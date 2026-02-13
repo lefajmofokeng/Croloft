@@ -54,11 +54,27 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Affiliate Programme - IT Solutions</title>
     <style>
+         /* Circular Std - Book/Regular (400) */
         @font-face {
             font-family: 'Circular Std';
-            src: local('Circular Std'), url('fonts/circular-std.ttf') format('woff'),
-                 url('fonts/CircularStd-Bold.ttf') format('woff');;
-            font-weight: normal;
+            src: url('fonts/CircularStd-Book.ttf') format('truetype');
+            font-weight: 400;
+            font-style: normal;
+        }
+
+        /* Circular Std - Medium (500) */
+        @font-face {
+            font-family: 'Circular Std';
+            src: url('fonts/CircularStd.ttf') format('truetype');
+            font-weight: 500;
+            font-style: normal;
+        }
+
+        /* Circular Std - Bold (700) */
+        @font-face {
+            font-family: 'Circular Std';
+            src: url('fonts/CircularStd-Bold.ttf') format('truetype');
+            font-weight: 600;
             font-style: normal;
         }
 
@@ -359,7 +375,7 @@
         }
 
         .cta-label {
-            font-size: 12px;
+            font-size: 14px;
             font-weight: 600;
             letter-spacing: 1px;
             text-transform: uppercase;
@@ -370,22 +386,22 @@
 
         .cta-title {
             font-size: 48px;
-            font-weight: 700;
+            font-weight: 500;
             margin-bottom: 20px;
             line-height: 1.3;
         }
 
         .cta-subtitle {
             font-size: 18px;
-            font-weight: 600;
+            font-weight: 500;
             color: #a0a9be;
             margin-bottom: 40px;
             line-height: 1.6;
         }
 
         .privacy-notice {
-            font-size: 13px;
-            font-weight: 500;
+            font-size: 14px;
+            font-weight: 400;
             color: #a0a9be;
             margin-top: 80px;
         }
@@ -416,8 +432,9 @@
                 font-size: 32px;
             }
 
-            .hero-visual {
+            .hero-visual img {
                 height: 300px;
+                width: 100%;
             }
         }
     </style>
@@ -433,7 +450,7 @@
                 <button class="btn-primary" onclick="window.location.href='affiliate-program.html'">Start Earning</button>
             </div>
             <div class="hero-visual">
-                <img src="thumbnails/Screenshot_2025-11-10_212555-removebg-preview.png">
+                <img src="thumbnails/affiliate.png">
             </div>
         </div>
     </div>
