@@ -555,6 +555,7 @@ class CronosHeader extends HTMLElement {
                     margin: 10px 0 0 0;
                     padding: 15px 20px;
                     text-align: center;
+                    font-size: 19px;
                 }
 
                 .cronos-qr-dropdown-trigger {
