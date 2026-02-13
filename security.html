@@ -77,6 +77,30 @@
             --font-size-5xl: 60px;
         }
 
+        /* Circular Std - Book/Regular (400) */
+        @font-face {
+            font-family: 'Circular Std';
+            src: url('fonts/CircularStd-Book.ttf') format('truetype');
+            font-weight: 400;
+            font-style: normal;
+        }
+
+        /* Circular Std - Medium (500) */
+        @font-face {
+            font-family: 'Circular Std';
+            src: url('fonts/CircularStd.ttf') format('truetype');
+            font-weight: 500;
+            font-style: normal;
+        }
+
+        /* Circular Std - Bold (700) */
+        @font-face {
+            font-family: 'Circular Std';
+            src: url('fonts/CircularStd-Bold.ttf') format('truetype');
+            font-weight: 600;
+            font-style: normal;
+        }
+
         /* --- Base Styles --- */
         * {
             box-sizing: border-box;
@@ -85,7 +109,7 @@
         }
 
         body {
-            font-family: 'Inter', sans-serif;
+            font-family: 'Circular Std', sans-serif;
             color: var(--text-dark);
             overflow-x: hidden;
         }
@@ -116,10 +140,9 @@
 
         .sec-hero-title {
             font-size: var(--font-size-3xl);
-            font-weight: 600;
+            font-weight: 500;
             color: #000000;
             margin-bottom: 20px;
-            letter-spacing: -0.04em;
             max-width: 700px;
             margin-left: auto;
             margin-right: auto;
@@ -127,7 +150,7 @@
 
         .sec-hero-subtext {
             font-size: var(--font-size-lg);
-            font-weight: 600;
+            font-weight: 500;
             line-height: 1.5;
             color: var(--text-grey);
             max-width: 850px;
@@ -142,7 +165,7 @@
 
         .sec-philosophy-title {
             font-size: var(--font-size-4xl);
-            font-weight: 600;
+            font-weight: 500;
             margin-bottom: 40px;
             color: #000;
         }
@@ -184,14 +207,14 @@
         .sec-transparency-title {
             font-size: var(--font-size-3xl);
             line-height: 1.1;
-            font-weight: 600;
+            font-weight: 500;
             margin-bottom: 40px;
             max-width: 900px;
         }
 
         .sec-certifications-title {
             font-size: var(--font-size-3xl);
-            font-weight: 600;
+            font-weight: 500;
             margin-top: 40px;
             margin-bottom: 20px;
         }
@@ -237,7 +260,7 @@
         .sec-bug-bounty-title {
             font-size: var(--font-size-3xl);
             margin-bottom: 15px;
-            font-weight: 600;
+            font-weight: 500;
             z-index: 10;
             position: relative;
         }
@@ -245,7 +268,8 @@
         .sec-bug-bounty-text {
             max-width: 600px;
             margin-bottom: 30px;
-            font-size: 18px;
+            font-weight: 400;
+            font-size: 19px;
             color: #c3c3c3;
             z-index: 10;
             position: relative;
@@ -258,7 +282,8 @@
             color: var(--text-light);
             text-decoration: none;
             border-radius: 50px;
-            font-weight: 600;
+            font-size: 18px;
+            font-weight: 500;
             transition: background-color 0.2s, color 0.2s;
             z-index: 10;
             position: relative;
@@ -298,9 +323,9 @@
         }
 
         .sec-learn-cards-title {
-            font-size: var(--font-size-2xl);
+            font-size: var(--font-size-3xl);
             margin-bottom: 40px;
-            font-weight: 600;
+            font-weight: 500;
         }
 
         .sec-cards-grid {
@@ -779,9 +804,6 @@
                     <img src="thumbnails/ISO 14001.png" alt="AICPA SOC Logo">
                 </div>
                 <div class="sec-cert-logo">
-                    <img src="thumbnails/kudelski security.png" alt="ISO 27001 Logo">
-                </div>
-                <div class="sec-cert-logo">
                     <img src="thumbnails/iso 1400.png" alt="ISO 1400 Logo">
                 </div>
                 <div class="sec-cert-logo">
@@ -798,7 +820,7 @@
                 </p>
                 <a href="#" class="sec-hacker-button">Submit a Vulnerability Report <span class="sec-external-link-icon">&#x2197;</span></a>
                 <div class="sec-h1-graphic">
-                    <img src="thumbnails/Screenshot_2025-11-10_212555-removebg-preview.png" alt="HackerOne Logo">
+                    <img src="thumbnails/sec2.png" alt="HackerOne Logo">
                 </div>
             </div>
         </div>
