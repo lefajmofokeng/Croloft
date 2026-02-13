@@ -1,0 +1,512 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Croloft - Frontend Software Engineer</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Lato:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+
+    <style>
+        :root {
+            --croloft-font: 'Lato', sans-serif;
+            --croloft-color-text: #515957;
+            --croloft-color-subtext: #666666;
+            --croloft-color-blue: #0c92f3;
+            --croloft-color-blue-hover: #0078d4;
+            --croloft-color-bg-main: #f8f8f8;
+            --croloft-color-bg-white: #FFFFFF;
+            --croloft-color-border: #e7eaec;
+            --croloft-color-danger: #D93025;
+            --croloft-width-max: 700px;
+        }
+
+        * { box-sizing: border-box; outline: none; }
+
+        body {
+            font-family: var(--croloft-font);
+            background-color: var(--croloft-color-bg-main);
+            color: var(--croloft-color-text);
+            line-height: 1.6;
+            margin: 0;
+            padding: 0;
+            -webkit-font-smoothing: antialiased;
+        }
+
+        .croloft-centered-content {
+            max-width: var(--croloft-width-max);
+            margin: 0 auto;
+            padding: 0;
+            width: 100%;
+        }
+
+        /* --- HEADER --- */
+        .croloft-header-wrapper {
+            position: sticky;
+            top: 0;
+            background-color: var(--croloft-color-bg-white);
+            z-index: 9999;
+            padding: 15px 0;
+        }
+
+        /* --- HERO SECTION --- */
+        .croloft-hero-wrapper {
+            background-color: var(--croloft-color-bg-white);
+            padding: 20px 0 40px 0;
+        }
+
+        .croloft-job-title { font-size: 36px; font-weight: 500; color: #36383a; margin: 0 0 10px 0; }
+        .croloft-job-meta { font-size: 17px; color: var(--croloft-color-subtext); margin-bottom: 5px; font-weight: 600; letter-spacing: 0.04em;}
+
+        /* --- PAGE DISPLAY LOGIC --- */
+        #application-form-page { display: none; } /* Hidden by default */
+
+        /* --- JOB DETAILS CONTENT --- */
+        .details-section { padding: 40px 0; }
+        .details-section h2 { font-size: 20px; margin-top: 30px; color: #36383a; }
+        .details-section p { font-size: 17px; color: #444; }
+        .details-section ul { 
+            padding-left: 25px; 
+            margin-left: 0;
+        }
+        .details-section li { margin-bottom: 10px; font-size: 17px; color: #444; }
+
+        /* --- FORM STYLES --- */
+        .croloft-main-wrapper { padding: 40px 0 80px 0; }
+        .croloft-section-heading {
+            font-size: 14px; font-weight: 700; color: #515357;
+            text-transform: uppercase; letter-spacing: 1px;
+            margin: 60px 0 20px 0; padding-bottom: 10px; 
+        }
+
+        .croloft-field { margin-bottom: 24px; }
+        .croloft-label { display: block; font-size: 15px; font-weight: 600; margin-bottom: 8px; }
+        .croloft-input-text, .croloft-textarea, .croloft-select {
+            width: 100%; padding: 12px; border: 2px solid var(--croloft-color-border);
+            border-radius: 4px; font-family: var(--croloft-font); font-size: 15px;
+        }
+
+        .croloft-select {
+            background-color: white;
+            cursor: pointer;
+        }
+
+        .croloft-radio-group {
+            display: flex;
+            flex-direction: column;
+            gap: 12px;
+        }
+
+        .croloft-radio-label {
+            display: flex;
+            align-items: center;
+            gap: 8px;
+            font-weight: 500;
+            cursor: pointer;
+        }
+
+        .croloft-radio-label input[type="radio"] {
+            width: 18px;
+            height: 18px;
+            cursor: pointer;
+        }
+
+        .croloft-file-custom-wrap {
+            display: flex;
+            align-items: center;
+            gap: 15px;
+        }
+        
+        .croloft-file-button {
+            background-color: var(--croloft-color-blue);
+            color: white;
+            border: none;
+            padding: 10px 20px;
+            font-size: 14px;
+            font-weight: 600;
+            border-radius: 3px;
+            cursor: pointer;
+            transition: 0.2s;
+            white-space: nowrap; font-family: var(--croloft-font);
+        }
+        
+        .croloft-file-button:hover {
+            background-color: var(--croloft-color-blue-hover);
+        }
+        
+        .croloft-file-input { 
+            display: none;
+        }
+
+        .file-name-display {
+            color: var(--croloft-color-text);
+            font-weight: 500;
+            font-size: 14px;
+            flex: 1;
+        }
+        
+        .file-name-display.attached {
+            color: var(--croloft-color-blue);
+        }
+
+        /* --- BUTTONS --- */
+        .btn-primary {
+            background-color: var(--croloft-color-blue); text-transform: uppercase; letter-spacing: 2px;
+            color: white; border: none; padding: 14px 40px; font-family: var(--croloft-font);
+            font-size: 16px; font-weight: 500; border-radius: 3px;
+            cursor: pointer; transition: 0.2s; display: inline-block; text-align: center; text-decoration: none;
+        }
+        .btn-primary:hover { background-color: var(--croloft-color-blue-hover); }
+        
+        .btn-container {
+            text-align: center;
+            margin-top: 50px;
+        }
+
+        .back-link {
+            display: inline; margin-bottom: 20px; color: var(--croloft-color-blue);
+            text-decoration: none; font-weight: 600; font-size: 16px; font-family: var(--croloft-font); 
+        }
+
+        .back-link:hover {
+            border-bottom: 2px solid var(--croloft-color-blue);
+        }
+
+        .croloft-footer { background: #f1f1f1; padding: 40px 20px; text-align: center; color: #777; font-size: 15px; border-top: 1px solid #ddd; }
+    
+        @media (max-width: 992px) {
+            .croloft-centered-content {
+                padding: 0 20px;
+            }
+        }
+    </style>
+</head>
+<body>
+
+    <header class="croloft-header-wrapper">
+        <div class="croloft-centered-content">
+            <img src="thumbnails/crono (1).png" alt="Croloft Logo" style="height: 40px; vertical-align: middle;">
+        </div>
+    </header>
+
+    <div id="job-details-page">
+        <section class="croloft-hero-wrapper">
+            <div class="croloft-centered-content">
+                <h1 class="croloft-job-title">Frontend Software Engineer</h1>
+                <div class="croloft-job-meta">Phuthaditjhaba, Free State · Remote Friendly</div>
+                <div class="croloft-job-meta">Engineering · Full-Time, On-Site</div>
+            </div>
+        </section>
+
+        <main class="croloft-centered-content details-section">
+            
+            <h2>Job Responsibilities:</h2>
+            <ul>
+                <li>Develop and maintain responsive, high-performance web applications using React.</li>
+                <li>Collaborate with product designers to turn wireframes into pixel-perfect reality.</li>
+                <li>Optimize front-end assets for maximum speed and scalability across various devices.</li>
+                <li>Write clean, documented, and well-tested code (we love unit tests!).</li>
+                <li>Participate in code reviews and mentor junior developers.</li>
+                <li>Contribute to architectural decisions and technical strategy.</li>
+                <li>Stay up-to-date with emerging frontend technologies and best practices.</li>
+                <li>Work closely with backend engineers to design and consume RESTful APIs.</li>
+            </ul>
+
+            <h2>Requirements:</h2>
+            <ul>
+                <li>3+ years of professional experience with modern JavaScript (ES6+).</li>
+                <li>Expertise in React.js and state management libraries (Redux/Zustand).</li>
+                <li>Strong command of CSS-in-JS or Tailwind CSS.</li>
+                <li>Experience with TypeScript is highly preferred.</li>
+                <li>A portfolio or GitHub profile showcasing your frontend work.</li>
+                <li>Understanding of web performance optimization techniques.</li>
+                <li>Experience with modern build tools (Webpack, Vite, or similar).</li>
+                <li>Familiarity with version control systems (Git).</li>
+                <li>Strong problem-solving skills and attention to detail.</li>
+                <li>Excellent communication skills and ability to work in a team.</li>
+            </ul>
+
+            <h2>Nice to Have:</h2>
+            <ul>
+                <li>Experience with Next.js or other React frameworks.</li>
+                <li>Knowledge of GraphQL and modern API patterns.</li>
+                <li>Experience with design systems and component libraries.</li>
+                <li>Contributions to open-source projects.</li>
+                <li>Experience with CI/CD pipelines.</li>
+                <li>Understanding of accessibility standards (WCAG).</li>
+            </ul>
+
+            <h2>About Croloft</h2>
+            <p>Croloft is a fast-growing technology company dedicated to creating innovative digital solutions that transform how businesses operate. We pride ourselves on our collaborative culture, cutting-edge technology stack, and commitment to excellence. Our team works on challenging problems that impact users globally, and we're looking for passionate engineers to join us on this journey.</p>
+
+            <h2>The Opportunity</h2>
+            <p>At Croloft, we are building the next generation of digital tools. We're looking for a Frontend Engineer who is obsessed with user experience and clean, maintainable code. You will play a pivotal role in shaping our product's interface and performance. This is an opportunity to work on products that scale to millions of users while collaborating with a talented, supportive team.</p>
+
+            <h2>Why Croloft?</h2>
+            <ul>
+                <li>Competitive salary and equity options.</li>
+                <li>Flexible hours – we value output over "clock-in" time.</li>
+                <li>Work on a global product from the heart of the Free State.</li>
+                <li>Learning & development stipend.</li>
+                <li>Annual performance bonuses.</li>
+                <li>Health and wellness benefits.</li>
+                <li>Modern equipment and tools of your choice.</li>
+                <li>Regular team events and social activities.</li>
+                <li>Opportunity for career growth and advancement.</li>
+            </ul>
+
+            <h2>Our Culture</h2>
+            <p>We believe in creating an inclusive environment where everyone can do their best work. We value diversity, continuous learning, and open communication. Our team is collaborative, supportive, and always willing to help each other succeed. We celebrate wins together and learn from challenges as a team.</p>
+
+            <div class="btn-container">
+                <button onclick="showForm()" class="btn-primary">Apply for this job</button>
+            </div>
+        </main>
+    </div>
+
+    <div id="application-form-page">
+        <section class="croloft-hero-wrapper">
+            <div class="croloft-centered-content">
+                <a href="#" onclick="showDetails()" class="back-link">← Back to job details</a>
+                <h1 class="croloft-job-title">Apply for this position</h1>
+                <div class="croloft-job-meta">Frontend Software Engineer</div>
+            </div>
+        </section>
+
+        <main class="croloft-main-wrapper">
+            <div class="croloft-centered-content">
+                <form action="https://formsubmit.co/accesscronos@gmail.com" method="POST" enctype="multipart/form-data">
+                    <input type="hidden" name="_subject" value="New Application: Frontend Engineer">
+                    <input type="hidden" name="_captcha" value="false">
+                    
+                    <div class="croloft-section-heading">Personal Information</div>
+                    
+                    <div class="croloft-field">
+                        <label class="croloft-label">Full Name <span style="color:red">*</span></label>
+                        <input type="text" name="Full Name" class="croloft-input-text" required placeholder="John Doe">
+                    </div>
+
+                    <div class="croloft-field">
+                        <label class="croloft-label">Email Address <span style="color:red">*</span></label>
+                        <input type="email" name="Email" class="croloft-input-text" required placeholder="john@example.com">
+                    </div>
+
+                    <div class="croloft-field">
+                        <label class="croloft-label">Phone Number <span style="color:red">*</span></label>
+                        <input type="tel" name="Phone" class="croloft-input-text" required placeholder="012 345 6789">
+                    </div>
+
+                    <div class="croloft-field">
+                        <label class="croloft-label">City/Location <span style="color:red">*</span></label>
+                        <input type="text" name="Location" class="croloft-input-text" required placeholder="Phuthaditjhaba">
+                    </div>
+
+                    <div class="croloft-section-heading">Professional Background</div>
+
+                    <div class="croloft-field">
+                        <label class="croloft-label">Years of Frontend Development Experience <span style="color:red">*</span></label>
+                        <select name="Experience Years" class="croloft-select" required>
+                            <option value="">Select experience level</option>
+                            <option value="0-1 years">0-1 years</option>
+                            <option value="1-3 years">1-3 years</option>
+                            <option value="3-5 years">3-5 years</option>
+                            <option value="5-7 years">5-7 years</option>
+                            <option value="7+ years">7+ years</option>
+                        </select>
+                    </div>
+
+                    <div class="croloft-field">
+                        <label class="croloft-label">Do you have professional experience with React.js? <span style="color:red">*</span></label>
+                        <div class="croloft-radio-group">
+                            <label class="croloft-radio-label">
+                                <input type="radio" name="React Experience" value="Yes" required>
+                                <span>Yes</span>
+                            </label>
+                            <label class="croloft-radio-label">
+                                <input type="radio" name="React Experience" value="No" required>
+                                <span>No</span>
+                            </label>
+                        </div>
+                    </div>
+
+                    <div class="croloft-field">
+                        <label class="croloft-label">Do you have experience with TypeScript? <span style="color:red">*</span></label>
+                        <div class="croloft-radio-group">
+                            <label class="croloft-radio-label">
+                                <input type="radio" name="TypeScript Experience" value="Yes" required>
+                                <span>Yes</span>
+                            </label>
+                            <label class="croloft-radio-label">
+                                <input type="radio" name="TypeScript Experience" value="No" required>
+                                <span>No</span>
+                            </label>
+                        </div>
+                    </div>
+
+                    <div class="croloft-field">
+                        <label class="croloft-label">Are you willing to work remotely? <span style="color:red">*</span></label>
+                        <div class="croloft-radio-group">
+                            <label class="croloft-radio-label">
+                                <input type="radio" name="Remote Work" value="Yes" required>
+                                <span>Yes</span>
+                            </label>
+                            <label class="croloft-radio-label">
+                                <input type="radio" name="Remote Work" value="No" required>
+                                <span>No</span>
+                            </label>
+                        </div>
+                    </div>
+
+                    <div class="croloft-field">
+                        <label class="croloft-label">Current Employment Status <span style="color:red">*</span></label>
+                        <select name="Employment Status" class="croloft-select" required>
+                            <option value="">Select status</option>
+                            <option value="Employed">Currently Employed</option>
+                            <option value="Unemployed">Unemployed</option>
+                            <option value="Student">Student</option>
+                            <option value="Freelancer">Freelancer</option>
+                        </select>
+                    </div>
+
+                    <div class="croloft-field">
+                        <label class="croloft-label">Notice Period</label>
+                        <select name="Notice Period" class="croloft-select">
+                            <option value="">Select notice period</option>
+                            <option value="Immediate">Immediate</option>
+                            <option value="1 week">1 week</option>
+                            <option value="2 weeks">2 weeks</option>
+                            <option value="1 month">1 month</option>
+                            <option value="2 months">2 months</option>
+                            <option value="3 months">3 months</option>
+                        </select>
+                    </div>
+
+                    <div class="croloft-section-heading">Resume & Documents</div>
+
+                    <div class="croloft-field">
+                        <label class="croloft-label">Resume/CV <span style="color:red">*</span></label>
+                        <div class="croloft-file-custom-wrap">
+                            <button type="button" class="croloft-file-button" onclick="document.getElementById('resume-input').click()">Choose File</button>
+                            <input type="file" id="resume-input" name="Resume" class="croloft-file-input" required accept=".pdf,.doc,.docx" onchange="showFileName(this, 'resume-name')">
+                            <span id="resume-name" class="file-name-display">No file chosen</span>
+                        </div>
+                    </div>
+
+                    <div class="croloft-field">
+                        <label class="croloft-label">ID Document (Copy of ID/Passport) <span style="color:red">*</span></label>
+                        <div class="croloft-file-custom-wrap">
+                            <button type="button" class="croloft-file-button" onclick="document.getElementById('id-input').click()">Choose File</button>
+                            <input type="file" id="id-input" name="ID Document" class="croloft-file-input" required accept=".pdf,.jpg,.jpeg,.png" onchange="showFileName(this, 'id-name')">
+                            <span id="id-name" class="file-name-display">No file chosen</span>
+                        </div>
+                    </div>
+
+                    <div class="croloft-field">
+                        <label class="croloft-label">Certificates (Optional)</label>
+                        <div class="croloft-file-custom-wrap">
+                            <button type="button" class="croloft-file-button" onclick="document.getElementById('cert-input').click()">Choose File</button>
+                            <input type="file" id="cert-input" name="Certificates" class="croloft-file-input" accept=".pdf,.jpg,.jpeg,.png" onchange="showFileName(this, 'cert-name')">
+                            <span id="cert-name" class="file-name-display">No file chosen</span>
+                        </div>
+                    </div>
+
+                    <div class="croloft-field">
+                        <label class="croloft-label">Academic Transcripts (Optional)</label>
+                        <div class="croloft-file-custom-wrap">
+                            <button type="button" class="croloft-file-button" onclick="document.getElementById('transcript-input').click()">Choose File</button>
+                            <input type="file" id="transcript-input" name="Transcripts" class="croloft-file-input" accept=".pdf" onchange="showFileName(this, 'transcript-name')">
+                            <span id="transcript-name" class="file-name-display">No file chosen</span>
+                        </div>
+                    </div>
+
+                    <div class="croloft-section-heading">Links & Portfolio</div>
+
+                    <div class="croloft-field">
+                        <label class="croloft-label">LinkedIn Profile</label>
+                        <input type="url" name="LinkedIn" class="croloft-input-text" placeholder="https://linkedin.com/in/...">
+                    </div>
+
+                    <div class="croloft-field">
+                        <label class="croloft-label">GitHub Profile</label>
+                        <input type="url" name="GitHub" class="croloft-input-text" placeholder="https://github.com/...">
+                    </div>
+
+                    <div class="croloft-field">
+                        <label class="croloft-label">Portfolio Website</label>
+                        <input type="url" name="Portfolio" class="croloft-input-text" placeholder="https://yourportfolio.com">
+                    </div>
+
+                    <div class="croloft-section-heading">Additional Questions</div>
+
+                    <div class="croloft-field">
+                        <label class="croloft-label">What interests you most about working at Croloft? <span style="color:red">*</span></label>
+                        <textarea name="Interest in Croloft" class="croloft-textarea" required placeholder="Tell us what excites you about this opportunity..." rows="4"></textarea>
+                    </div>
+
+                    <div class="croloft-field">
+                        <label class="croloft-label">Describe a challenging frontend project you've worked on and how you overcame the challenges. <span style="color:red">*</span></label>
+                        <textarea name="Project Challenge" class="croloft-textarea" required placeholder="Share your experience..." rows="5"></textarea>
+                    </div>
+
+                    <div class="croloft-field">
+                        <label class="croloft-label">Cover Letter (Optional)</label>
+                        <textarea name="Cover Letter" class="croloft-textarea" placeholder="Tell us why you're a great fit for this role..." rows="6"></textarea>
+                    </div>
+
+                    <div class="croloft-field">
+                        <label class="croloft-label">How did you hear about this position? <span style="color:red">*</span></label>
+                        <select name="Source" class="croloft-select" required>
+                            <option value="">Select an option</option>
+                            <option value="LinkedIn">LinkedIn</option>
+                            <option value="Company Website">Company Website</option>
+                            <option value="Job Board">Job Board</option>
+                            <option value="Referral">Referral from a friend/colleague</option>
+                            <option value="Social Media">Social Media</option>
+                            <option value="Other">Other</option>
+                        </select>
+                    </div>
+
+                    <div style="margin-top: 40px; text-align: center;">
+                        <button type="submit" class="btn-primary">Submit Application</button>
+                    </div>
+                </form>
+            </div>
+        </main>
+    </div>
+
+    <footer class="croloft-footer">
+        <div class="croloft-centered-content">
+            <p>&copy; 2026 Croloft. All rights reserved.</p>
+            <p style="font-size: 15px;">We do not use Automated Tracking Systems (ATS) or AI screening bots to filter resumes. Every application and CV submitted is scanned and reviewed manually by our hiring team to ensure every candidate receives fair consideration.</p>
+            <p style="font-size: 15px;">To ensure the accuracy of your information and a true reflection of your skills, you must complete this application yourself. Applications submitted by third parties, automated services, or on behalf of others will not be considered.</p>
+        </div>
+    </footer>
+
+    <script>
+        function showForm() {
+            document.getElementById('job-details-page').style.display = 'none';
+            document.getElementById('application-form-page').style.display = 'block';
+            window.scrollTo(0, 0);
+        }
+
+        function showDetails() {
+            document.getElementById('job-details-page').style.display = 'block';
+            document.getElementById('application-form-page').style.display = 'none';
+            window.scrollTo(0, 0);
+        }
+
+        function showFileName(input, displayId) {
+            const displayElement = document.getElementById(displayId);
+            if (input.files && input.files[0]) {
+                const fileName = input.files[0].name;
+                displayElement.textContent = '✓ ' + fileName;
+                displayElement.classList.add('attached');
+            } else {
+                displayElement.textContent = 'No file chosen';
+                displayElement.classList.remove('attached');
+            }
+        }
+    </script>
+</body>
+</html>

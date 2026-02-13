@@ -1,0 +1,980 @@
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>My Website</title>
+    
+    <script src="header.js" defer></script>
+    <script src="footer.js" defer></script> 
+</head>
+<body>
+
+    <cronos-header></cronos-header>
+    
+
+</body>
+</html>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+
+<style>
+  it-premium-ad-wrapper {
+    --brand-blue: #0061c2;
+    --text-main: #ffffff;
+    --text-dim: #bbc4d2;
+    --bg-deep: #05070a;
+    --glass-bg: rgba(255, 255, 255, 0.03);
+    --glass-border: rgba(255, 255, 255, 0.08);
+    
+    display: block;
+    width: 100%;
+    font-family: 'Inter', sans-serif;
+    background-color: var(--bg-deep);
+    color: var(--text-main);
+    box-sizing: border-box;
+    -webkit-font-smoothing: antialiased;
+  }
+
+  * {
+    margin: 0;
+    padding: 0;
+  }
+
+  it-premium-ad-wrapper *, it-premium-ad-wrapper *::before, it-premium-ad-wrapper *::after {
+    box-sizing: inherit;
+    margin: 0;
+    padding: 0;
+  }
+
+  /* --- HERO SECTION --- */
+  .it-ad-hero-section {
+    position: relative;
+    width: 100%;
+    min-height: 160vh; /* Large atmospheric height */
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: flex-start;
+    padding-top: 150px;
+    text-align: center;
+    
+    /* BACKGROUND IMAGE PLACEHOLDER */
+    /* Replace with your high-res tech background. 
+       Use a dark gradient overlay to ensure text readability. */
+    background: linear-gradient(to bottom, rgba(5, 7, 10, 0.2) 0%, var(--bg-deep) 100%), 
+                url('thumbnails/pexels-efdal-yildiz-325089-917494.jpg');
+    background-size: cover;
+    background-position: center top;
+  }
+
+  .it-ad-hero-tagline {
+    font-size: 80px;
+    font-weight: 600;
+    letter-spacing: -0.04em;
+    line-height: 1.1;
+    max-width: 900px;
+    margin-bottom: 24px;
+    padding: 0 20px;
+  }
+
+  .it-ad-hero-subtext {
+    font-size: 25px;
+    color: var(--text-dim);
+    font-weight: 600;
+    margin-bottom: 32px;
+    max-width: 600px;
+    line-height: 1.5;
+  }
+
+  .it-ad-btn {
+    background-color: var(--brand-blue);
+    color: white;
+    padding: 12px 28px;
+    border-radius: 60px;
+    text-decoration: none;
+    font-weight: 600;
+    font-size: 18px;
+    display: inline-flex;
+    align-items: center;
+    gap: 8px;
+    transition: transform 0.2s ease, filter 0.2s ease;
+  }
+
+  .it-ad-btn:hover {
+    transform: translateY(-1px);
+    filter: brightness(1.1);
+  }
+
+  /* --- PROOF SECTION --- */
+  .it-ad-proof-container {
+    padding: 150px 20px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    background-color: var(--bg-deep);
+  }
+
+  .it-ad-proof-title {
+    font-size: 42px;
+    letter-spacing: -0.02em;
+    font-weight: 600;
+    margin-bottom: 20px;
+    text-align: center;
+  }
+
+  .it-ad-stars-row {
+    display: flex;
+    gap: 40px;
+    margin-bottom: 80px;
+  }
+
+  .it-ad-star-item {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 8px;
+  }
+
+  .it-ad-star-meta {
+    font-size: 19px;
+    color: var(--text-dim);
+    font-weight: 500;
+  }
+
+  /* --- GRID SECTION --- */
+  .it-ad-grid {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 20px;
+    width: 100%;
+    max-width: 1200px;
+  }
+
+  .it-ad-card {
+    background: var(--glass-bg);
+    padding: 40px;
+    border-radius: 12px;
+    display: flex;
+    flex-direction: column;
+    gap: 16px;
+    min-height: 280px;
+    transition: border 0.3s ease;
+    margin-top: 3rem;
+  }
+
+  .it-ad-card:hover {
+    border-color: rgba(255, 255, 255, 0.2);
+  }
+
+  .it-ad-card-icon {
+    width: 24px;
+    height: 24px;
+    opacity: 0.8;
+  }
+
+  .it-ad-card-title {
+    font-size: 30px;
+    letter-spacing: -0.02em;
+    font-weight: 550;
+    margin-top: 10px;
+  }
+
+  .it-ad-card-body {
+    font-size: 18px;
+    font-weight: 600;
+    color: var(--text-dim);
+    line-height: 1.4;
+    margin-top: 6rem;
+  }
+
+  /* --- RESPONSIVE --- */
+  @media (max-width: 900px) {
+    .it-ad-grid { grid-template-columns: 1fr; }
+    .it-ad-stars-row { flex-direction: column; gap: 30px; }
+    .it-ad-hero-section { padding-top: 60px; }
+  }
+</style>
+
+<it-premium-ad-wrapper>
+  <header class="it-ad-hero-section">
+    <h1 class="it-ad-hero-tagline">The only advertising platform you need</h1>
+    <p class="it-ad-hero-subtext">Reach 400M+ tech-savvy users, developers, and IT decision makers in their local environment.</p>
+    <a href="#" class="it-ad-btn">
+      Get Started 
+    </a>
+  </header>
+
+  <section class="it-ad-proof-container">
+    <h2 class="it-ad-proof-title">Built for scale, made for everyone</h2>
+    
+    <div class="it-ad-stars-row">
+      <div class="it-ad-star-item">
+        <span class="it-ad-star-meta"><strong>4.6</strong> App Store Rating</span>
+        <img src="https://upload.wikimedia.org/wikipedia/commons/2/2f/5_stars.svg" width="80" alt="5 stars">
+      </div>
+      <div class="it-ad-star-item">
+        <span class="it-ad-star-meta"><strong>4.5</strong> Google Play Rating</span>
+        <img src="https://upload.wikimedia.org/wikipedia/commons/2/2f/5_stars.svg" width="80" alt="5 stars">
+      </div>
+    </div>
+
+    <div class="it-ad-grid">
+      <div class="it-ad-card">
+        <svg class="it-ad-card-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="10"></circle><line x1="2" y1="12" x2="22" y2="12"></line><path d="M12 2a15.3 15.3 0 0 1 4 10 15.3 15.3 0 0 1-4 10 15.3 15.3 0 0 1-4-10 15.3 15.3 0 0 1 4-10z"></path></svg>
+        <h3 class="it-ad-card-title">150m+ users globally</h3>
+        <p class="it-ad-card-body">Trusted by advertisers around the world to deliver high-intent traffic since 2016.</p>
+      </div>
+
+      <div class="it-ad-card">
+        <svg class="it-ad-card-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"></path></svg>
+        <h3 class="it-ad-card-title">Go live in minutes</h3>
+        <p class="it-ad-card-body">Set up your campaign and begin reaching tech professionals in a few simple steps.</p>
+      </div>
+
+      <div class="it-ad-card">
+        <svg class="it-ad-card-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M12 2a10 10 0 1 0 10 10H12V2z"></path><path d="M12 2a10 10 0 0 1 10 10h-10V2z"></path><path d="M12 12L2.2 7.6"></path><path d="M12 12l9.8 4.4"></path><path d="M12 12V21.8"></path></svg>
+        <h3 class="it-ad-card-title">Zero-fee targeting</h3>
+        <p class="it-ad-card-body">Fund your account and target specific niches at no extra cost with major tech verticals.</p>
+      </div>
+    </div>
+  </section>
+</it-premium-ad-wrapper>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<div class="it-ads-v2-wrapper">
+  <style>
+    /* Scoped Styles */
+    .it-ads-v2-wrapper {
+      --ads-bg-dark: #060b1e;       /* Deepest Navy */
+      --ads-bg-card: #111a3b;       /* Card BG */
+      --ads-bg-hover: #1a2448;      /* Hover State */
+      --ads-text-white: #ffffff;
+      --ads-text-gray: #8a94ad;
+      --ads-blue: #0082fa;          /* Primary Blue */
+      --ads-blue-dark: #0056b3;
+      --ads-font: 'Inter', sans-serif;
+      
+      font-family: var(--ads-font);
+      background-color: var(--ads-bg-dark);
+      color: var(--ads-text-white);
+      width: 100%;
+      overflow: hidden; /* Prevent horizontal scroll */
+      box-sizing: border-box;
+      line-height: 1.5;
+    }
+
+    .it-ads-v2-wrapper *, 
+    .it-ads-v2-wrapper *::before, 
+    .it-ads-v2-wrapper *::after {
+      box-sizing: inherit;
+    }
+
+    /* Container */
+    .it-ads-container {
+      max-width: 1200px;
+      margin: 0 auto;
+      padding: 150px 20px;
+      position: relative;
+    }
+
+    /* Typography */
+    .it-ads-h1 {
+      font-size: 3.5rem;
+      font-weight: 500;
+      letter-spacing: -0.02em;
+      margin: 0 0 16px;
+      line-height: 1.1;
+    }
+    .it-ads-h2 {
+      font-size: 2.5rem;
+      letter-spacing: -0.02em;
+      font-weight: 600;
+      margin: 0 0 10px;
+    }
+    .it-ads-h3 {
+      font-size: 1.4rem;
+      font-weight: 500;
+      letter-spacing: -0.02em;
+      margin: 0 0 8px;
+    }
+    .it-ads-p {
+      color: var(--ads-text-gray);
+      font-size: 1.2rem;
+      font-weight: 600;
+      line-height: 1.2;
+      margin: 0;
+    }
+    .it-ads-subhead {
+      font-size: 1.125rem;
+      font-weight: 600;
+      color: var(--ads-text-gray);
+      margin-bottom: 32px;
+    }
+
+    .it-ads-subheadline {
+        font-weight: 600;
+        color: #9096b7;
+        font-size: 1.5rem;
+        margin-bottom: 30px;
+    }
+
+    /* Buttons */
+    .it-ads-btn-group {
+      display: flex;
+      gap: 16px;
+      justify-content: center;
+      margin-bottom: 60px;
+    }
+    .it-ads-btn {
+      padding: 10px 24px;
+      border-radius: 50px; /* Pill shape */
+      font-size: 1rem;
+      font-weight: 600;
+      background: #64697f57;
+      text-decoration: none;
+      transition: all 0.2s ease;
+      display: inline-flex;
+      align-items: center;
+      gap: 6px;
+    }
+    .it-ads-btn-primary {
+      background-color: rgba(255, 255, 255, 0.1);
+      border: 1px solid rgba(255, 255, 255, 0.3);
+      color: var(--ads-text-white);
+    }
+    .it-ads-btn-primary:hover {
+      background-color: rgba(255, 255, 255, 0.1);
+    }
+
+    /* HERO SECTION */
+    .it-ads-hero {
+      text-align: center;
+      padding-top: 80px;
+      padding-bottom: 40px;
+    }
+
+    .it-ads-brand-mark {
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      gap: 8px;
+      margin-bottom: 24px;
+      font-weight: 600;
+      font-size: 0.9rem;
+      color: var(--ads-blue);
+    }
+
+    /* PHONE CONTAINERS */
+    .it-ads-phones-wrapper {
+      position: relative;
+      height: 600px; /* Height to accommodate the phones */
+      width: 100%;
+      max-width: 500px;
+      margin: 0 auto;
+      /* Visual illusion: Phones sit "between" text and features */
+      margin-top: 20px; 
+    }
+
+    .it-ads-phone {
+      position: absolute;
+      border-radius: 40px;
+      overflow: hidden;
+      box-shadow: 0 25px 50px -12px rgba(0, 0, 0, 0.5);
+      border: 6px solid #1e293b; /* Bezel look */
+      background-color: #000;
+    }
+
+    /* Phone 1 (Back/Left) */
+    .it-ads-phone-back {
+      width: 260px;
+      height: 520px;
+      top: 40px;
+      left: 20px;
+      z-index: 1;
+      transform: scale(0.95);
+      opacity: 0.8;
+      /* Placeholder background */
+      background: #0d1326 url('thumbnails/pexels-pixabay-270669.jpg') center/cover no-repeat;
+    }
+
+    /* Phone 2 (Front/Right) */
+    .it-ads-phone-front {
+      width: 280px;
+      height: 560px;
+      top: 0;
+      right: 20px;
+      z-index: 2;
+      box-shadow: -20px 20px 60px rgba(0,0,0,0.6);
+      /* Placeholder background */
+      background: #0d1326 url('thumbnails/pexels-dominick-davis.jpg') center/cover no-repeat;
+    }
+
+    /* 4-COLUMN FEATURES (Below Phones) */
+    .it-ads-text-features {
+      display: grid;
+      grid-template-columns: repeat(4, 1fr);
+      gap: 29px;
+      margin: 20px auto 100px;
+      text-align: left;
+    }
+    
+    .it-ads-text-feat-item {
+        padding: 10px 0 0 0;
+        border-top: 1px solid #1e293b;
+    }
+
+    /* MIDDLE BANNER (Video Background) */
+    .it-ads-banner-video {
+      position: relative;
+      border-radius: 32px;
+      overflow: hidden;
+      min-height: 700px;
+      display: flex;
+      align-items: center; /* Vertical center */
+      margin-bottom: 100px;
+    }
+
+    .it-ads-bg-video {
+      position: absolute;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      z-index: 0;
+    }
+    
+    /* Overlay gradient for text readability over video */
+    .it-ads-video-overlay {
+        position: absolute;
+        top: 0; left: 0; width: 100%; height: 100%;
+        background: linear-gradient(90deg, rgba(0,0,0,0.8) 0%, rgba(0,0,0,0.4) 50%, rgba(0,0,0,0) 100%);
+        z-index: 1;
+    }
+
+    .it-ads-banner-content {
+      position: relative;
+      z-index: 2;
+      padding: 60px;
+      max-width: 50%;
+    }
+
+    .it-ads-pill-btn {
+        background: rgba(255,255,255,0.1);
+        backdrop-filter: blur(10px);
+        border: 1px solid rgba(255,255,255,0.2);
+        color: white;
+        padding: 8px 16px;
+        border-radius: 100px;
+        text-decoration: none;
+        font-size: 1rem;
+        display: inline-block;
+        font-weight: 600;
+        margin-top: 20px;
+    }
+
+    /* 2x2 GRID CARDS */
+    .it-ads-grid-row {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 24px;
+      margin-bottom: 80px;
+    }
+
+    .it-ads-card {
+      background-color: var(--ads-bg-card);
+      border-radius: 24px;
+      padding: 40px;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      min-height: 220px;
+      position: relative;
+      overflow: hidden;
+      transition: transform 0.3s ease;
+    }
+    
+    .it-ads-card:hover {
+        background-color: var(--ads-bg-hover);
+        transform: translateY(-5px);
+    }
+
+    .it-ads-card-content {
+      position: relative;
+      z-index: 2;
+      max-width: 60%;
+    }
+
+    .it-ads-card-img {
+      width: 120px;
+      height: 120px;
+      object-fit: contain;
+      z-index: 1;
+      /* Placeholder for specific icons/3D elements */
+      background-image: url('https://via.placeholder.com/120x120/2a3555/ffffff?text=Icon');
+      background-size: cover;
+      border-radius: 12px;
+    }
+
+    .it-ads-sm-btn {
+      background-color: #385686;
+      color: white;
+      padding: 8px 16px;
+      border-radius: 6px;
+      text-decoration: none;
+      font-size: 1rem;
+      font-weight: 600;
+      display: inline-block;
+      margin-top: 16px;
+    }
+
+    /* Responsive Adjustments */
+    @media (max-width: 900px) {
+      .it-ads-h1 { font-size: 2.5rem; }
+      .it-ads-text-features { grid-template-columns: 1fr 1fr; }
+      .it-ads-banner-content { max-width: 100%; }
+      .it-ads-grid-row { grid-template-columns: 1fr; }
+    }
+    @media (max-width: 600px) {
+      .it-ads-phones-wrapper { height: 400px; transform: scale(0.8); transform-origin: top center; margin-bottom: -100px; }
+      .it-ads-btn-group { flex-direction: column; }
+    }
+  </style>
+
+  <div class="it-ads-container">
+    
+    <div class="it-ads-hero">
+      <div class="it-ads-brand-mark">
+        <span>🔹</span> IT Ads Pro App
+      </div>
+      <h1 class="it-ads-h1">Your ad campaign journey starts here</h1>
+      <p class="it-ads-subheadline">Target with precision and the lowest CPAs in the industry</p>
+      
+      <div class="it-ads-btn-group">
+        <a href="#" class="it-ads-btn it-ads-btn-primary">Create Account &rarr;</a>
+        <a href="#" class="it-ads-btn it-ads-btn-primary">Download Media Kit</a>
+      </div>
+
+      <div class="it-ads-phones-wrapper">
+        <div class="it-ads-phone it-ads-phone-back"></div>
+        <div class="it-ads-phone it-ads-phone-front"></div>
+      </div>
+    </div>
+
+    <div class="it-ads-text-features">
+      <div class="it-ads-text-feat-item">
+        <h3 class="it-ads-h3">SaaS, AI, Cloud, and 400+ niches</h3>
+        <p class="it-ads-p">Promote, convert, and scale in your specific vertical.</p>
+      </div>
+      <div class="it-ads-text-feat-item">
+        <h3 class="it-ads-h3">Bot Protection Programme</h3>
+        <p class="it-ads-p">Up to $250,000 coverage against unauthorized bot traffic.</p>
+      </div>
+      <div class="it-ads-text-feat-item">
+        <h3 class="it-ads-h3">Near-zero trading fees</h3>
+        <p class="it-ads-p">Pay only for results with our transparent bidding engine.</p>
+      </div>
+      <div class="it-ads-text-feat-item">
+        <h3 class="it-ads-h3">Secure by design</h3>
+        <p class="it-ads-p">Leading the industry in data privacy and certifications.</p>
+      </div>
+    </div>
+
+    <div class="it-ads-banner-video">
+      <video class="it-ads-bg-video" autoplay loop muted playsinline poster="https://via.placeholder.com/1200x500/0a1128/ffffff?text=Video+Poster">
+        <source src="videos/background-video3.mp4" type="video/mp4">
+      </video>
+      
+      <div class="it-ads-video-overlay"></div>
+
+      <div class="it-ads-banner-content">
+        <h2 class="it-ads-h2">Premium Ad Placements</h2>
+        <p class="it-ads-p" style="color: rgba(255,255,255,0.8);">Get up to 5% higher CTR on homepage takeovers and newsletter features.</p>
+        <a href="#" class="it-ads-pill-btn">Choose your placement &rarr;</a>
+      </div>
+    </div>
+
+    <div class="it-ads-grid-row">
+      <div class="it-ads-card">
+        <div class="it-ads-card-content">
+          <h3 class="it-ads-h3">Baskets</h3>
+          <p class="it-ads-p">Thematic bundles to instantly diversify your ad spend.</p>
+          <a href="#" class="it-ads-sm-btn">Browse Baskets</a>
+        </div>
+        <div class="it-ads-card-img"></div>
+      </div>
+      
+      <div class="it-ads-card">
+        <div class="it-ads-card-content">
+          <h3 class="it-ads-h3">Earn</h3>
+          <p class="it-ads-p">Generate passive leads by putting idle budget to work.</p>
+          <a href="#" class="it-ads-sm-btn">Start Earning</a>
+        </div>
+        <div class="it-ads-card-img"></div>
+      </div>
+      
+      <div class="it-ads-card">
+        <div class="it-ads-card-content">
+          <h3 class="it-ads-h3">Staking</h3>
+          <p class="it-ads-p">On-chain verification earns you rewards for securing data.</p>
+          <a href="#" class="it-ads-sm-btn">Stake Now</a>
+        </div>
+        <div class="it-ads-card-img"></div>
+      </div>
+      
+      <div class="it-ads-card">
+        <div class="it-ads-card-content">
+          <h3 class="it-ads-h3">Pay</h3>
+          <p class="it-ads-p">Spending budget is easy with over 300,000 publishers.</p>
+          <a href="#" class="it-ads-sm-btn">Explore Pay</a>
+        </div>
+        <div class="it-ads-card-img"></div>
+      </div>
+    </div>
+
+  </div>
+</div>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<style>
+  /* Root wrapper for the component */
+  .adv-it-section-wrapper {
+    /* Font and Reset */
+    font-family: 'Inter', -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif;
+    box-sizing: border-box;
+    
+    /* Background for the whole section (Deep dark blue/black) */
+    background-color: #03060d; 
+    color: #ffffff;
+    
+    /* Center the internal content */
+    display: flex;
+    justify-content: center;
+    
+    /* Spacing around the component */
+    padding: 120px 20px;
+    width: 100%;
+  }
+
+  /* Reset box-sizing for all internal elements */
+  .adv-it-section-wrapper * {
+    box-sizing: border-box;
+  }
+
+  /* The 1200px Constraint Container */
+  .adv-it-container-1200 {
+    width: 100%;
+    max-width: 1200px;
+    margin: 0 auto;
+  }
+
+  /* Section Header */
+  .adv-it-header-title {
+    font-size: 30px;
+    font-weight: 600;
+    margin: 0 0 32px 0;
+    letter-spacing: -0.02em;
+    color: #ffffff;
+  }
+
+  /* Grid Layout */
+  .adv-it-grid {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr); /* 3 Columns */
+    gap: 24px; /* Space between cards */
+  }
+
+  /* Individual Card Styling */
+  .adv-it-card-item {
+    position: relative;
+    height: 520px; /* Fixed height to match aspect ratio of design */
+    border-radius: 20px;
+    overflow: hidden;
+    background-color: #111620; /* Fallback color */
+    background-size: cover;
+    background-position: center;
+    background-repeat: no-repeat;
+    cursor: pointer;
+    transition: transform 0.3s cubic-bezier(0.25, 0.8, 0.25, 1);
+    
+    /* Border handling to match the subtle look */
+    border: 1px solid rgba(255, 255, 255, 0.05);
+  }
+
+  /* Hover Lift Effect */
+  .adv-it-card-item:hover {
+    transform: translateY(-8px);
+    box-shadow: 0 10px 30px rgba(0,0,0,0.5);
+  }
+
+  /* Gradient Overlay - Crucial for text readability and the "look" */
+  .adv-it-card-item::after {
+    content: '';
+    position: absolute;
+    inset: 0;
+    background: linear-gradient(
+      to bottom, 
+      rgba(0,0,0,0) 0%, 
+      rgba(0,0,0,0.2) 40%,
+      rgba(0,0,0,0.9) 100%
+    );
+    z-index: 1;
+  }
+
+  /* Content Wrapper inside Card */
+  .adv-it-card-inner {
+    position: relative;
+    z-index: 2;
+    height: 100%;
+    padding: 28px;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+  }
+
+  /* Card Top Title */
+  .adv-it-card-top-title {
+    font-size: 27px;
+    font-weight: 700;
+    margin: 0;
+    text-shadow: 0 2px 4px rgba(0,0,0,0.3);
+  }
+
+  /* Bottom Area Wrapper */
+  .adv-it-card-bottom {
+    display: flex;
+    align-items: flex-end; /* Align text and button to bottom */
+    justify-content: space-between;
+    gap: 16px;
+  }
+
+  /* Description Text */
+  .adv-it-card-desc {
+    font-size: 18px;
+    font-weight: 550;
+    letter-spacing: -0.02em;
+    line-height: 1.5;
+    color: #d1d5db; /* Light gray text */
+    margin: 0;
+    max-width: 85%;
+  }
+
+  /* Circle Arrow Button */
+  .adv-it-circle-btn {
+    flex-shrink: 0;
+    width: 36px;
+    height: 36px;
+    border-radius: 50%;
+    background-color: rgba(255, 255, 255, 0.1);
+    backdrop-filter: blur(4px);
+    border: 1px solid rgba(255, 255, 255, 0.1);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    transition: background-color 0.2s ease;
+  }
+
+  .adv-it-card-item:hover .adv-it-circle-btn {
+    background-color: rgba(255, 255, 255, 0.25);
+  }
+
+  /* Arrow Icon SVG */
+  .adv-it-arrow-svg {
+    width: 14px;
+    height: 14px;
+    fill: #ffffff;
+  }
+
+  /* Responsive Adjustments */
+  @media (max-width: 992px) {
+    .adv-it-grid {
+      grid-template-columns: repeat(2, 1fr); /* 2 cols on tablets */
+    }
+  }
+
+  @media (max-width: 600px) {
+    .adv-it-grid {
+      grid-template-columns: 1fr; /* 1 col on mobile */
+    }
+    .adv-it-card-item {
+      height: 360px;
+    }
+    .adv-it-section-wrapper {
+      padding: 40px 16px;
+    }
+  }
+</style>
+
+<div class="adv-it-section-wrapper">
+  <div class="adv-it-container-1200">
+    
+    <h2 class="adv-it-header-title">Precision IT Advertising</h2>
+
+    <div class="adv-it-grid">
+      
+      <div class="adv-it-card-item" style="background-image: url('https://images.pexels.com/photos/12602144/pexels-photo-12602144.jpeg');">
+        <div class="adv-it-card-inner">
+          <h3 class="adv-it-card-top-title">Infrastructure</h3>
+          
+          <div class="adv-it-card-bottom">
+            <p class="adv-it-card-desc">Target enterprise architects and deploy campaigns for high-scale server solutions.</p>
+            <div class="adv-it-circle-btn">
+              <svg class="adv-it-arrow-svg" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
+                <path d="M16.1716 10.9999L10.8076 5.63589L12.2218 4.22168L20 11.9999L12.2218 19.778L10.8076 18.3638L16.1716 12.9999H4V10.9999H16.1716Z"/>
+              </svg>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <div class="adv-it-card-item" style="background-image: url('https://images.pexels.com/photos/12602144/pexels-photo-12602144.jpeg');">
+        <div class="adv-it-card-inner">
+          <h3 class="adv-it-card-top-title">Cybersecurity</h3>
+          
+          <div class="adv-it-card-bottom">
+            <p class="adv-it-card-desc">Promote zero-trust frameworks and compliance tools to CISOs and security leads.</p>
+            <div class="adv-it-circle-btn">
+              <svg class="adv-it-arrow-svg" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
+                <path d="M16.1716 10.9999L10.8076 5.63589L12.2218 4.22168L20 11.9999L12.2218 19.778L10.8076 18.3638L16.1716 12.9999H4V10.9999H16.1716Z"/>
+              </svg>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <div class="adv-it-card-item" style="background-image: url('https://images.pexels.com/photos/12602144/pexels-photo-12602144.jpeg');">
+        <div class="adv-it-card-inner">
+          <h3 class="adv-it-card-top-title">SaaS Integration</h3>
+          
+          <div class="adv-it-card-bottom">
+            <p class="adv-it-card-desc">Reach backend developers building on the latest cloud APIs and microservices.</p>
+            <div class="adv-it-circle-btn">
+              <svg class="adv-it-arrow-svg" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
+                <path d="M16.1716 10.9999L10.8076 5.63589L12.2218 4.22168L20 11.9999L12.2218 19.778L10.8076 18.3638L16.1716 12.9999H4V10.9999H16.1716Z"/>
+              </svg>
+            </div>
+          </div>
+        </div>
+      </div>
+
+    </div>
+  </div>
+</div>
+
+
+
+
+
+
+
+
+<cronos-footer></cronos-footer>

@@ -1,0 +1,729 @@
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>My Website</title>
+    
+    <script src="header.js" defer></script>
+    <script src="footer.js" defer></script> 
+</head>
+<body>
+
+    <cronos-header></cronos-header>
+    
+
+</body>
+</html>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Defcon | South African Licenses & Registrations</title>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@100..900&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="sa-licenses.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.2/css/all.min.css">
+</head>
+<body class="defcon-licenses-page">
+
+    <header class="licenses-hero-section">
+        <div class="hero-background-gradient"></div>
+        <h1 class="hero-main-title">Cronos Licenses</h1>
+        <div class="hero-glow-effect"></div>
+    </header>
+
+    <main class="licenses-content-area">
+        <div class="licenses-info-card">
+            <h2 class="card-intro-heading">Cronos is registered and authorized to operate across all nine South African provinces:</h2>
+            
+            <div class="licenses-table">
+                <div class="table-header-row">
+                    <div class="header-cell jurisdiction-cell">PROVINCE</div>
+                    <div class="header-cell license-cell">REGISTRATION / ACCREDITATION</div>
+                </div>
+
+                
+<div class="jurisdiction-group" id="coastal-regions-group">
+                    <button class="group-toggle" aria-expanded="true" aria-controls="coastal-licenses">
+                        Coastal Hubs (WC, KZN, EC)
+                    </button>
+                    <div class="group-licenses-list" id="coastal-licenses">
+                        <div class="license-row">
+                            <div class="row-cell country-cell">Western Cape</div>
+                            <div class="row-cell license-details">
+                                Local Business Development Authority Registration<br>
+                                Primary IT Infrastructure Hub Permit
+                            </div>
+                        </div>
+                        <div class="license-row alternate-bg">
+                            <div class="row-cell country-cell">KwaZulu-Natal</div>
+                            <div class="row-cell license-details">
+                                Provincial BEE Certificate Status<br>
+                                Manufacturing & Logistics IT Support Accreditation
+                            </div>
+                        </div>
+                        <div class="license-row">
+                            <div class="row-cell country-cell">Eastern Cape</div>
+                            <div class="row-cell license-details">
+                                Regional Development Agency Vendor Status<br>
+                                Digital Marketing Services Authorization
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                
+<div class="jurisdiction-group" id="economic-regions-group">
+                    <button class="group-toggle" aria-expanded="true" aria-controls="economic-licenses">
+                        Economic Hubs (GP, MP, NW)
+                    </button>
+                    <div class="group-licenses-list" id="economic-licenses">
+                        <div class="license-row">
+                            <div class="row-cell country-cell">Gauteng</div>
+                            <div class="row-cell license-details">
+                                CIPC Company Registration (Head Office)<br>
+                                Financial Services Sector IT Compliance
+                            </div>
+                        </div>
+                        <div class="license-row alternate-bg">
+                            <div class="row-cell country-cell">Mpumalanga</div>
+                            <div class="row-cell license-details">
+                                Mining & Energy Sector Technology Vendor Permit<br>
+                                Provincial Skills Development Levy (SDL) Compliance
+                            </div>
+                        </div>
+                        <div class="license-row">
+                            <div class="row-cell country-cell">North West</div>
+                            <div class="row-cell license-details">
+                                Provincial Tender Supplier Database Registration<br>
+                                Automation & AI Consulting License
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                
+<div class="jurisdiction-group" id="inland-regions-group">
+                    <button class="group-toggle" aria-expanded="true" aria-controls="inland-licenses">
+                        Inland & Northern Regions (FS, LP, NC)
+                    </button>
+                    <div class="group-licenses-list" id="inland-licenses">
+                        <div class="license-row">
+                            <div class="row-cell country-cell">Free State</div>
+                            <div class="row-cell license-details">
+                                Provincial Tax Clearance Certificate<br>
+                                Public Sector IT Services Authorization
+                            </div>
+                        </div>
+                        <div class="license-row alternate-bg">
+                            <div class="row-cell country-cell">Limpopo</div>
+                            <div class="row-cell license-details">
+                                Digital Communications Service Provider Registration<br>
+                                Rural Connectivity Project Accreditation
+                            </div>
+                        </div>
+                        <div class="license-row">
+                            <div class="row-cell country-cell">Northern Cape</div>
+                            <div class="row-cell license-details">
+                                Renewable Energy Support Services Permit<br>
+                                Remote IT Infrastructure Management Authorization
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+            </div>
+        </div>
+    </main>
+
+    <script src="sa-licenses.js"></script>
+</body>
+</html>
+
+<style>
+  /* GLOBAL STYLES */
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box; font-family: 'Circular Std', sans-serif;
+}
+
+@font-face {
+            font-family: 'Circular Std';
+            src: local('Circular Std'), url('fonts/circular-std.ttf') format('woff'),
+                 url('fonts/CircularStd-Bold.ttf') format('woff');;
+            font-weight: normal;
+            font-style: normal;
+        }
+
+body.defcon-licenses-page {
+    font-family: 'Circular Std', sans-serif;
+    background-color: #f4f4f4; /* Light background for the overall page */
+    color: #000;
+    min-height: 100vh;
+}
+
+/* --- HERO SECTION --- */
+.licenses-hero-section {
+    position: relative;
+    width: 100%;
+    min-height: 550px; /* Adjust height as needed */
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    padding: 20px;
+    overflow: hidden;
+    z-index: 1;
+}
+
+.hero-background-gradient {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: linear-gradient(145deg, #001affc2 0%, #040e2a 40%, #040a23 100%); /* Darker blue to Defcon blue */
+    z-index: -1;
+}
+
+.hero-main-title {
+    font-size: clamp(2.5rem, 5vw, 60px);
+    font-weight: 500;
+    color: #fff;
+    text-align: center;
+    z-index: 1;
+    margin-bottom: 3rem;
+    letter-spacing: -0.02em;
+    margin-top: -180px;
+
+}
+
+/* Consistent hero glow effect */
+.hero-glow-effect {
+    position: absolute;
+    width: 300px;
+    height: 300px;
+    background: radial-gradient(circle, #0091ff44 0%, transparent 70%);
+    filter: blur(80px);
+    z-index: 0;
+    opacity: 0.6;
+    animation: pulseGlow 5s infinite alternate ease-in-out;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+}
+
+@keyframes pulseGlow {
+    0% { opacity: 0.5; transform: translate(-50%, -50%) scale(1); }
+    50% { opacity: 0.8; transform: translate(-50%, -50%) scale(1.05); }
+    100% { opacity: 0.5; transform: translate(-50%, -50%) scale(1); }
+}
+
+
+/* --- LICENSES CONTENT AREA --- */
+.licenses-content-area {
+    width: 100%;
+    padding: 0 20px;
+    margin-top: -280px; /* Pulls the card up into the hero section */
+    position: relative;
+    z-index: 2; /* Ensures card is above hero background */
+    display: flex;
+    justify-content: center;
+    margin-bottom: 4rem;
+}
+
+.licenses-info-card {
+    background-color: #fff;
+    border-radius: 2px;
+    max-width: 1000px;
+    width: 100%;
+    padding: 40px 60px;
+}
+
+.card-intro-heading {
+    font-size: 1.7rem;
+    font-weight: 500;
+    margin-bottom: 30px;
+    color: #000;
+}
+
+/* --- LICENSES TABLE STRUCTURE --- */
+.licenses-table {
+    border: 1px solid #e0e0e0;
+    border-radius: 2px;
+    overflow: hidden;
+}
+
+.table-header-row {
+    display: flex;
+    background-color: #062d61; /* Dark blue background for header */
+    color: #fff;
+    font-weight: 500;
+    font-size: 0.95rem;
+    text-transform: uppercase;
+    letter-spacing: 0.5px;
+}
+
+.header-cell {
+    padding: 15px 20px;
+    flex: 1;
+}
+
+.jurisdiction-cell {
+    flex: 0.8; /* Adjust width ratio */
+}
+
+/* Jurisdiction Group Toggle (NEW FEATURE) */
+.jurisdiction-group {
+    border-bottom: 1px solid #eee;
+}
+
+.group-toggle {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    width: 100%;
+    padding: 15px 20px;
+    background-color: #0080ff1e; /* Dark blue for group headers */
+    color: #000;
+    font-weight: 500;
+    font-size: 1.2rem;
+    letter-spacing: -0.02em;
+    border: none;
+    font-family: 'Circular Std', sans-serif;
+}
+
+.toggle-icon {
+    transition: transform 0.3s ease;
+}
+
+.group-toggle[aria-expanded="true"] .toggle-icon {
+    transform: rotate(180deg);
+}
+.group-toggle[aria-expanded="false"] .toggle-icon {
+    transform: rotate(0deg);
+}
+
+.group-licenses-list {
+    max-height: 500px; /* Arbitrary max height for transition */
+    overflow: hidden;
+    transition: max-height 0.4s ease-out; /* Smooth collapse/expand */
+}
+.group-licenses-list.collapsed {
+    max-height: 0;
+}
+
+
+.license-row {
+    display: flex;
+    border-bottom: 1px solid #e0e0e0;
+    font-size: 1.2rem;
+    font-weight: 400;
+}
+
+.license-row.alternate-bg {
+    background-color: #f9f9f9; /* Light gray for alternating rows */
+}
+
+.license-row:last-child {
+    border-bottom: none;
+}
+
+.row-cell {
+    padding: 15px 20px;
+    flex: 1;
+    color: #000;
+}
+
+.country-cell {
+    flex: 0.8; /* Match header width */
+    font-weight: 600;
+    letter-spacing: -0.02em;
+}
+
+.license-details {
+    line-height: 1.4;
+    color: #555; /* Slightly muted color for details */
+}
+
+/* Responsive adjustments */
+@media (max-width: 768px) {
+    .licenses-info-card {
+        padding: 20px;
+    }
+    .table-header-row,
+    .license-row {
+        flex-direction: column;
+    }
+    .header-cell,
+    .row-cell {
+        flex: none; /* Reset flex for column layout */
+        width: 100%;
+        padding: 10px 15px;
+    }
+    .hero-main-title {
+        font-size: clamp(2rem, 8vw, 3.5rem);
+        margin-top: 30px;
+        padding-top: 3rem;
+    }
+}
+
+@media (max-width: 480px) {
+    .licenses-hero-section {
+        min-height: 200px;
+    }
+    .licenses-content-area {
+        margin-top: -30px;
+    }
+    .card-intro-heading {
+        font-size: 1.2rem;
+    }
+    .group-toggle {
+        font-size: 1rem;
+        padding: 12px 15px;
+    }
+    .license-row {
+        font-size: 0.9rem;
+    }
+}
+</style>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Follow Us Bar</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: 'Inter', sans-serif;
+        }
+
+        .follow-container {
+            background-color: #ffffff;
+            color: #000;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+        }
+
+        .follow-bar {
+            padding: 30px 0;
+            width: 100%;
+            max-width: 1200px;
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            flex-wrap: wrap;
+            gap: 15px;
+        }
+
+        .follow-content {
+            display: flex;
+            align-items: center;
+            gap: 10px;
+        }
+
+        .follow-title {
+            font-size: 1rem;
+            font-weight: 500;
+            color: #06273e;
+            white-space: nowrap;
+            line-height: 1;
+            
+        }
+
+        .social-icons {
+            display: flex;
+            gap: 10px;
+        }
+
+        .social-icons {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            width: 37px;
+            height: 37px;
+            border-radius: 50%;
+            color: #f8f9fa;
+            text-decoration: none;
+            position: relative;
+            overflow: hidden;
+            backface-visibility: hidden;
+        }
+
+        .social-icons:hover {
+          background-color: #ececec1b;
+        }
+
+        .social-icons i {
+            font-size: 1.2rem;
+            z-index: 2;
+            position: relative;
+        }
+
+        .social-icons::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: #0091ff;
+            transform: scale(0);
+            transition: transform 0.3s ease;
+            border-radius: 50%;
+        }
+
+        /* Responsive adjustments */
+        @media (max-width: 600px) {
+            .follow-bar {
+                flex-direction: column;
+                text-align: center;
+                padding: 20px;
+               
+            }
+            
+            .follow-content {
+                flex-direction: column;
+                gap: 10px;
+            }
+            
+            .social-icons {
+                justify-content: center;
+            }
+        }
+
+        @media (max-width: 400px) {
+            .social-icons-container {
+                gap: 8px;
+            }
+            
+            .social-icons {
+                width: 36px;
+                height: 36px;
+            }
+        }
+    </style>
+</head>
+
+</html>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<cronos-footer></cronos-footer>

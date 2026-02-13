@@ -1,0 +1,130 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Defcon - Page Under Construction</title>
+    <!-- Use Inter font family for consistency -->
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@100..900&display=swap" rel="stylesheet">
+    <style>
+        /* Define colors and fonts based on your palette */
+        :root {
+            --defcon-primary-dark: #010119;
+            --defcon-accent: #1199fA;
+            --defcon-text-light: #f4f4f4;
+            --defcon-text-white: #fff;
+            --defcon-secondary-dark: #151519;
+            font-family: 'Inter', sans-serif;
+            color: var(--defcon-text-light);
+        }
+
+        /* Full page centering using Flexbox */
+        body {
+            margin: 0;
+            padding: 20px;
+            background-color: #010119;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            min-height: 90vh;
+            text-align: center;
+            line-height: 1.6;
+        }
+
+        .defcon-construction-container {
+            max-width: 600px;
+            padding: 40px;
+            border-radius: 2px;
+        }
+
+        /* Company Logo Header (Text Placeholder) */
+        .defcon-logo-header {
+            font-size: 2.5rem;
+            font-weight: 900;
+            color: var(--defcon-text-white);
+            margin-bottom: 2rem;
+            letter-spacing: 2px;
+            /* Accent color glow effect */
+            text-shadow: 0 0 10px rgba(17, 153, 250, 0.5);
+        }
+
+        .defcon-logo-header span {
+            color: var(--defcon-accent);
+        }
+
+        .defcon-status-icon {
+            font-size: 4rem;
+            color: var(--defcon-accent);
+            margin-bottom: 1.5rem;
+            display: block;
+        }
+
+        .defcon-status-title {
+            font-size: 1.8rem;
+            font-weight: 700;
+            color: var(--defcon-text-white);
+            margin-bottom: 1rem;
+        }
+
+        .defcon-status-message {
+            font-size: 1.1rem;
+            color: var(--defcon-text-light);
+            margin-bottom: 2rem;
+        }
+
+        .defcon-return-link {
+            display: inline-block;
+            padding: 10px 20px;
+            border: 1px solid white;
+            color: white;
+            text-decoration: none;
+            border-radius: 50px;
+            font-weight: 600;
+            transition: background-color 0.3s, transform 0.3s;
+        }
+
+        .defcon-return-link:hover {
+            background-color: #ffffff1f; /* Slightly darker accent */
+        }
+
+        /* Mobile adjustments */
+        @media (max-width: 600px) {
+            .defcon-logo-header {
+                font-size: 2rem;
+            }
+            .defcon-status-title {
+                font-size: 1.5rem;
+            }
+            .defcon-status-message {
+                font-size: 1rem;
+            }    
+        }
+    </style>
+</head>
+<body>
+
+    <div class="defcon-construction-container">
+
+        <!-- STATUS MESSAGE -->
+        <span class="defcon-status-icon">
+            <svg xmlns="http://www.w3.org/2000/svg" width="150" height="150" viewBox="0 0 24 24" fill="#0099fa">
+                <g fill="none" stroke="#0099fa" stroke-width="0.6">
+                    <path stroke-miterlimit="10" d="M1.808 3.37a2.456 2.456 0 1 0 4.912 0a2.456 2.456 0 0 0-4.912 0Z"/>
+                    <path stroke-linecap="round" stroke-linejoin="round" d="M11.413 9.7h-.008l-4.15.024L4.211 7.27c-.029-.024-.062-.04-.093-.061a2 2 0 0 0-.147-.1a1.4 1.4 0 0 0-.162-.068c-.037-.01-.071-.028-.109-.042a2 2 0 0 0-.225-.045c-.021 0-.04-.01-.062-.012h-.1a1.48 1.48 0 0 0-1.2.545L2.1 7.5c-.025.03-.042.065-.064.1s-.065.09-.092.14a2 2 0 0 0-.069.165c-.014.037-.031.07-.043.109a1.5 1.5 0 0 0-.043.215c0 .025-.012.047-.014.07v.015l-.708 7.347a1.5 1.5 0 0 0 1.159 1.6l5.321 1.217l.36 3.27a1.5 1.5 0 0 0 1.659 1.33a1.5 1.5 0 0 0 1.327-1.656l-.477-4.33a1.5 1.5 0 0 0-1.157-1.3l-5.08-1.16l.321-3.278L5.788 12.4c.267.215.6.332.942.332h.009l4.683-.027a1.5 1.5 0 0 0-.009-3zm7.558-.137l-.686 4.493l-3.611.028m-2.209 2.657H22.94m-8.058 0l-.413 6.042m6.054-6.042l.413 6.042"/>
+                </g>
+            </svg>
+        </span>
+        <h1 class="defcon-status-title">Page Under Development</h1>
+        
+        <p class="defcon-status-message">
+            This section of our website is currently being crafted by our engineering team to ensure it meets the highest standards of excellence. We apologize for the temporary inconvenience.<br><br>
+            Please check back soon for its official launch.
+        </p>
+
+        <!-- CTA/Return -->
+        <a href="index.html" class="defcon-return-link">Return to Homepage</a>
+
+    </div>
+
+</body>
+</html>

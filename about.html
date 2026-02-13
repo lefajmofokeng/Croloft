@@ -1,0 +1,1799 @@
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>My Website</title>
+    
+    <script src="header.js" defer></script>
+    <script src="footer.js" defer></script> 
+</head>
+<body>
+
+    <cronos-header></cronos-header>
+    
+
+</body>
+</html>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<body>
+
+<!-- =============================================
+     SCROLL PROGRESS BACK-TO-TOP
+     ============================================= -->
+<!-- Back to Top Button with Progress Circle -->
+<div class="scroll-progress-container" id="backToTopContainer">
+  <svg class="progress-circle-svg">
+    <circle class="progress-circle-bg"></circle>
+    <circle class="progress-circle-fill" id="progressCircle"></circle>
+  </svg>
+  <button class="back-to-top-btn" id="backToTopBtn">
+    <svg class="arrow-icon-svg" viewBox="0 0 24 24">
+      <path d="M7.41 15.41L12 10.83l4.59 4.58L18 14l-6-6-6 6z"/>
+    </svg>
+  </button>
+</div>
+<!-- Scroll Progress End -->
+
+<style>
+  .scroll-progress-container {
+  position: fixed;
+  bottom: 30px;
+  right: 30px;
+  width: 60px;
+  height: 60px;
+  z-index: 1000;
+  opacity: 0;
+  visibility: hidden;
+  transition: opacity 0.3s ease, visibility 0.3s ease;
+}
+
+.scroll-progress-container.show-button {
+  opacity: 1;
+  visibility: visible;
+}
+
+.progress-circle-svg {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 60px;
+  height: 60px;
+  transform: rotate(-90deg);
+}
+
+.progress-circle-bg {
+  fill: none;
+  stroke: rgba(255, 255, 255, 0.2);
+  stroke-width: 3;
+  r: 27;
+  cx: 30;
+  cy: 30;
+}
+
+.progress-circle-fill {
+  fill: none;
+  stroke: #007bff;
+  stroke-width: 3;
+  stroke-linecap: round;
+  r: 27;
+  cx: 30;
+  cy: 30;
+  stroke-dasharray: 169.65;
+  stroke-dashoffset: 169.65;
+  transition: stroke-dashoffset 0.1s ease;
+}
+
+.back-to-top-btn {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  width: 50px;
+  height: 50px;
+  background-color: #007bff;
+  border: none;
+  border-radius: 50%;
+  cursor: pointer;
+  box-shadow: 0 4px 12px rgba(0, 123, 255, 0.3);
+  transition: background-color 0.3s ease, transform 0.3s ease, box-shadow 0.3s ease;
+}
+
+.back-to-top-btn:hover {
+  background-color: #0056b3;
+  transform: translate(-50%, -50%) scale(1.1);
+  box-shadow: 0 6px 20px rgba(0, 123, 255, 0.4);
+}
+
+.back-to-top-btn:active {
+  transform: translate(-50%, -50%) scale(0.95);
+}
+
+.arrow-icon-svg {
+  width: 24px;
+  height: 24px;
+  fill: white;
+}
+
+.demo-content-section {
+  padding: 40px 20px;
+  margin: 20px 0;
+  background-color: #f8f9fa;
+  border-radius: 8px;
+}
+
+.demo-title {
+  font-size: 24px;
+  font-weight: bold;
+  color: #333;
+  margin-bottom: 20px;
+}
+
+.demo-paragraph {
+  font-size: 16px;
+  line-height: 1.6;
+  color: #666;
+  margin-bottom: 15px;
+}
+
+.demo-header {
+  font-size: 32px;
+  font-weight: bold;
+  color: #007bff;
+  text-align: center;
+  margin: 40px 0;
+}
+</style>
+
+<script>
+  document.addEventListener('DOMContentLoaded', function() {
+  const backToTopContainer = document.getElementById('backToTopContainer');
+  const backToTopBtn = document.getElementById('backToTopBtn');
+  const progressCircle = document.getElementById('progressCircle');
+  
+  // Circle circumference for progress calculation
+  const radius = 27;
+  const circumference = 2 * Math.PI * radius;
+  
+  // Set initial stroke-dasharray
+  progressCircle.style.strokeDasharray = circumference;
+  progressCircle.style.strokeDashoffset = circumference;
+  
+  // Show/hide button and update progress on scroll
+  window.addEventListener('scroll', function() {
+    const scrollTop = window.pageYOffset || document.documentElement.scrollTop;
+    const scrollHeight = document.documentElement.scrollHeight - window.innerHeight;
+    const scrollProgress = scrollTop / scrollHeight;
+    
+    // Show button after scrolling 100px
+    if (scrollTop > 100) {
+      backToTopContainer.classList.add('show-button');
+    } else {
+      backToTopContainer.classList.remove('show-button');
+    }
+    
+    // Update progress circle
+    const offset = circumference - (scrollProgress * circumference);
+    progressCircle.style.strokeDashoffset = offset;
+  });
+  
+  // Smooth scroll to top when button is clicked
+  backToTopBtn.addEventListener('click', function() {
+    window.scrollTo({
+      top: 0,
+      behavior: 'smooth'
+    });
+  });
+});
+</script>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700&display=swap" rel="stylesheet">
+
+<style>
+  /* Unique class prefix to avoid conflicts: tech-dupe- */
+  .tech-dupe-container {
+    position: relative;
+    width: 100%;
+    height: 800px; /* Adjust height as needed */
+   background-color: #061121;
+    overflow: hidden;
+    font-family: 'Circular Std', sans-serif;
+    color: #f4f4f4;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    text-align: center;
+  }
+
+  .tech-dupe-content {
+    max-width: 800px;
+    z-index: 1;
+  }
+
+  .tech-dupe-title {
+    font-size: 64px;
+    font-weight: 500;
+    line-height: 1.1;
+    margin-bottom: 50px;
+    letter-spacing: -0.04em;
+  }
+
+  .tech-dupe-subtitle {
+    font-size: 20px;
+    font-weight: 500;
+    text-transform: uppercase;
+    color: #1199fa;
+    margin-bottom: 32px;
+  }
+
+  .tech-dupe-button {
+    background-color: #F4F4F4;
+    color: #061121;
+    border: none;
+    border-radius: 24px;
+    padding: 10px 24px;
+    font-size: 19px;
+    font-weight: 500;
+    cursor: pointer;
+    transition: background-color 0.3s ease;
+    font-family: 'Inter', sans-serif;
+  }
+
+  .tech-dupe-button:hover {
+    background-color: #007bff;
+  }
+
+  .tech-dupe-person {
+    position: absolute;
+    bottom: 0;
+    right: 0;
+    height: 80%;
+    object-fit: contain;
+    opacity: 0.9; /* Slight opacity to blend with background */
+  }
+</style>
+
+<div class="tech-dupe-container">
+  <div class="tech-dupe-content">
+    <p class="tech-dupe-subtitle">Our Vision</p>
+    <h1 class="tech-dupe-title">Unlock the<br>Power of Technology<br>on your Platform</h1>
+    <button class="tech-dupe-button">View our roadmap
+        <span style="vertical-align: middle; justify-content: center; align-items: center;">
+            <svg xmlns="http://www.w3.org/2000/svg" class="arr-1" viewBox="0 0 24 24" width="24" fill="#061121" height="24">
+                <path d="M16.1716 10.9999L10.8076 5.63589L12.2218 4.22168L20 11.9999L12.2218 19.778L10.8076 18.3638L16.1716 12.9999H4V10.9999H16.1716Z"></path>
+            </svg>
+        </span>
+    </button>
+  </div>
+</div>
+
+
+
+
+<style>
+@import url('https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700&display=swap');
+</style>
+
+
+
+<!-- Video Hero Section -->
+        <section class="hero">
+            <video autoplay muted loop playsinline>
+                <source src="https://www.pexels.com/download/video/2397246/" type="video/mp4">
+                Your browser does not support the video tag.
+            </video>
+
+            <div class="hero-content">
+                <p class="tech-dupe-subtitle" style="color: #1199fa;">Our Partners</p>
+                <h1>The ROI-first technology partner, & <br> trusted platform for IT Solutions.</h1>
+                <div>
+                    <a href="#services" class="btn">Learn More
+                        <span style="vertical-align: middle; justify-content: center; align-items: center;">
+                            <svg xmlns="http://www.w3.org/2000/svg" class="arr-1" viewBox="0 0 24 24" width="24" fill="#fff" height="24">
+                                <path d="M16.1716 10.9999L10.8076 5.63589L12.2218 4.22168L20 11.9999L12.2218 19.778L10.8076 18.3638L16.1716 12.9999H4V10.9999H16.1716Z"></path>
+                            </svg>
+                        </span>
+                    </a>
+                </div>
+            </div>
+        </section>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>About Us</title>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Anton&family=Arbutus&family=Bitcount+Grid+Double:wght@100..900&family=Caprasimo&family=Changa+One:ital@0;1&family=Devonshire&family=Francois+One&family=Freckle+Face&family=Fruktur:ital@0;1&family=Gorditas:wght@400;700&family=Inter:ital,opsz,wght@0,14..32,100..900;1,14..32,100..900&family=Kavoon&family=Londrina+Sketch&family=Mogra&family=Patua+One&family=Piedra&family=Protest+Riot&family=Rubik+Beastly&family=Rubik+Dirt&family=Rubik+Distressed&family=Rubik+Glitch&family=Rubik+Maze&family=Rubik+Scribble&family=Rubik+Vinyl&family=Rubik+Wet+Paint&family=Satisfy&display=swap" rel="stylesheet">
+    <style>
+        @import url('https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700&display=swap');
+        /* ===== RESET & BASE STYLES ===== */
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        @font-face {
+            font-family: 'Circular Std';
+            src: local('Circular Std'), url('fonts/circular-std.ttf') format('woff'),
+                 url('fonts/CircularStd-Bold.ttf') format('woff');;
+            font-weight: normal;
+            font-style: normal;
+        }
+
+        :root {
+            --defcon-primary-dark: #080d1b;
+            --defcon-secondary-dark: #080d1b;
+            --defcon-accent: #0091ff;
+            --defcon-text-primary: #e6f1ff;
+            --defcon-text-secondary: #8892b0;
+            --defcon-card-bg: #061121;
+            --values-primary-blue: #0091ff;
+            --values-black: #000;
+            --values-white: #fff;
+            --values-dark-blue-bg: #061121;
+            --values-light-gray-bg: #f4f4f4;
+            --values-text-color: #d1d0d1;
+            --values-heading-color: #fff;
+        }
+
+        .aboutus-page-wrapper {
+            font-family: 'Circular Std', sans-serif;
+            overflow-x: hidden;
+        }
+
+        .aboutus-top-header {
+            color: #0577DA;
+            font-size: 19px;
+            font-weight: 500;
+            text-transform: uppercase;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            position: relative;
+            margin-bottom: 1rem;
+        }
+
+        /* ===== HERO SECTIONS ===== */
+
+        /* About Us Hero Section */
+        .aboutus-hero-section {
+            background-color: #061121;
+            min-height: 100vh;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            position: relative;
+            color: #fff;
+        }
+
+        .aboutus-hero-container {
+            max-width: 1200px;
+            width: 60%;
+            padding: 80px 40px;
+            text-align: center;
+        }
+
+        .aboutus-hero-heading {
+            font-size: 54px;
+            font-weight: 500;
+            margin-top: 24px;
+            margin-bottom: 24px;
+            letter-spacing: -0.04em;
+            color: #f4f4f4;
+            animation: aboutusFadeInUp 1s ease;
+        }
+
+        .aboutus-hero-subheading {
+            font-size: 25px;
+            font-weight: 500;
+            margin-bottom: 20px;
+            color: #f4f4f4;
+            animation: aboutusFadeInUp 1.2s ease;
+        }
+
+        .aboutus-stats-wrapper {
+            display: flex;
+            justify-content: center;
+            gap: 100px;
+            animation: aboutusFadeInUp 1.6s ease;
+        }
+
+        .aboutus-stat-item {
+            text-align: center;
+        }
+
+        .aboutus-stat-number {
+            font-size: 120px;
+            font-weight: 700;
+            color: #1199fa;
+            margin-bottom: 8px;
+        }
+
+        .aboutus-stat-label {
+            font-size: 16px;
+            font-weight: 500;
+            color: #f4f4f4;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+        }
+
+        /* Video Hero Section */
+        .hero {
+            padding: 300px 0;
+            position: relative;
+            min-height: 60vh;
+            width: 100%;
+            max-width: 100%;
+            overflow: hidden;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+        
+        .hero h1 {
+            font-size: 70px;
+            font-weight: 500;
+            letter-spacing: -0.03em;
+            margin-bottom: 1.5rem;
+            color: #ffffff;
+            text-align: center;
+            max-width: 80%;
+            line-height: 1.2;
+            opacity: 1;
+            transform: translateY(20px);
+            transition: opacity 0.8s ease, transform 0.8s ease;
+            font-family: 'Circular Std', sans-serif;
+        }
+
+        .hero p {
+            font-size: clamp(1rem, 2.5vw, 1.2rem);
+            color: #ecf0f1;
+            margin-bottom: 1.5rem;
+            text-align: center;
+            max-width: 90%;
+            opacity: 0;
+            transform: translateY(20px);
+            transition: opacity 0.8s ease 0.2s, transform 0.8s ease 0.2s;
+            font-family: 'Circular Std', sans-serif;
+        }
+
+        .hero video {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            z-index: 0;
+        }
+
+        .hero::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: rgba(0,0,0,0.4);
+            z-index: 1;
+        }
+
+        .hero-content {
+            flex-direction: column;
+            z-index: 2;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            position: relative;
+            padding: 0 1rem;
+            width: 100%;
+        }
+
+        .hero .btn {
+            display: inline-flex;
+            align-items: center;
+            gap: 8px;
+            padding: 9px 30px;
+            border: 1px solid white;
+            color: #ffffff;
+            font-weight: 500;
+            margin: 0.7rem 0;
+            font-size: clamp(0.9rem, 2vw, 1.1rem);
+            cursor: pointer;
+            border-radius: 60px;
+            text-decoration: none;
+            transition: all 0.3s ease;
+            opacity: 0;
+            transform: translateY(20px);
+            font-family: 'Circular Std', sans-serif;
+            transition: opacity 0.8s ease 0.4s, transform 0.8s ease 0.4s, background 0.3s ease;
+        }
+
+        .hero .btn:hover {
+            background: #f4f4f42f;
+        }
+
+        .hero .btn svg {
+            transition: transform 0.3s ease;
+        }
+
+        .hero .btn:hover svg {
+            transform: translateX(4px);
+        }
+
+        /* Animation classes */
+        .fade-in {
+            opacity: 1 !important;
+            transform: translateY(0) !important;
+        }
+
+        @keyframes aboutusFadeInUp {
+            from {
+                opacity: 0;
+                transform: translateY(20px);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+        /* ===== EXECUTIVE TEAM SECTION ===== */
+        .aboutus-team-section {
+            background-color: #061121;
+            padding: 90px 40px;
+            position: relative;
+            transition: filter 0.5s ease;
+        }
+
+        .aboutus-team-section.aboutus-blurred {
+            filter: blur(5px);
+            pointer-events: none;
+        }
+
+        .aboutus-team-container {
+            max-width: 1200px;
+            margin: 0 auto;
+            position: relative;
+        }
+
+        .aboutus-section-title {
+            font-size: 54px;
+            font-weight: 500;
+            letter-spacing: -0.04em;
+            text-align: center;
+            margin-bottom: 80px;
+            color: #f4f4f4;
+        }
+
+        .aboutus-team-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+            gap: 5px;
+        }
+
+        .aboutus-team-card {
+            text-align: center;
+            transition: transform 0.4s ease;
+            cursor: pointer;
+            position: relative;
+            margin: 25px 0;
+        }
+
+        .aboutus-team-card:hover {
+            transform: translateY(-10px);
+        }
+
+        .aboutus-team-image-wrapper {
+            width: 260px;
+            height: 260px;
+            margin: 0 auto 20px;
+            overflow: hidden;
+            position: relative;
+        }
+
+        .aboutus-team-image-wrapper::after {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background: linear-gradient(135deg, rgba(0, 145, 255, 0.2) 0%, transparent 100%);
+            opacity: 0;
+            transition: opacity 0.4s ease;
+        }
+
+        .aboutus-team-card:hover .aboutus-team-image-wrapper::after {
+            opacity: 1;
+        }
+
+        .aboutus-team-image {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+        }
+
+        .aboutus-team-name {
+            font-size: 21px;
+            font-weight: 500;
+            margin-bottom: 5px;
+            color: #f4f4f4;
+        }
+
+        .aboutus-team-title {
+            font-size: 16px;
+            font-weight: 300;
+            color: #d1d0d1;
+        }
+
+        /* Show More Button Styles */
+        .aboutus-show-more-container {
+            text-align: center;
+            margin-top: 40px;
+        }
+
+        .aboutus-show-more-btn {
+            background: transparent;
+            border: 2px solid #1199fa;
+            color: #1199fa;
+            padding: 12px 24px;
+            font-size: 16px;
+            font-weight: 500;
+            border-radius: 50px;
+            cursor: pointer;
+            display: flex;
+            align-items: center;
+            gap: 8px;
+            margin: 0 auto;
+            transition: all 0.3s ease;
+            font-family: 'Circular Std', sans-serif;
+        }
+
+        .aboutus-show-more-btn:hover {
+            background: #0091ff;
+            color: white;
+        }
+
+        .aboutus-show-more-btn svg {
+            transition: transform 0.3s ease;
+        }
+
+        .aboutus-show-more-btn.active svg {
+            transform: rotate(180deg);
+        }
+
+        /* Hidden cards style */
+        .aboutus-team-card.hidden {
+            display: none;
+        }
+
+        /* ===== EXECUTIVE DETAIL MODAL ===== */
+        .aboutus-executive-detail {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: rgba(6, 39, 62, 0.95);
+            display: none;
+            align-items: center;
+            justify-content: center;
+            z-index: 1000;
+            padding: 40px;
+            opacity: 0;
+            transition: opacity 0.5s ease;
+        }
+
+        .aboutus-executive-detail.aboutus-active {
+            display: flex;
+            opacity: 1;
+        }
+
+        .aboutus-detail-container {
+            background: white;
+            max-width: 1000px;
+            width: 100%;
+             border-radius: 4px;
+            overflow: hidden;
+            box-shadow: 0 20px 60px rgba(0, 0, 0, 0.3);
+            display: flex;
+            min-height: 500px;
+            transform: scale(0.9);
+            transition: transform 0.5s ease;
+        }
+
+        .aboutus-executive-detail.aboutus-active .aboutus-detail-container {
+            transform: scale(1);
+        }
+
+        .aboutus-detail-image {
+            flex: 0 0 40%;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .aboutus-detail-image img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+        }
+
+        .aboutus-detail-content {
+            flex: 1;
+            padding: 60px;
+            display: flex;
+            flex-direction: column;
+        }
+
+        .aboutus-detail-header {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 40px;
+            margin-bottom: 40px;
+            border-bottom: 2px solid #f4f4f4;
+            padding-bottom: 30px;
+        }
+
+        .aboutus-detail-name {
+            font-size: 36px;
+            font-weight: 500;
+            color: #000000;
+            margin-bottom: 8px;
+        }
+
+        .aboutus-detail-title {
+            font-size: 20px;
+            font-weight: 300;
+            color: #0091ff;
+        }
+
+        .aboutus-detail-description {
+            font-size: 18px;
+            font-weight: 400;
+            line-height: 1.8;
+            color: #06273e;
+            flex-grow: 1;
+        }
+
+        .aboutus-close-button {
+            position: absolute;
+            top: 30px;
+            right: 30px;
+            background: #0091ff;
+            color: white;
+            width: 50px;
+            height: 50px;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 24px;
+            cursor: pointer;
+            border: none;
+            transition: all 0.3s ease;
+            z-index: 1001;
+        }
+
+        .aboutus-close-button:hover {
+            background: #06273e;
+            transform: rotate(90deg);
+        }
+
+        /* ===== VALUES SECTION ===== */
+        .values-section-container {
+            font-family: 'Circular Std', sans-serif;
+            background-color: var(--values-dark-blue-bg);
+            color: var(--values-text-color);
+            padding: 120px 20px;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+        }
+
+        .values-section-title {
+            font-size: 54px;
+            letter-spacing: -0.04em;
+            font-weight: 500;
+            color: #f4f4f4;
+            margin-bottom: 50px;
+            text-align: center;
+        }
+
+        .values-content-wrapper {
+            display: flex;
+            max-width: 1200px;
+            width: 100%;
+            border-radius: 8px;
+            overflow: hidden;
+        }
+
+        .values-headings-nav {
+            flex: 1;
+            padding: 60px 0;
+        }
+
+        .values-heading-item {
+            padding: 22px 30px;
+            font-size: 2.1em;
+            font-weight: 600;
+            color: #62686e;
+            cursor: pointer;
+            transition: all 0s ease;
+            border-left: 4px solid transparent;
+            border-left: 1px solid #303c55;
+        }
+
+        .values-heading-item:hover {
+            color: grey;
+        }
+
+        .values-heading-item.values-active {
+            color: #f4f4f4;
+            font-weight: 500;
+            border-left-color: #b0bac3;
+        }
+
+        .values-description-display {
+            flex: 2;
+            padding: 40px;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            min-height: 300px;
+        }
+        
+        .values-description-display p {
+            font-size: 2.1em;
+            line-height: 1.6;
+            font-weight: 500;
+            color: #d1d0d1;
+            margin: 0 0 1em 0;
+        }
+
+        .values-description-display p:last-child {
+            margin-bottom: 0;
+        }
+
+        /* ===== CAREER CTA SECTION ===== */
+        .aboutus-career-section {
+            background-image: linear-gradient(rgba(0, 0, 0, 0), rgba(0, 0, 0, 0)), url(https://images.pexels.com/photos/12083872/pexels-photo-12083872.jpeg);
+            background-position: center;
+            background-size: cover;
+            background-repeat: no-repeat;
+            padding: 300px 40px;
+            text-align: center;
+            
+        }
+
+        .aboutus-career-container {
+            max-width: 1200px;
+            margin: 0 auto;
+        }
+
+        .aboutus-career-heading {
+            font-size: 54px;
+            font-weight: 500;
+            letter-spacing: -0.03em;
+            margin-bottom: 50px;
+            color: #020202;
+        }
+
+        .aboutus-career-button {
+            display: inline-block;
+            padding: 9px 25px;
+            border: 1px solid #0f0e0e;
+            color: #0f0e0e;
+            font-size: 20px;
+            font-weight: 500;
+            border-radius: 50px;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            text-decoration: none;
+            font-family: 'Circular Std', sans-serif;
+        }
+
+        /* ===== ANIMATIONS ===== */
+        @keyframes aboutusFadeInUp {
+            from {
+                opacity: 0;
+                transform: translateY(30px);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+        @keyframes aboutusCountUp {
+            from {
+                opacity: 0;
+            }
+            to {
+                opacity: 1;
+            }
+        }
+
+        @keyframes fadeIn {
+            from {
+                opacity: 0;
+                transform: translateY(20px);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+        .aboutus-team-card.show {
+            display: block;
+            animation: fadeIn 0.5s ease forwards;
+        }
+
+        /* ===== RESPONSIVE DESIGN ===== */
+        @media (max-width: 1024px) {
+            .aboutus-hero-container {
+                width: 80%;
+            }
+            
+            .aboutus-stats-wrapper {
+                gap: 60px;
+            }
+        }
+        
+        @media (max-width: 768px) {
+            /* Hero Sections */
+            .aboutus-hero-heading {
+                font-size: 48px;
+            }
+
+            .aboutus-hero-subheading {
+                font-size: 20px;
+            }
+
+            .aboutus-stats-wrapper {
+                flex-direction: column;
+                gap: 40px;
+            }
+
+            .aboutus-stat-number {
+                font-size: 80px;
+            }
+
+            .hero {
+                padding-top: 8rem;
+                min-height: 80vh;
+            }
+
+            .hero h1 {
+                font-size: 35px;
+            }
+            
+            .hero-content {
+                padding: 0 1.5rem;
+            }
+
+            /* Founder Section */
+            .defcon-founder-card {
+                flex-direction: column;
+                height: auto;
+            }
+
+            .defcon-founder-image {
+                min-width: 100%;
+                height: 350px;
+            }
+
+            .defcon-founder-info {
+                padding: 30px 0;
+            }
+
+            /* Team Section */
+            .aboutus-section-title,
+            .aboutus-values-title,
+            .aboutus-career-heading {
+                font-size: 36px;
+            }
+
+            .aboutus-team-section {
+                padding: 80px 20px;
+            }
+
+            /* Values Section */
+            .values-content-wrapper {
+                flex-direction: column;
+            }
+
+            .values-headings-nav {
+                border-right: none;
+                border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+                padding: 20px 0;
+            }
+
+            .values-heading-item {
+                padding: 12px 20px;
+                font-size: 1em;
+                border-left: none;
+                border-bottom: 2px solid transparent;
+            }
+
+            .values-heading-item.values-active {
+                border-bottom-color: var(--values-primary-blue);
+                border-left-color: transparent;
+            }
+
+            .values-description-display {
+                padding: 30px 20px;
+                min-height: auto;
+            }
+
+            .values-description-display p {
+                font-size: 1em;
+            }
+
+            /* Modal */
+            .aboutus-detail-container {
+                flex-direction: column;
+                max-height: 90vh;
+                overflow-y: auto;
+            }
+
+            .aboutus-detail-image {
+                flex: 0 0 300px;
+            }
+
+            .aboutus-detail-header {
+                grid-template-columns: 1fr;
+                gap: 20px;
+            }
+
+            .aboutus-detail-name {
+                font-size: 28px;
+            }
+
+            .aboutus-detail-content {
+                padding: 30px;
+            }
+
+            /* Career Section */
+            .aboutus-career-section {
+                padding: 200px 20px;
+            }
+        }
+
+        @media (max-width: 480px) {
+            .hero {
+                padding-top: 6rem;
+                min-height: 70vh;
+            }
+
+            .aboutus-hero-container {
+                width: 90%;
+                padding: 60px 20px;
+            }
+
+            .aboutus-hero-heading {
+                font-size: 36px;
+            }
+
+            .aboutus-stat-number {
+                font-size: 60px;
+            }
+
+            .aboutus-team-section {
+                padding: 60px 15px;
+            }
+
+            .aboutus-team-image-wrapper {
+                width: 220px;
+                height: 220px;
+            }
+
+            .values-section-container {
+                padding: 80px 15px;
+            }
+
+            .values-section-title {
+                font-size: 36px;
+            }
+
+            .aboutus-career-section {
+                padding: 150px 15px;
+            }
+
+            .aboutus-career-heading {
+                font-size: 36px;
+            }
+        }
+
+        .social-media {
+            margin-top: 25px;
+        }
+
+        .social-media a {
+            color: #000;
+            text-decoration: none;
+            border-bottom: none;
+            padding: 0 10px;
+            vertical-align: middle;
+        }
+    </style>
+</head>
+<body>
+    <div class="aboutus-page-wrapper">
+        <!-- About Us Hero Section -->
+        <section class="aboutus-hero-section">
+            <div class="aboutus-hero-container">
+                <span class="aboutus-top-header">Our Team</span>
+                <h1 class="aboutus-hero-heading">One Vision, One Global Team</h1>
+                <h2 class="aboutus-hero-subheading">Building world-changing platforms is a <br>monumental task. These are the people behind it.</h2>
+                <div class="aboutus-stats-wrapper">
+                    <div class="aboutus-stat-item">
+                        <div class="aboutus-stat-number" data-aboutus-target="2025">0</div>
+                        <div class="aboutus-stat-label">Year Founded</div>
+                    </div>
+                    <div class="aboutus-stat-item">
+                        <div class="aboutus-stat-number" data-aboutus-target="180">0</div>
+                        <div class="aboutus-stat-label">Happy Clients</div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        
+
+        <!-- Executive Team Section -->
+        <section class="aboutus-team-section" id="aboutus-team-section">
+            <div class="aboutus-team-container">
+                <h2 class="aboutus-section-title">Meet Our Executive Team</h2>
+                <div class="aboutus-team-grid" id="team-grid">
+                    <!-- Initial visible cards -->
+                    <div class="aboutus-team-card" data-aboutus-executive="michael">
+                        <div class="aboutus-team-image-wrapper">
+                            <img src="team/Gemini_Generated_Image_c3fhy0c3fhy0c3fh.png" alt="Michael Reynolds" class="aboutus-team-image">
+                        </div>
+                        <h3 class="aboutus-team-name">Michael Reynolds</h3>
+                        <p class="aboutus-team-title">Chief Executive Officer</p>
+                    </div>
+                    <div class="aboutus-team-card" data-aboutus-executive="sarah">
+                        <div class="aboutus-team-image-wrapper">
+                            <img src="team/Gemini_Generated_Image_e1cpzre1cpzre1cp.png" alt="Sarah Mitchell" class="aboutus-team-image">
+                        </div>
+                        <h3 class="aboutus-team-name">Sarah Mitchell</h3>
+                        <p class="aboutus-team-title">Chief Technology Officer, Head of Hyperion Retailers Corp.</p>
+                    </div>
+                    <div class="aboutus-team-card" data-aboutus-executive="david">
+                        <div class="aboutus-team-image-wrapper">
+                            <img src="team/Gemini_Generated_Image_f28r1ef28r1ef28r.png" alt="David Chen" class="aboutus-team-image">
+                        </div>
+                        <h3 class="aboutus-team-name">David Chen</h3>
+                        <p class="aboutus-team-title">Chief Operating Officer</p>
+                    </div>
+                    <div class="aboutus-team-card" data-aboutus-executive="david">
+                        <div class="aboutus-team-image-wrapper">
+                            <img src="team/Gemini_Generated_Image_ttsmggttsmggttsm.png" alt="David Chen" class="aboutus-team-image">
+                        </div>
+                        <h3 class="aboutus-team-name">David Chen</h3>
+                        <p class="aboutus-team-title">Chief Operating Officer</p>
+                    </div>
+                    
+                    <!-- Hidden cards initially -->
+                    <div class="aboutus-team-card hidden" data-aboutus-executive="emily">
+                        <div class="aboutus-team-image-wrapper">
+                            <img src="team/Gemini_Generated_Image_hji0m8hji0m8hji0.png" alt="Emily Watson" class="aboutus-team-image">
+                        </div>
+                        <h3 class="aboutus-team-name">Emily Watson</h3>
+                        <p class="aboutus-team-title">Chief Marketing Officer</p>
+                    </div>
+                    <div class="aboutus-team-card hidden" data-aboutus-executive="leo">
+                        <div class="aboutus-team-image-wrapper">
+                            <img src="team/Gemini_Generated_Image_giou3sgiou3sgiou.png" alt="Leo Richard" class="aboutus-team-image">
+                        </div>
+                        <h3 class="aboutus-team-name">Leo Richard</h3>
+                        <p class="aboutus-team-title">Chief Finance Manager</p>
+                    </div>
+                    <div class="aboutus-team-card hidden" data-aboutus-executive="reginald">
+                        <div class="aboutus-team-image-wrapper">
+                            <img src="team/Gemini_Generated_Image_u07cs8u07cs8u07c.png" alt="Reginald Mokoena" class="aboutus-team-image">
+                        </div>
+                        <h3 class="aboutus-team-name">Reginald Mokoena</h3>
+                        <p class="aboutus-team-title">Hardware & Software Administrator</p>
+                    </div>
+                </div>
+
+                <!-- Show More Button -->
+                <div class="aboutus-show-more-container">
+                    <button class="aboutus-show-more-btn" id="show-more-btn">
+                        See All Team Members
+                        <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                            <path d="M6 9l6 6 6-6"/>
+                        </svg>
+                    </button>
+                </div>
+            </div>
+        </section>
+
+        <!-- Executive Detail Modal -->
+        <div class="aboutus-executive-detail" id="aboutus-executive-detail">
+            <button class="aboutus-close-button" id="aboutus-close-detail">&times;</button>
+            <div class="aboutus-detail-container">
+                <div class="aboutus-detail-image">
+                    <img src="" alt="Executive" id="aboutus-detail-img">
+                </div>
+                <div class="aboutus-detail-content">
+                    <div class="aboutus-detail-header">
+                        <div>
+                            <h2 class="aboutus-detail-name" id="aboutus-detail-name"></h2>
+                            <p class="aboutus-detail-title" id="aboutus-detail-title"></p>
+                        </div>
+                    </div>
+                    <div class="aboutus-detail-description" id="aboutus-detail-description"></div>
+                </div>
+            </div>
+        </div>
+
+        <!-- Values Section -->
+        <section class="values-section-container">   
+            <h2 class="values-section-title">Our Values</h2>
+            <div class="values-content-wrapper">
+                <nav class="values-headings-nav">
+                    <div class="values-heading-item values-active" data-description-id="think-clearly">Think Clearly</div>
+                    <div class="values-heading-item" data-description-id="be-resourceful">Be Resourceful</div>
+                    <div class="values-heading-item" data-description-id="stay-determined">Stay Determined</div>
+                    <div class="values-heading-item" data-description-id="dream-big">Dream Big</div>
+                    <div class="values-heading-item" data-description-id="take-ownership">Take Ownership and Be Decisive</div>
+                    <div class="values-heading-item" data-description-id="remain-humble">Remain Humble</div>
+                </nav>
+                <div class="values-description-display"></div>
+            </div>
+        </section>
+
+        
+
+<script>
+    class ItContactSection extends HTMLElement {
+        constructor() {
+            super();
+            this.attachShadow({ mode: 'open' });
+        }
+
+        connectedCallback() {
+            this.render();
+        }
+
+        render() {
+            this.shadowRoot.innerHTML = `
+            <style>
+                @font-face {
+                    font-family: 'Circular Std';
+                    src: local('Circular Std'), url('fonts/circular-std.ttf') format('woff'),
+                        url('fonts/CircularStd-Bold.ttf') format('woff');;
+                    font-weight: normal;
+                    font-style: normal;
+                }
+
+                @import url('https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap');
+
+                :host {
+                    display: block;
+                    width: 100%;
+                    font-family: 'Circular Std', -apple-system, BlinkMacSystemFont, sans-serif;
+                    background-color: #ffffff;
+                    margin: 0;
+                    padding: 0;
+                    box-sizing: border-box;
+                }
+
+                .it-contact-wrapper {
+                    padding: 80px 20px;
+                    text-align: center;
+                    color: #000000;
+                }
+
+                /* Small Blue Top Label */
+                .it-contact-label {
+                    color: #0577da;
+                    font-weight: 500;
+                    font-size: 18px;
+                    text-transform: uppercase;
+                    margin-bottom: 15px;
+                    display: block;
+                }
+
+                /* Main Heading */
+                .it-contact-title {
+                    font-size: 48px;
+                    font-weight: 500;
+                    margin: 0 0 60px 0;
+                    letter-spacing: -1px;
+                }
+
+                /* Section Grouping */
+                .it-contact-group {
+                    margin-bottom: 45px;
+                }
+
+                .it-contact-group-label {
+                    font-size: 20px;
+                    font-weight: 500;
+                    color: #000000;
+                    margin-bottom: 15px;
+                    display: block;
+                }
+
+                /* Buttons Styling - Matches the pill shape in the image */
+                .it-contact-btn {
+                    display: inline-block;
+                    min-width: 240px;
+                    padding: 14px 20px;
+                    border: 2px solid #0a2540;
+                    border-radius: 50px;
+                    background: transparent;
+                    color: #0a2540;
+                    font-size: 20px;
+                    font-weight: 500;
+                    text-decoration: none;
+                    transition: all 0.2s ease;
+                    cursor: pointer;
+                    font-family: 'Circular Std', sans-serif;
+                }
+
+                .it-contact-btn:hover {
+                    background-color: #0a2540;
+                    color: #ffffff;
+                }
+
+                /* Text Links for Support/Press */
+                .it-contact-link {
+                    font-size: 18px;
+                    color: #000000;
+                    text-decoration: none;
+                    font-weight: 400;
+                    display: block;
+                    transition: color 0.2s;
+                }
+
+                .it-contact-link:hover {
+                    color: #007bff;
+                }
+
+                /* Mobile Optimization */
+                @media (max-width: 768px) {
+                    .it-contact-title {
+                        font-size: 32px;
+                        margin-bottom: 40px;
+                    }
+                    .it-contact-wrapper {
+                        padding: 60px 20px;
+                    }
+                }
+            </style>
+
+            <div class="it-contact-wrapper">
+                <span class="it-contact-label">Contact Us</span>
+                <h2 class="it-contact-title">Enquiries? Get in touch.</h2>
+
+                <div class="it-contact-group">
+                    <span class="it-contact-group-label">General</span>
+                    <a href="#" class="it-contact-btn">Start Chat</a>
+                </div>
+
+                <div class="it-contact-group">
+                    <span class="it-contact-group-label">Partnerships</span>
+                    <a href="#" class="it-contact-btn">Become a Partner</a>
+                </div>
+
+                <div class="it-contact-group">
+                    <span class="it-contact-group-label">Technical Support</span>
+                    <a href="mailto:support@cronoshq.com" class="it-contact-link">support@cronoshq.com</a>
+                </div>
+
+                <div class="it-contact-group">
+                    <span class="it-contact-group-label">Press</span>
+                    <a href="mailto:press@cronoshq.com" class="it-contact-link">press@cronoshq.com</a>
+                </div>
+            </div>
+            `;
+        }
+    }
+
+    // Define the custom element name
+    customElements.define('it-contact-section', ItContactSection);
+</script>
+
+<it-contact-section></it-contact-section>
+
+
+        <!-- Career CTA Section -->
+        <section class="aboutus-career-section">
+            <div class="aboutus-career-container">
+                <span class="aboutus-top-header" style="color: #0577DA;">Join Our Team</span>
+                <h2 class="aboutus-career-heading">Be part of something extraordinary<br>and shape the future with us</h2>
+                <a href="#careers" class="aboutus-career-button">Explore Careers
+                    <span style="vertical-align: middle; justify-items: center; align-items: center;">
+                        <svg xmlns="http://www.w3.org/2000/svg" class="arr-1" viewBox="0 0 24 24" width="24" fill="#000" height="24">
+                            <path d="M16.1716 10.9999L10.8076 5.63589L12.2218 4.22168L20 11.9999L12.2218 19.778L10.8076 18.3638L16.1716 12.9999H4V10.9999H16.1716Z"></path>
+                        </svg>
+                    </span>
+                </a>
+            </div>
+        </section>
+    </div>
+
+    <script>
+        // ===== VALUES SECTION FUNCTIONALITY =====
+        document.addEventListener('DOMContentLoaded', function() {
+            const headingItems = document.querySelectorAll('.values-heading-item');
+            const descriptionContainer = document.querySelector('.values-description-display');
+            
+            // Store descriptions as HTML strings with <p> tags
+            const descriptions = {
+                'think-clearly': `
+                    <p>Clarity of thought is the bedrock of our approach. It means we dissect complex problems into their fundamental components, allowing us to build solutions from a place of deep understanding.</p>
+                    <p>We prioritize clear communication, ensuring that ideas are conveyed concisely and effectively. This reduces ambiguity and aligns everyone towards a common goal, fostering an environment of efficiency and precision.</p>
+                    <p>Before acting, we take the time to think strategically. This involves considering second-order consequences and planning for various scenarios, ensuring our decisions are robust and well-informed.</p>
+                `,
+                'be-resourceful': `
+                    <p>Resourcefulness is our superpower. We believe in achieving maximum impact with the resources at hand, finding clever and unconventional ways to overcome constraints and solve problems.</p>
+                    <p>This mindset encourages a culture of innovation and creativity. We don't see limitations as stop signs; we see them as invitations to think differently and pioneer new methods.</p>
+                    <p>Being resourceful also means being proactive. We anticipate needs and act on them, leveraging our collective skills and knowledge to turn challenges into opportunities for growth.</p>
+                `,
+                'stay-determined': `
+                    <p>Determination is the engine that drives us forward. We embrace challenges with a resilient spirit, understanding that persistence is key to achieving meaningful breakthroughs.</p>
+                    <p>We maintain a long-term perspective, refusing to be discouraged by short-term setbacks. Our focus remains fixed on our ultimate goals, and we apply consistent effort to reach them.</p>
+                    <p>This value is about more than just hard work; it's about a deep-seated belief in our mission and the grit to see it through, no matter the obstacles.</p>
+                `,
+                'dream-big': `
+                    <p>We are not here to make incremental improvements; we are here to redefine what's possible. Dreaming big means setting audacious goals that inspire us to push beyond our comfort zones.</p>
+                    <p>This ambition fuels our innovation and propels us to explore uncharted territories. We encourage bold ideas and are not afraid to take calculated risks in pursuit of transformative outcomes.</p>
+                    <p>By aiming for the extraordinary, we create a dynamic environment where everyone is motivated to contribute their best work and make a lasting impact on the world.</p>
+                `,
+                'take-ownership': `
+                    <p>Ownership is about accountability and empowerment. Every team member is a leader, responsible for their contributions and empowered to make decisions that drive progress.</p>
+                    <p>We act with a sense of urgency and decisiveness. We don't wait for permission to solve a problem; we take the initiative, own the outcome, and learn from our experiences.</p>
+                    <p>This culture of responsibility fosters trust and reliability. When everyone takes ownership, the entire team operates at a higher level of performance and commitment.</p>
+                `,
+                'remain-humble': `
+                    <p>Humility is the foundation of our growth. We recognize that we don't have all the answers and that the best ideas can come from anyone, anywhere, at any time.</p>
+                    <p>We listen actively, value diverse perspectives, and are open to constructive feedback. This allows us to learn continuously from our colleagues, our customers, and our mistakes.</p>
+                    <p>Staying humble means we celebrate our successes as a team and focus on the mission rather than individual egos. It keeps us grounded, collaborative, and always striving to be better.</p>
+                `
+            };
+
+            function updateDescription(activeId) {
+                if (descriptions[activeId]) {
+                    descriptionContainer.innerHTML = descriptions[activeId];
+                }
+            }
+
+            // Initialize with the active item's description on page load
+            const initialActiveItem = document.querySelector('.values-heading-item.values-active');
+            if (initialActiveItem) {
+                const initialId = initialActiveItem.dataset.descriptionId;
+                updateDescription(initialId);
+            }
+
+            // Add click event listeners to all heading items
+            headingItems.forEach(item => {
+                item.addEventListener('click', function() {
+                    headingItems.forEach(h => h.classList.remove('values-active'));
+                    this.classList.add('values-active');
+                    const descriptionId = this.dataset.descriptionId;
+                    updateDescription(descriptionId);
+                });
+            });
+
+            // ===== SHOW MORE TEAM FUNCTIONALITY =====
+            const showMoreBtn = document.getElementById('show-more-btn');
+            const hiddenCards = document.querySelectorAll('.aboutus-team-card.hidden');
+            let isExpanded = false;
+
+            showMoreBtn.addEventListener('click', function() {
+                isExpanded = !isExpanded;
+                
+                hiddenCards.forEach((card, index) => {
+                    setTimeout(() => {
+                        if (isExpanded) {
+                            card.classList.remove('hidden');
+                            card.classList.add('show');
+                        } else {
+                            card.classList.remove('show');
+                            card.classList.add('hidden');
+                        }
+                    }, index * 100);
+                });
+
+                // Update button text and icon
+                this.classList.toggle('active');
+                this.innerHTML = isExpanded ? 
+                    `Show Less Team Members <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M6 9l6 6 6-6"/></svg>` : 
+                    `Show All Team Members <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M6 9l6 6 6-6"/></svg>`;
+            });
+
+            // ===== HERO SCROLL ANIMATION =====
+            const heroSection = document.querySelector('.hero');
+            const heroElements = document.querySelectorAll('.hero h1, .hero p, .hero .btn');
+            
+            function isInViewport(element) {
+                const rect = element.getBoundingClientRect();
+                return (
+                    rect.top <= (window.innerHeight || document.documentElement.clientHeight) * 0.8 &&
+                    rect.bottom >= 0
+                );
+            }
+            
+            function handleScrollAnimation() {
+                if (isInViewport(heroSection)) {
+                    heroElements.forEach(element => {
+                        element.classList.add('fade-in');
+                    });
+                } else {
+                    heroElements.forEach(element => {
+                        element.classList.remove('fade-in');
+                    });
+                }
+            }
+            
+            handleScrollAnimation();
+            window.addEventListener('scroll', handleScrollAnimation);
+        });
+
+        // ===== EXECUTIVE DATA AND FUNCTIONALITY =====
+        const aboutusExecutives = {
+            michael: {
+                name: "Michael Reynolds",
+                title: "Chief Executive Officer",
+                image: "thumbnails/Screenshot 2025-10-24 113746.png",
+                description: "Michael brings over 15 years of executive leadership experience in the technology sector. Under his guidance, our company has grown from a startup to an industry leader with global presence. His strategic vision focuses on sustainable growth and innovation-driven solutions that create lasting impact for our clients and stakeholders."
+            },
+            sarah: {
+                name: "Sarah Mitchell",
+                title: "Chief Technology Officer",
+                image: "https://images.unsplash.com/photo-1573496359142-b8d87734a5a2?w=600&h=600&fit=crop",
+                description: "Sarah is a visionary technologist with expertise in AI, machine learning, and cloud infrastructure. She leads our R&D initiatives and ensures our technological solutions remain at the forefront of innovation. Her commitment to technical excellence has been instrumental in developing our award-winning platform architecture."
+            },
+            david: {
+                name: "David Chen",
+                title: "Chief Operating Officer",
+                image: "https://images.unsplash.com/photo-1519085360753-af0119f7cbe7?w=600&h=600&fit=crop",
+                description: "David oversees our global operations with a focus on efficiency, scalability, and quality assurance. His operational expertise has streamlined our processes across multiple continents, resulting in 40% improved delivery times while maintaining our commitment to exceptional quality standards."
+            },
+            emily: {
+                name: "Emily Watson",
+                title: "Chief Marketing Officer",
+                image: "https://images.unsplash.com/photo-1580489944761-15a19d654956?w=600&h=600&fit=crop",
+                description: "Emily leads our global marketing strategy with a data-driven approach that has consistently delivered exceptional ROI. Her innovative campaigns have positioned our brand as an industry thought leader while driving sustainable customer acquisition and retention across all market segments."
+            },
+            leo: {
+                name: "Leo Richard",
+                title: "Chief Finance Manager",
+                image: "https://images.unsplash.com/photo-1580489944761-15a19d654956?w=600&h=600&fit=crop",
+                description: "Emily leads our global marketing strategy with a data-driven approach that has consistently delivered exceptional ROI. Her innovative campaigns have positioned our brand as an industry thought leader while driving sustainable customer acquisition and retention across all market segments."
+            },
+            reginald: {
+                name: "Reginald Mokoena",
+                title: "Hardware & Software Administrator",
+                image: "https://images.unsplash.com/photo-1580489944761-15a19d654956?w=600&h=600&fit=crop",
+                description: "Emily leads our global marketing strategy with a data-driven approach that has consistently delivered exceptional ROI. Her innovative campaigns have positioned our brand as an industry thought leader while driving sustainable customer acquisition and retention across all market segments."
+            },
+        };
+
+        // Animated Counter for Stats
+        function aboutusAnimateCounter(element, target, duration) {
+            let start = 0;
+            const increment = target / (duration / 16);
+            const timer = setInterval(() => {
+                start += increment;
+                if (start >= target) {
+                    element.textContent = target;
+                    clearInterval(timer);
+                } else {
+                    element.textContent = Math.floor(start);
+                }
+            }, 16);
+        }
+
+        // Initialize counters when hero section is visible
+        const aboutusObserverStats = new IntersectionObserver((entries) => {
+            entries.forEach(entry => {
+                if (entry.isIntersecting) {
+                    const aboutusStatNumbers = document.querySelectorAll('.aboutus-stat-number');
+                    aboutusStatNumbers.forEach(stat => {
+                        const target = parseInt(stat.getAttribute('data-aboutus-target'));
+                        aboutusAnimateCounter(stat, target, 2000);
+                    });
+                    aboutusObserverStats.unobserve(entry.target);
+                }
+            });
+        }, { threshold: 0.5 });
+
+        const aboutusHeroSection = document.querySelector('.aboutus-hero-section');
+        if (aboutusHeroSection) {
+            aboutusObserverStats.observe(aboutusHeroSection);
+        }
+
+        // Executive Detail Modal
+        const aboutusTeamSection = document.getElementById('aboutus-team-section');
+        const aboutusExecutiveDetail = document.getElementById('aboutus-executive-detail');
+        const aboutusCloseDetail = document.getElementById('aboutus-close-detail');
+
+        // Add click events to team cards
+        document.querySelectorAll('.aboutus-team-card').forEach(card => {
+            card.addEventListener('click', function() {
+                const executiveId = this.getAttribute('data-aboutus-executive');
+                const executive = aboutusExecutives[executiveId];
+                
+                if (executive) {
+                    document.getElementById('aboutus-detail-img').src = executive.image;
+                    document.getElementById('aboutus-detail-name').textContent = executive.name;
+                    document.getElementById('aboutus-detail-title').textContent = executive.title;
+                    document.getElementById('aboutus-detail-description').textContent = executive.description;
+                    
+                    aboutusExecutiveDetail.classList.add('aboutus-active');
+                    aboutusTeamSection.classList.add('aboutus-blurred');
+                    document.body.style.overflow = 'hidden';
+                }
+            });
+        });
+
+        // Close modal
+        aboutusCloseDetail.addEventListener('click', function() {
+            aboutusExecutiveDetail.classList.remove('aboutus-active');
+            aboutusTeamSection.classList.remove('aboutus-blurred');
+            document.body.style.overflow = 'auto';
+        });
+
+        // Close modal when clicking outside
+        aboutusExecutiveDetail.addEventListener('click', function(e) {
+            if (e.target === this) {
+                aboutusExecutiveDetail.classList.remove('aboutus-active');
+                aboutusTeamSection.classList.remove('aboutus-blurred');
+                document.body.style.overflow = 'auto';
+            }
+        });
+
+        // Smooth scroll for career button
+        document.querySelector('.aboutus-career-button')?.addEventListener('click', (e) => {
+            e.preventDefault();
+            console.log('Explore Careers clicked');
+        });
+    </script>
+</body>
+</html>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<cronos-footer></cronos-footer>

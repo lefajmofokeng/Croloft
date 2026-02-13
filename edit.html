@@ -1,0 +1,1467 @@
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>My Website</title>
+    
+    <script src="header.js" defer></script>
+    <script src="footer.js" defer></script> 
+</head>
+<body>
+
+    <cronos-header></cronos-header>
+    
+
+</body>
+</html>
+
+
+
+
+
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Our Work - Project Portfolio</title>
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Inter:wght@100..900&display=swap">
+    
+    <style>
+        /* ===== RESET & BASE STYLES ===== */
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif;
+            background-color: #010119;
+            color: #1a202c;
+            line-height: 1.6;
+        }
+
+        /* ===== HERO SECTION ===== */
+        .hero-section {
+            background-color: #07091d;
+            background-image: 
+                radial-gradient(at 0% 0%, rgba(39, 111, 255, 0.381) 0%, transparent 50%),
+                radial-gradient(at 100% 100%, rgba(30, 143, 255, 0.451) 0%, transparent 60%);
+            box-shadow: inset 0 -10px 20px rgba(0, 0, 0, 0.5);
+            border-radius: 40px;
+            padding: 140px 20px;
+            text-align: center;
+            color: white;
+            box-shadow: 0 20px 25px -5px rgba(0, 0, 0, 0.1);
+            margin: 1.5rem 1.5rem; 
+        }
+
+        .hero-container {
+            max-width: 1200px;
+            margin: 0 auto;
+        }
+
+        .hero-title {
+            font-size: 40px;
+            font-weight: 600;
+            margin-bottom: 20px;
+            letter-spacing: -1px;
+            line-height: 1.3;
+        }
+
+        .hero-subtitle {
+            font-size: 40px;
+            font-weight: 600;
+            color: #a3d5ff;
+            margin-bottom: 30px;
+            max-width: 600px;
+            margin-left: auto;
+            margin-right: auto;
+        }
+
+        .hero-button {
+            display: inline-block;
+            border: 1px solid white;
+            color: #fff;
+            padding: 7px 28px;
+            border-radius: 60px;
+            font-weight: 600;
+            text-decoration: none;
+            cursor: pointer;
+            transition: all 0.3s ease;
+        }
+
+        .hero-button:hover {
+            background-color: #e5e5e514;
+        }
+
+        /* ===== IT PROJECTS PILLARS SECTION ===== */
+        :root {
+            --it-proj-dark: #010119;
+            --it-proj-card: #15152a;
+            --it-proj-accent: #6366f1;
+            --it-proj-text-light: #f4f4f4;
+            --it-proj-text-muted: #94a3b8;
+        }
+
+        .it-proj-section {
+            width: 100%;
+            padding: 4rem 0;
+            background-color: var(--it-proj-dark);
+            font-family: 'Inter', sans-serif;
+            box-sizing: border-box;
+        }
+
+        .it-proj-wrapper {
+            max-width: 78rem;
+            margin: 0 auto;
+            padding: 0 1rem;
+        }
+
+        .it-proj-header {
+            font-size: 2.25rem;
+            line-height: 2.5rem;
+            font-weight: 600;
+            color: var(--it-proj-text-light);
+            text-align: left;
+            margin-bottom: 1rem;
+        }
+
+        .it-proj-grid-container {
+            display: grid;
+            grid-template-columns: 1fr;
+            gap: 1rem;
+        }
+
+        .it-proj-card {
+            background-color: var(--it-proj-card);
+            padding: 1.5rem 2rem;
+            border-radius: 25px;
+            box-shadow: 0 10px 15px -3px rgba(0, 0, 0, 0.1), 0 4px 6px -2px rgba(0, 0, 0, 0.05);
+            transition: transform 0.3s ease, box-shadow 0.3s ease;
+        }
+
+        .it-proj-icon-badge {
+            width: 3rem;
+            height: 3rem;
+            margin-bottom: 1.25rem;
+            border-radius: 0.5rem;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            background: linear-gradient(145deg, #05008b 0%, rgb(0, 0, 58) 100%);
+        }
+
+        .it-proj-icon {
+            color: var(--it-proj-accent);
+            width: 1.5rem;
+            height: 1.5rem;
+        }
+
+        .it-proj-title {
+            font-size: 1.25rem;
+            font-weight: 700;
+            color: var(--it-proj-text-light);
+            margin-bottom: 0.75rem;
+        }
+
+        .it-proj-description {
+            font-size: 1rem;
+            color: var(--it-proj-text-muted);
+        }
+
+        /* ===== DEFCON STATS SECTION ===== */
+        :root {
+            --defcon-navy: #0b1426;
+            --defcon-blue: #0091ff;
+            --defcon-light-gray: #f4f4f4;
+            --defcon-white: #ffffff;
+            --defcon-black: #000000;
+            --font-family-inter: 'Inter', sans-serif;
+            --border-radius-1px: 12px;
+            --content-max-width: 77rem;
+        }
+
+        .defcon-merchant-section-container {
+            font-family: var(--font-family-inter);
+            color: var(--defcon-white);
+            background-color: #010119;
+            padding: 40px 0;
+            border: none;
+            width: 100%;
+            margin: 0;
+            text-align: center;
+        }
+        
+        .defcon-content-wrapper {
+            max-width: var(--content-max-width);
+            width: 90%;
+            margin: 0 auto;
+            padding: 40px;
+        }
+
+        .defcon-merchant-section-title {
+            font-size: 3.5rem;
+            font-weight: 600;
+            color: var(--defcon-white);
+            margin-bottom: 50px;
+            text-align: left;
+        }
+
+        .defcon-asym-feature-grid {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 10px;
+            margin-bottom: 30px;
+        }
+
+        .defcon-asym-feature-card {
+            background-color: #EAEEF4;
+            border-radius: var(--border-radius-1px);
+            padding: 30px;
+            text-align: left; 
+            color: var(--defcon-black);
+            min-height: fit-content;
+            display: flex;
+        }
+        
+        .defcon-card-content-wrapper {
+            display: flex;
+            align-items: center;
+            width: fit-content;
+        }
+        
+        .defcon-grid-span-2 {
+            grid-column: span 2;
+        }
+        
+        .defcon-grid-span-1 {
+            grid-column: span 1;
+        }
+
+        .defcon-feature-card-number {
+            font-size: 3.5rem;
+            font-weight: 600;
+            color: var(--defcon-navy);
+            line-height: 1;
+            flex-shrink: 0;
+            margin-right: 15px;
+        }
+        
+        .defcon-feature-card-text {
+            font-size: 1.2rem;
+            font-weight: 700;
+            line-height: 1.4;
+            color: #555;
+        }
+        
+        .defcon-feature-card-text strong {
+            font-weight: 700;
+            color: var(--defcon-navy);
+        }
+
+        .defcon-superscript {
+            vertical-align: super;
+            font-size: 0.7em;
+            margin-left: 2px;
+        }
+
+        .defcon-legal-disclaimer {
+            font-size: 0.8rem;
+            color: var(--defcon-light-gray);
+            margin-top: 20px;
+        }
+
+        /* ===== PROJECTS SECTION ===== */
+        .project-section-wrapper {
+            margin: 5rem 1.5rem; 
+            margin-bottom: 5rem;
+            padding: 50px 20px;
+            background-color: transparent; 
+            border-radius: 40px; 
+            max-width: 1150px;
+            margin-left: auto;
+            margin-right: auto;
+        }
+        
+        .main-container {
+            max-width: 100%; 
+            margin: 0 auto;
+            padding: 0; 
+        }
+
+        .main-grid {
+            display: block;
+        }
+        
+        .sidebar {
+            display: none; 
+        }
+
+        /* ===== FILTER CONTAINER - FIXED RESPONSIVENESS ===== */
+.top-filters-container {
+    margin-bottom: 60px;
+    border: 1px solid #e5e7eb;
+    border-radius: 50px;
+    padding: 5px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    width: 100%; /* Changed from fit-content to 100% */
+    max-width: 100%; /* Ensure it doesn't overflow */
+    overflow: hidden; /* Prevent horizontal scroll */
+}
+
+.filters-list {
+    list-style: none;
+    display: flex;
+    flex-wrap: wrap; /* Changed from nowrap to wrap */
+    gap: 8px; /* Reduced gap for better mobile fit */
+    padding: 5px;
+    margin: 0;
+    justify-content: center; /* Center items when they wrap */
+    width: 100%;
+}
+
+.filter-button {
+    padding: 10px 16px; /* Slightly reduced padding */
+    border: none;
+    border-radius: 50px;
+    font-weight: 600;
+    cursor: pointer;
+    background-color: transparent;
+    color: #6f7782;
+    white-space: nowrap;
+    font-size: 14px; /* Slightly smaller font for mobile */
+    font-family: 'Inter', sans-serif;
+    transition: all 0.3s ease;
+    flex-shrink: 0; /* Prevent buttons from shrinking */
+}
+
+/* Mobile-specific adjustments */
+@media (max-width: 768px) {
+    .top-filters-container {
+        border-radius: 25px; /* Smaller radius on mobile */
+        padding: 3px;
+        margin-bottom: 40px;
+    }
+    
+    .filters-list {
+        gap: 6px;
+        padding: 3px;
+    }
+    
+    .filter-button {
+        padding: 8px 12px;
+        font-size: 13px;
+    }
+}
+
+@media (max-width: 480px) {
+    .top-filters-container {
+        border-radius: 20px;
+        margin-bottom: 30px;
+    }
+    
+    .filters-list {
+        gap: 4px;
+    }
+    
+    .filter-button {
+        padding: 6px 10px;
+        font-size: 12px;
+    }
+}
+
+/* Ensure horizontal scroll works if needed on very small screens */
+@media (max-width: 360px) {
+    .top-filters-container {
+        overflow-x: auto; /* Allow horizontal scrolling if needed */
+        justify-content: flex-start; /* Align to start when scrolling */
+    }
+    
+    .filters-list {
+        flex-wrap: nowrap; /* Don't wrap on very small screens */
+        justify-content: flex-start;
+        padding-bottom: 5px; /* Space for scroll if needed */
+    }
+}
+
+        .filter-button:hover {
+            background-color: #e5e7eb;
+        }
+
+        .filter-button.active {
+            background-color: #0577da;
+            color: #fff;
+        }
+
+        .projects-section {
+            padding-top: 20px;
+        }
+
+        .section-heading {
+            font-size: 36px;
+            font-weight: 700;
+            margin-bottom: 16px;
+            color: #ffffff;
+        }
+
+        .table-header {
+            display: grid; 
+            grid-template-columns: 2fr 1fr; 
+            gap: 16px;
+            padding-bottom: 12px;
+            border-bottom: 2px solid #cbd5e1;
+            font-size: 14px;
+            font-weight: 600;
+            color: #ffffff;
+            margin-bottom: 10px;
+        }
+
+        .table-header-cell {
+            text-align: left;
+        }
+
+        .table-header-cell.text-right {
+            text-align: right;
+        }
+
+        .project-row {
+            display: grid;
+            gap: 16px;
+            padding: 16px 8px;
+            border-bottom: 1px solid #e5e7eb; 
+            cursor: pointer;
+            grid-template-columns: 1fr;
+            margin-bottom: 15px;
+        }
+
+        .project-name {
+            font-weight: 600;
+            color: #ffffff; 
+            grid-column: 1 / 2;
+            font-size: 25px; 
+            line-height: 1.2;
+        }
+
+        .project-name a {
+            color: inherit;
+            text-decoration: none;
+        }
+        
+        .project-name a:hover {
+            color: #0577da;
+            text-decoration: underline;
+        }
+
+        .project-date {
+            text-align: left;
+            font-size: 25px;
+            font-weight: 600;
+            color: #0099fa;
+            grid-column: 1 / 2; 
+            order: 2;
+        }
+
+        .project-date-label {
+            display: inline;
+            color: #9ca3af;
+            font-weight: 500;
+            margin-right: 6px;
+        }
+
+        .all-projects-cta {
+            padding-top: 40px;
+            text-align: center;
+        }
+
+        .all-projects-button {
+            display: inline-block;
+            padding: 8px 38px;
+            background-color: #fff;
+            color: #080d1b;
+            border-radius: 50px;
+            font-weight: 600;
+            font-size: 17px;
+            text-decoration: none;
+        }
+
+        .all-projects-button:hover {
+            background-color: #045ca3;
+            transform: translateY(-1px);
+        }
+
+        .empty-state {
+            padding: 40px 20px;
+            text-align: center;
+            color: #9ca3af;
+        }
+
+        .loading-state {
+            padding: 40px 20px;
+            text-align: center;
+            color: #9ca3af;
+        }
+
+        /* ===== INTEGRATION SECTION ===== */
+        .dungeon-integration-section {
+            width: 100%;
+            padding: 80px 0;
+            background: #fff;
+            display: flex;
+            justify-content: center;
+            font-family: "Inter", sans-serif;
+        }
+
+        .dungeon-integration-container {
+            width: 1000px;
+            display: flex;
+            flex-direction: column;
+            gap: 40px;
+        }
+
+        .dungeon-integration-title {
+            font-size: 3rem;
+            font-weight: 600;
+            text-align: center;
+            color: #0a0a0a;
+        }
+
+        .dungeon-integration-grid {
+            display: grid;
+            grid-template-columns: repeat(2, 1fr);
+            gap: 15px;
+        }
+
+        .dungeon-card {
+            background: #f8f9fb;
+            border-radius: 16px;
+            overflow: hidden;
+            display: flex;
+            align-items: stretch;
+            box-shadow: 0 1px 3px rgba(0,0,0,0.08);
+            transition: all 0.3s ease;
+            height: 100%;
+        }
+
+        .dungeon-card:hover {
+            box-shadow: 0 8px 25px rgba(0,0,0,0.1);
+            transform: translateY(-4px);
+        }
+
+        .dungeon-card-image img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            display: block;
+        }
+
+        .dungeon-card-text {
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            padding: 40px;
+        }
+
+        .dungeon-card-inner {
+            display: flex;
+            flex-direction: column;
+            align-items: flex-start;
+            gap: 12px;
+        }
+
+        .dungeon-card-icon {
+            font-size: 24px;
+            color: #0052ff;
+        }
+
+        .dungeon-card-heading {
+            font-size: 2.25rem;
+            font-weight: 700;
+            color: #0a0a0a;
+            line-height: 1.2;
+        }
+
+        .dungeon-card-description {
+            color: #5f6b7a;
+            line-height: 1.6;
+            font-size: 0.95rem;
+        }
+
+        .dungeon-card-link {
+            color: #0052ff;
+            text-decoration: none;
+            font-weight: 600;
+            font-size: 0.95rem;
+            transition: color 0.3s ease;
+        }
+
+        .dungeon-card-link:hover {
+            color: #002b8e;
+        }
+
+        /* ===== ACCORDION SECTION ===== */
+        :root {
+            --dev-spec-dark: #010119;
+            --dev-spec-card: #1e293b;
+            --dev-spec-accent: #0091ff;
+            --dev-spec-text-light: #f8fafc;
+            --dev-spec-text-muted: #94a3b8;
+        }
+
+        .dev-spec-section {
+            width: 100%;
+            padding: 4rem 0;
+            background-color: var(--dev-spec-dark);
+            font-family: 'Inter', sans-serif;
+            box-sizing: border-box;
+        }
+
+        .dev-spec-wrapper {
+            max-width: 80rem;
+            margin: 0 auto;
+            padding: 0 1rem;
+        }
+
+        .dev-spec-header {
+            font-size: 3rem;
+            line-height: 1.3;
+            font-weight: 600;
+            color: var(--dev-spec-text-light);
+            text-align: left;
+            max-width: 1000px;
+            margin: 0 auto 3rem auto;
+        }
+
+        .dev-spec-accordion {
+            max-width: 1000px;
+            margin: 0 auto;
+        }
+
+        .dev-spec-accordion-item {
+            border-bottom: 1px solid #e5e5e5;
+            margin-bottom: 25px;
+        }
+
+        .dev-spec-accordion-toggle {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            width: 100%;
+            padding: 1.5rem 0;
+            cursor: pointer;
+            background: none;
+            border: none;
+            color: var(--dev-spec-text-light);
+            text-align: left;
+            font-size: 30px;
+            font-weight: 600;
+            transition: color 0.2s ease;
+            font-family: 'Inter', sans-serif;
+        }
+
+        .dev-spec-accordion-toggle:hover {
+            color: var(--dev-spec-accent);
+        }
+
+        .dev-spec-icon-plus {
+            display: inline-block;
+            width: 1.5rem;
+            height: 1.5rem;
+            position: relative;
+            transition: transform 0.3s ease;
+            flex-shrink: 0;
+        }
+
+        .dev-spec-icon-plus::before,
+        .dev-spec-icon-plus::after {
+            content: '';
+            position: absolute;
+            background-color: var(--dev-spec-text-light);
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+        }
+
+        .dev-spec-icon-plus::before {
+            width: 100%;
+            height: 2px;
+        }
+
+        .dev-spec-icon-plus::after {
+            width: 2px;
+            height: 100%;
+        }
+
+        .dev-spec-accordion-toggle[aria-expanded="true"] .dev-spec-icon-plus::after {
+            transform: translate(-50%, -50%) scaleY(0);
+        }
+
+        .dev-spec-accordion-content {
+            max-height: 0;
+            overflow: hidden;
+            transition: max-height 0.3s ease-out;
+            padding-bottom: 0;
+        }
+
+        .dev-spec-accordion-content-text {
+            padding: 0 0 1.5rem 0;
+            color: var(--dev-spec-text-muted);
+            line-height: 1.75rem;
+            font-size: 1rem;
+        }
+
+        /* ===== CTA SECTION ===== */
+        .cta-section {
+            padding: 80px 20px;
+            background: radial-gradient(75.83% 86.4% at 50% 100%, rgb(3, 68, 129) 0%, rgba(3, 68, 129, 0.21) 67.99%, rgba(3, 68, 129, 0.07) 88.86%, rgba(3, 68, 129, 0) 100%), rgb(1, 1, 24);
+            margin-top: 6rem;
+        }
+
+        .cta-inner-container {
+            max-width: 1000px;
+            margin: 0 auto;
+            display: flex;
+            flex-direction: column;
+            gap: 4px;
+            align-items: center;
+        }
+
+        .cta-text-content {
+            flex: 1;
+            text-align: center;
+        }
+
+        .cta-heading {
+            font-size: 60px;
+            font-weight: 600;
+            color: #fefefe;
+            margin-bottom: 12px;
+            line-height: 1.2;
+        }
+
+        .cta-description {
+            font-size: 18px;
+            font-weight: 700;
+            color: #a0a0a0;
+            margin-bottom: 30px;
+        }
+
+        .cta-button {
+            display: inline-flex;
+            align-items: center;
+            padding: 12px 28px;
+            background-color: #0577da;
+            color: white;
+            border-radius: 50px;
+            font-weight: 600;
+            text-decoration: none;
+            transition: background-color 0.3s ease;
+        }
+
+        .cta-button:hover {
+            background-color: #1a3a69;
+        }
+
+        .cta-button svg {
+            margin-right: 8px;
+            width: 20px;
+            height: 20px;
+        }
+
+        .cta-image-symbol {
+            width: 100%;
+            max-width: 300px;
+            height: 200px;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            color: #94a3b8;
+            font-size: 14px;
+            font-weight: 600;
+            text-align: center;
+        }
+
+        /* ===== RESPONSIVE DESIGN ===== */
+        @media (min-width: 768px) {
+            .hero-title {
+                font-size: 60px;
+            }
+
+            .hero-subtitle {
+                font-size: 24px;
+            }
+
+            .it-proj-header {
+                font-size: 2.5rem;
+                line-height: 2.75rem;
+                margin-bottom: 4rem;
+            }
+
+            .it-proj-grid-container {
+                grid-template-columns: repeat(2, 1fr);
+            }
+
+            .project-row {
+                grid-template-columns: 2fr 1fr;
+                padding: 16px 0;
+            }
+
+            .project-date {
+                grid-column: 2 / 3;
+                text-align: right;
+                order: initial;
+            }
+
+            .project-date-label {
+                display: none;
+            }
+
+            .cta-inner-container {
+                flex-direction: row;
+                justify-content: space-between;
+                align-items: center;
+            }
+
+            .cta-text-content {
+                text-align: left;
+                max-width: 60%;
+            }
+        }
+
+        @media (min-width: 1024px) {
+            .it-proj-wrapper {
+                padding: 0 3rem;
+            }
+
+            .it-proj-grid-container {
+                grid-template-columns: repeat(4, 1fr);
+            }
+
+            .project-section-wrapper {
+                padding: 60px;
+            }
+
+            .dev-spec-wrapper {
+                padding: 0 3rem;
+            }
+        }
+
+        @media (max-width: 900px) {
+            .defcon-asym-feature-grid {
+                grid-template-columns: repeat(2, 1fr);
+            }
+            
+            .defcon-grid-span-2,
+            .defcon-grid-span-1 {
+                grid-column: span 1;
+            }
+
+            .dungeon-integration-container {
+                width: 90%;
+            }
+        }
+
+        @media (max-width: 767px) {
+            .table-header {
+                display: none;
+            }
+
+            .dev-spec-header {
+                font-size: 2rem;
+                line-height: 2.25rem;
+            }
+
+            .dungeon-integration-grid {
+                grid-template-columns: 1fr;
+            }
+            
+            .dungeon-card {
+                min-height: 240px;
+            }
+
+            .defcon-content-wrapper {
+                padding: 25px;
+                width: 100%;
+            }
+            
+            .defcon-merchant-section-title {
+                font-size: 2rem;
+            }
+            
+            .defcon-feature-card-number {
+                font-size: 3rem;
+            }
+        }
+
+        @media (max-width: 600px) {
+            .defcon-asym-feature-grid {
+                grid-template-columns: 1fr;
+            }
+            
+            .hero-section {
+                margin: 1rem;
+                padding: 60px 20px;
+            }
+
+            .project-section-wrapper {
+                margin: 3rem 1rem;
+                padding: 30px 15px;
+            }
+
+            .section-heading {
+                font-size: 28px;
+            }
+
+            .project-name,
+            .project-date {
+                font-size: 20px;
+            }
+
+            .filter-button {
+                padding: 8px 16px;
+                font-size: 14px;
+            }
+
+            .cta-heading {
+                font-size: 40px;
+            }
+        }
+
+        @media (max-width: 480px) {
+            .hero-title {
+                font-size: 32px;
+            }
+
+            .hero-subtitle {
+                font-size: 20px;
+            }
+
+            .it-proj-wrapper {
+                padding: 0 0.5rem;
+            }
+
+            .it-proj-card {
+                padding: 1rem 1.5rem;
+            }
+
+            .defcon-content-wrapper {
+                padding: 20px 15px;
+            }
+
+            .defcon-merchant-section-title {
+                font-size: 1.8rem;
+            }
+
+            .dev-spec-accordion-toggle {
+                font-size: 24px;
+                padding: 1rem 0;
+            }
+
+            .dungeon-card-text {
+                padding: 30px 25px;
+            }
+
+            .dungeon-card-heading {
+                font-size: 1.8rem;
+            }
+        }
+    </style>
+</head>
+<body>
+
+    <div style="background-color: #010119;">
+        <!-- HERO SECTION -->
+        <header class="hero-section">
+            <div class="hero-container">
+                <h2 class="hero-title">Get the most of your digital<br>presence for your business</h2>
+                <p class="hero-subtitle">Over 10 years of experience in delivering high-quality digital solutions, and experts in various industries.</p>
+                <a href="#projects" class="hero-button">View Our Work</a>
+            </div>
+        </header>
+
+        <!-- IT PROJECTS PILLARS SECTION -->
+        <div id="it-projects-section-pure-css" class="it-proj-section">
+            <div class="it-proj-wrapper">
+                <h2 class="it-proj-header">Why work with Hyperion</h2>
+                <div class="it-proj-grid-container">
+                    <!-- Card 1: Scalable Architecture -->
+                    <div class="it-proj-card">
+                        <div class="it-proj-icon-badge">
+                            <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 48 48" fill="#fff"><g fill="none" stroke="#fff" stroke-linecap="round" stroke-linejoin="round" stroke-width="4"><path d="M8 24.59a25.5 25.5 0 0 0 2.75.59l1.21-1.41a24.13 24.13 0 0 1-4-.83ZM32.09 22H15.46l-5.41 6.31L15.49 34h16.6a2 2 0 0 0 2-2v-8.07a2 2 0 0 0-2-1.93Zm0 10H16.34l-3.59-3.77L16.38 24h15.71v8Z"/><path d="M16.11 27a1 1 0 1 0 1 1a1 1 0 0 0-1-1ZM18 17.54a34.81 34.81 0 0 1-10-1.21V18a40.86 40.86 0 0 0 10 1.16c3.46 0 9.13-.45 12-1.91v3.23h2v-7.26a7.32 7.32 0 0 1-2 .28v1.91c-.91.82-5 2.13-12 2.13Z"/><path d="M6 27.53V10.3c2.9 1.43 8.34 1.88 12 1.88a47.66 47.66 0 0 0 7.09-.52a7.45 7.45 0 0 1-1.51-1.8a47.4 47.4 0 0 1-5.58.32C10.71 10.18 6.31 8.69 6 8c.32-.8 4.72-2.3 12-2.3c1.66 0 3.16.08 4.51.21a7.56 7.56 0 0 1 .29-2c-1.7-.17-3.38-.24-4.8-.24c-5.2 0-14 .9-14 4.25v19.6c0 2 3.17 3.14 6.83 3.72l-2.45-2.56C7 28.28 6.13 27.84 6 27.53Z"/></g></svg>
+                        </div>
+                        <h3 class="it-proj-title">Scalable Architecture</h3>
+                        <p class="it-proj-description">
+                            Every solution is built using modern design patterns, ensuring robustness, high availability, and the capacity to handle significant future growth.
+                        </p>
+                    </div>
+
+                    <!-- Card 2: Modern Tech Stack -->
+                    <div class="it-proj-card">
+                        <div class="it-proj-icon-badge">
+                            <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 16 16"><path fill="none" stroke="#fff" stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" d="M1.75 11L8 14.25L14.25 11M1.75 8L8 11.25L14.25 8M8 1.75L1.75 5L8 8.25L14.25 5z"/></svg>
+                        </div>
+                        <h3 class="it-proj-title">Modern Tech Stack</h3>
+                        <p class="it-proj-description">
+                            Proficient use of contemporary frameworks (React, Angular, Python, Node.js) and cloud services, ensuring reliable, high-performance applications.
+                        </p>
+                    </div>
+
+                    <!-- Card 3: Iterative Development -->
+                    <div class="it-proj-card">
+                        <div class="it-proj-icon-badge">
+                            <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="#fff"><g fill="none"><path d="M0 0h24v24H0z"/><path fill="#fff" d="M14.486 3.143a1 1 0 0 1 .692 1.233l-4.43 15.788a1 1 0 0 1-1.926-.54l4.43-15.788a1 1 0 0 1 1.234-.693ZM7.207 7.05a1 1 0 0 1 0 1.414L3.672 12l3.535 3.535a1 1 0 1 1-1.414 1.415L1.55 12.707a1 1 0 0 1 0-1.414L5.793 7.05a1 1 0 0 1 1.414 0Zm9.586 1.414a1 1 0 1 1 1.414-1.414l4.243 4.243a1 1 0 0 1 0 1.414l-4.243 4.242a1 1 0 0 1-1.414-1.414L20.328 12l-3.535-3.536Z"/></g></svg>
+                        </div>
+                        <h3 class="it-proj-title">Iterative Development</h3>
+                        <p class="it-proj-description">
+                            Leveraging Agile principles and robust Git version control for continuous integration, transparent progress, and rapid response to critical feedback.
+                        </p>
+                    </div>
+
+                    <!-- Card 4: User-Centric Quality -->
+                    <div class="it-proj-card">
+                        <div class="it-proj-icon-badge">
+                            <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 48 48" fill="#fff"><g fill="none" stroke="#fff" stroke-linecap="round" stroke-linejoin="round" stroke-width="4"><path d="M40 23v-9L31 4H10a2 2 0 0 0-2 2v36a2 2 0 0 0 2 2h12"/><path d="M28.2 30h9.6l3.2 4.118L33 44l-8-9.882L28.2 30ZM30 4v10h10"/></g></svg>
+                        </div>
+                        <h3 class="it-proj-title">User-Centric Quality</h3>
+                        <p class="it-proj-description">
+                            A strong commitment to clean, well-documented, and fully tested code that prioritizes intuitive design and solves real-world user problems.
+                        </p>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- DEFCON STATS SECTION -->
+        <section class="defcon-merchant-section-container">
+            <div class="defcon-content-wrapper">
+                <h2 class="defcon-merchant-section-title">Our Extensive Project Gallery: From Concept to Completion</h2>
+                <div class="defcon-asym-feature-grid">
+                    <div class="defcon-asym-feature-card defcon-grid-span-2">
+                        <div class="defcon-card-content-wrapper">
+                            <span class="defcon-feature-card-number">&lt;15</span>
+                            <span class="defcon-feature-card-text">
+                                minute average response time for all critical-level support incidents.
+                            </span>
+                        </div>
+                    </div>
+
+                    <div class="defcon-asym-feature-card defcon-grid-span-1">
+                        <div class="defcon-card-content-wrapper">
+                            <span class="defcon-feature-card-number">1</span>
+                            <span class="defcon-feature-card-text">
+                                dedicated account manager per client.
+                            </span>
+                        </div>
+                    </div>
+
+                    <div class="defcon-asym-feature-card defcon-grid-span-1">
+                        <div class="defcon-card-content-wrapper">
+                            <span class="defcon-feature-card-number">120<span class="defcon-superscript">+</span></span>
+                            <span class="defcon-feature-card-text">
+                               successful projectS. 
+                            </span>
+                        </div>
+                    </div>
+                    
+                    <div class="defcon-asym-feature-card defcon-grid-span-2">
+                        <div class="defcon-card-content-wrapper">
+                            <span class="defcon-feature-card-number">80K<span class="defcon-superscript">+</span></span>
+                            <span class="defcon-feature-card-text">
+                                cyber threats neutralized on our clients' networks.
+                            </span>
+                        </div>
+                    </div>
+                </div>
+                <p class="defcon-legal-disclaimer">
+                    <span class="defcon-superscript">(1)</span> As per our Enterprise Service Level Agreement (SLA).
+                </p>
+            </div>
+        </section>
+    </div>
+
+    <!-- PROJECTS SECTION -->
+    <div class="project-section-wrapper">
+        <main id="projects" class="main-container">
+            <aside class="sidebar" style="display: none;">
+                <h3 class="sidebar-title">Select a Category</h3>
+            </aside>
+
+            <section class="projects-section">
+                <h2 class="section-heading">Proven Outcomes, Origional Work.</h2>
+                <div class="top-filters-container">
+                    <div id="filters-container">
+                        <ul class="filters-list" id="category-filters"></ul>
+                    </div>
+                </div>
+                
+                <div class="table-header">
+                    <div class="table-header-cell">Project Name</div>
+                    <div class="table-header-cell text-right">Completion Date</div>
+                </div>
+
+                <div id="projects-list" class="projects-list">
+                    <div class="loading-state" id="loading-message">Loading projects...</div>
+                </div>
+
+                <div class="all-projects-cta">
+                    <a href="/all-projects" target="_blank" class="all-projects-button">
+                        See All Projects
+                    </a>
+                </div>
+            </section>
+        </main>
+    </div>
+
+    <!-- INTEGRATION SECTION -->
+    <section class="dungeon-integration-section">
+        <div class="dungeon-integration-container">
+            <h2 class="dungeon-integration-title">Multiple options for easy integration</h2>
+            <div class="dungeon-integration-grid">
+                <!-- Card 1 -->
+                <div class="dungeon-card dungeon-card-text">
+                    <div class="dungeon-card-inner">
+                        <div class="dungeon-card-icon">
+                            <svg xmlns="http://www.w3.org/2000/svg" width="60" height="60" viewBox="0 0 24 24" fill="#0091ff"><g fill="none" stroke="#0091ff" stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5"><path d="M19.5 5.25c2.071 0 3.75-1.007 3.75-2.25S21.571.75 19.5.75S15.75 1.757 15.75 3s1.679 2.25 3.75 2.25"/><path d="M15.75 3v4.5c0 1.242 1.679 2.25 3.75 2.25s3.75-1.008 3.75-2.25V3M19.5 18.75c2.071 0 3.75-1.007 3.75-2.25s-1.679-2.25-3.75-2.25s-3.75 1.007-3.75 2.25s1.679 2.25 3.75 2.25"/><path d="M15.75 16.5V21c0 1.242 1.679 2.25 3.75 2.25s3.75-1.008 3.75-2.25v-4.5M7.125 18.375a6.375 6.375 0 1 0 0-12.75a6.375 6.375 0 0 0 0 12.75M1.07 14H13M1.07 10H13"/><path d="M5.75 5.774a20.65 20.65 0 0 0 .482 12.539M8.5 5.774a20.5 20.5 0 0 1 .75 5.518a20.5 20.5 0 0 1-1.228 7.02M10 3V1.5h3M10 21v1.5h3"/></g></svg>
+                        </div>
+                        <h3 class="dungeon-card-heading">Premium-level Software Development</h3>
+                        <p class="dungeon-card-description">
+                            Seamlessly integrate our platform with popular e-commerce systems such as Shopify, WooCommerce, and more.
+                        </p>
+                        <a href="#" class="dungeon-card-link">Setup 
+                            <span style="align-items: center; display: inline-flex; vertical-align: middle;">
+                            <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" fill="none" viewBox="0 0 24 24" stroke="#0091ff" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="dungeon-link-icon">
+                              <path d="M5 12h14M12 5l7 7-7 7"/>
+                            </svg>
+                            </span>
+                        </a>
+                    </div>
+                </div>
+
+                <!-- Card 2 (image) -->
+                <div class="dungeon-card dungeon-card-image">
+                    <img src="https://plus.unsplash.com/premium_photo-1720287601300-cf423c3d6760?ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&q=80&w=1170" alt="Plugin integrations">
+                </div>
+
+                <!-- Card 3 (image) -->
+                <div class="dungeon-card dungeon-card-image">
+                    <img src="https://plus.unsplash.com/premium_photo-1700681802509-d31a20943657?ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&q=80&w=1170" alt="API integration preview">
+                </div>
+
+                <!-- Card 4 -->
+                <div class="dungeon-card dungeon-card-text">
+                    <div class="dungeon-card-inner">
+                        <div class="dungeon-card-icon">
+                            <svg xmlns="http://www.w3.org/2000/svg" width="60" height="60" viewBox="0 0 36 36" fill="#0091ff"><g id="clarityControlLunOutlineBadged0" fill="#0091ff"><path d="M8 24.59a25.5 25.5 0 0 0 2.75.59l1.21-1.41a24.13 24.13 0 0 1-4-.83ZM32.09 22H15.46l-5.41 6.31L15.49 34h16.6a2 2 0 0 0 2-2v-8.07a2 2 0 0 0-2-1.93Zm0 10H16.34l-3.59-3.77L16.38 24h15.71v8Z"/><path d="M16.11 27a1 1 0 1 0 1 1a1 1 0 0 0-1-1ZM18 17.54a34.81 34.81 0 0 1-10-1.21V18a40.86 40.86 0 0 0 10 1.16c3.46 0 9.13-.45 12-1.91v3.23h2v-7.26a7.32 7.32 0 0 1-2 .28v1.91c-.91.82-5 2.13-12 2.13Z"/><path d="M6 27.53V10.3c2.9 1.43 8.34 1.88 12 1.88a47.66 47.66 0 0 0 7.09-.52a7.45 7.45 0 0 1-1.51-1.8a47.4 47.4 0 0 1-5.58.32C10.71 10.18 6.31 8.69 6 8c.32-.8 4.72-2.3 12-2.3c1.66 0 3.16.08 4.51.21a7.56 7.56 0 0 1 .29-2c-1.7-.17-3.38-.24-4.8-.24c-5.2 0-14 .9-14 4.25v19.6c0 2 3.17 3.14 6.83 3.72l-2.45-2.56C7 28.28 6.13 27.84 6 27.53Z"/><circle cx="30" cy="6" r="5"/></g></svg>
+                        </div>
+                        <h3 class="dungeon-card-heading">Dedicated Technical Support</h3>
+                        <p class="dungeon-card-description">
+                            For deeper customization, integrate directly using our SDKs and just a few lines of code.
+                        </p>
+                        <a href="#" class="dungeon-card-link">API Documentation
+                            <span style="align-items: center; display: inline-flex; vertical-align: middle;">
+                            <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" fill="none" viewBox="0 0 24 24" stroke="#0091ff" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="dungeon-link-icon">
+                              <path d="M5 12h14M12 5l7 7-7 7"/>
+                            </svg>
+                            </span>
+                        </a>
+                    </div>
+                </div>
+
+                <!-- Card 5 -->
+                <div class="dungeon-card dungeon-card-text">
+                    <div class="dungeon-card-inner">
+                        <div class="dungeon-card-icon">
+                            <svg xmlns="http://www.w3.org/2000/svg" width="60" height="60" viewBox="0 0 16 16"><path fill="#0091ff" d="M14.25 2.1a1.25 1.25 0 0 0-1.17-.1L6.91 4.43a1.22 1.22 0 0 1-.46.09H2.5a1.25 1.25 0 0 0-1.25 1.25v.1H0v3h1.25V9a1.25 1.25 0 0 0 1.25 1.22L4 13.4a1.26 1.26 0 0 0 1.13.72h.63A1.25 1.25 0 0 0 7 12.87v-2.53l6.08 2.43a1.27 1.27 0 0 0 .47.09a1.29 1.29 0 0 0 .7-.22a1.25 1.25 0 0 0 .55-1V3.13a1.25 1.25 0 0 0-.55-1.03zm-8.5 3.67V9H2.5V5.77zm0 7.1h-.63l-1.23-2.65h1.86zm1.62-3.72A2.29 2.29 0 0 0 7 9V5.7a2.26 2.26 0 0 0 .37-.11l6.18-2.46v8.48zm7.46-3.03v2.5a1.25 1.25 0 0 0 0-2.5z"/></svg>
+                        </div>
+                        <h3 class="dungeon-card-heading">Data-driven Digital Marketing</h3>
+                        <p class="dungeon-card-description">
+                            No problem — still benefit from automatic invoicing, affiliate tools, and one-time card payments.
+                        </p>
+                    </div>
+                </div>
+
+                <!-- Card 6 (image) -->
+                <div class="dungeon-card dungeon-card-image">
+                    <img src="https://plus.unsplash.com/premium_photo-1720287601013-69bed792f481?ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&q=80&w=1170" alt="Payment process">
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- ACCORDION SECTION -->
+    <div id="it-projects-section-pure-css" class="dev-spec-section">
+        <div class="dev-spec-wrapper">
+            <h2 class="dev-spec-header">Project Deliverables & Key Specifications</h2>
+            <div class="dev-spec-accordion">
+                <!-- Accordion Item 1 -->
+                <div class="dev-spec-accordion-item">
+                    <button 
+                        class="dev-spec-accordion-toggle" 
+                        aria-expanded="false" 
+                        aria-controls="content-1" 
+                        onclick="toggleAccordion('content-1', this)">
+                        Microservices Architecture & Deployment
+                        <span class="dev-spec-icon-plus"></span>
+                    </button>
+                    <div id="content-1" class="dev-spec-accordion-content">
+                        <p class="dev-spec-accordion-content-text">
+                            **Architecture:** Deployed using Docker containers managed via Kubernetes (K8s) for high scalability and automatic fault tolerance. <br>
+                            **CI/CD:** Automated pipelines (e.g., GitHub Actions or Jenkins) ensuring zero-downtime deployments and rapid release cycles. <br>
+                            **Backend:** Built with Python/Flask or Node.js/Express, utilizing asynchronous processing for speed.
+                        </p>
+                    </div>
+                </div>
+
+                <!-- Accordion Item 2 -->
+                <div class="dev-spec-accordion-item">
+                    <button 
+                        class="dev-spec-accordion-toggle" 
+                        aria-expanded="false" 
+                        aria-controls="content-2" 
+                        onclick="toggleAccordion('content-2', this)">
+                        Data Persistence and Real-time Sync
+                        <span class="dev-spec-icon-plus"></span>
+                    </button>
+                    <div id="content-2" class="dev-spec-accordion-content">
+                        <p class="dev-spec-accordion-content-text">
+                            **Database:** Primary data stored in PostgreSQL (relational) for strong consistency, supplemented by Redis (in-memory) for caching and session management. <br>
+                            **Real-Time:** WebSockets implemented via a dedicated service (e.g., Socket.IO or dedicated cloud messaging) for instantaneous updates across client applications.
+                        </p>
+                    </div>
+                </div>
+
+                <!-- Accordion Item 3 -->
+                <div class="dev-spec-accordion-item">
+                    <button 
+                        class="dev-spec-accordion-toggle" 
+                        aria-expanded="false" 
+                        aria-controls="content-3" 
+                        onclick="toggleAccordion('content-3', this)">
+                        Security and Compliance Features
+                        <span class="dev-spec-icon-plus"></span>
+                    </button>
+                    <div id="content-3" class="dev-spec-accordion-content">
+                        <p class="dev-spec-accordion-content-text">
+                            **Authentication:** Implemented using OAuth 2.0 and JWTs (JSON Web Tokens) for secure, stateless authorization. <br>
+                            **Security:** All APIs protected by rate limiting, input validation, and secure headers (CSP, HSTS). Infrastructure secured using least-privilege principles and regular vulnerability scanning.
+                        </p>
+                    </div>
+                </div>
+
+                <!-- Accordion Item 4 -->
+                <div class="dev-spec-accordion-item">
+                    <button 
+                        class="dev-spec-accordion-toggle" 
+                        aria-expanded="false" 
+                        aria-controls="content-4" 
+                        onclick="toggleAccordion('content-4', this)">
+                        Frontend Responsiveness and UX
+                        <span class="dev-spec-icon-plus"></span>
+                    </button>
+                    <div id="content-4" class="dev-spec-accordion-content">
+                        <p class="dev-spec-accordion-content-text">
+                            **Frameworks:** Built with modern JavaScript frameworks (e.g., React or Vue) for component-based, efficient UIs. <br>
+                            **Responsiveness:** Fully adaptive design using CSS Grid/Flexbox ensures optimal display and performance on all devices (mobile, tablet, desktop).
+                        </p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- CTA SECTION -->
+    <section class="cta-section">
+        <div class="cta-inner-container">
+            <div class="cta-text-content">
+                <h3 class="cta-heading">Start Creating</h3>
+                <p class="cta-description">
+                    Potentially grow your business, and reach <br> more customers.
+                </p>
+                <a href="#" class="cta-button">
+                    <svg fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
+                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M3 8l7.89 5.26a2 2 0 002.22 0L21 8M5 19h14a2 2 0 002-2V7a2 2 0 00-2-2H5a2 2 0 00-2 2v10a2 2 0 002 2z"></path>
+                    </svg>
+                    Get in Touch
+                </a>
+            </div>
+            <div class="cta-image-symbol">
+                <img src="thumbnails/3d-rendering-neon-triangle-removebg-preview.png" alt="Symbolic Image" width="300" height="300" style="opacity: 0.8; border-radius: 10px;">
+            </div>
+        </div>
+    </section>
+
+    <script>
+        // ===== PROJECTS DATA & FUNCTIONALITY =====
+        const projectsData = [
+            {
+                id: 1,
+                name: "Q4 Hyper-Growth Digital Marketing Campaign",
+                date: "Dec 1, 2024",
+                category: "Marketing & Creative Studio",
+                url: "https://example.com/case-study/q4-hyper-growth"
+            },
+            {
+                id: 2,
+                name: "E-Commerce SaaS Platform Relaunch",
+                date: "Oct 15, 2024",
+                category: "Software Development",
+                url: "https://example.com/case-study/saas-relaunch"
+            },
+            {
+                id: 3,
+                name: "E-Comated Cloud Migration to AWS/Azure",
+                date: "Aug 20, 2024",
+                category: "IT Infrastructure",
+                url: "https://example.com/case-study/cloud-migration"
+            },
+            {
+                id: 4,
+                name: "Decentralized NFT Ticketing System",
+                date: "May 20, 2024",
+                category: "Software Development",
+                url: "https://example.com/case-study/nft-ticketing"
+            },
+            {
+                id: 5,
+                name: "Integrated Home Automation Hub V2",
+                date: "Feb 1, 2024",
+                category: "Smart Technology",
+                url: "https://example.com/case-study/home-automation"
+            },
+            {
+                id: 6,
+                name: "Codex",
+                date: "In Progress",
+                category: "Software Development",
+                url: "https://example.com/case-study/codex-ai"
+            }
+        ];
+
+        let currentFilter = "All Projects";
+
+        function getCategories() {
+            const unique = new Set(projectsData.map(p => p.category));
+            return ["All Projects", ...Array.from(unique)];
+        }
+
+        function getFilteredProjects() {
+            if (currentFilter === "All Projects") {
+                return projectsData;
+            }
+            return projectsData.filter(p => p.category === currentFilter);
+        }
+
+        function renderFilterButtons() {
+            const container = document.getElementById("category-filters");
+            const categories = getCategories();
+            
+            container.innerHTML = categories
+                .map(category => {
+                    const isActive = category === currentFilter;
+                    return `
+                        <li>
+                            <button 
+                                class="filter-button ${isActive ? "active" : ""}"
+                                data-category="${category}"
+                            >
+                                ${category}
+                            </button>
+                        </li>
+                    `;
+                })
+                .join("");
+            
+            container.querySelectorAll("button").forEach(btn => {
+                btn.addEventListener("click", (e) => {
+                    const category = e.target.closest('button').dataset.category;
+                    currentFilter = category;
+                    renderFilterButtons();
+                    renderProjects();
+                });
+            });
+        }
+
+        function createProjectRow(project) {
+            const caseStudyUrl = project.url || `#case-study-${project.id}`;
+            return `
+                <div class="project-row">
+                    <div class="project-name">
+                        <a href="${caseStudyUrl}" target="_blank">${project.name}</a>
+                    </div>
+                    <div class="project-date">
+                        <span class="project-date-label">Completed:</span>
+                        ${project.date}
+                    </div>
+                </div>
+            `;
+        }
+
+        function renderProjects() {
+            const container = document.getElementById("projects-list");
+            const filtered = getFilteredProjects();
+            
+            const loadingMsg = document.getElementById("loading-message");
+            if (loadingMsg) loadingMsg.remove();
+            
+            if (filtered.length === 0) {
+                container.innerHTML = '<div class="empty-state">No projects found for this category.</div>';
+                return;
+            }
+            
+            container.innerHTML = filtered.map(createProjectRow).join("");
+        }
+
+        // ===== ACCORDION FUNCTIONALITY =====
+        function toggleAccordion(contentId, buttonElement) {
+            const content = document.getElementById(contentId);
+            const isExpanded = buttonElement.getAttribute('aria-expanded') === 'true';
+
+            if (!content) {
+                console.error(`Accordion content element not found for ID: ${contentId}`);
+                return;
+            }
+
+            if (isExpanded) {
+                content.style.maxHeight = '0';
+                buttonElement.setAttribute('aria-expanded', 'false');
+            } else {
+                document.querySelectorAll('.dev-spec-accordion-toggle[aria-expanded="true"]').forEach(openButton => {
+                    if (openButton !== buttonElement) {
+                        openButton.setAttribute('aria-expanded', 'false');
+                        const otherContentId = openButton.getAttribute('aria-controls');
+                        const otherContent = document.getElementById(otherContentId);
+                        if (otherContent) {
+                            otherContent.style.maxHeight = '0';
+                        }
+                    }
+                });
+
+                content.style.maxHeight = 'none';
+                const scrollHeight = content.scrollHeight;
+                content.style.maxHeight = '0';
+                
+                requestAnimationFrame(() => {
+                    content.style.maxHeight = scrollHeight + "px";
+                    buttonElement.setAttribute('aria-expanded', 'true');
+                });
+            }
+        }
+
+        // ===== INITIALIZATION =====
+        document.addEventListener("DOMContentLoaded", () => {
+            renderFilterButtons();
+            renderProjects();
+        });
+    </script>
+
+</body>
+</html>
+
+
+
+<cronos-footer></cronos-footer>

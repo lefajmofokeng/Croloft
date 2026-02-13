@@ -1,0 +1,495 @@
+
+
+
+
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Croloft - Link Everything</title>
+    
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800;900&display=swap" rel="stylesheet">
+
+    <style>
+        :root {
+            --inter: 'Inter', sans-serif;
+            --brand-blue: #0047FF;
+            --brand-yellow: #FFD700;
+            
+            /* --- PRECISION VARIABLES --- */
+            /* We use a larger height to ensure letters like 'g' don't get cut off */
+            --item-height: 100px; 
+            /* This ensures the visual baseline of "LINK" matches the scrolling words */
+            --baseline-offset: 0; 
+        }
+
+        body {
+            margin: 0;
+            padding: 0;
+            font-family: var(--inter);
+            background-color: var(--brand-blue);
+            color: white;
+            overflow-x: hidden;
+        }
+
+        /* --- HEADER --- */
+        .header {
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            height: 70px;
+            padding: 0 60px;
+            position: absolute;
+            top: 0;
+            width: 100%;
+            box-sizing: border-box;
+            z-index: 100;
+            border-bottom: 1px solid #ffffff60;
+        }
+
+        .logo { font-weight: 800; font-size: 22px; letter-spacing: -1px; display: flex; align-items: center; gap: 8px; }
+        .logo-box { width: 30px; height: 30px; background: white; color: var(--brand-blue); border-radius: 4px; display: flex; align-items: center; justify-content: center; font-size: 16px; }
+
+        .search-container { flex-grow: 1; display: flex; justify-content: center; max-width: 500px; margin: 0 40px; }
+        .search-bar { width: 100%; height: 40px; border-radius: 1px; border: 1px solid rgba(255,255,255,0.2); background: rgba(255,255,255,0.1); padding: 0 15px; color: white; font-family: var(--inter); }
+        .search-bar::placeholder { color: rgba(255,255,255,0.6); }
+
+        .nav-links { display: flex; align-items: center; gap: 30px; }
+        .nav-links a { color: white; text-decoration: none; font-weight: 500; font-size: 15px; }
+        .contact-btn { background: transparent; color: #fff; padding: 10px 20px; border-radius: 1px; font-weight: 700; border: 1px solid #ffffff6c; }
+
+        /* --- HERO SECTION --- */
+        .hero {
+            height: 100vh;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            background: radial-gradient(circle at center, #0055ff 0%, #0047FF 100%);
+        }
+
+        .hero-wrap {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            gap: 24px; /* Space between LINK and the words */
+        }
+
+        .static-link {
+            font-size: 80px;
+            font-weight: 400;
+            letter-spacing: -2px;
+            
+            /* Geometry enforcement for alignment */
+            height: var(--item-height);
+            line-height: var(--item-height);
+            display: flex;
+            align-items: center;
+            padding-bottom: var(--baseline-offset); /* Slight lift to match optical baseline */
+        }
+
+        .window {
+            /* We show exactly 3 items: top (faded), center (active), bottom (faded) */
+            height: calc(var(--item-height) * 3); 
+            overflow: hidden;
+            display: block;
+            position: relative;
+            
+            /* Gradient mask for the fade effect */
+            -webkit-mask-image: linear-gradient(to bottom, transparent 0%, black 35%, black 30%, transparent 100%);
+            mask-image: linear-gradient(to bottom, transparent 0%, black 35%, black 65%, transparent 100%);
+        }
+
+        .track {
+            display: flex;
+            flex-direction: column;
+            /* 15s total for 5 steps = 3s per word */
+            animation: slideItems 10s cubic-bezier(0.85, 0, 0.15, 1) infinite;
+        }
+
+        .word {
+            height: var(--item-height);
+            font-size: 80px;
+            font-weight: 500;
+            letter-spacing: -2px;
+            display: flex;
+            align-items: center; /* Vertically centers text in the box */
+            padding-bottom: var(--baseline-offset);
+            
+            /* Default State: Faded Blue-ish White */
+            color: rgba(255, 255, 255, 0.3);
+            
+            /* Smooth transition for the color snap */
+            transition: color 0.3s ease-out;
+            white-space: nowrap;
+        }
+
+        /* The class Javascript will add */
+        .word.active-word {
+            color: var(--brand-yellow) !important;
+            text-shadow: 0 0 30px rgba(255, 215, 0, 0.3); /* Subtle glow */
+        }
+
+        /* --- ANIMATION LOGIC --- */
+        /* Moves the strip up one unit at a time */
+        @keyframes slideItems {
+            0%, 16%   { transform: translateY(calc(var(--item-height) * -1)); } /* Item 1 Center */
+            20%, 36%  { transform: translateY(calc(var(--item-height) * -2)); } /* Item 2 Center */
+            40%, 56%  { transform: translateY(calc(var(--item-height) * -3)); } /* Item 3 Center */
+            60%, 76%  { transform: translateY(calc(var(--item-height) * -4)); } /* Item 4 Center */
+            80%, 96%  { transform: translateY(calc(var(--item-height) * -5)); } /* Item 5 Center */
+            100%      { transform: translateY(calc(var(--item-height) * -6)); } /* Reset Loop */
+        }
+        
+        /* The loop reset logic requires cloning the first items to the end.
+           0% starts at index 1 because index 0 is a buffer for the top fade. 
+        */
+
+        @media (max-width: 768px) {
+            .static-link, .word { font-size: 40px; }
+            .hero-wrap { flex-direction: column; gap: 0; }
+            .window { height: calc(var(--item-height) * 3); }
+            :root { --item-height: 60px; }
+            .header { padding: 0 20px; }
+            .nav-links, .search-container { display: none; }
+        }
+    </style>
+</head>
+<body>
+
+    <header class="header">
+        <div class="logo"><img src="thumbnails/hyperion logo (2).png" style="height: 40px;"/></div>
+        <div class="search-container">
+            <input type="text" class="search-bar" placeholder="Search tokenized assets...">
+        </div>
+        <nav class="nav-links">
+            <a href="#">Solutions</a>
+            <a href="#">Network</a>
+            <a href="#">Developers</a>
+            <a href="#">Company</a>
+            <a href="#" class="contact-btn">Contact Us</a>
+        </nav>
+    </header>
+
+    <section class="hero">
+        <div class="hero-wrap">
+            <div class="static-link">LINK</div>
+
+            <div class="window" id="scrollWindow">
+                <div class="track">
+                    <div class="word">Blockchains</div>
+                    
+                    <div class="word">Everything</div>
+                    <div class="word">Stocks</div>
+                    <div class="word">Treasuries</div>
+                    <div class="word">Banks</div>
+                    <div class="word">Blockchains</div>
+
+                    <div class="word">Everything</div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <script>
+        document.addEventListener('DOMContentLoaded', () => {
+            // Intersection Observer configuration
+            // This creates a "trigger line" exactly in the middle of the window
+            const observerOptions = {
+                root: document.querySelector('#scrollWindow'),
+                rootMargin: "-50% 0px -50% 0px", // Slices off top 50% and bottom 50% so only the exact center pixel triggers
+                threshold: 0
+            };
+
+            const observer = new IntersectionObserver((entries) => {
+                entries.forEach(entry => {
+                    if (entry.isIntersecting) {
+                        // When it hits the center line, make it yellow
+                        entry.target.classList.add('active-word');
+                    } else {
+                        // When it leaves the center line, make it grey
+                        entry.target.classList.remove('active-word');
+                    }
+                });
+            }, observerOptions);
+
+            // Start observing all words
+            document.querySelectorAll('.word').forEach(word => {
+                observer.observe(word);
+            });
+        });
+    </script>
+
+</body>
+</html>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Tech Features Component</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+    <style>
+        .techfeat-wrapper-x9z {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        .techfeat-wrapper-x9z *,
+        .techfeat-wrapper-x9z *::before,
+        .techfeat-wrapper-x9z *::after {
+            box-sizing: inherit;
+        }
+
+        .techfeat-section-x9z {
+            background: linear-gradient(180deg, #1d1e1f 0%, #000000 100%);
+            padding: 80px 40px 100px;
+            font-family: 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif;
+        }
+
+        .techfeat-header-x9z {
+            max-width: 1200px;
+            margin: 0 auto 30px;
+        }
+
+        .techfeat-title-x9z {
+            color: #ffffff;
+            font-size: 45px;
+            font-weight: 500;
+            line-height: 1.2;
+            margin: 0 0 24px 0;
+            letter-spacing: -0.02em;
+        }
+
+        .techfeat-subtitle-x9z {
+            color: #9ea6bc;
+            font-size: 19px;
+            font-weight: 600;
+            line-height: 1;
+            margin: 0;
+            max-width: 900px;
+        }
+
+        .techfeat-grid-x9z {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 30px;
+            max-width: 1200px;
+            margin: 0 auto;
+        }
+
+        .techfeat-card-x9z {
+            background: rgba(30, 37, 54, 0.5);
+            border-radius: 16px;
+            padding: 0;
+            overflow: hidden;
+            transition: transform 0.3s ease, background 0.3s ease;
+           
+        }
+
+        .techfeat-icon-container-x9z {
+            width: 100%;
+            height: 320px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            background: transparent;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .techfeat-icon-x9z {
+            width: 280px;
+            height: 280px;
+            object-fit: contain;
+            filter: drop-shadow(0 10px 30px rgba(0, 0, 0, 0.5));
+        }
+
+        .techfeat-content-x9z {
+            padding: 30px;
+        }
+
+        .techfeat-card-title-x9z {
+            color: #ffffff;
+            font-size: 20px;
+            font-weight: 550;
+            letter-spacing: -0.02em;
+            margin: 0 0 12px 0;
+        }
+
+        .techfeat-card-description-x9z {
+            color: #8b92a7;
+            font-size: 18px;
+            font-weight: 600;
+            margin: 0 0 18px 0;
+            letter-spacing: -0.02em;
+        }
+
+        .techfeat-button-x9z {
+            background: #174879c0;
+            color: #9dd2fa;
+            border: none;
+            border-radius: 8px;
+            padding: 14px 24px;
+            font-size: 16px;
+            font-weight: 600;
+            font-family: 'Inter', sans-serif;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            display: inline-block;
+            text-decoration: none;
+        }
+
+        .techfeat-button-x9z:hover {
+            background: #2563a8;
+            color: #7cc5ff;
+            transform: translateY(-1px);
+        }
+
+        @media (max-width: 1200px) {
+            .techfeat-grid-x9z {
+                grid-template-columns: repeat(2, 1fr);
+            }
+        }
+
+        @media (max-width: 768px) {
+            .techfeat-section-x9z {
+                padding: 60px 24px 80px;
+            }
+
+            .techfeat-title-x9z {
+                font-size: 36px;
+                margin-bottom: 20px;
+            }
+
+            .techfeat-subtitle-x9z {
+                font-size: 18px;
+            }
+
+            .techfeat-grid-x9z {
+                grid-template-columns: 1fr;
+                gap: 24px;
+            }
+
+            .techfeat-icon-container-x9z {
+                height: 260px;
+            }
+
+            .techfeat-icon-x9z {
+                width: 220px;
+                height: 220px;
+            }
+
+            .techfeat-card-title-x9z {
+                font-size: 24px;
+            }
+
+            .techfeat-card-description-x9z {
+                font-size: 16px;
+            }
+        }
+    </style>
+</head>
+<body class="techfeat-wrapper-x9z">
+    <section class="techfeat-section-x9z">
+        <div class="techfeat-header-x9z">
+            <h1 class="techfeat-title-x9z">Built for rapid deployment</h1>
+            <p class="techfeat-subtitle-x9z">
+                Achieve faster time-to-market with our proprietary technology,
+                protected by industry-leading security standards.
+            </p>
+        </div>
+
+        <div class="techfeat-grid-x9z">
+            <!-- Security Card -->
+            <div class="techfeat-card-x9z">
+                <div class="techfeat-icon-container-x9z">
+                    <img src="your-security-icon.png" alt="Security" class="techfeat-icon-x9z">
+                </div>
+                <div class="techfeat-content-x9z">
+                    <h2 class="techfeat-card-title-x9z">Security</h2>
+                    <p class="techfeat-card-description-x9z">
+                        Leading the industry in licenses and certifications
+                    </p>
+                    <button class="techfeat-button-x9z">See our security features</button>
+                </div>
+            </div>
+
+            <!-- Components Card -->
+            <div class="techfeat-card-x9z">
+                <div class="techfeat-icon-container-x9z">
+                    <img src="your-components-icon.png" alt="Components" class="techfeat-icon-x9z">
+                </div>
+                <div class="techfeat-content-x9z">
+                    <h2 class="techfeat-card-title-x9z">Components</h2>
+                    <p class="techfeat-card-description-x9z">
+                        Embeddable components for any enterprise application
+                    </p>
+                    <button class="techfeat-button-x9z">Build your component now</button>
+                </div>
+            </div>
+
+            <!-- API Card -->
+            <div class="techfeat-card-x9z">
+                <div class="techfeat-icon-container-x9z">
+                    <img src="your-api-icon.png" alt="API" class="techfeat-icon-x9z">
+                </div>
+                <div class="techfeat-content-x9z">
+                    <h2 class="techfeat-card-title-x9z">API</h2>
+                    <p class="techfeat-card-description-x9z">
+                        Embed turn-key integration modules directly into your platform
+                    </p>
+                    <button class="techfeat-button-x9z">Connect now</button>
+                </div>
+            </div>
+        </div>
+    </section>
+</body>
+</html>
+
+
+
+
+

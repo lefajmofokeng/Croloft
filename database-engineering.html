@@ -1,0 +1,597 @@
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Affiliate</title>
+    
+    <script src="header.js" defer></script>
+    <script src="footer.js" defer></script> 
+</head>
+<body>
+
+    <cronos-header></cronos-header>
+    
+
+</body>
+</html>
+
+
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>IT Technology Trust Component</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+
+<style>
+    /* Unique Namespace Prefix: it-tech- */
+
+    :root {
+        --it-tech-font-inter: 'Inter', sans-serif;
+        --it-tech-color-dark-blue: #0C224A;
+        --it-tech-color-text-main: #1F2937;
+        --it-tech-color-text-sub: #4B5563;
+        --it-tech-color-link-blue: #0066CC;
+        --it-tech-color-bg-hero-start: #9BB2C4;
+        --it-tech-color-bg-hero-end: #D8E1E9;
+        --it-tech-color-bg-light: #F9FAFB;
+        --it-tech-color-white: #FFFFFF;
+    }
+
+    * {
+        margin: 0;
+        padding: 0;
+    }
+
+    /* Component Wrapper to isolate styles */
+    it-tech-trust-component {
+        display: block;
+        font-family: var(--it-tech-font-inter);
+        color: var(--it-tech-color-text-main);
+        line-height: 1.5;
+        width: 100%;
+        overflow-x: hidden;
+    }
+
+    /* --- Section 1: Hero --- */
+    .it-tech-hero-section {
+        /* Gradient approximation based on image_0.png */
+        background: linear-gradient(135deg, var(--it-tech-color-bg-hero-start) 0%, var(--it-tech-color-bg-hero-end) 60%, var(--it-tech-color-white) 100%);
+        padding: 140px 20px 160px;
+        display: flex;
+        justify-content: center;
+    }
+
+    .it-tech-container {
+        max-width: 1200px;
+        width: 100%;
+        display: flex;
+        align-items: center;
+        justify-content: space-between;
+        gap: 60px;
+    }
+
+    .it-tech-hero-content {
+        max-width: 50%;
+    }
+
+    .it-tech-title-large {
+        font-size: 58px;
+        font-weight: 600;
+        letter-spacing: -0.02em;
+        color: var(--it-tech-color-text-main);
+        line-height: 1;
+        margin-bottom: 24px;
+    }
+
+    .it-tech-text-sub-large {
+        font-size: 19px;
+        font-weight: 600;
+        color: var(--it-tech-color-text-sub);
+        margin-bottom: 40px;
+        max-width: 480px;
+    }
+
+    .it-tech-button-group {
+        display: flex;
+        gap: 16px;
+        margin-bottom: 16px;
+    }
+
+    .it-tech-btn {
+        padding: 12px 24px;
+        border-radius: 30px;
+        font-weight: 600;
+        font-size: 16px;
+        cursor: pointer;
+        transition: all 0.2s ease;
+        text-decoration: none;
+        display: inline-block;
+    }
+
+    .it-tech-btn-primary {
+        background-color: var(--it-tech-color-dark-blue);
+        color: var(--it-tech-color-white);
+        border: none;
+    }
+
+    .it-tech-btn-outline {
+        background-color: transparent;
+        color: var(--it-tech-color-dark-blue);
+        border: 1px solid var(--it-tech-color-dark-blue);
+    }
+
+    .it-tech-helper-text {
+        font-size: 13px;
+        color: var(--it-tech-color-text-sub);
+        display: flex;
+        gap: 24px;
+        margin-left: 12px;
+    }
+    .it-tech-helper-text span {
+         display: flex;
+         align-items: center;
+    }
+     .it-tech-verified-icon {
+        color: #00C087; /* Greenish color from image */
+        margin-right: 4px;
+        font-size: 15px;
+    }
+
+    /* Hero Image Styles */
+    .it-tech-hero-image {
+        max-width: 45%;
+        height: auto;
+        display: block;
+        /* Adds a subtle floating shadow effect matching the original's depth */
+        filter: drop-shadow(0 25px 50px rgba(12, 34, 74, 0.25));
+        /* Optional gentle float animation */
+        animation: it-tech-float 8s ease-in-out infinite;
+    }
+
+    @keyframes it-tech-float {
+        0% { transform: translateY(0px); }
+        50% { transform: translateY(-20px); }
+        100% { transform: translateY(0px); }
+    }
+
+
+    /* --- Section 2: Centered Text --- */
+    .it-tech-middle-section {
+        background-color: var(--it-tech-color-white);
+        padding: 120px 20px;
+        text-align: center;
+        display: flex;
+        justify-content: center;
+    }
+
+    .it-tech-middle-content {
+        max-width: 700px;
+    }
+
+    .it-tech-title-medium {
+        font-size: 46px;
+        font-weight: 600;
+        letter-spacing: -0.02em;
+        color: var(--it-tech-color-text-main);
+        margin-bottom: 40px;
+    }
+
+    .it-tech-text-body-large {
+        font-size: 21px;
+        color: var(--it-tech-color-text-sub);
+        line-height: 1.6;
+        margin-bottom: 32px;
+        font-weight: 600;
+    }
+
+    .it-tech-link-arrow {
+        color: var(--it-tech-color-link-blue);
+        text-decoration: none;
+        font-weight: 600;
+        font-size: 19px;
+        display: inline-flex;
+        align-items: center;
+        transition: gap 0.2s ease;
+    }
+    
+    .it-tech-link-arrow:hover {
+        gap: 4px;
+    }
+
+    .it-tech-link-arrow::after {
+        content: '→';
+        margin-left: 8px;
+        font-size: 18px;
+    }
+
+    /* --- Section 3: Bottom Feature --- */
+    .it-tech-bottom-section {
+        background-color: var(--it-tech-color-bg-light);
+        padding: 120px 20px;
+        display: flex;
+        justify-content: center;
+    }
+
+    .it-tech-bottom-container {
+        max-width: 1200px;
+        width: 100%;
+        display: flex;
+        align-items: center;
+        justify-content: space-between;
+        gap: 80px;
+    }
+
+    .it-tech-bottom-content {
+        flex: 1;
+    }
+
+    .it-tech-title-small {
+        font-size: 46px;
+        font-weight: 600;
+        line-height: 1.4;
+        letter-spacing: -0.02em;
+        color: black;
+        margin-bottom: 24px;
+    }
+
+    .it-tech-text-body {
+        font-size: 21px;
+        font-weight: 600;
+        color: var(--it-tech-color-text-sub);
+        line-height: 1.6;
+        margin-bottom: 32px;
+    }
+
+    /* CSS Placeholder for the bottom graphic */
+    .it-tech-bottom-graphic-placeholder {
+        width: 500px;
+        height: 500px;
+        /* Mimicking the blue square style */
+        background: linear-gradient(135deg, #4facfe 0%, #00f2fe 100%);
+        box-shadow: 0 10px 30px rgba(79, 172, 254, 0.4);
+        border-radius: 12px;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        position: relative;
+        overflow: hidden;
+    }
+
+    .it-tech-bottom-graphic-inner {
+        width: 100%;
+        height: 100%;
+        background: rgba(255,255,255,0.2);
+        border-radius: 50%;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        font-weight: 700;
+        color: white;
+        font-size: 14px;
+        text-align: center;
+    }
+
+    /* Responsive adjustments */
+    @media (max-width: 900px) {
+        .it-tech-container, .it-tech-bottom-container {
+            flex-direction: column;
+            text-align: center;
+            gap: 60px;
+        }
+        .it-tech-hero-content, .it-tech-bottom-content {
+            max-width: 100%;
+        }
+        .it-tech-hero-image {
+            max-width: 80%;
+            margin-top: 40px;
+        }
+        .it-tech-button-group {
+            justify-content: center;
+        }
+        .it-tech-helper-text {
+            justify-content: center;
+            margin-left: 0;
+        }
+        .it-tech-text-sub-large {
+            margin-left: auto;
+            margin-right: auto;
+        }
+    }
+</style>
+</head>
+<body>
+
+<it-tech-trust-component>
+
+    <div class="it-tech-hero-section">
+        <div class="it-tech-container">
+            <div class="it-tech-hero-content" style="background: transparent;">
+                <h1 class="it-tech-title-large">First, verify<br>Then integrate</h1>
+                <p class="it-tech-text-sub-large">All our enterprise IT solutions are rigorously tested (1:1), securely deployed, and available for immediate integration into your infrastructure.</p>
+                <div class="it-tech-button-group">
+                    <a href="#" class="it-tech-btn it-tech-btn-primary">Explore Solutions</a>
+                    <a href="#" class="it-tech-btn it-tech-btn-outline">View Case Studies</a>
+                </div>
+            </div>
+            <img src="thumbnails/Screenshot_2025-11-10_212555-removebg-preview.png" alt="Abstract IT Core Architecture" class="it-tech-hero-image">
+        </div>
+    </div>
+
+    <div class="it-tech-middle-section">
+        <div class="it-tech-middle-content">
+            <h2 class="it-tech-title-medium">Results, Not words</h2>
+            <p class="it-tech-text-body-large">The digital landscape demands a foundation built on reliability. That's why cybersecurity, cloud compliance, and data privacy have been our core focus since day one.</p>
+            <p class="it-tech-text-body-large">As an industry leader in technological integration, trusted by global enterprises worldwide, we are more committed than ever to setting the highest standard for IT excellence.</p>
+            <a href="#" class="it-tech-link-arrow">Our commitment to security</a>
+        </div>
+    </div>
+
+    
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+    <!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Defcon Image-Text Grid</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+    
+    <style>
+        /* Root Variables */
+        :root {
+            --defcon-navy: #06273e;
+            --defcon-blue: #0091ff;
+            --defcon-light-gray: #e5e5e5;
+            --defcon-white: #ffffff;
+            --defcon-black: #000000;
+            --font-family-inter: 'Inter', sans-serif;
+            --border-radius-1px: 12px;
+            --content-max-width: 1100px; /* Adjusted for this section */
+        }
+
+        /* Container for the whole section */
+        .defcon-image-text-section-container {
+            font-family: var(--font-family-inter);
+            background-color: var(--defcon-white); /* White background for this section */
+            padding: 60px 0; /* Vertical padding */
+            width: 100%;
+            margin: 0;
+            text-align: center; /* Center content within */
+            color: var(--defcon-navy); /* Default text color for this section */
+        }
+        
+        /* Inner Wrapper to constrain all content */
+        .defcon-image-text-content-wrapper {
+            max-width: var(--content-max-width);
+            width: 90%; /* Use percentage for responsiveness */
+            margin: 0 auto;
+            text-align: left; /* Align grid content to left */
+        }
+
+        /* --- Image-Text Grid --- */
+        .defcon-content-grid {
+            display: grid;
+            /* Two main rows: Top (Text | Image) and Bottom (Image | Image | Text) */
+            /* Using a flexible 3-column layout for the items */
+            grid-template-columns: repeat(3, 1fr); 
+            gap: 8px; /* Space between grid items */
+            align-items: stretch; /* Stretch items to fill height of cell */
+        }
+
+        /* Grid Item Styling */
+        .defcon-grid-item {
+            background-color: var(--defcon-light-gray); /* Light gray background for text boxes */
+            border-radius: var(--border-radius-1px);
+            overflow: hidden; /* Ensures image corners are rounded if item has padding/border-radius */
+            display: flex;
+            flex-direction: column;
+            justify-content: center; /* Center content vertically */
+            padding: 0; /* Reset padding for individual control */
+        }
+
+        /* Text Block in Grid Item */
+        .defcon-grid-item-text {
+            padding: 30px; /* Padding for text content */
+            font-size: 1.25rem; /* Larger font for main text */
+            font-weight: 500;
+            line-height: 1.4;
+            color: var(--defcon-navy); /* Dark text on light gray background */
+        }
+
+        /* Image Block in Grid Item */
+        .defcon-grid-item-image {
+            width: auto;
+            height: 40vh;
+            object-fit: cover; /* Cover the area without distortion */
+            display: block; /* Remove extra space below image */
+            border-radius: var(--border-radius-1px); /* Match container radius */
+        }
+
+        /* --- Grid Spanning for Asymmetrical Layout --- */
+        /* Top Left Text */
+        .defcon-item-1-text {
+            grid-column: span 1;
+            background-color: #f4f4f4; /* Keep background white for text box */
+            text-align: left;
+            padding: 30px; /* Apply padding here for text */
+            font-size: 1.8rem; /* Slightly larger for this prominent text */
+            font-weight: 700;
+            line-height: 1.3;
+            color: var(--defcon-navy);
+            /* Ensure it stretches vertically in the grid */
+            align-self: stretch;
+            display: flex; /* Use flex to vertically center text */
+            align-items: center; /* Vertically center text */
+        }
+
+        /* Top Right Image - spans 2 columns */
+        .defcon-item-2-image {
+            grid-column: span 2;
+        }
+
+        /* Bottom Left Image - spans 1 column */
+        .defcon-item-3-image {
+            grid-column: span 1;
+        }
+
+        /* Bottom Middle Image - spans 1 column */
+        .defcon-item-4-image {
+            grid-column: span 1;
+        }
+
+        /* Bottom Right Text - spans 1 column */
+        .defcon-item-5-text {
+            grid-column: span 1;
+            background-color: #f4f4f4; /* Keep background white for text box */
+            text-align: left;
+            padding: 30px; /* Apply padding here for text */
+            font-size: 1.8rem; /* Consistent large font */
+            font-weight: 700;
+            line-height: 1.3;
+            color: var(--defcon-navy);
+            /* Ensure it stretches vertically in the grid */
+            align-self: stretch;
+            display: flex; /* Use flex to vertically center text */
+            align-items: center; /* Vertically center text */
+        }
+
+        /* --- Responsive Adjustments --- */
+        @media (max-width: 992px) {
+            .defcon-content-grid {
+                grid-template-columns: repeat(2, 1fr); /* 2 columns on medium screens */
+            }
+            /* Reset column spans for all items on medium screens to avoid gaps */
+            .defcon-item-1-text,
+            .defcon-item-2-image,
+            .defcon-item-3-image,
+            .defcon-item-4-image,
+            .defcon-item-5-text {
+                grid-column: span 1;
+            }
+            .defcon-item-1-text,
+            .defcon-item-5-text {
+                font-size: 1.25rem; /* Adjust font size for smaller screens */
+            }
+        }
+
+        @media (max-width: 768px) {
+            .defcon-content-grid {
+                grid-template-columns: 1fr; /* Stack all items on small screens */
+            }
+            .defcon-image-text-content-wrapper {
+                width: 95%; /* More width on small screens */
+            }
+            .defcon-grid-item-text,
+            .defcon-item-1-text,
+            .defcon-item-5-text {
+                padding: 20px;
+                font-size: 1.1rem;
+            }
+        }
+    </style>
+</head>
+<body>
+
+    <section class="defcon-image-text-section-container">
+        <div class="defcon-image-text-content-wrapper">
+            <div class="defcon-content-grid">
+
+                <div class="defcon-grid-item defcon-item-1-text">
+                    Seamlessly integrate blockchain & Web3 solutions into your existing enterprise architecture.
+                </div>
+
+                <div class="defcon-grid-item defcon-item-2-image">
+                    <img src="https://images.pexels.com/photos/6801874/pexels-photo-6801874.jpeg" alt="Modern IT Workplace" class="defcon-grid-item-image">
+                </div>
+
+                <div class="defcon-grid-item defcon-item-3-image">
+                    <img src="https://images.pexels.com/photos/3184418/pexels-photo-3184418.jpeg" alt="Team Collaboration" class="defcon-grid-item-image">
+                </div>
+
+                <div class="defcon-grid-item defcon-item-4-image">
+                    <img src="https://images.pexels.com/photos/3585088/pexels-photo-3585088.jpeg" alt="Mobile App Development" class="defcon-grid-item-image">
+                </div>
+
+                <div class="defcon-grid-item defcon-item-5-text">
+                    Leverage AI & Data Analytics to drive informed decisions and optimize your business operations.
+                </div>
+
+            </div>
+        </div>
+    </section>
+
+</body>
+</html>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+    <div class="it-tech-bottom-section">
+        <div class="it-tech-bottom-container">
+            <div class="it-tech-bottom-content">
+                <h3 class="it-tech-title-small">What is Zero Trust Architecture?</h3>
+                <p class="it-tech-text-body">Zero Trust is a strategic initiative that prevents successful data breaches by eliminating the concept of trust from an organization's network architecture. Rooted in the principle of "never trust, always verify," it requires continuous validation of every digital interaction across the infrastructure, regardless of location.</p>
+                <a href="#" class="it-tech-link-arrow">Learn about Zero Trust</a>
+            </div>
+             <div class="it-tech-bottom-graphic-placeholder">
+                <img src="thumbnails/Screenshot_2025-11-10_212555-removebg-preview.png"/>
+                
+            </div>
+        </div>
+    </div>
+
+</it-tech-trust-component>
+
+<cronos-footer></cronos-footer>
+</body>
+</html>
+

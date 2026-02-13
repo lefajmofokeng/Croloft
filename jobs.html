@@ -1,0 +1,942 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Croloft - Frontend Software Engineer Application</title>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/pdf.js/2.16.105/pdf.min.js"></script>
+    <script>
+        // Initialize PDF.js worker
+        pdfjsLib.GlobalWorkerOptions.workerSrc = 'https://cdnjs.cloudflare.com/ajax/libs/pdf.js/2.16.105/pdf.worker.min.js';
+    </script>
+
+    <style>
+        @font-face {
+            font-family: 'Circular Std';
+            src: local('Circular Std'), url('fonts/circular-std.ttf') format('woff'),
+                 url('fonts/CircularStd-Bold.ttf') format('woff');
+            font-weight: normal;
+            font-style: normal;
+        }
+
+        :root {
+            --croloft-font: 'Circular Std', 'Lato', sans-serif;
+            --croloft-color-text: #515957;
+            --croloft-color-subtext: #666666;
+            --croloft-color-blue: #0c92f3;
+            --croloft-color-blue-hover: #0078d4;
+            --croloft-color-bg-main: #f8f8f8;
+            --croloft-color-bg-white: #FFFFFF;
+            --croloft-color-border: #e7eaec;
+            --croloft-color-danger: #D93025;
+            --croloft-color-success: #0F9D58;
+            --croloft-width-max: 750px;
+        }
+
+        * { box-sizing: border-box; outline: none; }
+
+        body {
+            font-family: var(--croloft-font);
+            background-color: var(--croloft-color-bg-main);
+            color: var(--croloft-color-text);
+            line-height: 1.6;
+            margin: 0;
+            padding: 0;
+            -webkit-font-smoothing: antialiased;
+        }
+
+        .croloft-centered-content {
+            max-width: var(--croloft-width-max);
+            margin: 0 auto;
+            padding: 0 20px;
+            width: 100%;
+            position: relative;
+        }
+
+        /* --- HEADER --- */
+        .croloft-header-wrapper {
+            position: sticky;
+            top: 0;
+            background-color: var(--croloft-color-bg-white);
+            z-index: 9999;
+            padding: 10px 20px; /* Added padding for the absolute button */
+            display: flex;
+            align-items: center;
+            justify-content: center; /* Centers the logo */
+        }
+
+        /* --- BACK BUTTON (FAR LEFT) --- */
+        .back-to-careers-header {
+            position: absolute;
+            left: 30px; /* Far left of the screen */
+            top: 50%;
+            transform: translateY(-50%);
+            display: flex;
+            align-items: center;
+            background-color: #f8f8f8;
+            padding: 7px; border-radius: 60px;
+            color: #333;
+            border: none;
+            cursor: pointer;
+            text-decoration: none;
+            transition: color 0.2s;
+
+        }
+        .back-to-careers-header:hover { color: var(--croloft-color-blue); }
+        .back-to-careers-header svg { width: 28px; height: 28px; }
+
+        /* --- HERO SECTION --- */
+        .croloft-hero-wrapper {
+            background-color: var(--croloft-color-bg-white);
+            padding: 40px 0 40px 0;
+            
+        }
+
+        .croloft-job-title { font-size: 36px; font-weight: 500; color: #36383a; margin: 0 0 10px 0; }
+        .croloft-job-meta { 
+            font-size: 20px; 
+            color: var(--croloft-color-subtext); 
+            margin-bottom: 5px; 
+            font-weight: 400; 
+            letter-spacing: 0.02em;
+            display: flex;
+            align-items: center;
+            gap: 8px;
+        }
+
+        .croloft-job-meta svg { width: 20px; height: 20px; flex-shrink: 0; vertical-align: middle; }
+
+        /* --- PAGE LOGIC --- */
+        #application-form-page, #confirmation-page { display: none; }
+
+        /* --- JOB DETAILS CONTENT --- */
+        .details-section { padding: 40px 0; }
+        .details-section h2 { font-size: 22px; margin-top: 40px; margin-bottom: 15px; color: #36383a; font-weight: 600; }
+        .details-section h3 { font-size: 18px; margin-top: 25px; color: #36383a; font-weight: 600; }
+        .details-section p { font-size: 17px; color: #444; margin-bottom: 20px; }
+        .details-section ul { padding-left: 20px; margin-left: 0; margin-bottom: 20px; }
+        .details-section li { margin-bottom: 12px; font-size: 17px; color: #444; line-height: 1.6; font-weight: 400; }
+        .details-section strong { color: #222; font-weight: 600; }
+
+        /* --- FORM STYLES --- */
+        .croloft-main-wrapper { padding: 40px 0 80px 0; }
+
+        .croloft-section-heading {
+            font-size: 14px; font-weight: 600; color: #515357;
+            text-transform: uppercase; letter-spacing: 1px;
+            margin: 50px 0 20px 0; padding-bottom: 10px; 
+        }
+
+        .croloft-field { margin-bottom: 24px; position: relative; }
+        .croloft-label { 
+            display: block; font-size: 15px; font-weight: 500; margin-bottom: 8px; color: #333;
+        }
+        
+        .input-wrapper { position: relative; }
+
+        .croloft-input-text, .croloft-textarea, .croloft-select {
+            width: 100%; 
+            padding: 12px; 
+            border: 2px solid var(--croloft-color-border);
+            border-radius: 4px; 
+            font-family: var(--croloft-font); 
+            font-size: 15px;
+            transition: all 0.2s;
+            background-color: white;
+        }
+
+        .croloft-input-text:focus, .croloft-textarea:focus, .croloft-select:focus {
+            border-color: var(--croloft-color-blue);
+        }
+
+        .croloft-input-text.valid, .croloft-select.valid, .croloft-textarea.valid { border-color: var(--croloft-color-success); }
+        .croloft-input-text.invalid, .croloft-select.invalid, .croloft-textarea.invalid { border-color: var(--croloft-color-danger); background-color: #fff8f8; }
+
+        .validation-icon {
+            position: absolute;
+            right: 12px;
+            top: 50%;
+            transform: translateY(-50%);
+            color: var(--croloft-color-success);
+            display: none;
+            pointer-events: none;
+        }
+
+        input.valid + .validation-icon { display: block; }
+
+        .error-msg {
+            display: none;
+            color: var(--croloft-color-danger);
+            font-size: 13px;
+            margin-top: 6px;
+            font-weight: 500;
+        }
+
+        .invalid ~ .error-msg { display: block; }
+
+        /* Custom Radio */
+        .croloft-radio-group { display: flex; flex-direction: column; gap: 12px; margin-top: 10px; }
+        .croloft-radio-label { display: flex; align-items: center; gap: 10px; font-weight: 500; cursor: pointer; color: #444; font-size: 15px; }
+        .croloft-radio-label input[type="radio"] { width: 18px; height: 18px; accent-color: var(--croloft-color-blue); cursor: pointer; }
+
+        /* File Upload */
+        .croloft-file-custom-wrap { display: flex; align-items: center; gap: 15px; flex-wrap: wrap;}
+        .croloft-file-button {
+            background-color: #e5e5e5; color: #171717; border: none; padding: 10px 20px;
+            font-size: 14px; font-weight: 500; border-radius: 3px; cursor: pointer;
+            transition: 0.2s; white-space: nowrap; font-family: var(--croloft-font);
+        }
+        .croloft-file-button:hover { background-color: var(--croloft-color-blue-hover); color: white;}
+        .croloft-file-input { display: none; }
+        
+        .file-preview-container {
+            display: flex; align-items: center; gap: 15px; width: 100%; margin-top: 15px;
+        }
+        
+        /* Thumbnail Styling - Looks like a document */
+        .file-thumbnail {
+            width: 60px; 
+            height: 85px; /* Aspect ratio of a paper document */
+            object-fit: cover; 
+            border-radius: 2px; 
+            display: none; 
+            border: 1px solid #ccc;
+            box-shadow: 1px 1px 4px rgba(0,0,0,0.1);
+            background: white;
+        }
+        
+        .file-name-display { color: var(--croloft-color-text); font-weight: 500; font-size: 14px; }
+        .file-name-display.attached { color: var(--croloft-color-blue); }
+
+        /* Conditional Logic Hidden Fields */
+        #notice-period-wrapper { display: none; opacity: 0; transition: opacity 0.3s ease; }
+        #notice-period-wrapper.visible { display: block; opacity: 1; }
+
+        /* --- BUTTONS --- */
+        .btn-primary {
+            background-color: var(--croloft-color-blue); 
+            text-transform: uppercase; letter-spacing: 2px; color: white; border: none; 
+            padding: 14px 40px; font-family: var(--croloft-font); font-size: 14px; font-weight: 500; 
+            border-radius: 4px; cursor: pointer; transition: background-color 0.2s;
+        }
+        .btn-primary:hover { background-color: var(--croloft-color-blue-hover); }
+        .btn-primary:disabled { background-color: #ccc; cursor: not-allowed; }
+
+        .btn-outline {
+            background-color: transparent; color: var(--croloft-color-blue);
+            border: 2px solid var(--croloft-color-blue); padding: 10px 20px; 
+            font-size: 16px; font-weight: 500; border-radius: 4px; cursor: pointer; 
+            font-family: var(--croloft-font); transition: all 0.2s;
+        }
+        .btn-outline:hover { background-color: var(--croloft-color-blue); color: white; }
+
+        /* --- CONFIRMATION PAGE --- */
+        .confirmation-card {
+            background: white;
+            border: 1px solid var(--croloft-color-border);
+            border-radius: 4px;
+            padding: 40px;
+            text-align: center;
+            box-shadow: 0 4px 20px rgba(0,0,0,0.05);
+        }
+        .success-checkmark-lg { width: 80px; height: 80px; color: var(--croloft-color-success); margin-bottom: 20px; }
+        .timeline-box {
+            text-align: left; background: #f8f8f8; padding: 20px; border-radius: 4px; margin-top: 30px;
+        }
+
+        /* --- FOOTER --- */
+        .croloft-footer {
+            background-color: #2a2a2a;
+            color: #d4d4d4;
+            padding: 50px 0 30px 0;
+            margin-top: 60px;
+            width: 100%;
+        }
+        .croloft-footer .croloft-centered-content { max-width: 1000px !important; }
+        .footer-content { display: grid; grid-template-columns: 2fr 1fr; gap: 60px; margin-bottom: 40px; }
+        .footer-info p { margin: 0 0 15px 0; font-size: 15px; line-height: 1.7; text-align: left; }
+        .footer-links h4 { font-size: 16px; font-weight: 600; color: #ffffff; margin: 0 0 20px 0; text-transform: uppercase; letter-spacing: 1px; }
+        .footer-links ul { list-style: none; padding: 0; margin: 0; }
+        .footer-links li { margin-bottom: 12px; }
+        .footer-links a { color: #d4d4d4; text-decoration: none; font-size: 15px; transition: color 0.2s ease; display: inline-block; }
+        .footer-links a:hover { color: var(--croloft-color-blue); }
+        .footer-bottom { border-top: 1px solid #404040; padding-top: 25px; text-align: left; }
+        .footer-bottom p { margin: 0; font-size: 14px; color: #999; }
+
+        @media (max-width: 768px) {
+            .croloft-job-title { font-size: 28px; }
+            .footer-content { grid-template-columns: 1fr; gap: 40px; }
+            .back-to-careers-header { left: 0px;}
+            .back-to-careers-header svg { width: 22px; height: 22px; }
+        }
+
+        @media (max-width: 768px) {
+            .croloft-header-wrapper {
+                display: flex;
+                flex-direction: row;       /* Keep them on the same line */
+                justify-content: space-between; /* Push button left, logo right */
+                align-items: center;       /* Vertically center them */
+                padding: 15px 20px;
+            }
+
+            .back-to-careers-header {
+                position: static;      /* Remove absolute positioning so it flows naturally */
+                transform: none;       
+                margin-bottom: 0;      
+            }
+
+            /* Target the specific logo container inside the header */
+            .croloft-header-wrapper .croloft-centered-content {
+                width: auto;           /* Stop it from trying to be 100% width */
+                margin: 0;             /* Remove centering margins */
+                padding: 0;
+                display: flex;
+                justify-content: flex-end; /* Ensure the image inside aligns right */
+            }
+
+            .croloft-img {
+                height: 10px;          /* Adjust logo size for smaller screens */
+        }
+    }
+    </style>
+</head>
+<body>
+
+    <div id="job-details-page">
+        <header class="croloft-header-wrapper">
+            <a href="careers.html" class="back-to-careers-header">
+                <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path fill="#000000" d="m7.825 13l5.6 5.6L12 20l-8-8l8-8l1.425 1.4l-5.6 5.6H20v2H7.825Z"/></svg>
+            </a>
+            
+            <div class="croloft-centered-content" style="display: flex;">
+                <img src="thumbnails/croloft1.png" alt="Croloft Logo" style="height: 40px;" class="croloft-img">
+            </div>
+        </header>
+
+        <section class="croloft-hero-wrapper">
+            <div class="croloft-centered-content">
+                <h1 class="croloft-job-title">Frontend Software Engineer</h1>
+                <p class="croloft-job-meta">
+                    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0 1 18 0z"/><circle cx="12" cy="10" r="3"/></svg>
+                    Durban, South Africa
+                </p>
+                <p class="croloft-job-meta">
+                    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="3" y="4" width="18" height="18" rx="2" ry="2"/><line x1="16" y1="2" x2="16" y2="6"/><line x1="8" y1="2" x2="8" y2="6"/><line x1="3" y1="10" x2="21" y2="10"/></svg>
+                    Full-time | Hybrid
+                </p>
+            </div>
+        </section>
+
+        <main class="croloft-main-wrapper">
+            <div class="croloft-centered-content">
+                <div class="details-section">
+                    <h2>About the Role</h2>
+                    <p>At Croloft, we are building the operating system for the next generation of logistics. We are seeking a product-minded <strong>Frontend Software Engineer</strong> who obsesses over performance, accessibility, and pixel-perfect UIs.</p>
+                    <p>You won't just be moving tickets from left to right. You will play a pivotal role in defining our design system, architecting complex client-side states, and shipping features that are used by thousands of users daily.</p>
+
+                    <h2>About the Team</h2>
+                    <ul>
+                        <li><strong>Lean & Agile:</strong> We are a high-performance startup of 45+ members delivering enterprise-grade solutions.</li>
+                        <li><strong>Tech Stack:</strong> We don't have separate backend engineers; we leverage AI and modern APIs to build fast.</li>
+                        <li><strong>Diversity:</strong> We are proud to have 30% women in tech roles and operate across 4 global hubs.</li>
+                        <li><strong>Culture:</strong> We value output over hours. If you ship quality code, you fit in.</li>
+                    </ul>
+                    
+                    <h2>What You’ll Be Doing</h2>
+                    <ul>
+                        <li><strong>Architect & Build:</strong> Develop scalable, responsive web applications using React, TypeScript, and modern CSS methodologies.</li>
+                        <li><strong>Performance Engineering:</strong> Optimize application speed and scalability. We care about Core Web Vitals and fast TTI.</li>
+                        <li><strong>Design System Ownership:</strong> Collaborate with product designers to maintain and expand our internal UI library (Storybook).</li>
+                        <li><strong>Collaborate:</strong> Work closely with AI-assisted architectures to integrate robust API schemas.</li>
+                    </ul>
+
+                    <h2>The Toolkit (Requirements)</h2>
+                    <ul>
+                        <li>3+ years of professional experience building single-page applications (SPAs).</li>
+                        <li>Deep mastery of <strong>JavaScript (ES6+)</strong>, the DOM, and browser APIs.</li>
+                        <li>Proficiency in <strong>TypeScript</strong> is non-negotiable.</li>
+                        <li>Solid experience with <strong>React</strong> ecosystem (Hooks, Context, Redux/Zustand).</li>
+                        <li>Strong understanding of web security (XSS, CSRF) and accessibility standards (WCAG).</li>
+                    </ul>
+
+                    <h2>Why Croloft?</h2>
+                    <p>We believe in treating our engineers like adults. We don't track hours; we track impact. We are a team of curious problem solvers who value transparency and honest feedback.</p>
+                    <ul>
+                        <li><strong>Top-tier Equipment:</strong> Latest MacBook Pro and dual 4K monitors.</li>
+                        <li><strong>Continuous Learning:</strong> Annual budget for conferences, courses, and books.</li>
+                        <li><strong>Health & Wellness:</strong> Comprehensive medical aid subsidy and gym memberships.</li>
+                        <li><strong>Equity:</strong> Competitive stock options—when we win, you win.</li>
+                        <li><strong>Flexibility:</strong> Hybrid model (3 days remote, 2 days in-hub) with flexible start times.</li>
+                    </ul>
+
+                    <h2>The Hiring Process</h2>
+                    <ul>
+                        <li><strong>1. Application:</strong> Submit your profile. We review every application manually (No bots).</li>
+                        <li><strong>2. Screening:</strong> A quick chat to align on goals and expectations.</li>
+                        <li><strong>3. Challenge:</strong> A practical coding assessment relevant to the role.</li>
+                        <li><strong>4. Offer:</strong> Welcome to the team! Let's build the future.</li>
+                    </ul>
+
+                    <div style="margin-top: 50px;">
+                        <button class="btn-primary" onclick="showForm()">Apply for this Job</button>
+                    </div>
+                </div>
+            </div>
+        </main>
+    </div>
+
+    <div id="application-form-page">
+
+        <section class="croloft-hero-wrapper">
+            <div class="croloft-centered-content">
+                <h1 class="croloft-job-title">Apply for Frontend Software Engineer</h1>
+                <button class="btn-outline" onclick="showDetails()" style="margin-top: 20px;">
+                    <span style="display: flex; align-items: center;">
+                        Back to Job Details
+                    </span>
+                </button>
+            </div>
+        </section>
+
+        <main class="croloft-main-wrapper">
+            <div class="croloft-centered-content">
+                <form id="job-application-form" novalidate>
+                    <input type="hidden" name="_subject" value="New Application: Frontend Engineer (Croloft)">
+                    <input type="hidden" name="_captcha" value="false"> 
+
+                    <div class="croloft-section-heading">Personal Information</div>
+
+                    <div class="croloft-field">
+                        <label class="croloft-label">Full Name <span style="color:red">*</span></label>
+                        <div class="input-wrapper">
+                            <input type="text" name="name" id="fullName" class="croloft-input-text" required autocomplete="name" placeholder="John Doe">
+                            <svg class="validation-icon" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"></polyline></svg>
+                        </div>
+                        <div class="error-msg">Please enter your full name.</div>
+                    </div>
+
+                    <div class="croloft-field">
+                        <label class="croloft-label">Email Address <span style="color:red">*</span></label>
+                        <div class="input-wrapper">
+                            <input type="email" name="email" id="email" class="croloft-input-text" required autocomplete="email" placeholder="john.doe@example.com">
+                            <svg class="validation-icon" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"></polyline></svg>
+                        </div>
+                        <div class="error-msg">Please enter a valid email address.</div>
+                    </div>
+
+                    <div class="croloft-field">
+                        <label class="croloft-label">Phone Number <span style="color:red">*</span></label>
+                        <div class="input-wrapper">
+                            <input type="tel" name="phone" id="phone" class="croloft-input-text" required autocomplete="tel" placeholder="+27 XX XXX XXXX">
+                            <svg class="validation-icon" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"></polyline></svg>
+                        </div>
+                        <div class="error-msg">Please enter a valid phone number.</div>
+                    </div>
+
+                    <div class="croloft-field">
+                        <label class="croloft-label">Location <span style="color:red">*</span></label>
+                        <div class="input-wrapper">
+                            <input type="text" name="location" id="location" class="croloft-input-text" required autocomplete="address-level2" placeholder="City, Country">
+                            <svg class="validation-icon" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"></polyline></svg>
+                        </div>
+                        <div class="error-msg">Please enter your current location.</div>
+                    </div>
+
+                    <div class="croloft-section-heading">Social Presence & Portfolio</div>
+
+                    <div class="croloft-field">
+                        <label class="croloft-label">LinkedIn Profile URL <span style="color:red">*</span></label>
+                        <div class="input-wrapper">
+                            <input type="url" name="linkedin" id="linkedin" class="croloft-input-text" required placeholder="https://linkedin.com/in/..." pattern="https://.*">
+                            <svg class="validation-icon" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"></polyline></svg>
+                        </div>
+                        <div class="error-msg">Please provide a valid LinkedIn URL.</div>
+                    </div>
+
+                    <div class="croloft-field">
+                        <label class="croloft-label">GitHub / GitLab URL</label>
+                        <div class="input-wrapper">
+                            <input type="url" name="github" id="github" class="croloft-input-text" placeholder="https://github.com/...">
+                        </div>
+                    </div>
+
+                    <div class="croloft-field">
+                        <label class="croloft-label">Portfolio / Personal Website</label>
+                        <div class="input-wrapper">
+                            <input type="url" name="portfolio" id="portfolio" class="croloft-input-text" placeholder="https://mywebsite.com">
+                        </div>
+                    </div>
+
+                    <div class="croloft-section-heading">Experience & Skills</div>
+
+                    <div class="croloft-field">
+                        <label class="croloft-label">Years of Professional Frontend Experience <span style="color:red">*</span></label>
+                        <select name="yearsExperience" id="yearsExperience" class="croloft-select" required>
+                            <option value="">Select experience level</option>
+                            <option value="0-1">0 - 1 Years</option>
+                            <option value="1-3">1 - 3 Years</option>
+                            <option value="3-5">3 - 5 Years</option>
+                            <option value="5-8">5 - 8 Years</option>
+                            <option value="8+">8+ Years</option>
+                        </select>
+                        <div class="error-msg">Please select your experience level.</div>
+                    </div>
+
+                    <div class="croloft-field">
+                        <label class="croloft-label">Primary Framework Proficiency <span style="color:red">*</span></label>
+                        <div class="croloft-radio-group">
+                            <label class="croloft-radio-label">
+                                <input type="radio" name="framework" value="React" required> React
+                            </label>
+                            <label class="croloft-radio-label">
+                                <input type="radio" name="framework" value="Vue"> Vue.js
+                            </label>
+                            <label class="croloft-radio-label">
+                                <input type="radio" name="framework" value="Angular"> Angular
+                            </label>
+                            <label class="croloft-radio-label">
+                                <input type="radio" name="framework" value="Svelte"> Svelte
+                            </label>
+                            <label class="croloft-radio-label">
+                                <input type="radio" name="framework" value="Other"> Other
+                            </label>
+                        </div>
+                        <div class="error-msg">Please select a primary framework.</div>
+                    </div>
+
+                    <div class="croloft-section-heading">Employment Details</div>
+
+                    <div class="croloft-field">
+                        <label class="croloft-label">Current Employment Status <span style="color:red">*</span></label>
+                        <select name="employmentStatus" id="employmentStatus" class="croloft-select" required onchange="toggleNoticePeriod()">
+                            <option value="">Select status</option>
+                            <option value="Employed">Currently Employed</option>
+                            <option value="Unemployed">Unemployed</option>
+                            <option value="Student">Student</option>
+                            <option value="Freelancer">Freelancer</option>
+                        </select>
+                        <div class="error-msg">Please select your status.</div>
+                    </div>
+
+                    <div class="croloft-field" id="notice-period-wrapper">
+                        <label class="croloft-label">Notice Period <span style="color:red">*</span></label>
+                        <select name="noticePeriod" id="noticePeriod" class="croloft-select">
+                            <option value="">Select notice period</option>
+                            <option value="Immediate">Immediate</option>
+                            <option value="1 week">1 week</option>
+                            <option value="2 weeks">2 weeks</option>
+                            <option value="1 month">1 month</option>
+                            <option value="2 months">2 months</option>
+                            <option value="3 months">3 months</option>
+                        </select>
+                        <div class="error-msg">Please select a notice period.</div>
+                    </div>
+
+                    <div class="croloft-field">
+                        <label class="croloft-label">Are you legally authorized to work in South Africa? <span style="color:red">*</span></label>
+                        <div class="croloft-radio-group" style="flex-direction: row; gap: 30px;">
+                            <label class="croloft-radio-label">
+                                <input type="radio" name="workAuth" value="Yes" required> Yes
+                            </label>
+                            <label class="croloft-radio-label">
+                                <input type="radio" name="workAuth" value="No"> No
+                            </label>
+                        </div>
+                        <div class="error-msg">Please select an option.</div>
+                    </div>
+
+                    <div class="croloft-field">
+                        <label class="croloft-label">Salary Expectations (Gross Monthly) <span style="color:red">*</span></label>
+                        <div class="input-wrapper">
+                            <input type="text" name="salary" id="salary" class="croloft-input-text" required placeholder="e.g. ZAR 60,000">
+                            <svg class="validation-icon" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"></polyline></svg>
+                        </div>
+                        <div class="error-msg">Please enter your salary expectations.</div>
+                    </div>
+
+                    <div class="croloft-field">
+                        <label class="croloft-label">Earliest Start Date</label>
+                        <div class="input-wrapper">
+                            <input type="date" name="startDate" id="startDate" class="croloft-input-text">
+                        </div>
+                    </div>
+
+                    <div class="croloft-field">
+                        <label class="croloft-label">How did you hear about us?</label>
+                        <select name="referral" id="referral" class="croloft-select">
+                            <option value="">Select source</option>
+                            <option value="LinkedIn">LinkedIn</option>
+                            <option value="Glassdoor">Glassdoor</option>
+                            <option value="Referral">Friend/Colleague Referral</option>
+                            <option value="Search">Search Engine</option>
+                            <option value="Other">Other</option>
+                        </select>
+                    </div>
+
+                    <div class="croloft-section-heading">Why Croloft?</div>
+
+                    <div class="croloft-field">
+                        <label class="croloft-label">Cover Letter / Note to Hiring Manager</label>
+                        <p style="font-size:13px; color:#666; margin:0 0 10px 0;">Tell us about a technical challenge you recently solved.</p>
+                        <textarea name="coverLetter" id="coverLetter" class="croloft-textarea" rows="6" placeholder="I'm excited about this role because..."></textarea>
+                    </div>
+
+                    <div class="croloft-section-heading">Resume & Documents</div>
+
+                    <div class="croloft-field">
+                        <label class="croloft-label">Resume/CV (PDF) <span style="color:red">*</span></label>
+                        <div class="croloft-file-custom-wrap">
+                            <button type="button" class="croloft-file-button" onclick="document.getElementById('resume-input').click()">Upload Resume</button>
+                            <input type="file" id="resume-input" name="resume" class="croloft-file-input" required accept=".pdf,.doc,.docx" onchange="handleFileUpload(this, 'resume-preview', 'resume-name')">
+                        </div>
+                        <div class="file-preview-container" id="resume-preview-container">
+                            <img id="resume-preview" class="file-thumbnail" src="" alt="preview">
+                            <span id="resume-name" class="file-name-display">No file chosen</span>
+                        </div>
+                        <div class="error-msg">Please upload your resume.</div>
+                    </div>
+
+                    <div class="croloft-field">
+                        <label class="croloft-label">ID Document / Passport <span style="color:red">*</span></label>
+                        <div class="croloft-file-custom-wrap">
+                            <button type="button" class="croloft-file-button" onclick="document.getElementById('id-input').click()">Upload ID</button>
+                            <input type="file" id="id-input" name="idDoc" class="croloft-file-input" required accept=".pdf,.jpg,.jpeg,.png" onchange="handleFileUpload(this, 'id-preview', 'id-name')">
+                        </div>
+                        <div class="file-preview-container">
+                            <img id="id-preview" class="file-thumbnail" src="" alt="preview">
+                            <span id="id-name" class="file-name-display">No file chosen</span>
+                        </div>
+                        <div class="error-msg">Please upload your ID.</div>
+                    </div>
+
+                    <div style="margin-top: 40px; text-align: center;">
+                        <button type="submit" class="btn-primary" id="submit-btn">Submit Application</button>
+                        <p id="submit-loading" style="display:none; color: #666; margin-top: 10px;">Sending application...</p>
+                    </div>
+                </form>
+            </div>
+        </main>
+    </div>
+
+    <div id="confirmation-page">
+        <header class="croloft-header-wrapper">
+            <div class="croloft-centered-content">
+                <img src="thumbnails/crono (1).png" alt="Croloft Logo" style="height: 40px;">
+            </div>
+        </header>
+
+        <main class="croloft-main-wrapper">
+            <div class="croloft-centered-content">
+                <div class="confirmation-card">
+                    <svg class="success-checkmark-lg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                        <path d="M22 11.08V12a10 10 0 1 1-5.93-9.14"></path>
+                        <polyline points="22 4 12 14.01 9 11.01"></polyline>
+                    </svg>
+                    <h1 style="color: #333; margin-top: 0;">Application Received!</h1>
+                    <p style="font-size: 18px; color: #555;">Thank you, <span id="confirm-name">Candidate</span>. We have successfully received your application for the <strong>Frontend Software Engineer</strong> position.</p>
+                    
+                    <p style="color: #0c92f3; font-weight: 500;">✓ A copy of this application has been sent to <span id="confirm-email">your email</span>.</p>
+
+                    <div class="timeline-box">
+                        <h3 style="margin-top: 0; color: #333;">What Happens Next?</h3>
+                        <ul style="padding-left: 20px; color: #555;">
+                            <li><strong>Screening:</strong> Our team reviews applications manually (No AI bots).</li>
+                            <li><strong>Timeline:</strong> Expect to hear from us within <strong>5-7 business days</strong>.</li>
+                            <li><strong>Interview:</strong> If shortlisted, you will receive an invite for a technical interview.</li>
+                        </ul>
+                        <hr style="border: 0; border-top: 1px solid #eee; margin: 15px 0;">
+                        <p style="font-size: 14px; margin-bottom: 0;"><strong>Questions?</strong> Contact our hiring team at <a href="mailto:careers@croloft.com" style="color:#0c92f3">careers@croloft.com</a></p>
+                    </div>
+
+                    <button class="btn-outline" style="margin-top: 30px;" onclick="window.location.href='careers.html'">Return to Job Board</button>
+                </div>
+            </div>
+        </main>
+    </div>
+
+    <footer class="croloft-footer">
+        <div class="croloft-centered-content">
+            <div class="footer-content">
+                <div class="footer-info">
+                    <p>&copy; 2026 Croloft. All rights reserved.</p>
+                    <p>We do not use Automated Tracking Systems (ATS) or AI screening bots. Every application is reviewed manually.</p>
+                </div>
+                <div class="footer-links">
+                    <h4>Quick Links</h4>
+                    <ul>
+                        <li><a href="#">About Us</a></li>
+                        <li><a href="#">Careers</a></li>
+                        <li><a href="#">Hiring Policy</a></li>
+                        <li><a href="#">Privacy Policy</a></li>
+                        <li><a href="#">Contact Us</a></li>
+                    </ul>
+                </div>
+            </div>
+            <div class="footer-bottom">
+                <p>Croloft is an equal opportunity employer.</p>
+            </div>
+        </div>
+    </footer>
+
+    <script>
+        // --- NAVIGATION ---
+        function showForm() {
+            document.getElementById('job-details-page').style.display = 'none';
+            document.getElementById('application-form-page').style.display = 'block';
+            document.getElementById('confirmation-page').style.display = 'none';
+            window.scrollTo(0, 0);
+            loadFormData(); // Restore saved data
+        }
+
+        function showDetails() {
+            document.getElementById('job-details-page').style.display = 'block';
+            document.getElementById('application-form-page').style.display = 'none';
+            window.scrollTo(0, 0);
+        }
+
+        // --- PERSISTENCE (SAVE DATA) ---
+        const form = document.getElementById('job-application-form');
+        const inputs = form.querySelectorAll('input, select, textarea');
+
+        inputs.forEach(input => {
+            if(input.type === 'file' || input.type === 'hidden') return;
+
+            input.addEventListener('input', () => {
+                if(input.type === 'radio') {
+                    if(input.checked) localStorage.setItem('croloft_' + input.name, input.value);
+                } else {
+                    localStorage.setItem('croloft_' + input.name, input.value);
+                }
+                validateField(input); 
+            });
+            input.addEventListener('blur', () => {
+                validateField(input); 
+            });
+        });
+
+        function loadFormData() {
+            inputs.forEach(input => {
+                if(input.type === 'file' || input.type === 'hidden') return;
+                const saved = localStorage.getItem('croloft_' + input.name);
+                if (saved) {
+                    if(input.type === 'radio') {
+                        if(input.value === saved) input.checked = true;
+                    } else {
+                        input.value = saved;
+                    }
+                    if(input.name === 'employmentStatus') toggleNoticePeriod();
+                }
+            });
+        }
+
+        // --- CONDITIONAL LOGIC ---
+        function toggleNoticePeriod() {
+            const status = document.getElementById('employmentStatus').value;
+            const noticeWrapper = document.getElementById('notice-period-wrapper');
+            const noticeSelect = document.getElementById('noticePeriod');
+
+            if (status === 'Employed') {
+                noticeWrapper.classList.add('visible');
+                noticeSelect.required = true;
+            } else {
+                noticeWrapper.classList.remove('visible');
+                noticeSelect.required = false;
+                noticeSelect.value = ""; 
+            }
+        }
+
+        // --- FILE UPLOAD & REAL THUMBNAIL RENDERING ---
+        function handleFileUpload(input, previewId, nameId) {
+            const nameDisplay = document.getElementById(nameId);
+            const previewImg = document.getElementById(previewId);
+            const file = input.files[0];
+
+            if (file) {
+                // Show Name
+                nameDisplay.textContent = '✓ ' + file.name;
+                nameDisplay.classList.add('attached');
+                previewImg.style.display = 'block';
+                
+                if (file.type.startsWith('image/')) {
+                    // Standard Image (JPG/PNG)
+                    const reader = new FileReader();
+                    reader.onload = function(e) {
+                        previewImg.src = e.target.result;
+                    }
+                    reader.readAsDataURL(file);
+                } 
+                else if (file.type === 'application/pdf') {
+                    // RENDER REAL PDF PAGE using PDF.js
+                    const fileURL = URL.createObjectURL(file);
+                    
+                    pdfjsLib.getDocument(fileURL).promise.then(pdf => {
+                        // Get first page
+                        pdf.getPage(1).then(page => {
+                            const scale = 0.5; // Create a thumbnail size
+                            const viewport = page.getViewport({ scale: scale });
+
+                            // Prepare canvas
+                            const canvas = document.createElement('canvas');
+                            const context = canvas.getContext('2d');
+                            canvas.height = viewport.height;
+                            canvas.width = viewport.width;
+
+                            // Render PDF page into canvas context
+                            const renderContext = {
+                                canvasContext: context,
+                                viewport: viewport
+                            };
+                            
+                            page.render(renderContext).promise.then(() => {
+                                // Convert canvas to image src
+                                previewImg.src = canvas.toDataURL();
+                            });
+                        });
+                    }).catch(error => {
+                        console.error('Error rendering PDF:', error);
+                        previewImg.src = "https://cdn-icons-png.flaticon.com/512/337/337946.png"; // Fallback
+                    });
+                } 
+                else {
+                    // Word docs etc (Cannot render easily in browser)
+                    previewImg.src = "https://cdn-icons-png.flaticon.com/512/2965/2965335.png"; 
+                }
+                
+                // Clear validation error if exists
+                input.parentElement.parentElement.querySelector('.error-msg').style.display = 'none';
+            } else {
+                nameDisplay.textContent = 'No file chosen';
+                nameDisplay.classList.remove('attached');
+                previewImg.style.display = 'none';
+            }
+        }
+
+        // --- SMART VALIDATION ---
+        function validateField(input) {
+            if (input.offsetParent === null) return true;
+
+            let isValid = false;
+
+            if (input.type === 'email') {
+                const re = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
+                isValid = re.test(input.value);
+            } else if (input.type === 'url') {
+                if(input.value === "" && !input.hasAttribute('required')) isValid = true;
+                else isValid = input.value.length > 5 && input.value.includes('.');
+            } else if (input.type === 'tel') {
+                isValid = input.value.length > 9; 
+            } else if (input.tagName === 'SELECT') {
+                isValid = input.value !== "";
+            } else if (input.type === 'file') {
+                isValid = input.files.length > 0;
+            } else if (input.type === 'radio') {
+                const group = document.querySelectorAll(`input[name="${input.name}"]`);
+                let isChecked = false;
+                group.forEach(r => { if(r.checked) isChecked = true; });
+                isValid = isChecked;
+                if(isValid) {
+                    const container = input.closest('.croloft-field');
+                    if(container) {
+                        const error = container.querySelector('.error-msg');
+                        if(error) error.style.display = 'none';
+                    }
+                }
+                return isValid; 
+            } else {
+                isValid = input.value.trim().length > 1;
+            }
+
+            if (input.type !== 'radio') {
+                if (isValid) {
+                    input.classList.add('valid');
+                    input.classList.remove('invalid');
+                } else {
+                    if(input.value.length > 0) {
+                        input.classList.add('invalid');
+                        input.classList.remove('valid');
+                    } else {
+                        input.classList.remove('valid');
+                        input.classList.remove('invalid');
+                    }
+                }
+            }
+            return isValid;
+        }
+
+        // --- FORM SUBMISSION (Ajax to FormSubmit) ---
+        const submitBtn = document.getElementById('submit-btn');
+        const submitLoading = document.getElementById('submit-loading');
+
+        form.addEventListener('submit', function(e) {
+            e.preventDefault(); 
+
+            // Validation
+            let isFormValid = true;
+            const visibleInputs = document.querySelectorAll('#application-form-page input:not([type="radio"]):not([type="hidden"]), #application-form-page select, #application-form-page textarea');
+            
+            visibleInputs.forEach(input => {
+                if(input.offsetParent !== null && input.hasAttribute('required')) {
+                    if(!validateField(input) && input.value === "") {
+                        input.classList.add('invalid');
+                        isFormValid = false;
+                    } else if (input.classList.contains('invalid')) {
+                        isFormValid = false;
+                    }
+                }
+            });
+
+            const radioGroups = ['framework', 'workAuth'];
+            radioGroups.forEach(groupName => {
+                const radios = document.querySelectorAll(`input[name="${groupName}"]`);
+                let groupChecked = false;
+                radios.forEach(r => { if(r.checked) groupChecked = true; });
+                
+                if(!groupChecked) {
+                    const firstRadio = document.querySelector(`input[name="${groupName}"]`);
+                    if(firstRadio) {
+                        const container = firstRadio.closest('.croloft-field');
+                        const error = container.querySelector('.error-msg');
+                        if(error) error.style.display = 'block';
+                    }
+                    isFormValid = false;
+                }
+            });
+
+            if (!isFormValid) {
+                window.scrollTo(0, 0);
+                return;
+            }
+
+            // Submit
+            submitBtn.disabled = true;
+            submitBtn.textContent = 'Submitting...';
+            submitLoading.style.display = 'block';
+
+            const formData = new FormData(form);
+            const name = document.getElementById('fullName').value;
+            const email = document.getElementById('email').value;
+
+            fetch("https://formsubmit.co/ajax/accesscronos@gmail.com", {
+                method: "POST",
+                body: formData
+            })
+            .then(response => response.json())
+            .then(data => {
+                localStorage.clear();
+                document.getElementById('confirm-name').textContent = name;
+                document.getElementById('confirm-email').textContent = email;
+                document.getElementById('application-form-page').style.display = 'none';
+                document.getElementById('confirmation-page').style.display = 'block';
+                window.scrollTo(0, 0);
+            })
+            .catch(error => {
+                console.error("FormSubmit Error:", error);
+                alert("There was an error sending your application. Please try again later or email us directly.");
+                submitBtn.disabled = false;
+                submitBtn.textContent = 'Submit Application';
+                submitLoading.style.display = 'none';
+            });
+        });
+    </script>
+</body>
+</html>

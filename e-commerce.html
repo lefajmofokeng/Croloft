@@ -1,0 +1,1356 @@
+
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>My Website</title>
+    
+    <script src="header.js" defer></script>
+    <script src="footer.js" defer></script> 
+</head>
+<body>
+
+    <cronos-header></cronos-header>
+    
+
+</body>
+</html>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Defcon E-commerce Solutions - Digital Commerce Mastery</title>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
+    <style>
+        /* CSS Variables for Consistency */
+        :root {
+            --defcon-primary: #0086e7; /* Accent Color */
+            --defcon-dark: #010719; /* Primary Background/Text (Deep Navy) */
+            --defcon-white: #fff;
+            --defcon-light-grey: #f4f4f4;
+            --defcon-black: #000;
+            --defcon-lighter-grey: #e5e5e5;
+            --defcon-secondary-dark: #070733; /* Slightly lighter dark for contrast */
+            --defcon-text-light: #c0c0d0; /* Light text on dark background */
+        }
+
+        /* Base Styles */
+        body {
+            font-family: 'Inter', sans-serif;
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            background-color: var(--defcon-dark); /* Dark theme base */
+            color: var(--defcon-white);
+            line-height: 1.6;
+        }
+
+        *, *::before, *::after {
+            box-sizing: inherit;
+        }
+
+        /* General Utilities - UPDATED for 1200px centering */
+        .defcon-container {
+            /* Set the maximum width and center the block element */
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 20px;
+        }
+        
+        .defcon-section-title {
+            font-size: 3em;
+            font-weight: 600;
+            line-height: 1.2;
+            letter-spacing: -0.02em;
+            margin-bottom: 10px;
+            color: var(--defcon-white);
+        }
+
+        .defcon-subtitle-accent {
+            font-size: 1em;
+            color: #0086e7;
+            font-weight: 600;
+            text-transform: uppercase;
+            margin-bottom: 10px;
+        }
+
+        /* Primary Call-to-Action Button */
+        .defcon-primary-btn {
+            display: inline-block;
+            background-color: #f4f4f4;
+            color: #080d1b;
+            padding: 11px 25px;
+            border-radius: 50px;
+            text-decoration: none;
+            font-weight: 600;
+            font-size: 1.1em;
+            border: none;
+            cursor: pointer;
+        }
+
+        .defcon-primary-btn:hover {
+            background-color: #0d7ac7; /* Darker primary on hover */
+            transform: translateY(-2px);
+        }
+        
+        /* --- 1. HERO SECTION (Immersive & Dynamic) --- */
+        .defcon-ecommerce-hero {
+            position: relative;
+            height: 100vh;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            text-align: center;
+            overflow: hidden;
+            background-color: var(--defcon-dark);
+            background-image: linear-gradient(135deg, rgba(17, 153, 250, 0.1) 0%, rgba(1, 1, 25, 1) 50%, rgba(1, 1, 25, 1) 100%);
+        }
+
+        .defcon-ecommerce-hero-background {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            /* Placeholder for generated background image */
+            background-image: url('https://images.pexels.com/photos/14171333/pexels-photo-14171333.jpeg'); 
+            background-size: cover;
+            background-position: center;
+            filter: brightness(0.4) contrast(1.1);
+            opacity: 0.3;
+            z-index: 1;
+        }
+
+        .defcon-ecommerce-hero-content {
+            position: relative;
+            z-index: 3;
+            max-width: 900px;
+            padding: 20px;
+        }
+
+        .defcon-ecommerce-hero h1 {
+            font-size: 4.5em;
+            margin-bottom: 20px;
+            font-weight: 600;
+            letter-spacing: -0.02em;
+            line-height: 1.1;
+            background: linear-gradient(45deg, var(--defcon-white), var(--defcon-primary));
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+        }
+
+        .defcon-ecommerce-hero p {
+            font-size: 1.2em;
+            margin-bottom: 40px;
+            font-weight: 600;
+            color: var(--defcon-text-light);
+            
+        }
+
+        /* Glow effects for new feature */
+        .defcon-ecommerce-hero-glow1, .defcon-ecommerce-hero-glow2 {
+            position: absolute;
+            width: 350px;
+            height: 350px;
+            background: radial-gradient(circle, rgba(17, 153, 250, 0.5) 0%, transparent 70%);
+            border-radius: 50%;
+            filter: blur(100px);
+            z-index: 2;
+            opacity: 0.7;
+        }
+        .defcon-ecommerce-hero-glow1 { top: 10%; left: 10%; animation: glow-move1 12s infinite alternate ease-in-out; }
+        .defcon-ecommerce-hero-glow2 { bottom: 10%; right: 10%; animation: glow-move2 14s infinite alternate ease-in-out; }
+
+        @keyframes glow-move1 {
+            0% { transform: translate(0, 0); } 50% { transform: translate(30px, 40px); } 100% { transform: translate(0, 0); }
+        }
+        @keyframes glow-move2 {
+            0% { transform: translate(0, 0); } 50% { transform: translate(-30px, -40px); } 100% { transform: translate(0, 0); }
+        }
+
+        /* --- 2. PRODUCT DETAIL/PRICING SECTION (Aligned to image provided) --- */
+        .defcon-pricing-section {
+            background-color: var(--defcon-white);
+            padding: 150px 0;
+            color: var(--defcon-black);
+        }
+
+        .defcon-pricing-container {
+            /* Inherits max-width: 1200px from .defcon-container */
+            display: flex;
+            gap: 60px;
+        }
+
+        .defcon-pricing-left {
+            flex: 1;
+        }
+
+        .defcon-pricing-left .defcon-section-title {
+            color: var(--defcon-dark);
+            font-size: 3.5em;
+            line-height: 0.9;
+        }
+
+        .defcon-pricing-left p {
+            font-size: 1.1em;
+            color: #555;
+            line-height: 1.7;
+            margin-bottom: 40px;
+        }
+        
+        .defcon-pricing-left .defcon-subtitle-accent {
+            color: var(--defcon-black);
+        }
+
+        .defcon-pricing-right {
+            flex: 1.5;
+        }
+
+        .defcon-product-listing {
+            padding-top: 20px;
+        }
+
+        .defcon-product-item {
+            display: flex;
+            justify-content: space-between;
+            padding: 25px 0;
+            border-bottom: 1px solid var(--defcon-lighter-grey);
+        }
+
+        .defcon-product-info h3 {
+            margin: 0;
+            font-size: 1.6em;
+            font-weight: 600;
+            color: var(--defcon-dark);
+        }
+
+        .defcon-product-info p {
+            margin: 5px 0 0;
+            font-size: 0.95em;
+            color: #777;
+            padding: 4px 0;
+            line-height: 1.4;
+        }
+
+        .defcon-product-info span {
+            border-bottom: 2px solid #777;
+        }
+
+        .defcon-product-price {
+            font-size: 1.8em;
+            font-weight: 700;
+            color: var(--defcon-dark);
+            min-width: 80px;
+            text-align: right;
+            padding-left: 20px;
+        }
+        
+        .defcon-product-price-package {
+            font-size: 1em;
+            color: var(--defcon-primary);
+            font-weight: 600;
+            margin-top: 5px;
+            border: none;
+        }
+
+        /* --- 3. VALUE PROPOSITION SECTION (Centered text and cards) --- */
+        .defcon-value-section {
+            padding: 160px 0;
+            background-color: var(--defcon-dark);
+            background-image: radial-gradient(circle at 50% 10%, rgba(0, 149, 255, 0.234) 0%, #010719 50%);
+            text-align: left;
+        }
+
+        .defcon-value-section .defcon-section-title {
+            margin-bottom: 60px;
+            font-size: 3em;
+            font-weight: 600;
+            letter-spacing: -0.02em;
+        }
+        
+        .defcon-value-cards {
+            display: flex;
+            gap: 15px;
+            justify-content: center;
+        }
+
+        .defcon-value-card {
+            background-color: #0f1328;
+            padding: 40px 30px;
+            border-radius: 30px;
+            flex: 1;
+            max-width: 380px;
+        }
+
+
+        .defcon-value-card-icon {
+            font-size: 2.5em;
+            color: var(--defcon-primary);
+            margin-bottom: 20px;
+            font-weight: 300;
+        }
+
+        .defcon-value-card h3 {
+            font-size: 1.8em;
+            font-weight: 600;
+            color: var(--defcon-white);
+            margin-top: 0;
+            margin-bottom: 15px;
+        }
+
+        .defcon-value-card p {
+            color: var(--defcon-text-light);
+            font-size: 1.1em;
+            line-height: 1.6;
+        }
+        
+        /* --- 4. STATISTICS/SOCIAL PROOF SECTION --- */
+        .defcon-stats-section {
+            padding: 100px 0;
+            background-color: var(--defcon-dark);
+            text-align: center;
+        }
+
+        .defcon-stats-section .defcon-section-title {
+            font-size: 4em;
+        }
+        
+        .defcon-stats-section .defcon-subtitle-accent {
+            margin-bottom: 20px;
+        }
+
+        .defcon-stats-subtitle {
+            font-size: 1.4em;
+            color: var(--defcon-text-light);
+            max-width: 700px;
+            margin: 0 auto 50px auto;
+            font-weight: 600;
+        }
+
+        .defcon-stats-grid {
+            display: flex;
+            justify-content: center;
+            gap: 80px;
+            margin-top: 50px;
+        }
+
+        .defcon-stat-item {
+            text-align: center;
+        }
+
+        .defcon-stat-number {
+            font-size: 6em;
+            font-weight: 800;
+            line-height: 1;
+            color: var(--defcon-primary);
+            margin-bottom: 10px;
+        }
+
+        .defcon-stat-label {
+            font-size: 1.1em;
+            font-weight: 500;
+            color: var(--defcon-text-light);
+            text-transform: uppercase;
+        }
+
+        /* --- 5. FAQ/SPECIFICATIONS SECTION (Left alignment, centered container) --- */
+        .defcon-faq-section {
+            padding: 150px 0;
+            background-color: #010719;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+        
+        .defcon-faq-section .defcon-section-title {
+            text-align: left; /* Keep title aligned left within the container */
+            margin-bottom: 40px;
+        }
+
+        .defcon-accordion-list {
+            max-width: 1100px; /* Constrain the accordion width for better readability */
+        }
+
+        .defcon-accordion-item {
+            font-size: 1.2em;
+            border-bottom: 1px solid #2d2d4d;
+        }
+        
+        .defcon-accordion-item:last-child {
+            border-bottom: none;
+        }
+
+        .defcon-accordion-header {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 25px 0;
+            cursor: pointer;
+            font-size: 1.4em;
+            font-weight: 600;
+            color: var(--defcon-white);
+            transition: color 0.3s ease;
+        }
+        
+        .defcon-accordion-header:hover {
+            color: var(--defcon-primary);
+        }
+
+        .defcon-accordion-toggle {
+            font-size: 2.2em;
+            font-weight: 200;
+            line-height: 1;
+            transition: transform 0.3s ease;
+        }
+        
+        .defcon-accordion-content {
+            max-height: 0;
+            overflow: hidden;
+            transition: max-height 0.4s ease-in-out, padding 0.4s ease-in-out;
+            padding-left: 0;
+            padding-right: 0;
+            padding-bottom: 0;
+            color: var(--defcon-text-light);
+        }
+
+        .defcon-accordion-content p {
+            padding: 0 0 20px 0;
+            margin: 0;
+            font-size: 1em;
+            line-height: 1.7;
+        }
+
+        /* Active state for accordion */
+        .defcon-accordion-item.active .defcon-accordion-toggle {
+            transform: rotate(45deg); /* Plus sign becomes an X */
+        }
+        .defcon-accordion-item.active .defcon-accordion-content {
+            max-height: 500px; /* Sufficiently large value */
+            padding-bottom: 25px;
+        }
+        
+        .defcon-new-tag {
+            background-color: var(--defcon-primary);
+            color: white;
+            font-size: 0.5em;
+            font-weight: 800;
+            padding: 3px 8px;
+            border-radius: 60px;
+            margin-left: 10px;
+            vertical-align: middle;
+            display: inline-block;
+        }
+
+
+        /* --- Mobile Responsiveness --- */
+        @media (max-width: 1200px) {
+            /* Ensures proper padding when container max-width is reached */
+            .defcon-container {
+                padding: 0 40px; 
+            }
+        }
+        
+        @media (max-width: 1024px) {
+            .defcon-ecommerce-hero h1 {
+                font-size: 3.5em;
+            }
+            .defcon-ecommerce-hero p {
+                font-size: 1.2em;
+            }
+
+            .defcon-pricing-container {
+                flex-direction: column;
+                gap: 40px;
+            }
+            .defcon-pricing-left .defcon-section-title {
+                font-size: 3em;
+            }
+
+            .defcon-value-cards {
+                flex-direction: column;
+                align-items: center;
+            }
+            
+            .defcon-stats-grid {
+                flex-direction: column;
+                gap: 40px;
+            }
+            
+            .defcon-stat-number {
+                font-size: 5em;
+            }
+            .defcon-stat-label {
+                font-size: 1.3em;
+            }
+        }
+
+        @media (max-width: 768px) {
+            .defcon-container {
+                padding: 0 20px; 
+            }
+            
+            .defcon-ecommerce-hero {
+                /* Text alignment inside hero is still center for mobile */
+            }
+
+            .defcon-ecommerce-hero h1 {
+                font-size: 2.5em;
+            }
+            .defcon-ecommerce-hero p {
+                font-size: 1em;
+            }
+            .defcon-primary-btn {
+                padding: 12px 25px;
+                font-size: 1em;
+            }
+
+            .defcon-pricing-left .defcon-section-title {
+                font-size: 2.5em;
+            }
+            
+            .defcon-product-item {
+                flex-direction: column;
+                align-items: flex-start;
+                padding: 20px 0;
+            }
+            .defcon-product-info p {
+                padding-right: 0;
+            }
+            .defcon-product-price {
+                align-self: flex-end;
+                font-size: 1.6em;
+                margin-top: -30px; 
+            }
+            
+            .defcon-stats-section .defcon-section-title {
+                font-size: 3em;
+            }
+        }
+    </style>
+</head>
+<body>
+
+    <section class="defcon-ecommerce-hero">
+        <div class="defcon-ecommerce-hero-background"></div>
+        <div class="defcon-ecommerce-hero-glow1"></div>
+        <div class="defcon-ecommerce-hero-glow2"></div>
+        <div class="defcon-ecommerce-hero-content">
+            <h1>Digital Commerce, Redefined.</h1>
+            <p>Launch, scale, and conquer the online market with Defcon's secure, performance-driven e-commerce platforms. We blend stunning design with unyielding technology.</p>
+            <a href="#defcon-pricing-section" class="defcon-primary-btn">View Platform Packages &rarr;</a>
+        </div>
+    </section>
+
+    <section id="defcon-pricing-section" class="defcon-pricing-section">
+        <div class="defcon-container defcon-pricing-container">
+            <div class="defcon-pricing-left">
+                <span class="defcon-subtitle-accent">Our Solutions</span>
+                <h2 class="defcon-section-title">End-to-End E-commerce Mastery</h2>
+                <p>We build more than just websites; we architect comprehensive sales ecosystems. Choose from our expertly designed packages, each tailored to a specific stage of your business growth.</p>
+                <a href="#defcon-faq-section" class="defcon-primary-btn" style="background-color: transparent; border: 1px solid #080d1b;">Compare Features</a>
+            </div>
+            <div class="defcon-pricing-right">
+                <div class="defcon-product-listing">
+                    
+                    <div class="defcon-product-item">
+                        <div class="defcon-product-info">
+                            <h3>Enterprise Custom E-commerce Build</h3>
+                            <p>Bespoke development for complex business logic, custom integrations, and unique user experiences.
+                            <p><span>How it works:</span> Full discovery, wireframing, custom API development, and dedicated DevOps support.</p>
+                            <p><span>What it's for:</span> Market leaders and innovators with specific, non-standard requirements.</p>
+                            <div class="defcon-product-price-package">Package: Full Development Cycle</div>
+                        </div>
+                        <span class="defcon-product-price">$15,000+</span>
+                    </div>
+
+                    <div class="defcon-product-item">
+                        <div class="defcon-product-info">
+                            <h3>Headless Commerce API Deployment</h3>
+                            <p>Decouple your storefront (frontend) from your sales backend (API) for blazing fast performance and multi-channel flexibility.
+                            <p><span>How it works:</span> We utilize modern JS frameworks (React/Vue) for the front, and dedicated APIs (Node/Python) for the back.</p> 
+                            <p><span>What it's for:</span> Businesses needing extreme speed, scalability, and multiple sales channels (web, mobile, IoT).</p>
+                            <div class="defcon-product-price-package">Package: Architecture & Implementation</div>
+                        </div>
+                        <span class="defcon-product-price">$8,000+</span>
+                    </div>
+
+                    <div class="defcon-product-item">
+                        <div class="defcon-product-info">
+                            <h3>Mid-Market Platform Launch (Shopify/WooCommerce)</h3>
+                            <p>Rapid deployment on established platforms with advanced theme customization, app integration, and data migration.
+                            <p><span>Features:</span> Advanced SEO tools, multi-currency support, marketing automation setup.</p> 
+                            <p><span>What it's for:</span> SMBs and growing brands prioritizing speed-to-market and established infrastructure.</p>
+                            <div class="defcon-product-price-package">Package: Gold Launch & Migration</div>
+                        </div>
+                        <span class="defcon-product-price">$2,500+</span>
+                    </div>
+
+                    <div class="defcon-product-item">
+                        <div class="defcon-product-info">
+                            <h3>Native Mobile E-commerce App</h3>
+                            <p>iOS and Android apps for direct mobile sales, push notifications, and improved customer loyalty.
+                            <p><span>Features:</span> Offline shopping mode, biometric authentication, integrated loyalty program.</p>
+                            <p><span>What it's for:</span> Brands focused on maximizing recurring purchases and mobile engagement.</p>
+                            <div class="defcon-product-price-package">Package: Dual Platform Development</div>
+                        </div>
+                        <span class="defcon-product-price">$6,000+</span>
+                    </div>
+
+                    <div class="defcon-product-item">
+                        <div class="defcon-product-info">
+                            <h3>Conversion Rate Optimization (CRO) Audit</h3>
+                            <p>In-depth analysis of user flow, cart abandonment, and checkout process to maximize sales.
+                            <p><span>How it works:</span> A/B testing, heatmaps, and data-driven recommendations applied by our UX experts.</p>
+                            <p><span>What it's for:</span> Existing stores looking to boost revenue from current traffic.</p>
+                            <div class="defcon-product-price-package">Package: Monthly Retainer</div>
+                        </div>
+                        <span class="defcon-product-price">$1,000/mo+</span>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+
+
+
+
+
+
+
+
+
+
+
+
+    
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>IT Tech Independent Slide</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700&display=swap" rel="stylesheet">
+
+    <style>
+        /* Namespace: 'it-sep-' to avoid conflicts */
+        :root {
+            --it-sep-font: 'Inter', sans-serif;
+            --it-sep-bg: #FFFFFF;
+            --it-sep-text: #0B1221;
+            --it-sep-sub: #5d6269;
+            --it-sep-accent: #0B1221;
+            --it-sep-line: #E5E7EB;
+        }
+
+        * {
+            opacity: 9;
+        }
+
+        body {
+            margin: 0;
+            padding: 0;
+            font-family: var(--it-sep-font);
+        }
+
+        /* 1. Track: Controls the total scroll length */
+        .it-sep-track {
+            position: relative;
+            height: 400vh; /* 100vh per section */
+            background: var(--it-sep-bg);
+        }
+
+        /* 2. Sticky Container: Pins the component */
+        .it-sep-sticky {
+            position: sticky;
+            top: 120px;
+            height: 70vh;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            overflow: hidden;
+        }
+
+        .it-sep-header {
+            text-align: center;
+            margin-bottom: 50px;
+            z-index: 10;
+        }
+
+        .it-sep-title {
+            font-size: 42px;
+            font-weight: 600;
+            letter-spacing: -0.03em;
+            margin: 0;
+            color: var(--it-sep-text);
+        }
+
+        /* 3. The Central Layout */
+        .it-sep-grid {
+            position: relative;
+            display: grid;
+            grid-template-columns: 1fr 2px 1fr;
+            gap: 60px;
+            width: 100%;
+            max-width: 1200px;
+            height: 400px;
+            align-items: center;
+        }
+
+        /* Center Progress Line */
+        .it-sep-line-container {
+            height: 100%;
+            background: var(--it-sep-line);
+            position: relative;
+        }
+
+        .it-sep-line-fill {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            background: var(--it-sep-accent);
+            height: 0%;
+             transition: height 0.1s ease-out;
+        }
+
+        /* 4. Content Slots (Image side and Text side) */
+        .it-sep-slot {
+            position: relative;
+            height: 100%;
+            width: 100%;
+            overflow: hidden; /* This creates the "box" mask */
+            border-radius: 20px;
+        }
+
+        .it-sep-text-slot {
+            overflow: hidden;
+            border-radius: 0;
+            display: flex;
+            align-items: center;
+        }
+
+        /* The Individual Layers */
+        .it-sep-layer {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            opacity: 0;
+            pointer-events: none;
+            transition: transform 0.6s cubic-bezier(0.16, 1, 0.3, 1), opacity 0.4s ease;
+        }
+
+        /* Active State */
+        .it-sep-layer.active {
+            opacity: 1;
+            transform: translateY(0);
+            pointer-events: auto;
+        }
+
+        /* Image Logic: Slides DOWN into view */
+        .it-sep-img-layer {
+            transform: translateY(-100%);
+        }
+
+        /* Text Logic: Slides UP into view */
+        .it-sep-text-layer {
+            transform: translateY(100%);
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+        }
+
+        .it-sep-img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            border-radius: 8px;
+        }
+
+        .it-sep-h3 { font-size: 32px; font-weight: 600; margin: 0 0 15px 0; color: var(--it-sep-text); letter-spacing: -0.02em;}
+        .it-sep-p { font-size: 17px; color: var(--it-sep-sub); line-height: 1.2; margin: 0; font-weight: 600; opacity: 1;}
+
+        .it-sep-footer {
+            margin-top: 60px;
+        }
+
+        .it-sep-btn {
+            background: #0B1221;
+            color: white;
+            padding: 12px 30px;
+            border-radius: 50px;
+            font-weight: 600;
+            font-size: 17px;
+            border: none;
+            cursor: pointer;
+            font-family: 'Inter', sans-serif;
+        }
+
+        @media (max-width: 900px) {
+            .it-sep-grid { grid-template-columns: 1fr; height: auto; padding: 20px; }
+            .it-sep-line-container { display: none; }
+            .it-sep-slot { height: 300px; margin-bottom: 20px; }
+            .it-sep-layer { position: relative; opacity: 1; transform: none; margin-bottom: 40px; }
+            .it-sep-track { height: auto; }
+            .it-sep-sticky { position: relative; height: auto; }
+        }
+    </style>
+</head>
+<body>
+
+<div class="it-sep-track" id="itTrack">
+    <div class="it-sep-sticky">
+        
+        <div class="it-sep-header">
+            <h2 class="it-sep-title">See why 4,000+ merchants trust us</h2>
+        </div>
+
+        <div class="it-sep-grid">
+            <div class="it-sep-slot">
+                <div class="it-sep-layer it-sep-img-layer active" data-index="0">
+                    <img src="https://images.pexels.com/photos/10050551/pexels-photo-10050551.jpeg" class="it-sep-img" alt="Tech 1">
+                </div>
+                <div class="it-sep-layer it-sep-img-layer" data-index="1">
+                    <img src="https://images.pexels.com/photos/8193806/pexels-photo-8193806.jpeg" class="it-sep-img" alt="Tech 2">
+                </div>
+                <div class="it-sep-layer it-sep-img-layer" data-index="2">
+                    <img src="https://images.pexels.com/photos/10050600/pexels-photo-10050600.jpeg" class="it-sep-img" alt="Tech 3">
+                </div>
+                <div class="it-sep-layer it-sep-img-layer" data-index="3">
+                    <img src="https://images.pexels.com/photos/8193806/pexels-photo-8193806.jpeg" class="it-sep-img" alt="Tech 4">
+                </div>
+            </div>
+
+            <div class="it-sep-line-container">
+                <div class="it-sep-line-fill" id="itLine"></div>
+            </div>
+
+            <div class="it-sep-slot it-sep-text-slot">
+                <div class="it-sep-layer it-sep-text-layer active" data-index="0">
+                    <h3 class="it-sep-h3">Advanced Data Security</h3>
+                    <p class="it-sep-p">Protect your infrastructure with hardware-level encryption and real-time threat monitoring.</p>
+                </div>
+                <div class="it-sep-layer it-sep-text-layer" data-index="1">
+                    <h3 class="it-sep-h3">Cloud Infrastructure</h3>
+                    <p class="it-sep-p">Scalable cloud solutions that grow with your business, ensuring 99.9% uptime across all regions.</p>
+                </div>
+                <div class="it-sep-layer it-sep-text-layer" data-index="2">
+                    <h3 class="it-sep-h3">AI Performance</h3>
+                    <p class="it-sep-p">Harness the power of neural networks to automate complex workflows and data analysis.</p>
+                </div>
+                <div class="it-sep-layer it-sep-text-layer" data-index="3">
+                    <h3 class="it-sep-h3">Smart Interfaces</h3>
+                    <p class="it-sep-p">Intuitive dashboards designed for deep technical oversight without the clutter.</p>
+                </div>
+            </div>
+        </div>
+
+        <div class="it-sep-footer">
+            <button class="it-sep-btn">Start Accepting Crypto</button>
+        </div>
+
+    </div>
+</div>
+
+<script>
+    (function() {
+    const track = document.getElementById('itTrack');
+    const line = document.getElementById('itLine');
+    const imgLayers = document.querySelectorAll('.it-sep-img-layer');
+    const textLayers = document.querySelectorAll('.it-sep-text-layer');
+    const totalItems = 4;
+
+    function updateScroll() {
+        if (!track || window.innerWidth <= 900) return;
+
+        const rect = track.getBoundingClientRect();
+        const viewHeight = window.innerHeight;
+        
+        // Total scrollable distance
+        const totalDist = rect.height - viewHeight;
+        // Current progress (0 to 1)
+        let progress = -rect.top / totalDist;
+        progress = Math.max(0, Math.min(1, progress));
+
+        // Update Line
+        line.style.height = `${progress * 100}%`;
+
+        // Determine current active index based on scroll progress
+        // Dividing into 4 zones
+        const activeIndex = Math.min(Math.floor(progress * totalItems), totalItems - 1);
+
+        // Update Layers
+        imgLayers.forEach((layer, idx) => {
+            if (idx === activeIndex) {
+                layer.classList.add('active');
+                layer.style.transform = 'translateY(0)';
+            } else if (idx < activeIndex) {
+                // Already scrolled past: push it DOWN out of the box
+                layer.classList.remove('active');
+                layer.style.transform = 'translateY(100%)';
+            } else {
+                // Not reached yet: keep it UP above the box
+                layer.classList.remove('active');
+                layer.style.transform = 'translateY(-100%)';
+            }
+        });
+
+        textLayers.forEach((layer, idx) => {
+            if (idx === activeIndex) {
+                layer.classList.add('active');
+                layer.style.transform = 'translateY(0)';
+            } else if (idx < activeIndex) {
+                // Already scrolled past: push it UP out of the box
+                layer.classList.remove('active');
+                layer.style.transform = 'translateY(-100%)';
+            } else {
+                // Not reached yet: keep it DOWN below the box
+                layer.classList.remove('active');
+                layer.style.transform = 'translateY(100%)';
+            }
+        });
+    }
+
+    window.addEventListener('scroll', updateScroll, { passive: true });
+    window.addEventListener('resize', updateScroll);
+    updateScroll();
+})();
+</script>
+
+</body>
+</html>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<div class="custom-card-container-wrapper custom-flex custom-justify-center custom-align-center custom-min-height-screen custom-padding-large custom-background-light">
+
+    <div class="custom-cards-layout custom-display-grid custom-grid-cols-one custom-lg-grid-cols-three custom-gap-medium custom-max-width-extra-large">
+       
+        <div class="custom-text-card custom-background-white custom-padding-extra-large custom-border-radius-large custom-shadow-mild custom-display-flex custom-flex-column custom-justify-between custom-align-start">
+            <h2 class="custom-card-title-main custom-font-size-extra-large custom-font-weight-bolder custom-line-height-tight custom-text-dark">Make payments easy, simplify your finances.</h2>
+            <button class="custom-action-button custom-background-red custom-text-white custom-padding-y-small custom-padding-x-medium custom-border-radius-small custom-font-weight-medium custom-display-flex custom-align-center custom-gap-small custom-hover-background-dark-red custom-transition-colors">
+                Our Contact <span class="custom-arrow-icon custom-font-size-medium">&rarr;</span>
+            </button>
+        </div>
+
+        <div class="custom-info-card custom-background-dark-blue custom-padding-extra-large custom-border-radius-large custom-shadow-mild custom-display-flex custom-flex-column custom-justify-between">
+            <p class="custom-card-subheader custom-text-white custom-font-size-large custom-font-weight-bold custom-margin-bottom-medium">Integrated payment gateways</p>
+            <p class="custom-card-description custom-text-white custom-font-size-small custom-line-height-relaxed">
+                Our system integrates the latest technology to help you make smarter financial decisions with ease.
+            </p>
+        </div>
+
+        <div class="custom-image-card custom-background-white custom-padding-zero custom-border-radius-large custom-overflow-hidden custom-shadow-mild custom-display-flex custom-justify-center custom-align-center">
+            <div class="custom-image-placeholder custom-width-full custom-height-full custom-background-gray custom-display-flex custom-justify-center custom-align-center custom-text-dark custom-font-bold custom-font-size-large">
+                <img src="https://images.pexels.com/photos/8193806/pexels-photo-8193806.jpeg" style="width: 100%; height: 100%; object-fit: cover;">
+            </div>
+        </div>
+
+    </div>
+</div>
+
+<style>
+    /* Custom Styles for non-Tailwind CSS */
+    .custom-card-container-wrapper {
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        min-height: 100vh;
+        padding: 150px 0; /* padding-large */
+        background-color: #ffffff; /* light background */
+        font-family: 'Inter', sans-serif;
+        box-sizing: border-box; /* Ensures padding doesn't affect overall width/height */
+    }
+
+    .custom-cards-layout {
+        display: grid;
+        grid-template-columns: 1fr; /* grid-cols-one */
+        gap: 18px; /* gap-medium */
+        max-width: 1200px; /* max-width-extra-large */
+        width: 100%;
+        padding: 110px 0;
+    }
+
+    /* Card 1: Text with Button */
+    .custom-text-card {
+        background-color: #f4f4f4;
+        padding: 40px; /* padding-extra-large */
+        border-radius: 20px; /* border-radius-large */
+        display: flex;
+        flex-direction: column;
+        justify-content: space-between;
+        align-items: flex-start;
+        min-height: 280px; /* Adjust as needed for visual balance */
+    }
+
+    .custom-card-title-main {
+        font-size: 34px; /* font-size-extra-large */
+        font-weight: 700; /* font-weight-bolder */
+        line-height: 1; /* line-height-tight */
+        color: #212121; /* text-dark */
+        letter-spacing: -0.02em;
+        margin-bottom: 24px; /* Spacing before button if needed */
+    }
+
+    .custom-action-button {
+        background-color: #0055c4; /* red */
+        color: #fff;
+        padding: 12px 24px; /* padding-y-small, padding-x-medium */
+        border-radius: 60px; /* border-radius-small */
+        font-weight: 600; /* font-weight-medium */
+        display: flex;
+        align-items: center;
+        gap: 8px; /* gap-small */
+        border: none;
+        cursor: pointer;
+        transition: background-color 0.3s ease; /* transition-colors */
+        font-size: 16px;
+        font-family: 'Inter', sans-serif;
+    }
+
+    .custom-action-button:hover {
+        background-color: #991b1b; /* dark-red */
+    }
+
+    .custom-arrow-icon {
+        font-size: 20px; /* font-size-medium */
+    }
+
+    /* Card 2: Blue with Text */
+    .custom-info-card {
+        background-color: #f4f4f4; /* dark-blue */
+        padding: 40px; /* padding-extra-large */
+        border-radius: 16px; /* border-radius-large */
+        display: flex;
+        flex-direction: column;
+        justify-content: space-between;
+        color: #212121;
+    }
+
+    .custom-card-header {
+        display: flex;
+        align-items: baseline;
+        gap: 8px; /* gap-small */
+        margin-bottom: 8px; /* margin-bottom-small */
+        text-transform: uppercase;
+    }
+
+    .custom-header-highlight {
+        color: #0055c4; /* red */
+        font-size: 36px; /* font-size-large */
+        font-weight: 700; /* font-weight-bold */
+    }
+
+    .custom-header-text {
+        color: #212121;
+        font-size: 18px; /* font-size-medium */
+        font-weight: 700; /* font-weight-bold */
+        letter-spacing: 0.05em; /* letter-spacing-wide */
+    }
+
+    .custom-card-subheader {
+        color: #0053ac;
+        font-size: 34px; /* font-size-large */
+        font-weight: 700; /* font-weight-bold */
+        margin-bottom: 24px; /* margin-bottom-medium */
+        line-height: 1;
+        letter-spacing: -0.02em; /* letter-spacing-wide */
+    }
+
+    .custom-card-description {
+        color: #212121;
+        font-size: 19px; /* font-size-small */
+        font-weight: 600;
+        line-height: 1.1; /* line-height-relaxed */
+    }
+
+    /* Card 3: Image Placeholder */
+    .custom-image-card {
+        background-color: #fff;
+        padding: 0; /* padding-zero */
+        border-radius: 16px; /* border-radius-large */
+        overflow: hidden;
+        box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.1), 0 2px 4px -1px rgba(0, 0, 0, 0.06); /* shadow-mild */
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        min-height: 280px; /* Ensure consistent height with other cards on larger screens */
+    }
+
+    .custom-image-placeholder {
+        width: 100%;
+        height: 100%;
+        background-color: #e0e0e0; /* gray placeholder background */
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        color: #555; /* dark placeholder text */
+        font-weight: bold;
+        font-size: 28px; /* font-size-large */
+        text-align: center;
+    }
+
+    /* Responsive adjustments */
+    @media (min-width: 1024px) { /* lg breakpoint */
+        .custom-cards-layout {
+            grid-template-columns: 1fr 1fr 1fr; /* lg-grid-cols-three */
+        }
+    }
+
+    @media (max-width: 1023px) { /* Adjust for smaller screens below lg */
+        .custom-text-card, .custom-info-card, .custom-image-card {
+            min-height: 280px; /* Ensure a minimum height for all cards */
+        }
+    }
+
+</style>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+    <section class="defcon-value-section">
+        <div class="defcon-container">
+            <h2 class="defcon-section-title">Unleash Performance, Security, and Scale</h2>
+            <div class="defcon-value-cards">
+                
+                <div class="defcon-value-card">
+                    <div class="defcon-value-card-icon">&#9889;</div> <h3>Performance First</h3>
+                    <p>Our Headless architecture ensures sub-second load times, eliminating bounce rates and maximizing search engine ranking. We don't just load fast; we fly.</p>
+                </div>
+                
+                <div class="defcon-value-card">
+                    <div class="defcon-value-card-icon">&#128274;</div> <h3>Unbreakable Security</h3>
+                    <p>From PCI compliance to advanced DDoS protection, we implement enterprise-grade security measures that protect your customer data and preserve your brand's integrity.</p>
+                </div>
+                
+                <div class="defcon-value-card">
+                    <div class="defcon-value-card-icon">&#128200;</div> <h3>Scalable Growth</h3>
+                    <p>Built on cloud-native infrastructure, our platforms automatically scale to handle Black Friday traffic or sudden viral spikes without missing a single transaction.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section class="defcon-stats-section">
+        <div class="defcon-container">
+            <span class="defcon-subtitle-accent">Impact and Reach</span>
+            <h2 class="defcon-section-title">E-commerce Built on Real-World Results</h2>
+            <p class="defcon-stats-subtitle">Our mission is to translate technological excellence into quantifiable business success. These are the numbers behind Defcon-powered e-commerce stores.</p>
+
+            <div class="defcon-stats-grid">
+                <div class="defcon-stat-item">
+                    <div class="defcon-stat-number">40%</div>
+                    <span class="defcon-stat-label">Avg. Revenue Increase</span>
+                </div>
+                <div class="defcon-stat-item">
+                    <div class="defcon-stat-number">10M+</div>
+                    <span class="defcon-stat-label">Annual Transactions</span>
+                </div>
+                <div class="defcon-stat-item">
+                    <div class="defcon-stat-number">99.9%</div>
+                    <span class="defcon-stat-label">Uptime SLA</span>
+                </div>
+            </div>
+            
+            <a href="#" class="defcon-primary-btn" style="margin-top: 60px;">Request a Case Study &rarr;</a>
+        </div>
+    </section>
+
+    <section id="defcon-faq-section" class="defcon-faq-section">
+        <div class="defcon-container">
+            <h2 class="defcon-section-title">Platform Specifications & FAQs</h2>
+            <div class="defcon-accordion-list">
+                
+                <div class="defcon-accordion-item">
+                    <div class="defcon-accordion-header">
+                        <span>API Specification for Inventory Synchronization</span>
+                        <span class="defcon-accordion-toggle">+</span>
+                    </div>
+                    <div class="defcon-accordion-content">
+                        <p>Our RESTful inventory API is built on a high-availability serverless architecture, enabling real-time stock updates across all channels (Web, POS, Mobile). It supports both webhook and polled update methods, ensuring seamless integration with your existing ERP or 3rd-party logistics provider.</p>
+                    </div>
+                </div>
+
+                <div class="defcon-accordion-item">
+                    <div class="defcon-accordion-header">
+                        <span>Defcon POS System Integration Capabilities</span>
+                        <span class="defcon-accordion-toggle">+</span>
+                    </div>
+                    <div class="defcon-accordion-content">
+                        <p>The Defcon POS solution (part of our Smart Technology service) integrates natively with our e-commerce backend. This allows for unified inventory, centralized order management, and a single view of the customer, bridging your online and physical retail operations without friction.</p>
+                    </div>
+                </div>
+
+                <div class="defcon-accordion-item">
+                    <div class="defcon-accordion-header">
+                        <span>Digital Marketing & SEO Features <span class="defcon-new-tag">NEW</span></span>
+                        <span class="defcon-accordion-toggle">+</span>
+                    </div>
+                    <div class="defcon-accordion-content">
+                        <p>Our platforms are designed from the ground up for SEO. Key features include automatic sitemap generation, customizable schema markup (Product, Offer, Review), canonical URL management, and integrated Google Analytics/Tag Manager support for advanced conversion tracking by our Marketing & Creative Studio team.</p>
+                    </div>
+                </div>
+
+                <div class="defcon-accordion-item">
+                    <div class="defcon-accordion-header">
+                        <span>Supported Payment Gateways</span>
+                        <span class="defcon-accordion-toggle">+</span>
+                    </div>
+                    <div class="defcon-accordion-content">
+                        <p>We support all major global payment gateways including Stripe, PayPal, Authorize.net, and region-specific providers. We also integrate with modern payment methods such as cryptocurrencies (Web3/Blockchain), ensuring maximum customer reach.</p>
+                    </div>
+                </div>
+                
+            </div>
+        </div>
+    </section>
+
+    <script>
+        // JavaScript for Accordion Functionality
+        document.addEventListener('DOMContentLoaded', () => {
+            const accordionItems = document.querySelectorAll('.defcon-accordion-item');
+
+            accordionItems.forEach(item => {
+                const header = item.querySelector('.defcon-accordion-header');
+                
+                header.addEventListener('click', () => {
+                    // Close all other active items
+                    accordionItems.forEach(otherItem => {
+                        if (otherItem !== item && otherItem.classList.contains('active')) {
+                            otherItem.classList.remove('active');
+                        }
+                    });
+
+                    // Toggle the current item
+                    item.classList.toggle('active');
+                });
+            });
+        });
+    </script>
+
+    <cronos-footer></cronos-footer>
+</body>
+</html>

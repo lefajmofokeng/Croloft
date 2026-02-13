@@ -1,0 +1,583 @@
+<div id="webapp-pricing-root">
+    <style>
+        @import url('https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap');
+
+        #webapp-pricing-root {
+            font-family: 'Inter', sans-serif;
+            background: transparent;
+            padding: 60px 20px;
+            color: #ffffff;
+            max-width: 1300px;
+            margin: 0 auto;
+        }
+
+        /* Namespace: wap- (Web App Pricing) */
+        .wap-pricing-header {
+            text-align: center;
+            margin-bottom: 60px;
+        }
+
+        .wap-badge {
+            display: inline-block;
+            background: rgba(0, 102, 255, 0.15);
+            color: #0066FF;
+            padding: 6px 16px;
+            border-radius: 30px;
+            font-size: 12px;
+            font-weight: 700;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+            margin-bottom: 20px;
+            border: 1px solid rgba(0, 102, 255, 0.3);
+        }
+
+        .wap-title {
+            font-size: 42px;
+            font-weight: 700;
+            margin: 0 0 16px 0;
+            background: linear-gradient(90deg, #ffffff, #94a3b8);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+        }
+
+        /* Glass Table Styling */
+        .wap-table-container {
+            width: 100%;
+            overflow-x: auto;
+            border-radius: 24px;
+            border: 1px solid rgba(255, 255, 255, 0.1);
+            background: rgba(255, 255, 255, 0.03);
+            backdrop-filter: blur(20px);
+            -webkit-backdrop-filter: blur(20px);
+            margin-bottom: 40px;
+        }
+
+        .wap-mega-table {
+            width: 100%;
+            border-collapse: collapse;
+            min-width: 1000px;
+        }
+
+        /* Headers */
+        .wap-mega-table th {
+            padding: 40px 25px;
+            text-align: left;
+            vertical-align: top;
+            border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+        }
+
+        .wap-category-label {
+            font-size: 20px;
+            font-weight: 700;
+            color: #ffffff;
+        }
+
+        .wap-tier-name {
+            font-size: 24px;
+            font-weight: 700;
+            display: block;
+            margin-bottom: 8px;
+        }
+
+        .wap-tier-desc {
+            font-size: 13px;
+            color: #8A94A6;
+            line-height: 1.6;
+            font-weight: 400;
+            display: block;
+            margin-bottom: 20px;
+            min-height: 40px;
+        }
+
+        .wap-price-wrapper {
+            margin-bottom: 20px;
+        }
+
+        .wap-price-currency { font-size: 18px; vertical-align: top; color: #0066FF; font-weight: 700; }
+        .wap-price-amount { font-size: 48px; font-weight: 700; letter-spacing: -1px; }
+        .wap-price-cycle { font-size: 14px; color: #8A94A6; }
+
+        /* Rows */
+        .wap-mega-table td {
+            padding: 20px 25px;
+            border-bottom: 1px solid rgba(255, 255, 255, 0.05);
+            font-size: 14px;
+            color: #cbd5e1;
+        }
+
+        .wap-row-title {
+            font-weight: 600;
+            color: #ffffff;
+            display: block;
+            margin-bottom: 4px;
+        }
+
+        .wap-row-sub {
+            font-size: 12px;
+            color: #64748b;
+            line-height: 1.5;
+            display: block;
+        }
+
+        .wap-section-divider {
+            background: rgba(255, 255, 255, 0.05);
+            padding: 15px 25px !important;
+            font-weight: 700;
+            color: #0066FF;
+            text-transform: uppercase;
+            letter-spacing: 2px;
+            font-size: 11px;
+        }
+
+        /* Status & Icons */
+        .wap-check { color: #34C759; font-weight: bold; font-size: 18px; }
+        .wap-cross { color: rgba(255, 255, 255, 0.1); font-size: 18px; }
+        
+        /* Feature details styling */
+        .wap-feature-details {
+            font-size: 12px;
+            color: #8A94A6;
+            display: block;
+            margin-top: 5px;
+            line-height: 1.5;
+        }
+
+        /* CTA Buttons */
+        .wap-cta-btn {
+            display: block;
+            text-align: center;
+            padding: 14px;
+            border-radius: 12px;
+            text-decoration: none;
+            font-weight: 700;
+            font-size: 14px;
+            transition: all 0.3s ease;
+            width: 100%;
+        }
+
+        .wap-btn-outline {
+            border: 1px solid rgba(0, 102, 255, 0.5);
+            color: #ffffff;
+            background: transparent;
+        }
+
+        .wap-btn-outline:hover {
+            background: rgba(0, 102, 255, 0.1);
+            border-color: #0066FF;
+        }
+
+        .wap-btn-primary {
+            background: #0066FF;
+            color: #ffffff;
+        }
+
+        .wap-btn-primary:hover {
+            background: #0052cc;
+            box-shadow: 0 0 20px rgba(0, 102, 255, 0.4);
+        }
+        
+        /* Notes Section */
+        .wap-notes-container {
+            background: rgba(255, 255, 255, 0.03);
+            border-radius: 16px;
+            padding: 30px;
+            border: 1px solid rgba(255, 255, 255, 0.1);
+            margin-top: 40px;
+        }
+        
+        .wap-notes-title {
+            color: #0066FF;
+            font-size: 18px;
+            font-weight: 700;
+            margin-bottom: 20px;
+        }
+        
+        .wap-notes-list {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
+            gap: 15px;
+        }
+        
+        .wap-note-item {
+            display: flex;
+            align-items: flex-start;
+            margin-bottom: 10px;
+        }
+        
+        .wap-note-bullet {
+            color: #0066FF;
+            font-weight: bold;
+            margin-right: 10px;
+            flex-shrink: 0;
+        }
+        
+        .wap-note-text {
+            font-size: 14px;
+            color: #cbd5e1;
+            line-height: 1.6;
+        }
+
+        /* Mobile Responsive Design */
+        @media (max-width: 1024px) {
+            .wap-title { font-size: 36px; }
+            .wap-notes-list { grid-template-columns: 1fr; }
+        }
+        
+        @media (max-width: 768px) {
+            #webapp-pricing-root { padding: 40px 15px; }
+            
+            .wap-title { font-size: 28px; }
+            
+            .wap-pricing-header { margin-bottom: 40px; }
+            
+            .wap-table-container {
+                border-radius: 16px;
+                overflow-x: auto;
+                -webkit-overflow-scrolling: touch;
+            }
+            
+            .wap-mega-table th {
+                padding: 25px 20px;
+            }
+            
+            .wap-mega-table td {
+                padding: 18px 20px;
+            }
+            
+            .wap-tier-name { font-size: 20px; }
+            
+            .wap-price-amount { font-size: 36px; }
+            
+            .wap-notes-container {
+                padding: 20px;
+            }
+        }
+        
+        @media (max-width: 480px) {
+            .wap-title { font-size: 24px; }
+            
+            .wap-mega-table th {
+                padding: 20px 15px;
+            }
+            
+            .wap-mega-table td {
+                padding: 15px;
+                font-size: 13px;
+            }
+            
+            .wap-tier-name { font-size: 18px; }
+            
+            .wap-price-amount { font-size: 32px; }
+            
+            .wap-cta-btn {
+                padding: 12px;
+                font-size: 13px;
+            }
+        }
+        
+        /* Scrollbar styling for table container */
+        .wap-table-container::-webkit-scrollbar {
+            height: 8px;
+        }
+        
+        .wap-table-container::-webkit-scrollbar-track {
+            background: rgba(255, 255, 255, 0.05);
+            border-radius: 4px;
+        }
+        
+        .wap-table-container::-webkit-scrollbar-thumb {
+            background: rgba(0, 102, 255, 0.5);
+            border-radius: 4px;
+        }
+        
+        .wap-table-container::-webkit-scrollbar-thumb:hover {
+            background: rgba(0, 102, 255, 0.7);
+        }
+    </style>
+
+    <div class="wap-pricing-header">
+        <div class="wap-badge">Web & Mobile Application Development</div>
+        <h1 class="wap-title">Custom App Development Packages</h1>
+        <p style="color: #8A94A6; max-width: 700px; margin: 0 auto; line-height: 1.6;">Comprehensive development packages for web and mobile applications. Each tier includes full lifecycle support from design to deployment and maintenance.</p>
+    </div>
+
+    <div class="wap-table-container">
+        <table class="wap-mega-table">
+            <thead>
+                <tr>
+                    <th style="width: 28%;">
+                        <div class="wap-category-label">Application Features</div>
+                        <p style="font-size: 13px; color: #64748b; margin-top: 10px; line-height: 1.5;">Detailed breakdown of what's included in each development package.</p>
+                    </th>
+                    <th style="width: 24%;">
+                        <span class="wap-tier-name">Starter</span>
+                        <span class="wap-tier-desc">Single platform app with basic functionality for small businesses.</span>
+                        <div class="wap-price-wrapper">
+                            <span class="wap-price-currency">$</span>
+                            <span class="wap-price-amount">4,999</span>
+                            <span class="wap-price-cycle">/project</span>
+                        </div>
+                        <a href="#" class="wap-cta-btn wap-btn-outline">Get Quote</a>
+                    </th>
+                    <th style="width: 24%; background: rgba(0, 102, 255, 0.05);">
+                        <span class="wap-tier-name" style="color: #0066FF;">Professional</span>
+                        <span class="wap-tier-desc">Cross-platform app with advanced features and API integration.</span>
+                        <div class="wap-price-wrapper">
+                            <span class="wap-price-currency">$</span>
+                            <span class="wap-price-amount">14,500</span>
+                            <span class="wap-price-cycle">/project</span>
+                        </div>
+                        <a href="#" class="wap-cta-btn wap-btn-primary">Choose Plan</a>
+                    </th>
+                    <th style="width: 24%;">
+                        <span class="wap-tier-name">Enterprise</span>
+                        <span class="wap-tier-desc">Full-scale custom application with AI features and scalability.</span>
+                        <div class="wap-price-wrapper">
+                            <span class="wap-price-currency">$</span>
+                            <span class="wap-price-amount">45,000</span>
+                            <span class="wap-price-cycle">/project+</span>
+                        </div>
+                        <a href="#" class="wap-cta-btn wap-btn-outline">Contact Sales</a>
+                    </th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr><td colspan="4" class="wap-section-divider">Platform & Scope</td></tr>
+                <tr>
+                    <td>
+                        <span class="wap-row-title">Platform Coverage</span>
+                        <span class="wap-row-sub">Native and web platforms included</span>
+                    </td>
+                    <td>
+                        Web App OR iOS/Android
+                        <span class="wap-feature-details">Choose one platform only</span>
+                    </td>
+                    <td>
+                        Web + 1 Mobile Platform
+                        <span class="wap-feature-details">Responsive web + iOS or Android</span>
+                    </td>
+                    <td>
+                        Web + iOS + Android
+                        <span class="wap-feature-details">Full cross-platform coverage</span>
+                    </td>
+                </tr>
+                <tr>
+                    <td>
+                        <span class="wap-row-title">Development Timeline</span>
+                        <span class="wap-row-sub">Estimated delivery time from kickoff</span>
+                    </td>
+                    <td>
+                        4-6 Weeks
+                        <span class="wap-feature-details">Basic functionality only</span>
+                    </td>
+                    <td>
+                        8-12 Weeks
+                        <span class="wap-feature-details">Includes testing and refinement</span>
+                    </td>
+                    <td>
+                        12-20 Weeks
+                        <span class="wap-feature-details">Comprehensive development cycle</span>
+                    </td>
+                </tr>
+                
+                <tr><td colspan="4" class="wap-section-divider">Core Development Features</td></tr>
+                <tr>
+                    <td>
+                        <span class="wap-row-title">Custom UI/UX Design</span>
+                        <span class="wap-row-sub">Wireframes, prototypes, and visual design</span>
+                    </td>
+                    <td>
+                        Basic Design
+                        <span class="wap-feature-details">Template-based with light customization</span>
+                    </td>
+                    <td>
+                        Custom Design
+                        <span class="wap-feature-details">Fully custom UI with 3 revision rounds</span>
+                    </td>
+                    <td>
+                        Premium Design
+                        <span class="wap-feature-details">Custom UI/UX with unlimited revisions</span>
+                    </td>
+                </tr>
+                <tr>
+                    <td>
+                        <span class="wap-row-title">Frontend Development</span>
+                        <span class="wap-row-sub">HTML/CSS/JavaScript or framework</span>
+                    </td>
+                    <td>
+                        Basic Frontend
+                        <span class="wap-feature-details">Vanilla JS or simple React components</span>
+                    </td>
+                    <td>
+                        Advanced Frontend
+                        <span class="wap-feature-details">React/Vue/Angular with state management</span>
+                    </td>
+                    <td>
+                        Enterprise Frontend
+                        <span class="wap-feature-details">Micro-frontends, SSR, PWA capabilities</span>
+                    </td>
+                </tr>
+                <tr>
+                    <td>
+                        <span class="wap-row-title">Backend Development</span>
+                        <span class="wap-row-sub">Server, database, and API development</span>
+                    </td>
+                    <td>
+                        Simple Backend
+                        <span class="wap-feature-details">Firebase or basic Node.js with 5 API endpoints</span>
+                    </td>
+                    <td>
+                        Robust Backend
+                        <span class="wap-feature-details">Node.js/Python with 15+ API endpoints, auth, and database</span>
+                    </td>
+                    <td>
+                        Scalable Backend
+                        <span class="wap-feature-details">Microservices, cloud functions, real-time features</span>
+                    </td>
+                </tr>
+                
+                <tr><td colspan="4" class="wap-section-divider">Advanced Features</td></tr>
+                <tr>
+                    <td>
+                        <span class="wap-row-title">Third-Party API Integration</span>
+                        <span class="wap-row-sub">Payment, social media, maps, etc.</span>
+                    </td>
+                    <td>
+                        1 Basic Integration
+                        <span class="wap-feature-details">Stripe or PayPal only</span>
+                    </td>
+                    <td>
+                        3-5 Integrations
+                        <span class="wap-feature-details">Payment + social + maps + 2 custom</span>
+                    </td>
+                    <td>
+                        Unlimited Integrations
+                        <span class="wap-feature-details">All required APIs with custom middleware</span>
+                    </td>
+                </tr>
+                <tr>
+                    <td>
+                        <span class="wap-row-title">User Authentication</span>
+                        <span class="wap-row-sub">Login, registration, and user management</span>
+                    </td>
+                    <td>
+                        Email/Password
+                        <span class="wap-feature-details">Basic auth with email verification</span>
+                    </td>
+                    <td>
+                        Social + Email
+                        <span class="wap-feature-details">Google, Facebook, Apple login + email/password</span>
+                    </td>
+                    <td>
+                        Enterprise SSO
+                        <span class="wap-feature-details">SAML, OAuth2, LDAP, custom identity provider</span>
+                    </td>
+                </tr>
+                <tr>
+                    <td>
+                        <span class="wap-row-title">Admin Dashboard</span>
+                        <span class="wap-row-sub">Content management and analytics</span>
+                    </td>
+                    <td class="wap-cross">✘</td>
+                    <td class="wap-check">✔</td>
+                    <td class="wap-check">✔</td>
+                </tr>
+                <tr>
+                    <td>
+                        <span class="wap-row-title">Push Notifications</span>
+                        <span class="wap-row-sub">Mobile and web notifications</span>
+                    </td>
+                    <td class="wap-cross">✘</td>
+                    <td class="wap-check">✔</td>
+                    <td class="wap-check">✔</td>
+                </tr>
+                
+                <tr><td colspan="4" class="wap-section-divider">Post-Launch Services</td></tr>
+                <tr>
+                    <td>
+                        <span class="wap-row-title">Hosting & Deployment</span>
+                        <span class="wap-row-sub">Server setup and app store deployment</span>
+                    </td>
+                    <td>
+                        Basic Hosting (3 months)
+                        <span class="wap-feature-details">Shared hosting, manual deployment</span>
+                    </td>
+                    <td>
+                        Managed Hosting (6 months)
+                        <span class="wap-feature-details">Cloud hosting with CI/CD pipeline</span>
+                    </td>
+                    <td>
+                        Enterprise Hosting (12 months)
+                        <span class="wap-feature-details">Dedicated infrastructure with auto-scaling</span>
+                    </td>
+                </tr>
+                <tr>
+                    <td>
+                        <span class="wap-row-title">Maintenance & Support</span>
+                        <span class="wap-row-sub">Bug fixes, updates, and technical support</span>
+                    </td>
+                    <td>
+                        1 Month Support
+                        <span class="wap-feature-details">Critical bug fixes only</span>
+                    </td>
+                    <td>
+                        3 Months Support
+                        <span class="wap-feature-details">Bug fixes + minor feature updates</span>
+                    </td>
+                    <td>
+                        6 Months Support
+                        <span class="wap-feature-details">Full support including performance optimization</span>
+                    </td>
+                </tr>
+                <tr>
+                    <td>
+                        <span class="wap-row-title">Analytics & Reporting</span>
+                        <span class="wap-row-sub">User behavior and performance tracking</span>
+                    </td>
+                    <td>
+                        Basic Analytics
+                        <span class="wap-feature-details">Simple traffic and conversion tracking</span>
+                    </td>
+                    <td>
+                        Advanced Analytics
+                        <span class="wap-feature-details">User flow, retention, and custom events</span>
+                    </td>
+                    <td>
+                        Business Intelligence
+                        <span class="wap-feature-details">Custom dashboards, predictive analytics, AI insights</span>
+                    </td>
+                </tr>
+            </tbody>
+        </table>
+    </div>
+    
+    <div class="wap-notes-container">
+        <div class="wap-notes-title">Important Notes & Clarifications</div>
+        <div class="wap-notes-list">
+            <div class="wap-note-item">
+                <span class="wap-note-bullet">•</span>
+                <span class="wap-note-text">All prices are for complete projects. Monthly retainers are available for ongoing development at $1,500-$5,000/month depending on scope.</span>
+            </div>
+            <div class="wap-note-item">
+                <span class="wap-note-bullet">•</span>
+                <span class="wap-note-text">Timelines begin after final design approval and content delivery. Delays in client feedback may extend project timelines.</span>
+            </div>
+            <div class="wap-note-item">
+                <span class="wap-note-bullet">•</span>
+                <span class="wap-note-text">Third-party service costs (domain, hosting beyond included period, paid APIs, app store fees) are not included unless specified.</span>
+            </div>
+            <div class="wap-note-item">
+                <span class="wap-note-bullet">•</span>
+                <span class="wap-note-text">Custom Enterprise pricing varies based on specific requirements, complexity, and integrations needed. Contact for a detailed quote.</span>
+            </div>
+            <div class="wap-note-item">
+                <span class="wap-note-bullet">•</span>
+                <span class="wap-note-text">Projects require a 50% deposit to begin work, with the balance due upon completion before final delivery.</span>
+            </div>
+            <div class="wap-note-item">
+                <span class="wap-note-bullet">•</span>
+                <span class="wap-note-text">All code is delivered with documentation. Clients retain full ownership of all deliverables upon final payment.</span>
+            </div>
+        </div>
+    </div>
+</div>

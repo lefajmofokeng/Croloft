@@ -1,0 +1,1604 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>My Website</title>
+    
+    <script src="header.js" defer></script> 
+    <script src="footer.js" defer></script>
+</head>
+<body>
+
+    <cronos-header></cronos-header>
+
+</body>
+</html>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Careers at Defcon</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <style>
+        @font-face {
+            font-family: 'Circular Std';
+            src: url('fonts/CircularStd-Book.ttf') format('truetype');
+            font-weight: 400;
+            font-style: normal;
+        }
+
+        /* Circular Std - Medium (500) */
+        @font-face {
+            font-family: 'Circular Std';
+            src: url('fonts/CircularStd.ttf') format('truetype');
+            font-weight: 500;
+            font-style: normal;
+        }
+
+        /* Circular Std - Bold (700) */
+        @font-face {
+            font-family: 'Circular Std';
+            src: url('fonts/CircularStd-Bold.ttf') format('truetype');
+            font-weight: 600;
+            font-style: normal;
+        }
+        /*
+        CONFIGURATION: Custom CSS and Tailwind Setup
+        */
+        :root {
+            --color-primary: #0056b3; /* Defcon Blue */
+            --color-text-dark: #06273e;
+            --color-text-light: #555;
+            --color-text-faded: #8c8c8c;
+        }
+
+        /* Default Font and Box Sizing */
+        body {
+            font-family: 'Circular Std', sans-serif;
+            color: var(--color-text-dark);
+            background-color: #f4f4f4;
+        }
+        
+        /* Utility Classes */
+        .dc-careers-container {
+            max-width: 1100px;
+            margin-left: auto;
+            margin-right: auto;
+            padding: 1.5rem;
+        }
+
+        /* Hero Section */
+        .dc-careers-hero {
+            background: linear-gradient(rgba(6, 39, 62, 0.5), rgba(6, 39, 62, 0.2)), url('https://images.unsplash.com/photo-1497366216548-37526070297c?q=80&w=1169&auto=format&fit=crop&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D') no-repeat center center/cover;
+            padding: 23rem 0 0 0;
+            text-align: center;
+            height: 900px;
+        }
+        .dc-careers-hero-title {
+            font-size: 70px;
+            color: #fff;
+            font-weight: 500;
+            margin-bottom: 20px;
+            /* Replaced CSS-only animation with a focus on stability */
+        }
+        @media (min-width: 640px) {
+            .dc-careers-hero-title {
+                font-size: 4.5rem; /* 72px */
+            }
+        }
+        @media (max-width: 480px) {
+            .dc-careers-hero {
+                padding: 25rem 0 0 0;
+                height: 800px;
+            }
+            .dc-careers-hero-title {
+                font-size: 2.5rem;
+            }
+        }
+        .dc-careers-hero-cta {
+             display: inline-block;
+            padding: 15px 32px;
+            color: #004599;
+            background: #f4f4f4;
+            border: none;
+            border-radius: 4px;
+            font-size: 20px;
+            font-weight: 500;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            text-decoration: none;
+            letter-spacing: 0.02em;
+        }
+        @media (max-width: 480px) {
+            .dc-careers-hero-cta {
+                padding: 12px 24px;
+                font-size: 16px;
+            }
+        }
+        .dc-careers-hero-cta:hover {
+            background-color: #004599;
+            color: #fff;
+        }
+
+        /* Value Proposition Section (What It's Like) */
+        .dc-careers-solutions-title {
+            font-size: 2.25rem;
+            font-weight: 700;
+            color: black;
+            line-height: 1.2;
+            margin-bottom: 1.5rem;
+            letter-spacing: -0.04em;
+        }
+        @media (min-width: 1024px) {
+            .dc-careers-solutions-title {
+                font-size: 3.375rem; /* 54px */
+            }
+        }
+        @media (max-width: 480px) {
+            .dc-careers-solutions-title {
+                font-size: 1.75rem;
+            }
+        }
+        .dc-careers-solutions-card {
+            padding: 2rem;
+            border-radius: 0.75rem;
+            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.07);
+            background-color: #ffffff;
+            transition: transform 0.3s;
+        }
+        @media (max-width: 480px) {
+            .dc-careers-solutions-card {
+                padding: 1.5rem;
+            }
+        }
+        .dc-careers-solutions-card:hover {
+            transform: translateY(-4px);
+        }
+        .dc-careers-solutions-card--primary {
+            background-color: var(--color-primary);
+            color: white;
+        }
+        .dc-careers-solutions-card--primary h3, .dc-careers-solutions-card--primary h2 {
+            color: white !important;
+        }
+
+        .dc-careers-solutions-card p {
+            font-weight: 500;
+        }
+
+        .dc-careers-solutions-card h2 {
+            font-size: 2rem;
+            font-weight: 700;
+            color: var(--color-primary);
+            margin-bottom: 0.5rem;
+        }
+        @media (max-width: 480px) {
+            .dc-careers-solutions-card h2 {
+                font-size: 1.5rem;
+            }
+        }
+        .dc-careers-solutions-card h3 {
+            font-size: 1.25rem;
+            font-weight: 700;
+            margin-bottom: 0.5rem;
+            color: var(--color-text-dark);
+        }
+        @media (max-width: 480px) {
+            .dc-careers-solutions-card h3 {
+                font-size: 1.1rem;
+            }
+        }
+
+        /* Jobs Section Header */
+        .dc-careers-jobs-title {
+            font-size: 2.45rem;
+            font-weight: 500;
+            color: black;
+            margin-bottom: 1rem;
+        }
+        @media (min-width: 640px) {
+            .dc-careers-jobs-title {
+                font-size: 3.375rem; /* 54px */
+            }
+        }
+        @media (max-width: 480px) {
+            .dc-careers-jobs-title {
+            font-size: 2rem;
+            margin-bottom: 0.5rem;
+            line-height: 1.2;
+            text-align: center;
+            padding: 0 1rem;
+            letter-spacing: -0.02em;
+            word-wrap: break-word;
+            overflow-wrap: break-word;
+            hyphens: auto;
+            max-width: 100%;
+            box-sizing: border-box;
+            display: block;
+        }
+        }
+
+        /* Search Form */
+        .dc-careers-search-form {
+            display: grid;
+            grid-template-columns: 1fr;
+            gap: 1.5rem;
+            margin-bottom: 2rem;
+        }
+        @media (min-width: 768px) {
+            .dc-careers-search-form {
+                grid-template-columns: repeat(3, 1fr);
+            }
+        }
+        .dc-careers-label {
+            font-weight: 550;
+            margin-bottom: 10px;
+            color: var(--color-primary);
+            font-size: 1.1rem;
+            text-transform: uppercase;
+        }
+        .dc-careers-search-input,
+        .dc-careers-search-select {
+            padding: 15px;
+            border: 2px solid #777;
+            border-radius: 8px;
+            font-size: 1.3rem;
+            font-weight: 400;
+            color:#555;
+            transition: border-color 0.3s, box-shadow 0.3s;
+            width: 100%;
+            background: transparent;
+            box-sizing: border-box;
+            height: 56px;
+        }
+
+        .dc-careers-search-select {
+            appearance: none;
+            -webkit-appearance: none;
+            -moz-appearance: none;
+            background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='14' height='14' viewBox='0 0 14 14'%3E%3Cpath fill='%23555' d='M7 10L2 5h10z'/%3E%3C/svg%3E");
+            background-repeat: no-repeat;
+            background-position: right 1rem center;
+            padding-right: 3rem;
+            cursor: pointer;
+            background-color: transparent;
+        }
+
+        .dc-careers-search-select option {
+            font-weight: 600;
+            /* Removed variable that was not defined globally for stability */
+            background: transparent; 
+            color: #060708;
+            border: 1px solid grey;
+            padding: 10px;
+        }
+
+        /* Custom Dropdown Styles */
+        .dc-custom-dropdown {
+            position: relative;
+            width: 100%;
+        }
+
+        .dc-custom-dropdown-selected {
+            padding: 15px;
+            border: 2px solid #777;
+            border-radius: 8px;
+            font-size: 1.3rem;
+            font-weight: 500;
+            color: #555;
+            background-color: #f4f4f4;
+            cursor: pointer;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            transition: border-color 0.3s, box-shadow 0.3s;
+            height: 56px;
+            box-sizing: border-box;
+        }
+
+        .dc-custom-dropdown-selected:hover {
+            border-color: var(--color-primary);
+        }
+
+        .dc-custom-dropdown.active .dc-custom-dropdown-selected {
+            border-color: var(--color-primary);
+            box-shadow: 0 0 0 3px rgba(0, 86, 179, 0.2);
+        }
+
+        .dc-custom-dropdown-text {
+            flex: 1;
+        }
+
+        .dc-custom-dropdown-arrow {
+            transition: transform 0.3s ease;
+            flex-shrink: 0;
+            margin-left: 10px;
+        }
+
+        .dc-custom-dropdown.active .dc-custom-dropdown-arrow {
+            transform: rotate(180deg);
+        }
+
+        .dc-custom-dropdown-options {
+            position: absolute;
+            top: calc(100% + 5px);
+            left: 0;
+            right: 0;
+            background: #f4f4f4;
+            border: 2px solid #777;
+            border-radius: 8px;
+            max-height: 280px;
+            overflow-y: auto;
+            z-index: 998;
+            opacity: 0;
+            visibility: hidden;
+            transform: translateY(-10px);
+            transition: opacity 0.3s ease, transform 0.3s ease, visibility 0.3s;
+            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.15);
+        }
+
+        .dc-custom-dropdown.active .dc-custom-dropdown-options {
+            opacity: 1;
+            visibility: visible;
+            transform: translateY(0);
+        }
+
+        /* Custom scrollbar for dropdown */
+        .dc-custom-dropdown-options::-webkit-scrollbar {
+            width: 6px;
+        }
+
+        .dc-custom-dropdown-options::-webkit-scrollbar-track {
+            background: transparent;
+            margin: 15px 0;
+        }
+
+        .dc-custom-dropdown-options::-webkit-scrollbar-thumb {
+            background: #888;
+            border-radius: 10px;
+        }
+
+        .dc-custom-dropdown-options::-webkit-scrollbar-thumb:hover {
+            background: #555;
+        }
+
+        .dc-custom-dropdown-option {
+            padding: 15px;
+            font-size: 1.3rem;
+            font-weight: 500;
+            color: #050505;
+            cursor: pointer;
+            transition: background-color 0.2s ease;
+            display: flex;
+            justify-content: flex-start;
+            align-items: center;
+        }
+
+        .dc-custom-dropdown-option:first-child {
+            border-radius: 13px 13px 0 0;
+        }
+
+        .dc-custom-dropdown-option:last-child {
+            border-radius: 0 0 13px 13px;
+        }
+
+        .dc-custom-dropdown-option:hover {
+            background-color: #f0f0f0;
+        }
+
+        .dc-custom-dropdown-option.selected {
+            background-color: var(--color-primary);
+            color: white;
+        }
+
+        .dc-custom-dropdown-option.selected .dc-dept-count {
+            color: white;
+        }
+
+        .dc-dept-count {
+            color: #000000;
+            font-weight: 500;
+            margin-left: 8px;
+        }
+
+        .dc-careers-search-input::placeholder {
+            color: #555;
+        }
+
+        .dc-careers-search-input:focus,
+        .dc-careers-search-select:focus {
+            border-color: var(--color-primary);
+            outline: none;
+            box-shadow: 0 0 0 3px rgba(0, 86, 179, 0.2);
+        }
+
+        /* Job Card Styling */
+        .dc-careers-jobs-grid {
+            display: flex;
+            flex-direction: column;
+            gap: 0.5rem;
+        }
+        
+        /* IMPORTANT: Use flex-none to manage visibility with JS, but ensure default display is flex on desktop */
+        .dc-careers-job-card {
+            display: flex; 
+            justify-content: space-between;
+            align-items: center;
+            padding: 0.8rem 0;
+            transition: all 0.3s ease;
+            border-bottom: 1px solid #aaaaaa;
+            background-color: transparent; /* Ensure it looks like a list item */
+        }
+        
+        .dc-careers-job-title {
+            font-size: 1.5rem;
+            font-weight: 500;
+            color: #000;
+            margin-bottom: 5px;  
+            line-height: 1; 
+            letter-spacing: 0.02em;
+        }
+        .dc-careers-job-department, .dc-careers-job-location {
+            font-size: 1.2rem;
+            color: #004599;
+            font-weight: 580;
+            letter-spacing: -0.02em;
+            line-height: 1.7;
+        }
+
+        .dc-careers-job-department {
+            border-right: 1px solid #aaa;
+            line-height: 0.8;
+            display: inline-block;
+            padding-right: 10px;
+        }
+
+        .dc-careers-job-location {
+            padding-left: 5px;
+        }
+
+        /* Apply Now Hover Effect and Arrow Color Change (Desktop) */
+        .dc-careers-apply-link {
+            display: flex;
+            align-items: center;
+            text-decoration: none;
+            cursor: pointer;
+            min-width: 140px; 
+            justify-content: flex-end;
+        }
+
+        .dc-careers-apply-now {
+            opacity: 0;
+            color: var(--color-primary);
+            text-decoration: none;
+            font-size: 1.5rem;
+            font-weight: 500;
+            margin-right: 0.5rem;
+            white-space: nowrap;
+            transition: opacity 0s ease;
+        }
+
+        .dc-careers-apply-arrow svg {
+            height: 60px; flex-shrink: 0;
+        }
+
+        .dc-careers-apply-arrow svg path {
+            fill: var(--color-text-faded); /* Default grey color */
+            transition: fill 0s ease; flex-shrink: 0;
+        }
+        
+        /* State when card is hovered */
+        .dc-careers-job-card:hover .dc-careers-apply-now {
+            opacity: 1; /* Make 'Apply Now' visible */
+        }
+        .dc-careers-job-card:hover .dc-careers-apply-arrow svg path {
+            fill: var(--color-primary); /* Change arrow color to blue */
+        }
+
+        .application-notes {
+            color: #000;
+            font-weight: 400;
+            font-size: 14px;
+            margin-top: 5rem;
+        }
+        
+        /* ------------------------------------------- */
+        /* Mobile Adjustments for Job Card (List View) */
+        /* ------------------------------------------- */
+        @media (max-width: 640px) {
+            .dc-careers-job-card {
+                flex-direction: column;
+                align-items: flex-start;
+                padding: 1rem 0; /* Adjusted padding for cleaner list */
+            }
+            .dc-careers-job-card > div:first-child {
+                margin-bottom: 0.75rem;
+            }
+            .dc-careers-job-title {
+                font-size: 1.2rem;
+            }
+            .dc-careers-job-department, .dc-careers-job-location {
+                font-size: 1.1rem; /* Smaller font size for mobile details */
+                
+                display: inline;
+                line-height: 0.8;
+            }
+            .dc-careers-job-department {
+                border-right: 1px solid #cecece;
+                padding-right: 8px;
+                
+            }
+            .dc-careers-apply-link {
+                justify-content: flex-start;
+                width: 100%;
+                min-width: unset;
+                margin-top: 0.5rem;
+            }
+            .dc-careers-apply-now {
+                opacity: 1; /* Always show 'Apply Now' on mobile for usability */
+                font-size: 1rem;
+                border: 2px solid #838383;
+                padding: 10px 20px;
+                border-radius: 8px;
+            }
+            .dc-careers-apply-arrow svg path {
+                fill: var(--color-primary); /* Always blue on mobile */
+                display: none;
+            }
+        }
+
+        /* Pagination Styling */
+        .dc-careers-pagination-controls {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            padding: 2rem 0;
+            gap: 0.5rem;
+            flex-wrap: wrap;
+        }
+        .dc-careers-page-btn {
+            padding: 0.5rem 1rem;
+            border-radius: 50px;
+            font-size: 1.1rem;
+            font-weight: 500;
+            cursor: pointer;
+            transition: background-color 0.2s, color 0.2s;
+            background-color: transparent;
+            color: var(--color-text-dark);
+            border: 2px solid #ddd;
+            font-family: 'Circular Std', sans-serif;
+        }
+        .dc-careers-page-btn:hover:not(.dc-careers-active):not(.dc-careers-disabled) {
+            background-color: #e5e5e5;
+        }
+        .dc-careers-page-btn.dc-careers-active {
+            background-color: var(--color-primary);
+            color: white;
+            border-color: var(--color-primary);
+        }
+        .dc-careers-page-btn.dc-careers-disabled {
+            opacity: 0.5;
+            cursor: not-allowed;
+        }
+
+        /* Utility class for JS to hide/show elements */
+        .dc-careers-hidden-by-js {
+            display: none !important;
+        }
+
+    </style>
+</head>
+<body>
+    
+    <section class="dc-careers-hero">
+        <div class="dc-careers-hero-content max-w-7xl mx-auto">
+            <h1 class="dc-careers-hero-title">Find Your Role</h1>
+            <a href="#jobs" class="dc-careers-hero-cta">Explore Roles</a>
+        </div>
+    </section>
+
+
+
+
+
+
+
+
+
+
+
+
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>IT Vision Component Example</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+</head>
+<body style="margin: 0; padding: 0;">
+
+    <it-vision-component></it-vision-component>
+
+
+    <script>
+        class ItVisionComponent extends HTMLElement {
+            constructor() {
+                super();
+                // Create shadow DOM for complete isolation
+                this.attachShadow({ mode: 'open' });
+
+                // Data for the IT/Technology Theme
+                this.data = [
+                    {
+                        title: "Think Clearly",
+                        content: [
+                            "Clarity of thought is the bedrock of our approach. It means we dissect complex problems into their fundamental components, allowing us to build solutions from a place of deep understanding.",
+                            "We prioritize clear communication, ensuring that ideas are conveyed concisely and effectively. This reduces ambiguity and aligns everyone towards a common goal, fostering an environment of efficiency and precision.",
+                            "Before acting, we take the time to think strategically. This involves considering second-order consequences and planning for various scenarios, ensuring our decisions are robust and well-informed."
+                        ]
+                    },
+                    {
+                        title: "Be Resourceful",
+                        content: [
+                            "Resourcefulness is our superpower. We believe in achieving maximum impact with the resources at hand, finding clever and unconventional ways to overcome constraints and solve problems.",
+                            "This mindset encourages a culture of innovation and creativity. We don't see limitations as stop signs; we see them as invitations to think differently and pioneer new methods.",
+                            "Being resourceful also means being proactive. We anticipate needs and act on them, leveraging our collective skills and knowledge to turn challenges into opportunities for growth."
+                        ]
+                    },
+                    {
+                        title: "Embrace Agility",
+                        content: [
+                            "The ability to pivot quickly is crucial. We utilize agile frameworks to respond swiftly to changing market demands and user feedback.",
+                            "We value iterative progress and flexibility over rigid, outdated structures."
+                        ]
+                    },
+                    {
+                        title: "Scale Responsibly",
+                        content: [
+                            "We design architectures that are built to grow seamlessly with demand.",
+                            "Our focus is on creating sustainable, high-performance systems that handle increased loads without compromising stability or efficiency."
+                        ]
+                    },
+                    {
+                        title: "Foster Collaboration",
+                        content: [
+                            "Complex tech challenges require diverse perspectives. We break down silos and encourage open communication across development, operations, and business units.",
+                            "We believe shared knowledge leads to superior solutions."
+                        ]
+                    },
+                    {
+                        title: " Deliver Excellence",
+                        content: [
+                            "We do not compromise on quality. From clean code to intuitive user experiences, we strive for precision in every deliverable.",
+                            "Reliability and performance are non-negotiable metrics of our success."
+                        ]
+                    }
+                ];
+                
+                this.activeIndex = 0; // Start with the first item active
+            }
+
+            connectedCallback() {
+                this.render();
+            }
+
+            // Handles tab clicking
+            handleTabClick(index) {
+                this.activeIndex = index;
+                this.updateActiveState();
+            }
+
+            // Updates the DOM to reflect the active index without re-rendering everything
+            updateActiveState() {
+                const tabs = this.shadowRoot.querySelectorAll('.it-v-tab-item');
+                const contents = this.shadowRoot.querySelectorAll('.it-v-content-group');
+
+                tabs.forEach((tab, idx) => {
+                    if (idx === this.activeIndex) {
+                        tab.classList.add('it-v-active');
+                    } else {
+                        tab.classList.remove('it-v-active');
+                    }
+                });
+
+                contents.forEach((content, idx) => {
+                    if (idx === this.activeIndex) {
+                        content.classList.add('it-v-active');
+                    } else {
+                        content.classList.remove('it-v-active');
+                    }
+                });
+            }
+
+            render() {
+                // 1. Define Styles (Scoped to Shadow DOM)
+                const styles = `
+                    <style>
+                        @import url('https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700&display=swap');
+
+                        @font-face {
+                            font-family: 'Circular Std';
+                            src: url('fonts/CircularStd-Book.ttf') format('truetype');
+                            font-weight: 400;
+                            font-style: normal;
+                        }
+
+                        /* Circular Std - Medium (500) */
+                        @font-face {
+                            font-family: 'Circular Std';
+                            src: url('fonts/CircularStd.ttf') format('truetype');
+                            font-weight: 500;
+                            font-style: normal;
+                        }
+
+                        /* Circular Std - Bold (700) */
+                        @font-face {
+                            font-family: 'Circular Std';
+                            src: url('fonts/CircularStd-Bold.ttf') format('truetype');
+                            font-weight: 600;
+                            font-style: normal;
+                        }
+
+                        :host {
+                            /* Ensure the component block behaves like a block element */
+                            display: block;
+                            all: initial; /* Reset inheritable properties */
+                            font-family: 'Circular Std', sans-serif;
+                            background-color: #F4F5F6; /* Match image background */
+                            color: #0B1426; /* Deep dark blue/black from image */
+                        }
+
+                        .it-v-wrapper {
+                            padding: 160px 24px;
+                            display: flex;
+                            justify-content: center;
+                        }
+
+                        .it-v-container {
+                            max-width: 1080px;
+                            width: 100%;
+                        }
+
+                        /* Typography & Headings */
+                        .it-v-heading {
+                            font-size: 66px;
+                            font-weight: 500;
+                            margin: 0 0 24px 0;
+                            line-height: 1.1;
+                            color: #000;
+                            letter-spacing: -0.02em;
+                        }
+
+                        .it-v-subheading {
+                            font-size: 32px;
+                            font-weight: 500;
+                            line-height: 1.2;
+                            max-width: 800px;
+                            color: #000;
+                            margin: 0 0 60px 0;
+                        }
+
+                        /* Main Two-Column Layout */
+                        .it-v-tabs-layout {
+                            display: flex;
+                            gap: 60px;
+                        }
+
+                        /* Left Column - Tabs List */
+                        .it-v-tab-list {
+                            list-style: none;
+                            padding: 0;
+                            margin: 0;
+                            flex: 0 0 300px; /* Fixed width for tab column */
+                            display: flex;
+                            flex-direction: column;
+                            gap: 20px;
+                            border-left: 1px solid #aaa;
+                        }
+
+                        .it-v-tab-item {
+                            font-size: 32px;
+                            font-weight: 500;
+                            line-height: 1.4;
+                            color: #B4B9C3; /* Grey color for inactive state */
+                            cursor: pointer;
+                            padding: 4px 0 4px 24px;
+                            border-left: 2px solid transparent;
+                            transition: all 0.2s ease;
+                        }
+
+                        /* Active Tab State */
+                        .it-v-tab-item.it-v-active {
+                            color: #0B1426;
+                            border-left-color: #0B1426;
+                        }
+
+                        /* Right Column - Content Area */
+                        .it-v-content-area {
+                            flex: 1;
+                            padding-top: 4px; /* Align with top of first tab */
+                        }
+
+                        .it-v-content-group {
+                            display: none; /* Hidden by default */
+                            font-size: 32px;
+                            font-weight: 500;
+                            line-height: 1.4;
+                            color: #454D5C; /* Slightly lighter text for body */
+                        }
+
+                        .it-v-content-group.it-v-active {
+                            display: block; /* Show only the active group */
+                        }
+
+                        .it-v-content-paragraph {
+                            margin: 0 0 28px 0;
+                        }
+                        .it-v-content-paragraph:last-child {
+                            margin-bottom: 0;
+                        }
+
+                        /* Responsive adjustments for smaller screens */
+                        @media (max-width: 768px) {
+                            .it-v-wrapper { padding: 40px 20px; }
+                            .it-v-heading { font-size: 26px; }
+                            .it-v-subheading { font-size: 18px; }
+                            .it-v-tabs-layout { flex-direction: column; gap: 32px; }
+                            .it-v-tab-list { border-left: none; flex: auto; width: 100%; flex-direction: row; overflow-x: auto; padding-bottom: 10px; border-bottom: 1px solid #E0E0E0; }
+                            .it-v-tab-item { font-size: 19px; padding: 8px 0; border-left: none; border-bottom: 2px solid transparent; white-space: nowrap; margin-right: 20px;}
+                            .it-v-tab-item.it-v-active { border-left: none; border-bottom-color: #0B1426; }
+                            .it-v-content-group { font-size: 18px; }
+                        }
+                    </style>
+                `;
+
+                // 2. Generate HTML Structure based on data
+                const tabsHtml = this.data.map((item, index) => `
+                    <li class="it-v-tab-item ${index === this.activeIndex ? 'it-v-active' : ''}">
+                        ${item.title}
+                    </li>
+                `).join('');
+
+                const contentHtml = this.data.map((item, index) => `
+                    <div class="it-v-content-group ${index === this.activeIndex ? 'it-v-active' : ''}">
+                        ${item.content.map(paragraph => `<p class="it-v-content-paragraph">${paragraph}</p>`).join('')}
+                    </div>
+                `).join('');
+
+
+                // 3. Assemble Shadow DOM structure
+                this.shadowRoot.innerHTML = `
+                    ${styles}
+                    <div class="it-v-wrapper">
+                        <div class="it-v-container">
+                            <h2 class="it-v-heading">Our Vision</h2>
+                            <p class="it-v-subheading">
+                                Technology in Every Aspect™. At Cronos, we are on a mission to accelerate the world's digital transformation through innovative IT infrastructure and software.
+                            </p>
+
+                            <div class="it-v-tabs-layout">
+                                <ul class="it-v-tab-list" id="tabContainer">
+                                    ${tabsHtml}
+                                </ul>
+
+                                <div class="it-v-content-area">
+                                    ${contentHtml}
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                `;
+
+                // 4. Attach Event Listeners
+                const tabItems = this.shadowRoot.querySelectorAll('.it-v-tab-item');
+                tabItems.forEach((tab, index) => {
+                    tab.addEventListener('click', () => this.handleTabClick(index));
+                });
+            }
+        }
+
+        // Define the custom element
+        customElements.define('it-vision-component', ItVisionComponent);
+    </script>
+
+</body>
+</html>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Split Screen Grid</title>
+    <style>
+        /* Reset margins and padding to ensure edge-to-edge coverage */
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        
+
+        /* The Grid Container */
+        .split-grid {
+            display: grid;
+            grid-template-columns: 1fr 1fr; /* Two equal columns */
+            width: fit-content; /* Fill full viewport width */
+            height: 80vh; /* Fill full viewport height */
+            gap: 0; /* Ensures no spacing between images */
+        }
+
+        /* The Image Wrapper */
+        .grid-item {
+            width: 100%;
+            height: 100%;
+            overflow: hidden;
+        }
+
+        /* The Image Styling */
+        .grid-item img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover; /* High-end effect: fills the area without distorting */
+            display: block; /* Removes tiny bottom gaps common with images */
+        }
+
+        /* Mobile Responsive: Stack them if the screen is too narrow */
+        @media (max-width: 768px) {
+            .split-grid {
+                grid-template-columns: 1fr;
+                grid-template-rows: 1fr 1fr;
+            }
+        }
+    </style>
+</head>
+<body>
+
+    <div class="split-grid">
+        <div class="grid-item">
+            <img src="https://images.unsplash.com/photo-1455849318743-b2233052fcff?q=80&w=2069&auto=format&fit=crop&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D" alt="Technology Left">
+        </div>
+
+        <div class="grid-item">
+            <img src="https://images.unsplash.com/photo-1497366754035-f200968a6e72?q=80&w=1169&auto=format&fit=crop&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D" alt="Technology Right">
+        </div>
+    </div>
+
+</body>
+</html>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+    <section class="py-16 lg:py-24" id="jobs" style="padding: 130px 0;">
+        <div class="dc-careers-container">
+            
+            <h2 class="dc-careers-jobs-title">Join the Team.</h2>
+            
+            <div class="dc-careers-jobs-search mb-8">
+                <form class="dc-careers-search-form" onsubmit="event.preventDefault(); dcCareersFilterJobs(true);">
+                    
+                    <div class="flex flex-col">
+                        <label for="dc-careers-search-title" class="dc-careers-label">Job Title</label>
+                        <input type="text" class="dc-careers-search-input" placeholder="e.g., Web Developer" id="dc-careers-search-title">
+                    </div>
+
+                    <div class="flex flex-col">
+                        <label for="dc-careers-search-department" class="dc-careers-label">Department</label>
+                        <div class="dc-custom-dropdown" id="dc-careers-department-dropdown">
+                            <div class="dc-custom-dropdown-selected" id="dc-custom-dropdown-selected">
+                                <span class="dc-custom-dropdown-text">All Departments</span>
+                                <svg class="dc-custom-dropdown-arrow" width="14" height="14" viewBox="0 0 14 14">
+                                    <path fill="#555" d="M7 10L2 5h10z"/>
+                                </svg>
+                            </div>
+                            <div class="dc-custom-dropdown-options" id="dc-custom-dropdown-options">
+                                <div class="dc-custom-dropdown-option" data-value="">All Departments <span class="dc-dept-count">(0)</span></div>
+                                <div class="dc-custom-dropdown-option" data-value="Engineering">Engineering <span class="dc-dept-count">(0)</span></div>
+                                <div class="dc-custom-dropdown-option" data-value="IT Operations">IT Operations <span class="dc-dept-count">(0)</span></div>
+                                <div class="dc-custom-dropdown-option" data-value="Product Management & Design">Product Management & Design <span class="dc-dept-count">(0)</span></div>
+                                <div class="dc-custom-dropdown-option" data-value="Security">Security <span class="dc-dept-count">(0)</span></div>
+                                <div class="dc-custom-dropdown-option" data-value="Data Analytics">Data Analytics <span class="dc-dept-count">(0)</span></div>
+                                <div class="dc-custom-dropdown-option" data-value="Marketing">Marketing <span class="dc-dept-count">(0)</span></div>
+                                <div class="dc-custom-dropdown-option" data-value="Customer Care">Customer Care <span class="dc-dept-count">(0)</span></div>
+                                <div class="dc-custom-dropdown-option" data-value="Corporate">Corporate <span class="dc-dept-count">(0)</span></div>
+                            </div>
+                        </div>
+                        <input type="hidden" id="dc-careers-search-department" value="">
+                    </div>
+
+                    <div class="flex flex-col">
+                        <label for="dc-careers-search-location" class="dc-careers-label">Location</label>
+                        <input type="text" class="dc-careers-search-input" placeholder="e.g., Cape Town" id="dc-careers-search-location">
+                    </div>
+
+                </form>
+                <div class="text-right text-gray-600 text-md mt-4 lg:mt-0" id="dc-careers-search-results" style="text-align: left; border-bottom: 1px solid #aaa; padding-bottom: 10px; font-weight: 400; margin-bottom: 20px;">Showing <span id="dc-careers-jobs-count">0</span> jobs</div>
+            </div>
+            
+            <div class="dc-careers-jobs-grid" id="dc-careers-jobs-container">
+                
+                <div class="dc-careers-job-card" data-department="Engineering" data-title="senior frontend developer" data-location="phuthaditjhaba" data-url="about-us.html">
+                    <div class="flex flex-col">
+                        <h3 class="dc-careers-job-title">Frontend Software Engineer</h3>
+                        <div>
+                            <span class="dc-careers-job-department">Engineering</span>
+                            <span class="dc-careers-job-location">Phuthaditjhaba, Free State</span>
+                        </div>
+                    </div>
+                    <a href="jobs.html" class="dc-careers-apply-link" aria-label="Apply for Frontend Developer">
+                        <span class="dc-careers-apply-now">Apply Now</span>
+                        <span class="dc-careers-apply-arrow flex items-center">
+                            <svg xmlns="http://www.w3.org/2000/svg" width="40" height="40" viewBox="0 0 24 24" stroke-width="0.2">
+                                <path d="m8.006 21.308l-1.064-1.064L15.187 12L6.942 3.756l1.064-1.064L17.313 12l-9.307 9.308Z"/>
+                            </svg>
+                        </span>
+                    </a>
+                </div>
+                
+                <div class="dc-careers-job-card" data-department="Data Analytics" data-title="data scientist" data-location="phuthaditjhaba" data-url="about-us.html">
+                   <div class="flex flex-col">
+                        <h3 class="dc-careers-job-title">Backend Software Engineer</h3>
+                        <div>
+                            <span class="dc-careers-job-department">Engineering</span>
+                            <span class="dc-careers-job-location">Phuthaditjhaba, Free State</span>
+                        </div>
+                    </div>
+                    <a href="jobs.html" class="dc-careers-apply-link" aria-label="Apply for Data Scientist">
+                        <span class="dc-careers-apply-now">Apply Now</span>
+                        <span class="dc-careers-apply-arrow flex items-center">
+                            <svg xmlns="http://www.w3.org/2000/svg" width="40" height="40" viewBox="0 0 24 24" stroke-width="0.2">
+                                <path d="m8.006 21.308l-1.064-1.064L15.187 12L6.942 3.756l1.064-1.064L17.313 12l-9.307 9.308Z"/>
+                            </svg>
+                        </span>
+                    </a>
+                </div>
+
+                <div class="dc-careers-job-card" data-department="Engineering" data-title="database Administrator" data-location="phuthaditjhaba" data-url="01.html">
+                   <div class="flex flex-col">
+                        <h3 class="dc-careers-job-title">Database Administrator</h3>
+                        <div>
+                            <span class="dc-careers-job-department">Engineering</span>
+                            <span class="dc-careers-job-location">Phuthaditjhaba, Free State</span>
+                        </div>
+                    </div>
+                    <a href="jobs.html" class="dc-careers-apply-link" aria-label="Apply for Backend Engineer">
+                        <span class="dc-careers-apply-now">Apply Now</span>
+                        <span class="dc-careers-apply-arrow flex items-center">
+                            <svg xmlns="http://www.w3.org/2000/svg" width="40" height="40" viewBox="0 0 24 24" stroke-width="0.2">
+                                <path d="m8.006 21.308l-1.064-1.064L15.187 12L6.942 3.756l1.064-1.064L17.313 12l-9.307 9.308Z"/>
+                            </svg>
+                        </span>
+                    </a>
+                </div>
+
+                <div class="dc-careers-job-card" data-department="Marketing" data-title="digital marketing manager" data-location="Phuthaditjhaba" data-url="about-us.html">
+                   <div class="flex flex-col">
+                        <h3 class="dc-careers-job-title">Content Editor & Proofreader</h3>
+                        <div>
+                            <span class="dc-careers-job-department">Marketing</span>
+                            <span class="dc-careers-job-location">Phuthaditjhaba, Free State</span>
+                        </div>
+                    </div>
+                    <a href="page.html" class="dc-careers-apply-link" aria-label="Apply for Digital Marketing Manager">
+                        <span class="dc-careers-apply-now">Apply Now</span>
+                        <span class="dc-careers-apply-arrow flex items-center">
+                            <svg xmlns="http://www.w3.org/2000/svg" width="40" height="40" viewBox="0 0 24 24" stroke-width="0.2">
+                                <path d="m8.006 21.308l-1.064-1.064L15.187 12L6.942 3.756l1.064-1.064L17.313 12l-9.307 9.308Z"/>
+                            </svg>
+                        </span>
+                    </a>
+                </div>
+                
+                <div class="dc-careers-job-card" data-department="Security" data-title="cybersecurity specialist" data-location="phuthaditjhaba" data-url="about-us.html">
+                   <div class="flex flex-col">
+                        <h3 class="dc-careers-job-title">Cybersecurity Specialist</h3>
+                        <div>
+                            <span class="dc-careers-job-department">Security</span>
+                            <span class="dc-careers-job-location">Phuthaditjhaba, Free State</span>
+                        </div>
+                    </div>
+                    <a href="page.html" class="dc-careers-apply-link" aria-label="Apply for Cybersecurity Specialist">
+                        <span class="dc-careers-apply-now">Apply Now</span>
+                        <span class="dc-careers-apply-arrow flex items-center">
+                            <svg xmlns="http://www.w3.org/2000/svg" width="40" height="40" viewBox="0 0 24 24" stroke-width="0.2">
+                                <path d="m8.006 21.308l-1.064-1.064L15.187 12L6.942 3.756l1.064-1.064L17.313 12l-9.307 9.308Z"/>
+                            </svg>
+                        </span>
+                    </a>
+                </div>
+                
+                <div class="dc-careers-job-card" data-department="Customer Care" data-title="sales development representative" data-location="Phuthaditjhaba" data-url="about-us.html">
+                   <div class="flex flex-col">
+                        <h3 class="dc-careers-job-title">Sales Development Representative (Customer Care Product Management & Marketing)</h3>
+                        <div>
+                            <span class="dc-careers-job-department">Customer Care</span>
+                            <span class="dc-careers-job-location">Phuthaditjhaba, Free State</span>
+                        </div>
+                    </div>
+                    <a href="page.html" class="dc-careers-apply-link" aria-label="Apply for Sales Development Representative">
+                        <span class="dc-careers-apply-now">Apply Now</span>
+                        <span class="dc-careers-apply-arrow flex items-center">
+                            <svg xmlns="http://www.w3.org/2000/svg" width="40" height="40" viewBox="0 0 24 24" stroke-width="0.2">
+                                <path d="m8.006 21.308l-1.064-1.064L15.187 12L6.942 3.756l1.064-1.064L17.313 12l-9.307 9.308Z"/>
+                            </svg>
+                        </span>
+                    </a>
+                </div>
+                
+                <div class="dc-careers-job-card" data-department="IT Operations" data-title="computer technician" data-location="Kestell" data-url="about-us.html">
+                   <div class="flex flex-col">
+                        <h3 class="dc-careers-job-title">Computer Technician</h3>
+                        <div>
+                            <span class="dc-careers-job-department">IT Operations</span>
+                            <span class="dc-careers-job-location">Kestell, Free State</span>
+                        </div>
+                    </div>
+                    <a href="page.html" class="dc-careers-apply-link" aria-label="Apply for Computer Technician">
+                        <span class="dc-careers-apply-now">Apply Now</span>
+                        <span class="dc-careers-apply-arrow flex items-center">
+                            <svg xmlns="http://www.w3.org/2000/svg" width="40" height="40" viewBox="0 0 24 24" stroke-width="0.2">
+                                <path d="m8.006 21.308l-1.064-1.064L15.187 12L6.942 3.756l1.064-1.064L17.313 12l-9.307 9.308Z"/>
+                            </svg>
+                        </span>
+                    </a>
+                </div>
+
+                <div class="dc-careers-job-card" data-department="IT Operations" data-title="it support technician" data-location="Phuthaditjhaba" data-url="about-us.html">
+                   <div class="flex flex-col">
+                        <h3 class="dc-careers-job-title">IT Support Technician (Tier 1-3)</h3>
+                        <div>
+                            <span class="dc-careers-job-department">IT Operations</span>
+                            <span class="dc-careers-job-location">Phuthaditjhaba, Free State</span>
+                        </div>
+                    </div>
+                    <a href="page.html" class="dc-careers-apply-link" aria-label="Apply for IT Support Technician">
+                        <span class="dc-careers-apply-now">Apply Now</span>
+                        <span class="dc-careers-apply-arrow flex items-center">
+                            <svg xmlns="http://www.w3.org/2000/svg" width="40" height="40" viewBox="0 0 24 24" stroke-width="0.2">
+                                <path d="m8.006 21.308l-1.064-1.064L15.187 12L6.942 3.756l1.064-1.064L17.313 12l-9.307 9.308Z"/>
+                            </svg>
+                        </span>
+                    </a>
+                </div>
+
+                <div class="dc-careers-job-card" data-department="IT Operations" data-title="it support technician" data-location="Bethlehem" data-url="about-us.html">
+                   <div class="flex flex-col">
+                        <h3 class="dc-careers-job-title">IT Support Technician (Tier 1-3)</h3>
+                        <div>
+                            <span class="dc-careers-job-department">IT Operations</span>
+                            <span class="dc-careers-job-location">Bethlehem, Free State</span>
+                        </div>
+                    </div>
+                    <a href="page.html" class="dc-careers-apply-link" aria-label="Apply for IT Support Technician">
+                        <span class="dc-careers-apply-now">Apply Now</span>
+                        <span class="dc-careers-apply-arrow flex items-center">
+                            <svg xmlns="http://www.w3.org/2000/svg" width="40" height="40" viewBox="0 0 24 24" stroke-width="0.2">
+                                <path d="m8.006 21.308l-1.064-1.064L15.187 12L6.942 3.756l1.064-1.064L17.313 12l-9.307 9.308Z"/>
+                            </svg>
+                        </span>
+                    </a>
+                </div>
+
+                <div class="dc-careers-job-card" data-department="Product Management & Product Design" data-title="product designer" data-location="Phuthaditjhaba" data-url="about-us.html">
+                   <div class="flex flex-col">
+                        <h3 class="dc-careers-job-title">Product Designer</h3>
+                        <div>
+                            <span class="dc-careers-job-department">Product Management & Product Design</span>
+                            <span class="dc-careers-job-location">Phuthaditjhaba, Free State</span>
+                        </div>
+                    </div>
+                    <a href="page.html" class="dc-careers-apply-link" aria-label="Apply for UX/UI Designer">
+                        <span class="dc-careers-apply-now">Apply Now</span>
+                        <span class="dc-careers-apply-arrow flex items-center">
+                            <svg xmlns="http://www.w3.org/2000/svg" width="40" height="40" viewBox="0 0 24 24" stroke-width="0.2">
+                                <path d="m8.006 21.308l-1.064-1.064L15.187 12L6.942 3.756l1.064-1.064L17.313 12l-9.307 9.308Z"/>
+                            </svg>
+                        </span>
+                    </a>
+                </div>
+            </div>
+
+            <div id="dc-careers-no-results" class="dc-careers-hidden-by-js p-8 text-center text-gray-500 bg-white">
+                <p class="text-lg font-medium">No jobs match your search criteria. Try adjusting your filters.</p>
+            </div>
+
+
+            <div class="dc-careers-pagination-controls" id="dc-careers-pagination-controls"></div>
+
+        </div>
+    </section>
+
+    
+    <script>
+        // JAVASCRIPT LOGIC FOR FILTERING AND PAGINATION - STABILITY IMPROVED
+        let dcCareersAllJobs = []; // Stores all job elements initially loaded from the DOM
+        let dcCareersFilteredJobs = []; // Stores jobs matching current search/filters
+        let dcCareersCurrentPage = 1;
+        const dcCareersJobsPerPage = 6;
+        
+        // DOM Elements
+        const dcCareersJobContainer = document.getElementById('dc-careers-jobs-container');
+        const dcCareersPaginationControls = document.getElementById('dc-careers-pagination-controls');
+        const dcCareersSearchTitle = document.getElementById('dc-careers-search-title');
+        const dcCareersSearchDepartment = document.getElementById('dc-careers-search-department');
+        const dcCareersSearchLocation = document.getElementById('dc-careers-search-location');
+        const dcCareersJobCountElement = document.getElementById('dc-careers-jobs-count');
+        const dcCareersNoResults = document.getElementById('dc-careers-no-results');
+        
+        // Custom Dropdown Elements
+        const dcCustomDropdown = document.getElementById('dc-careers-department-dropdown');
+        const dcCustomDropdownSelected = document.getElementById('dc-custom-dropdown-selected');
+        const dcCustomDropdownOptions = document.getElementById('dc-custom-dropdown-options');
+
+        /**
+         * Initialize custom dropdown functionality
+         */
+        function dcCareersInitCustomDropdown() {
+            // Toggle dropdown on click
+            dcCustomDropdownSelected.addEventListener('click', (e) => {
+                e.stopPropagation();
+                dcCustomDropdown.classList.toggle('active');
+            });
+
+            // Handle option selection
+            const options = dcCustomDropdownOptions.querySelectorAll('.dc-custom-dropdown-option');
+            options.forEach(option => {
+                option.addEventListener('click', (e) => {
+                    e.stopPropagation();
+                    
+                    // Remove selected class from all options
+                    options.forEach(opt => opt.classList.remove('selected'));
+                    
+                    // Add selected class to clicked option
+                    option.classList.add('selected');
+                    
+                    // Update the selected text
+                    const value = option.getAttribute('data-value');
+                    const text = option.childNodes[0].textContent.trim();
+                    const count = option.querySelector('.dc-dept-count').textContent;
+                    
+                    dcCustomDropdownSelected.querySelector('.dc-custom-dropdown-text').textContent = text + ' ' + count;
+                    
+                    // Update hidden input
+                    dcCareersSearchDepartment.value = value;
+                    
+                    // Close dropdown
+                    dcCustomDropdown.classList.remove('active');
+                    
+                    // Trigger filter
+                    dcCareersFilterJobs(true);
+                });
+            });
+
+            // Close dropdown when clicking outside
+            document.addEventListener('click', (e) => {
+                if (!dcCustomDropdown.contains(e.target)) {
+                    dcCustomDropdown.classList.remove('active');
+                }
+            });
+        }
+
+        /**
+         * Initializes the job system by pulling all jobs from the visible container.
+         */
+        function dcCareersInitializeJobs() {
+            // Get all job cards directly from the grid container
+            dcCareersAllJobs = Array.from(dcCareersJobContainer.children).filter(el => el.classList.contains('dc-careers-job-card'));
+            
+            // Initialize custom dropdown
+            dcCareersInitCustomDropdown();
+            
+            // Update department counts initially
+            dcCareersUpdateDepartmentCounts();
+            
+            // Set up event listeners for filtering
+            dcCareersSearchTitle.addEventListener('input', () => dcCareersFilterJobs(true));
+            dcCareersSearchLocation.addEventListener('input', () => dcCareersFilterJobs(true));
+
+            // Initial call to filter and render the first page
+            dcCareersFilterJobs(true);
+        }
+
+        /**
+         * Updates the department dropdown options with live job counts
+         */
+        function dcCareersUpdateDepartmentCounts() {
+            const titleSearch = dcCareersSearchTitle.value.toLowerCase().trim();
+            const locationSearch = dcCareersSearchLocation.value.toLowerCase().trim();
+            
+            // Get all dropdown options
+            const options = dcCustomDropdownOptions.querySelectorAll('.dc-custom-dropdown-option');
+            
+            options.forEach((option, index) => {
+                const departmentName = option.getAttribute('data-value');
+                
+                if (index === 0) {
+                    // "All Departments" - count all matching jobs
+                    const allCount = dcCareersAllJobs.filter(card => {
+                        const title = card.getAttribute('data-title') ? card.getAttribute('data-title').toLowerCase().trim() : '';
+                        const location = card.getAttribute('data-location') ? card.getAttribute('data-location').toLowerCase().trim() : '';
+                        
+                        const titleMatch = title.includes(titleSearch);
+                        const locationMatch = location.includes(locationSearch);
+                        
+                        return titleMatch && locationMatch;
+                    }).length;
+                    
+                    const countSpan = option.querySelector('.dc-dept-count');
+                    countSpan.textContent = `(${allCount})`;
+                } else {
+                    // Specific department
+                    const count = dcCareersAllJobs.filter(card => {
+                        const title = card.getAttribute('data-title') ? card.getAttribute('data-title').toLowerCase().trim() : '';
+                        const department = card.getAttribute('data-department') ? card.getAttribute('data-department').trim() : '';
+                        const location = card.getAttribute('data-location') ? card.getAttribute('data-location').toLowerCase().trim() : '';
+                        
+                        const titleMatch = title.includes(titleSearch);
+                        const departmentMatch = department === departmentName;
+                        const locationMatch = location.includes(locationSearch);
+                        
+                        return titleMatch && departmentMatch && locationMatch;
+                    }).length;
+                    
+                    const countSpan = option.querySelector('.dc-dept-count');
+                    countSpan.textContent = `(${count})`;
+                }
+            });
+            
+            // Update the selected display text if needed
+            const currentValue = dcCareersSearchDepartment.value;
+            const selectedOption = Array.from(options).find(opt => opt.getAttribute('data-value') === currentValue);
+            if (selectedOption) {
+                const text = selectedOption.childNodes[0].textContent.trim();
+                const count = selectedOption.querySelector('.dc-dept-count').textContent;
+                dcCustomDropdownSelected.querySelector('.dc-custom-dropdown-text').textContent = text + ' ' + count;
+            }
+        }
+
+        /**
+         * Filters the job cards based on current search inputs.
+         * @param {boolean} resetPage - If true, resets currentPage to 1 after filtering.
+         */
+        function dcCareersFilterJobs(resetPage) {
+            const titleSearch = dcCareersSearchTitle.value.toLowerCase().trim();
+            const departmentSearch = dcCareersSearchDepartment.value;
+            const locationSearch = dcCareersSearchLocation.value.toLowerCase().trim();
+            
+            dcCareersFilteredJobs = dcCareersAllJobs.filter(card => {
+                // Read data- attributes, ensure they are normalized (lowercase and trimmed)
+                const title = card.getAttribute('data-title') ? card.getAttribute('data-title').toLowerCase().trim() : '';
+                const department = card.getAttribute('data-department') ? card.getAttribute('data-department').trim() : '';
+                const location = card.getAttribute('data-location') ? card.getAttribute('data-location').toLowerCase().trim() : '';
+                
+                const titleMatch = title.includes(titleSearch);
+                const departmentMatch = departmentSearch === '' || department === departmentSearch;
+                const locationMatch = location.includes(locationSearch);
+                
+                return titleMatch && departmentMatch && locationMatch;
+            });
+            
+            if (resetPage) {
+                dcCareersCurrentPage = 1;
+            }
+            
+            dcCareersJobCountElement.textContent = dcCareersFilteredJobs.length;
+            
+            // Update department counts to reflect current filters
+            dcCareersUpdateDepartmentCounts();
+            
+            dcCareersRenderJobs();
+        }
+
+        /**
+         * Renders the current page of filtered jobs and updates pagination controls.
+         */
+        function dcCareersRenderJobs() {
+            // Hide all jobs initially
+            dcCareersAllJobs.forEach(job => job.classList.add('dc-careers-hidden-by-js'));
+            dcCareersNoResults.classList.add('dc-careers-hidden-by-js'); // Hide no results message
+
+            const start = (dcCareersCurrentPage - 1) * dcCareersJobsPerPage;
+            const end = start + dcCareersJobsPerPage;
+            const paginatedJobs = dcCareersFilteredJobs.slice(start, end);
+            
+            // Show jobs for the current page
+            if (paginatedJobs.length > 0) {
+                paginatedJobs.forEach(job => {
+                    job.classList.remove('dc-careers-hidden-by-js');
+                });
+            } else {
+                dcCareersNoResults.classList.remove('dc-careers-hidden-by-js'); // Show no results message
+            }
+            
+            dcCareersRenderPaginationControls();
+        }
+
+        /**
+         * Generates and updates the pagination buttons.
+         */
+        function dcCareersRenderPaginationControls() {
+            const totalPages = Math.ceil(dcCareersFilteredJobs.length / dcCareersJobsPerPage);
+            dcCareersPaginationControls.innerHTML = ''; // Clear previous controls
+
+            if (totalPages <= 1) {
+                return;
+            }
+            
+            // Previous Button
+            const prevBtn = dcCareersCreatePageButton('<i class="fas fa-chevron-left"></i> Prev', dcCareersCurrentPage - 1);
+            if (dcCareersCurrentPage === 1) prevBtn.classList.add('dc-careers-disabled');
+            dcCareersPaginationControls.appendChild(prevBtn);
+
+            // Page Number Buttons
+            for (let i = 1; i <= totalPages; i++) {
+                const pageBtn = dcCareersCreatePageButton(i, i);
+                if (i === dcCareersCurrentPage) pageBtn.classList.add('dc-careers-active');
+                dcCareersPaginationControls.appendChild(pageBtn);
+            }
+
+            // Next Button
+            const nextBtn = dcCareersCreatePageButton('Next <i class="fas fa-chevron-right"></i>', dcCareersCurrentPage + 1);
+            if (dcCareersCurrentPage === totalPages) nextBtn.classList.add('dc-careers-disabled');
+            dcCareersPaginationControls.appendChild(nextBtn);
+        }
+
+        /**
+         * Creates a clickable button for pagination.
+         */
+        function dcCareersCreatePageButton(text, pageNum) {
+            const button = document.createElement('button');
+            button.className = 'dc-careers-page-btn';
+            button.innerHTML = text; // Use innerHTML for icon support
+            
+            button.addEventListener('click', () => {
+                const maxPage = Math.ceil(dcCareersFilteredJobs.length / dcCareersJobsPerPage);
+                if (pageNum >= 1 && pageNum <= maxPage) {
+                    dcCareersCurrentPage = pageNum;
+                    dcCareersRenderJobs();
+                    // Scroll to jobs section after page change
+                    document.getElementById('jobs').scrollIntoView({ behavior: 'smooth' });
+                }
+            });
+            return button;
+        }
+
+        // Initialize the app when the window loads
+        window.addEventListener('load', dcCareersInitializeJobs);
+    </script>
+</body>
+</html>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<cronos-footer></cronos-footer>

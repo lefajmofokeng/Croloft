@@ -1,0 +1,460 @@
+
+
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Affiliate Programme - IT Solutions</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: 'Inter', sans-serif;
+        }
+
+        body {
+            font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Helvetica Neue', sans-serif;
+            background-color: #f5f5f5;
+            color: #333;
+        }
+
+        .full-width {
+            width: 100%;
+        }
+
+        .container {
+            max-width: 1100px;
+            margin: 0 auto;
+            padding: 0 20px;
+        }
+
+        /* Hero Section */
+        .hero {
+            background: linear-gradient(135deg, #0c568b 0%, #001023 100%);
+            color: white;
+            padding: 80px 20px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            min-height: 700px;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .hero-content {
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            gap: 60px;
+            max-width: 1100px;
+            margin: 0 auto;
+            width: 100%;
+        }
+
+        .hero-text {
+            flex: 1;
+        }
+
+        .hero-label {
+            color: #51b0f9;
+            font-size: 15px;
+            font-weight: 600;
+            letter-spacing: 1px;
+            text-transform: uppercase;
+            margin-bottom: 20px;
+        }
+
+        .hero h1 {
+            font-size: 56px;
+            font-weight: 700;
+            line-height: 1.2;
+            margin-bottom: 30px;
+        }
+
+        .hero p {
+            font-size: 18px;
+            font-weight: 600;
+            line-height: 1.6;
+            color: #a8c5dd;
+            margin-bottom: 40px;
+        }
+
+        .btn-primary {
+            display: inline-block;
+            background-color: white;
+            color: #0a1e3e;
+            padding: 14px 40px;
+            border-radius: 50px;
+            font-weight: 600;
+            text-decoration: none;
+            cursor: pointer;
+            border: none;
+            font-size: 17px;
+            transition: all 0.3s ease;
+        }
+
+        .btn-primary:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.2);
+        }
+
+        .hero-visual {
+            flex: 1;
+            position: relative;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 400px;
+        }
+
+        .hero-3d {
+            position: relative;
+            width: 300px;
+            height: 300px;
+            animation: float 6s ease-in-out infinite;
+        }
+
+        @keyframes float {
+            0%, 100% { transform: translateY(0px); }
+            50% { transform: translateY(-20px); }
+        }
+
+        .phone-mockup {
+            background: linear-gradient(135deg, #1a3a52 0%, #0f2438 100%);
+            border-radius: 40px;
+            padding: 12px;
+            width: 250px;
+            height: 280px;
+            box-shadow: 0 20px 60px rgba(0, 0, 0, 0.3);
+            position: relative;
+        }
+
+        .phone-screen {
+            background: linear-gradient(135deg, #1e4d6d 0%, #0a1e3e 100%);
+            border-radius: 30px;
+            padding: 20px;
+            height: 100%;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            position: relative;
+        }
+
+        .user-icon {
+            width: 60px;
+            height: 60px;
+            background: rgba(255, 255, 255, 0.1);
+            border-radius: 50%;
+            margin-bottom: 15px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 30px;
+        }
+
+        .speech-bubble {
+            background: white;
+            color: #0a1e3e;
+            padding: 15px 20px;
+            border-radius: 20px;
+            position: absolute;
+            top: -30px;
+            right: -20px;
+            width: 120px;
+            text-align: center;
+            font-weight: 600;
+            font-size: 12px;
+            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.2);
+        }
+
+        .hexagon {
+            width: 50px;
+            height: 50px;
+            background: linear-gradient(135deg, #6ba3d4, #4a7ba7);
+            clip-path: polygon(50% 0%, 100% 25%, 100% 75%, 50% 100%, 0% 75%, 0% 25%);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 24px;
+        }
+
+        /* How It Works Section */
+        .how-it-works {
+            padding: 100px 20px;
+            background: #f7f9fa;
+        }
+
+        .section-title {
+            font-size: 42px;
+            font-weight: 600;
+            margin-bottom: 20px;
+            color: #0a1e3e;
+            letter-spacing: -0.03em;
+            backface-visibility: visible;
+        }
+
+        .section-subtitle {
+            font-size: 18px;
+            font-weight: 600;
+            color: #333;
+            margin-bottom: 30px;
+        }
+
+        .steps-grid {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 15px;
+            max-width: 1100px;
+            margin: 0 auto;
+        }
+
+        .step-card {
+            background: #fff;
+            padding: 40px;
+            border-radius: 30px;
+            text-align: left;
+            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.1);
+        }
+
+        .step-icon {
+            width: 60px;
+            height: 60px;
+            
+            border-radius: 12px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            margin-bottom: 20px;
+            font-size: 32px;
+        }
+
+        .step-title {
+            font-size: 18px;
+            font-weight: 600;
+            color: #0a1e3e;
+            margin-bottom: 12px;
+        }
+
+        .step-description {
+            font-size: 14px;
+            color: #666;
+            line-height: 1.6;
+        }
+
+        /* Why Partner Section */
+        .why-partner {
+            padding: 40px 0 80px 0;
+            background: #f7f9fa;
+        }
+
+        .benefits-grid {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 40px;
+            max-width: 1100px;
+            margin: 0 auto;
+        }
+
+        .benefit-card {
+            text-align: left;
+            padding-right: 30px;
+        }
+
+        .benefit-icon {
+            width: 60px;
+            height: 60px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            margin-bottom: 20px;
+            font-size: 32px;
+        }
+
+        .benefit-title {
+            font-size: 19px;
+            font-weight: 600;
+            color: #0066cc;
+            margin-bottom: 12px;
+        }
+
+        .benefit-description {
+            font-size: 14px;
+            color: #333;
+            line-height: 1.6;
+        }
+
+        /* CTA Section */
+        .cta-section {
+            background: none;
+            padding: 80px 20px;
+            text-align: center;
+            background-color: #f7f9fa;
+            color: white;
+        }
+
+        .cta-content {
+            max-width: 1100px;
+            margin: 0 auto;
+            background: radial-gradient(75.83% 86.4% at 50% 100%, rgb(3, 68, 129) 0%, rgba(3, 68, 129, 0.21) 67.99%, rgba(3, 68, 129, 0.07) 88.86%, rgba(3, 68, 129, 0) 100%), rgb(1, 1, 24);
+            padding: 30px 20px;
+            border-radius: 30px;
+        }
+
+        .cta-label {
+            font-size: 12px;
+            font-weight: 600;
+            letter-spacing: 1px;
+            text-transform: uppercase;
+            color: #6ba3d4;
+            margin-bottom: 20px;
+            display: inline-block;
+        }
+
+        .cta-title {
+            font-size: 48px;
+            font-weight: 700;
+            margin-bottom: 20px;
+            line-height: 1.3;
+        }
+
+        .cta-subtitle {
+            font-size: 18px;
+            font-weight: 600;
+            color: #a8c5dd;
+            margin-bottom: 40px;
+            line-height: 1.6;
+        }
+
+        .privacy-notice {
+            font-size: 12px;
+            color: #6ba3d4;
+            margin-top: 40px;
+        }
+
+        .privacy-notice a {
+            color: #6ba3d4;
+            text-decoration: underline;
+        }
+
+        @media (max-width: 768px) {
+            .hero-content {
+                flex-direction: column;
+                gap: 40px;
+            }
+
+            .hero h1 {
+                font-size: 36px;
+            }
+
+            .steps-grid,
+            .benefits-grid {
+                grid-template-columns: 1fr;
+                gap: 30px;
+            }
+
+            .section-title,
+            .cta-title {
+                font-size: 32px;
+            }
+
+            .hero-visual {
+                height: 300px;
+            }
+        }
+    </style>
+</head>
+<body>
+    <!-- Hero Section -->
+    <div class="hero full-width">
+        <div class="hero-content">
+            <div class="hero-text">
+                <div class="hero-label">Affiliate Programme</div>
+                <h1>Earn <br>industry-leading commissions</h1>
+                <p>Join our IT Solutions Affiliate Program and unlock industry-leading commissions, exclusive partner benefits, and comprehensive support to grow your business with our innovative technology solutions.</p>
+                <button class="btn-primary" onclick="window.location.href='page.html'">Start Earning</button>
+            </div>
+            <div class="hero-visual">
+            </div>
+        </div>
+    </div>
+
+    <!-- How It Works Section -->
+    <div class="how-it-works full-width">
+        <div class="container">
+            <h2 class="section-title">How it works</h2>
+            <p class="section-subtitle">Sign up and start earning in 3 steps:</p>
+            
+            <div class="steps-grid">
+                <div class="step-card">
+                    <div class="step-icon">
+                        <svg xmlns="http://www.w3.org/2000/svg" width="200" height="200" viewBox="0 0 14 14" fill="#0577da"><g fill="none" stroke="#0577da" stroke-linecap="round" stroke-linejoin="round"><path d="m7.5 9l-3 .54L5 6.5L10.73.79a1 1 0 0 1 1.42 0l1.06 1.06a1 1 0 0 1 0 1.42Z"/><path d="M12 9.5v3a1 1 0 0 1-1 1H1.5a1 1 0 0 1-1-1V3a1 1 0 0 1 1-1h3"/></g></svg>
+                    </div>
+                    <h3 class="step-title">Complete Your Application</h3>
+                    <p class="step-description">Submit your affiliate application through our partner portal with essential details about your IT company, client base, and service offerings. Our team will review and approve qualified partners within 5 business days.</p>
+                </div>
+                <div class="step-card">
+                    <div class="step-icon">
+                        <svg xmlns="http://www.w3.org/2000/svg" width="200" height="200" viewBox="0 0 24 24" stroke-width="0.7"><path fill="#0577da" d="M12 22c.8 0 1.6-.1 2.3-.3c-.4-.5-.8-1.1-1-1.8c-.4.1-.9.1-1.3.1c-4.4 0-8-3.6-8-8s3.6-8 8-8c.8 0 1.5.1 2.2.3l1.6-1.6C14.6 2.3 13.3 2 12 2C6.5 2 2 6.5 2 12s4.5 10 10 10M6.5 11.5l1.4-1.4l3.1 3.1l8.6-8.6L21 6L11 16l-4.5-4.5M19 14l-1.26 2.75L15 18l2.74 1.26L19 22l1.25-2.74L23 18l-2.75-1.25L19 14Z"/></svg>
+                    </div>
+                    <h3 class="step-title">Access Marketing Resources</h3>
+                    <p class="step-description">Get instant access to your unique referral links, customizable marketing materials, product documentation, and case studies. Use our comprehensive toolkit to promote our solutions to your existing and prospective clients.</p>
+                </div>
+                <div class="step-card">
+                    <div class="step-icon">
+                        <svg xmlns="http://www.w3.org/2000/svg" width="200" height="200" viewBox="0 0 16 16" stroke-width="0.7"><path fill="#0575da" d="M1.5 14a.5.5 0 0 1 0-1h13a.5.5 0 0 1 0 1h-13Zm.5-3.75c0 .966.784 1.75 1.75 1.75h1.5A1.75 1.75 0 0 0 7 10.25v-6.5A1.75 1.75 0 0 0 5.25 2h-1.5A1.75 1.75 0 0 0 2 3.75v6.5Zm1.75.75a.75.75 0 0 1-.75-.75v-6.5A.75.75 0 0 1 3.75 3h1.5a.75.75 0 0 1 .75.75v6.5a.75.75 0 0 1-.75.75h-1.5ZM9 10.25c0 .966.784 1.75 1.75 1.75h1.5A1.75 1.75 0 0 0 14 10.25v-4.5A1.75 1.75 0 0 0 12.25 4h-1.5A1.75 1.75 0 0 0 9 5.75v4.5Zm1.75.75a.75.75 0 0 1-.75-.75v-4.5a.75.75 0 0 1 .75-.75h1.5a.75.75 0 0 1 .75.75v4.5a.75.75 0 0 1-.75.75h-1.5Z"/></svg>
+                    </div>
+                    <h3 class="step-title">Earn Recurring Revenue</h3>
+                    <p class="step-description">Receive competitive commissions on every successful referral with transparent tracking and real-time analytics. Commissions are processed monthly, directly into your account with no hidden fees.</p>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Why Partner Section -->
+    <div class="why-partner full-width">
+        <div class="container">
+            <h2 class="section-title" style="margin-bottom: 50px;">Why partner with us</h2>
+            
+            <div class="benefits-grid">
+                <div class="benefit-card" style="border-right: 1px solid rgb(216, 216, 216);">
+                    <div class="benefit-icon">
+                        <svg xmlns="http://www.w3.org/2000/svg" width="200" height="200" viewBox="0 0 32 32"><path fill="#0577da" d="M4 20v2h4.586L2 28.586L3.414 30L10 23.414V28h2v-8H4zM30 4h-7v2h3.586L19 13.586l-4.293-4.293a1 1 0 0 0-1.414 0L8 14.586L9.414 16L14 11.414l4.293 4.293a1 1 0 0 0 1.414 0L28 7.414V11h2zM16 28h14v2H16zM2 2h2v14H2z"/></svg>                    </div>
+                    <h3 class="benefit-title">Earn up to 30% recurring commissions</h3>
+                    <p class="benefit-description">Earn substantial commissions on managed services, software licenses, and implementation projects. Our multi-tier commission structure rewards top performers with even higher rates. Build passive income from long-term customer relationships without caps or limitations.</p>
+                </div>
+                <div class="benefit-card" style="border-right: 1px solid rgb(216, 216, 216);">
+                    <div class="benefit-icon">
+                        <svg xmlns="http://www.w3.org/2000/svg" width="200" height="200" viewBox="0 0 14 14" fill="#0577da"><g fill="none" stroke="#0577da" stroke-linecap="round" stroke-linejoin="round"><rect x=".5" y=".5" rx="1" transform="rotate(180 7 7)"/><path d="M3 3h2M3 5.5h4.5m4 0l-3 5l-3.5-2l-2 3"/></g></svg>
+                    </div>
+                    <h3 class="benefit-title">Real-time tracking and analytics</h3>
+                    <p class="benefit-description">Monitor your referrals, conversions, and earnings through our advanced partner dashboard. Track commission calculations, view detailed reports, and manage all your partner activities in one centralized platform with transparent real-time data.</p>
+                </div>
+                <div class="benefit-card">
+                    <div class="benefit-icon">
+                        <svg xmlns="http://www.w3.org/2000/svg" width="200" height="200" viewBox="0 0 28 28"><path fill="#0577da" d="M14 19a2 2 0 0 1-1.839-1.212a7.94 7.94 0 0 1-.951-.288l-.017-.006A7.997 7.997 0 0 1 8.708 16a8 8 0 1 1 13.257-6.75c.039.413-.3.75-.715.75c-.414 0-.745-.337-.793-.749A6.5 6.5 0 1 0 11.496 16l.04.017c.2.082.406.154.616.217a2 2 0 0 1 3.785 1.266A2 2 0 0 1 14 19Zm-7-1.5h1.169a9.554 9.554 0 0 1-1.518-1.48A3 3 0 0 0 4 19v.715C4 23.433 8.21 26 14 26s10-2.708 10-6.285V19a3 3 0 0 0-3-3h-3.645a3.5 3.5 0 0 1 .11 1.5H21l.145.007A1.5 1.5 0 0 1 22.5 19v.715l-.005.161c-.14 2.52-3.569 4.624-8.495 4.624c-5.111 0-8.5-2.111-8.5-4.785V19l.007-.145A1.5 1.5 0 0 1 7 17.5ZM19 10a5 5 0 0 1-2.644 4.411A3.487 3.487 0 0 0 14 13.5a3.5 3.5 0 1 0 0-7a3.5 3.5 0 0 0 0 7c-.908 0-1.734.346-2.355.912a5.024 5.024 0 0 1-1.932-1.838A5 5 0 1 1 19 10Z"/></svg>
+                    </div>
+                    <h3 class="benefit-title">Dedicated partner support</h3>
+                    <p class="benefit-description">Access a dedicated account manager, technical support team, and co-marketing opportunities. Benefit from regular training sessions, priority lead handling, and exclusive partner events to maximize your earning potential.</p>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- CTA Section -->
+    <div class="cta-section full-width">
+        <div class="cta-content">
+            <div class="cta-label">Partner With Us</div>
+            <h2 class="cta-title">Ready to grow your IT business?</h2>
+            <p class="cta-subtitle">Join our thriving network of successful IT partners and unlock <br> new revenue streams. Start earning today. The future of your business is waiting.</p>
+            <button class="btn-primary" onclick="window.location.href='page.html'">Apply Now</button>
+            <div class="privacy-notice">
+                We respect your privacy and are committed to protecting your business information. <br> Please read our <a href="page.html">Affiliate Programme Terms & Privacy Policy</a> carefully before applying.
+            </div>
+        </div>
+    </div>
+</body>
+</html>

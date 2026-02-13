@@ -1,0 +1,1319 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Affiliate</title>
+    
+    <script src="header.js" defer></script>
+    <script src="footer.js" defer></script> 
+</head>
+<body>
+
+    <cronos-header></cronos-header>
+    
+
+</body>
+</html>
+
+
+
+
+
+
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Defcon - Cloud Computing Services</title>
+    
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
+
+    <style>
+        /* ========================================
+        DEFCON CLOUD COMPUTING (DCF-CC) STYLES
+        ========================================
+        */
+
+        /* COMMENT: Root color palette and font definition */
+        :root {
+            --dcf-cc-color-primary: #1199fA; /* Accent Blue */
+            --dcf-cc-color-primary-darker: #0a74c3;
+            --dcf-cc-color-dark-bg: #151519;    /* Main Dark Background */
+            --dcf-cc-color-dark-surface: #1E1E22; /* Slightly Lighter Card/Surface */
+            --dcf-cc-color-white: #ffffff;
+            --dcf-cc-color-text: #f4f4f4;       /* Primary Text */
+            --dcf-cc-color-text-muted: #a0a0a0; /* Muted Text */
+            --dcf-cc-color-border: #3a3a40;     /* Borders */
+
+            --dcf-cc-font-family: 'Inter', -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
+        }
+
+        * {
+            margin: 0;
+            padding: 0;
+        }
+
+        /* COMMENT: Global Resets and Base Styles */
+        .dcf-cc-page-wrapper * {
+            box-sizing: border-box;
+            margin: 0;
+            padding: 0;
+        }
+
+        .dcf-cc-page-wrapper {
+            font-family: var(--dcf-cc-font-family);
+            background-color: var(--dcf-cc-color-dark-bg);
+            color: var(--dcf-cc-color-text);
+            overflow-x: hidden; /* Prevent horizontal scroll */
+        }
+
+        .dcf-cc-container {
+            width: 90%;
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 120px 0;
+            position: relative;
+            z-index: 2;
+        }
+
+        /* COMMENT: Reusable Utility Classes */
+        .dcf-cc-btn {
+            display: inline-block;
+            padding: 14px 28px;
+            font-family: var(--dcf-cc-font-family);
+            font-size: 16px;
+            font-weight: 600;
+            border-radius: 8px;
+            text-decoration: none;
+            transition: all 0.3s ease;
+            cursor: pointer;
+            border: none;
+        }
+
+        .dcf-cc-btn-primary {
+            background: linear-gradient(45deg, var(--dcf-cc-color-primary), var(--dcf-cc-color-primary-darker));
+            color: var(--dcf-cc-color-white);
+            box-shadow: 0 4px 15px rgba(17, 153, 250, 0.3);
+        }
+
+        .dcf-cc-btn-primary:hover {
+            transform: translateY(-3px);
+            box-shadow: 0 6px 20px rgba(17, 153, 250, 0.4);
+        }
+
+        .dcf-cc-btn-secondary {
+            background-color: transparent;
+            color: var(--dcf-cc-color-white);
+            border: 2px solid var(--dcf-cc-color-border);
+        }
+
+        .dcf-cc-btn-secondary:hover {
+            background-color: var(--dcf-cc-color-primary);
+            border-color: var(--dcf-cc-color-primary);
+        }
+
+        .dcf-cc-section-heading {
+            font-size: 44px;
+            font-weight: 700;
+            color: var(--dcf-cc-color-white);
+            margin-bottom: 20px;
+            text-align: center;
+        }
+
+        .dcf-cc-section-subheading {
+            font-size: 19px;
+            color: var(--dcf-cc-color-text-muted);
+            text-align: center;
+            max-width: 700px;
+            font-weight: 600;
+            margin: 0 auto 60px auto;
+        }
+        
+        .dcf-cc-accent-text {
+            color: var(--dcf-cc-color-primary);
+            font-weight: 700;
+        }
+
+        /* ========================================
+        1. HERO SECTION (dcf-cc-hero)
+        ========================================
+        */
+        .dcf-cc-hero-section {
+            position: relative;
+            height: 100vh;
+            min-height: 600px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            text-align: center;
+            background-color: var(--dcf-cc-color-dark-bg);
+            overflow: hidden;
+        }
+
+        .dcf-cc-hero-background {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            /* COMMENT: Replace with your actual background image URL */
+            background-image: url('https://images.pexels.com/photos/14171333/pexels-photo-14171333.jpeg');
+            background-size: cover;
+            background-position: center;
+            z-index: 1;
+        }
+
+        .dcf-cc-hero-overlay {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: linear-gradient(180deg, rgba(21, 21, 25, 0.9) 0%, rgba(21, 21, 25, 0.7) 50%, rgba(21, 21, 25, 0.9) 100%);
+            z-index: 2;
+        }
+
+        .dcf-cc-hero-content {
+            position: relative;
+            z-index: 3;
+            max-width: 900px;
+            padding: 0 20px;
+        }
+
+        .dcf-cc-hero-new-badge {
+            display: inline-block;
+            background-color: rgba(17, 153, 250, 0.1);
+            color: var(--dcf-cc-color-primary);
+            border: 1px solid rgba(17, 153, 250, 0.3);
+            padding: 8px 16px;
+            border-radius: 50px;
+            font-size: 14px;
+            font-weight: 600;
+            margin-bottom: 24px;
+        }
+
+        .dcf-cc-hero-headline {
+            font-size: 64px;
+            font-weight: 600;
+            color: var(--dcf-cc-color-white);
+            margin-bottom: 24px;
+            line-height: 1.2;
+            letter-spacing: -0.02em;
+        }
+
+        .dcf-cc-hero-subheadline {
+            font-size: 20px;
+            color: var(--dcf-cc-color-text);
+            margin-bottom: 40px;
+            max-width: 650px;
+            font-weight: 600;
+            margin-left: auto;
+            margin-right: auto;
+            line-height: 1.6;
+        }
+
+        .dcf-cc-hero-cta-group {
+            display: flex;
+            justify-content: center;
+            gap: 16px;
+        }
+        
+        /* COMMENT: Hero background 'glow' element */
+        .dcf-cc-hero-glow {
+            position: absolute;
+            width: 600px;
+            height: 600px;
+            background: radial-gradient(circle, rgba(17, 153, 250, 0.15) 0%, rgba(17, 153, 250, 0) 70%);
+            bottom: -300px;
+            left: 50%;
+            transform: translateX(-50%);
+            border-radius: 50%;
+            z-index: 1;
+            pointer-events: none;
+        }
+
+        /* ========================================
+        2. SERVICE OVERVIEW (dcf-cc-overview) - F-Layout
+        ========================================
+        */
+        .dcf-cc-overview-section {
+            background-color: var(--dcf-cc-color-dark-bg);
+        }
+        
+        .dcf-cc-overview-grid {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 60px;
+            align-items: center;
+        }
+        
+        .dcf-cc-overview-image-wrapper {
+            position: relative;
+            border-radius: 12px;
+            overflow: hidden;
+            box-shadow: 0 10px 30px rgba(0,0,0,0.3);
+        }
+
+        .dcf-cc-overview-image-wrapper img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            display: block;
+        }
+        
+        .dcf-cc-overview-image-wrapper::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: linear-gradient(-45deg, rgba(17, 153, 250, 0.2), transparent 50%);
+            z-index: 2;
+        }
+
+        .dcf-cc-overview-content .dcf-cc-content-tag {
+            font-size: 14px;
+            font-weight: 600;
+            color: var(--dcf-cc-color-primary);
+            margin-bottom: 16px;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+        }
+        
+        .dcf-cc-overview-content .dcf-cc-content-title {
+            font-size: 36px;
+            font-weight: 700;
+            color: var(--dcf-cc-color-white);
+            margin-bottom: 24px;
+        }
+        
+        .dcf-cc-overview-content .dcf-cc-content-description {
+            font-size: 16px;
+            color: var(--dcf-cc-color-text-muted);
+            line-height: 1.7;
+            margin-bottom: 32px;
+        }
+        
+        .dcf-cc-benefits-list {
+            list-style: none;
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 20px;
+        }
+        
+        .dcf-cc-benefits-item {
+            font-size: 16px;
+            font-weight: 500;
+            color: var(--dcf-cc-color-text);
+            display: flex;
+            align-items: center;
+            gap: 12px;
+        }
+        
+        .dcf-cc-benefits-item svg {
+            width: 20px;
+            height: 20px;
+            flex-shrink: 0;
+            color: var(--dcf-cc-color-primary);
+        }
+
+        /* ========================================
+        3. PRODUCTS (dcf-cc-products)
+        ========================================
+        */
+        .dcf-cc-products-section {
+            background-color: var(--dcf-cc-color-dark-surface);
+            border-top: 1px solid var(--dcf-cc-color-border);
+            border-bottom: 1px solid var(--dcf-cc-color-border);
+        }
+        
+        .dcf-cc-products-grid {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 30px;
+        }
+        
+        .dcf-cc-product-card {
+            background-color: var(--dcf-cc-color-dark-bg);
+            border: 1px solid var(--dcf-cc-color-border);
+            border-radius: 12px;
+            padding: 32px;
+            transition: all 0.3s ease;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .dcf-cc-product-card:hover {
+            transform: translateY(-8px);
+            border-color: var(--dcf-cc-color-primary);
+            box-shadow: 0 8px 25px rgba(17, 153, 250, 0.1);
+        }
+        
+        .dcf-cc-product-card-icon {
+            width: 50px;
+            height: 50px;
+            margin-bottom: 24px;
+            color: var(--dcf-cc-color-primary);
+        }
+        
+        .dcf-cc-product-card-title {
+            font-size: 22px;
+            font-weight: 600;
+            color: var(--dcf-cc-color-white);
+            margin-bottom: 16px;
+        }
+        
+        .dcf-cc-product-card-desc {
+            font-size: 17px;
+            font-weight: 500;
+            color: var(--dcf-cc-color-text-muted);
+            line-height: 1.1;
+        }
+
+        /* ========================================
+        4. PRICING TABLE (dcf-cc-pricing)
+        ========================================
+        */
+        .dcf-cc-pricing-section {
+             background: linear-gradient(180deg, var(--dcf-cc-color-dark-bg) 0%, #1a1a1e 100%);
+        }
+
+        .dcf-cc-pricing-toggle-wrap {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            gap: 16px;
+            margin-bottom: 40px;
+        }
+        
+        .dcf-cc-pricing-toggle-label {
+            font-size: 16px;
+            font-weight: 500;
+            color: var(--dcf-cc-color-text-muted);
+            transition: color 0.3s ease;
+        }
+        
+        .dcf-cc-pricing-toggle-label.active {
+            color: var(--dcf-cc-color-white);
+        }
+        
+        .dcf-cc-pricing-toggle {
+            position: relative;
+            display: inline-block;
+            width: 50px;
+            height: 26px;
+        }
+        
+        .dcf-cc-pricing-toggle-input {
+            opacity: 0;
+            width: 0;
+            height: 0;
+        }
+        
+        .dcf-cc-pricing-toggle-slider {
+            position: absolute;
+            cursor: pointer;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background-color: var(--dcf-cc-color-dark-surface);
+            border: 1px solid var(--dcf-cc-color-border);
+            transition: .4s;
+            border-radius: 26px;
+        }
+        
+        .dcf-cc-pricing-toggle-slider:before {
+            position: absolute;
+            content: "";
+            height: 18px;
+            width: 18px;
+            left: 3px;
+            bottom: 3px;
+            background-color: white;
+            transition: .4s;
+            border-radius: 50%;
+        }
+        
+        .dcf-cc-pricing-toggle-input:checked + .dcf-cc-pricing-toggle-slider {
+            background-color: var(--dcf-cc-color-primary);
+            border-color: var(--dcf-cc-color-primary);
+        }
+
+        .dcf-cc-pricing-toggle-input:checked + .dcf-cc-pricing-toggle-slider:before {
+            transform: translateX(24px);
+        }
+
+        .dcf-cc-pricing-table-wrapper {
+            overflow-x: auto; /* For mobile responsiveness */
+            border: 1px solid var(--dcf-cc-color-border);
+            border-radius: 1px;
+            background-color: var(--dcf-cc-color-dark-surface);
+            box-shadow: 0 10px 40px rgba(0,0,0,0.2);
+        }
+
+        .dcf-cc-pricing-table {
+            width: 100%;
+            min-width: 1000px; /* Force scroll on small screens */
+            border-collapse: collapse;
+            text-align: left;
+        }
+
+        .dcf-cc-pricing-table th,
+        .dcf-cc-pricing-table td {
+            padding: 24px;
+            vertical-align: top;
+        }
+
+        .dcf-cc-pricing-table thead th {
+            font-size: 14px;
+            font-weight: 600;
+            color: var(--dcf-cc-color-text-muted);
+            text-transform: uppercase;
+            letter-spacing: 0.5px;
+            border-bottom: 1px solid var(--dcf-cc-color-border);
+        }
+
+        .dcf-cc-pricing-table tbody tr {
+            border-bottom: 1px solid var(--dcf-cc-color-border);
+            transition: background-color 0.3s ease;
+        }
+
+        .dcf-cc-pricing-table tbody tr:last-child {
+            border-bottom: none;
+        }
+        
+        .dcf-cc-pricing-table tbody tr:hover {
+            background-color: var(--dcf-cc-color-dark-bg);
+        }
+
+        .dcf-cc-pricing-table .dcf-cc-product-name {
+            font-size: 18px;
+            font-weight: 600;
+            color: var(--dcf-cc-color-white);
+        }
+        
+        .dcf-cc-pricing-table .dcf-cc-product-desc {
+            font-size: 14px;
+            color: var(--dcf-cc-color-text-muted);
+            max-width: 300px;
+        }
+        
+        .dcf-cc-pricing-table .dcf-cc-features-list {
+            list-style: none;
+            padding: 0;
+            margin: 0;
+        }
+        
+        .dcf-cc-pricing-table .dcf-cc-features-list li {
+            font-size: 14px;
+            color: var(--dcf-cc-color-text);
+            margin-bottom: 8px;
+            display: flex;
+            align-items: center;
+            gap: 8px;
+        }
+        
+        .dcf-cc-pricing-table .dcf-cc-features-list li svg {
+            width: 16px;
+            height: 16px;
+            flex-shrink: 0;
+            color: var(--dcf-cc-color-primary);
+        }
+
+        .dcf-cc-pricing-table .dcf-cc-features-list li:last-child {
+            margin-bottom: 0;
+        }
+        
+        .dcf-cc-price-value {
+            font-size: 28px;
+            font-weight: 700;
+            color: var(--dcf-cc-color-white);
+            display: block;
+        }
+        
+        .dcf-cc-price-term {
+            font-size: 14px;
+            color: var(--dcf-cc-color-text-muted);
+        }
+
+        /* COMMENT: JS hook classes for price toggling */
+        .dcf-cc-price-yearly {
+            display: none; /* Hide yearly by default */
+        }
+        
+        .dcf-cc-price-static {
+            font-size: 18px;
+            font-weight: 600;
+            color: var(--dcf-cc-color-white);
+        }
+
+        /* ========================================
+        5. HOW IT WORKS (dcf-cc-how-it-works)
+        ========================================
+        */
+        .dcf-cc-how-it-works-section {
+            background-color: var(--dcf-cc-color-dark-bg);
+        }
+        
+        .dcf-cc-how-it-works-grid {
+            display: grid;
+            grid-template-columns: repeat(4, 1fr);
+            gap: 30px;
+            position: relative;
+        }
+        
+        /* COMMENT: Dashed line connecting steps (desktop) */
+        .dcf-cc-how-it-works-grid::before {
+            content: '';
+            position: absolute;
+            top: 40px; /* Position vertically center of the number */
+            left: 12.5%; /* Start after half of the first item */
+            width: 75%; /* Span across the middle items */
+            height: 2px;
+            background-image: linear-gradient(to right, var(--dcf-cc-color-border) 50%, transparent 50%);
+            background-size: 20px 2px;
+            z-index: 1;
+        }
+
+        .dcf-cc-how-it-works-step {
+            position: relative;
+            z-index: 2;
+            padding: 24px;
+            background-color: var(--dcf-cc-color-dark-surface);
+            border: 1px solid var(--dcf-cc-color-border);
+            border-radius: 12px;
+        }
+        
+        .dcf-cc-step-number {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            width: 80px;
+            height: 80px;
+            font-size: 32px;
+            font-weight: 700;
+            color: var(--dcf-cc-color-primary);
+            background-color: rgba(17, 153, 250, 0.1);
+            border: 1px solid rgba(17, 153, 250, 0.2);
+            border-radius: 50%;
+            margin-bottom: 24px;
+            box-shadow: 0 0 15px rgba(17, 153, 250, 0.1);
+        }
+        
+        .dcf-cc-step-title {
+            font-size: 20px;
+            font-weight: 600;
+            color: var(--dcf-cc-color-white);
+            margin-bottom: 12px;
+        }
+        
+        .dcf-cc-step-desc {
+            font-size: 14px;
+            color: var(--dcf-cc-color-text-muted);
+            line-height: 1.6;
+        }
+
+        /* ========================================
+        6. FEATURES DEEP DIVE (dcf-cc-features) - Z-Layout
+        ========================================
+        */
+        .dcf-cc-features-section {
+            background-color: var(--dcf-cc-color-dark-surface);
+            border-top: 1px solid var(--dcf-cc-color-border);
+        }
+        
+        .dcf-cc-feature-item {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 60px;
+            align-items: center;
+            margin-bottom: 80px;
+        }
+        
+        .dcf-cc-feature-item:last-child {
+            margin-bottom: 0;
+        }
+        
+        /* COMMENT: Z-Layout reversal */
+        .dcf-cc-feature-item:nth-child(even) .dcf-cc-feature-content {
+            order: 1;
+        }
+        
+        .dcf-cc-feature-item:nth-child(even) .dcf-cc-feature-image {
+            order: 2;
+        }
+
+        .dcf-cc-feature-image {
+            position: relative;
+            border-radius: 12px;
+            overflow: hidden;
+            background-color: var(--dcf-cc-color-dark-bg);
+            border: 1px solid var(--dcf-cc-color-border);
+        }
+        
+        .dcf-cc-feature-image img {
+            width: 100%;
+            height: auto;
+            display: block;
+            object-fit: cover;
+            opacity: 0.9;
+        }
+
+        .dcf-cc-feature-content .dcf-cc-content-tag {
+            font-size: 14px;
+            font-weight: 600;
+            color: var(--dcf-cc-color-primary);
+            margin-bottom: 16px;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+        }
+        
+        .dcf-cc-feature-content .dcf-cc-content-title {
+            font-size: 36px;
+            font-weight: 700;
+            color: var(--dcf-cc-color-white);
+            margin-bottom: 24px;
+        }
+        
+        .dcf-cc-feature-content .dcf-cc-content-description {
+            font-size: 16px;
+            color: var(--dcf-cc-color-text-muted);
+            line-height: 1.7;
+            margin-bottom: 32px;
+        }
+
+        /* ========================================
+        7. GETTING STARTED (dcf-cc-get-started)
+        ========================================
+        */
+        .dcf-cc-get-started-section {
+            background-color: var(--dcf-cc-color-dark-bg);
+        }
+        
+        .dcf-cc-get-started-container {
+            background: linear-gradient(135deg, var(--dcf-cc-color-dark-surface), #2a2a30);
+            border: 1px solid var(--dcf-cc-color-border);
+            border-radius: 16px;
+            padding: 60px;
+            text-align: center;
+            position: relative;
+            overflow: hidden;
+        }
+        
+        /* COMMENT: Glow effect for CTA box */
+        .dcf-cc-get-started-container::before {
+            content: '';
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            width: 80%;
+            height: 80%;
+            transform: translate(-50%, -50%);
+            background: radial-gradient(circle, rgba(17, 153, 250, 0.05) 0%, rgba(17, 153, 250, 0) 70%);
+            z-index: 1;
+            pointer-events: none;
+        }
+        
+        .dcf-cc-get-started-content {
+            position: relative;
+            z-index: 2;
+        }
+        
+        .dcf-cc-get-started-title {
+            font-size: 36px;
+            font-weight: 700;
+            color: var(--dcf-cc-color-white);
+            margin-bottom: 20px;
+        }
+        
+        .dcf-cc-get-started-desc {
+            font-size: 18px;
+            color: var(--dcf-cc-color-text-muted);
+            max-width: 600px;
+            margin: 0 auto 40px auto;
+        }
+
+        /* ========================================
+        8. FAQ (dcf-cc-faq)
+        ========================================
+        */
+        .dcf-cc-faq-section {
+            background-color: var(--dcf-cc-color-dark-bg);
+        }
+        
+        .dcf-cc-faq-container {
+            max-width: 900px;
+            margin: 0 auto;
+        }
+        
+        .dcf-cc-faq-item {
+            border-bottom: 1px solid var(--dcf-cc-color-border);
+        }
+        
+        .dcf-cc-faq-question {
+            width: 100%;
+            background: none;
+            border: none;
+            text-align: left;
+            padding: 24px 0;
+            font-family: var(--dcf-cc-font-family);
+            font-size: 21px;
+            font-weight: 600;
+            color: var(--dcf-cc-color-white);
+            cursor: pointer;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+        
+        .dcf-cc-faq-icon {
+            width: 20px;
+            height: 20px;
+            color: var(--dcf-cc-color-text-muted);
+            transition: transform 0.3s ease;
+            flex-shrink: 0;
+            margin-left: 16px;
+        }
+        
+        .dcf-cc-faq-item.active .dcf-cc-faq-icon {
+            transform: rotate(45deg);
+            color: var(--dcf-cc-color-primary);
+        }
+
+        .dcf-cc-faq-answer {
+            max-height: 0;
+            overflow: hidden;
+            transition: max-height 0.4s ease-out;
+        }
+        
+        .dcf-cc-faq-answer p {
+            font-size: 18px;
+            color: var(--dcf-cc-color-text-muted);
+            line-height: 1.7;
+            padding: 0 0 24px 0;
+        }
+
+        /* ========================================
+        RESPONSIVE STYLES
+        ========================================
+        */
+
+        @media (max-width: 1024px) {
+            .dcf-cc-section-heading {
+                font-size: 36px;
+            }
+
+            .dcf-cc-hero-headline {
+                font-size: 50px;
+            }
+            
+            .dcf-cc-overview-grid {
+                grid-template-columns: 1fr;
+            }
+            
+            .dcf-cc-products-grid {
+                grid-template-columns: 1fr 1fr;
+            }
+            
+            .dcf-cc-how-it-works-grid {
+                grid-template-columns: 1fr 1fr;
+            }
+            
+            .dcf-cc-how-it-works-grid::before {
+                display: none; /* Hide connector on tablet */
+            }
+
+            .dcf-cc-feature-item {
+                grid-template-columns: 1fr;
+            }
+            
+            /* COMMENT: Reset Z-Layout for mobile */
+            .dcf-cc-feature-item:nth-child(even) .dcf-cc-feature-content {
+                order: 2;
+            }
+            
+            .dcf-cc-feature-item:nth-child(even) .dcf-cc-feature-image {
+                order: 1;
+            }
+        }
+
+        @media (max-width: 768px) {
+            .dcf-cc-container {
+                padding: 60px 0;
+            }
+            
+            .dcf-cc-hero-headline {
+                font-size: 40px;
+            }
+            
+            .dcf-cc-hero-subheadline {
+                font-size: 18px;
+            }
+            
+            .dcf-cc-hero-cta-group {
+                flex-direction: column;
+                gap: 12px;
+                padding: 0 20px;
+            }
+            
+            .dcf-cc-products-grid {
+                grid-template-columns: 1fr;
+            }
+
+            .dcf-cc-how-it-works-grid {
+                grid-template-columns: 1fr;
+            }
+            
+            .dcf-cc-get-started-container {
+                padding: 40px 24px;
+            }
+            
+            .dcf-cc-get-started-title {
+                font-size: 28px;
+            }
+            
+            .dcf-cc-faq-question {
+                font-size: 16px;
+            }
+        }
+
+    </style>
+</head>
+<body>
+
+    <div class="dcf-cc-page-wrapper">
+
+        <section class="dcf-cc-hero-section">
+            <div class="dcf-cc-hero-background"></div>
+            <div class="dcf-cc-hero-overlay"></div>
+            <div class="dcf-cc-hero-glow"></div>
+            
+            <div class="dcf-cc-hero-content">
+                <span class="dcf-cc-hero-new-badge">Powered by Defcon AI</span>
+                <h1 class="dcf-cc-hero-headline">
+                    Elevate Your Infrastructure
+                </h1>
+                <p class="dcf-cc-hero-subheadline">
+                    Defcon Cloud Computing: Scalable, Secure, and Intelligent solutions designed to fuel your growth and streamline operations.
+                </p>
+                <div class="dcf-cc-hero-cta-group">
+                    <a href="#dcf-cc-pricing-section" class="dcf-cc-btn dcf-cc-btn-primary">View Pricing & Plans</a>
+                    <a href="#dcf-cc-get-started-section" class="dcf-cc-btn dcf-cc-btn-secondary">Schedule Consultation</a>
+                </div>
+            </div>
+        </section>
+
+        <section class="dcf-cc-overview-section">
+            <div class="dcf-cc-container">
+                <div class="dcf-cc-overview-grid">
+                    <div class="dcf-cc-overview-image-wrapper">
+                        <img src="thumbnails/pexels-resourceboy-18541715.jpg" alt="Defcon data center infrastructure">
+                    </div>
+                    <div class="dcf-cc-overview-content">
+                        <div class="dcf-cc-content-tag">The Defcon Difference</div>
+                        <h2 class="dcf-cc-content-title">Move Beyond Limits, Not Budgets</h2>
+                        <p class="dcf-cc-content-description">
+                            Traditional infrastructure is a bottleneck. Defcon's cloud platform is engineered for high performance and infinite scalability, allowing you to innovate faster, deploy quicker, and reduce operational overhead. We handle the complexity so you can focus on your code.
+                        </p>
+                        <ul class="dcf-cc-benefits-list">
+                            <li class="dcf-cc-benefits-item">
+                                <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 20 20" fill="currentColor"><path fill-rule="evenodd" d="M10 18a8 8 0 100-16 8 8 0 000 16zm3.857-9.809a.75.75 0 00-1.214-.882l-3.483 4.79-1.88-1.88a.75.75 0 10-1.06 1.061l2.5 2.5a.75.75 0 001.137-.089l4-5.5z" clip-rule="evenodd" /></svg>
+                                99.99% Uptime SLA
+                            </li>
+                            <li class="dcf-cc-benefits-item">
+                                <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 20 20" fill="currentColor"><path fill-rule="evenodd" d="M10 18a8 8 0 100-16 8 8 0 000 16zm3.857-9.809a.75.75 0 00-1.214-.882l-3.483 4.79-1.88-1.88a.75.75 0 10-1.06 1.061l2.5 2.5a.75.75 0 001.137-.089l4-5.5z" clip-rule="evenodd" /></svg>
+                                AI-Driven Security
+                            </li>
+                            <li class="dcf-cc-benefits-item">
+                                <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 20 20" fill="currentColor"><path fill-rule="evenodd" d="M10 18a8 8 0 100-16 8 8 0 000 16zm3.857-9.809a.75.75 0 00-1.214-.882l-3.483 4.79-1.88-1.88a.75.75 0 10-1.06 1.061l2.5 2.5a.75.75 0 001.137-.089l4-5.5z" clip-rule="evenodd" /></svg>
+                                Pay-As-You-Grow
+                            </li>
+                            <li class="dcf-cc-benefits-item">
+                                <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 20 20" fill="currentColor"><path fill-rule="evenodd" d="M10 18a8 8 0 100-16 8 8 0 000 16zm3.857-9.809a.75.75 0 00-1.214-.882l-3.483 4.79-1.88-1.88a.75.75 0 10-1.06 1.061l2.5 2.5a.75.75 0 001.137-.089l4-5.5z" clip-rule="evenodd" /></svg>
+                                24/7 Expert Support
+                            </li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <section class="dcf-cc-products-section">
+            <div class="dcf-cc-container">
+                <h2 class="dcf-cc-section-heading">Our Cloud Product Suite</h2>
+                <p class="dcf-cc-section-subheading">
+                    A comprehensive set of services to build, deploy, and manage applications at scale, from virtual machines to serverless code.
+                </p>
+                <div class="dcf-cc-products-grid">
+                    <div class="dcf-cc-product-card">
+                        <svg class="dcf-cc-product-card-icon" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" d="M21.75 17.25v-.228a4.5 4.5 0 00-.12-1.03l-2.268-9.64a3.375 3.375 0 00-3.285-2.602H7.923a3.375 3.375 0 00-3.285 2.602l-2.268 9.64a4.5 4.5 0 00-.12 1.03v.228m19.5 0a3 3 0 01-3 3H5.25a3 3 0 01-3-3m19.5 0a3 3 0 00-3-3H5.25a3 3 0 00-3 3m16.5 0h.008v.008h-.008v-.008zm-3 0h.008v.008h-.008v-.008z" /></svg>
+                        <h3 class="dcf-cc-product-card-title">Cloud Virtual Machines</h3>
+                        <p class="dcf-cc-product-card-desc">Secure and resizable compute capacity (IaaS). Deploy VMs in minutes with your choice of OS, storage, and networking.</p>
+                    </div>
+                    <div class="dcf-cc-product-card">
+                        <svg class="dcf-cc-product-card-icon" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" d="M6.75 7.5l3 2.25-3 2.25v-4.5zm3 2.25l3-2.25v4.5l-3-2.25zm3 2.25l3 2.25v-4.5l-3 2.25zM6.75 12l3 2.25-3 2.25v-4.5zm3 2.25l3-2.25v4.5l-3-2.25zm3 2.25l3 2.25v-4.5l-3 2.25zM3.75 12c0-1.036.84-1.875 1.875-1.875h12.75c1.035 0 1.875.84 1.875 1.875s-.84 1.875-1.875 1.875H5.625c-1.036 0-1.875-.84-1.875-1.875z" /></svg>
+                        <h3 class="dcf-cc-product-card-title">Cloud Kubernetes (DKE)</h3>
+                        <p class="dcf-cc-product-card-desc">Managed Kubernetes service for automating deployment, scaling, and management of containerized applications.</p>
+                    </div>
+                    <div class="dcf-cc-product-card">
+                        <svg class="dcf-cc-product-card-icon" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" d="M20.25 7.5l-.625 10.632a2.25 2.25 0 01-2.247 2.118H6.622a2.25 2.25 0 01-2.247-2.118L3.75 7.5M10.5 11.25h3M12 15V7.5" /><path stroke-linecap="round" stroke-linejoin="round" d="M3.75 7.5H20.25M3.75 7.5A2.25 2.25 0 015.25 5.25h13.5a2.25 2.25 0 011.5 2.25" /></svg>
+                        <h3 class="dcf-cc-product-card-title">Cloud Storage</h3>
+                        <p class="dcf-cc-product-card-desc">Scalable object storage (S3-compatible) and high-performance block storage for all your data needs, from backups to big data.</p>
+                    </div>
+                    <div class="dcf-cc-product-card">
+                        <svg class="dcf-cc-product-card-icon" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" d="M4.034 15.118A9 9 0 013 12v-1.5M4.034 15.118l.028.018a9 9 0 013.858 1.85m-3.886-1.868a9 9 0 01-1.562-3.045m1.562 3.045a9 9 0 003.886 1.868M7.922 16.968a9 9 0 003.886-1.868M3 10.5v.153c0 3.045 1.562 5.86 4.034 7.458l.028.018a9 9 0 007.976 0l.028-.018c2.472-1.598 4.034-4.413 4.034-7.458V10.5M3 10.5c0-3.138 2.55-5.69 5.706-5.69h6.588C18.45 4.81 21 7.361 21 10.5M12 4.81v6m0 0v6m0-6h.008v.008H12v-.008z" /></svg>
+                        <h3 class="dcf-cc-product-card-title">Cloud Database</h3>
+                        <p class="dcf-cc-product-card-desc">Fully managed SQL (PostgreSQL, MySQL) and NoSQL (MongoDB) databases. We handle patching, backups, and scaling.</p>
+                    </div>
+                    <div class="dcf-cc-product-card">
+                        <svg class="dcf-cc-product-card-icon" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" d="M17.25 6.75l-5.25 5.25-5.25-5.25m5.25 5.25l-5.25 5.25m5.25-5.25l5.25 5.25m5.25-5.25l-5.25-5.25m0 0l-5.25 5.25m5.25-5.25l5.25 5.25" /></svg>
+                        <h3 class="dcf-cc-product-card-title">Cloud Serverless</h3>
+                        <p class="dcf-cc-product-card-desc">Run code without provisioning servers (FaaS). Pay only for the compute time you consume, down to the millisecond.</p>
+                    </div>
+                    <div class="dcf-cc-product-card">
+                        <svg class="dcf-cc-product-card-icon" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" d="M8.288 15.038a5.25 5.25 0 017.424 0M5.106 11.856c3.807-3.808 9.98-3.808 13.788 0M1.924 8.674c5.565-5.565 14.587-5.565 20.152 0M12 20.25h.008v.008H12v-.008z" /></svg>
+                        <h3 class="dcf-cc-product-card-title">Cloud Networking</h3>
+                        <p class="dcf-cc-product-card-desc">Create isolated networks with VPCs, manage traffic with Load Balancers, and secure your perimeter with our Cloud Firewall.</p>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <section class="dcf-cc-pricing-section" id="dcf-cc-pricing-section">
+            <div class="dcf-cc-container">
+                <h2 class="dcf-cc-section-heading">Transparent, Predictable Pricing</h2>
+                <p class="dcf-cc-section-subheading">
+                    Choose the plan that fits your needs. Scale up or down anytime. Save more with annual commitments.
+                </p>
+
+                <div class="dcf-cc-pricing-toggle-wrap">
+                    <span class="dcf-cc-pricing-toggle-label active" id="dcf-cc-toggle-label-monthly">Monthly</span>
+                    <label class="dcf-cc-pricing-toggle">
+                        <input type="checkbox" class="dcf-cc-pricing-toggle-input" id="dcf-cc-pricing-toggle-input">
+                        <span class="dcf-cc-pricing-toggle-slider"></span>
+                    </label>
+                    <span class="dcf-cc-pricing-toggle-label" id="dcf-cc-toggle-label-yearly">Yearly (Save 10%)</span>
+                </div>
+
+                <div class="dcf-cc-pricing-table-wrapper">
+                    <table class="dcf-cc-pricing-table">
+                        <thead>
+                            <tr>
+                                <th>Product</th>
+                                <th>Description</th>
+                                <th>Key Features</th>
+                                <th>Pricing</th>
+                                <th></th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <tr class="dcf-cc-price-toggleable">
+                                <td>
+                                    <div class="dcf-cc-product-name">VM Starter</div>
+                                </td>
+                                <td>
+                                    <div class="dcf-cc-product-desc">Perfect for development, testing, and small web applications.</div>
+                                </td>
+                                <td>
+                                    <ul class="dcf-cc-features-list">
+                                        <li><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 16 16" fill="currentColor"><path d="M8 15A7 7 0 1 1 8 1a7 7 0 0 1 0 14Zm3.844-8.707.001-.002-3.375 3.374a.75.75 0 0 1-1.06 0L5.156 7.41a.75.75 0 0 1 1.06-1.06l1.75 1.75 2.813-2.814a.75.75 0 1 1 1.06 1.06Z" /></svg> 1 vCPU (Shared)</li>
+                                        <li><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 16 16" fill="currentColor"><path d="M8 15A7 7 0 1 1 8 1a7 7 0 0 1 0 14Zm3.844-8.707.001-.002-3.375 3.374a.75.75 0 0 1-1.06 0L5.156 7.41a.75.75 0 0 1 1.06-1.06l1.75 1.75 2.813-2.814a.75.75 0 1 1 1.06 1.06Z" /></svg> 2 GB RAM</li>
+                                        <li><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 16 16" fill="currentColor"><path d="M8 15A7 7 0 1 1 8 1a7 7 0 0 1 0 14Zm3.844-8.707.001-.002-3.375 3.374a.75.75 0 0 1-1.06 0L5.156 7.41a.75.75 0 0 1 1.06-1.06l1.75 1.75 2.813-2.814a.75.75 0 1 1 1.06 1.06Z" /></svg> 50 GB SSD Storage</li>
+                                    </ul>
+                                </td>
+                                <td>
+                                    <div class="dcf-cc-price-monthly">
+                                        <span class="dcf-cc-price-value">$50</span>
+                                        <span class="dcf-cc-price-term">/ per month</span>
+                                    </div>
+                                    <div class="dcf-cc-price-yearly">
+                                        <span class="dcf-cc-price-value">$540</span>
+                                        <span class="dcf-cc-price-term">/ per year</span>
+                                    </div>
+                                </td>
+                                <td>
+                                    <a href="#" class="dcf-cc-btn dcf-cc-btn-secondary">Deploy Now</a>
+                                </td>
+                            </tr>
+                            
+                            <tr class="dcf-cc-price-toggleable">
+                                <td>
+                                    <div class="dcf-cc-product-name">Managed Kubernetes</div>
+                                </td>
+                                <td>
+                                    <div class="dcf-cc-product-desc">Managed control plane for your containerized workloads.</div>
+                                </td>
+                                <td>
+                                    <ul class="dcf-cc-features-list">
+                                        <li><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 16 16" fill="currentColor"><path d="M8 15A7 7 0 1 1 8 1a7 7 0 0 1 0 14Zm3.844-8.707.001-.002-3.375 3.374a.75.75 0 0 1-1.06 0L5.156 7.41a.75.75 0 0 1 1.06-1.06l1.75 1.75 2.813-2.814a.75.75 0 1 1 1.06 1.06Z" /></svg> Free Control Plane</li>
+                                        <li><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 16 16" fill="currentColor"><path d="M8 15A7 7 0 1 1 8 1a7 7 0 0 1 0 14Zm3.844-8.707.001-.002-3.375 3.374a.75.75 0 0 1-1.06 0L5.156 7.41a.75.75 0 0 1 1.06-1.06l1.75 1.75 2.813-2.814a.75.75 0 1 1 1.06 1.06Z" /></svg> Auto-Scaling Nodes</li>
+                                        <li><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 16 16" fill="currentColor"><path d="M8 15A7 7 0 1 1 8 1a7 7 0 0 1 0 14Zm3.844-8.707.001-.002-3.375 3.374a.75.75 0 0 1-1.06 0L5.156 7.41a.75.75 0 0 1 1.06-1.06l1.75 1.75 2.813-2.814a.75.75 0 1 1 1.06 1.06Z" /></svg> Integrated Load Balancing</li>
+                                    </ul>
+                                </td>
+                                <td>
+                                    <div class="dcf-cc-price-monthly">
+                                        <span class="dcf-cc-price-value">$300</span>
+                                        <span class="dcf-cc-price-term">/ per month (plus node costs)</span>
+                                    </div>
+                                    <div class="dcf-cc-price-yearly">
+                                        <span class="dcf-cc-price-value">$3,240</span>
+                                        <span class="dcf-cc-price-term">/ per year (plus node costs)</span>
+                                    </div>
+                                </td>
+                                <td>
+                                    <a href="#" class="dcf-cc-btn dcf-cc-btn-secondary">Deploy Now</a>
+                                </td>
+                            </tr>
+
+                            <tr>
+                                <td>
+                                    <div class="dcf-cc-product-name">Object Storage</div>
+                                </td>
+                                <td>
+                                    <div class="dcf-cc-product-desc">S3-compatible storage for backups, archives, and static assets.</div>
+                                </td>
+                                <td>
+                                    <ul class="dcf-cc-features-list">
+                                        <li><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 16 16" fill="currentColor"><path d="M8 15A7 7 0 1 1 8 1a7 7 0 0 1 0 14Zm3.844-8.707.001-.002-3.375 3.374a.75.75 0 0 1-1.06 0L5.156 7.41a.75.75 0 0 1 1.06-1.06l1.75 1.75 2.813-2.814a.75.75 0 1 1 1.06 1.06Z" /></svg> 99.9999% Durability</li>
+                                        <li><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 16 16" fill="currentColor"><path d="M8 15A7 7 0 1 1 8 1a7 7 0 0 1 0 14Zm3.844-8.707.001-.002-3.375 3.374a.75.75 0 0 1-1.06 0L5.156 7.41a.75.75 0 0 1 1.06-1.06l1.75 1.75 2.813-2.814a.75.75 0 1 1 1.06 1.06Z" /></svg> No Data Ingress Fees</li>
+                                        <li><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 16 16" fill="currentColor"><path d="M8 15A7 7 0 1 1 8 1a7 7 0 0 1 0 14Zm3.844-8.707.001-.002-3.375 3.374a.75.75 0 0 1-1.06 0L5.156 7.41a.75.75 0 0 1 1.06-1.06l1.75 1.75 2.813-2.814a.75.75 0 1 1 1.06 1.06Z" /></svg> Global CDN Integration</li>
+                                    </ul>
+                                </td>
+                                <td>
+                                    <div class="dcf-cc-price-static">Pay-As-You-Go</div>
+                                    <span class="dcf-cc-price-term">$0.02 per GB/month</span>
+                                </td>
+                                <td>
+                                    <a href="#" class="dcf-cc-btn dcf-cc-btn-secondary">Start Storing</a>
+                                </td>
+                            </tr>
+                        </tbody>
+                    </table>
+                </div>
+            </div>
+        </section>
+        
+        <section class="dcf-cc-how-it-works-section">
+            <div class="dcf-cc-container">
+                <h2 class="dcf-cc-section-heading">Your Journey to the Cloud</h2>
+                <p class="dcf-cc-section-subheading">
+                    We follow a proven 4-step process to ensure a seamless and successful migration, minimizing disruption and maximizing value.
+                </p>
+                <div class="dcf-cc-how-it-works-grid">
+                    <div class="dcf-cc-how-it-works-step">
+                        <div class="dcf-cc-step-number">01</div>
+                        <h3 class="dcf-cc-step-title">Discovery & Analysis</h3>
+                        <p class="dcf-cc-step-desc">We map your current infrastructure, applications, and business goals to design a bespoke cloud strategy.</p>
+                    </div>
+                    <div class="dcf-cc-how-it-works-step">
+                        <div class="dcf-cc-step-number">02</div>
+                        <h3 class="dcf-cc-step-title">Architect & Design</h3>
+                        <p class="dcf-cc-step-desc">Our certified architects design a secure, scalable, and resilient cloud environment tailored to your needs.</p>
+                    </div>
+                    <div class="dcf-cc-how-it-works-step">
+                        <div class="dcf-cc-step-number">03</div>
+                        <h3 class="dcf-cc-step-title">Migrate & Deploy</h3>
+                        <p class="dcf-cc-step-desc">A phased, zero-downtime migration plan to move your workloads safely. New applications are deployed via CI/CD pipelines.</p>
+                    </div>
+                    <div class="dcf-cc-how-it-works-step">
+                        <div class="dcf-cc-step-number">04</div>
+                        <h3 class="dcf-cc-step-title">Optimize & Manage</h3>
+                        <p class="dcf-cc-step-desc">Continuous monitoring, cost optimization, and 24/7 managed support to ensure your environment is always performant.</p>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <section class="dcf-cc-features-section">
+            <div class="dcf-cc-container">
+                
+                <div class="dcf-cc-feature-item">
+                    <div class="dcf-cc-feature-image">
+                        <img src="thumbnails/pexels-inspiredimages-5626726.jpg" alt="Global network map">
+                    </div>
+                    <div class="dcf-cc-feature-content">
+                        <div class="dcf-cc-content-tag">Security First</div>
+                        <h2 class="dcf-cc-content-title">Ironclad Security & Compliance</h2>
+                        <p class="dcf-cc-content-description">
+                            Your trust is our top priority. Our platform is built with AI-powered threat detection, network-level firewalls, and data encryption at rest and in transit. We provide all the tools you need to meet rigorous compliance standards like PCI, HIPAA, and GDPR.
+                        </p>
+                        <a href="#" class="dcf-cc-btn dcf-cc-btn-secondary">Explore Security Features</a>
+                    </div>
+                </div>
+
+                <div class="dcf-cc-feature-item">
+                    <div class="dcf-cc-feature-image">
+                        <img src="thumbnails/pexels-serpstat-177219-572056.jpg" alt="Developers collaborating on API">
+                    </div>
+                    <div class="dcf-cc-feature-content">
+                        <div class="dcf-cc-content-tag">Developer Ready</div>
+                        <h2 class="dcf-cc-content-title">Built for Developers, Loved by Teams</h2>
+                        <p class="dcf-cc-content-description">
+                            Stop fighting your infrastructure. With our comprehensive APIs, CLI, and Terraform provider, you can automate everything. Integrate seamlessly with your existing CI/CD pipelines to build, test, and deploy faster than ever before.
+                        </p>
+                        <a href="#" class="dcf-cc-btn dcf-cc-btn-secondary">Read API Documentation</a>
+                    </div>
+                </div>
+
+            </div>
+        </section>
+
+        <section class="dcf-cc-get-started-section" id="dcf-cc-get-started-section">
+            <div class="dcf-cc-container">
+                <div class="dcf-cc-get-started-container">
+                    <div class="dcf-cc-get-started-content">
+                        <h2 class="dcf-cc-get-started-title">Ready to Ascend to the Cloud?</h2>
+                        <p class="dcf-cc-get-started-desc">
+                            Let our cloud architects show you what's possible. Schedule a free, no-obligation consultation to discuss your goals, challenges, and how Defcon can help you succeed.
+                        </p>
+                        <a href="#" class="dcf-cc-btn dcf-cc-btn-primary">Schedule Your Free Consultation</a>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <section class="dcf-cc-faq-section">
+            <div class="dcf-cc-container dcf-cc-faq-container">
+                <h2 class="dcf-cc-section-heading">Frequently Asked Questions</h2>
+                <p class="dcf-cc-section-subheading">
+                    Have more questions? We've got answers.
+                </p>
+
+                <div class="dcf-cc-faq-list">
+                    <div class="dcf-cc-faq-item">
+                        <button class="dcf-cc-faq-question" aria-expanded="false">
+                            What cloud models do you support (IaaS, PaaS, SaaS)?
+                            <svg class="dcf-cc-faq-icon" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" d="M12 4.5v15m7.5-7.5h-15" /></svg>
+                        </button>
+                        <div class="dcf-cc-faq-answer">
+                            <p>We primarily offer Infrastructure-as-a-Service (IaaS) with products like Virtual Machines and Block Storage, and Platform-as-a-Service (PaaS) with our Managed Kubernetes and Managed Databases. This gives you the most flexibility and control, while we manage the underlying hardware and platform stability.</p>
+                        </div>
+                    </div>
+                    <div class="dcf-cc-faq-item">
+                        <button class="dcf-cc-faq-question" aria-expanded="false">
+                            How do you handle data security and compliance?
+                            <svg class="dcf-cc-faq-icon" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" d="M12 4.5v15m7.5-7.5h-15" /></svg>
+                        </button>
+                        <div class="dcf-cc-faq-answer">
+                            <p>Security is our foundation. All data is encrypted at rest (AES-256) and in-transit (TLS 1.2+). Our data centers are certified for SOC 2, ISO 27001, and we provide tools to help you maintain HIPAA and PCI-DSS compliance. Our AI-powered security center monitors for threats 24/7.</p>
+                        </div>
+                    </div>
+                    <div class="dcf-cc-faq-item">
+                        <button class="dcf-cc-faq-question" aria-expanded="false">
+                            What is the migration process like?
+                            <svg class="dcf-cc-faq-icon" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" d="M12 4.5v15m7.5-7.5h-15" /></svg>
+                        </button>
+                        <div class="dcf-cc-faq-answer">
+                            <p>Our migrations are planned in 4 phases: Discover, Architect, Migrate, and Optimize. We use a "lift-and-shift" or "re-platform" approach based on your needs. For critical applications, we plan for parallel environments to ensure zero downtime during the final cutover.</p>
+                        </div>
+                    </div>
+                    <div class="dcf-cc-faq-item">
+                        <button class="dcf-cc-faq-question" aria-expanded="false">
+                            How does "Pay-As-You-Go" billing work?
+                            <svg class="dcf-cc-faq-icon" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" d="M12 4.5v15m7.5-7.5h-15" /></svg>
+                        </button>
+                        <div class="dcf-cc-faq-answer">
+                            <p>For services like Object Storage and Serverless, you are billed only for what you use, calculated per-hour or per-GB. For IaaS products like VMs, you are billed hourly for the resources you provision, whether they are running or stopped. You can see a real-time cost breakdown in your control panel.</p>
+                        </div>
+                    </div>
+                </div>
+
+            </div>
+        </section>
+
+    </div>
+    
+    <script>
+        /* COMMENT: Wait for the DOM to be fully loaded before running scripts */
+        document.addEventListener('DOMContentLoaded', function() {
+
+            /* ========================================
+            PRICING TOGGLE LOGIC
+            ========================================
+            */
+            const pricingToggle = document.getElementById('dcf-cc-pricing-toggle-input');
+            const labelMonthly = document.getElementById('dcf-cc-toggle-label-monthly');
+            const labelYearly = document.getElementById('dcf-cc-toggle-label-yearly');
+            
+            // Find all toggleable rows
+            const toggleableRows = document.querySelectorAll('.dcf-cc-price-toggleable');
+
+            if (pricingToggle) {
+                pricingToggle.addEventListener('change', function() {
+                    const isYearly = this.checked;
+
+                    // Update labels
+                    if (isYearly) {
+                        labelMonthly.classList.remove('active');
+                        labelYearly.classList.add('active');
+                    } else {
+                        labelMonthly.classList.add('active');
+                        labelYearly.classList.remove('active');
+                    }
+                    
+                    // Iterate ONLY over the toggleable rows
+                    toggleableRows.forEach(row => {
+                        const monthlyPrice = row.querySelector('.dcf-cc-price-monthly');
+                        const yearlyPrice = row.querySelector('.dcf-cc-price-yearly');
+
+                        if (monthlyPrice && yearlyPrice) {
+                            if (isYearly) {
+                                monthlyPrice.style.display = 'none';
+                                yearlyPrice.style.display = 'block';
+                            } else {
+                                monthlyPrice.style.display = 'block';
+                                yearlyPrice.style.display = 'none';
+                            }
+                        }
+                    });
+                });
+            }
+
+            /* ========================================
+            FAQ ACCORDION LOGIC
+            ========================================
+            */
+            const faqItems = document.querySelectorAll('.dcf-cc-faq-item');
+
+            faqItems.forEach(item => {
+                const questionButton = item.querySelector('.dcf-cc-faq-question');
+                const answerPanel = item.querySelector('.dcf-cc-faq-answer');
+
+                if (questionButton && answerPanel) {
+                    questionButton.addEventListener('click', () => {
+                        const isOpening = !item.classList.contains('active');
+
+                        // Optional: Close all other items
+                        // faqItems.forEach(otherItem => {
+                        //     otherItem.classList.remove('active');
+                        //     otherItem.querySelector('.dcf-cc-faq-question').setAttribute('aria-expanded', 'false');
+                        //     otherItem.querySelector('.dcf-cc-faq-answer').style.maxHeight = null;
+                        // });
+
+                        if (isOpening) {
+                            item.classList.add('active');
+                            questionButton.setAttribute('aria-expanded', 'true');
+                            // Set max-height to the panel's scroll height so CSS transition works
+                            answerPanel.style.maxHeight = answerPanel.scrollHeight + 'px';
+                        } else {
+                            item.classList.remove('active');
+                            questionButton.setAttribute('aria-expanded', 'false');
+                            answerPanel.style.maxHeight = null;
+                        }
+                    });
+                }
+            });
+
+        });
+    </script>
+
+    <cronos-footer></cronos-footer>
+
+</body>
+</html>

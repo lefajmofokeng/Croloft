@@ -1,0 +1,427 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Enterprise Solution Architect | Premium Quote Console</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
+    <style>
+        :root {
+            --brand-dark: #080d1b;
+            --brand-blue: #0091ff;
+            --brand-white: #ffffff;
+            --brand-bg: #f4f4f4;
+            --text-main: #1e293b;
+            --text-muted: #64748b;
+            --border-color: #e2e8f0;
+        }
+
+        * { box-sizing: border-box; }
+        body {
+            font-family: 'Inter', sans-serif;
+            background-color: var(--brand-bg);
+            color: var(--text-main);
+            margin: 0;
+            line-height: 1.6;
+        }
+
+        /* Hero & Header */
+        .hero {
+            background-color: var(--brand-dark);
+            color: var(--brand-white);
+            padding: 3.5rem 2rem;
+            text-align: center;
+        }
+
+        .hero h1 {
+            font-size: 2.25rem;
+            font-weight: 800;
+            margin: 0;
+            letter-spacing: -0.025em;
+        }
+
+        .hero p {
+            color: #94a3b8;
+            margin-top: 0.5rem;
+            font-weight: 400;
+        }
+
+        /* Sticky Real-Time Summary Bar */
+        .summary-bar {
+            position: sticky;
+            top: 0;
+            z-index: 1000;
+            background: rgba(8, 13, 27, 0.98);
+            border-bottom: 3px solid var(--brand-blue);
+            color: white;
+            padding: 1.25rem 2rem;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            box-shadow: 0 10px 15px -3px rgba(0,0,0,0.1);
+        }
+
+        .summary-group { display: flex; gap: 3rem; }
+        .summary-item span { display: block; font-size: 0.7rem; text-transform: uppercase; color: #94a3b8; font-weight: 700; letter-spacing: 0.05em; }
+        .summary-item b { font-size: 1.35rem; color: var(--brand-blue); }
+        .summary-item.capex b { color: var(--brand-white); }
+
+        /* Container Layout */
+        .main-grid {
+            max-width: 1300px;
+            margin: 2rem auto;
+            display: grid;
+            grid-template-columns: 320px 1fr;
+            gap: 2.5rem;
+            padding: 0 1.5rem;
+        }
+
+        /* Navigation Sidebar */
+        .sidebar {
+            background: white;
+            padding: 2rem;
+            border-radius: 4px;
+            height: fit-content;
+            box-shadow: 0 4px 6px -1px rgba(0,0,0,0.05);
+        }
+
+        .nav-category { margin-bottom: 2rem; }
+        .nav-category h4 {
+            font-size: 0.75rem;
+            text-transform: uppercase;
+            color: var(--brand-blue);
+            border-bottom: 1px solid var(--border-color);
+            padding-bottom: 0.5rem;
+            margin-bottom: 1rem;
+        }
+
+        .nav-link {
+            display: flex;
+            align-items: center;
+            gap: 10px;
+            padding: 0.6rem 0;
+            font-weight: 600;
+            font-size: 0.95rem;
+            cursor: pointer;
+            color: var(--text-main);
+            transition: color 0.2s;
+        }
+
+        .nav-link:hover { color: var(--brand-blue); }
+        .nav-link input { width: 18px; height: 18px; accent-color: var(--brand-blue); cursor: pointer; }
+
+        /* Configuration Cards */
+        .config-card {
+            background: white;
+            padding: 2.5rem;
+            margin-bottom: 2rem;
+            border-radius: 4px;
+            box-shadow: 0 10px 15px -3px rgba(0,0,0,0.05);
+            display: none; /* Hidden until checked */
+            animation: slideUp 0.3s ease-out;
+        }
+
+        @keyframes slideUp { from { opacity: 0; transform: translateY(15px); } to { opacity: 1; transform: translateY(0); } }
+
+        .card-header { margin-bottom: 2rem; border-bottom: 1px solid var(--border-color); padding-bottom: 1rem; }
+        .card-header h2 { font-size: 1.5rem; margin: 0; display: flex; align-items: center; gap: 15px; }
+
+        .badge { font-size: 0.65rem; padding: 4px 10px; border-radius: 2px; font-weight: 800; letter-spacing: 0.05em; }
+        .badge-opex { background: #e0f2fe; color: #0070cc; }
+        .badge-capex { background: #fef3c7; color: #92400e; }
+
+        /* Form Controls */
+        .form-row { display: grid; grid-template-columns: 1fr 1fr; gap: 2rem; margin-bottom: 1.5rem; }
+        .field { margin-bottom: 1.5rem; }
+        label { display: block; font-weight: 700; font-size: 0.85rem; margin-bottom: 0.5rem; color: #475569; }
+        
+        select, input {
+            width: 100%;
+            padding: 0.9rem;
+            border: 1px solid var(--border-color);
+            background: #f8fafc;
+            border-radius: 2px;
+            font-family: inherit;
+            font-size: 0.95rem;
+            transition: border-color 0.2s;
+        }
+
+        select:focus, input:focus { border-color: var(--brand-blue); outline: none; background: #fff; }
+
+        .price-info { float: right; color: var(--brand-blue); font-weight: 700; }
+
+        .clear-btn {
+            background: transparent;
+            border: 1px solid #475569;
+            color: #94a3b8;
+            padding: 0.6rem 1.2rem;
+            font-size: 0.75rem;
+            font-weight: 700;
+            text-transform: uppercase;
+            cursor: pointer;
+            transition: all 0.2s;
+        }
+        .clear-btn:hover { border-color: white; color: white; }
+
+        @media (max-width: 1024px) {
+            .main-grid { grid-template-columns: 1fr; }
+            .summary-bar { flex-direction: column; gap: 1.5rem; text-align: center; }
+            .summary-group { gap: 1rem; }
+        }
+    </style>
+</head>
+<body>
+
+    <header class="hero">
+        <div class="hprn-pricing-container">
+            <h1>Solution Configuration Console</h1>
+            <p>Design your enterprise infrastructure with real-time cost modeling.</p>
+        </div>
+    </header>
+
+    <div class="summary-bar">
+        <div class="summary-group">
+            <div class="summary-item">
+                <span>Monthly Recurring (OpEx)</span>
+                <b id="monthly-val">R 0.00</b>
+            </div>
+            <div class="summary-item capex">
+                <span>Setup / Once-off (CapEx)</span>
+                <b id="capex-val">R 0.00</b>
+            </div>
+            <div class="summary-item">
+                <span>Annualized (10% Discount)</span>
+                <b id="annual-val">R 0.00</b>
+            </div>
+        </div>
+        <button class="clear-btn" onclick="window.location.reload()">Reset Architect</button>
+    </div>
+
+    <div class="main-grid">
+        <aside class="sidebar">
+            <div class="nav-category">
+                <h4>Software & AI</h4>
+                <label class="nav-link"><input type="checkbox" data-target="soft-dev"> Software Development</label>
+                <label class="nav-link"><input type="checkbox" data-target="ai-auto"> AI & Automation</label>
+                <label class="nav-link"><input type="checkbox" data-target="ecom"> E-commerce Solutions</label>
+            </div>
+            <div class="nav-category">
+                <h4>Managed Infrastructure</h4>
+                <label class="nav-link"><input type="checkbox" data-target="managed-it"> Managed IT Support</label>
+                <label class="nav-link"><input type="checkbox" data-target="cloud-infra"> Cloud & Storage</label>
+            </div>
+            <div class="nav-category">
+                <h4>Creative Studio</h4>
+                <label class="nav-link"><input type="checkbox" data-target="digital-mkt"> Digital Marketing</label>
+                <label class="nav-link"><input type="checkbox" data-target="creative"> Design & Branding</label>
+            </div>
+        </aside>
+
+        <main id="config-workspace">
+            
+            <section class="config-card" id="soft-dev">
+                <div class="card-header">
+                    <h2>Software Development <span class="badge badge-capex">CapEx</span></h2>
+                </div>
+                <div class="field">
+                    <label>Base Application Tier <span class="price-info">Setup Cost</span></label>
+                    <select name="soft-tier" class="calc-trigger">
+                        <option value="0">Select Tier...</option>
+                        <option value="45000">Startup MVP (Web/App) - R 45,000</option>
+                        <option value="95000">Corporate Enterprise Suite - R 95,000</option>
+                        <option value="180000">Custom SaaS Ecosystem - R 180,000</option>
+                    </select>
+                </div>
+                <div class="form-row">
+                    <div class="field">
+                        <label>Additional Features/Screens (R 6,500 ea)</label>
+                        <input type="number" name="soft-screens" value="0" min="0" class="calc-trigger">
+                    </div>
+                    <div class="field">
+                        <label>API Integrations (R 12,000 ea)</label>
+                        <input type="number" name="soft-apis" value="0" min="0" class="calc-trigger">
+                    </div>
+                </div>
+            </section>
+
+            <section class="config-card" id="ai-auto">
+                <div class="card-header">
+                    <h2>AI & Automation <span class="badge badge-opex">OpEx</span></h2>
+                </div>
+                <div class="field">
+                    <label>Automation Service</label>
+                    <select name="ai-service" class="calc-trigger">
+                        <option value="0">None</option>
+                        <option value="12000">Intelligent Customer Bot - R 12,000/mo</option>
+                        <option value="25000">AI Internal Workflow Agent - R 25,000/mo</option>
+                        <option value="55000">Full Enterprise Cognitive Core - R 55,000/mo</option>
+                    </select>
+                </div>
+                <div class="field">
+                    <label>Once-off Implementation/Training Fee (CapEx)</label>
+                    <select name="ai-setup" class="calc-trigger">
+                        <option value="0">R 0.00</option>
+                        <option value="35000">Standard Data Training - R 35,000</option>
+                        <option value="85000">Deep Learning Integration - R 85,000</option>
+                    </select>
+                </div>
+            </section>
+
+            <section class="config-card" id="managed-it">
+                <div class="card-header">
+                    <h2>Managed IT & Consulting <span class="badge badge-opex">OpEx</span></h2>
+                </div>
+                <div class="field">
+                    <label>SLA Support Tier</label>
+                    <select name="it-sla" class="calc-trigger">
+                        <option value="0">None</option>
+                        <option value="8500">Essential (8/5 Support) - R 8,500/mo</option>
+                        <option value="22000">Premium (24/7 Managed) - R 22,000/mo</option>
+                        <option value="45000">Elite (Embedded Consulting) - R 45,000/mo</option>
+                    </select>
+                </div>
+                <div class="form-row">
+                    <div class="field">
+                        <label>Number of Users (R 650/user/mo)</label>
+                        <input type="number" name="it-users" value="0" min="0" class="calc-trigger">
+                    </div>
+                    <div class="field">
+                        <label>Workstations (R 400/unit/mo)</label>
+                        <input type="number" name="it-units" value="0" min="0" class="calc-trigger">
+                    </div>
+                </div>
+            </section>
+
+            <section class="config-card" id="cloud-infra">
+                <div class="card-header">
+                    <h2>Cloud & Data Storage <span class="badge badge-opex">OpEx</span></h2>
+                </div>
+                <div class="form-row">
+                    <div class="field">
+                        <label>Cloud VMs (R 3,200 ea/mo)</label>
+                        <input type="number" name="cloud-vms" value="0" min="0" class="calc-trigger">
+                    </div>
+                    <div class="field">
+                        <label>Managed Storage (R 1,800/TB/mo)</label>
+                        <input type="number" name="cloud-tb" value="0" min="0" class="calc-trigger">
+                    </div>
+                </div>
+                <div class="field">
+                    <label>Data Center Colocation</label>
+                    <select name="cloud-colo" class="calc-trigger">
+                        <option value="0">None</option>
+                        <option value="15000">Partial Rack - R 15,000/mo</option>
+                        <option value="35000">Full Dedicated Rack - R 35,000/mo</option>
+                    </select>
+                </div>
+            </section>
+
+            <section class="config-card" id="creative">
+                <div class="card-header">
+                    <h2>Marketing & Creative <span class="badge badge-opex">OpEx Focus</span></h2>
+                </div>
+                <div class="field">
+                    <label>Branding Package (CapEx Once-off)</label>
+                    <select name="creative-brand" class="calc-trigger">
+                        <option value="0">None</option>
+                        <option value="20000">Logo & Identity - R 20,000</option>
+                        <option value="55000">Full Corporate Design System - R 55,000</option>
+                    </select>
+                </div>
+                <div class="form-row">
+                    <div class="field">
+                        <label>Content Retainer (Hours/mo - R 1,200/hr)</label>
+                        <input type="number" name="creative-hours" value="0" min="0" class="calc-trigger">
+                    </div>
+                    <div class="field">
+                        <label>Managed Ad Channels (R 4,000/channel/mo)</label>
+                        <input type="number" name="creative-ads" value="0" min="0" class="calc-trigger">
+                    </div>
+                </div>
+            </section>
+
+        </main>
+    </div>
+
+    <script>
+        document.addEventListener('DOMContentLoaded', () => {
+            const navCheckboxes = document.querySelectorAll('.nav-link input');
+            const triggers = document.querySelectorAll('.calc-trigger');
+
+            // Toggle logic for sections
+            navCheckboxes.forEach(box => {
+                box.addEventListener('change', () => {
+                    const target = document.getElementById(box.dataset.target);
+                    if (target) {
+                        target.style.display = box.checked ? 'block' : 'none';
+                        if (!box.checked) resetInputs(target);
+                        calculate();
+                    }
+                });
+            });
+
+            // Input listener
+            triggers.forEach(t => t.addEventListener('input', calculate));
+
+            function resetInputs(container) {
+                container.querySelectorAll('input').forEach(i => i.value = 0);
+                container.querySelectorAll('select').forEach(s => s.value = 0);
+            }
+
+            function format(val) {
+                return new Intl.NumberFormat('en-ZA', {
+                    style: 'currency',
+                    currency: 'ZAR',
+                    minimumFractionDigits: 0
+                }).format(val);
+            }
+
+            function calculate() {
+                let monthly = 0;
+                let capex = 0;
+
+                // Software Logic
+                if (document.querySelector('[data-target="soft-dev"]').checked) {
+                    capex += parseFloat(document.querySelector('[name="soft-tier"]').value) || 0;
+                    capex += (parseFloat(document.querySelector('[name="soft-screens"]').value) || 0) * 6500;
+                    capex += (parseFloat(document.querySelector('[name="soft-apis"]').value) || 0) * 12000;
+                }
+
+                // AI Logic
+                if (document.querySelector('[data-target="ai-auto"]').checked) {
+                    monthly += parseFloat(document.querySelector('[name="ai-service"]').value) || 0;
+                    capex += parseFloat(document.querySelector('[name="ai-setup"]').value) || 0;
+                }
+
+                // IT Support Logic
+                if (document.querySelector('[data-target="managed-it"]').checked) {
+                    monthly += parseFloat(document.querySelector('[name="it-sla"]').value) || 0;
+                    monthly += (parseFloat(document.querySelector('[name="it-users"]').value) || 0) * 650;
+                    monthly += (parseFloat(document.querySelector('[name="it-units"]').value) || 0) * 400;
+                }
+
+                // Cloud Logic
+                if (document.querySelector('[data-target="cloud-infra"]').checked) {
+                    monthly += (parseFloat(document.querySelector('[name="cloud-vms"]').value) || 0) * 3200;
+                    monthly += (parseFloat(document.querySelector('[name="cloud-tb"]').value) || 0) * 1800;
+                    monthly += parseFloat(document.querySelector('[name="cloud-colo"]').value) || 0;
+                }
+
+                // Creative Logic
+                if (document.querySelector('[data-target="creative"]').checked) {
+                    capex += parseFloat(document.querySelector('[name="creative-brand"]').value) || 0;
+                    monthly += (parseFloat(document.querySelector('[name="creative-hours"]').value) || 0) * 1200;
+                    monthly += (parseFloat(document.querySelector('[name="creative-ads"]').value) || 0) * 4000;
+                }
+
+                const annual = (monthly * 12) * 0.9; // 10% volume discount
+
+                document.getElementById('monthly-val').innerText = format(monthly);
+                document.getElementById('capex-val').innerText = format(capex);
+                document.getElementById('annual-val').innerText = format(annual);
+            }
+        });
+    </script>
+</body>
+</html>

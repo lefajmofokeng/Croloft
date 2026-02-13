@@ -1,0 +1,519 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>My Website</title>
+    
+    <script src="header.js" defer></script> 
+    <script src="footer.js" defer></script>
+</head>
+<body>
+
+    <cronos-header></cronos-header>
+
+</body>
+</html>
+
+
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Verify Asset - Defcon</title>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    <style>
+        :root {
+            /* NEW "Advanced" Palette */
+            --bg-dark: #06080e;
+            --bg-glass: rgba(255, 255, 255, 0.05);
+            --border-glass: rgba(255, 255, 255, 0.1);
+            --text-primary: #FFFFFF;
+            --text-secondary: #a0b3d6;
+            --accent-blue: #fdfdfd; /* Electric Blue/Teal */
+            --loading-color: #00A3B5;
+
+            /* Status Colors */
+            --status-green-text: #17e089;
+            --status-green-bg: rgba(23, 224, 137, 0.1);
+            --status-red-text: #ff4d4d;
+            --status-red-bg: rgba(255, 77, 77, 0.1);
+
+            --border-radius-card: 16px;
+            --border-radius-btn: 50px;
+        }
+        
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: 'Inter', sans-serif;
+        }
+        
+        body {
+            background-color: var(--bg-dark);
+            background: radial-gradient(circle at 10% 20%, rgba(0, 106, 255, 0.1), transparent 30%),
+                        radial-gradient(circle at 90% 80%, rgba(0, 132, 255, 0.166), transparent 30%),
+                        var(--bg-dark);
+            color: var(--text-primary);
+            line-height: 1.6;
+        }
+        
+        /* Wrapper to center the verification card */
+        .verify-wrapper {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            min-height: 90vh;
+            padding: 40px 20px;
+        }
+
+        .verify-card {
+            
+            padding: 40px;
+            width: 100%;
+            max-width: 600px;
+            text-align: center;
+        }
+
+        .verify-card h1 {
+            font-size: 35px;
+            font-weight: 700;
+            color: var(--text-primary);
+            margin-bottom: 10px;
+        }
+
+        .verify-card p {
+            font-size: 16px;
+            color: var(--text-secondary);
+            margin-bottom: 30px;
+        }
+
+        /* --- Tabbed Interface --- */
+        .verify-tabs {
+            display: flex;
+            background-color: rgba(0, 0, 0, 0.2);
+            border-radius: var(--border-radius-btn);
+            margin-bottom: 30px;
+            padding: 1.5px;
+            border: 1px solid #fdfdfd;
+        }
+
+        .verify-tab {
+            flex: 1;
+            padding: 12px 10px;
+            border-radius: var(--border-radius-btn);
+            cursor: pointer;
+            font-weight: 600;
+            color: var(--text-secondary);
+            border: 1px solid transparent;
+            transition: all 0.3s ease;
+        }
+
+        .verify-tab:hover {
+            background-color: var(--bg-glass);
+        }
+        
+        .verify-tab.active {
+            background-color: var(--accent-blue);
+            color: var(--bg-dark);
+            font-weight: 700;
+            
+        }
+        /* -------------------------- */
+
+        .verify-form {
+            display: flex;
+            flex-direction: column;
+        }
+
+        #verify-input {
+            width: 100%;
+            padding: 12px 20px;
+            border-radius: var(--border-radius-btn);
+            border: 1px solid var(--border-glass);
+            background-color: var(--bg-glass);
+            color: var(--text-primary);
+            font-size: 16px;
+            margin-bottom: 20px;
+        }
+
+        #verify-input::placeholder {
+            color: var(--text-secondary);
+            opacity: 0.7;
+        }
+
+        #verify-input:focus {
+            outline: none;
+            border-color: var(--accent-blue);
+        }
+        
+        /* Default Button Style */
+        .btn {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            background-color: var(--accent-blue);
+            color: var(--bg-dark);
+            padding: 12px 30px;
+            border-radius: var(--border-radius-btn);
+            text-decoration: none;
+            font-weight: 600;
+            transition: all 0.3s;
+            border: none;
+            cursor: pointer;
+            font-size: 18px;
+            letter-spacing: -0.02em;
+            position: relative;
+            font-family: 'Inter', sans-serif;
+        }
+        
+        /* --- Loading State Styles --- */
+        .btn.loading {
+            background-color: var(--loading-color);
+            cursor: not-allowed;
+            color: transparent; /* Hide text */
+            animation: pulse 1s infinite alternate;
+        }
+
+        .btn.loading .spinner {
+            display: block;
+            width: 20px;
+            height: 20px;
+            border: 3px solid rgba(255, 255, 255, 0.3);
+            border-top-color: var(--text-primary);
+            border-radius: 50%;
+            animation: spin 0.8s linear infinite;
+        }
+        
+        .spinner {
+            display: none;
+        }
+
+        @keyframes pulse {
+            0% { transform: scale(1); opacity: 1; }
+            100% { transform: scale(1.02); opacity: 0.9; }
+        }
+
+        @keyframes spin {
+            to { transform: rotate(360deg); }
+        }
+        /* -------------------------- */
+
+        .btn-secondary {
+            background-color: #07142a;
+            color: #fdfdfd;
+            width: 100%;
+            text-align: center;
+            border: 1px solid var(--border-glass);
+            padding: 15px 0;
+            font-size: 20px;
+        }
+        
+        /* Modal Styles (remains the same) */
+        .modal {
+            display: none;
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background-color: rgba(0, 0, 0, 0.923);
+            z-index: 1000;
+            align-items: center;
+            justify-content: center;
+        }
+        
+        .modal-content {
+            background-color: #fdfdfd;
+            border-radius: var(--border-radius-card);
+            border: 1px solid var(--border-glass);
+            backdrop-filter: blur(10px);
+            -webkit-backdrop-filter: blur(10px);
+            width: 90%;
+            max-width: 500px;
+            max-height: 90vh;
+            overflow: auto;
+            position: relative;
+            padding: 30px;
+            text-align: center;
+        }
+        
+        .modal-header {
+            padding: 0;
+            border-bottom: none;
+            display: block;
+            position: relative;
+        }
+        
+        .modal-title {
+            font-size: 24px;
+            font-weight: 700;
+            color: #1191fa;
+            margin-bottom: 20px;
+        }
+        
+        .close-modal {
+            position: absolute;
+            top: -15px;
+            right: -10px;
+            background: none;
+            border: none;
+            font-size: 26px;
+            cursor: pointer;
+            color: #07142a;
+        }
+        
+        .modal-body {
+            padding: 0;
+        }
+
+        .modal-body p {
+            color: #07142a;
+            font-size: 20px;
+            font-weight: 600;
+            margin-bottom: 30px;
+        }
+
+        .modal-body p span {
+            color: #1191fa;
+            word-break: keep-all;
+        }
+
+        .modal-icon {
+            width: 60px;
+            height: 60px;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            margin: 0 auto 20px auto;
+            font-size: 30px;
+            font-weight: 700;
+        }
+
+        .modal-icon.success {
+            color: var(--status-green-text);
+        }
+        
+        .modal-icon.failure {
+            color: var(--status-red-text);
+        }
+
+        @media (max-width: 600px) {
+            .verify-card {
+                padding: 20px;
+            }
+
+            .verify-card h1 {
+                font-size: 28px;
+            }
+
+            .modal-content {
+                padding: 20px;
+            }
+
+             .verify-tab {
+                font-size: 14px;
+                padding: 7px 15px;
+                align-items: center;
+                justify-items: center;
+            }
+        }
+        
+    </style>
+</head>
+<body>
+    
+    <div class="verify-wrapper">
+        <div class="verify-card">
+            <h1><span style="padding-right: 15px; font-weight: 600;">Cronos</span> <span style="border-left: 2px solid #b6b6b6; color: #b6b6b6; padding-left: 20px; letter-spacing: 0.09em; text-transform: uppercase;">Verify</span></h1>
+            <p>Select an asset type and enter the identifier to confirm it's officially associated with our projects.</p>
+            
+            <div class="verify-tabs">
+                <div class="verify-tab active" data-type="link">URL/Link</div>
+                <div class="verify-tab" data-type="email">Email Adress</div>
+                <div class="verify-tab" data-type="social">Social ID</div>
+            </div>
+
+            <div class="verify-form">
+                <input type="text" id="verify-input" placeholder="e.g., example.com/project-link">
+                <button class="btn" id="verify-btn">
+                    <span class="btn-text">Verify Asset</span>
+                    <span class="spinner"></span>
+                </button>
+            </div>
+        </div>
+    </div>
+
+    <div class="modal" id="success-modal">
+        <div class="modal-content">
+            <div class="modal-header">
+                <button class="close-modal">&times;</button>
+                <div class="modal-icon success">✓</div>
+                <h3 class="modal-title">Asset Verified</h3>
+            </div>
+            <div class="modal-body">
+                <p>The identifier <span id="success-link"></span> is an official asset. You can proceed with confidence.</p>
+                <button class="btn modal-close-btn">OK, Got It</button>
+            </div>
+        </div>
+    </div>
+
+    <div class="modal" id="failure-modal">
+        <div class="modal-content">
+            <div class="modal-header">
+                <button class="close-modal">&times;</button>
+                <div class="modal-icon failure">
+                    <svg xmlns="http://www.w3.org/2000/svg" width="80" height="80" viewBox="0 0 48 48"><path fill="#0091ff" d="M21.44 3.44a1.5 1.5 0 0 1 2.12 0l5 5a1.5 1.5 0 0 1 0 2.12l-5 5a1.5 1.5 0 0 1-2.12-2.12L23.877 11C15.65 11.067 9 17.757 9 26c0 8.284 6.716 15 15 15c7.779 0 14.175-5.921 14.926-13.502c.082-.825.746-1.498 1.574-1.498s1.507.674 1.438 1.5C41.176 36.74 33.436 44 24 44c-9.941 0-18-8.059-18-18c0-9.9 7.994-17.935 17.88-18l-2.44-2.44a1.5 1.5 0 0 1 0-2.12m11.12 19.12a1.5 1.5 0 0 0-2.12-2.12l-7.94 7.939l-2.94-2.94a1.5 1.5 0 0 0-2.12 2.122l4 4a1.5 1.5 0 0 0 2.12 0z"/></svg>
+                </div>
+                <h3 class="modal-title">Asset Not Found</h3>
+            </div>
+            <div class="modal-body">
+                <p>The identifier <span id="failure-link"></span> is not associated with our records. Please be cautious and do not trust this asset.</p>
+                <button class="btn btn-secondary modal-close-btn">Close</button>
+            </div>
+        </div>
+    </div>
+
+    <script>
+        document.addEventListener('DOMContentLoaded', function() {
+            
+            // --- This is our "mock" database ---
+            const verifiedAssets = {
+                links: [
+                    'example.com/project-link',
+                    'official-client-site.com',
+                    'nexus-retail.com',
+                    'artchain.io/marketplace',
+                    'defcon.com/projects'
+                ],
+                emails: [
+                    'support@defcon.com',
+                    'jessica.s@nexus-retail.com',
+                    'contact@artchain.io',
+                    'noreply@official-client-site.com'
+                ],
+                socials: [
+                    '@defconofficial',
+                    '@nexusretail',
+                    '@artchain_nft',
+                    'facebook.com/defcon'
+                ]
+            };
+            // ------------------------------------
+
+            const tabs = document.querySelectorAll('.verify-tab');
+            const verifyInput = document.getElementById('verify-input');
+            const verifyBtn = document.getElementById('verify-btn');
+            const verifyBtnText = verifyBtn.querySelector('.btn-text');
+            
+            const successModal = document.getElementById('success-modal');
+            const failureModal = document.getElementById('failure-modal');
+            
+            const successLinkSpan = document.getElementById('success-link');
+            const failureLinkSpan = document.getElementById('failure-link');
+
+            const allCloseButtons = document.querySelectorAll('.close-modal');
+            const allModalCloseButtons = document.querySelectorAll('.modal-close-btn');
+
+            let currentVerifyType = 'link'; // Default type
+            const placeholders = {
+                link: 'e.g., example.com/project-link',
+                email: 'e.g., support@defcon.com',
+                social: 'e.g., @DefconOfficial'
+            };
+
+            // --- Tab Switching Logic ---
+            tabs.forEach(tab => {
+                tab.addEventListener('click', () => {
+                    // Remove active class from all tabs
+                    tabs.forEach(t => t.classList.remove('active'));
+                    
+                    // Add active class to clicked tab
+                    tab.classList.add('active');
+                    
+                    // Update current verification type
+                    currentVerifyType = tab.getAttribute('data-type');
+                    
+                    // Update placeholder text and clear input
+                    verifyInput.placeholder = placeholders[currentVerifyType];
+                    verifyInput.value = '';
+                });
+            });
+
+            // --- Verification Logic ---
+            function runVerification(assetToVerify) {
+                let isVerified = false;
+
+                // Check against the correct database array
+                if (currentVerifyType === 'link') {
+                    isVerified = verifiedAssets.links.includes(assetToVerify);
+                } else if (currentVerifyType === 'email') {
+                    isVerified = verifiedAssets.emails.includes(assetToVerify);
+                } else if (currentVerifyType === 'social') {
+                    // Case-insensitive check for social media IDs
+                    isVerified = verifiedAssets.socials.some(social => social.toLowerCase() === assetToVerify);
+                }
+
+                // Show appropriate modal after the loading delay
+                if (isVerified) {
+                    successLinkSpan.textContent = assetToVerify;
+                    successModal.style.display = 'flex';
+                } else {
+                    failureLinkSpan.textContent = assetToVerify;
+                    failureModal.style.display = 'flex';
+                }
+
+                // Reset button state
+                verifyBtn.classList.remove('loading');
+                verifyBtn.disabled = false;
+                verifyBtnText.textContent = 'Verify Asset';
+            }
+
+
+            verifyBtn.addEventListener('click', () => {
+                const assetToVerify = verifyInput.value.trim().toLowerCase();
+
+                if (assetToVerify === '') {
+                    return; // Don't proceed if input is empty
+                }
+
+                // 1. Start Loading State
+                verifyBtn.classList.add('loading');
+                verifyBtn.disabled = true;
+                verifyBtnText.textContent = ''; // Hide text during loading
+                
+                // 2. Simulate Network Delay (2 seconds)
+                setTimeout(() => {
+                    runVerification(assetToVerify);
+                }, 2000); 
+            });
+
+            // --- Modal Closing Logic ---
+            function closeModal() {
+                successModal.style.display = 'none';
+                failureModal.style.display = 'none';
+            }
+
+            allCloseButtons.forEach(button => {
+                button.addEventListener('click', closeModal);
+            });
+
+            allModalCloseButtons.forEach(button => {
+                button.addEventListener('click', closeModal);
+            });
+
+            window.addEventListener('click', (e) => {
+                if (e.target === successModal || e.target === failureModal) {
+                    closeModal();
+                }
+            });
+        });
+    </script>
+
+
+<cronos-footer></cronos-footer>
+</body>
+</html>

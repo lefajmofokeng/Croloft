@@ -1,0 +1,542 @@
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>My Website</title>
+    
+    <script src="header.js" defer></script>
+    <script src="footer.js" defer></script> 
+</head>
+<body>
+
+    <cronos-header></cronos-header>
+    
+
+</body>
+</html>
+
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700;800&display=swap" rel="stylesheet">
+
+<style>
+    /* Scoped Container to prevent global style leakage */
+    .it-hero-wrapper {
+        margin: 0;
+        padding: 0;
+        box-sizing: border-box;
+        font-family: 'Inter', sans-serif;
+        display: flex;
+        align-items: center;
+        justify-content: flex-start;
+        min-height: 800px;
+        width: 100%;
+        background: linear-gradient(to right, rgba(0,0,0,0.8) 20%, rgba(0,0,0,0.1) 100%), 
+                    url('https://images.pexels.com/photos/10050551/pexels-photo-10050551.jpeg');
+        background-size: cover;
+        background-position: center;
+        color: #ffffff;
+        padding-left: 10%;
+        position: relative;
+        overflow: hidden;
+    }
+
+    * {
+        margin: 0;
+        padding: 0;
+    }
+
+    .it-hero-content {
+        max-width: 700px;
+        z-index: 2;
+    }
+
+    .it-hero-category {
+        font-size: 1.1rem;
+        font-weight: 600;
+        letter-spacing: -0.02em;
+        margin-bottom: 1.5rem;
+        text-transform: uppercase;
+        color: #0082CC;
+    }
+
+    .it-hero-headline {
+        font-size: 3.5rem;
+        line-height: 1.1;
+        font-weight: 600;
+        margin-bottom: 1rem;
+        letter-spacing: -0.03em;
+    }
+
+    .it-hero-sub-headline {
+        font-size: 1.25rem;
+        font-weight: 600;
+        margin-bottom: 0.5rem;
+        color: #f1f1f1;
+    }
+
+    .it-hero-footer-note {
+        font-size: 0.9rem;
+        font-weight: 600;
+        color: #b0b8d1;
+        margin-top: 1rem;
+    }
+
+    /* Responsive Adjustments */
+    @media (max-width: 768px) {
+        .it-hero-headline { font-size: 2.5rem; }
+        .it-hero-category { font-size: 1.5rem; }
+        .it-hero-wrapper { padding-left: 5%; }
+    }
+</style>
+
+<section class="it-hero-wrapper">
+    <div class="it-hero-content">
+        <div class="it-hero-category">Content Management</div>
+        
+        <h1 class="it-hero-headline">
+            Innovate your future.<br>
+            Build it when you're right.
+        </h1>
+
+        <p class="it-hero-sub-headline">Available throughout the US.</p>
+        
+        <p class="it-hero-footer-note">
+            Currently only available in the United States.
+        </p>
+    </div>
+</section>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<div id="cms-premium-v3">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+
+  <style>
+    /* ---- SCOPED RESET & VARIABLES ---- */
+    #cms-premium-v3 {
+      font-family: 'Inter', sans-serif;
+      color: #ffffff;
+      margin: 0;
+      padding: 0;
+      width: 100%;
+      overflow-x: hidden;
+      position: relative;
+    }
+
+    #cms-premium-v3 *,
+    #cms-premium-v3 *::before,
+    #cms-premium-v3 *::after {
+      box-sizing: border-box;
+    }
+
+    /* ---- UTILITIES ---- */
+    .cms-v3-container {
+      width: 100%;
+      max-width: 1200px;
+      margin: 0 auto;
+      padding: 0 24px;
+      position: relative;
+    }
+
+    .cms-v3-text-center {
+      text-align: center;
+    }
+
+    /* ---- SECTION 1: HERO (Gradient + Video) ---- */
+    .cms-v3-hero-section {
+      /* Deep Blue Gradient */
+      background: linear-gradient(180deg, #050C1F 60%, #ffffff 100%);
+      padding-top: 130px;
+      /* Large padding bottom allows the video to 'hang' inside this container physically, 
+         but visually overlap the next section */
+      padding-bottom: 250px; 
+      position: relative;
+      z-index: 1;
+    }
+
+    .cms-v3-hero-headline {
+      font-size: 2rem;
+      font-weight: 600;
+      letter-spacing: -0.02em;
+      line-height: 1.3;
+      max-width: 700px;
+      margin: 0 auto 50px auto;
+    }
+
+    .cms-v3-hero-sublink {
+      color: #00A3FF;
+      text-decoration: none;
+      font-weight: 600;
+      font-size: 1.1rem;
+      display: inline-block;
+      margin-bottom: 60px;
+      transition: opacity 0.2s;
+    }
+
+    .cms-v3-hero-sublink:hover {
+      opacity: 0.8;
+    }
+
+    /* Video Container - Centered & Overlapping */
+    .cms-v3-video-wrapper {
+      width: 100%;
+      max-width: 1200px; /* Constrain width */
+      margin: 0 auto; /* Horizontal Center */
+      border-radius: 24px; /* Smooth large radius */
+      overflow: hidden;
+      position: relative;
+      /* Aspect Ratio Hack (16:9) */
+      padding-bottom: 56.25%; 
+      height: 0;
+      background-color: #000;
+      
+      /* KEY: This creates the visual "pop" */
+      border: 1px solid rgba(255,255,255,0.1);
+    }
+
+    .cms-v3-video-wrapper video,
+    .cms-v3-video-wrapper .cms-v3-video-content {
+      position: absolute;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+    }
+
+    /* ---- SECTION 2: FEATURES (Black Curve + Cards) ---- */
+    .cms-v3-features-section {
+      background-color: #060B13; /* Pitch Black/Dark Navy */
+      border-radius: 60px 60px 0 0; /* The curve at the top */
+      position: relative;
+      z-index: 2; /* Sits 'above' the bottom of the gradient section theoretically */
+      
+      /* KEY: Negative margin pulls this section UP behind the video 
+         Since video is in the section above, we actually need to pull the section up 
+         to close the gap, OR we position the video absolute. 
+         
+         BETTER APPROACH USED HERE:
+         The video is in the top section. The top section has lots of padding.
+         This section simply pulls up slightly to create the curve effect, 
+         while the video sits naturally above it via z-index logic.
+      */
+      margin-top: -150px; 
+      padding-top: 150px; /* Space for the video to overlap safely */
+      padding-bottom: 120px;
+    }
+
+    .cms-v3-section-title {
+      font-size: 3.2rem;
+      font-weight: 600;
+      letter-spacing: -0.02em;
+      margin-bottom: 32px;
+    }
+
+    .cms-v3-cta-button {
+      background-color: #00A3FF;
+      color: white;
+      padding: 14px 32px;
+      border-radius: 30px;
+      font-weight: 600;
+      text-decoration: none;
+      display: inline-block;
+      margin-bottom: 80px;
+      transition: background-color 0.2s;
+    }
+
+    .cms-v3-cta-button:hover {
+      background-color: #0082CC;
+    }
+
+    /* ---- CARDS (Background Image Style) ---- */
+    .cms-v3-card-grid {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 10px;
+      width: 100%;
+    }
+
+    .cms-v3-card {
+      position: relative;
+      height: 520px; /* Fixed tall height like the reference */
+      border-radius: 15px;
+      overflow: hidden;
+      /* Flex to position text at bottom */
+      display: flex;
+      flex-direction: column;
+      justify-content: flex-end;
+      padding: 32px;
+      
+      /* Background Image Settings */
+      background-size: cover;
+      background-position: center;
+      background-repeat: no-repeat;
+      background-color: #111827; /* Fallback color */
+
+      border: 1px solid rgba(255,255,255,0.05);
+      transition: transform 0.3s ease;
+    }
+
+    /* The Gradient Scrim - Darkens bottom for text readability */
+    .cms-v3-card::before {
+      content: '';
+      position: absolute;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      background: linear-gradient(
+        to bottom, 
+        rgba(0, 0, 0, 0.151) 0%, 
+        rgba(0, 0, 0, 0.325) 50%, 
+        rgb(0, 0, 0) 100%
+      );
+      z-index: 1;
+      pointer-events: none;
+    }
+
+    /* Card Content (Sits on top of scrim) */
+    .cms-v3-card-content {
+      position: relative;
+      z-index: 2;
+    }
+
+    .cms-v3-card-icon {
+      margin-bottom: auto; /* Pushes icon to top if flex direction was different, but here we want fixed positioning */
+      position: absolute;
+      top: 32px;
+      left: 32px;
+      width: 40px;
+      height: 40px;
+      background: rgba(255,255,255,0.1);
+      backdrop-filter: blur(5px);
+      border-radius: 50%;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+    }
+    
+    .cms-v3-card-badge {
+        position: absolute;
+        top: 32px;
+        right: 32px;
+        background: rgba(255,255,255,0.1);
+        backdrop-filter: blur(5px);
+        padding: 6px 12px;
+        border-radius: 20px;
+        font-size: 0.75rem;
+        font-weight: 200;
+        color: rgba(255,255,255,0.8);
+        z-index: 2;
+    }
+
+    .cms-v3-card-title {
+      font-size: 1.5rem;
+      font-weight: 600;
+      letter-spacing: -0.02em;
+      margin-bottom: 8px;
+    }
+
+    .cms-v3-card-desc {
+      font-size: 1.2rem;
+      color: rgba(255,255,255,0.7);
+      margin-bottom: 24px;
+      line-height: 1.2;
+      font-weight: 600;
+    }
+
+    .cms-v3-card-btn {
+      display: inline-flex;
+      align-items: center;
+      background: rgba(255,255,255,0.1);
+      backdrop-filter: blur(10px);
+      color: white;
+      text-decoration: none;
+      padding: 10px 20px;
+      border-radius: 20px;
+      font-size: 0.975rem;
+      font-weight: 600;
+      width: fit-content;
+      transition: background 0.3s;
+    }
+
+    .cms-v3-card-btn:hover {
+      background: rgba(255,255,255,0.2);
+    }
+
+    /* ---- RESPONSIVENESS ---- */
+    @media (max-width: 1024px) {
+      .cms-v3-card-grid {
+        grid-template-columns: repeat(2, 1fr);
+      }
+      .cms-v3-hero-headline { font-size: 1.75rem; }
+      .cms-v3-features-section { padding-top: 150px; }
+    }
+
+    @media (max-width: 768px) {
+      .cms-v3-hero-section {
+        padding-bottom: 150px; /* Reduce overlapping space */
+      }
+      .cms-v3-video-wrapper {
+        border-radius: 20px;
+      }
+      .cms-v3-features-section {
+        margin-top: -100px;
+        padding-top: 140px;
+        border-radius: 40px 40px 0 0;
+      }
+      .cms-v3-card-grid {
+        grid-template-columns: 1fr; /* Stack cards */
+        max-width: 400px;
+        margin: 0 auto;
+      }
+      .cms-v3-card {
+        height: 450px; /* Slightly shorter on mobile */
+      }
+      .cms-v3-hero-headline {
+        font-size: 1.5rem;
+        padding: 0 16px;
+      }
+      .cms-v3-section-title {
+        font-size: 1.75rem;
+      }
+    }
+  </style>
+
+  <div class="cms-v3-hero-section">
+    <div class="cms-v3-container cms-v3-text-center">
+      <h1 class="cms-v3-hero-headline">
+        We work with world-class enterprises to put powerful content management in every hand.
+      </h1>
+      <a href="#" class="cms-v3-hero-sublink">More about our Integration Partners &rarr;</a>
+
+      <div class="cms-v3-video-wrapper">
+        <video 
+          class="cms-v3-video-content" 
+          autoplay muted loop playsinline 
+          poster="https://images.unsplash.com/photo-1451187580459-43490279c0fa?q=80&w=2072&auto=format&fit=crop"
+        >
+           <source src="videos/background-video3.mp4" type="video/mp4">
+        </video>
+      </div>
+    </div>
+  </div>
+
+  <div class="cms-v3-features-section">
+    <div class="cms-v3-container cms-v3-text-center">
+      
+      <h2 class="cms-v3-section-title">One platform, multiple ways to manage</h2>
+      <a href="#" class="cms-v3-cta-button">Create an account</a>
+
+      <div class="cms-v3-card-grid">
+        
+        <div class="cms-v3-card" style="background-image: url('https://images.pexels.com/photos/12602144/pexels-photo-12602144.jpeg');">
+          <div class="cms-v3-card-icon">
+            <svg width="20" height="20" fill="white" viewBox="0 0 24 24"><path d="M3 13h2v-2H3v2zm0 4h2v-2H3v2zm0-8h2V7H3v2zm4 4h14v-2H7v2zm0 4h14v-2H7v2zM7 7v2h14V7H7z"/></svg>
+          </div>
+          <div class="cms-v3-card-badge">Advanced Features</div>
+
+          <div class="cms-v3-card-content">
+            <h3 class="cms-v3-card-title">Enterprise Dashboard</h3>
+            <p class="cms-v3-card-desc">Pro features for advanced content architecture and workflows.</p>
+            <a href="#" class="cms-v3-card-btn">Open the Exchange &rarr;</a>
+          </div>
+        </div>
+
+        <div class="cms-v3-card" style="background-image: url('https://images.unsplash.com/photo-1512941937669-90a1b58e7e9c?q=80&w=2070&auto=format&fit=crop');">
+          <div class="cms-v3-card-icon">
+            <svg width="20" height="20" fill="white" viewBox="0 0 24 24"><path d="M17 1.01L7 1c-1.1 0-2 .9-2 2v18c0 1.1.9 2 2 2h10c1.1 0 2-.9 2-2V3c0-1.1-.9-1.99-2-1.99zM17 19H7V5h10v14z"/></svg>
+          </div>
+          <div class="cms-v3-card-badge">Easy & Fast</div>
+
+          <div class="cms-v3-card-content">
+            <h3 class="cms-v3-card-title">The Admin App</h3>
+            <p class="cms-v3-card-desc">All-in-one platform built for everyday content creators.</p>
+            <a href="#" class="cms-v3-card-btn">Start Creating &rarr;</a>
+          </div>
+        </div>
+
+        <div class="cms-v3-card" style="background-image: url('https://images.unsplash.com/photo-1616469829941-c7200edec809?q=80&w=2070&auto=format&fit=crop');">
+          <div class="cms-v3-card-icon">
+            <svg width="20" height="20" fill="white" viewBox="0 0 24 24"><path d="M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2zm-1 17.93c-3.95-.49-7-3.85-7-7.93 0-.62.08-1.21.21-1.79L9 15v1c0 1.1.9 2 2 2v1.93zm6.9-2.54c-.26-.81-1-1.39-1.9-1.39h-1v-3c0-.55-.45-1-1-1H8v-2h2c.55 0 1-.45 1-1V7h2c1.1 0 2-.9 2-2v-.41c2.93 1.19 5 4.06 5 7.41 0 2.08-.8 3.97-2.1 5.39z"/></svg>
+          </div>
+          <div class="cms-v3-card-badge">Explore API</div>
+
+          <div class="cms-v3-card-content">
+            <h3 class="cms-v3-card-title">Headless API</h3>
+            <p class="cms-v3-card-desc">Self-hosted content built for Web3 and IoT users.</p>
+            <a href="#" class="cms-v3-card-btn">Download the SDK &rarr;</a>
+          </div>
+        </div>
+
+      </div>
+    </div>
+  </div>
+</div>
+
+
+
+
+<cronos-footer></cronos-footer>

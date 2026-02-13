@@ -1,0 +1,1028 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>My Website</title>
+    
+    <script src="header.js" defer></script>
+    <script src="footer.js" defer></script> 
+</head>
+<body>
+
+    <cronos-header></cronos-header>
+    
+
+</body>
+</html>
+
+
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Terms of Service - Cronos IT Solutions</title>
+    <style>
+         @font-face {
+            font-family: 'Circular Std';
+            src: url('fonts/CircularStd-Book.ttf') format('truetype');
+            font-weight: 400;
+            font-style: normal;
+        }
+
+        /* Circular Std - Medium (500) */
+        @font-face {
+            font-family: 'Circular Std';
+            src: url('fonts/CircularStd.ttf') format('truetype');
+            font-weight: 500;
+            font-style: normal;
+        }
+
+        /* Circular Std - Bold (700) */
+        @font-face {
+            font-family: 'Circular Std';
+            src: url('fonts/CircularStd-Bold.ttf') format('truetype');
+            font-weight: 600;
+            font-style: normal;
+        }
+
+        * {
+            margin: 0;
+            padding: 0;
+        }
+
+        .it-policy-wrapper {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 100px 20px;
+            font-family: 'Circular Std', -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Arial, sans-serif;
+            color: #1a1a1a;
+            line-height: 1.8;
+            text-align: left;
+        }
+
+        .it-policy-header {
+            margin-bottom: 30px;
+        }
+
+        .it-policy-h1 {
+            font-size: 42px;
+            letter-spacing: -0.02em;
+            margin-bottom: 10px;
+            font-weight: 500;
+        }
+
+        .it-policy-date {
+            color: #757575;
+            font-size: 14px;
+            letter-spacing: 0.1em;
+            margin-bottom: 15px;
+        }
+
+        .it-policy-intro {
+            margin-bottom: 40px
+        }
+
+        .it-policy-section {
+            margin-bottom: 40px;
+        }
+
+        .it-policy-h2 {
+            font-size: 26px;
+            font-weight: 700;
+            margin-bottom: 20px;
+            color: #000;
+            padding-top: 15px;
+        }
+
+        .it-policy-h3 {
+            font-size: 19px;
+            font-weight: 600;
+            margin-bottom: 12px;
+            margin-top: 25px;
+            color: #1a1a1a;
+        }
+
+        .it-policy-p {
+            margin-bottom: 18px;
+            font-size: 16px;
+            color: #333;
+        }
+
+        .it-policy-list {
+            margin-bottom: 18px;
+            padding-left: 20px;
+        }
+
+        .it-policy-list li {
+            margin-bottom: 10px;
+            line-height: 1.7;
+        }
+
+        .it-policy-list li strong {
+            color: #000;
+        }
+
+        .it-policy-highlight {
+            background-color: #f7f7f7;
+            padding: 20px;
+            margin: 25px 0;
+        }
+
+        .it-policy-table {
+            width: 100%;
+            border-collapse: collapse;
+            margin: 25px 0;
+            background-color: #fff;
+            border: 1px solid #e0e0e0;
+        }
+
+        .it-policy-table th {
+            background-color: #f8f9fa;
+            padding: 12px;
+            text-align: left;
+            font-weight: 600;
+            border-bottom: 2px solid #e0e0e0;
+        }
+
+        .it-policy-table td {
+            padding: 12px;
+            border-bottom: 1px solid #e0e0e0;
+        }
+
+        .it-policy-table td ul {
+            margin: 0;
+            padding-left: 20px;
+        }
+
+        .it-policy-table td ul li {
+            margin-bottom: 5px;
+        }
+
+        /* Table wrapper for horizontal scrolling on mobile */
+        .table-wrapper {
+            width: 100%;
+            overflow-x: auto;
+            -webkit-overflow-scrolling: touch;
+            margin: 25px 0;
+        }
+
+        .table-scroll-hint {
+            display: none;
+            text-align: center;
+            font-size: 13px;
+            color: #6c757d;
+            margin-top: -15px;
+            margin-bottom: 15px;
+            font-style: italic;
+        }
+
+        .it-policy-contact-box {
+            background-color: #f8f9fa;
+            padding: 25px;
+            margin-top: 30px;
+        }
+
+        @media (max-width: 768px) {
+            .it-policy-h1 { 
+                font-size: 32px; 
+                line-height: 1.2;
+            }
+            .it-policy-h2 { 
+                font-size: 22px;
+                line-height: 1.3;
+            }
+            .it-policy-h3 {
+                font-size: 18px;
+            }
+            .it-policy-wrapper { 
+                padding: 40px 20px; 
+            }
+            .it-policy-intro,
+            .it-policy-highlight,
+            .it-policy-contact-box {
+                padding: 20px 15px;
+            }
+            .it-policy-p {
+                font-size: 15px;
+            }
+            .it-policy-list {
+                padding-left: 25px;
+            }
+            
+            /* Show scroll hint on mobile */
+            .table-scroll-hint {
+                display: block;
+            }
+            
+            /* Make tables scrollable on mobile */
+            .table-wrapper {
+                border: 1px solid #e0e0e0;
+                border-radius: 4px;
+                box-shadow: inset 0 0 5px rgba(0,0,0,0.05);
+            }
+            
+            .it-policy-table {
+                font-size: 14px;
+                min-width: 600px; /* Ensure table doesn't shrink too much */
+                margin: 0;
+                border: none;
+            }
+            
+            .it-policy-table th,
+            .it-policy-table td { 
+                padding: 10px 8px;
+                white-space: normal;
+            }
+            
+            .it-policy-table td ul {
+                font-size: 13px;
+            }
+            
+            /* Adjust header spacing on mobile */
+            .it-policy-header {
+                margin-bottom: 30px;
+                padding-bottom: 20px;
+            }
+            
+            .it-policy-date {
+                font-size: 12px;
+            }
+            
+            /* Better section spacing on mobile */
+            .it-policy-section {
+                margin-bottom: 30px;
+            }
+        }
+
+        @media (max-width: 480px) {
+            .it-policy-h1 { 
+                font-size: 32px; 
+            }
+            .it-policy-h2 { 
+                font-size: 20px;
+            }
+            .it-policy-wrapper { 
+                padding: 30px 20px; 
+            }
+            .it-policy-intro,
+            .it-policy-highlight,
+            .it-policy-contact-box {
+                padding: 15px 12px;
+            }
+            .it-policy-table {
+                font-size: 13px;
+                min-width: 500px;
+            }
+
+            .it-policy-header {
+                padding-top: 70px;
+            }
+
+            .it-policy-table th,
+            .it-policy-table td { 
+                padding: 8px 6px;
+            }
+        }
+    </style>
+</head>
+<body>
+
+<div class="it-policy-wrapper">
+    <header class="it-policy-header">
+        <h1 class="it-policy-h1">Terms of Service</h1>
+        <p class="it-policy-date">Last Updated: February 13, 2026</p>
+        <p class="it-policy-date">Effective Date: February 13, 2026</p>
+    </header>
+
+    <div class="it-policy-intro">
+        <p class="it-policy-p">
+            <strong>Welcome to Cronos IT Solutions (Pty) Ltd.</strong> These Terms of Service ("Terms") govern your access to and use of our website, services, and products. By accessing our website or engaging our services, you agree to be bound by these Terms. If you do not agree to these Terms, please do not use our services.
+        </p>
+        <p class="it-policy-p">
+            These Terms constitute a legally binding agreement between you ("Client," "you," or "your") and Cronos IT Solutions (Pty) Ltd ("Cronos," "we," "us," or "our"), a company registered in South Africa.
+        </p>
+    </div>
+
+    <div class="it-policy-section">
+        <h2 class="it-policy-h2">1. Definitions</h2>
+        <p class="it-policy-p">For the purposes of these Terms, the following definitions apply:</p>
+        <ul class="it-policy-list">
+            <li><strong>"Services"</strong> means all IT services, software development, consulting, cloud services, cybersecurity, technical support, and any other services provided by Cronos IT Solutions.</li>
+            <li><strong>"Website"</strong> means our website located at www.cronosit.co.za and any associated subdomains or platforms.</li>
+            <li><strong>"Client"</strong> means any individual or entity that accesses our Website or engages our Services.</li>
+            <li><strong>"Agreement"</strong> means these Terms of Service together with any Service Agreement, Statement of Work, or other contract entered into between you and Cronos.</li>
+            <li><strong>"Confidential Information"</strong> means any proprietary or confidential information disclosed by either party.</li>
+            <li><strong>"Deliverables"</strong> means any software, documentation, reports, or other work products provided by Cronos under a Service Agreement.</li>
+            <li><strong>"Intellectual Property"</strong> means patents, trademarks, copyrights, trade secrets, and any other proprietary rights.</li>
+        </ul>
+    </div>
+
+    <div class="it-policy-section">
+        <h2 class="it-policy-h2">2. Acceptance of Terms</h2>
+        <p class="it-policy-p">
+            By accessing or using our Website or Services, you acknowledge that you have read, understood, and agree to be bound by these Terms and our Privacy Policy. These Terms apply to all visitors, users, and clients of our Services.
+        </p>
+        <ul class="it-policy-list">
+            <li>If you are entering into these Terms on behalf of a company or organization, you represent that you have the authority to bind that entity to these Terms</li>
+            <li>You must be at least 18 years of age to use our Services</li>
+            <li>Your continued use of our Services constitutes acceptance of any updates or modifications to these Terms</li>
+            <li>Specific services may be subject to additional terms and conditions, which will be provided separately</li>
+        </ul>
+    </div>
+
+    <div class="it-policy-section">
+        <h2 class="it-policy-h2">3. Services Overview</h2>
+        <p class="it-policy-p">
+            Cronos IT Solutions provides a comprehensive range of IT and creative services to businesses and organizations globally. Our service offerings are organized into three primary divisions:
+        </p>
+
+        <div class="table-wrapper">
+            <table class="it-policy-table">
+                <thead>
+                    <tr>
+                        <th style="width: 25%;">Service Division</th>
+                        <th>Services Offered</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr>
+                        <td><strong>Software Development</strong></td>
+                        <td>
+                            <ul style="margin: 8px 0; padding-left: 20px;">
+                                <li>AI & Automation Solutions</li>
+                                <li>Mobile & Web Applications</li>
+                                <li>E-commerce Platforms</li>
+                                <li>Database Engineering & Management</li>
+                            </ul>
+                        </td>
+                    </tr>
+                    <tr>
+                        <td><strong>IT Infrastructure</strong></td>
+                        <td>
+                            <ul style="margin: 8px 0; padding-left: 20px;">
+                                <li>IT Support & Helpdesk Services</li>
+                                <li>IT Consulting</li>
+                                <li>Managed IT Services</li>
+                                <li>Cloud Infrastructure</li>
+                                <li>Data Center & Storage Solutions</li>
+                            </ul>
+                        </td>
+                    </tr>
+                    <tr>
+                        <td><strong>Marketing & Creative Studio</strong></td>
+                        <td>
+                            <ul style="margin: 8px 0; padding-left: 20px;">
+                                <li>Digital Marketing</li>
+                                <li>Graphic Design</li>
+                                <li>Content Management</li>
+                                <li>Advertising</li>
+                            </ul>
+                        </td>
+                    </tr>
+                </tbody>
+            </table>
+        </div>
+        <p class="table-scroll-hint">← Scroll horizontally to view full table →</p>
+
+        <p class="it-policy-p">
+            Specific services are subject to Service Agreements, Statements of Work, or proposals that outline detailed scope, deliverables, timelines, and pricing.
+        </p>
+    </div>
+
+    <div class="it-policy-section">
+        <h2 class="it-policy-h2">4. Service Agreements and Engagement</h2>
+        
+        <h3 class="it-policy-h3">4.1 Engagement Types</h3>
+        <p class="it-policy-p">We offer flexible engagement models to meet diverse client needs:</p>
+        
+        <div class="table-wrapper">
+            <table class="it-policy-table">
+                <thead>
+                    <tr>
+                        <th style="width: 25%;">Engagement Type</th>
+                        <th>Description</th>
+                        <th style="width: 25%;">Typical Duration</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr>
+                        <td><strong>Project-Based</strong></td>
+                        <td>Fixed scope project with defined deliverables and timeline</td>
+                        <td>Weeks to months</td>
+                    </tr>
+                    <tr>
+                        <td><strong>Ongoing Support</strong></td>
+                        <td>Continuous maintenance, updates, and technical support</td>
+                        <td>Monthly/Annual contracts</td>
+                    </tr>
+                    <tr>
+                        <td><strong>Consulting</strong></td>
+                        <td>Strategic advice, assessments, and recommendations</td>
+                        <td>Days to weeks</td>
+                    </tr>
+                    <tr>
+                        <td><strong>Managed Services</strong></td>
+                        <td>Full management of IT infrastructure, helpdesk, or systems</td>
+                        <td>Annual contracts</td>
+                    </tr>
+                    <tr>
+                        <td><strong>Staff Augmentation</strong></td>
+                        <td>Dedicated resources working as extension of client team</td>
+                        <td>Months to years</td>
+                    </tr>
+                </tbody>
+            </table>
+        </div>
+        <p class="table-scroll-hint">← Scroll horizontally to view full table →</p>
+
+        <h3 class="it-policy-h3">4.2 Service Proposals</h3>
+        <p class="it-policy-p">
+            Before commencing work, we provide detailed proposals or Statements of Work that include:
+        </p>
+        <ul class="it-policy-list">
+            <li>Scope of services and project objectives</li>
+            <li>Deliverables and milestones</li>
+            <li>Timeline and project schedule</li>
+            <li>Pricing, payment terms, and payment schedule</li>
+            <li>Roles and responsibilities of both parties</li>
+            <li>Acceptance criteria and testing procedures</li>
+        </ul>
+
+        <h3 class="it-policy-h3">4.3 Service Agreement Execution</h3>
+        <ul class="it-policy-list">
+            <li>Services commence upon execution of a Service Agreement or written acceptance of a proposal</li>
+            <li>Verbal agreements must be confirmed in writing within 5 business days</li>
+            <li>Changes to scope, timeline, or pricing require written amendment to the Service Agreement</li>
+            <li>Both parties must sign any amendments or change orders before work proceeds</li>
+        </ul>
+
+        <h3 class="it-policy-h3">4.4 Client Responsibilities</h3>
+        <p class="it-policy-p">To ensure successful project delivery, clients are responsible for:</p>
+        <ul class="it-policy-list">
+            <li>Providing timely access to systems, data, and personnel as required</li>
+            <li>Providing accurate and complete information and requirements</li>
+            <li>Designating authorized representatives for decision-making</li>
+            <li>Reviewing and approving deliverables within agreed timeframes</li>
+            <li>Making timely payments according to the payment schedule</li>
+            <li>Maintaining appropriate backups of their data</li>
+            <li>Complying with applicable laws and regulations</li>
+        </ul>
+    </div>
+
+    <div class="it-policy-section">
+        <h2 class="it-policy-h2">5. Fees and Payment Terms</h2>
+        
+        <h3 class="it-policy-h3">5.1 Pricing Models</h3>
+        <p class="it-policy-p">We offer various pricing models depending on the nature of services:</p>
+        
+        <div class="table-wrapper">
+            <table class="it-policy-table">
+                <thead>
+                    <tr>
+                        <th style="width: 25%;">Pricing Model</th>
+                        <th>Description</th>
+                        <th style="width: 30%;">Best For</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr>
+                        <td><strong>Fixed Price</strong></td>
+                        <td>Agreed total price for defined scope and deliverables</td>
+                        <td>Projects with clear requirements and scope</td>
+                    </tr>
+                    <tr>
+                        <td><strong>Time and Materials</strong></td>
+                        <td>Hourly or daily rates for services rendered</td>
+                        <td>Flexible projects, ongoing development, consulting</td>
+                    </tr>
+                    <tr>
+                        <td><strong>Retainer</strong></td>
+                        <td>Monthly fee for ongoing support and maintenance</td>
+                        <td>Continuous support, helpdesk, maintenance services</td>
+                    </tr>
+                    <tr>
+                        <td><strong>Subscription</strong></td>
+                        <td>Recurring fees for SaaS products or managed services</td>
+                        <td>Cloud services, software licenses, managed IT</td>
+                    </tr>
+                    <tr>
+                        <td><strong>Milestone-Based</strong></td>
+                        <td>Payments tied to completion of specific project milestones</td>
+                        <td>Large projects with distinct phases</td>
+                    </tr>
+                </tbody>
+            </table>
+        </div>
+        <p class="table-scroll-hint">← Scroll horizontally to view full table →</p>
+
+        <h3 class="it-policy-h3">5.2 Payment Terms</h3>
+        <ul class="it-policy-list">
+            <li>Unless otherwise specified, invoices are payable within 30 days of invoice date</li>
+            <li>For fixed-price projects, payment schedules are typically: 30% upfront, 40% at mid-project milestone, 30% upon completion</li>
+            <li>For time and materials projects, invoices are issued monthly or bi-weekly</li>
+            <li>Late payments are subject to interest charges of 2% per month or the maximum allowed by law</li>
+            <li>Payments must be made in South African Rand (ZAR) or as otherwise agreed in writing</li>
+        </ul>
+
+        <h3 class="it-policy-h3">5.3 Expenses and Additional Costs</h3>
+        <ul class="it-policy-list">
+            <li>Out-of-pocket expenses (travel, accommodation, third-party licenses) are billed separately unless included in the agreement</li>
+            <li>Expenses require prior approval from the client if exceeding agreed thresholds</li>
+            <li>All expenses are billed at cost with supporting documentation</li>
+        </ul>
+
+        <h3 class="it-policy-h3">5.4 Late Payment and Suspension</h3>
+        <ul class="it-policy-list">
+            <li>Overdue payments may result in suspension of services until payment is received</li>
+            <li>Cronos reserves the right to charge interest on late payments at the rate of 2% per month</li>
+            <li>Continued non-payment may result in termination of services and legal action</li>
+            <li>Client remains liable for all fees for work performed, even if services are suspended or terminated</li>
+        </ul>
+
+        <h3 class="it-policy-h3">5.5 Taxes</h3>
+        <ul class="it-policy-list">
+            <li>All fees are exclusive of applicable taxes (VAT, withholding tax, etc.)</li>
+            <li>Clients are responsible for all applicable taxes unless exempt with valid documentation</li>
+            <li>International clients may be subject to taxes in their jurisdiction</li>
+        </ul>
+    </div>
+
+    <div class="it-policy-section">
+        <h2 class="it-policy-h2">6. Intellectual Property Rights</h2>
+        
+        <h3 class="it-policy-h3">6.1 Cronos Intellectual Property</h3>
+        <ul class="it-policy-list">
+            <li>Cronos retains all rights to its pre-existing intellectual property, including methodologies, frameworks, tools, and templates</li>
+            <li>Our website content, logos, trademarks, and branding materials are owned by Cronos and protected by copyright and trademark laws</li>
+            <li>Clients may not use Cronos's intellectual property without prior written permission</li>
+        </ul>
+
+        <h3 class="it-policy-h3">6.2 Custom Development and Work Product</h3>
+        <p class="it-policy-p">For custom development projects:</p>
+        <ul class="it-policy-list">
+            <li>Upon full payment, ownership of custom-developed deliverables transfers to the client</li>
+            <li>Cronos retains the right to reuse general concepts, techniques, and know-how developed during the project</li>
+            <li>Any third-party components, open-source software, or licensed tools remain the property of their respective owners</li>
+            <li>Cronos may showcase completed projects in our portfolio with client permission</li>
+        </ul>
+
+        <h3 class="it-policy-h3">6.3 License Grants</h3>
+        <ul class="it-policy-list">
+            <li>For subscription or SaaS services, clients receive a limited, non-exclusive, non-transferable license to use the services</li>
+            <li>Licenses are valid only during the subscription period and for the agreed number of users</li>
+            <li>Clients may not sublicense, resell, or redistribute our services without written authorization</li>
+        </ul>
+
+        <h3 class="it-policy-h3">6.4 Client Materials</h3>
+        <ul class="it-policy-list">
+            <li>Clients grant Cronos a limited license to use client-provided materials solely for delivering the contracted services</li>
+            <li>Clients represent that they have the right to provide such materials and that their use will not infringe third-party rights</li>
+            <li>Clients retain all ownership rights to their data, content, and proprietary information</li>
+        </ul>
+    </div>
+
+    <div class="it-policy-section">
+        <h2 class="it-policy-h2">7. Confidentiality</h2>
+        <p class="it-policy-p">
+            Both parties agree to maintain the confidentiality of proprietary and confidential information:
+        </p>
+        <ul class="it-policy-list">
+            <li>Confidential Information includes technical data, business information, source code, customer data, and any information marked as confidential</li>
+            <li>Each party will protect Confidential Information with the same degree of care used to protect its own confidential information</li>
+            <li>Confidential Information may only be disclosed to employees or contractors who need to know it for project purposes</li>
+            <li>Confidentiality obligations survive termination of the agreement for a period of 3 years</li>
+            <li>Exceptions include information that is publicly available, independently developed, or required to be disclosed by law</li>
+        </ul>
+    </div>
+
+    <div class="it-policy-section">
+        <h2 class="it-policy-h2">8. Data Protection and Privacy</h2>
+        <p class="it-policy-p">
+            We are committed to protecting your personal information and complying with data protection laws:
+        </p>
+        <ul class="it-policy-list">
+            <li>Our processing of personal information is governed by our Privacy Policy, which is incorporated by reference into these Terms</li>
+            <li>We comply with the Protection of Personal Information Act (POPIA) and GDPR where applicable</li>
+            <li>When processing personal data on behalf of clients, we act as a data processor and follow client instructions</li>
+            <li>We implement appropriate technical and organizational security measures to protect data</li>
+            <li>Clients are responsible for ensuring they have lawful basis for providing personal data to us</li>
+            <li>Data processing terms are detailed in our Data Processing Agreement, available upon request</li>
+        </ul>
+    </div>
+
+    <div class="it-policy-section">
+        <h2 class="it-policy-h2">9. Warranties and Disclaimers</h2>
+        
+        <h3 class="it-policy-h3">9.1 Service Warranties</h3>
+        <p class="it-policy-p">Cronos warrants that:</p>
+        <ul class="it-policy-list">
+            <li>Services will be performed in a professional and workmanlike manner consistent with industry standards</li>
+            <li>We have the necessary skills, experience, and resources to deliver the contracted services</li>
+            <li>Deliverables will substantially conform to specifications in the Service Agreement</li>
+            <li>We will not knowingly introduce viruses or malicious code into client systems</li>
+        </ul>
+
+        <h3 class="it-policy-h3">9.2 Warranty Period and Remedies</h3>
+        <p class="it-policy-p">Warranty periods vary by service type:</p>
+        
+        <div class="table-wrapper">
+            <table class="it-policy-table">
+                <thead>
+                    <tr>
+                        <th style="width: 30%;">Service Type</th>
+                        <th style="width: 20%;">Warranty Period</th>
+                        <th>Coverage</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr>
+                        <td>Custom Software Development</td>
+                        <td>90 days</td>
+                        <td>Defects in materials and workmanship, bugs not caused by client modifications</td>
+                    </tr>
+                    <tr>
+                        <td>Website Development</td>
+                        <td>60 days</td>
+                        <td>Functional issues, broken links, display errors on agreed browsers</td>
+                    </tr>
+                    <tr>
+                        <td>IT Infrastructure Setup</td>
+                        <td>30 days</td>
+                        <td>Configuration issues, installation defects</td>
+                    </tr>
+                    <tr>
+                        <td>Design & Creative Work</td>
+                        <td>14 days</td>
+                        <td>Technical issues with deliverable files only</td>
+                    </tr>
+                    <tr>
+                        <td>Consulting Services</td>
+                        <td>No warranty</td>
+                        <td>Professional advice provided as-is</td>
+                    </tr>
+                </tbody>
+            </table>
+        </div>
+        <p class="table-scroll-hint">← Scroll horizontally to view full table →</p>
+        
+        <p class="it-policy-p" style="margin-top: 20px;">Warranty terms:</p>
+        <ul class="it-policy-list">
+            <li>Warranty claims must be reported promptly with sufficient detail to reproduce the issue</li>
+            <li>Our sole obligation under warranty is to correct defects or re-perform services at no additional charge</li>
+            <li>Warranties do not cover issues caused by client modifications, misuse, or third-party components</li>
+            <li>Extended warranty or maintenance agreements are available for purchase</li>
+        </ul>
+
+        <h3 class="it-policy-h3">9.3 Disclaimer of Warranties</h3>
+        <div class="it-policy-highlight">
+            <p class="it-policy-p">
+                <strong>EXCEPT AS EXPRESSLY PROVIDED IN THESE TERMS, CRONOS MAKES NO WARRANTIES, EXPRESS OR IMPLIED, INCLUDING WITHOUT LIMITATION IMPLIED WARRANTIES OF MERCHANTABILITY, FITNESS FOR A PARTICULAR PURPOSE, OR NON-INFRINGEMENT.</strong>
+            </p>
+            <p class="it-policy-p">
+                We do not warrant that our services will be uninterrupted, error-free, or meet all client requirements. The use of our services is at your own risk.
+            </p>
+        </div>
+    </div>
+
+    <div class="it-policy-section">
+        <h2 class="it-policy-h2">10. Limitation of Liability</h2>
+        
+        <h3 class="it-policy-h3">10.1 General Limitations</h3>
+        <div class="it-policy-highlight">
+            <p class="it-policy-p">
+                <strong>TO THE MAXIMUM EXTENT PERMITTED BY LAW, CRONOS'S TOTAL LIABILITY ARISING FROM OR RELATED TO THESE TERMS OR THE SERVICES SHALL NOT EXCEED THE TOTAL FEES PAID BY THE CLIENT TO CRONOS IN THE 12 MONTHS PRECEDING THE CLAIM.</strong>
+            </p>
+        </div>
+
+        <h3 class="it-policy-h3">10.2 Excluded Damages</h3>
+        <div class="it-policy-highlight">
+            <p class="it-policy-p">
+                <strong>IN NO EVENT SHALL CRONOS BE LIABLE FOR ANY INDIRECT, INCIDENTAL, SPECIAL, CONSEQUENTIAL, OR PUNITIVE DAMAGES, INCLUDING WITHOUT LIMITATION LOSS OF PROFITS, DATA, USE, GOODWILL, OR OTHER INTANGIBLE LOSSES, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGES.</strong>
+            </p>
+        </div>
+
+        <h3 class="it-policy-h3">10.3 Exceptions</h3>
+        <p class="it-policy-p">
+            The limitations in this section do not apply to:
+        </p>
+        <ul class="it-policy-list">
+            <li>Liability for gross negligence or willful misconduct</li>
+            <li>Breaches of confidentiality obligations</li>
+            <li>Intellectual property infringement claims</li>
+            <li>Liability that cannot be limited under applicable law</li>
+            <li>Death or personal injury caused by our negligence</li>
+        </ul>
+
+        <h3 class="it-policy-h3">10.4 Client Indemnification</h3>
+        <p class="it-policy-p">
+            Client agrees to indemnify and hold Cronos harmless from claims arising from:
+        </p>
+        <ul class="it-policy-list">
+            <li>Client's use of our services in violation of these Terms or applicable law</li>
+            <li>Client's content, data, or materials provided to Cronos</li>
+            <li>Infringement of third-party rights by client-provided materials</li>
+            <li>Client's breach of representations or warranties</li>
+        </ul>
+    </div>
+
+    <div class="it-policy-section">
+        <h2 class="it-policy-h2">11. Term and Termination</h2>
+        
+        <h3 class="it-policy-h3">11.1 Term</h3>
+        <ul class="it-policy-list">
+            <li>These Terms remain in effect as long as you use our Website or Services</li>
+            <li>Service Agreements specify the term for specific projects or services</li>
+            <li>Subscription services continue until cancelled by either party</li>
+        </ul>
+
+        <h3 class="it-policy-h3">11.2 Termination for Convenience</h3>
+        <ul class="it-policy-list">
+            <li>Either party may terminate a Service Agreement with 30 days' written notice</li>
+            <li>Client remains responsible for fees for work performed up to the termination date</li>
+            <li>Early termination of fixed-price projects may incur cancellation fees as specified in the Service Agreement</li>
+            <li>Subscription services may be cancelled with notice according to the subscription terms</li>
+        </ul>
+
+        <h3 class="it-policy-h3">11.3 Termination for Cause</h3>
+        <p class="it-policy-p">Either party may terminate immediately upon written notice if:</p>
+        <ul class="it-policy-list">
+            <li>The other party materially breaches these Terms and fails to cure within 15 days of written notice</li>
+            <li>The other party becomes insolvent, files for bankruptcy, or ceases operations</li>
+            <li>Continuing the agreement would violate applicable law</li>
+        </ul>
+
+        <h3 class="it-policy-h3">11.4 Effect of Termination</h3>
+        <p class="it-policy-p">Upon termination:</p>
+        <ul class="it-policy-list">
+            <li>Client must pay all outstanding fees and expenses</li>
+            <li>Cronos will deliver all completed work and client materials</li>
+            <li>All licenses granted to client for subscription services terminate immediately</li>
+            <li>Both parties must return or destroy confidential information</li>
+            <li>Sections relating to payment, intellectual property, confidentiality, and liability survive termination</li>
+        </ul>
+
+        <h3 class="it-policy-h3">11.5 Data Retrieval</h3>
+        <ul class="it-policy-list">
+            <li>Upon termination of services, clients have 30 days to retrieve their data</li>
+            <li>After 30 days, Cronos may delete client data from our systems</li>
+            <li>Data retrieval services may be subject to additional fees</li>
+        </ul>
+    </div>
+
+    <div class="it-policy-section">
+        <h2 class="it-policy-h2">12. Website Use and Restrictions</h2>
+        
+        <h3 class="it-policy-h3">12.1 Permitted Use</h3>
+        <p class="it-policy-p">You may use our Website to:</p>
+        <ul class="it-policy-list">
+            <li>Learn about our services and company</li>
+            <li>Contact us for inquiries or support</li>
+            <li>Access client portals and resources (with proper authorization)</li>
+            <li>Download materials explicitly made available for download</li>
+        </ul>
+
+        <h3 class="it-policy-h3">12.2 Prohibited Activities</h3>
+        <p class="it-policy-p">You may not:</p>
+        <ul class="it-policy-list">
+            <li>Use our Website or Services for any illegal purpose or in violation of any laws</li>
+            <li>Attempt to gain unauthorized access to our systems, networks, or data</li>
+            <li>Introduce viruses, malware, or any malicious code</li>
+            <li>Interfere with or disrupt the integrity or performance of our Website or Services</li>
+            <li>Scrape, copy, or download content using automated means without permission</li>
+            <li>Impersonate Cronos or any other person or entity</li>
+            <li>Harass, abuse, or harm other users</li>
+            <li>Reverse engineer, decompile, or disassemble our software or services</li>
+        </ul>
+
+        <h3 class="it-policy-h3">12.3 Account Security</h3>
+        <ul class="it-policy-list">
+            <li>You are responsible for maintaining the confidentiality of your account credentials</li>
+            <li>You must notify us immediately of any unauthorized access to your account</li>
+            <li>You are responsible for all activities that occur under your account</li>
+            <li>We reserve the right to suspend or terminate accounts that violate these Terms</li>
+        </ul>
+    </div>
+
+    <div class="it-policy-section">
+        <h2 class="it-policy-h2">13. Third-Party Services and Links</h2>
+        <ul class="it-policy-list">
+            <li>Our services may integrate with or link to third-party services, applications, or websites</li>
+            <li>We are not responsible for the content, privacy practices, or terms of third-party services</li>
+            <li>Your use of third-party services is governed by their respective terms and policies</li>
+            <li>We do not endorse or assume any responsibility for third-party services</li>
+            <li>Third-party licenses and terms apply to any third-party components used in our solutions</li>
+        </ul>
+    </div>
+
+    <div class="it-policy-section">
+        <h2 class="it-policy-h2">14. Force Majeure</h2>
+        <p class="it-policy-p">
+            Neither party shall be liable for failure or delay in performance due to circumstances beyond their reasonable control, including:
+        </p>
+        <ul class="it-policy-list">
+            <li>Acts of God, natural disasters, pandemics, or epidemics</li>
+            <li>War, terrorism, civil unrest, or government actions</li>
+            <li>Strikes, labor disputes, or transportation disruptions</li>
+            <li>Power outages, telecommunications failures, or internet disruptions</li>
+            <li>Cyberattacks or security incidents affecting critical infrastructure</li>
+        </ul>
+        <p class="it-policy-p">
+            The affected party must notify the other party promptly and make reasonable efforts to minimize the impact. If force majeure continues for more than 30 days, either party may terminate the affected Service Agreement.
+        </p>
+    </div>
+
+    <div class="it-policy-section">
+        <h2 class="it-policy-h2">15. Dispute Resolution</h2>
+        <p class="it-policy-p">
+            We believe in resolving disputes amicably and efficiently. Our dispute resolution process follows these steps:
+        </p>
+        
+        <div class="table-wrapper">
+            <table class="it-policy-table">
+                <thead>
+                    <tr>
+                        <th style="width: 15%;">Step</th>
+                        <th style="width: 25%;">Method</th>
+                        <th>Process</th>
+                        <th style="width: 20%;">Timeline</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr>
+                        <td><strong>Step 1</strong></td>
+                        <td>Direct Negotiation</td>
+                        <td>Good-faith negotiation between senior representatives of both parties</td>
+                        <td>30 days</td>
+                    </tr>
+                    <tr>
+                        <td><strong>Step 2</strong></td>
+                        <td>Mediation</td>
+                        <td>Independent mediator facilitates resolution; costs shared equally</td>
+                        <td>30 days</td>
+                    </tr>
+                    <tr>
+                        <td><strong>Step 3</strong></td>
+                        <td>Arbitration</td>
+                        <td>Binding arbitration under AFSA rules; single arbitrator; held in South Africa</td>
+                        <td>As needed</td>
+                    </tr>
+                    <tr>
+                        <td><strong>Exception</strong></td>
+                        <td>Court Action</td>
+                        <td>Immediate relief for IP breaches, confidentiality violations, or urgent matters</td>
+                        <td>Immediate</td>
+                    </tr>
+                </tbody>
+            </table>
+        </div>
+        <p class="table-scroll-hint">← Scroll horizontally to view full table →</p>
+        
+        <h3 class="it-policy-h3">15.1 Negotiation</h3>
+        <p class="it-policy-p">
+            In the event of any dispute, the parties agree to first attempt to resolve it through good-faith negotiation between senior representatives of both parties.
+        </p>
+
+        <h3 class="it-policy-h3">15.2 Mediation</h3>
+        <p class="it-policy-p">
+            If negotiation fails to resolve the dispute within 30 days, the parties agree to attempt mediation before pursuing litigation or arbitration. Mediation costs will be shared equally.
+        </p>
+
+        <h3 class="it-policy-h3">15.3 Arbitration</h3>
+        <p class="it-policy-p">
+            Any disputes that cannot be resolved through negotiation or mediation shall be referred to arbitration under the Arbitration Act of South Africa. The arbitration shall be:
+        </p>
+        <ul class="it-policy-list">
+            <li>Conducted in English</li>
+            <li>Held in South Africa (or virtually by mutual agreement)</li>
+            <li>Governed by the rules of the Arbitration Foundation of Southern Africa (AFSA)</li>
+            <li>Decided by a single arbitrator mutually agreed upon by the parties</li>
+        </ul>
+
+        <h3 class="it-policy-h3">15.4 Exceptions</h3>
+        <p class="it-policy-p">
+            Either party may seek injunctive relief in court for:
+        </p>
+        <ul class="it-policy-list">
+            <li>Breaches of intellectual property rights</li>
+            <li>Breaches of confidentiality obligations</li>
+            <li>Urgent matters requiring immediate relief</li>
+        </ul>
+    </div>
+
+    <div class="it-policy-section">
+        <h2 class="it-policy-h2">16. Governing Law and Jurisdiction</h2>
+        <ul class="it-policy-list">
+            <li>These Terms are governed by the laws of the Republic of South Africa</li>
+            <li>Any legal proceedings shall be subject to the exclusive jurisdiction of the courts of South Africa</li>
+            <li>The parties exclude the application of the United Nations Convention on Contracts for the International Sale of Goods</li>
+            <li>For international clients, local laws may provide additional protections that cannot be waived</li>
+        </ul>
+    </div>
+
+    <div class="it-policy-section">
+        <h2 class="it-policy-h2">17. Changes to Terms</h2>
+        <p class="it-policy-p">
+            We reserve the right to modify these Terms at any time. Changes become effective:
+        </p>
+        <ul class="it-policy-list">
+            <li>Immediately upon posting the updated Terms on our Website for new users</li>
+            <li>30 days after notification for existing clients with active Service Agreements</li>
+            <li>Material changes will be communicated via email or prominent notice on our Website</li>
+            <li>Continued use of our Services after changes constitutes acceptance of the modified Terms</li>
+            <li>If you do not agree to modified Terms, you may terminate your Service Agreement as provided in Section 11</li>
+        </ul>
+    </div>
+
+    <div class="it-policy-section">
+        <h2 class="it-policy-h2">18. General Provisions</h2>
+        
+        <h3 class="it-policy-h3">18.1 Entire Agreement</h3>
+        <p class="it-policy-p">
+            These Terms, together with any Service Agreements, Statements of Work, and our Privacy Policy, constitute the entire agreement between the parties and supersede all prior agreements and understandings.
+        </p>
+
+        <h3 class="it-policy-h3">18.2 Assignment</h3>
+        <ul class="it-policy-list">
+            <li>Clients may not assign or transfer their rights or obligations without our prior written consent</li>
+            <li>Cronos may assign these Terms or Service Agreements to affiliates or in connection with a merger, acquisition, or sale of assets</li>
+        </ul>
+
+        <h3 class="it-policy-h3">18.3 Severability</h3>
+        <p class="it-policy-p">
+            If any provision of these Terms is found to be unenforceable or invalid, that provision will be limited or eliminated to the minimum extent necessary, and the remaining provisions will remain in full force and effect.
+        </p>
+
+        <h3 class="it-policy-h3">18.4 Waiver</h3>
+        <p class="it-policy-p">
+            No waiver of any term or condition shall be deemed a further or continuing waiver of such term or any other term. Failure to enforce any provision does not constitute a waiver of that provision.
+        </p>
+
+        <h3 class="it-policy-h3">18.5 Independent Contractors</h3>
+        <p class="it-policy-p">
+            The parties are independent contractors. These Terms do not create a partnership, joint venture, employment, or agency relationship.
+        </p>
+
+        <h3 class="it-policy-h3">18.6 Notices</h3>
+        <p class="it-policy-p">
+            All notices must be in writing and delivered by:
+        </p>
+        <ul class="it-policy-list">
+            <li>Email to the addresses specified in the Service Agreement</li>
+            <li>Registered mail to the physical addresses on record</li>
+            <li>Hand delivery with proof of receipt</li>
+        </ul>
+        <p class="it-policy-p">
+            Notices are deemed received when delivered via email, 3 business days after mailing, or upon hand delivery.
+        </p>
+
+        <h3 class="it-policy-h3">18.7 Language</h3>
+        <p class="it-policy-p">
+            These Terms are drafted in English. Any translations are provided for convenience only. In case of conflict, the English version prevails.
+        </p>
+    </div>
+
+    <div class="it-policy-section">
+        <h2 class="it-policy-h2">19. Contact Information</h2>
+        
+        <div class="it-policy-contact-box">
+            <p class="it-policy-p">
+                If you have any questions about these Terms of Service, please contact us:
+            </p>
+            <p class="it-policy-p">
+                <strong>Cronos IT Solutions (Pty) Ltd</strong><br>
+                <strong>Email:</strong> legal@cronosit.co.za<br>
+                <strong>General Inquiries:</strong> info@cronosit.co.za<br>
+                <strong>Phone:</strong> [Your Phone Number]<br>
+                <strong>Website:</strong> www.cronosit.co.za<br>
+                <strong>Physical Address:</strong> [Your Physical Address], South Africa
+            </p>
+        </div>
+    </div>
+
+    <div class="it-policy-section">
+        <h2 class="it-policy-h2">20. Acknowledgment</h2>
+        <p class="it-policy-p">
+            By using our Website or Services, you acknowledge that:
+        </p>
+        <ul class="it-policy-list">
+            <li>You have read and understood these Terms of Service</li>
+            <li>You agree to be bound by these Terms and our Privacy Policy</li>
+            <li>You have the authority to enter into these Terms</li>
+            <li>You understand the limitations of liability and warranty disclaimers</li>
+            <li>You will comply with all applicable laws and regulations in your use of our Services</li>
+        </ul>
+    </div>
+
+    <footer style="margin-top: 60px; padding-top: 30px; border-top: 1px solid #e0e0e0;">
+        <p class="it-policy-p" style="text-align: center; color: #757575; font-size: 14px;">
+            © 2026 Cronos IT Solutions (Pty) Ltd. All rights reserved.<br>
+            These Terms of Service were last updated on February 13, 2026.
+        </p>
+    </footer>
+
+</div>
+
+</body>
+</html>

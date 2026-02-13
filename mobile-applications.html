@@ -1,0 +1,1516 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>My Website</title>
+    
+    <script src="header.js" defer></script>
+    <script src="footer.js" defer></script> 
+</head>
+<body>
+
+    <cronos-header></cronos-header>
+    
+
+</body>
+</html>
+
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700&display=swap" rel="stylesheet">
+
+<style>
+  /* Unique class prefix to avoid conflicts: tech-bold-launch- */
+  .tech-bold-launch-container {
+    position: relative;
+    width: 100%;
+    height: 100vh; /* Full viewport height for whole background effect */
+    background: url('https://images.pexels.com/photos/2091399/pexels-photo-2091399.jpeg') no-repeat center/cover; /* Replace with actual tech-themed image URL */
+    overflow: hidden;
+    font-family: 'Inter', sans-serif;
+    color: #ffffff;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    text-align: center;
+  }
+
+  * {
+    margin: 0;
+    padding: 0;
+  }
+
+  /* Optional overlay for better text readability on background image */
+  .tech-bold-launch-container::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: rgba(0, 0, 0, 0.5); /* Semi-transparent dark overlay */
+    z-index: 0;
+  }
+
+  .tech-bold-launch-content {
+    position: relative;
+    z-index: 1;
+    max-width: 800px;
+  }
+
+  .tech-bold-launch-title {
+    font-size: 72px;
+    font-weight: 500;
+    line-height: 1;
+    letter-spacing: -0.04em;
+    margin-bottom: 52px;
+  }
+
+  .tech-bold-launch-buttons {
+    display: flex;
+    gap: 16px;
+    justify-content: center;
+  }
+
+  .tech-bold-launch-button {
+    background-color: #ffffff;
+    color: #000000;
+    border: none;
+    border-radius: 24px;
+    padding: 12px 24px;
+    font-size: 16px;
+    font-weight: 600;
+    cursor: pointer;
+  }
+
+  .tech-bold-launch-button:hover {
+    background-color: #f0f0f0;
+  }
+
+  .tech-bold-launch-button-ai {
+    background-color: #1e3a8a;
+    color: #ffffff;
+  }
+
+  .tech-bold-launch-button-ai:hover {
+    background-color: #152e6e;
+  }
+</style>
+
+<div class="tech-bold-launch-container">
+  <div class="tech-bold-launch-content">
+    <h1 class="tech-bold-launch-title">Innovate bold.<br>Launch fast.</h1>
+    <div class="tech-bold-launch-buttons">
+      <button class="tech-bold-launch-button">Start for Free</button>
+      <button class="tech-bold-launch-button tech-bold-launch-button-ai">Start with AI</button>
+    </div>
+  </div>
+</div>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>IT Technology Layout</title>
+    
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+
+    <style>
+        /* Namespace Prefix: .spec-tech- */
+        
+        .spec-tech-wrapper {
+            box-sizing: border-box;
+            font-family: 'Inter', sans-serif;
+            background-color: #F8F9FB;
+            
+            /* FIX: Strict Width & Overflow Control */
+            width: 100%;
+            max-width: 100vw; /* Ensures it never exceeds viewport width */
+            overflow-x: hidden; /* Cuts off any negative margin overflow */
+            position: relative; /* Establishes a container context */
+            
+            margin: 0;
+            padding: 180px 0;
+            color: #111827;
+        }
+
+        /* FIX: Removed the global '* {}' selector that was breaking your other components */
+
+        /* Scoped reset only for this component */
+        .spec-tech-wrapper * {
+            box-sizing: border-box;
+            margin: 0;
+            padding: 0;
+        }
+
+        /* Top Header */
+        .spec-tech-header {
+            text-align: center;
+            max-width: 800px;
+            margin: 0 auto 80px auto;
+            padding: 0 20px;
+            position: relative;
+            z-index: 2;
+        }
+
+        .spec-tech-eyebrow {
+            color: #0066FF;
+            font-size: 14px;
+            font-weight: 600;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+            display: block;
+            margin-bottom: 15px;
+        }
+
+        .spec-tech-title {
+            font-size: clamp(28px, 5vw, 42px);
+            font-weight: 600;
+            margin-bottom: 20px;
+            letter-spacing: -0.02em;
+            line-height: 1.2;
+        }
+
+        .spec-tech-subtitle {
+            font-size: 18px;
+            color: #64748b;
+            line-height: 1.6;
+        }
+
+        /* Split Section */
+        .spec-tech-split-container {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            align-items: center;
+            gap: 60px;
+            width: 100%;
+        }
+
+        /* Left Side: The Screen */
+        .spec-tech-screen-box {
+            position: relative;
+            width: 100%;
+            /* Kept the design choice, but overflow-x on wrapper now contains it safely */
+            margin-left: -50px; 
+            display: flex; /* Helps with alignment */
+        }
+
+        .spec-tech-screen-image {
+            width: 100%;
+            display: block;
+            border-radius: 0 16px 16px 0;
+            box-shadow: 20px 20px 60px rgba(0, 0, 0, 0.15);
+            background-color: #1a1a1a;
+            border: 20px solid rgba(0,0,0,0.1);
+            object-fit: cover;
+            /* Ensure image scales correctly */
+            max-width: 100%;
+            height: auto;
+        }
+
+        /* Right Side: Footer Content */
+        .spec-tech-footer-content {
+            padding-right: 10%;
+            max-width: 600px; /* Slightly increased for better breathing room */
+        }
+
+        .spec-tech-footer-title {
+            font-size: 32px;
+            font-weight: 600;
+            letter-spacing: -0.02em;
+            margin-bottom: 20px;
+            line-height: 1.2;
+        }
+
+        .spec-tech-footer-desc {
+            font-size: 18px;
+            color: #64748b;
+            line-height: 1.7;
+        }
+
+        /* Animations */
+        .spec-tech-reveal {
+            opacity: 0;
+            transform: translateY(30px);
+            transition: all 0.8s ease-out;
+        }
+
+        .spec-tech-visible {
+            opacity: 1;
+            transform: translateY(0);
+        }
+
+        /* Mobile Adjustments */
+        @media (max-width: 900px) {
+            .spec-tech-wrapper {
+                padding: 100px 0;
+            }
+            
+            .spec-tech-split-container {
+                grid-template-columns: 1fr;
+                gap: 50px;
+            }
+
+            .spec-tech-screen-box {
+                margin-left: 0; /* Reset negative margin on mobile */
+                padding-right: 20px; /* Add breathing room for the shadow */
+            }
+            
+            .spec-tech-screen-image {
+                /* Make it look like it's coming from left on mobile too, or full width */
+                border-radius: 0 16px 16px 0;
+                width: 95%; /* Pull back slightly so shadow doesn't clip */
+            }
+
+            .spec-tech-footer-content {
+                padding: 0 20px;
+                max-width: 100%;
+            }
+        }
+    </style>
+</head>
+<body>
+
+    <main class="spec-tech-wrapper">
+        
+        <header class="spec-tech-header spec-tech-reveal">
+            <span class="spec-tech-eyebrow">Browser Extension</span>
+            <h1 class="spec-tech-title">Two ways to access, yours to choose</h1>
+            <p class="spec-tech-subtitle">
+                Apart from the IT Hub console, you can manage cloud infrastructure 
+                directly via our Chrome® extension — the choice is yours.
+            </p>
+        </header>
+
+        <section class="spec-tech-split-container">
+            
+            <div class="spec-tech-screen-box spec-tech-reveal">
+                <img 
+                    src="https://images.pexels.com/photos/1779487/pexels-photo-1779487.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=1" 
+                    alt="IT Technology Dashboard" 
+                    class="spec-tech-screen-image"
+                >
+            </div>
+
+            <div class="spec-tech-footer-content spec-tech-reveal">
+                <h2 class="spec-tech-footer-title">Connect seamlessly</h2>
+                <p class="spec-tech-footer-desc">
+                    Easily connect your local environment or hardware security modules 
+                    to access global IT projects, DevOps protocols, and secure APIs instantly.
+                </p>
+            </div>
+
+        </section>
+
+    </main>
+
+    <script>
+        document.addEventListener('DOMContentLoaded', () => {
+            const observer = new IntersectionObserver((entries) => {
+                entries.forEach(entry => {
+                    if (entry.isIntersecting) {
+                        entry.target.classList.add('spec-tech-visible');
+                    }
+                });
+            }, { threshold: 0.1 });
+
+            document.querySelectorAll('.spec-tech-reveal').forEach(el => observer.observe(el));
+        });
+    </script>
+
+</body>
+</html>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700;800&display=swap" rel="stylesheet">
+
+<style>
+    :root {
+        --secure-bg: #030a17;
+        --secure-text: #ffffff;
+        --secure-muted: #8a94a6;
+        --secure-blue: #4ca2ff;
+        --secure-radius: 12px;
+    }
+
+    .secure-it-wrapper {
+        background-color: var(--secure-bg);
+        color: var(--secure-text);
+        font-family: 'Inter', sans-serif;
+        padding: 230px 5%;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        min-height: 80vh;
+        overflow: hidden;
+    }
+
+    .secure-it-container {
+        max-width: 1200px;
+        width: 100%;
+        display: flex;
+        align-items: center;
+        gap: 60px;
+    }
+
+    /* Left Side Content */
+    .secure-it-content {
+        flex: 1;
+        max-width: 500px;
+    }
+
+    .secure-it-label {
+        color: var(--secure-blue);
+        text-transform: uppercase;
+        font-weight: 600;
+        font-size: 1.1rem;
+        letter-spacing: -0.02em;
+        margin-bottom: 20px;
+        display: block;
+    }
+
+    .secure-it-title {
+        font-size: 3.5rem;
+        font-weight: 600;
+        line-height: 1.1;
+        margin-bottom: 24px;
+        letter-spacing: -0.02em;
+    }
+
+    .secure-it-desc {
+        color: var(--secure-muted);
+        font-size: 1.15rem;
+        line-height: 1.6;
+        margin-bottom: 40px;
+    }
+
+    .secure-it-btn {
+        display: inline-flex;
+        align-items: center;
+        padding: 12px 24px;
+        border: 1px solid #ffffff;
+        border-radius: 30px;
+        color: #ffffff;
+        text-decoration: none;
+        font-weight: 600;
+        transition: all 0.3s ease;
+    }
+
+    .secure-it-btn:hover {
+        background: #ffffff;
+        color: var(--secure-bg);
+    }
+
+    .secure-it-btn::after {
+        content: '→';
+        margin-left: 10px;
+    }
+
+    /* Right Side Visuals (Floating Cards) */
+    .secure-it-visual {
+        flex: 1;
+        position: relative;
+        height: 500px;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+    }
+
+    /* Main Phone Silhouette Shadow */
+    .secure-it-phone-shape {
+        width: 320px;
+        height: 600px;
+        background: linear-gradient(135deg, #0d1b31 0%, #050d1a 100%);
+        border-radius: 40px; 
+        box-shadow: 0 50px 100px rgba(0,0,0,0.5);
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        border: 5px solid #f0f0f0;
+    }
+
+    /* Floating UI Elements */
+    .secure-it-card {
+        position: absolute;
+        background: #ffffff;
+        color: #000;
+        padding: 15px;
+        border-radius: var(--secure-radius);
+        box-shadow: 0 20px 40px rgba(0,0,0,0.3);
+        animation: float-it 6s ease-in-out infinite;
+    }
+
+    .secure-it-card.face-id {
+        top: 20%;
+        left: 0;
+        width: 140px;
+        text-align: center;
+        font-size: 0.7rem;
+        font-weight: 700;
+        animation-delay: 0s;
+    }
+
+    .secure-it-card.two-fa {
+        bottom: 15%;
+        right: 0;
+        width: 220px;
+        animation-delay: 1s;
+    }
+
+    .secure-it-code-tag {
+        position: absolute;
+        top: 40%;
+        right: -10%;
+        background: var(--secure-blue);
+        color: white;
+        padding: 8px 16px;
+        border-radius: 20px;
+        font-family: monospace;
+        font-weight: bold;
+        letter-spacing: 2px;
+        animation-delay: 2s;
+    }
+
+    @keyframes float-it {
+        0%, 100% { transform: translateY(0); }
+        50% { transform: translateY(-20px); }
+    }
+
+    /* Mobile Logic */
+    @media (max-width: 992px) {
+        .secure-it-container { flex-direction: column; text-align: center; }
+        .secure-it-content { max-width: 100%; order: 1; }
+        .secure-it-visual { order: 2; width: 100%; height: 400px; margin-top: 50px; }
+        .secure-it-title { font-size: 2.5rem; }
+        .secure-it-desc { max-width: 100%; }
+    }
+</style>
+
+<section class="secure-it-wrapper">
+    <div class="secure-it-container">
+        
+        <div class="secure-it-content">
+            <span class="secure-it-label">Security</span>
+            <h2 class="secure-it-title">Take your keys into your own hands</h2>
+            <p class="secure-it-desc">
+                Your private keys are encrypted locally on your device with Secure Enclave, 
+                protected by biometric and 2-Factor Authentication.
+            </p>
+            <a href="#" class="secure-it-btn">Learn More</a>
+        </div>
+
+        <div class="secure-it-visual">
+            <img src="thumbnails/pexels-dominick-davis.jpg" alt="Phone Silhouette" class="secure-it-phone-shape">
+        </div>
+
+    </div>
+</section>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<div id="webapp-pricing-root">
+    <style>
+        @import url('https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap');
+
+        #webapp-pricing-root {
+            font-family: 'Inter', sans-serif;
+            background: #f4f4f4; /* CHANGED: Light Background */
+            padding: 60px 20px;
+            color: #1e293b; /* CHANGED: Dark Text */
+            max-width: 1300px;
+            margin: 0 auto;
+        }
+
+        /* Namespace: wap- (Web App Pricing) */
+        .wap-pricing-header {
+            text-align: center;
+            margin-bottom: 60px;
+        }
+
+        .wap-badge {
+            display: inline-block;
+            background: rgba(0, 102, 255, 0.1);
+            color: #0066FF;
+            padding: 6px 16px;
+            border-radius: 30px;
+            font-size: 12px;
+            font-weight: 700;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+            margin-bottom: 20px;
+            border: 1px solid rgba(0, 102, 255, 0.2);
+        }
+
+        .wap-title {
+            font-size: 42px;
+            font-weight: 800;
+            margin: 0 0 16px 0;
+            /* CHANGED: Dark gradient for title */
+            background: linear-gradient(90deg, #0f172a, #334155);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+        }
+
+        /* Table Container - Made Transparent */
+        .wap-table-container {
+            width: 100%;
+            overflow-x: auto;
+            /* CHANGED: Removed background and border */
+            background: transparent;
+            margin-bottom: 40px;
+        }
+
+        .wap-mega-table {
+            width: 100%;
+            /* CHANGED: Separate borders to allow spacing between rows */
+            border-collapse: separate; 
+            border-spacing: 0 15px; /* Spacing between rows */
+            min-width: 1000px;
+        }
+
+        /* Headers - Transparent background, Dark Text */
+        .wap-mega-table th {
+            padding: 20px 25px;
+            text-align: left;
+            vertical-align: top;
+            border: none; /* Removed borders */
+            background: transparent;
+        }
+
+        .wap-category-label {
+            font-size: 20px;
+            font-weight: 800;
+            color: #0f172a; /* Dark Color */
+        }
+
+        .wap-tier-name {
+            font-size: 24px;
+            font-weight: 800;
+            display: block;
+            margin-bottom: 8px;
+            color: #0f172a;
+        }
+
+        .wap-tier-desc {
+            font-size: 13px;
+            color: #64748b; /* Medium Gray */
+            line-height: 1.6;
+            font-weight: 500;
+            display: block;
+            margin-bottom: 20px;
+            min-height: 40px;
+        }
+
+        .wap-price-wrapper {
+            margin-bottom: 20px;
+        }
+
+        .wap-price-currency { font-size: 18px; vertical-align: top; color: #0066FF; font-weight: 700; }
+        .wap-price-amount { font-size: 48px; font-weight: 800; letter-spacing: -1px; color: #0f172a; }
+        .wap-price-cycle { font-size: 14px; color: #64748b; }
+
+        /* Rows Styling - The "Card" Look */
+        .wap-mega-table td {
+            padding: 25px;
+            font-size: 14px;
+            color: #334155; /* Dark Text */
+            background: #ffffff; /* CHANGED: White card background */
+            border: none;
+            /* Soft shadow for depth */
+            box-shadow: 0 2px 5px rgba(0,0,0,0.02); 
+        }
+
+        /* Border Radius Logic for Rows */
+        .wap-mega-table td:first-child {
+            border-top-left-radius: 15px;
+            border-bottom-left-radius: 15px;
+        }
+        
+        .wap-mega-table td:last-child {
+            border-top-right-radius: 15px;
+            border-bottom-right-radius: 15px;
+        }
+
+        .wap-row-title {
+            font-weight: 700;
+            color: #0f172a; /* Darkest Blue/Black */
+            display: block;
+            margin-bottom: 4px;
+            font-size: 15px;
+        }
+
+        .wap-row-sub {
+            font-size: 12px;
+            color: #64748b;
+            line-height: 1.5;
+            display: block;
+        }
+
+        /* Section Divider Styling */
+        .wap-section-divider {
+            /* CHANGED: Distinct look for section headers */
+            background: #1e293b !important; 
+            padding: 15px 25px !important;
+            font-weight: 700;
+            color: #ffffff !important; /* White text on dark divider */
+            text-transform: uppercase;
+            letter-spacing: 2px;
+            font-size: 12px;
+            /* Radius is handled by general TD rules above, but we ensure it applies here */
+        }
+
+        /* Status & Icons */
+        .wap-check { color: #059669; font-weight: 900; font-size: 18px; } /* Darker Green */
+        .wap-cross { color: #cbd5e1; font-size: 18px; } /* Light Gray Cross */
+        
+        /* Feature details styling */
+        .wap-feature-details {
+            font-size: 12px;
+            color: #64748b;
+            display: block;
+            margin-top: 5px;
+            line-height: 1.5;
+            font-weight: 500;
+        }
+
+        /* CTA Buttons */
+        .wap-cta-btn {
+            display: block;
+            text-align: center;
+            padding: 14px;
+            border-radius: 12px;
+            text-decoration: none;
+            font-weight: 700;
+            font-size: 14px;
+            transition: all 0.3s ease;
+            width: 100%;
+        }
+
+        .wap-btn-outline {
+            border: 2px solid #0066FF; /* Thicker border */
+            color: #0066FF;
+            background: transparent;
+        }
+
+        .wap-btn-outline:hover {
+            background: rgba(0, 102, 255, 0.05);
+        }
+
+        .wap-btn-primary {
+            background: #0066FF;
+            color: #ffffff;
+            border: 2px solid #0066FF;
+        }
+
+        .wap-btn-primary:hover {
+            background: #0052cc;
+            box-shadow: 0 4px 12px rgba(0, 102, 255, 0.3);
+        }
+        
+        /* Notes Section - Adapted for Light Mode */
+        .wap-notes-container {
+            background: #ffffff; /* White bg */
+            border-radius: 16px;
+            padding: 30px;
+            border: 1px solid rgba(0,0,0,0.05);
+            margin-top: 40px;
+            box-shadow: 0 4px 20px rgba(0,0,0,0.03);
+        }
+        
+        .wap-notes-title {
+            color: #0066FF;
+            font-size: 18px;
+            font-weight: 800;
+            margin-bottom: 20px;
+        }
+        
+        .wap-notes-list {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
+            gap: 15px;
+        }
+        
+        .wap-note-item {
+            display: flex;
+            align-items: flex-start;
+            margin-bottom: 10px;
+        }
+        
+        .wap-note-bullet {
+            color: #0066FF;
+            font-weight: bold;
+            margin-right: 10px;
+            flex-shrink: 0;
+        }
+        
+        .wap-note-text {
+            font-size: 14px;
+            color: #475569; /* Darker text for readability */
+            line-height: 1.6;
+        }
+
+        /* Mobile Responsive Design */
+        @media (max-width: 1024px) {
+            .wap-title { font-size: 36px; }
+            .wap-notes-list { grid-template-columns: 1fr; }
+        }
+        
+        @media (max-width: 768px) {
+            #webapp-pricing-root { padding: 40px 15px; }
+            
+            .wap-title { font-size: 28px; }
+            
+            .wap-pricing-header { margin-bottom: 40px; }
+            
+            .wap-table-container {
+                border-radius: 16px;
+                overflow-x: auto;
+                -webkit-overflow-scrolling: touch;
+            }
+            
+            .wap-mega-table th {
+                padding: 25px 20px;
+            }
+            
+            .wap-mega-table td {
+                padding: 18px 20px;
+            }
+            
+            .wap-tier-name { font-size: 20px; }
+            
+            .wap-price-amount { font-size: 36px; }
+            
+            .wap-notes-container {
+                padding: 20px;
+            }
+        }
+        
+        /* Highlight specific column */
+        .wap-highlight-col {
+            background: #EFF6FF !important; /* Very light blue for highlighted column */
+        }
+        
+    </style>
+
+    <div class="wap-pricing-header">
+        <div class="wap-badge">Web & Mobile Application Development</div>
+        <h1 class="wap-title">Custom App Development Packages</h1>
+        <p style="color: #64748b; max-width: 700px; margin: 0 auto; line-height: 1.6; font-size: 16px;">Comprehensive development packages for web and mobile applications. Each tier includes full lifecycle support from design to deployment and maintenance.</p>
+    </div>
+
+    <div class="wap-table-container">
+        <table class="wap-mega-table">
+            <thead>
+                <tr>
+                    <th style="width: 28%;">
+                        <div class="wap-category-label">Application Features</div>
+                        <p style="font-size: 13px; color: #64748b; margin-top: 10px; line-height: 1.5;">Detailed breakdown of what's included in each development package.</p>
+                    </th>
+                    <th style="width: 24%;">
+                        <span class="wap-tier-name">Starter</span>
+                        <span class="wap-tier-desc">Single platform app with basic functionality for small businesses.</span>
+                        <div class="wap-price-wrapper">
+                            <span class="wap-price-currency">$</span>
+                            <span class="wap-price-amount">4,999</span>
+                            <span class="wap-price-cycle">/project</span>
+                        </div>
+                        <a href="#" class="wap-cta-btn wap-btn-outline">Get Quote</a>
+                    </th>
+                    <th style="width: 24%;">
+                        <span class="wap-tier-name" style="color: #0066FF;">Professional</span>
+                        <span class="wap-tier-desc">Cross-platform app with advanced features and API integration.</span>
+                        <div class="wap-price-wrapper">
+                            <span class="wap-price-currency">$</span>
+                            <span class="wap-price-amount">14,500</span>
+                            <span class="wap-price-cycle">/project</span>
+                        </div>
+                        <a href="#" class="wap-cta-btn wap-btn-primary">Choose Plan</a>
+                    </th>
+                    <th style="width: 24%;">
+                        <span class="wap-tier-name">Enterprise</span>
+                        <span class="wap-tier-desc">Full-scale custom application with AI features and scalability.</span>
+                        <div class="wap-price-wrapper">
+                            <span class="wap-price-currency">$</span>
+                            <span class="wap-price-amount">45,000</span>
+                            <span class="wap-price-cycle">/project+</span>
+                        </div>
+                        <a href="#" class="wap-cta-btn wap-btn-outline">Contact Sales</a>
+                    </th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr><td colspan="4" class="wap-section-divider">Platform & Scope</td></tr>
+                
+                <tr>
+                    <td>
+                        <span class="wap-row-title">Platform Coverage</span>
+                        <span class="wap-row-sub">Native and web platforms included</span>
+                    </td>
+                    <td>
+                        Web App OR iOS/Android
+                        <span class="wap-feature-details">Choose one platform only</span>
+                    </td>
+                    <td class="wap-highlight-col">
+                        Web + 1 Mobile Platform
+                        <span class="wap-feature-details">Responsive web + iOS or Android</span>
+                    </td>
+                    <td>
+                        Web + iOS + Android
+                        <span class="wap-feature-details">Full cross-platform coverage</span>
+                    </td>
+                </tr>
+                <tr>
+                    <td>
+                        <span class="wap-row-title">Development Timeline</span>
+                        <span class="wap-row-sub">Estimated delivery time from kickoff</span>
+                    </td>
+                    <td>
+                        4-6 Weeks
+                        <span class="wap-feature-details">Basic functionality only</span>
+                    </td>
+                    <td class="wap-highlight-col">
+                        8-12 Weeks
+                        <span class="wap-feature-details">Includes testing and refinement</span>
+                    </td>
+                    <td>
+                        12-20 Weeks
+                        <span class="wap-feature-details">Comprehensive development cycle</span>
+                    </td>
+                </tr>
+                
+                <tr><td colspan="4" class="wap-section-divider">Core Development Features</td></tr>
+                <tr>
+                    <td>
+                        <span class="wap-row-title">Custom UI/UX Design</span>
+                        <span class="wap-row-sub">Wireframes, prototypes, and visual design</span>
+                    </td>
+                    <td>
+                        Basic Design
+                        <span class="wap-feature-details">Template-based with light customization</span>
+                    </td>
+                    <td class="wap-highlight-col">
+                        Custom Design
+                        <span class="wap-feature-details">Fully custom UI with 3 revision rounds</span>
+                    </td>
+                    <td>
+                        Premium Design
+                        <span class="wap-feature-details">Custom UI/UX with unlimited revisions</span>
+                    </td>
+                </tr>
+                <tr>
+                    <td>
+                        <span class="wap-row-title">Frontend Development</span>
+                        <span class="wap-row-sub">HTML/CSS/JavaScript or framework</span>
+                    </td>
+                    <td>
+                        Basic Frontend
+                        <span class="wap-feature-details">Vanilla JS or simple React components</span>
+                    </td>
+                    <td class="wap-highlight-col">
+                        Advanced Frontend
+                        <span class="wap-feature-details">React/Vue/Angular with state management</span>
+                    </td>
+                    <td>
+                        Enterprise Frontend
+                        <span class="wap-feature-details">Micro-frontends, SSR, PWA capabilities</span>
+                    </td>
+                </tr>
+                <tr>
+                    <td>
+                        <span class="wap-row-title">Backend Development</span>
+                        <span class="wap-row-sub">Server, database, and API development</span>
+                    </td>
+                    <td>
+                        Simple Backend
+                        <span class="wap-feature-details">Firebase or basic Node.js with 5 API endpoints</span>
+                    </td>
+                    <td class="wap-highlight-col">
+                        Robust Backend
+                        <span class="wap-feature-details">Node.js/Python with 15+ API endpoints, auth, and database</span>
+                    </td>
+                    <td>
+                        Scalable Backend
+                        <span class="wap-feature-details">Microservices, cloud functions, real-time features</span>
+                    </td>
+                </tr>
+                
+                <tr><td colspan="4" class="wap-section-divider">Advanced Features</td></tr>
+                <tr>
+                    <td>
+                        <span class="wap-row-title">Third-Party API Integration</span>
+                        <span class="wap-row-sub">Payment, social media, maps, etc.</span>
+                    </td>
+                    <td>
+                        1 Basic Integration
+                        <span class="wap-feature-details">Stripe or PayPal only</span>
+                    </td>
+                    <td class="wap-highlight-col">
+                        3-5 Integrations
+                        <span class="wap-feature-details">Payment + social + maps + 2 custom</span>
+                    </td>
+                    <td>
+                        Unlimited Integrations
+                        <span class="wap-feature-details">All required APIs with custom middleware</span>
+                    </td>
+                </tr>
+                <tr>
+                    <td>
+                        <span class="wap-row-title">User Authentication</span>
+                        <span class="wap-row-sub">Login, registration, and user management</span>
+                    </td>
+                    <td>
+                        Email/Password
+                        <span class="wap-feature-details">Basic auth with email verification</span>
+                    </td>
+                    <td class="wap-highlight-col">
+                        Social + Email
+                        <span class="wap-feature-details">Google, Facebook, Apple login + email/password</span>
+                    </td>
+                    <td>
+                        Enterprise SSO
+                        <span class="wap-feature-details">SAML, OAuth2, LDAP, custom identity provider</span>
+                    </td>
+                </tr>
+                <tr>
+                    <td>
+                        <span class="wap-row-title">Admin Dashboard</span>
+                        <span class="wap-row-sub">Content management and analytics</span>
+                    </td>
+                    <td class="wap-cross">✘</td>
+                    <td class="wap-check wap-highlight-col">✔</td>
+                    <td class="wap-check">✔</td>
+                </tr>
+                <tr>
+                    <td>
+                        <span class="wap-row-title">Push Notifications</span>
+                        <span class="wap-row-sub">Mobile and web notifications</span>
+                    </td>
+                    <td class="wap-cross">✘</td>
+                    <td class="wap-check wap-highlight-col">✔</td>
+                    <td class="wap-check">✔</td>
+                </tr>
+                
+                <tr><td colspan="4" class="wap-section-divider">Post-Launch Services</td></tr>
+                <tr>
+                    <td>
+                        <span class="wap-row-title">Hosting & Deployment</span>
+                        <span class="wap-row-sub">Server setup and app store deployment</span>
+                    </td>
+                    <td>
+                        Basic Hosting (3 months)
+                        <span class="wap-feature-details">Shared hosting, manual deployment</span>
+                    </td>
+                    <td class="wap-highlight-col">
+                        Managed Hosting (6 months)
+                        <span class="wap-feature-details">Cloud hosting with CI/CD pipeline</span>
+                    </td>
+                    <td>
+                        Enterprise Hosting (12 months)
+                        <span class="wap-feature-details">Dedicated infrastructure with auto-scaling</span>
+                    </td>
+                </tr>
+                <tr>
+                    <td>
+                        <span class="wap-row-title">Maintenance & Support</span>
+                        <span class="wap-row-sub">Bug fixes, updates, and technical support</span>
+                    </td>
+                    <td>
+                        1 Month Support
+                        <span class="wap-feature-details">Critical bug fixes only</span>
+                    </td>
+                    <td class="wap-highlight-col">
+                        3 Months Support
+                        <span class="wap-feature-details">Bug fixes + minor feature updates</span>
+                    </td>
+                    <td>
+                        6 Months Support
+                        <span class="wap-feature-details">Full support including performance optimization</span>
+                    </td>
+                </tr>
+                <tr>
+                    <td>
+                        <span class="wap-row-title">Analytics & Reporting</span>
+                        <span class="wap-row-sub">User behavior and performance tracking</span>
+                    </td>
+                    <td>
+                        Basic Analytics
+                        <span class="wap-feature-details">Simple traffic and conversion tracking</span>
+                    </td>
+                    <td class="wap-highlight-col">
+                        Advanced Analytics
+                        <span class="wap-feature-details">User flow, retention, and custom events</span>
+                    </td>
+                    <td>
+                        Business Intelligence
+                        <span class="wap-feature-details">Custom dashboards, predictive analytics, AI insights</span>
+                    </td>
+                </tr>
+            </tbody>
+        </table>
+    </div>
+    
+    <div class="wap-notes-container">
+        <div class="wap-notes-title">Important Notes & Clarifications</div>
+        <div class="wap-notes-list">
+            <div class="wap-note-item">
+                <span class="wap-note-bullet">•</span>
+                <span class="wap-note-text">All prices are for complete projects. Monthly retainers are available for ongoing development at $1,500-$5,000/month depending on scope.</span>
+            </div>
+            <div class="wap-note-item">
+                <span class="wap-note-bullet">•</span>
+                <span class="wap-note-text">Timelines begin after final design approval and content delivery. Delays in client feedback may extend project timelines.</span>
+            </div>
+            <div class="wap-note-item">
+                <span class="wap-note-bullet">•</span>
+                <span class="wap-note-text">Third-party service costs (domain, hosting beyond included period, paid APIs, app store fees) are not included unless specified.</span>
+            </div>
+            <div class="wap-note-item">
+                <span class="wap-note-bullet">•</span>
+                <span class="wap-note-text">Custom Enterprise pricing varies based on specific requirements, complexity, and integrations needed. Contact for a detailed quote.</span>
+            </div>
+            <div class="wap-note-item">
+                <span class="wap-note-bullet">•</span>
+                <span class="wap-note-text">Projects require a 50% deposit to begin work, with the balance due upon completion before final delivery.</span>
+            </div>
+            <div class="wap-note-item">
+                <span class="wap-note-bullet">•</span>
+                <span class="wap-note-text">All code is delivered with documentation. Clients retain full ownership of all deliverables upon final payment.</span>
+            </div>
+        </div>
+    </div>
+</div>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>FAQ Component</title>
+    
+    <!-- Fonts: Inter -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    
+    <!-- Icons: FontAwesome -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+
+    <style>
+        /* --- Reset & Base Styles --- */
+        * {
+            box-sizing: border-box;
+            margin: 0;
+            padding: 0;
+        }
+
+        body {
+            font-family: 'Inter', sans-serif;
+            background-color: #f4f3fd;
+            color: #111827;
+            -webkit-font-smoothing: antialiased;
+        }
+
+        /* --- Component Container --- */
+        .faq-container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 9rem 0;
+        }
+
+        /* --- Header Section --- */
+        .faq-header {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            margin-bottom: 60px;
+        }
+
+        .faq-title {
+            font-size: 48px;
+            font-weight: 600; /* Matches the bold/clean look */
+            letter-spacing: -0.02em;
+            color: #000000;
+        }
+
+        .faq-cta-button {
+            display: inline-flex;
+            align-items: center;
+            gap: 8px;
+            padding: 12px 24px;
+            background-color: #ffffff;
+            border: 1px solid #e5e7eb;
+            border-radius: 50px;
+            font-size: 15px;
+            font-weight: 500;
+            color: #111827;
+            text-decoration: none;
+            transition: all 0.2s ease;
+        }
+
+        .faq-cta-button:hover {
+            background-color: #f9fafb;
+            border-color: #d1d5db;
+        }
+
+        .faq-cta-icon {
+            font-size: 14px;
+        }
+
+        /* --- Grid Layout for FAQs --- */
+        .faq-grid {
+            display: grid;
+            grid-template-columns: 1fr 1fr; /* Two equal columns */
+            gap: 0 60px; /* 0 vertical gap (handled by padding), 60px horizontal gap */
+            align-items: start; /* Align items to top */
+        }
+
+        /* --- Individual FAQ Item --- */
+        .faq-item {
+            border-bottom: 1px solid #E5E7EB;
+        }
+
+        /* Button Style (Question) */
+        .faq-question-btn {
+            width: 100%;
+            background: none;
+            border: none;
+            padding: 32px 0; /* Generous vertical padding */
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            cursor: pointer;
+            text-align: left;
+            font-family: 'Inter', sans-serif;
+            font-size: 18px;
+            font-weight: 600;
+            color: #000000;
+            transition: color 0.2s ease;
+        }
+
+        .faq-question-btn:hover {
+            color: #374151;
+        }
+
+        .faq-icon-wrapper {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            width: 24px;
+            height: 24px;
+            flex-shrink: 0;
+            transition: transform 0.3s ease;
+        }
+
+        .faq-item.active .faq-icon-wrapper {
+            transform: rotate(45deg); /* Rotate + to become x */
+        }
+
+        /* Answer Panel */
+        .faq-answer-panel {
+            max-height: 0;
+            overflow: hidden;
+            transition: max-height 0.3s ease-out;
+        }
+
+        .faq-answer-content {
+            padding-bottom: 32px;
+            color: #4B5563;
+            font-size: 16px;
+            line-height: 1.6;
+        }
+
+        /* --- Responsive Adjustments --- */
+        @media (max-width: 900px) {
+            .faq-grid {
+                grid-template-columns: 1fr; /* Stack into 1 column */
+                gap: 0;
+            }
+            
+            .faq-header {
+                flex-direction: column;
+                align-items: flex-start;
+                gap: 24px;
+            }
+
+            .faq-title {
+                font-size: 36px;
+            }
+        }
+    </style>
+</head>
+<body>
+
+    <section class="faq-container">
+        
+        <!-- Header -->
+        <header class="faq-header">
+            <h2 class="faq-title">FAQ</h2>
+            <a href="#" class="faq-cta-button">
+                Contact us for more info <i class="fa-solid fa-arrow-right faq-cta-icon"></i>
+            </a>
+        </header>
+
+        <!-- FAQ Grid -->
+        <div class="faq-grid">
+
+            <!-- Left Column -->
+            <div class="faq-column">
+                <!-- Item 1 -->
+                <div class="faq-item">
+                    <button class="faq-question-btn" aria-expanded="false">
+                        Can you work with wireframes or our existing designs?
+                        <span class="faq-icon-wrapper">
+                            <i class="fa-solid fa-plus"></i>
+                        </span>
+                    </button>
+                    <div class="faq-answer-panel">
+                        <div class="faq-answer-content">
+                            Yes, absolutely. We can seamlessly integrate with your existing workflows, whether you have rough wireframes or polished designs that need implementation.
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Item 2 -->
+                <div class="faq-item">
+                    <button class="faq-question-btn" aria-expanded="false">
+                        What happens after the design is ready & I approve it?
+                        <span class="faq-icon-wrapper">
+                            <i class="fa-solid fa-plus"></i>
+                        </span>
+                    </button>
+                    <div class="faq-answer-panel">
+                        <div class="faq-answer-content">
+                            Once approved, we prepare all final assets and source files for delivery. We can also collaborate with your development team to ensure a smooth handoff.
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Item 3 -->
+                <div class="faq-item">
+                    <button class="faq-question-btn" aria-expanded="false">
+                        Do you charge for additional revisions?
+                        <span class="faq-icon-wrapper">
+                            <i class="fa-solid fa-plus"></i>
+                        </span>
+                    </button>
+                    <div class="faq-answer-panel">
+                        <div class="faq-answer-content">
+                            We include a standard round of revisions in our initial quote. Significant changes outside the original scope may incur additional fees, which we will discuss upfront.
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Right Column -->
+            <div class="faq-column">
+                <!-- Item 4 -->
+                <div class="faq-item">
+                    <button class="faq-question-btn" aria-expanded="false">
+                        I have an agency. Can I outsource work to you?
+                        <span class="faq-icon-wrapper">
+                            <i class="fa-solid fa-plus"></i>
+                        </span>
+                    </button>
+                    <div class="faq-answer-panel">
+                        <div class="faq-answer-content">
+                            Yes, we frequently partner with agencies to provide white-label design services. We act as an extension of your team while maintaining your brand standards.
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Item 5 -->
+                <div class="faq-item">
+                    <button class="faq-question-btn" aria-expanded="false">
+                        What do I need to give you to get started?
+                        <span class="faq-icon-wrapper">
+                            <i class="fa-solid fa-plus"></i>
+                        </span>
+                    </button>
+                    <div class="faq-answer-panel">
+                        <div class="faq-answer-content">
+                            A brief overview of your project, target audience, and any brand guidelines you have are a great start. We'll guide you through a discovery process if you're unsure.
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Item 6 -->
+                <div class="faq-item">
+                    <button class="faq-question-btn" aria-expanded="false">
+                        Can I outsource work to you? I have an agency
+                        <span class="faq-icon-wrapper">
+                            <i class="fa-solid fa-plus"></i>
+                        </span>
+                    </button>
+                    <div class="faq-answer-panel">
+                        <div class="faq-answer-content">
+                            Absolutely. We understand agency timelines and requirements well. Contact us to discuss how we can support your overflow work or specific projects.
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+        </div>
+    </section>
+
+    <script>
+        // Simple accordion functionality
+        const faqButtons = document.querySelectorAll('.faq-question-btn');
+
+        faqButtons.forEach(button => {
+            button.addEventListener('click', () => {
+                const faqItem = button.parentElement;
+                const panel = button.nextElementSibling;
+                const isExpanded = button.getAttribute('aria-expanded') === 'true';
+
+                // Optional: Close other items in the same column or everywhere
+                // Remove this block if you want multiple items open at once
+                document.querySelectorAll('.faq-item').forEach(item => {
+                    if (item !== faqItem && item.classList.contains('active')) {
+                        item.classList.remove('active');
+                        item.querySelector('.faq-question-btn').setAttribute('aria-expanded', 'false');
+                        item.querySelector('.faq-answer-panel').style.maxHeight = null;
+                    }
+                });
+
+                // Toggle current item
+                faqItem.classList.toggle('active');
+                button.setAttribute('aria-expanded', !isExpanded);
+
+                if (faqItem.classList.contains('active')) {
+                    panel.style.maxHeight = panel.scrollHeight + "px";
+                } else {
+                    panel.style.maxHeight = null;
+                }
+            });
+        });
+    </script>
+
+</body>
+</html>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<cronos-footer></cronos-footer>

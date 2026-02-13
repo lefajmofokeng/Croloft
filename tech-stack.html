@@ -1,0 +1,362 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Affiliate</title>
+    
+    <script src="header.js" defer></script>
+    <script src="footer.js" defer></script> 
+</head>
+<body>
+
+    <cronos-header></cronos-header>
+    
+
+</body>
+</html>
+
+
+
+
+
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Premium Tech Stack</title>
+    
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+    <link href="https://cdn.jsdelivr.net/npm/remixicon@3.5.0/fonts/remixicon.css" rel="stylesheet">
+
+    <style>
+        :root {
+            --tstk-bg: #0B0C0E;
+            --tstk-card: #16171A;
+            --tstk-card-hover: #1C1D21;
+            --tstk-accent: #3ECF8E; 
+            --tstk-text: #FFFFFF;
+            --tstk-muted: #888888;
+            --tstk-border: #262626;
+            --tstk-font: 'Circular Std', 'Inter', sans-serif;
+            --tstk-max-width: 1350px;
+        }
+
+        /* Circular Std - Book/Regular (400) */
+        @font-face {
+            font-family: 'Circular Std';
+            src: url('fonts/CircularStd-Book.ttf') format('truetype');
+            font-weight: 400;
+            font-style: normal;
+        }
+
+        /* Circular Std - Medium (500) */
+        @font-face {
+            font-family: 'Circular Std';
+            src: url('fonts/CircularStd.ttf') format('truetype');
+            font-weight: 500;
+            font-style: normal;
+        }
+
+        /* Circular Std - Bold (700) */
+        @font-face {
+            font-family: 'Circular Std';
+            src: url('fonts/CircularStd-Bold.ttf') format('truetype');
+            font-weight: 600;
+            font-style: normal;
+        }
+
+        .tstk-container * { box-sizing: border-box; margin: 0; padding: 0; }
+
+        body { background-color: var(--tstk-bg); margin: 0; }
+
+        .tstk-container {
+            font-family: var(--tstk-font);
+            color: var(--tstk-text);
+            max-width: var(--tstk-max-width);
+            margin: 0 auto;
+            padding: 140px 40px;
+            display: flex;
+            gap: 80px;
+        }
+
+        /* --- SIDEBAR --- */
+        .tstk-sidebar {
+            width: 260px;
+            flex-shrink: 0;
+            position: sticky;
+            top: 100px;
+            height: calc(100vh - 120px);
+            display: flex;
+            flex-direction: column;
+        }
+
+        .tstk-logo-area h1 { font-size: 36px; font-weight: 300; margin-bottom: 12px; }
+        .tstk-logo-area p { color: var(--tstk-muted); font-size: 18px; margin-bottom: 35px; }
+
+        .tstk-search-wrapper { position: relative; margin-bottom: 30px; }
+        .tstk-search-input {
+            width: 100%;
+            background: #111111;
+            border: 1px solid var(--tstk-border);
+            padding: 11px 14px 11px 42px;
+            border-radius: 8px;
+            color: white;
+            font-size: 14px;
+            font-weight: 400;
+            outline: none;
+            font-family: var(--tstk-font);
+        }
+        .tstk-search-input:focus { border-color: var(--tstk-accent); }
+        .tstk-search-icon { position: absolute; vertical-align: middle; display: inline-flex; left: 14px; top: 15px; color: var(--tstk-muted); font-size: 18px; }
+
+        .tstk-nav-list { list-style: none; }
+        .tstk-nav-label { font-size: 15px; color: #444; font-weight: 500; margin-bottom: 15px; }
+        
+        .tstk-nav-link {
+            display: block;
+            color: var(--tstk-muted);
+            text-decoration: none;
+            font-size: 16px;
+            padding: 10px 0;
+            font-weight: 300;
+            cursor: pointer;
+        }
+        .tstk-nav-link:hover { color: var(--tstk-text); }
+        .tstk-nav-link.active { color: var(--tstk-accent); font-weight: 400; }
+
+        /* --- MAIN CONTENT --- */
+        .tstk-content { flex: 1; }
+        .tstk-section { margin-bottom: 80px; scroll-margin-top: 60px; }
+        .tstk-section-title { font-size: 36px; font-weight: 300; margin-bottom: 30px; }
+
+        .tstk-grid {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 20px;
+        }
+
+        /* --- CARD DESIGN: ICON LEFT, CONTENT RIGHT --- */
+        .tstk-card {
+            background: var(--tstk-card);
+            border: 1px solid var(--tstk-border);
+            border-radius: 12px;
+            padding: 26px 26px 32px 26px;
+            display: flex;
+            gap: 20px; /* Space between icon and text block */
+            transition: all 0.3s ease;
+        }
+
+        .tstk-card:hover {
+            background: var(--tstk-card-hover);
+            border-color: #333;
+            transform: translateY(-3px);
+        }
+
+        .tstk-card-icon {
+            width: 48px;
+            height: 48px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            background: #292929;
+            border-radius: 50px;
+            font-size: 24px;
+            flex-shrink: 0; /* Prevents icon from squishing */
+        }
+
+        .tstk-card-body { display: flex; flex-direction: column; gap: 6px; }
+        .tstk-card-title { font-size: 18px; font-weight: 500; color: var(--tstk-text); }
+        .tstk-card-desc { font-size: 14px; color: var(--tstk-muted); line-height: 1.6; }
+
+        
+
+        /* Search Highlight */
+        .tstk-hidden { display: none !important; }
+
+        @media (max-width: 1100px) {
+            .tstk-grid { grid-template-columns: 1fr; }
+            .tstk-container { flex-direction: column; padding: 0 20px; }
+            .tstk-sidebar { width: 100%; position: relative; top: 0; height: auto; }
+        }
+    </style>
+</head>
+<body>
+
+<div class="tstk-container">
+    <aside class="tstk-sidebar">
+        <div class="tstk-logo-area">
+            <h1>Technologies We Use</h1>
+            <p>The specialized tools we use to power our multipurpose IT services.</p>
+        </div>
+
+        <div class="tstk-search-wrapper">
+            <i class="ri-search-line tstk-search-icon"></i>
+            <input type="text" id="tstkSearch" class="tstk-search-input" placeholder="Search tech or service...">
+        </div>
+
+        <nav class="tstk-nav-list">
+            <div class="tstk-nav-label">Categories</div>
+            <a href="#frontend" class="tstk-nav-link active">Frontend Development</a>
+            <a href="#backend" class="tstk-nav-link">Backend Systems</a>
+            <a href="#infrastructure" class="tstk-nav-link">Infrastructure & Cloud</a>
+            <a href="#creative" class="tstk-nav-link">Creative & CMS</a>
+        </nav>
+    </aside>
+
+    <main class="tstk-content">
+        <section id="frontend" class="tstk-section">
+            <h2 class="tstk-section-title">Frontend Development</h2>
+            <div class="tstk-grid">
+                <div class="tstk-card">
+                    <div class="tstk-card-icon tstk-ic-blue"><img src="https://img.icons8.com/?size=100&id=wU62u24brJ44&format=png&color=000000" style="height: 38px;"/></div>
+                    <div class="tstk-card-body">
+                        <div class="tstk-card-title">React.js</div>
+                        <div class="tstk-card-desc">Building modular, fast, and scalable user interfaces for our web platforms.</div>
+                    </div>
+                </div>
+                <div class="tstk-card">
+                    <div class="tstk-card-icon tstk-ic-blue"><i class="ri-tailwind-css-fill"></i></div>
+                    <div class="tstk-card-body">
+                        <div class="tstk-card-title">Tailwind CSS</div>
+                        <div class="tstk-card-desc">Utility-first styling used to maintain rapid and consistent UI development across projects.</div>
+                    </div>
+                </div>
+                <div class="tstk-card">
+                    <div class="tstk-card-icon tstk-ic-blue"><i class="ri-tailwind-css-fill"></i></div>
+                    <div class="tstk-card-body">
+                        <div class="tstk-card-title">Tailwind CSS</div>
+                        <div class="tstk-card-desc">Utility-first styling used to maintain rapid and consistent UI development across projects.</div>
+                    </div>
+                </div>
+                <div class="tstk-card">
+                    <div class="tstk-card-icon tstk-ic-blue"><i class="ri-tailwind-css-fill"></i></div>
+                    <div class="tstk-card-body">
+                        <div class="tstk-card-title">Tailwind CSS</div>
+                        <div class="tstk-card-desc">Utility-first styling used to maintain rapid and consistent UI development across projects.</div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <section id="backend" class="tstk-section">
+            <h2 class="tstk-section-title">Backend Systems</h2>
+            <div class="tstk-grid">
+                <div class="tstk-card">
+                    <div class="tstk-card-icon tstk-ic-green"><i class="ri-nodejs-line"></i></div>
+                    <div class="tstk-card-body">
+                        <div class="tstk-card-title">Node.js</div>
+                        <div class="tstk-card-desc">Handling high-concurrency requests and powering our real-time notification engines.</div>
+                    </div>
+                </div>
+                <div class="tstk-card">
+                    <div class="tstk-card-icon tstk-ic-orange"><i class="ri-database-2-line"></i></div>
+                    <div class="tstk-card-body">
+                        <div class="tstk-card-title">PostgreSQL</div>
+                        <div class="tstk-card-desc">Our primary relational database for complex data structures and financial reporting.</div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <section id="infrastructure" class="tstk-section">
+            <h2 class="tstk-section-title">Infrastructure & Cloud</h2>
+            <div class="tstk-grid">
+                <div class="tstk-card">
+                    <div class="tstk-card-icon tstk-ic-orange"><i class="ri-amazon-fill"></i></div>
+                    <div class="tstk-card-body">
+                        <div class="tstk-card-title">AWS</div>
+                        <div class="tstk-card-desc">Enterprise-grade hosting providing the security and uptime our SA clients demand.</div>
+                    </div>
+                </div>
+                <div class="tstk-card">
+                    <div class="tstk-card-icon tstk-ic-blue"><i class="ri-docker-js-fill"></i></div>
+                    <div class="tstk-card-body">
+                        <div class="tstk-card-title">Docker</div>
+                        <div class="tstk-card-desc">Streamlining our deployment workflows to ensure consistency across environments.</div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <section id="creative" class="tstk-section">
+            <h2 class="tstk-section-title">Creative & CMS</h2>
+            <div class="tstk-grid">
+                <div class="tstk-card">
+                    <div class="tstk-card-icon tstk-ic-purple"><i class="ri-layout-masonry-line"></i></div>
+                    <div class="tstk-card-body">
+                        <div class="tstk-card-title">Strapi CMS</div>
+                        <div class="tstk-card-desc">Powering headless content management for our mobile and web applications.</div>
+                    </div>
+                </div>
+                <div class="tstk-card">
+                    <div class="tstk-card-icon tstk-ic-purple"><i class="ri-wordpress-fill"></i></div>
+                    <div class="tstk-card-body">
+                        <div class="tstk-card-title">WordPress</div>
+                        <div class="tstk-card-desc">Fast-turnaround corporate websites for SMEs and marketing landing pages.</div>
+                    </div>
+                </div>
+            </div>
+        </section>
+    </main>
+</div>
+
+<script>
+    document.addEventListener('DOMContentLoaded', () => {
+        const searchInput = document.getElementById('tstkSearch');
+        const cards = document.querySelectorAll('.tstk-card');
+        const sections = document.querySelectorAll('.tstk-section');
+        const navLinks = document.querySelectorAll('.tstk-nav-link');
+
+        // 1. Real-time Search Functional
+        searchInput.addEventListener('input', (e) => {
+            const term = e.target.value.toLowerCase();
+            
+            cards.forEach(card => {
+                const title = card.querySelector('.tstk-card-title').innerText.toLowerCase();
+                const desc = card.querySelector('.tstk-card-desc').innerText.toLowerCase();
+                
+                if (title.includes(term) || desc.includes(term)) {
+                    card.classList.remove('tstk-hidden');
+                } else {
+                    card.classList.add('tstk-hidden');
+                }
+            });
+
+            // Hide empty sections
+            sections.forEach(section => {
+                const visibleCards = section.querySelectorAll('.tstk-card:not(.tstk-hidden)');
+                section.style.display = visibleCards.length === 0 ? 'none' : 'block';
+            });
+        });
+
+        // 2. Smooth Scroll & Active State
+        navLinks.forEach(link => {
+            link.addEventListener('click', (e) => {
+                e.preventDefault();
+                const target = document.querySelector(link.getAttribute('href'));
+                window.scrollTo({ top: target.offsetTop - 60, behavior: 'smooth' });
+            });
+        });
+
+        // 3. Intersection Observer for Sidebar Scroll Interaction
+        const observer = new IntersectionObserver((entries) => {
+            entries.forEach(entry => {
+                if (entry.isIntersecting) {
+                    navLinks.forEach(link => {
+                        link.classList.toggle('active', link.getAttribute('href') === `#${entry.target.id}`);
+                    });
+                }
+            });
+        }, { threshold: 0.5, rootMargin: "-10% 0px -70% 0px" });
+
+        sections.forEach(s => observer.observe(s));
+    });
+</script>
+
+<cronos-footer></cronos-footer>
+
+</body>
+</html>

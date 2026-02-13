@@ -1,0 +1,253 @@
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Affiliate</title>
+    
+    <script src="header.js" defer></script>
+    <script src="footer.js" defer></script> 
+</head>
+<body>
+
+    <cronos-header></cronos-header>
+    
+
+</body>
+</html>
+
+
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700;800&display=swap" rel="stylesheet">
+
+<style>
+    /* Scoped Container to prevent global style leakage */
+    .it-hero-wrapper {
+        margin: 0;
+        padding: 0;
+        box-sizing: border-box;
+        font-family: 'Inter', sans-serif;
+        display: flex;
+        align-items: center;
+        justify-content: flex-start;
+        min-height: 800px;
+        width: 100%;
+        background: linear-gradient(to right, rgba(0,0,0,0.8) 20%, rgba(0,0,0,0.1) 100%), 
+                    url('https://images.unsplash.com/photo-1678203699291-253ab7a4d6d2?q=80&w=1332&auto=format&fit=crop&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D');
+        background-size: cover;
+        background-position: center;
+        color: #ffffff;
+        padding-left: 10%;
+        position: relative;
+        overflow: hidden;
+    }
+
+    * {
+        margin: 0;
+        padding: 0;
+    }
+
+    .it-hero-content {
+        max-width: 700px;
+        z-index: 2;
+    }
+
+    .it-hero-category {
+        font-size: 2.2rem;
+        font-weight: 700;
+        letter-spacing: -0.02em;
+        margin-bottom: 1.5rem;
+        text-transform: uppercase;
+        opacity: 0.95;
+    }
+
+    .it-hero-headline {
+        font-size: 3.5rem;
+        line-height: 1.1;
+        font-weight: 600;
+        margin-bottom: 1rem;
+        letter-spacing: -0.03em;
+    }
+
+    .it-hero-sub-headline {
+        font-size: 1.25rem;
+        font-weight: 600;
+        margin-bottom: 0.5rem;
+        color: #f1f1f1;
+    }
+
+    .it-hero-footer-note {
+        font-size: 0.9rem;
+        font-weight: 600;
+        color: #b0b8d1;
+        margin-top: 1rem;
+    }
+
+    /* Responsive Adjustments */
+    @media (max-width: 768px) {
+        .it-hero-headline { font-size: 2.5rem; }
+        .it-hero-category { font-size: 1.5rem; }
+        .it-hero-wrapper { padding-left: 5%; }
+    }
+</style>
+
+<section class="it-hero-wrapper">
+    <div class="it-hero-content">
+        <div class="it-hero-category">INFRASTRUCTURE</div>
+        
+        <h1 class="it-hero-headline">
+            Innovate your future.<br>
+            Build it when you're right.
+        </h1>
+
+        <p class="it-hero-sub-headline">Available throughout the US.</p>
+        
+        <p class="it-hero-footer-note">
+            Currently only available in the United States.
+        </p>
+    </div>
+</section>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700;800&display=swap" rel="stylesheet">
+
+<style>
+    :root {
+        --it-tech-bg: #030308;
+        --it-tech-text-white: #f7F9FA;
+        --it-tech-text-dim: #A0A9BE;
+        --it-tech-radius: 8px;
+    }
+
+    .it-tech-container {
+        background-color: var(--it-tech-bg);
+        color: var(--it-tech-text-white);
+        font-family: 'Inter', sans-serif;
+        padding: 60px 5%;
+    }
+
+    .it-tech-row {
+        display: flex;
+        align-items: center;
+        justify-content: space-between;
+        max-width: 1100px;
+        margin: 0 auto 100px auto;
+        gap: 8%;
+    }
+
+    /* Alternating logic */
+    .it-tech-row:nth-child(even) {
+        flex-direction: row-reverse;
+    }
+
+    /* Reduced Image Size (40% width instead of 50/50 split) */
+    .it-tech-image-box {
+        flex: 0 0 40%;
+    }
+
+    .it-tech-image-box img {
+        width: 100%;
+        height: 320px; /* Controlled height for consistency */
+        border-radius: var(--it-tech-radius);
+        object-fit: cover;
+        display: block;
+    }
+
+    .it-tech-text-box {
+        flex: 0 0 52%;
+    }
+
+    .it-tech-title {
+        font-size: 2.5rem;
+        font-weight: 600;
+        line-height: 1.1;
+        margin-bottom: 20px;
+        letter-spacing: -0.02em;
+    }
+
+    .it-tech-desc {
+        font-size: 1.1rem;
+        line-height: 1.6;
+        color: var(--it-tech-text-dim);
+        font-weight: 400;
+    }
+
+    @media (max-width: 768px) {
+        .it-tech-row, .it-tech-row:nth-child(even) {
+            flex-direction: column;
+            text-align: center;
+            margin-bottom: 60px;
+        }
+        .it-tech-image-box, .it-tech-text-box {
+            flex: 0 0 100%;
+        }
+        .it-tech-image-box img { height: 250px; }
+    }
+</style>
+
+<div class="it-tech-container">
+    <div class="it-tech-row">
+        <div class="it-tech-text-box">
+            <h2 class="it-tech-title">Cloud Native Infrastructure</h2>
+            <p class="it-tech-desc">Scale your applications with microservices architecture designed for maximum uptime and resilience.</p>
+        </div>
+        <div class="it-tech-image-box">
+            <img src="https://images.unsplash.com/photo-1733534843143-a4df42fe8bfe?q=80&w=1170&auto=format&fit=crop&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D" alt="Cloud tech">
+        </div>
+    </div>
+
+    <div class="it-tech-row">
+        <div class="it-tech-text-box">
+            <h2 class="it-tech-title">Cyber Security First</h2>
+            <p class="it-tech-desc">End-to-end encryption and real-time threat detection to protect your most sensitive data assets.</p>
+        </div>
+        <div class="it-tech-image-box">
+            <img src="https://images.unsplash.com/photo-1692825122355-bf1daadefb76?q=80&w=1932&auto=format&fit=crop&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D" alt="Security">
+        </div>
+    </div>
+
+    <div class="it-tech-row">
+        <div class="it-tech-text-box">
+            <h2 class="it-tech-title">AI Driven Analytics</h2>
+            <p class="it-tech-desc">Transform raw data into actionable insights using our proprietary machine learning models.</p>
+        </div>
+        <div class="it-tech-image-box">
+            <img src="https://images.unsplash.com/photo-1702409096882-5508585181fb?q=80&w=1932&auto=format&fit=crop&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D" alt="AI Analytics">
+        </div>
+    </div>
+
+    <div class="it-tech-row">
+        <div class="it-tech-text-box">
+            <h2 class="it-tech-title">Edge Computing</h2>
+            <p class="it-tech-desc">Reduce latency by processing data closer to the source with our distributed edge network.</p>
+        </div>
+        <div class="it-tech-image-box">
+            <img src="https://images.unsplash.com/photo-1714548835781-f910461db159?q=80&w=1332&auto=format&fit=crop&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D" alt="Edge Computing">
+        </div>
+    </div>
+
+    <div class="it-tech-row">
+        <div class="it-tech-text-box">
+            <h2 class="it-tech-title">DevOps Automation</h2>
+            <p class="it-tech-desc">Streamline your CI/CD pipelines and eliminate manual bottlenecks in your release cycle.</p>
+        </div>
+        <div class="it-tech-image-box">
+            <img src="https://images.unsplash.com/photo-1704748430013-41227f6abf2f?q=80&w=1332&auto=format&fit=crop&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D" alt="Automation">
+        </div>
+    </div>
+</div>
+
+
+
+<cronos-footer></cronos-footer>

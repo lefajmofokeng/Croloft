@@ -1,0 +1,408 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Ruul Affiliate Program</title>
+    <style>
+        /* 1. SETUP & FONTS */
+        @font-face {
+            font-family: 'Circular Std';
+            src: url('fonts/CircularStd-Book.ttf') format('truetype');
+            font-weight: 400;
+            font-style: normal;
+        }
+
+        /* Circular Std - Medium (500) */
+        @font-face {
+            font-family: 'Circular Std';
+            src: url('fonts/CircularStd.ttf') format('truetype');
+            font-weight: 500;
+            font-style: normal;
+        }
+
+        /* Circular Std - Bold (700) */
+        @font-face {
+            font-family: 'Circular Std';
+            src: url('fonts/CircularStd-Bold.ttf') format('truetype');
+            font-weight: 600;
+            font-style: normal;
+        }
+
+        :root {
+            --bg-input: #f0f4f8;
+            --text-main: #1a1a1a;
+            --text-muted: #555;
+            --primary-black: #111;
+            --radius-input: 4px;
+            --radius-card: 4px;
+        }
+
+        * {
+            box-sizing: border-box;
+            margin: 0;
+            padding: 0;
+        }
+
+        body {
+            font-family: 'Circular Std', -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
+            color: var(--text-main);
+            line-height: 1.5;
+            background: linear-gradient(to bottom, #ffffff 60%, #000000 40%);
+            min-height: 100vh;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+        }
+
+        /* 2. HEADER AREA */
+        header {
+            width: 100%;
+            max-width: 1200px;
+            padding: 24px;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        .logo {
+            font-weight: 700;
+            font-size: 24px;
+            letter-spacing: -1px;
+            display: flex;
+            align-items: center;
+            gap: 4px;
+        }
+
+        .btn-header {
+            background-color: #0069d8;
+            color: #fff;
+            padding: 10px 20px;
+            border-radius: 50px;
+            text-decoration: none;
+            font-size: 1rem;
+            font-weight: 500;
+            transition: background 0.2s;
+        }
+        
+        .btn-header:hover {
+            background-color: #000;
+        }
+
+        /* 3. HERO CONTENT */
+        .hero-text {
+            text-align: center;
+            padding: 40px 20px;
+            margin-bottom: 2rem;
+            max-width: 600px;
+            background: transparent;
+        }
+
+        h1 {
+            font-size: 2.2rem;
+            font-weight: 500;
+            margin-bottom: 20px;
+            letter-spacing: 0.5px;
+            color: var(--primary-black);
+        }
+
+        p.subtext {
+            color: var(--text-muted);
+            margin-bottom: 16px;
+            font-size: 1.1rem;
+        }
+
+        /* 4. FORM CARD */
+        .form-card {
+            background: white;
+            width: 90%;
+            max-width: 600px;
+            padding: 40px;
+            border-radius: var(--radius-card);
+            box-shadow: 0 -1px 10px rgba(0,0,0,0.1);
+            margin-bottom: 80px;
+            position: relative;
+            z-index: 10;
+        }
+
+        .form-header {
+            font-size: 1.1rem;
+            margin-bottom: 24px;
+            color: var(--primary-black);
+        }
+
+        /* Form Layout */
+        .form-group {
+            margin-bottom: 20px;
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+        }
+
+        .form-group.align-top {
+            align-items: flex-start;
+        }
+        
+        .form-group.align-top label {
+            padding-top: 10px;
+        }
+
+        .form-group label {
+            width: 30%;
+            font-size: 0.95rem;
+            color: #333;
+            font-weight: 500;
+        }
+
+        .form-group label .hint {
+            display: block;
+            font-size: 0.75rem;
+            color: #777;
+            font-weight: 400;
+            margin-top: 4px;
+        }
+
+        .form-input-container {
+            width: 68%;
+        }
+
+        /* Inputs & Selects */
+        .form-group input,
+        .form-group select {
+            width: 100%;
+            background-color: var(--bg-input);
+            border: 1px solid transparent;
+            padding: 12px 16px;
+            border-radius: var(--radius-input);
+            font-family: inherit;
+            font-size: 0.95rem;
+            color: var(--text-main);
+            transition: border-color 0.2s;
+        }
+
+        /* Specific styling for standard dropdown */
+        .form-group select:not([multiple]) {
+            appearance: none;
+            background-image: url("data:image/svg+xml;charset=UTF-8,%3csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24' fill='none' stroke='%23333' stroke-width='2' stroke-linecap='round' stroke-linejoin='round'%3e%3cpolyline points='6 9 12 15 18 9'%3e%3c/polyline%3e%3c/svg%3e");
+            background-repeat: no-repeat;
+            background-position: right 1rem center;
+            background-size: 1em;
+        }
+
+        /* Specific styling for Multi-Select dropdown */
+        .form-group select[multiple] {
+            height: 120px; /* Show enough options */
+            padding: 8px;
+            overflow-y: auto;
+        }
+
+        .form-group select[multiple] option {
+            padding: 8px 12px;
+            border-radius: 4px;
+            margin-bottom: 2px;
+        }
+        
+        .form-group select[multiple] option:checked {
+            background-color: #ddd; /* Visual feedback for selected items */
+            font-weight: 600;
+        }
+
+        .form-group input:focus,
+        .form-group select:focus {
+            outline: none;
+            border-color: #ccc;
+            background-color: #fff;
+        }
+
+        .help-text {
+            font-size: 0.8rem;
+            color: #888;
+            margin-top: 6px;
+        }
+
+        /* Terms Checkbox */
+        .terms-group {
+            display: flex;
+            align-items: center;
+            gap: 12px;
+            margin: 30px 0;
+            font-size: 0.95rem;
+        }
+        
+        .terms-group input {
+            width: 20px;
+            height: 20px;
+            accent-color: var(--primary-black);
+            cursor: pointer;
+        }
+
+        .terms-group a {
+            color: #0056b3;
+            text-decoration: none;
+            font-weight: 500;
+        }
+
+        /* Submit Button */
+        .form-footer {
+            display: flex;
+            justify-content: flex-end;
+        }
+
+        .btn-submit {
+            background-color: #0069d8;
+            color: white;
+            border: none;
+            padding: 14px 28px;
+            font-size: 0.95rem;
+            font-weight: 700;
+            border-radius: var(--radius-card);
+            cursor: pointer;
+            transition: opacity 0.2s;
+            font-family: 'Circular Std', sans-serif;
+        }
+
+        .btn-submit:hover {
+            opacity: 0.9;
+        }
+
+        /* 5. MOBILE RESPONSIVENESS */
+        @media (max-width: 600px) {
+            body {
+                background: linear-gradient(to bottom, #ffffff 40%, #050505 40%);
+            }
+
+            header {
+                padding: 20px;
+            }
+
+            .form-card {
+                padding: 24px;
+                width: 94%;
+            }
+
+            .form-group, .form-group.align-top {
+                flex-direction: column;
+                align-items: flex-start;
+                gap: 8px;
+            }
+
+            .form-group label {
+                width: 100%;
+                font-size: 0.9rem;
+                padding-top: 0;
+            }
+            
+            /* Hide the desktop-specific hint on mobile */
+            .help-text.desktop-only {
+                display: none; 
+            }
+
+            .form-input-container, 
+            .form-group input, 
+            .form-group select {
+                width: 100%;
+            }
+
+            h1 {
+                font-size: 1.8rem;
+            }
+        }
+    </style>
+</head>
+<body>
+
+    <header>
+        <div class="logo">
+            <img src="thumbnails/croloft1.png" style="height: 30px;"/>
+            
+        </div>
+        <a href="form.html" class="btn-header">Contact Us</a>
+    </header>
+
+    <div class="hero-text">
+        <h1>Bring Users. Get Paid.</h1>
+        <p class="subtext">
+            Our affiliate program earns you around $10 per user, each month. Bring 100, and that’s about $1,000 in passive income.
+        </p>
+        <p class="subtext">Start earning with each successful referral!</p>
+    </div>
+
+    <main class="form-card">
+        <h2 class="form-header">Become our affiliate. Apply here!</h2>
+        
+        <form action="#" method="POST">
+            <div class="form-group">
+                <label for="firstname">First name *</label>
+                <div class="form-input-container">
+                    <input type="text" id="firstname" name="firstname" required>
+                </div>
+            </div>
+
+            <div class="form-group">
+                <label for="lastname">Last name *</label>
+                <div class="form-input-container">
+                     <input type="text" id="lastname" name="lastname" required>
+                </div>
+            </div>
+
+            <div class="form-group">
+                <label for="email">Email *</label>
+                <div class="form-input-container">
+                    <input type="email" id="email" name="email" required>
+                </div>
+            </div>
+
+            <div class="form-group">
+                <label for="social">Social Profile *</label>
+                <div class="form-input-container">
+                    <input type="url" id="social" name="social" placeholder="Link to your largest following" required>
+                </div>
+            </div>
+
+            <div class="form-group">
+                <label for="promotion-method">Primary Promotion Method</label>
+                <div class="form-input-container">
+                    <select id="promotion-method" name="promotion_method">
+                        <option value="" disabled selected>Select a method...</option>
+                        <option value="referral">Direct Client Referral</option>
+                        <option value="social">Social Media</option>
+                        <option value="blog">Blog / Content Marketing</option>
+                        <option value="email">Email List</option>
+                        <option value="paid_ads">Paid Advertising</option>
+                        <option value="other">Other</option>
+                    </select>
+                </div>
+            </div>
+
+            <div class="form-group">
+                <label for="promotion-method">Services to Promote
+                    <span class="hint">(Select all that apply)</span>
+                </label>
+                <div class="form-input-container">
+                    <select id="promotion-method" name="promotion_method">
+                        <option value="" disabled selected>Select a method...</option>
+                        <option value="referral">Direct Client Referral</option>
+                        <option value="social">Social Media</option>
+                        <option value="blog">Blog / Content Marketing</option>
+                        <option value="email">Email List</option>
+                        <option value="paid_ads">Paid Advertising</option>
+                        <option value="other">Other</option>
+                    </select>
+                </div>
+            </div>
+
+            
+
+            <div class="terms-group">
+                <input type="checkbox" id="terms" name="terms" required>
+                <label for="terms">I agree to <a href="#">Terms and conditions</a> *</label>
+            </div>
+
+            <div class="form-footer">
+                <button type="submit" class="btn-submit">Apply now</button>
+            </div>
+        </form>
+    </main>
+
+</body>
+</html>
