@@ -302,9 +302,9 @@ class CronosFooter extends HTMLElement {
             </div>
 
             <div class="bottom-links">
-              <a href="terms.html">Terms of Use</a>
-              <a href="privacy.html">Privacy Policy</a>
-              <a href="privacy.html">Disclaimer</a>
+              <a href="privacy-policy.html">Privacy Policy</a>
+              <a href="terms-of-service.html">Terms of Service</a>
+              <a href="disclaimer.html">Disclaimer</a>
             </div>
           </div>
         </div>
