@@ -141,7 +141,7 @@ class CronosHeader extends HTMLElement {
                 font-weight: 500;
                 padding: 10px 0;
                 display: flex;
-                font-size: 16px;
+                font-size: 15px;
                 align-items: center;
                 cursor: pointer;
                 font-family: 'Circular Std', sans-serif;
@@ -390,8 +390,8 @@ class CronosHeader extends HTMLElement {
 
             /* Tagline Style */
             .cronos-menu-group-tagline {
-                font-size: 13px;
-                font-weight: 500;
+                font-size: 14px;
+                font-weight: 400;
                 color: var(--cronos-color-text-muted);
                 margin-top: 5px;
                 display: block;
