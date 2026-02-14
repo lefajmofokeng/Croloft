@@ -1087,263 +1087,307 @@ document.addEventListener("DOMContentLoaded", function() {
 
 
 
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Premium Hero</title>
+    <style>
+        /* --- SCOPED PREMIUM HERO STYLES --- */
+        @import url('https://fonts.googleapis.com/css2?family=DM+Sans:opsz,wght@9..40,400;500;700&display=swap');
 
+        .it-premium-hero {
+            --it-primary: #161616;
+            --it-secondary: #636363;
+            --it-accent: #3ECF8E; 
+            --it-font: 'Circular Std', 'DM Sans', sans-serif;
+            
+            background: #ffffff;
+            width: 100%;
+            min-height: 500px;
+            overflow: hidden; 
+            display: flex;
+            align-items: center;
+            position: relative;
+            font-family: var(--it-font);
+            box-sizing: border-box;
+        }
 
+        /* Ensure all elements inside use border-box */
+        .it-premium-hero *, .it-premium-hero *::before, .it-premium-hero *::after {
+            box-sizing: border-box;
+        }
 
+        .it-premium-container {
+            max-width: 1200px;
+            margin: 0 auto;
+            width: 100%;
+            padding: 0 20px; /* Added padding for safety on small screens */
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            z-index: 2;
+        }
 
+        /* --- Left Side: Text --- */
+        .it-premium-text-box {
+            flex: 0 0 500px; /* Slightly wider to accommodate text */
+            z-index: 10; /* Keep text above visual elements */
+        }
 
+        .it-premium-headline {
+            font-size: 50px;
+            font-weight: 500; /* Bumped weight slightly for readability */
+            line-height: 1.1;
+            color: var(--it-primary);
+            letter-spacing: -0.04em;
+            margin: 0;
+        }
 
+        /* Dynamic Text Container */
+        .it-dynamic-wrapper {
+            display: inline-block;
+            min-width: 300px; /* Prevents layout shift when text length changes */
+        }
 
+        #it-dynamic-text {
+            color: var(--it-primary);
+            transition: opacity 0.2s ease, transform 0.2s ease;
+            display: inline-block;
+            position: relative;
+        }
 
+        /* Highlight color for the dynamic text */
+        .it-highlight {
+            color: var(--it-accent); /* Optional: Use accent color when active */
+        }
 
+        .it-text-fade {
+            opacity: 0;
+            transform: translateY(10px);
+        }
 
+        /* --- Right Side: Visual Area --- */
+        .it-premium-visual-area {
+            flex: 1;
+            position: relative;
+            display: flex;
+            align-items: center;
+            height: 180px; /* Increased height slightly */
+            overflow: hidden;
+            /* Masking for the fade effect on edges */
+            -webkit-mask-image: linear-gradient(to right, transparent 0%, black 10%, black 90%, transparent 100%);
+            mask-image: linear-gradient(to right, transparent 0%, black 10%, black 90%, transparent 100%);
+            margin-left: 40px; /* Spacing from text */
+        }
 
+        .it-premium-single-row {
+            display: flex;
+            width: max-content;
+            animation: scroll-seamless 30s linear infinite; /* Slowed down slightly for elegance */
+            will-change: transform;
+        }
 
+        .it-group {
+            display: flex;
+            gap: 10px; /* Increased gap for cleaner look */
+            padding-right: 30px; 
+        }
 
+        /* Hover pauses animation */
+        .it-premium-single-row:hover {
+            animation-play-state: paused;
+        }
 
+        @keyframes scroll-seamless {
+            0% { transform: translateX(0); }
+            100% { transform: translateX(-50%); }
+        }
 
+        /* --- Card Styles --- */
+        .it-premium-card {
+            width: 100px;
+            height: 100px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            cursor: pointer;
+            transition: all 0.3s cubic-bezier(0.25, 0.8, 0.25, 1);
+            flex-shrink: 0;
+        }
 
+        .it-premium-card img {
+            width: 50px;
+            height: 50px;
+            object-fit: contain;
+            filter: grayscale(100%);
+            opacity: 0.9;
+            transition: all 0.3s ease;
+            pointer-events: none; /* Prevents image dragging */
+        }
 
+        .it-premium-card:hover {
+            transform: translateY(-5px) scale(1.05);
+            z-index: 5;
+        }
 
+        .it-premium-card:hover img {
+            filter: grayscale(0%);
+            opacity: 1;
+        }
 
+        /* --- Mobile Responsiveness --- */
+        @media (max-width: 992px) {
+            .it-premium-hero {
+                padding: 60px 0;
+                min-height: auto;
+                flex-direction: column;
+                justify-content: center;
+            }
 
+            .it-premium-container {
+                flex-direction: column;
+                text-align: center;
+                padding: 0 15px;
+            }
 
+            .it-premium-text-box {
+                flex: 0 0 auto;
+                width: 100%;
+                margin-bottom: 40px;
+            }
 
+            .it-premium-headline {
+                font-size: 36px; /* Smaller font on mobile */
+            }
 
+            .it-dynamic-wrapper {
+                display: block; /* Stack on mobile if needed */
+                min-width: 0;
+            }
 
+            .it-premium-visual-area {
+                width: 100%;
+                margin-left: 0;
+                /* Reset mask for fuller width visibility on mobile */
+                -webkit-mask-image: linear-gradient(to right, transparent 0%, black 5%, black 95%, transparent 100%);
+                mask-image: linear-gradient(to right, transparent 0%, black 5%, black 95%, transparent 100%);
+            }
+            
+            /* KEY FIX: Ensure single row persists on mobile */
+            .it-premium-single-row {
+                flex-wrap: nowrap; /* Prevent wrapping */
+            }
+            
+            .it-group {
+                gap: 20px;
+                padding-right: 20px;
+            }
+            
+            .it-premium-card {
+                width: 80px; /* Smaller cards on mobile */
+                height: 80px;
+            }
+            
+            .it-premium-card img {
+                width: 40px;
+                height: 40px;
+            }
+        }
+    </style>
+</head>
+<body>
 
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-<style>
-/* --- SCOPED PREMIUM HERO STYLES --- */
-@import url('https://fonts.googleapis.com/css2?family=DM+Sans:opsz,wght@9..40,400;500;700&display=swap');
-
-.it-premium-hero {
-    --it-primary: #161616;
-    --it-secondary: #636363;
-    --it-accent: #3ECF8E; 
-    --it-font: 'Circular Std', 'DM Sans', sans-serif;
-    
-    background: #ffffff;
-    width: 100%;
-    min-height: 500px; /* Adjusted for single row height */
-    overflow: hidden; 
-    display: flex;
-    align-items: center; /* Vertically centers the 1200px container */
-    position: relative;
-    font-family: var(--it-font);
-}
-
-.it-premium-container {
-    max-width: 1200px;
-    margin: 0 auto;
-    width: 100%;
-    padding: 0;
-    display: flex;
-    align-items: center; /* Vertically centers content within the 1200px box */
-    justify-content: space-between;
-    z-index: 2;
-}
-
-/* --- Left Side: Text --- */
-.it-premium-text-box {
-    flex: 0 0 450px; /* Fixed width to keep text stable */
-}
-
-.it-premium-headline {
-    font-size: 54px;
-    font-weight: 400;
-    line-height: 1.1;
-    color: var(--it-primary);
-    letter-spacing: -0.04em;
-    margin: 0;
-}
-
-#it-dynamic-text {
-    color: var(--it-primary);
-    transition: opacity 0.2s ease, transform 0.2s ease;
-    display: inline-block;
-}
-
-.it-text-fade {
-    opacity: 0;
-    transform: translateY(8px);
-}
-
-/* --- Right Side: Single Row Icon Grid --- */
-/* --- Added Animation & Masking --- */
-.it-premium-visual-area {
-    flex: 1;
-    position: relative;
-    display: flex;
-    align-items: center;
-    height: 150px;
-    overflow: hidden;
-    /* Soft fade-out as they approach the headline */
-    -webkit-mask-image: linear-gradient(to right, transparent 0%, black 15%, black 85%, transparent 100%);
-    mask-image: linear-gradient(to right, transparent 0%, black 15%, black 85%, transparent 100%);
-}
-
-.it-premium-single-row {
-    display: flex;
-    width: max-content; /* Critical: allows row to be as wide as content */
-    animation: scroll-seamless 20s linear infinite;
-}
-
-.it-group {
-    display: flex;
-    gap: 20px;
-    padding-right: 20px; /* Maintains the gap between the two groups */
-}
-
-/* Stops animation on hover */
-.it-premium-single-row:hover {
-    animation-play-state: paused;
-}
-
-@keyframes scroll-seamless {
-    0% {
-        transform: translateX(0);
-    }
-    100% {
-        /* Move exactly half the width of the total row (one full group) */
-        transform: translateX(-50%);
-    }
-}
-
-/* Premium touch: ensure icons don't shrink */
-.it-premium-card {
-    flex-shrink: 0;
-}
-
-/* Ensure the text box stays above the moving cards if they overlap */
-.it-premium-text-box {
-    flex: 0 0 550px;
-    z-index: 5;
-    background: white; /* Optional: keeps text clear if icons slide behind it */
-}
-
-.it-premium-card {
-    width: 110px;
-    height: 110px;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    cursor: pointer;
-    transition: all 0.3s cubic-bezier(0.175, 0.885, 0.32, 1.275);
-    flex-shrink: 0;
-}
-
-.it-premium-card img {
-    width: 55px;
-    height: 55px;
-    object-fit: contain;
-    filter: grayscale(100%);
-    opacity: 0.6;
-    transition: all 0.3s ease;
-}
-
-.it-premium-card:hover {
-    transform: scale(1.1);
-    z-index: 10;
-}
-
-.it-premium-card:hover img {
-    filter: grayscale(0%);
-    opacity: 1;
-}
-
-/* Mobile Responsiveness */
-@media (max-width: 992px) {
-    .it-premium-hero { padding: 60px 0; }
-    .it-premium-container {
-        flex-direction: column;
-        text-align: center;
-    }
-    .it-premium-text-box {
-        flex: 0 0 auto;
-        margin-bottom: 50px;
-    }
-    .it-premium-headline { font-size: 42px; }
-    .it-premium-visual-area { width: 100%; justify-content: center; }
-    .it-premium-single-row {
-        position: relative;
-        left: 0;
-        width: 100%;
-        justify-content: center;
-        flex-wrap: wrap; /* Wraps on mobile for better visibility */
-    }
-}
-</style>
 <section class="it-premium-hero">
     <div class="it-premium-container">
         
         <div class="it-premium-text-box">
             <h1 class="it-premium-headline">
-                Build your solution with 
-                <span id="it-dynamic-text">any framework</span>
+                Build your solution with<br>
+                <span class="it-dynamic-wrapper">
+                    <span id="it-dynamic-text">any framework</span>
+                </span>
             </h1>
         </div>
 
         <div class="it-premium-visual-area">
-    <div class="it-premium-single-row">
-        <div class="it-group">
-            <div class="it-premium-card" data-name="React.js"><img src="https://cdn.worldvectorlogo.com/logos/react-2.svg" alt="React"></div>
-            <div class="it-premium-card" data-name="Next.js"><img src="https://cdn.worldvectorlogo.com/logos/next-js.svg" alt="Next"></div>
-            <div class="it-premium-card" data-name="Vue.js"><img src="https://cdn.worldvectorlogo.com/logos/vue-9.svg" alt="Vue"></div>
-            <div class="it-premium-card" data-name="TypeScript"><img src="https://cdn.worldvectorlogo.com/logos/typescript.svg" alt="TS"></div>
-            <div class="it-premium-card" data-name="Node.js"><img src="https://cdn.worldvectorlogo.com/logos/nodejs-icon.svg" alt="Node"></div>
+            <div class="it-premium-single-row">
+                <div class="it-group">
+                    <div class="it-premium-card" data-name="React.js"><img src="https://cdn.worldvectorlogo.com/logos/react-2.svg" alt="React"></div>
+                    <div class="it-premium-card" data-name="Next.js"><img src="https://cdn.worldvectorlogo.com/logos/next-js.svg" alt="Next"></div>
+                    <div class="it-premium-card" data-name="Vue.js"><img src="https://cdn.worldvectorlogo.com/logos/vue-9.svg" alt="Vue"></div>
+                    <div class="it-premium-card" data-name="TypeScript"><img src="https://cdn.worldvectorlogo.com/logos/typescript.svg" alt="TS"></div>
+                    <div class="it-premium-card" data-name="Node.js"><img src="https://cdn.worldvectorlogo.com/logos/nodejs-icon.svg" alt="Node"></div>
+                    <div class="it-premium-card" data-name="Angular"><img src="https://cdn.worldvectorlogo.com/logos/angular-icon-1.svg" alt="Angular"></div>
+                </div>
+                
+                <div class="it-group">
+                    <div class="it-premium-card" data-name="React.js"><img src="https://cdn.worldvectorlogo.com/logos/react-2.svg" alt="React"></div>
+                    <div class="it-premium-card" data-name="Next.js"><img src="https://cdn.worldvectorlogo.com/logos/next-js.svg" alt="Next"></div>
+                    <div class="it-premium-card" data-name="Vue.js"><img src="https://cdn.worldvectorlogo.com/logos/vue-9.svg" alt="Vue"></div>
+                    <div class="it-premium-card" data-name="TypeScript"><img src="https://cdn.worldvectorlogo.com/logos/typescript.svg" alt="TS"></div>
+                    <div class="it-premium-card" data-name="Node.js"><img src="https://cdn.worldvectorlogo.com/logos/nodejs-icon.svg" alt="Node"></div>
+                    <div class="it-premium-card" data-name="Angular"><img src="https://cdn.worldvectorlogo.com/logos/angular-icon-1.svg" alt="Angular"></div>
+                </div>
             </div>
-        
-        <div class="it-group">
-            <div class="it-premium-card" data-name="React.js"><img src="https://cdn.worldvectorlogo.com/logos/react-2.svg" alt="React"></div>
-            <div class="it-premium-card" data-name="Next.js"><img src="https://cdn.worldvectorlogo.com/logos/next-js.svg" alt="Next"></div>
-            <div class="it-premium-card" data-name="Vue.js"><img src="https://cdn.worldvectorlogo.com/logos/vue-9.svg" alt="Vue"></div>
-            <div class="it-premium-card" data-name="TypeScript"><img src="https://cdn.worldvectorlogo.com/logos/typescript.svg" alt="TS"></div>
-            <div class="it-premium-card" data-name="Node.js"><img src="https://cdn.worldvectorlogo.com/logos/nodejs-icon.svg" alt="Node"></div>
-            </div>
-    </div>
-</div>
+        </div>
 
     </div>
 </section>
+
 <script>
-    document.querySelectorAll('.it-premium-card').forEach(card => {
-    const dynamicText = document.getElementById('it-dynamic-text');
-    const defaultText = "any framework";
+    document.addEventListener("DOMContentLoaded", () => {
+        const dynamicText = document.getElementById('it-dynamic-text');
+        const cards = document.querySelectorAll('.it-premium-card');
+        const defaultText = "any framework";
+        let textTimeout; // Variable to track the timer
 
-    card.addEventListener('mouseenter', function() {
-        const newName = this.getAttribute('data-name');
-        dynamicText.classList.add('it-text-fade');
-        setTimeout(() => {
-            dynamicText.innerText = newName;
-            dynamicText.classList.remove('it-text-fade');
-        }, 150);
-    });
+        // Function to handle text change
+        const changeText = (newName, isDefault = false) => {
+            // Clear any existing timer to prevent overlapping animations
+            clearTimeout(textTimeout);
 
-    card.addEventListener('mouseleave', function() {
-        dynamicText.classList.add('it-text-fade');
-        setTimeout(() => {
-            dynamicText.innerText = defaultText;
-            dynamicText.classList.remove('it-text-fade');
-        }, 150);
+            dynamicText.classList.add('it-text-fade');
+            
+            // Wait for fade out, then change text
+            textTimeout = setTimeout(() => {
+                dynamicText.innerText = newName;
+                if(isDefault) {
+                    dynamicText.classList.remove('it-highlight');
+                } else {
+                    dynamicText.classList.add('it-highlight');
+                }
+                dynamicText.classList.remove('it-text-fade');
+            }, 150);
+        };
+
+        cards.forEach(card => {
+            card.addEventListener('mouseenter', function() {
+                const newName = this.getAttribute('data-name');
+                changeText(newName);
+            });
+
+            card.addEventListener('mouseleave', function() {
+                changeText(defaultText, true);
+            });
+            
+            // Added simple click support for mobile tap interaction
+            card.addEventListener('click', function() {
+                const newName = this.getAttribute('data-name');
+                changeText(newName);
+                
+                // Auto reset after 2 seconds on mobile tap
+                setTimeout(() => {
+                    changeText(defaultText, true);
+                }, 2000);
+            });
+        });
     });
-});
 </script>
 
+</body>
+</html>
 
 
 
@@ -1392,238 +1436,225 @@ document.addEventListener("DOMContentLoaded", function() {
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Course Grid - IT Company</title>
+    <title>IT Company Profile Section</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+
     <style>
-        /* CSS Variables for easy maintenance */
-        :root {
-            --itc-main-width: 1200px;
-            --itc-border-radius: 32px;
-            --itc-bg-color: #e4e4e4;
-            --itc-text-dark: #000000;
-            --itc-text-light: #ffffff;
-            --itc-accent-gray: #e8e8e8;
-            /* Font Stack - Assuming Circular Std is loaded via your system/hosting */
-            --itc-font-family: 'Circular Std', -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
+        /* IMPORTANT NOTE ON FONTS: 
+        The design specifies "Circular Std". This is a commercial font and cannot be 
+        embedded directly via CDN without a license. 
+        
+        To use it perfectly, you must purchase the license, host the font files 
+        (woff2/woff), and update the @font-face src paths below.
+        
+        I have included a standard sans-serif fallback stack for now.
+        */
+
+        @font-face {
+            font-family: 'Circular Std';
+            /* REPLACE THESE URLS WITH YOUR ACTUAL HOSTED FONT PATHS */
+            src: url('/fonts/CircularStd-Medium.woff2') format('woff2'),
+                 url('/fonts/CircularStd-Medium.woff') format('woff');
+            font-weight: 500;
+            font-style: normal;
+            font-display: swap;
         }
 
-        .itc-section-wrapper {
+        @font-face {
+            font-family: 'Circular Std';
+            /* REPLACE THESE URLS WITH YOUR ACTUAL HOSTED FONT PATHS */
+            src: url('/fonts/CircularStd-Book.woff2') format('woff2'),
+                 url('/fonts/CircularStd-Book.woff') format('woff');
+            font-weight: 400;
+            font-style: normal;
+            font-display: swap;
+        }
+
+        /* --- Scoped CSS Start (Prefix: itco-) --- */
+
+        :root {
+            /* Defining colors based on the image palette: charcoal, white, grey */
+            --itco-bg-charcoal-dark: #0e0e2c; /* The main deep background */
+            --itco-bg-charcoal-accent: #1e1743; /* The lighter box behind the image */
+            --itco-text-white: #ffffff;
+            --itco-text-grey: #b8b8d0; /* Slightly bluish grey for better harmony */
+        }
+
+        /* Resets for this section to ensure isolation */
+        .itco-section-reset {
+            box-sizing: border-box;
+            margin: 0;
+            padding: 0;
+            line-height: 1.5;
+            -webkit-font-smoothing: antialiased;
+        }
+
+        .itco-section-reset *, .itco-section-reset *::before, .itco-section-reset *::after {
+            box-sizing: inherit;
+        }
+
+        /* Main Wrapper to maintain 1200px width */
+        .itco-hero-wrapper {
             width: 100%;
             display: flex;
             justify-content: center;
-            padding: 80px 0;
-            background-color: var(--itc-bg-color);
-            font-family: var(--itc-font-family);
+            background-color: var(--itco-bg-charcoal-dark);
+            padding: 80px 20px; /* Vertical padding, horizontal gap for smaller screens */
         }
 
-        .itc-container {
-            width: var(--itc-main-width);
-            display: flex;
-            flex-direction: column;
-            gap: 40px;
-        }
-
-        /* Header Section */
-        .itc-header {
-            display: flex;
-            justify-content: space-between;
-            align-items: flex-start;
-        }
-
-        .itc-title {
-            font-size: 64px;
-            font-weight: 700;
-            line-height: 1.05;
-            letter-spacing: -2px;
-            margin: 0;
-            color: var(--itc-text-dark);
-        }
-
-        .itc-badge {
-            background-color: var(--itc-accent-gray);
-            padding: 10px 20px;
-            border-radius: 50px;
-            font-size: 14px;
-            font-weight: 500;
-            color: #444;
-        }
-
-        /* Grid Layout */
-        .itc-grid {
-            display: grid;
-            grid-template-columns: repeat(3, 1fr);
-            gap: 24px;
-        }
-
-        .itc-card {
-            position: relative;
-            height: 480px;
-            border-radius: var(--itc-border-radius);
-            overflow: hidden;
-            display: flex;
-            flex-direction: column;
-            justify-content: flex-end;
-            padding: 32px;
-            transition: transform 0.3s ease;
-            border: 5px solid #fff;
-            cursor: pointer;
-        }
-
-        .itc-card:hover {
-            transform: translateY(-5px);
-        }
-
-        /* Background Images/Overlays */
-        .itc-card-bg {
-            position: absolute;
-            top: 0;
-            left: 0;
+        .itco-hero-container {
             width: 100%;
-            height: 100%;
-            object-fit: cover;
+            max-width: 1200px;
+            display: flex;
+            align-items: center; /* Vertically center content */
+            justify-content: space-between;
+            gap: 80px; /* Space between image column and text column */
+            font-family: 'Circular Std', -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
+        }
+
+        /* --- Left Column (Image & Icons) --- */
+        .itco-media-column {
+            flex: 0 0 auto;
+            position: relative;
+            /* Ensuring enough space for the offset elements */
+            padding-bottom: 20px; 
+            padding-left: 20px;
+        }
+
+        /* Container for the image overlap effect */
+        .itco-image-stack {
+            position: relative;
+            width: 320px;
+            height: 400px;
             z-index: 1;
         }
 
-        .itc-card-overlay {
+        /* The actual image */
+        .itco-profile-img {
             position: absolute;
             top: 0;
-            left: 0;
-            width: 100%;
-            height: 100%;
-            background: linear-gradient(180deg, rgba(0,0,0,0) 40%, rgba(0,0,0,0.85) 100%);
-            z-index: 2;
+            right: 0;
+            width: 320px;
+            height: 400px;
+            object-fit: cover;
+            z-index: 3; /* Sits on top */
+            border-radius: 2px;
         }
 
-        /* Content inside card */
-        .itc-card-content {
+        /* The lighter charcoal box behind the image */
+        .itco-image-backdrop {
+            position: absolute;
+            top: 80px; /* Shifted down */
+            right: 60px; /* Shifted left relative to image right edge */
+            width: 320px;
+            height: 400px;
+            background-color: var(--itco-bg-charcoal-accent);
+            z-index: 2; /* Sits behind image */
+            border-radius: 2px;
+        }
+
+        /* Social Icons Row */
+        .itco-social-row {
+            display: flex;
+            gap: 25px;
+            margin-top: 29px;
+            /* Aligning icons with the backdrop box edge */
+            margin-left: -30px; 
             position: relative;
-            z-index: 3;
-            color: var(--itc-text-light);
+            z-index: 4;
         }
 
-        .itc-card-tag {
-            font-size: 13px;
+        .itco-social-link {
+            color: var(--itco-text-white);
+            font-size: 18px;
+            text-decoration: none;
+            transition: opacity 0.3s ease;
+        }
+
+        .itco-social-link:hover {
+            opacity: 0.7;
+        }
+
+
+        /* --- Right Column (Text) --- */
+        .itco-content-column {
+            flex: 1; /* Takes remaining space */
+        }
+
+        .itco-headline {
+            color: var(--itco-text-white);
+            font-size: 40px;
+            font-weight: 400; /* Medium weight matches design */
+            line-height: 1.3;
+            margin-bottom: 32px;
+            letter-spacing: -0.5px;
+        }
+
+        .itco-description {
+            color: var(--itco-text-grey);
+            font-size: 18px;
+            line-height: 1.6;
             font-weight: 400;
-            opacity: 0.8;
-            margin-bottom: 8px;
-            text-transform: capitalize;
         }
 
-        .itc-card-headline {
-            font-size: 28px;
-            font-weight: 700;
-            margin: 0 0 12px 0;
-            line-height: 1.2;
-        }
+        /* --- Basic Responsiveness --- */
+        @media screen and (max-width: 992px) {
+            .itco-hero-container {
+                flex-direction: column;
+                text-align: center;
+                gap: 60px;
+            }
 
-        .itc-card-description {
-            font-size: 16px;
-            line-height: 1.5;
-            opacity: 0.9;
-            margin: 0;
-            font-weight: 400;
-        }
+            .itco-media-column {
+                padding-left: 0;
+                margin: 0 auto; /* Center the stack block */
+            }
 
-        /* Mobile Responsiveness */
-        @media (max-width: 1240px) {
-            .itc-container { width: 95%; }
-            .itc-title { font-size: 48px; }
-        }
+            /* Recenter stack for mobile view */
+            .itco-image-stack {
+               margin-left: 25px; /* Compensate for the backdrop shift to center visually */
+            }
 
-        @media (max-width: 991px) {
-            .itc-grid { grid-template-columns: repeat(2, 1fr); }
-        }
+            .itco-social-row {
+                justify-content: center;
+                margin-left: 0;
+            }
 
-        @media (max-width: 767px) {
-            .itc-grid { grid-template-columns: 1fr; }
-            .itc-header { flex-direction: column; gap: 20px; }
+            .itco-headline {
+                font-size: 32px;
+            }
         }
+        /* --- Scoped CSS End --- */
     </style>
 </head>
-<body>
+<body >
 
-    <section class="itc-section-wrapper">
-        <div class="itc-container">
+    <div class="itco-section-reset itco-hero-wrapper">
+        <div class="itco-hero-container">
             
-            <header class="itc-header">
-                <h1 class="itc-title">You’ll love<br>this course</h1>
-                <div class="itc-badge">Our Approach</div>
-            </header>
-
-            <div class="itc-grid">
-                
-                <div class="itc-card">
-                    <img src="https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?auto=format&fit=crop&q=80&w=600" alt="Growth" class="itc-card-bg">
-                    <div class="itc-card-overlay"></div>
-                    <div class="itc-card-content">
-                        <div class="itc-card-tag">Real momentum</div>
-                        <h2 class="itc-card-headline">Growth that pops</h2>
-                        <p class="itc-card-description">Learn how to push your content further and spark growth you can actually see.</p>
-                    </div>
+            <div class="itco-media-column">
+                <div class="itco-image-stack">
+                    <img src="https://images.unsplash.com/photo-1553877522-43269d4ea984?q=80&w=1470&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D" alt="John Smith Web Developer working on laptop" class="itco-profile-img">
+                    <div class="itco-image-backdrop"></div>
                 </div>
 
-                <div class="itc-card">
-                    <img src="https://images.unsplash.com/photo-1534528741775-53994a69daeb?auto=format&fit=crop&q=80&w=600" alt="Posting" class="itc-card-bg">
-                    <div class="itc-card-overlay"></div>
-                    <div class="itc-card-content">
-                        <div class="itc-card-tag">No more falling off</div>
-                        <h2 class="itc-card-headline">Posting on lock</h2>
-                        <p class="itc-card-description">Build a simple posting flow that keeps you showing up without overthinking it.</p>
-                    </div>
+                <div class="itco-social-row">
+                    <a href="#" class="itco-social-link" aria-label="Twitter"><i class="fab fa-twitter"></i></a>
+                    <a href="#" class="itco-social-link" aria-label="Facebook"><i class="fab fa-facebook-f"></i></a>
+                    <a href="#" class="itco-social-link" aria-label="Discord"><i class="fab fa-discord"></i></a>
+                    <a href="#" class="itco-social-link" aria-label="YouTube"><i class="fab fa-youtube"></i></a>
                 </div>
-
-                <div class="itc-card">
-                    <img src="https://images.unsplash.com/photo-1517841905240-472988babdf9?auto=format&fit=crop&q=80&w=600" alt="Content" class="itc-card-bg">
-                    <div class="itc-card-overlay"></div>
-                    <div class="itc-card-content">
-                        <div class="itc-card-tag">Never stuck again</div>
-                        <h2 class="itc-card-headline">Content on repeat</h2>
-                        <p class="itc-card-description">Use proven frameworks that tell you exactly what to post — again and again.</p>
-                    </div>
-                </div>
-
-                <div class="itc-card">
-                    <img src="https://images.unsplash.com/photo-1494790108377-be9c29b29330?auto=format&fit=crop&q=80&w=600" alt="Views" class="itc-card-bg">
-                    <div class="itc-card-overlay"></div>
-                    <div class="itc-card-content">
-                        <div class="itc-card-tag">Growth with profit</div>
-                        <h2 class="itc-card-headline">Monetized views</h2>
-                        <p class="itc-card-description">Learn how to turn attention into real opportunities, not just empty numbers.</p>
-                    </div>
-                </div>
-
-                <div class="itc-card">
-                    <img src="https://images.unsplash.com/photo-1506794778202-cad84cf45f1d?auto=format&fit=crop&q=80&w=600" alt="Engagement" class="itc-card-bg">
-                    <div class="itc-card-overlay"></div>
-                    <div class="itc-card-content">
-                        <div class="itc-card-tag">Likes, comments, shares</div>
-                        <h2 class="itc-card-headline">Real engagement</h2>
-                        <p class="itc-card-description">Create posts people actually stop for, react to, and share across platforms.</p>
-                    </div>
-                </div>
-
-                <div class="itc-card">
-                    <img src="https://images.unsplash.com/photo-1524504388940-b1c1722653e1?auto=format&fit=crop&q=80&w=600" alt="Energy" class="itc-card-bg">
-                    <div class="itc-card-overlay"></div>
-                    <div class="itc-card-content">
-                        <div class="itc-card-tag">You're ready now</div>
-                        <h2 class="itc-card-headline">Level-up energy</h2>
-                        <p class="itc-card-description">Know what works, why it works, and how to repeat it with confidence.</p>
-                    </div>
-                </div>
-
             </div>
+
+            <div class="itco-content-column">
+                <h1 class="itco-headline">I’m John Smith. I’m passionate about crafting exceptional websites. With a blend of design skills and coding expertise, I create unique online experiences that captivate users.</h1>
+                <p class="itco-description">Looking for a top-notch web developer to revamp your hotel’s website? Look no further than John Smith. With years of experience and a keen eye for design, John can take your site to the next level, helping you attract more visitors and boost your bookings.</p>
+            </div>
+
         </div>
-    </section>
-
-</body>
+    </div>
+    </body>
 </html>
-
-
-
-
-
-
-
 
 
 

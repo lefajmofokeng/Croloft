@@ -1,0 +1,5413 @@
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Tech Hero Component</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700&display=swap" rel="stylesheet">
+    <style>
+        .tech-hero-wrapper-unique {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        .tech-hero-wrapper-unique *,
+        .tech-hero-wrapper-unique *::before,
+        .tech-hero-wrapper-unique *::after {
+            box-sizing: inherit;
+        }
+
+        .tech-hero-container-unique {
+            background: linear-gradient(180deg, #0a0e1a 0%, #141b2d 100%);
+            padding: 80px 40px;
+            font-family: 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif;
+            min-height: 400px;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+        }
+
+        .tech-hero-heading-unique {
+            color: #ffffff;
+            font-size: 50px;
+            font-weight: 600;
+            line-height: 1.2;
+            margin: 0 0 80px 0;
+            text-align: center;
+            letter-spacing: -0.02em;
+        }
+
+        .tech-hero-heading-unique .tech-hero-highlight-unique {
+            color: #9ca3af;
+            font-weight: 600;
+        }
+
+        .tech-hero-grid-unique {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 40px;
+            max-width: 1200px;
+            margin: 0 auto;
+            width: 100%;
+        }
+
+        .tech-hero-card-unique {
+            border-top: 1px solid #2d3748;
+            padding-top: 30px;
+        }
+
+        .tech-hero-card-title-unique {
+            color: #ffffff;
+            font-size: 22px;
+            font-weight: 600;
+            letter-spacing: -0.02em;
+            line-height: 1.4;
+        }
+
+        .tech-hero-card-subtitle-unique {
+            color: #ffffff;
+            font-size: 22px;
+            font-weight: 600;
+            margin: 0 0 20px 0;
+            line-height: 1;
+            letter-spacing: -0.02em;
+        }
+
+        .tech-hero-card-description-unique {
+            color: #9ca3af;
+            font-size: 19px;
+            font-weight: 600;
+            line-height: 1;
+            margin: 0;
+        }
+
+        @media (max-width: 1024px) {
+            .tech-hero-grid-unique {
+                grid-template-columns: 1fr;
+                gap: 50px;
+            }
+
+            .tech-hero-heading-unique {
+                font-size: 48px;
+                margin-bottom: 60px;
+            }
+        }
+
+        @media (max-width: 768px) {
+            .tech-hero-container-unique {
+                padding: 60px 24px;
+            }
+
+            .tech-hero-heading-unique {
+                font-size: 36px;
+                margin-bottom: 50px;
+            }
+
+            .tech-hero-card-title-unique {
+                font-size: 18px;
+            }
+
+            .tech-hero-card-subtitle-unique,
+            .tech-hero-card-description-unique {
+                font-size: 15px;
+            }
+        }
+    </style>
+</head>
+<body class="tech-hero-wrapper-unique">
+    <div class="tech-hero-container-unique">
+        <h1 class="tech-hero-heading-unique">
+            Launched in 2019, <span class="tech-hero-highlight-unique">TechCore leverages<br>25+ years of expertise to enable<br>secure, strategic digital transformation</span>
+        </h1>
+
+        <div class="tech-hero-grid-unique">
+            <div class="tech-hero-card-unique">
+                <h2 class="tech-hero-card-title-unique">Certified by</h2>
+                <p class="tech-hero-card-subtitle-unique">ISO 27001</p>
+                <p class="tech-hero-card-description-unique">
+                    We are the first major IT platform to obtain a full stack of ISO security and quality certifications.
+                </p>
+            </div>
+
+            <div class="tech-hero-card-unique">
+                <h2 class="tech-hero-card-title-unique">Cloud Infrastructure</h2>
+                <p class="tech-hero-card-subtitle-unique">(Multi-Cloud Architecture)</p>
+                <p class="tech-hero-card-description-unique">
+                    Covers deployment across AWS, Azure, and Google Cloud with enterprise-grade security and scalability.
+                </p>
+            </div>
+
+            <div class="tech-hero-card-unique">
+                <h2 class="tech-hero-card-title-unique">DevOps Solutions</h2>
+                <p class="tech-hero-card-subtitle-unique">(Continuous Integration & Deployment)</p>
+                <p class="tech-hero-card-description-unique">
+                    Providing automated pipeline management for our enterprise clients, enabling rapid deployment and continuous delivery.
+                </p>
+            </div>
+        </div>
+    </div>
+</body>
+</html>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>IT Enterprise Infrastructure</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700&display=swap" rel="stylesheet">
+
+    <style>
+        /* --- CSS Reset & Global Styles --- */
+        *, *::before, *::after {
+            box-sizing: border-box;
+            margin: 0;
+            padding: 0;
+        }
+
+        body {
+            /* Setting the requested font and dark theme base */
+            font-family: 'Inter', sans-serif;
+            background-color: #0A0E17; /* Deep charcoal background matching the image */
+            color: #FFFFFF;
+            
+            -webkit-font-smoothing: antialiased;
+        }
+
+        /* --- Main Section Wrapper --- */
+        /* Using a semantic section tag with a descriptive class */
+        .enterprise-hero-section {
+            width: 100%;
+            min-height: 80vh; /* Ensures substantial vertical space */
+            padding: 150px 24px 200px 24px;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+        }
+
+        /* Container to constrain width on large screens */
+        .hero-container {
+            width: 100%;
+            max-width: 1200px;
+        }
+
+        /* --- Header Area Styling --- */
+        .hero-headline-block {
+            margin-bottom: 96px; /* Large spacing between title and columns */
+            max-width: 850px;
+            margin-top: 5rem;
+        }
+
+        .hero-main-title {
+            font-size: 18px;
+            font-weight: 600;
+            color: #0091ff; /* Muted gray/blue for subtitle */
+            margin-bottom: 18px;
+            letter-spacing: 0.5px;
+            text-transform: uppercase;
+        }
+
+        /* The main H1 title */
+        .hero-title {
+            font-size: 44px; /* Large scale typography */
+            font-weight: 600; /* Regular weight by default */
+            line-height: 1.2;
+            color: #ffffff; /* Slightly softened white */
+        }
+
+        /* --- Three-Column Grid Styling --- */
+        .solutions-grid {
+            display: grid;
+            /* Create three equal columns */
+            grid-template-columns: repeat(3, 1fr);
+            /* Large horizontal gap between columns */
+            gap: 64px;
+            align-items: flex-start;
+        }
+
+        /* Semantic article tag for each feature block */
+        .solution-card {
+            display: flex;
+            flex-direction: column;
+            align-items: flex-start;
+        }
+
+        /* Wrapper for the icons */
+        .card-icon-wrapper {
+            margin-bottom: 24px;
+            color: #E2E8F0; /* Icon color matches soft white text */
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            height: 58px;
+            width: 58px;
+            stroke-width: 0.1;
+        }
+
+        /* The H3 headings for each column */
+        .card-heading {
+            font-size: 1.5rem;
+            font-weight: 600;
+            margin-bottom: 16px;
+            line-height: 1.3;
+            color: #FFFFFF;
+        }
+
+        /* The descriptive paragraph text */
+        .card-description {
+            font-size: 1.1rem;
+            /* Muted gray/blue for descriptions to create hierarchy */
+            color: #94A3B8;
+            font-weight: 500; 
+            line-height: 1.6;
+            max-width: 340px; /* Ensures optimal reading width */
+        }
+
+        /* --- Responsive Adjustments --- */
+        /* Tablet breakpoints */
+        @media (max-width: 1024px) {
+            .hero-title {
+                font-size: 3rem;
+            }
+            .solutions-grid {
+                gap: 40px;
+            }
+
+            .solution-card {
+                border: 2px solid #303c55;
+                padding: 15px;
+                border-radius: 20px;
+            }
+        }
+
+        /* Mobile breakpoints */
+        @media (max-width: 768px) {
+            .enterprise-hero-section {
+                padding: 9rem 20px;
+            }
+            .hero-headline-block {
+                margin-bottom: 56px;
+            }
+            .hero-title {
+                font-size: 2.25rem;
+            }
+            /* Stack the grid columns vertically on mobile */
+            .solutions-grid {
+                grid-template-columns: 1fr;
+                gap: 48px;
+            }
+            .card-description {
+                max-width: 100%;
+            }
+        }
+
+        .service-btn {
+            font-weight: 600;
+            font-size: 16px;
+            color: #fff;
+            padding: 10px 20px;
+            border-radius: 50px;
+            border: 1px solid #fff;
+            background-color: transparent;
+            margin-top: 35px;
+        }
+    </style>
+</head>
+<body>
+
+    <section class="enterprise-hero-section">
+        <div class="hero-container">
+            
+            <header class="hero-headline-block">
+                <h1 class="hero-main-title">Cronos Solutions</h1>
+                <h1 class="hero-title">
+                    Building Digital <br>Ecosystems That Work
+                </h1>
+            </header>
+
+            <div class="solutions-grid">
+                
+                <article class="solution-card">
+                    <div class="card-icon-wrapper">
+                        <svg width="70" height="70"  xmlns="http://www.w3.org/2000/svg" viewBox="0 0 32 32"><path d="M21.49 13.115l-9-5a1 1 0 0 0-1 0l-9 5A1.008 1.008 0 0 0 2 14v9.995a1 1 0 0 0 .52.87l9 5A1.004 1.004 0 0 0 12 30a1.056 1.056 0 0 0 .49-.135l9-5A.992.992 0 0 0 22 24V14a1.008 1.008 0 0 0-.51-.885zM11 27.295l-7-3.89v-7.72l7 3.89zm1-9.45L5.06 14L12 10.135l6.94 3.86zm8 5.56l-7 3.89v-7.72l7-3.89z" fill="#ffffff"/><path d="M30 6h-4V2h-2v4h-4v2h4v4h2V8h4V6z" fill="#ffffff"/></svg>
+                    </div>
+                    <h3 class="card-heading">Software Development</h3>
+                    <p class="card-description">
+                        All-in-one infrastructure. From cloud migration and cybersecurity to custom software development, data analytics, and managed network services.
+                    </p>
+                    <button class="service-btn"><a href="page.html">Learn More
+                        <svg xmlns="http://www.w3.org/2000/svg" style="vertical-align: middle;" width="20" height="20" viewBox="0 0 24 24"><path fill="#ffffff" d="m16 8.4l-8.9 8.9q-.275.275-.7.275t-.7-.275q-.275-.275-.275-.7t.275-.7L14.6 7H7q-.425 0-.713-.288T6 6q0-.425.288-.713T7 5h10q.425 0 .713.288T18 6v10q0 .425-.288.713T17 17q-.425 0-.713-.288T16 16V8.4Z"/></svg>
+                    </a></button>
+                </article>
+
+                <article class="solution-card">
+                    <div class="card-icon-wrapper">
+                         <svg width="40" height="40" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round">
+                            <path d="M12 2l8.66 5v10L12 22l-8.66-5V7L12 2z"/>
+                            <path d="M12 12m-3 0a3 3 0 1 0 6 0a3 3 0 1 0-6 0"/>
+                        </svg>
+                    </div>
+                    <h3 class="card-heading">IT Infrastructure</h3>
+                    <p class="card-description">
+                        Facilitating robust, zero-trust access to regulated data across distributed networks and hybrid cloud environments for maximum integrity.
+                    </p>
+                    <button class="service-btn"><a href="page.html">Learn More
+                        <svg xmlns="http://www.w3.org/2000/svg" style="vertical-align: middle;" width="20" height="20" viewBox="0 0 24 24"><path fill="#ffffff" d="m16 8.4l-8.9 8.9q-.275.275-.7.275t-.7-.275q-.275-.275-.275-.7t.275-.7L14.6 7H7q-.425 0-.713-.288T6 6q0-.425.288-.713T7 5h10q.425 0 .713.288T18 6v10q0 .425-.288.713T17 17q-.425 0-.713-.288T16 16V8.4Z"/></svg>
+                    </a></button>
+                </article>
+
+                <article class="solution-card">
+                    <div class="card-icon-wrapper">
+                        <svg width="40" height="40" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round">
+                            <circle cx="12" cy="12" r="3"/><circle cx="12" cy="12" r="9"/>
+                            <path d="M12 3v2"/><path d="M12 19v2"/><path d="M3 12h2"/><path d="M19 12h2"/>
+                        </svg>
+                    </div>
+                    <h3 class="card-heading">Marketing & Creative Studio</h3>
+                    <p class="card-description">
+                        Composable utility for systems across existing and new tech stacks. Instant scalability, enhanced performance, and seamless API interoperability.
+                    </p>
+                    <button class="service-btn"><a href="page.html">Learn More
+                        <svg xmlns="http://www.w3.org/2000/svg" style="vertical-align: middle;" width="20" height="20" viewBox="0 0 24 24"><path fill="#ffffff" d="m16 8.4l-8.9 8.9q-.275.275-.7.275t-.7-.275q-.275-.275-.275-.7t.275-.7L14.6 7H7q-.425 0-.713-.288T6 6q0-.425.288-.713T7 5h10q.425 0 .713.288T18 6v10q0 .425-.288.713T17 17q-.425 0-.713-.288T16 16V8.4Z"/></svg>
+                    </a></button>
+                </article>
+
+            </div>
+            </div>
+    </section>
+
+</body>
+</html>
+
+
+
+
+
+
+
+
+
+
+
+
+<script>
+  class ItTechSolutions extends HTMLElement {
+    constructor() {
+      super();
+      this.attachShadow({ mode: 'open' }); // Use Shadow DOM for complete style isolation
+    }
+
+    connectedCallback() {
+      this.render();
+    }
+
+    render() {
+      this.shadowRoot.innerHTML = `
+      <style>
+        :host {
+          all: initial; /* Reset inheritance from parent document */
+          display: block;
+          font-family: 'Inter', sans-serif;
+          background-color: #F5F5F7; /* Overall page background */
+          color: #1D1D1F;
+          line-height: 1.5;
+          -webkit-font-smoothing: antialiased;
+        }
+
+        /* --- CSS Variables & Resets within Shadow DOM --- */
+        .it-ts-wrapper {
+          --c-bg-dark: #0A0A0A;
+          --c-bg-card: #FFFFFF;
+          --c-bg-banner: #E8E8ED;
+          --c-text-light: #FFFFFF;
+          --c-text-dark: #1D1D1F;
+          --c-text-grey: #86868B;
+          --c-blue: #0066CC;
+          --section-spacing: 120px;
+          --content-width: 1200px;
+          
+          box-sizing: border-box;
+          width: 100%;
+        }
+
+        .it-ts-wrapper *, .it-ts-wrapper *::before, .it-ts-wrapper *::after {
+          box-sizing: inherit;
+          margin: 0;
+          padding: 0;
+        }
+
+        /* --- Utilities --- */
+        .it-ts-container {
+          max-width: var(--content-width);
+          margin: 0 auto;
+          padding: 0 20px;
+        }
+
+        .it-ts-grid-3 {
+          display: grid;
+          grid-template-columns: repeat(3, 1fr);
+          gap: 40px;
+        }
+
+        .it-ts-grid-2 {
+          display: grid;
+          grid-template-columns: repeat(2, 1fr);
+          gap: 40px;
+        }
+
+        h1, h2, h3, h4 { color: inherit; font-weight: 600; }
+        p { color: var(--c-text-grey); font-size: 16px; font-weight: 400; }
+
+        .it-ts-btn {
+          display: inline-block;
+          padding: 12px 24px;
+          border-radius: 980px;
+          font-size: 16px;
+          font-weight: 600;
+          text-decoration: none;
+          cursor: pointer;
+          transition: all 0.2s ease;
+        }
+        .it-ts-btn-white { background: #FFF; color: #000; border: 1px solid #FFF; }
+        .it-ts-btn-outline { background: transparent; color: #FFF; border: 1px solid #FFF; margin-left: 10px; }
+
+        /* --- Section 1: Hero Header --- */
+        .it-ts-hero {
+          background-color: var(--c-bg-dark);
+          color: var(--c-text-light);
+          padding: 200px 0;
+          /* Placeholder for dark server room background image */
+          background-image: linear-gradient(to right, rgba(0,0,0,0.8), rgba(0,0,0,0.4)), url('https://images.pexels.com/photos/14171333/pexels-photo-14171333.jpeg');
+          background-size: cover;
+          background-position: center;
+          border-bottom-left-radius: 20px;
+          border-bottom-right-radius: 20px;
+          overflow: hidden;
+        }
+
+        .it-ts-hero-content {
+          display: flex;
+          align-items: center;
+          justify-content: space-between;
+        }
+
+        .it-ts-hero-text { max-width: 50%; }
+        .it-ts-logo-line { display: flex; align-items: center; margin-bottom: 24px; font-size: 14px; font-weight: 600; }
+        .it-ts-logo-icon { width: 20px; height: 20px; background: #fff; margin-right: 8px; border-radius: 4px; /* Placeholder logo */ }
+        
+        .it-ts-hero h1 { font-size: 48px; line-height: 1.1; margin-bottom: 20px; }
+        .it-ts-hero p { color: rgba(255,255,255,0.7); margin-bottom: 32px; max-width: 400px; }
+
+        .it-ts-hero-visual {
+          /* Placeholder for the large 3D logo */
+          width: 300px; height: 300px;
+          background: linear-gradient(135deg, #333, #555);
+          border-radius: 30px;
+          display: flex; align-items: center; justify-content: center;
+          font-size: 100px; color: rgba(255,255,255,0.1);
+        }
+
+        /* --- Section 2: UI Showcase --- */
+        .it-ts-showcase { padding: var(--section-spacing) 0; text-align: center; }
+        .it-ts-showcase h2 { font-size: 32px; margin-bottom: 60px; color: var(--c-text-dark); }
+        .it-ts-ui-mockup {
+          width: 100%;
+          border-radius: 12px;
+          box-shadow: 0 20px 40px rgba(0,0,0,0.1);
+          overflow: hidden;
+        }
+        /* Placeholder for the dashboard screenshot */
+        .it-ts-ui-img-placeholder { width: 100%; height: auto; display: block; }
+
+
+        /* --- Section 3 & 4: Feature Grids --- */
+        .it-ts-features { padding-bottom: var(--section-spacing); }
+        .it-ts-feature-row { margin-bottom: 60px; }
+        .it-ts-feature-item { text-align: left; }
+        .it-ts-f-icon {
+          width: 48px; height: 48px;
+          /* Using generic SVG shapes to mimic the style */
+          background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' fill='none' viewBox='0 0 24 24' stroke='%230066CC'%3E%3Cpath stroke-linecap='round' stroke-linejoin='round' stroke-width='1.5' d='M19.428 15.428a2 2 0 00-1.022-.547l-2.387-.477a6 6 0 00-3.86.517l-.318.158a6 6 0 01-3.86.517L6.05 15.21a2 2 0 00-1.022.547c-.264.346-.423.766-.423 1.219 0 2.21 1.791 4.014 4 4.022a2.028 2.028 0 001.414-.566l.152-.152c.408-.408.953-.644 1.529-.644a2.184 2.184 0 011.53.645l.151.152a2.028 2.028 0 001.415.566c2.21-.008 4-1.812 4-4.022 0-.453-.159-.873-.423-1.22z' /%3E%3Cpath stroke-linecap='round' stroke-linejoin='round' stroke-width='1.5' d='M12 11a5 5 0 100-10 5 5 0 000 10z' /%3E%3C/svg%3E");
+          background-repeat: no-repeat; background-position: center;
+          margin-bottom: 20px;
+        }
+        /* Varying icons for visual distinction */
+        .it-ts-f-icon-2 { background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' fill='none' viewBox='0 0 24 24' stroke='%230066CC'%3E%3Cpath stroke-linecap='round' stroke-linejoin='round' stroke-width='1.5' d='M4 7v10c0 2.21 3.582 4 8 4s8-1.79 8-4V7M4 7c0 2.21 3.582 4 8 4s8-1.79 8-4M4 7c0-2.21 3.582-4 8-4s8 1.79 8 4m0 5c0 2.21-3.582 4-8 4s-8-1.79-8-4' /%3E%3C/svg%3E"); }
+        .it-ts-f-icon-3 { background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' fill='none' viewBox='0 0 24 24' stroke='%230066CC'%3E%3Cpath stroke-linecap='round' stroke-linejoin='round' stroke-width='1.5' d='M9 12l2 2 4-4m5.618-4.016A11.955 11.955 0 0112 2.944a11.955 11.955 0 01-8.618 3.04A12.02 12.02 0 003 9c0 5.591 3.824 10.29 9 11.622 5.176-1.332 9-6.03 9-11.622 0-1.042-.133-2.052-.382-3.016z' /%3E%3C/svg%3E"); }
+
+        .it-ts-feature-item h3 { font-size: 18px; margin-bottom: 12px; color: var(--c-text-dark); }
+        .it-ts-feature-item p { font-size: 14px; line-height: 1.6; max-width: 300px; }
+
+
+        /* --- Section 5: Robust Banner --- */
+        .it-ts-banner {
+          background-color: var(--c-bg-banner);
+          border-radius: 24px;
+          padding: 60px;
+          display: flex;
+          align-items: center;
+          justify-content: space-between;
+          margin-bottom: var(--section-spacing);
+          overflow: hidden;
+        }
+        .it-ts-banner-text { max-width: 45%; }
+        .it-ts-banner h2 { font-size: 32px; margin-bottom: 20px; color: var(--c-text-dark); }
+        .it-ts-banner p { max-width: 400px; }
+        .it-ts-banner-visual {
+          /* Placeholder for complex 3D illustration */
+          width: 400px; height: 250px;
+          background: linear-gradient(to right, #d0d0d5, #a0a0a5);
+          border-radius: 12px;
+          position: relative;
+          right: -40px; /* Subtle overlap effect */
+        }
+
+
+        /* --- Section 6: Security Details --- */
+        .it-ts-details { padding-bottom: var(--section-spacing); }
+        .it-ts-Detail-col h3 { font-size: 18px; margin-bottom: 20px; color: var(--c-text-dark); }
+        .it-ts-Detail-col p { font-size: 14px; margin-bottom: 30px; max-width: 320px; }
+        
+        .it-ts-cert-logos { display: flex; gap: 15px; flex-wrap: wrap; }
+        .it-ts-cert-logo { width: 60px; height: 60px; background: #E1E1E6; border-radius: 50%; /* Placeholder */ }
+
+        .it-ts-infra-diagram, .it-ts-api-diagram {
+          height: 120px; background: #E1E1E6; border-radius: 8px; width: 80%;
+          /* Placeholder for flowcharts */
+          display: flex; align-items: center; justify-content: center; color: #86868B; font-size: 12px;
+        }
+
+        /* --- Section 7: Summary --- */
+        .it-ts-summary { padding-bottom: var(--section-spacing); border-top: 1px solid #E1E1E6; padding-top: 60px; }
+        .it-ts-summary h3 { font-size: 16px; margin-bottom: 12px; color: var(--c-text-dark); }
+        .it-ts-summary p { font-size: 14px; max-width: 350px; }
+
+
+        /* --- Section 8: Footer CTA --- */
+        .it-ts-footer {
+          background-color: var(--c-bg-dark);
+          color: var(--c-text-light);
+          padding: 80px 0;
+          /* Placeholder background */
+          background-image: linear-gradient(to right, rgba(0,0,0,0.8), rgba(0,0,0,0.5)), url('https://placehold.co/1600x600/2a2a2a/2a2a2a?text=IT+Footer+Background');
+          background-size: cover;
+          background-position: center;
+          border-radius: 20px;
+          margin-bottom: 40px;
+        }
+        .it-ts-footer-content { max-width: 500px; }
+        .it-ts-footer h2 { font-size: 36px; margin-bottom: 30px; line-height: 1.2; }
+
+        /* Responsive tweaks for smaller screens if needed */
+        @media (max-width: 768px) {
+          .it-ts-hero-content, .it-ts-banner { flex-direction: column; text-align: center; }
+          .it-ts-hero-text, .it-ts-banner-text { max-width: 100%; margin-bottom: 40px; }
+          .it-ts-hero-visual, .it-ts-banner-visual { width: 100%; }
+          .it-ts-grid-3, .it-ts-grid-2 { grid-template-columns: 1fr; }
+          .it-ts-banner-visual { right: 0; height: 200px; }
+        }
+
+      </style>
+
+      <div class="it-ts-wrapper">
+        
+        <section class="it-ts-hero">
+          <div class="it-ts-container it-ts-hero-content">
+            <div class="it-ts-hero-text">
+              <div class="it-ts-logo-line">
+                <div class="it-ts-logo-icon"></div> <span>Enterprise IT Solutions</span>
+              </div>
+              <h1>Your Enterprise IT Foundation</h1>
+              <p>Secure your infrastructure with industry-leading compliance, security, and reliability since 2016.</p>
+              <div class="it-ts-hero-btns">
+                <a class="it-ts-btn it-ts-btn-white">Get Started</a>
+                <a class="it-ts-btn it-ts-btn-outline">Learn More -></a>
+              </div>
+            </div>
+            <div class="it-ts-hero-visual">
+              <span style="font-size: 80px; opacity: 0.2;">IT</span>
+            </div>
+          </div>
+        </section>
+
+        <section class="it-ts-showcase">
+          <div class="it-ts-container">
+            <h2>Optimized solutions for scalability and management</h2>
+            <div class="it-ts-ui-mockup">
+              <img src="https://images.pexels.com/photos/14171333/pexels-photo-14171333.jpeg" alt="Dashboard UI" class="it-ts-ui-img-placeholder">
+            </div>
+          </div>
+        </section>
+
+        <section class="it-ts-features">
+          <div class="it-ts-container">
+            <div class="it-ts-grid-3 it-ts-feature-row">
+              <div class="it-ts-feature-item">
+                <div class="it-ts-f-icon"></div>
+                <h3>Data Segregation</h3>
+                <p>Critical data is isolated in separate environments, ensuring strict access controls and auditability.</p>
+              </div>
+              <div class="it-ts-feature-item">
+                <div class="it-ts-f-icon it-ts-f-icon-2"></div>
+                <h3>Comprehensive Cloud Coverage</h3>
+                <p>Support for major public and private cloud providers, including AWS, Azure, and GCP integration.</p>
+              </div>
+              <div class="it-ts-feature-item">
+                <div class="it-ts-f-icon it-ts-f-icon-3"></div>
+                <h3>Dynamic Access Controls</h3>
+                <p>Flexibly define user roles and permissions with granular policies that adapt to your organizational structure.</p>
+              </div>
+            </div>
+
+            <div class="it-ts-grid-3 it-ts-feature-row">
+              <div class="it-ts-feature-item">
+                <div class="it-ts-f-icon it-ts-f-icon-3"></div>
+                <h3>Advanced Encryption Standards</h3>
+                <p>Utilizing AES-256 and TLS 1.3 protocols to ensure data is secure both in transit and at rest.</p>
+              </div>
+              <div class="it-ts-feature-item">
+                <div class="it-ts-f-icon"></div>
+                <h3>High-Availability Architecture</h3>
+                <p>Redundant systems and failover mechanisms ensure maximum uptime for mission-critical applications.</p>
+              </div>
+              <div class="it-ts-feature-item">
+                <div class="it-ts-f-icon it-ts-f-icon-2"></div>
+                <h3>Isolated Tenant Environments</h3>
+                <p>Prevent data leakage with strict logical separation between different business units or clients.</p>
+              </div>
+            </div>
+          </div>
+        </section>
+
+        <section class="it-ts-container">
+          <div class="it-ts-banner">
+            <div class="it-ts-banner-text">
+              <h2>Robust Infrastructure Protection</h2>
+              <p>Enterprise IT Solutions operates under strict global standards for data security, operational integrity, and risk management.</p>
+            </div>
+            <div class="it-ts-banner-visual">
+              </div>
+          </div>
+        </section>
+
+        <section class="it-ts-details">
+          <div class="it-ts-container">
+            <div class="it-ts-grid-3">
+              <div class="it-ts-Detail-col">
+                <h3>Security certification</h3>
+                <p>Our platform and operations are certified to meet international standards including ISO 27001, SOC 2 Type II, and GDPR compliance.</p>
+                <div class="it-ts-cert-logos">
+                  <div class="it-ts-cert-logo" title="SOC2"></div>
+                  <div class="it-ts-cert-logo" title="ISO"></div>
+                  <div class="it-ts-cert-logo" title="GDPR"></div>
+                </div>
+              </div>
+              <div class="it-ts-Detail-col">
+                <h3>Layered infrastructure</h3>
+                <p>Multiple defense-in-depth layers protect your data, mitigating the risk of single points of failure in the stack.</p>
+                <div class="it-ts-infra-diagram">Diagram Placeholder</div>
+              </div>
+              <div class="it-ts-Detail-col">
+                <h3>Seamless integration</h3>
+                <p>A powerful suite of RESTful APIs and SDKs allows for easy integration into your existing tech stack and workflows.</p>
+                <div class="it-ts-api-diagram">API Flow Placeholder</div>
+              </div>
+            </div>
+          </div>
+        </section>
+
+        <section class="it-ts-summary">
+          <div class="it-ts-container">
+            <div class="it-ts-grid-2">
+              <div>
+                <h3>Increased operational efficiency</h3>
+                <p>Streamline IT operations and reduce overhead with centralized management and automation tools.</p>
+              </div>
+              <div>
+                <h3>Scalable resource management</h3>
+                <p>Easily scale compute and storage resources up or down based on real-time demand.</p>
+              </div>
+            </div>
+          </div>
+        </section>
+
+        <section class="it-ts-container">
+          <div class="it-ts-footer">
+            <div class="it-ts-container it-ts-footer-content">
+              <div class="it-ts-logo-line">
+                <div class="it-ts-logo-icon"></div>
+                <span>Enterprise IT Solutions</span>
+              </div>
+              <h2>Secure your technology stack with Enterprise IT Solutions.</h2>
+              <a class="it-ts-btn it-ts-btn-white">Get Started</a>
+            </div>
+          </div>
+        </section>
+
+      </div>
+    `;
+    }
+  }
+
+  customElements.define('it-tech-solutions', ItTechSolutions);
+</script>
+
+<it-tech-solutions></it-tech-solutions>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<div class="it-ads-component-wrapper">
+  <style>
+    /* Scoped styles for the component to prevent conflicts */
+    .it-ads-component-wrapper {
+      --it-ads-bg-main: #0a1128;
+      --it-ads-bg-card: #121a38;
+      --it-ads-bg-banner: #1c2445;
+      --it-ads-text-white: #ffffff;
+      --it-ads-text-muted: #a0a8c0;
+      --it-ads-accent-blue: #0082fa;
+      --it-ads-border-blue: #0082fa;
+      --it-ads-font-family: 'Inter', sans-serif;
+
+      font-family: var(--it-ads-font-family);
+      background-color: var(--it-ads-bg-main);
+      color: var(--it-ads-text-white);
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+      width: 100%;
+      overflow-x: hidden;
+    }
+
+    .it-ads-component-wrapper *,
+    .it-ads-component-wrapper *::before,
+    .it-ads-component-wrapper *::after {
+      box-sizing: inherit;
+    }
+
+    /* Utility Classes */
+    .it-ads-container {
+      max-width: 1200px;
+      margin: 0 auto;
+      padding: 0 20px;
+    }
+
+    .it-ads-text-center { text-align: center; }
+    .it-ads-text-muted { color: var(--it-ads-text-muted); }
+
+    .it-ads-btn {
+      display: inline-block;
+      padding: 12px 24px;
+      border-radius: 4px;
+      font-weight: 600;
+      text-decoration: none;
+      transition: all 0.3s ease;
+      cursor: pointer;
+      font-size: 14px;
+    }
+
+    .it-ads-btn-outline {
+      background-color: transparent;
+      border: 2px solid var(--it-ads-border-blue);
+      color: var(--it-ads-text-white);
+    }
+    .it-ads-btn-outline:hover {
+      background-color: var(--it-ads-border-blue);
+    }
+
+    .it-ads-btn-solid {
+      background-color: var(--it-ads-accent-blue);
+      border: 2px solid var(--it-ads-accent-blue);
+      color: var(--it-ads-text-white);
+    }
+    .it-ads-btn-solid:hover {
+      background-color: #006add;
+      border-color: #006add;
+    }
+
+    /* Header Section */
+    .it-ads-header {
+      padding: 60px 0 40px;
+    }
+    
+    .it-ads-logo {
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        margin-bottom: 30px;
+        font-weight: 700;
+        font-size: 1.1rem;
+    }
+
+    .it-ads-logo-icon {
+        width: 24px;
+        height: 24px;
+        margin-right: 10px;
+        background-color: var(--it-ads-accent-blue); /* Placeholder for logo icon */
+        border-radius: 50%;
+    }
+
+    .it-ads-headline {
+      font-size: 3.5rem;
+      font-weight: 700;
+      margin-bottom: 16px;
+      line-height: 1.2;
+    }
+
+    .it-ads-subheadline {
+      font-size: 1.25rem;
+      margin-bottom: 40px;
+    }
+
+    .it-ads-header-buttons {
+      display: flex;
+      justify-content: center;
+      gap: 20px;
+      margin-bottom: 60px;
+    }
+
+    /* Hero Video Section */
+    .it-ads-hero-video-container {
+      position: relative;
+      max-width: 800px;
+      margin: 0 auto 80px;
+      border-radius: 20px;
+      overflow: hidden;
+      box-shadow: 0 20px 40px rgba(0, 0, 0, 0.3);
+    }
+
+    .it-ads-hero-video {
+      width: 100%;
+      display: block;
+      /* Placeholder for video poster */
+      background: #1a1a2e url('https://via.placeholder.com/800x450?text=Video+Placeholder') center/cover no-repeat;
+    }
+
+    /* Features Row */
+    .it-ads-features-row {
+      display: flex;
+      justify-content: space-between;
+      margin-bottom: 100px;
+      text-align: left;
+    }
+
+    .it-ads-feature-item {
+      flex: 1;
+      padding: 0 15px;
+      max-width: 25%;
+    }
+
+    .it-ads-feature-title {
+      font-size: 1.1rem;
+      font-weight: 700;
+      margin-bottom: 10px;
+    }
+
+    .it-ads-feature-desc {
+      font-size: 0.9rem;
+      line-height: 1.5;
+    }
+
+    /* Large Banner Section */
+    .it-ads-banner {
+      position: relative;
+      padding: 80px;
+      border-radius: 30px;
+      overflow: hidden;
+      margin-bottom: 100px;
+      /* Placeholder for banner background image */
+      background: var(--it-ads-bg-banner) url('https://via.placeholder.com/1200x400?text=Large+Banner+Background') center/cover no-repeat;
+      display: flex;
+      align-items: flex-start;
+      justify-content: space-between;
+      min-height: 400px;
+    }
+    
+    /* Dark overlay for better text readability over placeholder */
+    .it-ads-banner::before {
+        content: '';
+        position: absolute;
+        top: 0; left: 0; right: 0; bottom: 0;
+        background: linear-gradient(to right, rgba(10, 17, 40, 0.8) 30%, rgba(10, 17, 40, 0));
+        z-index: 1;
+    }
+
+    .it-ads-banner-content {
+      position: relative;
+      z-index: 2;
+      max-width: 500px;
+    }
+
+    .it-ads-banner-title {
+      font-size: 2.5rem;
+      font-weight: 700;
+      margin-bottom: 20px;
+    }
+
+    .it-ads-banner-text {
+      font-size: 1.1rem;
+      margin-bottom: 40px;
+      line-height: 1.4;
+    }
+
+    .it-ads-banner-btn-container {
+        position: relative;
+        z-index: 2;
+        align-self: flex-end;
+    }
+
+    /* 2x2 Feature Grid */
+    .it-ads-grid-section {
+      margin-bottom: 100px;
+    }
+
+    .it-ads-grid {
+      display: grid;
+      grid-template-columns: repeat(2, 1fr);
+      gap: 30px;
+    }
+
+    .it-ads-grid-card {
+      background-color: var(--it-ads-bg-card);
+      border-radius: 24px;
+      padding: 40px;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      overflow: hidden;
+      position: relative;
+    }
+
+    .it-ads-grid-content {
+      flex: 1;
+      z-index: 2;
+    }
+
+    .it-ads-grid-title {
+      font-size: 1.5rem;
+      font-weight: 700;
+      margin-bottom: 15px;
+    }
+
+    .it-ads-grid-desc {
+      margin-bottom: 30px;
+      line-height: 1.5;
+      max-width: 80%;
+    }
+
+    .it-ads-grid-image {
+      flex: 1;
+      max-width: 200px;
+      height: auto;
+      z-index: 1;
+      /* Placeholder for grid item images */
+      content: url('https://via.placeholder.com/200x200?text=Feature+Icon');
+    }
+
+    /* Responsive Design */
+    @media (max-width: 992px) {
+      .it-ads-headline { font-size: 2.8rem; }
+      .it-ads-features-row { flex-wrap: wrap; }
+      .it-ads-feature-item { max-width: 50%; margin-bottom: 40px; }
+      .it-ads-banner { padding: 50px; flex-direction: column; justify-content: center; }
+      .it-ads-banner::before { background: rgba(10, 17, 40, 0.6); }
+      .it-ads-banner-btn-container { align-self: flex-start; margin-top: 30px; }
+      .it-ads-grid { grid-template-columns: 1fr; }
+    }
+    @media (max-width: 768px) {
+      .it-ads-headline { font-size: 2rem; }
+      .it-ads-subheadline { font-size: 1rem; }
+      .it-ads-header-buttons { flex-direction: column; align-items: center; }
+      .it-ads-feature-item { max-width: 100%; }
+      .it-ads-grid-card { flex-direction: column; text-align: center; }
+      .it-ads-grid-desc { max-width: 100%; }
+      .it-ads-grid-image { margin-top: 30px; }
+    }
+  </style>
+
+  <div class="it-ads-container">
+    <header class="it-ads-header it-ads-text-center">
+      <div class="it-ads-logo">
+          <div class="it-ads-logo-icon"></div>
+          <span>IT Ads Pro</span>
+      </div>
+      <h1 class="it-ads-headline">Your tech brand's reach starts here</h1>
+      <p class="it-ads-subheadline it-ads-text-muted">Advertise with precision and the lowest acquisition costs</p>
+      <div class="it-ads-header-buttons">
+        <a href="#" class="it-ads-btn it-ads-btn-outline">Create Campaign &rarr;</a>
+        <a href="#" class="it-ads-btn it-ads-btn-outline">View Media Kit</a>
+      </div>
+    </header>
+
+    <div class="it-ads-hero-video-container">
+      <video class="it-ads-hero-video" autoplay loop muted playsinline poster="https://via.placeholder.com/800x450?text=Video+Poster">
+        <source src="https://via.placeholder.com/800x450.mp4?text=Placeholder+Video" type="video/mp4">
+        Your browser does not support the video tag.
+      </video>
+    </div>
+
+    <section class="it-ads-features-row">
+      <div class="it-ads-feature-item">
+        <h3 class="it-ads-feature-title">SaaS, Cloud, AI, and 400+ niches</h3>
+        <p class="it-ads-feature-desc it-ads-text-muted">Target highly specific B2B and B2C tech audiences across the globe.</p>
+      </div>
+      <div class="it-ads-feature-item">
+        <h3 class="it-ads-feature-title">Bot & Fraud Protection Programme</h3>
+        <p class="it-ads-feature-desc it-ads-text-muted">Up to $250,000 coverage against invalid traffic and click fraud.</p>
+      </div>
+      <div class="it-ads-feature-item">
+        <h3 class="it-ads-feature-title">Performance-based Pricing</h3>
+        <p class="it-ads-feature-desc it-ads-text-muted">Only pay for genuine engagement with flexible CPC and CPA models.</p>
+      </div>
+      <div class="it-ads-feature-item">
+        <h3 class="it-ads-feature-title">Secure by design</h3>
+        <p class="it-ads-feature-desc it-ads-text-muted">Leading the industry in GDPR and privacy compliance certifications.</p>
+      </div>
+    </section>
+
+    <section class="it-ads-banner">
+      <div class="it-ads-banner-content">
+        <h2 class="it-ads-banner-title">Premium Ad Placements</h2>
+        <p class="it-ads-banner-text">Get up to 5x ROI on targeted campaigns with exclusive inventory on top-tier tech publications and platforms.</p>
+      </div>
+      <div class="it-ads-banner-btn-container">
+          <a href="#" class="it-ads-btn it-ads-btn-outline">View Ad Formats &rarr;</a>
+      </div>
+    </section>
+
+    <section class="it-ads-grid-section">
+      <div class="it-ads-grid">
+        <div class="it-ads-grid-card">
+          <div class="it-ads-grid-content">
+            <h3 class="it-ads-grid-title">Audience Segments</h3>
+            <p class="it-ads-grid-desc it-ads-text-muted">Pre-built segments to instantly target decision-makers by intent, role, and tech stack.</p>
+            <a href="#" class="it-ads-btn it-ads-btn-solid">Browse Segments</a>
+          </div>
+          <img class="it-ads-grid-image" alt="Audience Segments">
+        </div>
+        <div class="it-ads-grid-card">
+          <div class="it-ads-grid-content">
+            <h3 class="it-ads-grid-title">Analytics</h3>
+            <p class="it-ads-grid-desc it-ads-text-muted">Generate actionable insights from real-time campaign performance data.</p>
+            <a href="#" class="it-ads-btn it-ads-btn-solid">View Dashboard</a>
+          </div>
+          <img class="it-ads-grid-image" alt="Analytics">
+        </div>
+        <div class="it-ads-grid-card">
+          <div class="it-ads-grid-content">
+            <h3 class="it-ads-grid-title">Retargeting</h3>
+            <p class="it-ads-grid-desc it-ads-text-muted">Cross-channel retargeting brings back high-intent prospects to convert.</p>
+            <a href="#" class="it-ads-btn it-ads-btn-solid">Start Retargeting</a>
+          </div>
+          <img class="it-ads-grid-image" alt="Retargeting">
+        </div>
+        <div class="it-ads-grid-card">
+          <div class="it-ads-grid-content">
+            <h3 class="it-ads-grid-title">Reporting</h3>
+            <p class="it-ads-grid-desc it-ads-text-muted">Automated reporting is easy with custom scheduling for stakeholders.</p>
+            <a href="#" class="it-ads-btn it-ads-btn-solid">Explore Reports</a>
+          </div>
+          <img class="it-ads-grid-image" alt="Reporting">
+        </div>
+      </div>
+    </section>
+  </div>
+</div>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>IT Technology Layout</title>
+    
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+
+    <style>
+        /* Namespace Prefix: .spec-tech- */
+        
+        .spec-tech-wrapper {
+            box-sizing: border-box;
+            font-family: 'Inter', sans-serif;
+            background-color: #F8F9FB; /* Light neutral background */
+            width: 100%;
+            margin: 0;
+            padding: 80px 0; /* Vertical padding only */
+            overflow-x: hidden; /* Prevents scrollbars from the offset screen */
+            color: #111827;
+        }
+
+        .spec-tech-wrapper * {
+            box-sizing: border-box;
+        }
+
+        /* Top Header - Stays centered or adapts to container */
+        .spec-tech-header {
+            text-align: center;
+            max-width: 800px;
+            margin: 0 auto 80px auto;
+            padding: 0 20px;
+        }
+
+        .spec-tech-eyebrow {
+            color: #0066FF;
+            font-size: 14px;
+            font-weight: 600;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+            display: block;
+            margin-bottom: 15px;
+        }
+
+        .spec-tech-title {
+            font-size: clamp(28px, 5vw, 42px);
+            font-weight: 700;
+            margin-bottom: 20px;
+            letter-spacing: -1px;
+        }
+
+        .spec-tech-subtitle {
+            font-size: 18px;
+            color: #64748b;
+            line-height: 1.6;
+        }
+
+        /* Split Section: Image Left, Text Right */
+        .spec-tech-split-container {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            align-items: center;
+            gap: 60px;
+            width: 100%;
+        }
+
+        /* Left Side: The Screen */
+        .spec-tech-screen-box {
+            position: relative;
+            width: 100%;
+            /* This makes the image container stick to the left edge 
+               and creates the "half-screen" look */
+            margin-left: -50px; 
+        }
+
+        .spec-tech-screen-image {
+            width: 100%;
+            display: block;
+            border-radius: 0 16px 16px 0; /* Rounded only on the right side */
+            box-shadow: 20px 20px 60px rgba(0, 0, 0, 0.15);
+            background-color: #1a1a1a;
+            border: 1px solid rgba(0,0,0,0.1);
+            object-fit: cover;
+        }
+
+        /* Right Side: Footer Content */
+        .spec-tech-footer-content {
+            padding-right: 10%;
+            max-width: 500px;
+        }
+
+        .spec-tech-footer-title {
+            font-size: 32px;
+            font-weight: 700;
+            margin-bottom: 20px;
+        }
+
+        .spec-tech-footer-desc {
+            font-size: 18px;
+            color: #64748b;
+            line-height: 1.7;
+        }
+
+        /* Animations */
+        .spec-tech-reveal {
+            opacity: 0;
+            transform: translateY(30px);
+            transition: all 0.8s ease-out;
+        }
+
+        .spec-tech-visible {
+            opacity: 1;
+            transform: translateY(0);
+        }
+
+        /* Mobile Adjustments */
+        @media (max-width: 900px) {
+            .spec-tech-split-container {
+                grid-template-columns: 1fr;
+                gap: 40px;
+            }
+            .spec-tech-screen-box {
+                margin-left: 0;
+                padding-right: 40px;
+            }
+            .spec-tech-footer-content {
+                padding: 0 20px;
+                max-width: 100%;
+            }
+        }
+    </style>
+</head>
+<body>
+
+    <main class="spec-tech-wrapper">
+        
+        <header class="spec-tech-header spec-tech-reveal">
+            <span class="spec-tech-eyebrow">Browser Extension</span>
+            <h1 class="spec-tech-title">Two ways to access, yours to choose</h1>
+            <p class="spec-tech-subtitle">
+                Apart from the IT Hub console, you can manage cloud infrastructure 
+                directly via our Chrome® extension — the choice is yours.
+            </p>
+        </header>
+
+        <section class="spec-tech-split-container">
+            
+            <div class="spec-tech-screen-box spec-tech-reveal">
+                <img 
+                    src="https://placehold.co/1000x700/1e1e2e/FFF?text=IT+System+Interface" 
+                    alt="IT Technology Dashboard" 
+                    class="spec-tech-screen-image"
+                >
+            </div>
+
+            <div class="spec-tech-footer-content spec-tech-reveal">
+                <h2 class="spec-tech-footer-title">Connect seamlessly</h2>
+                <p class="spec-tech-footer-desc">
+                    Easily connect your local environment or hardware security modules 
+                    to access global IT projects, DevOps protocols, and secure APIs instantly.
+                </p>
+            </div>
+
+        </section>
+
+    </main>
+
+    <script>
+        document.addEventListener('DOMContentLoaded', () => {
+            const observer = new IntersectionObserver((entries) => {
+                entries.forEach(entry => {
+                    if (entry.isIntersecting) {
+                        entry.target.classList.add('spec-tech-visible');
+                    }
+                });
+            }, { threshold: 0.1 });
+
+            document.querySelectorAll('.spec-tech-reveal').forEach(el => observer.observe(el));
+        });
+    </script>
+
+</body>
+</html>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>IT Technology Trust Component</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+
+<style>
+    /* Unique Namespace Prefix: it-tech- */
+
+    :root {
+        --it-tech-font-inter: 'Inter', sans-serif;
+        --it-tech-color-dark-blue: #0C224A;
+        --it-tech-color-text-main: #1F2937;
+        --it-tech-color-text-sub: #4B5563;
+        --it-tech-color-link-blue: #0066CC;
+        --it-tech-color-bg-hero-start: #9BB2C4;
+        --it-tech-color-bg-hero-end: #D8E1E9;
+        --it-tech-color-bg-light: #F9FAFB;
+        --it-tech-color-white: #FFFFFF;
+    }
+
+    /* Component Wrapper to isolate styles */
+    it-tech-trust-component {
+        display: block;
+        font-family: var(--it-tech-font-inter);
+        color: var(--it-tech-color-text-main);
+        line-height: 1.5;
+        width: 100%;
+        overflow-x: hidden;
+    }
+
+    /* --- Section 1: Hero --- */
+    .it-tech-hero-section {
+        /* Gradient approximation based on image_0.png */
+        background: linear-gradient(135deg, var(--it-tech-color-bg-hero-start) 0%, var(--it-tech-color-bg-hero-end) 60%, var(--it-tech-color-white) 100%);
+        padding: 120px 20px 160px;
+        display: flex;
+        justify-content: center;
+    }
+
+    .it-tech-container {
+        max-width: 1200px;
+        width: 100%;
+        display: flex;
+        align-items: center;
+        justify-content: space-between;
+        gap: 60px;
+    }
+
+    .it-tech-hero-content {
+        max-width: 50%;
+    }
+
+    .it-tech-title-large {
+        font-size: 48px;
+        font-weight: 700;
+        color: var(--it-tech-color-text-main);
+        line-height: 1.1;
+        margin-bottom: 24px;
+    }
+
+    .it-tech-text-sub-large {
+        font-size: 16px;
+        color: var(--it-tech-color-text-sub);
+        margin-bottom: 40px;
+        max-width: 480px;
+    }
+
+    .it-tech-button-group {
+        display: flex;
+        gap: 16px;
+        margin-bottom: 16px;
+    }
+
+    .it-tech-btn {
+        padding: 12px 24px;
+        border-radius: 30px;
+        font-weight: 600;
+        font-size: 14px;
+        cursor: pointer;
+        transition: all 0.2s ease;
+        text-decoration: none;
+        display: inline-block;
+    }
+
+    .it-tech-btn-primary {
+        background-color: var(--it-tech-color-dark-blue);
+        color: var(--it-tech-color-white);
+        border: none;
+    }
+
+    .it-tech-btn-outline {
+        background-color: transparent;
+        color: var(--it-tech-color-dark-blue);
+        border: 1px solid var(--it-tech-color-dark-blue);
+    }
+
+    .it-tech-helper-text {
+        font-size: 10px;
+        color: var(--it-tech-color-text-sub);
+        display: flex;
+        gap: 24px;
+        margin-left: 12px;
+    }
+    .it-tech-helper-text span {
+         display: flex;
+         align-items: center;
+    }
+     .it-tech-verified-icon {
+        color: #00C087; /* Greenish color from image */
+        margin-right: 4px;
+        font-size: 12px;
+    }
+
+    /* Hero Image Styles */
+    .it-tech-hero-image {
+        max-width: 45%;
+        height: auto;
+        display: block;
+        /* Adds a subtle floating shadow effect matching the original's depth */
+        filter: drop-shadow(0 25px 50px rgba(12, 34, 74, 0.25));
+        /* Optional gentle float animation */
+        animation: it-tech-float 8s ease-in-out infinite;
+    }
+
+    @keyframes it-tech-float {
+        0% { transform: translateY(0px); }
+        50% { transform: translateY(-20px); }
+        100% { transform: translateY(0px); }
+    }
+
+
+    /* --- Section 2: Centered Text --- */
+    .it-tech-middle-section {
+        background-color: var(--it-tech-color-white);
+        padding: 120px 20px;
+        text-align: center;
+        display: flex;
+        justify-content: center;
+    }
+
+    .it-tech-middle-content {
+        max-width: 700px;
+    }
+
+    .it-tech-title-medium {
+        font-size: 36px;
+        font-weight: 700;
+        color: var(--it-tech-color-text-main);
+        margin-bottom: 40px;
+    }
+
+    .it-tech-text-body-large {
+        font-size: 18px;
+        color: var(--it-tech-color-text-sub);
+        line-height: 1.6;
+        margin-bottom: 32px;
+        font-weight: 500;
+    }
+
+    .it-tech-link-arrow {
+        color: var(--it-tech-color-link-blue);
+        text-decoration: none;
+        font-weight: 600;
+        display: inline-flex;
+        align-items: center;
+        transition: gap 0.2s ease;
+    }
+    
+    .it-tech-link-arrow:hover {
+        gap: 4px;
+    }
+
+    .it-tech-link-arrow::after {
+        content: '→';
+        margin-left: 8px;
+        font-size: 18px;
+    }
+
+    /* --- Section 3: Bottom Feature --- */
+    .it-tech-bottom-section {
+        background-color: var(--it-tech-color-bg-light);
+        padding: 120px 20px;
+        display: flex;
+        justify-content: center;
+    }
+
+    .it-tech-bottom-container {
+        max-width: 1000px;
+        width: 100%;
+        display: flex;
+        align-items: center;
+        justify-content: space-between;
+        gap: 80px;
+    }
+
+    .it-tech-bottom-content {
+        flex: 1;
+    }
+
+    .it-tech-title-small {
+        font-size: 28px;
+        font-weight: 700;
+        color: var(--it-tech-color-text-main);
+        margin-bottom: 24px;
+    }
+
+    .it-tech-text-body {
+        font-size: 16px;
+        color: var(--it-tech-color-text-sub);
+        line-height: 1.6;
+        margin-bottom: 32px;
+    }
+
+    /* CSS Placeholder for the bottom graphic */
+    .it-tech-bottom-graphic-placeholder {
+        width: 300px;
+        height: 300px;
+        /* Mimicking the blue square style */
+        background: linear-gradient(135deg, #4facfe 0%, #00f2fe 100%);
+        box-shadow: 0 10px 30px rgba(79, 172, 254, 0.4);
+        border-radius: 12px;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        position: relative;
+        overflow: hidden;
+    }
+
+    .it-tech-bottom-graphic-inner {
+        width: 70%;
+        height: 70%;
+        background: rgba(255,255,255,0.2);
+        border-radius: 50%;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        font-weight: 700;
+        color: white;
+        font-size: 14px;
+        text-align: center;
+    }
+
+    /* Responsive adjustments */
+    @media (max-width: 900px) {
+        .it-tech-container, .it-tech-bottom-container {
+            flex-direction: column;
+            text-align: center;
+            gap: 60px;
+        }
+        .it-tech-hero-content, .it-tech-bottom-content {
+            max-width: 100%;
+        }
+        .it-tech-hero-image {
+            max-width: 80%;
+            margin-top: 40px;
+        }
+        .it-tech-button-group {
+            justify-content: center;
+        }
+        .it-tech-helper-text {
+            justify-content: center;
+            margin-left: 0;
+        }
+        .it-tech-text-sub-large {
+            margin-left: auto;
+            margin-right: auto;
+        }
+    }
+</style>
+</head>
+<body>
+
+<it-tech-trust-component>
+
+    <div class="it-tech-hero-section">
+        <div class="it-tech-container">
+            <div class="it-tech-hero-content" style="background: transparent;">
+                <h1 class="it-tech-title-large">First, verify<br>Then integrate</h1>
+                <p class="it-tech-text-sub-large">All our enterprise IT solutions are rigorously tested (1:1), securely deployed, and available for immediate integration into your infrastructure.</p>
+                <div class="it-tech-button-group">
+                    <a href="#" class="it-tech-btn it-tech-btn-primary">Explore Solutions</a>
+                    <a href="#" class="it-tech-btn it-tech-btn-outline">View Case Studies</a>
+                </div>
+                <div class="it-tech-helper-text">
+                    <span>How to verify?</span>
+                    <span><span class="it-tech-verified-icon">✓</span> Verified by TechAudit Grp.</span>
+                </div>
+            </div>
+            <img src="https://images.unsplash.com/photo-1639762681485-074b7f938ba0?q=80&w=1632&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D" alt="Abstract IT Core Architecture" class="it-tech-hero-image">
+        </div>
+    </div>
+
+    <div class="it-tech-middle-section">
+        <div class="it-tech-middle-content">
+            <h2 class="it-tech-title-medium">Results, Not words</h2>
+            <p class="it-tech-text-body-large">The digital landscape demands a foundation built on reliability. That's why cybersecurity, cloud compliance, and data privacy have been our core focus since day one.</p>
+            <p class="it-tech-text-body-large">As an industry leader in technological integration, trusted by global enterprises worldwide, we are more committed than ever to setting the highest standard for IT excellence.</p>
+            <a href="#" class="it-tech-link-arrow">Our commitment to security</a>
+        </div>
+    </div>
+
+    <div class="it-tech-bottom-section">
+        <div class="it-tech-bottom-container">
+            <div class="it-tech-bottom-content">
+                <h3 class="it-tech-title-small">What is Zero Trust Architecture?</h3>
+                <p class="it-tech-text-body">Zero Trust is a strategic initiative that prevents successful data breaches by eliminating the concept of trust from an organization's network architecture. Rooted in the principle of "never trust, always verify," it requires continuous validation of every digital interaction across the infrastructure, regardless of location.</p>
+                <a href="#" class="it-tech-link-arrow">Learn about Zero Trust</a>
+            </div>
+             <div class="it-tech-bottom-graphic-placeholder">
+                <div class="it-tech-bottom-graphic-inner">SECURE<br>CORE</div>
+            </div>
+        </div>
+    </div>
+
+</it-tech-trust-component>
+
+</body>
+</html>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600&display=swap" rel="stylesheet">
+
+<div class="itc-svc-container">
+  <div class="itc-svc-alert-banner">
+    <div class="itc-svc-alert-inner">
+      <p class="itc-svc-alert-message">
+        <strong>Auto-Scaling is active for Cluster-01!</strong> Optimize performance and reduce latency with our latest edge nodes.
+      </p>
+      <a href="/docs/auto-scaling" class="itc-svc-cta-link">
+        View Documentation
+        <svg class="itc-svc-icon-arrow" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round">
+          <line x1="5" y1="12" x2="19" y2="12"></line>
+          <polyline points="12 5 19 12 12 19"></polyline>
+        </svg>
+      </a>
+    </div>
+  </div>
+
+  <div class="itc-svc-disclaimer-row">
+    <div class="itc-svc-info-wrapper">
+      <svg width="18" height="18" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+        <circle cx="12" cy="12" r="10" stroke="#3b82f6" stroke-width="2"/>
+        <path d="M12 16V11" stroke="#3b82f6" stroke-width="2" stroke-linecap="round"/>
+        <path d="M12 8H12.01" stroke="#3b82f6" stroke-width="2" stroke-linecap="round"/>
+      </svg>
+    </div>
+    <div class="itc-svc-details">
+      <p class="itc-svc-fine-print">
+        Metrics are based on real-time telemetry and estimated throughput from API gateway logs. Final billing cycles may vary based on egress data spikes. System uptime guarantees are subject to the Service Level Agreement (SLA).
+      </p>
+    </div>
+  </div>
+</div>
+
+<style>
+    /* Container Scoping */
+.itc-svc-container {
+  font-family: 'Inter', -apple-system, sans-serif;
+  max-width: 1200px;
+  margin: 40px auto;
+  padding: 0 20px;
+  -webkit-font-smoothing: antialiased;
+}
+
+/* Banner Component */
+.itc-svc-alert-banner {
+  background-color: #f0f7ff; /* Light Tech Blue */
+  border: 1px solid #dbeafe;
+  border-radius: 10px;
+  padding: 14px 20px;
+  margin-bottom: 12px;
+  transition: border-color 0.2s ease;
+}
+
+.itc-svc-alert-banner:hover {
+  border-color: #3b82f6;
+}
+
+.itc-svc-alert-inner {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  gap: 16px;
+}
+
+.itc-svc-alert-message {
+  margin: 0;
+  font-size: 14px;
+  color: #1e293b; /* Slate 800 */
+  line-height: 1.5;
+}
+
+.itc-svc-alert-message strong {
+  font-weight: 600;
+  color: #0f172a;
+}
+
+/* CTA Link Styling */
+.itc-svc-cta-link {
+  color: #2563eb;
+  text-decoration: none;
+  font-size: 14px;
+  font-weight: 600;
+  display: flex;
+  align-items: center;
+  gap: 6px;
+  white-space: nowrap;
+}
+
+.itc-svc-cta-link:hover {
+  color: #1d4ed8;
+  text-decoration: underline;
+}
+
+/* Disclaimer / Info Section */
+.itc-svc-disclaimer-row {
+  display: flex;
+  gap: 10px;
+  padding: 4px 8px;
+}
+
+.itc-svc-info-wrapper {
+  flex-shrink: 0;
+  padding-top: 2px;
+}
+
+.itc-svc-fine-print {
+  margin: 0;
+  font-size: 12px;
+  line-height: 1.6;
+  color: #64748b; /* Slate 500 */
+}
+
+/* Breakpoints for Dashboards */
+@media (max-width: 768px) {
+  .itc-svc-alert-inner {
+    flex-direction: column;
+    align-items: flex-start;
+    gap: 10px;
+  }
+}
+</style>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>IT Tech Independent Slide</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700&display=swap" rel="stylesheet">
+
+    <style>
+        /* Namespace: 'it-sep-' to avoid conflicts */
+        :root {
+            --it-sep-font: 'Inter', sans-serif;
+            --it-sep-bg: #FFFFFF;
+            --it-sep-text: #0B1221;
+            --it-sep-sub: #556987;
+            --it-sep-accent: #0B1221;
+            --it-sep-line: #E5E7EB;
+        }
+
+        body {
+            margin: 0;
+            padding: 0;
+            font-family: var(--it-sep-font);
+            padding-top: 50vh; /* Spacer */
+            padding-bottom: 100vh;
+        }
+
+        /* 1. Track: Controls the total scroll length */
+        .it-sep-track {
+            position: relative;
+            height: 400vh; /* 100vh per section */
+            background: var(--it-sep-bg);
+        }
+
+        /* 2. Sticky Container: Pins the component */
+        .it-sep-sticky {
+            position: sticky;
+            top: 0;
+            height: 100vh;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            overflow: hidden;
+        }
+
+        .it-sep-header {
+            text-align: center;
+            margin-bottom: 50px;
+            z-index: 10;
+        }
+
+        .it-sep-title {
+            font-size: 42px;
+            font-weight: 600;
+            letter-spacing: -0.03em;
+            margin: 0;
+            color: var(--it-sep-text);
+        }
+
+        /* 3. The Central Layout */
+        .it-sep-grid {
+            position: relative;
+            display: grid;
+            grid-template-columns: 1fr 2px 1fr;
+            gap: 60px;
+            width: 100%;
+            max-width: 1200px;
+            height: 400px;
+            align-items: center;
+        }
+
+        /* Center Progress Line */
+        .it-sep-line-container {
+            height: 100%;
+            background: var(--it-sep-line);
+            position: relative;
+        }
+
+        .it-sep-line-fill {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            background: var(--it-sep-accent);
+            height: 0%;
+            transition: height 0.1s ease-out;
+        }
+
+        /* 4. Content Slots (Image side and Text side) */
+        .it-sep-slot {
+            position: relative;
+            height: 100%;
+            width: 100%;
+            overflow: hidden; /* This creates the "box" mask */
+            border-radius: 20px;
+        }
+
+        .it-sep-text-slot {
+            overflow: hidden;
+            border-radius: 0;
+            display: flex;
+            align-items: center;
+        }
+
+        /* The Individual Layers */
+        .it-sep-layer {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            opacity: 0;
+            pointer-events: none;
+            transition: transform 0.6s cubic-bezier(0.16, 1, 0.3, 1), opacity 0.4s ease;
+        }
+
+        /* Active State */
+        .it-sep-layer.active {
+            opacity: 1;
+            transform: translateY(0);
+            pointer-events: auto;
+        }
+
+        /* Image Logic: Slides DOWN into view */
+        .it-sep-img-layer {
+            transform: translateY(-100%);
+        }
+
+        /* Text Logic: Slides UP into view */
+        .it-sep-text-layer {
+            transform: translateY(100%);
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+        }
+
+        .it-sep-img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            border-radius: 20px;
+        }
+
+        .it-sep-h3 { font-size: 32px; font-weight: 600; margin: 0 0 15px 0; color: var(--it-sep-text); letter-spacing: -0.02em;}
+        .it-sep-p { font-size: 18px; color: var(--it-sep-sub); line-height: 1.2; margin: 0; font-weight: 200; opacity: 1;}
+
+        .it-sep-footer {
+            margin-top: 60px;
+        }
+
+        .it-sep-btn {
+            background: #0B1221;
+            color: white;
+            padding: 12px 30px;
+            border-radius: 50px;
+            font-weight: 600;
+            font-size: 17px;
+            border: none;
+            cursor: pointer;
+            font-family: 'Inter', sans-serif;
+        }
+
+        @media (max-width: 900px) {
+            .it-sep-grid { grid-template-columns: 1fr; height: auto; padding: 20px; }
+            .it-sep-line-container { display: none; }
+            .it-sep-slot { height: 300px; margin-bottom: 20px; }
+            .it-sep-layer { position: relative; opacity: 1; transform: none; margin-bottom: 40px; }
+            .it-sep-track { height: auto; }
+            .it-sep-sticky { position: relative; height: auto; }
+        }
+    </style>
+</head>
+<body>
+
+<div class="it-sep-track" id="itTrack">
+    <div class="it-sep-sticky">
+        
+        <div class="it-sep-header">
+            <h2 class="it-sep-title">See why 4,000+ merchants trust us</h2>
+        </div>
+
+        <div class="it-sep-grid">
+            <div class="it-sep-slot">
+                <div class="it-sep-layer it-sep-img-layer active" data-index="0">
+                    <img src="https://images.unsplash.com/photo-1550751827-4bd374c3f58b?auto=format&fit=crop&q=80&w=800" class="it-sep-img" alt="Tech 1">
+                </div>
+                <div class="it-sep-layer it-sep-img-layer" data-index="1">
+                    <img src="https://images.unsplash.com/photo-1451187580459-43490279c0fa?auto=format&fit=crop&q=80&w=800" class="it-sep-img" alt="Tech 2">
+                </div>
+                <div class="it-sep-layer it-sep-img-layer" data-index="2">
+                    <img src="https://images.unsplash.com/photo-1518770660439-4636190af475?auto=format&fit=crop&q=80&w=800" class="it-sep-img" alt="Tech 3">
+                </div>
+                <div class="it-sep-layer it-sep-img-layer" data-index="3">
+                    <img src="https://images.unsplash.com/photo-1563986768609-322da13575f3?auto=format&fit=crop&q=80&w=800" class="it-sep-img" alt="Tech 4">
+                </div>
+            </div>
+
+            <div class="it-sep-line-container">
+                <div class="it-sep-line-fill" id="itLine"></div>
+            </div>
+
+            <div class="it-sep-slot it-sep-text-slot">
+                <div class="it-sep-layer it-sep-text-layer active" data-index="0">
+                    <h3 class="it-sep-h3">Advanced Data Security</h3>
+                    <p class="it-sep-p">Protect your infrastructure with hardware-level encryption and real-time threat monitoring.</p>
+                </div>
+                <div class="it-sep-layer it-sep-text-layer" data-index="1">
+                    <h3 class="it-sep-h3">Cloud Infrastructure</h3>
+                    <p class="it-sep-p">Scalable cloud solutions that grow with your business, ensuring 99.9% uptime across all regions.</p>
+                </div>
+                <div class="it-sep-layer it-sep-text-layer" data-index="2">
+                    <h3 class="it-sep-h3">AI Performance</h3>
+                    <p class="it-sep-p">Harness the power of neural networks to automate complex workflows and data analysis.</p>
+                </div>
+                <div class="it-sep-layer it-sep-text-layer" data-index="3">
+                    <h3 class="it-sep-h3">Smart Interfaces</h3>
+                    <p class="it-sep-p">Intuitive dashboards designed for deep technical oversight without the clutter.</p>
+                </div>
+            </div>
+        </div>
+
+        <div class="it-sep-footer">
+            <button class="it-sep-btn">Start Accepting Crypto</button>
+        </div>
+
+    </div>
+</div>
+
+<script>
+(function() {
+    const track = document.getElementById('itTrack');
+    const line = document.getElementById('itLine');
+    const imgLayers = document.querySelectorAll('.it-sep-img-layer');
+    const textLayers = document.querySelectorAll('.it-sep-text-layer');
+    const totalItems = 4;
+
+    function updateScroll() {
+        if (!track || window.innerWidth <= 900) return;
+
+        const rect = track.getBoundingClientRect();
+        const viewHeight = window.innerHeight;
+        
+        // Total scrollable distance
+        const totalDist = rect.height - viewHeight;
+        // Current progress (0 to 1)
+        let progress = -rect.top / totalDist;
+        progress = Math.max(0, Math.min(1, progress));
+
+        // Update Line
+        line.style.height = `${progress * 100}%`;
+
+        // Determine current active index based on scroll progress
+        // Dividing into 4 zones
+        const activeIndex = Math.min(Math.floor(progress * totalItems), totalItems - 1);
+
+        // Update Layers
+        imgLayers.forEach((layer, idx) => {
+            if (idx === activeIndex) {
+                layer.classList.add('active');
+                layer.style.transform = 'translateY(0)';
+            } else if (idx < activeIndex) {
+                // Already scrolled past: push it DOWN out of the box
+                layer.classList.remove('active');
+                layer.style.transform = 'translateY(100%)';
+            } else {
+                // Not reached yet: keep it UP above the box
+                layer.classList.remove('active');
+                layer.style.transform = 'translateY(-100%)';
+            }
+        });
+
+        textLayers.forEach((layer, idx) => {
+            if (idx === activeIndex) {
+                layer.classList.add('active');
+                layer.style.transform = 'translateY(0)';
+            } else if (idx < activeIndex) {
+                // Already scrolled past: push it UP out of the box
+                layer.classList.remove('active');
+                layer.style.transform = 'translateY(-100%)';
+            } else {
+                // Not reached yet: keep it DOWN below the box
+                layer.classList.remove('active');
+                layer.style.transform = 'translateY(100%)';
+            }
+        });
+    }
+
+    window.addEventListener('scroll', updateScroll, { passive: true });
+    window.addEventListener('resize', updateScroll);
+    updateScroll();
+})();
+</script>
+
+</body>
+</html>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700&display=swap" rel="stylesheet">
+
+<style>
+  /* Unique class prefix to avoid conflicts: tech-dupe- */
+  .tech-dupe-container {
+    position: relative;
+    width: 100%;
+    height: 800px; /* Adjust height as needed */
+    background: linear-gradient(180deg, #000428 0%, #004e92 100%);
+    overflow: hidden;
+    font-family: 'Inter', sans-serif;
+    color: #ffffff;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    text-align: center;
+  }
+
+  .tech-dupe-content {
+    max-width: 800px;
+    z-index: 1;
+  }
+
+  .tech-dupe-title {
+    font-size: 64px;
+    font-weight: 600;
+    line-height: 1.1;
+    margin-bottom: 16px;
+    letter-spacing: -0.02em;
+  }
+
+  .tech-dupe-subtitle {
+    font-size: 20px;
+    font-weight: 600;
+    color: #838eb1;
+    margin-bottom: 32px;
+  }
+
+  .tech-dupe-button {
+    background-color: #1e90ff;
+    color: #ffffff;
+    border: none;
+    border-radius: 24px;
+    padding: 12px 24px;
+    font-size: 17px;
+    font-weight: 600;
+    cursor: pointer;
+    transition: background-color 0.3s ease;
+  }
+
+  .tech-dupe-button:hover {
+    background-color: #007bff;
+  }
+
+  .tech-dupe-person {
+    position: absolute;
+    bottom: 0;
+    right: 0;
+    height: 80%;
+    object-fit: contain;
+    opacity: 0.9; /* Slight opacity to blend with background */
+  }
+</style>
+
+<div class="tech-dupe-container">
+  <div class="tech-dupe-content">
+    <h1 class="tech-dupe-title">Unlock the<br>Power of Technology<br>on your Platform</h1>
+    <p class="tech-dupe-subtitle">Take your business into the future of engagement as our partner</p>
+    <button class="tech-dupe-button">Become A Partner →</button>
+  </div>
+</div>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Tech Features Component</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+    <style>
+        .techfeat-wrapper-x9z {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        .techfeat-wrapper-x9z *,
+        .techfeat-wrapper-x9z *::before,
+        .techfeat-wrapper-x9z *::after {
+            box-sizing: inherit;
+        }
+
+        .techfeat-section-x9z {
+            background: linear-gradient(180deg, #1a1f35 0%, #0f1419 100%);
+            padding: 80px 40px 100px;
+            font-family: 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif;
+        }
+
+        .techfeat-header-x9z {
+            max-width: 1200px;
+            margin: 0 auto 30px;
+        }
+
+        .techfeat-title-x9z {
+            color: #ffffff;
+            font-size: 45px;
+            font-weight: 500;
+            line-height: 1.2;
+            margin: 0 0 24px 0;
+            letter-spacing: -0.02em;
+        }
+
+        .techfeat-subtitle-x9z {
+            color: #9ea6bc;
+            font-size: 19px;
+            font-weight: 600;
+            line-height: 1;
+            margin: 0;
+            max-width: 900px;
+        }
+
+        .techfeat-grid-x9z {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 30px;
+            max-width: 1200px;
+            margin: 0 auto;
+        }
+
+        .techfeat-card-x9z {
+            background: rgba(30, 37, 54, 0.5);
+            border-radius: 16px;
+            padding: 0;
+            overflow: hidden;
+            transition: transform 0.3s ease, background 0.3s ease;
+           
+        }
+
+        .techfeat-icon-container-x9z {
+            width: 100%;
+            height: 320px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            background: transparent;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .techfeat-icon-x9z {
+            width: 280px;
+            height: 280px;
+            object-fit: contain;
+            filter: drop-shadow(0 10px 30px rgba(0, 0, 0, 0.5));
+        }
+
+        .techfeat-content-x9z {
+            padding: 30px;
+        }
+
+        .techfeat-card-title-x9z {
+            color: #ffffff;
+            font-size: 20px;
+            font-weight: 550;
+            letter-spacing: -0.02em;
+            margin: 0 0 12px 0;
+        }
+
+        .techfeat-card-description-x9z {
+            color: #8b92a7;
+            font-size: 18px;
+            font-weight: 600;
+            margin: 0 0 18px 0;
+            letter-spacing: -0.02em;
+        }
+
+        .techfeat-button-x9z {
+            background: #174879c0;
+            color: #9dd2fa;
+            border: none;
+            border-radius: 8px;
+            padding: 14px 24px;
+            font-size: 16px;
+            font-weight: 600;
+            font-family: 'Inter', sans-serif;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            display: inline-block;
+            text-decoration: none;
+        }
+
+        .techfeat-button-x9z:hover {
+            background: #2563a8;
+            color: #7cc5ff;
+            transform: translateY(-1px);
+        }
+
+        @media (max-width: 1200px) {
+            .techfeat-grid-x9z {
+                grid-template-columns: repeat(2, 1fr);
+            }
+        }
+
+        @media (max-width: 768px) {
+            .techfeat-section-x9z {
+                padding: 60px 24px 80px;
+            }
+
+            .techfeat-title-x9z {
+                font-size: 36px;
+                margin-bottom: 20px;
+            }
+
+            .techfeat-subtitle-x9z {
+                font-size: 18px;
+            }
+
+            .techfeat-grid-x9z {
+                grid-template-columns: 1fr;
+                gap: 24px;
+            }
+
+            .techfeat-icon-container-x9z {
+                height: 260px;
+            }
+
+            .techfeat-icon-x9z {
+                width: 220px;
+                height: 220px;
+            }
+
+            .techfeat-card-title-x9z {
+                font-size: 24px;
+            }
+
+            .techfeat-card-description-x9z {
+                font-size: 16px;
+            }
+        }
+    </style>
+</head>
+<body class="techfeat-wrapper-x9z">
+    <section class="techfeat-section-x9z">
+        <div class="techfeat-header-x9z">
+            <h1 class="techfeat-title-x9z">Built for rapid deployment</h1>
+            <p class="techfeat-subtitle-x9z">
+                Achieve faster time-to-market with our proprietary technology,
+                protected by industry-leading security standards.
+            </p>
+        </div>
+
+        <div class="techfeat-grid-x9z">
+            <!-- Security Card -->
+            <div class="techfeat-card-x9z">
+                <div class="techfeat-icon-container-x9z">
+                    <img src="your-security-icon.png" alt="Security" class="techfeat-icon-x9z">
+                </div>
+                <div class="techfeat-content-x9z">
+                    <h2 class="techfeat-card-title-x9z">Security</h2>
+                    <p class="techfeat-card-description-x9z">
+                        Leading the industry in licenses and certifications
+                    </p>
+                    <button class="techfeat-button-x9z">See our security features</button>
+                </div>
+            </div>
+
+            <!-- Components Card -->
+            <div class="techfeat-card-x9z">
+                <div class="techfeat-icon-container-x9z">
+                    <img src="your-components-icon.png" alt="Components" class="techfeat-icon-x9z">
+                </div>
+                <div class="techfeat-content-x9z">
+                    <h2 class="techfeat-card-title-x9z">Components</h2>
+                    <p class="techfeat-card-description-x9z">
+                        Embeddable components for any enterprise application
+                    </p>
+                    <button class="techfeat-button-x9z">Build your component now</button>
+                </div>
+            </div>
+
+            <!-- API Card -->
+            <div class="techfeat-card-x9z">
+                <div class="techfeat-icon-container-x9z">
+                    <img src="your-api-icon.png" alt="API" class="techfeat-icon-x9z">
+                </div>
+                <div class="techfeat-content-x9z">
+                    <h2 class="techfeat-card-title-x9z">API</h2>
+                    <p class="techfeat-card-description-x9z">
+                        Embed turn-key integration modules directly into your platform
+                    </p>
+                    <button class="techfeat-button-x9z">Connect now</button>
+                </div>
+            </div>
+        </div>
+    </section>
+</body>
+</html>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Video Hero Section</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+    <style>
+        .videohero-wrapper-k7p {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        .videohero-wrapper-k7p *,
+        .videohero-wrapper-k7p *::before,
+        .videohero-wrapper-k7p *::after {
+            box-sizing: inherit;
+        }
+
+        .videohero-section-k7p {
+            position: relative;
+            width: 100%;
+            height: 100vh;
+            min-height: 600px;
+            overflow: hidden;
+            display: flex;
+            align-items: flex-end;
+            justify-content: center;
+            padding-bottom: 80px;
+        }
+
+        .videohero-video-k7p {
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            min-width: 100%;
+            min-height: 100%;
+            width: auto;
+            height: auto;
+            transform: translate(-50%, -50%);
+            z-index: 1;
+            object-fit: cover;
+        }
+
+        .videohero-overlay-k7p {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: rgba(0, 0, 0, 0.4);
+            z-index: 2;
+        }
+
+        .videohero-content-k7p {
+            position: relative;
+            z-index: 3;
+            text-align: center;
+            align-items: center;
+            justify-content: center;
+        }
+
+        .videohero-button-k7p {
+            background: #0577da;
+            color: #ffffff;
+            border: none;
+            border-radius: 60px;
+            padding: 10px 30px;
+            font-size: 18px;
+            font-weight: 600;
+            font-family: 'Inter', sans-serif;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            vertical-align: middle;
+        }
+
+        .videohero-content-k7p a {
+            border-bottom: none;
+            text-decoration: none;
+            color: #fff;
+        }
+
+        .videohero-button-k7p:active {
+            transform: translateY(0);
+        }
+
+        @media (max-width: 768px) {
+            .videohero-section-k7p {
+                padding-bottom: 60px;
+                min-height: 500px;
+            }
+
+            .videohero-button-k7p {
+                padding: 10px 30px;
+                font-size: 18px;
+            }
+        }
+    </style>
+</head>
+<body class="videohero-wrapper-k7p">
+    <section class="videohero-section-k7p">
+        <!-- Video Background -->
+        <video class="videohero-video-k7p" autoplay muted loop playsinline>
+            <source src="https://www.pexels.com/download/video/4208325/" type="video/mp4">
+            <source src="your-video.webm" type="video/webm">
+            Your browser does not support the video tag.
+        </video>
+
+        <!-- Dark Overlay -->
+        <div class="videohero-overlay-k7p"></div>
+
+        <!-- Button Content -->
+        <div class="videohero-content-k7p">
+            <button class="videohero-button-k7p"><a href="#">Get Started Now
+            <svg style="vertical-align: middle; align-items: center;" xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24"><path fill="#ffffff" d="M4.5 11h11.586l-4.5-4.5L13 5.086L19.914 12L13 18.914L11.586 17.5l4.5-4.5H4.5v-2Z"/></svg>
+            </a></button>
+        </div>
+    </section>
+</body>
+</html>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Alternating Grid Section</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+    <style>
+        .altgrid-wrapper-m3r {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        .altgrid-wrapper-m3r *,
+        .altgrid-wrapper-m3r *::before,
+        .altgrid-wrapper-m3r *::after {
+            box-sizing: inherit;
+        }
+
+        .altgrid-section-m3r {
+            background: #ffffff;
+            padding: 0;
+            font-family: 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif;
+        }
+
+        .altgrid-row-m3r {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            min-height: 600px;
+            align-items: center;
+        }
+
+        .altgrid-image-container-m3r {
+            width: 100%;
+            height: 100%;
+            min-height: 600px;
+            overflow: hidden;
+            position: relative;
+        }
+
+        .altgrid-image-m3r {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            display: block;
+        }
+
+        .altgrid-content-m3r {
+            padding: 80px 100px;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+        }
+
+        .altgrid-heading-m3r {
+            color: #1a1f35;
+            font-size: 48px;
+            font-weight: 600;
+            line-height: 1;
+            margin: 0 0 24px 0;
+            letter-spacing: -0.04em;
+        }
+
+        .altgrid-description-m3r {
+            color: #4a5568;
+            font-size: 18px;
+            font-weight: 400;
+            line-height: 1.7;
+            margin: 0;
+        }
+
+        /* Alternating pattern - image on right */
+        .altgrid-row-reverse-m3r {
+            direction: rtl;
+        }
+
+        .altgrid-row-reverse-m3r .altgrid-content-m3r {
+            direction: ltr;
+        }
+
+        /* Even rows with different background */
+        .altgrid-row-m3r:nth-child(even) {
+            background: #f7fafc;
+        }
+
+        @media (max-width: 968px) {
+            .altgrid-row-m3r,
+            .altgrid-row-reverse-m3r {
+                grid-template-columns: 1fr;
+                direction: ltr;
+            }
+
+            .altgrid-image-container-m3r {
+                min-height: 400px;
+            }
+
+            .altgrid-content-m3r {
+                padding: 60px 40px;
+            }
+
+            .altgrid-heading-m3r {
+                font-size: 36px;
+            }
+
+            .altgrid-description-m3r {
+                font-size: 16px;
+            }
+        }
+
+        @media (max-width: 640px) {
+            .altgrid-image-container-m3r {
+                min-height: 300px;
+            }
+
+            .altgrid-content-m3r {
+                padding: 40px 24px;
+            }
+
+            .altgrid-heading-m3r {
+                font-size: 28px;
+                margin-bottom: 16px;
+            }
+        }
+    </style>
+</head>
+<body class="altgrid-wrapper-m3r">
+    <section class="altgrid-section-m3r">
+        
+        <!-- Row 1: Image Left, Content Right -->
+        <div class="altgrid-row-m3r">
+            <div class="altgrid-image-container-m3r">
+                <img src="https://images.unsplash.com/photo-1451187580459-43490279c0fa?w=1200&h=800&fit=crop" 
+                     alt="Technology" 
+                     class="altgrid-image-m3r">
+            </div>
+            <div class="altgrid-content-m3r">
+                <h2 class="altgrid-heading-m3r">Cloud Infrastructure Solutions</h2>
+                <p class="altgrid-description-m3r">
+                    Transform your business with scalable cloud infrastructure that grows with your needs. Our enterprise-grade solutions provide the reliability and performance you demand, with 99.99% uptime and global reach across multiple regions.
+                </p>
+            </div>
+        </div>
+
+        <!-- Row 2: Content Left, Image Right -->
+        <div class="altgrid-row-m3r altgrid-row-reverse-m3r">
+            <div class="altgrid-image-container-m3r">
+                <img src="https://images.unsplash.com/photo-1558494949-ef010cbdcc31?w=1200&h=800&fit=crop" 
+                     alt="Security" 
+                     class="altgrid-image-m3r">
+            </div>
+            <div class="altgrid-content-m3r">
+                <h2 class="altgrid-heading-m3r">Advanced Security Protocols</h2>
+                <p class="altgrid-description-m3r">
+                    Protect your data with military-grade encryption and multi-layered security architecture. Our comprehensive security framework includes real-time threat detection, automated response systems, and continuous monitoring to keep your assets safe.
+                </p>
+            </div>
+        </div>
+
+        <!-- Row 3: Image Left, Content Right -->
+        <div class="altgrid-row-m3r">
+            <div class="altgrid-image-container-m3r">
+                <img src="https://images.unsplash.com/photo-1504384308090-c894fdcc538d?w=1200&h=800&fit=crop" 
+                     alt="Analytics" 
+                     class="altgrid-image-m3r">
+            </div>
+            <div class="altgrid-content-m3r">
+                <h2 class="altgrid-heading-m3r">Data Analytics & Insights</h2>
+                <p class="altgrid-description-m3r">
+                    Unlock the power of your data with advanced analytics and machine learning capabilities. Gain actionable insights in real-time, visualize complex data patterns, and make informed decisions that drive your business forward.
+                </p>
+            </div>
+        </div>
+
+        <!-- Row 4: Content Left, Image Right -->
+        <div class="altgrid-row-m3r altgrid-row-reverse-m3r">
+            <div class="altgrid-image-container-m3r">
+                <img src="https://images.unsplash.com/photo-1552664730-d307ca884978?w=1200&h=800&fit=crop" 
+                     alt="Collaboration" 
+                     class="altgrid-image-m3r">
+            </div>
+            <div class="altgrid-content-m3r">
+                <h2 class="altgrid-heading-m3r">Seamless Team Collaboration</h2>
+                <p class="altgrid-description-m3r">
+                    Enable your teams to work together effortlessly from anywhere in the world. Our collaboration platform integrates communication, project management, and file sharing in one unified workspace designed for modern teams.
+                </p>
+            </div>
+        </div>
+
+    </section>
+</body>
+</html>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700;800&display=swap" rel="stylesheet">
+
+<style>
+    /* Scoped Container to prevent global style leakage */
+    .it-hero-wrapper {
+        margin: 0;
+        padding: 0;
+        box-sizing: border-box;
+        font-family: 'Inter', sans-serif;
+        display: flex;
+        align-items: center;
+        justify-content: flex-start;
+        min-height: 800px;
+        width: 100%;
+        background: linear-gradient(to right, rgba(0,0,0,0.8) 20%, rgba(0,0,0,0.1) 100%), 
+                    url('https://images.unsplash.com/photo-1678203699291-253ab7a4d6d2?q=80&w=1332&auto=format&fit=crop&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D');
+        background-size: cover;
+        background-position: center;
+        color: #ffffff;
+        padding-left: 10%;
+        position: relative;
+        overflow: hidden;
+    }
+
+    .it-hero-content {
+        max-width: 700px;
+        z-index: 2;
+    }
+
+    .it-hero-category {
+        font-size: 2.2rem;
+        font-weight: 700;
+        letter-spacing: -0.02em;
+        margin-bottom: 1.5rem;
+        text-transform: uppercase;
+        opacity: 0.95;
+    }
+
+    .it-hero-headline {
+        font-size: 3.5rem;
+        line-height: 1.1;
+        font-weight: 600;
+        margin-bottom: 1rem;
+        letter-spacing: -0.03em;
+    }
+
+    .it-hero-sub-headline {
+        font-size: 1.25rem;
+        font-weight: 600;
+        margin-bottom: 0.5rem;
+        color: #f1f1f1;
+    }
+
+    .it-hero-footer-note {
+        font-size: 0.9rem;
+        font-weight: 600;
+        color: #b0b8d1;
+        margin-top: 1rem;
+    }
+
+    /* Responsive Adjustments */
+    @media (max-width: 768px) {
+        .it-hero-headline { font-size: 2.5rem; }
+        .it-hero-category { font-size: 1.5rem; }
+        .it-hero-wrapper { padding-left: 5%; }
+    }
+</style>
+
+<section class="it-hero-wrapper">
+    <div class="it-hero-content">
+        <div class="it-hero-category">INFRASTRUCTURE</div>
+        
+        <h1 class="it-hero-headline">
+            Innovate your future.<br>
+            Build it when you're right.
+        </h1>
+
+        <p class="it-hero-sub-headline">Available throughout the US.</p>
+        
+        <p class="it-hero-footer-note">
+            Currently only available in the United States.
+        </p>
+    </div>
+</section>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700;800&display=swap" rel="stylesheet">
+
+<style>
+    :root {
+        --it-tech-bg: #030308;
+        --it-tech-text-white: #f7F9FA;
+        --it-tech-text-dim: #A0A9BE;
+        --it-tech-radius: 8px;
+    }
+
+    .it-tech-container {
+        background-color: var(--it-tech-bg);
+        color: var(--it-tech-text-white);
+        font-family: 'Inter', sans-serif;
+        padding: 60px 5%;
+    }
+
+    .it-tech-row {
+        display: flex;
+        align-items: center;
+        justify-content: space-between;
+        max-width: 1100px;
+        margin: 0 auto 100px auto;
+        gap: 8%;
+    }
+
+    /* Alternating logic */
+    .it-tech-row:nth-child(even) {
+        flex-direction: row-reverse;
+    }
+
+    /* Reduced Image Size (40% width instead of 50/50 split) */
+    .it-tech-image-box {
+        flex: 0 0 40%;
+    }
+
+    .it-tech-image-box img {
+        width: 100%;
+        height: 320px; /* Controlled height for consistency */
+        border-radius: var(--it-tech-radius);
+        object-fit: cover;
+        display: block;
+    }
+
+    .it-tech-text-box {
+        flex: 0 0 52%;
+    }
+
+    .it-tech-title {
+        font-size: 2.5rem;
+        font-weight: 600;
+        line-height: 1.1;
+        margin-bottom: 20px;
+        letter-spacing: -0.02em;
+    }
+
+    .it-tech-desc {
+        font-size: 1.1rem;
+        line-height: 1.6;
+        color: var(--it-tech-text-dim);
+        font-weight: 400;
+    }
+
+    @media (max-width: 768px) {
+        .it-tech-row, .it-tech-row:nth-child(even) {
+            flex-direction: column;
+            text-align: center;
+            margin-bottom: 60px;
+        }
+        .it-tech-image-box, .it-tech-text-box {
+            flex: 0 0 100%;
+        }
+        .it-tech-image-box img { height: 250px; }
+    }
+</style>
+
+<div class="it-tech-container">
+    <div class="it-tech-row">
+        <div class="it-tech-text-box">
+            <h2 class="it-tech-title">Cloud Native Infrastructure</h2>
+            <p class="it-tech-desc">Scale your applications with microservices architecture designed for maximum uptime and resilience.</p>
+        </div>
+        <div class="it-tech-image-box">
+            <img src="https://images.unsplash.com/photo-1733534843143-a4df42fe8bfe?q=80&w=1170&auto=format&fit=crop&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D" alt="Cloud tech">
+        </div>
+    </div>
+
+    <div class="it-tech-row">
+        <div class="it-tech-text-box">
+            <h2 class="it-tech-title">Cyber Security First</h2>
+            <p class="it-tech-desc">End-to-end encryption and real-time threat detection to protect your most sensitive data assets.</p>
+        </div>
+        <div class="it-tech-image-box">
+            <img src="https://images.unsplash.com/photo-1692825122355-bf1daadefb76?q=80&w=1932&auto=format&fit=crop&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D" alt="Security">
+        </div>
+    </div>
+
+    <div class="it-tech-row">
+        <div class="it-tech-text-box">
+            <h2 class="it-tech-title">AI Driven Analytics</h2>
+            <p class="it-tech-desc">Transform raw data into actionable insights using our proprietary machine learning models.</p>
+        </div>
+        <div class="it-tech-image-box">
+            <img src="https://images.unsplash.com/photo-1702409096882-5508585181fb?q=80&w=1932&auto=format&fit=crop&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D" alt="AI Analytics">
+        </div>
+    </div>
+
+    <div class="it-tech-row">
+        <div class="it-tech-text-box">
+            <h2 class="it-tech-title">Edge Computing</h2>
+            <p class="it-tech-desc">Reduce latency by processing data closer to the source with our distributed edge network.</p>
+        </div>
+        <div class="it-tech-image-box">
+            <img src="https://images.unsplash.com/photo-1714548835781-f910461db159?q=80&w=1332&auto=format&fit=crop&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D" alt="Edge Computing">
+        </div>
+    </div>
+
+    <div class="it-tech-row">
+        <div class="it-tech-text-box">
+            <h2 class="it-tech-title">DevOps Automation</h2>
+            <p class="it-tech-desc">Streamline your CI/CD pipelines and eliminate manual bottlenecks in your release cycle.</p>
+        </div>
+        <div class="it-tech-image-box">
+            <img src="https://images.unsplash.com/photo-1704748430013-41227f6abf2f?q=80&w=1332&auto=format&fit=crop&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D" alt="Automation">
+        </div>
+    </div>
+</div>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700;800&display=swap" rel="stylesheet">
+
+<style>
+    :root {
+        --it-bg: #040608;
+        --it-text-main: #ffffff;
+        --it-text-muted: #999999;
+        --it-radius: 8px;
+        --it-accent: #007AFF;
+    }
+
+    .it-scroll-wrapper {
+        background-color: var(--it-bg);
+        color: var(--it-text-main);
+        font-family: 'Inter', sans-serif;
+        margin: 0;
+        padding: 0;
+        box-sizing: border-box;
+    }
+
+    /* Main Container */
+    .it-scroll-container {
+        display: flex;
+        max-width: 1200px;
+        margin: 0 auto;
+        position: relative;
+    }
+
+    /* --- DESKTOP: LEFT STICKY PANEL --- */
+    .it-sticky-visual {
+        flex: 0 0 50%; /* Half width */
+        height: 100vh;
+        position: sticky;
+        top: 0;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        padding: 40px;
+        /* Hidden on mobile by default via media query below */
+    }
+
+    .it-image-stack {
+        width: 100%;
+        height: 400px; /* Fixed height for consistency */
+        position: relative;
+        border-radius: var(--it-radius);
+        overflow: hidden;
+        box-shadow: 0 20px 40px rgba(0,0,0,0.5);
+    }
+
+    .it-image-stack img {
+        position: absolute;
+        top: 0;
+        left: 0;
+        width: 100%;
+        height: 100%;
+        object-fit: cover;
+        opacity: 0;
+        transition: opacity 0.6s ease;
+    }
+
+    .it-image-stack img.active {
+        opacity: 1;
+    }
+
+    /* --- RIGHT CONTENT PANEL --- */
+    .it-scroll-content {
+        flex: 0 0 50%;
+        padding: 40px;
+    }
+
+    .it-text-step {
+        min-height: 100vh; /* Ensures enough scroll space on desktop */
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+        padding: 40px 0;
+    }
+
+    .it-step-title {
+        font-size: 3rem;
+        font-weight: 600;
+        line-height: 1.1;
+        margin-bottom: 1.5rem;
+        letter-spacing: -0.03em;
+    }
+
+    .it-step-desc {
+        font-size: 1.2rem;
+        line-height: 1.6;
+        color: var(--it-text-muted);
+        max-width: 450px;
+        font-weight: 600;
+    }
+
+    /* --- MOBILE IMAGE (Hidden on Desktop) --- */
+    .it-mobile-image {
+        display: none; /* Hidden by default */
+        width: 100%;
+        height: 300px;
+        object-fit: cover;
+        border-radius: var(--it-radius);
+        margin-top: 30px;
+        margin-bottom: 30px;
+    }
+
+    /* --- RESPONSIVE LOGIC --- */
+    @media (max-width: 900px) {
+        .it-scroll-container {
+            flex-direction: column;
+        }
+
+        /* Hide the sticky desktop panel */
+        .it-sticky-visual {
+            display: none;
+        }
+
+        /* Reset right panel width */
+        .it-scroll-content {
+            flex: 0 0 100%;
+            padding: 20px 20px 60px 20px;
+        }
+
+        /* Reset step height so they stack naturally */
+        .it-text-step {
+            min-height: auto;
+            margin-bottom: 80px;
+            display: block; /* Normal block flow */
+        }
+
+        /* Show the mobile image inside the text block */
+        .it-mobile-image {
+            display: block;
+        }
+
+        .it-step-title {
+            font-size: 2.2rem;
+        }
+    }
+</style>
+
+<div class="it-scroll-wrapper">
+    <div class="it-scroll-container">
+        
+        <div class="it-sticky-visual">
+            <div class="it-image-stack">
+                <img src="https://images.unsplash.com/photo-1639322537228-f710d846310a?auto=format&fit=crop&q=80&w=1000" class="active" data-id="1">
+                <img src="https://images.unsplash.com/photo-1550751827-4bd374c3f58b?auto=format&fit=crop&q=80&w=1000" data-id="2">
+                <img src="https://images.unsplash.com/photo-1677442136019-21780ecad995?auto=format&fit=crop&q=80&w=1000" data-id="3">
+                <img src="https://images.unsplash.com/photo-1451187580459-43490279c0fa?auto=format&fit=crop&q=80&w=1000" data-id="4">
+                <img src="https://images.unsplash.com/photo-1518770660439-4636190af475?auto=format&fit=crop&q=80&w=1000" data-id="5">
+            </div>
+        </div>
+
+        <div class="it-scroll-content">
+            
+            <div class="it-text-step" data-target="1">
+                <h2 class="it-step-title">Decentralized Security</h2>
+                <p class="it-step-desc">
+                    The foundation of our stack is built on zero-trust architecture, ensuring your nodes are invisible to threats.
+                </p>
+                <img class="it-mobile-image" src="https://images.unsplash.com/photo-1639322537228-f710d846310a?auto=format&fit=crop&q=80&w=1000" alt="Security">
+            </div>
+
+            <div class="it-text-step" data-target="2">
+                <h2 class="it-step-title">Real-time Monitoring</h2>
+                <p class="it-step-desc">
+                    Watch your deployment scale in real-time with granular metrics at every layer of the infrastructure.
+                </p>
+                <img class="it-mobile-image" src="https://images.unsplash.com/photo-1550751827-4bd374c3f58b?auto=format&fit=crop&q=80&w=1000" alt="Monitoring">
+            </div>
+
+            <div class="it-text-step" data-target="3">
+                <h2 class="it-step-title">Neural Networks</h2>
+                <p class="it-step-desc">
+                    Our AI automatically optimizes traffic routing based on global latency patterns and user behavior.
+                </p>
+                <img class="it-mobile-image" src="https://images.unsplash.com/photo-1677442136019-21780ecad995?auto=format&fit=crop&q=80&w=1000" alt="AI">
+            </div>
+
+            <div class="it-text-step" data-target="4">
+                <h2 class="it-step-title">Global Connectivity</h2>
+                <p class="it-step-desc">
+                    Connect your team across 40+ countries with low-latency private tunneling and dedicated backbones.
+                </p>
+                <img class="it-mobile-image" src="https://images.unsplash.com/photo-1451187580459-43490279c0fa?auto=format&fit=crop&q=80&w=1000" alt="Connectivity">
+            </div>
+
+            <div class="it-text-step" data-target="5">
+                <h2 class="it-step-title">Edge Resilience</h2>
+                <p class="it-step-desc">
+                    Hardware-accelerated edge points ensure that even under heavy load, your users stay connected.
+                </p>
+                <img class="it-mobile-image" src="https://images.unsplash.com/photo-1518770660439-4636190af475?auto=format&fit=crop&q=80&w=1000" alt="Edge">
+            </div>
+
+        </div>
+    </div>
+</div>
+
+<script>
+    // Only run the observer logic if we are on desktop (width > 900px)
+    // However, keeping it active generally doesn't hurt mobile, but we can optimize.
+    
+    const stackImages = document.querySelectorAll('.it-image-stack img');
+    
+    const observer = new IntersectionObserver((entries) => {
+        entries.forEach(entry => {
+            if (entry.isIntersecting) {
+                // Get the ID of the text section currently in view
+                const targetId = entry.target.getAttribute('data-target');
+                
+                // Show the corresponding image in the sticky stack
+                stackImages.forEach(img => {
+                    if (img.getAttribute('data-id') === targetId) {
+                        img.classList.add('active');
+                    } else {
+                        img.classList.remove('active');
+                    }
+                });
+            }
+        });
+    }, {
+        root: null,
+        rootMargin: '-40% 0px -40% 0px', // Trigger when content is in the middle of the screen
+        threshold: 0
+    });
+
+    document.querySelectorAll('.it-text-step').forEach(step => {
+        observer.observe(step);
+    });
+</script>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700;800&display=swap" rel="stylesheet">
+
+<style>
+    /* Scoped container to ensure no style leakage */
+    .nexus-it-hero-wrapper {
+        margin: 0;
+        padding: 0;
+        box-sizing: border-box;
+        font-family: 'Inter', sans-serif;
+        display: flex;
+        align-items: center;
+        min-height: 600px;
+        width: 100%;
+        /* Dark technical background with gradient overlay for text readability */
+        background: linear-gradient(to right, rgba(0, 0, 0, 0.85) 30%, rgba(0, 0, 0, 0.2) 100%), 
+                    url('https://images.unsplash.com/photo-1558494949-ef010cbdcc51?auto=format&fit=crop&q=80&w=2000');
+        background-size: cover;
+        background-position: center;
+        color: #ffffff;
+        padding: 0 8%;
+        position: relative;
+        overflow: hidden;
+    }
+
+    .nexus-it-hero-content {
+        max-width: 700px;
+        z-index: 2;
+    }
+
+    /* Top Category Label */
+    .nexus-it-category-tag {
+        font-size: 1.8rem;
+        font-weight: 800;
+        letter-spacing: 0.05em;
+        margin-bottom: 1.2rem;
+        text-transform: uppercase;
+        display: flex;
+        align-items: center;
+        gap: 12px;
+    }
+
+    /* Icon mimicking the logo in the original */
+    .nexus-it-icon {
+        width: 32px;
+        height: 32px;
+        border: 2px solid #ffffff;
+        border-radius: 6px;
+        display: inline-block;
+        position: relative;
+    }
+    .nexus-it-icon::after {
+        content: '';
+        position: absolute;
+        top: 50%;
+        left: 50%;
+        transform: translate(-50%, -50%);
+        width: 12px;
+        height: 12px;
+        background: #ffffff;
+        border-radius: 2px;
+    }
+
+    /* Headline Styling */
+    .nexus-it-headline {
+        font-size: 3.8rem;
+        line-height: 1.05;
+        font-weight: 700;
+        margin-bottom: 1.5rem;
+        letter-spacing: -0.03em;
+    }
+
+    /* Sub-text and Disclaimer */
+    .nexus-it-sub-headline {
+        font-size: 1.2rem;
+        font-weight: 600;
+        margin-bottom: 0.5rem;
+        opacity: 0.95;
+    }
+
+    .nexus-it-footer-note {
+        font-size: 0.85rem;
+        font-weight: 400;
+        color: #aaaaaa;
+        margin-top: 0.8rem;
+    }
+
+    /* Floating Technical Element (The Golden Tech Sphere) */
+    .nexus-it-floating-element {
+        position: absolute;
+        right: 10%;
+        width: 400px;
+        height: 400px;
+        background: url('https://images.unsplash.com/photo-1550751827-4bd374c3f58b?auto=format&fit=crop&q=80&w=1000');
+        background-size: cover;
+        border-radius: 50%;
+        box-shadow: 0 0 50px rgba(0, 0, 0, 0.5), inset 0 0 40px rgba(255, 255, 255, 0.2);
+        border: 1px solid rgba(255, 255, 255, 0.1);
+        display: flex;
+        align-items: center;
+        justify-content: center;
+    }
+
+    /* Responsive Adjustments */
+    @media (max-width: 1024px) {
+        .nexus-it-floating-element { display: none; }
+        .nexus-it-headline { font-size: 3rem; }
+    }
+
+    @media (max-width: 768px) {
+        .nexus-it-hero-wrapper { padding: 0 5%; text-align: center; justify-content: center; }
+        .nexus-it-category-tag { justify-content: center; font-size: 1.4rem; }
+        .nexus-it-headline { font-size: 2.5rem; }
+    }
+</style>
+
+<section class="nexus-it-hero-wrapper">
+    <div class="nexus-it-hero-content">
+        <div class="nexus-it-category-tag">
+            <span class="nexus-it-icon"></span>
+            IT/TECHNOLOGY
+        </div>
+        
+        <h1 class="nexus-it-headline">
+            Innovate your future.<br>
+            Build it when you're right.
+        </h1>
+
+        <p class="nexus-it-sub-headline">Available throughout the US.</p>
+        
+        <p class="nexus-it-footer-note">
+            Currently only available in the United States.
+        </p>
+    </div>
+
+    <div class="nexus-it-floating-element"></div>
+</section>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700;800&display=swap" rel="stylesheet">
+
+<style>
+    :root {
+        --secure-bg: #030a17;
+        --secure-text: #ffffff;
+        --secure-muted: #8a94a6;
+        --secure-blue: #4ca2ff;
+        --secure-radius: 12px;
+    }
+
+    .secure-it-wrapper {
+        background-color: var(--secure-bg);
+        color: var(--secure-text);
+        font-family: 'Inter', sans-serif;
+        padding: 100px 5%;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        min-height: 80vh;
+        overflow: hidden;
+    }
+
+    .secure-it-container {
+        max-width: 1200px;
+        width: 100%;
+        display: flex;
+        align-items: center;
+        gap: 60px;
+    }
+
+    /* Left Side Content */
+    .secure-it-content {
+        flex: 1;
+        max-width: 500px;
+    }
+
+    .secure-it-label {
+        color: var(--secure-blue);
+        text-transform: uppercase;
+        font-weight: 600;
+        font-size: 1.1rem;
+        letter-spacing: -0.02em;
+        margin-bottom: 20px;
+        display: block;
+    }
+
+    .secure-it-title {
+        font-size: 3.5rem;
+        font-weight: 600;
+        line-height: 1.1;
+        margin-bottom: 24px;
+        letter-spacing: -0.02em;
+    }
+
+    .secure-it-desc {
+        color: var(--secure-muted);
+        font-size: 1.15rem;
+        line-height: 1.6;
+        margin-bottom: 40px;
+    }
+
+    .secure-it-btn {
+        display: inline-flex;
+        align-items: center;
+        padding: 12px 24px;
+        border: 1px solid #ffffff;
+        border-radius: 30px;
+        color: #ffffff;
+        text-decoration: none;
+        font-weight: 600;
+        transition: all 0.3s ease;
+    }
+
+    .secure-it-btn:hover {
+        background: #ffffff;
+        color: var(--secure-bg);
+    }
+
+    .secure-it-btn::after {
+        content: '→';
+        margin-left: 10px;
+    }
+
+    /* Right Side Visuals (Floating Cards) */
+    .secure-it-visual {
+        flex: 1;
+        position: relative;
+        height: 500px;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+    }
+
+    /* Main Phone Silhouette Shadow */
+    .secure-it-phone-shape {
+        width: 240px;
+        height: 490px;
+        background: linear-gradient(135deg, #0d1b31 0%, #050d1a 100%);
+        border-radius: 40px; 
+        box-shadow: 0 50px 100px rgba(0,0,0,0.5);
+        display: flex;
+        align-items: center;
+        justify-content: center;
+    }
+
+    /* Floating UI Elements */
+    .secure-it-card {
+        position: absolute;
+        background: #ffffff;
+        color: #000;
+        padding: 15px;
+        border-radius: var(--secure-radius);
+        box-shadow: 0 20px 40px rgba(0,0,0,0.3);
+        animation: float-it 6s ease-in-out infinite;
+    }
+
+    .secure-it-card.face-id {
+        top: 20%;
+        left: 0;
+        width: 140px;
+        text-align: center;
+        font-size: 0.7rem;
+        font-weight: 700;
+        animation-delay: 0s;
+    }
+
+    .secure-it-card.two-fa {
+        bottom: 15%;
+        right: 0;
+        width: 220px;
+        animation-delay: 1s;
+    }
+
+    .secure-it-code-tag {
+        position: absolute;
+        top: 40%;
+        right: -10%;
+        background: var(--secure-blue);
+        color: white;
+        padding: 8px 16px;
+        border-radius: 20px;
+        font-family: monospace;
+        font-weight: bold;
+        letter-spacing: 2px;
+        animation-delay: 2s;
+    }
+
+    @keyframes float-it {
+        0%, 100% { transform: translateY(0); }
+        50% { transform: translateY(-20px); }
+    }
+
+    /* Mobile Logic */
+    @media (max-width: 992px) {
+        .secure-it-container { flex-direction: column; text-align: center; }
+        .secure-it-content { max-width: 100%; order: 1; }
+        .secure-it-visual { order: 2; width: 100%; height: 400px; margin-top: 50px; }
+        .secure-it-title { font-size: 2.5rem; }
+        .secure-it-desc { max-width: 100%; }
+    }
+</style>
+
+<section class="secure-it-wrapper">
+    <div class="secure-it-container">
+        
+        <div class="secure-it-content">
+            <span class="secure-it-label">Security</span>
+            <h2 class="secure-it-title">Take your keys into your own hands</h2>
+            <p class="secure-it-desc">
+                Your private keys are encrypted locally on your device with Secure Enclave, 
+                protected by biometric and 2-Factor Authentication.
+            </p>
+            <a href="#" class="secure-it-btn">Learn More</a>
+        </div>
+
+        <div class="secure-it-visual">
+            <img src="https://images.unsplash.com/photo-1511707171634-5f897ff02aa9?auto=format&fit=crop&q=80&w=600" alt="Phone Silhouette" class="secure-it-phone-shape">
+        </div>
+
+    </div>
+</section>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700&display=swap" rel="stylesheet">
+
+<style>
+  /* Unique class prefix to avoid conflicts: tech-bold-launch- */
+  .tech-bold-launch-container {
+    position: relative;
+    width: 100%;
+    height: 100vh; /* Full viewport height for whole background effect */
+    background: url('https://images.pexels.com/photos/2091399/pexels-photo-2091399.jpeg') no-repeat center/cover; /* Replace with actual tech-themed image URL */
+    overflow: hidden;
+    font-family: 'Inter', sans-serif;
+    color: #ffffff;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    text-align: center;
+    padding: 20px;
+  }
+
+  /* Optional overlay for better text readability on background image */
+  .tech-bold-launch-container::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: rgba(0, 0, 0, 0.5); /* Semi-transparent dark overlay */
+    z-index: 0;
+  }
+
+  .tech-bold-launch-content {
+    position: relative;
+    z-index: 1;
+    max-width: 800px;
+  }
+
+  .tech-bold-launch-title {
+    font-size: 72px;
+    font-weight: 500;
+    line-height: 1;
+    letter-spacing: -0.04em;
+    margin-bottom: 52px;
+  }
+
+  .tech-bold-launch-buttons {
+    display: flex;
+    gap: 16px;
+    justify-content: center;
+  }
+
+  .tech-bold-launch-button {
+    background-color: #ffffff;
+    color: #000000;
+    border: none;
+    border-radius: 24px;
+    padding: 12px 24px;
+    font-size: 16px;
+    font-weight: 600;
+    cursor: pointer;
+  }
+
+  .tech-bold-launch-button:hover {
+    background-color: #f0f0f0;
+  }
+
+  .tech-bold-launch-button-ai {
+    background-color: #1e3a8a;
+    color: #ffffff;
+  }
+
+  .tech-bold-launch-button-ai:hover {
+    background-color: #152e6e;
+  }
+</style>
+
+<div class="tech-bold-launch-container">
+  <div class="tech-bold-launch-content">
+    <h1 class="tech-bold-launch-title">Innovate bold.<br>Launch fast.</h1>
+    <div class="tech-bold-launch-buttons">
+      <button class="tech-bold-launch-button">Start for Free</button>
+      <button class="tech-bold-launch-button tech-bold-launch-button-ai">Start with AI</button>
+    </div>
+  </div>
+</div>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>IT Team Component</title>
+<style>
+  /* Import Inter font from Google Fonts */
+  @import url('https://fonts.googleapis.com/css2?family=Inter:wght@400;600&display=swap');
+
+  /* * IT Tech Team Component Styles
+   * Uses a unique namespace 'it-tech-' to avoid conflicts.
+   */
+
+  .it-tech-team-section {
+    font-family: 'Inter', -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
+    padding: 60px 20px;
+    background-color: #ffffff;
+    color: #1a1a1a;
+    box-sizing: border-box;
+  }
+
+  /* Reset box-sizing for component elements */
+  .it-tech-team-section * {
+    box-sizing: border-box;
+  }
+
+  .it-tech-team-container {
+    max-width: 1200px;
+    margin: 0 auto;
+  }
+
+  /* Header Section: Title, Subtitle, and Logos */
+  .it-tech-team-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: flex-start;
+    margin-bottom: 50px;
+    flex-wrap: wrap;
+    gap: 20px;
+  }
+
+  .it-tech-team-title-group {
+    flex: 1;
+    min-width: 300px;
+    padding-right: 20px;
+  }
+
+  .it-tech-team-title {
+    font-size: 36px;
+    font-weight: 600;
+    margin: 0 0 5px 0;
+    line-height: 1.2;
+    letter-spacing: -0.02em;
+  }
+
+  .it-tech-team-subtitle {
+    font-size: 18px;
+    font-weight: 600;
+    color: #666666;
+    margin: 0;
+    line-height: 1.4;
+  }
+
+  .it-tech-team-logos {
+    display: flex;
+    align-items: center;
+    gap: 30px;
+    /* Pushing logos to the right to match the design */
+    margin-left: auto; 
+  }
+
+  /* Styling for the greyed-out logos */
+  .it-tech-team-logo {
+    height: auto;
+    max-height: 80px; /* Adjust based on actual logo aspect ratios */
+    width: auto;
+    /* Using filters to achieve the grey, muted look */
+    opacity: 0.5;
+    filter: grayscale(100%);
+  }
+
+  /* Profile Grid Section */
+  .it-tech-team-grid {
+    display: grid;
+    grid-template-columns: repeat(4, 1fr); /* 4 columns */
+    gap: 20px;
+  }
+
+  /* Individual Profile Card */
+  .it-tech-team-card {
+    display: flex;
+    flex-direction: column;
+    text-align: left;
+  }
+
+  .it-tech-team-photo {
+    width: 100%;
+    aspect-ratio: 1 / 1; /* Ensures the image is a perfect square */
+    object-fit: cover;
+    border-radius: 24px; /* Prominent rounded corners */
+    margin-bottom: 16px;
+    background-color: #e0e0e0; /* Placeholder background color */
+  }
+
+  .it-tech-team-name {
+    font-size: 20px;
+    font-weight: 600;
+    margin: 0 0 8px 0;
+    letter-spacing: -0.02em;
+    color: #1a1a1a;
+  }
+
+  .it-tech-team-role {
+    font-size: 16px;
+    font-weight: 600;
+    color: #666666;
+    margin: 0;
+    line-height: 1.1;
+  }
+
+  /* Responsive Breakpoints */
+
+  /* Tablet: 2 columns */
+  @media (max-width: 1024px) {
+    .it-tech-team-grid {
+      grid-template-columns: repeat(2, 1fr);
+    }
+  }
+
+  /* Mobile Landscape / Small Tablet: Stack header and logos */
+  @media (max-width: 768px) {
+    .it-tech-team-header {
+      flex-direction: column;
+    }
+    .it-tech-team-logos {
+      margin-left: 0;
+      margin-top: 20px;
+      justify-content: flex-start;
+    }
+    .it-tech-team-title-group {
+      padding-right: 0;
+    }
+    .it-tech-team-title {
+      font-size: 28px;
+    }
+  }
+
+  /* Mobile Portrait: 1 column grid */
+  @media (max-width: 480px) {
+    .it-tech-team-grid {
+      grid-template-columns: 1fr;
+      gap: 40px;
+    }
+    .it-tech-team-logos {
+        flex-wrap: wrap;
+        gap: 20px;
+    }
+  }
+</style>
+</head>
+<body>
+
+<section class="it-tech-team-section">
+  <div class="it-tech-team-container">
+    
+    <div class="it-tech-team-header">
+      <div class="it-tech-team-title-group">
+        <h2 class="it-tech-team-title">Architected by world-class IT experts</h2>
+        <p class="it-tech-team-subtitle">Supported by the world's top technology leaders and innovators.</p>
+      </div>
+      <div class="it-tech-team-logos">
+        <img src="images/coursera_.png" alt="TechGlobal Logo" class="it-tech-team-logo">
+        <img src="images/erlang_.png" alt="Innovate Systems Logo" class="it-tech-team-logo">
+        <img src="images/helm_.png" alt="FutureNet Logo" class="it-tech-team-logo">
+      </div>
+    </div>
+
+    <div class="it-tech-team-grid">
+      
+      <div class="it-tech-team-card">
+        <img src="https://images.pexels.com/photos/6474475/pexels-photo-6474475.jpeg" alt="Alex Chen" class="it-tech-team-photo">
+        <h3 class="it-tech-team-name">Alex Chen</h3>
+        <p class="it-tech-team-role">Chief Technology Officer, Ex-Google & MIT Alum</p>
+      </div>
+      
+      <div class="it-tech-team-card">
+        <img src="https://images.pexels.com/photos/3862614/pexels-photo-3862614.jpeg" alt="Sarah Jenkins" class="it-tech-team-photo">
+        <h3 class="it-tech-team-name">Sarah Jenkins</h3>
+        <p class="it-tech-team-role">Principal Software Architect & Founder of CodeCraft</p>
+      </div>
+      
+      <div class="it-tech-team-card">
+        <img src="https://images.pexels.com/photos/6893898/pexels-photo-6893898.jpeg" alt="David Lee" class="it-tech-team-photo">
+        <h3 class="it-tech-team-name">David Lee</h3>
+        <p class="it-tech-team-role">Director of Cybersecurity & Ethical Hacker</p>
+      </div>
+      
+      <div class="it-tech-team-card">
+        <img src="https://images.pexels.com/photos/6980994/pexels-photo-6980994.jpeg" alt="Maria Rodriguez" class="it-tech-team-photo">
+        <h3 class="it-tech-team-name">Maria Rodriguez</h3>
+        <p class="it-tech-team-role">AI Research Scientist, Stanford PhD, Best-selling Author</p>
+      </div>
+      
+    </div>
+  </div>
+</section>
+
+</body>
+</html>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>TechNova IT Solutions</title>
+
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=DM+Sans:opsz,wght@9..40,400;500;700&display=swap" rel="stylesheet">
+
+    <style>
+        @font-face {
+            font-family: 'Circular Std';
+            src: url('fonts/CircularStd-Book.ttf') format('truetype');
+            font-weight: 400;
+            font-style: normal;
+        }
+
+        /* Circular Std - Medium (500) */
+        @font-face {
+            font-family: 'Circular Std';
+            src: url('fonts/CircularStd.ttf') format('truetype');
+            font-weight: 500;
+            font-style: normal;
+        }
+
+        /* Circular Std - Bold (700) */
+        @font-face {
+            font-family: 'Circular Std';
+            src: url('fonts/CircularStd-Bold.ttf') format('truetype');
+            font-weight: 600;
+            font-style: normal;
+        }
+        :root {
+            --itsvc-bg: #F5F7FA;
+            --itsvc-text-dark: #0F172A; 
+            --itsvc-text-body: #475467; 
+            --itsvc-text-muted: #CBD5E1; 
+            --itsvc-accent: #1F61EB; 
+            --itsvc-border: #E2E8F0;
+            --itsvc-font: 'Circular Std', sans-serif;
+            --itsvc-anim-speed: 5s;
+        }
+
+        .itsvc-wrapper * { box-sizing: border-box; margin: 0; padding: 0; }
+
+        .itsvc-wrapper {
+            font-family: var(--itsvc-font);
+            background-color: var(--itsvc-bg);
+            padding: 80px 20px;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+        }
+
+        /* --- Header: 1000px --- */
+        .itsvc-header-section {
+            width: 100%;
+            max-width: 900px;
+            text-align: left;
+            margin-bottom: 80px;
+        }
+
+        .itsvc-eyebrow {
+            color: var(--itsvc-accent);
+            font-weight: 600;
+            font-size: 16px;
+            letter-spacing: 1.2px;
+            text-transform: uppercase;
+            margin-bottom: 20px;
+            display: block;
+        }
+
+        .itsvc-h1 {
+            font-size: 48px;
+            line-height: 1.1;
+            font-weight: 700;
+            color: var(--itsvc-text-dark);
+            letter-spacing: -1.5px;
+            margin-bottom: 30px;
+        }
+
+        /* --- Main Content: 1200px --- */
+        .itsvc-main-section {
+            width: 100%;
+            max-width: 1200px;
+            display: flex; /* Using Flex for equal height stretching */
+            gap: 80px;
+            align-items: stretch; /* This makes left and right equal height */
+        }
+
+        /* Left Column: The Image */
+        .itsvc-image-col {
+            flex: 1;
+            position: relative;
+            border-radius: 12px;
+            overflow: hidden;
+            min-height: 500px; /* Base height for mobile/empty states */
+        }
+
+        .itsvc-img {
+            position: absolute;
+            top: 0; left: 0;
+            width: 100%; height: 100%;
+            object-fit: cover;
+            opacity: 0;
+            transition: opacity 0.5s ease;
+        }
+
+        .itsvc-img.active { opacity: 1; z-index: 2; }
+
+        /* Right Column: The Content */
+        .itsvc-content-col {
+            flex: 1;
+            display: flex;
+            flex-direction: column;
+            justify-content: flex-start;
+        }
+
+        /* Tabs */
+        .itsvc-tabs-stack {
+            display: flex;
+            flex-direction: column;
+            margin-bottom: 40px;
+        }
+
+        .itsvc-tab-item {
+            position: relative;
+            cursor: pointer;
+            margin-bottom: 30px;
+            display: inline-block; /* Crucial for progress bar width */
+            width: fit-content;
+        }
+
+        .itsvc-tab-title {
+            font-size: 52px;
+            font-weight: 500;
+            color: var(--itsvc-text-muted);
+            transition: color 0.3s ease;
+            line-height: 1.2;
+        }
+
+        .itsvc-tab-item.active .itsvc-tab-title {
+            color: var(--itsvc-text-dark);
+        }
+
+        /* Progress Bar: Width of the Tab Title */
+        .itsvc-progress-bg {
+            height: 3px;
+            width: 100%;
+            background-color: transparent;
+            margin-top: 8px;
+        }
+
+        .itsvc-tab-item.active .itsvc-progress-bg {
+            background-color: var(--itsvc-border);
+        }
+
+        .itsvc-progress-fill {
+            height: 3px;
+            width: 0%;
+            background-color: var(--itsvc-text-dark);
+        }
+
+        .itsvc-animating {
+            animation: itsvc-fill var(--itsvc-anim-speed) linear forwards;
+        }
+
+        @keyframes itsvc-fill { from { width: 0%; } to { width: 100%; } }
+
+        /* Description & Button Section */
+        .itsvc-description-area {
+            position: relative;
+            margin-top: auto; /* Pushes content to the bottom of the column if needed */
+        }
+
+        .itsvc-desc-content {
+            display: none;
+            animation: fadeIn 0.4s ease forwards;
+        }
+
+        .itsvc-desc-content.active { display: block; }
+
+        .itsvc-body-text {
+            font-size: 18px;
+            line-height: 1.6;
+            margin-bottom: 40px;
+            color: var(--itsvc-text-body);
+        }
+
+        .itsvc-btn {
+            display: inline-block;
+            background-color: var(--itsvc-accent);
+            color: #fff;
+            padding: 16px 40px;
+            font-weight: 500;
+            text-decoration: none;
+            border-radius: 4px;
+            transition: background 0.3s;
+        }
+
+        @keyframes fadeIn { from { opacity: 0; transform: translateY(10px); } to { opacity: 1; transform: translateY(0); } }
+
+        /* --- Responsive --- */
+        @media (max-width: 1024px) {
+            .itsvc-main-section { flex-direction: column; }
+            .itsvc-image-col { order: 2; height: 400px; min-height: 400px; }
+            .itsvc-content-col { order: 1; }
+            .itsvc-h1 { font-size: 34px; }
+            .itsvc-tab-title { font-size: 40px; }
+        }
+    </style>
+</head>
+<body>
+
+<div class="itsvc-wrapper">
+    <header class="itsvc-header-section">
+        <span class="itsvc-eyebrow">(WHO WE ARE)</span>
+        <h1 class="itsvc-h1">Licensed, background-checked pros delivering clean, on-time digital solutions across USA, with honest pricing—no surprises.</h1>
+        <p style="font-size: 18px; color: var(--itsvc-text-body); max-width: 800px;">
+            TechNova™ provides reliable service with a commitment to quality. Trusted by customers nationwide, we're proud to set the standard in the IT industry.
+        </p>
+    </header>
+
+    <section class="itsvc-main-section">
+        <div class="itsvc-image-col">
+            <img src="https://images.pexels.com/photos/31650357/pexels-photo-31650357.jpeg" class="itsvc-img active" data-id="0">
+            <img src="https://images.pexels.com/photos/31401980/pexels-photo-31401980.png" class="itsvc-img" data-id="1">
+        </div>
+
+        <div class="itsvc-content-col">
+            <span class="itsvc-eyebrow">(HOW WE CAN HELP)</span>
+            
+            <div class="itsvc-tabs-stack">
+                <div class="itsvc-tab-item active" data-id="0">
+                    <div class="itsvc-tab-title">Enterprise</div>
+                    <div class="itsvc-progress-bg">
+                        <div class="itsvc-progress-fill itsvc-animating"></div>
+                    </div>
+                </div>
+
+                <div class="itsvc-tab-item" data-id="1">
+                    <div class="itsvc-tab-title">Startups</div>
+                    <div class="itsvc-progress-bg">
+                        <div class="itsvc-progress-fill"></div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="itsvc-description-area">
+                <div class="itsvc-desc-content active" data-id="0">
+                    <p class="itsvc-body-text">
+                        From system architecture to full-scale cloud migrations—fast, clean, and reliable engineering for your infrastructure. We cover security, scalability, and 24/7 maintenance.
+                    </p>
+                    <a href="#" class="itsvc-btn">View Enterprise Details</a>
+                </div>
+
+                <div class="itsvc-desc-content" data-id="1">
+                    <p class="itsvc-body-text">
+                        Rapid MVP development to launch your vision. We build high-performance web and mobile applications designed to scale alongside your user base and business goals.
+                    </p>
+                    <a href="#" class="itsvc-btn">View Startup Details</a>
+                </div>
+            </div>
+        </div>
+    </section>
+</div>
+
+<script>
+    const tabs = document.querySelectorAll('.itsvc-tab-item');
+    const images = document.querySelectorAll('.itsvc-img');
+    const contents = document.querySelectorAll('.itsvc-desc-content');
+    let currentIndex = 0;
+    let timer;
+
+    function switchStep(index) {
+        currentIndex = index % tabs.length;
+
+        tabs.forEach((tab, i) => {
+            const isActive = i === currentIndex;
+            tab.classList.toggle('active', isActive);
+            
+            const bar = tab.querySelector('.itsvc-progress-fill');
+            bar.classList.remove('itsvc-animating');
+            if (isActive) {
+                void bar.offsetWidth; // Trigger reflow
+                bar.classList.add('itsvc-animating');
+            }
+        });
+
+        images.forEach((img, i) => img.classList.toggle('active', i === currentIndex));
+        contents.forEach((desc, i) => desc.classList.toggle('active', i === currentIndex));
+
+        resetTimer();
+    }
+
+    function resetTimer() {
+        clearInterval(timer);
+        timer = setInterval(() => switchStep(currentIndex + 1), 5000);
+    }
+
+    tabs.forEach((tab, i) => {
+        tab.addEventListener('click', () => switchStep(i));
+    });
+
+    resetTimer();
+</script>
+
+</body>
+</html>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<style>
+  @font-face {
+            font-family: 'Circular Std';
+            src: url('fonts/CircularStd-Book.ttf') format('truetype');
+            font-weight: 400;
+            font-style: normal;
+        }
+
+        /* Circular Std - Medium (500) */
+        @font-face {
+            font-family: 'Circular Std';
+            src: url('fonts/CircularStd.ttf') format('truetype');
+            font-weight: 500;
+            font-style: normal;
+        }
+
+        /* Circular Std - Bold (700) */
+        @font-face {
+            font-family: 'Circular Std';
+            src: url('fonts/CircularStd-Bold.ttf') format('truetype');
+            font-weight: 600;
+            font-style: normal;
+        }
+
+  .it-global-section {
+    --max-width: 1200px;
+    --accent-color: #1a1a1a;
+    --text-muted: #757575;
+    --card-bg: #f5f5f5;
+    --transition: all 0.4s cubic-bezier(0.25, 1, 0.5, 1);
+    
+    background-color: #EAEAEA;
+    padding: 100px 0;
+    font-family: 'Circular Std', 'Inter', sans-serif;
+    overflow-x: hidden; /* Prevents horizontal scroll on the body */
+  }
+
+  /* Headline Layout - Centered 1200px */
+  .it-global-header {
+    max-width: var(--max-width);
+    margin: 0 auto 60px auto;
+    padding: 0 20px;
+  }
+
+  .it-global-label {
+    font-size: 14px;
+    font-weight: 500;
+    margin-bottom: 40px;
+    display: flex;
+    align-items: center;
+    gap: 10px;
+  }
+
+  .it-global-h1 {
+    font-size: clamp(40px, 6vw, 72px);
+    line-height: 1.1;
+    font-weight: 500;
+    letter-spacing: -0.04em;
+    margin: 0;
+  }
+
+  .it-global-h1 span {
+    display: block;
+    color: var(--text-muted);
+  }
+
+  .it-global-h1 strong {
+    display: block;
+    color: var(--accent-color);
+  }
+
+  /* Card Slider - Bleeds to Right */
+  .it-global-slider-container {
+    /* Aligns start of cards with the 1200px margin */
+    padding-left: calc((100vw - var(--max-width)) / 2 + 20px);
+  }
+
+  /* Fallback for very wide screens */
+  @media (max-width: 1200px) {
+    .it-global-slider-container { padding-left: 20px; }
+  }
+
+  .it-global-track {
+    display: flex;
+    gap: 24px;
+    overflow-x: auto;
+    scroll-behavior: smooth;
+    scrollbar-width: none; /* Firefox */
+    padding-right: 100px; /* Space at the end */
+  }
+
+  .it-global-track::-webkit-scrollbar { display: none; }
+
+  /* Card Design */
+  .it-global-card {
+    flex: 0 0 420px;
+    height: 420px;
+    background-color: var(--card-bg);
+    padding: 40px;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    position: relative;
+    cursor: pointer;
+    transition: var(--transition);
+    overflow: hidden;
+    text-decoration: none;
+    color: inherit;
+  }
+
+  /* Background Image Layer (Hover) */
+  .it-global-card-img {
+    position: absolute;
+    top: 0; left: 0; width: 100%; height: 100%;
+    background-size: cover;
+    background-position: center;
+    opacity: 0;
+    transform: scale(1.05);
+    transition: var(--transition);
+    z-index: 1;
+  }
+
+  .it-global-card-overlay {
+    position: absolute;
+    top: 0; left: 0; width: 100%; height: 100%;
+    background: linear-gradient(to bottom, rgba(0,0,0,0.1), rgba(0,0,0,0.6));
+    opacity: 0;
+    transition: var(--transition);
+    z-index: 2;
+  }
+
+  .it-global-card-content {
+    position: relative;
+    z-index: 3;
+    height: 100%;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    transition: var(--transition);
+  }
+
+  .it-global-card:hover {
+    color: #ffffff;
+  }
+
+  .it-global-card:hover .it-global-card-img {
+    opacity: 1;
+    transform: scale(1);
+  }
+
+  .it-global-card:hover .it-global-card-overlay {
+    opacity: 1;
+  }
+
+  .it-global-card:hover .it-global-meta {
+    color: rgba(255,255,255,0.8);
+  }
+
+  .it-global-tag {
+    font-size: 13px;
+    font-weight: 500;
+    letter-spacing: 0.1em;
+    margin-bottom: 20px;
+    display: block;
+  }
+
+  .it-global-card-title {
+    font-size: 32px;
+    line-height: 1.2;
+    font-weight: 500;
+    margin: 0;
+  }
+
+  .it-global-footer {
+    display: flex;
+    justify-content: space-between;
+    font-size: 14px;
+  }
+
+  .it-global-meta {
+    color: var(--text-muted);
+    transition: var(--transition);
+  }
+
+  /* Navigation */
+  .it-global-nav {
+    max-width: var(--max-width);
+    margin: 40px auto 0 auto;
+    padding: 0 20px;
+    display: flex;
+    gap: 12px;
+  }
+
+  .it-global-btn {
+    width: 56px;
+    height: 56px;
+    border-radius: 4px;
+    border: none;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    cursor: pointer;
+    transition: var(--transition);
+    background: transparent;
+  }
+
+  .it-global-btn-prev { background: #dcdcdc; }
+  .it-global-btn-next { background: #1a1a1a; color: white; }
+
+  .it-global-btn:hover {
+    transform: translateY(-2px);
+    filter: brightness(1.1);
+  }
+
+  /* Mobile Fixes */
+  @media (max-width: 768px) {
+    .it-global-card { flex: 0 0 85vw; height: 450px; }
+    .it-global-h1 { font-size: 36px; }
+  }
+</style>
+
+<section class="it-global-section">
+  <header class="it-global-header">
+    <div class="it-global-label">+ Newsroom</div>
+    <h1 class="it-global-h1">
+      <span style="color: #000;">Updates that move</span>
+      <span>the world forward</span>
+    </h1>
+  </header>
+
+  <div class="it-global-slider-container">
+    <div class="it-global-track" id="itTrack">
+      
+      <div class="it-global-card">
+        <div class="it-global-card-img" style="background-image: url('https://images.unsplash.com/photo-1521737604893-d14cc237f11d?auto=format&fit=crop&w=800&q=80');"></div>
+        <div class="it-global-card-overlay"></div>
+        <div class="it-global-card-content">
+          <div>
+            <span class="it-global-tag">NEWS</span>
+            <h3 class="it-global-card-title">Global IT infrastructure expands across South Africa</h3>
+          </div>
+          <div class="it-global-footer">
+            <span class="it-global-meta">February 13, 2026</span>
+            <span class="it-global-meta">4 min read</span>
+          </div>
+        </div>
+      </div>
+
+      <div class="it-global-card">
+        <div class="it-global-card-img" style="background-image: url('https://images.unsplash.com/photo-1451187580459-43490279c0fa?auto=format&fit=crop&w=800&q=80');"></div>
+        <div class="it-global-card-overlay"></div>
+        <div class="it-global-card-content">
+          <div>
+            <span class="it-global-tag">NEWS</span>
+            <h3 class="it-global-card-title">Hybrid cloud solutions reaching 100+ active enterprise clients</h3>
+          </div>
+          <div class="it-global-footer">
+            <span class="it-global-meta">February 10, 2026</span>
+            <span class="it-global-meta">6 min read</span>
+          </div>
+        </div>
+      </div>
+
+      <div class="it-global-card">
+        <div class="it-global-card-img" style="background-image: url('https://images.unsplash.com/photo-1550751827-4bd374c3f58b?auto=format&fit=crop&w=800&q=80');"></div>
+        <div class="it-global-card-overlay"></div>
+        <div class="it-global-card-content">
+          <div>
+            <span class="it-global-tag">TECH</span>
+            <h3 class="it-global-card-title">Next-gen cybersecurity corridor connects London & Johannesburg</h3>
+          </div>
+          <div class="it-global-footer">
+            <span class="it-global-meta">February 05, 2026</span>
+            <span class="it-global-meta">5 min read</span>
+          </div>
+        </div>
+      </div>
+
+      <div class="it-global-card">
+        <div class="it-global-card-img" style="background-image: url('https://images.unsplash.com/photo-1519389950473-47ba0277781c?auto=format&fit=crop&w=800&q=80');"></div>
+        <div class="it-global-card-overlay"></div>
+        <div class="it-global-card-content">
+          <div>
+            <span class="it-global-tag">AI</span>
+            <h3 class="it-global-card-title">Automating multipurpose IT workflows for global scale</h3>
+          </div>
+          <div class="it-global-footer">
+            <span class="it-global-meta">January 28, 2026</span>
+            <span class="it-global-meta">8 min read</span>
+          </div>
+        </div>
+      </div>
+
+    </div>
+  </div>
+
+  <div class="it-global-nav">
+    <button class="it-global-btn it-global-btn-prev" onclick="scrollSlider(-444)">
+      <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><line x1="19" y1="12" x2="5" y2="12"></line><polyline points="12 19 5 12 12 5"></polyline></svg>
+    </button>
+    <button class="it-global-btn it-global-btn-next" onclick="scrollSlider(444)">
+      <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><line x1="5" y1="12" x2="19" y2="12"></line><polyline points="12 5 19 12 12 19"></polyline></svg>
+    </button>
+  </div>
+</section>
+
+<script>
+  function scrollSlider(amount) {
+    const track = document.getElementById('itTrack');
+    track.scrollBy({ left: amount, behavior: 'smooth' });
+  }
+</script>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Course Grid - IT Company</title>
+    <style>
+        /* CSS Variables for easy maintenance */
+        :root {
+            --itc-main-width: 1200px;
+            --itc-border-radius: 32px;
+            --itc-bg-color: #e4e4e4;
+            --itc-text-dark: #000000;
+            --itc-text-light: #ffffff;
+            --itc-accent-gray: #e8e8e8;
+            /* Font Stack - Assuming Circular Std is loaded via your system/hosting */
+            --itc-font-family: 'Circular Std', -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
+        }
+
+        .itc-section-wrapper {
+            width: 100%;
+            display: flex;
+            justify-content: center;
+            padding: 80px 0;
+            background-color: var(--itc-bg-color);
+            font-family: var(--itc-font-family);
+        }
+
+        .itc-container {
+            width: var(--itc-main-width);
+            display: flex;
+            flex-direction: column;
+            gap: 40px;
+        }
+
+        /* Header Section */
+        .itc-header {
+            display: flex;
+            justify-content: space-between;
+            align-items: flex-start;
+        }
+
+        .itc-title {
+            font-size: 64px;
+            font-weight: 700;
+            line-height: 1.05;
+            letter-spacing: -2px;
+            margin: 0;
+            color: var(--itc-text-dark);
+        }
+
+        .itc-badge {
+            background-color: var(--itc-accent-gray);
+            padding: 10px 20px;
+            border-radius: 50px;
+            font-size: 14px;
+            font-weight: 500;
+            color: #444;
+        }
+
+        /* Grid Layout */
+        .itc-grid {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 24px;
+        }
+
+        .itc-card {
+            position: relative;
+            height: 480px;
+            border-radius: var(--itc-border-radius);
+            overflow: hidden;
+            display: flex;
+            flex-direction: column;
+            justify-content: flex-end;
+            padding: 32px;
+            transition: transform 0.3s ease;
+            border: 5px solid #fff;
+            cursor: pointer;
+        }
+
+        .itc-card:hover {
+            transform: translateY(-5px);
+        }
+
+        /* Background Images/Overlays */
+        .itc-card-bg {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            z-index: 1;
+        }
+
+        .itc-card-overlay {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: linear-gradient(180deg, rgba(0,0,0,0) 40%, rgba(0,0,0,0.85) 100%);
+            z-index: 2;
+        }
+
+        /* Content inside card */
+        .itc-card-content {
+            position: relative;
+            z-index: 3;
+            color: var(--itc-text-light);
+        }
+
+        .itc-card-tag {
+            font-size: 13px;
+            font-weight: 400;
+            opacity: 0.8;
+            margin-bottom: 8px;
+            text-transform: capitalize;
+        }
+
+        .itc-card-headline {
+            font-size: 28px;
+            font-weight: 700;
+            margin: 0 0 12px 0;
+            line-height: 1.2;
+        }
+
+        .itc-card-description {
+            font-size: 16px;
+            line-height: 1.5;
+            opacity: 0.9;
+            margin: 0;
+            font-weight: 400;
+        }
+
+        /* Mobile Responsiveness */
+        @media (max-width: 1240px) {
+            .itc-container { width: 95%; }
+            .itc-title { font-size: 48px; }
+        }
+
+        @media (max-width: 991px) {
+            .itc-grid { grid-template-columns: repeat(2, 1fr); }
+        }
+
+        @media (max-width: 767px) {
+            .itc-grid { grid-template-columns: 1fr; }
+            .itc-header { flex-direction: column; gap: 20px; }
+        }
+    </style>
+</head>
+<body>
+
+    <section class="itc-section-wrapper">
+        <div class="itc-container">
+            
+            <header class="itc-header">
+                <h1 class="itc-title">You’ll love<br>this course</h1>
+                <div class="itc-badge">Our Approach</div>
+            </header>
+
+            <div class="itc-grid">
+                
+                <div class="itc-card">
+                    <img src="https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?auto=format&fit=crop&q=80&w=600" alt="Growth" class="itc-card-bg">
+                    <div class="itc-card-overlay"></div>
+                    <div class="itc-card-content">
+                        <div class="itc-card-tag">Real momentum</div>
+                        <h2 class="itc-card-headline">Growth that pops</h2>
+                        <p class="itc-card-description">Learn how to push your content further and spark growth you can actually see.</p>
+                    </div>
+                </div>
+
+                <div class="itc-card">
+                    <img src="https://images.unsplash.com/photo-1534528741775-53994a69daeb?auto=format&fit=crop&q=80&w=600" alt="Posting" class="itc-card-bg">
+                    <div class="itc-card-overlay"></div>
+                    <div class="itc-card-content">
+                        <div class="itc-card-tag">No more falling off</div>
+                        <h2 class="itc-card-headline">Posting on lock</h2>
+                        <p class="itc-card-description">Build a simple posting flow that keeps you showing up without overthinking it.</p>
+                    </div>
+                </div>
+
+                <div class="itc-card">
+                    <img src="https://images.unsplash.com/photo-1517841905240-472988babdf9?auto=format&fit=crop&q=80&w=600" alt="Content" class="itc-card-bg">
+                    <div class="itc-card-overlay"></div>
+                    <div class="itc-card-content">
+                        <div class="itc-card-tag">Never stuck again</div>
+                        <h2 class="itc-card-headline">Content on repeat</h2>
+                        <p class="itc-card-description">Use proven frameworks that tell you exactly what to post — again and again.</p>
+                    </div>
+                </div>
+
+                <div class="itc-card">
+                    <img src="https://images.unsplash.com/photo-1494790108377-be9c29b29330?auto=format&fit=crop&q=80&w=600" alt="Views" class="itc-card-bg">
+                    <div class="itc-card-overlay"></div>
+                    <div class="itc-card-content">
+                        <div class="itc-card-tag">Growth with profit</div>
+                        <h2 class="itc-card-headline">Monetized views</h2>
+                        <p class="itc-card-description">Learn how to turn attention into real opportunities, not just empty numbers.</p>
+                    </div>
+                </div>
+
+                <div class="itc-card">
+                    <img src="https://images.unsplash.com/photo-1506794778202-cad84cf45f1d?auto=format&fit=crop&q=80&w=600" alt="Engagement" class="itc-card-bg">
+                    <div class="itc-card-overlay"></div>
+                    <div class="itc-card-content">
+                        <div class="itc-card-tag">Likes, comments, shares</div>
+                        <h2 class="itc-card-headline">Real engagement</h2>
+                        <p class="itc-card-description">Create posts people actually stop for, react to, and share across platforms.</p>
+                    </div>
+                </div>
+
+                <div class="itc-card">
+                    <img src="https://images.unsplash.com/photo-1524504388940-b1c1722653e1?auto=format&fit=crop&q=80&w=600" alt="Energy" class="itc-card-bg">
+                    <div class="itc-card-overlay"></div>
+                    <div class="itc-card-content">
+                        <div class="itc-card-tag">You're ready now</div>
+                        <h2 class="itc-card-headline">Level-up energy</h2>
+                        <p class="itc-card-description">Know what works, why it works, and how to repeat it with confidence.</p>
+                    </div>
+                </div>
+
+            </div>
+        </div>
+    </section>
+
+</body>
+</html>
