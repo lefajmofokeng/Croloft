@@ -6,6 +6,29 @@
     <title>Cronos IT Portal</title>
     <style>
         @import url('https://fonts.googleapis.com/css2?family=Inter+Tight:ital,wght@0,100..900;1,100..900&family=Inter:ital,opsz,wght@0,14..32,100..900;1,14..32,100..900&display=swap');
+                    
+        @font-face {
+            font-family: 'Circular Std';
+            src: url('fonts/CircularStd-Book.ttf') format('truetype');
+            font-weight: 400;
+            font-style: normal;
+        }
+
+        /* Circular Std - Medium (500) */
+        @font-face {
+            font-family: 'Circular Std';
+            src: url('fonts/CircularStd.ttf') format('truetype');
+            font-weight: 500;
+            font-style: normal;
+        }
+
+        /* Circular Std - Bold (700) */
+        @font-face {
+            font-family: 'Circular Std';
+            src: url('fonts/CircularStd-Bold.ttf') format('truetype');
+            font-weight: 600;
+            font-style: normal;
+        }
 
         /* 1. FULL SCREEN LOCK & BACKGROUND */
         body, html { 
@@ -20,7 +43,7 @@
             /* Premium Background Image */
             background: url('https://images.unsplash.com/photo-1721041879210-c2580ae0a8ed?q=80&w=1332&auto=format&fit=crop') no-repeat center center fixed;
             background-size: cover;
-            font-family: 'Inter Tight', sans-serif;
+            font-family: 'Circular Std', sans-serif;
         }
 
         /* Dark Overlay for readability */
@@ -294,27 +317,50 @@
             render() {
                 this.shadowRoot.innerHTML = `
                 <style>
+                     @font-face {
+                        font-family: 'Circular Std';
+                        src: url('fonts/CircularStd-Book.ttf') format('truetype');
+                        font-weight: 400;
+                        font-style: normal;
+                    }
+
+                    /* Circular Std - Medium (500) */
+                    @font-face {
+                        font-family: 'Circular Std';
+                        src: url('fonts/CircularStd.ttf') format('truetype');
+                        font-weight: 500;
+                        font-style: normal;
+                    }
+
+                    /* Circular Std - Bold (700) */
+                    @font-face {
+                        font-family: 'Circular Std';
+                        src: url('fonts/CircularStd-Bold.ttf') format('truetype');
+                        font-weight: 600;
+                        font-style: normal;
+                    }
+
                     @import url('https://fonts.googleapis.com/css2?family=Inter+Tight:ital,wght@0,100..900;1,100..900&family=Inter:ital,opsz,wght@0,14..32,100..900;1,14..32,100..900&display=swap');
 
                     :host {
                         display: block; width: 100%; height: 100%;
-                        font-family: 'Inter Tight', sans-serif; color: white;
+                        font-family: 'Circular Std', sans-serif; color: white;
                     }
-                    * { font-family: 'Inter Tight', sans-serif; box-sizing: border-box; margin: 0; padding: 0; }
+                    * { font-family: 'Circular Std', sans-serif; box-sizing: border-box; margin: 0; padding: 0; }
                     button { background: none; border: none; cursor: pointer; padding: 0; }
 
                     /* --- Header --- */
                     .c-global-header {
                         display: flex; justify-content: space-between; align-items: center;
                         padding: 7px 150px; background: #080d1b;
-                        position: relative; z-index: 10; height: 80px;
+                        position: relative; z-index: 10; height: 55px;
                     }
                     .c-header-logo { color: white; display: flex; align-items: center; font-weight: bold; font-size: 20px;}
                     .c-btn-download {
                         display: flex; align-items: center; gap: 8px;
                         background-color: transparent; border: 2px solid #1199ff;
                         color: white; padding: 10px 16px; border-radius: 30px;
-                        font-weight: 600; font-size: 14px; transition: all 0.2s ease; font-family: 'Inter', sans-serif;
+                        font-weight: 600; font-size: 14px; transition: all 0.2s ease; font-family: 'Circular Std', sans-serif;
                     }
                     .c-btn-download:hover { background-color: rgba(255,255,255,0.1); border-color: white; }
 
@@ -351,7 +397,7 @@
                     .c-chat-header-details {
                         display: none; opacity: 0; transition: opacity 0.3s;
                     }
-                    .c-chat-title { font-size: 16px; font-weight: 700; display: block; }
+                    .c-chat-title { font-size: 16px; font-weight: 500; display: block; }
                     .c-chat-time { font-size: 12px; font-weight: 400; opacity: 0.8; margin-top: 2px; display: block;}
 
                     /* Close Button */
@@ -368,7 +414,7 @@
                     /* --- Search / Input --- */
                     .c-search-container {
                         position: absolute; left: 24px; right: 24px;
-                        top: 150px; z-index: 20;
+                        top: 140px; z-index: 20;
                         transition: all 0.5s cubic-bezier(0.16, 1, 0.3, 1);
                     }
                     .c-search-wrapper { position: relative; width: 100%; display: flex; align-items: center; }
@@ -376,10 +422,10 @@
                     .c-search-input {
                         width: 100%; padding: 10px 16px 10px 48px;
                         border-radius: 8px; border: none;
-                        font-family: 'Inter Tight', sans-serif; font-size: 16px; color: #111827; font-weight: 300;
+                        font-family: 'Circular Std', sans-serif; font-size: 16px; color: #111827; font-weight: 400;
                         outline: none; transition: all 0.3s;
                     }
-                    .c-search-input::placeholder { color: #9ca3af; font-weight: 500;}
+                    .c-search-input::placeholder { color: #9ca3af; font-weight: 400;}
                     
                     .c-send-btn {
                         position: absolute; right: 8px; top: 50%; transform: translateY(-50%);
@@ -403,6 +449,7 @@
                         position: relative; transition: padding 0.4s ease;
                         /* Make scrollbar sit on edge */
                         scrollbar-gutter: stable; 
+                        font-family: 'Circular Std', sans-serif;
                     }
                     
                     /* Custom Scrollbar */
@@ -412,10 +459,10 @@
                     .c-card-body::-webkit-scrollbar-thumb:hover { background: #9ca3af; }
 
                     /* FAQ Styles */
-                    .c-faq-title { font-size: 18px; font-weight: 600; color: #111827; margin-bottom: 10px; }
+                    .c-faq-title { font-size: 18px; font-weight: 500; color: #111827; margin-bottom: 10px; margin-top: -18px; }
                     .c-faq-list { list-style: none; }
                     .c-faq-item { border-bottom: 2px solid #e5e7eb; }
-                    .c-faq-link { display: flex; justify-content: space-between; align-items: center; width: 100%; padding: 12px 0; text-align: left; font-weight: 500; color: #374151; font-size: 15px; }
+                    .c-faq-link { display: flex; justify-content: space-between; align-items: center; width: 100%; padding: 12px 0; text-align: left; font-weight: 400; color: #374151; font-size: 16px; }
                     .c-faq-link:hover { color: #000; }
                     .c-answer-title { font-size: 20px; font-weight: 700; color: #111827; margin-bottom: 16px; }
                     .c-answer-content { font-size: 16px; line-height: 1.6; color: #4b5563; }
@@ -436,8 +483,8 @@
                         font-size: 14px; line-height: 1.5; animation: popIn 0.3s ease-out; 
                         position: relative; min-width: 60px;
                     }
-                    .c-message--user .c-bubble { background-color: #192c6d; color: white; border-bottom-right-radius: 4px; font-weight: 500; }
-                    .c-message--bot .c-bubble { background-color: #f3f4f6; color: #1f2937; border-bottom-left-radius: 4px; font-weight: 500; }
+                    .c-message--user .c-bubble { background-color: #192c6d; color: white; border-bottom-right-radius: 4px; font-weight: 400; }
+                    .c-message--bot .c-bubble { background-color: #f3f4f6; color: #1f2937; border-bottom-left-radius: 4px; font-weight: 400; }
                     .c-timestamp { display: block; font-size: 10px; margin-top: 4px; text-align: right; opacity: 0.6; }
                     .c-typing-indicator { display: none; gap: 4px; padding: 12px; background: #f3f4f6; border-radius: 16px; width: fit-content; border-bottom-left-radius: 4px;}
                     .dot { width: 6px; height: 6px; background: #9ca3af; border-radius: 50%; animation: bounce 1.4s infinite; }
@@ -460,7 +507,7 @@
 
                     /* Move Search Bar to Bottom */
                     .chat-mode .c-search-container { top: auto; bottom: 24px; }
-                    .chat-mode .c-search-input { border: 2px solid #e5e7eb; font-weight: 500; padding: 10px; }
+                    .chat-mode .c-search-input { border: 2px solid #e5e7eb; font-weight: 400; padding: 10px; }
                     .chat-mode .c-search-icon-wrapper { display: none; }
                     .chat-mode .c-send-btn { opacity: 1; pointer-events: auto; }
                     .chat-mode .c-legal-text { opacity: 1; pointer-events: auto; }
@@ -492,6 +539,8 @@
                     /* --- RESPONSIVE / MOBILE --- */
                     @media (max-width: 480px) {
                         .c-global-header { padding: 16px; height: 60px;}
+                        .c-card-icon { display: none;} 
+                        .c-search-container { left: 16px; right: 16px; top: 110px; }
                         
                         /* Fix: Make Main Container fill remaining height */
                         .c-main-container {
@@ -513,8 +562,9 @@
                         }
                     }
 
-                     @media (min-width: 769px) and (max-width: 992px) {
+                     @media (min-width: 768px) and (max-width: 992px) {
                         .c-main-container { padding: 0 10px;}
+                        .c-card-icon { display: none;}
                      }
                 </style>
 
@@ -533,7 +583,7 @@
                             <button class="c-close-chat">${icons.close}</button>
                             
                             <div class="c-card-header-top">
-                                <div class="c-card-icon"><img src="thumbnails/hyperion logo (2).png" style="height: 30px;"/></div>
+                                <div class="c-card-icon"><img src="thumbnails/croloft2.png" style="height: 20px;"/></div>
                             </div>
                             <h1 class="c-greeting">
                                 Hi, <br>
