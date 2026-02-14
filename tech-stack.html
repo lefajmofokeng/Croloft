@@ -20,6 +20,290 @@
 
 
 
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<style>
+   /* --- SCOPED STYLES FOR IT STARTUP HERO --- */
+@import url('https://fonts.googleapis.com/css2?family=DM+Sans:opsz,wght@9..40,400;500;700&display=swap');
+
+.it-startup-hero-wrapper {
+    --it-bg-color: #ffffff;
+    --it-text-main: #161616;
+    --it-text-sub: #636363;
+    --it-accent: #00B5AD;
+    --it-font: 'Circular Std', 'DM Sans', sans-serif;
+    
+    width: 100%;
+    min-height: 700px; /* Ensure height for the visuals */
+    overflow: hidden; /* CRITICAL: Cuts off the icons at the edge */
+    background-color: var(--it-bg-color);
+    padding: 80px 0;
+    font-family: var(--it-font);
+    position: relative;
+    display: flex;
+    align-items: center;
+}
+
+/* 1200px Content Container */
+.it-startup-container {
+    max-width: 1300px;
+    width: 100%;
+    margin: 0 auto;
+    padding: 0 20px;
+    display: flex;
+    align-items: center;
+    position: relative;
+    z-index: 10; /* Keeps text above background elements */
+}
+
+/* --- Left Column: Content --- */
+.it-startup-content-col {
+    max-width: 500px; /* Restrict width so it doesn't overlap icons */
+    width: 100%;
+}
+
+.it-startup-tag {
+    color: var(--it-accent);
+    font-weight: 700;
+    font-size: 15px;
+    letter-spacing: -0.01em;
+    margin-bottom: 24px;
+    display: block;
+}
+
+.it-startup-headline {
+    font-size: 64px; /* Larger to match reference */
+    line-height: 1.05;
+    color: var(--it-text-main);
+    font-weight: 400;
+    letter-spacing: -0.03em;
+    margin: 0 0 24px 0;
+}
+
+.it-startup-highlight {
+    color: var(--it-accent);
+}
+
+.it-startup-subtext {
+    font-size: 20px;
+    line-height: 1.5;
+    color: var(--it-text-sub);
+    margin: 0 0 40px 0;
+    max-width: 440px;
+}
+
+.it-startup-btn {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    background-color: #fff;
+    color: var(--it-text-main);
+    padding: 16px 32px;
+    border-radius: 50px;
+    font-weight: 500;
+    font-size: 16px;
+    text-decoration: none;
+    border: 1px solid #070707;
+}
+
+.it-startup-btn:hover {
+    transform: translateY(-2px);
+    box-shadow: 0 10px 15px -3px rgba(0, 0, 0, 0.1);
+}
+
+/* --- Right Column: The "Disappearing" Grid --- */
+/* This is positioned absolutely relative to the screen to ensure it bleeds off */
+.it-startup-visual-wrapper {
+    position: absolute;
+    top: 50%;
+    left: 50%; /* Starts at center of screen */
+    margin-left: 100px; /* Pushes it to the right side of the content */
+    transform: translateY(-50%);
+    width: 1500px; /* Massive width to hold many icons */
+    height: 800px;
+    pointer-events: none; /* Prevents icons from blocking clicks */
+    
+    /* THE 3D PERSPECTIVE MAGIC */
+    perspective: 1500px; 
+}
+
+.it-startup-icon-grid {
+    display: flex;
+    flex-direction: column;
+    gap: 28px; /* Spacing between rows */
+    transform-style: preserve-3d;
+}
+
+.it-startup-icon-row {
+    display: flex;
+    gap: 28px; /* Spacing between columns */
+    padding-left: 0;
+}
+
+/* The Icon Card */
+.it-startup-icon-box {
+    width: 90px;
+    height: 90px;
+    border-radius: 22px;
+    background: #fff;
+    box-shadow: 0 20px 40px -5px rgba(0, 0, 0, 0.15), 0 10px 20px -5px rgba(0, 0, 0, 0.05);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    overflow: hidden; /* Ensures image corners are rounded */
+    transition: transform 0.3s ease;
+    flex-shrink: 0; /* Prevents squishing */
+}
+
+/* Image styling */
+.it-startup-icon-box img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover; /* Change to 'contain' if you want whole logo visible with padding */
+    display: block;
+}
+
+/* Floating animation for a "live" feel */
+.it-startup-icon-box:hover {
+    transform: translateZ(20px) scale(1.1);
+    box-shadow: 0 30px 60px -10px rgba(0, 0, 0, 0.25);
+    z-index: 100;
+}
+
+/* Mobile Responsive */
+@media (max-width: 992px) {
+    .it-startup-container {
+        flex-direction: column;
+        text-align: center;
+    }
+    .it-startup-content-col {
+        margin: 0 auto;
+        padding-bottom: 60px;
+    }
+    .it-startup-visual-wrapper {
+        position: relative;
+        left: 0;
+        top: 0;
+        margin-left: 0;
+        transform: none;
+        width: 120%; /* Slightly wider than screen */
+        height: auto;
+        perspective: none;
+        overflow: hidden;
+        display: none;
+    }
+    .it-startup-icon-grid {
+        transform: rotate(-5deg); /* Flatter look for mobile */
+        align-items: center;
+    }
+    .it-startup-icon-row {
+        justify-content: center;
+    }
+}
+</style>
+
+<section class="it-startup-hero-wrapper">
+    <div class="it-startup-container">
+        
+        <div class="it-startup-content-col">
+            <span class="it-startup-tag">#madeforgrowth</span>
+            <h1 class="it-startup-headline">
+                Build your future with <span class="it-startup-highlight">intelligent</span> IT foundations.
+            </h1>
+            <p class="it-startup-subtext">
+                From AI automation to cloud infrastructure. We provide the stack you need to scale professionally and efficiently.
+            </p>
+            <a href="#" class="it-startup-btn">Explore Solutions</a>
+        </div>
+
+    </div>
+
+    <div class="it-startup-visual-wrapper">
+        <div class="it-startup-icon-grid">
+            
+            <div class="it-startup-icon-row">
+                <div class="it-startup-icon-box"><img src="https://placehold.co/100x100/FFB75E/ffffff?text=Py" alt="Python"></div>
+                <div class="it-startup-icon-box"><img src="https://placehold.co/100x100/00B5AD/ffffff?text=AI" alt="AI"></div>
+                <div class="it-startup-icon-box"><img src="https://placehold.co/100x100/212121/ffffff?text=JS" alt="Javascript"></div>
+                <div class="it-startup-icon-box"><img src="https://placehold.co/100x100/667eea/ffffff?text=Cloud" alt="Cloud"></div>
+                <div class="it-startup-icon-box"><img src="https://placehold.co/100x100/ff9a9e/ffffff?text=Data" alt="Database"></div>
+                <div class="it-startup-icon-box"><img src="https://placehold.co/100x100/a18cd1/ffffff?text=Sec" alt="Security"></div>
+            </div>
+
+            <div class="it-startup-icon-row">
+                <div class="it-startup-icon-box"><img src="https://placehold.co/100x100/4facfe/ffffff?text=Web" alt="Web"></div>
+                <div class="it-startup-icon-box"><img src="https://placehold.co/100x100/434343/ffffff?text=Dev" alt="Development"></div>
+                <div class="it-startup-icon-box"><img src="https://placehold.co/100x100/84fab0/225c4e?text=Bot" alt="Chatbot"></div>
+                <div class="it-startup-icon-box"><img src="https://placehold.co/100x100/fbc2eb/ffffff?text=UI" alt="Design"></div>
+                <div class="it-startup-icon-box"><img src="https://placehold.co/100x100/ED8F03/ffffff?text=App" alt="Mobile App"></div>
+                <div class="it-startup-icon-box"><img src="https://placehold.co/100x100/20E2D7/00695C?text=API" alt="API Integration"></div>
+            </div>
+
+            <div class="it-startup-icon-row">
+                <div class="it-startup-icon-box"><img src="https://placehold.co/100x100/764ba2/ffffff?text=SaaS" alt="SaaS"></div>
+                <div class="it-startup-icon-box"><img src="https://placehold.co/100x100/ff758c/ffffff?text=Ads" alt="Marketing"></div>
+                <div class="it-startup-icon-box"><img src="https://placehold.co/100x100/30cfd0/ffffff?text=CRM" alt="CRM"></div>
+                <div class="it-startup-icon-box"><img src="https://placehold.co/100x100/330867/ffffff?text=IT" alt="IT Support"></div>
+                <div class="it-startup-icon-box"><img src="https://placehold.co/100x100/d299c2/ffffff?text=SEO" alt="SEO"></div>
+                <div class="it-startup-icon-box"><img src="https://placehold.co/100x100/89f7fe/225c4e?text=Ops" alt="DevOps"></div>
+            </div>
+
+            <div class="it-startup-icon-row">
+                <div class="it-startup-icon-box"><img src="https://placehold.co/100x100/000000/ffffff?text=HTML" alt="HTML"></div>
+                <div class="it-startup-icon-box"><img src="https://placehold.co/100x100/fa709a/ffffff?text=CSS" alt="CSS"></div>
+                <div class="it-startup-icon-box"><img src="https://placehold.co/100x100/fee140/000000?text=Auto" alt="Automation"></div>
+                <div class="it-startup-icon-box"><img src="https://placehold.co/100x100/96e6a1/225c4e?text=DB" alt="Database"></div>
+                <div class="it-startup-icon-box"><img src="https://placehold.co/100x100/fccb90/ffffff?text=UX" alt="UX"></div>
+                <div class="it-startup-icon-box"><img src="https://placehold.co/100x100/e0c3fc/ffffff?text=Mgmt" alt="Management"></div>
+            </div>
+
+        </div>
+    </div>
+</section>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -41,7 +325,7 @@
             --tstk-muted: #888888;
             --tstk-border: #262626;
             --tstk-font: 'Circular Std', 'Inter', sans-serif;
-            --tstk-max-width: 1350px;
+            --tstk-max-width: 1300px;
         }
 
         /* Circular Std - Book/Regular (400) */
@@ -178,7 +462,7 @@
 
         @media (max-width: 1100px) {
             .tstk-grid { grid-template-columns: 1fr; }
-            .tstk-container { flex-direction: column; padding: 0 20px; }
+            .tstk-container { flex-direction: column; padding: 50px 20px; }
             .tstk-sidebar { width: 100%; position: relative; top: 0; height: auto; }
         }
     </style>

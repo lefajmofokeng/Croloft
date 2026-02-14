@@ -1091,317 +1091,257 @@ document.addEventListener("DOMContentLoaded", function() {
 
 
 
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 <style>
-  @font-face {
-            font-family: 'Circular Std';
-            src: url('fonts/CircularStd-Book.ttf') format('truetype');
-            font-weight: 400;
-            font-style: normal;
-        }
+/* --- SCOPED PREMIUM HERO STYLES --- */
+@import url('https://fonts.googleapis.com/css2?family=DM+Sans:opsz,wght@9..40,400;500;700&display=swap');
 
-        /* Circular Std - Medium (500) */
-        @font-face {
-            font-family: 'Circular Std';
-            src: url('fonts/CircularStd.ttf') format('truetype');
-            font-weight: 500;
-            font-style: normal;
-        }
-
-        /* Circular Std - Bold (700) */
-        @font-face {
-            font-family: 'Circular Std';
-            src: url('fonts/CircularStd-Bold.ttf') format('truetype');
-            font-weight: 600;
-            font-style: normal;
-        }
-
-  .it-global-section {
-    --max-width: 1200px;
-    --accent-color: #1a1a1a;
-    --text-muted: #757575;
-    --card-bg: #f5f5f5;
-    --transition: all 0.4s cubic-bezier(0.25, 1, 0.5, 1);
+.it-premium-hero {
+    --it-primary: #161616;
+    --it-secondary: #636363;
+    --it-accent: #3ECF8E; 
+    --it-font: 'Circular Std', 'DM Sans', sans-serif;
     
-    background-color: #EAEAEA;
-    padding: 100px 0;
-    font-family: 'Circular Std', 'Inter', sans-serif;
-    overflow-x: hidden; /* Prevents horizontal scroll on the body */
-  }
-
-  /* Headline Layout - Centered 1200px */
-  .it-global-header {
-    max-width: var(--max-width);
-    margin: 0 auto 60px auto;
-    padding: 0 20px;
-  }
-
-  .it-global-label {
-    font-size: 14px;
-    font-weight: 500;
-    margin-bottom: 40px;
+    background: #ffffff;
+    width: 100%;
+    min-height: 500px; /* Adjusted for single row height */
+    overflow: hidden; 
     display: flex;
-    align-items: center;
-    gap: 10px;
-  }
+    align-items: center; /* Vertically centers the 1200px container */
+    position: relative;
+    font-family: var(--it-font);
+}
 
-  .it-global-h1 {
-    font-size: clamp(40px, 6vw, 72px);
+.it-premium-container {
+    max-width: 1200px;
+    margin: 0 auto;
+    width: 100%;
+    padding: 0;
+    display: flex;
+    align-items: center; /* Vertically centers content within the 1200px box */
+    justify-content: space-between;
+    z-index: 2;
+}
+
+/* --- Left Side: Text --- */
+.it-premium-text-box {
+    flex: 0 0 450px; /* Fixed width to keep text stable */
+}
+
+.it-premium-headline {
+    font-size: 54px;
+    font-weight: 400;
     line-height: 1.1;
-    font-weight: 500;
+    color: var(--it-primary);
     letter-spacing: -0.04em;
     margin: 0;
-  }
+}
 
-  .it-global-h1 span {
-    display: block;
-    color: var(--text-muted);
-  }
+#it-dynamic-text {
+    color: var(--it-primary);
+    transition: opacity 0.2s ease, transform 0.2s ease;
+    display: inline-block;
+}
 
-  .it-global-h1 strong {
-    display: block;
-    color: var(--accent-color);
-  }
+.it-text-fade {
+    opacity: 0;
+    transform: translateY(8px);
+}
 
-  /* Card Slider - Bleeds to Right */
-  .it-global-slider-container {
-    /* Aligns start of cards with the 1200px margin */
-    padding-left: calc((100vw - var(--max-width)) / 2 + 20px);
-  }
-
-  /* Fallback for very wide screens */
-  @media (max-width: 1200px) {
-    .it-global-slider-container { padding-left: 20px; }
-  }
-
-  .it-global-track {
-    display: flex;
-    gap: 24px;
-    overflow-x: auto;
-    scroll-behavior: smooth;
-    scrollbar-width: none; /* Firefox */
-    padding-right: 100px; /* Space at the end */
-  }
-
-  .it-global-track::-webkit-scrollbar { display: none; }
-
-  /* Card Design */
-  .it-global-card {
-    flex: 0 0 420px;
-    height: 420px;
-    background-color: var(--card-bg);
-    padding: 40px;
-    display: flex;
-    flex-direction: column;
-    justify-content: space-between;
+/* --- Right Side: Single Row Icon Grid --- */
+/* --- Added Animation & Masking --- */
+.it-premium-visual-area {
+    flex: 1;
     position: relative;
-    cursor: pointer;
-    transition: var(--transition);
+    display: flex;
+    align-items: center;
+    height: 150px;
     overflow: hidden;
-    text-decoration: none;
-    color: inherit;
-  }
+    /* Soft fade-out as they approach the headline */
+    -webkit-mask-image: linear-gradient(to right, transparent 0%, black 15%, black 85%, transparent 100%);
+    mask-image: linear-gradient(to right, transparent 0%, black 15%, black 85%, transparent 100%);
+}
 
-  /* Background Image Layer (Hover) */
-  .it-global-card-img {
-    position: absolute;
-    top: 0; left: 0; width: 100%; height: 100%;
-    background-size: cover;
-    background-position: center;
-    opacity: 0;
-    transform: scale(1.05);
-    transition: var(--transition);
-    z-index: 1;
-  }
-
-  .it-global-card-overlay {
-    position: absolute;
-    top: 0; left: 0; width: 100%; height: 100%;
-    background: linear-gradient(to bottom, rgba(0,0,0,0.1), rgba(0,0,0,0.6));
-    opacity: 0;
-    transition: var(--transition);
-    z-index: 2;
-  }
-
-  .it-global-card-content {
-    position: relative;
-    z-index: 3;
-    height: 100%;
+.it-premium-single-row {
     display: flex;
-    flex-direction: column;
-    justify-content: space-between;
-    transition: var(--transition);
-  }
+    width: max-content; /* Critical: allows row to be as wide as content */
+    animation: scroll-seamless 20s linear infinite;
+}
 
-  .it-global-card:hover {
-    color: #ffffff;
-  }
-
-  .it-global-card:hover .it-global-card-img {
-    opacity: 1;
-    transform: scale(1);
-  }
-
-  .it-global-card:hover .it-global-card-overlay {
-    opacity: 1;
-  }
-
-  .it-global-card:hover .it-global-meta {
-    color: rgba(255,255,255,0.8);
-  }
-
-  .it-global-tag {
-    font-size: 13px;
-    font-weight: 500;
-    letter-spacing: 0.1em;
-    margin-bottom: 20px;
-    display: block;
-  }
-
-  .it-global-card-title {
-    font-size: 32px;
-    line-height: 1.2;
-    font-weight: 500;
-    margin: 0;
-  }
-
-  .it-global-footer {
+.it-group {
     display: flex;
-    justify-content: space-between;
-    font-size: 14px;
-  }
+    gap: 20px;
+    padding-right: 20px; /* Maintains the gap between the two groups */
+}
 
-  .it-global-meta {
-    color: var(--text-muted);
-    transition: var(--transition);
-  }
+/* Stops animation on hover */
+.it-premium-single-row:hover {
+    animation-play-state: paused;
+}
 
-  /* Navigation */
-  .it-global-nav {
-    max-width: var(--max-width);
-    margin: 40px auto 0 auto;
-    padding: 0 20px;
-    display: flex;
-    gap: 12px;
-  }
+@keyframes scroll-seamless {
+    0% {
+        transform: translateX(0);
+    }
+    100% {
+        /* Move exactly half the width of the total row (one full group) */
+        transform: translateX(-50%);
+    }
+}
 
-  .it-global-btn {
-    width: 56px;
-    height: 56px;
-    border-radius: 4px;
-    border: none;
+/* Premium touch: ensure icons don't shrink */
+.it-premium-card {
+    flex-shrink: 0;
+}
+
+/* Ensure the text box stays above the moving cards if they overlap */
+.it-premium-text-box {
+    flex: 0 0 550px;
+    z-index: 5;
+    background: white; /* Optional: keeps text clear if icons slide behind it */
+}
+
+.it-premium-card {
+    width: 110px;
+    height: 110px;
     display: flex;
     align-items: center;
     justify-content: center;
     cursor: pointer;
-    transition: var(--transition);
-    background: transparent;
-  }
+    transition: all 0.3s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+    flex-shrink: 0;
+}
 
-  .it-global-btn-prev { background: #dcdcdc; }
-  .it-global-btn-next { background: #1a1a1a; color: white; }
+.it-premium-card img {
+    width: 55px;
+    height: 55px;
+    object-fit: contain;
+    filter: grayscale(100%);
+    opacity: 0.6;
+    transition: all 0.3s ease;
+}
 
-  .it-global-btn:hover {
-    transform: translateY(-2px);
-    filter: brightness(1.1);
-  }
+.it-premium-card:hover {
+    transform: scale(1.1);
+    z-index: 10;
+}
 
-  /* Mobile Fixes */
-  @media (max-width: 768px) {
-    .it-global-card { flex: 0 0 85vw; height: 450px; }
-    .it-global-h1 { font-size: 36px; }
-  }
+.it-premium-card:hover img {
+    filter: grayscale(0%);
+    opacity: 1;
+}
+
+/* Mobile Responsiveness */
+@media (max-width: 992px) {
+    .it-premium-hero { padding: 60px 0; }
+    .it-premium-container {
+        flex-direction: column;
+        text-align: center;
+    }
+    .it-premium-text-box {
+        flex: 0 0 auto;
+        margin-bottom: 50px;
+    }
+    .it-premium-headline { font-size: 42px; }
+    .it-premium-visual-area { width: 100%; justify-content: center; }
+    .it-premium-single-row {
+        position: relative;
+        left: 0;
+        width: 100%;
+        justify-content: center;
+        flex-wrap: wrap; /* Wraps on mobile for better visibility */
+    }
+}
 </style>
-
-<section class="it-global-section">
-  <header class="it-global-header">
-    <div class="it-global-label">+ Newsroom</div>
-    <h1 class="it-global-h1">
-      <span style="color: #000;">Updates that move</span>
-      <span>the world forward</span>
-    </h1>
-  </header>
-
-  <div class="it-global-slider-container">
-    <div class="it-global-track" id="itTrack">
-      
-      <div class="it-global-card">
-        <div class="it-global-card-img" style="background-image: url('https://images.pexels.com/photos/31216387/pexels-photo-31216387.jpeg');"></div>
-        <div class="it-global-card-overlay"></div>
-        <div class="it-global-card-content">
-          <div>
-            <span class="it-global-tag">NEWS</span>
-            <h3 class="it-global-card-title">Global IT infrastructure expands across South Africa</h3>
-          </div>
-          <div class="it-global-footer">
-            <span class="it-global-meta">February 13, 2026</span>
-            <span class="it-global-meta">4 min read</span>
-          </div>
+<section class="it-premium-hero">
+    <div class="it-premium-container">
+        
+        <div class="it-premium-text-box">
+            <h1 class="it-premium-headline">
+                Build your solution with 
+                <span id="it-dynamic-text">any framework</span>
+            </h1>
         </div>
-      </div>
 
-      <div class="it-global-card">
-        <div class="it-global-card-img" style="background-image: url('https://images.pexels.com/photos/31216390/pexels-photo-31216390.jpeg');"></div>
-        <div class="it-global-card-overlay"></div>
-        <div class="it-global-card-content">
-          <div>
-            <span class="it-global-tag">NEWS</span>
-            <h3 class="it-global-card-title">Hybrid cloud solutions reaching 100+ active enterprise clients</h3>
-          </div>
-          <div class="it-global-footer">
-            <span class="it-global-meta">February 10, 2026</span>
-            <span class="it-global-meta">6 min read</span>
-          </div>
-        </div>
-      </div>
-
-      <div class="it-global-card">
-        <div class="it-global-card-img" style="background-image: url('https://images.pexels.com/photos/12966861/pexels-photo-12966861.jpeg');"></div>
-        <div class="it-global-card-overlay"></div>
-        <div class="it-global-card-content">
-          <div>
-            <span class="it-global-tag">TECH</span>
-            <h3 class="it-global-card-title">Next-gen cybersecurity corridor connects London & Johannesburg</h3>
-          </div>
-          <div class="it-global-footer">
-            <span class="it-global-meta">February 05, 2026</span>
-            <span class="it-global-meta">5 min read</span>
-          </div>
-        </div>
-      </div>
-
-      <div class="it-global-card">
-        <div class="it-global-card-img" style="background-image: url('https://images.unsplash.com/photo-1519389950473-47ba0277781c?auto=format&fit=crop&w=800&q=80');"></div>
-        <div class="it-global-card-overlay"></div>
-        <div class="it-global-card-content">
-          <div>
-            <span class="it-global-tag">AI</span>
-            <h3 class="it-global-card-title">Automating multipurpose IT workflows for global scale</h3>
-          </div>
-          <div class="it-global-footer">
-            <span class="it-global-meta">January 28, 2026</span>
-            <span class="it-global-meta">8 min read</span>
-          </div>
-        </div>
-      </div>
+        <div class="it-premium-visual-area">
+    <div class="it-premium-single-row">
+        <div class="it-group">
+            <div class="it-premium-card" data-name="React.js"><img src="https://cdn.worldvectorlogo.com/logos/react-2.svg" alt="React"></div>
+            <div class="it-premium-card" data-name="Next.js"><img src="https://cdn.worldvectorlogo.com/logos/next-js.svg" alt="Next"></div>
+            <div class="it-premium-card" data-name="Vue.js"><img src="https://cdn.worldvectorlogo.com/logos/vue-9.svg" alt="Vue"></div>
+            <div class="it-premium-card" data-name="TypeScript"><img src="https://cdn.worldvectorlogo.com/logos/typescript.svg" alt="TS"></div>
+            <div class="it-premium-card" data-name="Node.js"><img src="https://cdn.worldvectorlogo.com/logos/nodejs-icon.svg" alt="Node"></div>
+            </div>
+        
+        <div class="it-group">
+            <div class="it-premium-card" data-name="React.js"><img src="https://cdn.worldvectorlogo.com/logos/react-2.svg" alt="React"></div>
+            <div class="it-premium-card" data-name="Next.js"><img src="https://cdn.worldvectorlogo.com/logos/next-js.svg" alt="Next"></div>
+            <div class="it-premium-card" data-name="Vue.js"><img src="https://cdn.worldvectorlogo.com/logos/vue-9.svg" alt="Vue"></div>
+            <div class="it-premium-card" data-name="TypeScript"><img src="https://cdn.worldvectorlogo.com/logos/typescript.svg" alt="TS"></div>
+            <div class="it-premium-card" data-name="Node.js"><img src="https://cdn.worldvectorlogo.com/logos/nodejs-icon.svg" alt="Node"></div>
+            </div>
+    </div>
+</div>
 
     </div>
-  </div>
-
-  <div class="it-global-nav">
-    <button class="it-global-btn it-global-btn-prev" onclick="scrollSlider(-444)">
-      <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><line x1="19" y1="12" x2="5" y2="12"></line><polyline points="12 19 5 12 12 5"></polyline></svg>
-    </button>
-    <button class="it-global-btn it-global-btn-next" onclick="scrollSlider(444)">
-      <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><line x1="5" y1="12" x2="19" y2="12"></line><polyline points="12 5 19 12 12 19"></polyline></svg>
-    </button>
-  </div>
 </section>
-
 <script>
-  function scrollSlider(amount) {
-    const track = document.getElementById('itTrack');
-    track.scrollBy({ left: amount, behavior: 'smooth' });
-  }
+    document.querySelectorAll('.it-premium-card').forEach(card => {
+    const dynamicText = document.getElementById('it-dynamic-text');
+    const defaultText = "any framework";
+
+    card.addEventListener('mouseenter', function() {
+        const newName = this.getAttribute('data-name');
+        dynamicText.classList.add('it-text-fade');
+        setTimeout(() => {
+            dynamicText.innerText = newName;
+            dynamicText.classList.remove('it-text-fade');
+        }, 150);
+    });
+
+    card.addEventListener('mouseleave', function() {
+        dynamicText.classList.add('it-text-fade');
+        setTimeout(() => {
+            dynamicText.innerText = defaultText;
+            dynamicText.classList.remove('it-text-fade');
+        }, 150);
+    });
+});
 </script>
 
 
@@ -1417,6 +1357,266 @@ document.addEventListener("DOMContentLoaded", function() {
 
 
 
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Course Grid - IT Company</title>
+    <style>
+        /* CSS Variables for easy maintenance */
+        :root {
+            --itc-main-width: 1200px;
+            --itc-border-radius: 32px;
+            --itc-bg-color: #e4e4e4;
+            --itc-text-dark: #000000;
+            --itc-text-light: #ffffff;
+            --itc-accent-gray: #e8e8e8;
+            /* Font Stack - Assuming Circular Std is loaded via your system/hosting */
+            --itc-font-family: 'Circular Std', -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
+        }
+
+        .itc-section-wrapper {
+            width: 100%;
+            display: flex;
+            justify-content: center;
+            padding: 80px 0;
+            background-color: var(--itc-bg-color);
+            font-family: var(--itc-font-family);
+        }
+
+        .itc-container {
+            width: var(--itc-main-width);
+            display: flex;
+            flex-direction: column;
+            gap: 40px;
+        }
+
+        /* Header Section */
+        .itc-header {
+            display: flex;
+            justify-content: space-between;
+            align-items: flex-start;
+        }
+
+        .itc-title {
+            font-size: 64px;
+            font-weight: 700;
+            line-height: 1.05;
+            letter-spacing: -2px;
+            margin: 0;
+            color: var(--itc-text-dark);
+        }
+
+        .itc-badge {
+            background-color: var(--itc-accent-gray);
+            padding: 10px 20px;
+            border-radius: 50px;
+            font-size: 14px;
+            font-weight: 500;
+            color: #444;
+        }
+
+        /* Grid Layout */
+        .itc-grid {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 24px;
+        }
+
+        .itc-card {
+            position: relative;
+            height: 480px;
+            border-radius: var(--itc-border-radius);
+            overflow: hidden;
+            display: flex;
+            flex-direction: column;
+            justify-content: flex-end;
+            padding: 32px;
+            transition: transform 0.3s ease;
+            border: 5px solid #fff;
+            cursor: pointer;
+        }
+
+        .itc-card:hover {
+            transform: translateY(-5px);
+        }
+
+        /* Background Images/Overlays */
+        .itc-card-bg {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            z-index: 1;
+        }
+
+        .itc-card-overlay {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: linear-gradient(180deg, rgba(0,0,0,0) 40%, rgba(0,0,0,0.85) 100%);
+            z-index: 2;
+        }
+
+        /* Content inside card */
+        .itc-card-content {
+            position: relative;
+            z-index: 3;
+            color: var(--itc-text-light);
+        }
+
+        .itc-card-tag {
+            font-size: 13px;
+            font-weight: 400;
+            opacity: 0.8;
+            margin-bottom: 8px;
+            text-transform: capitalize;
+        }
+
+        .itc-card-headline {
+            font-size: 28px;
+            font-weight: 700;
+            margin: 0 0 12px 0;
+            line-height: 1.2;
+        }
+
+        .itc-card-description {
+            font-size: 16px;
+            line-height: 1.5;
+            opacity: 0.9;
+            margin: 0;
+            font-weight: 400;
+        }
+
+        /* Mobile Responsiveness */
+        @media (max-width: 1240px) {
+            .itc-container { width: 95%; }
+            .itc-title { font-size: 48px; }
+        }
+
+        @media (max-width: 991px) {
+            .itc-grid { grid-template-columns: repeat(2, 1fr); }
+        }
+
+        @media (max-width: 767px) {
+            .itc-grid { grid-template-columns: 1fr; }
+            .itc-header { flex-direction: column; gap: 20px; }
+        }
+    </style>
+</head>
+<body>
+
+    <section class="itc-section-wrapper">
+        <div class="itc-container">
+            
+            <header class="itc-header">
+                <h1 class="itc-title">You’ll love<br>this course</h1>
+                <div class="itc-badge">Our Approach</div>
+            </header>
+
+            <div class="itc-grid">
+                
+                <div class="itc-card">
+                    <img src="https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?auto=format&fit=crop&q=80&w=600" alt="Growth" class="itc-card-bg">
+                    <div class="itc-card-overlay"></div>
+                    <div class="itc-card-content">
+                        <div class="itc-card-tag">Real momentum</div>
+                        <h2 class="itc-card-headline">Growth that pops</h2>
+                        <p class="itc-card-description">Learn how to push your content further and spark growth you can actually see.</p>
+                    </div>
+                </div>
+
+                <div class="itc-card">
+                    <img src="https://images.unsplash.com/photo-1534528741775-53994a69daeb?auto=format&fit=crop&q=80&w=600" alt="Posting" class="itc-card-bg">
+                    <div class="itc-card-overlay"></div>
+                    <div class="itc-card-content">
+                        <div class="itc-card-tag">No more falling off</div>
+                        <h2 class="itc-card-headline">Posting on lock</h2>
+                        <p class="itc-card-description">Build a simple posting flow that keeps you showing up without overthinking it.</p>
+                    </div>
+                </div>
+
+                <div class="itc-card">
+                    <img src="https://images.unsplash.com/photo-1517841905240-472988babdf9?auto=format&fit=crop&q=80&w=600" alt="Content" class="itc-card-bg">
+                    <div class="itc-card-overlay"></div>
+                    <div class="itc-card-content">
+                        <div class="itc-card-tag">Never stuck again</div>
+                        <h2 class="itc-card-headline">Content on repeat</h2>
+                        <p class="itc-card-description">Use proven frameworks that tell you exactly what to post — again and again.</p>
+                    </div>
+                </div>
+
+                <div class="itc-card">
+                    <img src="https://images.unsplash.com/photo-1494790108377-be9c29b29330?auto=format&fit=crop&q=80&w=600" alt="Views" class="itc-card-bg">
+                    <div class="itc-card-overlay"></div>
+                    <div class="itc-card-content">
+                        <div class="itc-card-tag">Growth with profit</div>
+                        <h2 class="itc-card-headline">Monetized views</h2>
+                        <p class="itc-card-description">Learn how to turn attention into real opportunities, not just empty numbers.</p>
+                    </div>
+                </div>
+
+                <div class="itc-card">
+                    <img src="https://images.unsplash.com/photo-1506794778202-cad84cf45f1d?auto=format&fit=crop&q=80&w=600" alt="Engagement" class="itc-card-bg">
+                    <div class="itc-card-overlay"></div>
+                    <div class="itc-card-content">
+                        <div class="itc-card-tag">Likes, comments, shares</div>
+                        <h2 class="itc-card-headline">Real engagement</h2>
+                        <p class="itc-card-description">Create posts people actually stop for, react to, and share across platforms.</p>
+                    </div>
+                </div>
+
+                <div class="itc-card">
+                    <img src="https://images.unsplash.com/photo-1524504388940-b1c1722653e1?auto=format&fit=crop&q=80&w=600" alt="Energy" class="itc-card-bg">
+                    <div class="itc-card-overlay"></div>
+                    <div class="itc-card-content">
+                        <div class="itc-card-tag">You're ready now</div>
+                        <h2 class="itc-card-headline">Level-up energy</h2>
+                        <p class="itc-card-description">Know what works, why it works, and how to repeat it with confidence.</p>
+                    </div>
+                </div>
+
+            </div>
+        </div>
+    </section>
+
+</body>
+</html>
 
 
 
@@ -2995,9 +3195,11 @@ document.addEventListener("DOMContentLoaded", function() {
             max-width: 100%;
         }
 
-        .cronos-answer-paragraph-text strong {
+        .cronos-answer-paragraph-text a {
             color: #0088f0;
             font-weight: 400;
+            text-decoration: none;
+            border-bottom: none;
         }
 
         .cronos-cta-us {
@@ -3063,7 +3265,7 @@ document.addEventListener("DOMContentLoaded", function() {
             </button>
             <div class="cronos-accordion-content-panel">
                 <p class="cronos-answer-paragraph-text">
-                    We primarily use an <strong>Agile and Scrum methodology</strong>. This approach emphasizes iterative development, frequent collaboration, and flexible responsiveness to changing requirements. Our process includes Discovery, Design & Prototyping, Iterative Development, Quality Assurance (QA), and continuous deployment. This ensures rapid time-to-market and alignment with your business goals at every stage.
+                    We primarily use an <a href="#">Agile and Scrum methodology</a>. This approach emphasizes iterative development, frequent collaboration, and flexible responsiveness to changing requirements. Our process includes Discovery, Design & Prototyping, Iterative Development, Quality Assurance (QA), and continuous deployment. This ensures rapid time-to-market and alignment with your business goals at every stage.
                 </p>
             </div>
         </div>
@@ -3110,7 +3312,7 @@ document.addEventListener("DOMContentLoaded", function() {
             </button>
             <div class="cronos-accordion-content-panel">
                 <p class="cronos-answer-paragraph-text">
-                    We specialize in a wide range of technologies including JavaScript frameworks (React, Angular, Vue), backend platforms (Node.js, Django, Ruby on Rails), cloud services (AWS, Azure, Google Cloud), and DevOps tools (Docker, Kubernetes, Jenkins). Our team stays current with industry trends to deliver modern, scalable solutions tailored to your needs.
+                    We specialize in a wide range of technologies including JavaScript frameworks (React, Angular, Vue), backend platforms (Node.js, Django, Ruby on Rails), cloud services (AWS, Azure, Google Cloud), and DevOps tools (Docker, Kubernetes, Jenkins). Our team stays current with industry trends to deliver modern, scalable solutions tailored to your needs. View our complete <a href="tech-stack.html">technology stack</a> for more details.
                 </p>
             </div>
         </div>
