@@ -20,12 +20,35 @@
 <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700;800&display=swap" rel="stylesheet">
 
 <style>
+    @font-face {
+            font-family: 'Circular Std';
+            src: url('fonts/CircularStd-Book.ttf') format('truetype');
+            font-weight: 400;
+            font-style: normal;
+        }
+
+        /* Circular Std - Medium (500) */
+        @font-face {
+            font-family: 'Circular Std';
+            src: url('fonts/CircularStd.ttf') format('truetype');
+            font-weight: 500;
+            font-style: normal;
+        }
+
+        /* Circular Std - Bold (700) */
+        @font-face {
+            font-family: 'Circular Std';
+            src: url('fonts/CircularStd-Bold.ttf') format('truetype');
+            font-weight: 600;
+            font-style: normal;
+        }
+
     /* Scoped Container to prevent global style leakage */
     .it-hero-wrapper {
         margin: 0;
         padding: 0;
         box-sizing: border-box;
-        font-family: 'Inter', sans-serif;
+        font-family: 'Circular Std', sans-serif;
         display: flex;
         align-items: center;
         justify-content: flex-start;
@@ -120,6 +143,1220 @@
 
 
 
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>IT Consulting Pricing | Scalable IT Solutions</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Outfit:wght@400;600;800&family=Work+Sans:wght@400;500&display=swap" rel="stylesheet">
+  <style>
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+    }
+
+    :root {
+      --primary: #1e40af;
+      --primary-dark: #1e3a8a;
+      --primary-light: #3b82f6;
+      --success: #000000;
+      --text-dark: #0f172a;
+      --text-gray: #64748b;
+      --text-light: #94a3b8;
+      --bg-light: #f8fafc;
+      --bg-white: #ffffff;
+      --border: #e2e8f0;
+      --shadow-sm: 0 1px 3px rgba(0, 0, 0, 0.05);
+      --shadow-md: 0 4px 12px rgba(0, 0, 0, 0.08);
+      --shadow-lg: 0 20px 25px -5px rgba(0, 0, 0, 0.1);
+    }
+
+    body {
+      font-family: 'Circular Std', -apple-system, sans-serif;
+      color: var(--text-dark);
+      background-color: var(--bg-light);
+      line-height: 1.6;
+      overflow-x: hidden;
+    }
+
+    /* Container & Wrapper */
+    .itc-pricing-wrap {
+      padding: 60px 20px 80px;
+      background: linear-gradient(135deg, #f8fafc 0%, #f1f5f9 100%);
+    }
+
+    .itc-container {
+      max-width: 1200px;
+      margin: 0 auto;
+    }
+
+    /* Header Styling */
+    .itc-header {
+      text-align: center;
+      margin-bottom: 60px;
+      animation: fadeInDown 0.8s ease-out;
+    }
+
+    @keyframes fadeInDown {
+      from {
+        opacity: 0;
+        transform: translateY(-20px);
+      }
+      to {
+        opacity: 1;
+        transform: translateY(0);
+      }
+    }
+
+    .itc-main-title {
+      font-family: 'Outfit', sans-serif;
+      font-size: clamp(2rem, 5vw, 3rem);
+      font-weight: 600;
+      margin-bottom: 16px;
+      color: var(--text-dark);
+      letter-spacing: -0.02em;
+    }
+
+    .itc-subtitle {
+      font-size: clamp(1rem, 2.5vw, 1.25rem);
+      color: var(--text-gray);
+      max-width: 650px;
+      margin: 0 auto 30px;
+      line-height: 1.7;
+    }
+
+    /* Trust Indicators */
+    .itc-trust-bar {
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      gap: 30px;
+      flex-wrap: wrap;
+      margin-top: 30px;
+      padding: 20px;
+      background: rgba(255, 255, 255, 0.6);
+      border-radius: 12px;
+      backdrop-filter: blur(10px);
+    }
+
+    .itc-trust-item {
+      display: flex;
+      align-items: center;
+      gap: 8px;
+      font-size: 0.9rem;
+      color: var(--text-gray);
+    }
+
+    .itc-trust-item::before {
+      content: "✓";
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      width: 24px;
+      height: 24px;
+      background: var(--success);
+      color: white;
+      border-radius: 50%;
+      font-weight: bold;
+      font-size: 0.75rem;
+    }
+
+    /* Grid Logic */
+    .itc-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+      gap: 30px;
+      margin-bottom: 60px;
+    }
+
+    /* Card Styling */
+    .itc-card {
+      background: var(--bg-white);
+      border: 2px solid var(--border);
+      border-radius: 20px;
+      padding: 40px 30px;
+      display: flex;
+      flex-direction: column;
+      transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+      position: relative;
+      animation: fadeInUp 0.8s ease-out backwards;
+    }
+
+    @keyframes fadeInUp {
+      from {
+        opacity: 0;
+        transform: translateY(30px);
+      }
+      to {
+        opacity: 1;
+        transform: translateY(0);
+      }
+    }
+
+    .itc-card:nth-child(1) { animation-delay: 0.1s; }
+    .itc-card:nth-child(2) { animation-delay: 0.2s; }
+    .itc-card:nth-child(3) { animation-delay: 0.3s; }
+
+    .itc-card:hover {
+      transform: translateY(-8px);
+      box-shadow: var(--shadow-lg);
+      border-color: var(--primary-light);
+    }
+
+    .itc-card-featured {
+      border: 3px solid var(--primary);
+      background: linear-gradient(135deg, #ffffff 0%, #f0f9ff 100%);
+      position: relative;
+    }
+
+    .itc-card-featured:hover {
+      border-color: var(--primary-dark);
+    }
+
+    /* Badge */
+    .itc-badge {
+      position: absolute;
+      top: -15px;
+      left: 50%;
+      transform: translateX(-50%);
+      background: linear-gradient(135deg, var(--primary) 0%, var(--primary-dark) 100%);
+      color: white;
+      padding: 6px 18px;
+      font-size: 0.75rem;
+      font-weight: 700;
+      border-radius: 20px;
+      text-transform: uppercase;
+      letter-spacing: 0.5px;
+      box-shadow: var(--shadow-md);
+    }
+
+    .itc-tier-name {
+      font-family: 'Circular Std', sans-serif;
+      font-size: clamp(1.5rem, 3vw, 1.75rem);
+      font-weight: 700;
+      margin-bottom: 12px;
+      color: var(--text-dark);
+    }
+
+    .itc-description {
+      color: var(--text-gray);
+      margin-bottom: 24px;
+      font-size: 0.95rem;
+      min-height: 48px;
+    }
+
+    .itc-price-wrapper {
+      font-family: 'Outfit', sans-serif;
+      font-size: clamp(2.5rem, 5vw, 3rem);
+      font-weight: 800;
+      margin-bottom: 24px;
+      color: var(--primary);
+      display: flex;
+      align-items: baseline;
+      gap: 4px;
+    }
+
+    .itc-currency {
+      font-size: clamp(1.5rem, 3vw, 2rem);
+      vertical-align: top;
+    }
+
+    .itc-period {
+      font-size: clamp(1rem, 2vw, 1.25rem);
+      color: var(--text-light);
+      font-weight: 500;
+    }
+
+    .itc-features {
+      list-style: none;
+      padding: 0;
+      margin-bottom: 30px;
+      flex-grow: 1;
+    }
+
+    .itc-features li {
+      padding: 12px 0;
+      font-size: 0.95rem;
+      color: var(--text-gray);
+      border-bottom: 1px solid var(--border);
+      display: flex;
+      align-items: flex-start;
+      gap: 10px;
+      line-height: 1.5;
+    }
+
+    .itc-features li:last-child {
+      border-bottom: none;
+    }
+
+    .itc-features li::before {
+      content: "✓";
+      flex-shrink: 0;
+      color: var(--success);
+      font-weight: bold;
+      font-size: 1.1rem;
+      margin-top: 2px;
+    }
+
+    .itc-features li strong {
+      color: var(--text-dark);
+    }
+
+    /* Buttons */
+    .itc-btn {
+      display: block;
+      text-align: center;
+      padding: 16px 24px;
+      border-radius: 12px;
+      text-decoration: none;
+      font-weight: 600;
+      font-size: 1rem;
+      border: 2px solid var(--primary);
+      color: var(--primary);
+      transition: all 0.3s ease;
+      cursor: pointer;
+      background: var(--bg-white);
+    }
+
+    .itc-btn-primary {
+      background: linear-gradient(135deg, var(--primary) 0%, var(--primary-dark) 100%);
+      color: white;
+      border: none;
+      box-shadow: 0 4px 14px rgba(30, 64, 175, 0.3);
+    }
+
+    .itc-btn:hover {
+      transform: translateY(-2px);
+      box-shadow: var(--shadow-md);
+    }
+
+    .itc-btn-primary:hover {
+      box-shadow: 0 6px 20px rgba(30, 64, 175, 0.4);
+    }
+
+    .itc-btn:active {
+      transform: translateY(0);
+    }
+
+    /* Comparison Section */
+    .itc-comparison-section {
+      margin: 80px 0;
+      padding: 0;
+      background: transparent;
+      border-radius: 0;
+      box-shadow: none;
+    }
+
+    .itc-comparison-title {
+      font-family: 'Circular Std', sans-serif;
+      font-size: clamp(1.75rem, 4vw, 2.25rem);
+      font-weight: 700;
+      text-align: center;
+      margin-bottom: 16px;
+      color: var(--text-dark);
+    }
+
+    .itc-comparison-subtitle {
+      text-align: center;
+      color: var(--text-gray);
+      font-size: 1.05rem;
+      margin-bottom: 50px;
+      max-width: 700px;
+      margin-left: auto;
+      margin-right: auto;
+    }
+
+    .itc-comparison-wrapper {
+      display: flex;
+      flex-direction: column;
+      gap: 30px;
+    }
+
+    .itc-table-section {
+      border: 2px solid var(--border);
+      border-radius: 15px;
+      overflow: hidden;
+      background: var(--bg-white);
+    }
+
+    /* Sticky header styles */
+    .itc-table-section.itc-table-header {
+      position: sticky;
+      top: 70px;
+      z-index: 100;
+      background: var(--bg-light);
+      box-shadow: 0 4px 12px rgba(0, 0, 0, 0.08);
+      border: none;
+      border-radius: 20px;
+    }
+
+    .itc-comparison-table {
+      overflow-x: auto;
+      -webkit-overflow-scrolling: touch;
+      background: transparent;
+    }
+
+    table {
+      width: 100%;
+      border-collapse: collapse;
+      table-layout: fixed;
+      min-width: 800px;
+      background: transparent;
+    }
+
+    /* Unified Column widths for alignment */
+    table th:first-child,
+    table td:first-child {
+      width: 20%;
+    }
+
+    table th:nth-child(2),
+    table td:nth-child(2) {
+      width: 20%;
+    }
+
+    table th:nth-child(3),
+    table td:nth-child(3) {
+      width: 20%;
+    }
+
+    table th:nth-child(4),
+    table td:nth-child(4) {
+      width: 20%;
+    }
+
+    thead th {
+      background: var(--bg-white);
+      padding: 20px 16px;
+      text-align: left;
+      font-weight: 500;
+      color: var(--text-dark);
+      border-bottom: 2px solid var(--border);
+      font-size: 1.4rem;
+      font-family: 'Circular Std', sans-serif;
+    }
+
+    thead th:first-child {
+      font-size: 0.85rem;
+      color: var(--text-gray);
+      text-transform: uppercase;
+      letter-spacing: 0.5px;
+      font-family: 'Circular Std', sans-serif;
+    }
+
+    tbody tr {
+      border-bottom: 1px solid var(--border);
+    }
+
+    tbody tr:last-child {
+      border-bottom: none;
+    }
+
+    tbody td {
+      padding: 18px 16px;
+      color: var(--text-gray);
+      font-size: 1.3rem;
+      vertical-align: top;
+      background: transparent;
+    }
+
+    tbody td:first-child {
+      font-weight: 600;
+      color: var(--text-dark);
+    }
+
+    tbody tr:hover {
+      background: rgba(30, 64, 175, 0.02);
+    }
+
+    .itc-feature-group {
+      font-weight: 700;
+      color: var(--text-dark);
+      background: rgba(30, 64, 175, 0.04);
+      text-transform: uppercase;
+      letter-spacing: 0.5px;
+      font-size: 0.8rem;
+    }
+
+    .itc-feature-group td {
+        padding: 12px 16px;
+    }
+
+    .itc-check {
+      color: var(--success);
+      font-weight: bold;
+      font-family: 'Circular Std', sans-serif;
+      font-size: 1.3rem;
+    }
+
+    .itc-cross {
+      color: var(--text-light);
+      font-size: 1.2rem;
+    }
+
+    .itc-feature-detail {
+      display: block;
+      font-size: 0.95rem;
+      font-weight: 500;
+      color: var(--text-light);
+      margin-top: 4px;
+      line-height: 1.5;
+    }
+
+    /* FAQ Section */
+    .itc-faq-section {
+      margin: 150px 0;
+      display: grid;
+      grid-template-columns: 300px 1fr;
+      gap: 60px;
+      align-items: start;
+    }
+
+    .itc-faq-left {
+      position: sticky;
+      top: 90px;
+    }
+
+    .itc-faq-title {
+      font-family: 'Circular Std', sans-serif;
+      font-size: clamp(1.75rem, 4vw, 2.25rem);
+      font-weight: 700;
+      color: var(--text-dark);
+      margin-bottom: 16px;
+      line-height: 1.2;
+    }
+
+    .itc-faq-subtitle {
+      color: var(--text-gray);
+      font-size: 1.1rem;
+      line-height: 1.6;
+    }
+
+    .itc-faq-right {
+      display: flex;
+      flex-direction: column;
+      gap: 12px;
+    }
+
+    .itc-faq-item {
+      border-bottom: 1px solid #64748b;
+      overflow: hidden;
+      transition: all 0.3s ease;
+      background: transparent;
+    }
+
+    .itc-faq-item.active {
+      border-color: var(--primary);
+    }
+
+    .itc-faq-question {
+      font-weight: 500;
+      font-size: 1.5rem;
+      color: var(--text-dark);
+      padding: 20px 0;
+      cursor: pointer;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      user-select: none;
+      transition: all 0.3s ease;
+      background: transparent;
+    }
+
+    .itc-faq-icon {
+      font-size: 2.5rem;
+      font-weight: 400;
+      font-family: 'Work Sans', sans-serif;
+      color: var(--primary);
+      transition: transform 0.3s ease;
+      flex-shrink: 0;
+      margin-left: 12px;
+    }
+
+    .itc-faq-item.active .itc-faq-icon {
+      transform: rotate(180deg);
+    }
+
+    .itc-faq-answer {
+      color: var(--text-gray);
+      line-height: 1.8;
+      font-size: 1.2rem;
+      padding: 0;
+      max-height: 0;
+      overflow: hidden;
+      transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+      background: transparent;
+    }
+
+    .itc-faq-item.active .itc-faq-answer {
+      max-height: 500px;
+      padding: 0 0 24px 0;
+    }
+
+    /* Footer Notes */
+    .itc-footer-notes {
+      text-align: left;
+      max-width: 100%;
+      margin: 150px auto 0;
+    }
+
+    .itc-footer-notes h3 {
+      font-family: 'Circular Std', sans-serif;
+      font-size: 1.5rem;
+      margin-bottom: 20px;
+      font-weight: 500;
+      color: var(--text-dark);
+    }
+
+    .itc-footer-notes p {
+      font-size: 0.95rem;
+      color: var(--text-gray);
+      line-height: 1.8;
+      margin-bottom: 12px;
+    }
+
+    .itc-footer-notes p:last-child {
+      margin-bottom: 0;
+    }
+
+    /* Responsive Design */
+    @media (max-width: 968px) {
+      .itc-faq-section {
+        grid-template-columns: 1fr;
+        gap: 30px;
+      }
+
+      .itc-faq-left {
+        position: static;
+        text-align: center;
+      }
+
+      .itc-faq-title {
+        margin-bottom: 8px;
+      }
+
+      /* Adjust sticky header for mobile */
+      .itc-table-section.itc-table-header {
+        top: 70px;
+      }
+    }
+
+    @media (max-width: 768px) {
+      .itc-pricing-wrap {
+        padding: 40px 16px 60px;
+      }
+
+      .itc-grid {
+        grid-template-columns: 1fr;
+        gap: 24px;
+      }
+
+      .itc-card {
+        padding: 32px 24px;
+      }
+
+      .itc-card-featured {
+        transform: none;
+      }
+
+      .itc-trust-bar {
+        gap: 16px;
+        padding: 16px;
+      }
+
+      .itc-trust-item {
+        font-size: 0.85rem;
+      }
+
+      .itc-comparison-section,
+      .itc-footer-notes {
+        padding: 32px 20px;
+      }
+
+      .itc-comparison-section {
+        padding: 0;
+      }
+
+      .itc-table-section {
+        border-radius: 12px;
+      }
+
+      .itc-comparison-table {
+        border-radius: 12px;
+      }
+
+      .itc-faq-item {
+        padding: 0;
+      }
+
+      .itc-faq-question {
+        font-size: 1rem;
+        padding: 16px 20px;
+      }
+    }
+
+    @media (max-width: 480px) {
+      .itc-card {
+        padding: 24px 20px;
+      }
+
+      .itc-features li {
+        font-size: 0.9rem;
+        padding: 10px 0;
+      }
+
+      .itc-btn {
+        padding: 14px 20px;
+        font-size: 0.95rem;
+      }
+
+      .itc-trust-bar {
+        flex-direction: column;
+        gap: 12px;
+      }
+
+      table {
+        min-width: 650px;
+      }
+
+      thead th, tbody td {
+        padding: 14px 12px;
+        font-size: 0.85rem;
+      }
+
+      .itc-faq-question {
+        font-size: 0.95rem;
+        padding: 14px 16px;
+      }
+
+      .itc-faq-answer {
+        font-size: 0.9rem;
+      }
+
+      .itc-faq-item.active .itc-faq-answer {
+        padding: 0 16px 16px 16px;
+      }
+    }
+
+    /* Print Styles */
+    @media print {
+      .itc-pricing-wrap {
+        background: white;
+      }
+
+      .itc-card {
+        break-inside: avoid;
+        box-shadow: none;
+        border: 2px solid #ccc;
+      }
+
+      .itc-btn {
+        display: none;
+      }
+    }
+  </style>
+</head>
+<body>
+
+<section class="itc-pricing-wrap">
+  <div class="itc-container">
+    
+    <div class="itc-header">
+      <h1 class="itc-main-title">Scalable IT Solutions for Growing Businesses</h1>
+      <p class="itc-subtitle">Choose the level of support that fits your business goals. Transparent pricing, expert engineering, and proactive solutions to keep your systems running smoothly.</p>
+      
+      <div class="itc-trust-bar">
+        <div class="itc-trust-item">99.9% Uptime SLA</div>
+        <div class="itc-trust-item">SOC 2 Certified</div>
+        <div class="itc-trust-item">No Long-term Lock-in</div>
+        <div class="itc-trust-item">15+ Years Experience</div>
+      </div>
+    </div>
+
+    <div class="itc-grid">
+      <div class="itc-card">
+        <h3 class="itc-tier-name">Advisory</h3>
+        <p class="itc-description">Perfect for businesses with internal IT teams who need strategic guidance on specific projects.</p>
+        <div class="itc-price-wrapper">
+          <span class="itc-currency">$</span><span class="itc-amount">150</span><span class="itc-period">/hr</span>
+        </div>
+        <ul class="itc-features">
+          <li>Strategic IT Roadmap Planning</li>
+          <li>Security Audit & Assessment</li>
+          <li>Cloud Migration Strategy</li>
+          <li>Technology Stack Review</li>
+          <li>Vendor Selection Guidance</li>
+          <li>Disaster Recovery Planning</li>
+          <li>48-hour Email Response Time</li>
+          <li>Pay-as-you-go, No Commitment</li>
+        </ul>
+        <a href="#contact" class="itc-btn">Book Consultation</a>
+      </div>
+
+      <div class="itc-card itc-card-featured">
+        <div class="itc-badge">Most Popular</div>
+        <h3 class="itc-tier-name">Fully Managed</h3>
+        <p class="itc-description">Comprehensive IT management for businesses that want to focus on growth, not infrastructure.</p>
+        <div class="itc-price-wrapper">
+          <span class="itc-currency">$</span><span class="itc-amount">1,200</span><span class="itc-period">/mo</span>
+        </div>
+        <ul class="itc-features">
+          <li><strong>Everything in Advisory, plus:</strong></li>
+          <li>24/7 Infrastructure Monitoring</li>
+          <li>Managed Cybersecurity & Threat Detection</li>
+          <li>Automated Daily Backups & Recovery</li>
+          <li>Patch Management & Updates</li>
+          <li>Network Performance Optimization</li>
+          <li>Email & Endpoint Security</li>
+          <li>Priority Support Queue (4-hour Response)</li>
+          <li>Monthly Performance Reports</li>
+          <li>Unlimited Support Tickets</li>
+        </ul>
+        <a href="#contact" class="itc-btn itc-btn-primary">Get Started Today</a>
+      </div>
+
+      <div class="itc-card">
+        <h3 class="itc-tier-name">Enterprise</h3>
+        <p class="itc-description">Tailored solutions for organizations with complex compliance requirements and mission-critical systems.</p>
+        <div class="itc-price-wrapper">
+          <span class="itc-amount">Custom</span>
+        </div>
+        <ul class="itc-features">
+          <li><strong>Everything in Fully Managed, plus:</strong></li>
+          <li>Dedicated Account Manager</li>
+          <li>On-site Hardware Support Available</li>
+          <li>HIPAA/GDPR/SOC 2 Compliance Support</li>
+          <li>Custom SLA Agreements (99.99% Uptime)</li>
+          <li>Multi-site Infrastructure Management</li>
+          <li>Advanced Threat Intelligence</li>
+          <li>White-glove Migration Services</li>
+          <li>Quarterly Business Reviews</li>
+          <li>24/7 Phone Support (1-hour Response)</li>
+        </ul>
+        <a href="#contact" class="itc-btn">Contact Sales Team</a>
+      </div>
+    </div>
+
+    <div class="itc-comparison-section">
+      <h2 class="itc-comparison-title">Feature Comparison</h2>
+      <p class="itc-comparison-subtitle">Compare service tiers at a glance.</p>
+      
+      <div class="itc-comparison-wrapper">
+        <div class="itc-table-section itc-table-header">
+          <div class="itc-comparison-table">
+            <table>
+              <thead>
+                <tr>
+                  <th>Feature & Service</th>
+                  <th>Advisory<br><span style="font-weight:400; font-size:1rem; color: var(--text-gray);">$150/hr</span></th>
+                  <th>Fully Managed<br><span style="font-weight:400; font-size:1rem; color: var(--text-gray);">$1,200/mo</span></th>
+                  <th>Enterprise<br><span style="font-weight:400; font-size:1rem; color: var(--text-gray);">Custom Pricing</span></th>
+                </tr>
+              </thead>
+            </table>
+          </div>
+        </div>
+
+        <div class="itc-table-section">
+          <div class="itc-comparison-table">
+            <table>
+              <tbody>
+                <tr class="itc-feature-group">
+                  <td colspan="4">Support & Response Times</td>
+                </tr>
+                <tr>
+                  <td>Support Availability</td>
+                  <td>Business hours</td>
+                  <td>24/7/365</td>
+                  <td>24/7/365</td>
+                </tr>
+                <tr>
+                  <td>Emergency Response</td>
+                  <td>48 hours</td>
+                  <td>1 hour</td>
+                  <td>15 minutes</td>
+                </tr>
+                <tr>
+                  <td>Support Channels</td>
+                  <td>Email only</td>
+                  <td>Email, phone, chat</td>
+                  <td>All + SMS</td>
+                </tr>
+              </tbody>
+            </table>
+          </div>
+        </div>
+
+        <div class="itc-table-section">
+          <div class="itc-comparison-table">
+            <table>
+              <tbody>
+                <tr class="itc-feature-group">
+                  <td colspan="4">Infrastructure Management</td>
+                </tr>
+                <tr>
+                  <td>24/7 System Monitoring</td>
+                  <td class="itc-cross">—</td>
+                  <td class="itc-check">✓</td>
+                  <td class="itc-check">✓</td>
+                </tr>
+                <tr>
+                  <td>Server Management</td>
+                  <td class="itc-cross">—</td>
+                  <td class="itc-check">✓</td>
+                  <td class="itc-check">✓</td>
+                </tr>
+                <tr>
+                  <td>Cloud Infrastructure</td>
+                  <td class="itc-cross">—</td>
+                  <td class="itc-check">✓</td>
+                  <td class="itc-check">✓</td>
+                </tr>
+                <tr>
+                  <td>Patch Management</td>
+                  <td class="itc-cross">—</td>
+                  <td>Automated</td>
+                  <td>Automated + testing</td>
+                </tr>
+              </tbody>
+            </table>
+          </div>
+        </div>
+
+        <div class="itc-table-section">
+          <div class="itc-comparison-table">
+            <table>
+              <tbody>
+                <tr class="itc-feature-group">
+                  <td colspan="4">Security & Compliance</td>
+                </tr>
+                <tr>
+                  <td>Security Monitoring</td>
+                  <td class="itc-cross">—</td>
+                  <td class="itc-check">✓</td>
+                  <td class="itc-check">✓</td>
+                </tr>
+                <tr>
+                  <td>Vulnerability Scanning</td>
+                  <td class="itc-cross">—</td>
+                  <td>Weekly</td>
+                  <td>Daily</td>
+                </tr>
+                <tr>
+                  <td>Firewall Management</td>
+                  <td class="itc-cross">—</td>
+                  <td class="itc-check">✓</td>
+                  <td class="itc-check">✓</td>
+                </tr>
+                <tr>
+                  <td>Compliance Support</td>
+                  <td>Consultation</td>
+                  <td>Documentation</td>
+                  <td>Full compliance</td>
+                </tr>
+              </tbody>
+            </table>
+          </div>
+        </div>
+
+        <div class="itc-table-section">
+          <div class="itc-comparison-table">
+            <table>
+              <tbody>
+                <tr class="itc-feature-group">
+                  <td colspan="4">Data Protection</td>
+                </tr>
+                <tr>
+                  <td>Automated Backups</td>
+                  <td class="itc-cross">—</td>
+                  <td class="itc-check">✓</td>
+                  <td class="itc-check">✓</td>
+                </tr>
+                <tr>
+                  <td>Backup Retention</td>
+                  <td class="itc-cross">—</td>
+                  <td>30 days</td>
+                  <td>90+ days</td>
+                </tr>
+                <tr>
+                  <td>Disaster Recovery Testing</td>
+                  <td class="itc-cross">—</td>
+                  <td>Bi-annual</td>
+                  <td>Quarterly</td>
+                </tr>
+              </tbody>
+            </table>
+          </div>
+        </div>
+
+        <div class="itc-table-section">
+          <div class="itc-comparison-table">
+            <table>
+              <tbody>
+                <tr class="itc-feature-group">
+                  <td colspan="4">Strategy & Reporting</td>
+                </tr>
+                <tr>
+                  <td>IT Roadmap Planning</td>
+                  <td class="itc-check">✓</td>
+                  <td class="itc-check">✓</td>
+                  <td class="itc-check">✓</td>
+                </tr>
+                <tr>
+                  <td>Monthly Reports</td>
+                  <td class="itc-cross">—</td>
+                  <td class="itc-check">✓</td>
+                  <td class="itc-check">✓</td>
+                </tr>
+                <tr>
+                  <td>Business Reviews</td>
+                  <td class="itc-cross">—</td>
+                  <td>Annual</td>
+                  <td>Quarterly</td>
+                </tr>
+                <tr>
+                  <td>Account Manager</td>
+                  <td class="itc-cross">—</td>
+                  <td class="itc-cross">—</td>
+                  <td class="itc-check">✓</td>
+                </tr>
+              </tbody>
+            </table>
+          </div>
+        </div>
+
+      </div>
+    </div>
+
+    <div class="itc-faq-section">
+      <div class="itc-faq-left">
+        <h2 class="itc-faq-title">Frequently Asked Questions</h2>
+        <p class="itc-faq-subtitle">Get answers to common questions about our services, pricing, and support.</p>
+      </div>
+      
+      <div class="itc-faq-right">
+        <div class="itc-faq-item">
+          <div class="itc-faq-question">
+            What's included in the onboarding and setup process?
+            <span class="itc-faq-icon">+</span>
+          </div>
+          <div class="itc-faq-answer">
+            All Fully Managed and Enterprise plans include a comprehensive onboarding process that typically takes 2-4 weeks. We start with a complete infrastructure audit and documentation of your current systems. Our team then sets up monitoring tools, implements security protocols, configures backup systems, and establishes communication channels. We also provide employee training sessions to ensure your team knows how to access support and understands any new processes. For Enterprise clients, we create detailed runbooks and disaster recovery procedures tailored to your business.
+          </div>
+        </div>
+
+        <div class="itc-faq-item">
+          <div class="itc-faq-question">
+            Can I upgrade or downgrade my plan at any time?
+            <span class="itc-faq-icon">+</span>
+          </div>
+          <div class="itc-faq-answer">
+            Yes, you have flexibility to change plans. Upgrades take effect immediately – you'll gain access to all additional features right away, and we'll prorate the billing. Downgrades apply at the start of your next billing cycle to ensure you receive full value for the month you've paid for. However, the Fully Managed plan does require a 6-month minimum commitment, so you can downgrade to Advisory only after completing that period. Enterprise agreements have custom terms that we'll discuss during the sales process. Simply contact your account manager or our support team to discuss plan changes.
+          </div>
+        </div>
+
+        <div class="itc-faq-item">
+          <div class="itc-faq-question">
+            What happens if I exceed my support hours on the Advisory plan?
+            <span class="itc-faq-icon">+</span>
+          </div>
+          <div class="itc-faq-answer">
+            Advisory services are billed hourly at $150/hour with no predetermined limit. We track time in 15-minute increments and always provide estimates before starting significant work. If a project is taking longer than initially estimated, we'll notify you immediately and discuss options. We'll never charge you for time without your awareness. Most clients who consistently use more than 8-10 hours monthly find better value in our Fully Managed plan ($1,200/mo with unlimited support tickets), which we'll recommend if we notice this pattern in your usage.
+          </div>
+        </div>
+
+        <div class="itc-faq-item">
+          <div class="itc-faq-question">
+            What industries and compliance requirements do you specialize in?
+            <span class="itc-faq-icon">+</span>
+          </div>
+          <div class="itc-faq-answer">
+            We have deep expertise in highly regulated industries including healthcare (HIPAA compliance), financial services (PCI-DSS, SEC regulations), legal firms (attorney-client privilege protection), and professional services. Our team has successfully guided clients through HIPAA audits, GDPR implementation, SOC 2 Type II certification, and various state-specific privacy laws. For Enterprise clients, we provide hands-on compliance support including documentation, technical controls implementation, audit preparation, and ongoing monitoring. We also work with your compliance officers and legal team to ensure our technical solutions align with your regulatory obligations.
+          </div>
+        </div>
+
+        <div class="itc-faq-item">
+          <div class="itc-faq-question">
+            Are hardware and software licenses included in the monthly price?
+            <span class="itc-faq-icon">+</span>
+          </div>
+          <div class="itc-faq-answer">
+            No, our pricing covers professional services, management, and monitoring only. Hardware purchases (servers, computers, networking equipment), software licenses (Microsoft 365, Adobe, antivirus, etc.), and cloud infrastructure costs (AWS, Azure, Google Cloud) are billed separately and remain under your control. We believe in transparency – you own all your licenses and infrastructure. However, we can absolutely help you optimize these costs. Many clients save 20-30% on their software and cloud spending through our vendor relationships, license optimization reviews, and right-sizing recommendations. We provide detailed estimates before any external costs are incurred and can help you budget for technology expenses.
+          </div>
+        </div>
+
+        <div class="itc-faq-item">
+          <div class="itc-faq-question">
+            What's your process for handling security incidents?
+            <span class="itc-faq-icon">+</span>
+          </div>
+          <div class="itc-faq-answer">
+            We follow industry-standard incident response protocols. When a security event is detected (through our 24/7 monitoring or your report), we immediately assess the severity and contain the threat to prevent spread. Our team investigates the root cause, documents all findings, and implements remediation steps. For Fully Managed and Enterprise clients, we provide detailed incident reports including timeline, impact assessment, and recommendations to prevent recurrence. Enterprise clients also receive post-incident reviews with executive summaries suitable for board presentations. We maintain an incident response playbook customized for your environment and conduct annual tabletop exercises to ensure readiness. All security incidents are handled with strict confidentiality.
+          </div>
+        </div>
+
+        <div class="itc-faq-item">
+          <div class="itc-faq-question">
+            Can you help us migrate from our current IT provider?
+            <span class="itc-faq-icon">+</span>
+          </div>
+          <div class="itc-faq-answer">
+            Absolutely. We've successfully migrated dozens of businesses from other providers (or from self-managed IT) with zero downtime. Our migration process includes: comprehensive documentation of your current environment, coordination with your existing provider for knowledge transfer, phased migration plan to minimize disruption, parallel running period to ensure stability, and extensive testing before final cutover. We handle all the heavy lifting including extracting documentation from previous providers, reconfiguring access credentials, and validating that all systems work correctly. For Enterprise clients, we provide white-glove migration services with dedicated project management. Most migrations are completed within 30-45 days depending on environment complexity.
+          </div>
+        </div>
+
+        <div class="itc-faq-item">
+          <div class="itc-faq-question">
+            Do you support remote/hybrid work environments?
+            <span class="itc-faq-icon">+</span>
+          </div>
+          <div class="itc-faq-answer">
+            Yes, this is one of our specialties. We design and support IT infrastructure specifically optimized for distributed teams. This includes secure VPN or zero-trust network access, cloud-based productivity tools (Microsoft 365, Google Workspace, Slack), endpoint security for home/remote devices, mobile device management, video conferencing optimization (Zoom, Teams), and support for BYOD (bring your own device) policies. We help ensure your remote employees have the same security protections and reliable access as they would in an office environment. Our remote support capabilities mean we can troubleshoot and resolve issues for employees anywhere in the world without requiring physical access to devices.
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <div class="itc-footer-notes">
+      <h3>Important Information</h3>
+      <p><strong>Commitment Terms:</strong> Fully Managed plans require a 6-month minimum commitment. Advisory services are billed monthly with no long-term contract. Enterprise agreements are customized based on your needs.</p>
+      <p><strong>Business Hours:</strong> Standard support hours are Monday-Friday, 9 AM - 5 PM EST. Response times are measured during business hours unless you have 24/7 coverage (Fully Managed & Enterprise).</p>
+      <p><strong>Additional Costs:</strong> All prices exclude hardware, third-party software licenses (Microsoft, Adobe, etc.), cloud infrastructure costs (AWS, Azure), and internet/telecom expenses. We provide transparent estimates before any external costs are incurred.</p>
+      <p><strong>Payment Terms:</strong> Monthly plans are billed in advance. Advisory hours are invoiced at month-end. Net 15 payment terms for all services. Major credit cards and ACH accepted.</p>
+    </div>
+
+  </div>
+</section>
+
+<script>
+  // FAQ Accordion functionality
+  document.addEventListener('DOMContentLoaded', function() {
+    const faqItems = document.querySelectorAll('.itc-faq-item');
+    
+    faqItems.forEach(item => {
+      const question = item.querySelector('.itc-faq-question');
+      
+      question.addEventListener('click', () => {
+        // Close other open items
+        faqItems.forEach(otherItem => {
+          if (otherItem !== item && otherItem.classList.contains('active')) {
+            otherItem.classList.remove('active');
+          }
+        });
+        
+        // Toggle current item
+        item.classList.toggle('active');
+      });
+    });
+
+    // Optional: Open first FAQ by default
+    if (faqItems.length > 0) {
+      faqItems[0].classList.add('active');
+    }
+  });
+</script>
+
+</body>
+</html>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700;800&display=swap" rel="stylesheet">
 
 <style>
@@ -133,7 +1370,7 @@
     .it-tech-container {
         background-color: var(--it-tech-bg);
         color: var(--it-tech-text-white);
-        font-family: 'Inter', sans-serif;
+        font-family: 'Circular Std', sans-serif;
         padding: 60px 5%;
     }
 
