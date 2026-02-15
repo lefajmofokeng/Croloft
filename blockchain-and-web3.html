@@ -19,6 +19,51 @@
 
 
 
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -44,6 +89,29 @@
             --defcon-transition: all 0.3s ease;
         }
 
+        @font-face {
+            font-family: 'Circular Std';
+            src: url('fonts/CircularStd-Book.ttf') format('truetype');
+            font-weight: 400;
+            font-style: normal;
+        }
+
+        /* Circular Std - Medium (500) */
+        @font-face {
+            font-family: 'Circular Std';
+            src: url('fonts/CircularStd.ttf') format('truetype');
+            font-weight: 500;
+            font-style: normal;
+        }
+
+        /* Circular Std - Bold (700) */
+        @font-face {
+            font-family: 'Circular Std';
+            src: url('fonts/CircularStd-Bold.ttf') format('truetype');
+            font-weight: 600;
+            font-style: normal;
+        }
+
         /* ===== RESET & BASE STYLES ===== */
         * {
             margin: 0;
@@ -52,11 +120,99 @@
         }
 
         body {
-            font-family: 'Inter', sans-serif;
+            font-family: 'Circular Std', sans-serif;
             line-height: 1.6;
             color: var(--defcon-white);
             background-color: var(--defcon-dark);
             overflow-x: hidden;
+            padding-top: 0;
+        }
+
+        body.scrolled {
+            padding-top: 70px;
+        }
+
+        /* ===== STICKY NAVIGATION HEADER ===== */
+        .defcon-sticky-nav {
+            position: fixed;
+            top: -100px;
+            left: 0;
+            right: 0;
+            height: 60px;
+            background: white;
+            border-bottom: 1px solid #e0e0e0;
+            z-index: 999;
+            transition: top 0.3s ease, box-shadow 0.3s ease;
+            box-shadow: 0 2px 10px rgba(0, 0, 0, 0.05);
+        }
+
+        .defcon-sticky-nav.visible {
+            top: 55px;
+        }
+
+        .defcon-sticky-nav-container {
+            max-width: var(--defcon-container-width);
+            margin: 0 auto;
+            padding: 0;
+            height: 100%;
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            gap: 40px;
+        }
+
+        .defcon-sticky-nav-links {
+            display: flex;
+            align-items: center;
+            gap: 35px;
+            flex: 1;
+            overflow-x: auto;
+            scrollbar-width: none;
+            -ms-overflow-style: none;
+        }
+
+        .defcon-sticky-nav-links::-webkit-scrollbar {
+            display: none;
+        }
+
+        .defcon-sticky-nav-link {
+            text-decoration: none;
+            color: #475569;
+            font-size: 0.9rem;
+            font-weight: 500;
+            white-space: nowrap;
+            padding: 8px 0;
+            border-bottom: 2px solid transparent;
+            cursor: pointer;
+        }
+
+        .defcon-sticky-nav-link:hover {
+            color: var(--defcon-primary);
+            border-bottom-color: var(--defcon-primary);
+        }
+
+        .defcon-sticky-nav-link.active {
+            color: var(--defcon-primary);
+            border-bottom-color: var(--defcon-primary);
+        }
+
+        .defcon-sticky-nav-cta {
+            padding: 8px 28px;
+            background: linear-gradient(135deg, var(--defcon-primary) 0%, #2ac7ff 100%);
+            color: white;
+            border: none;
+            border-radius: 50px;
+            font-size: 0.95rem;
+            font-weight: 500;
+            cursor: pointer;
+            white-space: nowrap;
+            text-decoration: none;
+            display: inline-block;
+        }
+
+        .defcon-sticky-nav-cta:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 6px 20px rgba(17, 153, 250, 0.4);
         }
 
         .defcon-container {
@@ -168,7 +324,7 @@
         /* ===== FEATURES SECTION ===== */
         .defcon-blockchain-features {
             padding: 150px 0;
-            background: linear-gradient(135deg, var(--defcon-darker) 0%, var(--defcon-dark) 100%);
+            background: #ffffff;
         }
 
         .defcon-section-header {
@@ -200,16 +356,23 @@
         }
 
         .defcon-feature-card {
-            background: rgba(255, 255, 255, 0.05);
+            background: #f8f9fa;
             border-radius: var(--defcon-border-radius);
             padding: 40px 30px;
-            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.2);
+            box-shadow: 0 2px 8px rgba(0, 0, 0, 0.08);
             transition: var(--defcon-transition);
             height: 100%;
             display: flex;
             flex-direction: column;
             position: relative;
             overflow: hidden;
+            border: 2px solid transparent;
+        }
+
+        .defcon-feature-card:hover {
+            transform: translateY(-8px);
+            box-shadow: 0 12px 30px rgba(17, 153, 250, 0.15);
+            border-color: var(--defcon-primary);
         }
 
         .defcon-feature-icon {
@@ -230,11 +393,11 @@
             font-size: 1.5rem;
             font-weight: 600;
             margin-bottom: 18px;
-            color: var(--defcon-white);
+            color: #1a1a1a;
         }
 
         .defcon-feature-description {
-            color: #a7b5c6;
+            color: #64748b;
             margin-bottom: 20px;
             flex-grow: 1;
             line-height: 1.7;
@@ -259,7 +422,7 @@
         /* ===== SECURITY SECTION ===== */
         .defcon-blockchain-security {
             padding: 100px 0;
-            background: linear-gradient(135deg, var(--defcon-dark) 0%, var(--defcon-darker) 100%);
+            background: #f8f9fa;
         }
 
         .defcon-security-grid {
@@ -269,11 +432,18 @@
         }
 
         .defcon-security-card {
-            background: rgba(255, 255, 255, 0.05);
+            background: white;
             border-radius: 20px;
             padding: 40px 30px;
-            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.2);
+            box-shadow: 0 2px 8px rgba(0, 0, 0, 0.08);
             transition: var(--defcon-transition);
+            border: 2px solid transparent;
+        }
+
+        .defcon-security-card:hover {
+            border-color: var(--defcon-primary);
+            transform: translateY(-5px);
+            box-shadow: 0 8px 20px rgba(17, 153, 250, 0.15);
         }
 
         .defcon-security-title {
@@ -282,20 +452,20 @@
             letter-spacing: -0.02em;
             line-height: 1;
             margin-bottom: 5px;
-            color: var(--defcon-white);
+            color: #1a1a1a;
         }
 
         .defcon-security-subtitle {
             font-size: 1.1rem;
             font-weight: 500;
             margin-bottom: 20px;
-            color: #edecec;
+            color: var(--defcon-primary);
         }
 
         .defcon-security-description {
-            color: #a7b5c6;
-            font-weight: 600;
-            font-size: 1.1rem;
+            color: #64748b;
+            font-weight: 400;
+            font-size: 1rem;
             margin-bottom: 25px;
             line-height: 1.7;
         }
@@ -308,181 +478,256 @@
         }
 
         .defcon-security-badge {
-            background: rgba(17, 153, 250, 0.121);
-            color: #59a0d2;
+            background: rgba(17, 153, 250, 0.1);
+            color: var(--defcon-primary);
             padding: 6px 12px;
             border-radius: 8px;
             font-size: 0.8rem;
             font-weight: 600;
-            
         }
 
-        /* ===== SOLUTIONS SECTION ===== */
+        /* ===== SOLUTIONS SECTION WITH STICKY SIDEBAR ===== */
         .defcon-blockchain-solutions {
             padding: 100px 0;
-            background: linear-gradient(135deg, var(--defcon-darker) 0%, var(--defcon-dark) 100%);
+            background: #f8f9fa;
         }
 
-        .defcon-solutions-header {
+        .defcon-solutions-layout {
             display: flex;
-            justify-content: space-between;
-            align-items: flex-end;
-            margin-bottom: 50px;
+            gap: 60px;
+            margin-top: 60px;
         }
 
-        .defcon-solutions-title-container {
-            max-width: 500px;
+        /* Sticky Sidebar Navigation */
+        .defcon-solutions-sidebar {
+            flex: 0 0 280px;
+            position: sticky;
+            top: 40px;
+            align-self: flex-start;
+            height: fit-content;
         }
 
-        .defcon-solutions-title {
-            font-size: 2.75rem;
-            font-weight: 600;
-            letter-spacing: -0.02em;
-            line-height: 1.1;
-            margin-bottom: 15px;
-            color: var(--defcon-white);
-        }
-
-        .defcon-solutions-subtitle {
-            font-size: 1.15rem;
-            font-weight: 600;
-            color: #aaa;
-            line-height: 1.7;
-        }
-
-        .defcon-solutions-tabs {
-            display: flex;
-            gap: 10px;
-            flex-wrap: wrap;
-            border: 1px solid rgba(128, 128, 128, 0.259);
-            padding: 5px; border-radius: 50px;
-        }
-
-        .defcon-tab-btn {
-            padding: 12px 24px;
-            background: rgba(255, 255, 255, 0.05);
-            border: 1px solid rgba(255, 255, 255, 0.1);
-            border-radius: 50px;
-            font-family: 'Inter', sans-serif;
-            font-weight: 600;
-            cursor: pointer;
-            font-size: 14px;
-            transition: var(--defcon-transition);
-            color: #aaa;
-        }
-
-        .defcon-tab-btn.active {
-            background: var(--defcon-primary);
-            color: var(--defcon-white);
-            border-color: var(--defcon-primary);
-        }
-
-        .defcon-tab-btn:hover:not(.active) {
-            background: rgba(255, 255, 255, 0.1);
-            color: var(--defcon-white);
-        }
-
-        .defcon-solutions-grid {
-            display: grid;
-            grid-template-columns: repeat(auto-fill, minmax(360px, 1fr));
-            gap: 35px;
-        }
-
-        .defcon-solution-card {
-            background: rgba(255, 255, 255, 0.05);
-            border-radius: var(--defcon-border-radius);
-            overflow: hidden;
-            
+        .defcon-sidebar-nav {
             display: flex;
             flex-direction: column;
-            height: 100%;
+            gap: 8px;
+        }
+
+        .defcon-sidebar-link {
+            display: flex;
+            align-items: center;
+            gap: 15px;
+            padding: 18px 20px;
+            background: white;
+            border-radius: 12px;
+            text-decoration: none;
+            transition: all 0.3s ease;
+            border: 2px solid transparent;
+            box-shadow: 0 2px 8px rgba(0, 0, 0, 0.05);
+        }
+
+        .defcon-sidebar-link:hover {
+            transform: translateX(8px);
+            box-shadow: 0 4px 12px rgba(17, 153, 250, 0.15);
+            border-color: rgba(17, 153, 250, 0.2);
+        }
+
+        .defcon-sidebar-link.active {
+            background: linear-gradient(135deg, var(--defcon-primary) 0%, #2ac7ff 100%);
+            box-shadow: 0 4px 16px rgba(17, 153, 250, 0.3);
+            transform: translateX(8px);
+        }
+
+        .defcon-sidebar-number {
+            font-size: 1.5rem;
+            font-weight: 700;
+            color: var(--defcon-primary);
+            min-width: 40px;
+        }
+
+        .defcon-sidebar-link.active .defcon-sidebar-number {
+            color: white;
+        }
+
+        .defcon-sidebar-title {
+            font-size: 0.95rem;
+            font-weight: 600;
+            color: #2c3e50;
+            line-height: 1.3;
+        }
+
+        .defcon-sidebar-link.active .defcon-sidebar-title {
+            color: white;
+        }
+
+        /* Solutions Content */
+        .defcon-solutions-content {
+            flex: 1;
+            min-width: 0;
+        }
+
+        .defcon-solution-item {
+            margin-bottom: 50px;
+            scroll-margin-top: 60px;
+        }
+
+        .defcon-solution-item:last-child {
+            margin-bottom: 0;
+        }
+
+        .defcon-solution-main {
+            background: white;
+            border-radius: 16px;
+            padding: 50px;
+            box-shadow: 0 4px 20px rgba(0, 0, 0, 0.08);
+            display: grid;
+            grid-template-columns: 1fr 1.2fr;
+            gap: 50px;
+            align-items: start;
+        }
+
+        /* Left Side: Info & Pricing */
+        .defcon-solution-left {
+            border-right: 2px solid #f0f0f0;
+            padding-right: 50px;
         }
 
         .defcon-solution-badge {
             display: inline-block;
-            background: linear-gradient(90deg, var(--defcon-primary), #2ac7ff);
-            color: var(--defcon-white);
-            padding: 6px 15px;
-            border-radius: 4px;
-            font-size: 0.8rem;
+            background: linear-gradient(135deg, var(--defcon-primary) 0%, #2ac7ff 100%);
+            color: white;
+            padding: 8px 18px;
+            border-radius: 30px;
+            font-size: 0.85rem;
             font-weight: 600;
-            margin-bottom: 15px;
-        }
-
-        .defcon-solution-header {
-            padding: 30px 30px 0;
-            flex-grow: 1;
-        }
-
-        .defcon-solution-title {
-            font-size: 1.6rem;
-            font-weight: 600;
-            margin-bottom: 15px;
-            color: var(--defcon-white);
-        }
-
-        .defcon-solution-description {
-            color: #aaa;
             margin-bottom: 20px;
-            font-size: 0.95rem;
-            line-height: 1.6;
+            box-shadow: 0 4px 12px rgba(17, 153, 250, 0.25);
         }
 
-        .defcon-solution-price-container {
-            display: flex;
-            align-items: baseline;
-            gap: 10px;
-            margin-bottom: 5px;
+        .defcon-solution-name {
+            font-size: 2rem;
+            font-weight: 700;
+            color: #1a1a1a;
+            margin-bottom: 20px;
+            line-height: 1.2;
         }
 
-        .defcon-solution-price {
-            font-size: 2.2rem;
+        .defcon-solution-desc {
+            font-size: 1.05rem;
+            color: #64748b;
+            line-height: 1.7;
+            margin-bottom: 40px;
+        }
+
+        .defcon-solution-pricing {
+            background: linear-gradient(135deg, #f8f9fa 0%, #e8f4fd 100%);
+            padding: 30px;
+            border-radius: 12px;
+            border: 2px solid var(--defcon-primary);
+        }
+
+        .defcon-price-tag {
+            font-size: 3rem;
             font-weight: 700;
             color: var(--defcon-primary);
+            line-height: 1;
+            margin-bottom: 8px;
         }
 
-        .defcon-solution-period {
-            color: #777;
-            font-size: 0.9rem;
+        .defcon-price-period {
+            font-size: 0.95rem;
+            color: #64748b;
+            font-weight: 500;
         }
 
-        .defcon-solution-body {
-            padding: 0 30px 30px;
+        /* Right Side: Features */
+        .defcon-solution-right {
+            padding-left: 20px;
         }
 
-        .defcon-solution-features {
+        .defcon-features-title {
+            font-size: 1.3rem;
+            font-weight: 700;
+            color: #1a1a1a;
+            margin-bottom: 25px;
+        }
+
+        .defcon-features-list {
             list-style: none;
-            margin-bottom: 30px;
+            margin-bottom: 35px;
         }
 
-        .defcon-solution-feature {
-            padding: 10px 0;
-            border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+        .defcon-feature-item {
             display: flex;
-            align-items: center;
+            align-items: flex-start;
+            gap: 15px;
+            padding: 16px 0;
+            border-bottom: 1px solid #f0f0f0;
+            transition: all 0.3s ease;
         }
 
-        .defcon-solution-feature:last-child {
+        .defcon-feature-item:last-child {
             border-bottom: none;
         }
 
-        .defcon-feature-check {
-            color: var(--defcon-primary);
-            margin-right: 12px;
-            font-size: 1.1rem;
+        .defcon-feature-item:hover {
+            padding-left: 10px;
+            background: rgba(17, 153, 250, 0.02);
+            border-radius: 8px;
         }
 
-        .defcon-solution-cta {
-            width: 100%;
-            text-align: center;
-            padding: 14px;
+        .defcon-check-icon {
+            width: 24px;
+            height: 24px;
+            color: var(--defcon-primary);
+            flex-shrink: 0;
+            margin-top: 2px;
+        }
+
+        .defcon-feature-item span {
             font-size: 1rem;
+            color: #475569;
+            line-height: 1.6;
+            font-weight: 500;
+        }
+
+        .defcon-solution-btn {
+            width: 100%;
+            padding: 18px 32px;
+            background: linear-gradient(135deg, var(--defcon-primary) 0%, #2ac7ff 100%);
+            color: white;
+            border: none;
+            border-radius: 50px;
+            font-size: 1.1rem;
+            font-weight: 600;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            box-shadow: 0 4px 15px rgba(17, 153, 250, 0.3);
+            font-family: 'Circular Std', sans-serif;
+        }
+
+        .defcon-solution-btn:hover {
+            transform: translateY(-3px);
+            box-shadow: 0 8px 25px rgba(17, 153, 250, 0.4);
+        }
+
+        .defcon-solution-btn:active {
+            transform: translateY(-1px);
+        }
+
+        /* Section Header Styles for Light Theme */
+        .defcon-blockchain-solutions .defcon-section-title {
+            color: #1a1a1a;
+        }
+
+        .defcon-blockchain-solutions .defcon-section-subtitle {
+            color: #64748b;
         }
 
         /* ===== STAKING SECTION ===== */
         .defcon-blockchain-staking {
             padding: 100px 0;
-            background: linear-gradient(135deg, var(--defcon-dark) 0%, var(--defcon-darker) 100%);
+            background: #ffffff;
         }
 
         .defcon-staking-container {
@@ -511,13 +756,13 @@
             line-height: 1.1;
             font-weight: 600;
             margin-bottom: 25px;
-            color: var(--defcon-white);
+            color: #1a1a1a;
         }
 
         .defcon-staking-subtitle {
             font-size: 1.15rem;
             font-weight: 600;
-            color: #aaa;
+            color: #64748b;
             margin-bottom: 40px;
             line-height: 1.3;
         }
@@ -554,11 +799,11 @@
             font-size: 1.3rem;
             font-weight: 600;
             margin-bottom: 10px;
-            color: var(--defcon-white);
+            color: #1a1a1a;
         }
 
         .defcon-staking-feature-description {
-            color: #aaa;
+            color: #64748b;
             line-height: 1.7;
         }
 
@@ -611,12 +856,12 @@
 
         .defcon-staking-note {
             margin-top: 50px;
-            color: #7b8a9b;
+            color: #64748b;
             font-weight: 300;
         }
 
         .defcon-staking-note-text {
-            color: #aaa;
+            color: #64748b;
             font-size: 0.9rem;
             line-height: 1.6;
         }
@@ -624,7 +869,7 @@
         /* ===== INTEGRATION SECTION ===== */
         .defcon-blockchain-integration {
             padding: 100px 0;
-            background: linear-gradient(135deg, var(--defcon-darker) 0%, var(--defcon-dark) 100%);
+            background: #f8f9fa;
         }
 
         .defcon-integration-grid {
@@ -634,11 +879,15 @@
         }
 
         .defcon-integration-card {
-            border-top: 1px solid #bebebe39;
+            border-top: 2px solid #e0e0e0;
             transition: var(--defcon-transition);
             position: relative;
             overflow: hidden;
             padding-top: 1rem;
+        }
+
+        .defcon-integration-card:hover {
+            border-top-color: var(--defcon-primary);
         }
         
         .defcon-integration-title {
@@ -646,14 +895,118 @@
             font-weight: 500;
             margin-bottom: 15px;
             letter-spacing: -0.02em;
-            color: var(--defcon-white);
+            color: #1a1a1a;
         }
 
         .defcon-integration-description {
-            color: #707383;
+            color: #64748b;
+            font-weight: 400;
+            font-size: 1rem;
+            line-height: 1.6;
+        }
+
+        /* ===== FAQ SECTION ===== */
+        .defcon-blockchain-faq {
+            padding: 100px 0;
+            background: #ffffff;
+        }
+
+        .defcon-faq-container {
+            max-width: 900px;
+            margin: 0 auto;
+        }
+
+        .defcon-faq-item {
+            background: white;
+            border: 2px solid #e0e0e0;
+            border-radius: 12px;
+            margin-bottom: 16px;
+            overflow: hidden;
+            transition: all 0.3s ease;
+        }
+
+        .defcon-faq-item:hover {
+            border-color: var(--defcon-primary);
+        }
+
+        .defcon-faq-item.active {
+            border-color: var(--defcon-primary);
+            box-shadow: 0 4px 20px rgba(17, 153, 250, 0.1);
+        }
+
+        .defcon-faq-question {
+            padding: 25px 30px;
+            cursor: pointer;
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            gap: 20px;
+            background: white;
+            transition: all 0.3s ease;
+        }
+
+        .defcon-faq-question:hover {
+            background: #f8f9fa;
+        }
+
+        .defcon-faq-question-text {
+            font-size: 1.15rem;
             font-weight: 600;
-            font-size: 19px;
-            line-height: 1.2;
+            color: #1a1a1a;
+            flex: 1;
+        }
+
+        .defcon-faq-icon {
+            width: 32px;
+            height: 32px;
+            background: linear-gradient(135deg, var(--defcon-primary) 0%, #2ac7ff 100%);
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: white;
+            font-size: 1.2rem;
+            font-weight: 700;
+            transition: transform 0.3s ease;
+            flex-shrink: 0;
+        }
+
+        .defcon-faq-item.active .defcon-faq-icon {
+            transform: rotate(45deg);
+        }
+
+        .defcon-faq-answer {
+            max-height: 0;
+            overflow: hidden;
+            transition: max-height 0.4s ease, padding 0.4s ease;
+        }
+
+        .defcon-faq-item.active .defcon-faq-answer {
+            max-height: 500px;
+        }
+
+        .defcon-faq-answer-content {
+            padding: 0 30px 25px 30px;
+            color: #64748b;
+            line-height: 1.8;
+            font-size: 1rem;
+        }
+
+        .defcon-faq-answer-content p {
+            margin-bottom: 15px;
+        }
+
+        .defcon-faq-answer-content p:last-child {
+            margin-bottom: 0;
+        }
+
+        .defcon-faq-answer-content ul {
+            margin: 15px 0;
+            padding-left: 25px;
+        }
+
+        .defcon-faq-answer-content li {
+            margin-bottom: 8px;
         }
 
         /* ===== CTA SECTION ===== */
@@ -686,6 +1039,27 @@
                 align-items: flex-start;
                 gap: 25px;
             }
+
+            .defcon-solutions-layout {
+                gap: 40px;
+            }
+
+            .defcon-solution-main {
+                grid-template-columns: 1fr;
+                gap: 40px;
+                padding: 40px 35px;
+            }
+
+            .defcon-solution-left {
+                border-right: none;
+                border-bottom: 2px solid #f0f0f0;
+                padding-right: 0;
+                padding-bottom: 40px;
+            }
+
+            .defcon-solution-right {
+                padding-left: 0;
+            }
             
             .defcon-staking-container {
                 flex-direction: column;
@@ -693,6 +1067,10 @@
             
             .defcon-staking-visual {
                 order: -1;
+            }
+
+            .defcon-integration-grid {
+                grid-template-columns: repeat(2, 1fr);
             }
         }
 
@@ -708,6 +1086,82 @@
             .defcon-cta-title {
                 font-size: 2.2rem;
             }
+
+            /* Sticky nav mobile */
+            .defcon-sticky-nav {
+                height: auto;
+            }
+
+            .defcon-sticky-nav-container {
+                flex-direction: column;
+                padding: 15px 20px;
+                gap: 15px;
+                align-items: stretch;
+            }
+
+            .defcon-sticky-nav-links {
+                gap: 20px;
+                padding-bottom: 10px;
+            }
+
+            .defcon-sticky-nav-link {
+                font-size: 0.85rem;
+            }
+
+            .defcon-sticky-nav-cta {
+                width: 100%;
+                text-align: center;
+            }
+
+            /* Mobile: Stack sidebar and content vertically */
+            .defcon-solutions-layout {
+                flex-direction: column;
+                gap: 30px;
+            }
+
+            .defcon-solutions-sidebar {
+                position: static;
+                flex: 1;
+                width: 100%;
+            }
+
+            .defcon-sidebar-nav {
+                flex-direction: row;
+                overflow-x: auto;
+                gap: 10px;
+                padding-bottom: 10px;
+                -webkit-overflow-scrolling: touch;
+            }
+
+            .defcon-sidebar-link {
+                flex-shrink: 0;
+                min-width: 200px;
+            }
+
+            .defcon-sidebar-link:hover {
+                transform: none;
+            }
+
+            .defcon-sidebar-link.active {
+                transform: none;
+            }
+
+            .defcon-solution-main {
+                padding: 30px 25px;
+                gap: 30px;
+            }
+
+            .defcon-solution-name {
+                font-size: 1.6rem;
+            }
+
+            .defcon-solution-desc {
+                font-size: 1rem;
+            }
+
+            .defcon-price-tag {
+                font-size: 2.5rem;
+            }
             
             .defcon-solutions-grid {
                 grid-template-columns: 1fr;
@@ -720,6 +1174,20 @@
             .defcon-hero-cta {
                 flex-direction: column;
                 align-items: flex-start;
+            }
+
+            /* FAQ mobile */
+            .defcon-faq-question {
+                padding: 20px;
+            }
+
+            .defcon-faq-question-text {
+                font-size: 1rem;
+            }
+
+            .defcon-faq-answer-content {
+                padding: 0 20px 20px 20px;
+                font-size: 0.95rem;
             }
         }
 
@@ -739,6 +1207,61 @@
             .defcon-container {
                 padding: 0 15px;
             }
+
+            .defcon-sticky-nav-container {
+                padding: 12px 15px;
+            }
+
+            .defcon-sticky-nav-links {
+                gap: 15px;
+            }
+
+            .defcon-sidebar-link {
+                min-width: 180px;
+                padding: 15px;
+            }
+
+            .defcon-sidebar-number {
+                font-size: 1.2rem;
+                min-width: 32px;
+            }
+
+            .defcon-sidebar-title {
+                font-size: 0.85rem;
+            }
+
+            .defcon-solution-main {
+                padding: 25px 20px;
+            }
+
+            .defcon-solution-name {
+                font-size: 1.4rem;
+            }
+
+            .defcon-solution-desc {
+                font-size: 0.95rem;
+            }
+
+            .defcon-solution-pricing {
+                padding: 20px;
+            }
+
+            .defcon-price-tag {
+                font-size: 2rem;
+            }
+
+            .defcon-features-title {
+                font-size: 1.1rem;
+            }
+
+            .defcon-feature-item span {
+                font-size: 0.9rem;
+            }
+
+            .defcon-solution-btn {
+                padding: 15px 28px;
+                font-size: 1rem;
+            }
             
             .defcon-feature-card, 
             .defcon-solution-card,
@@ -750,10 +1273,39 @@
             .defcon-solution-header {
                 padding: 25px 25px 0;
             }
+
+            .defcon-faq-question {
+                padding: 18px;
+            }
+
+            .defcon-faq-question-text {
+                font-size: 0.95rem;
+            }
+
+            .defcon-faq-icon {
+                width: 28px;
+                height: 28px;
+                font-size: 1rem;
+            }
         }
     </style>
 </head>
 <body>
+    <!-- STICKY NAVIGATION -->
+    <nav class="defcon-sticky-nav" id="stickyNav">
+        <div class="defcon-sticky-nav-container">
+            <div class="defcon-sticky-nav-links">
+                <a class="defcon-sticky-nav-link" data-section="features">Comprehensive Solutions</a>
+                <a class="defcon-sticky-nav-link" data-section="security">Enterprise Security</a>
+                <a class="defcon-sticky-nav-link" data-section="solutions">Solutions & Pricing</a>
+                <a class="defcon-sticky-nav-link" data-section="staking">On-Chain Staking</a>
+                <a class="defcon-sticky-nav-link" data-section="integration">Integration</a>
+                <a class="defcon-sticky-nav-link" data-section="faq">FAQ</a>
+            </div>
+            <a href="#contact" class="defcon-sticky-nav-cta">Contact Sales</a>
+        </div>
+    </nav>
+
     <!-- HERO SECTION -->
     <section class="defcon-blockchain-hero">
         <div class="defcon-container">
@@ -816,7 +1368,7 @@
 
 
     <!-- FEATURES SECTION -->
-    <section class="defcon-blockchain-features">
+    <section class="defcon-blockchain-features" id="features">
         <div class="defcon-container">
             <div class="defcon-section-header">
                 <h2 class="defcon-section-title">Comprehensive Blockchain Solutions</h2>
@@ -876,7 +1428,7 @@
     </section>
 
     <!-- SECURITY SECTION -->
-    <section class="defcon-blockchain-security">
+    <section class="defcon-blockchain-security" id="security">
         <div class="defcon-container">
             <div class="defcon-section-header">
                 <h2 class="defcon-section-title">Enterprise-Grade Security</h2>
@@ -917,264 +1469,388 @@
         </div>
     </section>
 
-    <!-- SOLUTIONS SECTION -->
-    <section class="defcon-blockchain-solutions" id="defcon-blockchain-solutions">
+
+    <!-- BLOCKCHAIN SOLUTIONS SECTION WITH STICKY SIDEBAR -->
+    <section class="defcon-blockchain-solutions" id="solutions">
         <div class="defcon-container">
-            <div class="defcon-solutions-header">
-                <div class="defcon-solutions-title-container">
-                    <h2 class="defcon-solutions-title">Blockchain Solutions & Pricing</h2>
-                    <p class="defcon-solutions-subtitle">Choose from our comprehensive blockchain and Web3 development solutions tailored to your specific business needs and technical requirements.</p>
-                </div>
-                <div class="defcon-solutions-tabs">
-                    <button class="defcon-tab-btn active" data-tab="all">All Solutions</button>
-                    <button class="defcon-tab-btn" data-tab="development">Development</button>
-                    <button class="defcon-tab-btn" data-tab="security">Security</button>
-                    <button class="defcon-tab-btn" data-tab="consulting">Consulting</button>
-                </div>
+            <div class="defcon-section-header">
+                <h2 class="defcon-section-title">Blockchain Solutions & Pricing</h2>
+                <p class="defcon-section-subtitle">Comprehensive blockchain services tailored to your business needs</p>
             </div>
-            <div class="defcon-solutions-grid">
-                <!-- Blockchain Development Solutions -->
-                <div class="defcon-solution-card" data-categories="development">
-                    <div class="defcon-solution-header">
-                        <span class="defcon-solution-badge">Blockchain Development</span>
-                        <h3 class="defcon-solution-title">Smart Contract Development</h3>
-                        <p class="defcon-solution-description">Custom smart contract development for various use cases including DeFi, NFTs, DAOs, and enterprise blockchain solutions.</p>
-                        <div class="defcon-solution-price-container">
-                            <div class="defcon-solution-price">$9,999</div>
-                            <div class="defcon-solution-period">one-time development</div>
+
+            <div class="defcon-solutions-layout">
+                <!-- Sticky Sidebar Navigation -->
+                <aside class="defcon-solutions-sidebar">
+                    <nav class="defcon-sidebar-nav">
+                        <a href="#solution-1" class="defcon-sidebar-link active" data-solution="1">
+                            <span class="defcon-sidebar-number">01</span>
+                            <span class="defcon-sidebar-title">Smart Contract Development</span>
+                        </a>
+                        <a href="#solution-2" class="defcon-sidebar-link" data-solution="2">
+                            <span class="defcon-sidebar-number">02</span>
+                            <span class="defcon-sidebar-title">Blockchain Strategy Consulting</span>
+                        </a>
+                        <a href="#solution-3" class="defcon-sidebar-link" data-solution="3">
+                            <span class="defcon-sidebar-number">03</span>
+                            <span class="defcon-sidebar-title">Decentralized Application</span>
+                        </a>
+                        <a href="#solution-4" class="defcon-sidebar-link" data-solution="4">
+                            <span class="defcon-sidebar-number">04</span>
+                            <span class="defcon-sidebar-title">Smart Contract Security Audit</span>
+                        </a>
+                        <a href="#solution-5" class="defcon-sidebar-link" data-solution="5">
+                            <span class="defcon-sidebar-number">05</span>
+                            <span class="defcon-sidebar-title">Custom Token Creation</span>
+                        </a>
+                        <a href="#solution-6" class="defcon-sidebar-link" data-solution="6">
+                            <span class="defcon-sidebar-number">06</span>
+                            <span class="defcon-sidebar-title">NFT Marketplace Development</span>
+                        </a>
+                    </nav>
+                </aside>
+
+                <!-- Solutions Content Area -->
+                <div class="defcon-solutions-content">
+                    <!-- Solution 1: Smart Contract Development -->
+                    <div id="solution-1" class="defcon-solution-item" data-solution="1">
+                        <div class="defcon-solution-main">
+                            <div class="defcon-solution-left">
+                                <span class="defcon-solution-badge">Smart Contracts</span>
+                                <h3 class="defcon-solution-name">Smart Contract Development</h3>
+                                <p class="defcon-solution-desc">Custom smart contract development on Ethereum, Binance Smart Chain, or Polygon with comprehensive testing and deployment.</p>
+                                <div class="defcon-solution-pricing">
+                                    <div class="defcon-price-tag">$7,999</div>
+                                    <div class="defcon-price-period">per contract</div>
+                                </div>
+                            </div>
+                            <div class="defcon-solution-right">
+                                <h4 class="defcon-features-title">What's Included</h4>
+                                <ul class="defcon-features-list">
+                                    <li class="defcon-feature-item">
+                                        <svg class="defcon-check-icon" viewBox="0 0 20 20" fill="currentColor">
+                                            <path fill-rule="evenodd" d="M16.707 5.293a1 1 0 010 1.414l-8 8a1 1 0 01-1.414 0l-4-4a1 1 0 011.414-1.414L8 12.586l7.293-7.293a1 1 0 011.414 0z" clip-rule="evenodd"/>
+                                        </svg>
+                                        <span>Contract architecture design</span>
+                                    </li>
+                                    <li class="defcon-feature-item">
+                                        <svg class="defcon-check-icon" viewBox="0 0 20 20" fill="currentColor">
+                                            <path fill-rule="evenodd" d="M16.707 5.293a1 1 0 010 1.414l-8 8a1 1 0 01-1.414 0l-4-4a1 1 0 011.414-1.414L8 12.586l7.293-7.293a1 1 0 011.414 0z" clip-rule="evenodd"/>
+                                        </svg>
+                                        <span>Solidity development</span>
+                                    </li>
+                                    <li class="defcon-feature-item">
+                                        <svg class="defcon-check-icon" viewBox="0 0 20 20" fill="currentColor">
+                                            <path fill-rule="evenodd" d="M16.707 5.293a1 1 0 010 1.414l-8 8a1 1 0 01-1.414 0l-4-4a1 1 0 011.414-1.414L8 12.586l7.293-7.293a1 1 0 011.414 0z" clip-rule="evenodd"/>
+                                        </svg>
+                                        <span>Comprehensive testing suite</span>
+                                    </li>
+                                    <li class="defcon-feature-item">
+                                        <svg class="defcon-check-icon" viewBox="0 0 20 20" fill="currentColor">
+                                            <path fill-rule="evenodd" d="M16.707 5.293a1 1 0 010 1.414l-8 8a1 1 0 01-1.414 0l-4-4a1 1 0 011.414-1.414L8 12.586l7.293-7.293a1 1 0 011.414 0z" clip-rule="evenodd"/>
+                                        </svg>
+                                        <span>Gas optimization</span>
+                                    </li>
+                                    <li class="defcon-feature-item">
+                                        <svg class="defcon-check-icon" viewBox="0 0 20 20" fill="currentColor">
+                                            <path fill-rule="evenodd" d="M16.707 5.293a1 1 0 010 1.414l-8 8a1 1 0 01-1.414 0l-4-4a1 1 0 011.414-1.414L8 12.586l7.293-7.293a1 1 0 011.414 0z" clip-rule="evenodd"/>
+                                        </svg>
+                                        <span>Mainnet deployment</span>
+                                    </li>
+                                    <li class="defcon-feature-item">
+                                        <svg class="defcon-check-icon" viewBox="0 0 20 20" fill="currentColor">
+                                            <path fill-rule="evenodd" d="M16.707 5.293a1 1 0 010 1.414l-8 8a1 1 0 01-1.414 0l-4-4a1 1 0 011.414-1.414L8 12.586l7.293-7.293a1 1 0 011.414 0z" clip-rule="evenodd"/>
+                                        </svg>
+                                        <span>30 days support</span>
+                                    </li>
+                                </ul>
+                                <button class="defcon-solution-btn">Get Started</button>
+                            </div>
                         </div>
                     </div>
-                    <div class="defcon-solution-body">
-                        <ul class="defcon-solution-features">
-                            <li class="defcon-solution-feature">
-                                <span class="defcon-feature-check">✓</span>
-                                <span>Up to 5 custom smart contracts</span>
-                            </li>
-                            <li class="defcon-solution-feature">
-                                <span class="defcon-feature-check">✓</span>
-                                <span>Comprehensive testing & deployment</span>
-                            </li>
-                            <li class="defcon-solution-feature">
-                                <span class="defcon-feature-check">✓</span>
-                                <span>Basic security audit</span>
-                            </li>
-                            <li class="defcon-solution-feature">
-                                <span class="defcon-feature-check">✓</span>
-                                <span>Documentation & user guides</span>
-                            </li>
-                            <li class="defcon-solution-feature">
-                                <span class="defcon-feature-check">✓</span>
-                                <span>30 days technical support</span>
-                            </li>
-                        </ul>
-                        <button class="defcon-btn defcon-btn-primary defcon-solution-cta">Get Started</button>
-                    </div>
-                </div>
-                
-                <div class="defcon-solution-card" data-categories="development">
-                    <div class="defcon-solution-header">
-                        <span class="defcon-solution-badge">Blockchain Development</span>
-                        <h3 class="defcon-solution-title">Enterprise DApp Development</h3>
-                        <p class="defcon-solution-description">Full-stack decentralized application development with frontend, backend, and blockchain integration for enterprise use cases.</p>
-                        <div class="defcon-solution-price-container">
-                            <div class="defcon-solution-price">$24,999</div>
-                            <div class="defcon-solution-period">one-time development</div>
+
+                    <!-- Solution 2: Blockchain Strategy Consulting -->
+                    <div id="solution-2" class="defcon-solution-item" data-solution="2">
+                        <div class="defcon-solution-main">
+                            <div class="defcon-solution-left">
+                                <span class="defcon-solution-badge">Consulting</span>
+                                <h3 class="defcon-solution-name">Blockchain Strategy Consulting</h3>
+                                <p class="defcon-solution-desc">Expert guidance on blockchain technology adoption, tokenomics design, and implementation strategy for your business.</p>
+                                <div class="defcon-solution-pricing">
+                                    <div class="defcon-price-tag">$4,999</div>
+                                    <div class="defcon-price-period">per month</div>
+                                </div>
+                            </div>
+                            <div class="defcon-solution-right">
+                                <h4 class="defcon-features-title">What's Included</h4>
+                                <ul class="defcon-features-list">
+                                    <li class="defcon-feature-item">
+                                        <svg class="defcon-check-icon" viewBox="0 0 20 20" fill="currentColor">
+                                            <path fill-rule="evenodd" d="M16.707 5.293a1 1 0 010 1.414l-8 8a1 1 0 01-1.414 0l-4-4a1 1 0 011.414-1.414L8 12.586l7.293-7.293a1 1 0 011.414 0z" clip-rule="evenodd"/>
+                                        </svg>
+                                        <span>Technology assessment</span>
+                                    </li>
+                                    <li class="defcon-feature-item">
+                                        <svg class="defcon-check-icon" viewBox="0 0 20 20" fill="currentColor">
+                                            <path fill-rule="evenodd" d="M16.707 5.293a1 1 0 010 1.414l-8 8a1 1 0 01-1.414 0l-4-4a1 1 0 011.414-1.414L8 12.586l7.293-7.293a1 1 0 011.414 0z" clip-rule="evenodd"/>
+                                        </svg>
+                                        <span>Use case identification</span>
+                                    </li>
+                                    <li class="defcon-feature-item">
+                                        <svg class="defcon-check-icon" viewBox="0 0 20 20" fill="currentColor">
+                                            <path fill-rule="evenodd" d="M16.707 5.293a1 1 0 010 1.414l-8 8a1 1 0 01-1.414 0l-4-4a1 1 0 011.414-1.414L8 12.586l7.293-7.293a1 1 0 011.414 0z" clip-rule="evenodd"/>
+                                        </svg>
+                                        <span>Tokenomics design</span>
+                                    </li>
+                                    <li class="defcon-feature-item">
+                                        <svg class="defcon-check-icon" viewBox="0 0 20 20" fill="currentColor">
+                                            <path fill-rule="evenodd" d="M16.707 5.293a1 1 0 010 1.414l-8 8a1 1 0 01-1.414 0l-4-4a1 1 0 011.414-1.414L8 12.586l7.293-7.293a1 1 0 011.414 0z" clip-rule="evenodd"/>
+                                        </svg>
+                                        <span>Roadmap development</span>
+                                    </li>
+                                    <li class="defcon-feature-item">
+                                        <svg class="defcon-check-icon" viewBox="0 0 20 20" fill="currentColor">
+                                            <path fill-rule="evenodd" d="M16.707 5.293a1 1 0 010 1.414l-8 8a1 1 0 01-1.414 0l-4-4a1 1 0 011.414-1.414L8 12.586l7.293-7.293a1 1 0 011.414 0z" clip-rule="evenodd"/>
+                                        </svg>
+                                        <span>Regulatory guidance</span>
+                                    </li>
+                                    <li class="defcon-feature-item">
+                                        <svg class="defcon-check-icon" viewBox="0 0 20 20" fill="currentColor">
+                                            <path fill-rule="evenodd" d="M16.707 5.293a1 1 0 010 1.414l-8 8a1 1 0 01-1.414 0l-4-4a1 1 0 011.414-1.414L8 12.586l7.293-7.293a1 1 0 011.414 0z" clip-rule="evenodd"/>
+                                        </svg>
+                                        <span>Implementation support</span>
+                                    </li>
+                                </ul>
+                                <button class="defcon-solution-btn">Get Started</button>
+                            </div>
                         </div>
                     </div>
-                    <div class="defcon-solution-body">
-                        <ul class="defcon-solution-features">
-                            <li class="defcon-solution-feature">
-                                <span class="defcon-feature-check">✓</span>
-                                <span>Complete DApp development</span>
-                            </li>
-                            <li class="defcon-solution-feature">
-                                <span class="defcon-feature-check">✓</span>
-                                <span>Custom smart contracts</span>
-                            </li>
-                            <li class="defcon-solution-feature">
-                                <span class="defcon-feature-check">✓</span>
-                                <span>Web3 integration & wallet connectivity</span>
-                            </li>
-                            <li class="defcon-solution-feature">
-                                <span class="defcon-feature-check">✓</span>
-                                <span>UI/UX design & development</span>
-                            </li>
-                            <li class="defcon-solution-feature">
-                                <span class="defcon-feature-check">✓</span>
-                                <span>Comprehensive security audit</span>
-                            </li>
-                            <li class="defcon-solution-feature">
-                                <span class="defcon-feature-check">✓</span>
-                                <span>90 days technical support</span>
-                            </li>
-                        </ul>
-                        <button class="defcon-btn defcon-btn-primary defcon-solution-cta">Get Started</button>
-                    </div>
-                </div>
-                
-                <!-- Security Solutions -->
-                <div class="defcon-solution-card" data-categories="security">
-                    <div class="defcon-solution-header">
-                        <span class="defcon-solution-badge">Security & Auditing</span>
-                        <h3 class="defcon-solution-title">Smart Contract Audit</h3>
-                        <p class="defcon-solution-description">Comprehensive security assessment and code review of your smart contracts to identify vulnerabilities and ensure robustness.</p>
-                        <div class="defcon-solution-price-container">
-                            <div class="defcon-solution-price">$5,999</div>
-                            <div class="defcon-solution-period">one-time audit</div>
+
+                    <!-- Solution 3: Decentralized Application -->
+                    <div id="solution-3" class="defcon-solution-item" data-solution="3">
+                        <div class="defcon-solution-main">
+                            <div class="defcon-solution-left">
+                                <span class="defcon-solution-badge">DApp Development</span>
+                                <h3 class="defcon-solution-name">Decentralized Application (DApp)</h3>
+                                <p class="defcon-solution-desc">Full-stack DApp development including frontend, backend, smart contracts, and Web3 integration.</p>
+                                <div class="defcon-solution-pricing">
+                                    <div class="defcon-price-tag">$24,999</div>
+                                    <div class="defcon-price-period">starting price</div>
+                                </div>
+                            </div>
+                            <div class="defcon-solution-right">
+                                <h4 class="defcon-features-title">What's Included</h4>
+                                <ul class="defcon-features-list">
+                                    <li class="defcon-feature-item">
+                                        <svg class="defcon-check-icon" viewBox="0 0 20 20" fill="currentColor">
+                                            <path fill-rule="evenodd" d="M16.707 5.293a1 1 0 010 1.414l-8 8a1 1 0 01-1.414 0l-4-4a1 1 0 011.414-1.414L8 12.586l7.293-7.293a1 1 0 011.414 0z" clip-rule="evenodd"/>
+                                        </svg>
+                                        <span>Full-stack development</span>
+                                    </li>
+                                    <li class="defcon-feature-item">
+                                        <svg class="defcon-check-icon" viewBox="0 0 20 20" fill="currentColor">
+                                            <path fill-rule="evenodd" d="M16.707 5.293a1 1 0 010 1.414l-8 8a1 1 0 01-1.414 0l-4-4a1 1 0 011.414-1.414L8 12.586l7.293-7.293a1 1 0 011.414 0z" clip-rule="evenodd"/>
+                                        </svg>
+                                        <span>Smart contract integration</span>
+                                    </li>
+                                    <li class="defcon-feature-item">
+                                        <svg class="defcon-check-icon" viewBox="0 0 20 20" fill="currentColor">
+                                            <path fill-rule="evenodd" d="M16.707 5.293a1 1 0 010 1.414l-8 8a1 1 0 01-1.414 0l-4-4a1 1 0 011.414-1.414L8 12.586l7.293-7.293a1 1 0 011.414 0z" clip-rule="evenodd"/>
+                                        </svg>
+                                        <span>Wallet integration (MetaMask, WalletConnect)</span>
+                                    </li>
+                                    <li class="defcon-feature-item">
+                                        <svg class="defcon-check-icon" viewBox="0 0 20 20" fill="currentColor">
+                                            <path fill-rule="evenodd" d="M16.707 5.293a1 1 0 010 1.414l-8 8a1 1 0 01-1.414 0l-4-4a1 1 0 011.414-1.414L8 12.586l7.293-7.293a1 1 0 011.414 0z" clip-rule="evenodd"/>
+                                        </svg>
+                                        <span>Responsive UI/UX design</span>
+                                    </li>
+                                    <li class="defcon-feature-item">
+                                        <svg class="defcon-check-icon" viewBox="0 0 20 20" fill="currentColor">
+                                            <path fill-rule="evenodd" d="M16.707 5.293a1 1 0 010 1.414l-8 8a1 1 0 01-1.414 0l-4-4a1 1 0 011.414-1.414L8 12.586l7.293-7.293a1 1 0 011.414 0z" clip-rule="evenodd"/>
+                                        </svg>
+                                        <span>IPFS integration</span>
+                                    </li>
+                                    <li class="defcon-feature-item">
+                                        <svg class="defcon-check-icon" viewBox="0 0 20 20" fill="currentColor">
+                                            <path fill-rule="evenodd" d="M16.707 5.293a1 1 0 010 1.414l-8 8a1 1 0 01-1.414 0l-4-4a1 1 0 011.414-1.414L8 12.586l7.293-7.293a1 1 0 011.414 0z" clip-rule="evenodd"/>
+                                        </svg>
+                                        <span>60 days support</span>
+                                    </li>
+                                </ul>
+                                <button class="defcon-solution-btn">Get Started</button>
+                            </div>
                         </div>
                     </div>
-                    <div class="defcon-solution-body">
-                        <ul class="defcon-solution-features">
-                            <li class="defcon-solution-feature">
-                                <span class="defcon-feature-check">✓</span>
-                                <span>Manual code review</span>
-                            </li>
-                            <li class="defcon-solution-feature">
-                                <span class="defcon-feature-check">✓</span>
-                                <span>Automated vulnerability scanning</span>
-                            </li>
-                            <li class="defcon-solution-feature">
-                                <span class="defcon-feature-check">✓</span>
-                                <span>Gas optimization analysis</span>
-                            </li>
-                            <li class="defcon-solution-feature">
-                                <span class="defcon-feature-check">✓</span>
-                                <span>Formal verification (if applicable)</span>
-                            </li>
-                            <li class="defcon-solution-feature">
-                                <span class="defcon-feature-check">✓</span>
-                                <span>Detailed audit report</span>
-                            </li>
-                            <li class="defcon-solution-feature">
-                                <span class="defcon-feature-check">✓</span>
-                                <span>Remediation guidance</span>
-                            </li>
-                        </ul>
-                        <button class="defcon-btn defcon-btn-primary defcon-solution-cta">Get Started</button>
-                    </div>
-                </div>
-                
-                <!-- Consulting Solutions -->
-                <div class="defcon-solution-card" data-categories="consulting">
-                    <div class="defcon-solution-header">
-                        <span class="defcon-solution-badge">Consulting</span>
-                        <h3 class="defcon-solution-title">Blockchain Strategy Consulting</h3>
-                        <p class="defcon-solution-description">Expert guidance on blockchain implementation, token economics, regulatory compliance, and technology selection for your business.</p>
-                        <div class="defcon-solution-price-container">
-                            <div class="defcon-solution-price">$7,499</div>
-                            <div class="defcon-solution-period">one-time engagement</div>
+
+                    <!-- Solution 4: Smart Contract Security Audit -->
+                    <div id="solution-4" class="defcon-solution-item" data-solution="4">
+                        <div class="defcon-solution-main">
+                            <div class="defcon-solution-left">
+                                <span class="defcon-solution-badge">Security</span>
+                                <h3 class="defcon-solution-name">Smart Contract Security Audit</h3>
+                                <p class="defcon-solution-desc">Comprehensive security audit of your smart contracts to identify vulnerabilities and ensure best practices.</p>
+                                <div class="defcon-solution-pricing">
+                                    <div class="defcon-price-tag">$5,999</div>
+                                    <div class="defcon-price-period">per contract</div>
+                                </div>
+                            </div>
+                            <div class="defcon-solution-right">
+                                <h4 class="defcon-features-title">What's Included</h4>
+                                <ul class="defcon-features-list">
+                                    <li class="defcon-feature-item">
+                                        <svg class="defcon-check-icon" viewBox="0 0 20 20" fill="currentColor">
+                                            <path fill-rule="evenodd" d="M16.707 5.293a1 1 0 010 1.414l-8 8a1 1 0 01-1.414 0l-4-4a1 1 0 011.414-1.414L8 12.586l7.293-7.293a1 1 0 011.414 0z" clip-rule="evenodd"/>
+                                        </svg>
+                                        <span>Manual code review</span>
+                                    </li>
+                                    <li class="defcon-feature-item">
+                                        <svg class="defcon-check-icon" viewBox="0 0 20 20" fill="currentColor">
+                                            <path fill-rule="evenodd" d="M16.707 5.293a1 1 0 010 1.414l-8 8a1 1 0 01-1.414 0l-4-4a1 1 0 011.414-1.414L8 12.586l7.293-7.293a1 1 0 011.414 0z" clip-rule="evenodd"/>
+                                        </svg>
+                                        <span>Automated vulnerability scanning</span>
+                                    </li>
+                                    <li class="defcon-feature-item">
+                                        <svg class="defcon-check-icon" viewBox="0 0 20 20" fill="currentColor">
+                                            <path fill-rule="evenodd" d="M16.707 5.293a1 1 0 010 1.414l-8 8a1 1 0 01-1.414 0l-4-4a1 1 0 011.414-1.414L8 12.586l7.293-7.293a1 1 0 011.414 0z" clip-rule="evenodd"/>
+                                        </svg>
+                                        <span>Gas optimization analysis</span>
+                                    </li>
+                                    <li class="defcon-feature-item">
+                                        <svg class="defcon-check-icon" viewBox="0 0 20 20" fill="currentColor">
+                                            <path fill-rule="evenodd" d="M16.707 5.293a1 1 0 010 1.414l-8 8a1 1 0 01-1.414 0l-4-4a1 1 0 011.414-1.414L8 12.586l7.293-7.293a1 1 0 011.414 0z" clip-rule="evenodd"/>
+                                        </svg>
+                                        <span>Detailed audit report</span>
+                                    </li>
+                                    <li class="defcon-feature-item">
+                                        <svg class="defcon-check-icon" viewBox="0 0 20 20" fill="currentColor">
+                                            <path fill-rule="evenodd" d="M16.707 5.293a1 1 0 010 1.414l-8 8a1 1 0 01-1.414 0l-4-4a1 1 0 011.414-1.414L8 12.586l7.293-7.293a1 1 0 011.414 0z" clip-rule="evenodd"/>
+                                        </svg>
+                                        <span>Recommendations & fixes</span>
+                                    </li>
+                                    <li class="defcon-feature-item">
+                                        <svg class="defcon-check-icon" viewBox="0 0 20 20" fill="currentColor">
+                                            <path fill-rule="evenodd" d="M16.707 5.293a1 1 0 010 1.414l-8 8a1 1 0 01-1.414 0l-4-4a1 1 0 011.414-1.414L8 12.586l7.293-7.293a1 1 0 011.414 0z" clip-rule="evenodd"/>
+                                        </svg>
+                                        <span>Re-audit after fixes</span>
+                                    </li>
+                                </ul>
+                                <button class="defcon-solution-btn">Get Started</button>
+                            </div>
                         </div>
                     </div>
-                    <div class="defcon-solution-body">
-                        <ul class="defcon-solution-features">
-                            <li class="defcon-solution-feature">
-                                <span class="defcon-feature-check">✓</span>
-                                <span>Blockchain use case analysis</span>
-                            </li>
-                            <li class="defcon-solution-feature">
-                                <span class="defcon-feature-check">✓</span>
-                                <span>Technology stack recommendation</span>
-                            </li>
-                            <li class="defcon-solution-feature">
-                                <span class="defcon-feature-check">✓</span>
-                                <span>Token economics design</span>
-                            </li>
-                            <li class="defcon-solution-feature">
-                                <span class="defcon-feature-check">✓</span>
-                                <span>Regulatory compliance guidance</span>
-                            </li>
-                            <li class="defcon-solution-feature">
-                                <span class="defcon-feature-check">✓</span>
-                                <span>Implementation roadmap</span>
-                            </li>
-                            <li class="defcon-solution-feature">
-                                <span class="defcon-feature-check">✓</span>
-                                <span>30 days follow-up support</span>
-                            </li>
-                        </ul>
-                        <button class="defcon-btn defcon-btn-primary defcon-solution-cta">Get Started</button>
-                    </div>
-                </div>
-                
-                <div class="defcon-solution-card" data-categories="development security">
-                    <div class="defcon-solution-header">
-                        <span class="defcon-solution-badge">Wallet Development</span>
-                        <h3 class="defcon-solution-title">Secure Digital Wallet</h3>
-                        <p class="defcon-solution-description">Development of secure cryptocurrency wallets with multi-signature support, MPC technology, and comprehensive security features.</p>
-                        <div class="defcon-solution-price-container">
-                            <div class="defcon-solution-price">$19,999</div>
-                            <div class="defcon-solution-period">one-time development</div>
+
+                    <!-- Solution 5: Custom Token Creation -->
+                    <div id="solution-5" class="defcon-solution-item" data-solution="5">
+                        <div class="defcon-solution-main">
+                            <div class="defcon-solution-left">
+                                <span class="defcon-solution-badge">Token Development</span>
+                                <h3 class="defcon-solution-name">Custom Token Creation</h3>
+                                <p class="defcon-solution-desc">Create custom ERC-20, BEP-20, or other standard tokens with advanced features and comprehensive deployment support.</p>
+                                <div class="defcon-solution-pricing">
+                                    <div class="defcon-price-tag">$3,499</div>
+                                    <div class="defcon-price-period">starting price</div>
+                                </div>
+                            </div>
+                            <div class="defcon-solution-right">
+                                <h4 class="defcon-features-title">What's Included</h4>
+                                <ul class="defcon-features-list">
+                                    <li class="defcon-feature-item">
+                                        <svg class="defcon-check-icon" viewBox="0 0 20 20" fill="currentColor">
+                                            <path fill-rule="evenodd" d="M16.707 5.293a1 1 0 010 1.414l-8 8a1 1 0 01-1.414 0l-4-4a1 1 0 011.414-1.414L8 12.586l7.293-7.293a1 1 0 011.414 0z" clip-rule="evenodd"/>
+                                        </svg>
+                                        <span>Custom token development</span>
+                                    </li>
+                                    <li class="defcon-feature-item">
+                                        <svg class="defcon-check-icon" viewBox="0 0 20 20" fill="currentColor">
+                                            <path fill-rule="evenodd" d="M16.707 5.293a1 1 0 010 1.414l-8 8a1 1 0 01-1.414 0l-4-4a1 1 0 011.414-1.414L8 12.586l7.293-7.293a1 1 0 011.414 0z" clip-rule="evenodd"/>
+                                        </svg>
+                                        <span>Standard compliance (ERC-20/BEP-20)</span>
+                                    </li>
+                                    <li class="defcon-feature-item">
+                                        <svg class="defcon-check-icon" viewBox="0 0 20 20" fill="currentColor">
+                                            <path fill-rule="evenodd" d="M16.707 5.293a1 1 0 010 1.414l-8 8a1 1 0 01-1.414 0l-4-4a1 1 0 011.414-1.414L8 12.586l7.293-7.293a1 1 0 011.414 0z" clip-rule="evenodd"/>
+                                        </svg>
+                                        <span>Token economics design</span>
+                                    </li>
+                                    <li class="defcon-feature-item">
+                                        <svg class="defcon-check-icon" viewBox="0 0 20 20" fill="currentColor">
+                                            <path fill-rule="evenodd" d="M16.707 5.293a1 1 0 010 1.414l-8 8a1 1 0 01-1.414 0l-4-4a1 1 0 011.414-1.414L8 12.586l7.293-7.293a1 1 0 011.414 0z" clip-rule="evenodd"/>
+                                        </svg>
+                                        <span>Security features implementation</span>
+                                    </li>
+                                    <li class="defcon-feature-item">
+                                        <svg class="defcon-check-icon" viewBox="0 0 20 20" fill="currentColor">
+                                            <path fill-rule="evenodd" d="M16.707 5.293a1 1 0 010 1.414l-8 8a1 1 0 01-1.414 0l-4-4a1 1 0 011.414-1.414L8 12.586l7.293-7.293a1 1 0 011.414 0z" clip-rule="evenodd"/>
+                                        </svg>
+                                        <span>Testnet & mainnet deployment</span>
+                                    </li>
+                                    <li class="defcon-feature-item">
+                                        <svg class="defcon-check-icon" viewBox="0 0 20 20" fill="currentColor">
+                                            <path fill-rule="evenodd" d="M16.707 5.293a1 1 0 010 1.414l-8 8a1 1 0 01-1.414 0l-4-4a1 1 0 011.414-1.414L8 12.586l7.293-7.293a1 1 0 011.414 0z" clip-rule="evenodd"/>
+                                        </svg>
+                                        <span>90 days technical support</span>
+                                    </li>
+                                </ul>
+                                <button class="defcon-solution-btn">Get Started</button>
+                            </div>
                         </div>
                     </div>
-                    <div class="defcon-solution-body">
-                        <ul class="defcon-solution-features">
-                            <li class="defcon-solution-feature">
-                                <span class="defcon-feature-check">✓</span>
-                                <span>Multi-currency wallet development</span>
-                            </li>
-                            <li class="defcon-solution-feature">
-                                <span class="defcon-feature-check">✓</span>
-                                <span>MPC technology implementation</span>
-                            </li>
-                            <li class="defcon-solution-feature">
-                                <span class="defcon-feature-check">✓</span>
-                                <span>Multi-signature security</span>
-                            </li>
-                            <li class="defcon-solution-feature">
-                                <span class="defcon-feature-check">✓</span>
-                                <span>Biometric authentication</span>
-                            </li>
-                            <li class="defcon-solution-feature">
-                                <span class="defcon-feature-check">✓</span>
-                                <span>Comprehensive security audit</span>
-                            </li>
-                            <li class="defcon-solution-feature">
-                                <span class="defcon-feature-check">✓</span>
-                                <span>90 days technical support</span>
-                            </li>
-                        </ul>
-                        <button class="defcon-btn defcon-btn-primary defcon-solution-cta">Get Started</button>
-                    </div>
-                </div>
-                
-                <div class="defcon-solution-card" data-categories="development">
-                    <div class="defcon-solution-header">
-                        <span class="defcon-solution-badge">NFT Development</span>
-                        <h3 class="defcon-solution-title">NFT Marketplace Development</h3>
-                        <p class="defcon-solution-description">End-to-end NFT marketplace development with minting, trading, auction functionality, and comprehensive user experience.</p>
-                        <div class="defcon-solution-price-container">
-                            <div class="defcon-solution-price">$34,999</div>
-                            <div class="defcon-solution-period">one-time development</div>
+
+                    <!-- Solution 6: NFT Marketplace Development -->
+                    <div id="solution-6" class="defcon-solution-item" data-solution="6">
+                        <div class="defcon-solution-main">
+                            <div class="defcon-solution-left">
+                                <span class="defcon-solution-badge">NFT Development</span>
+                                <h3 class="defcon-solution-name">NFT Marketplace Development</h3>
+                                <p class="defcon-solution-desc">End-to-end NFT marketplace development with minting, trading, auction functionality, and comprehensive user experience.</p>
+                                <div class="defcon-solution-pricing">
+                                    <div class="defcon-price-tag">$34,999</div>
+                                    <div class="defcon-price-period">one-time development</div>
+                                </div>
+                            </div>
+                            <div class="defcon-solution-right">
+                                <h4 class="defcon-features-title">What's Included</h4>
+                                <ul class="defcon-features-list">
+                                    <li class="defcon-feature-item">
+                                        <svg class="defcon-check-icon" viewBox="0 0 20 20" fill="currentColor">
+                                            <path fill-rule="evenodd" d="M16.707 5.293a1 1 0 010 1.414l-8 8a1 1 0 01-1.414 0l-4-4a1 1 0 011.414-1.414L8 12.586l7.293-7.293a1 1 0 011.414 0z" clip-rule="evenodd"/>
+                                        </svg>
+                                        <span>Custom NFT marketplace development</span>
+                                    </li>
+                                    <li class="defcon-feature-item">
+                                        <svg class="defcon-check-icon" viewBox="0 0 20 20" fill="currentColor">
+                                            <path fill-rule="evenodd" d="M16.707 5.293a1 1 0 010 1.414l-8 8a1 1 0 01-1.414 0l-4-4a1 1 0 011.414-1.414L8 12.586l7.293-7.293a1 1 0 011.414 0z" clip-rule="evenodd"/>
+                                        </svg>
+                                        <span>NFT minting functionality</span>
+                                    </li>
+                                    <li class="defcon-feature-item">
+                                        <svg class="defcon-check-icon" viewBox="0 0 20 20" fill="currentColor">
+                                            <path fill-rule="evenodd" d="M16.707 5.293a1 1 0 010 1.414l-8 8a1 1 0 01-1.414 0l-4-4a1 1 0 011.414-1.414L8 12.586l7.293-7.293a1 1 0 011.414 0z" clip-rule="evenodd"/>
+                                        </svg>
+                                        <span>Auction & fixed-price sales</span>
+                                    </li>
+                                    <li class="defcon-feature-item">
+                                        <svg class="defcon-check-icon" viewBox="0 0 20 20" fill="currentColor">
+                                            <path fill-rule="evenodd" d="M16.707 5.293a1 1 0 010 1.414l-8 8a1 1 0 01-1.414 0l-4-4a1 1 0 011.414-1.414L8 12.586l7.293-7.293a1 1 0 011.414 0z" clip-rule="evenodd"/>
+                                        </svg>
+                                        <span>Royalty system implementation</span>
+                                    </li>
+                                    <li class="defcon-feature-item">
+                                        <svg class="defcon-check-icon" viewBox="0 0 20 20" fill="currentColor">
+                                            <path fill-rule="evenodd" d="M16.707 5.293a1 1 0 010 1.414l-8 8a1 1 0 01-1.414 0l-4-4a1 1 0 011.414-1.414L8 12.586l7.293-7.293a1 1 0 011.414 0z" clip-rule="evenodd"/>
+                                        </svg>
+                                        <span>Comprehensive security audit</span>
+                                    </li>
+                                    <li class="defcon-feature-item">
+                                        <svg class="defcon-check-icon" viewBox="0 0 20 20" fill="currentColor">
+                                            <path fill-rule="evenodd" d="M16.707 5.293a1 1 0 010 1.414l-8 8a1 1 0 01-1.414 0l-4-4a1 1 0 011.414-1.414L8 12.586l7.293-7.293a1 1 0 011.414 0z" clip-rule="evenodd"/>
+                                        </svg>
+                                        <span>120 days technical support</span>
+                                    </li>
+                                </ul>
+                                <button class="defcon-solution-btn">Get Started</button>
+                            </div>
                         </div>
-                    </div>
-                    <div class="defcon-solution-body">
-                        <ul class="defcon-solution-features">
-                            <li class="defcon-solution-feature">
-                                <span class="defcon-feature-check">✓</span>
-                                <span>Custom NFT marketplace development</span>
-                            </li>
-                            <li class="defcon-solution-feature">
-                                <span class="defcon-feature-check">✓</span>
-                                <span>NFT minting functionality</span>
-                            </li>
-                            <li class="defcon-solution-feature">
-                                <span class="defcon-feature-check">✓</span>
-                                <span>Auction & fixed-price sales</span>
-                            </li>
-                            <li class="defcon-solution-feature">
-                                <span class="defcon-feature-check">✓</span>
-                                <span>Royalty system implementation</span>
-                            </li>
-                            <li class="defcon-solution-feature">
-                                <span class="defcon-feature-check">✓</span>
-                                <span>Comprehensive security audit</span>
-                            </li>
-                            <li class="defcon-solution-feature">
-                                <span class="defcon-feature-check">✓</span>
-                                <span>120 days technical support</span>
-                            </li>
-                        </ul>
-                        <button class="defcon-btn defcon-btn-primary defcon-solution-cta">Get Started</button>
                     </div>
                 </div>
             </div>
@@ -1182,7 +1858,7 @@
     </section>
 
     <!-- STAKING SECTION -->
-    <section class="defcon-blockchain-staking">
+    <section class="defcon-blockchain-staking" id="staking">
         <div class="defcon-container">
             <div class="defcon-staking-container">
                 <div class="defcon-staking-content">
@@ -1237,7 +1913,7 @@
     </section>
 
     <!-- INTEGRATION SECTION -->
-    <section class="defcon-blockchain-integration">
+    <section class="defcon-blockchain-integration" id="integration">
         <div class="defcon-container">
             <div class="defcon-section-header">
                 <h2 class="defcon-section-title">Seamless Integration</h2>
@@ -1264,39 +1940,387 @@
         </div>
     </section>
 
+    <!-- FAQ SECTION -->
+    <section class="defcon-blockchain-faq" id="faq">
+        <div class="defcon-container">
+            <div class="defcon-section-header">
+                <h2 class="defcon-section-title">Frequently Asked Questions</h2>
+                <p class="defcon-section-subtitle">Everything you need to know about our blockchain solutions and services</p>
+            </div>
+
+            <div class="defcon-faq-container">
+                <div class="defcon-faq-item">
+                    <div class="defcon-faq-question">
+                        <h3 class="defcon-faq-question-text">What blockchain platforms do you support?</h3>
+                        <div class="defcon-faq-icon">+</div>
+                    </div>
+                    <div class="defcon-faq-answer">
+                        <div class="defcon-faq-answer-content">
+                            <p>We support all major blockchain platforms including Ethereum, Binance Smart Chain (BSC), Polygon, Solana, Avalanche, and other EVM-compatible chains. Our team has extensive experience with both public and private blockchain networks.</p>
+                            <p>We can also help you choose the right blockchain platform based on your specific use case, scalability requirements, transaction costs, and business objectives.</p>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="defcon-faq-item">
+                    <div class="defcon-faq-question">
+                        <h3 class="defcon-faq-question-text">How long does it take to develop a blockchain solution?</h3>
+                        <div class="defcon-faq-icon">+</div>
+                    </div>
+                    <div class="defcon-faq-answer">
+                        <div class="defcon-faq-answer-content">
+                            <p>Development timelines vary based on project complexity:</p>
+                            <ul>
+                                <li><strong>Smart Contracts:</strong> 2-4 weeks for standard contracts</li>
+                                <li><strong>DApps:</strong> 8-16 weeks for full-stack applications</li>
+                                <li><strong>NFT Marketplaces:</strong> 12-20 weeks for complete platforms</li>
+                                <li><strong>Custom Solutions:</strong> Timeline determined after requirements analysis</li>
+                            </ul>
+                            <p>We follow an agile development methodology with regular milestones and deliverables throughout the project.</p>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="defcon-faq-item">
+                    <div class="defcon-faq-question">
+                        <h3 class="defcon-faq-question-text">What is included in your security audit service?</h3>
+                        <div class="defcon-faq-icon">+</div>
+                    </div>
+                    <div class="defcon-faq-answer">
+                        <div class="defcon-faq-answer-content">
+                            <p>Our comprehensive security audit includes:</p>
+                            <ul>
+                                <li>Manual code review by experienced blockchain security experts</li>
+                                <li>Automated vulnerability scanning using industry-standard tools</li>
+                                <li>Gas optimization analysis to reduce transaction costs</li>
+                                <li>Testing against common attack vectors (reentrancy, overflow, etc.)</li>
+                                <li>Detailed audit report with findings and severity ratings</li>
+                                <li>Specific recommendations for fixes and improvements</li>
+                                <li>Re-audit after implementing fixes to ensure security</li>
+                            </ul>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="defcon-faq-item">
+                    <div class="defcon-faq-question">
+                        <h3 class="defcon-faq-question-text">Do you provide ongoing support after deployment?</h3>
+                        <div class="defcon-faq-icon">+</div>
+                    </div>
+                    <div class="defcon-faq-answer">
+                        <div class="defcon-faq-answer-content">
+                            <p>Yes! All our solutions include post-deployment support ranging from 30 to 120 days depending on the package. Support includes:</p>
+                            <ul>
+                                <li>Bug fixes and technical troubleshooting</li>
+                                <li>Performance monitoring and optimization</li>
+                                <li>Documentation and knowledge transfer</li>
+                                <li>Minor updates and modifications</li>
+                            </ul>
+                            <p>We also offer extended maintenance contracts for long-term support, continuous monitoring, and feature enhancements.</p>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="defcon-faq-item">
+                    <div class="defcon-faq-question">
+                        <h3 class="defcon-faq-question-text">What are the costs associated with blockchain development?</h3>
+                        <div class="defcon-faq-icon">+</div>
+                    </div>
+                    <div class="defcon-faq-answer">
+                        <div class="defcon-faq-answer-content">
+                            <p>Costs vary based on project scope and complexity. Our pricing structure includes:</p>
+                            <ul>
+                                <li><strong>Development costs:</strong> Based on time and complexity (see our pricing section)</li>
+                                <li><strong>Deployment costs:</strong> Gas fees for mainnet deployment (varies by network)</li>
+                                <li><strong>Infrastructure costs:</strong> Hosting, node services, and APIs</li>
+                                <li><strong>Maintenance costs:</strong> Optional ongoing support and updates</li>
+                            </ul>
+                            <p>We provide transparent, itemized quotes with no hidden fees. Contact our sales team for a custom quote based on your specific requirements.</p>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="defcon-faq-item">
+                    <div class="defcon-faq-question">
+                        <h3 class="defcon-faq-question-text">Can you integrate blockchain with our existing systems?</h3>
+                        <div class="defcon-faq-icon">+</div>
+                    </div>
+                    <div class="defcon-faq-answer">
+                        <div class="defcon-faq-answer-content">
+                            <p>Absolutely! We specialize in seamless blockchain integration with existing enterprise systems. Our integration services include:</p>
+                            <ul>
+                                <li>API development for blockchain connectivity</li>
+                                <li>Database synchronization and hybrid architecture</li>
+                                <li>Legacy system modernization with blockchain components</li>
+                                <li>Microservices architecture for modular integration</li>
+                                <li>Cloud infrastructure setup and deployment</li>
+                            </ul>
+                            <p>We ensure minimal disruption to your current operations while adding the benefits of blockchain technology.</p>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="defcon-faq-item">
+                    <div class="defcon-faq-question">
+                        <h3 class="defcon-faq-question-text">Do you offer consulting services for blockchain strategy?</h3>
+                        <div class="defcon-faq-icon">+</div>
+                    </div>
+                    <div class="defcon-faq-answer">
+                        <div class="defcon-faq-answer-content">
+                            <p>Yes, our blockchain strategy consulting service helps you make informed decisions about blockchain adoption. We provide:</p>
+                            <ul>
+                                <li>Use case analysis and feasibility studies</li>
+                                <li>Technology stack recommendations</li>
+                                <li>Tokenomics design and economic modeling</li>
+                                <li>Regulatory compliance guidance</li>
+                                <li>Implementation roadmap and phased approach</li>
+                                <li>ROI analysis and cost-benefit assessment</li>
+                            </ul>
+                            <p>Our consultants bring years of experience across various industries to help you navigate the blockchain landscape effectively.</p>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="defcon-faq-item">
+                    <div class="defcon-faq-question">
+                        <h3 class="defcon-faq-question-text">What makes your blockchain solutions secure?</h3>
+                        <div class="defcon-faq-icon">+</div>
+                    </div>
+                    <div class="defcon-faq-answer">
+                        <div class="defcon-faq-answer-content">
+                            <p>Security is our top priority. We implement multiple layers of protection:</p>
+                            <ul>
+                                <li><strong>Secure Development:</strong> Following best practices and security patterns</li>
+                                <li><strong>Multi-Party Computation (MPC):</strong> For key management and wallet security</li>
+                                <li><strong>Regular Audits:</strong> Both internal and third-party security reviews</li>
+                                <li><strong>Penetration Testing:</strong> Simulated attacks to identify vulnerabilities</li>
+                                <li><strong>Formal Verification:</strong> Mathematical proof of contract correctness</li>
+                                <li><strong>Monitoring:</strong> 24/7 monitoring for suspicious activities</li>
+                            </ul>
+                            <p>All our developers are trained in blockchain security and stay updated with the latest security research and vulnerabilities.</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
     <script>
-        // Tab functionality for solutions
+        // Sticky Navigation
         document.addEventListener('DOMContentLoaded', function() {
-            const tabButtons = document.querySelectorAll('.defcon-tab-btn');
-            const solutionCards = document.querySelectorAll('.defcon-solution-card');
+            const stickyNav = document.getElementById('stickyNav');
+            const heroSection = document.querySelector('.defcon-blockchain-hero');
+            const navLinks = document.querySelectorAll('.defcon-sticky-nav-link');
+            const sections = {};
             
-            tabButtons.forEach(button => {
-                button.addEventListener('click', function() {
-                    // Remove active class from all buttons
-                    tabButtons.forEach(btn => btn.classList.remove('active'));
-                    
-                    // Add active class to clicked button
-                    this.classList.add('active');
-                    
-                    const filter = this.getAttribute('data-tab');
-                    
-                    // Show/hide solution cards based on filter
-                    solutionCards.forEach(card => {
-                        if (filter === 'all') {
-                            card.style.display = 'flex';
-                        } else {
-                            const categories = card.getAttribute('data-categories').split(' ');
-                            if (categories.includes(filter)) {
-                                card.style.display = 'flex';
-                            } else {
-                                card.style.display = 'none';
-                            }
+            // Store section references
+            navLinks.forEach(link => {
+                const sectionId = link.getAttribute('data-section');
+                sections[sectionId] = document.getElementById(sectionId);
+            });
+
+            // Show/hide sticky nav on scroll
+            let lastScroll = 0;
+            window.addEventListener('scroll', function() {
+                const currentScroll = window.pageYOffset;
+                const heroBottom = heroSection ? heroSection.offsetHeight : 500;
+
+                // Show nav after scrolling past hero
+                if (currentScroll > heroBottom) {
+                    stickyNav.classList.add('visible');
+                    document.body.classList.add('scrolled');
+                } else {
+                    stickyNav.classList.remove('visible');
+                    document.body.classList.remove('scrolled');
+                }
+
+                // Update active nav link based on scroll position
+                let currentSection = '';
+                Object.keys(sections).forEach(sectionId => {
+                    const section = sections[sectionId];
+                    if (section) {
+                        const sectionTop = section.offsetTop - 150;
+                        const sectionBottom = sectionTop + section.offsetHeight;
+                        
+                        if (currentScroll >= sectionTop && currentScroll < sectionBottom) {
+                            currentSection = sectionId;
                         }
-                    });
+                    }
+                });
+
+                // Update active class
+                navLinks.forEach(link => {
+                    link.classList.remove('active');
+                    if (link.getAttribute('data-section') === currentSection) {
+                        link.classList.add('active');
+                    }
+                });
+
+                lastScroll = currentScroll;
+            });
+
+            // Smooth scroll to sections
+            navLinks.forEach(link => {
+                link.addEventListener('click', function(e) {
+                    e.preventDefault();
+                    const sectionId = this.getAttribute('data-section');
+                    const section = sections[sectionId];
+                    
+                    if (section) {
+                        const yOffset = -125; // Account for sticky nav height
+                        const y = section.getBoundingClientRect().top + window.pageYOffset + yOffset;
+                        
+                        window.scrollTo({
+                            top: y,
+                            behavior: 'smooth'
+                        });
+                    }
                 });
             });
+
+            // FAQ Accordion
+            const faqItems = document.querySelectorAll('.defcon-faq-item');
+            
+            faqItems.forEach(item => {
+                const question = item.querySelector('.defcon-faq-question');
+                
+                question.addEventListener('click', function() {
+                    // Toggle current item
+                    const isActive = item.classList.contains('active');
+                    
+                    // Close all items
+                    faqItems.forEach(faq => {
+                        faq.classList.remove('active');
+                    });
+                    
+                    // Open clicked item if it wasn't active
+                    if (!isActive) {
+                        item.classList.add('active');
+                    }
+                });
+            });
+
+            // Sidebar navigation with scroll-based activation
+            const sidebarLinks = document.querySelectorAll('.defcon-sidebar-link');
+            const solutionItems = document.querySelectorAll('.defcon-solution-item');
+            
+            // Function to update active sidebar link based on scroll position
+            function updateActiveSidebar() {
+                let currentActive = null;
+                
+                solutionItems.forEach(item => {
+                    const rect = item.getBoundingClientRect();
+                    const isInView = rect.top <= window.innerHeight / 2 && rect.bottom >= window.innerHeight / 2;
+                    
+                    if (isInView) {
+                        currentActive = item.getAttribute('data-solution');
+                    }
+                });
+                
+                if (currentActive) {
+                    sidebarLinks.forEach(link => {
+                        link.classList.remove('active');
+                        if (link.getAttribute('data-solution') === currentActive) {
+                            link.classList.add('active');
+                        }
+                    });
+                }
+            }
+            
+            // Add click event listeners to sidebar links for smooth scrolling
+            sidebarLinks.forEach(link => {
+                link.addEventListener('click', function(e) {
+                    e.preventDefault();
+                    const solutionNumber = this.getAttribute('data-solution');
+                    const targetSolution = document.querySelector(`#solution-${solutionNumber}`);
+                    
+                    if (targetSolution) {
+                        const yOffset = -80;
+                        const y = targetSolution.getBoundingClientRect().top + window.pageYOffset + yOffset;
+                        
+                        window.scrollTo({
+                            top: y,
+                            behavior: 'smooth'
+                        });
+                    }
+                });
+            });
+            
+            // Update active sidebar on scroll
+            window.addEventListener('scroll', function() {
+                requestAnimationFrame(updateActiveSidebar);
+            });
+            
+            // Initial update
+            updateActiveSidebar();
         });
     </script>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 
 

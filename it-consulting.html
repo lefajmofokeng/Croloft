@@ -158,12 +158,29 @@
 
 
 
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 <!DOCTYPE html>
 <html lang="en">
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>IT Consulting Pricing | Scalable IT Solutions</title>
+  <title>IT Consulting Pricing | Strategic IT Guidance</title>
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=Outfit:wght@400;600;800&family=Work+Sans:wght@400;500&display=swap" rel="stylesheet">
@@ -239,7 +256,7 @@
     .itc-subtitle {
       font-size: clamp(1rem, 2.5vw, 1.25rem);
       color: var(--text-gray);
-      max-width: 650px;
+      max-width: 750px;
       margin: 0 auto 30px;
       line-height: 1.7;
     }
@@ -347,6 +364,23 @@
       text-transform: uppercase;
       letter-spacing: 0.5px;
       box-shadow: var(--shadow-md);
+      z-index: 10;
+    }
+
+    /* Custom Box for Header inside Cards */
+    .itc-card-header-box {
+      background: var(--bg-light);
+      border: 1px solid var(--border);
+      border-radius: 15px;
+      padding: 24px;
+      margin-bottom: 24px;
+      margin-top: 10px;
+    }
+
+    .itc-card-featured .itc-card-header-box {
+      background: var(--bg-white);
+      border-color: var(--primary-light);
+      box-shadow: var(--shadow-sm);
     }
 
     .itc-tier-name {
@@ -359,7 +393,7 @@
 
     .itc-description {
       color: var(--text-gray);
-      margin-bottom: 24px;
+      margin-bottom: 20px;
       font-size: 0.95rem;
       min-height: 48px;
     }
@@ -368,7 +402,6 @@
       font-family: 'Outfit', sans-serif;
       font-size: clamp(2.5rem, 5vw, 3rem);
       font-weight: 800;
-      margin-bottom: 24px;
       color: var(--primary);
       display: flex;
       align-items: baseline;
@@ -391,6 +424,7 @@
       padding: 0;
       margin-bottom: 30px;
       flex-grow: 1;
+      background: transparent;
     }
 
     .itc-features li {
@@ -402,6 +436,7 @@
       align-items: flex-start;
       gap: 10px;
       line-height: 1.5;
+      background: transparent;
     }
 
     .itc-features li:last-child {
@@ -492,10 +527,7 @@
     }
 
     .itc-table-section {
-      border: 2px solid var(--border);
-      border-radius: 15px;
       overflow: hidden;
-      background: var(--bg-white);
     }
 
     /* Sticky header styles */
@@ -526,22 +558,16 @@
     /* Unified Column widths for alignment */
     table th:first-child,
     table td:first-child {
-      width: 20%;
+      width: 25%;
     }
 
     table th:nth-child(2),
-    table td:nth-child(2) {
-      width: 20%;
-    }
-
+    table td:nth-child(2),
     table th:nth-child(3),
-    table td:nth-child(3) {
-      width: 20%;
-    }
-
+    table td:nth-child(3),
     table th:nth-child(4),
     table td:nth-child(4) {
-      width: 20%;
+      width: 25%;
     }
 
     thead th {
@@ -550,21 +576,14 @@
       text-align: left;
       font-weight: 500;
       color: var(--text-dark);
-      border-bottom: 2px solid var(--border);
       font-size: 1.4rem;
       font-family: 'Circular Std', sans-serif;
     }
 
     thead th:first-child {
-      font-size: 0.85rem;
+      font-size: 1.3rem;
       color: var(--text-gray);
-      text-transform: uppercase;
-      letter-spacing: 0.5px;
       font-family: 'Circular Std', sans-serif;
-    }
-
-    tbody tr {
-      border-bottom: 1px solid var(--border);
     }
 
     tbody tr:last-child {
@@ -580,25 +599,26 @@
     }
 
     tbody td:first-child {
-      font-weight: 600;
+      font-weight: 500;
       color: var(--text-dark);
     }
 
-    tbody tr:hover {
-      background: rgba(30, 64, 175, 0.02);
+   
+
+    /* Group Category Pill Box */
+    .itc-feature-group td {
+        padding: 0; /* Reset padding to use the inner div for styling */
     }
 
-    .itc-feature-group {
-      font-weight: 700;
+    .itc-feature-group-inner {
+      font-weight: 500;
       color: var(--text-dark);
       background: rgba(30, 64, 175, 0.04);
-      text-transform: uppercase;
       letter-spacing: 0.5px;
-      font-size: 0.8rem;
-    }
-
-    .itc-feature-group td {
-        padding: 12px 16px;
+      font-size: 1.3rem;
+      border-radius: 15px; /* Added requested border radius */
+      padding: 18px 16px;
+      margin: 10px 0;
     }
 
     .itc-check {
@@ -670,7 +690,7 @@
 
     .itc-faq-question {
       font-weight: 500;
-      font-size: 1.5rem;
+      font-size: 1.3rem;
       color: var(--text-dark);
       padding: 20px 0;
       cursor: pointer;
@@ -699,7 +719,7 @@
     .itc-faq-answer {
       color: var(--text-gray);
       line-height: 1.8;
-      font-size: 1.2rem;
+      font-size: 1.1rem;
       padding: 0;
       max-height: 0;
       overflow: hidden;
@@ -881,84 +901,88 @@
   <div class="itc-container">
     
     <div class="itc-header">
-      <h1 class="itc-main-title">Scalable IT Solutions for Growing Businesses</h1>
-      <p class="itc-subtitle">Choose the level of support that fits your business goals. Transparent pricing, expert engineering, and proactive solutions to keep your systems running smoothly.</p>
+      <h1 class="itc-main-title">Strategic IT Guidance for Growing Businesses</h1>
+      <p class="itc-subtitle">High-level architecture, technology roadmaps, and executive insights. We partner with lean teams to design robust IT infrastructure without the overhead of full-time hires.</p>
       
       <div class="itc-trust-bar">
-        <div class="itc-trust-item">99.9% Uptime SLA</div>
-        <div class="itc-trust-item">SOC 2 Certified</div>
+        <div class="itc-trust-item">Vendor-Neutral Strategy</div>
+        <div class="itc-trust-item">Expert Architecture Planning</div>
         <div class="itc-trust-item">No Long-term Lock-in</div>
-        <div class="itc-trust-item">15+ Years Experience</div>
+        <div class="itc-trust-item">15+ Years Executive Experience</div>
       </div>
     </div>
 
     <div class="itc-grid">
       <div class="itc-card">
-        <h3 class="itc-tier-name">Advisory</h3>
-        <p class="itc-description">Perfect for businesses with internal IT teams who need strategic guidance on specific projects.</p>
-        <div class="itc-price-wrapper">
-          <span class="itc-currency">$</span><span class="itc-amount">150</span><span class="itc-period">/hr</span>
+        <div class="itc-card-header-box">
+          <h3 class="itc-tier-name">Advisory</h3>
+          <p class="itc-description">Ad-hoc strategic guidance delivered via video consultations and documentation. Perfect for leaning into expertise on specific business roadblocks.</p>
+          <div class="itc-price-wrapper">
+            <span class="itc-currency">$</span><span class="itc-amount">150</span><span class="itc-period">/hr</span>
+          </div>
         </div>
         <ul class="itc-features">
-          <li>Strategic IT Roadmap Planning</li>
-          <li>Security Audit & Assessment</li>
-          <li>Cloud Migration Strategy</li>
-          <li>Technology Stack Review</li>
-          <li>Vendor Selection Guidance</li>
-          <li>Disaster Recovery Planning</li>
-          <li>48-hour Email Response Time</li>
+          <li>Delivered via scheduled video calls</li>
+          <li>Current Tech Stack Review</li>
+          <li>Vendor Evaluation & Selection</li>
+          <li>Cloud Migration Brainstorming</li>
+          <li>Security Concept Assessment</li>
+          <li>Disaster Recovery Strategy</li>
+          <li>Follow-up PDF summaries</li>
           <li>Pay-as-you-go, No Commitment</li>
         </ul>
-        <a href="#contact" class="itc-btn">Book Consultation</a>
+        <a href="#contact" class="itc-btn">Book Strategy Call</a>
       </div>
 
       <div class="itc-card itc-card-featured">
         <div class="itc-badge">Most Popular</div>
-        <h3 class="itc-tier-name">Fully Managed</h3>
-        <p class="itc-description">Comprehensive IT management for businesses that want to focus on growth, not infrastructure.</p>
-        <div class="itc-price-wrapper">
-          <span class="itc-currency">$</span><span class="itc-amount">1,200</span><span class="itc-period">/mo</span>
+        <div class="itc-card-header-box">
+          <h3 class="itc-tier-name">Virtual CTO</h3>
+          <p class="itc-description">Ongoing executive IT leadership. Delivered through monthly strategy sessions, detailed roadmaps, and priority consultation access.</p>
+          <div class="itc-price-wrapper">
+            <span class="itc-currency">$</span><span class="itc-amount">1,200</span><span class="itc-period">/mo</span>
+          </div>
         </div>
         <ul class="itc-features">
           <li><strong>Everything in Advisory, plus:</strong></li>
-          <li>24/7 Infrastructure Monitoring</li>
-          <li>Managed Cybersecurity & Threat Detection</li>
-          <li>Automated Daily Backups & Recovery</li>
-          <li>Patch Management & Updates</li>
-          <li>Network Performance Optimization</li>
-          <li>Email & Endpoint Security</li>
-          <li>Priority Support Queue (4-hour Response)</li>
-          <li>Monthly Performance Reports</li>
-          <li>Unlimited Support Tickets</li>
+          <li>Monthly Executive Strategy Sessions</li>
+          <li>Comprehensive IT Roadmap Planning</li>
+          <li>Cybersecurity Framework Design</li>
+          <li>Quarterly Risk & Audit Reviews</li>
+          <li>Architecture Blueprints for Development</li>
+          <li>Priority Email/Call Access</li>
+          <li>Hiring & Tech Team Interview Support</li>
+          <li>Budget Optimization Planning</li>
         </ul>
-        <a href="#contact" class="itc-btn itc-btn-primary">Get Started Today</a>
+        <a href="#contact" class="itc-btn itc-btn-primary">Partner With Us</a>
       </div>
 
       <div class="itc-card">
-        <h3 class="itc-tier-name">Enterprise</h3>
-        <p class="itc-description">Tailored solutions for organizations with complex compliance requirements and mission-critical systems.</p>
-        <div class="itc-price-wrapper">
-          <span class="itc-amount">Custom</span>
+        <div class="itc-card-header-box">
+          <h3 class="itc-tier-name">Project-Based</h3>
+          <p class="itc-description">End-to-end consulting for large initiatives like total digital transformation. Delivered via dedicated project milestones and deliverables.</p>
+          <div class="itc-price-wrapper">
+            <span class="itc-amount">Custom</span>
+          </div>
         </div>
         <ul class="itc-features">
-          <li><strong>Everything in Fully Managed, plus:</strong></li>
-          <li>Dedicated Account Manager</li>
-          <li>On-site Hardware Support Available</li>
-          <li>HIPAA/GDPR/SOC 2 Compliance Support</li>
-          <li>Custom SLA Agreements (99.99% Uptime)</li>
-          <li>Multi-site Infrastructure Management</li>
-          <li>Advanced Threat Intelligence</li>
-          <li>White-glove Migration Services</li>
-          <li>Quarterly Business Reviews</li>
-          <li>24/7 Phone Support (1-hour Response)</li>
+          <li><strong>Everything in Virtual CTO, plus:</strong></li>
+          <li>Dedicated Lead Consultant</li>
+          <li>Full Digital Transformation Audits</li>
+          <li>HIPAA/GDPR/SOC 2 Pre-Audit Prep</li>
+          <li>Custom Enterprise Architecture Design</li>
+          <li>White-Glove Vendor Negotiation</li>
+          <li>Multi-Site Infrastructure Strategy</li>
+          <li>Post-Merger IT Integration Planning</li>
+          <li>On-site Strategy Workshops Available</li>
         </ul>
-        <a href="#contact" class="itc-btn">Contact Sales Team</a>
+        <a href="#contact" class="itc-btn">Discuss Your Project</a>
       </div>
     </div>
 
     <div class="itc-comparison-section">
-      <h2 class="itc-comparison-title">Feature Comparison</h2>
-      <p class="itc-comparison-subtitle">Compare service tiers at a glance.</p>
+      <h2 class="itc-comparison-title">Consulting Feature Comparison</h2>
+      <p class="itc-comparison-subtitle">Compare our strategic engagement tiers at a glance.</p>
       
       <div class="itc-comparison-wrapper">
         <div class="itc-table-section itc-table-header">
@@ -966,10 +990,10 @@
             <table>
               <thead>
                 <tr>
-                  <th>Feature & Service</th>
+                  <th>Deliverables & Access</th>
                   <th>Advisory<br><span style="font-weight:400; font-size:1rem; color: var(--text-gray);">$150/hr</span></th>
-                  <th>Fully Managed<br><span style="font-weight:400; font-size:1rem; color: var(--text-gray);">$1,200/mo</span></th>
-                  <th>Enterprise<br><span style="font-weight:400; font-size:1rem; color: var(--text-gray);">Custom Pricing</span></th>
+                  <th>Virtual CTO<br><span style="font-weight:400; font-size:1rem; color: var(--text-gray);">$1,200/mo</span></th>
+                  <th>Project-Based<br><span style="font-weight:400; font-size:1rem; color: var(--text-gray);">Custom Pricing</span></th>
                 </tr>
               </thead>
             </table>
@@ -981,25 +1005,25 @@
             <table>
               <tbody>
                 <tr class="itc-feature-group">
-                  <td colspan="4">Support & Response Times</td>
+                  <td colspan="4"><div class="itc-feature-group-inner">Engagement & Delivery</div></td>
                 </tr>
                 <tr>
-                  <td>Support Availability</td>
-                  <td>Business hours</td>
-                  <td>24/7/365</td>
-                  <td>24/7/365</td>
+                  <td>Consulting Availability</td>
+                  <td>Scheduled calls</td>
+                  <td>Priority scheduling</td>
+                  <td>Dedicated allocation</td>
                 </tr>
                 <tr>
-                  <td>Emergency Response</td>
-                  <td>48 hours</td>
-                  <td>1 hour</td>
-                  <td>15 minutes</td>
+                  <td>Strategy Sessions</td>
+                  <td>As requested</td>
+                  <td>Monthly fixed</td>
+                  <td>Weekly/Milestone</td>
                 </tr>
                 <tr>
-                  <td>Support Channels</td>
-                  <td>Email only</td>
-                  <td>Email, phone, chat</td>
-                  <td>All + SMS</td>
+                  <td>Delivery Format</td>
+                  <td>Call summaries</td>
+                  <td>Detailed roadmaps</td>
+                  <td>Comprehensive blueprints</td>
                 </tr>
               </tbody>
             </table>
@@ -1011,31 +1035,31 @@
             <table>
               <tbody>
                 <tr class="itc-feature-group">
-                  <td colspan="4">Infrastructure Management</td>
+                  <td colspan="4"><div class="itc-feature-group-inner">Strategic Planning</div></td>
                 </tr>
                 <tr>
-                  <td>24/7 System Monitoring</td>
+                  <td>Tech Stack Evaluation</td>
+                  <td class="itc-check">✓</td>
+                  <td class="itc-check">✓</td>
+                  <td class="itc-check">✓</td>
+                </tr>
+                <tr>
+                  <td>Budget Optimization</td>
                   <td class="itc-cross">—</td>
                   <td class="itc-check">✓</td>
                   <td class="itc-check">✓</td>
                 </tr>
                 <tr>
-                  <td>Server Management</td>
+                  <td>Vendor Negotiation</td>
                   <td class="itc-cross">—</td>
-                  <td class="itc-check">✓</td>
-                  <td class="itc-check">✓</td>
+                  <td>Guidance</td>
+                  <td>Hands-on negotiation</td>
                 </tr>
                 <tr>
-                  <td>Cloud Infrastructure</td>
+                  <td>Hiring/Interview Support</td>
                   <td class="itc-cross">—</td>
                   <td class="itc-check">✓</td>
                   <td class="itc-check">✓</td>
-                </tr>
-                <tr>
-                  <td>Patch Management</td>
-                  <td class="itc-cross">—</td>
-                  <td>Automated</td>
-                  <td>Automated + testing</td>
                 </tr>
               </tbody>
             </table>
@@ -1047,31 +1071,31 @@
             <table>
               <tbody>
                 <tr class="itc-feature-group">
-                  <td colspan="4">Security & Compliance</td>
+                  <td colspan="4"><div class="itc-feature-group-inner">Security & Compliance Consulting</div></td>
                 </tr>
                 <tr>
-                  <td>Security Monitoring</td>
+                  <td>Risk Assessment</td>
+                  <td>High-level</td>
+                  <td>Quarterly in-depth</td>
+                  <td>Comprehensive</td>
+                </tr>
+                <tr>
+                  <td>Compliance Roadmaps</td>
                   <td class="itc-cross">—</td>
+                  <td>Framework design</td>
+                  <td>Full pre-audit prep</td>
+                </tr>
+                <tr>
+                  <td>Disaster Recovery Design</td>
+                  <td class="itc-check">✓</td>
                   <td class="itc-check">✓</td>
                   <td class="itc-check">✓</td>
                 </tr>
                 <tr>
-                  <td>Vulnerability Scanning</td>
-                  <td class="itc-cross">—</td>
-                  <td>Weekly</td>
-                  <td>Daily</td>
-                </tr>
-                <tr>
-                  <td>Firewall Management</td>
-                  <td class="itc-cross">—</td>
+                  <td>Security Tool Selection</td>
+                  <td>Ad-hoc advice</td>
                   <td class="itc-check">✓</td>
                   <td class="itc-check">✓</td>
-                </tr>
-                <tr>
-                  <td>Compliance Support</td>
-                  <td>Consultation</td>
-                  <td>Documentation</td>
-                  <td>Full compliance</td>
                 </tr>
               </tbody>
             </table>
@@ -1083,61 +1107,25 @@
             <table>
               <tbody>
                 <tr class="itc-feature-group">
-                  <td colspan="4">Data Protection</td>
+                  <td colspan="4"><div class="itc-feature-group-inner">Architecture & Cloud Strategy</div></td>
                 </tr>
                 <tr>
-                  <td>Automated Backups</td>
+                  <td>Cloud Migration Strategy</td>
+                  <td class="itc-check">✓</td>
+                  <td class="itc-check">✓</td>
+                  <td class="itc-check">✓</td>
+                </tr>
+                <tr>
+                  <td>Architecture Blueprints</td>
                   <td class="itc-cross">—</td>
                   <td class="itc-check">✓</td>
                   <td class="itc-check">✓</td>
                 </tr>
                 <tr>
-                  <td>Backup Retention</td>
-                  <td class="itc-cross">—</td>
-                  <td>30 days</td>
-                  <td>90+ days</td>
-                </tr>
-                <tr>
-                  <td>Disaster Recovery Testing</td>
-                  <td class="itc-cross">—</td>
-                  <td>Bi-annual</td>
-                  <td>Quarterly</td>
-                </tr>
-              </tbody>
-            </table>
-          </div>
-        </div>
-
-        <div class="itc-table-section">
-          <div class="itc-comparison-table">
-            <table>
-              <tbody>
-                <tr class="itc-feature-group">
-                  <td colspan="4">Strategy & Reporting</td>
-                </tr>
-                <tr>
-                  <td>IT Roadmap Planning</td>
-                  <td class="itc-check">✓</td>
-                  <td class="itc-check">✓</td>
-                  <td class="itc-check">✓</td>
-                </tr>
-                <tr>
-                  <td>Monthly Reports</td>
-                  <td class="itc-cross">—</td>
-                  <td class="itc-check">✓</td>
-                  <td class="itc-check">✓</td>
-                </tr>
-                <tr>
-                  <td>Business Reviews</td>
+                  <td>Scalability Audits</td>
                   <td class="itc-cross">—</td>
                   <td>Annual</td>
-                  <td>Quarterly</td>
-                </tr>
-                <tr>
-                  <td>Account Manager</td>
-                  <td class="itc-cross">—</td>
-                  <td class="itc-cross">—</td>
-                  <td class="itc-check">✓</td>
+                  <td>Pre/Post Project</td>
                 </tr>
               </tbody>
             </table>
@@ -1150,87 +1138,67 @@
     <div class="itc-faq-section">
       <div class="itc-faq-left">
         <h2 class="itc-faq-title">Frequently Asked Questions</h2>
-        <p class="itc-faq-subtitle">Get answers to common questions about our services, pricing, and support.</p>
+        <p class="itc-faq-subtitle">Get answers to common questions about our consulting process, deliverables, and expertise.</p>
       </div>
       
       <div class="itc-faq-right">
         <div class="itc-faq-item">
           <div class="itc-faq-question">
-            What's included in the onboarding and setup process?
+            How do you deliver your consulting reports and roadmaps?
             <span class="itc-faq-icon">+</span>
           </div>
           <div class="itc-faq-answer">
-            All Fully Managed and Enterprise plans include a comprehensive onboarding process that typically takes 2-4 weeks. We start with a complete infrastructure audit and documentation of your current systems. Our team then sets up monitoring tools, implements security protocols, configures backup systems, and establishes communication channels. We also provide employee training sessions to ensure your team knows how to access support and understands any new processes. For Enterprise clients, we create detailed runbooks and disaster recovery procedures tailored to your business.
+            We believe in actionable deliverables, not just talk. For Advisory sessions, we provide PDF summaries and high-level action items following our video calls. For Virtual CTO and Project-Based clients, we deliver comprehensive, professionally formatted architecture blueprints, cybersecurity frameworks, and multi-year IT roadmaps. We present these findings via executive workshops to ensure your entire leadership team is aligned on the technical direction.
           </div>
         </div>
 
         <div class="itc-faq-item">
           <div class="itc-faq-question">
-            Can I upgrade or downgrade my plan at any time?
+            Do you actually manage our IT or helpdesk tickets?
             <span class="itc-faq-icon">+</span>
           </div>
           <div class="itc-faq-answer">
-            Yes, you have flexibility to change plans. Upgrades take effect immediately – you'll gain access to all additional features right away, and we'll prorate the billing. Downgrades apply at the start of your next billing cycle to ensure you receive full value for the month you've paid for. However, the Fully Managed plan does require a 6-month minimum commitment, so you can downgrade to Advisory only after completing that period. Enterprise agreements have custom terms that we'll discuss during the sales process. Simply contact your account manager or our support team to discuss plan changes.
+            No, we are strictly an IT consulting and advisory firm. We do not provide day-to-day managed IT services, helpdesk support, or automated patching. Our focus is purely on high-level strategy, architecture design, and executive leadership. If you require day-to-day operational support, we can help you vet, select, and negotiate with a Managed Service Provider (MSP) as part of our vendor selection services.
           </div>
         </div>
 
         <div class="itc-faq-item">
           <div class="itc-faq-question">
-            What happens if I exceed my support hours on the Advisory plan?
+            We don't have an internal backend team yet. Can you help?
             <span class="itc-faq-icon">+</span>
           </div>
           <div class="itc-faq-answer">
-            Advisory services are billed hourly at $150/hour with no predetermined limit. We track time in 15-minute increments and always provide estimates before starting significant work. If a project is taking longer than initially estimated, we'll notify you immediately and discuss options. We'll never charge you for time without your awareness. Most clients who consistently use more than 8-10 hours monthly find better value in our Fully Managed plan ($1,200/mo with unlimited support tickets), which we'll recommend if we notice this pattern in your usage.
+            Absolutely. Many of the startups we partner with lack dedicated in-house backend engineers initially. We act as your technical sounding board, designing scalable architecture blueprints that you can hand off to freelance developers or future hires. When you're ready to build your internal team, our Virtual CTO service includes sitting in on technical interviews to ensure you hire the right talent for the tech stack we've helped you design.
           </div>
         </div>
 
         <div class="itc-faq-item">
           <div class="itc-faq-question">
-            What industries and compliance requirements do you specialize in?
+            What happens if I exceed my consulting hours on the Advisory plan?
             <span class="itc-faq-icon">+</span>
           </div>
           <div class="itc-faq-answer">
-            We have deep expertise in highly regulated industries including healthcare (HIPAA compliance), financial services (PCI-DSS, SEC regulations), legal firms (attorney-client privilege protection), and professional services. Our team has successfully guided clients through HIPAA audits, GDPR implementation, SOC 2 Type II certification, and various state-specific privacy laws. For Enterprise clients, we provide hands-on compliance support including documentation, technical controls implementation, audit preparation, and ongoing monitoring. We also work with your compliance officers and legal team to ensure our technical solutions align with your regulatory obligations.
+            Advisory services are billed hourly at $150/hour with no predetermined limit. We track consultation and research time in 15-minute increments and always provide estimates before starting deep-dive research or drafting complex documents. If you find yourself consistently needing more than 8 hours of guidance a month, we will recommend transitioning to the Virtual CTO tier for better value and more structured roadmapping.
           </div>
         </div>
 
         <div class="itc-faq-item">
           <div class="itc-faq-question">
-            Are hardware and software licenses included in the monthly price?
+            Are software licenses or cloud hosting included?
             <span class="itc-faq-icon">+</span>
           </div>
           <div class="itc-faq-answer">
-            No, our pricing covers professional services, management, and monitoring only. Hardware purchases (servers, computers, networking equipment), software licenses (Microsoft 365, Adobe, antivirus, etc.), and cloud infrastructure costs (AWS, Azure, Google Cloud) are billed separately and remain under your control. We believe in transparency – you own all your licenses and infrastructure. However, we can absolutely help you optimize these costs. Many clients save 20-30% on their software and cloud spending through our vendor relationships, license optimization reviews, and right-sizing recommendations. We provide detailed estimates before any external costs are incurred and can help you budget for technology expenses.
+            No, our pricing covers professional strategic consulting only. We do not resell software or hardware. We are completely vendor-neutral, meaning our recommendations for AWS, Azure, Microsoft 365, or security tools are based entirely on what is best for your business, not on reseller commissions. We will help you optimize your budgets and negotiate directly with these vendors to save you money.
           </div>
         </div>
 
         <div class="itc-faq-item">
           <div class="itc-faq-question">
-            What's your process for handling security incidents?
+            What compliance frameworks do you consult on?
             <span class="itc-faq-icon">+</span>
           </div>
           <div class="itc-faq-answer">
-            We follow industry-standard incident response protocols. When a security event is detected (through our 24/7 monitoring or your report), we immediately assess the severity and contain the threat to prevent spread. Our team investigates the root cause, documents all findings, and implements remediation steps. For Fully Managed and Enterprise clients, we provide detailed incident reports including timeline, impact assessment, and recommendations to prevent recurrence. Enterprise clients also receive post-incident reviews with executive summaries suitable for board presentations. We maintain an incident response playbook customized for your environment and conduct annual tabletop exercises to ensure readiness. All security incidents are handled with strict confidentiality.
-          </div>
-        </div>
-
-        <div class="itc-faq-item">
-          <div class="itc-faq-question">
-            Can you help us migrate from our current IT provider?
-            <span class="itc-faq-icon">+</span>
-          </div>
-          <div class="itc-faq-answer">
-            Absolutely. We've successfully migrated dozens of businesses from other providers (or from self-managed IT) with zero downtime. Our migration process includes: comprehensive documentation of your current environment, coordination with your existing provider for knowledge transfer, phased migration plan to minimize disruption, parallel running period to ensure stability, and extensive testing before final cutover. We handle all the heavy lifting including extracting documentation from previous providers, reconfiguring access credentials, and validating that all systems work correctly. For Enterprise clients, we provide white-glove migration services with dedicated project management. Most migrations are completed within 30-45 days depending on environment complexity.
-          </div>
-        </div>
-
-        <div class="itc-faq-item">
-          <div class="itc-faq-question">
-            Do you support remote/hybrid work environments?
-            <span class="itc-faq-icon">+</span>
-          </div>
-          <div class="itc-faq-answer">
-            Yes, this is one of our specialties. We design and support IT infrastructure specifically optimized for distributed teams. This includes secure VPN or zero-trust network access, cloud-based productivity tools (Microsoft 365, Google Workspace, Slack), endpoint security for home/remote devices, mobile device management, video conferencing optimization (Zoom, Teams), and support for BYOD (bring your own device) policies. We help ensure your remote employees have the same security protections and reliable access as they would in an office environment. Our remote support capabilities mean we can troubleshoot and resolve issues for employees anywhere in the world without requiring physical access to devices.
+            We provide strategic guidance and gap analysis for major regulatory frameworks including HIPAA, GDPR, and SOC 2 Type II. While we do not act as the final certifying auditor, our pre-audit preparation services ensure your technical architecture, access controls, and disaster recovery policies are structured correctly so you can pass your formal audits with confidence.
           </div>
         </div>
       </div>
@@ -1238,10 +1206,9 @@
 
     <div class="itc-footer-notes">
       <h3>Important Information</h3>
-      <p><strong>Commitment Terms:</strong> Fully Managed plans require a 6-month minimum commitment. Advisory services are billed monthly with no long-term contract. Enterprise agreements are customized based on your needs.</p>
-      <p><strong>Business Hours:</strong> Standard support hours are Monday-Friday, 9 AM - 5 PM EST. Response times are measured during business hours unless you have 24/7 coverage (Fully Managed & Enterprise).</p>
-      <p><strong>Additional Costs:</strong> All prices exclude hardware, third-party software licenses (Microsoft, Adobe, etc.), cloud infrastructure costs (AWS, Azure), and internet/telecom expenses. We provide transparent estimates before any external costs are incurred.</p>
-      <p><strong>Payment Terms:</strong> Monthly plans are billed in advance. Advisory hours are invoiced at month-end. Net 15 payment terms for all services. Major credit cards and ACH accepted.</p>
+      <p><strong>Commitment Terms:</strong> Virtual CTO plans are billed monthly with a standard 30-day cancellation notice. Advisory services have no commitment. Project-Based consulting relies on custom Statements of Work (SOW).</p>
+      <p><strong>Service Scope:</strong> All plans are purely consultative. Implementation of the provided strategies remains the responsibility of your internal staff, outsourced developers, or managed service providers.</p>
+      <p><strong>Payment Terms:</strong> Monthly retainer plans are billed in advance. Advisory hours are invoiced at month-end. Net 15 payment terms for all services.</p>
     </div>
 
   </div>
@@ -1277,9 +1244,6 @@
 
 </body>
 </html>
-
-
-
 
 
 

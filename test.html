@@ -1,1238 +1,574 @@
 
-
-<!DOCTYPE html>
-<html lang="en">
-<head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>IT Consulting Pricing | Scalable IT Solutions</title>
-  <link rel="preconnect" href="https://fonts.googleapis.com">
-  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link href="https://fonts.googleapis.com/css2?family=Outfit:wght@400;600;800&family=Work+Sans:wght@400;500&display=swap" rel="stylesheet">
-  <style>
-    * {
-      margin: 0;
-      padding: 0;
-      box-sizing: border-box;
-    }
-
-    :root {
-      --primary: #1e40af;
-      --primary-dark: #1e3a8a;
-      --primary-light: #3b82f6;
-      --success: #059669;
-      --text-dark: #0f172a;
-      --text-gray: #64748b;
-      --text-light: #94a3b8;
-      --bg-light: #f8fafc;
-      --bg-white: #ffffff;
-      --border: #e2e8f0;
-      --shadow-sm: 0 1px 3px rgba(0, 0, 0, 0.05);
-      --shadow-md: 0 4px 12px rgba(0, 0, 0, 0.08);
-      --shadow-lg: 0 20px 25px -5px rgba(0, 0, 0, 0.1);
-    }
-
-    body {
-      font-family: 'Circular Std', -apple-system, sans-serif;
-      color: var(--text-dark);
-      background-color: var(--bg-light);
-      line-height: 1.6;
-      overflow-x: hidden;
-    }
-
-    /* Container & Wrapper */
-    .itc-pricing-wrap {
-      padding: 60px 20px 80px;
-      background: linear-gradient(135deg, #f8fafc 0%, #f1f5f9 100%);
-    }
-
-    .itc-container {
-      max-width: 1200px;
-      margin: 0 auto;
-    }
-
-    /* Header Styling */
-    .itc-header {
-      text-align: center;
-      margin-bottom: 60px;
-      animation: fadeInDown 0.8s ease-out;
-    }
-
-    @keyframes fadeInDown {
-      from {
-        opacity: 0;
-        transform: translateY(-20px);
-      }
-      to {
-        opacity: 1;
-        transform: translateY(0);
-      }
-    }
-
-    .itc-main-title {
-      font-family: 'Outfit', sans-serif;
-      font-size: clamp(2rem, 5vw, 3rem);
-      font-weight: 600;
-      margin-bottom: 16px;
-      color: var(--text-dark);
-      letter-spacing: -0.02em;
-    }
-
-    .itc-subtitle {
-      font-size: clamp(1rem, 2.5vw, 1.25rem);
-      color: var(--text-gray);
-      max-width: 650px;
-      margin: 0 auto 30px;
-      line-height: 1.7;
-    }
-
-    /* Trust Indicators */
-    .itc-trust-bar {
-      display: flex;
-      justify-content: center;
-      align-items: center;
-      gap: 30px;
-      flex-wrap: wrap;
-      margin-top: 30px;
-      padding: 20px;
-      background: rgba(255, 255, 255, 0.6);
-      border-radius: 12px;
-      backdrop-filter: blur(10px);
-    }
-
-    .itc-trust-item {
-      display: flex;
-      align-items: center;
-      gap: 8px;
-      font-size: 0.9rem;
-      color: var(--text-gray);
-    }
-
-    .itc-trust-item::before {
-      content: "✓";
-      display: inline-flex;
-      align-items: center;
-      justify-content: center;
-      width: 24px;
-      height: 24px;
-      background: var(--success);
-      color: white;
-      border-radius: 50%;
-      font-weight: bold;
-      font-size: 0.75rem;
-    }
-
-    /* Grid Logic */
-    .itc-grid {
-      display: grid;
-      grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
-      gap: 30px;
-      margin-bottom: 60px;
-    }
-
-    /* Card Styling */
-    .itc-card {
-      background: var(--bg-white);
-      border: 2px solid var(--border);
-      border-radius: 20px;
-      padding: 40px 30px;
-      display: flex;
-      flex-direction: column;
-      transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
-      position: relative;
-      animation: fadeInUp 0.8s ease-out backwards;
-    }
-
-    @keyframes fadeInUp {
-      from {
-        opacity: 0;
-        transform: translateY(30px);
-      }
-      to {
-        opacity: 1;
-        transform: translateY(0);
-      }
-    }
-
-    .itc-card:nth-child(1) { animation-delay: 0.1s; }
-    .itc-card:nth-child(2) { animation-delay: 0.2s; }
-    .itc-card:nth-child(3) { animation-delay: 0.3s; }
-
-    .itc-card:hover {
-      transform: translateY(-8px);
-      box-shadow: var(--shadow-lg);
-      border-color: var(--primary-light);
-    }
-
-    .itc-card-featured {
-      border: 3px solid var(--primary);
-      background: linear-gradient(135deg, #ffffff 0%, #f0f9ff 100%);
-      position: relative;
-    }
-
-    .itc-card-featured:hover {
-      border-color: var(--primary-dark);
-    }
-
-    /* Badge */
-    .itc-badge {
-      position: absolute;
-      top: -15px;
-      left: 50%;
-      transform: translateX(-50%);
-      background: linear-gradient(135deg, var(--primary) 0%, var(--primary-dark) 100%);
-      color: white;
-      padding: 6px 18px;
-      font-size: 0.75rem;
-      font-weight: 700;
-      border-radius: 20px;
-      text-transform: uppercase;
-      letter-spacing: 0.5px;
-      box-shadow: var(--shadow-md);
-    }
-
-    .itc-tier-name {
-      font-family: 'Outfit', sans-serif;
-      font-size: clamp(1.5rem, 3vw, 1.75rem);
-      font-weight: 700;
-      margin-bottom: 12px;
-      color: var(--text-dark);
-    }
-
-    .itc-description {
-      color: var(--text-gray);
-      margin-bottom: 24px;
-      font-size: 0.95rem;
-      min-height: 48px;
-    }
-
-    .itc-price-wrapper {
-      font-family: 'Outfit', sans-serif;
-      font-size: clamp(2.5rem, 5vw, 3rem);
-      font-weight: 800;
-      margin-bottom: 24px;
-      color: var(--primary);
-      display: flex;
-      align-items: baseline;
-      gap: 4px;
-    }
-
-    .itc-currency {
-      font-size: clamp(1.5rem, 3vw, 2rem);
-      vertical-align: top;
-    }
-
-    .itc-period {
-      font-size: clamp(1rem, 2vw, 1.25rem);
-      color: var(--text-light);
-      font-weight: 500;
-    }
-
-    .itc-features {
-      list-style: none;
-      padding: 0;
-      margin-bottom: 30px;
-      flex-grow: 1;
-    }
-
-    .itc-features li {
-      padding: 12px 0;
-      font-size: 0.95rem;
-      color: var(--text-gray);
-      border-bottom: 1px solid var(--border);
-      display: flex;
-      align-items: flex-start;
-      gap: 10px;
-      line-height: 1.5;
-    }
-
-    .itc-features li:last-child {
-      border-bottom: none;
-    }
-
-    .itc-features li::before {
-      content: "✓";
-      flex-shrink: 0;
-      color: var(--success);
-      font-weight: bold;
-      font-size: 1.1rem;
-      margin-top: 2px;
-    }
-
-    .itc-features li strong {
-      color: var(--text-dark);
-    }
-
-    /* Buttons */
-    .itc-btn {
-      display: block;
-      text-align: center;
-      padding: 16px 24px;
-      border-radius: 12px;
-      text-decoration: none;
-      font-weight: 600;
-      font-size: 1rem;
-      border: 2px solid var(--primary);
-      color: var(--primary);
-      transition: all 0.3s ease;
-      cursor: pointer;
-      background: var(--bg-white);
-    }
-
-    .itc-btn-primary {
-      background: linear-gradient(135deg, var(--primary) 0%, var(--primary-dark) 100%);
-      color: white;
-      border: none;
-      box-shadow: 0 4px 14px rgba(30, 64, 175, 0.3);
-    }
-
-    .itc-btn:hover {
-      transform: translateY(-2px);
-      box-shadow: var(--shadow-md);
-    }
-
-    .itc-btn-primary:hover {
-      box-shadow: 0 6px 20px rgba(30, 64, 175, 0.4);
-    }
-
-    .itc-btn:active {
-      transform: translateY(0);
-    }
-
-    /* Comparison Section */
-    .itc-comparison-section {
-      margin: 80px 0;
-      padding: 0;
-      background: transparent;
-      border-radius: 0;
-      box-shadow: none;
-    }
-
-    .itc-comparison-title {
-      font-family: 'Outfit', sans-serif;
-      font-size: clamp(1.75rem, 4vw, 2.25rem);
-      font-weight: 700;
-      text-align: center;
-      margin-bottom: 16px;
-      color: var(--text-dark);
-    }
-
-    .itc-comparison-subtitle {
-      text-align: center;
-      color: var(--text-gray);
-      font-size: 1.05rem;
-      margin-bottom: 50px;
-      max-width: 700px;
-      margin-left: auto;
-      margin-right: auto;
-    }
-
-    .itc-comparison-wrapper {
-      display: flex;
-      flex-direction: column;
-      gap: 30px;
-    }
-
-    .itc-table-section {
-      border: 2px solid var(--border);
-      border-radius: 15px;
-      overflow: hidden;
-      background: transparent;
-    }
-
-    /* Sticky header styles */
-    .itc-table-section.itc-table-header {
-      position: sticky;
-      top: 70px;
-      z-index: 100;
-      background: var(--bg-light);
-      box-shadow: 0 4px 12px rgba(0, 0, 0, 0.08);
-    }
-
-    .itc-comparison-table {
-      overflow-x: auto;
-      -webkit-overflow-scrolling: touch;
-      background: transparent;
-    }
-
-    table {
-      width: 100%;
-      border-collapse: collapse;
-      table-layout: fixed;
-      min-width: 800px;
-      background: transparent;
-    }
-
-    /* Column widths to ensure alignment */
-    table th:first-child,
-    table td:first-child {
-      width: 40%;
-    }
-
-    table th:nth-child(2),
-    table td:nth-child(2) {
-      width: 20%;
-    }
-
-    table th:nth-child(3),
-    table td:nth-child(3) {
-      width: 20%;
-    }
-
-    table th:nth-child(4),
-    table td:nth-child(4) {
-      width: 20%;
-    }
-
-    thead th {
-      background: transparent;
-      padding: 20px 16px;
-      text-align: left;
-      font-weight: 700;
-      color: var(--text-dark);
-      border-bottom: 2px solid var(--border);
-      font-size: 1rem;
-      font-family: 'Outfit', sans-serif;
-    }
-
-    thead th:first-child {
-      font-size: 0.85rem;
-      color: var(--text-gray);
-      text-transform: uppercase;
-      letter-spacing: 0.5px;
-      font-family: 'Work Sans', sans-serif;
-    }
-
-    tbody tr {
-      border-bottom: 1px solid var(--border);
-    }
-
-    tbody tr:last-child {
-      border-bottom: none;
-    }
-
-    tbody td {
-      padding: 18px 16px;
-      color: var(--text-gray);
-      font-size: 1.3rem;
-      vertical-align: top;
-      background: transparent;
-    }
-
-    tbody td:first-child {
-      font-weight: 600;
-      color: var(--text-dark);
-    }
-
-    tbody tr:hover {
-      background: rgba(30, 64, 175, 0.02);
-    }
-
-    .itc-feature-group {
-      font-weight: 700;
-      color: var(--text-dark);
-      font-size: 0.95rem;
-      background: rgba(30, 64, 175, 0.04);
-      text-transform: uppercase;
-      letter-spacing: 0.5px;
-      font-size: 0.8rem; padding-left: 200px;
-    }
-
-    .itc-check {
-      color: var(--success);
-      font-weight: bold;
-      font-family: 'Circular Std', sans-serif;
-      font-size: 1.3rem;
-    }
-
-    .itc-cross {
-      color: var(--text-light);
-      font-size: 1.2rem;
-    }
-
-    .itc-feature-detail {
-      display: block;
-      font-size: 0.95rem;
-      font-weight: 500;
-      color: var(--text-light);
-      margin-top: 4px;
-      line-height: 1.5;
-    }
-
-    /* FAQ Section */
-    .itc-faq-section {
-      margin: 80px 0;
-      display: grid;
-      grid-template-columns: 300px 1fr;
-      gap: 60px;
-      align-items: start;
-    }
-
-    .itc-faq-left {
-      position: sticky;
-      top: 20px;
-    }
-
-    .itc-faq-title {
-      font-family: 'Outfit', sans-serif;
-      font-size: clamp(1.75rem, 4vw, 2.25rem);
-      font-weight: 700;
-      color: var(--text-dark);
-      margin-bottom: 16px;
-      line-height: 1.2;
-    }
-
-    .itc-faq-subtitle {
-      color: var(--text-gray);
-      font-size: 0.95rem;
-      line-height: 1.6;
-    }
-
-    .itc-faq-right {
-      display: flex;
-      flex-direction: column;
-      gap: 12px;
-    }
-
-    .itc-faq-item {
-      border: 1px solid var(--border);
-      border-radius: 12px;
-      overflow: hidden;
-      transition: all 0.3s ease;
-      background: transparent;
-    }
-
-    .itc-faq-item.active {
-      border-color: var(--primary);
-    }
-
-    .itc-faq-question {
-      font-weight: 600;
-      font-size: 1.05rem;
-      color: var(--text-dark);
-      padding: 20px 24px;
-      cursor: pointer;
-      display: flex;
-      justify-content: space-between;
-      align-items: center;
-      user-select: none;
-      transition: all 0.3s ease;
-      background: transparent;
-    }
-
-    .itc-faq-question:hover {
-      background: rgba(30, 64, 175, 0.03);
-    }
-
-    .itc-faq-icon {
-      font-size: 1.2rem;
-      color: var(--primary);
-      transition: transform 0.3s ease;
-      flex-shrink: 0;
-      margin-left: 12px;
-    }
-
-    .itc-faq-item.active .itc-faq-icon {
-      transform: rotate(180deg);
-    }
-
-    .itc-faq-answer {
-      color: var(--text-gray);
-      line-height: 1.8;
-      font-size: 0.95rem;
-      padding: 0 24px;
-      max-height: 0;
-      overflow: hidden;
-      transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
-      background: transparent;
-    }
-
-    .itc-faq-item.active .itc-faq-answer {
-      max-height: 500px;
-      padding: 0 24px 20px 24px;
-    }
-
-    /* Footer Notes */
-    .itc-footer-notes {
-      text-align: center;
-      max-width: 900px;
-      margin: 60px auto 0;
-      padding: 40px 30px;
-      background: var(--bg-white);
-      border-radius: 16px;
-      border: 1px solid var(--border);
-    }
-
-    .itc-footer-notes h3 {
-      font-family: 'Outfit', sans-serif;
-      font-size: 1.5rem;
-      margin-bottom: 20px;
-      color: var(--text-dark);
-    }
-
-    .itc-footer-notes p {
-      font-size: 0.95rem;
-      color: var(--text-gray);
-      line-height: 1.8;
-      margin-bottom: 12px;
-    }
-
-    .itc-footer-notes p:last-child {
-      margin-bottom: 0;
-    }
-
-    /* CTA Section */
-    .itc-cta-section {
-      text-align: center;
-      padding: 60px 30px;
-      background: linear-gradient(135deg, var(--primary) 0%, var(--primary-dark) 100%);
-      border-radius: 20px;
-      margin: 60px 0;
-      color: white;
-    }
-
-    .itc-cta-title {
-      font-family: 'Outfit', sans-serif;
-      font-size: clamp(1.75rem, 4vw, 2.5rem);
-      font-weight: 700;
-      margin-bottom: 16px;
-    }
-
-    .itc-cta-text {
-      font-size: 1.1rem;
-      margin-bottom: 30px;
-      opacity: 0.95;
-      max-width: 600px;
-      margin-left: auto;
-      margin-right: auto;
-    }
-
-    .itc-cta-buttons {
-      display: flex;
-      gap: 16px;
-      justify-content: center;
-      flex-wrap: wrap;
-    }
-
-    .itc-cta-btn {
-      padding: 16px 32px;
-      border-radius: 12px;
-      text-decoration: none;
-      font-weight: 600;
-      font-size: 1rem;
-      transition: all 0.3s ease;
-      display: inline-block;
-    }
-
-    .itc-cta-btn-primary {
-      background: white;
-      color: var(--primary);
-    }
-
-    .itc-cta-btn-secondary {
-      background: transparent;
-      color: white;
-      border: 2px solid white;
-    }
-
-    .itc-cta-btn:hover {
-      transform: translateY(-3px);
-      box-shadow: 0 8px 20px rgba(0, 0, 0, 0.2);
-    }
-
-    /* Responsive Design */
-    @media (max-width: 968px) {
-      .itc-faq-section {
-        grid-template-columns: 1fr;
-        gap: 30px;
-      }
-
-      .itc-faq-left {
-        position: static;
-        text-align: center;
-      }
-
-      .itc-faq-title {
-        margin-bottom: 8px;
-      }
-
-      /* Adjust sticky header for mobile */
-      .itc-table-section.itc-table-header {
-        top: 0;
-      }
-    }
-
-    @media (max-width: 768px) {
-      .itc-pricing-wrap {
-        padding: 40px 16px 60px;
-      }
-
-      .itc-grid {
-        grid-template-columns: 1fr;
-        gap: 24px;
-      }
-
-      .itc-card {
-        padding: 32px 24px;
-      }
-
-      .itc-card-featured {
-        transform: none;
-      }
-
-      .itc-trust-bar {
-        gap: 16px;
-        padding: 16px;
-      }
-
-      .itc-trust-item {
-        font-size: 0.85rem;
-      }
-
-      .itc-comparison-section,
-      .itc-footer-notes,
-      .itc-cta-section {
-        padding: 32px 20px;
-      }
-
-      .itc-comparison-section {
-        padding: 0;
-      }
-
-      .itc-table-section {
-        border-radius: 12px;
-      }
-
-      .itc-comparison-table {
-        border-radius: 12px;
-      }
-
-      .itc-faq-item {
-        padding: 0;
-      }
-
-      .itc-faq-question {
-        font-size: 1rem;
-        padding: 16px 20px;
-      }
-
-      .itc-cta-buttons {
-        flex-direction: column;
-        align-items: stretch;
-      }
-
-      .itc-cta-btn {
-        width: 100%;
-      }
-    }
-
-    @media (max-width: 480px) {
-      .itc-card {
-        padding: 24px 20px;
-      }
-
-      .itc-features li {
-        font-size: 0.9rem;
-        padding: 10px 0;
-      }
-
-      .itc-btn {
-        padding: 14px 20px;
-        font-size: 0.95rem;
-      }
-
-      .itc-trust-bar {
-        flex-direction: column;
-        gap: 12px;
-      }
-
-      table {
-        min-width: 650px;
-      }
-
-      thead th, tbody td {
-        padding: 14px 12px;
-        font-size: 0.85rem;
-      }
-
-      .itc-faq-question {
-        font-size: 0.95rem;
-        padding: 14px 16px;
-      }
-
-      .itc-faq-answer {
-        font-size: 0.9rem;
-      }
-
-      .itc-faq-item.active .itc-faq-answer {
-        padding: 0 16px 16px 16px;
-      }
-    }
-
-    /* Print Styles */
-    @media print {
-      .itc-pricing-wrap {
-        background: white;
-      }
-
-      .itc-card {
-        break-inside: avoid;
-        box-shadow: none;
-        border: 2px solid #ccc;
-      }
-
-      .itc-btn {
-        display: none;
-      }
-    }
-  </style>
-</head>
-<body>
-
-<section class="itc-pricing-wrap">
-  <div class="itc-container">
-    
-    <div class="itc-header">
-      <h1 class="itc-main-title">Scalable IT Solutions for Growing Businesses</h1>
-      <p class="itc-subtitle">Choose the level of support that fits your business goals. Transparent pricing, expert engineering, and proactive solutions to keep your systems running smoothly.</p>
-      
-      <div class="itc-trust-bar">
-        <div class="itc-trust-item">99.9% Uptime SLA</div>
-        <div class="itc-trust-item">SOC 2 Certified</div>
-        <div class="itc-trust-item">No Long-term Lock-in</div>
-        <div class="itc-trust-item">15+ Years Experience</div>
-      </div>
-    </div>
-
-    <div class="itc-grid">
-      <div class="itc-card">
-        <h3 class="itc-tier-name">Advisory</h3>
-        <p class="itc-description">Perfect for businesses with internal IT teams who need strategic guidance on specific projects.</p>
-        <div class="itc-price-wrapper">
-          <span class="itc-currency">$</span><span class="itc-amount">150</span><span class="itc-period">/hr</span>
-        </div>
-        <ul class="itc-features">
-          <li>Strategic IT Roadmap Planning</li>
-          <li>Security Audit & Assessment</li>
-          <li>Cloud Migration Strategy</li>
-          <li>Technology Stack Review</li>
-          <li>Vendor Selection Guidance</li>
-          <li>Disaster Recovery Planning</li>
-          <li>48-hour Email Response Time</li>
-          <li>Pay-as-you-go, No Commitment</li>
-        </ul>
-        <a href="#contact" class="itc-btn">Book Consultation</a>
-      </div>
-
-      <div class="itc-card itc-card-featured">
-        <div class="itc-badge">Most Popular</div>
-        <h3 class="itc-tier-name">Fully Managed</h3>
-        <p class="itc-description">Comprehensive IT management for businesses that want to focus on growth, not infrastructure.</p>
-        <div class="itc-price-wrapper">
-          <span class="itc-currency">$</span><span class="itc-amount">1,200</span><span class="itc-period">/mo</span>
-        </div>
-        <ul class="itc-features">
-          <li><strong>Everything in Advisory, plus:</strong></li>
-          <li>24/7 Infrastructure Monitoring</li>
-          <li>Managed Cybersecurity & Threat Detection</li>
-          <li>Automated Daily Backups & Recovery</li>
-          <li>Patch Management & Updates</li>
-          <li>Network Performance Optimization</li>
-          <li>Email & Endpoint Security</li>
-          <li>Priority Support Queue (4-hour Response)</li>
-          <li>Monthly Performance Reports</li>
-          <li>Unlimited Support Tickets</li>
-        </ul>
-        <a href="#contact" class="itc-btn itc-btn-primary">Get Started Today</a>
-      </div>
-
-      <div class="itc-card">
-        <h3 class="itc-tier-name">Enterprise</h3>
-        <p class="itc-description">Tailored solutions for organizations with complex compliance requirements and mission-critical systems.</p>
-        <div class="itc-price-wrapper">
-          <span class="itc-amount">Custom</span>
-        </div>
-        <ul class="itc-features">
-          <li><strong>Everything in Fully Managed, plus:</strong></li>
-          <li>Dedicated Account Manager</li>
-          <li>On-site Hardware Support Available</li>
-          <li>HIPAA/GDPR/SOC 2 Compliance Support</li>
-          <li>Custom SLA Agreements (99.99% Uptime)</li>
-          <li>Multi-site Infrastructure Management</li>
-          <li>Advanced Threat Intelligence</li>
-          <li>White-glove Migration Services</li>
-          <li>Quarterly Business Reviews</li>
-          <li>24/7 Phone Support (1-hour Response)</li>
-        </ul>
-        <a href="#contact" class="itc-btn">Contact Sales Team</a>
-      </div>
-    </div>
-
-    <!-- Feature Comparison Table -->
-    <div class="itc-comparison-section">
-      <h2 class="itc-comparison-title">Feature Comparison</h2>
-      <p class="itc-comparison-subtitle">Compare service tiers at a glance.</p>
-      
-      <div class="itc-comparison-wrapper">
-        <!-- Table Header -->
-        <div class="itc-table-section itc-table-header">
-          <div class="itc-comparison-table">
-            <table>
-              <thead>
-                <tr>
-                  <th>Feature & Service</th>
-                  <th>Advisory<br><span style="font-weight:400; font-size:0.85rem; color: var(--text-gray);">$150/hr</span></th>
-                  <th>Fully Managed<br><span style="font-weight:400; font-size:0.85rem; color: var(--text-gray);">$1,200/mo</span></th>
-                  <th>Enterprise<br><span style="font-weight:400; font-size:0.85rem; color: var(--text-gray);">Custom Pricing</span></th>
-                </tr>
-              </thead>
-            </table>
-          </div>
-        </div>
-
-        <!-- Support & Response -->
-        <div class="itc-table-section">
-          <div class="itc-comparison-table">
-            <table>
-              <tbody>
-                <tr class="itc-feature-group">
-                  <td colspan="4">Support & Response Times</td>
-                </tr>
-                <tr>
-                  <td>Support Availability</td>
-                  <td>Business hours</td>
-                  <td>24/7/365</td>
-                  <td>24/7/365</td>
-                </tr>
-                <tr>
-                  <td>Emergency Response</td>
-                  <td>48 hours</td>
-                  <td>1 hour</td>
-                  <td>15 minutes</td>
-                </tr>
-                <tr>
-                  <td>Support Channels</td>
-                  <td>Email only</td>
-                  <td>Email, phone, chat</td>
-                  <td>All + SMS</td>
-                </tr>
-              </tbody>
-            </table>
-          </div>
-        </div>
-
-        <!-- Infrastructure Management -->
-        <div class="itc-table-section">
-          <div class="itc-comparison-table">
-            <table>
-              <tbody>
-                <tr class="itc-feature-group">
-                  <td colspan="4">Infrastructure Management</td>
-                </tr>
-                <tr>
-                  <td>24/7 System Monitoring</td>
-                  <td class="itc-cross">—</td>
-                  <td class="itc-check">✓</td>
-                  <td class="itc-check">✓</td>
-                </tr>
-                <tr>
-                  <td>Server Management</td>
-                  <td class="itc-cross">—</td>
-                  <td class="itc-check">✓</td>
-                  <td class="itc-check">✓</td>
-                </tr>
-                <tr>
-                  <td>Cloud Infrastructure</td>
-                  <td class="itc-cross">—</td>
-                  <td class="itc-check">✓</td>
-                  <td class="itc-check">✓</td>
-                </tr>
-                <tr>
-                  <td>Patch Management</td>
-                  <td class="itc-cross">—</td>
-                  <td>Automated</td>
-                  <td>Automated + testing</td>
-                </tr>
-              </tbody>
-            </table>
-          </div>
-        </div>
-
-        <!-- Security & Compliance -->
-        <div class="itc-table-section">
-          <div class="itc-comparison-table">
-            <table>
-              <tbody>
-                <tr class="itc-feature-group">
-                  <td colspan="4">Security & Compliance</td>
-                </tr>
-                <tr>
-                  <td>Security Monitoring</td>
-                  <td class="itc-cross">—</td>
-                  <td class="itc-check">✓</td>
-                  <td class="itc-check">✓</td>
-                </tr>
-                <tr>
-                  <td>Vulnerability Scanning</td>
-                  <td class="itc-cross">—</td>
-                  <td>Weekly</td>
-                  <td>Daily</td>
-                </tr>
-                <tr>
-                  <td>Firewall Management</td>
-                  <td class="itc-cross">—</td>
-                  <td class="itc-check">✓</td>
-                  <td class="itc-check">✓</td>
-                </tr>
-                <tr>
-                  <td>Compliance Support</td>
-                  <td>Consultation</td>
-                  <td>Documentation</td>
-                  <td>Full compliance</td>
-                </tr>
-              </tbody>
-            </table>
-          </div>
-        </div>
-
-        <!-- Data Protection -->
-        <div class="itc-table-section">
-          <div class="itc-comparison-table">
-            <table>
-              <tbody>
-                <tr class="itc-feature-group">
-                  <td colspan="4">Data Protection</td>
-                </tr>
-                <tr>
-                  <td>Automated Backups</td>
-                  <td class="itc-cross">—</td>
-                  <td class="itc-check">✓</td>
-                  <td class="itc-check">✓</td>
-                </tr>
-                <tr>
-                  <td>Backup Retention</td>
-                  <td class="itc-cross">—</td>
-                  <td>30 days</td>
-                  <td>90+ days</td>
-                </tr>
-                <tr>
-                  <td>Disaster Recovery Testing</td>
-                  <td class="itc-cross">—</td>
-                  <td>Bi-annual</td>
-                  <td>Quarterly</td>
-                </tr>
-              </tbody>
-            </table>
-          </div>
-        </div>
-
-        <!-- Strategy & Reporting -->
-        <div class="itc-table-section">
-          <div class="itc-comparison-table">
-            <table>
-              <tbody>
-                <tr class="itc-feature-group">
-                  <td colspan="4">Strategy & Reporting</td>
-                </tr>
-                <tr>
-                  <td>IT Roadmap Planning</td>
-                  <td class="itc-check">✓</td>
-                  <td class="itc-check">✓</td>
-                  <td class="itc-check">✓</td>
-                </tr>
-                <tr>
-                  <td>Monthly Reports</td>
-                  <td class="itc-cross">—</td>
-                  <td class="itc-check">✓</td>
-                  <td class="itc-check">✓</td>
-                </tr>
-                <tr>
-                  <td>Business Reviews</td>
-                  <td class="itc-cross">—</td>
-                  <td>Annual</td>
-                  <td>Quarterly</td>
-                </tr>
-                <tr>
-                  <td>Account Manager</td>
-                  <td class="itc-cross">—</td>
-                  <td class="itc-cross">—</td>
-                  <td class="itc-check">✓</td>
-                </tr>
-              </tbody>
-            </table>
-          </div>
-        </div>
-
-      </div>
-    </div>
-
-    <!-- FAQ Section -->
-    <div class="itc-faq-section">
-      <div class="itc-faq-left">
-        <h2 class="itc-faq-title">Frequently Asked Questions</h2>
-        <p class="itc-faq-subtitle">Get answers to common questions about our services, pricing, and support.</p>
-      </div>
-      
-      <div class="itc-faq-right">
-        <div class="itc-faq-item">
-          <div class="itc-faq-question">
-            What's included in the onboarding and setup process?
-            <span class="itc-faq-icon">▼</span>
-          </div>
-          <div class="itc-faq-answer">
-            All Fully Managed and Enterprise plans include a comprehensive onboarding process that typically takes 2-4 weeks. We start with a complete infrastructure audit and documentation of your current systems. Our team then sets up monitoring tools, implements security protocols, configures backup systems, and establishes communication channels. We also provide employee training sessions to ensure your team knows how to access support and understands any new processes. For Enterprise clients, we create detailed runbooks and disaster recovery procedures tailored to your business.
-          </div>
-        </div>
-
-        <div class="itc-faq-item">
-          <div class="itc-faq-question">
-            Can I upgrade or downgrade my plan at any time?
-            <span class="itc-faq-icon">▼</span>
-          </div>
-          <div class="itc-faq-answer">
-            Yes, you have flexibility to change plans. Upgrades take effect immediately – you'll gain access to all additional features right away, and we'll prorate the billing. Downgrades apply at the start of your next billing cycle to ensure you receive full value for the month you've paid for. However, the Fully Managed plan does require a 6-month minimum commitment, so you can downgrade to Advisory only after completing that period. Enterprise agreements have custom terms that we'll discuss during the sales process. Simply contact your account manager or our support team to discuss plan changes.
-          </div>
-        </div>
-
-        <div class="itc-faq-item">
-          <div class="itc-faq-question">
-            What happens if I exceed my support hours on the Advisory plan?
-            <span class="itc-faq-icon">▼</span>
-          </div>
-          <div class="itc-faq-answer">
-            Advisory services are billed hourly at $150/hour with no predetermined limit. We track time in 15-minute increments and always provide estimates before starting significant work. If a project is taking longer than initially estimated, we'll notify you immediately and discuss options. We'll never charge you for time without your awareness. Most clients who consistently use more than 8-10 hours monthly find better value in our Fully Managed plan ($1,200/mo with unlimited support tickets), which we'll recommend if we notice this pattern in your usage.
-          </div>
-        </div>
-
-        <div class="itc-faq-item">
-          <div class="itc-faq-question">
-            Do you provide 24/7 emergency support for critical outages?
-            <span class="itc-faq-icon">▼</span>
-          </div>
-          <div class="itc-faq-answer">
-            Yes, for Fully Managed and Enterprise clients. We provide true 24/7/365 support with guaranteed response times for critical issues (complete system outages, security breaches, or data loss events). Fully Managed clients receive 1-hour response for critical issues, while Enterprise clients get 15-minute response times. Our on-call team can be reached by phone, email, or SMS. For Advisory clients, standard support is during business hours (9 AM - 5 PM EST, Monday-Friday), but emergency after-hours support can be arranged on a case-by-case basis at premium rates. We recommend upgrading to Fully Managed if you need guaranteed emergency support availability.
-          </div>
-        </div>
-
-        <div class="itc-faq-item">
-          <div class="itc-faq-question">
-            What industries and compliance requirements do you specialize in?
-            <span class="itc-faq-icon">▼</span>
-          </div>
-          <div class="itc-faq-answer">
-            We have deep expertise in highly regulated industries including healthcare (HIPAA compliance), financial services (PCI-DSS, SEC regulations), legal firms (attorney-client privilege protection), and professional services. Our team has successfully guided clients through HIPAA audits, GDPR implementation, SOC 2 Type II certification, and various state-specific privacy laws. For Enterprise clients, we provide hands-on compliance support including documentation, technical controls implementation, audit preparation, and ongoing monitoring. We also work with your compliance officers and legal team to ensure our technical solutions align with your regulatory obligations.
-          </div>
-        </div>
-
-        <div class="itc-faq-item">
-          <div class="itc-faq-question">
-            Are hardware and software licenses included in the monthly price?
-            <span class="itc-faq-icon">▼</span>
-          </div>
-          <div class="itc-faq-answer">
-            No, our pricing covers professional services, management, and monitoring only. Hardware purchases (servers, computers, networking equipment), software licenses (Microsoft 365, Adobe, antivirus, etc.), and cloud infrastructure costs (AWS, Azure, Google Cloud) are billed separately and remain under your control. We believe in transparency – you own all your licenses and infrastructure. However, we can absolutely help you optimize these costs. Many clients save 20-30% on their software and cloud spending through our vendor relationships, license optimization reviews, and right-sizing recommendations. We provide detailed estimates before any external costs are incurred and can help you budget for technology expenses.
-          </div>
-        </div>
-
-        <div class="itc-faq-item">
-          <div class="itc-faq-question">
-            How quickly can you respond to support requests?
-            <span class="itc-faq-icon">▼</span>
-          </div>
-          <div class="itc-faq-answer">
-            Response times vary by plan and issue severity. Advisory clients receive email responses within 48 business hours. Fully Managed clients get 4-hour response for priority issues and 1-hour response for critical outages (system down, security breach). Enterprise clients receive 1-hour response for priority issues and 15-minute response for critical emergencies. All response times are measured during your service hours (business hours for Advisory, 24/7 for Fully Managed and Enterprise). We also prioritize issues by business impact – a server outage affecting your entire team gets faster attention than a single user's password reset. Resolution times depend on complexity, but we provide regular status updates throughout the process.
-          </div>
-        </div>
-
-        <div class="itc-faq-item">
-          <div class="itc-faq-question">
-            What's your process for handling security incidents?
-            <span class="itc-faq-icon">▼</span>
-          </div>
-          <div class="itc-faq-answer">
-            We follow industry-standard incident response protocols. When a security event is detected (through our 24/7 monitoring or your report), we immediately assess the severity and contain the threat to prevent spread. Our team investigates the root cause, documents all findings, and implements remediation steps. For Fully Managed and Enterprise clients, we provide detailed incident reports including timeline, impact assessment, and recommendations to prevent recurrence. Enterprise clients also receive post-incident reviews with executive summaries suitable for board presentations. We maintain an incident response playbook customized for your environment and conduct annual tabletop exercises to ensure readiness. All security incidents are handled with strict confidentiality.
-          </div>
-        </div>
-
-        <div class="itc-faq-item">
-          <div class="itc-faq-question">
-            Can you help us migrate from our current IT provider?
-            <span class="itc-faq-icon">▼</span>
-          </div>
-          <div class="itc-faq-answer">
-            Absolutely. We've successfully migrated dozens of businesses from other providers (or from self-managed IT) with zero downtime. Our migration process includes: comprehensive documentation of your current environment, coordination with your existing provider for knowledge transfer, phased migration plan to minimize disruption, parallel running period to ensure stability, and extensive testing before final cutover. We handle all the heavy lifting including extracting documentation from previous providers, reconfiguring access credentials, and validating that all systems work correctly. For Enterprise clients, we provide white-glove migration services with dedicated project management. Most migrations are completed within 30-45 days depending on environment complexity.
-          </div>
-        </div>
-
-        <div class="itc-faq-item">
-          <div class="itc-faq-question">
-            Do you support remote/hybrid work environments?
-            <span class="itc-faq-icon">▼</span>
-          </div>
-          <div class="itc-faq-answer">
-            Yes, this is one of our specialties. We design and support IT infrastructure specifically optimized for distributed teams. This includes secure VPN or zero-trust network access, cloud-based productivity tools (Microsoft 365, Google Workspace, Slack), endpoint security for home/remote devices, mobile device management, video conferencing optimization (Zoom, Teams), and support for BYOD (bring your own device) policies. We help ensure your remote employees have the same security protections and reliable access as they would in an office environment. Our remote support capabilities mean we can troubleshoot and resolve issues for employees anywhere in the world without requiring physical access to devices.
-          </div>
-        </div>
-      </div>
-    </div>
-
-    <!-- CTA Section -->
-    <div class="itc-cta-section">
-      <h2 class="itc-cta-title">Ready to Transform Your IT Infrastructure?</h2>
-      <p class="itc-cta-text">Schedule a free 30-minute consultation to discuss your technology challenges and learn how we can help your business thrive.</p>
-      <div class="itc-cta-buttons">
-        <a href="#contact" class="itc-cta-btn itc-cta-btn-primary">Schedule Free Consultation</a>
-        <a href="#contact" class="itc-cta-btn itc-cta-btn-secondary">Download Service Guide (PDF)</a>
-      </div>
-    </div>
-
-    <!-- Footer Notes -->
-    <div class="itc-footer-notes">
-      <h3>Important Information</h3>
-      <p><strong>Commitment Terms:</strong> Fully Managed plans require a 6-month minimum commitment. Advisory services are billed monthly with no long-term contract. Enterprise agreements are customized based on your needs.</p>
-      <p><strong>Business Hours:</strong> Standard support hours are Monday-Friday, 9 AM - 5 PM EST. Response times are measured during business hours unless you have 24/7 coverage (Fully Managed & Enterprise).</p>
-      <p><strong>Additional Costs:</strong> All prices exclude hardware, third-party software licenses (Microsoft, Adobe, etc.), cloud infrastructure costs (AWS, Azure), and internet/telecom expenses. We provide transparent estimates before any external costs are incurred.</p>
-      <p><strong>Payment Terms:</strong> Monthly plans are billed in advance. Advisory hours are invoiced at month-end. Net 15 payment terms for all services. Major credit cards and ACH accepted.</p>
-    </div>
-
-  </div>
-</section>
-
-<script>
-  // FAQ Accordion functionality
-  document.addEventListener('DOMContentLoaded', function() {
-    const faqItems = document.querySelectorAll('.itc-faq-item');
-    
-    faqItems.forEach(item => {
-      const question = item.querySelector('.itc-faq-question');
-      
-      question.addEventListener('click', () => {
-        // Close other open items
-        faqItems.forEach(otherItem => {
-          if (otherItem !== item && otherItem.classList.contains('active')) {
-            otherItem.classList.remove('active');
-          }
-        });
+<div id="webapp-pricing-root">
+    <style>
+        @import url('https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap');
+
+        #webapp-pricing-root {
+            font-family: 'Inter', sans-serif;
+            background: #f4f4f4; /* CHANGED: Light Background */
+            padding: 60px 20px;
+            color: #1e293b; /* CHANGED: Dark Text */
+            max-width: 1300px;
+            margin: 0 auto;
+        }
+
+        /* Namespace: wap- (Web App Pricing) */
+        .wap-pricing-header {
+            text-align: center;
+            margin-bottom: 60px;
+        }
+
+        .wap-badge {
+            display: inline-block;
+            background: rgba(0, 102, 255, 0.1);
+            color: #0066FF;
+            padding: 6px 16px;
+            border-radius: 30px;
+            font-size: 12px;
+            font-weight: 700;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+            margin-bottom: 20px;
+            border: 1px solid rgba(0, 102, 255, 0.2);
+        }
+
+        .wap-title {
+            font-size: 42px;
+            font-weight: 800;
+            margin: 0 0 16px 0;
+            /* CHANGED: Dark gradient for title */
+            background: linear-gradient(90deg, #0f172a, #334155);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+        }
+
+        /* Table Container - Made Transparent */
+        .wap-table-container {
+            width: 100%;
+            overflow-x: auto;
+            /* CHANGED: Removed background and border */
+            background: transparent;
+            margin-bottom: 40px;
+        }
+
+        .wap-mega-table {
+            width: 100%;
+            /* CHANGED: Separate borders to allow spacing between rows */
+            border-collapse: separate; 
+            border-spacing: 0 15px; /* Spacing between rows */
+            min-width: 1000px;
+        }
+
+        /* Headers - Transparent background, Dark Text */
+        .wap-mega-table th {
+            padding: 20px 25px;
+            text-align: left;
+            vertical-align: top;
+            border: none; /* Removed borders */
+            background: transparent;
+        }
+
+        .wap-category-label {
+            font-size: 20px;
+            font-weight: 800;
+            color: #0f172a; /* Dark Color */
+        }
+
+        .wap-tier-name {
+            font-size: 24px;
+            font-weight: 800;
+            display: block;
+            margin-bottom: 8px;
+            color: #0f172a;
+        }
+
+        .wap-tier-desc {
+            font-size: 13px;
+            color: #64748b; /* Medium Gray */
+            line-height: 1.6;
+            font-weight: 500;
+            display: block;
+            margin-bottom: 20px;
+            min-height: 40px;
+        }
+
+        .wap-price-wrapper {
+            margin-bottom: 20px;
+        }
+
+        .wap-price-currency { font-size: 18px; vertical-align: top; color: #0066FF; font-weight: 700; }
+        .wap-price-amount { font-size: 48px; font-weight: 800; letter-spacing: -1px; color: #0f172a; }
+        .wap-price-cycle { font-size: 14px; color: #64748b; }
+
+        /* Rows Styling - The "Card" Look */
+        .wap-mega-table td {
+            padding: 25px;
+            font-size: 14px;
+            color: #334155; /* Dark Text */
+            background: #ffffff; /* CHANGED: White card background */
+            border: none;
+            /* Soft shadow for depth */
+            box-shadow: 0 2px 5px rgba(0,0,0,0.02); 
+        }
+
+        /* Border Radius Logic for Rows */
+        .wap-mega-table td:first-child {
+            border-top-left-radius: 15px;
+            border-bottom-left-radius: 15px;
+        }
         
-        // Toggle current item
-        item.classList.toggle('active');
-      });
-    });
+        .wap-mega-table td:last-child {
+            border-top-right-radius: 15px;
+            border-bottom-right-radius: 15px;
+        }
 
-    // Optional: Open first FAQ by default
-    if (faqItems.length > 0) {
-      faqItems[0].classList.add('active');
-    }
-  });
-</script>
+        .wap-row-title {
+            font-weight: 700;
+            color: #0f172a; /* Darkest Blue/Black */
+            display: block;
+            margin-bottom: 4px;
+            font-size: 15px;
+        }
 
-</body>
-</html>
+        .wap-row-sub {
+            font-size: 12px;
+            color: #64748b;
+            line-height: 1.5;
+            display: block;
+        }
 
+        /* Section Divider Styling */
+        .wap-section-divider {
+            /* CHANGED: Distinct look for section headers */
+            background: #1e293b !important; 
+            padding: 15px 25px !important;
+            font-weight: 700;
+            color: #ffffff !important; /* White text on dark divider */
+            text-transform: uppercase;
+            letter-spacing: 2px;
+            font-size: 12px;
+            /* Radius is handled by general TD rules above, but we ensure it applies here */
+        }
 
+        /* Status & Icons */
+        .wap-check { color: #059669; font-weight: 900; font-size: 18px; } /* Darker Green */
+        .wap-cross { color: #cbd5e1; font-size: 18px; } /* Light Gray Cross */
+        
+        /* Feature details styling */
+        .wap-feature-details {
+            font-size: 12px;
+            color: #64748b;
+            display: block;
+            margin-top: 5px;
+            line-height: 1.5;
+            font-weight: 500;
+        }
 
+        /* CTA Buttons */
+        .wap-cta-btn {
+            display: block;
+            text-align: center;
+            padding: 14px;
+            border-radius: 12px;
+            text-decoration: none;
+            font-weight: 700;
+            font-size: 14px;
+            transition: all 0.3s ease;
+            width: 100%;
+        }
 
+        .wap-btn-outline {
+            border: 2px solid #0066FF; /* Thicker border */
+            color: #0066FF;
+            background: transparent;
+        }
 
+        .wap-btn-outline:hover {
+            background: rgba(0, 102, 255, 0.05);
+        }
 
+        .wap-btn-primary {
+            background: #0066FF;
+            color: #ffffff;
+            border: 2px solid #0066FF;
+        }
+
+        .wap-btn-primary:hover {
+            background: #0052cc;
+            box-shadow: 0 4px 12px rgba(0, 102, 255, 0.3);
+        }
+        
+        /* Notes Section - Adapted for Light Mode */
+        .wap-notes-container {
+            background: #ffffff; /* White bg */
+            border-radius: 16px;
+            padding: 30px;
+            border: 1px solid rgba(0,0,0,0.05);
+            margin-top: 40px;
+            box-shadow: 0 4px 20px rgba(0,0,0,0.03);
+        }
+        
+        .wap-notes-title {
+            color: #0066FF;
+            font-size: 18px;
+            font-weight: 800;
+            margin-bottom: 20px;
+        }
+        
+        .wap-notes-list {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
+            gap: 15px;
+        }
+        
+        .wap-note-item {
+            display: flex;
+            align-items: flex-start;
+            margin-bottom: 10px;
+        }
+        
+        .wap-note-bullet {
+            color: #0066FF;
+            font-weight: bold;
+            margin-right: 10px;
+            flex-shrink: 0;
+        }
+        
+        .wap-note-text {
+            font-size: 14px;
+            color: #475569; /* Darker text for readability */
+            line-height: 1.6;
+        }
+
+        /* Mobile Responsive Design */
+        @media (max-width: 1024px) {
+            .wap-title { font-size: 36px; }
+            .wap-notes-list { grid-template-columns: 1fr; }
+        }
+        
+        @media (max-width: 768px) {
+            #webapp-pricing-root { padding: 40px 15px; }
+            
+            .wap-title { font-size: 28px; }
+            
+            .wap-pricing-header { margin-bottom: 40px; }
+            
+            .wap-table-container {
+                border-radius: 16px;
+                overflow-x: auto;
+                -webkit-overflow-scrolling: touch;
+            }
+            
+            .wap-mega-table th {
+                padding: 25px 20px;
+            }
+            
+            .wap-mega-table td {
+                padding: 18px 20px;
+            }
+            
+            .wap-tier-name { font-size: 20px; }
+            
+            .wap-price-amount { font-size: 36px; }
+            
+            .wap-notes-container {
+                padding: 20px;
+            }
+        }
+        
+        /* Highlight specific column */
+        .wap-highlight-col {
+            background: #EFF6FF !important; /* Very light blue for highlighted column */
+        }
+        
+    </style>
+
+    <div class="wap-pricing-header">
+        <div class="wap-badge">Web & Mobile Application Development</div>
+        <h1 class="wap-title">Custom App Development Packages</h1>
+        <p style="color: #64748b; max-width: 700px; margin: 0 auto; line-height: 1.6; font-size: 16px;">Comprehensive development packages for web and mobile applications. Each tier includes full lifecycle support from design to deployment and maintenance.</p>
+    </div>
+
+    <div class="wap-table-container">
+        <table class="wap-mega-table">
+            <thead>
+                <tr>
+                    <th style="width: 28%;">
+                        <div class="wap-category-label">Application Features</div>
+                        <p style="font-size: 13px; color: #64748b; margin-top: 10px; line-height: 1.5;">Detailed breakdown of what's included in each development package.</p>
+                    </th>
+                    <th style="width: 24%;">
+                        <span class="wap-tier-name">Starter</span>
+                        <span class="wap-tier-desc">Single platform app with basic functionality for small businesses.</span>
+                        <div class="wap-price-wrapper">
+                            <span class="wap-price-currency">$</span>
+                            <span class="wap-price-amount">4,999</span>
+                            <span class="wap-price-cycle">/project</span>
+                        </div>
+                        <a href="#" class="wap-cta-btn wap-btn-outline">Get Quote</a>
+                    </th>
+                    <th style="width: 24%;">
+                        <span class="wap-tier-name" style="color: #0066FF;">Professional</span>
+                        <span class="wap-tier-desc">Cross-platform app with advanced features and API integration.</span>
+                        <div class="wap-price-wrapper">
+                            <span class="wap-price-currency">$</span>
+                            <span class="wap-price-amount">14,500</span>
+                            <span class="wap-price-cycle">/project</span>
+                        </div>
+                        <a href="#" class="wap-cta-btn wap-btn-primary">Choose Plan</a>
+                    </th>
+                    <th style="width: 24%;">
+                        <span class="wap-tier-name">Enterprise</span>
+                        <span class="wap-tier-desc">Full-scale custom application with AI features and scalability.</span>
+                        <div class="wap-price-wrapper">
+                            <span class="wap-price-currency">$</span>
+                            <span class="wap-price-amount">45,000</span>
+                            <span class="wap-price-cycle">/project+</span>
+                        </div>
+                        <a href="#" class="wap-cta-btn wap-btn-outline">Contact Sales</a>
+                    </th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr><td colspan="4" class="wap-section-divider">Platform & Scope</td></tr>
+                
+                <tr>
+                    <td>
+                        <span class="wap-row-title">Platform Coverage</span>
+                        <span class="wap-row-sub">Native and web platforms included</span>
+                    </td>
+                    <td>
+                        Web App OR iOS/Android
+                        <span class="wap-feature-details">Choose one platform only</span>
+                    </td>
+                    <td class="wap-highlight-col">
+                        Web + 1 Mobile Platform
+                        <span class="wap-feature-details">Responsive web + iOS or Android</span>
+                    </td>
+                    <td>
+                        Web + iOS + Android
+                        <span class="wap-feature-details">Full cross-platform coverage</span>
+                    </td>
+                </tr>
+                <tr>
+                    <td>
+                        <span class="wap-row-title">Development Timeline</span>
+                        <span class="wap-row-sub">Estimated delivery time from kickoff</span>
+                    </td>
+                    <td>
+                        4-6 Weeks
+                        <span class="wap-feature-details">Basic functionality only</span>
+                    </td>
+                    <td class="wap-highlight-col">
+                        8-12 Weeks
+                        <span class="wap-feature-details">Includes testing and refinement</span>
+                    </td>
+                    <td>
+                        12-20 Weeks
+                        <span class="wap-feature-details">Comprehensive development cycle</span>
+                    </td>
+                </tr>
+                
+                <tr><td colspan="4" class="wap-section-divider">Core Development Features</td></tr>
+                <tr>
+                    <td>
+                        <span class="wap-row-title">Custom UI/UX Design</span>
+                        <span class="wap-row-sub">Wireframes, prototypes, and visual design</span>
+                    </td>
+                    <td>
+                        Basic Design
+                        <span class="wap-feature-details">Template-based with light customization</span>
+                    </td>
+                    <td class="wap-highlight-col">
+                        Custom Design
+                        <span class="wap-feature-details">Fully custom UI with 3 revision rounds</span>
+                    </td>
+                    <td>
+                        Premium Design
+                        <span class="wap-feature-details">Custom UI/UX with unlimited revisions</span>
+                    </td>
+                </tr>
+                <tr>
+                    <td>
+                        <span class="wap-row-title">Frontend Development</span>
+                        <span class="wap-row-sub">HTML/CSS/JavaScript or framework</span>
+                    </td>
+                    <td>
+                        Basic Frontend
+                        <span class="wap-feature-details">Vanilla JS or simple React components</span>
+                    </td>
+                    <td class="wap-highlight-col">
+                        Advanced Frontend
+                        <span class="wap-feature-details">React/Vue/Angular with state management</span>
+                    </td>
+                    <td>
+                        Enterprise Frontend
+                        <span class="wap-feature-details">Micro-frontends, SSR, PWA capabilities</span>
+                    </td>
+                </tr>
+                <tr>
+                    <td>
+                        <span class="wap-row-title">Backend Development</span>
+                        <span class="wap-row-sub">Server, database, and API development</span>
+                    </td>
+                    <td>
+                        Simple Backend
+                        <span class="wap-feature-details">Firebase or basic Node.js with 5 API endpoints</span>
+                    </td>
+                    <td class="wap-highlight-col">
+                        Robust Backend
+                        <span class="wap-feature-details">Node.js/Python with 15+ API endpoints, auth, and database</span>
+                    </td>
+                    <td>
+                        Scalable Backend
+                        <span class="wap-feature-details">Microservices, cloud functions, real-time features</span>
+                    </td>
+                </tr>
+                
+                <tr><td colspan="4" class="wap-section-divider">Advanced Features</td></tr>
+                <tr>
+                    <td>
+                        <span class="wap-row-title">Third-Party API Integration</span>
+                        <span class="wap-row-sub">Payment, social media, maps, etc.</span>
+                    </td>
+                    <td>
+                        1 Basic Integration
+                        <span class="wap-feature-details">Stripe or PayPal only</span>
+                    </td>
+                    <td class="wap-highlight-col">
+                        3-5 Integrations
+                        <span class="wap-feature-details">Payment + social + maps + 2 custom</span>
+                    </td>
+                    <td>
+                        Unlimited Integrations
+                        <span class="wap-feature-details">All required APIs with custom middleware</span>
+                    </td>
+                </tr>
+                <tr>
+                    <td>
+                        <span class="wap-row-title">User Authentication</span>
+                        <span class="wap-row-sub">Login, registration, and user management</span>
+                    </td>
+                    <td>
+                        Email/Password
+                        <span class="wap-feature-details">Basic auth with email verification</span>
+                    </td>
+                    <td class="wap-highlight-col">
+                        Social + Email
+                        <span class="wap-feature-details">Google, Facebook, Apple login + email/password</span>
+                    </td>
+                    <td>
+                        Enterprise SSO
+                        <span class="wap-feature-details">SAML, OAuth2, LDAP, custom identity provider</span>
+                    </td>
+                </tr>
+                <tr>
+                    <td>
+                        <span class="wap-row-title">Admin Dashboard</span>
+                        <span class="wap-row-sub">Content management and analytics</span>
+                    </td>
+                    <td class="wap-cross">✘</td>
+                    <td class="wap-check wap-highlight-col">✔</td>
+                    <td class="wap-check">✔</td>
+                </tr>
+                <tr>
+                    <td>
+                        <span class="wap-row-title">Push Notifications</span>
+                        <span class="wap-row-sub">Mobile and web notifications</span>
+                    </td>
+                    <td class="wap-cross">✘</td>
+                    <td class="wap-check wap-highlight-col">✔</td>
+                    <td class="wap-check">✔</td>
+                </tr>
+                
+                <tr><td colspan="4" class="wap-section-divider">Post-Launch Services</td></tr>
+                <tr>
+                    <td>
+                        <span class="wap-row-title">Hosting & Deployment</span>
+                        <span class="wap-row-sub">Server setup and app store deployment</span>
+                    </td>
+                    <td>
+                        Basic Hosting (3 months)
+                        <span class="wap-feature-details">Shared hosting, manual deployment</span>
+                    </td>
+                    <td class="wap-highlight-col">
+                        Managed Hosting (6 months)
+                        <span class="wap-feature-details">Cloud hosting with CI/CD pipeline</span>
+                    </td>
+                    <td>
+                        Enterprise Hosting (12 months)
+                        <span class="wap-feature-details">Dedicated infrastructure with auto-scaling</span>
+                    </td>
+                </tr>
+                <tr>
+                    <td>
+                        <span class="wap-row-title">Maintenance & Support</span>
+                        <span class="wap-row-sub">Bug fixes, updates, and technical support</span>
+                    </td>
+                    <td>
+                        1 Month Support
+                        <span class="wap-feature-details">Critical bug fixes only</span>
+                    </td>
+                    <td class="wap-highlight-col">
+                        3 Months Support
+                        <span class="wap-feature-details">Bug fixes + minor feature updates</span>
+                    </td>
+                    <td>
+                        6 Months Support
+                        <span class="wap-feature-details">Full support including performance optimization</span>
+                    </td>
+                </tr>
+                <tr>
+                    <td>
+                        <span class="wap-row-title">Analytics & Reporting</span>
+                        <span class="wap-row-sub">User behavior and performance tracking</span>
+                    </td>
+                    <td>
+                        Basic Analytics
+                        <span class="wap-feature-details">Simple traffic and conversion tracking</span>
+                    </td>
+                    <td class="wap-highlight-col">
+                        Advanced Analytics
+                        <span class="wap-feature-details">User flow, retention, and custom events</span>
+                    </td>
+                    <td>
+                        Business Intelligence
+                        <span class="wap-feature-details">Custom dashboards, predictive analytics, AI insights</span>
+                    </td>
+                </tr>
+            </tbody>
+        </table>
+    </div>
+    
+    <div class="wap-notes-container">
+        <div class="wap-notes-title">Important Notes & Clarifications</div>
+        <div class="wap-notes-list">
+            <div class="wap-note-item">
+                <span class="wap-note-bullet">•</span>
+                <span class="wap-note-text">All prices are for complete projects. Monthly retainers are available for ongoing development at $1,500-$5,000/month depending on scope.</span>
+            </div>
+            <div class="wap-note-item">
+                <span class="wap-note-bullet">•</span>
+                <span class="wap-note-text">Timelines begin after final design approval and content delivery. Delays in client feedback may extend project timelines.</span>
+            </div>
+            <div class="wap-note-item">
+                <span class="wap-note-bullet">•</span>
+                <span class="wap-note-text">Third-party service costs (domain, hosting beyond included period, paid APIs, app store fees) are not included unless specified.</span>
+            </div>
+            <div class="wap-note-item">
+                <span class="wap-note-bullet">•</span>
+                <span class="wap-note-text">Custom Enterprise pricing varies based on specific requirements, complexity, and integrations needed. Contact for a detailed quote.</span>
+            </div>
+            <div class="wap-note-item">
+                <span class="wap-note-bullet">•</span>
+                <span class="wap-note-text">Projects require a 50% deposit to begin work, with the balance due upon completion before final delivery.</span>
+            </div>
+            <div class="wap-note-item">
+                <span class="wap-note-bullet">•</span>
+                <span class="wap-note-text">All code is delivered with documentation. Clients retain full ownership of all deliverables upon final payment.</span>
+            </div>
+        </div>
+    </div>
+</div>
 
 

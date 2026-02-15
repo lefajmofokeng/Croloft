@@ -773,22 +773,22 @@ class CronosHeader extends HTMLElement {
                                                 <ul class="cronos-mega-menu-group-list">
                                                     <li>
                                                         <a href="mobile-applications.html">
-                                                            <span class="cronos-mega-menu-link-title">Mobile & Web Applications</span>
+                                                            <span class="cronos-mega-menu-link-title">AI & Workflow Automation</span>
                                                             </a>
                                                     </li>
                                                     <li>
                                                         <a href="page.html">
-                                                            <span class="cronos-mega-menu-link-title">AI & Machine Learning</span>
+                                                            <span class="cronos-mega-menu-link-title">Mobile & Web Apps</span>
                                                             </a>
                                                     </li>
                                                     <li>
                                                         <a href="page.html">
-                                                            <span class="cronos-mega-menu-link-title">API & Microservices Architecture</span>
+                                                            <span class="cronos-mega-menu-link-title">E-commerce</span>
                                                             </a>
                                                     </li>
                                                     <li>
-                                                        <a href="page.html">
-                                                            <span class="cronos-mega-menu-link-title">E-commerce Solutions</span>
+                                                        <a href="blockchain-and-web3.html">
+                                                            <span class="cronos-mega-menu-link-title">Blockchain & Web3</span>
                                                             </a>
                                                     </li>
                                                     <li>
