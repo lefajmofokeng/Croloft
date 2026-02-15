@@ -59,8 +59,6 @@
         }
 
         .crns-main-wrapper {
-            /* FIXED: Background Image logic */
-            /* This sets a dark overlay on top of an image, limited to the top 240px */
             position: relative;
             background-color: #fff;
             min-height: 100vh;
@@ -102,7 +100,6 @@
             max-width: 510px;
             padding: 35px;
             border-radius: 4px;
-            /* Shifts the form up to overlap the image slightly */
             margin-top: 100px; 
             margin-bottom: 40px;
             position: relative;
@@ -164,6 +161,7 @@
 
         .crns-field-group {
             margin-bottom: 28px;
+            position: relative; /* For custom dropdown positioning */
         }
 
         .crns-label {
@@ -214,6 +212,120 @@
             border-color: var(--crns-color-primary-blue);
             box-shadow: 0 0 0 3px rgba(17, 106, 230, 0.15);
         }
+
+        /* --- CUSTOM DROPDOWN CSS --- */
+        .crns-custom-select-wrapper {
+            position: relative;
+            user-select: none;
+            width: 100%;
+        }
+
+        .crns-custom-select {
+            position: relative;
+            display: flex;
+            flex-direction: column;
+        }
+
+        .crns-custom-select-trigger {
+            position: relative;
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            padding: 12px 16px;
+            font-size: 15px;
+            font-weight: 400;
+            color: var(--crns-color-text-dark);
+            background: #fff;
+            cursor: pointer;
+            border: 2px solid var(--crns-color-border); /* 2px solid grey */
+            border-radius: 4px; /* 4px border radius */
+            transition: all 0.2s ease;
+        }
+
+        .crns-custom-select-trigger:focus {
+             outline: none;
+             border-color: var(--crns-color-primary-blue);
+             box-shadow: 0 0 0 3px rgba(17, 106, 230, 0.15);
+        }
+
+        /* Custom Arrow */
+        .crns-custom-select-trigger::after {
+            content: '';
+            width: 10px;
+            height: 10px;
+            background-image: url("data:image/svg+xml;charset=US-ASCII,%3Csvg%20xmlns%3D%22http%3A%2F%2Fwww.w3.org%2F2000%2Fsvg%22%20width%3D%22292.4%22%20height%3D%22292.4%22%3E%3Cpath%20fill%3D%22%23111827%22%20d%3D%22M287%2069.4a17.6%2017.6%200%200%200-13-5.4H18.4c-5%200-9.3%201.8-12.9%205.4A17.6%2017.6%200%200%200%200%2082.2c0%205%201.8%209.3%205.4%2012.9l128%20127.9c3.6%203.6%207.8%205.4%2012.8%205.4s9.2-1.8%2012.8-5.4L287%2095c3.5-3.5%205.4-7.8%205.4-12.8%200-5-1.9-9.2-5.5-12.8z%22%2F%3E%3C%2Fsvg%3E");
+            background-repeat: no-repeat;
+            background-size: contain;
+            transition: transform 0.2s ease;
+        }
+
+        .crns-custom-select.open .crns-custom-select-trigger::after {
+            transform: rotate(180deg);
+        }
+        
+        .crns-custom-select.open .crns-custom-select-trigger {
+             border-color: var(--crns-color-primary-blue);
+        }
+
+        .crns-custom-options {
+            position: absolute;
+            display: block;
+            top: 100%;
+            left: 0;
+            right: 0;
+            /* CHANGED: Removed border-top:0 and added full border-radius */
+            border: 2px solid var(--crns-color-border);
+            border-radius: 4px;
+            background: #fff;
+            transition: all 0.2s ease;
+            opacity: 0;
+            visibility: hidden;
+            pointer-events: none;
+            z-index: 20;
+            margin-top: 4px;
+            box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.1);
+        }
+
+        .crns-custom-select.open .crns-custom-options {
+            opacity: 1;
+            visibility: visible;
+            pointer-events: all;
+            border-color: var(--crns-color-primary-blue);
+        }
+
+        .crns-custom-option {
+            position: relative;
+            display: block;
+            padding: 12px 16px;
+            font-size: 15px;
+            font-weight: 400;
+            color: var(--crns-color-text-dark);
+            cursor: pointer;
+            transition: all 0.2s;
+        }
+        
+        /* Add border radius to first and last options so they don't overflow the rounded container */
+        .crns-custom-option:first-child {
+            border-top-left-radius: 2px;
+            border-top-right-radius: 2px;
+        }
+        .crns-custom-option:last-child {
+            border-bottom-left-radius: 2px;
+            border-bottom-right-radius: 2px;
+        }
+
+        .crns-custom-option:hover {
+            background-color: #f3f4f6;
+            color: var(--crns-color-primary-blue);
+        }
+
+        .crns-custom-option.selected {
+            font-weight: 600;
+            background-color: #f3f4f6;
+        }
+
+        /* --- END CUSTOM DROPDOWN --- */
+
 
         .crns-submit-section {
             display: flex;
@@ -292,7 +404,6 @@
         @media (max-width: 768px) {
             .crns-main-wrapper {
                 padding: 20px 12px;
-                /* Adjust background on mobile */
                 background-size: 100% 250px; 
             }
             .crns-form-container {
@@ -309,16 +420,16 @@
             }
         }
 
-        /* --- MODAL CSS STYLES (FIXED) --- */
+        /* --- MODAL CSS STYLES --- */
         .crns-modal-overlay {
-            display: none; /* Hidden by default */
+            display: none;
             position: fixed;
             top: 0;
             left: 0;
             width: 100%;
             height: 100%;
             background-color: rgba(0, 0, 0, 0.6);
-            z-index: 9999; /* High Z-Index */
+            z-index: 9999;
             justify-content: center;
             align-items: center;
             padding: 16px;
@@ -444,7 +555,7 @@
         .crns-cancel-btn:hover { background-color: #f9fafb; border-color: #9ca3af; }
 
         .crns-modal-submit-btn {
-            background-color: #007ad7; /* Red for report */
+            background-color: #007ad7; 
             color: white;
             border: none;
             padding: 10px 24px;
@@ -475,7 +586,6 @@
 <body>
 
     <div class="crns-main-wrapper">
-        <!-- Back Button -->
         <a href="index.html" class="crns-back-button">
             <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor">
                 <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M10 19l-7-7m0 0l7-7m-7 7h18"/>
@@ -504,11 +614,88 @@
                     <input type="hidden" name="_captcha" value="true"> <input type="hidden" name="_template" value="table">
                     
                     <div class="crns-field-group">
+                        <label for="crns-name" class="crns-label">
+                            Full Name <span class="crns-required-mark">*</span>
+                        </label>
+                        <input type="text" id="crns-name" name="name" class="crns-input" required placeholder="John Doe">
+                    </div>
+
+                    <div class="crns-field-group">
                         <label for="crns-email" class="crns-label">
                             Your email address <span class="crns-required-mark">*</span>
                         </label>
                         <p class="crns-helper-text">Make sure to enter a valid, active email address.</p>
                         <input type="email" id="crns-email" name="email" class="crns-input" required placeholder="name@company.com">
+                    </div>
+
+                    <div class="crns-field-group">
+                        <label for="crns-location" class="crns-label">
+                            Location <span class="crns-required-mark">*</span>
+                        </label>
+                        <input type="text" id="crns-location" name="location" class="crns-input" required placeholder="Bethlehem, Free State">
+                    </div>
+
+                    <div class="crns-field-group">
+                        <label class="crns-label">
+                            I am completing this form in connection with my: <span class="crns-required-mark">*</span>
+                        </label>
+                        <div class="crns-custom-select-wrapper">
+                            <div class="crns-custom-select" id="custom-context-select">
+                                <div class="crns-custom-select-trigger"><span>Select an option</span></div>
+                                <div class="crns-custom-options">
+                                    <span class="crns-custom-option" data-value="business">Business</span>
+                                    <span class="crns-custom-option" data-value="work">Work</span>
+                                    <span class="crns-custom-option" data-value="personal">Personal interests</span>
+                                </div>
+                            </div>
+                            <input type="hidden" id="crns-context" name="connection_type" value=""> 
+                        </div>
+                    </div>
+
+                    <div id="crns-business-fields" style="display: none;">
+                        <div class="crns-field-group">
+                            <label class="crns-label">
+                                Industry <span class="crns-required-mark">*</span>
+                            </label>
+                            
+                            <div class="crns-custom-select-wrapper">
+                                <div class="crns-custom-select" id="custom-industry-select">
+                                    <div class="crns-custom-select-trigger"><span>Select Industry</span></div>
+                                    <div class="crns-custom-options">
+                                        <span class="crns-custom-option" data-value="technology">Technology</span>
+                                        <span class="crns-custom-option" data-value="finance">Finance</span>
+                                        <span class="crns-custom-option" data-value="healthcare">Healthcare</span>
+                                        <span class="crns-custom-option" data-value="education">Education</span>
+                                        <span class="crns-custom-option" data-value="manufacturing">Manufacturing</span>
+                                        <span class="crns-custom-option" data-value="retail">Retail</span>
+                                        <span class="crns-custom-option" data-value="other">Other</span>
+                                    </div>
+                                </div>
+                                <input type="hidden" id="crns-industry" name="industry" value="">
+                            </div>
+
+                        </div>
+                        <div class="crns-field-group">
+                            <label for="crns-bus-phone" class="crns-label">
+                                Telephone Number <span class="crns-required-mark">*</span>
+                            </label>
+                            <input type="tel" id="crns-bus-phone" name="business_phone" class="crns-input" placeholder="(012) 000-0000">
+                        </div>
+                    </div>
+
+                    <div id="crns-work-fields" style="display: none;">
+                        <div class="crns-field-group">
+                            <label for="crns-job-role" class="crns-label">
+                                Job Role <span class="crns-required-mark">*</span>
+                            </label>
+                            <input type="text" id="crns-job-role" name="job_role" class="crns-input" placeholder="e.g. Senior Developer, Manager">
+                        </div>
+                        <div class="crns-field-group">
+                            <label for="crns-company-phone" class="crns-label">
+                                Company Telephone Number <span class="crns-required-mark">*</span>
+                            </label>
+                            <input type="tel" id="crns-company-phone" name="company_phone" class="crns-input" placeholder="(078) 000 0000">
+                        </div>
                     </div>
 
                     <div class="crns-field-group">
@@ -597,8 +784,96 @@
         document.addEventListener('DOMContentLoaded', function() {
             
             // --- CONSTANTS ---
-            // Replace with your preferred email if needed, currently set to your request
             const FORMSUBMIT_ENDPOINT = "https://formsubmit.co/ajax/accesscronos@gmail.com"; 
+
+
+            // --- CUSTOM DROPDOWN LOGIC ---
+            
+            // Setup Dropdowns
+            const customSelects = document.querySelectorAll('.crns-custom-select');
+            
+            customSelects.forEach(select => {
+                const trigger = select.querySelector('.crns-custom-select-trigger');
+                const triggerText = trigger.querySelector('span');
+                const options = select.querySelectorAll('.crns-custom-option');
+                const hiddenInput = select.parentElement.querySelector('input[type="hidden"]'); // Find sibling input
+
+                // Toggle Open
+                trigger.addEventListener('click', function(e) {
+                    // Close others
+                    customSelects.forEach(other => {
+                        if(other !== select) other.classList.remove('open');
+                    });
+                    select.classList.toggle('open');
+                    e.stopPropagation();
+                });
+
+                // Select Option
+                options.forEach(option => {
+                    option.addEventListener('click', function(e) {
+                        e.stopPropagation();
+                        // Styling updates
+                        options.forEach(opt => opt.classList.remove('selected'));
+                        this.classList.add('selected');
+                        
+                        // Set Values
+                        const val = this.getAttribute('data-value');
+                        const display = this.textContent;
+                        
+                        triggerText.textContent = display;
+                        hiddenInput.value = val;
+                        
+                        // Close dropdown
+                        select.classList.remove('open');
+
+                        // TRIGGER CONDITIONAL LOGIC MANUALLY
+                        // Because hidden inputs don't fire 'change' events automatically
+                        if(hiddenInput.id === 'crns-context') {
+                            handleContextChange(val);
+                        }
+                    });
+                });
+            });
+
+            // Close dropdowns when clicking outside
+            document.addEventListener('click', function(e) {
+                customSelects.forEach(select => {
+                    if (!select.contains(e.target)) {
+                        select.classList.remove('open');
+                    }
+                });
+            });
+
+
+            // --- CONDITIONAL FIELDS LOGIC ---
+            const businessFields = document.getElementById('crns-business-fields');
+            const workFields = document.getElementById('crns-work-fields');
+            const industryInput = document.getElementById('crns-industry');
+            const busPhoneInput = document.getElementById('crns-bus-phone');
+            const jobRoleInput = document.getElementById('crns-job-role');
+            const compPhoneInput = document.getElementById('crns-company-phone');
+
+            function handleContextChange(val) {
+                // Reset Visibility
+                businessFields.style.display = 'none';
+                workFields.style.display = 'none';
+
+                // Reset Validations (Hidden inputs aren't natively validated well, but we untoggle required logic mentally)
+                busPhoneInput.required = false;
+                jobRoleInput.required = false;
+                compPhoneInput.required = false;
+
+                if (val === 'business') {
+                    businessFields.style.display = 'block';
+                    busPhoneInput.required = true;
+                    // Industry is handled via custom check in submit
+                } else if (val === 'work') {
+                    workFields.style.display = 'block';
+                    jobRoleInput.required = true;
+                    compPhoneInput.required = true;
+                }
+            }
+
 
             // --- MAIN CONTACT FORM LOGIC ---
             const form = document.getElementById('crns-contact-form');
@@ -610,6 +885,22 @@
             if(form) {
                 form.addEventListener('submit', function(e) {
                     e.preventDefault();
+
+                    // --- CUSTOM VALIDATION FOR DROPDOWNS ---
+                    const contextVal = document.getElementById('crns-context').value;
+                    if(!contextVal) {
+                        alert("Please select connection type.");
+                        return;
+                    }
+                    
+                    if(contextVal === 'business') {
+                        const industryVal = document.getElementById('crns-industry').value;
+                        if(!industryVal) {
+                            alert("Please select an Industry.");
+                            return;
+                        }
+                    }
+
                     
                     // UI Loading State
                     const originalBtnText = submitBtn.innerText;
@@ -644,7 +935,7 @@
             }
 
 
-            // --- REPORT MODAL LOGIC (FIXED) ---
+            // --- REPORT MODAL LOGIC ---
             const modalOverlay = document.getElementById('crns-report-modal');
             const openModalLink = document.getElementById('crns-open-report-modal');
             const closeModalBtns = document.querySelectorAll('.crns-modal-close');
@@ -652,30 +943,25 @@
             const reportSubmitBtn = document.getElementById('crns-report-submit-btn');
 
             if (openModalLink && modalOverlay) {
-                // Open Modal
                 openModalLink.addEventListener('click', function(e) {
                     e.preventDefault();
                     modalOverlay.style.display = 'flex';
                 });
 
-                // Close Modal Function
                 function closeModal() {
                     modalOverlay.style.display = 'none';
                 }
 
-                // Close on 'X' or 'Cancel' button click
                 closeModalBtns.forEach(btn => {
                     btn.addEventListener('click', closeModal);
                 });
 
-                // Close on clicking outside the modal content (Overlay click)
                 modalOverlay.addEventListener('click', function(e) {
                     if (e.target === modalOverlay) {
                         closeModal();
                     }
                 });
 
-                // Handle Report Form Submission
                 if (reportForm) {
                     reportForm.addEventListener('submit', function(e) {
                         e.preventDefault();
@@ -691,7 +977,6 @@
                             body: reportData
                         })
                         .then(response => {
-                            // Close modal and reset
                             closeModal();
                             reportForm.reset();
                             reportSubmitBtn.innerText = originalText;

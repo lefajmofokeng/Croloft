@@ -931,7 +931,215 @@
 
 
 
+<div class="mkt-comp-wrapper">
+  <style>
+    /*--- Variables & Font ---*/
+    :root {
+      --mkt-bg: #0e0e1a; /* Deep Charcoal */
+      --mkt-accent: #4f46e5; /* Premium Blue/Indigo */
+      --mkt-text-main: #ffffff;
+      --mkt-text-muted: #94a3b8;
+      --mkt-input-bg: rgba(255, 255, 255, 0.03);
+      --mkt-border: rgba(255, 255, 255, 0.1);
+    }
 
+    /* Font stack prioritizing Circular Std */
+    .mkt-comp-wrapper {
+      font-family: 'Circular Std', 'Inter', -apple-system, sans-serif;
+      background-color: var(--mkt-bg);
+      color: var(--mkt-text-main);
+      padding: 100px 20px;
+      width: 100%;
+      box-sizing: border-box;
+    }
+
+    .mkt-comp-container {
+      max-width: 1200px;
+      margin: 0 auto;
+      display: grid;
+      grid-template-columns: 1.2fr 1fr;
+      gap: 80px;
+    }
+
+    /*--- Typography ---*/
+    .mkt-comp-heading {
+      font-size: 52px;
+      font-weight: 700;
+      line-height: 1.1;
+      margin-bottom: 24px;
+      letter-spacing: -0.02em;
+    }
+
+    .mkt-comp-subheading {
+      font-size: 24px;
+      font-weight: 450;
+      margin-bottom: 20px;
+      color: var(--mkt-text-main);
+    }
+
+    .mkt-comp-text {
+      font-size: 18px;
+      line-height: 1.6;
+      color: var(--mkt-text-muted);
+    }
+
+    /*--- Form Elements ---*/
+    .mkt-comp-right {
+      border-left: 1px solid var(--mkt-border);
+      padding-left: 80px;
+    }
+
+    .mkt-comp-form-title {
+      font-size: 28px;
+      margin-bottom: 32px;
+    }
+
+    .mkt-comp-input-group {
+      margin-bottom: 20px;
+      position: relative;
+    }
+
+    .mkt-comp-input, .mkt-comp-textarea {
+      width: 100%;
+      background: var(--mkt-input-bg);
+      border: 1px solid var(--mkt-border);
+      padding: 16px;
+      border-radius: 8px;
+      color: white;
+      font-size: 16px;
+      transition: all 0.3s ease;
+    }
+
+    .mkt-comp-input:focus, .mkt-comp-textarea:focus {
+      outline: none;
+      border-color: var(--mkt-accent);
+      background: rgba(255, 255, 255, 0.06);
+    }
+
+    .mkt-comp-textarea {
+      height: 150px;
+      resize: none;
+    }
+
+    .mkt-comp-submit-btn {
+      background: var(--mkt-accent);
+      color: white;
+      border: none;
+      padding: 16px 32px;
+      border-radius: 6px;
+      font-weight: 600;
+      cursor: pointer;
+      width: fit-content;
+      transition: transform 0.2s ease, opacity 0.2s ease;
+    }
+
+    .mkt-comp-submit-btn:active {
+      transform: scale(0.98);
+    }
+
+    .mkt-comp-submit-btn:disabled {
+      opacity: 0.5;
+      cursor: not-allowed;
+    }
+
+    /*--- Feedback Messages ---*/
+    #mkt-feedback {
+      margin-top: 20px;
+      padding: 12px;
+      border-radius: 6px;
+      display: none; /* Hidden by default */
+      font-size: 14px;
+    }
+
+    .mkt-success { background: rgba(16, 185, 129, 0.1); color: #10b981; border: 1px solid #10b981; display: block !important; }
+    .mkt-error { background: rgba(239, 68, 68, 0.1); color: #ef4444; border: 1px solid #ef4444; display: block !important; }
+
+    @media (max-width: 968px) {
+      .mkt-comp-container { grid-template-columns: 1fr; gap: 40px; }
+      .mkt-comp-right { border-left: none; padding-left: 0; padding-top: 40px; border-top: 1px solid var(--mkt-border); }
+    }
+  </style>
+
+  <div class="mkt-comp-container">
+    <div class="mkt-comp-left">
+      <h1 class="mkt-comp-heading">Ready to Grow Your Business?</h1>
+      <h2 class="mkt-comp-subheading">Let’s Build a Marketing Strategy That Delivers Results</h2>
+      <p class="mkt-comp-text">
+        Tell us about your goals and challenges. We’ll create a customized digital marketing plan designed to attract the right audience and drive real growth for your business.
+      </p>
+    </div>
+
+    <div class="mkt-comp-right">
+      <h3 class="mkt-comp-form-title">Let’s talk</h3>
+      
+      <form id="mkt-contact-form">
+        <input type="hidden" name="_captcha" value="false">
+        <input type="hidden" name="_subject" value="New Business Inquiry - Premium Startup">
+
+        <div class="mkt-comp-input-group">
+          <input type="text" name="name" class="mkt-comp-input" placeholder="Full name *" required>
+        </div>
+        <div class="mkt-comp-input-group">
+          <input type="email" name="email" class="mkt-comp-input" placeholder="Your email address *" required>
+        </div>
+        <div class="mkt-comp-input-group">
+          <textarea name="message" class="mkt-comp-textarea" placeholder="Your message *" required></textarea>
+        </div>
+
+        <button type="submit" id="mkt-submit-btn" class="mkt-comp-submit-btn">Get a Quote</button>
+        
+        <div id="mkt-feedback"></div>
+      </form>
+    </div>
+  </div>
+
+  <script>
+    const contactForm = document.getElementById('mkt-contact-form');
+    const feedbackMsg = document.getElementById('mkt-feedback');
+    const submitBtn = document.getElementById('mkt-submit-btn');
+
+    contactForm.addEventListener('submit', async (e) => {
+      e.preventDefault();
+      
+      // Visual feedback: Disable button while sending
+      submitBtn.disabled = true;
+      submitBtn.innerText = "Sending...";
+      feedbackMsg.className = ""; 
+      feedbackMsg.innerText = "";
+
+      const formData = new FormData(contactForm);
+      const data = Object.fromEntries(formData.entries());
+
+      try {
+        const response = await fetch("https://formsubmit.co/ajax/accesscronos@gmail.com", {
+          method: "POST",
+          headers: { 
+              'Content-Type': 'application/json',
+              'Accept': 'application/json'
+          },
+          body: JSON.stringify(data)
+        });
+
+        if (response.ok) {
+          // Success Feedback
+          feedbackMsg.innerText = "Thank you! Your message has been sent successfully.";
+          feedbackMsg.classList.add('mkt-success');
+          contactForm.reset();
+        } else {
+          throw new Error();
+        }
+      } catch (error) {
+        // Error Feedback
+        feedbackMsg.innerText = "Oops! Something went wrong. Please try again.";
+        feedbackMsg.classList.add('mkt-error');
+      } finally {
+        // Restore button state
+        submitBtn.disabled = false;
+        submitBtn.innerText = "Get a Quote";
+      }
+    });
+  </script>
+</div>
 
 
 
