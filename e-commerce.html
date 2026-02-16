@@ -24,12 +24,6 @@
 
 
 
-
-
-
-
-
-
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -48,6 +42,7 @@
             --defcon-lighter-grey: #e5e5e5;
             --defcon-secondary-dark: #070733; /* Slightly lighter dark for contrast */
             --defcon-text-light: #c0c0d0; /* Light text on dark background */
+            --defcon-green: #10b981; /* For discounts */
         }
 
         /* Base Styles */
@@ -65,9 +60,8 @@
             box-sizing: inherit;
         }
 
-        /* General Utilities - UPDATED for 1200px centering */
+        /* General Utilities */
         .defcon-container {
-            /* Set the maximum width and center the block element */
             max-width: 1200px;
             margin: 0 auto;
             padding: 0 20px;
@@ -109,7 +103,7 @@
             transform: translateY(-2px);
         }
         
-        /* --- 1. HERO SECTION (Immersive & Dynamic) --- */
+        /* --- 1. HERO SECTION --- */
         .defcon-ecommerce-hero {
             position: relative;
             height: 100vh;
@@ -128,7 +122,6 @@
             left: 0;
             width: 100%;
             height: 100%;
-            /* Placeholder for generated background image */
             background-image: url('https://images.pexels.com/photos/14171333/pexels-photo-14171333.jpeg'); 
             background-size: cover;
             background-position: center;
@@ -163,7 +156,6 @@
             
         }
 
-        /* Glow effects for new feature */
         .defcon-ecommerce-hero-glow1, .defcon-ecommerce-hero-glow2 {
             position: absolute;
             width: 350px;
@@ -184,7 +176,7 @@
             0% { transform: translate(0, 0); } 50% { transform: translate(-30px, -40px); } 100% { transform: translate(0, 0); }
         }
 
-        /* --- 2. PRODUCT DETAIL/PRICING SECTION (Aligned to image provided) --- */
+        /* --- 2. PRODUCT DETAIL/PRICING SECTION --- */
         .defcon-pricing-section {
             background-color: var(--defcon-white);
             padding: 150px 0;
@@ -192,7 +184,6 @@
         }
 
         .defcon-pricing-container {
-            /* Inherits max-width: 1200px from .defcon-container */
             display: flex;
             gap: 60px;
         }
@@ -226,50 +217,114 @@
             padding-top: 20px;
         }
 
+        /* PRODUCT ITEM STYLES */
         .defcon-product-item {
-            display: flex;
-            justify-content: space-between;
-            padding: 25px 0;
+            display: grid;
+            grid-template-columns: 2fr 1fr;
+            gap: 30px;
+            padding: 35px 0;
             border-bottom: 1px solid var(--defcon-lighter-grey);
+            align-items: start;
         }
 
         .defcon-product-info h3 {
-            margin: 0;
-            font-size: 1.6em;
-            font-weight: 600;
+            margin: 0 0 10px 0;
+            font-size: 1.5em;
+            font-weight: 700;
             color: var(--defcon-dark);
         }
 
-        .defcon-product-info p {
-            margin: 5px 0 0;
-            font-size: 0.95em;
-            color: #777;
-            padding: 4px 0;
+        .defcon-product-desc {
+            margin: 0 0 15px 0;
+            font-size: 1em;
+            color: #555;
+            line-height: 1.5;
+        }
+
+        .defcon-feature-list {
+            list-style: none;
+            padding: 0;
+            margin: 15px 0 0 0;
+        }
+
+        .defcon-feature-list li {
+            position: relative;
+            padding-left: 20px;
+            margin-bottom: 6px;
+            font-size: 0.9em;
+            color: #666;
             line-height: 1.4;
         }
 
-        .defcon-product-info span {
-            border-bottom: 2px solid #777;
+        .defcon-feature-list li::before {
+            content: "•";
+            color: var(--defcon-primary);
+            position: absolute;
+            left: 0;
+            font-weight: bold;
+        }
+
+        .defcon-product-package-tag {
+            display: inline-block;
+            font-size: 0.75em;
+            font-weight: 600;
+            text-transform: uppercase;
+            letter-spacing: 0.05em;
+            color: var(--defcon-primary);
+            background: rgba(0, 134, 231, 0.1);
+            padding: 4px 10px;
+            border-radius: 4px;
+            margin-bottom: 10px;
+        }
+
+        .defcon-price-column {
+            text-align: right;
+            display: flex;
+            flex-direction: column;
+            align-items: flex-end;
         }
 
         .defcon-product-price {
             font-size: 1.8em;
-            font-weight: 700;
+            font-weight: 800;
             color: var(--defcon-dark);
-            min-width: 80px;
-            text-align: right;
-            padding-left: 20px;
-        }
-        
-        .defcon-product-price-package {
-            font-size: 1em;
-            color: var(--defcon-primary);
-            font-weight: 600;
-            margin-top: 5px;
-            border: none;
+            line-height: 1;
         }
 
-        /* --- 3. VALUE PROPOSITION SECTION (Centered text and cards) --- */
+        .defcon-price-sub {
+            font-size: 0.85em;
+            color: #777;
+            text-transform: uppercase;
+            font-weight: 600;
+            margin-bottom: 10px;
+            display: block;
+        }
+
+        .defcon-installment-price {
+            font-size: 1.05em;
+            color: var(--defcon-dark);
+            font-weight: 600;
+            margin-bottom: 5px;
+        }
+
+        .defcon-installment-note {
+            font-size: 0.85em;
+            color: #666;
+        }
+
+        .defcon-discount-badge {
+            margin-top: 10px;
+            font-size: 0.8em;
+            color: var(--defcon-green);
+            font-weight: 700;
+            background-color: rgba(16, 185, 129, 0.1);
+            padding: 5px 10px;
+            border-radius: 4px;
+            display: inline-block;
+            white-space: nowrap;
+        }
+
+        /* --- 3. VALUE PROPOSITION SECTION --- */
         .defcon-value-section {
             padding: 160px 0;
             background-color: var(--defcon-dark);
@@ -320,7 +375,7 @@
             line-height: 1.6;
         }
         
-        /* --- 4. STATISTICS/SOCIAL PROOF SECTION --- */
+        /* --- 4. STATISTICS SECTION --- */
         .defcon-stats-section {
             padding: 100px 0;
             background-color: var(--defcon-dark);
@@ -369,7 +424,7 @@
             text-transform: uppercase;
         }
 
-        /* --- 5. FAQ/SPECIFICATIONS SECTION (Left alignment, centered container) --- */
+        /* --- 5. FAQ SECTION --- */
         .defcon-faq-section {
             padding: 150px 0;
             background-color: #010719;
@@ -379,12 +434,12 @@
         }
         
         .defcon-faq-section .defcon-section-title {
-            text-align: left; /* Keep title aligned left within the container */
+            text-align: left;
             margin-bottom: 40px;
         }
 
         .defcon-accordion-list {
-            max-width: 1100px; /* Constrain the accordion width for better readability */
+            max-width: 1100px;
         }
 
         .defcon-accordion-item {
@@ -436,12 +491,11 @@
             line-height: 1.7;
         }
 
-        /* Active state for accordion */
         .defcon-accordion-item.active .defcon-accordion-toggle {
-            transform: rotate(45deg); /* Plus sign becomes an X */
+            transform: rotate(45deg);
         }
         .defcon-accordion-item.active .defcon-accordion-content {
-            max-height: 500px; /* Sufficiently large value */
+            max-height: 500px;
             padding-bottom: 25px;
         }
         
@@ -460,7 +514,6 @@
 
         /* --- Mobile Responsiveness --- */
         @media (max-width: 1200px) {
-            /* Ensures proper padding when container max-width is reached */
             .defcon-container {
                 padding: 0 40px; 
             }
@@ -495,18 +548,11 @@
             .defcon-stat-number {
                 font-size: 5em;
             }
-            .defcon-stat-label {
-                font-size: 1.3em;
-            }
         }
 
         @media (max-width: 768px) {
             .defcon-container {
                 padding: 0 20px; 
-            }
-            
-            .defcon-ecommerce-hero {
-                /* Text alignment inside hero is still center for mobile */
             }
 
             .defcon-ecommerce-hero h1 {
@@ -525,19 +571,19 @@
             }
             
             .defcon-product-item {
-                flex-direction: column;
-                align-items: flex-start;
-                padding: 20px 0;
-            }
-            .defcon-product-info p {
-                padding-right: 0;
-            }
-            .defcon-product-price {
-                align-self: flex-end;
-                font-size: 1.6em;
-                margin-top: -30px; 
+                grid-template-columns: 1fr;
+                padding: 30px 0;
             }
             
+            .defcon-price-column {
+                text-align: left;
+                align-items: flex-start;
+                margin-top: 15px;
+                border-top: 1px dashed #ddd;
+                padding-top: 15px;
+                width: 100%;
+            }
+
             .defcon-stats-section .defcon-section-title {
                 font-size: 3em;
             }
@@ -552,8 +598,8 @@
         <div class="defcon-ecommerce-hero-glow2"></div>
         <div class="defcon-ecommerce-hero-content">
             <h1>Digital Commerce, Redefined.</h1>
-            <p>Launch, scale, and conquer the online market with Defcon's secure, performance-driven e-commerce platforms. We blend stunning design with unyielding technology.</p>
-            <a href="#defcon-pricing-section" class="defcon-primary-btn">View Platform Packages &rarr;</a>
+            <p>Launch, scale, and conquer the online market with Defcon's secure, performance-driven e-commerce platforms. From local startups to global enterprises.</p>
+            <a href="#defcon-pricing-section" class="defcon-primary-btn">View SA Pricing & Packages &rarr;</a>
         </div>
     </section>
 
@@ -562,388 +608,271 @@
             <div class="defcon-pricing-left">
                 <span class="defcon-subtitle-accent">Our Solutions</span>
                 <h2 class="defcon-section-title">End-to-End E-commerce Mastery</h2>
-                <p>We build more than just websites; we architect comprehensive sales ecosystems. Choose from our expertly designed packages, each tailored to a specific stage of your business growth.</p>
+                <p>We build more than just websites; we architect comprehensive sales ecosystems. Whether you are a solo entrepreneur in Joburg or a retail giant in Cape Town, we have a package for you.</p>
                 <a href="#defcon-faq-section" class="defcon-primary-btn" style="background-color: transparent; border: 1px solid #080d1b;">Compare Features</a>
             </div>
+            
             <div class="defcon-pricing-right">
                 <div class="defcon-product-listing">
                     
                     <div class="defcon-product-item">
                         <div class="defcon-product-info">
-                            <h3>Enterprise Custom E-commerce Build</h3>
-                            <p>Bespoke development for complex business logic, custom integrations, and unique user experiences.
-                            <p><span>How it works:</span> Full discovery, wireframing, custom API development, and dedicated DevOps support.</p>
-                            <p><span>What it's for:</span> Market leaders and innovators with specific, non-standard requirements.</p>
-                            <div class="defcon-product-price-package">Package: Full Development Cycle</div>
+                            <span class="defcon-product-package-tag">Package: Kickstart (Starters)</span>
+                            <h3>Startup E-commerce Essentials</h3>
+                            <p class="defcon-product-desc">The perfect entry point for solo entrepreneurs and side-hustlers. Get your brand online quickly with a professional, mobile-ready store.</p>
+                            <ul class="defcon-feature-list">
+                                <li>5-Page Store Setup (WooCommerce/Shopify)</li>
+                                <li>Payment Integration (PayFast / Yoco)</li>
+                                <li>WhatsApp Chat Button for Direct Sales</li>
+                                <li>Basic SEO & Google Maps Listing</li>
+                                <li>1 Month Post-Launch Support</li>
+                            </ul>
                         </div>
-                        <span class="defcon-product-price">$15,000+</span>
+                        <div class="defcon-price-column">
+                            <span class="defcon-product-price">R 4,950</span>
+                            <span class="defcon-price-sub">One-Time Fee</span>
+                            <div class="defcon-installment-price">or R250 <span style="font-size:0.8em; font-weight:400;">x 24 Months</span></div>
+                            <span class="defcon-installment-note">Small deposit required</span>
+                            <div class="defcon-discount-badge">Save 5% on Cash Payment</div>
+                        </div>
                     </div>
 
                     <div class="defcon-product-item">
                         <div class="defcon-product-info">
-                            <h3>Headless Commerce API Deployment</h3>
-                            <p>Decouple your storefront (frontend) from your sales backend (API) for blazing fast performance and multi-channel flexibility.
-                            <p><span>How it works:</span> We utilize modern JS frameworks (React/Vue) for the front, and dedicated APIs (Node/Python) for the back.</p> 
-                            <p><span>What it's for:</span> Businesses needing extreme speed, scalability, and multiple sales channels (web, mobile, IoT).</p>
-                            <div class="defcon-product-price-package">Package: Architecture & Implementation</div>
+                            <span class="defcon-product-package-tag">Package: Business Standard (SME)</span>
+                            <h3>Professional Store Launch</h3>
+                            <p class="defcon-product-desc">Designed for growing small businesses needing inventory management, courier integration, and automated emails.</p>
+                            <ul class="defcon-feature-list">
+                                <li>Up to 50 Products Uploaded & Categorized</li>
+                                <li>Courier Integration (The Courier Guy / Pudo)</li>
+                                <li>Automated Abandoned Cart Emails</li>
+                                <li>Blog/News Section for Content Marketing</li>
+                                <li>Training Session on Order Management</li>
+                            </ul>
                         </div>
-                        <span class="defcon-product-price">$8,000+</span>
+                        <div class="defcon-price-column">
+                            <span class="defcon-product-price">R 14,500</span>
+                            <span class="defcon-price-sub">One-Time Fee</span>
+                            <div class="defcon-installment-price">or R725 <span style="font-size:0.8em; font-weight:400;">x 24 Months</span></div>
+                            <span class="defcon-installment-note">Fast approval financing</span>
+                            <div class="defcon-discount-badge">Save 10% on Cash Payment</div>
+                        </div>
                     </div>
 
                     <div class="defcon-product-item">
                         <div class="defcon-product-info">
-                            <h3>Mid-Market Platform Launch (Shopify/WooCommerce)</h3>
-                            <p>Rapid deployment on established platforms with advanced theme customization, app integration, and data migration.
-                            <p><span>Features:</span> Advanced SEO tools, multi-currency support, marketing automation setup.</p> 
-                            <p><span>What it's for:</span> SMBs and growing brands prioritizing speed-to-market and established infrastructure.</p>
-                            <div class="defcon-product-price-package">Package: Gold Launch & Migration</div>
+                            <span class="defcon-product-package-tag">Package: Advanced Growth</span>
+                            <h3>Scale-Up Ecosystem</h3>
+                            <p class="defcon-product-desc">For established brands needing advanced customization, loyalty programs, and deeper analytics to scale revenue.</p>
+                            <ul class="defcon-feature-list">
+                                <li>Custom Theme Development & UX Design</li>
+                                <li>Data Migration (from old platforms)</li>
+                                <li>Advanced Filtering & Search (ElasticSearch)</li>
+                                <li>Loyalty Points & Rewards System Integration</li>
+                                <li>Multi-currency & Cross-border Setup</li>
+                            </ul>
                         </div>
-                        <span class="defcon-product-price">$2,500+</span>
+                        <div class="defcon-price-column">
+                            <span class="defcon-product-price">R 35,000</span>
+                            <span class="defcon-price-sub">One-Time Fee</span>
+                            <div class="defcon-installment-price">or R1,750 <span style="font-size:0.8em; font-weight:400;">x 24 Months</span></div>
+                            <span class="defcon-installment-note">Interest-free terms available</span>
+                            <div class="defcon-discount-badge">Save 10% on Cash Payment</div>
+                        </div>
                     </div>
 
                     <div class="defcon-product-item">
                         <div class="defcon-product-info">
-                            <h3>Native Mobile E-commerce App</h3>
-                            <p>iOS and Android apps for direct mobile sales, push notifications, and improved customer loyalty.
-                            <p><span>Features:</span> Offline shopping mode, biometric authentication, integrated loyalty program.</p>
-                            <p><span>What it's for:</span> Brands focused on maximizing recurring purchases and mobile engagement.</p>
-                            <div class="defcon-product-price-package">Package: Dual Platform Development</div>
+                            <span class="defcon-product-package-tag">Package: Dual Platform App</span>
+                            <h3>Native Mobile App</h3>
+                            <p class="defcon-product-desc">iOS and Android apps for direct mobile sales. Secure real estate on your customer's home screen.</p>
+                            <ul class="defcon-feature-list">
+                                <li>Native iOS & Android Development</li>
+                                <li>Biometric Login (FaceID/TouchID)</li>
+                                <li>Push Notification Marketing Dashboard</li>
+                                <li>Offline Shopping Capabilities</li>
+                                <li>App Store & Play Store Submission Handling</li>
+                            </ul>
                         </div>
-                        <span class="defcon-product-price">$6,000+</span>
+                        <div class="defcon-price-column">
+                            <span class="defcon-product-price">R 85,000</span>
+                            <span class="defcon-price-sub">One-Time Fee</span>
+                            <div class="defcon-installment-price">or R4,250 <span style="font-size:0.8em; font-weight:400;">x 24 Months</span></div>
+                            <span class="defcon-installment-note">Project milestone payments</span>
+                            <div class="defcon-discount-badge">Save 12% on Upfront Payment</div>
+                        </div>
                     </div>
 
                     <div class="defcon-product-item">
                         <div class="defcon-product-info">
-                            <h3>Conversion Rate Optimization (CRO) Audit</h3>
-                            <p>In-depth analysis of user flow, cart abandonment, and checkout process to maximize sales.
-                            <p><span>How it works:</span> A/B testing, heatmaps, and data-driven recommendations applied by our UX experts.</p>
-                            <p><span>What it's for:</span> Existing stores looking to boost revenue from current traffic.</p>
-                            <div class="defcon-product-price-package">Package: Monthly Retainer</div>
+                            <span class="defcon-product-package-tag">Package: Enterprise Custom</span>
+                            <h3>Headless / Custom Build</h3>
+                            <p class="defcon-product-desc">Bespoke development for high-volume retailers. Sub-second speeds, custom APIs, and uncompromising security.</p>
+                            <ul class="defcon-feature-list">
+                                <li>Headless Architecture (React/Next.js + Node)</li>
+                                <li>ERP & CRM Deep Integration (SAP/Sage/Salesforce)</li>
+                                <li>Dedicated DevOps & Auto-Scaling Servers</li>
+                                <li>Advanced Security (DDoS, WAF, Penetration Testing)</li>
+                                <li>SLA: 99.99% Uptime Guarantee</li>
+                            </ul>
                         </div>
-                        <span class="defcon-product-price">$1,000/mo+</span>
+                        <div class="defcon-price-column">
+                            <span class="defcon-product-price">R 250,000+</span>
+                            <span class="defcon-price-sub">Estimated Project Value</span>
+                            <div class="defcon-installment-price">Custom Terms</div>
+                            <span class="defcon-installment-note">Phased billing structure</span>
+                            <div class="defcon-discount-badge">Consultation Required</div>
+                        </div>
                     </div>
+
+                    <div class="defcon-product-item">
+                        <div class="defcon-product-info">
+                            <span class="defcon-product-package-tag">Package: Monthly Retainer</span>
+                            <h3>CRO & Maintenance</h3>
+                            <p class="defcon-product-desc">Continuous improvement of your store's conversion rate, speed, and security updates.</p>
+                            <ul class="defcon-feature-list">
+                                <li>Monthly A/B Testing & Reporting</li>
+                                <li>User Session Analysis (Heatmaps)</li>
+                                <li>Plugin/Theme Updates & Backups</li>
+                                <li>Priority Technical Support</li>
+                                <li>Monthly Strategy Call</li>
+                            </ul>
+                        </div>
+                        <div class="defcon-price-column">
+                            <span class="defcon-product-price">R 4,500<span style="font-size:0.5em">/mo</span></span>
+                            <span class="defcon-price-sub">Recurring Service</span>
+                            <div class="defcon-installment-price">Cancel Anytime</div>
+                            <span class="defcon-installment-note">No long-term contracts</span>
+                            <div class="defcon-discount-badge">1 Month Free on Yearly Plan</div>
+                        </div>
+                    </div>
+
+                </div>
+            </div>
+            </div>
+    </section>
+    
+    <section class="defcon-value-section">
+        <div class="defcon-container">
+            <h2 class="defcon-section-title">Unleash Performance, Security, and Scale</h2>
+            <div class="defcon-value-cards">
+                
+                <div class="defcon-value-card">
+                    <div class="defcon-value-card-icon">&#9889;</div> <h3>Performance First</h3>
+                    <p>Our Headless architecture ensures sub-second load times, eliminating bounce rates and maximizing search engine ranking. We don't just load fast; we fly.</p>
+                </div>
+                
+                <div class="defcon-value-card">
+                    <div class="defcon-value-card-icon">&#128274;</div> <h3>Unbreakable Security</h3>
+                    <p>From PCI compliance to advanced DDoS protection, we implement enterprise-grade security measures that protect your customer data and preserve your brand's integrity.</p>
+                </div>
+                
+                <div class="defcon-value-card">
+                    <div class="defcon-value-card-icon">&#128200;</div> <h3>Scalable Growth</h3>
+                    <p>Built on cloud-native infrastructure, our platforms automatically scale to handle Black Friday traffic or sudden viral spikes without missing a single transaction.</p>
                 </div>
             </div>
         </div>
     </section>
 
+    <section class="defcon-stats-section">
+        <div class="defcon-container">
+            <span class="defcon-subtitle-accent">Impact and Reach</span>
+            <h2 class="defcon-section-title">E-commerce Built on Real-World Results</h2>
+            <p class="defcon-stats-subtitle">Our mission is to translate technological excellence into quantifiable business success. These are the numbers behind Defcon-powered e-commerce stores.</p>
 
-
-
-
-
-
-
-
-
-
-
-
-    
-<!DOCTYPE html>
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>IT Tech Independent Slide</title>
-    <link rel="preconnect" href="https://fonts.googleapis.com">
-    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700&display=swap" rel="stylesheet">
-
-    <style>
-        /* Namespace: 'it-sep-' to avoid conflicts */
-        :root {
-            --it-sep-font: 'Inter', sans-serif;
-            --it-sep-bg: #FFFFFF;
-            --it-sep-text: #0B1221;
-            --it-sep-sub: #5d6269;
-            --it-sep-accent: #0B1221;
-            --it-sep-line: #E5E7EB;
-        }
-
-        * {
-            opacity: 9;
-        }
-
-        body {
-            margin: 0;
-            padding: 0;
-            font-family: var(--it-sep-font);
-        }
-
-        /* 1. Track: Controls the total scroll length */
-        .it-sep-track {
-            position: relative;
-            height: 400vh; /* 100vh per section */
-            background: var(--it-sep-bg);
-        }
-
-        /* 2. Sticky Container: Pins the component */
-        .it-sep-sticky {
-            position: sticky;
-            top: 120px;
-            height: 70vh;
-            display: flex;
-            flex-direction: column;
-            align-items: center;
-            justify-content: center;
-            overflow: hidden;
-        }
-
-        .it-sep-header {
-            text-align: center;
-            margin-bottom: 50px;
-            z-index: 10;
-        }
-
-        .it-sep-title {
-            font-size: 42px;
-            font-weight: 600;
-            letter-spacing: -0.03em;
-            margin: 0;
-            color: var(--it-sep-text);
-        }
-
-        /* 3. The Central Layout */
-        .it-sep-grid {
-            position: relative;
-            display: grid;
-            grid-template-columns: 1fr 2px 1fr;
-            gap: 60px;
-            width: 100%;
-            max-width: 1200px;
-            height: 400px;
-            align-items: center;
-        }
-
-        /* Center Progress Line */
-        .it-sep-line-container {
-            height: 100%;
-            background: var(--it-sep-line);
-            position: relative;
-        }
-
-        .it-sep-line-fill {
-            position: absolute;
-            top: 0;
-            left: 0;
-            width: 100%;
-            background: var(--it-sep-accent);
-            height: 0%;
-             transition: height 0.1s ease-out;
-        }
-
-        /* 4. Content Slots (Image side and Text side) */
-        .it-sep-slot {
-            position: relative;
-            height: 100%;
-            width: 100%;
-            overflow: hidden; /* This creates the "box" mask */
-            border-radius: 20px;
-        }
-
-        .it-sep-text-slot {
-            overflow: hidden;
-            border-radius: 0;
-            display: flex;
-            align-items: center;
-        }
-
-        /* The Individual Layers */
-        .it-sep-layer {
-            position: absolute;
-            top: 0;
-            left: 0;
-            width: 100%;
-            height: 100%;
-            opacity: 0;
-            pointer-events: none;
-            transition: transform 0.6s cubic-bezier(0.16, 1, 0.3, 1), opacity 0.4s ease;
-        }
-
-        /* Active State */
-        .it-sep-layer.active {
-            opacity: 1;
-            transform: translateY(0);
-            pointer-events: auto;
-        }
-
-        /* Image Logic: Slides DOWN into view */
-        .it-sep-img-layer {
-            transform: translateY(-100%);
-        }
-
-        /* Text Logic: Slides UP into view */
-        .it-sep-text-layer {
-            transform: translateY(100%);
-            display: flex;
-            flex-direction: column;
-            justify-content: center;
-        }
-
-        .it-sep-img {
-            width: 100%;
-            height: 100%;
-            object-fit: cover;
-            border-radius: 8px;
-        }
-
-        .it-sep-h3 { font-size: 32px; font-weight: 600; margin: 0 0 15px 0; color: var(--it-sep-text); letter-spacing: -0.02em;}
-        .it-sep-p { font-size: 17px; color: var(--it-sep-sub); line-height: 1.2; margin: 0; font-weight: 600; opacity: 1;}
-
-        .it-sep-footer {
-            margin-top: 60px;
-        }
-
-        .it-sep-btn {
-            background: #0B1221;
-            color: white;
-            padding: 12px 30px;
-            border-radius: 50px;
-            font-weight: 600;
-            font-size: 17px;
-            border: none;
-            cursor: pointer;
-            font-family: 'Inter', sans-serif;
-        }
-
-        @media (max-width: 900px) {
-            .it-sep-grid { grid-template-columns: 1fr; height: auto; padding: 20px; }
-            .it-sep-line-container { display: none; }
-            .it-sep-slot { height: 300px; margin-bottom: 20px; }
-            .it-sep-layer { position: relative; opacity: 1; transform: none; margin-bottom: 40px; }
-            .it-sep-track { height: auto; }
-            .it-sep-sticky { position: relative; height: auto; }
-        }
-    </style>
-</head>
-<body>
-
-<div class="it-sep-track" id="itTrack">
-    <div class="it-sep-sticky">
-        
-        <div class="it-sep-header">
-            <h2 class="it-sep-title">See why 4,000+ merchants trust us</h2>
-        </div>
-
-        <div class="it-sep-grid">
-            <div class="it-sep-slot">
-                <div class="it-sep-layer it-sep-img-layer active" data-index="0">
-                    <img src="https://images.pexels.com/photos/10050551/pexels-photo-10050551.jpeg" class="it-sep-img" alt="Tech 1">
+            <div class="defcon-stats-grid">
+                <div class="defcon-stat-item">
+                    <div class="defcon-stat-number">40%</div>
+                    <span class="defcon-stat-label">Avg. Revenue Increase</span>
                 </div>
-                <div class="it-sep-layer it-sep-img-layer" data-index="1">
-                    <img src="https://images.pexels.com/photos/8193806/pexels-photo-8193806.jpeg" class="it-sep-img" alt="Tech 2">
+                <div class="defcon-stat-item">
+                    <div class="defcon-stat-number">10M+</div>
+                    <span class="defcon-stat-label">Annual Transactions</span>
                 </div>
-                <div class="it-sep-layer it-sep-img-layer" data-index="2">
-                    <img src="https://images.pexels.com/photos/10050600/pexels-photo-10050600.jpeg" class="it-sep-img" alt="Tech 3">
-                </div>
-                <div class="it-sep-layer it-sep-img-layer" data-index="3">
-                    <img src="https://images.pexels.com/photos/8193806/pexels-photo-8193806.jpeg" class="it-sep-img" alt="Tech 4">
+                <div class="defcon-stat-item">
+                    <div class="defcon-stat-number">99.9%</div>
+                    <span class="defcon-stat-label">Uptime SLA</span>
                 </div>
             </div>
+            
+            <a href="#" class="defcon-primary-btn" style="margin-top: 60px;">Request a Case Study &rarr;</a>
+        </div>
+    </section>
 
-            <div class="it-sep-line-container">
-                <div class="it-sep-line-fill" id="itLine"></div>
-            </div>
+    <section id="defcon-faq-section" class="defcon-faq-section">
+        <div class="defcon-container">
+            <h2 class="defcon-section-title">Platform Specifications & FAQs</h2>
+            <div class="defcon-accordion-list">
+                
+                <div class="defcon-accordion-item">
+                    <div class="defcon-accordion-header">
+                        <span>API Specification for Inventory Synchronization</span>
+                        <span class="defcon-accordion-toggle">+</span>
+                    </div>
+                    <div class="defcon-accordion-content">
+                        <p>Our RESTful inventory API is built on a high-availability serverless architecture, enabling real-time stock updates across all channels (Web, POS, Mobile). It supports both webhook and polled update methods, ensuring seamless integration with your existing ERP or 3rd-party logistics provider.</p>
+                    </div>
+                </div>
 
-            <div class="it-sep-slot it-sep-text-slot">
-                <div class="it-sep-layer it-sep-text-layer active" data-index="0">
-                    <h3 class="it-sep-h3">Advanced Data Security</h3>
-                    <p class="it-sep-p">Protect your infrastructure with hardware-level encryption and real-time threat monitoring.</p>
+                <div class="defcon-accordion-item">
+                    <div class="defcon-accordion-header">
+                        <span>Defcon POS System Integration Capabilities</span>
+                        <span class="defcon-accordion-toggle">+</span>
+                    </div>
+                    <div class="defcon-accordion-content">
+                        <p>The Defcon POS solution (part of our Smart Technology service) integrates natively with our e-commerce backend. This allows for unified inventory, centralized order management, and a single view of the customer, bridging your online and physical retail operations without friction.</p>
+                    </div>
                 </div>
-                <div class="it-sep-layer it-sep-text-layer" data-index="1">
-                    <h3 class="it-sep-h3">Cloud Infrastructure</h3>
-                    <p class="it-sep-p">Scalable cloud solutions that grow with your business, ensuring 99.9% uptime across all regions.</p>
+
+                <div class="defcon-accordion-item">
+                    <div class="defcon-accordion-header">
+                        <span>Digital Marketing & SEO Features <span class="defcon-new-tag">NEW</span></span>
+                        <span class="defcon-accordion-toggle">+</span>
+                    </div>
+                    <div class="defcon-accordion-content">
+                        <p>Our platforms are designed from the ground up for SEO. Key features include automatic sitemap generation, customizable schema markup (Product, Offer, Review), canonical URL management, and integrated Google Analytics/Tag Manager support for advanced conversion tracking by our Marketing & Creative Studio team.</p>
+                    </div>
                 </div>
-                <div class="it-sep-layer it-sep-text-layer" data-index="2">
-                    <h3 class="it-sep-h3">AI Performance</h3>
-                    <p class="it-sep-p">Harness the power of neural networks to automate complex workflows and data analysis.</p>
+
+                <div class="defcon-accordion-item">
+                    <div class="defcon-accordion-header">
+                        <span>Supported Payment Gateways</span>
+                        <span class="defcon-accordion-toggle">+</span>
+                    </div>
+                    <div class="defcon-accordion-content">
+                        <p>We support all major global payment gateways including Stripe, PayPal, Authorize.net, and region-specific providers. We also integrate with modern payment methods such as cryptocurrencies (Web3/Blockchain), ensuring maximum customer reach.</p>
+                    </div>
                 </div>
-                <div class="it-sep-layer it-sep-text-layer" data-index="3">
-                    <h3 class="it-sep-h3">Smart Interfaces</h3>
-                    <p class="it-sep-p">Intuitive dashboards designed for deep technical oversight without the clutter.</p>
-                </div>
+                
             </div>
         </div>
+    </section>
 
-        <div class="it-sep-footer">
-            <button class="it-sep-btn">Start Accepting Crypto</button>
-        </div>
+    <script>
+        // JavaScript for Accordion Functionality
+        document.addEventListener('DOMContentLoaded', () => {
+            const accordionItems = document.querySelectorAll('.defcon-accordion-item');
 
-    </div>
-</div>
+            accordionItems.forEach(item => {
+                const header = item.querySelector('.defcon-accordion-header');
+                
+                header.addEventListener('click', () => {
+                    // Close all other active items
+                    accordionItems.forEach(otherItem => {
+                        if (otherItem !== item && otherItem.classList.contains('active')) {
+                            otherItem.classList.remove('active');
+                        }
+                    });
 
-<script>
-    (function() {
-    const track = document.getElementById('itTrack');
-    const line = document.getElementById('itLine');
-    const imgLayers = document.querySelectorAll('.it-sep-img-layer');
-    const textLayers = document.querySelectorAll('.it-sep-text-layer');
-    const totalItems = 4;
-
-    function updateScroll() {
-        if (!track || window.innerWidth <= 900) return;
-
-        const rect = track.getBoundingClientRect();
-        const viewHeight = window.innerHeight;
-        
-        // Total scrollable distance
-        const totalDist = rect.height - viewHeight;
-        // Current progress (0 to 1)
-        let progress = -rect.top / totalDist;
-        progress = Math.max(0, Math.min(1, progress));
-
-        // Update Line
-        line.style.height = `${progress * 100}%`;
-
-        // Determine current active index based on scroll progress
-        // Dividing into 4 zones
-        const activeIndex = Math.min(Math.floor(progress * totalItems), totalItems - 1);
-
-        // Update Layers
-        imgLayers.forEach((layer, idx) => {
-            if (idx === activeIndex) {
-                layer.classList.add('active');
-                layer.style.transform = 'translateY(0)';
-            } else if (idx < activeIndex) {
-                // Already scrolled past: push it DOWN out of the box
-                layer.classList.remove('active');
-                layer.style.transform = 'translateY(100%)';
-            } else {
-                // Not reached yet: keep it UP above the box
-                layer.classList.remove('active');
-                layer.style.transform = 'translateY(-100%)';
-            }
+                    // Toggle the current item
+                    item.classList.toggle('active');
+                });
+            });
         });
-
-        textLayers.forEach((layer, idx) => {
-            if (idx === activeIndex) {
-                layer.classList.add('active');
-                layer.style.transform = 'translateY(0)';
-            } else if (idx < activeIndex) {
-                // Already scrolled past: push it UP out of the box
-                layer.classList.remove('active');
-                layer.style.transform = 'translateY(-100%)';
-            } else {
-                // Not reached yet: keep it DOWN below the box
-                layer.classList.remove('active');
-                layer.style.transform = 'translateY(100%)';
-            }
-        });
-    }
-
-    window.addEventListener('scroll', updateScroll, { passive: true });
-    window.addEventListener('resize', updateScroll);
-    updateScroll();
-})();
-</script>
-
+    </script>
 </body>
 </html>
-
-
-
-
 
 
 
@@ -1230,127 +1159,3 @@
 
 
 
-
-    <section class="defcon-value-section">
-        <div class="defcon-container">
-            <h2 class="defcon-section-title">Unleash Performance, Security, and Scale</h2>
-            <div class="defcon-value-cards">
-                
-                <div class="defcon-value-card">
-                    <div class="defcon-value-card-icon">&#9889;</div> <h3>Performance First</h3>
-                    <p>Our Headless architecture ensures sub-second load times, eliminating bounce rates and maximizing search engine ranking. We don't just load fast; we fly.</p>
-                </div>
-                
-                <div class="defcon-value-card">
-                    <div class="defcon-value-card-icon">&#128274;</div> <h3>Unbreakable Security</h3>
-                    <p>From PCI compliance to advanced DDoS protection, we implement enterprise-grade security measures that protect your customer data and preserve your brand's integrity.</p>
-                </div>
-                
-                <div class="defcon-value-card">
-                    <div class="defcon-value-card-icon">&#128200;</div> <h3>Scalable Growth</h3>
-                    <p>Built on cloud-native infrastructure, our platforms automatically scale to handle Black Friday traffic or sudden viral spikes without missing a single transaction.</p>
-                </div>
-            </div>
-        </div>
-    </section>
-
-    <section class="defcon-stats-section">
-        <div class="defcon-container">
-            <span class="defcon-subtitle-accent">Impact and Reach</span>
-            <h2 class="defcon-section-title">E-commerce Built on Real-World Results</h2>
-            <p class="defcon-stats-subtitle">Our mission is to translate technological excellence into quantifiable business success. These are the numbers behind Defcon-powered e-commerce stores.</p>
-
-            <div class="defcon-stats-grid">
-                <div class="defcon-stat-item">
-                    <div class="defcon-stat-number">40%</div>
-                    <span class="defcon-stat-label">Avg. Revenue Increase</span>
-                </div>
-                <div class="defcon-stat-item">
-                    <div class="defcon-stat-number">10M+</div>
-                    <span class="defcon-stat-label">Annual Transactions</span>
-                </div>
-                <div class="defcon-stat-item">
-                    <div class="defcon-stat-number">99.9%</div>
-                    <span class="defcon-stat-label">Uptime SLA</span>
-                </div>
-            </div>
-            
-            <a href="#" class="defcon-primary-btn" style="margin-top: 60px;">Request a Case Study &rarr;</a>
-        </div>
-    </section>
-
-    <section id="defcon-faq-section" class="defcon-faq-section">
-        <div class="defcon-container">
-            <h2 class="defcon-section-title">Platform Specifications & FAQs</h2>
-            <div class="defcon-accordion-list">
-                
-                <div class="defcon-accordion-item">
-                    <div class="defcon-accordion-header">
-                        <span>API Specification for Inventory Synchronization</span>
-                        <span class="defcon-accordion-toggle">+</span>
-                    </div>
-                    <div class="defcon-accordion-content">
-                        <p>Our RESTful inventory API is built on a high-availability serverless architecture, enabling real-time stock updates across all channels (Web, POS, Mobile). It supports both webhook and polled update methods, ensuring seamless integration with your existing ERP or 3rd-party logistics provider.</p>
-                    </div>
-                </div>
-
-                <div class="defcon-accordion-item">
-                    <div class="defcon-accordion-header">
-                        <span>Defcon POS System Integration Capabilities</span>
-                        <span class="defcon-accordion-toggle">+</span>
-                    </div>
-                    <div class="defcon-accordion-content">
-                        <p>The Defcon POS solution (part of our Smart Technology service) integrates natively with our e-commerce backend. This allows for unified inventory, centralized order management, and a single view of the customer, bridging your online and physical retail operations without friction.</p>
-                    </div>
-                </div>
-
-                <div class="defcon-accordion-item">
-                    <div class="defcon-accordion-header">
-                        <span>Digital Marketing & SEO Features <span class="defcon-new-tag">NEW</span></span>
-                        <span class="defcon-accordion-toggle">+</span>
-                    </div>
-                    <div class="defcon-accordion-content">
-                        <p>Our platforms are designed from the ground up for SEO. Key features include automatic sitemap generation, customizable schema markup (Product, Offer, Review), canonical URL management, and integrated Google Analytics/Tag Manager support for advanced conversion tracking by our Marketing & Creative Studio team.</p>
-                    </div>
-                </div>
-
-                <div class="defcon-accordion-item">
-                    <div class="defcon-accordion-header">
-                        <span>Supported Payment Gateways</span>
-                        <span class="defcon-accordion-toggle">+</span>
-                    </div>
-                    <div class="defcon-accordion-content">
-                        <p>We support all major global payment gateways including Stripe, PayPal, Authorize.net, and region-specific providers. We also integrate with modern payment methods such as cryptocurrencies (Web3/Blockchain), ensuring maximum customer reach.</p>
-                    </div>
-                </div>
-                
-            </div>
-        </div>
-    </section>
-
-    <script>
-        // JavaScript for Accordion Functionality
-        document.addEventListener('DOMContentLoaded', () => {
-            const accordionItems = document.querySelectorAll('.defcon-accordion-item');
-
-            accordionItems.forEach(item => {
-                const header = item.querySelector('.defcon-accordion-header');
-                
-                header.addEventListener('click', () => {
-                    // Close all other active items
-                    accordionItems.forEach(otherItem => {
-                        if (otherItem !== item && otherItem.classList.contains('active')) {
-                            otherItem.classList.remove('active');
-                        }
-                    });
-
-                    // Toggle the current item
-                    item.classList.toggle('active');
-                });
-            });
-        });
-    </script>
-
-    <cronos-footer></cronos-footer>
-</body>
-</html>

@@ -1,574 +1,451 @@
-
-<div id="webapp-pricing-root">
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+    <title>Defcon Data Engineering | Architecture & Management</title>
+    
+    <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
+    
     <style>
-        @import url('https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap');
+        /* --- 1. CORE VARIABLES & SETUP --- */
+        :root {
+            /* Data Theme Colors */
+            --db-bg: #050a14;
+            --db-panel: #0b1221;
+            --db-accent: #00f2ea; /* Cyan/Teal for Data */
+            --db-accent-dim: rgba(0, 242, 234, 0.1);
+            --db-text-main: #ffffff;
+            --db-text-muted: #94a3b8;
+            --db-border: #1e293b;
+            --db-success: #10b981;
+            
+            /* Font Settings */
+            --font-stack: 'Circular Std', 'Plus Jakarta Sans', 'Inter', sans-serif;
+        }
 
-        #webapp-pricing-root {
-            font-family: 'Inter', sans-serif;
-            background: #f4f4f4; /* CHANGED: Light Background */
-            padding: 60px 20px;
-            color: #1e293b; /* CHANGED: Dark Text */
-            max-width: 1300px;
+        body {
+            font-family: var(--font-stack);
+            background-color: var(--db-bg);
+            color: var(--db-text-main);
+            margin: 0;
+            padding: 0;
+            -webkit-font-smoothing: antialiased;
+            overflow-x: hidden;
+        }
+
+        /* --- 2. LAYOUT UTILITIES --- */
+        .db-container {
+            max-width: 1000px; /* Tighter width for technical reading */
             margin: 0 auto;
+            padding: 0 20px;
         }
 
-        /* Namespace: wap- (Web App Pricing) */
-        .wap-pricing-header {
-            text-align: center;
-            margin-bottom: 60px;
+        /* --- 3. HERO SECTION (Minimalist / Terminal Style) --- */
+        .db-hero {
+            padding: 120px 0 80px 0;
+            border-bottom: 1px solid var(--db-border);
+            position: relative;
         }
 
-        .wap-badge {
+        .db-hero::before {
+            /* Grid Background Effect */
+            content: '';
+            position: absolute;
+            top: 0; left: 0; right: 0; bottom: 0;
+            background-image: 
+                linear-gradient(rgba(30, 41, 59, 0.3) 1px, transparent 1px),
+                linear-gradient(90deg, rgba(30, 41, 59, 0.3) 1px, transparent 1px);
+            background-size: 40px 40px;
+            z-index: -1;
+            mask-image: linear-gradient(to bottom, black 40%, transparent 100%);
+            -webkit-mask-image: linear-gradient(to bottom, black 40%, transparent 100%);
+        }
+
+        .db-status-badge {
+            font-family: 'Courier New', monospace;
+            font-size: 0.8em;
+            color: var(--db-accent);
+            background: var(--db-accent-dim);
+            padding: 6px 12px;
+            border-radius: 4px;
             display: inline-block;
-            background: rgba(0, 102, 255, 0.1);
-            color: #0066FF;
-            padding: 6px 16px;
-            border-radius: 30px;
-            font-size: 12px;
-            font-weight: 700;
-            text-transform: uppercase;
-            letter-spacing: 1px;
             margin-bottom: 20px;
-            border: 1px solid rgba(0, 102, 255, 0.2);
+            border: 1px solid rgba(0, 242, 234, 0.2);
         }
 
-        .wap-title {
-            font-size: 42px;
-            font-weight: 800;
-            margin: 0 0 16px 0;
-            /* CHANGED: Dark gradient for title */
-            background: linear-gradient(90deg, #0f172a, #334155);
-            -webkit-background-clip: text;
-            -webkit-text-fill-color: transparent;
+        .db-hero h1 {
+            font-size: 3.5em;
+            line-height: 1.1;
+            margin: 0 0 20px 0;
+            letter-spacing: -0.03em;
         }
 
-        /* Table Container - Made Transparent */
-        .wap-table-container {
-            width: 100%;
-            overflow-x: auto;
-            /* CHANGED: Removed background and border */
-            background: transparent;
-            margin-bottom: 40px;
-        }
-
-        .wap-mega-table {
-            width: 100%;
-            /* CHANGED: Separate borders to allow spacing between rows */
-            border-collapse: separate; 
-            border-spacing: 0 15px; /* Spacing between rows */
-            min-width: 1000px;
-        }
-
-        /* Headers - Transparent background, Dark Text */
-        .wap-mega-table th {
-            padding: 20px 25px;
-            text-align: left;
-            vertical-align: top;
-            border: none; /* Removed borders */
-            background: transparent;
-        }
-
-        .wap-category-label {
-            font-size: 20px;
-            font-weight: 800;
-            color: #0f172a; /* Dark Color */
-        }
-
-        .wap-tier-name {
-            font-size: 24px;
-            font-weight: 800;
-            display: block;
-            margin-bottom: 8px;
-            color: #0f172a;
-        }
-
-        .wap-tier-desc {
-            font-size: 13px;
-            color: #64748b; /* Medium Gray */
+        .db-hero p {
+            font-size: 1.2em;
+            color: var(--db-text-muted);
+            max-width: 600px;
             line-height: 1.6;
-            font-weight: 500;
-            display: block;
-            margin-bottom: 20px;
-            min-height: 40px;
         }
 
-        .wap-price-wrapper {
-            margin-bottom: 20px;
+        /* --- 4. PRICING "RACKS" (The Non-Card Design) --- */
+        .db-pricing-wrapper {
+            padding: 80px 0;
         }
 
-        .wap-price-currency { font-size: 18px; vertical-align: top; color: #0066FF; font-weight: 700; }
-        .wap-price-amount { font-size: 48px; font-weight: 800; letter-spacing: -1px; color: #0f172a; }
-        .wap-price-cycle { font-size: 14px; color: #64748b; }
-
-        /* Rows Styling - The "Card" Look */
-        .wap-mega-table td {
-            padding: 25px;
-            font-size: 14px;
-            color: #334155; /* Dark Text */
-            background: #ffffff; /* CHANGED: White card background */
-            border: none;
-            /* Soft shadow for depth */
-            box-shadow: 0 2px 5px rgba(0,0,0,0.02); 
-        }
-
-        /* Border Radius Logic for Rows */
-        .wap-mega-table td:first-child {
-            border-top-left-radius: 15px;
-            border-bottom-left-radius: 15px;
+        .db-section-header {
+            margin-bottom: 50px;
         }
         
-        .wap-mega-table td:last-child {
-            border-top-right-radius: 15px;
-            border-bottom-right-radius: 15px;
-        }
-
-        .wap-row-title {
-            font-weight: 700;
-            color: #0f172a; /* Darkest Blue/Black */
-            display: block;
-            margin-bottom: 4px;
-            font-size: 15px;
-        }
-
-        .wap-row-sub {
-            font-size: 12px;
-            color: #64748b;
-            line-height: 1.5;
-            display: block;
-        }
-
-        /* Section Divider Styling */
-        .wap-section-divider {
-            /* CHANGED: Distinct look for section headers */
-            background: #1e293b !important; 
-            padding: 15px 25px !important;
-            font-weight: 700;
-            color: #ffffff !important; /* White text on dark divider */
-            text-transform: uppercase;
-            letter-spacing: 2px;
-            font-size: 12px;
-            /* Radius is handled by general TD rules above, but we ensure it applies here */
-        }
-
-        /* Status & Icons */
-        .wap-check { color: #059669; font-weight: 900; font-size: 18px; } /* Darker Green */
-        .wap-cross { color: #cbd5e1; font-size: 18px; } /* Light Gray Cross */
-        
-        /* Feature details styling */
-        .wap-feature-details {
-            font-size: 12px;
-            color: #64748b;
-            display: block;
-            margin-top: 5px;
-            line-height: 1.5;
-            font-weight: 500;
-        }
-
-        /* CTA Buttons */
-        .wap-cta-btn {
-            display: block;
-            text-align: center;
-            padding: 14px;
-            border-radius: 12px;
-            text-decoration: none;
-            font-weight: 700;
-            font-size: 14px;
-            transition: all 0.3s ease;
-            width: 100%;
-        }
-
-        .wap-btn-outline {
-            border: 2px solid #0066FF; /* Thicker border */
-            color: #0066FF;
-            background: transparent;
-        }
-
-        .wap-btn-outline:hover {
-            background: rgba(0, 102, 255, 0.05);
-        }
-
-        .wap-btn-primary {
-            background: #0066FF;
-            color: #ffffff;
-            border: 2px solid #0066FF;
-        }
-
-        .wap-btn-primary:hover {
-            background: #0052cc;
-            box-shadow: 0 4px 12px rgba(0, 102, 255, 0.3);
-        }
-        
-        /* Notes Section - Adapted for Light Mode */
-        .wap-notes-container {
-            background: #ffffff; /* White bg */
-            border-radius: 16px;
-            padding: 30px;
-            border: 1px solid rgba(0,0,0,0.05);
-            margin-top: 40px;
-            box-shadow: 0 4px 20px rgba(0,0,0,0.03);
-        }
-        
-        .wap-notes-title {
-            color: #0066FF;
-            font-size: 18px;
-            font-weight: 800;
-            margin-bottom: 20px;
-        }
-        
-        .wap-notes-list {
-            display: grid;
-            grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
-            gap: 15px;
-        }
-        
-        .wap-note-item {
-            display: flex;
-            align-items: flex-start;
+        .db-section-header h2 {
+            font-size: 2em;
             margin-bottom: 10px;
         }
-        
-        .wap-note-bullet {
-            color: #0066FF;
-            font-weight: bold;
-            margin-right: 10px;
-            flex-shrink: 0;
+
+        /* The Rack Row Container */
+        .db-rack-row {
+            display: flex;
+            align-items: center;
+            background-color: var(--db-panel);
+            border: 1px solid var(--db-border);
+            margin-bottom: 20px; /* Spacing between rows */
+            padding: 0;
+            border-radius: 8px;
+            transition: all 0.3s ease;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .db-rack-row:hover {
+            border-color: var(--db-accent);
+            box-shadow: 0 0 20px rgba(0, 242, 234, 0.05);
+            transform: translateY(-2px);
+        }
+
+        /* Left: Identification */
+        .db-rack-id {
+            padding: 30px;
+            flex: 1.5;
+            border-right: 1px solid var(--db-border);
+        }
+
+        .db-rack-name {
+            display: block;
+            font-size: 1.4em;
+            font-weight: 700;
+            color: var(--db-text-main);
+            margin-bottom: 5px;
+        }
+
+        .db-rack-type {
+            font-family: 'Courier New', monospace;
+            font-size: 0.85em;
+            color: var(--db-accent);
+            text-transform: uppercase;
+        }
+
+        /* Middle: Specs */
+        .db-rack-specs {
+            flex: 3;
+            padding: 30px;
+            display: flex;
+            flex-wrap: wrap;
+            gap: 15px;
+        }
+
+        .db-spec-pill {
+            background: #141d2e;
+            padding: 6px 14px;
+            border-radius: 4px;
+            font-size: 0.9em;
+            color: var(--db-text-muted);
+            border: 1px solid var(--db-border);
         }
         
-        .wap-note-text {
-            font-size: 14px;
-            color: #475569; /* Darker text for readability */
+        .db-spec-pill strong { color: white; }
+
+        /* Right: Action & Price */
+        .db-rack-action {
+            flex: 1.5;
+            padding: 30px;
+            text-align: right;
+            background: rgba(255, 255, 255, 0.02);
+            height: 100%;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: flex-end;
+        }
+
+        .db-price-large {
+            font-size: 1.6em;
+            font-weight: 700;
+            color: var(--db-text-main);
+            display: block;
+        }
+
+        .db-price-meta {
+            font-size: 0.8em;
+            color: var(--db-text-muted);
+            margin-bottom: 15px;
+            display: block;
+        }
+
+        .db-btn {
+            background: transparent;
+            border: 1px solid var(--db-accent);
+            color: var(--db-accent);
+            padding: 10px 20px;
+            font-family: var(--font-stack);
+            font-weight: 600;
+            font-size: 0.9em;
+            cursor: pointer;
+            transition: all 0.2s;
+            text-decoration: none;
+            display: inline-block;
+        }
+
+        .db-btn:hover {
+            background: var(--db-accent);
+            color: var(--db-bg);
+        }
+
+        /* Installment Text */
+        .db-terms {
+            font-size: 0.75em;
+            color: var(--db-text-muted);
+            margin-top: 8px;
+            font-style: italic;
+        }
+
+        /* --- 5. TECHNICAL DETAILS (Accordion Style) --- */
+        .db-details-toggle {
+            width: 100%;
+            text-align: left;
+            background: transparent;
+            border: none;
+            border-top: 1px dashed var(--db-border);
+            color: var(--db-text-muted);
+            padding: 15px 30px;
+            cursor: pointer;
+            font-family: var(--font-stack);
+            font-size: 0.9em;
+            display: flex;
+            justify-content: space-between;
+        }
+
+        .db-details-content {
+            display: none;
+            padding: 0 30px 30px 30px;
+            color: #bdc7d6;
+            font-size: 0.95em;
             line-height: 1.6;
         }
-
-        /* Mobile Responsive Design */
-        @media (max-width: 1024px) {
-            .wap-title { font-size: 36px; }
-            .wap-notes-list { grid-template-columns: 1fr; }
-        }
         
+        .db-details-content.show {
+            display: block;
+        }
+
+        .db-details-content ul {
+            margin: 0; padding-left: 20px;
+        }
+        .db-details-content li { margin-bottom: 8px; }
+
+        /* --- 6. DBA RETAINER SECTION (Different visual) --- */
+        .db-retainer-section {
+            background: linear-gradient(to right, #0b1221, #060c18);
+            border: 1px solid var(--db-accent);
+            border-radius: 8px;
+            padding: 40px;
+            margin-top: 60px;
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+        }
+
+        .db-retainer-text h3 {
+            color: var(--db-accent);
+            margin: 0 0 10px 0;
+            font-size: 1.5em;
+        }
+
+        /* --- MOBILE OPTIMIZATION (PWA READY) --- */
         @media (max-width: 768px) {
-            #webapp-pricing-root { padding: 40px 15px; }
+            .db-hero h1 { font-size: 2.5em; }
             
-            .wap-title { font-size: 28px; }
-            
-            .wap-pricing-header { margin-bottom: 40px; }
-            
-            .wap-table-container {
-                border-radius: 16px;
-                overflow-x: auto;
-                -webkit-overflow-scrolling: touch;
+            /* Stack the Rows */
+            .db-rack-row {
+                flex-direction: column;
+                align-items: flex-start;
             }
-            
-            .wap-mega-table th {
-                padding: 25px 20px;
-            }
-            
-            .wap-mega-table td {
-                padding: 18px 20px;
-            }
-            
-            .wap-tier-name { font-size: 20px; }
-            
-            .wap-price-amount { font-size: 36px; }
-            
-            .wap-notes-container {
+
+            .db-rack-id, .db-rack-specs, .db-rack-action {
+                width: 100%;
+                border-right: none;
                 padding: 20px;
             }
+
+            .db-rack-id {
+                border-bottom: 1px solid var(--db-border);
+                background: rgba(255,255,255,0.02);
+            }
+
+            .db-rack-action {
+                text-align: left;
+                align-items: flex-start;
+                border-top: 1px solid var(--db-border);
+                background: rgba(0, 242, 234, 0.02);
+            }
+
+            .db-retainer-section {
+                flex-direction: column;
+                text-align: center;
+                gap: 30px;
+            }
+            
+            .db-btn {
+                width: 100%; /* Full width touch target */
+                text-align: center;
+                padding: 15px; /* Larger touch area */
+            }
         }
-        
-        /* Highlight specific column */
-        .wap-highlight-col {
-            background: #EFF6FF !important; /* Very light blue for highlighted column */
-        }
-        
     </style>
+</head>
+<body>
 
-    <div class="wap-pricing-header">
-        <div class="wap-badge">Web & Mobile Application Development</div>
-        <h1 class="wap-title">Custom App Development Packages</h1>
-        <p style="color: #64748b; max-width: 700px; margin: 0 auto; line-height: 1.6; font-size: 16px;">Comprehensive development packages for web and mobile applications. Each tier includes full lifecycle support from design to deployment and maintenance.</p>
-    </div>
-
-    <div class="wap-table-container">
-        <table class="wap-mega-table">
-            <thead>
-                <tr>
-                    <th style="width: 28%;">
-                        <div class="wap-category-label">Application Features</div>
-                        <p style="font-size: 13px; color: #64748b; margin-top: 10px; line-height: 1.5;">Detailed breakdown of what's included in each development package.</p>
-                    </th>
-                    <th style="width: 24%;">
-                        <span class="wap-tier-name">Starter</span>
-                        <span class="wap-tier-desc">Single platform app with basic functionality for small businesses.</span>
-                        <div class="wap-price-wrapper">
-                            <span class="wap-price-currency">$</span>
-                            <span class="wap-price-amount">4,999</span>
-                            <span class="wap-price-cycle">/project</span>
-                        </div>
-                        <a href="#" class="wap-cta-btn wap-btn-outline">Get Quote</a>
-                    </th>
-                    <th style="width: 24%;">
-                        <span class="wap-tier-name" style="color: #0066FF;">Professional</span>
-                        <span class="wap-tier-desc">Cross-platform app with advanced features and API integration.</span>
-                        <div class="wap-price-wrapper">
-                            <span class="wap-price-currency">$</span>
-                            <span class="wap-price-amount">14,500</span>
-                            <span class="wap-price-cycle">/project</span>
-                        </div>
-                        <a href="#" class="wap-cta-btn wap-btn-primary">Choose Plan</a>
-                    </th>
-                    <th style="width: 24%;">
-                        <span class="wap-tier-name">Enterprise</span>
-                        <span class="wap-tier-desc">Full-scale custom application with AI features and scalability.</span>
-                        <div class="wap-price-wrapper">
-                            <span class="wap-price-currency">$</span>
-                            <span class="wap-price-amount">45,000</span>
-                            <span class="wap-price-cycle">/project+</span>
-                        </div>
-                        <a href="#" class="wap-cta-btn wap-btn-outline">Contact Sales</a>
-                    </th>
-                </tr>
-            </thead>
-            <tbody>
-                <tr><td colspan="4" class="wap-section-divider">Platform & Scope</td></tr>
-                
-                <tr>
-                    <td>
-                        <span class="wap-row-title">Platform Coverage</span>
-                        <span class="wap-row-sub">Native and web platforms included</span>
-                    </td>
-                    <td>
-                        Web App OR iOS/Android
-                        <span class="wap-feature-details">Choose one platform only</span>
-                    </td>
-                    <td class="wap-highlight-col">
-                        Web + 1 Mobile Platform
-                        <span class="wap-feature-details">Responsive web + iOS or Android</span>
-                    </td>
-                    <td>
-                        Web + iOS + Android
-                        <span class="wap-feature-details">Full cross-platform coverage</span>
-                    </td>
-                </tr>
-                <tr>
-                    <td>
-                        <span class="wap-row-title">Development Timeline</span>
-                        <span class="wap-row-sub">Estimated delivery time from kickoff</span>
-                    </td>
-                    <td>
-                        4-6 Weeks
-                        <span class="wap-feature-details">Basic functionality only</span>
-                    </td>
-                    <td class="wap-highlight-col">
-                        8-12 Weeks
-                        <span class="wap-feature-details">Includes testing and refinement</span>
-                    </td>
-                    <td>
-                        12-20 Weeks
-                        <span class="wap-feature-details">Comprehensive development cycle</span>
-                    </td>
-                </tr>
-                
-                <tr><td colspan="4" class="wap-section-divider">Core Development Features</td></tr>
-                <tr>
-                    <td>
-                        <span class="wap-row-title">Custom UI/UX Design</span>
-                        <span class="wap-row-sub">Wireframes, prototypes, and visual design</span>
-                    </td>
-                    <td>
-                        Basic Design
-                        <span class="wap-feature-details">Template-based with light customization</span>
-                    </td>
-                    <td class="wap-highlight-col">
-                        Custom Design
-                        <span class="wap-feature-details">Fully custom UI with 3 revision rounds</span>
-                    </td>
-                    <td>
-                        Premium Design
-                        <span class="wap-feature-details">Custom UI/UX with unlimited revisions</span>
-                    </td>
-                </tr>
-                <tr>
-                    <td>
-                        <span class="wap-row-title">Frontend Development</span>
-                        <span class="wap-row-sub">HTML/CSS/JavaScript or framework</span>
-                    </td>
-                    <td>
-                        Basic Frontend
-                        <span class="wap-feature-details">Vanilla JS or simple React components</span>
-                    </td>
-                    <td class="wap-highlight-col">
-                        Advanced Frontend
-                        <span class="wap-feature-details">React/Vue/Angular with state management</span>
-                    </td>
-                    <td>
-                        Enterprise Frontend
-                        <span class="wap-feature-details">Micro-frontends, SSR, PWA capabilities</span>
-                    </td>
-                </tr>
-                <tr>
-                    <td>
-                        <span class="wap-row-title">Backend Development</span>
-                        <span class="wap-row-sub">Server, database, and API development</span>
-                    </td>
-                    <td>
-                        Simple Backend
-                        <span class="wap-feature-details">Firebase or basic Node.js with 5 API endpoints</span>
-                    </td>
-                    <td class="wap-highlight-col">
-                        Robust Backend
-                        <span class="wap-feature-details">Node.js/Python with 15+ API endpoints, auth, and database</span>
-                    </td>
-                    <td>
-                        Scalable Backend
-                        <span class="wap-feature-details">Microservices, cloud functions, real-time features</span>
-                    </td>
-                </tr>
-                
-                <tr><td colspan="4" class="wap-section-divider">Advanced Features</td></tr>
-                <tr>
-                    <td>
-                        <span class="wap-row-title">Third-Party API Integration</span>
-                        <span class="wap-row-sub">Payment, social media, maps, etc.</span>
-                    </td>
-                    <td>
-                        1 Basic Integration
-                        <span class="wap-feature-details">Stripe or PayPal only</span>
-                    </td>
-                    <td class="wap-highlight-col">
-                        3-5 Integrations
-                        <span class="wap-feature-details">Payment + social + maps + 2 custom</span>
-                    </td>
-                    <td>
-                        Unlimited Integrations
-                        <span class="wap-feature-details">All required APIs with custom middleware</span>
-                    </td>
-                </tr>
-                <tr>
-                    <td>
-                        <span class="wap-row-title">User Authentication</span>
-                        <span class="wap-row-sub">Login, registration, and user management</span>
-                    </td>
-                    <td>
-                        Email/Password
-                        <span class="wap-feature-details">Basic auth with email verification</span>
-                    </td>
-                    <td class="wap-highlight-col">
-                        Social + Email
-                        <span class="wap-feature-details">Google, Facebook, Apple login + email/password</span>
-                    </td>
-                    <td>
-                        Enterprise SSO
-                        <span class="wap-feature-details">SAML, OAuth2, LDAP, custom identity provider</span>
-                    </td>
-                </tr>
-                <tr>
-                    <td>
-                        <span class="wap-row-title">Admin Dashboard</span>
-                        <span class="wap-row-sub">Content management and analytics</span>
-                    </td>
-                    <td class="wap-cross">✘</td>
-                    <td class="wap-check wap-highlight-col">✔</td>
-                    <td class="wap-check">✔</td>
-                </tr>
-                <tr>
-                    <td>
-                        <span class="wap-row-title">Push Notifications</span>
-                        <span class="wap-row-sub">Mobile and web notifications</span>
-                    </td>
-                    <td class="wap-cross">✘</td>
-                    <td class="wap-check wap-highlight-col">✔</td>
-                    <td class="wap-check">✔</td>
-                </tr>
-                
-                <tr><td colspan="4" class="wap-section-divider">Post-Launch Services</td></tr>
-                <tr>
-                    <td>
-                        <span class="wap-row-title">Hosting & Deployment</span>
-                        <span class="wap-row-sub">Server setup and app store deployment</span>
-                    </td>
-                    <td>
-                        Basic Hosting (3 months)
-                        <span class="wap-feature-details">Shared hosting, manual deployment</span>
-                    </td>
-                    <td class="wap-highlight-col">
-                        Managed Hosting (6 months)
-                        <span class="wap-feature-details">Cloud hosting with CI/CD pipeline</span>
-                    </td>
-                    <td>
-                        Enterprise Hosting (12 months)
-                        <span class="wap-feature-details">Dedicated infrastructure with auto-scaling</span>
-                    </td>
-                </tr>
-                <tr>
-                    <td>
-                        <span class="wap-row-title">Maintenance & Support</span>
-                        <span class="wap-row-sub">Bug fixes, updates, and technical support</span>
-                    </td>
-                    <td>
-                        1 Month Support
-                        <span class="wap-feature-details">Critical bug fixes only</span>
-                    </td>
-                    <td class="wap-highlight-col">
-                        3 Months Support
-                        <span class="wap-feature-details">Bug fixes + minor feature updates</span>
-                    </td>
-                    <td>
-                        6 Months Support
-                        <span class="wap-feature-details">Full support including performance optimization</span>
-                    </td>
-                </tr>
-                <tr>
-                    <td>
-                        <span class="wap-row-title">Analytics & Reporting</span>
-                        <span class="wap-row-sub">User behavior and performance tracking</span>
-                    </td>
-                    <td>
-                        Basic Analytics
-                        <span class="wap-feature-details">Simple traffic and conversion tracking</span>
-                    </td>
-                    <td class="wap-highlight-col">
-                        Advanced Analytics
-                        <span class="wap-feature-details">User flow, retention, and custom events</span>
-                    </td>
-                    <td>
-                        Business Intelligence
-                        <span class="wap-feature-details">Custom dashboards, predictive analytics, AI insights</span>
-                    </td>
-                </tr>
-            </tbody>
-        </table>
-    </div>
-    
-    <div class="wap-notes-container">
-        <div class="wap-notes-title">Important Notes & Clarifications</div>
-        <div class="wap-notes-list">
-            <div class="wap-note-item">
-                <span class="wap-note-bullet">•</span>
-                <span class="wap-note-text">All prices are for complete projects. Monthly retainers are available for ongoing development at $1,500-$5,000/month depending on scope.</span>
-            </div>
-            <div class="wap-note-item">
-                <span class="wap-note-bullet">•</span>
-                <span class="wap-note-text">Timelines begin after final design approval and content delivery. Delays in client feedback may extend project timelines.</span>
-            </div>
-            <div class="wap-note-item">
-                <span class="wap-note-bullet">•</span>
-                <span class="wap-note-text">Third-party service costs (domain, hosting beyond included period, paid APIs, app store fees) are not included unless specified.</span>
-            </div>
-            <div class="wap-note-item">
-                <span class="wap-note-bullet">•</span>
-                <span class="wap-note-text">Custom Enterprise pricing varies based on specific requirements, complexity, and integrations needed. Contact for a detailed quote.</span>
-            </div>
-            <div class="wap-note-item">
-                <span class="wap-note-bullet">•</span>
-                <span class="wap-note-text">Projects require a 50% deposit to begin work, with the balance due upon completion before final delivery.</span>
-            </div>
-            <div class="wap-note-item">
-                <span class="wap-note-bullet">•</span>
-                <span class="wap-note-text">All code is delivered with documentation. Clients retain full ownership of all deliverables upon final payment.</span>
-            </div>
+    <header class="db-hero">
+        <div class="db-container">
+            <span class="db-status-badge">system_status: optimal</span>
+            <h1>Architecting Your Data Backbone.</h1>
+            <p>Scalable database engineering, migration, and optimization services. From local startups to high-availability enterprise clusters.</p>
         </div>
-    </div>
-</div>
+    </header>
 
+    <section class="db-pricing-wrapper">
+        <div class="db-container">
+            
+            <div class="db-section-header">
+                <h2>Engineering Packages</h2>
+                <p style="color: var(--db-text-muted);">One-time architecture & deployment fees. Hosted on your preferred cloud (AWS/Azure/DigitalOcean) or local servers.</p>
+            </div>
 
+            <div class="db-rack-row">
+                <div class="db-rack-id">
+                    <span class="db-rack-name">Micro Cluster</span>
+                    <span class="db-rack-type">Entry Level SQL</span>
+                </div>
+                <div class="db-rack-specs">
+                    <div class="db-spec-pill"><strong>Engine:</strong> PostgreSQL / MySQL</div>
+                    <div class="db-spec-pill"><strong>Backup:</strong> Daily Automated</div>
+                    <div class="db-spec-pill"><strong>Security:</strong> SSL + Firewall</div>
+                    <div class="db-spec-pill"><strong>Scale:</strong> Up to 50k Records</div>
+                </div>
+                <div class="db-rack-action">
+                    <span class="db-price-large">R 3,500</span>
+                    <span class="db-price-meta">One-Time Setup Fee</span>
+                    <a href="#" class="db-btn">Deploy Node</a>
+                    <span class="db-terms">or R175 x 24 Months</span>
+                </div>
+                <button class="db-details-toggle" onclick="toggleDetails(this)">
+                    <span>> View Engineering Specs</span> <span>+</span>
+                </button>
+                <div class="db-details-content">
+                    <ul>
+                        <li>Setup of Managed Database (DigitalOcean/AWS RDS Free Tier).</li>
+                        <li>Schema Design (Up to 10 Tables) with Relationship Mapping.</li>
+                        <li>Basic Indexing for Search Performance.</li>
+                        <li>Connection to your Backend API.</li>
+                    </ul>
+                </div>
+            </div>
+
+            <div class="db-rack-row" style="border-left: 4px solid var(--db-accent);">
+                <div class="db-rack-id">
+                    <span class="db-rack-name">Production Core</span>
+                    <span class="db-rack-type">High Performance</span>
+                </div>
+                <div class="db-rack-specs">
+                    <div class="db-spec-pill"><strong>Engine:</strong> Postgres / Mongo / SQL Server</div>
+                    <div class="db-spec-pill"><strong>Architecture:</strong> Master-Slave Replica</div>
+                    <div class="db-spec-pill"><strong>Migration:</strong> Data Import Included</div>
+                    <div class="db-spec-pill"><strong>Optimization:</strong> Query Tuning</div>
+                </div>
+                <div class="db-rack-action">
+                    <span class="db-price-large">R 12,500</span>
+                    <span class="db-price-meta">One-Time Architecture Fee</span>
+                    <a href="#" class="db-btn" style="background-color:var(--db-accent); color:#000;">Deploy Cluster</a>
+                    <span class="db-terms">or R625 x 24 Months</span>
+                </div>
+                <button class="db-details-toggle" onclick="toggleDetails(this)">
+                    <span>> View Engineering Specs</span> <span>+</span>
+                </button>
+                <div class="db-details-content">
+                    <ul>
+                        <li>Full Architecture: Write Node + Read Replica for speed.</li>
+                        <li>Data Migration from Excel/Legacy Systems (Up to 1GB).</li>
+                        <li>Advanced Indexing & Query Optimization (Fix slow loads).</li>
+                        <li>Redis Caching Layer Implementation.</li>
+                        <li>Automated Point-in-Time Recovery Backups.</li>
+                    </ul>
+                </div>
+            </div>
+
+            <div class="db-rack-row">
+                <div class="db-rack-id">
+                    <span class="db-rack-name">Data Warehouse</span>
+                    <span class="db-rack-type">Enterprise Sharding</span>
+                </div>
+                <div class="db-rack-specs">
+                    <div class="db-spec-pill"><strong>Tech:</strong> Snowflake / BigQuery / Redshift</div>
+                    <div class="db-spec-pill"><strong>Uptime:</strong> 99.99% HA Design</div>
+                    <div class="db-spec-pill"><strong>Pipeline:</strong> ETL Automation</div>
+                    <div class="db-spec-pill"><strong>Security:</strong> VPC Peering / VPN</div>
+                </div>
+                <div class="db-rack-action">
+                    <span class="db-price-large">R 45,000+</span>
+                    <span class="db-price-meta">Estimated Project Value</span>
+                    <a href="#" class="db-btn">Request Consult</a>
+                    <span class="db-terms">Custom Terms Available</span>
+                </div>
+                <button class="db-details-toggle" onclick="toggleDetails(this)">
+                    <span>> View Engineering Specs</span> <span>+</span>
+                </button>
+                <div class="db-details-content">
+                    <ul>
+                        <li>Horizontal Sharding & Partitioning for Million+ Records.</li>
+                        <li>ETL Pipelines (Python/Airflow) for Business Intelligence.</li>
+                        <li>Disaster Recovery Planning (Multi-Region).</li>
+                        <li>Compliance Auditing (POPIA/GDPR Logs).</li>
+                    </ul>
+                </div>
+            </div>
+
+            <div class="db-retainer-section">
+                <div class="db-retainer-text">
+                    <h3>Remote DBA Retainer</h3>
+                    <p style="color: var(--db-text-muted); margin: 0;">Need ongoing support? We monitor, patch, and optimize your database monthly.</p>
+                    <ul style="color: #fff; font-size: 0.9em; margin-top: 15px; padding-left: 20px;">
+                        <li>24/7 Uptime Monitoring</li>
+                        <li>Monthly Security Patching</li>
+                        <li>Slow Query Analysis & Fixing</li>
+                    </ul>
+                </div>
+                <div style="text-align: right;">
+                    <span class="db-price-large" style="color: var(--db-accent);">R 2,500<small style="font-size:0.5em; color:white;">/pm</small></span>
+                    <a href="#" class="db-btn" style="margin-top: 15px;">Subscribe</a>
+                </div>
+            </div>
+
+        </div>
+    </section>
+
+    <script>
+        function toggleDetails(button) {
+            const content = button.nextElementSibling;
+            content.classList.toggle('show');
+            const icon = button.querySelector('span:last-child');
+            icon.textContent = content.classList.contains('show') ? '-' : '+';
+        }
+    </script>
+</body>
+</html>

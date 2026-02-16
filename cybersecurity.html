@@ -120,315 +120,1495 @@
 
 
 
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
 <!DOCTYPE html>
 <html lang="en">
 <head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Blockchain & Web3 Solutions</title>
-  <link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@300;500;700&family=Inter:wght@300;400;600&display=swap" rel="stylesheet">
-  <style>
-    :root {
-      --bg-deep: #05070a;
-      --card-bg: rgba(255, 255, 255, 0.03);
-      --accent-purple: #8b5cf6;
-      --accent-cyan: #06b6d4;
-      --text-main: #f8fafc;
-      --text-dim: #94a3b8;
-      --glass-border: rgba(255, 255, 255, 0.1);
-    }
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Defcon Cybersecurity Solutions - Enterprise-Grade Protection</title>
+    <link href="https://fonts.cdnfonts.com/css/circular-std" rel="stylesheet">
+    <style>
+        /* CSS Variables */
+        :root {
+            --cyber-primary: #0091ff;
+            --cyber-secondary: #1a1a1a;
+            --cyber-dark: #000000;
+            --cyber-accent: #0091ff;
+            --cyber-text: #ffffff;
+            --cyber-muted: #9ca3af;
+            --cyber-border: #2a2a2a;
+            --cyber-card-bg: #141414;
+            --cyber-gradient-start: #0091ff;
+            --cyber-gradient-end: #0066cc;
+        }
 
-    body {
-      background-color: var(--bg-deep);
-      color: var(--text-main);
-      font-family: 'Inter', sans-serif;
-      margin: 0;
-      overflow-x: hidden;
-    }
+        /* Base Styles */
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
 
-    .web3-wrapper {
-      padding: 100px 20px;
-      background: radial-gradient(circle at top right, rgba(139, 92, 246, 0.1), transparent 400px),
-                  radial-gradient(circle at bottom left, rgba(6, 182, 212, 0.1), transparent 400px);
-    }
+        body {
+            font-family: 'Circular Std', -apple-system, BlinkMacSystemFont, sans-serif;
+            background-color: var(--cyber-dark);
+            color: var(--cyber-text);
+            line-height: 1.6;
+            overflow-x: hidden;
+        }
 
-    .container {
-      max-width: 1200px;
-      margin: 0 auto;
-    }
+        /* Utility Container */
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 20px;
+        }
 
-    /* Header Section */
-    .header {
-      text-align: center;
-      margin-bottom: 80px;
-    }
+        /* Hero Section with Terminal Aesthetic */
+        .hero {
+            position: relative;
+            min-height: 100vh;
+            display: flex;
+            align-items: center;
+            background: linear-gradient(135deg, var(--cyber-dark) 0%, var(--cyber-secondary) 100%);
+            overflow: hidden;
+            padding: 80px 0;
+        }
 
-    .header h1 {
-      font-family: 'Space Grotesk', sans-serif;
-      font-size: clamp(2.5rem, 6vw, 4rem);
-      font-weight: 700;
-      background: linear-gradient(to right, #fff, var(--accent-cyan));
-      -webkit-background-clip: text;
-      -webkit-text-fill-color: transparent;
-      margin-bottom: 20px;
-    }
+        .hero::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background-image: 
+                repeating-linear-gradient(0deg, transparent, transparent 2px, rgba(0, 145, 255, 0.03) 2px, rgba(0, 145, 255, 0.03) 4px);
+            pointer-events: none;
+            animation: scan 8s linear infinite;
+        }
 
-    .header p {
-      color: var(--text-dim);
-      font-size: 1.2rem;
-      max-width: 600px;
-      margin: 0 auto;
-    }
+        @keyframes scan {
+            0% { transform: translateY(0); }
+            100% { transform: translateY(40px); }
+        }
 
-    /* Grid Design - Different from IT Consulting */
-    .web3-grid {
-      display: grid;
-      grid-template-columns: repeat(auto-fit, minmax(350px, 1fr));
-      gap: 30px;
-    }
+        .hero-grid {
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background-image: 
+                linear-gradient(rgba(0, 145, 255, 0.05) 1px, transparent 1px),
+                linear-gradient(90deg, rgba(0, 145, 255, 0.05) 1px, transparent 1px);
+            background-size: 50px 50px;
+            opacity: 0.3;
+        }
 
-    .web3-card {
-      background: var(--card-bg);
-      backdrop-filter: blur(12px);
-      border: 1px solid var(--glass-border);
-      border-radius: 24px;
-      padding: 40px;
-      position: relative;
-      transition: all 0.4s ease;
-      display: flex;
-      flex-direction: column;
-    }
+        .hero-content {
+            position: relative;
+            z-index: 2;
+            max-width: 800px;
+        }
 
-    .web3-card:hover {
-      border-color: var(--accent-purple);
-      transform: translateY(-10px);
-      box-shadow: 0 0 30px rgba(139, 92, 246, 0.2);
-    }
+        .hero-label {
+            display: inline-block;
+            padding: 8px 16px;
+            background: rgba(0, 255, 136, 0.1);
+            border: 1px solid var(--cyber-primary);
+            border-radius: 4px;
+            font-size: 0.75rem;
+            letter-spacing: 2px;
+            text-transform: uppercase;
+            color: var(--cyber-primary);
+            margin-bottom: 24px;
+            font-weight: 500;
+        }
 
-    /* Unique Feature: Glowing Icon Box */
-    .icon-box {
-      width: 60px;
-      height: 60px;
-      background: linear-gradient(135deg, var(--accent-purple), var(--accent-cyan));
-      border-radius: 15px;
-      margin-bottom: 25px;
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      font-size: 1.5rem;
-      box-shadow: 0 10px 20px rgba(0,0,0,0.3);
-    }
+        .hero h1 {
+            font-size: clamp(2.5rem, 8vw, 5rem);
+            font-weight: 700;
+            line-height: 1.1;
+            margin-bottom: 24px;
+            background: linear-gradient(135deg, #ffffff 0%, var(--cyber-primary) 100%);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+        }
 
-    .tier-label {
-      text-transform: uppercase;
-      letter-spacing: 2px;
-      font-size: 0.75rem;
-      color: var(--accent-cyan);
-      font-weight: 700;
-      margin-bottom: 10px;
-      display: block;
-    }
+        .hero p {
+            font-size: clamp(1.1rem, 2.5vw, 1.3rem);
+            color: var(--cyber-muted);
+            margin-bottom: 40px;
+            line-height: 1.7;
+        }
 
-    .price-box {
-      background: rgba(255, 255, 255, 0.05);
-      border-radius: 15px;
-      padding: 20px;
-      margin: 20px 0;
-      border: 1px solid var(--glass-border);
-    }
+        .hero-cta {
+            display: inline-flex;
+            gap: 16px;
+            flex-wrap: wrap;
+        }
 
-    .price-box h2 {
-      font-family: 'Space Grotesk', sans-serif;
-      font-size: 2.5rem;
-      margin: 0;
-    }
+        .btn {
+            padding: 16px 32px;
+            border-radius: 6px;
+            font-weight: 600;
+            font-size: 1rem;
+            text-decoration: none;
+            transition: all 0.3s ease;
+            display: inline-block;
+            border: none;
+            cursor: pointer;
+        }
 
-    .price-box span {
-      font-size: 1rem;
-      color: var(--text-dim);
-    }
+        .btn-primary {
+            background: var(--cyber-primary);
+            color: #ffffff;
+            box-shadow: 0 0 30px rgba(0, 145, 255, 0.3);
+        }
 
-    .solution-list {
-      list-style: none;
-      padding: 0;
-      margin-top: 20px;
-      flex-grow: 1;
-    }
+        .btn-primary:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 0 40px rgba(0, 145, 255, 0.5);
+        }
 
-    .solution-list li {
-      padding: 12px 0;
-      color: var(--text-dim);
-      display: flex;
-      align-items: center;
-      gap: 12px;
-      border-bottom: 1px solid rgba(255,255,255,0.05);
-    }
+        .btn-secondary {
+            background: transparent;
+            color: var(--cyber-text);
+            border: 2px solid var(--cyber-border);
+        }
 
-    .solution-list li::before {
-      content: "→";
-      color: var(--accent-cyan);
-      font-weight: bold;
-    }
+        .btn-secondary:hover {
+            border-color: var(--cyber-primary);
+            background: rgba(0, 145, 255, 0.05);
+        }
 
-    .web3-btn {
-      margin-top: 30px;
-      background: transparent;
-      border: 1px solid var(--accent-cyan);
-      color: var(--text-main);
-      padding: 15px;
-      border-radius: 12px;
-      cursor: pointer;
-      font-family: 'Space Grotesk', sans-serif;
-      font-weight: 600;
-      transition: 0.3s;
-      text-align: center;
-      text-decoration: none;
-    }
+        /* Stats Section */
+        .stats {
+            background: var(--cyber-secondary);
+            padding: 60px 0;
+            border-top: 1px solid var(--cyber-border);
+            border-bottom: 1px solid var(--cyber-border);
+        }
 
-    .web3-btn:hover {
-      background: var(--accent-cyan);
-      color: var(--bg-deep);
-      box-shadow: 0 0 20px var(--accent-cyan);
-    }
+        .stats-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+            gap: 40px;
+            text-align: center;
+        }
 
-    /* Solutions Section */
-    .products-section {
-      margin-top: 100px;
-    }
+        .stat-item {
+            padding: 20px;
+        }
 
-    .product-pill {
-      display: inline-block;
-      padding: 8px 20px;
-      background: rgba(255,255,255,0.05);
-      border: 1px solid var(--glass-border);
-      border-radius: 30px;
-      margin: 5px;
-      font-size: 0.9rem;
-      color: var(--accent-cyan);
-    }
+        .stat-number {
+            font-size: clamp(2.5rem, 5vw, 4rem);
+            font-weight: 700;
+            color: var(--cyber-primary);
+            line-height: 1;
+            margin-bottom: 8px;
+        }
 
-    @media (max-width: 768px) {
-      .web3-grid {
-        grid-template-columns: 1fr;
-      }
-    }
-  </style>
+        .stat-label {
+            font-size: 0.95rem;
+            color: var(--cyber-muted);
+            text-transform: uppercase;
+            letter-spacing: 1px;
+            font-weight: 500;
+        }
+
+        /* Services Section - Alternating Layout */
+        .services {
+            padding: 120px 0;
+            background: var(--cyber-dark);
+        }
+
+        .section-header {
+            text-align: center;
+            margin-bottom: 100px;
+        }
+
+        .section-subtitle {
+            font-size: 0.85rem;
+            letter-spacing: 3px;
+            text-transform: uppercase;
+            color: var(--cyber-primary);
+            margin-bottom: 16px;
+            font-weight: 600;
+        }
+
+        .section-title {
+            font-size: clamp(2rem, 5vw, 3.5rem);
+            font-weight: 700;
+            margin-bottom: 20px;
+            line-height: 1.2;
+        }
+
+        .section-description {
+            font-size: 1.15rem;
+            color: var(--cyber-muted);
+            max-width: 700px;
+            margin: 0 auto;
+            line-height: 1.7;
+        }
+
+        /* Service Items Container */
+        .service-list {
+            display: flex;
+            flex-direction: column;
+            gap: 120px;
+        }
+
+        .service-item {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 80px;
+            align-items: start;
+            position: relative;
+            padding: 40px 0;
+        }
+
+        /* Product Name Side */
+        .service-name-block {
+            position: relative;
+            display: flex;
+            flex-direction: column;
+            align-items: flex-start;
+        }
+
+        .service-number {
+            font-size: 8rem;
+            font-weight: 900;
+            line-height: 1;
+            background: linear-gradient(135deg, rgba(0, 145, 255, 0.15) 0%, transparent 100%);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+            margin-bottom: 20px;
+            opacity: 0.5;
+        }
+
+        .service-title {
+            font-size: clamp(2rem, 4vw, 3.2rem);
+            font-weight: 800;
+            color: var(--cyber-text);
+            line-height: 1.1;
+            margin-bottom: 16px;
+        }
+
+        .service-icon {
+            font-size: 4rem;
+            margin-bottom: 24px;
+            display: block;
+        }
+
+        .service-tagline {
+            font-size: 1.1rem;
+            color: var(--cyber-muted);
+            line-height: 1.6;
+            margin-top: 16px;
+            font-weight: 400;
+        }
+
+        /* Details Side */
+        .service-details-block {
+            background: rgba(13, 18, 37, 0.4);
+            border: 1px solid var(--cyber-border);
+            border-radius: 16px;
+            padding: 40px;
+            backdrop-filter: blur(10px);
+            transition: all 0.4s ease;
+        }
+
+        .service-details-block:hover {
+            border-color: rgba(0, 145, 255, 0.4);
+            background: rgba(13, 18, 37, 0.6);
+            transform: translateY(-4px);
+            box-shadow: 0 20px 60px rgba(0, 145, 255, 0.1);
+        }
+
+        .service-description {
+            font-size: 1.05rem;
+            color: var(--cyber-text);
+            line-height: 1.8;
+            margin-bottom: 32px;
+        }
+
+
+        .service-features {
+            margin: 32px 0;
+        }
+
+        .service-features h4 {
+            font-size: 0.75rem;
+            text-transform: uppercase;
+            letter-spacing: 2px;
+            color: var(--cyber-primary);
+            margin-bottom: 20px;
+            font-weight: 700;
+            border-bottom: 1px solid var(--cyber-border);
+            padding-bottom: 12px;
+        }
+
+        .feature-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 12px;
+        }
+
+        .feature-list {
+            list-style: none;
+        }
+
+        .feature-list li {
+            padding: 10px 0 10px 24px;
+            position: relative;
+            font-size: 0.9rem;
+            color: var(--cyber-text);
+            line-height: 1.6;
+            opacity: 0.9;
+        }
+
+        .feature-list li::before {
+            content: '→';
+            position: absolute;
+            left: 0;
+            color: var(--cyber-primary);
+            font-weight: bold;
+        }
+
+        /* Pricing Section within Details */
+        .service-pricing {
+            background: linear-gradient(135deg, rgba(0, 145, 255, 0.05) 0%, rgba(0, 102, 204, 0.05) 100%);
+            border: 1px solid rgba(0, 145, 255, 0.2);
+            border-radius: 12px;
+            padding: 32px;
+            margin-top: 32px;
+        }
+
+        .pricing-header {
+            display: flex;
+            justify-content: space-between;
+            align-items: baseline;
+            margin-bottom: 24px;
+            padding-bottom: 20px;
+            border-bottom: 1px solid var(--cyber-border);
+            flex-wrap: wrap;
+            gap: 16px;
+        }
+
+        .pricing-label {
+            font-size: 0.9rem;
+            color: var(--cyber-muted);
+            text-transform: uppercase;
+            letter-spacing: 1px;
+            font-weight: 600;
+        }
+
+        .pricing-amount {
+            font-size: 2.5rem;
+            font-weight: 800;
+            color: var(--cyber-primary);
+            line-height: 1;
+        }
+
+        .pricing-type {
+            font-size: 0.85rem;
+            color: var(--cyber-muted);
+            text-transform: uppercase;
+            letter-spacing: 0.5px;
+            margin-top: 8px;
+        }
+
+        .pricing-options {
+            display: flex;
+            flex-direction: column;
+            gap: 12px;
+        }
+
+        .pricing-option {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 12px 16px;
+            background: rgba(0, 0, 0, 0.3);
+            border-radius: 8px;
+            border: 1px solid var(--cyber-border);
+            flex-wrap: wrap;
+            gap: 12px;
+        }
+
+        .pricing-option-label {
+            font-size: 0.9rem;
+            color: var(--cyber-text);
+            font-weight: 500;
+        }
+
+        .pricing-option-value {
+            font-size: 1.1rem;
+            color: var(--cyber-primary);
+            font-weight: 700;
+        }
+
+        .pricing-discount {
+            background: linear-gradient(135deg, rgba(0, 145, 255, 0.15) 0%, rgba(0, 102, 204, 0.15) 100%);
+            padding: 16px 20px;
+            border-radius: 8px;
+            margin-top: 16px;
+            text-align: center;
+            border: 1px solid rgba(0, 145, 255, 0.3);
+            font-size: 0.95rem;
+        }
+
+        .pricing-discount strong {
+            color: var(--cyber-primary);
+            font-size: 1.2rem;
+        }
+
+        /* Mobile Responsive */
+        @media (max-width: 968px) {
+            .service-item {
+                grid-template-columns: 1fr;
+                gap: 40px;
+            }
+
+            .service-number {
+                font-size: 5rem;
+            }
+
+            .service-title {
+                font-size: 2rem;
+            }
+
+            .service-details-block {
+                padding: 28px;
+            }
+
+            .pricing-amount {
+                font-size: 2rem;
+            }
+
+            .feature-grid {
+                grid-template-columns: 1fr;
+            }
+
+            .faq-question {
+                padding: 20px;
+            }
+
+            .faq-question h3 {
+                font-size: 1rem;
+            }
+
+            .faq-answer p {
+                padding: 0 20px 20px 20px;
+                padding-top: 16px;
+            }
+        }
+
+        /* Threat Landscape Section */
+        .threat-landscape {
+            padding: 100px 0;
+            background: var(--cyber-secondary);
+            border-top: 1px solid var(--cyber-border);
+        }
+
+        .threat-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+            gap: 24px;
+            margin-top: 60px;
+        }
+
+        .threat-card {
+            background: var(--cyber-card-bg);
+            border: 1px solid var(--cyber-border);
+            border-radius: 12px;
+            padding: 32px;
+            transition: all 0.3s ease;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .threat-card::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            height: 4px;
+            background: linear-gradient(90deg, var(--cyber-primary), var(--cyber-gradient-end));
+            transform: scaleX(0);
+            transition: transform 0.3s ease;
+        }
+
+        .threat-card:hover::before {
+            transform: scaleX(1);
+        }
+
+        .threat-card:hover {
+            border-color: rgba(0, 145, 255, 0.4);
+            transform: translateY(-4px);
+            box-shadow: 0 12px 40px rgba(0, 145, 255, 0.15);
+        }
+
+        .threat-icon {
+            width: 60px;
+            height: 60px;
+            background: rgba(0, 145, 255, 0.1);
+            border-radius: 12px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 1.8rem;
+            margin-bottom: 20px;
+        }
+
+        .threat-card h3 {
+            font-size: 1.3rem;
+            font-weight: 700;
+            margin-bottom: 12px;
+            color: var(--cyber-text);
+        }
+
+        .threat-card p {
+            color: var(--cyber-muted);
+            line-height: 1.7;
+            font-size: 0.95rem;
+        }
+
+        /* Compliance Section */
+        .compliance {
+            padding: 100px 0;
+            background: var(--cyber-dark);
+        }
+
+        .compliance-badges {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            gap: 40px;
+            flex-wrap: wrap;
+            margin-top: 60px;
+        }
+
+        .compliance-badge {
+            padding: 20px 40px;
+            background: rgba(0, 145, 255, 0.05);
+            border: 2px solid var(--cyber-border);
+            border-radius: 12px;
+            font-size: 1.1rem;
+            font-weight: 700;
+            color: var(--cyber-primary);
+            letter-spacing: 2px;
+            transition: all 0.3s ease;
+        }
+
+        .compliance-badge:hover {
+            border-color: var(--cyber-primary);
+            background: rgba(0, 145, 255, 0.1);
+            transform: translateY(-2px);
+        }
+
+        /* FAQ Section */
+        .faq-section {
+            padding: 100px 0;
+            background: var(--cyber-secondary);
+            border-top: 1px solid var(--cyber-border);
+        }
+
+        .faq-container {
+            max-width: 900px;
+            margin: 0 auto;
+            margin-top: 60px;
+        }
+
+        .faq-item {
+            background: var(--cyber-card-bg);
+            border: 1px solid var(--cyber-border);
+            border-radius: 12px;
+            margin-bottom: 16px;
+            overflow: hidden;
+            transition: all 0.3s ease;
+        }
+
+        .faq-item:hover {
+            border-color: rgba(0, 145, 255, 0.3);
+        }
+
+        .faq-question {
+            padding: 24px 28px;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            gap: 20px;
+            cursor: pointer;
+            user-select: none;
+        }
+
+        .faq-question h3 {
+            font-size: 1.15rem;
+            font-weight: 600;
+            color: var(--cyber-text);
+            margin: 0;
+            line-height: 1.5;
+        }
+
+        .faq-toggle {
+            width: 32px;
+            height: 32px;
+            border-radius: 50%;
+            background: rgba(0, 145, 255, 0.1);
+            border: 1px solid var(--cyber-border);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 1.5rem;
+            color: var(--cyber-primary);
+            transition: all 0.3s ease;
+            flex-shrink: 0;
+        }
+
+        .faq-item.active .faq-toggle {
+            transform: rotate(45deg);
+            background: var(--cyber-primary);
+            color: #ffffff;
+        }
+
+        .faq-answer {
+            max-height: 0;
+            overflow: hidden;
+            transition: max-height 0.4s ease;
+        }
+
+        .faq-item.active .faq-answer {
+            max-height: 500px;
+        }
+
+        .faq-answer p {
+            padding: 0 28px 24px 28px;
+            margin: 0;
+            color: var(--cyber-muted);
+            line-height: 1.8;
+            font-size: 1rem;
+            border-top: 1px solid var(--cyber-border);
+            padding-top: 20px;
+        }
+
+        /* CTA Section */
+        .cta-section {
+            padding: 120px 0;
+            background: linear-gradient(135deg, var(--cyber-secondary) 0%, var(--cyber-dark) 100%);
+            border-top: 1px solid var(--cyber-border);
+            text-align: center;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .cta-section::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background: radial-gradient(circle at 50% 50%, rgba(0, 145, 255, 0.1) 0%, transparent 70%);
+            pointer-events: none;
+        }
+
+        .cta-content {
+            position: relative;
+            z-index: 2;
+            max-width: 700px;
+            margin: 0 auto;
+        }
+
+        .cta-section h2 {
+            font-size: clamp(2rem, 5vw, 3rem);
+            font-weight: 700;
+            margin-bottom: 24px;
+        }
+
+        .cta-section p {
+            font-size: 1.2rem;
+            color: var(--cyber-muted);
+            margin-bottom: 40px;
+            line-height: 1.7;
+        }
+
+        /* Footer */
+        footer {
+            background: var(--cyber-dark);
+            border-top: 1px solid var(--cyber-border);
+            padding: 40px 0;
+            text-align: center;
+        }
+
+        footer p {
+            color: var(--cyber-muted);
+            font-size: 0.9rem;
+        }
+
+        /* Mobile Optimizations */
+        @media (max-width: 768px) {
+            .hero {
+                min-height: auto;
+                padding: 60px 0;
+            }
+
+            .service-list {
+                gap: 80px;
+            }
+
+            .stats-grid {
+                gap: 30px;
+            }
+
+            .threat-grid {
+                grid-template-columns: 1fr;
+            }
+
+            .pricing-header {
+                flex-direction: column;
+                align-items: flex-start;
+            }
+
+            .pricing-option {
+                flex-direction: column;
+                align-items: flex-start;
+            }
+
+            .compliance-badges {
+                gap: 20px;
+            }
+
+            .compliance-badge {
+                padding: 16px 24px;
+                font-size: 0.95rem;
+            }
+        }
+
+        /* Animations */
+        @keyframes fadeInUp {
+            from {
+                opacity: 0;
+                transform: translateY(30px);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+        .animate-in {
+            animation: fadeInUp 0.8s ease forwards;
+        }
+    </style>
 </head>
 <body>
 
-<section class="web3-wrapper">
-  <div class="container">
-    <div class="header">
-      <span class="tier-label">Decentralized Future</span>
-      <h1>Web3 & Blockchain</h1>
-      <p>Strategic advisory for the next evolution of the internet. We help you navigate decentralization, tokenomics, and smart contract architecture.</p>
-    </div>
-
-    <div class="web3-grid">
-      <div class="web3-card">
-        <div class="icon-box">🔭</div>
-        <span class="tier-label">Phase 01</span>
-        <h3>Web3 Strategy</h3>
-        <p style="color: var(--text-dim); font-size: 0.9rem;">Perfect for businesses exploring blockchain integration.</p>
-        
-        <div class="price-box">
-          <h2>$2k<span> /project</span></h2>
+    <!-- Hero Section -->
+    <section class="hero">
+        <div class="hero-grid"></div>
+        <div class="container">
+            <div class="hero-content animate-in">
+                <div class="hero-label">🛡️ Enterprise Security</div>
+                <h1>Fortify Your Digital Infrastructure</h1>
+                <p>Advanced cybersecurity solutions designed to protect your business from evolving threats. Real-time monitoring, incident response, and comprehensive security architecture.</p>
+                <div class="hero-cta">
+                    <a href="#services" class="btn btn-primary">Explore Solutions</a>
+                    <a href="#contact" class="btn btn-secondary">Schedule Audit</a>
+                </div>
+            </div>
         </div>
+    </section>
 
-        <ul class="solution-list">
-          <li>Blockchain Feasibility Study</li>
-          <li>Web3 Readiness Audit</li>
-          <li>Tokenomics Concept Design</li>
-          <li>DeFi/NFT Use-case Mapping</li>
-          <li>Regulatory Landscape Review</li>
-        </ul>
-        <a href="#" class="web3-btn">Initiate Strategy</a>
-      </div>
-
-      <div class="web3-card" style="border-color: var(--accent-purple);">
-        <div class="icon-box">⛓️</div>
-        <span class="tier-label">Phase 02</span>
-        <h3>Architecture Design</h3>
-        <p style="color: var(--text-dim); font-size: 0.9rem;">Deep technical blueprints for decentralized applications.</p>
-        
-        <div class="price-box">
-          <h2>$5k<span> /roadmap</span></h2>
+    <!-- Stats Section -->
+    <section class="stats">
+        <div class="container">
+            <div class="stats-grid">
+                <div class="stat-item">
+                    <div class="stat-number">99.9%</div>
+                    <div class="stat-label">Threat Detection</div>
+                </div>
+                <div class="stat-item">
+                    <div class="stat-number">&lt;15min</div>
+                    <div class="stat-label">Response Time</div>
+                </div>
+                <div class="stat-item">
+                    <div class="stat-number">24/7</div>
+                    <div class="stat-label">SOC Monitoring</div>
+                </div>
+                <div class="stat-item">
+                    <div class="stat-number">500+</div>
+                    <div class="stat-label">Threats Blocked Daily</div>
+                </div>
+            </div>
         </div>
+    </section>
 
-        <ul class="solution-list">
-          <li>Smart Contract Architecture</li>
-          <li>DAO Governance Structures</li>
-          <li>Layer 2 Scaling Strategy</li>
-          <li>IPFS & Decentralized Storage</li>
-          <li>Wallet Integration Flow</li>
-        </ul>
-        <a href="#" class="web3-btn" style="border-color: var(--accent-purple); background: rgba(139, 92, 246, 0.1);">Get Blueprints</a>
-      </div>
+    <!-- Services Section with Consistent Layout -->
+    <section class="services" id="services">
+        <div class="container">
+            <div class="section-header">
+                <div class="section-subtitle">Security Solutions</div>
+                <h2 class="section-title">Comprehensive Protection Packages</h2>
+                <p class="section-description">From vulnerability assessments to 24/7 managed security operations, we provide enterprise-grade protection tailored to your business needs.</p>
+            </div>
 
-      <div class="web3-card">
-        <div class="icon-box">🛡️</div>
-        <span class="tier-label">Phase 03</span>
-        <h3>Security & Launch</h3>
-        <p style="color: var(--text-dim); font-size: 0.9rem;">The gold standard for production-ready ecosystems.</p>
-        
-        <div class="price-box">
-          <h2>Custom</h2>
+            <div class="service-list">
+                
+                <!-- Service 1: Penetration Testing -->
+                <div class="service-item">
+                    <div class="service-name-block">
+                        <div class="service-number">01</div>
+                        <div class="service-icon">⚔️</div>
+                        <h3 class="service-title">Advanced Penetration Testing</h3>
+                        <p class="service-tagline">Comprehensive ethical hacking to identify vulnerabilities before attackers do</p>
+                    </div>
+
+                    <div class="service-details-block">
+                        <p class="service-description">Our certified ethical hackers simulate real-world attack scenarios to uncover security weaknesses in your network, applications, and infrastructure. Receive detailed reports with actionable remediation strategies and priority rankings.</p>
+                        
+                        <div class="service-features">
+                            <h4>What's Included</h4>
+                            <ul class="feature-list">
+                                <li>External & internal network penetration testing</li>
+                                <li>Web application vulnerability scanning</li>
+                                <li>API security testing</li>
+                                <li>Social engineering simulations</li>
+                                <li>Wireless network security audit</li>
+                                <li>Cloud infrastructure testing (AWS/Azure/GCP)</li>
+                                <li>Detailed vulnerability report with CVSS scores</li>
+                                <li>Executive summary and technical documentation</li>
+                                <li>Remediation roadmap and follow-up retest</li>
+                            </ul>
+                        </div>
+
+                        <div class="service-pricing">
+                            <div class="pricing-header">
+                                <div>
+                                    <div class="pricing-label">One-time Assessment</div>
+                                    <div class="pricing-type">Complete audit cycle</div>
+                                </div>
+                                <div class="pricing-amount">R85,000</div>
+                            </div>
+                            <div class="pricing-options">
+                                <div class="pricing-option">
+                                    <span class="pricing-option-label">Installment Plan</span>
+                                    <span class="pricing-option-value">R3,750/month × 24</span>
+                                </div>
+                            </div>
+                            <div class="pricing-discount">
+                                Save <strong>12%</strong> with full upfront payment: <strong>R74,800</strong>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Service 2: Managed SOC -->
+                <div class="service-item">
+                    <div class="service-name-block">
+                        <div class="service-number">02</div>
+                        <div class="service-icon">👁️</div>
+                        <h3 class="service-title">24/7 Managed SOC</h3>
+                        <p class="service-tagline">Round-the-clock threat monitoring, detection, and incident response</p>
+                    </div>
+
+                    <div class="service-details-block">
+                        <p class="service-description">Our Security Operations Center provides continuous monitoring of your IT infrastructure with real-time threat detection, automated response capabilities, and expert security analysts available 24/7/365.</p>
+                        
+                        <div class="service-features">
+                            <h4>What's Included</h4>
+                            <ul class="feature-list">
+                                <li>24/7/365 security monitoring and alerting</li>
+                                <li>Advanced SIEM (Security Information & Event Management)</li>
+                                <li>Threat intelligence integration</li>
+                                <li>Real-time anomaly detection and behavioral analysis</li>
+                                <li>Incident response and forensic investigation</li>
+                                <li>Log management and correlation (up to 50GB/day)</li>
+                                <li>Monthly threat reports and security posture analysis</li>
+                                <li>Compliance reporting (ISO, GDPR, PCI-DSS)</li>
+                                <li>Dedicated security analyst team</li>
+                                <li>Annual penetration test included</li>
+                            </ul>
+                        </div>
+
+                        <div class="service-pricing">
+                            <div class="pricing-header">
+                                <div>
+                                    <div class="pricing-label">Monthly Subscription</div>
+                                    <div class="pricing-type">Per month, billed monthly</div>
+                                </div>
+                                <div class="pricing-amount">R45,000</div>
+                            </div>
+                            <div class="pricing-options">
+                                <div class="pricing-option">
+                                    <span class="pricing-option-label">Quarterly Payment</span>
+                                    <span class="pricing-option-value">R129,600 (R43,200/mo)</span>
+                                </div>
+                            </div>
+                            <div class="pricing-discount">
+                                Save <strong>20%</strong> with annual commitment: <strong>R36,000/month</strong>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Service 3: Vulnerability Assessment -->
+                <div class="service-item">
+                    <div class="service-name-block">
+                        <div class="service-number">03</div>
+                        <div class="service-icon">🔍</div>
+                        <h3 class="service-title">Vulnerability Assessment & Management</h3>
+                        <p class="service-tagline">Continuous scanning and prioritized remediation of security weaknesses</p>
+                    </div>
+
+                    <div class="service-details-block">
+                        <p class="service-description">Stay ahead of threats with automated vulnerability scanning, risk assessment, and patch management. Our platform continuously scans your infrastructure, prioritizes vulnerabilities by severity, and provides guided remediation steps.</p>
+                        
+                        <div class="service-features">
+                            <h4>What's Included</h4>
+                            <ul class="feature-list">
+                                <li>Weekly automated vulnerability scanning</li>
+                                <li>Network, application, and database scanning</li>
+                                <li>Risk-based vulnerability prioritization</li>
+                                <li>Patch management and tracking</li>
+                                <li>Compliance scanning (PCI-DSS, HIPAA, ISO 27001)</li>
+                                <li>Integration with existing security tools</li>
+                                <li>Trend analysis and historical reporting</li>
+                                <li>Remediation verification testing</li>
+                                <li>Monthly executive dashboards</li>
+                                <li>Unlimited on-demand scans</li>
+                            </ul>
+                        </div>
+
+                        <div class="service-pricing">
+                            <div class="pricing-header">
+                                <div>
+                                    <div class="pricing-label">Monthly Subscription</div>
+                                    <div class="pricing-type">Up to 50 assets</div>
+                                </div>
+                                <div class="pricing-amount">R12,500/mo</div>
+                            </div>
+                            <div class="pricing-options">
+                                <div class="pricing-option">
+                                    <span class="pricing-option-label">Annual Prepayment</span>
+                                    <span class="pricing-option-value">R135,000 (R11,250/mo)</span>
+                                </div>
+                            </div>
+                            <div class="pricing-discount">
+                                Save <strong>10%</strong> with annual commitment
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Service 4: Security Awareness Training -->
+                <div class="service-item">
+                    <div class="service-name-block">
+                        <div class="service-number">04</div>
+                        <div class="service-icon">🎓</div>
+                        <h3 class="service-title">Security Awareness Training</h3>
+                        <p class="service-tagline">Transform your employees into your strongest defense layer</p>
+                    </div>
+
+                    <div class="service-details-block">
+                        <p class="service-description">Human error remains the leading cause of security breaches. Our comprehensive training program educates your team on security best practices, threat awareness, and safe computing habits through engaging content and realistic simulations.</p>
+                        
+                        <div class="service-features">
+                            <h4>What's Included</h4>
+                            <ul class="feature-list">
+                                <li>Customized security awareness curriculum</li>
+                                <li>Interactive e-learning modules (25+ topics)</li>
+                                <li>Monthly phishing simulation campaigns</li>
+                                <li>Real-time phishing attempt reporting and tracking</li>
+                                <li>Social engineering awareness training</li>
+                                <li>Password security and credential hygiene</li>
+                                <li>Mobile device and BYOD security training</li>
+                                <li>Data handling and classification modules</li>
+                                <li>Ransomware and malware awareness</li>
+                                <li>Incident reporting procedures training</li>
+                                <li>Gamification, leaderboards, and rewards</li>
+                                <li>Quarterly live training webinars</li>
+                                <li>Completion certificates and compliance tracking</li>
+                            </ul>
+                        </div>
+
+                        <div class="service-pricing">
+                            <div class="pricing-header">
+                                <div>
+                                    <div class="pricing-label">Per User, Annually</div>
+                                    <div class="pricing-type">Minimum 25 users</div>
+                                </div>
+                                <div class="pricing-amount">R350</div>
+                            </div>
+                            <div class="pricing-options">
+                                <div class="pricing-option">
+                                    <span class="pricing-option-label">50-100 Users</span>
+                                    <span class="pricing-option-value">R300/user/year</span>
+                                </div>
+                                <div class="pricing-option">
+                                    <span class="pricing-option-label">100+ Users</span>
+                                    <span class="pricing-option-value">R280/user/year</span>
+                                </div>
+                            </div>
+                            <div class="pricing-discount">
+                                Save <strong>25%</strong> with 3-year commitment: <strong>R262/user/year</strong>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Service 5: Startup Security Package -->
+                <div class="service-item">
+                    <div class="service-name-block">
+                        <div class="service-number">05</div>
+                        <div class="service-icon">🚀</div>
+                        <h3 class="service-title">Startup Security Essentials</h3>
+                        <p class="service-tagline">Affordable, comprehensive security foundation for growing businesses</p>
+                    </div>
+
+                    <div class="service-details-block">
+                        <p class="service-description">Built specifically for startups and small businesses, this package provides essential security controls without breaking the bank. Get enterprise-grade protection scaled to your needs and budget as you grow.</p>
+                        
+                        <div class="service-features">
+                            <h4>What's Included</h4>
+                            <ul class="feature-list">
+                                <li>Security posture assessment and gap analysis</li>
+                                <li>Essential security policy documentation templates</li>
+                                <li>Endpoint protection deployment (up to 25 devices)</li>
+                                <li>Cloud security configuration (AWS/Azure/GCP)</li>
+                                <li>Email security and anti-phishing setup</li>
+                                <li>Multi-factor authentication (MFA) implementation</li>
+                                <li>Basic network firewall configuration</li>
+                                <li>Data backup and recovery planning</li>
+                                <li>Security awareness training for all employees</li>
+                                <li>Quarterly security reviews and updates</li>
+                                <li>Incident response playbook</li>
+                                <li>3 months of ongoing support</li>
+                            </ul>
+                        </div>
+
+                        <div class="service-pricing">
+                            <div class="pricing-header">
+                                <div>
+                                    <div class="pricing-label">Complete Setup Package</div>
+                                    <div class="pricing-type">One-time implementation</div>
+                                </div>
+                                <div class="pricing-amount">R35,000</div>
+                            </div>
+                            <div class="pricing-options">
+                                <div class="pricing-option">
+                                    <span class="pricing-option-label">Installment Plan</span>
+                                    <span class="pricing-option-value">R1,600/month × 24</span>
+                                </div>
+                                <div class="pricing-option">
+                                    <span class="pricing-option-label">Monthly Maintenance (Optional)</span>
+                                    <span class="pricing-option-value">R4,500/month</span>
+                                </div>
+                            </div>
+                            <div class="pricing-discount">
+                                Save <strong>15%</strong> with annual maintenance commitment: <strong>R29,750 setup</strong>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Service 6: Incident Response -->
+                <div class="service-item">
+                    <div class="service-name-block">
+                        <div class="service-number">06</div>
+                        <div class="service-icon">🚨</div>
+                        <h3 class="service-title">Emergency Incident Response</h3>
+                        <p class="service-tagline">Rapid containment, investigation, and recovery from security breaches</p>
+                    </div>
+
+                    <div class="service-details-block">
+                        <p class="service-description">When a security incident occurs, every minute counts. Our rapid response team deploys immediately to contain threats, preserve evidence, conduct forensic analysis, and restore operations while minimizing business impact.</p>
+                        
+                        <div class="service-features">
+                            <h4>What's Included</h4>
+                            <ul class="feature-list">
+                                <li>Immediate incident triage and containment (&lt;15min response)</li>
+                                <li>Digital forensics and evidence preservation</li>
+                                <li>Malware analysis and reverse engineering</li>
+                                <li>Root cause analysis and attack timeline</li>
+                                <li>Data breach assessment and impact analysis</li>
+                                <li>Threat actor identification and attribution</li>
+                                <li>Recovery and remediation strategy</li>
+                                <li>Legal and regulatory compliance support</li>
+                                <li>Post-incident security hardening</li>
+                                <li>Comprehensive incident report</li>
+                            </ul>
+                        </div>
+
+                        <div class="service-pricing">
+                            <div class="pricing-header">
+                                <div>
+                                    <div class="pricing-label">Monthly Retainer</div>
+                                    <div class="pricing-type">Guaranteed availability + discounted rates</div>
+                                </div>
+                                <div class="pricing-amount">R25,000</div>
+                            </div>
+                            <div class="pricing-options">
+                                <div class="pricing-option">
+                                    <span class="pricing-option-label">Per-Incident (No Retainer)</span>
+                                    <span class="pricing-option-value">R120,000+</span>
+                                </div>
+                                <div class="pricing-option">
+                                    <span class="pricing-option-label">Installment Option</span>
+                                    <span class="pricing-option-value">R5,500/month × 24</span>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Service 7: Security Architecture -->
+                <div class="service-item">
+                    <div class="service-name-block">
+                        <div class="service-number">07</div>
+                        <div class="service-icon">🏗️</div>
+                        <h3 class="service-title">Security Architecture Design</h3>
+                        <p class="service-tagline">Build security into your infrastructure from the ground up</p>
+                    </div>
+
+                    <div class="service-details-block">
+                        <p class="service-description">Design and implement a comprehensive security architecture tailored to your business requirements. From zero-trust networks to multi-cloud security, we build resilient systems that protect your most critical assets.</p>
+                        
+                        <div class="service-features">
+                            <h4>What's Included</h4>
+                            <ul class="feature-list">
+                                <li>Security architecture assessment and gap analysis</li>
+                                <li>Zero-trust network architecture design</li>
+                                <li>Multi-cloud security strategy (AWS/Azure/GCP)</li>
+                                <li>Identity and access management (IAM) framework</li>
+                                <li>Network segmentation and micro-segmentation</li>
+                                <li>Data encryption strategy (at rest and in transit)</li>
+                                <li>Endpoint protection and EDR deployment</li>
+                                <li>Firewall and IDS/IPS configuration</li>
+                                <li>Security automation and orchestration (SOAR)</li>
+                                <li>6 months of post-implementation support</li>
+                            </ul>
+                        </div>
+
+                        <div class="service-pricing">
+                            <div class="pricing-header">
+                                <div>
+                                    <div class="pricing-label">Complete Architecture Project</div>
+                                    <div class="pricing-type">Design + implementation + support</div>
+                                </div>
+                                <div class="pricing-amount">R180,000</div>
+                            </div>
+                            <div class="pricing-options">
+                                <div class="pricing-option">
+                                    <span class="pricing-option-label">Installment Plan</span>
+                                    <span class="pricing-option-value">R8,000/month × 24</span>
+                                </div>
+                            </div>
+                            <div class="pricing-discount">
+                                Save <strong>15%</strong> with full upfront payment: <strong>R153,000</strong>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Service 8: Compliance Management -->
+                <div class="service-item">
+                    <div class="service-name-block">
+                        <div class="service-number">08</div>
+                        <div class="service-icon">📋</div>
+                        <h3 class="service-title">Compliance & Governance</h3>
+                        <p class="service-tagline">Achieve and maintain regulatory compliance effortlessly</p>
+                    </div>
+
+                    <div class="service-details-block">
+                        <p class="service-description">Navigate complex regulatory requirements with confidence. We help you achieve and maintain compliance with industry standards including ISO 27001, PCI-DSS, GDPR, HIPAA, and POPIA while building a sustainable governance framework.</p>
+                        
+                        <div class="service-features">
+                            <h4>What's Included</h4>
+                            <ul class="feature-list">
+                                <li>Compliance gap analysis and readiness assessment</li>
+                                <li>Policy and procedure development</li>
+                                <li>Risk assessment and risk register management</li>
+                                <li>Security controls implementation (ISO 27001/27002)</li>
+                                <li>Data protection and privacy program (GDPR/POPIA)</li>
+                                <li>PCI-DSS certification support</li>
+                                <li>Security awareness training program</li>
+                                <li>Internal audit preparation and support</li>
+                                <li>Continuous compliance monitoring</li>
+                                <li>Annual compliance reporting</li>
+                            </ul>
+                        </div>
+
+                        <div class="service-pricing">
+                            <div class="pricing-header">
+                                <div>
+                                    <div class="pricing-label">Initial Certification Project</div>
+                                    <div class="pricing-type">Gap analysis + implementation</div>
+                                </div>
+                                <div class="pricing-amount">R95,000</div>
+                            </div>
+                            <div class="pricing-options">
+                                <div class="pricing-option">
+                                    <span class="pricing-option-label">Installment Plan</span>
+                                    <span class="pricing-option-value">R4,200/month × 24</span>
+                                </div>
+                                <div class="pricing-option">
+                                    <span class="pricing-option-label">Ongoing Management</span>
+                                    <span class="pricing-option-value">R18,000/month</span>
+                                </div>
+                            </div>
+                            <div class="pricing-discount">
+                                Save <strong>10%</strong> on initial project with annual management commitment
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+            </div>
         </div>
+    </section>
+    <!-- Threat Landscape Section -->
+    <section class="threat-landscape">
+        <div class="container">
+            <div class="section-header">
+                <div class="section-subtitle">Threat Intelligence</div>
+                <h2 class="section-title">What We Protect You Against</h2>
+                <p class="section-description">Modern cyber threats are sophisticated and constantly evolving. Our multi-layered approach defends against the full spectrum of attack vectors.</p>
+            </div>
 
-        <ul class="solution-list">
-          <li>Smart Contract Code Audit</li>
-          <li>Mainnet Launch Orchestration</li>
-          <li>Vulnerability Stress Testing</li>
-          <li>Liquidity Management Strategy</li>
-          <li>Post-Launch Ecosystem Advisory</li>
-        </ul>
-        <a href="#" class="web3-btn">Request Audit</a>
-      </div>
-    </div>
+            <div class="threat-grid">
+                <div class="threat-card">
+                    <div class="threat-icon">🎣</div>
+                    <h3>Phishing & Social Engineering</h3>
+                    <p>Advanced email filtering, URL analysis, and user awareness training to prevent credential theft and business email compromise attacks.</p>
+                </div>
+                <div class="threat-card">
+                    <div class="threat-icon">🔐</div>
+                    <h3>Ransomware</h3>
+                    <p>Behavioral detection, endpoint isolation, and automated backup systems to prevent encryption attacks and data extortion.</p>
+                </div>
+                <div class="threat-card">
+                    <div class="threat-icon">🌐</div>
+                    <h3>DDoS Attacks</h3>
+                    <p>Traffic analysis, rate limiting, and cloud-based mitigation to maintain availability during distributed denial of service attacks.</p>
+                </div>
+                <div class="threat-card">
+                    <div class="threat-icon">💉</div>
+                    <h3>Zero-Day Exploits</h3>
+                    <p>Threat intelligence feeds, virtual patching, and behavioral analysis to protect against unknown vulnerabilities.</p>
+                </div>
+                <div class="threat-card">
+                    <div class="threat-icon">👤</div>
+                    <h3>Insider Threats</h3>
+                    <p>User behavior analytics, privilege management, and data loss prevention to detect malicious or negligent internal actors.</p>
+                </div>
+                <div class="threat-card">
+                    <div class="threat-icon">☁️</div>
+                    <h3>Cloud Misconfigurations</h3>
+                    <p>Continuous compliance monitoring, automated remediation, and security posture management for cloud infrastructure.</p>
+                </div>
+            </div>
+        </div>
+    </section>
 
-    <div class="products-section">
-      <h3 style="margin-bottom: 20px; font-family: 'Space Grotesk';">Our Core Solutions</h3>
-      <div class="product-pill">Ethereum / L2</div>
-      <div class="product-pill">Solana Ecosystem</div>
-      <div class="product-pill">DeFi Protocols</div>
-      <div class="product-pill">RWA Tokenization</div>
-      <div class="product-pill">Private Ledgers</div>
-      <div class="product-pill">Smart Contract Security</div>
-      <div class="product-pill">Cross-chain Bridges</div>
-      <div class="product-pill">Governance Tokens</div>
-    </div>
-  </div>
-</section>
+    <!-- Compliance Section -->
+    <section class="compliance">
+        <div class="container">
+            <div class="section-header">
+                <div class="section-subtitle">Regulatory Compliance</div>
+                <h2 class="section-title">Industry-Leading Certifications</h2>
+                <p class="section-description">Our team maintains the highest industry certifications and helps you achieve compliance with global security standards.</p>
+            </div>
+
+            <div class="compliance-badges">
+                <div class="compliance-badge">ISO 27001</div>
+                <div class="compliance-badge">PCI-DSS</div>
+                <div class="compliance-badge">SOC 2</div>
+                <div class="compliance-badge">GDPR</div>
+                <div class="compliance-badge">POPIA</div>
+                <div class="compliance-badge">NIST CSF</div>
+            </div>
+        </div>
+    </section>
+
+    <!-- FAQ Section -->
+    <section class="faq-section">
+        <div class="container">
+            <div class="section-header">
+                <div class="section-subtitle">Common Questions</div>
+                <h2 class="section-title">Frequently Asked Questions</h2>
+                <p class="section-description">Get answers to the most common questions about our cybersecurity services and solutions.</p>
+            </div>
+
+            <div class="faq-container">
+                <div class="faq-item">
+                    <div class="faq-question">
+                        <h3>How quickly can you respond to a security incident?</h3>
+                        <span class="faq-toggle">+</span>
+                    </div>
+                    <div class="faq-answer">
+                        <p>Our incident response team provides a guaranteed response time of under 15 minutes for retainer clients. For non-retainer emergency incidents, we typically respond within 1-2 hours. Our 24/7 SOC monitoring clients receive immediate automated alerts and human analyst review within minutes of threat detection.</p>
+                    </div>
+                </div>
+
+                <div class="faq-item">
+                    <div class="faq-question">
+                        <h3>What's the difference between penetration testing and vulnerability assessment?</h3>
+                        <span class="faq-toggle">+</span>
+                    </div>
+                    <div class="faq-answer">
+                        <p>Vulnerability assessments use automated scanning tools to identify known security weaknesses in your systems and provide a comprehensive list of vulnerabilities. Penetration testing goes deeper - our ethical hackers actively attempt to exploit vulnerabilities to gain unauthorized access, simulating real-world attacks. We recommend quarterly vulnerability assessments with annual penetration testing for comprehensive coverage.</p>
+                    </div>
+                </div>
+
+                <div class="faq-item">
+                    <div class="faq-question">
+                        <h3>Do you offer month-to-month contracts or require long-term commitments?</h3>
+                        <span class="faq-toggle">+</span>
+                    </div>
+                    <div class="faq-answer">
+                        <p>We offer flexible options. Most of our managed services (SOC, vulnerability management) are available on month-to-month contracts with no long-term commitment required. However, we provide significant discounts (10-20%) for annual commitments. Project-based services like penetration testing and architecture design are one-time engagements with optional installment payment plans.</p>
+                    </div>
+                </div>
+
+                <div class="faq-item">
+                    <div class="faq-question">
+                        <h3>What industries do you specialize in?</h3>
+                        <span class="faq-toggle">+</span>
+                    </div>
+                    <div class="faq-answer">
+                        <p>We serve clients across multiple industries including financial services, healthcare, e-commerce, technology startups, manufacturing, and professional services. Our team has deep expertise in industry-specific compliance requirements like PCI-DSS for payment processors, HIPAA for healthcare, POPIA for South African businesses, and GDPR for companies with EU customers.</p>
+                    </div>
+                </div>
+
+                <div class="faq-item">
+                    <div class="faq-question">
+                        <h3>Can you help us achieve ISO 27001 certification?</h3>
+                        <span class="faq-toggle">+</span>
+                    </div>
+                    <div class="faq-answer">
+                        <p>Yes, our Compliance & Governance service is specifically designed to help organizations achieve ISO 27001, PCI-DSS, SOC 2, and other certifications. We conduct gap analyses, implement required controls, develop documentation, and prepare you for third-party audits. The process typically takes 6-12 months depending on your current security posture.</p>
+                    </div>
+                </div>
+
+                <div class="faq-item">
+                    <div class="faq-question">
+                        <h3>What makes your security awareness training effective?</h3>
+                        <span class="faq-toggle">+</span>
+                    </div>
+                    <div class="faq-answer">
+                        <p>Our training combines interactive microlearning modules with real-world phishing simulations. Rather than boring annual training sessions, employees receive engaging 5-10 minute lessons monthly, followed by simulated phishing attacks to test retention. We track metrics like click rates and reporting speed, and provide personalized feedback. Gamification and leaderboards drive engagement and friendly competition.</p>
+                    </div>
+                </div>
+
+                <div class="faq-item">
+                    <div class="faq-question">
+                        <h3>Is the Startup Security Essentials package suitable for established businesses?</h3>
+                        <span class="faq-toggle">+</span>
+                    </div>
+                    <div class="faq-answer">
+                        <p>The Startup Security Essentials package is optimized for companies with 5-50 employees and limited IT infrastructure. If you're an established business with more complex needs, we recommend starting with a security posture assessment to determine the right mix of services. Many of our enterprise clients started with the startup package and scaled up as they grew.</p>
+                    </div>
+                </div>
+
+                <div class="faq-item">
+                    <div class="faq-question">
+                        <h3>Do you provide cyber insurance support?</h3>
+                        <span class="faq-toggle">+</span>
+                    </div>
+                    <div class="faq-answer">
+                        <p>Yes, we regularly assist clients with cyber insurance applications and renewals. Many insurers now require security assessments, penetration testing reports, and proof of security controls before underwriting policies. Our documentation meets insurer requirements and we can work directly with your insurance provider to demonstrate your security posture.</p>
+                    </div>
+                </div>
+
+                <div class="faq-item">
+                    <div class="faq-question">
+                        <h3>What happens if we experience a breach while under your protection?</h3>
+                        <span class="faq-toggle">+</span>
+                    </div>
+                    <div class="faq-answer">
+                        <p>Our SOC and managed services are designed to prevent, detect, and respond to threats in real-time. In the unlikely event of a successful breach, our incident response team immediately activates to contain the threat, minimize damage, and restore operations. For managed SOC clients, this response is included at no additional cost. We also provide detailed forensic analysis and work with you to prevent recurrence.</p>
+                    </div>
+                </div>
+
+                <div class="faq-item">
+                    <div class="faq-question">
+                        <h3>Can you integrate with our existing security tools?</h3>
+                        <span class="faq-toggle">+</span>
+                    </div>
+                    <div class="faq-answer">
+                        <p>Absolutely. Our platform integrates with hundreds of security tools including firewalls, endpoint protection, cloud security platforms, ticketing systems, and SIEM solutions. We believe in enhancing your existing investments rather than requiring complete replacement. During onboarding, we audit your current tools and design an integration strategy that maximizes visibility and automation.</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- CTA Section -->
+    <section class="cta-section" id="contact">
+        <div class="container">
+            <div class="cta-content">
+                <h2>Ready to Strengthen Your Security Posture?</h2>
+                <p>Let's discuss your security needs and build a customized protection strategy. Schedule a free consultation with our security experts today.</p>
+                <div class="hero-cta">
+                    <a href="#" class="btn btn-primary">Schedule Free Consultation</a>
+                    <a href="#" class="btn btn-secondary">Download Security Guide</a>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer>
+        <div class="container">
+            <p>&copy; 2025 Defcon Cybersecurity Solutions. All rights reserved. | Protecting businesses from digital threats.</p>
+        </div>
+    </footer>
+
+    <script>
+        // Smooth scroll for anchor links
+        document.addEventListener('DOMContentLoaded', () => {
+            document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+                anchor.addEventListener('click', function (e) {
+                    e.preventDefault();
+                    const target = document.querySelector(this.getAttribute('href'));
+                    if (target) {
+                        target.scrollIntoView({
+                            behavior: 'smooth',
+                            block: 'start'
+                        });
+                    }
+                });
+            });
+
+            // FAQ Accordion Functionality
+            const faqItems = document.querySelectorAll('.faq-item');
+
+            faqItems.forEach(item => {
+                const question = item.querySelector('.faq-question');
+                
+                question.addEventListener('click', () => {
+                    // Close all other items
+                    faqItems.forEach(otherItem => {
+                        if (otherItem !== item && otherItem.classList.contains('active')) {
+                            otherItem.classList.remove('active');
+                        }
+                    });
+
+                    // Toggle current item
+                    item.classList.toggle('active');
+                });
+            });
+        });
+    </script>
 
 </body>
 </html>
-
-
-
-
-
-
-
-
-
-
 
 
 

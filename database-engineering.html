@@ -348,22 +348,596 @@
 
 
 
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+    <title>Defcon Database Engineering | Advanced Architecture</title>
+    
+    <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
+    
+    <style>
+        :root {
+            --db-dark: #0f172a;
+            --db-slate: #475569;
+            --db-border: #e2e8f0;
+            --db-bg-light: #f8fafc;
+            --font-main: 'Plus Jakarta Sans', sans-serif;
+        }
 
+        body {
+            font-family: var(--font-main);
+            background-color: #ffffff;
+            color: var(--db-dark);
+            margin: 0;
+            padding: 0;
+            -webkit-font-smoothing: antialiased;
+        }
 
+        /* Engineering Grid Background */
+        .blueprint-bg {
+            background-image: 
+                radial-gradient(var(--db-border) 1px, transparent 1px),
+                linear-gradient(to bottom, #fcfcfc, #ffffff);
+            background-size: 30px 30px;
+        }
 
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 24px;
+        }
 
+        /* --- Header --- */
+        .hero {
+            padding: 100px 0 60px;
+            text-align: center;
+        }
 
+        .hero h1 {
+            font-size: clamp(2.5rem, 5vw, 3.5rem);
+            font-weight: 800;
+            letter-spacing: -0.03em;
+            margin-bottom: 16px;
+            color: var(--db-dark);
+        }
 
+        .hero p {
+            font-size: 1.15rem;
+            color: var(--db-slate);
+            max-width: 650px;
+            margin: 0 auto;
+            line-height: 1.6;
+        }
 
+        /* --- The Engineering Strip --- */
+        .product-strip {
+            display: flex;
+            background: #ffffff;
+            border: 1px solid var(--db-border);
+            border-radius: 12px;
+            margin-bottom: 24px;
+            transition: transform 0.2s ease, box-shadow 0.2s ease;
+            overflow: hidden;
+            align-items: stretch;
+            box-shadow: 0 4px 6px rgba(0,0,0,0.02);
+        }
 
+        .product-strip:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 20px 40px rgba(0,0,0,0.06);
+            border-color: var(--db-dark);
+        }
 
+        /* 1. Brand Area */
+        .strip-brand {
+            padding: 40px;
+            flex: 0 0 220px;
+            background-color: #ffffff;
+            border-right: 1px solid var(--db-border);
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+        }
 
+        .strip-brand h3 {
+            font-size: 1.4rem;
+            margin: 0 0 8px 0;
+            font-weight: 700;
+            letter-spacing: -0.02em;
+        }
 
+        .badge {
+            font-size: 0.75rem;
+            text-transform: uppercase;
+            letter-spacing: 0.05em;
+            font-weight: 700;
+            color: var(--db-dark);
+            margin-bottom: 12px;
+            display: inline-block;
+            background: var(--db-border);
+            padding: 4px 10px;
+            border-radius: 6px;
+            width: fit-content;
+        }
 
+        /* 2. Content Area (Specs + Infra) */
+        .strip-content {
+            flex: 1;
+            padding: 40px;
+            display: grid;
+            grid-template-columns: 1.2fr 0.8fr;
+            gap: 40px;
+            border-right: 1px solid var(--db-border);
+        }
 
+        /* Specs Section */
+        .section-label {
+            font-size: 0.75rem;
+            text-transform: uppercase;
+            letter-spacing: 0.05em;
+            font-weight: 700;
+            color: var(--db-slate);
+            margin-bottom: 16px;
+        }
 
+        .spec-list {
+            display: flex;
+            flex-direction: column;
+            gap: 14px;
+        }
 
+        .spec-item {
+            display: flex;
+            align-items: flex-start;
+            gap: 12px;
+        }
 
+        .check-icon {
+            width: 18px;
+            height: 18px;
+            flex-shrink: 0;
+            margin-top: 2px;
+            color: var(--db-dark);
+        }
+
+        .spec-text {
+            font-size: 0.95rem;
+            line-height: 1.4;
+            color: var(--db-dark);
+            font-weight: 500;
+        }
+
+        /* Infra Section */
+        .infra-box {
+            background: var(--db-bg-light);
+            border: 1px solid var(--db-border);
+            border-radius: 8px;
+            padding: 20px;
+            display: flex;
+            flex-direction: column;
+            gap: 12px;
+        }
+
+        .infra-item {
+            display: flex;
+            flex-direction: column;
+            gap: 2px;
+        }
+
+        .infra-label {
+            font-size: 0.7rem;
+            text-transform: uppercase;
+            letter-spacing: 0.05em;
+            font-weight: 700;
+            color: var(--db-slate);
+        }
+
+        .infra-value {
+            font-size: 0.9rem;
+            font-weight: 600;
+            color: var(--db-dark);
+        }
+
+        /* 3. Pricing & CTA */
+        .strip-pricing {
+            padding: 40px;
+            flex: 0 0 240px;
+            text-align: right;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: flex-end;
+            background: #ffffff;
+        }
+
+        .price-tag {
+            font-size: 2rem;
+            font-weight: 800;
+            color: var(--db-dark);
+            letter-spacing: -0.03em;
+        }
+
+        .price-sub {
+            font-size: 0.85rem;
+            color: var(--db-slate);
+            margin-bottom: 24px;
+        }
+
+        .cta-btn {
+            background-color: var(--db-dark);
+            color: #fff;
+            padding: 14px 24px;
+            border-radius: 8px;
+            text-decoration: none;
+            font-weight: 600;
+            font-size: 0.95rem;
+            transition: background 0.2s;
+            width: 100%;
+            text-align: center;
+            box-sizing: border-box;
+        }
+
+        .cta-btn:hover {
+            background-color: #000000;
+        }
+
+        .installment {
+            font-size: 0.8rem;
+            color: var(--db-slate);
+            margin-top: 12px;
+            font-weight: 500;
+        }
+
+        /* --- Mobile Responsiveness --- */
+        @media (max-width: 1024px) {
+            .strip-content {
+                grid-template-columns: 1fr;
+                gap: 30px;
+            }
+        }
+
+        @media (max-width: 768px) {
+            .product-strip {
+                flex-direction: column;
+            }
+
+            .strip-brand, .strip-content, .strip-pricing {
+                border-right: none;
+                flex: auto;
+            }
+
+            .strip-brand {
+                border-bottom: 1px solid var(--db-border);
+                padding: 30px;
+            }
+
+            .strip-content {
+                padding: 30px;
+                border-bottom: 1px solid var(--db-border);
+            }
+
+            .strip-pricing {
+                text-align: left;
+                align-items: flex-start;
+                padding: 30px;
+            }
+            
+            .cta-btn {
+                width: 100%;
+            }
+        }
+    </style>
+</head>
+<body class="blueprint-bg">
+
+    <header class="hero">
+        <div class="container">
+            <span class="badge" style="background: var(--db-border);">Infrastructure & Engineering</span>
+            <h1>High-Performance <br>Database Architecture.</h1>
+            <p>Fully managed, resilient data foundations tailored for your scale. From solo innovators to enterprise operations.</p>
+        </div>
+    </header>
+
+    <section class="container">
+        
+        <div class="product-strip">
+            <div class="strip-brand">
+                <span class="badge">Solo / Dev</span>
+                <h3>Sandbox Instance</h3>
+            </div>
+            
+            <div class="strip-content">
+                <div class="specs-wrapper">
+                    <div class="section-label">Engineering Specs</div>
+                    <div class="spec-list">
+                        <div class="spec-item">
+                            <svg class="check-icon" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2.5" d="M5 13l4 4L19 7"></path></svg>
+                            <div class="spec-text">Serverless Architecture Setup</div>
+                        </div>
+                        <div class="spec-item">
+                            <svg class="check-icon" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2.5" d="M5 13l4 4L19 7"></path></svg>
+                            <div class="spec-text">Data Migration from Excel/CSV (Up to 100MB)</div>
+                        </div>
+                        <div class="spec-item">
+                            <svg class="check-icon" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2.5" d="M5 13l4 4L19 7"></path></svg>
+                            <div class="spec-text">Basic Schema Normalization</div>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="infra-wrapper">
+                    <div class="section-label">Core Infrastructure</div>
+                    <div class="infra-box">
+                        <div class="infra-item"><span class="infra-label">Engine</span><span class="infra-value">Serverless PostgreSQL</span></div>
+                        <div class="infra-item"><span class="infra-label">Backup</span><span class="infra-value">Daily Automated Dumps</span></div>
+                        <div class="infra-item"><span class="infra-label">Security</span><span class="infra-value">Standard SSL / TLS</span></div>
+                        <div class="infra-item"><span class="infra-label">Scale</span><span class="infra-value">Up to 10,000 Records</span></div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="strip-pricing">
+                <div class="price-tag">R 950</div>
+                <div class="price-sub">One-Time Setup</div>
+                <a href="#" class="cta-btn">Initialize Sandbox</a>
+                <div class="installment">or R45 p/m (24 months)</div>
+            </div>
+        </div>
+
+        <div class="product-strip">
+            <div class="strip-brand">
+                <span class="badge">Startup</span>
+                <h3>Micro Cluster</h3>
+            </div>
+            
+            <div class="strip-content">
+                <div class="specs-wrapper">
+                    <div class="section-label">Engineering Specs</div>
+                    <div class="spec-list">
+                        <div class="spec-item">
+                            <svg class="check-icon" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2.5" d="M5 13l4 4L19 7"></path></svg>
+                            <div class="spec-text">Dedicated Primary Node Provisioning</div>
+                        </div>
+                        <div class="spec-item">
+                            <svg class="check-icon" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2.5" d="M5 13l4 4L19 7"></path></svg>
+                            <div class="spec-text">Data Migration from Legacy Systems (Up to 500MB)</div>
+                        </div>
+                        <div class="spec-item">
+                            <svg class="check-icon" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2.5" d="M5 13l4 4L19 7"></path></svg>
+                            <div class="spec-text">Standard Indexing for primary key lookups</div>
+                        </div>
+                        <div class="spec-item">
+                            <svg class="check-icon" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2.5" d="M5 13l4 4L19 7"></path></svg>
+                            <div class="spec-text">Automated Point-in-Time Recovery Setup</div>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="infra-wrapper">
+                    <div class="section-label">Core Infrastructure</div>
+                    <div class="infra-box">
+                        <div class="infra-item"><span class="infra-label">Engine</span><span class="infra-value">PostgreSQL 15 / MySQL 8.0</span></div>
+                        <div class="infra-item"><span class="infra-label">Backup</span><span class="infra-value">24-Hour PITR</span></div>
+                        <div class="infra-item"><span class="infra-label">Security</span><span class="infra-value">VPC Network Isolation</span></div>
+                        <div class="infra-item"><span class="infra-label">Scale</span><span class="infra-value">Optimized for 50k+ Records</span></div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="strip-pricing">
+                <div class="price-tag">R 3,500</div>
+                <div class="price-sub">One-Time Setup</div>
+                <a href="#" class="cta-btn">Deploy Cluster</a>
+                <div class="installment">or R175 p/m (24 months)</div>
+            </div>
+        </div>
+
+        <div class="product-strip">
+            <div class="strip-brand">
+                <span class="badge">Small Business</span>
+                <h3>Growth Instance</h3>
+            </div>
+            
+            <div class="strip-content">
+                <div class="specs-wrapper">
+                    <div class="section-label">Engineering Specs</div>
+                    <div class="spec-list">
+                        <div class="spec-item">
+                            <svg class="check-icon" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2.5" d="M5 13l4 4L19 7"></path></svg>
+                            <div class="spec-text">High-Availability Setup (Primary + Fallback)</div>
+                        </div>
+                        <div class="spec-item">
+                            <svg class="check-icon" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2.5" d="M5 13l4 4L19 7"></path></svg>
+                            <div class="spec-text">Advanced Indexing & Query Tuning (Fix slow loads)</div>
+                        </div>
+                        <div class="spec-item">
+                            <svg class="check-icon" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2.5" d="M5 13l4 4L19 7"></path></svg>
+                            <div class="spec-text">Seamless Application API Integration</div>
+                        </div>
+                        <div class="spec-item">
+                            <svg class="check-icon" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2.5" d="M5 13l4 4L19 7"></path></svg>
+                            <div class="spec-text">Automated Weekly Performance Audits</div>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="infra-wrapper">
+                    <div class="section-label">Core Infrastructure</div>
+                    <div class="infra-box">
+                        <div class="infra-item"><span class="infra-label">Engine</span><span class="infra-value">Managed High-Availability SQL</span></div>
+                        <div class="infra-item"><span class="infra-label">Backup</span><span class="infra-value">6-Hour Sync + Daily Snapshots</span></div>
+                        <div class="infra-item"><span class="infra-label">Security</span><span class="infra-value">IAM Roles & IP Whitelisting</span></div>
+                        <div class="infra-item"><span class="infra-label">Scale</span><span class="infra-value">Up to 500,000+ Records</span></div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="strip-pricing">
+                <div class="price-tag">R 7,500</div>
+                <div class="price-sub">One-Time Setup</div>
+                <a href="#" class="cta-btn">Provision Instance</a>
+                <div class="installment">or R375 p/m (24 months)</div>
+            </div>
+        </div>
+
+        <div class="product-strip">
+            <div class="strip-brand">
+                <span class="badge">Scaling Apps</span>
+                <h3>Production Core</h3>
+            </div>
+            
+            <div class="strip-content">
+                <div class="specs-wrapper">
+                    <div class="section-label">Engineering Specs</div>
+                    <div class="spec-list">
+                        <div class="spec-item">
+                            <svg class="check-icon" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2.5" d="M5 13l4 4L19 7"></path></svg>
+                            <div class="spec-text">Full Architecture: Write Node + Read Replica for speed</div>
+                        </div>
+                        <div class="spec-item">
+                            <svg class="check-icon" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2.5" d="M5 13l4 4L19 7"></path></svg>
+                            <div class="spec-text">Data Migration from Excel/Legacy Systems (Up to 1GB)</div>
+                        </div>
+                        <div class="spec-item">
+                            <svg class="check-icon" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2.5" d="M5 13l4 4L19 7"></path></svg>
+                            <div class="spec-text">Advanced Indexing & Query Optimization</div>
+                        </div>
+                        <div class="spec-item">
+                            <svg class="check-icon" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2.5" d="M5 13l4 4L19 7"></path></svg>
+                            <div class="spec-text">Redis Caching Layer Implementation</div>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="infra-wrapper">
+                    <div class="section-label">Core Infrastructure</div>
+                    <div class="infra-box">
+                        <div class="infra-item"><span class="infra-label">Engine</span><span class="infra-value">Primary SQL + Redis Cache</span></div>
+                        <div class="infra-item"><span class="infra-label">Backup</span><span class="infra-value">Continuous Multi-AZ Sync</span></div>
+                        <div class="infra-item"><span class="infra-label">Security</span><span class="infra-value">End-to-End Volume Encryption</span></div>
+                        <div class="infra-item"><span class="infra-label">Scale</span><span class="infra-value">1 Million+ Records</span></div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="strip-pricing">
+                <div class="price-tag">R 12,500</div>
+                <div class="price-sub">Architecture Fee</div>
+                <a href="#" class="cta-btn">Initialize Core</a>
+                <div class="installment">or R625 p/m (24 months)</div>
+            </div>
+        </div>
+
+        <div class="product-strip">
+            <div class="strip-brand">
+                <span class="badge">Enterprise</span>
+                <h3>Distributed Mesh</h3>
+            </div>
+            
+            <div class="strip-content">
+                <div class="specs-wrapper">
+                    <div class="section-label">Engineering Specs</div>
+                    <div class="spec-list">
+                        <div class="spec-item">
+                            <svg class="check-icon" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2.5" d="M5 13l4 4L19 7"></path></svg>
+                            <div class="spec-text">Geo-Distributed Multi-Region Nodes</div>
+                        </div>
+                        <div class="spec-item">
+                            <svg class="check-icon" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2.5" d="M5 13l4 4L19 7"></path></svg>
+                            <div class="spec-text">Zero-Downtime Live Migration Pipeline</div>
+                        </div>
+                        <div class="spec-item">
+                            <svg class="check-icon" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2.5" d="M5 13l4 4L19 7"></path></svg>
+                            <div class="spec-text">Custom Data Warehousing & ETL Scripting</div>
+                        </div>
+                        <div class="spec-item">
+                            <svg class="check-icon" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2.5" d="M5 13l4 4L19 7"></path></svg>
+                            <div class="spec-text">Dedicated Real-Time Analytics Replicas</div>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="infra-wrapper">
+                    <div class="section-label">Core Infrastructure</div>
+                    <div class="infra-box">
+                        <div class="infra-item"><span class="infra-label">Engine</span><span class="infra-value">Distributed SQL (Citus/Cockroach)</span></div>
+                        <div class="infra-item"><span class="infra-label">Backup</span><span class="infra-value">Sub-minute RPO Disater Recovery</span></div>
+                        <div class="infra-item"><span class="infra-label">Security</span><span class="infra-value">Compliance Grade / SSO Isolation</span></div>
+                        <div class="infra-item"><span class="infra-label">Scale</span><span class="infra-value">Infinite Horizontal Scaling</span></div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="strip-pricing">
+                <div class="price-tag">R 28,000</div>
+                <div class="price-sub">Architecture Fee</div>
+                <a href="#" class="cta-btn">Contact Engineering</a>
+                <div class="installment">or R1,400 p/m (24 months)</div>
+            </div>
+        </div>
+
+        <div class="product-strip" style="border: 2px solid var(--db-dark);">
+            <div class="strip-brand">
+                <span class="badge" style="background: var(--db-dark); color: #fff;">Ongoing Support</span>
+                <h3>Managed DBA</h3>
+            </div>
+            
+            <div class="strip-content">
+                <div class="specs-wrapper">
+                    <div class="section-label">Engineering Specs</div>
+                    <div class="spec-list">
+                        <div class="spec-item">
+                            <svg class="check-icon" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2.5" d="M5 13l4 4L19 7"></path></svg>
+                            <div class="spec-text">24/7 Proactive Incident Response & Alerts</div>
+                        </div>
+                        <div class="spec-item">
+                            <svg class="check-icon" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2.5" d="M5 13l4 4L19 7"></path></svg>
+                            <div class="spec-text">Monthly Slow-Query Optimization & Refactoring</div>
+                        </div>
+                        <div class="spec-item">
+                            <svg class="check-icon" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2.5" d="M5 13l4 4L19 7"></path></svg>
+                            <div class="spec-text">Routine Disaster Recovery Drills & Validation</div>
+                        </div>
+                        <div class="spec-item">
+                            <svg class="check-icon" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2.5" d="M5 13l4 4L19 7"></path></svg>
+                            <div class="spec-text">Security Kernel Patching & Version Upgrades</div>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="infra-wrapper">
+                    <div class="section-label">Core Infrastructure</div>
+                    <div class="infra-box">
+                        <div class="infra-item"><span class="infra-label">Engine</span><span class="infra-value">Continuous Tuning</span></div>
+                        <div class="infra-item"><span class="infra-label">Backup</span><span class="infra-value">Monitored Integrity Checks</span></div>
+                        <div class="infra-item"><span class="infra-label">Security</span><span class="infra-value">Monthly Threat Audits</span></div>
+                        <div class="infra-item"><span class="infra-label">Scale</span><span class="infra-value">Proactive Auto-Scaling Adjustments</span></div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="strip-pricing">
+                <div class="price-tag">R 2,500</div>
+                <div class="price-sub">Per Month Retainer</div>
+                <a href="#" class="cta-btn">Subscribe Now</a>
+                <div class="installment" style="color: var(--db-dark); font-weight: 700;">Priority Slack Channel</div>
+            </div>
+        </div>
+
+    </section>
+
+    <footer class="contact-footer">
+        <div class="container">
+            <h3 style="margin-top: 0;">Custom Data Requirements?</h3>
+            <p style="color: var(--db-slate); margin-bottom: 24px;">For complex environments, BigQuery, or custom ETL pipelines.</p>
+            <a href="mailto:engineering@defcon.co.za" style="color: var(--db-dark); font-weight: 700; text-decoration: none; border-bottom: 2px solid var(--db-dark); padding-bottom: 2px;">Get a Custom Quote &rarr;</a>
+        </div>
+    </footer>
+
+</body>
+</html>
 
 
 
