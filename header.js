@@ -14,6 +14,8 @@ class CronosHeader extends HTMLElement {
     render() {
         this.shadowRoot.innerHTML = `
         <style>
+        @import url('https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;600;700;900&family=Work+Sans:wght@300;400;500;600;700&display=swap');
+
          /* Circular Std - Book/Regular (400) */
         @font-face {
             font-family: 'Circular Std';
