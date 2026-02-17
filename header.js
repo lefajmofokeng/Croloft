@@ -106,7 +106,7 @@ class CronosHeader extends HTMLElement {
                 letter-spacing: -0.5px;
                 color: var(--cronos-color-text-light);
                 transition: color 0.3s ease;
-                height: 20px;
+                height: 30px;
                 vertical-align: middle;
             }
             
@@ -658,7 +658,7 @@ class CronosHeader extends HTMLElement {
                     
                     <div class="cronos-custom-logo-container">
                         <a href="index.html" class="cronos-custom-logo-link cronos-custom-logo-text">
-                            <img src="thumbnails/croloft2.png" alt="Cronos Logo">
+                            <img src="thumbnails/logo.png" alt="Cronos Logo">
                         </a>
                     </div>
 

@@ -231,7 +231,7 @@ class CronosFooter extends HTMLElement {
         <div class="top-section">
           <div class="col-brand">
             <div class="brand-logo-wrapper">
-              <img class="brand-logo-img" src="thumbnails/croloft2.png" alt="Cronos Logo" />
+              <img class="brand-logo-img" src="thumbnails/logo.png" alt="Cronos Logo" />
             </div>
             <p class="brand-desc">
                 From Concept, To Code, To Market.
