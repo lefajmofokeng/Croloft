@@ -303,7 +303,6 @@
 
 
 
-
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -371,7 +370,7 @@
             width: 260px;
             flex-shrink: 0;
             position: sticky;
-            top: 100px;
+            top: 90px;
             height: calc(100vh - 120px);
             display: flex;
             flex-direction: column;
@@ -396,20 +395,85 @@
         .tstk-search-input:focus { border-color: var(--tstk-accent); }
         .tstk-search-icon { position: absolute; vertical-align: middle; display: inline-flex; left: 14px; top: 15px; color: var(--tstk-muted); font-size: 18px; }
 
-        .tstk-nav-list { list-style: none; }
-        .tstk-nav-label { font-size: 15px; color: #444; font-weight: 500; margin-bottom: 15px; }
+        .tstk-nav-list {
+            list-style: none;
+            overflow-y: auto;
+            flex: 1;
+            /* Hide default scrollbar track — show only thumb */
+            scrollbar-width: thin;
+            scrollbar-color: #3a3a3a transparent;
+        }
+        /* Webkit: no track, only a slim grey thumb */
+        .tstk-nav-list::-webkit-scrollbar { width: 3px; }
+        .tstk-nav-list::-webkit-scrollbar-track { background: transparent; }
+        .tstk-nav-list::-webkit-scrollbar-thumb {
+            background: #3a3a3a;
+            border-radius: 99px;
+        }
+        .tstk-nav-list::-webkit-scrollbar-thumb:hover { background: #555; }
+
+        .tstk-nav-label { font-size: 15px; color: #666666; font-weight: 500; margin-bottom: 15px; }
         
         .tstk-nav-link {
             display: block;
-            color: var(--tstk-muted);
+            color: #f4f4f4;
             text-decoration: none;
             font-size: 16px;
             padding: 10px 0;
             font-weight: 300;
             cursor: pointer;
+            transition: color 0.2s ease;
         }
         .tstk-nav-link:hover { color: var(--tstk-text); }
         .tstk-nav-link.active { color: var(--tstk-accent); font-weight: 400; }
+
+        /* --- MOBILE STICKY NAV --- */
+        .tstk-mobile-nav {
+            display: none;
+            position: sticky;
+            top: 55px;
+            z-index: 100;
+            background: var(--tstk-bg);
+            border-bottom: 1px solid var(--tstk-border);
+            overflow-x: auto;
+            white-space: nowrap;
+            padding: 0 20px;
+            gap: 6px;
+            scrollbar-width: none;
+            -ms-overflow-style: none;
+        }
+        .tstk-mobile-nav::-webkit-scrollbar { display: none; }
+
+        .tstk-mobile-nav-inner {
+            display: inline-flex;
+            gap: 6px;
+            padding: 12px 0;
+        }
+
+        .tstk-mobile-nav-link {
+            display: inline-block;
+            padding: 7px 16px;
+            border-radius: 99px;
+            font-family: var(--tstk-font);
+            font-size: 13px;
+            font-weight: 400;
+            color: var(--tstk-muted);
+            text-decoration: none;
+            white-space: nowrap;
+            border: 1px solid transparent;
+            cursor: pointer;
+            transition: color 0.2s ease, border-color 0.2s ease, background 0.2s ease;
+            background: transparent;
+        }
+        .tstk-mobile-nav-link:hover {
+            color: var(--tstk-text);
+            border-color: #333;
+        }
+        .tstk-mobile-nav-link.active {
+            color: var(--tstk-accent);
+            border-color: var(--tstk-accent);
+            background: rgba(62, 207, 142, 0.08);
+        }
 
         /* --- MAIN CONTENT --- */
         .tstk-content { flex: 1; }
@@ -433,22 +497,22 @@
             transition: all 0.3s ease;
         }
 
-        .tstk-card:hover {
-            background: var(--tstk-card-hover);
-            border-color: #333;
-            transform: translateY(-3px);
-        }
-
         .tstk-card-icon {
-            width: 48px;
-            height: 48px;
+            width: 55px;
+            height: 55px;
             display: flex;
             align-items: center;
             justify-content: center;
-            background: #292929;
+            background: #ffffff;
             border-radius: 50px;
             font-size: 24px;
             flex-shrink: 0; /* Prevents icon from squishing */
+        }
+
+        .tstk-card-icon img {
+            width: 28px;
+            height: 28px;
+            object-fit: contain;
         }
 
         .tstk-card-body { display: flex; flex-direction: column; gap: 6px; }
@@ -461,13 +525,40 @@
         .tstk-hidden { display: none !important; }
 
         @media (max-width: 1100px) {
+            .tstk-grid { grid-template-columns: repeat(2, 1fr); }
+            .tstk-container { flex-direction: column; padding: 24px 20px 50px; }
+            .tstk-sidebar { display: none; }
+            .tstk-mobile-nav { display: block; }
+        }
+
+        @media (max-width: 600px) {
             .tstk-grid { grid-template-columns: 1fr; }
-            .tstk-container { flex-direction: column; padding: 50px 20px; }
-            .tstk-sidebar { width: 100%; position: relative; top: 0; height: auto; }
+            .tstk-container { padding: 16px 16px 50px; }
         }
     </style>
 </head>
 <body>
+
+<!-- MOBILE STICKY CATEGORY NAV -->
+<nav class="tstk-mobile-nav" id="tstkMobileNav">
+    <div class="tstk-mobile-nav-inner">
+        <a href="#frontend"       class="tstk-mobile-nav-link active">Frontend</a>
+        <a href="#backend"        class="tstk-mobile-nav-link">Backend</a>
+        <a href="#mobile"         class="tstk-mobile-nav-link">Mobile</a>
+        <a href="#ai"             class="tstk-mobile-nav-link">AI & Automation</a>
+        <a href="#ecommerce"      class="tstk-mobile-nav-link">E-Commerce</a>
+        <a href="#database"       class="tstk-mobile-nav-link">Database</a>
+        <a href="#infrastructure" class="tstk-mobile-nav-link">Cloud</a>
+        <a href="#devops"         class="tstk-mobile-nav-link">DevOps</a>
+        <a href="#security"       class="tstk-mobile-nav-link">Security</a>
+        <a href="#itsupport"      class="tstk-mobile-nav-link">IT Support</a>
+        <a href="#networking"     class="tstk-mobile-nav-link">Networking</a>
+        <a href="#creative"       class="tstk-mobile-nav-link">Creative</a>
+        <a href="#marketing"      class="tstk-mobile-nav-link">Marketing</a>
+        <a href="#analytics"      class="tstk-mobile-nav-link">Analytics</a>
+        <a href="#communication"  class="tstk-mobile-nav-link">Collaboration</a>
+    </div>
+</nav>
 
 <div class="tstk-container">
     <aside class="tstk-sidebar">
@@ -485,160 +576,1653 @@
             <div class="tstk-nav-label">Categories</div>
             <a href="#frontend" class="tstk-nav-link active">Frontend Development</a>
             <a href="#backend" class="tstk-nav-link">Backend Systems</a>
+            <a href="#mobile" class="tstk-nav-link">Mobile Development</a>
+            <a href="#ai" class="tstk-nav-link">AI & Automation</a>
+            <a href="#ecommerce" class="tstk-nav-link">E-Commerce</a>
+            <a href="#database" class="tstk-nav-link">Database Engineering</a>
             <a href="#infrastructure" class="tstk-nav-link">Infrastructure & Cloud</a>
+            <a href="#devops" class="tstk-nav-link">DevOps & CI/CD</a>
+            <a href="#security" class="tstk-nav-link">Security & Compliance</a>
+            <a href="#itsupport" class="tstk-nav-link">IT Support & Helpdesk</a>
+            <a href="#networking" class="tstk-nav-link">Networking & Infrastructure</a>
             <a href="#creative" class="tstk-nav-link">Creative & CMS</a>
+            <a href="#marketing" class="tstk-nav-link">Digital Marketing</a>
+            <a href="#analytics" class="tstk-nav-link">Analytics & BI</a>
+            <a href="#communication" class="tstk-nav-link">Communication & Collab</a>
         </nav>
     </aside>
 
     <main class="tstk-content">
+
+        <!-- FRONTEND -->
         <section id="frontend" class="tstk-section">
             <h2 class="tstk-section-title">Frontend Development</h2>
             <div class="tstk-grid">
                 <div class="tstk-card">
-                    <div class="tstk-card-icon tstk-ic-blue"><img src="https://img.icons8.com/?size=100&id=wU62u24brJ44&format=png&color=000000" style="height: 38px;"/></div>
+                    <div class="tstk-card-icon"><img src="https://img.icons8.com/?size=100&id=wU62u24brJ44&format=png&color=000000" style="height: 38px;"/></div>
                     <div class="tstk-card-body">
                         <div class="tstk-card-title">React.js</div>
                         <div class="tstk-card-desc">Building modular, fast, and scalable user interfaces for our web platforms.</div>
                     </div>
                 </div>
                 <div class="tstk-card">
-                    <div class="tstk-card-icon tstk-ic-blue"><i class="ri-tailwind-css-fill"></i></div>
+                    <div class="tstk-card-icon"><img src="https://img.icons8.com/?size=100&id=MWiBjkuHeMVq&format=png&color=000000" /></div>
+                    <div class="tstk-card-body">
+                        <div class="tstk-card-title">Next.js</div>
+                        <div class="tstk-card-desc">Server-side rendering and static generation for SEO-optimized, high-performance web apps.</div>
+                    </div>
+                </div>
+                <div class="tstk-card">
+                    <div class="tstk-card-icon"><img src="https://img.icons8.com/?size=100&id=dJjTWMogzFzg&format=png&color=000000" /></div>
+                    <div class="tstk-card-body">
+                        <div class="tstk-card-title">Vue.js</div>
+                        <div class="tstk-card-desc">Progressive framework used for lightweight, interactive dashboards and admin panels.</div>
+                    </div>
+                </div>
+                <div class="tstk-card">
+                    <div class="tstk-card-icon"><img src="https://img.icons8.com/?size=100&id=4PiNHtUJVbLs&format=png&color=000000" /></div>
                     <div class="tstk-card-body">
                         <div class="tstk-card-title">Tailwind CSS</div>
                         <div class="tstk-card-desc">Utility-first styling used to maintain rapid and consistent UI development across projects.</div>
                     </div>
                 </div>
                 <div class="tstk-card">
-                    <div class="tstk-card-icon tstk-ic-blue"><i class="ri-tailwind-css-fill"></i></div>
+                    <div class="tstk-card-icon"><img src="https://img.icons8.com/?size=100&id=20909&format=png&color=000000" /></div>
                     <div class="tstk-card-body">
-                        <div class="tstk-card-title">Tailwind CSS</div>
-                        <div class="tstk-card-desc">Utility-first styling used to maintain rapid and consistent UI development across projects.</div>
+                        <div class="tstk-card-title">HTML5</div>
+                        <div class="tstk-card-desc">Semantic markup forming the structural backbone of every web product we deliver.</div>
                     </div>
                 </div>
                 <div class="tstk-card">
-                    <div class="tstk-card-icon tstk-ic-blue"><i class="ri-tailwind-css-fill"></i></div>
+                    <div class="tstk-card-icon"><img src="https://img.icons8.com/?size=100&id=21278&format=png&color=000000" /></div>
                     <div class="tstk-card-body">
-                        <div class="tstk-card-title">Tailwind CSS</div>
-                        <div class="tstk-card-desc">Utility-first styling used to maintain rapid and consistent UI development across projects.</div>
+                        <div class="tstk-card-title">CSS3</div>
+                        <div class="tstk-card-desc">Modern animations, grid layouts, and responsive design across all screen sizes.</div>
+                    </div>
+                </div>
+                <div class="tstk-card">
+                    <div class="tstk-card-icon"><img src="https://img.icons8.com/?size=100&id=108784&format=png&color=000000" /></div>
+                    <div class="tstk-card-body">
+                        <div class="tstk-card-title">JavaScript</div>
+                        <div class="tstk-card-desc">Core scripting language powering interactivity, logic, and dynamic content across our platforms.</div>
+                    </div>
+                </div>
+                <div class="tstk-card">
+                    <div class="tstk-card-icon"><img src="https://img.icons8.com/?size=100&id=uJM6fQYqDaZK&format=png&color=000000" /></div>
+                    <div class="tstk-card-body">
+                        <div class="tstk-card-title">TypeScript</div>
+                        <div class="tstk-card-desc">Type-safe development for large-scale codebases, reducing bugs and improving maintainability.</div>
+                    </div>
+                </div>
+                <div class="tstk-card">
+                    <div class="tstk-card-icon"><img src="https://img.icons8.com/?size=100&id=bzf0DqjXFHIW&format=png&color=000000" /></div>
+                    <div class="tstk-card-body">
+                        <div class="tstk-card-title">Framer Motion</div>
+                        <div class="tstk-card-desc">Fluid animation library used to craft premium, polished motion experiences in React apps.</div>
+                    </div>
+                </div>
+                <div class="tstk-card">
+                    <div class="tstk-card-icon"><img src="https://img.icons8.com/?size=100&id=YO3YqSaTOu5K&format=png&color=000000" /></div>
+                    <div class="tstk-card-body">
+                        <div class="tstk-card-title">Webflow</div>
+                        <div class="tstk-card-desc">Visual development platform for marketing websites and landing pages with CMS capabilities.</div>
+                    </div>
+                </div>
+                <div class="tstk-card">
+                    <div class="tstk-card-icon"><img src="https://img.icons8.com/?size=100&id=eUTNRSCe6PLHF&format=png&color=000000" /></div>
+                    <div class="tstk-card-body">
+                        <div class="tstk-card-title">Sass / SCSS</div>
+                        <div class="tstk-card-desc">Preprocessor for scalable, maintainable stylesheets with variables and nested syntax.</div>
+                    </div>
+                </div>
+                <div class="tstk-card">
+                    <div class="tstk-card-icon"><img src="https://img.icons8.com/?size=100&id=yUdJlcKanVbh&format=png&color=000000" /></div>
+                    <div class="tstk-card-body">
+                        <div class="tstk-card-title">Vite</div>
+                        <div class="tstk-card-desc">Lightning-fast frontend build tool replacing Webpack for instant hot-module replacement.</div>
                     </div>
                 </div>
             </div>
         </section>
 
+        <!-- BACKEND -->
         <section id="backend" class="tstk-section">
             <h2 class="tstk-section-title">Backend Systems</h2>
             <div class="tstk-grid">
                 <div class="tstk-card">
-                    <div class="tstk-card-icon tstk-ic-green"><i class="ri-nodejs-line"></i></div>
+                    <div class="tstk-card-icon"><img src="https://img.icons8.com/?size=100&id=54087&format=png&color=000000" /></div>
                     <div class="tstk-card-body">
                         <div class="tstk-card-title">Node.js</div>
                         <div class="tstk-card-desc">Handling high-concurrency requests and powering our real-time notification engines.</div>
                     </div>
                 </div>
                 <div class="tstk-card">
-                    <div class="tstk-card-icon tstk-ic-orange"><i class="ri-database-2-line"></i></div>
+                    <div class="tstk-card-icon"><img src="https://img.icons8.com/?size=100&id=l75OEUJkPAk4&format=png&color=000000" /></div>
                     <div class="tstk-card-body">
-                        <div class="tstk-card-title">PostgreSQL</div>
-                        <div class="tstk-card-desc">Our primary relational database for complex data structures and financial reporting.</div>
+                        <div class="tstk-card-title">Python</div>
+                        <div class="tstk-card-desc">Primary language for backend APIs, data pipelines, machine learning, and automation scripts.</div>
+                    </div>
+                </div>
+                <div class="tstk-card">
+                    <div class="tstk-card-icon"><img src="https://img.icons8.com/?size=100&id=hsPbhkOH4FMe&format=png&color=000000" /></div>
+                    <div class="tstk-card-body">
+                        <div class="tstk-card-title">Django</div>
+                        <div class="tstk-card-desc">High-level Python framework powering rapid development of secure, scalable web applications.</div>
+                    </div>
+                </div>
+                <div class="tstk-card">
+                    <div class="tstk-card-icon"><img src="https://img.icons8.com/?size=100&id=MHcMYTljfKOr&format=png&color=000000" /></div>
+                    <div class="tstk-card-body">
+                        <div class="tstk-card-title">FastAPI</div>
+                        <div class="tstk-card-desc">High-performance async Python framework for building lightning-fast REST and AI inference APIs.</div>
+                    </div>
+                </div>
+                <div class="tstk-card">
+                    <div class="tstk-card-icon"><img src="https://img.icons8.com/?size=100&id=kg46nzoJrmTR&format=png&color=000000" /></div>
+                    <div class="tstk-card-body">
+                        <div class="tstk-card-title">Express.js</div>
+                        <div class="tstk-card-desc">Minimal Node.js framework used to build RESTful APIs and microservices for web applications.</div>
+                    </div>
+                </div>
+                <div class="tstk-card">
+                    <div class="tstk-card-icon"><img src="https://img.icons8.com/?size=100&id=ZoxjA0jZDdFZ&format=png&color=000000" /></div>
+                    <div class="tstk-card-body">
+                        <div class="tstk-card-title">Laravel</div>
+                        <div class="tstk-card-desc">PHP framework for enterprise web portals, CRM systems, and multi-tenant SaaS applications.</div>
+                    </div>
+                </div>
+                <div class="tstk-card">
+                    <div class="tstk-card-icon"><img src="https://img.icons8.com/?size=100&id=Lz7oiCpdanST&format=png&color=000000" /></div>
+                    <div class="tstk-card-body">
+                        <div class="tstk-card-title">GraphQL</div>
+                        <div class="tstk-card-desc">Flexible API query language reducing over-fetching and enabling precise data retrieval in complex apps.</div>
+                    </div>
+                </div>
+                <div class="tstk-card">
+                    <div class="tstk-card-icon"><img src="https://img.icons8.com/?size=100&id=bosfpvRzNOG8&format=png&color=000000" /></div>
+                    <div class="tstk-card-body">
+                        <div class="tstk-card-title">Java</div>
+                        <div class="tstk-card-desc">Enterprise-grade backend language used for robust, high-throughput business applications.</div>
+                    </div>
+                </div>
+                <div class="tstk-card">
+                    <div class="tstk-card-icon"><img src="https://img.icons8.com/?size=100&id=55251&format=png&color=000000" /></div>
+                    <div class="tstk-card-body">
+                        <div class="tstk-card-title">Go (Golang)</div>
+                        <div class="tstk-card-desc">Compiled language for ultra-fast microservices and backend systems requiring extreme performance.</div>
+                    </div>
+                </div>
+                <div class="tstk-card">
+                    <div class="tstk-card-icon"><img src="https://img.icons8.com/?size=100&id=DakakaPez685&format=png&color=000000" /></div>
+                    <div class="tstk-card-body">
+                        <div class="tstk-card-title">Supabase</div>
+                        <div class="tstk-card-desc">Open-source Firebase alternative providing instant backends with Postgres, auth, and storage.</div>
+                    </div>
+                </div>
+                <div class="tstk-card">
+                    <div class="tstk-card-icon"><img src="https://img.icons8.com/?size=100&id=9Kvi4GkNST3U&format=png&color=000000" /></div>
+                    <div class="tstk-card-body">
+                        <div class="tstk-card-title">Firebase</div>
+                        <div class="tstk-card-desc">Real-time database and backend-as-a-service for mobile apps and rapid MVP development.</div>
+                    </div>
+                </div>
+                <div class="tstk-card">
+                    <div class="tstk-card-icon"><img src="https://img.icons8.com/?size=100&id=9zMaHfqWJgYH&format=png&color=000000" /></div>
+                    <div class="tstk-card-body">
+                        <div class="tstk-card-title">Redis</div>
+                        <div class="tstk-card-desc">In-memory data store used for caching, session management, and pub/sub messaging queues.</div>
                     </div>
                 </div>
             </div>
         </section>
 
+        <!-- MOBILE -->
+        <section id="mobile" class="tstk-section">
+            <h2 class="tstk-section-title">Mobile Development</h2>
+            <div class="tstk-grid">
+                <div class="tstk-card">
+                    <div class="tstk-card-icon"><img src="https://img.icons8.com/?size=100&id=7I3BjCqe9rjG&format=png&color=000000" /></div>
+                    <div class="tstk-card-body">
+                        <div class="tstk-card-title">React Native</div>
+                        <div class="tstk-card-desc">Cross-platform mobile framework delivering native experiences on both iOS and Android from one codebase.</div>
+                    </div>
+                </div>
+                <div class="tstk-card">
+                    <div class="tstk-card-icon"><img src="https://img.icons8.com/?size=100&id=7AFcZ2L7oOa9&format=png&color=000000" /></div>
+                    <div class="tstk-card-body">
+                        <div class="tstk-card-title">Flutter</div>
+                        <div class="tstk-card-desc">Google's UI toolkit for building beautiful, natively compiled apps across mobile, web, and desktop.</div>
+                    </div>
+                </div>
+                <div class="tstk-card">
+                    <div class="tstk-card-icon"><img src="https://img.icons8.com/?size=100&id=13441&format=png&color=000000" /></div>
+                    <div class="tstk-card-body">
+                        <div class="tstk-card-title">iOS / Swift</div>
+                        <div class="tstk-card-desc">Native iOS development for apps requiring deep Apple ecosystem integration and maximum performance.</div>
+                    </div>
+                </div>
+                <div class="tstk-card">
+                    <div class="tstk-card-icon"><img src="https://img.icons8.com/?size=100&id=17836&format=png&color=000000" /></div>
+                    <div class="tstk-card-body">
+                        <div class="tstk-card-title">Android / Kotlin</div>
+                        <div class="tstk-card-desc">Native Android development using modern Kotlin for feature-rich, performant mobile applications.</div>
+                    </div>
+                </div>
+                <div class="tstk-card">
+                    <div class="tstk-card-icon"><img src="https://img.icons8.com/?size=100&id=NfbyHexkIsLH&format=png&color=000000" /></div>
+                    <div class="tstk-card-body">
+                        <div class="tstk-card-title">Expo</div>
+                        <div class="tstk-card-desc">Managed React Native workflow for rapid prototyping and streamlined mobile app deployment.</div>
+                    </div>
+                </div>
+                <div class="tstk-card">
+                    <div class="tstk-card-icon"><img src="https://img.icons8.com/?size=100&id=9klfAkyHabYB&format=png&color=000000" /></div>
+                    <div class="tstk-card-body">
+                        <div class="tstk-card-title">Ionic</div>
+                        <div class="tstk-card-desc">Hybrid mobile framework for delivering web-based apps with near-native UX on any device.</div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- AI & AUTOMATION -->
+        <section id="ai" class="tstk-section">
+            <h2 class="tstk-section-title">AI & Automation</h2>
+            <div class="tstk-grid">
+                <div class="tstk-card">
+                    <div class="tstk-card-icon"><img src="https://img.icons8.com/?size=100&id=kTuxVYRKeKEY&format=png&color=000000" /></div>
+                    <div class="tstk-card-body">
+                        <div class="tstk-card-title">OpenAI API</div>
+                        <div class="tstk-card-desc">Integrating GPT-4 and o-series models for intelligent chatbots, document processing, and content generation.</div>
+                    </div>
+                </div>
+                <div class="tstk-card">
+                    <div class="tstk-card-icon"><img src="https://img.icons8.com/?size=100&id=vHAMsXW9lkiF&format=png&color=000000" /></div>
+                    <div class="tstk-card-body">
+                        <div class="tstk-card-title">TensorFlow</div>
+                        <div class="tstk-card-desc">End-to-end ML platform for training and deploying deep learning models in production environments.</div>
+                    </div>
+                </div>
+                <div class="tstk-card">
+                    <div class="tstk-card-icon"><img src="https://img.icons8.com/?size=100&id=jH4BpkMnRrU5&format=png&color=000000" /></div>
+                    <div class="tstk-card-body">
+                        <div class="tstk-card-title">PyTorch</div>
+                        <div class="tstk-card-desc">Research-first deep learning framework used for custom model development and AI experimentation.</div>
+                    </div>
+                </div>
+                <div class="tstk-card">
+                    <div class="tstk-card-icon"><img src="https://img.icons8.com/?size=100&id=n4KjKpjgMHYE&format=png&color=000000" /></div>
+                    <div class="tstk-card-body">
+                        <div class="tstk-card-title">LangChain</div>
+                        <div class="tstk-card-desc">Framework for building LLM-powered applications with memory, agents, and retrieval-augmented generation.</div>
+                    </div>
+                </div>
+                <div class="tstk-card">
+                    <div class="tstk-card-icon"><img src="https://img.icons8.com/?size=100&id=oROcPah5ues6&format=png&color=000000" /></div>
+                    <div class="tstk-card-body">
+                        <div class="tstk-card-title">Hugging Face</div>
+                        <div class="tstk-card-desc">Hub for open-source ML models, transformers, and datasets used in NLP and computer vision tasks.</div>
+                    </div>
+                </div>
+                <div class="tstk-card">
+                    <div class="tstk-card-icon"><img src="https://img.icons8.com/?size=100&id=Omjj8KaEbX5B&format=png&color=000000" /></div>
+                    <div class="tstk-card-body">
+                        <div class="tstk-card-title">n8n</div>
+                        <div class="tstk-card-desc">Open-source workflow automation platform used to build no-code integration pipelines for client systems.</div>
+                    </div>
+                </div>
+                <div class="tstk-card">
+                    <div class="tstk-card-icon"><img src="https://img.icons8.com/?size=100&id=35494&format=png&color=000000" /></div>
+                    <div class="tstk-card-body">
+                        <div class="tstk-card-title">Zapier</div>
+                        <div class="tstk-card-desc">Connecting business apps and automating workflows across thousands of SaaS platforms without code.</div>
+                    </div>
+                </div>
+                <div class="tstk-card">
+                    <div class="tstk-card-icon"><img src="https://img.icons8.com/?size=100&id=laYYF3dV0Iew&format=png&color=000000" /></div>
+                    <div class="tstk-card-body">
+                        <div class="tstk-card-title">Scikit-learn</div>
+                        <div class="tstk-card-desc">Python ML library for classification, regression, and clustering models in data science projects.</div>
+                    </div>
+                </div>
+                <div class="tstk-card">
+                    <div class="tstk-card-icon"><img src="https://img.icons8.com/?size=100&id=aR9CXyMagKIS&format=png&color=000000" /></div>
+                    <div class="tstk-card-body">
+                        <div class="tstk-card-title">Apache Kafka</div>
+                        <div class="tstk-card-desc">Distributed event streaming for real-time data pipelines and high-throughput automation workflows.</div>
+                    </div>
+                </div>
+                <div class="tstk-card">
+                    <div class="tstk-card-icon"><img src="https://img.icons8.com/?size=100&id=ZxMIggnUQBaQ&format=png&color=000000" /></div>
+                    <div class="tstk-card-body">
+                        <div class="tstk-card-title">Make (Integromat)</div>
+                        <div class="tstk-card-desc">Visual automation platform for orchestrating complex multi-step business process workflows.</div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- E-COMMERCE -->
+        <section id="ecommerce" class="tstk-section">
+            <h2 class="tstk-section-title">E-Commerce</h2>
+            <div class="tstk-grid">
+                <div class="tstk-card">
+                    <div class="tstk-card-icon"><img src="https://img.icons8.com/?size=100&id=uSHYbs6PJfMT&format=png&color=000000" /></div>
+                    <div class="tstk-card-body">
+                        <div class="tstk-card-title">Shopify</div>
+                        <div class="tstk-card-desc">End-to-end e-commerce platform for building, launching, and scaling online retail stores.</div>
+                    </div>
+                </div>
+                <div class="tstk-card">
+                    <div class="tstk-card-icon"><img src="https://img.icons8.com/?size=100&id=bxHQDTCbFGFn&format=png&color=000000" /></div>
+                    <div class="tstk-card-body">
+                        <div class="tstk-card-title">WooCommerce</div>
+                        <div class="tstk-card-desc">WordPress-native commerce plugin powering customizable online stores with full ownership.</div>
+                    </div>
+                </div>
+                <div class="tstk-card">
+                    <div class="tstk-card-icon"><img src="https://img.icons8.com/?size=100&id=YY7NQKZL1U31&format=png&color=000000" /></div>
+                    <div class="tstk-card-body">
+                        <div class="tstk-card-title">Stripe</div>
+                        <div class="tstk-card-desc">Developer-first payment infrastructure for accepting online payments, subscriptions, and invoicing.</div>
+                    </div>
+                </div>
+                <div class="tstk-card">
+                    <div class="tstk-card-icon"><img src="https://img.icons8.com/?size=100&id=13677&format=png&color=000000" /></div>
+                    <div class="tstk-card-body">
+                        <div class="tstk-card-title">PayPal</div>
+                        <div class="tstk-card-desc">Widely trusted global payment gateway integrated into client e-commerce and invoicing platforms.</div>
+                    </div>
+                </div>
+                <div class="tstk-card">
+                    <div class="tstk-card-icon"><img src="https://img.icons8.com/?size=100&id=Vg7kVPuZSByy&format=png&color=000000" /></div>
+                    <div class="tstk-card-body">
+                        <div class="tstk-card-title">Magento</div>
+                        <div class="tstk-card-desc">Enterprise-level commerce platform for large catalogues, B2B commerce, and complex pricing rules.</div>
+                    </div>
+                </div>
+                <div class="tstk-card">
+                    <div class="tstk-card-icon"><img src="https://img.icons8.com/?size=100&id=19582&format=png&color=000000" /></div>
+                    <div class="tstk-card-body">
+                        <div class="tstk-card-title">PrestaShop</div>
+                        <div class="tstk-card-desc">Open-source commerce solution deployed for SMEs requiring cost-effective, self-hosted storefronts.</div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- DATABASE -->
+        <section id="database" class="tstk-section">
+            <h2 class="tstk-section-title">Database Engineering</h2>
+            <div class="tstk-grid">
+                <div class="tstk-card">
+                    <div class="tstk-card-icon"><img src="https://img.icons8.com/?size=100&id=38561&format=png&color=000000" /></div>
+                    <div class="tstk-card-body">
+                        <div class="tstk-card-title">PostgreSQL</div>
+                        <div class="tstk-card-desc">Primary relational database for complex data structures, financial reporting, and transactional systems.</div>
+                    </div>
+                </div>
+                <div class="tstk-card">
+                    <div class="tstk-card-icon"><img src="https://img.icons8.com/?size=100&id=UFXRpPFebwa2&format=png&color=000000" /></div>
+                    <div class="tstk-card-body">
+                        <div class="tstk-card-title">MySQL</div>
+                        <div class="tstk-card-desc">Battle-tested relational database powering web applications, CMS platforms, and legacy system migrations.</div>
+                    </div>
+                </div>
+                <div class="tstk-card">
+                    <div class="tstk-card-icon"><img src="https://img.icons8.com/?size=100&id=74402&format=png&color=000000" /></div>
+                    <div class="tstk-card-body">
+                        <div class="tstk-card-title">MongoDB</div>
+                        <div class="tstk-card-desc">NoSQL document database for flexible, schema-less data storage in dynamic content-heavy applications.</div>
+                    </div>
+                </div>
+                <div class="tstk-card">
+                    <div class="tstk-card-icon"><img src="https://img.icons8.com/?size=100&id=laYYF3dV0Iew&format=png&color=000000" /></div>
+                    <div class="tstk-card-body">
+                        <div class="tstk-card-title">Microsoft SQL Server</div>
+                        <div class="tstk-card-desc">Enterprise relational database for Windows-centric environments and large-scale corporate deployments.</div>
+                    </div>
+                </div>
+                <div class="tstk-card">
+                    <div class="tstk-card-icon"><img src="https://img.icons8.com/?size=100&id=9zMaHfqWJgYH&format=png&color=000000" /></div>
+                    <div class="tstk-card-body">
+                        <div class="tstk-card-title">Redis</div>
+                        <div class="tstk-card-desc">In-memory key-value store used as a high-performance cache layer and real-time leaderboard engine.</div>
+                    </div>
+                </div>
+                <div class="tstk-card">
+                    <div class="tstk-card-icon"><img src="https://img.icons8.com/?size=100&id=oNHHfOzIJyEb&format=png&color=000000" /></div>
+                    <div class="tstk-card-body">
+                        <div class="tstk-card-title">Elasticsearch</div>
+                        <div class="tstk-card-desc">Distributed search and analytics engine for full-text search, log analysis, and application monitoring.</div>
+                    </div>
+                </div>
+                <div class="tstk-card">
+                    <div class="tstk-card-icon"><img src="https://img.icons8.com/?size=100&id=M4qrqAeJJrx0&format=png&color=000000" /></div>
+                    <div class="tstk-card-body">
+                        <div class="tstk-card-title">SQLite</div>
+                        <div class="tstk-card-desc">Lightweight embedded database used in mobile apps and edge deployments requiring minimal overhead.</div>
+                    </div>
+                </div>
+                <div class="tstk-card">
+                    <div class="tstk-card-icon"><img src="https://img.icons8.com/?size=100&id=DakakaPez685&format=png&color=000000" /></div>
+                    <div class="tstk-card-body">
+                        <div class="tstk-card-title">Supabase</div>
+                        <div class="tstk-card-desc">Postgres-based managed database platform with real-time subscriptions, auth, and instant APIs.</div>
+                    </div>
+                </div>
+                <div class="tstk-card">
+                    <div class="tstk-card-icon"><img src="https://img.icons8.com/?size=100&id=aR9CXyMagKIS&format=png&color=000000" /></div>
+                    <div class="tstk-card-body">
+                        <div class="tstk-card-title">Apache Cassandra</div>
+                        <div class="tstk-card-desc">Wide-column NoSQL database for massive-scale, high-availability workloads with no single point of failure.</div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- INFRASTRUCTURE & CLOUD -->
         <section id="infrastructure" class="tstk-section">
             <h2 class="tstk-section-title">Infrastructure & Cloud</h2>
             <div class="tstk-grid">
                 <div class="tstk-card">
-                    <div class="tstk-card-icon tstk-ic-orange"><i class="ri-amazon-fill"></i></div>
+                    <div class="tstk-card-icon"><img src="https://img.icons8.com/?size=100&id=33039&format=png&color=000000" /></div>
                     <div class="tstk-card-body">
                         <div class="tstk-card-title">AWS</div>
-                        <div class="tstk-card-desc">Enterprise-grade hosting providing the security and uptime our SA clients demand.</div>
+                        <div class="tstk-card-desc">Enterprise-grade cloud hosting providing the security and uptime our clients demand at scale.</div>
                     </div>
                 </div>
                 <div class="tstk-card">
-                    <div class="tstk-card-icon tstk-ic-blue"><i class="ri-docker-js-fill"></i></div>
+                    <div class="tstk-card-icon"><img src="https://img.icons8.com/?size=100&id=VLKafOkk3sBX&format=png&color=000000" /></div>
+                    <div class="tstk-card-body">
+                        <div class="tstk-card-title">Microsoft Azure</div>
+                        <div class="tstk-card-desc">Enterprise cloud platform used for hybrid deployments, Active Directory, and Microsoft ecosystem integrations.</div>
+                    </div>
+                </div>
+                <div class="tstk-card">
+                    <div class="tstk-card-icon"><img src="https://img.icons8.com/?size=100&id=WHRLQdbEXQ16&format=png&color=000000" /></div>
+                    <div class="tstk-card-body">
+                        <div class="tstk-card-title">Google Cloud</div>
+                        <div class="tstk-card-desc">Cloud platform leveraged for BigQuery analytics, AI APIs, and globally distributed app deployments.</div>
+                    </div>
+                </div>
+                <div class="tstk-card">
+                    <div class="tstk-card-icon"><img src="https://img.icons8.com/?size=100&id=UFXRpPFebwa2&format=png&color=000000" /></div>
                     <div class="tstk-card-body">
                         <div class="tstk-card-title">Docker</div>
-                        <div class="tstk-card-desc">Streamlining our deployment workflows to ensure consistency across environments.</div>
+                        <div class="tstk-card-desc">Containerisation platform ensuring consistent application environments from development to production.</div>
+                    </div>
+                </div>
+                <div class="tstk-card">
+                    <div class="tstk-card-icon"><img src="https://img.icons8.com/?size=100&id=cvzmaEA4kC0o&format=png&color=000000" /></div>
+                    <div class="tstk-card-body">
+                        <div class="tstk-card-title">Kubernetes</div>
+                        <div class="tstk-card-desc">Container orchestration system for automating deployment, scaling, and management of containerised apps.</div>
+                    </div>
+                </div>
+                <div class="tstk-card">
+                    <div class="tstk-card-icon"><img src="https://img.icons8.com/?size=100&id=KAZMoHzRiDCC&format=png&color=000000" /></div>
+                    <div class="tstk-card-body">
+                        <div class="tstk-card-title">Vercel</div>
+                        <div class="tstk-card-desc">Edge deployment platform for frontend applications with instant global CDN and serverless functions.</div>
+                    </div>
+                </div>
+                <div class="tstk-card">
+                    <div class="tstk-card-icon"><img src="https://img.icons8.com/?size=100&id=yUdJlcKanVbh&format=png&color=000000" /></div>
+                    <div class="tstk-card-body">
+                        <div class="tstk-card-title">Netlify</div>
+                        <div class="tstk-card-desc">Automated build and deployment pipeline for JAMstack websites with built-in form handling and CDN.</div>
+                    </div>
+                </div>
+                <div class="tstk-card">
+                    <div class="tstk-card-icon"><img src="https://img.icons8.com/?size=100&id=BzGa2HiOiZkQ&format=png&color=000000" /></div>
+                    <div class="tstk-card-body">
+                        <div class="tstk-card-title">DigitalOcean</div>
+                        <div class="tstk-card-desc">Cost-effective cloud provider for managed databases, Kubernetes clusters, and VPS deployments.</div>
+                    </div>
+                </div>
+                <div class="tstk-card">
+                    <div class="tstk-card-icon"><img src="https://img.icons8.com/?size=100&id=Xg5bHXBSzwF0&format=png&color=000000" /></div>
+                    <div class="tstk-card-body">
+                        <div class="tstk-card-title">Cloudflare</div>
+                        <div class="tstk-card-desc">Global CDN, DNS management, DDoS protection, and edge computing for high-availability web apps.</div>
+                    </div>
+                </div>
+                <div class="tstk-card">
+                    <div class="tstk-card-icon"><img src="https://img.icons8.com/?size=100&id=9MJf0HVQKHHW&format=png&color=000000" /></div>
+                    <div class="tstk-card-body">
+                        <div class="tstk-card-title">Terraform</div>
+                        <div class="tstk-card-desc">Infrastructure-as-code tool for provisioning and managing cloud resources across multiple providers.</div>
+                    </div>
+                </div>
+                <div class="tstk-card">
+                    <div class="tstk-card-icon"><img src="https://img.icons8.com/?size=100&id=38562&format=png&color=000000" /></div>
+                    <div class="tstk-card-body">
+                        <div class="tstk-card-title">Nginx</div>
+                        <div class="tstk-card-desc">High-performance web server and reverse proxy used to route traffic, serve static files, and load balance.</div>
+                    </div>
+                </div>
+                <div class="tstk-card">
+                    <div class="tstk-card-icon"><img src="https://img.icons8.com/?size=100&id=GnVHau1cTbGf&format=png&color=000000" /></div>
+                    <div class="tstk-card-body">
+                        <div class="tstk-card-title">Linux (Ubuntu)</div>
+                        <div class="tstk-card-desc">Primary OS for all server deployments, offering stability, security, and full administrative control.</div>
                     </div>
                 </div>
             </div>
         </section>
 
-        <section id="creative" class="tstk-section">
-            <h2 class="tstk-section-title">Creative & CMS</h2>
+        <!-- DEVOPS -->
+        <section id="devops" class="tstk-section">
+            <h2 class="tstk-section-title">DevOps & CI/CD</h2>
             <div class="tstk-grid">
                 <div class="tstk-card">
-                    <div class="tstk-card-icon tstk-ic-purple"><i class="ri-layout-masonry-line"></i></div>
+                    <div class="tstk-card-icon"><img src="https://img.icons8.com/?size=100&id=AZOZNnY73haj&format=png&color=000000" /></div>
                     <div class="tstk-card-body">
-                        <div class="tstk-card-title">Strapi CMS</div>
-                        <div class="tstk-card-desc">Powering headless content management for our mobile and web applications.</div>
+                        <div class="tstk-card-title">GitHub</div>
+                        <div class="tstk-card-desc">Version control and collaborative development platform for all source code across every project.</div>
                     </div>
                 </div>
                 <div class="tstk-card">
-                    <div class="tstk-card-icon tstk-ic-purple"><i class="ri-wordpress-fill"></i></div>
+                    <div class="tstk-card-icon"><img src="https://img.icons8.com/?size=100&id=34886&format=png&color=000000" /></div>
                     <div class="tstk-card-body">
-                        <div class="tstk-card-title">WordPress</div>
-                        <div class="tstk-card-desc">Fast-turnaround corporate websites for SMEs and marketing landing pages.</div>
+                        <div class="tstk-card-title">GitLab</div>
+                        <div class="tstk-card-desc">Self-hosted DevOps platform combining source control, CI/CD pipelines, and project management.</div>
+                    </div>
+                </div>
+                <div class="tstk-card">
+                    <div class="tstk-card-icon"><img src="https://img.icons8.com/?size=100&id=RQMSjEZrFbcF&format=png&color=000000" /></div>
+                    <div class="tstk-card-body">
+                        <div class="tstk-card-title">GitHub Actions</div>
+                        <div class="tstk-card-desc">Automated CI/CD workflows for testing, building, and deploying code directly from GitHub repositories.</div>
+                    </div>
+                </div>
+                <div class="tstk-card">
+                    <div class="tstk-card-icon"><img src="https://img.icons8.com/?size=100&id=34886&format=png&color=000000" /></div>
+                    <div class="tstk-card-body">
+                        <div class="tstk-card-title">Jenkins</div>
+                        <div class="tstk-card-desc">Open-source automation server for building, testing, and deploying complex enterprise CI/CD pipelines.</div>
+                    </div>
+                </div>
+                <div class="tstk-card">
+                    <div class="tstk-card-icon"><img src="https://img.icons8.com/?size=100&id=9MJf0HVQKHHW&format=png&color=000000" /></div>
+                    <div class="tstk-card-body">
+                        <div class="tstk-card-title">Ansible</div>
+                        <div class="tstk-card-desc">Agentless automation tool for configuration management, application deployment, and task execution.</div>
+                    </div>
+                </div>
+                <div class="tstk-card">
+                    <div class="tstk-card-icon"><img src="https://img.icons8.com/?size=100&id=vHAMsXW9lkiF&format=png&color=000000" /></div>
+                    <div class="tstk-card-body">
+                        <div class="tstk-card-title">Prometheus & Grafana</div>
+                        <div class="tstk-card-desc">Monitoring and observability stack for real-time metrics, alerts, and infrastructure dashboards.</div>
+                    </div>
+                </div>
+                <div class="tstk-card">
+                    <div class="tstk-card-icon"><img src="https://img.icons8.com/?size=100&id=oNHHfOzIJyEb&format=png&color=000000" /></div>
+                    <div class="tstk-card-body">
+                        <div class="tstk-card-title">ELK Stack</div>
+                        <div class="tstk-card-desc">Elasticsearch, Logstash, and Kibana combined for centralised log management and system observability.</div>
+                    </div>
+                </div>
+                <div class="tstk-card">
+                    <div class="tstk-card-icon"><img src="https://img.icons8.com/?size=100&id=AZOZNnY73haj&format=png&color=000000" /></div>
+                    <div class="tstk-card-body">
+                        <div class="tstk-card-title">SonarQube</div>
+                        <div class="tstk-card-desc">Static code analysis tool for identifying bugs, vulnerabilities, and code smells in every pull request.</div>
                     </div>
                 </div>
             </div>
         </section>
+
+        <!-- SECURITY -->
+        <section id="security" class="tstk-section">
+            <h2 class="tstk-section-title">Security & Compliance</h2>
+            <div class="tstk-grid">
+                <div class="tstk-card">
+                    <div class="tstk-card-icon"><img src="https://img.icons8.com/?size=100&id=Xg5bHXBSzwF0&format=png&color=000000" /></div>
+                    <div class="tstk-card-body">
+                        <div class="tstk-card-title">Cloudflare WAF</div>
+                        <div class="tstk-card-desc">Web application firewall blocking malicious traffic and OWASP Top 10 attacks at the edge.</div>
+                    </div>
+                </div>
+                <div class="tstk-card">
+                    <div class="tstk-card-icon"><img src="https://img.icons8.com/?size=100&id=VLKafOkk3sBX&format=png&color=000000" /></div>
+                    <div class="tstk-card-body">
+                        <div class="tstk-card-title">Microsoft Defender</div>
+                        <div class="tstk-card-desc">Endpoint protection and threat intelligence for securing Windows environments across client organisations.</div>
+                    </div>
+                </div>
+                <div class="tstk-card">
+                    <div class="tstk-card-icon"><img src="https://img.icons8.com/?size=100&id=VLKafOkk3sBX&format=png&color=000000" /></div>
+                    <div class="tstk-card-body">
+                        <div class="tstk-card-title">Azure AD / Entra ID</div>
+                        <div class="tstk-card-desc">Identity and access management with SSO, MFA, and conditional access policies for enterprise clients.</div>
+                    </div>
+                </div>
+                <div class="tstk-card">
+                    <div class="tstk-card-icon"><img src="https://img.icons8.com/?size=100&id=9klfAkyHabYB&format=png&color=000000" /></div>
+                    <div class="tstk-card-body">
+                        <div class="tstk-card-title">Auth0</div>
+                        <div class="tstk-card-desc">Authentication and authorisation platform for implementing secure login flows, OAuth, and SAML in apps.</div>
+                    </div>
+                </div>
+                <div class="tstk-card">
+                    <div class="tstk-card-icon"><img src="https://img.icons8.com/?size=100&id=33039&format=png&color=000000" /></div>
+                    <div class="tstk-card-body">
+                        <div class="tstk-card-title">AWS IAM & GuardDuty</div>
+                        <div class="tstk-card-desc">Granular cloud access control and intelligent threat detection for AWS-hosted infrastructure.</div>
+                    </div>
+                </div>
+                <div class="tstk-card">
+                    <div class="tstk-card-icon"><img src="https://img.icons8.com/?size=100&id=GnVHau1cTbGf&format=png&color=000000" /></div>
+                    <div class="tstk-card-body">
+                        <div class="tstk-card-title">Let's Encrypt / SSL</div>
+                        <div class="tstk-card-desc">Automated SSL/TLS certificate provisioning ensuring all client web properties are encrypted in transit.</div>
+                    </div>
+                </div>
+                <div class="tstk-card">
+                    <div class="tstk-card-icon"><img src="https://img.icons8.com/?size=100&id=oNHHfOzIJyEb&format=png&color=000000" /></div>
+                    <div class="tstk-card-body">
+                        <div class="tstk-card-title">Wazuh</div>
+                        <div class="tstk-card-desc">Open-source SIEM platform for security event monitoring, intrusion detection, and compliance reporting.</div>
+                    </div>
+                </div>
+                <div class="tstk-card">
+                    <div class="tstk-card-icon"><img src="https://img.icons8.com/?size=100&id=aR9CXyMagKIS&format=png&color=000000" /></div>
+                    <div class="tstk-card-body">
+                        <div class="tstk-card-title">HashiCorp Vault</div>
+                        <div class="tstk-card-desc">Secrets management tool for storing and accessing API keys, passwords, and certificates securely.</div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- IT SUPPORT -->
+        <section id="itsupport" class="tstk-section">
+            <h2 class="tstk-section-title">IT Support & Helpdesk</h2>
+            <div class="tstk-grid">
+                <div class="tstk-card">
+                    <div class="tstk-card-icon"><img src="https://img.icons8.com/?size=100&id=61461&format=png&color=000000" /></div>
+                    <div class="tstk-card-body">
+                        <div class="tstk-card-title">Freshdesk</div>
+                        <div class="tstk-card-desc">Customer support platform powering our helpdesk ticketing, SLA management, and client communication.</div>
+                    </div>
+                </div>
+                <div class="tstk-card">
+                    <div class="tstk-card-icon"><img src="https://img.icons8.com/?size=100&id=TyHWXqMBiCOj&format=png&color=000000" /></div>
+                    <div class="tstk-card-body">
+                        <div class="tstk-card-title">Zendesk</div>
+                        <div class="tstk-card-desc">Enterprise helpdesk software used for omnichannel support, knowledge bases, and CSAT tracking.</div>
+                    </div>
+                </div>
+                <div class="tstk-card">
+                    <div class="tstk-card-icon"><img src="https://img.icons8.com/?size=100&id=VLKafOkk3sBX&format=png&color=000000" /></div>
+                    <div class="tstk-card-body">
+                        <div class="tstk-card-title">Microsoft 365</div>
+                        <div class="tstk-card-desc">Provisioning and managing M365 tenants, licenses, Exchange, Teams, and SharePoint for business clients.</div>
+                    </div>
+                </div>
+                <div class="tstk-card">
+                    <div class="tstk-card-icon"><img src="https://img.icons8.com/?size=100&id=jkMIi60oEpKa&format=png&color=000000" /></div>
+                    <div class="tstk-card-body">
+                        <div class="tstk-card-title">TeamViewer</div>
+                        <div class="tstk-card-desc">Remote desktop software enabling our technicians to provide instant on-demand support to end users.</div>
+                    </div>
+                </div>
+                <div class="tstk-card">
+                    <div class="tstk-card-icon"><img src="https://img.icons8.com/?size=100&id=VLKafOkk3sBX&format=png&color=000000" /></div>
+                    <div class="tstk-card-body">
+                        <div class="tstk-card-title">Active Directory</div>
+                        <div class="tstk-card-desc">Managing users, groups, GPOs, and domain policies for Windows-based enterprise environments.</div>
+                    </div>
+                </div>
+                <div class="tstk-card">
+                    <div class="tstk-card-icon"><img src="https://img.icons8.com/?size=100&id=WBOoFKCEPBRl&format=png&color=000000" /></div>
+                    <div class="tstk-card-body">
+                        <div class="tstk-card-title">Jira Service Management</div>
+                        <div class="tstk-card-desc">ITSM platform aligned with ITIL practices for incident, problem, and change management workflows.</div>
+                    </div>
+                </div>
+                <div class="tstk-card">
+                    <div class="tstk-card-icon"><img src="https://img.icons8.com/?size=100&id=Ri17jLuONfWH&format=png&color=000000" /></div>
+                    <div class="tstk-card-body">
+                        <div class="tstk-card-title">ConnectWise</div>
+                        <div class="tstk-card-desc">MSP management platform for automated monitoring, RMM, and IT service delivery at scale.</div>
+                    </div>
+                </div>
+                <div class="tstk-card">
+                    <div class="tstk-card-icon"><img src="https://img.icons8.com/?size=100&id=GnVHau1cTbGf&format=png&color=000000" /></div>
+                    <div class="tstk-card-body">
+                        <div class="tstk-card-title">VMware</div>
+                        <div class="tstk-card-desc">Virtualisation platform for server consolidation, disaster recovery, and on-premises cloud infrastructure.</div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- NETWORKING -->
+        <section id="networking" class="tstk-section">
+            <h2 class="tstk-section-title">Networking & Infrastructure</h2>
+            <div class="tstk-grid">
+                <div class="tstk-card">
+                    <div class="tstk-card-icon"><img src="https://img.icons8.com/?size=100&id=e6MoEr5HDDMF&format=png&color=000000" /></div>
+                    <div class="tstk-card-body">
+                        <div class="tstk-card-title">Cisco</div>
+                        <div class="tstk-card-desc">Enterprise-grade networking hardware and software for routing, switching, and wireless deployments.</div>
+                    </div>
+                </div>
+                <div class="tstk-card">
+                    <div class="tstk-card-icon"><img src="https://img.icons8.com/?size=100&id=VLKafOkk3sBX&format=png&color=000000" /></div>
+                    <div class="tstk-card-body">
+                        <div class="tstk-card-title">Hyper-V</div>
+                        <div class="tstk-card-desc">Microsoft's virtualisation platform for running isolated virtual machines in Windows Server environments.</div>
+                    </div>
+                </div>
+                <div class="tstk-card">
+                    <div class="tstk-card-icon"><img src="https://img.icons8.com/?size=100&id=Xg5bHXBSzwF0&format=png&color=000000" /></div>
+                    <div class="tstk-card-body">
+                        <div class="tstk-card-title">Cloudflare DNS</div>
+                        <div class="tstk-card-desc">Fastest DNS resolver used for domain management and intelligent traffic routing globally.</div>
+                    </div>
+                </div>
+                <div class="tstk-card">
+                    <div class="tstk-card-icon"><img src="https://img.icons8.com/?size=100&id=33039&format=png&color=000000" /></div>
+                    <div class="tstk-card-body">
+                        <div class="tstk-card-title">AWS VPC</div>
+                        <div class="tstk-card-desc">Isolated virtual networking environment for deploying secure, segmented cloud infrastructure.</div>
+                    </div>
+                </div>
+                <div class="tstk-card">
+                    <div class="tstk-card-icon"><img src="https://img.icons8.com/?size=100&id=GnVHau1cTbGf&format=png&color=000000" /></div>
+                    <div class="tstk-card-body">
+                        <div class="tstk-card-title">pfSense</div>
+                        <div class="tstk-card-desc">Open-source firewall and router software for managing network perimeter security and VPN access.</div>
+                    </div>
+                </div>
+                <div class="tstk-card">
+                    <div class="tstk-card-icon"><img src="https://img.icons8.com/?size=100&id=vHAMsXW9lkiF&format=png&color=000000" /></div>
+                    <div class="tstk-card-body">
+                        <div class="tstk-card-title">Nagios</div>
+                        <div class="tstk-card-desc">Infrastructure monitoring system for tracking uptime, performance, and health of servers and network devices.</div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- CREATIVE & CMS -->
+        <section id="creative" class="tstk-section">
+            <h2 class="tstk-section-title">Creative & CMS</h2>
+            <div class="tstk-grid">
+                <div class="tstk-card">
+                    <div class="tstk-card-icon"><img src="https://img.icons8.com/?size=100&id=21827&format=png&color=000000" /></div>
+                    <div class="tstk-card-body">
+                        <div class="tstk-card-title">Adobe Photoshop</div>
+                        <div class="tstk-card-desc">Industry-standard photo editing and graphic design for all visual marketing and brand assets.</div>
+                    </div>
+                </div>
+                <div class="tstk-card">
+                    <div class="tstk-card-icon"><img src="https://img.icons8.com/?size=100&id=13631&format=png&color=000000" /></div>
+                    <div class="tstk-card-body">
+                        <div class="tstk-card-title">Adobe Illustrator</div>
+                        <div class="tstk-card-desc">Vector design tool for logos, illustrations, brand identities, and scalable print-ready artwork.</div>
+                    </div>
+                </div>
+                <div class="tstk-card">
+                    <div class="tstk-card-icon"><img src="https://img.icons8.com/?size=100&id=zfHRZ6i1Wg0U&format=png&color=000000" /></div>
+                    <div class="tstk-card-body">
+                        <div class="tstk-card-title">Figma</div>
+                        <div class="tstk-card-desc">Collaborative UI/UX design platform for wireframing, prototyping, and developer handoff on every project.</div>
+                    </div>
+                </div>
+                <div class="tstk-card">
+                    <div class="tstk-card-icon"><img src="https://img.icons8.com/?size=100&id=iWw83PVcBpLw&format=png&color=000000" /></div>
+                    <div class="tstk-card-body">
+                        <div class="tstk-card-title">Adobe Premiere Pro</div>
+                        <div class="tstk-card-desc">Professional video editing suite for producing brand films, social content, and marketing reels.</div>
+                    </div>
+                </div>
+                <div class="tstk-card">
+                    <div class="tstk-card-icon"><img src="https://img.icons8.com/?size=100&id=czpFiAuQ1n4I&format=png&color=000000" /></div>
+                    <div class="tstk-card-body">
+                        <div class="tstk-card-title">Adobe After Effects</div>
+                        <div class="tstk-card-desc">Motion graphics and visual effects for animated brand content, explainer videos, and UI animations.</div>
+                    </div>
+                </div>
+                <div class="tstk-card">
+                    <div class="tstk-card-icon"><img src="https://img.icons8.com/?size=100&id=iWw83PVcBpLw&format=png&color=000000" /></div>
+                    <div class="tstk-card-body">
+                        <div class="tstk-card-title">Canva</div>
+                        <div class="tstk-card-desc">Rapid design platform for social media graphics, presentations, and marketing collateral at speed.</div>
+                    </div>
+                </div>
+                <div class="tstk-card">
+                    <div class="tstk-card-icon"><img src="https://img.icons8.com/?size=100&id=bxHQDTCbFGFn&format=png&color=000000" /></div>
+                    <div class="tstk-card-body">
+                        <div class="tstk-card-title">WordPress</div>
+                        <div class="tstk-card-desc">Fast-turnaround corporate websites for SMEs and marketing landing pages with full CMS control.</div>
+                    </div>
+                </div>
+                <div class="tstk-card">
+                    <div class="tstk-card-icon"><img src="https://img.icons8.com/?size=100&id=r2OarXWQc7B6&format=png&color=000000" /></div>
+                    <div class="tstk-card-body">
+                        <div class="tstk-card-title">Strapi CMS</div>
+                        <div class="tstk-card-desc">Headless CMS powering flexible content management for mobile and web application backends.</div>
+                    </div>
+                </div>
+                <div class="tstk-card">
+                    <div class="tstk-card-icon"><img src="https://img.icons8.com/?size=100&id=YO3YqSaTOu5K&format=png&color=000000" /></div>
+                    <div class="tstk-card-body">
+                        <div class="tstk-card-title">Webflow CMS</div>
+                        <div class="tstk-card-desc">No-code CMS for non-technical teams to manage dynamic content without developer involvement.</div>
+                    </div>
+                </div>
+                <div class="tstk-card">
+                    <div class="tstk-card-icon"><img src="https://img.icons8.com/?size=100&id=MCBcUoRnYgYL&format=png&color=000000" /></div>
+                    <div class="tstk-card-body">
+                        <div class="tstk-card-title">Contentful</div>
+                        <div class="tstk-card-desc">API-first headless CMS for delivering structured content across websites, apps, and digital channels.</div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- DIGITAL MARKETING -->
+        <section id="marketing" class="tstk-section">
+            <h2 class="tstk-section-title">Digital Marketing</h2>
+            <div class="tstk-grid">
+                <div class="tstk-card">
+                    <div class="tstk-card-icon"><img src="https://img.icons8.com/?size=100&id=60984&format=png&color=000000" /></div>
+                    <div class="tstk-card-body">
+                        <div class="tstk-card-title">Google Ads</div>
+                        <div class="tstk-card-desc">Paid search and display campaigns for driving qualified traffic and generating leads for client businesses.</div>
+                    </div>
+                </div>
+                <div class="tstk-card">
+                    <div class="tstk-card-icon"><img src="https://img.icons8.com/?size=100&id=uLWV5A9vXIPu&format=png&color=000000" /></div>
+                    <div class="tstk-card-body">
+                        <div class="tstk-card-title">Meta Ads</div>
+                        <div class="tstk-card-desc">Facebook and Instagram advertising for targeted audience reach, retargeting, and conversion campaigns.</div>
+                    </div>
+                </div>
+                <div class="tstk-card">
+                    <div class="tstk-card-icon"><img src="https://img.icons8.com/?size=100&id=60983&format=png&color=000000" /></div>
+                    <div class="tstk-card-body">
+                        <div class="tstk-card-title">Google Analytics 4</div>
+                        <div class="tstk-card-desc">Web analytics platform tracking user behaviour, conversions, and campaign performance across digital channels.</div>
+                    </div>
+                </div>
+                <div class="tstk-card">
+                    <div class="tstk-card-icon"><img src="https://img.icons8.com/?size=100&id=HElKVkFXOXhL&format=png&color=000000" /></div>
+                    <div class="tstk-card-body">
+                        <div class="tstk-card-title">Mailchimp</div>
+                        <div class="tstk-card-desc">Email marketing automation for campaigns, drip sequences, and audience segmentation at scale.</div>
+                    </div>
+                </div>
+                <div class="tstk-card">
+                    <div class="tstk-card-icon"><img src="https://img.icons8.com/?size=100&id=KO9A0P0xhJnS&format=png&color=000000" /></div>
+                    <div class="tstk-card-body">
+                        <div class="tstk-card-title">HubSpot</div>
+                        <div class="tstk-card-desc">CRM and inbound marketing platform for managing contacts, email campaigns, and sales pipelines.</div>
+                    </div>
+                </div>
+                <div class="tstk-card">
+                    <div class="tstk-card-icon"><img src="https://img.icons8.com/?size=100&id=60983&format=png&color=000000" /></div>
+                    <div class="tstk-card-body">
+                        <div class="tstk-card-title">Google Search Console</div>
+                        <div class="tstk-card-desc">SEO monitoring and indexing tool for tracking organic search visibility, clicks, and keyword rankings.</div>
+                    </div>
+                </div>
+                <div class="tstk-card">
+                    <div class="tstk-card-icon"><img src="https://img.icons8.com/?size=100&id=J6LczySJYrm3&format=png&color=000000" /></div>
+                    <div class="tstk-card-body">
+                        <div class="tstk-card-title">SEMrush</div>
+                        <div class="tstk-card-desc">Comprehensive SEO and competitive intelligence platform for keyword research, audits, and backlink analysis.</div>
+                    </div>
+                </div>
+                <div class="tstk-card">
+                    <div class="tstk-card-icon"><img src="https://img.icons8.com/?size=100&id=uLWV5A9vXIPu&format=png&color=000000" /></div>
+                    <div class="tstk-card-body">
+                        <div class="tstk-card-title">LinkedIn Ads</div>
+                        <div class="tstk-card-desc">B2B advertising platform for targeting decision-makers by industry, job title, and company size.</div>
+                    </div>
+                </div>
+                <div class="tstk-card">
+                    <div class="tstk-card-icon"><img src="https://img.icons8.com/?size=100&id=61482&format=png&color=000000" /></div>
+                    <div class="tstk-card-body">
+                        <div class="tstk-card-title">TikTok Ads</div>
+                        <div class="tstk-card-desc">Short-form video advertising for brands targeting younger, mobile-first audiences with high engagement rates.</div>
+                    </div>
+                </div>
+                <div class="tstk-card">
+                    <div class="tstk-card-icon"><img src="https://img.icons8.com/?size=100&id=HElKVkFXOXhL&format=png&color=000000" /></div>
+                    <div class="tstk-card-body">
+                        <div class="tstk-card-title">Klaviyo</div>
+                        <div class="tstk-card-desc">E-commerce-focused email and SMS marketing with deep Shopify integration and advanced segmentation.</div>
+                    </div>
+                </div>
+                <div class="tstk-card">
+                    <div class="tstk-card-icon"><img src="https://img.icons8.com/?size=100&id=ABBSjQJK83zf&format=png&color=000000" /></div>
+                    <div class="tstk-card-body">
+                        <div class="tstk-card-title">Hootsuite</div>
+                        <div class="tstk-card-desc">Social media management for scheduling, publishing, monitoring, and reporting across all client channels.</div>
+                    </div>
+                </div>
+                <div class="tstk-card">
+                    <div class="tstk-card-icon"><img src="https://img.icons8.com/?size=100&id=60984&format=png&color=000000" /></div>
+                    <div class="tstk-card-body">
+                        <div class="tstk-card-title">Google Tag Manager</div>
+                        <div class="tstk-card-desc">Tag management system for deploying tracking pixels, analytics scripts, and conversion tags without code changes.</div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- ANALYTICS & BI -->
+        <section id="analytics" class="tstk-section">
+            <h2 class="tstk-section-title">Analytics & Business Intelligence</h2>
+            <div class="tstk-grid">
+                <div class="tstk-card">
+                    <div class="tstk-card-icon"><img src="https://img.icons8.com/?size=100&id=9OGIyU8hrxW5&format=png&color=000000" /></div>
+                    <div class="tstk-card-body">
+                        <div class="tstk-card-title">Power BI</div>
+                        <div class="tstk-card-desc">Microsoft's BI platform for building interactive dashboards and business reports from multiple data sources.</div>
+                    </div>
+                </div>
+                <div class="tstk-card">
+                    <div class="tstk-card-icon"><img src="https://img.icons8.com/?size=100&id=PjmM5aMXaJfe&format=png&color=000000" /></div>
+                    <div class="tstk-card-body">
+                        <div class="tstk-card-title">Tableau</div>
+                        <div class="tstk-card-desc">Powerful data visualisation tool for creating rich, shareable analytics dashboards for executive teams.</div>
+                    </div>
+                </div>
+                <div class="tstk-card">
+                    <div class="tstk-card-icon"><img src="https://img.icons8.com/?size=100&id=WHRLQdbEXQ16&format=png&color=000000" /></div>
+                    <div class="tstk-card-body">
+                        <div class="tstk-card-title">Google Looker Studio</div>
+                        <div class="tstk-card-desc">Free reporting platform connecting Google data sources for custom marketing and sales performance dashboards.</div>
+                    </div>
+                </div>
+                <div class="tstk-card">
+                    <div class="tstk-card-icon"><img src="https://img.icons8.com/?size=100&id=WHRLQdbEXQ16&format=png&color=000000" /></div>
+                    <div class="tstk-card-body">
+                        <div class="tstk-card-title">BigQuery</div>
+                        <div class="tstk-card-desc">Serverless data warehouse for running SQL analytics on petabyte-scale datasets with lightning speed.</div>
+                    </div>
+                </div>
+                <div class="tstk-card">
+                    <div class="tstk-card-icon"><img src="https://img.icons8.com/?size=100&id=laYYF3dV0Iew&format=png&color=000000" /></div>
+                    <div class="tstk-card-body">
+                        <div class="tstk-card-title">Pandas / NumPy</div>
+                        <div class="tstk-card-desc">Python libraries for data manipulation, transformation, and statistical analysis in analytics pipelines.</div>
+                    </div>
+                </div>
+                <div class="tstk-card">
+                    <div class="tstk-card-icon"><img src="https://img.icons8.com/?size=100&id=33039&format=png&color=000000" /></div>
+                    <div class="tstk-card-body">
+                        <div class="tstk-card-title">AWS Redshift</div>
+                        <div class="tstk-card-desc">Cloud data warehouse for fast SQL querying across structured data for enterprise reporting needs.</div>
+                    </div>
+                </div>
+                <div class="tstk-card">
+                    <div class="tstk-card-icon"><img src="https://img.icons8.com/?size=100&id=oNHHfOzIJyEb&format=png&color=000000" /></div>
+                    <div class="tstk-card-body">
+                        <div class="tstk-card-title">Kibana</div>
+                        <div class="tstk-card-desc">Visualisation layer for Elasticsearch data, used for operational dashboards and log analytics.</div>
+                    </div>
+                </div>
+                <div class="tstk-card">
+                    <div class="tstk-card-icon"><img src="https://img.icons8.com/?size=100&id=vHAMsXW9lkiF&format=png&color=000000" /></div>
+                    <div class="tstk-card-body">
+                        <div class="tstk-card-title">Grafana</div>
+                        <div class="tstk-card-desc">Open-source observability platform for building real-time operational metrics and infrastructure dashboards.</div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- COMMUNICATION & COLLAB -->
+        <section id="communication" class="tstk-section">
+            <h2 class="tstk-section-title">Communication & Collaboration</h2>
+            <div class="tstk-grid">
+                <div class="tstk-card">
+                    <div class="tstk-card-icon"><img src="https://img.icons8.com/?size=100&id=MfMiCeAZMfXE&format=png&color=000000" /></div>
+                    <div class="tstk-card-body">
+                        <div class="tstk-card-title">Slack</div>
+                        <div class="tstk-card-desc">Primary internal communication platform for real-time team messaging, file sharing, and integrations.</div>
+                    </div>
+                </div>
+                <div class="tstk-card">
+                    <div class="tstk-card-icon"><img src="https://img.icons8.com/?size=100&id=VLKafOkk3sBX&format=png&color=000000" /></div>
+                    <div class="tstk-card-body">
+                        <div class="tstk-card-title">Microsoft Teams</div>
+                        <div class="tstk-card-desc">Video conferencing and collaboration hub deployed for enterprise clients within the M365 ecosystem.</div>
+                    </div>
+                </div>
+                <div class="tstk-card">
+                    <div class="tstk-card-icon"><img src="https://img.icons8.com/?size=100&id=NuRpwNbmBkUS&format=png&color=000000" /></div>
+                    <div class="tstk-card-body">
+                        <div class="tstk-card-title">Zoom</div>
+                        <div class="tstk-card-desc">Video meetings, webinars, and remote client consultations with reliable cross-device compatibility.</div>
+                    </div>
+                </div>
+                <div class="tstk-card">
+                    <div class="tstk-card-icon"><img src="https://img.icons8.com/?size=100&id=WBOoFKCEPBRl&format=png&color=000000" /></div>
+                    <div class="tstk-card-body">
+                        <div class="tstk-card-title">Jira</div>
+                        <div class="tstk-card-desc">Agile project management for sprint planning, bug tracking, and delivery across development teams.</div>
+                    </div>
+                </div>
+                <div class="tstk-card">
+                    <div class="tstk-card-icon"><img src="https://img.icons8.com/?size=100&id=YU8xkKPlBRWG&format=png&color=000000" /></div>
+                    <div class="tstk-card-body">
+                        <div class="tstk-card-title">Notion</div>
+                        <div class="tstk-card-desc">All-in-one workspace for internal documentation, project wikis, SOPs, and team knowledge management.</div>
+                    </div>
+                </div>
+                <div class="tstk-card">
+                    <div class="tstk-card-icon"><img src="https://img.icons8.com/?size=100&id=oRQPPPPqSBMT&format=png&color=000000" /></div>
+                    <div class="tstk-card-body">
+                        <div class="tstk-card-title">Trello</div>
+                        <div class="tstk-card-desc">Kanban-based task management for organising projects visually and tracking deliverables across teams.</div>
+                    </div>
+                </div>
+                <div class="tstk-card">
+                    <div class="tstk-card-icon"><img src="https://img.icons8.com/?size=100&id=xXOYeFsEu2Bt&format=png&color=000000" /></div>
+                    <div class="tstk-card-body">
+                        <div class="tstk-card-title">Asana</div>
+                        <div class="tstk-card-desc">Task and project management platform for cross-functional team coordination and deadline tracking.</div>
+                    </div>
+                </div>
+                <div class="tstk-card">
+                    <div class="tstk-card-icon"><img src="https://img.icons8.com/?size=100&id=WHRLQdbEXQ16&format=png&color=000000" /></div>
+                    <div class="tstk-card-body">
+                        <div class="tstk-card-title">Google Workspace</div>
+                        <div class="tstk-card-desc">Gmail, Drive, Docs, and Meet provisioned and managed for clients as a complete business productivity suite.</div>
+                    </div>
+                </div>
+                <div class="tstk-card">
+                    <div class="tstk-card-icon"><img src="https://img.icons8.com/?size=100&id=Ri17jLuONfWH&format=png&color=000000" /></div>
+                    <div class="tstk-card-body">
+                        <div class="tstk-card-title">Confluence</div>
+                        <div class="tstk-card-desc">Team wiki and documentation tool for creating structured knowledge bases and technical runbooks.</div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
     </main>
 </div>
 
 <script>
     document.addEventListener('DOMContentLoaded', () => {
-        const searchInput = document.getElementById('tstkSearch');
-        const cards = document.querySelectorAll('.tstk-card');
-        const sections = document.querySelectorAll('.tstk-section');
-        const navLinks = document.querySelectorAll('.tstk-nav-link');
+        const searchInput   = document.getElementById('tstkSearch');
+        const cards         = document.querySelectorAll('.tstk-card');
+        const sections      = document.querySelectorAll('.tstk-section');
+        const sideNavLinks  = document.querySelectorAll('.tstk-nav-link');
+        const mobileLinks   = document.querySelectorAll('.tstk-mobile-nav-link');
 
-        // 1. Real-time Search Functional
-        searchInput.addEventListener('input', (e) => {
-            const term = e.target.value.toLowerCase();
-            
-            cards.forEach(card => {
-                const title = card.querySelector('.tstk-card-title').innerText.toLowerCase();
-                const desc = card.querySelector('.tstk-card-desc').innerText.toLowerCase();
-                
-                if (title.includes(term) || desc.includes(term)) {
-                    card.classList.remove('tstk-hidden');
-                } else {
-                    card.classList.add('tstk-hidden');
-                }
+        /* ── helper: set active on a set of links ─────────────────── */
+        function setActive(links, id) {
+            links.forEach(link => {
+                const matches = link.getAttribute('href') === `#${id}`;
+                link.classList.toggle('active', matches);
             });
+        }
 
-            // Hide empty sections
-            sections.forEach(section => {
-                const visibleCards = section.querySelectorAll('.tstk-card:not(.tstk-hidden)');
-                section.style.display = visibleCards.length === 0 ? 'none' : 'block';
+        /* ── helper: scroll active mobile pill into view ──────────── */
+        function scrollMobilePillIntoView(id) {
+            const pill = document.querySelector(`.tstk-mobile-nav-link[href="#${id}"]`);
+            if (!pill) return;
+            const nav   = document.getElementById('tstkMobileNav');
+            const inner = nav.querySelector('.tstk-mobile-nav-inner');
+            // Centre the active pill within the scrollable strip
+            const pillLeft   = pill.offsetLeft;
+            const pillWidth  = pill.offsetWidth;
+            const navWidth   = nav.offsetWidth;
+            const scrollTo   = pillLeft - (navWidth / 2) + (pillWidth / 2);
+            nav.scrollTo({ left: scrollTo, behavior: 'smooth' });
+        }
+
+        /* ── 1. Real-time Search ───────────────────────────────────── */
+        if (searchInput) {
+            searchInput.addEventListener('input', (e) => {
+                const term = e.target.value.toLowerCase();
+                cards.forEach(card => {
+                    const title = card.querySelector('.tstk-card-title').innerText.toLowerCase();
+                    const desc  = card.querySelector('.tstk-card-desc').innerText.toLowerCase();
+                    card.classList.toggle('tstk-hidden', !title.includes(term) && !desc.includes(term));
+                });
+                sections.forEach(section => {
+                    const visible = section.querySelectorAll('.tstk-card:not(.tstk-hidden)');
+                    section.style.display = visible.length === 0 ? 'none' : '';
+                });
             });
-        });
+        }
 
-        // 2. Smooth Scroll & Active State
-        navLinks.forEach(link => {
-            link.addEventListener('click', (e) => {
-                e.preventDefault();
-                const target = document.querySelector(link.getAttribute('href'));
-                window.scrollTo({ top: target.offsetTop - 60, behavior: 'smooth' });
-            });
-        });
+        /* ── 2. Click: smooth scroll + immediate active state ─────── */
+        function handleNavClick(e) {
+            e.preventDefault();
+            const href   = this.getAttribute('href');
+            const target = document.querySelector(href);
+            if (!target) return;
 
-        // 3. Intersection Observer for Sidebar Scroll Interaction
+            const mobileNav     = document.getElementById('tstkMobileNav');
+            const mobileNavH    = mobileNav ? mobileNav.offsetHeight : 0;
+            const isMobile      = window.innerWidth <= 1100;
+            const offset        = isMobile ? mobileNavH + 8 : 80;
+            const top           = target.getBoundingClientRect().top + window.scrollY - offset;
+
+            // Immediately mark active (don't wait for observer)
+            const id = href.replace('#', '');
+            setActive(sideNavLinks, id);
+            setActive(mobileLinks,  id);
+            scrollMobilePillIntoView(id);
+
+            window.scrollTo({ top, behavior: 'smooth' });
+        }
+
+        sideNavLinks.forEach(l => l.addEventListener('click', handleNavClick));
+        mobileLinks.forEach(l  => l.addEventListener('click', handleNavClick));
+
+        /* ── 3. Scroll spy via IntersectionObserver ───────────────── */
+        // Track which sections are currently intersecting; pick the topmost one
+        const visibleSections = new Set();
+
         const observer = new IntersectionObserver((entries) => {
             entries.forEach(entry => {
                 if (entry.isIntersecting) {
-                    navLinks.forEach(link => {
-                        link.classList.toggle('active', link.getAttribute('href') === `#${entry.target.id}`);
-                    });
+                    visibleSections.add(entry.target);
+                } else {
+                    visibleSections.delete(entry.target);
                 }
             });
-        }, { threshold: 0.5, rootMargin: "-10% 0px -70% 0px" });
+
+            if (visibleSections.size === 0) return;
+
+            // Pick the section closest to the top of the viewport
+            let topSection = null;
+            let minTop = Infinity;
+            visibleSections.forEach(sec => {
+                const rect = sec.getBoundingClientRect();
+                if (rect.top < minTop) {
+                    minTop = rect.top;
+                    topSection = sec;
+                }
+            });
+
+            if (topSection) {
+                const id = topSection.id;
+                setActive(sideNavLinks, id);
+                setActive(mobileLinks,  id);
+                scrollMobilePillIntoView(id);
+
+                // Also scroll the sidebar nav link into view within the nav list
+                const activeLink = document.querySelector(`.tstk-nav-link[href="#${id}"]`);
+                if (activeLink) {
+                    activeLink.scrollIntoView({ block: 'nearest', behavior: 'smooth' });
+                }
+            }
+        }, {
+            // Fire when section crosses into the upper portion of viewport
+            rootMargin: '-10% 0px -60% 0px',
+            threshold: 0
+        });
 
         sections.forEach(s => observer.observe(s));
     });
 </script>
+</body>
+</html>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>FAQ Section</title>
+  <link href="https://fonts.cdnfonts.com/css/circular-std" rel="stylesheet" />
+  <style>
+    /* ─── Scoped FAQ Section ─────────────────────────────────────────────── */
+    .cf-faq-section {
+      all: initial;
+      display: block;
+      font-family: 'Circular Std', 'CircularXX', -apple-system, BlinkMacSystemFont, sans-serif;
+      background-color: #0a0a0a;
+      color: #ffffff;
+      box-sizing: border-box;
+      padding: 80px 64px;
+      min-height: 100vh;
+    }
+
+    .cf-faq-section *,
+    .cf-faq-section *::before,
+    .cf-faq-section *::after {
+      box-sizing: border-box;
+    }
+
+    /* ─── Layout Grid ───────────────────────────────────────────────────── */
+    .cf-faq-grid {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 80px;
+      max-width: 1200px;
+      margin: 0 auto;
+    }
+
+    /* ─── Left Column ───────────────────────────────────────────────────── */
+    .cf-faq-left {}
+
+    .cf-faq-heading {
+      font-size: 52px;
+      font-weight: 300;
+      line-height: 1.1;
+      margin: 0 0 20px 0;
+      color: #aaaaaa;
+      letter-spacing: -1px;
+    }
+
+    .cf-faq-heading strong {
+      font-weight: 700;
+      color: #ffffff;
+    }
+
+    .cf-faq-intro {
+      font-size: 15px;
+      font-weight: 400;
+      color: #888888;
+      line-height: 1.65;
+      margin: 0 0 56px 0;
+      max-width: 480px;
+    }
+
+    /* ─── Accordion ─────────────────────────────────────────────────────── */
+    .cf-accordion {}
+
+    .cf-accordion-item {
+      border-top: 1px solid #2a2a2a;
+    }
+
+    .cf-accordion-item:last-child {
+      border-bottom: 1px solid #2a2a2a;
+    }
+
+    .cf-accordion-trigger {
+      all: unset;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      width: 100%;
+      padding: 24px 0;
+      cursor: pointer;
+      font-family: inherit;
+      font-size: 17px;
+      font-weight: 700;
+      color: #ffffff;
+      letter-spacing: -0.2px;
+      line-height: 1.3;
+      transition: color 0.2s ease;
+    }
+
+    .cf-accordion-trigger:hover {
+      color: #cccccc;
+    }
+
+    .cf-accordion-icon {
+      flex-shrink: 0;
+      width: 20px;
+      height: 20px;
+      position: relative;
+      margin-left: 24px;
+    }
+
+    .cf-accordion-icon::before,
+    .cf-accordion-icon::after {
+      content: '';
+      position: absolute;
+      background: #ffffff;
+      border-radius: 2px;
+      transition: transform 0.3s ease, opacity 0.3s ease;
+    }
+
+    /* Horizontal bar */
+    .cf-accordion-icon::before {
+      width: 16px;
+      height: 1.5px;
+      top: 50%;
+      left: 50%;
+      transform: translate(-50%, -50%);
+    }
+
+    /* Vertical bar */
+    .cf-accordion-icon::after {
+      width: 1.5px;
+      height: 16px;
+      top: 50%;
+      left: 50%;
+      transform: translate(-50%, -50%);
+    }
+
+    /* Open state: rotate to minus */
+    .cf-accordion-item[data-cf-open="true"] .cf-accordion-icon::after {
+      transform: translate(-50%, -50%) rotate(90deg);
+      opacity: 0;
+    }
+
+    .cf-accordion-body {
+      overflow: hidden;
+      max-height: 0;
+      transition: max-height 0.35s ease, padding 0.35s ease;
+    }
+
+    .cf-accordion-item[data-cf-open="true"] .cf-accordion-body {
+      max-height: 300px;
+    }
+
+    .cf-accordion-body-inner {
+      padding: 0 0 28px 0;
+      font-size: 15px;
+      color: #888888;
+      line-height: 1.7;
+      font-weight: 400;
+    }
+
+    /* ─── Right Column ──────────────────────────────────────────────────── */
+    .cf-faq-right {
+      display: flex;
+      flex-direction: column;
+      justify-content: flex-start;
+      background: #1f1f1f;
+      padding: 50px;
+      border-radius: 30px;
+    }
+
+    .cf-cta-block {
+      margin-bottom: 72px;
+    }
+
+    .cf-cta-heading {
+      font-size: 48px;
+      font-weight: 700;
+      line-height: 1.1;
+      letter-spacing: -1.5px;
+      margin: 0 0 20px 0;
+      color: #ffffff;
+    }
+
+    .cf-cta-desc {
+      font-size: 15px;
+      color: #888888;
+      line-height: 1.65;
+      font-weight: 400;
+      margin: 0 0 32px 0;
+      max-width: 340px;
+    }
+
+    .cf-cta-btn {
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      padding: 14px 32px;
+      background: #ffffff;
+      color: #0a0a0a;
+      border-radius: 999px;
+      font-family: inherit;
+      font-size: 15px;
+      font-weight: 700;
+      letter-spacing: -0.2px;
+      text-decoration: none;
+      border: none;
+      cursor: pointer;
+      transition: background 0.2s ease, color 0.2s ease, transform 0.15s ease;
+    }
+
+    .cf-cta-btn:hover {
+      background: #e0e0e0;
+      transform: translateY(-1px);
+    }
+
+    /* ─── Contact Block ─────────────────────────────────────────────────── */
+    .cf-contact-block {
+      padding-top: 48px;
+      border-top: 1px solid #2a2a2a;
+    }
+
+    .cf-contact-label {
+      font-size: 14px;
+      font-weight: 400;
+      color: #888888;
+      margin: 0 0 6px 0;
+      letter-spacing: 0.1px;
+    }
+
+    .cf-contact-email {
+      font-size: 22px;
+      font-weight: 700;
+      color: #ffffff;
+      text-decoration: none;
+      letter-spacing: -0.5px;
+      transition: color 0.2s ease;
+    }
+
+    .cf-contact-email:hover {
+      color: #aaaaaa;
+    }
+
+    /* ─── Responsive ────────────────────────────────────────────────────── */
+    @media (max-width: 860px) {
+      .cf-faq-section {
+        padding: 48px 28px;
+      }
+
+      .cf-faq-grid {
+        grid-template-columns: 1fr;
+        gap: 56px;
+      }
+
+      .cf-faq-heading {
+        font-size: 38px;
+      }
+
+      .cf-cta-heading {
+        font-size: 36px;
+      }
+
+      .cf-faq-left {
+        padding: 0 20px;
+      }
+      .cf-faq-right {
+        padding: 40px 20px 40px 20px;
+      }
+    }
+  </style>
+</head>
+<body>
+
+  <!-- FAQ Section Component — scoped with cf- prefix -->
+  <div class="cf-faq-section">
+    <div class="cf-faq-grid">
+
+      <!-- LEFT: FAQ -->
+      <div class="cf-faq-left">
+        <h2 class="cf-faq-heading">Do you have <strong>more questions?</strong></h2>
+        <p class="cf-faq-intro">Lorem ipsum dolor sit amet consectetur diam nunc ut placerat vitae urna orci quam quam lorem facilisis accumsan aliquet lacus egestas velit praesent.</p>
+
+        <div class="cf-accordion">
+
+          <div class="cf-accordion-item" data-cf-open="true">
+            <button class="cf-accordion-trigger" aria-expanded="true" data-cf-toggle>
+              Are you open for new projects?
+              <span class="cf-accordion-icon" aria-hidden="true"></span>
+            </button>
+            <div class="cf-accordion-body" role="region">
+              <div class="cf-accordion-body-inner">
+                Lorem ipsum dolor sit amet consectetur diam nunc ut placerat vitae urna orci quam quam lorem facilisis accumsan aliquet lacus egestas velit praesent.
+              </div>
+            </div>
+          </div>
+
+          <div class="cf-accordion-item" data-cf-open="false">
+            <button class="cf-accordion-trigger" aria-expanded="false" data-cf-toggle>
+              How long has your agency been running for?
+              <span class="cf-accordion-icon" aria-hidden="true"></span>
+            </button>
+            <div class="cf-accordion-body" role="region">
+              <div class="cf-accordion-body-inner">
+                Lorem ipsum dolor sit amet consectetur diam nunc ut placerat vitae urna orci quam quam lorem facilisis accumsan aliquet lacus egestas velit praesent.
+              </div>
+            </div>
+          </div>
+
+          <div class="cf-accordion-item" data-cf-open="false">
+            <button class="cf-accordion-trigger" aria-expanded="false" data-cf-toggle>
+              Do you currently have career openings?
+              <span class="cf-accordion-icon" aria-hidden="true"></span>
+            </button>
+            <div class="cf-accordion-body" role="region">
+              <div class="cf-accordion-body-inner">
+                Lorem ipsum dolor sit amet consectetur diam nunc ut placerat vitae urna orci quam quam lorem facilisis accumsan aliquet lacus egestas velit praesent.
+              </div>
+            </div>
+          </div>
+
+          <div class="cf-accordion-item" data-cf-open="false">
+            <button class="cf-accordion-trigger" aria-expanded="false" data-cf-toggle>
+              Do you offer discounts for nonprofit companies?
+              <span class="cf-accordion-icon" aria-hidden="true"></span>
+            </button>
+            <div class="cf-accordion-body" role="region">
+              <div class="cf-accordion-body-inner">
+                Lorem ipsum dolor sit amet consectetur diam nunc ut placerat vitae urna orci quam quam lorem facilisis accumsan aliquet lacus egestas velit praesent.
+              </div>
+            </div>
+          </div>
+
+        </div>
+      </div>
+
+      <!-- RIGHT: CTA + Contact -->
+      <div class="cf-faq-right">
+
+        <div class="cf-cta-block">
+          <h3 class="cf-cta-heading">Would you like to work with us?</h3>
+          <p class="cf-cta-desc">Lorem ipsum dolor sit amet consectetur ultrices tempus scelerisque et nulla vestibulum lacus.</p>
+          <a href="#" class="cf-cta-btn">Join our team</a>
+        </div>
+
+        <div class="cf-contact-block">
+          <p class="cf-contact-label">Send us a message</p>
+          <a href="mailto:careers@cinemaflow.com" class="cf-contact-email">careers@cinemaflow.com</a>
+        </div>
+
+      </div>
+
+    </div>
+  </div>
+
+  <script>
+    (function () {
+      // Scoped to cf-accordion-item only
+      var triggers = document.querySelectorAll('[data-cf-toggle]');
+
+      triggers.forEach(function (btn) {
+        btn.addEventListener('click', function () {
+          var item = btn.closest('.cf-accordion-item');
+          var isOpen = item.getAttribute('data-cf-open') === 'true';
+
+          // Close all
+          document.querySelectorAll('.cf-accordion-item').forEach(function (el) {
+            el.setAttribute('data-cf-open', 'false');
+            el.querySelector('[data-cf-toggle]').setAttribute('aria-expanded', 'false');
+          });
+
+          // Toggle clicked
+          if (!isOpen) {
+            item.setAttribute('data-cf-open', 'true');
+            btn.setAttribute('aria-expanded', 'true');
+          }
+        });
+      });
+    })();
+  </script>
+
+</body>
+</html>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 <cronos-footer></cronos-footer>
 

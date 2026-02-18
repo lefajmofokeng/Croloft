@@ -1,451 +1,336 @@
+
 <!DOCTYPE html>
 <html lang="en">
 <head>
     <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
-    <title>Defcon Data Engineering | Architecture & Management</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Premium Tech Stack</title>
     
-    <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
-    
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+    <link href="https://cdn.jsdelivr.net/npm/remixicon@3.5.0/fonts/remixicon.css" rel="stylesheet">
+
     <style>
-        /* --- 1. CORE VARIABLES & SETUP --- */
         :root {
-            /* Data Theme Colors */
-            --db-bg: #050a14;
-            --db-panel: #0b1221;
-            --db-accent: #00f2ea; /* Cyan/Teal for Data */
-            --db-accent-dim: rgba(0, 242, 234, 0.1);
-            --db-text-main: #ffffff;
-            --db-text-muted: #94a3b8;
-            --db-border: #1e293b;
-            --db-success: #10b981;
-            
-            /* Font Settings */
-            --font-stack: 'Circular Std', 'Plus Jakarta Sans', 'Inter', sans-serif;
+            --tstk-bg: #0B0C0E;
+            --tstk-card: #16171A;
+            --tstk-card-hover: #1C1D21;
+            --tstk-accent: #3ECF8E; 
+            --tstk-text: #FFFFFF;
+            --tstk-muted: #888888;
+            --tstk-border: #262626;
+            --tstk-font: 'Circular Std', 'Inter', sans-serif;
+            --tstk-max-width: 1300px;
         }
 
-        body {
-            font-family: var(--font-stack);
-            background-color: var(--db-bg);
-            color: var(--db-text-main);
-            margin: 0;
-            padding: 0;
-            -webkit-font-smoothing: antialiased;
-            overflow-x: hidden;
+        /* Circular Std - Book/Regular (400) */
+        @font-face {
+            font-family: 'Circular Std';
+            src: url('fonts/CircularStd-Book.ttf') format('truetype');
+            font-weight: 400;
+            font-style: normal;
         }
 
-        /* --- 2. LAYOUT UTILITIES --- */
-        .db-container {
-            max-width: 1000px; /* Tighter width for technical reading */
+        /* Circular Std - Medium (500) */
+        @font-face {
+            font-family: 'Circular Std';
+            src: url('fonts/CircularStd.ttf') format('truetype');
+            font-weight: 500;
+            font-style: normal;
+        }
+
+        /* Circular Std - Bold (700) */
+        @font-face {
+            font-family: 'Circular Std';
+            src: url('fonts/CircularStd-Bold.ttf') format('truetype');
+            font-weight: 600;
+            font-style: normal;
+        }
+
+        .tstk-container * { box-sizing: border-box; margin: 0; padding: 0; }
+
+        body { background-color: var(--tstk-bg); margin: 0; }
+
+        .tstk-container {
+            font-family: var(--tstk-font);
+            color: var(--tstk-text);
+            max-width: var(--tstk-max-width);
             margin: 0 auto;
-            padding: 0 20px;
-        }
-
-        /* --- 3. HERO SECTION (Minimalist / Terminal Style) --- */
-        .db-hero {
-            padding: 120px 0 80px 0;
-            border-bottom: 1px solid var(--db-border);
-            position: relative;
-        }
-
-        .db-hero::before {
-            /* Grid Background Effect */
-            content: '';
-            position: absolute;
-            top: 0; left: 0; right: 0; bottom: 0;
-            background-image: 
-                linear-gradient(rgba(30, 41, 59, 0.3) 1px, transparent 1px),
-                linear-gradient(90deg, rgba(30, 41, 59, 0.3) 1px, transparent 1px);
-            background-size: 40px 40px;
-            z-index: -1;
-            mask-image: linear-gradient(to bottom, black 40%, transparent 100%);
-            -webkit-mask-image: linear-gradient(to bottom, black 40%, transparent 100%);
-        }
-
-        .db-status-badge {
-            font-family: 'Courier New', monospace;
-            font-size: 0.8em;
-            color: var(--db-accent);
-            background: var(--db-accent-dim);
-            padding: 6px 12px;
-            border-radius: 4px;
-            display: inline-block;
-            margin-bottom: 20px;
-            border: 1px solid rgba(0, 242, 234, 0.2);
-        }
-
-        .db-hero h1 {
-            font-size: 3.5em;
-            line-height: 1.1;
-            margin: 0 0 20px 0;
-            letter-spacing: -0.03em;
-        }
-
-        .db-hero p {
-            font-size: 1.2em;
-            color: var(--db-text-muted);
-            max-width: 600px;
-            line-height: 1.6;
-        }
-
-        /* --- 4. PRICING "RACKS" (The Non-Card Design) --- */
-        .db-pricing-wrapper {
-            padding: 80px 0;
-        }
-
-        .db-section-header {
-            margin-bottom: 50px;
-        }
-        
-        .db-section-header h2 {
-            font-size: 2em;
-            margin-bottom: 10px;
-        }
-
-        /* The Rack Row Container */
-        .db-rack-row {
+            padding: 140px 40px;
             display: flex;
-            align-items: center;
-            background-color: var(--db-panel);
-            border: 1px solid var(--db-border);
-            margin-bottom: 20px; /* Spacing between rows */
-            padding: 0;
-            border-radius: 8px;
-            transition: all 0.3s ease;
-            position: relative;
-            overflow: hidden;
+            gap: 80px;
         }
 
-        .db-rack-row:hover {
-            border-color: var(--db-accent);
-            box-shadow: 0 0 20px rgba(0, 242, 234, 0.05);
-            transform: translateY(-2px);
-        }
-
-        /* Left: Identification */
-        .db-rack-id {
-            padding: 30px;
-            flex: 1.5;
-            border-right: 1px solid var(--db-border);
-        }
-
-        .db-rack-name {
-            display: block;
-            font-size: 1.4em;
-            font-weight: 700;
-            color: var(--db-text-main);
-            margin-bottom: 5px;
-        }
-
-        .db-rack-type {
-            font-family: 'Courier New', monospace;
-            font-size: 0.85em;
-            color: var(--db-accent);
-            text-transform: uppercase;
-        }
-
-        /* Middle: Specs */
-        .db-rack-specs {
-            flex: 3;
-            padding: 30px;
-            display: flex;
-            flex-wrap: wrap;
-            gap: 15px;
-        }
-
-        .db-spec-pill {
-            background: #141d2e;
-            padding: 6px 14px;
-            border-radius: 4px;
-            font-size: 0.9em;
-            color: var(--db-text-muted);
-            border: 1px solid var(--db-border);
-        }
-        
-        .db-spec-pill strong { color: white; }
-
-        /* Right: Action & Price */
-        .db-rack-action {
-            flex: 1.5;
-            padding: 30px;
-            text-align: right;
-            background: rgba(255, 255, 255, 0.02);
-            height: 100%;
+        /* --- SIDEBAR --- */
+        .tstk-sidebar {
+            width: 260px;
+            flex-shrink: 0;
+            position: sticky;
+            top: 100px;
+            height: calc(100vh - 120px);
             display: flex;
             flex-direction: column;
-            justify-content: center;
-            align-items: flex-end;
         }
 
-        .db-price-large {
-            font-size: 1.6em;
-            font-weight: 700;
-            color: var(--db-text-main);
-            display: block;
-        }
+        .tstk-logo-area h1 { font-size: 36px; font-weight: 300; margin-bottom: 12px; }
+        .tstk-logo-area p { color: var(--tstk-muted); font-size: 18px; margin-bottom: 35px; }
 
-        .db-price-meta {
-            font-size: 0.8em;
-            color: var(--db-text-muted);
-            margin-bottom: 15px;
-            display: block;
-        }
-
-        .db-btn {
-            background: transparent;
-            border: 1px solid var(--db-accent);
-            color: var(--db-accent);
-            padding: 10px 20px;
-            font-family: var(--font-stack);
-            font-weight: 600;
-            font-size: 0.9em;
-            cursor: pointer;
-            transition: all 0.2s;
-            text-decoration: none;
-            display: inline-block;
-        }
-
-        .db-btn:hover {
-            background: var(--db-accent);
-            color: var(--db-bg);
-        }
-
-        /* Installment Text */
-        .db-terms {
-            font-size: 0.75em;
-            color: var(--db-text-muted);
-            margin-top: 8px;
-            font-style: italic;
-        }
-
-        /* --- 5. TECHNICAL DETAILS (Accordion Style) --- */
-        .db-details-toggle {
+        .tstk-search-wrapper { position: relative; margin-bottom: 30px; }
+        .tstk-search-input {
             width: 100%;
-            text-align: left;
-            background: transparent;
-            border: none;
-            border-top: 1px dashed var(--db-border);
-            color: var(--db-text-muted);
-            padding: 15px 30px;
-            cursor: pointer;
-            font-family: var(--font-stack);
-            font-size: 0.9em;
-            display: flex;
-            justify-content: space-between;
-        }
-
-        .db-details-content {
-            display: none;
-            padding: 0 30px 30px 30px;
-            color: #bdc7d6;
-            font-size: 0.95em;
-            line-height: 1.6;
-        }
-        
-        .db-details-content.show {
-            display: block;
-        }
-
-        .db-details-content ul {
-            margin: 0; padding-left: 20px;
-        }
-        .db-details-content li { margin-bottom: 8px; }
-
-        /* --- 6. DBA RETAINER SECTION (Different visual) --- */
-        .db-retainer-section {
-            background: linear-gradient(to right, #0b1221, #060c18);
-            border: 1px solid var(--db-accent);
+            background: #111111;
+            border: 1px solid var(--tstk-border);
+            padding: 11px 14px 11px 42px;
             border-radius: 8px;
-            padding: 40px;
-            margin-top: 60px;
+            color: white;
+            font-size: 14px;
+            font-weight: 400;
+            outline: none;
+            font-family: var(--tstk-font);
+        }
+        .tstk-search-input:focus { border-color: var(--tstk-accent); }
+        .tstk-search-icon { position: absolute; vertical-align: middle; display: inline-flex; left: 14px; top: 15px; color: var(--tstk-muted); font-size: 18px; }
+
+        .tstk-nav-list { list-style: none; }
+        .tstk-nav-label { font-size: 15px; color: #444; font-weight: 500; margin-bottom: 15px; }
+        
+        .tstk-nav-link {
+            display: block;
+            color: var(--tstk-muted);
+            text-decoration: none;
+            font-size: 16px;
+            padding: 10px 0;
+            font-weight: 300;
+            cursor: pointer;
+        }
+        .tstk-nav-link:hover { color: var(--tstk-text); }
+        .tstk-nav-link.active { color: var(--tstk-accent); font-weight: 400; }
+
+        /* --- MAIN CONTENT --- */
+        .tstk-content { flex: 1; }
+        .tstk-section { margin-bottom: 80px; scroll-margin-top: 60px; }
+        .tstk-section-title { font-size: 36px; font-weight: 300; margin-bottom: 30px; }
+
+        .tstk-grid {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 20px;
+        }
+
+        /* --- CARD DESIGN: ICON LEFT, CONTENT RIGHT --- */
+        .tstk-card {
+            background: var(--tstk-card);
+            border: 1px solid var(--tstk-border);
+            border-radius: 12px;
+            padding: 26px 26px 32px 26px;
+            display: flex;
+            gap: 20px; /* Space between icon and text block */
+            transition: all 0.3s ease;
+        }
+
+        .tstk-card:hover {
+            background: var(--tstk-card-hover);
+            border-color: #333;
+            transform: translateY(-3px);
+        }
+
+        .tstk-card-icon {
+            width: 48px;
+            height: 48px;
             display: flex;
             align-items: center;
-            justify-content: space-between;
+            justify-content: center;
+            background: #292929;
+            border-radius: 50px;
+            font-size: 24px;
+            flex-shrink: 0; /* Prevents icon from squishing */
         }
 
-        .db-retainer-text h3 {
-            color: var(--db-accent);
-            margin: 0 0 10px 0;
-            font-size: 1.5em;
-        }
+        .tstk-card-body { display: flex; flex-direction: column; gap: 6px; }
+        .tstk-card-title { font-size: 18px; font-weight: 500; color: var(--tstk-text); }
+        .tstk-card-desc { font-size: 14px; color: var(--tstk-muted); line-height: 1.6; }
 
-        /* --- MOBILE OPTIMIZATION (PWA READY) --- */
-        @media (max-width: 768px) {
-            .db-hero h1 { font-size: 2.5em; }
-            
-            /* Stack the Rows */
-            .db-rack-row {
-                flex-direction: column;
-                align-items: flex-start;
-            }
+        
 
-            .db-rack-id, .db-rack-specs, .db-rack-action {
-                width: 100%;
-                border-right: none;
-                padding: 20px;
-            }
+        /* Search Highlight */
+        .tstk-hidden { display: none !important; }
 
-            .db-rack-id {
-                border-bottom: 1px solid var(--db-border);
-                background: rgba(255,255,255,0.02);
-            }
-
-            .db-rack-action {
-                text-align: left;
-                align-items: flex-start;
-                border-top: 1px solid var(--db-border);
-                background: rgba(0, 242, 234, 0.02);
-            }
-
-            .db-retainer-section {
-                flex-direction: column;
-                text-align: center;
-                gap: 30px;
-            }
-            
-            .db-btn {
-                width: 100%; /* Full width touch target */
-                text-align: center;
-                padding: 15px; /* Larger touch area */
-            }
+        @media (max-width: 1100px) {
+            .tstk-grid { grid-template-columns: 1fr; }
+            .tstk-container { flex-direction: column; padding: 50px 20px; }
+            .tstk-sidebar { width: 100%; position: relative; top: 0; height: auto; }
         }
     </style>
 </head>
 <body>
 
-    <header class="db-hero">
-        <div class="db-container">
-            <span class="db-status-badge">system_status: optimal</span>
-            <h1>Architecting Your Data Backbone.</h1>
-            <p>Scalable database engineering, migration, and optimization services. From local startups to high-availability enterprise clusters.</p>
+<div class="tstk-container">
+    <aside class="tstk-sidebar">
+        <div class="tstk-logo-area">
+            <h1>Technologies We Use</h1>
+            <p>The specialized tools we use to power our multipurpose IT services.</p>
         </div>
-    </header>
 
-    <section class="db-pricing-wrapper">
-        <div class="db-container">
+        <div class="tstk-search-wrapper">
+            <i class="ri-search-line tstk-search-icon"></i>
+            <input type="text" id="tstkSearch" class="tstk-search-input" placeholder="Search tech or service...">
+        </div>
+
+        <nav class="tstk-nav-list">
+            <div class="tstk-nav-label">Categories</div>
+            <a href="#frontend" class="tstk-nav-link active">Frontend Development</a>
+            <a href="#backend" class="tstk-nav-link">Backend Systems</a>
+            <a href="#infrastructure" class="tstk-nav-link">Infrastructure & Cloud</a>
+            <a href="#creative" class="tstk-nav-link">Creative & CMS</a>
+        </nav>
+    </aside>
+
+    <main class="tstk-content">
+        <section id="frontend" class="tstk-section">
+            <h2 class="tstk-section-title">Frontend Development</h2>
+            <div class="tstk-grid">
+                <div class="tstk-card">
+                    <div class="tstk-card-icon tstk-ic-blue"><img src="https://img.icons8.com/?size=100&id=wU62u24brJ44&format=png&color=000000" style="height: 38px;"/></div>
+                    <div class="tstk-card-body">
+                        <div class="tstk-card-title">React.js</div>
+                        <div class="tstk-card-desc">Building modular, fast, and scalable user interfaces for our web platforms.</div>
+                    </div>
+                </div>
+                <div class="tstk-card">
+                    <div class="tstk-card-icon tstk-ic-blue"><i class="ri-tailwind-css-fill"></i></div>
+                    <div class="tstk-card-body">
+                        <div class="tstk-card-title">Tailwind CSS</div>
+                        <div class="tstk-card-desc">Utility-first styling used to maintain rapid and consistent UI development across projects.</div>
+                    </div>
+                </div>
+                <div class="tstk-card">
+                    <div class="tstk-card-icon tstk-ic-blue"><i class="ri-tailwind-css-fill"></i></div>
+                    <div class="tstk-card-body">
+                        <div class="tstk-card-title">Tailwind CSS</div>
+                        <div class="tstk-card-desc">Utility-first styling used to maintain rapid and consistent UI development across projects.</div>
+                    </div>
+                </div>
+                <div class="tstk-card">
+                    <div class="tstk-card-icon tstk-ic-blue"><i class="ri-tailwind-css-fill"></i></div>
+                    <div class="tstk-card-body">
+                        <div class="tstk-card-title">Tailwind CSS</div>
+                        <div class="tstk-card-desc">Utility-first styling used to maintain rapid and consistent UI development across projects.</div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <section id="backend" class="tstk-section">
+            <h2 class="tstk-section-title">Backend Systems</h2>
+            <div class="tstk-grid">
+                <div class="tstk-card">
+                    <div class="tstk-card-icon tstk-ic-green"><i class="ri-nodejs-line"></i></div>
+                    <div class="tstk-card-body">
+                        <div class="tstk-card-title">Node.js</div>
+                        <div class="tstk-card-desc">Handling high-concurrency requests and powering our real-time notification engines.</div>
+                    </div>
+                </div>
+                <div class="tstk-card">
+                    <div class="tstk-card-icon tstk-ic-orange"><i class="ri-database-2-line"></i></div>
+                    <div class="tstk-card-body">
+                        <div class="tstk-card-title">PostgreSQL</div>
+                        <div class="tstk-card-desc">Our primary relational database for complex data structures and financial reporting.</div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <section id="infrastructure" class="tstk-section">
+            <h2 class="tstk-section-title">Infrastructure & Cloud</h2>
+            <div class="tstk-grid">
+                <div class="tstk-card">
+                    <div class="tstk-card-icon tstk-ic-orange"><i class="ri-amazon-fill"></i></div>
+                    <div class="tstk-card-body">
+                        <div class="tstk-card-title">AWS</div>
+                        <div class="tstk-card-desc">Enterprise-grade hosting providing the security and uptime our SA clients demand.</div>
+                    </div>
+                </div>
+                <div class="tstk-card">
+                    <div class="tstk-card-icon tstk-ic-blue"><i class="ri-docker-js-fill"></i></div>
+                    <div class="tstk-card-body">
+                        <div class="tstk-card-title">Docker</div>
+                        <div class="tstk-card-desc">Streamlining our deployment workflows to ensure consistency across environments.</div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <section id="creative" class="tstk-section">
+            <h2 class="tstk-section-title">Creative & CMS</h2>
+            <div class="tstk-grid">
+                <div class="tstk-card">
+                    <div class="tstk-card-icon tstk-ic-purple"><i class="ri-layout-masonry-line"></i></div>
+                    <div class="tstk-card-body">
+                        <div class="tstk-card-title">Strapi CMS</div>
+                        <div class="tstk-card-desc">Powering headless content management for our mobile and web applications.</div>
+                    </div>
+                </div>
+                <div class="tstk-card">
+                    <div class="tstk-card-icon tstk-ic-purple"><i class="ri-wordpress-fill"></i></div>
+                    <div class="tstk-card-body">
+                        <div class="tstk-card-title">WordPress</div>
+                        <div class="tstk-card-desc">Fast-turnaround corporate websites for SMEs and marketing landing pages.</div>
+                    </div>
+                </div>
+            </div>
+        </section>
+    </main>
+</div>
+
+<script>
+    document.addEventListener('DOMContentLoaded', () => {
+        const searchInput = document.getElementById('tstkSearch');
+        const cards = document.querySelectorAll('.tstk-card');
+        const sections = document.querySelectorAll('.tstk-section');
+        const navLinks = document.querySelectorAll('.tstk-nav-link');
+
+        // 1. Real-time Search Functional
+        searchInput.addEventListener('input', (e) => {
+            const term = e.target.value.toLowerCase();
             
-            <div class="db-section-header">
-                <h2>Engineering Packages</h2>
-                <p style="color: var(--db-text-muted);">One-time architecture & deployment fees. Hosted on your preferred cloud (AWS/Azure/DigitalOcean) or local servers.</p>
-            </div>
+            cards.forEach(card => {
+                const title = card.querySelector('.tstk-card-title').innerText.toLowerCase();
+                const desc = card.querySelector('.tstk-card-desc').innerText.toLowerCase();
+                
+                if (title.includes(term) || desc.includes(term)) {
+                    card.classList.remove('tstk-hidden');
+                } else {
+                    card.classList.add('tstk-hidden');
+                }
+            });
 
-            <div class="db-rack-row">
-                <div class="db-rack-id">
-                    <span class="db-rack-name">Micro Cluster</span>
-                    <span class="db-rack-type">Entry Level SQL</span>
-                </div>
-                <div class="db-rack-specs">
-                    <div class="db-spec-pill"><strong>Engine:</strong> PostgreSQL / MySQL</div>
-                    <div class="db-spec-pill"><strong>Backup:</strong> Daily Automated</div>
-                    <div class="db-spec-pill"><strong>Security:</strong> SSL + Firewall</div>
-                    <div class="db-spec-pill"><strong>Scale:</strong> Up to 50k Records</div>
-                </div>
-                <div class="db-rack-action">
-                    <span class="db-price-large">R 3,500</span>
-                    <span class="db-price-meta">One-Time Setup Fee</span>
-                    <a href="#" class="db-btn">Deploy Node</a>
-                    <span class="db-terms">or R175 x 24 Months</span>
-                </div>
-                <button class="db-details-toggle" onclick="toggleDetails(this)">
-                    <span>> View Engineering Specs</span> <span>+</span>
-                </button>
-                <div class="db-details-content">
-                    <ul>
-                        <li>Setup of Managed Database (DigitalOcean/AWS RDS Free Tier).</li>
-                        <li>Schema Design (Up to 10 Tables) with Relationship Mapping.</li>
-                        <li>Basic Indexing for Search Performance.</li>
-                        <li>Connection to your Backend API.</li>
-                    </ul>
-                </div>
-            </div>
+            // Hide empty sections
+            sections.forEach(section => {
+                const visibleCards = section.querySelectorAll('.tstk-card:not(.tstk-hidden)');
+                section.style.display = visibleCards.length === 0 ? 'none' : 'block';
+            });
+        });
 
-            <div class="db-rack-row" style="border-left: 4px solid var(--db-accent);">
-                <div class="db-rack-id">
-                    <span class="db-rack-name">Production Core</span>
-                    <span class="db-rack-type">High Performance</span>
-                </div>
-                <div class="db-rack-specs">
-                    <div class="db-spec-pill"><strong>Engine:</strong> Postgres / Mongo / SQL Server</div>
-                    <div class="db-spec-pill"><strong>Architecture:</strong> Master-Slave Replica</div>
-                    <div class="db-spec-pill"><strong>Migration:</strong> Data Import Included</div>
-                    <div class="db-spec-pill"><strong>Optimization:</strong> Query Tuning</div>
-                </div>
-                <div class="db-rack-action">
-                    <span class="db-price-large">R 12,500</span>
-                    <span class="db-price-meta">One-Time Architecture Fee</span>
-                    <a href="#" class="db-btn" style="background-color:var(--db-accent); color:#000;">Deploy Cluster</a>
-                    <span class="db-terms">or R625 x 24 Months</span>
-                </div>
-                <button class="db-details-toggle" onclick="toggleDetails(this)">
-                    <span>> View Engineering Specs</span> <span>+</span>
-                </button>
-                <div class="db-details-content">
-                    <ul>
-                        <li>Full Architecture: Write Node + Read Replica for speed.</li>
-                        <li>Data Migration from Excel/Legacy Systems (Up to 1GB).</li>
-                        <li>Advanced Indexing & Query Optimization (Fix slow loads).</li>
-                        <li>Redis Caching Layer Implementation.</li>
-                        <li>Automated Point-in-Time Recovery Backups.</li>
-                    </ul>
-                </div>
-            </div>
+        // 2. Smooth Scroll & Active State
+        navLinks.forEach(link => {
+            link.addEventListener('click', (e) => {
+                e.preventDefault();
+                const target = document.querySelector(link.getAttribute('href'));
+                window.scrollTo({ top: target.offsetTop - 60, behavior: 'smooth' });
+            });
+        });
 
-            <div class="db-rack-row">
-                <div class="db-rack-id">
-                    <span class="db-rack-name">Data Warehouse</span>
-                    <span class="db-rack-type">Enterprise Sharding</span>
-                </div>
-                <div class="db-rack-specs">
-                    <div class="db-spec-pill"><strong>Tech:</strong> Snowflake / BigQuery / Redshift</div>
-                    <div class="db-spec-pill"><strong>Uptime:</strong> 99.99% HA Design</div>
-                    <div class="db-spec-pill"><strong>Pipeline:</strong> ETL Automation</div>
-                    <div class="db-spec-pill"><strong>Security:</strong> VPC Peering / VPN</div>
-                </div>
-                <div class="db-rack-action">
-                    <span class="db-price-large">R 45,000+</span>
-                    <span class="db-price-meta">Estimated Project Value</span>
-                    <a href="#" class="db-btn">Request Consult</a>
-                    <span class="db-terms">Custom Terms Available</span>
-                </div>
-                <button class="db-details-toggle" onclick="toggleDetails(this)">
-                    <span>> View Engineering Specs</span> <span>+</span>
-                </button>
-                <div class="db-details-content">
-                    <ul>
-                        <li>Horizontal Sharding & Partitioning for Million+ Records.</li>
-                        <li>ETL Pipelines (Python/Airflow) for Business Intelligence.</li>
-                        <li>Disaster Recovery Planning (Multi-Region).</li>
-                        <li>Compliance Auditing (POPIA/GDPR Logs).</li>
-                    </ul>
-                </div>
-            </div>
+        // 3. Intersection Observer for Sidebar Scroll Interaction
+        const observer = new IntersectionObserver((entries) => {
+            entries.forEach(entry => {
+                if (entry.isIntersecting) {
+                    navLinks.forEach(link => {
+                        link.classList.toggle('active', link.getAttribute('href') === `#${entry.target.id}`);
+                    });
+                }
+            });
+        }, { threshold: 0.5, rootMargin: "-10% 0px -70% 0px" });
 
-            <div class="db-retainer-section">
-                <div class="db-retainer-text">
-                    <h3>Remote DBA Retainer</h3>
-                    <p style="color: var(--db-text-muted); margin: 0;">Need ongoing support? We monitor, patch, and optimize your database monthly.</p>
-                    <ul style="color: #fff; font-size: 0.9em; margin-top: 15px; padding-left: 20px;">
-                        <li>24/7 Uptime Monitoring</li>
-                        <li>Monthly Security Patching</li>
-                        <li>Slow Query Analysis & Fixing</li>
-                    </ul>
-                </div>
-                <div style="text-align: right;">
-                    <span class="db-price-large" style="color: var(--db-accent);">R 2,500<small style="font-size:0.5em; color:white;">/pm</small></span>
-                    <a href="#" class="db-btn" style="margin-top: 15px;">Subscribe</a>
-                </div>
-            </div>
-
-        </div>
-    </section>
-
-    <script>
-        function toggleDetails(button) {
-            const content = button.nextElementSibling;
-            content.classList.toggle('show');
-            const icon = button.querySelector('span:last-child');
-            icon.textContent = content.classList.contains('show') ? '-' : '+';
-        }
-    </script>
-</body>
-</html>
+        sections.forEach(s => observer.observe(s));
+    });
+</script>
