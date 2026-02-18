@@ -1632,6 +1632,31 @@ document.addEventListener("DOMContentLoaded", function() {
             }
         }
         /* --- Scoped CSS End --- */
+
+        .underline-svg {
+            position: absolute;
+            bottom: -25px;
+            left: -5%;
+            width: 110%;
+            height: 30px;
+            overflow: visible;
+        }
+        
+        .underline-svg path {
+            stroke: #0091ff;
+            stroke-width: 2;
+            stroke-linecap: round;
+            fill: none;
+            stroke-dasharray: 300; /* Approximate length of the path */
+            stroke-dashoffset: 300;
+            animation: draw 1.5s ease-out 0.5s forwards;
+        }
+        
+        @keyframes draw {
+            to {
+                stroke-dashoffset: 0;
+            }
+        }
     </style>
 </head>
 <body >
@@ -1654,7 +1679,11 @@ document.addEventListener("DOMContentLoaded", function() {
             </div>
 
             <div class="itco-content-column">
-                <h1 class="itco-headline">I’m John Smith. I’m passionate about crafting exceptional websites. With a blend of design skills and coding expertise, I create unique online experiences that captivate users.</h1>
+                <h1 class="itco-headline">I’m John Smith, <span style="color: #0070f0; position: relative;">Product Manager
+                    <svg class="underline-svg" viewBox="0 0 196 20" fill="none" xmlns="http://www.w3.org/2000/svg">
+                        <path d="M3 16.9998C30.4988 9.39999 91.2223 -6.38075 193 11.0002"/>
+                    </svg>
+                </span> at Croloft. I’m passionate about crafting exceptional websites. With a blend of design skills and coding expertise, I create unique online experiences that captivate users.</h1>
                 <p class="itco-description">Looking for a top-notch web developer to revamp your hotel’s website? Look no further than John Smith. With years of experience and a keen eye for design, John can take your site to the next level, helping you attract more visitors and boost your bookings.</p>
             </div>
 

@@ -489,6 +489,7 @@ class CronosHeader extends HTMLElement {
                     height: calc(100vh - var(--cronos-header-height));
                     background-color: var(--cronos-color-header-bg);
                     overflow-y: auto;
+                    overflow-x: hidden;
                     padding: 20px 0;
                     transform: translateX(100%);
                     transition: transform 0.3s ease;
@@ -510,7 +511,7 @@ class CronosHeader extends HTMLElement {
                 .cronos-custom-nav-list li {
                     margin: 0;
                     width: 100%;
-                    
+                    position: static;
                 }
 
                 .cronos-custom-nav-link {
@@ -537,9 +538,9 @@ class CronosHeader extends HTMLElement {
                     display: inline-block;
                 }
                 
-                /* Rotate icon when the parent menu item is active */
+                /* Right arrow stays static — panel slides in instead */
                 .cronos-custom-nav-item--has-megamenu.active .cronos-custom-nav-link .cronos-mobile-dropdown-icon {
-                    transform: rotate(180deg);
+                    transform: none;
                 }
                 
                 /* Mobile Action Buttons */
@@ -592,17 +593,32 @@ class CronosHeader extends HTMLElement {
                     transform: none;
                 }
 
-                /* Mobile Mega Menu */
-                .cronos-mega-menu-container {
-                    position: static;
+                /* Mobile Mega Menu — slide-in sub-panel
+                   NOTE: position:fixed won't work here because .cronos-custom-main-nav
+                   uses transform which creates a containing block for fixed children.
+                   We use position:absolute instead — the <li> is position:static so
+                   the containing block is .cronos-custom-main-nav (position:fixed). */
+                   
+                .cronos-custom-nav-item--has-megamenu .cronos-mega-menu-container {
+                    position: absolute;
+                    top: 0;
+                    left: 0;
+                    width: 100%;
+                    height: 100%;
+                    background-color: var(--cronos-color-header-bg);
+                    transform: translateX(100%);
+                    transition: transform 0.3s ease;
+                    overflow-y: auto;
+                    z-index: 10;
                     visibility: visible;
                     opacity: 1;
-                    transform: none;
-                    transition: max-height 0.3s ease;
-                    overflow: hidden;
-                    max-height: 0;
-                    background-color: var(--cronos-color-menu-bg);
                     border-top: none;
+                    padding: 0;
+                }
+
+                /* Prevent the nav from scrolling while sub-panel is open */
+                .cronos-custom-main-nav.cronos-subpanel-open {
+                    overflow: hidden;
                 }
 
                 .cronos-mega-menu-link-title {
@@ -610,35 +626,91 @@ class CronosHeader extends HTMLElement {
                   border-bottom: none;
                 }
                 
+                /* When parent nav item is active, slide the sub-panel in */
                 .cronos-custom-nav-item--has-megamenu.active .cronos-mega-menu-container {
-                    max-height: 2000px;
+                    transform: translateX(0);
+                    max-height: none;
                     padding: 0;
                 }
                 
                 .cronos-mega-menu-panel {
-                    padding: 15px 0;
+                    padding: 0 20px 40px;
                     display: block;
+                }
+
+                /* Back button injected via JS */
+                .cronos-mobile-back-btn {
+                    display: flex;
+                    align-items: center;
+                    gap: 10px;
+                    width: 100%;
+                    padding: 18px 20px;
+                    background: none;
+                    border: none;
+                    
+                    color: var(--cronos-color-text-light);
+                    font-family: 'Circular Std', system-ui, sans-serif;
+                    font-size: 1rem;
+                    font-weight: 500;
+                    cursor: pointer;
+                    margin-bottom: 8px;
+                    text-align: left;
+                    letter-spacing: 0;
+                }
+
+                .cronos-mobile-back-btn svg {
+                    flex-shrink: 0;
+                    color: var(--cronos-color-text-muted);
+                }
+
+                .cronos-mobile-back-btn:hover {
+                    color: var(--cronos-color-accent);
+                }
+
+                .cronos-mobile-back-btn:hover svg {
+                    color: var(--cronos-color-accent);
+                }
+
+                /* Sub-panel section title (panel name shown in back bar) */
+                .cronos-mobile-back-label {
+                    color: var(--cronos-color-text-muted);
+                    font-size: 0.85rem;
+                    font-weight: 400;
                 }
 
                 .cronos-megamenu-3-column-grid {
                     grid-template-columns: 1fr;
-                    gap: 20px;
+                    gap: 0;
                     padding-left: 0;
                 }
                 
                 .cronos-menu-group-card {
                     padding: 0;
+                    padding-bottom: 25px;
+                    margin-bottom: 10px;
+                }
+
+                .cronos-menu-group-card:last-child {
+                    border-bottom: none;
                 }
                 
                 .cronos-menu-group-card h3 {
-                    margin-top: 23px;
+                    margin-top: 20px;
+                    margin-bottom: 14px;
                     flex-direction: row;
                     align-items: center;
                     display: flex;
                 }
                 
                 .cronos-mega-menu-group-list a {
-                    margin: 10px 0;
+                    margin: 0;
+                    padding: 5px 0;
+                    font-size: 19px;
+                    
+                }
+
+                .cronos-mega-menu-group-list li:last-child a {
+                    border-bottom: none;
                 }
 
                 .cronos-mega-menu-group-list li {
@@ -646,7 +718,8 @@ class CronosHeader extends HTMLElement {
                 }
                 
                 .cronos-mega-menu-group-list a:hover {
-                    background-color: rgba(0, 145, 255, 0.1);
+                    background-color: transparent;
+                    color: var(--cronos-color-accent);
                 }
             }
         </style>
@@ -689,7 +762,7 @@ class CronosHeader extends HTMLElement {
                                 <a href="#" class="cronos-custom-nav-link" data-cronos-megamenu-trigger="Crypto">
                                     Crypto
                                     <svg class="cronos-mobile-dropdown-icon" xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 16 16" fill="none">
-                                      <path d="M4 6L8 10L12 6" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+                                      <path d="M6 4L10 8L6 12" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
                                     </svg>
                                 </a>
                                 <div class="cronos-mega-menu-container">
@@ -761,7 +834,7 @@ class CronosHeader extends HTMLElement {
                                 <a href="page.html" class="cronos-custom-nav-link" data-cronos-megamenu-trigger="services">
                                     Solutions
                                     <svg class="cronos-mobile-dropdown-icon" xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 16 16" fill="none">
-                                      <path d="M4 6L8 10L12 6" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+                                      <path d="M6 4L10 8L6 12" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
                                     </svg>
                                 </a>
                                 <div class="cronos-mega-menu-container">
@@ -879,7 +952,7 @@ class CronosHeader extends HTMLElement {
                                 <a href="#" class="cronos-custom-nav-link" data-cronos-megamenu-trigger="discover">
                                     Discover
                                     <svg class="cronos-mobile-dropdown-icon" xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 16 16" fill="none">
-                                      <path d="M4 6L8 10L12 6" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+                                      <path d="M6 4L10 8L6 12" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
                                     </svg>
                                 </a>
                                 <div class="cronos-mega-menu-container">
@@ -1431,7 +1504,42 @@ class CronosHeader extends HTMLElement {
         // MOBILE MENU LOGIC
         // =============================================
         const cronosMobileDropdownItems = this.shadowRoot.querySelectorAll('.cronos-custom-nav-item--has-megamenu');
+        const cronosMobileMainNav = this.shadowRoot.querySelector('.cronos-custom-main-nav');
         
+        // Inject a back button into each mobile mega-menu container (once, on init)
+        cronosMobileDropdownItems.forEach(item => {
+            const trigger = item.querySelector('.cronos-custom-nav-link');
+            const menuContainer = item.querySelector('.cronos-mega-menu-container');
+            if (!menuContainer) return;
+
+            // Get the label from the trigger text (strip whitespace around SVG)
+            const labelText = trigger.childNodes[0] && trigger.childNodes[0].textContent
+                ? trigger.childNodes[0].textContent.trim()
+                : 'Back';
+
+            // Build back button element
+            const backBtn = document.createElement('button');
+            backBtn.className = 'cronos-mobile-back-btn';
+            backBtn.setAttribute('aria-label', 'Go back to menu');
+            backBtn.innerHTML = `
+                <svg xmlns="http://www.w3.org/2000/svg" width="18" height="18" viewBox="0 0 16 16" fill="none">
+                  <path d="M10 4L6 8L10 12" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+                </svg>
+                <span>Menu</span>
+                <span class="cronos-mobile-back-label">/ ${labelText}</span>
+            `;
+
+            // Prepend back button before the first child of the container
+            menuContainer.insertBefore(backBtn, menuContainer.firstChild);
+
+            // Back button closes the sub-panel
+            backBtn.addEventListener('click', function(e) {
+                e.stopPropagation();
+                item.classList.remove('active');
+                cronosMobileMainNav.classList.remove('cronos-subpanel-open');
+            });
+        });
+
         cronosMobileMenuToggle.addEventListener('click', function() {
             cronosHeaderWrapper.classList.toggle('cronos-mobile-menu-open');
             // Toggle body class for scroll locking (accessing global scope intentionally)
@@ -1439,6 +1547,7 @@ class CronosHeader extends HTMLElement {
             
             if (!cronosHeaderWrapper.classList.contains('cronos-mobile-menu-open')) {
                  cronosMobileDropdownItems.forEach(item => item.classList.remove('active'));
+                 cronosMobileMainNav.classList.remove('cronos-subpanel-open');
                  cronosQrDropdownContent.classList.remove('show');
             }
         });
@@ -1450,13 +1559,16 @@ class CronosHeader extends HTMLElement {
                     e.preventDefault();
                     e.stopPropagation(); 
 
+                    // Close any other open sub-panels first
                     cronosMobileDropdownItems.forEach(otherItem => {
                         if (otherItem !== item) {
                             otherItem.classList.remove('active');
                         }
                     });
 
-                    item.classList.toggle('active');
+                    // Slide this sub-panel in and lock nav scroll
+                    item.classList.add('active');
+                    cronosMobileMainNav.classList.add('cronos-subpanel-open');
                     cronosQrDropdownContent.classList.remove('show');
                 }
             });
@@ -1503,6 +1615,7 @@ class CronosHeader extends HTMLElement {
                     cronosHeaderWrapper.classList.remove('cronos-mobile-menu-open');
                     cronosBody.classList.remove('cronos-mobile-menu-active');
                     cronosMobileDropdownItems.forEach(item => item.classList.remove('active'));
+                    cronosMobileMainNav.classList.remove('cronos-subpanel-open');
                     cronosSetActiveMenu(null, null);
                 } else {
                     cronosQrDropdownContent.classList.remove('show');
