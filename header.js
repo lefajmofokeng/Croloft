@@ -1522,11 +1522,12 @@ class CronosHeader extends HTMLElement {
             backBtn.className = 'cronos-mobile-back-btn';
             backBtn.setAttribute('aria-label', 'Go back to menu');
             backBtn.innerHTML = `
-                <svg xmlns="http://www.w3.org/2000/svg" width="18" height="18" viewBox="0 0 16 16" fill="none">
-                  <path d="M10 4L6 8L10 12" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+            
+                <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24">
+                    <path fill="currentColor" d="M10 22L0 12L10 2l1.775 1.775L3.55 12l8.225 8.225L10 22Z" stroke="currentColor" stroke-width="0.1" stroke-linecap="round" stroke-linejoin="round"/>
                 </svg>
-                <span>Menu</span>
-                <span class="cronos-mobile-back-label">/ ${labelText}</span>
+                
+                <span class="cronos-mobile-back-label" style="margin-left: -13px; font-weight: 700;">${labelText}</span>
             `;
 
             // Prepend back button before the first child of the container
