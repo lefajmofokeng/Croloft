@@ -761,8 +761,8 @@ class CronosHeader extends HTMLElement {
                             <li class="cronos-custom-nav-item--has-megamenu">
                                 <a href="#" class="cronos-custom-nav-link" data-cronos-megamenu-trigger="Crypto">
                                     Crypto
-                                    <svg class="cronos-mobile-dropdown-icon" xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 16 16" fill="none">
-                                      <path d="M6 4L10 8L6 12" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+                                    <svg class="cronos-mobile-dropdown-icon" xmlns="http://www.w3.org/2000/svg" width="22" height="22" viewBox="0 0 24 24">
+                                        <path fill="#f2f2f2" d="M8.025 22L6.25 20.225L14.475 12L6.25 3.775L8.025 2l10 10l-10 10Z" stroke-width="1" stroke-linecap="round" stroke-linejoin="round"/>
                                     </svg>
                                 </a>
                                 <div class="cronos-mega-menu-container">
@@ -833,8 +833,8 @@ class CronosHeader extends HTMLElement {
                             <li class="cronos-custom-nav-item--has-megamenu">
                                 <a href="page.html" class="cronos-custom-nav-link" data-cronos-megamenu-trigger="services">
                                     Solutions
-                                    <svg class="cronos-mobile-dropdown-icon" xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 16 16" fill="none">
-                                      <path d="M6 4L10 8L6 12" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+                                    <svg class="cronos-mobile-dropdown-icon" xmlns="http://www.w3.org/2000/svg" width="22" height="22" viewBox="0 0 24 24">
+                                        <path fill="#f2f2f2" d="M8.025 22L6.25 20.225L14.475 12L6.25 3.775L8.025 2l10 10l-10 10Z" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
                                     </svg>
                                 </a>
                                 <div class="cronos-mega-menu-container">
@@ -951,8 +951,8 @@ class CronosHeader extends HTMLElement {
                             <li class="cronos-custom-nav-item--has-megamenu">
                                 <a href="#" class="cronos-custom-nav-link" data-cronos-megamenu-trigger="discover">
                                     Discover
-                                    <svg class="cronos-mobile-dropdown-icon" xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 16 16" fill="none">
-                                      <path d="M6 4L10 8L6 12" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+                                    <svg class="cronos-mobile-dropdown-icon" xmlns="http://www.w3.org/2000/svg" width="22" height="22" viewBox="0 0 24 24">
+                                        <path fill="#f2f2f2" d="M8.025 22L6.25 20.225L14.475 12L6.25 3.775L8.025 2l10 10l-10 10Z" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
                                     </svg>
                                 </a>
                                 <div class="cronos-mega-menu-container">
