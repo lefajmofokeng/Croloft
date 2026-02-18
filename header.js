@@ -1526,8 +1526,8 @@ class CronosHeader extends HTMLElement {
                 <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24">
                     <path fill="currentColor" d="M10 22L0 12L10 2l1.775 1.775L3.55 12l8.225 8.225L10 22Z" stroke="currentColor" stroke-width="0.1" stroke-linecap="round" stroke-linejoin="round"/>
                 </svg>
-                
-                <span class="cronos-mobile-back-label" style="margin-left: -13px; font-weight: 700;">${labelText}</span>
+                <span style="margin-left: -10px;">Menu</span>
+                <span class="cronos-mobile-back-label" style="font-weight: 700;">/ ${labelText}</span>
             `;
 
             // Prepend back button before the first child of the container
