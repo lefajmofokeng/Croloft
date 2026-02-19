@@ -3,7 +3,7 @@
 <html lang="en">
 <head>
     <meta charset="UTF-8">
-    <title>My Website</title>
+    <title>Glossary</title>
     
     <script src="header.js" defer></script>
     <script src="footer.js" defer></script> 
@@ -237,6 +237,29 @@ document.addEventListener('DOMContentLoaded', function() {
     TRENDING TERMS SECTION CSS (Updated for Responsiveness)
     =============================================
     */
+    @font-face {
+        font-family: 'Circular Std';
+        src: url('fonts/CircularStd-Book.ttf') format('truetype');
+        font-weight: 400;
+        font-style: normal;
+    }
+
+    /* Circular Std - Medium (500) */
+    @font-face {
+        font-family: 'Circular Std';
+        src: url('fonts/CircularStd.ttf') format('truetype');
+        font-weight: 500;
+        font-style: normal;
+    }
+
+    /* Circular Std - Bold (700) */
+    @font-face {
+        font-family: 'Circular Std';
+        src: url('fonts/CircularStd-Bold.ttf') format('truetype');
+        font-weight: 600;
+        font-style: normal;
+    }
+
     .content-container h1 {
         padding-top: 40px;
     }
@@ -246,7 +269,7 @@ document.addEventListener('DOMContentLoaded', function() {
         margin: 60px auto;
         padding: 0; /* Added desktop padding */
         position: relative;
-        font-family: 'Inter', sans-serif;
+        font-family: 'Circular Std', sans-serif;
     }
 
     .section-header {
@@ -292,7 +315,7 @@ document.addEventListener('DOMContentLoaded', function() {
 
     .term-card-sv h3 {
         font-size: 1.9rem;
-        font-weight: 700;
+        font-weight: 500;
         color: #000;
         margin-bottom: 10px;
         border-bottom: 1px solid #e0e0e055;
@@ -303,7 +326,7 @@ document.addEventListener('DOMContentLoaded', function() {
         font-size: 1rem;
         color: #333;
         line-height: 1.6;
-        font-weight: 500;
+        font-weight: 400;
         padding-top: 10px;
     }
 
@@ -423,7 +446,7 @@ document.addEventListener('DOMContentLoaded', function() {
 
     <section class="hero-section">
         <div class="content-container">
-            <h1>Cronos Glossary</h1>
+            <h1 style="font-weight: 500;">Cronos Glossary</h1>
             <p>Comprehensive definitions for technical terms you need to know.</p>
         </div>
     </section>
@@ -524,8 +547,31 @@ document.addEventListener('DOMContentLoaded', function() {
             box-sizing: border-box;
         }
 
+        @font-face {
+            font-family: 'Circular Std';
+            src: url('fonts/CircularStd-Book.ttf') format('truetype');
+            font-weight: 400;
+            font-style: normal;
+        }
+
+        /* Circular Std - Medium (500) */
+        @font-face {
+            font-family: 'Circular Std';
+            src: url('fonts/CircularStd.ttf') format('truetype');
+            font-weight: 500;
+            font-style: normal;
+        }
+
+        /* Circular Std - Bold (700) */
+        @font-face {
+            font-family: 'Circular Std';
+            src: url('fonts/CircularStd-Bold.ttf') format('truetype');
+            font-weight: 600;
+            font-style: normal;
+        }
+
         body {
-            font-family: 'Inter', sans-serif;
+            font-family: 'Circular Std', sans-serif;
             background-color: var(--color-background-light);
             color: var(--color-text-dark);
             
@@ -715,8 +761,8 @@ document.addEventListener('DOMContentLoaded', function() {
         }
 
         .term-card p {
-            font-size: 1rem;
-            font-weight: 500;
+            font-size: 1.1rem;
+            font-weight: 400;
             color: var(--color-text-muted);
             line-height: 1.6;
         }
