@@ -1,211 +1,1778 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Get a Quote — Croloft</title>
+<link href="https://fonts.cdnfonts.com/css/circular-std" rel="stylesheet">
+<script src="https://cdnjs.cloudflare.com/ajax/libs/html2canvas/1.4.1/html2canvas.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/jspdf/2.5.1/jspdf.umd.min.js"></script>
 <style>
-    
+  :root {
+    --black: #0a0a0f;
+    --dark-blue: #0d1b3e;
+    --accent-blue: #1a6cf6;
+    --accent-blue-light: #3d85ff;
+    --accent-glow: rgba(26,108,246,0.10);
 
-/* --- Premium Safe Dial CSS (MASSIVE HERO VERSION) --- */
-.dial-wrapper {
-    position: relative;
-    width: 100%;
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    margin-top: 80px; 
-    padding-bottom: 40px;
-    overflow: visible; /* Ensures shadows don't get cut off */
-}
+    --bg: #f4f5f8;
+    --bg-card: #ffffff;
+    --bg-sidebar: #ffffff;
+    --bg-input: #f8f9fc;
+    --bg-section: #eef0f5;
 
-/* BASE SIZE: 500px 
-   This is the desktop size. 
-*/
-.dial-outer-ring {
-    width: 500px;
-    height: 500px;
-    border-radius: 50%;
-    /* Advanced metallic gradient */
-    background: linear-gradient(135deg, #e0e0e0 0%, #f3f3f3 40%, #ffffff 50%, #d9d9d9 100%);
-    box-shadow: 
-        -20px -20px 60px rgb(195, 195, 195),
-        20px 20px 60px rgba(0, 0, 0, 0.2),
-        inset 0 0 0 4px rgba(255,255,255,0.5); /* Thicker rim */
-    position: relative;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    flex-shrink: 0; /* Prevents oval squishing */
-}
+    --border: #dde1ea;
+    --border-focus: #1a6cf6;
 
-/* The Indicator Line */
-.dial-indicator {
-    position: absolute;
-    top: 10px;
-    width: 4px;
-    height: 30px;
-    background-color: #2b2b2b; /* Changed to red for high contrast/security look */
-    z-index: 10;
-}
+    --text-primary: #0d1b3e;
+    --text-secondary: #4a5068;
+    --text-muted: #8a90a8;
+    --text-light: #b0b5c8;
 
-/* The Rotating Face: 400px */
-.dial-face {
-    width: 400px;
-    height: 400px;
-    border-radius: 50%;
-    background: conic-gradient(from 180deg, #e6e6e6, #ffffff, #e6e6e6, #cccccc, #e6e6e6);
-    position: relative;
-    box-shadow: 
-        inset 4px 4px 10px rgba(255,255,255,0.9),
-        inset -4px -4px 10px rgba(0,0,0,0.1),
-        0 10px 30px rgba(0,0,0,0.15);
-    transition: transform 0s linear;
-    will-change: transform;
-}
+    --font: 'Circular Std', 'Helvetica Neue', Arial, sans-serif;
+    --radius: 14px;
+    --radius-sm: 8px;
+    --shadow: 0 2px 12px rgba(13,27,62,0.07);
+    --shadow-lg: 0 8px 32px rgba(13,27,62,0.12);
+    --transition: 0.2s cubic-bezier(.4,0,.2,1);
+  }
 
-/* Ticks */
-.dial-ticks {
-    position: absolute;
-    inset: 15px;
-    border-radius: 50%;
-    background: 
-        radial-gradient(transparent 65%, #e6e6e6 65%),
-        conic-gradient(
-            rgba(0,0,0,0.6) 0 0.6deg, 
-            transparent 0.6deg 3.6deg
-        );
-    mask-image: radial-gradient(transparent 64%, black 65%);
-    -webkit-mask-image: radial-gradient(transparent 64%, black 65%);
-    opacity: 0.7;
-}
+  *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
 
-/* Numbers */
-.dial-numbers {
-    position: absolute;
-    inset: 0;
-    font-family: 'Inter', sans-serif;
-    font-weight: 700;
-    color: #000000;
-    font-size: 18px; /* Larger, readable font */
-}
+  body {
+    font-family: var(--font);
+    background: var(--bg);
+    color: var(--text-primary);
+    min-height: 100vh;
+    overflow-x: hidden;
+  }
 
-.dial-numbers span {
-    position: absolute;
-    top: 50%;
-    left: 50%;
-    width: 40px;
-    height: 40px;
-    margin-left: -20px;
-    margin-top: -20px;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-}
+  /* ── NAV ── */
+  nav {
+    position: fixed; top: 0; left: 0; right: 0; z-index: 200;
+    display: flex; align-items: center; justify-content: space-between;
+    padding: 0 73px; height: 55px;
+    background: #fff;
+    border-bottom: 1px solid var(--border);
+    box-shadow: 0 2px 12px rgba(13,27,62,0.06);
+  }
+  .nav-logo {
+    display: flex; align-items: center; gap: 12px;
+    font-size: 20px; font-weight: 800; letter-spacing: -0.5px;
+    color: var(--dark-blue); text-decoration: none;
+  }
+  .logo-placeholder {
+    width: 40px; height: 40px;
+    display: flex; align-items: center; justify-content: center;
+    font-size: 10px; font-weight: 700; color: var(--text-muted);
+    letter-spacing: 0.3px; text-align: center; line-height: 1.3;
+    flex-shrink: 0;
+  }
+  .nav-right { display: flex; align-items: center; gap: 18px; }
+  .nav-tag {
+    background: var(--accent-blue); color: #fff;
+    font-size: 11px; font-weight: 700; letter-spacing: 1px;
+    padding: 4px 12px; border-radius: 20px; text-transform: uppercase;
+  }
+  .nav-contact { font-size: 13px; color: var(--text-secondary); font-weight: 500; }
 
-/* Number Positioning Math:
-   Radius is roughly 200px. We want numbers at ~165px from center.
-*/
-.dial-numbers span:nth-child(1) { transform: rotate(0deg) translate(0, -165px) rotate(0deg); }
-.dial-numbers span:nth-child(2) { transform: rotate(36deg) translate(0, -165px) rotate(-36deg); }
-.dial-numbers span:nth-child(3) { transform: rotate(72deg) translate(0, -165px) rotate(-72deg); }
-.dial-numbers span:nth-child(4) { transform: rotate(108deg) translate(0, -165px) rotate(-108deg); }
-.dial-numbers span:nth-child(5) { transform: rotate(144deg) translate(0, -165px) rotate(-144deg); }
-.dial-numbers span:nth-child(6) { transform: rotate(180deg) translate(0, -165px) rotate(-180deg); }
-.dial-numbers span:nth-child(7) { transform: rotate(216deg) translate(0, -165px) rotate(-216deg); }
-.dial-numbers span:nth-child(8) { transform: rotate(252deg) translate(0, -165px) rotate(-252deg); }
-.dial-numbers span:nth-child(9) { transform: rotate(288deg) translate(0, -165px) rotate(-288deg); }
-.dial-numbers span:nth-child(10) { transform: rotate(324deg) translate(0, -165px) rotate(-324deg); }
+  /* ── HERO ── */
+  .hero {
+    margin-top: 55px;
+    padding: 72px 48px 52px;
+    background: linear-gradient(160deg, #fff 0%, #f0f3fa 100%);
+    border-bottom: 1px solid var(--border);
+    position: relative; overflow: hidden;
+  }
+  .hero::after {
+    content: '';
+    position: absolute; right: -80px; top: -80px;
+    width: 500px; height: 500px; border-radius: 50%;
+    background: radial-gradient(circle, rgba(26,108,246,0.06) 0%, transparent 70%);
+    pointer-events: none;
+  }
+  .hero-inner { max-width: 680px; margin: 0 auto; text-align: center; position: relative; }
+  .hero-eyebrow {
+    display: inline-block;
+    font-size: 11px; font-weight: 700; letter-spacing: 2px; text-transform: uppercase;
+    color: var(--accent-blue); margin-bottom: 18px;
+  }
+  .hero h1 {
+    font-size: clamp(36px, 5vw, 58px); font-weight: 600;
+    line-height: 1.06; letter-spacing: -2px;
+    color: var(--dark-blue); margin-bottom: 18px;
+  }
+  .hero h1 span { color: var(--accent-blue); }
+  .hero p { font-size: 17px; color: var(--text-secondary); line-height: 1.65; max-width: 520px; margin: 0 auto 40px; }
 
-/* Center Knob: 240px */
-.dial-knob {
-    position: absolute;
-    top: 50%;
-    left: 50%;
-    transform: translate(-50%, -50%);
-    width: 240px;
-    height: 240px;
-    border-radius: 50%;
-    background: repeating-conic-gradient(
-        #cccccc 0deg 0.5deg,
-        #f5f5f5 0.5deg 1deg
-    );
-    box-shadow: 
-        0 10px 25px rgba(0,0,0,0.3),
-        inset 0 2px 5px rgba(255,255,255,1);
-    display: flex;
-    align-items: center;
-    justify-content: center;
-}
+  /* ── PROGRESS ── */
+  .progress-bar { display: flex; align-items: center; justify-content: center; gap: 0; margin-bottom: 0; }
+  .step-item { display: flex; flex-direction: column; align-items: center; gap: 7px; }
+  .step-circle {
+    width: 36px; height: 36px; border-radius: 50%;
+    display: flex; align-items: center; justify-content: center;
+    font-size: 13px; font-weight: 700;
+    border: 2px solid var(--border);
+    color: var(--text-muted); background: #fff;
+    transition: var(--transition); position: relative; z-index: 1;
+  }
+  .step-circle.active { border-color: var(--accent-blue); color: #fff; background: var(--accent-blue); box-shadow: 0 0 0 4px rgba(26,108,246,0.12); }
+  .step-circle.done { border-color: var(--accent-blue); color: var(--accent-blue); background: rgba(26,108,246,0.08); }
+  .step-label { font-size: 11px; font-weight: 600; color: var(--text-muted); letter-spacing: 0.3px; white-space: nowrap; }
+  .step-label.active { color: var(--accent-blue); }
+  .step-connector { width: 72px; height: 2px; background: var(--border); margin-bottom: 22px; transition: var(--transition); }
+  .step-connector.done { background: var(--accent-blue); }
 
-/* Inner Knob Face: 200px */
-.dial-knob-inner {
-    width: 200px;
-    height: 200px;
-    border-radius: 50%;
-    background: radial-gradient(circle at 30% 30%, #ffffff, #dcdcdc);
-    box-shadow: 
-        inset 0 0 20px rgba(0,0,0,0.1),
-        0 4px 10px rgba(0,0,0,0.1);
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    border: 1px solid rgba(255,255,255,0.8);
-}
+  /* ── MAIN ── */
+  .main-container { max-width: 1240px; margin: 0 auto; padding: 0 48px 120px; }
 
-.dial-logo-hex {
-    width: 80px;
-    height: 80px;
-    color: #999;
-    opacity: 0.5;
-}
+  /* ── SECTIONS ── */
+  .section { display: none; animation: fadeUp 0.3s ease; padding-top: 44px; }
+  .section.active { display: block; }
+  @keyframes fadeUp { from{opacity:0;transform:translateY(14px)} to{opacity:1;transform:translateY(0)} }
 
-/* --- MOBILE RESPONSIVENESS --- 
-   This ensures perfect circular shape on all devices.
-   Instead of changing width (which creates ovals), we ZOOM OUT.
-*/
+  .section-header { margin-bottom: 32px; }
+  .section-header h2 { font-size: 28px; font-weight: 800; letter-spacing: -0.8px; color: var(--dark-blue); margin-bottom: 6px; }
+  .section-header p { color: var(--text-secondary); font-size: 15px; }
 
-/* Tablet: Scale down slightly */
-@media (max-width: 768px) {
-    .dial-wrapper {
-        margin-top: 50px;
-        /* Reduce height of container to account for the visual scaling */
-        margin-bottom: -50px; 
-    }
-    .dial-outer-ring {
-        transform: scale(0.8); 
-    }
-}
+  /* ── CATEGORY GRID ── */
+  .category-grid { display: grid; grid-template-columns: repeat(3,1fr); gap: 16px; margin-bottom: 36px; }
+  .category-card {
+    background: var(--bg-card); border: 1.5px solid var(--border);
+    border-radius: var(--radius); padding: 28px 24px;
+    cursor: pointer; transition: var(--transition);
+    position: relative; box-shadow: var(--shadow);
+  }
+  .category-card:hover { border-color: var(--accent-blue); box-shadow: var(--shadow-lg); transform: translateY(-2px); }
+  .category-card.selected { border-color: var(--accent-blue); background: #f0f5ff; box-shadow: 0 4px 20px rgba(26,108,246,0.12); }
+  .cat-check {
+    position: absolute; top: 16px; right: 16px;
+    width: 22px; height: 22px; border-radius: 50%;
+    background: var(--accent-blue); color: #fff;
+    display: flex; align-items: center; justify-content: center;
+    font-size: 11px; font-weight: 700; opacity: 0; transition: var(--transition);
+  }
+  .category-card.selected .cat-check { opacity: 1; }
+  .cat-icon {
+    width: 46px; height: 46px; border-radius: 10px;
+    background: var(--bg-section); border: 1px solid var(--border);
+    display: flex; align-items: center; justify-content: center;
+    margin-bottom: 14px;
+  }
+  .cat-icon svg { width: 22px; height: 22px; stroke: var(--accent-blue); fill: none; stroke-width: 1.8; stroke-linecap: round; stroke-linejoin: round; }
+  .category-card.selected .cat-icon { background: rgba(26,108,246,0.1); border-color: rgba(26,108,246,0.2); }
+  .category-card h3 { font-size: 16px; font-weight: 700; color: var(--dark-blue); margin-bottom: 5px; }
+  .category-card p { font-size: 13px; color: var(--text-secondary); line-height: 1.5; }
 
-/* Mobile: Scale down significantly (500px -> ~300px visual) */
-@media (max-width: 550px) {
-    .dial-wrapper {
-        margin-top: 30px;
-        margin-bottom: -100px; /* Pull content up since the dial visually shrinks */
-    }
-    .dial-outer-ring {
-        transform: scale(0.6); 
-    }
-}
+  /* ── LAYOUT ── */
+  .quote-layout { display: grid; grid-template-columns: 1fr 340px; gap: 28px; align-items: start; }
+
+  /* ── STICKY SIDEBAR ── */
+  .sidebar-sticky-wrap {
+    position: sticky;
+    top: 84px; /* nav height + small gap */
+  }
+  .quote-sidebar {
+    background: var(--bg-sidebar); border: 1.5px solid var(--border);
+    border-radius: var(--radius); overflow: hidden; box-shadow: var(--shadow);
+  }
+  .sidebar-head {
+    background: var(--dark-blue); color: #fff;
+    padding: 18px 22px; font-size: 15px; font-weight: 700; letter-spacing: -0.3px;
+  }
+  .sidebar-body { padding: 20px 22px; }
+  .quote-item {
+    display: flex; align-items: flex-start; justify-content: space-between;
+    padding: 11px 0; border-bottom: 1px solid var(--bg-section); gap: 10px;
+  }
+  .quote-item:last-of-type { border-bottom: none; }
+  .quote-item-name { font-size: 13px; font-weight: 600; color: var(--dark-blue); margin-bottom: 2px; }
+  .quote-item-tier { font-size: 11px; color: var(--text-muted); }
+  .quote-item-price { font-size: 13px; font-weight: 700; color: var(--accent-blue); white-space: nowrap; }
+  .quote-remove {
+    color: var(--text-muted); font-size: 18px; cursor: pointer;
+    background: none; border: none; padding: 0 0 0 4px; line-height: 1;
+    transition: var(--transition); flex-shrink: 0;
+  }
+  .quote-remove:hover { color: #e53935; }
+  .quote-total-row { margin-top: 16px; padding-top: 14px; border-top: 2px solid var(--border); }
+  .quote-total-label { font-size: 11px; font-weight: 700; color: var(--text-muted); text-transform: uppercase; letter-spacing: 1px; }
+  .quote-total-amount { font-size: 28px; font-weight: 900; letter-spacing: -1px; color: var(--dark-blue); margin: 4px 0 4px; }
+  .quote-total-note { font-size: 11px; color: var(--text-muted); }
+  .empty-quote { text-align: center; padding: 28px 16px; }
+  .empty-quote p { font-size: 13px; color: var(--text-muted); line-height: 1.6; }
+  .sidebar-note {
+    margin: 14px 22px 20px; padding: 12px 14px;
+    background: #f0f5ff; border-radius: var(--radius-sm);
+    border-left: 3px solid var(--accent-blue);
+    font-size: 12px; color: var(--text-secondary); line-height: 1.6;
+  }
+
+  /* ── SERVICE PANEL ── */
+  .service-panel { display: none; }
+  .service-panel.active { display: block; animation: fadeUp 0.25s ease; }
+  .panel-title {
+    font-size: 20px; font-weight: 800; color: var(--dark-blue);
+    letter-spacing: -0.5px; margin-bottom: 4px;
+  }
+  .panel-sub { font-size: 13px; color: var(--text-secondary); margin-bottom: 22px; }
+
+  /* ── PRODUCT TABS ── */
+  .product-tabs { display: flex; gap: 6px; margin-bottom: 24px; flex-wrap: wrap; }
+  .ptab {
+    padding: 8px 18px; border-radius: 30px;
+    font-size: 13px; font-weight: 600;
+    border: 1.5px solid var(--border);
+    color: var(--text-secondary); background: var(--bg-card);
+    cursor: pointer; transition: var(--transition); font-family: var(--font);
+  }
+  .ptab:hover { border-color: var(--accent-blue); color: var(--accent-blue); }
+  .ptab.active { background: var(--accent-blue); border-color: var(--accent-blue); color: #fff; }
+
+  /* ── PRODUCT CARDS ── */
+  .products-grid { display: grid; grid-template-columns: repeat(auto-fill,minmax(340px,1fr)); gap: 18px; }
+  .product-card {
+    background: var(--bg-card); border: 1.5px solid var(--border);
+    border-radius: var(--radius); overflow: hidden;
+    transition: var(--transition); box-shadow: var(--shadow);
+  }
+  .product-card:hover { border-color: #bcc8e8; box-shadow: var(--shadow-lg); }
+  .product-card.selected-product { border-color: var(--accent-blue); box-shadow: 0 4px 24px rgba(26,108,246,0.14); }
+  .product-card-header {
+    padding: 20px 22px 16px;
+    border-bottom: 1px solid var(--bg-section);
+    background: linear-gradient(135deg, #f7f9ff, #fff);
+    display: flex; align-items: flex-start; justify-content: space-between; gap: 10px;
+  }
+  .product-card-header h4 { font-size: 16px; font-weight: 700; color: var(--dark-blue); margin-bottom: 3px; }
+  .product-card-header .subtitle { font-size: 12px; color: var(--text-muted); }
+  .product-badge {
+    font-size: 10px; font-weight: 700; letter-spacing: 0.8px; text-transform: uppercase;
+    padding: 3px 10px; border-radius: 20px; white-space: nowrap; flex-shrink: 0;
+    background: rgba(26,108,246,0.1); color: var(--accent-blue);
+    border: 1px solid rgba(26,108,246,0.18);
+  }
+  .product-badge.popular { background: rgba(245,158,11,0.1); color: #b45309; border-color: rgba(245,158,11,0.25); }
+  .product-card-body { padding: 20px 22px; }
+
+  /* ── TIERS ── */
+  .tiers-row { display: flex; gap: 8px; margin-bottom: 16px; }
+  .tier-btn {
+    flex: 1; padding: 9px 6px; border-radius: var(--radius-sm);
+    border: 1.5px solid var(--border); background: var(--bg-section);
+    color: var(--text-secondary); font-family: var(--font);
+    font-size: 11px; font-weight: 600; cursor: pointer;
+    transition: var(--transition); text-align: center;
+  }
+  .tier-btn:hover { border-color: var(--accent-blue); color: var(--accent-blue); }
+  .tier-btn.active { border-color: var(--accent-blue); background: rgba(26,108,246,0.07); color: var(--dark-blue); }
+  .tier-btn .tier-name { display: block; margin-bottom: 3px; }
+  .tier-btn .tier-price { display: block; font-size: 13px; font-weight: 800; color: var(--accent-blue); }
+
+  /* ── PRICE ── */
+  .price-row { display: flex; align-items: baseline; gap: 5px; margin-bottom: 4px; }
+  .price-main { font-size: 26px; font-weight: 900; letter-spacing: -1px; color: var(--dark-blue); }
+  .price-period { font-size: 13px; color: var(--text-muted); }
+  .price-note { font-size: 11px; color: var(--text-muted); margin-bottom: 14px; }
+  .timeline-row { display: flex; gap: 8px; flex-wrap: wrap; margin-bottom: 16px; }
+  .timeline-badge {
+    display: inline-flex; align-items: center;
+    background: var(--bg-section); border: 1px solid var(--border);
+    color: var(--text-secondary); font-size: 11px; font-weight: 600;
+    padding: 4px 10px; border-radius: 20px;
+  }
+
+  /* ── FEATURES ── */
+  .feature-list { list-style: none; margin-bottom: 18px; }
+  .feature-list li {
+    font-size: 13px; color: var(--text-secondary); padding: 4px 0;
+    display: flex; align-items: flex-start; gap: 8px; line-height: 1.45;
+    transition: var(--transition);
+  }
+  .feature-list li .feat-icon {
+    flex-shrink: 0; margin-top: 2px; font-style: normal;
+    font-weight: 700; color: var(--accent-blue); font-size: 12px; width: 14px;
+  }
+  .feature-list li.feat-unavailable {
+    opacity: 0.38;
+    text-decoration: line-through;
+    color: var(--text-muted);
+  }
+  .feature-list li.feat-unavailable .feat-icon { color: var(--text-muted); }
+
+  /* ── ADD-ONS ── */
+  .addons-section { margin-top: 14px; border-top: 1px solid var(--bg-section); padding-top: 14px; }
+  .addons-title { font-size: 11px; font-weight: 700; color: var(--text-muted); letter-spacing: 1px; text-transform: uppercase; margin-bottom: 10px; }
+  .addon-item {
+    display: flex; align-items: center; justify-content: space-between;
+    padding: 7px 0; border-bottom: 1px solid var(--bg-section);
+  }
+  .addon-item:last-child { border-bottom: none; }
+  .addon-left { display: flex; align-items: center; gap: 10px; }
+  .addon-info { font-size: 12px; color: var(--text-secondary); }
+  .addon-price { font-size: 12px; font-weight: 600; color: var(--accent-blue); }
+  .addon-check {
+    width: 18px; height: 18px; border-radius: 4px;
+    border: 1.5px solid var(--border); cursor: pointer;
+    display: flex; align-items: center; justify-content: center;
+    transition: var(--transition); background: #fff;
+    font-size: 10px; color: transparent; flex-shrink: 0;
+  }
+  .addon-check.checked { background: var(--accent-blue); border-color: var(--accent-blue); color: #fff; }
+
+  /* ── ADD BUTTON ── */
+  .add-to-quote-btn {
+    width: 100%; padding: 12px;
+    background: transparent; border: 1.5px solid var(--accent-blue);
+    color: var(--accent-blue); border-radius: var(--radius-sm);
+    font-size: 13px; font-weight: 700; font-family: var(--font);
+    cursor: pointer; transition: var(--transition);
+  }
+  .add-to-quote-btn:hover { background: var(--accent-blue); color: #fff; }
+  .add-to-quote-btn.added { background: var(--accent-blue); color: #fff; }
+
+  /* ── BACK BTN ── */
+  .back-btn {
+    display: inline-flex; align-items: center; gap: 6px;
+    color: var(--text-muted); font-size: 13px; font-weight: 600;
+    cursor: pointer; padding: 0; background: none; border: none;
+    font-family: var(--font); transition: var(--transition); margin-bottom: 28px;
+  }
+  .back-btn:hover { color: var(--dark-blue); }
+
+  /* ── BUTTONS ── */
+  .btn {
+    display: inline-flex; align-items: center; gap: 8px;
+    padding: 13px 26px; border-radius: 10px;
+    font-size: 14px; font-weight: 700; font-family: var(--font);
+    cursor: pointer; transition: var(--transition); border: none; text-decoration: none;
+  }
+  .btn-primary { background: var(--accent-blue); color: #fff; }
+  .btn-primary:hover { background: var(--accent-blue-light); box-shadow: 0 6px 20px rgba(26,108,246,0.3); }
+  .btn-primary:disabled { background: var(--border); color: var(--text-muted); cursor: not-allowed; box-shadow: none; }
+  .btn-secondary { background: #fff; color: var(--text-secondary); border: 1.5px solid var(--border); }
+  .btn-secondary:hover { border-color: var(--accent-blue); color: var(--accent-blue); }
+  .btn-download { background: #15803d; color: #fff; }
+  .btn-download:hover { background: #166534; box-shadow: 0 6px 20px rgba(21,128,61,0.25); }
+  .btn-row { display: flex; gap: 12px; align-items: center; flex-wrap: wrap; }
+
+  /* ── FORM ── */
+  .form-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 18px; margin-bottom: 28px; }
+  .form-group { display: flex; flex-direction: column; gap: 7px; }
+  .form-group.full { grid-column: 1/-1; }
+  .form-group label { font-size: 11px; font-weight: 700; color: var(--text-muted); letter-spacing: 0.8px; text-transform: uppercase; }
+  .form-group input, .form-group select, .form-group textarea {
+    background: var(--bg-input); border: 1.5px solid var(--border);
+    color: var(--text-primary); font-family: var(--font); font-size: 14px;
+    border-radius: var(--radius-sm); padding: 12px 14px; outline: none;
+    transition: var(--transition); resize: vertical;
+  }
+  .form-group input:focus, .form-group select:focus, .form-group textarea:focus {
+    border-color: var(--accent-blue); background: #fff;
+    box-shadow: 0 0 0 3px rgba(26,108,246,0.1);
+  }
+  .form-group textarea { min-height: 90px; }
+  .form-group select { appearance: none; cursor: pointer; }
+
+  /* ── QUOTE DOC ── */
+  .quote-preview-wrap {
+    background: var(--bg-card); border: 1.5px solid var(--border);
+    border-radius: var(--radius); overflow: hidden; box-shadow: var(--shadow);
+  }
+  #quote-preview-doc {
+    background: #fff; color: #1a1a2e; padding: 64px;
+    font-family: var(--font); min-height: 1000px;
+  }
+  .qp-header { display: flex; justify-content: space-between; align-items: flex-start; margin-bottom: 44px; }
+  .qp-logo-area { display: flex; align-items: center; gap: 14px; }
+  .qp-logo-img { width: 52px; height: 52px; border-radius: 10px; background: #eef0f5; border: 1.5px dashed #c0c6d8; display: flex; align-items: center; justify-content: center; font-size: 9px; font-weight: 700; color: #8a90a8; text-align: center; line-height: 1.4; }
+  .qp-logo-text { font-size: 22px; font-weight: 900; color: #0d1b3e; letter-spacing: -0.8px; }
+  .qp-logo-text span { color: #1a6cf6; }
+  .qp-company-sub { font-size: 11px; color: #8a90a8; margin-top: 2px; }
+  .qp-doc-info { text-align: right; }
+  .qp-doc-info .qp-label { font-size: 11px; font-weight: 700; color: #8a90a8; text-transform: uppercase; letter-spacing: 2px; margin-bottom: 4px; }
+  .qp-doc-info .qp-num { font-size: 20px; font-weight: 900; color: #0d1b3e; }
+  .qp-doc-info .qp-date { font-size: 12px; color: #8a90a8; margin-top: 2px; }
+  .qp-doc-info .qp-valid { font-size: 12px; color: #b45309; margin-top: 2px; font-weight: 600; }
+  .qp-divider { height: 3px; background: linear-gradient(to right, #1a6cf6 60%, #e8eaf2); margin-bottom: 36px; border-radius: 2px; }
+  .qp-parties { display: grid; grid-template-columns: 1fr 1fr; gap: 36px; margin-bottom: 36px; }
+  .qp-party h5 { font-size: 10px; font-weight: 700; color: #8a90a8; text-transform: uppercase; letter-spacing: 1.5px; margin-bottom: 8px; }
+  .qp-party p { font-size: 13px; color: #1a1a2e; line-height: 1.7; }
+  .qp-party strong { font-weight: 800; font-size: 15px; display: block; margin-bottom: 2px; }
+  .qp-table { width: 100%; border-collapse: collapse; margin-bottom: 28px; }
+  .qp-table thead tr { background: #0d1b3e; }
+  .qp-table thead th { color: #fff; font-size: 11px; font-weight: 700; letter-spacing: 1px; text-transform: uppercase; padding: 13px 15px; text-align: left; }
+  .qp-table tbody tr { border-bottom: 1px solid #eaecf5; }
+  .qp-table tbody tr:nth-child(even) { background: #f7f8fc; }
+  .qp-table td { padding: 13px 15px; font-size: 13px; color: #1a1a2e; vertical-align: top; }
+  .qp-table td:last-child { font-weight: 700; text-align: right; }
+  .qp-total-section { background: #f4f7ff; border-radius: 10px; padding: 22px; margin-bottom: 28px; }
+  .qp-total-row { display: flex; justify-content: space-between; padding: 5px 0; font-size: 13px; color: #1a1a2e; }
+  .qp-total-row.grand { font-size: 18px; font-weight: 900; color: #0d1b3e; border-top: 2px solid #c8d3ef; margin-top: 8px; padding-top: 12px; }
+  .qp-notes { background: #fffbf0; border-left: 4px solid #f59e0b; padding: 16px 18px; border-radius: 6px; margin-bottom: 28px; }
+  .qp-notes h6 { font-size: 10px; font-weight: 700; color: #92400e; text-transform: uppercase; letter-spacing: 1px; margin-bottom: 5px; }
+  .qp-notes p { font-size: 13px; color: #78350f; line-height: 1.6; }
+  .qp-terms { background: #f7f8fc; border-radius: 8px; padding: 18px; margin-bottom: 28px; }
+  .qp-terms p { font-size: 12px; color: #6b6b80; line-height: 1.7; }
+  .qp-terms strong { color: #1a1a2e; }
+  .qp-footer-doc { border-top: 1px solid #eaecf5; padding-top: 22px; display: flex; justify-content: space-between; align-items: center; }
+  .qp-footer-doc p { font-size: 12px; color: #8a90a8; line-height: 1.6; }
+  .qp-cta-text { font-weight: 700; color: #0d1b3e; font-size: 14px; }
+  .qp-cta-contact { color: #1a6cf6; font-weight: 600; font-size: 13px; }
+  .qp-stamp {
+    width: 72px; height: 72px; border-radius: 50%;
+    border: 3px solid #1a6cf6; display: flex; align-items: center; justify-content: center;
+    color: #1a6cf6; font-size: 8px; font-weight: 800; text-align: center;
+    text-transform: uppercase; letter-spacing: 0.5px; line-height: 1.5; flex-shrink: 0;
+  }
+
+  /* ── RESPONSIVE ── */
+  @media(max-width:960px) {
+    nav { padding: 0 24px; }
+    .hero { padding: 60px 24px 44px; }
+    .main-container { padding: 0 24px 80px; }
+    .category-grid { grid-template-columns: 1fr 1fr; }
+    .quote-layout { grid-template-columns: 1fr; }
+    .sidebar-sticky-wrap { position: static; }
+    .form-grid { grid-template-columns: 1fr; }
+    .form-group.full { grid-column: 1; }
+    #quote-preview-doc { padding: 32px; }
+    .qp-parties { grid-template-columns: 1fr; gap: 20px; }
+  }
+
+  @media(max-width:768px) {
+    nav { padding: 0 40px; }
+  }
+
+  @media(max-width:600px) {
+    .category-grid { grid-template-columns: 1fr; }
+    .products-grid { grid-template-columns: 1fr; }
+    .tiers-row { flex-direction: column; }
+    .step-connector { width: 32px; }
+    .hero h1 { font-size: 34px; }
+  }
+
+  @media print {
+    nav, .hero, .back-btn, .btn-row, .progress-bar { display: none !important; }
+    body { background: white; }
+    .main-container { padding: 0; }
+    #section4 { display: block !important; padding-top: 0; }
+    .quote-preview-wrap { border: none; box-shadow: none; }
+  }
 </style>
+</head>
+<body>
 
-<div class="dial-wrapper">
-    <div class="dial-outer-ring">
-        <div class="dial-indicator"></div>
-        
-        <div class="dial-face" id="securityDial">
-            <div class="dial-ticks"></div>
-            <div class="dial-numbers">
-                <span>0</span><span>10</span><span>20</span><span>30</span>
-                <span>40</span><span>50</span><span>60</span><span>70</span>
-                <span>80</span><span>90</span>
-            </div>
-            <div class="dial-knob">
-                <div class="dial-knob-inner">
-                    <div class="dial-logo-hex">
-                        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5">
-                            <path d="M12 2L2 8l0 8l10 6l10 -6l0 -8z" opacity="0.5"/>
-                            <path d="M12 22V12" opacity="0.3"/>
-                            <path d="M12 12L2 8" opacity="0.3"/>
-                            <path d="M12 12l10 -4" opacity="0.3"/>
-                        </svg>
-                    </div>
-                </div>
-            </div>
-        </div>
+<!-- NAV -->
+<nav>
+  <a class="nav-logo" href="#">
+    <div class="logo-placeholder"><img src="thumbnails/logo1.png" style="height: 30px;" alt="Croloft Logo"></div>
+  </a>
+  <div class="nav-right">
+    <span class="nav-contact">+27 31 000 0000</span>
+    <span class="nav-tag">Get a Quote</span>
+  </div>
+</nav>
+
+<!-- HERO -->
+<div class="hero">
+  <div class="hero-inner">
+    <div class="hero-eyebrow">Instant Quotation Engine</div>
+    <h1>Build Your <span>Custom IT</span> Solution Quote</h1>
+    <p>Select services, choose your tier, configure add-ons, and download a professional quote — no sales call required.</p>
+    <div class="progress-bar">
+      <div class="step-item">
+        <div class="step-circle active" id="step1c">1</div>
+        <div class="step-label active" id="step1l">Services</div>
+      </div>
+      <div class="step-connector" id="conn1"></div>
+      <div class="step-item">
+        <div class="step-circle" id="step2c">2</div>
+        <div class="step-label" id="step2l">Configure</div>
+      </div>
+      <div class="step-connector" id="conn2"></div>
+      <div class="step-item">
+        <div class="step-circle" id="step3c">3</div>
+        <div class="step-label" id="step3l">Details</div>
+      </div>
+      <div class="step-connector" id="conn3"></div>
+      <div class="step-item">
+        <div class="step-circle" id="step4c">4</div>
+        <div class="step-label" id="step4l">Download</div>
+      </div>
     </div>
-</div>    
+  </div>
+</div>
+
+<!-- MAIN -->
+<div class="main-container">
+
+  <!-- STEP 1 -->
+  <div class="section active" id="section1">
+    <div class="section-header">
+      <h2>What services do you need?</h2>
+      <p>Select one or more service categories. You can mix and match across divisions.</p>
+    </div>
+    <div class="category-grid">
+      <div class="category-card" onclick="selectCategory('software')" id="cat-software">
+        <div class="cat-check">&#10003;</div>
+        <div class="cat-icon">
+          <svg viewBox="0 0 24 24"><polyline points="16 18 22 12 16 6"/><polyline points="8 6 2 12 8 18"/></svg>
+        </div>
+        <h3>Software Development</h3>
+        <p>AI &amp; automation, web &amp; mobile apps, e-commerce, database engineering</p>
+      </div>
+      <div class="category-card" onclick="selectCategory('infrastructure')" id="cat-infrastructure">
+        <div class="cat-check">&#10003;</div>
+        <div class="cat-icon">
+          <svg viewBox="0 0 24 24"><rect x="2" y="3" width="20" height="4" rx="1"/><rect x="2" y="10" width="20" height="4" rx="1"/><rect x="2" y="17" width="20" height="4" rx="1"/><circle cx="18" cy="5" r="1" fill="#1a6cf6" stroke="none"/><circle cx="18" cy="12" r="1" fill="#1a6cf6" stroke="none"/><circle cx="18" cy="19" r="1" fill="#1a6cf6" stroke="none"/></svg>
+        </div>
+        <h3>IT Infrastructure</h3>
+        <p>IT support, consulting, managed services, cloud &amp; data center solutions</p>
+      </div>
+      <div class="category-card" onclick="selectCategory('marketing')" id="cat-marketing">
+        <div class="cat-check">&#10003;</div>
+        <div class="cat-icon">
+          <svg viewBox="0 0 24 24"><path d="M22 12h-4l-3 9L9 3l-3 9H2"/></svg>
+        </div>
+        <h3>Marketing &amp; Creative</h3>
+        <p>Digital marketing, graphic design, content management, advertising</p>
+      </div>
+    </div>
+    <div class="btn-row">
+      <button class="btn btn-primary" onclick="goToStep(2)" id="nextBtn1" disabled>Continue to Configure</button>
+    </div>
+  </div>
+
+  <!-- STEP 2 -->
+  <div class="section" id="section2">
+    <button class="back-btn" onclick="goToStep(1)">&#8592; Back to Categories</button>
+    <div class="quote-layout">
+      <div>
+        <div class="section-header">
+          <h2>Configure Your Services</h2>
+          <p>Select packages, tiers, and add-ons. Features update automatically based on your chosen tier.</p>
+        </div>
+
+        <!-- SOFTWARE -->
+        <div class="service-panel" id="panel-software">
+          <div class="panel-title">Software Development</div>
+          <div class="panel-sub">Build powerful digital products tailored to your business operations.</div>
+          <div class="product-tabs">
+            <button class="ptab active" onclick="showPTab(this,'sw-ai')">AI &amp; Automation</button>
+            <button class="ptab" onclick="showPTab(this,'sw-web')">Web Apps</button>
+            <button class="ptab" onclick="showPTab(this,'sw-mobile')">Mobile Apps</button>
+            <button class="ptab" onclick="showPTab(this,'sw-ecom')">E-Commerce</button>
+            <button class="ptab" onclick="showPTab(this,'sw-db')">Database Engineering</button>
+          </div>
+
+          <!-- AI & AUTOMATION -->
+          <div class="service-panel active" id="sw-ai">
+            <div class="products-grid">
+
+              <!-- AI Chatbot -->
+              <div class="product-card" id="pc-ai-chatbot">
+                <div class="product-card-header">
+                  <div><h4>AI Chatbot &amp; Virtual Assistant</h4><div class="subtitle">Customer service automation</div></div>
+                  <span class="product-badge popular">Popular</span>
+                </div>
+                <div class="product-card-body">
+                  <div class="tiers-row">
+                    <button class="tier-btn" onclick="selectTier(this,'pc-ai-chatbot',0)"><span class="tier-name">Basic</span><span class="tier-price">R 28,000</span></button>
+                    <button class="tier-btn active" onclick="selectTier(this,'pc-ai-chatbot',1)"><span class="tier-name">Pro</span><span class="tier-price">R 58,000</span></button>
+                    <button class="tier-btn" onclick="selectTier(this,'pc-ai-chatbot',2)"><span class="tier-name">Enterprise</span><span class="tier-price">R 120,000</span></button>
+                  </div>
+                  <div class="price-row"><span class="price-main" id="price-pc-ai-chatbot">R 58,000</span></div>
+                  <div class="price-note">One-time development + monthly hosting from R 1,200/mo</div>
+                  <div class="timeline-row">
+                    <span class="timeline-badge" id="tl-pc-ai-chatbot">4–8 weeks</span>
+                  </div>
+                  <ul class="feature-list" id="feat-pc-ai-chatbot"
+                    data-tiers='["Basic","Pro","Enterprise"]'
+                    data-prices='["R 28,000","R 58,000","R 120,000"]'
+                    data-timelines='["2–4 weeks","4–8 weeks","8–14 weeks"]'
+                    data-active="1">
+                    <li data-min="0"><i class="feat-icon">&#10003;</i>NLP-powered conversational AI</li>
+                    <li data-min="0"><i class="feat-icon">&#10003;</i>Website &amp; email channel integration</li>
+                    <li data-min="0"><i class="feat-icon">&#10003;</i>Ticketing &amp; basic conversation logs</li>
+                    <li data-min="1"><i class="feat-icon">&#10003;</i>WhatsApp &amp; multi-channel integration</li>
+                    <li data-min="1"><i class="feat-icon">&#10003;</i>Live agent handoff system</li>
+                    <li data-min="1"><i class="feat-icon">&#10003;</i>Analytics dashboard</li>
+                    <li data-min="1"><i class="feat-icon">&#10003;</i>Custom knowledge base training</li>
+                    <li data-min="2"><i class="feat-icon">&#10003;</i>Multi-language support</li>
+                    <li data-min="2"><i class="feat-icon">&#10003;</i>Dedicated SLA &amp; priority support</li>
+                    <li data-min="2"><i class="feat-icon">&#10003;</i>Enterprise SSO &amp; security compliance</li>
+                  </ul>
+                  <div class="addons-section">
+                    <div class="addons-title">Add-Ons</div>
+                    <div class="addon-item"><div class="addon-left"><div class="addon-check" onclick="toggleAddon(this,'pc-ai-chatbot','CRM Integration','R 8,500')">&#10003;</div><div class="addon-info">CRM Integration (Salesforce / HubSpot)</div></div><div class="addon-price">+ R 8,500</div></div>
+                    <div class="addon-item"><div class="addon-left"><div class="addon-check" onclick="toggleAddon(this,'pc-ai-chatbot','Voice AI Module','R 14,000')">&#10003;</div><div class="addon-info">Voice AI Module</div></div><div class="addon-price">+ R 14,000</div></div>
+                    <div class="addon-item"><div class="addon-left"><div class="addon-check" onclick="toggleAddon(this,'pc-ai-chatbot','Monthly Maintenance','R 1,800/mo')">&#10003;</div><div class="addon-info">Monthly Maintenance &amp; Updates</div></div><div class="addon-price">+ R 1,800/mo</div></div>
+                  </div>
+                  <br>
+                  <button class="add-to-quote-btn" id="btn-pc-ai-chatbot" onclick="addToQuote('pc-ai-chatbot','AI Chatbot &amp; Virtual Assistant')">+ Add to Quote</button>
+                </div>
+              </div>
+
+              <!-- BPA -->
+              <div class="product-card" id="pc-ai-auto">
+                <div class="product-card-header">
+                  <div><h4>Business Process Automation</h4><div class="subtitle">Workflow &amp; RPA solutions</div></div>
+                  <span class="product-badge">Enterprise</span>
+                </div>
+                <div class="product-card-body">
+                  <div class="tiers-row">
+                    <button class="tier-btn" onclick="selectTier(this,'pc-ai-auto',0)"><span class="tier-name">Starter</span><span class="tier-price">R 35,000</span></button>
+                    <button class="tier-btn active" onclick="selectTier(this,'pc-ai-auto',1)"><span class="tier-name">Professional</span><span class="tier-price">R 85,000</span></button>
+                    <button class="tier-btn" onclick="selectTier(this,'pc-ai-auto',2)"><span class="tier-name">Full Suite</span><span class="tier-price">R 180,000</span></button>
+                  </div>
+                  <div class="price-row"><span class="price-main" id="price-pc-ai-auto">R 85,000</span></div>
+                  <div class="price-note">One-time project fee. Automation audit included.</div>
+                  <div class="timeline-row"><span class="timeline-badge" id="tl-pc-ai-auto">6–12 weeks</span></div>
+                  <ul class="feature-list" id="feat-pc-ai-auto"
+                    data-tiers='["Starter","Professional","Full Suite"]'
+                    data-prices='["R 35,000","R 85,000","R 180,000"]'
+                    data-timelines='["4–6 weeks","6–12 weeks","12–20 weeks"]'
+                    data-active="1">
+                    <li data-min="0"><i class="feat-icon">&#10003;</i>Business process mapping &amp; audit</li>
+                    <li data-min="0"><i class="feat-icon">&#10003;</i>Up to 3 RPA bots (invoicing, data entry)</li>
+                    <li data-min="0"><i class="feat-icon">&#10003;</i>Basic API integrations</li>
+                    <li data-min="1"><i class="feat-icon">&#10003;</i>Up to 10 RPA bots across departments</li>
+                    <li data-min="1"><i class="feat-icon">&#10003;</i>AI-powered document processing &amp; OCR</li>
+                    <li data-min="1"><i class="feat-icon">&#10003;</i>Real-time monitoring &amp; error alerts</li>
+                    <li data-min="1"><i class="feat-icon">&#10003;</i>Staff training &amp; full documentation</li>
+                    <li data-min="2"><i class="feat-icon">&#10003;</i>Unlimited bots &amp; enterprise integrations</li>
+                    <li data-min="2"><i class="feat-icon">&#10003;</i>Predictive analytics &amp; reporting suite</li>
+                    <li data-min="2"><i class="feat-icon">&#10003;</i>Dedicated automation engineer (6 months)</li>
+                  </ul>
+                  <div class="addons-section">
+                    <div class="addons-title">Add-Ons</div>
+                    <div class="addon-item"><div class="addon-left"><div class="addon-check" onclick="toggleAddon(this,'pc-ai-auto','Predictive Analytics','R 22,000')">&#10003;</div><div class="addon-info">Predictive Analytics Module</div></div><div class="addon-price">+ R 22,000</div></div>
+                    <div class="addon-item"><div class="addon-left"><div class="addon-check" onclick="toggleAddon(this,'pc-ai-auto','Quarterly Review','R 5,500/qtr')">&#10003;</div><div class="addon-info">Quarterly Performance Review</div></div><div class="addon-price">+ R 5,500/qtr</div></div>
+                  </div>
+                  <br>
+                  <button class="add-to-quote-btn" id="btn-pc-ai-auto" onclick="addToQuote('pc-ai-auto','Business Process Automation')">+ Add to Quote</button>
+                </div>
+              </div>
+
+              <!-- Custom ML -->
+              <div class="product-card" id="pc-ai-ml">
+                <div class="product-card-header">
+                  <div><h4>Custom ML / AI Model Development</h4><div class="subtitle">Bespoke intelligence solutions</div></div>
+                  <span class="product-badge">Custom</span>
+                </div>
+                <div class="product-card-body">
+                  <div class="tiers-row">
+                    <button class="tier-btn" onclick="selectTier(this,'pc-ai-ml',0)"><span class="tier-name">Proof of Concept</span><span class="tier-price">R 65,000</span></button>
+                    <button class="tier-btn active" onclick="selectTier(this,'pc-ai-ml',1)"><span class="tier-name">Production</span><span class="tier-price">R 120,000</span></button>
+                    <button class="tier-btn" onclick="selectTier(this,'pc-ai-ml',2)"><span class="tier-name">Enterprise</span><span class="tier-price">R 280,000+</span></button>
+                  </div>
+                  <div class="price-row"><span class="price-main" id="price-pc-ai-ml">R 120,000</span></div>
+                  <div class="price-note">Hourly rate: R 950/hr available. Phase-based billing.</div>
+                  <div class="timeline-row"><span class="timeline-badge" id="tl-pc-ai-ml">12–20 weeks</span></div>
+                  <ul class="feature-list" id="feat-pc-ai-ml"
+                    data-tiers='["Proof of Concept","Production","Enterprise"]'
+                    data-prices='["R 65,000","R 120,000","R 280,000+"]'
+                    data-timelines='["4–8 weeks","12–20 weeks","20–36 weeks"]'
+                    data-active="1">
+                    <li data-min="0"><i class="feat-icon">&#10003;</i>Custom model design &amp; architecture</li>
+                    <li data-min="0"><i class="feat-icon">&#10003;</i>Data pipeline &amp; preprocessing</li>
+                    <li data-min="0"><i class="feat-icon">&#10003;</i>PoC validation &amp; benchmarking</li>
+                    <li data-min="1"><i class="feat-icon">&#10003;</i>Full model training, validation &amp; deployment</li>
+                    <li data-min="1"><i class="feat-icon">&#10003;</i>REST API productionisation</li>
+                    <li data-min="1"><i class="feat-icon">&#10003;</i>MLOps &amp; continuous model monitoring</li>
+                    <li data-min="1"><i class="feat-icon">&#10003;</i>IP ownership transferred to client</li>
+                    <li data-min="2"><i class="feat-icon">&#10003;</i>Multi-model ensemble architectures</li>
+                    <li data-min="2"><i class="feat-icon">&#10003;</i>Cloud &amp; on-premise hybrid deployment</li>
+                    <li data-min="2"><i class="feat-icon">&#10003;</i>Dedicated data science team</li>
+                  </ul>
+                  <div class="addons-section">
+                    <div class="addons-title">Add-Ons</div>
+                    <div class="addon-item"><div class="addon-left"><div class="addon-check" onclick="toggleAddon(this,'pc-ai-ml','Data Labelling','R 18,000')">&#10003;</div><div class="addon-info">Data Labelling &amp; Preparation Service</div></div><div class="addon-price">+ R 18,000</div></div>
+                    <div class="addon-item"><div class="addon-left"><div class="addon-check" onclick="toggleAddon(this,'pc-ai-ml','Model Monitoring','R 4,500/mo')">&#10003;</div><div class="addon-info">Ongoing Model Drift Monitoring</div></div><div class="addon-price">+ R 4,500/mo</div></div>
+                  </div>
+                  <br>
+                  <button class="add-to-quote-btn" id="btn-pc-ai-ml" onclick="addToQuote('pc-ai-ml','Custom ML / AI Model Development')">+ Add to Quote</button>
+                </div>
+              </div>
+
+            </div>
+          </div>
+
+          <!-- WEB APPS -->
+          <div class="service-panel" id="sw-web">
+            <div class="products-grid">
+
+              <div class="product-card" id="pc-web-portfolio">
+                <div class="product-card-header">
+                  <div><h4>Portfolio Website</h4><div class="subtitle">Professional personal or business showcase</div></div>
+                  <span class="product-badge">1–3 weeks</span>
+                </div>
+                <div class="product-card-body">
+                  <div class="tiers-row">
+                    <button class="tier-btn active" onclick="selectTier(this,'pc-web-portfolio',0)"><span class="tier-name">Essential</span><span class="tier-price">R 8,500</span></button>
+                    <button class="tier-btn" onclick="selectTier(this,'pc-web-portfolio',1)"><span class="tier-name">Premium</span><span class="tier-price">R 18,500</span></button>
+                  </div>
+                  <div class="price-row"><span class="price-main" id="price-pc-web-portfolio">R 8,500</span></div>
+                  <div class="price-note">+ Annual hosting from R 2,400/yr</div>
+                  <div class="timeline-row"><span class="timeline-badge" id="tl-pc-web-portfolio">1–2 weeks</span></div>
+                  <ul class="feature-list" id="feat-pc-web-portfolio"
+                    data-tiers='["Essential","Premium"]'
+                    data-prices='["R 8,500","R 18,500"]'
+                    data-timelines='["1–2 weeks","2–4 weeks"]'
+                    data-active="0">
+                    <li data-min="0"><i class="feat-icon">&#10003;</i>Custom responsive design (mobile-first)</li>
+                    <li data-min="0"><i class="feat-icon">&#10003;</i>Up to 5 pages</li>
+                    <li data-min="0"><i class="feat-icon">&#10003;</i>Contact form integration</li>
+                    <li data-min="0"><i class="feat-icon">&#10003;</i>SEO basics &amp; Google Analytics</li>
+                    <li data-min="1"><i class="feat-icon">&#10003;</i>Up to 10 pages with CMS</li>
+                    <li data-min="1"><i class="feat-icon">&#10003;</i>Blog / news module</li>
+                    <li data-min="1"><i class="feat-icon">&#10003;</i>Social media integration</li>
+                    <li data-min="1"><i class="feat-icon">&#10003;</i>1 year post-launch support</li>
+                  </ul>
+                  <div class="addons-section">
+                    <div class="addons-title">Add-Ons</div>
+                    <div class="addon-item"><div class="addon-left"><div class="addon-check" onclick="toggleAddon(this,'pc-web-portfolio','Live Chat','R 2,000')">&#10003;</div><div class="addon-info">Live Chat Integration</div></div><div class="addon-price">+ R 2,000</div></div>
+                    <div class="addon-item"><div class="addon-left"><div class="addon-check" onclick="toggleAddon(this,'pc-web-portfolio','Monthly SEO','R 2,800/mo')">&#10003;</div><div class="addon-info">Monthly SEO Management</div></div><div class="addon-price">+ R 2,800/mo</div></div>
+                  </div>
+                  <br>
+                  <button class="add-to-quote-btn" id="btn-pc-web-portfolio" onclick="addToQuote('pc-web-portfolio','Portfolio Website')">+ Add to Quote</button>
+                </div>
+              </div>
+
+              <div class="product-card" id="pc-web-startup">
+                <div class="product-card-header">
+                  <div><h4>Startup Business Website</h4><div class="subtitle">Launch-ready web presence</div></div>
+                  <span class="product-badge popular">Popular</span>
+                </div>
+                <div class="product-card-body">
+                  <div class="tiers-row">
+                    <button class="tier-btn" onclick="selectTier(this,'pc-web-startup',0)"><span class="tier-name">Launch</span><span class="tier-price">R 22,000</span></button>
+                    <button class="tier-btn active" onclick="selectTier(this,'pc-web-startup',1)"><span class="tier-name">Growth</span><span class="tier-price">R 42,000</span></button>
+                    <button class="tier-btn" onclick="selectTier(this,'pc-web-startup',2)"><span class="tier-name">Scale</span><span class="tier-price">R 75,000</span></button>
+                  </div>
+                  <div class="price-row"><span class="price-main" id="price-pc-web-startup">R 42,000</span></div>
+                  <div class="price-note">Full-stack web app + hosting from R 4,500/yr</div>
+                  <div class="timeline-row"><span class="timeline-badge" id="tl-pc-web-startup">5–8 weeks</span></div>
+                  <ul class="feature-list" id="feat-pc-web-startup"
+                    data-tiers='["Launch","Growth","Scale"]'
+                    data-prices='["R 22,000","R 42,000","R 75,000"]'
+                    data-timelines='["3–5 weeks","5–8 weeks","8–14 weeks"]'
+                    data-active="1">
+                    <li data-min="0"><i class="feat-icon">&#10003;</i>Brand-aligned UI/UX design</li>
+                    <li data-min="0"><i class="feat-icon">&#10003;</i>CMS integration (WordPress / Headless)</li>
+                    <li data-min="0"><i class="feat-icon">&#10003;</i>Lead capture forms</li>
+                    <li data-min="0"><i class="feat-icon">&#10003;</i>SEO fundamentals</li>
+                    <li data-min="1"><i class="feat-icon">&#10003;</i>Booking &amp; appointment system</li>
+                    <li data-min="1"><i class="feat-icon">&#10003;</i>Payment gateway integration</li>
+                    <li data-min="1"><i class="feat-icon">&#10003;</i>Advanced SEO &amp; performance optimisation</li>
+                    <li data-min="1"><i class="feat-icon">&#10003;</i>Analytics &amp; heatmap setup</li>
+                    <li data-min="1"><i class="feat-icon">&#10003;</i>3 months post-launch support</li>
+                    <li data-min="2"><i class="feat-icon">&#10003;</i>Custom integrations &amp; automation</li>
+                    <li data-min="2"><i class="feat-icon">&#10003;</i>Multi-language &amp; multi-region support</li>
+                    <li data-min="2"><i class="feat-icon">&#10003;</i>6 months dedicated support &amp; SLA</li>
+                  </ul>
+                  <div class="addons-section">
+                    <div class="addons-title">Add-Ons</div>
+                    <div class="addon-item"><div class="addon-left"><div class="addon-check" onclick="toggleAddon(this,'pc-web-startup','Membership Portal','R 12,000')">&#10003;</div><div class="addon-info">Membership / Client Portal</div></div><div class="addon-price">+ R 12,000</div></div>
+                    <div class="addon-item"><div class="addon-left"><div class="addon-check" onclick="toggleAddon(this,'pc-web-startup','Multi-language','R 6,500')">&#10003;</div><div class="addon-info">Multi-language Support</div></div><div class="addon-price">+ R 6,500</div></div>
+                  </div>
+                  <br>
+                  <button class="add-to-quote-btn" id="btn-pc-web-startup" onclick="addToQuote('pc-web-startup','Startup Business Website')">+ Add to Quote</button>
+                </div>
+              </div>
+
+              <div class="product-card" id="pc-web-ems">
+                <div class="product-card-header">
+                  <div><h4>Employee Management System</h4><div class="subtitle">HR, payroll &amp; attendance platform</div></div>
+                  <span class="product-badge">Custom</span>
+                </div>
+                <div class="product-card-body">
+                  <div class="tiers-row">
+                    <button class="tier-btn" onclick="selectTier(this,'pc-web-ems',0)"><span class="tier-name">SME</span><span class="tier-price">R 65,000</span></button>
+                    <button class="tier-btn active" onclick="selectTier(this,'pc-web-ems',1)"><span class="tier-name">Corporate</span><span class="tier-price">R 145,000</span></button>
+                  </div>
+                  <div class="price-row"><span class="price-main" id="price-pc-web-ems">R 145,000</span></div>
+                  <div class="price-note">+ from R 3,500/mo SaaS or once-off license</div>
+                  <div class="timeline-row"><span class="timeline-badge" id="tl-pc-web-ems">12–18 weeks</span></div>
+                  <ul class="feature-list" id="feat-pc-web-ems"
+                    data-tiers='["SME","Corporate"]'
+                    data-prices='["R 65,000","R 145,000"]'
+                    data-timelines='["8–12 weeks","12–18 weeks"]'
+                    data-active="1">
+                    <li data-min="0"><i class="feat-icon">&#10003;</i>Employee onboarding &amp; self-service portal</li>
+                    <li data-min="0"><i class="feat-icon">&#10003;</i>Leave &amp; attendance management</li>
+                    <li data-min="0"><i class="feat-icon">&#10003;</i>Basic payroll &amp; payslip generation</li>
+                    <li data-min="0"><i class="feat-icon">&#10003;</i>Role-based access &amp; permissions</li>
+                    <li data-min="1"><i class="feat-icon">&#10003;</i>Performance reviews &amp; KPI tracking</li>
+                    <li data-min="1"><i class="feat-icon">&#10003;</i>Integration with Sage / Xero / SAP</li>
+                    <li data-min="1"><i class="feat-icon">&#10003;</i>Advanced HR reporting &amp; analytics</li>
+                    <li data-min="1"><i class="feat-icon">&#10003;</i>Multi-branch / multi-company support</li>
+                  </ul>
+                  <div class="addons-section">
+                    <div class="addons-title">Add-Ons</div>
+                    <div class="addon-item"><div class="addon-left"><div class="addon-check" onclick="toggleAddon(this,'pc-web-ems','Biometric Integration','R 18,000')">&#10003;</div><div class="addon-info">Biometric Clock-In Integration</div></div><div class="addon-price">+ R 18,000</div></div>
+                    <div class="addon-item"><div class="addon-left"><div class="addon-check" onclick="toggleAddon(this,'pc-web-ems','Training Module','R 14,000')">&#10003;</div><div class="addon-info">LMS Training Module</div></div><div class="addon-price">+ R 14,000</div></div>
+                  </div>
+                  <br>
+                  <button class="add-to-quote-btn" id="btn-pc-web-ems" onclick="addToQuote('pc-web-ems','Employee Management System')">+ Add to Quote</button>
+                </div>
+              </div>
+
+            </div>
+          </div>
+
+          <!-- MOBILE -->
+          <div class="service-panel" id="sw-mobile">
+            <div class="products-grid">
+              <div class="product-card" id="pc-mob-app">
+                <div class="product-card-header">
+                  <div><h4>iOS / Android Mobile App</h4><div class="subtitle">Native or cross-platform development</div></div>
+                  <span class="product-badge popular">Popular</span>
+                </div>
+                <div class="product-card-body">
+                  <div class="tiers-row">
+                    <button class="tier-btn" onclick="selectTier(this,'pc-mob-app',0)"><span class="tier-name">MVP</span><span class="tier-price">R 85,000</span></button>
+                    <button class="tier-btn active" onclick="selectTier(this,'pc-mob-app',1)"><span class="tier-name">Full App</span><span class="tier-price">R 180,000</span></button>
+                    <button class="tier-btn" onclick="selectTier(this,'pc-mob-app',2)"><span class="tier-name">Enterprise</span><span class="tier-price">R 350,000</span></button>
+                  </div>
+                  <div class="price-row"><span class="price-main" id="price-pc-mob-app">R 180,000</span></div>
+                  <div class="price-note">Cross-platform (iOS + Android). + R 6,500/mo maintenance.</div>
+                  <div class="timeline-row"><span class="timeline-badge" id="tl-pc-mob-app">14–20 weeks</span></div>
+                  <ul class="feature-list" id="feat-pc-mob-app"
+                    data-tiers='["MVP","Full App","Enterprise"]'
+                    data-prices='["R 85,000","R 180,000","R 350,000"]'
+                    data-timelines='["8–12 weeks","14–20 weeks","20–36 weeks"]'
+                    data-active="1">
+                    <li data-min="0"><i class="feat-icon">&#10003;</i>Core feature set (MVP scope)</li>
+                    <li data-min="0"><i class="feat-icon">&#10003;</i>React Native / Flutter development</li>
+                    <li data-min="0"><i class="feat-icon">&#10003;</i>App Store &amp; Play Store submission</li>
+                    <li data-min="0"><i class="feat-icon">&#10003;</i>Basic backend API</li>
+                    <li data-min="1"><i class="feat-icon">&#10003;</i>Full UX research, wireframing &amp; UI design</li>
+                    <li data-min="1"><i class="feat-icon">&#10003;</i>Push notifications &amp; offline mode</li>
+                    <li data-min="1"><i class="feat-icon">&#10003;</i>Advanced backend &amp; database architecture</li>
+                    <li data-min="1"><i class="feat-icon">&#10003;</i>Beta testing &amp; full QA cycles</li>
+                    <li data-min="2"><i class="feat-icon">&#10003;</i>Enterprise SSO &amp; MDM integration</li>
+                    <li data-min="2"><i class="feat-icon">&#10003;</i>Dedicated DevOps &amp; CI/CD pipeline</li>
+                    <li data-min="2"><i class="feat-icon">&#10003;</i>12 months priority support &amp; SLA</li>
+                  </ul>
+                  <div class="addons-section">
+                    <div class="addons-title">Add-Ons</div>
+                    <div class="addon-item"><div class="addon-left"><div class="addon-check" onclick="toggleAddon(this,'pc-mob-app','In-App Payments','R 18,000')">&#10003;</div><div class="addon-info">In-App Payments (Stripe / PayFast)</div></div><div class="addon-price">+ R 18,000</div></div>
+                    <div class="addon-item"><div class="addon-left"><div class="addon-check" onclick="toggleAddon(this,'pc-mob-app','Admin Dashboard','R 22,000')">&#10003;</div><div class="addon-info">Admin Web Dashboard</div></div><div class="addon-price">+ R 22,000</div></div>
+                    <div class="addon-item"><div class="addon-left"><div class="addon-check" onclick="toggleAddon(this,'pc-mob-app','AR Features','R 35,000')">&#10003;</div><div class="addon-info">Augmented Reality Features</div></div><div class="addon-price">+ R 35,000</div></div>
+                  </div>
+                  <br>
+                  <button class="add-to-quote-btn" id="btn-pc-mob-app" onclick="addToQuote('pc-mob-app','iOS / Android Mobile App')">+ Add to Quote</button>
+                </div>
+              </div>
+            </div>
+          </div>
+
+          <!-- E-COMMERCE -->
+          <div class="service-panel" id="sw-ecom">
+            <div class="products-grid">
+              <div class="product-card" id="pc-ec-store">
+                <div class="product-card-header">
+                  <div><h4>E-Commerce Store</h4><div class="subtitle">Full-featured online shop</div></div>
+                  <span class="product-badge popular">Popular</span>
+                </div>
+                <div class="product-card-body">
+                  <div class="tiers-row">
+                    <button class="tier-btn" onclick="selectTier(this,'pc-ec-store',0)"><span class="tier-name">Starter</span><span class="tier-price">R 25,000</span></button>
+                    <button class="tier-btn active" onclick="selectTier(this,'pc-ec-store',1)"><span class="tier-name">Pro</span><span class="tier-price">R 55,000</span></button>
+                    <button class="tier-btn" onclick="selectTier(this,'pc-ec-store',2)"><span class="tier-name">Headless</span><span class="tier-price">R 120,000</span></button>
+                  </div>
+                  <div class="price-row"><span class="price-main" id="price-pc-ec-store">R 55,000</span></div>
+                  <div class="price-note">WooCommerce / Shopify / Custom + from R 2,200/mo hosting</div>
+                  <div class="timeline-row"><span class="timeline-badge" id="tl-pc-ec-store">5–9 weeks</span></div>
+                  <ul class="feature-list" id="feat-pc-ec-store"
+                    data-tiers='["Starter","Pro","Headless"]'
+                    data-prices='["R 25,000","R 55,000","R 120,000"]'
+                    data-timelines='["3–5 weeks","5–9 weeks","10–16 weeks"]'
+                    data-active="1">
+                    <li data-min="0"><i class="feat-icon">&#10003;</i>Product catalogue &amp; inventory management</li>
+                    <li data-min="0"><i class="feat-icon">&#10003;</i>Payment gateway (PayFast / Stripe)</li>
+                    <li data-min="0"><i class="feat-icon">&#10003;</i>Customer accounts &amp; order tracking</li>
+                    <li data-min="1"><i class="feat-icon">&#10003;</i>Shipping &amp; courier integration</li>
+                    <li data-min="1"><i class="feat-icon">&#10003;</i>Abandoned cart &amp; email automation</li>
+                    <li data-min="1"><i class="feat-icon">&#10003;</i>SEO &amp; conversion rate optimisation</li>
+                    <li data-min="1"><i class="feat-icon">&#10003;</i>Wishlist, reviews &amp; product filtering</li>
+                    <li data-min="2"><i class="feat-icon">&#10003;</i>Headless architecture (Next.js / Nuxt)</li>
+                    <li data-min="2"><i class="feat-icon">&#10003;</i>AI product recommendations engine</li>
+                    <li data-min="2"><i class="feat-icon">&#10003;</i>Multi-currency &amp; multi-region support</li>
+                  </ul>
+                  <div class="addons-section">
+                    <div class="addons-title">Add-Ons</div>
+                    <div class="addon-item"><div class="addon-left"><div class="addon-check" onclick="toggleAddon(this,'pc-ec-store','Loyalty Program','R 12,000')">&#10003;</div><div class="addon-info">Loyalty &amp; Rewards Program</div></div><div class="addon-price">+ R 12,000</div></div>
+                    <div class="addon-item"><div class="addon-left"><div class="addon-check" onclick="toggleAddon(this,'pc-ec-store','B2B Portal','R 28,000')">&#10003;</div><div class="addon-info">B2B Wholesale Portal</div></div><div class="addon-price">+ R 28,000</div></div>
+                  </div>
+                  <br>
+                  <button class="add-to-quote-btn" id="btn-pc-ec-store" onclick="addToQuote('pc-ec-store','E-Commerce Store')">+ Add to Quote</button>
+                </div>
+              </div>
+            </div>
+          </div>
+
+          <!-- DATABASE -->
+          <div class="service-panel" id="sw-db">
+            <div class="products-grid">
+              <div class="product-card" id="pc-db-design">
+                <div class="product-card-header">
+                  <div><h4>Database Design &amp; Engineering</h4><div class="subtitle">Architecture, build &amp; optimisation</div></div>
+                  <span class="product-badge">Technical</span>
+                </div>
+                <div class="product-card-body">
+                  <div class="tiers-row">
+                    <button class="tier-btn" onclick="selectTier(this,'pc-db-design',0)"><span class="tier-name">Standard</span><span class="tier-price">R 22,000</span></button>
+                    <button class="tier-btn active" onclick="selectTier(this,'pc-db-design',1)"><span class="tier-name">Advanced</span><span class="tier-price">R 55,000</span></button>
+                    <button class="tier-btn" onclick="selectTier(this,'pc-db-design',2)"><span class="tier-name">Enterprise</span><span class="tier-price">R 110,000</span></button>
+                  </div>
+                  <div class="price-row"><span class="price-main" id="price-pc-db-design">R 55,000</span></div>
+                  <div class="price-note">Hourly rate: R 850/hr. DBA retainer: R 8,000/mo</div>
+                  <div class="timeline-row"><span class="timeline-badge" id="tl-pc-db-design">3–8 weeks</span></div>
+                  <ul class="feature-list" id="feat-pc-db-design"
+                    data-tiers='["Standard","Advanced","Enterprise"]'
+                    data-prices='["R 22,000","R 55,000","R 110,000"]'
+                    data-timelines='["2–4 weeks","3–8 weeks","6–14 weeks"]'
+                    data-active="1">
+                    <li data-min="0"><i class="feat-icon">&#10003;</i>ERD &amp; schema design (SQL / NoSQL)</li>
+                    <li data-min="0"><i class="feat-icon">&#10003;</i>Basic indexing &amp; query optimisation</li>
+                    <li data-min="0"><i class="feat-icon">&#10003;</i>Automated backup configuration</li>
+                    <li data-min="1"><i class="feat-icon">&#10003;</i>Performance tuning &amp; advanced indexing</li>
+                    <li data-min="1"><i class="feat-icon">&#10003;</i>Migration from legacy systems</li>
+                    <li data-min="1"><i class="feat-icon">&#10003;</i>High-availability &amp; replication setup</li>
+                    <li data-min="1"><i class="feat-icon">&#10003;</i>Data warehouse &amp; BI-ready architecture</li>
+                    <li data-min="2"><i class="feat-icon">&#10003;</i>Multi-region replication &amp; geo-redundancy</li>
+                    <li data-min="2"><i class="feat-icon">&#10003;</i>Disaster recovery &amp; failover automation</li>
+                    <li data-min="2"><i class="feat-icon">&#10003;</i>Dedicated DBA for 3 months post-delivery</li>
+                  </ul>
+                  <div class="addons-section">
+                    <div class="addons-title">Add-Ons</div>
+                    <div class="addon-item"><div class="addon-left"><div class="addon-check" onclick="toggleAddon(this,'pc-db-design','DBA Retainer','R 8,000/mo')">&#10003;</div><div class="addon-info">Ongoing DBA Retainer (monthly)</div></div><div class="addon-price">+ R 8,000/mo</div></div>
+                    <div class="addon-item"><div class="addon-left"><div class="addon-check" onclick="toggleAddon(this,'pc-db-design','BI Dashboard','R 18,000')">&#10003;</div><div class="addon-info">Power BI / Tableau Dashboard</div></div><div class="addon-price">+ R 18,000</div></div>
+                  </div>
+                  <br>
+                  <button class="add-to-quote-btn" id="btn-pc-db-design" onclick="addToQuote('pc-db-design','Database Design &amp; Engineering')">+ Add to Quote</button>
+                </div>
+              </div>
+            </div>
+          </div>
+
+        </div><!-- /panel-software -->
+
+        <!-- INFRASTRUCTURE -->
+        <div class="service-panel" id="panel-infrastructure">
+          <div class="panel-title">IT Infrastructure</div>
+          <div class="panel-sub">Reliable, secure and scalable infrastructure solutions for your organisation.</div>
+          <div class="product-tabs">
+            <button class="ptab active" onclick="showPTab(this,'inf-support')">IT Support &amp; Helpdesk</button>
+            <button class="ptab" onclick="showPTab(this,'inf-managed')">Managed IT Services</button>
+            <button class="ptab" onclick="showPTab(this,'inf-cloud')">Cloud Infrastructure</button>
+            <button class="ptab" onclick="showPTab(this,'inf-dc')">Data Center &amp; Storage</button>
+          </div>
+
+          <div class="service-panel active" id="inf-support">
+            <div class="products-grid">
+              <div class="product-card" id="pc-it-helpdesk">
+                <div class="product-card-header">
+                  <div><h4>IT Support &amp; Helpdesk</h4><div class="subtitle">On-site &amp; remote support</div></div>
+                  <span class="product-badge popular">Popular</span>
+                </div>
+                <div class="product-card-body">
+                  <div class="tiers-row">
+                    <button class="tier-btn" onclick="selectTier(this,'pc-it-helpdesk',0)"><span class="tier-name">Basic</span><span class="tier-price">R 4,500/mo</span></button>
+                    <button class="tier-btn active" onclick="selectTier(this,'pc-it-helpdesk',1)"><span class="tier-name">Standard</span><span class="tier-price">R 9,800/mo</span></button>
+                    <button class="tier-btn" onclick="selectTier(this,'pc-it-helpdesk',2)"><span class="tier-name">Premium</span><span class="tier-price">R 18,500/mo</span></button>
+                  </div>
+                  <div class="price-row"><span class="price-main" id="price-pc-it-helpdesk">R 9,800</span><span class="price-period">/month</span></div>
+                  <div class="price-note">12-month contract. Response SLA included.</div>
+                  <div class="timeline-row"><span class="timeline-badge" id="tl-pc-it-helpdesk">Business hours + 8hr SLA</span></div>
+                  <ul class="feature-list" id="feat-pc-it-helpdesk"
+                    data-tiers='["Basic","Standard","Premium"]'
+                    data-prices='["R 4,500/mo","R 9,800/mo","R 18,500/mo"]'
+                    data-timelines='["Business hours + next-day SLA","Business hours + 8hr SLA","24/7 + 4hr SLA"]'
+                    data-active="1">
+                    <li data-min="0"><i class="feat-icon">&#10003;</i>Remote desktop support</li>
+                    <li data-min="0"><i class="feat-icon">&#10003;</i>Ticketing system</li>
+                    <li data-min="0"><i class="feat-icon">&#10003;</i>Hardware &amp; software troubleshooting</li>
+                    <li data-min="0"><i class="feat-icon">&#10003;</i>Monthly health reports</li>
+                    <li data-min="1"><i class="feat-icon">&#10003;</i>Proactive monitoring &amp; alerts</li>
+                    <li data-min="1"><i class="feat-icon">&#10003;</i>Patch management &amp; security updates</li>
+                    <li data-min="1"><i class="feat-icon">&#10003;</i>2 on-site visits per month</li>
+                    <li data-min="2"><i class="feat-icon">&#10003;</i>24/7 after-hours emergency support</li>
+                    <li data-min="2"><i class="feat-icon">&#10003;</i>Unlimited on-site visits</li>
+                    <li data-min="2"><i class="feat-icon">&#10003;</i>Dedicated account manager</li>
+                  </ul>
+                  <div class="addons-section">
+                    <div class="addons-title">Add-Ons</div>
+                    <div class="addon-item"><div class="addon-left"><div class="addon-check" onclick="toggleAddon(this,'pc-it-helpdesk','Asset Management','R 1,800/mo')">&#10003;</div><div class="addon-info">IT Asset Management</div></div><div class="addon-price">+ R 1,800/mo</div></div>
+                    <div class="addon-item"><div class="addon-left"><div class="addon-check" onclick="toggleAddon(this,'pc-it-helpdesk','Cyber Awareness Training','R 4,500')">&#10003;</div><div class="addon-info">Staff Cybersecurity Awareness Training</div></div><div class="addon-price">+ R 4,500</div></div>
+                  </div>
+                  <br>
+                  <button class="add-to-quote-btn" id="btn-pc-it-helpdesk" onclick="addToQuote('pc-it-helpdesk','IT Support &amp; Helpdesk')">+ Add to Quote</button>
+                </div>
+              </div>
+
+              <div class="product-card" id="pc-it-consult">
+                <div class="product-card-header">
+                  <div><h4>IT Consulting</h4><div class="subtitle">Strategy, audits &amp; digital roadmaps</div></div>
+                  <span class="product-badge">Advisory</span>
+                </div>
+                <div class="product-card-body">
+                  <div class="tiers-row">
+                    <button class="tier-btn" onclick="selectTier(this,'pc-it-consult',0)"><span class="tier-name">Hourly</span><span class="tier-price">R 1,800/hr</span></button>
+                    <button class="tier-btn active" onclick="selectTier(this,'pc-it-consult',1)"><span class="tier-name">Day Rate</span><span class="tier-price">R 12,000/day</span></button>
+                    <button class="tier-btn" onclick="selectTier(this,'pc-it-consult',2)"><span class="tier-name">Retainer</span><span class="tier-price">R 22,000/mo</span></button>
+                  </div>
+                  <div class="price-row"><span class="price-main" id="price-pc-it-consult">R 12,000</span><span class="price-period">/day</span></div>
+                  <div class="price-note">Engagement-based. Audit report included.</div>
+                  <div class="timeline-row"><span class="timeline-badge" id="tl-pc-it-consult">Flexible engagement</span></div>
+                  <ul class="feature-list" id="feat-pc-it-consult"
+                    data-tiers='["Hourly","Day Rate","Retainer"]'
+                    data-prices='["R 1,800/hr","R 12,000/day","R 22,000/mo"]'
+                    data-timelines='["Ad hoc","Flexible engagement","Monthly ongoing"]'
+                    data-active="1">
+                    <li data-min="0"><i class="feat-icon">&#10003;</i>IT infrastructure assessment</li>
+                    <li data-min="0"><i class="feat-icon">&#10003;</i>Vendor selection advisory</li>
+                    <li data-min="1"><i class="feat-icon">&#10003;</i>Technology roadmap development</li>
+                    <li data-min="1"><i class="feat-icon">&#10003;</i>Cybersecurity risk assessment</li>
+                    <li data-min="1"><i class="feat-icon">&#10003;</i>Digital transformation strategy</li>
+                    <li data-min="1"><i class="feat-icon">&#10003;</i>Procurement &amp; budget optimisation</li>
+                    <li data-min="2"><i class="feat-icon">&#10003;</i>Ongoing strategic advisory (monthly)</li>
+                    <li data-min="2"><i class="feat-icon">&#10003;</i>POPIA / ISO 27001 compliance support</li>
+                    <li data-min="2"><i class="feat-icon">&#10003;</i>Board-level reporting &amp; presentations</li>
+                  </ul>
+                  <div class="addons-section">
+                    <div class="addons-title">Add-Ons</div>
+                    <div class="addon-item"><div class="addon-left"><div class="addon-check" onclick="toggleAddon(this,'pc-it-consult','Penetration Test','R 28,000')">&#10003;</div><div class="addon-info">Full Penetration Testing</div></div><div class="addon-price">+ R 28,000</div></div>
+                  </div>
+                  <br>
+                  <button class="add-to-quote-btn" id="btn-pc-it-consult" onclick="addToQuote('pc-it-consult','IT Consulting')">+ Add to Quote</button>
+                </div>
+              </div>
+            </div>
+          </div>
+
+          <div class="service-panel" id="inf-managed">
+            <div class="products-grid">
+              <div class="product-card" id="pc-managed-it">
+                <div class="product-card-header">
+                  <div><h4>Managed IT Services</h4><div class="subtitle">Your full IT department, outsourced</div></div>
+                  <span class="product-badge popular">Popular</span>
+                </div>
+                <div class="product-card-body">
+                  <div class="tiers-row">
+                    <button class="tier-btn" onclick="selectTier(this,'pc-managed-it',0)"><span class="tier-name">SME</span><span class="tier-price">R 14,500/mo</span></button>
+                    <button class="tier-btn active" onclick="selectTier(this,'pc-managed-it',1)"><span class="tier-name">Mid-Market</span><span class="tier-price">R 28,000/mo</span></button>
+                    <button class="tier-btn" onclick="selectTier(this,'pc-managed-it',2)"><span class="tier-name">Enterprise</span><span class="tier-price">R 55,000/mo</span></button>
+                  </div>
+                  <div class="price-row"><span class="price-main" id="price-pc-managed-it">R 28,000</span><span class="price-period">/month</span></div>
+                  <div class="price-note">Per-user pricing also available: R 650–900/user/mo</div>
+                  <div class="timeline-row"><span class="timeline-badge" id="tl-pc-managed-it">24/7 NOC monitoring</span></div>
+                  <ul class="feature-list" id="feat-pc-managed-it"
+                    data-tiers='["SME","Mid-Market","Enterprise"]'
+                    data-prices='["R 14,500/mo","R 28,000/mo","R 55,000/mo"]'
+                    data-timelines='["Business hrs monitoring","24/7 NOC monitoring","24/7 NOC + SOC monitoring"]'
+                    data-active="1">
+                    <li data-min="0"><i class="feat-icon">&#10003;</i>Network monitoring &amp; management</li>
+                    <li data-min="0"><i class="feat-icon">&#10003;</i>Endpoint protection &amp; antivirus</li>
+                    <li data-min="0"><i class="feat-icon">&#10003;</i>Microsoft 365 / Google Workspace management</li>
+                    <li data-min="0"><i class="feat-icon">&#10003;</i>Monthly IT review &amp; reporting</li>
+                    <li data-min="1"><i class="feat-icon">&#10003;</i>Email security &amp; spam filtering</li>
+                    <li data-min="1"><i class="feat-icon">&#10003;</i>Backup &amp; disaster recovery</li>
+                    <li data-min="1"><i class="feat-icon">&#10003;</i>24/7 NOC support</li>
+                    <li data-min="1"><i class="feat-icon">&#10003;</i>Dedicated account manager</li>
+                    <li data-min="2"><i class="feat-icon">&#10003;</i>SOC / SIEM security monitoring</li>
+                    <li data-min="2"><i class="feat-icon">&#10003;</i>POPIA compliance reporting</li>
+                    <li data-min="2"><i class="feat-icon">&#10003;</i>Executive-level IT reporting</li>
+                  </ul>
+                  <div class="addons-section">
+                    <div class="addons-title">Add-Ons</div>
+                    <div class="addon-item"><div class="addon-left"><div class="addon-check" onclick="toggleAddon(this,'pc-managed-it','SOC Monitoring','R 12,000/mo')">&#10003;</div><div class="addon-info">SOC / SIEM Monitoring</div></div><div class="addon-price">+ R 12,000/mo</div></div>
+                    <div class="addon-item"><div class="addon-left"><div class="addon-check" onclick="toggleAddon(this,'pc-managed-it','Compliance Reporting','R 4,500/mo')">&#10003;</div><div class="addon-info">POPIA Compliance Reporting</div></div><div class="addon-price">+ R 4,500/mo</div></div>
+                  </div>
+                  <br>
+                  <button class="add-to-quote-btn" id="btn-pc-managed-it" onclick="addToQuote('pc-managed-it','Managed IT Services')">+ Add to Quote</button>
+                </div>
+              </div>
+            </div>
+          </div>
+
+          <div class="service-panel" id="inf-cloud">
+            <div class="products-grid">
+              <div class="product-card" id="pc-cloud-infra">
+                <div class="product-card-header">
+                  <div><h4>Cloud Infrastructure Setup</h4><div class="subtitle">AWS / Azure / GCP architecture</div></div>
+                  <span class="product-badge">Cloud</span>
+                </div>
+                <div class="product-card-body">
+                  <div class="tiers-row">
+                    <button class="tier-btn" onclick="selectTier(this,'pc-cloud-infra',0)"><span class="tier-name">Lift &amp; Shift</span><span class="tier-price">R 35,000</span></button>
+                    <button class="tier-btn active" onclick="selectTier(this,'pc-cloud-infra',1)"><span class="tier-name">Cloud-Native</span><span class="tier-price">R 80,000</span></button>
+                    <button class="tier-btn" onclick="selectTier(this,'pc-cloud-infra',2)"><span class="tier-name">Multi-Cloud</span><span class="tier-price">R 165,000</span></button>
+                  </div>
+                  <div class="price-row"><span class="price-main" id="price-pc-cloud-infra">R 80,000</span></div>
+                  <div class="price-note">Once-off setup. Ongoing management: R 9,500–22,000/mo</div>
+                  <div class="timeline-row"><span class="timeline-badge" id="tl-pc-cloud-infra">4–8 weeks</span></div>
+                  <ul class="feature-list" id="feat-pc-cloud-infra"
+                    data-tiers='["Lift & Shift","Cloud-Native","Multi-Cloud"]'
+                    data-prices='["R 35,000","R 80,000","R 165,000"]'
+                    data-timelines='["2–4 weeks","4–8 weeks","8–14 weeks"]'
+                    data-active="1">
+                    <li data-min="0"><i class="feat-icon">&#10003;</i>Cloud account setup &amp; provisioning</li>
+                    <li data-min="0"><i class="feat-icon">&#10003;</i>VPC, IAM &amp; basic networking</li>
+                    <li data-min="0"><i class="feat-icon">&#10003;</i>Server migration (lift &amp; shift)</li>
+                    <li data-min="1"><i class="feat-icon">&#10003;</i>Cloud-native architecture design</li>
+                    <li data-min="1"><i class="feat-icon">&#10003;</i>CI/CD pipeline setup</li>
+                    <li data-min="1"><i class="feat-icon">&#10003;</i>Auto-scaling &amp; load balancing</li>
+                    <li data-min="1"><i class="feat-icon">&#10003;</i>Kubernetes / container orchestration</li>
+                    <li data-min="1"><i class="feat-icon">&#10003;</i>Cost optimisation planning</li>
+                    <li data-min="2"><i class="feat-icon">&#10003;</i>Multi-cloud / hybrid architecture</li>
+                    <li data-min="2"><i class="feat-icon">&#10003;</i>Advanced security posture management</li>
+                    <li data-min="2"><i class="feat-icon">&#10003;</i>FinOps &amp; continuous cost governance</li>
+                  </ul>
+                  <div class="addons-section">
+                    <div class="addons-title">Add-Ons</div>
+                    <div class="addon-item"><div class="addon-left"><div class="addon-check" onclick="toggleAddon(this,'pc-cloud-infra','DR Site','R 42,000')">&#10003;</div><div class="addon-info">Disaster Recovery Site Setup</div></div><div class="addon-price">+ R 42,000</div></div>
+                    <div class="addon-item"><div class="addon-left"><div class="addon-check" onclick="toggleAddon(this,'pc-cloud-infra','FinOps Monitoring','R 5,500/mo')">&#10003;</div><div class="addon-info">Ongoing FinOps Monitoring</div></div><div class="addon-price">+ R 5,500/mo</div></div>
+                  </div>
+                  <br>
+                  <button class="add-to-quote-btn" id="btn-pc-cloud-infra" onclick="addToQuote('pc-cloud-infra','Cloud Infrastructure Setup')">+ Add to Quote</button>
+                </div>
+              </div>
+            </div>
+          </div>
+
+          <div class="service-panel" id="inf-dc">
+            <div class="products-grid">
+              <div class="product-card" id="pc-dc-storage">
+                <div class="product-card-header">
+                  <div><h4>Data Center &amp; Storage</h4><div class="subtitle">On-premise &amp; hybrid solutions</div></div>
+                  <span class="product-badge">Infrastructure</span>
+                </div>
+                <div class="product-card-body">
+                  <div class="tiers-row">
+                    <button class="tier-btn" onclick="selectTier(this,'pc-dc-storage',0)"><span class="tier-name">Standard</span><span class="tier-price">R 95,000</span></button>
+                    <button class="tier-btn active" onclick="selectTier(this,'pc-dc-storage',1)"><span class="tier-name">High Availability</span><span class="tier-price">R 185,000</span></button>
+                    <button class="tier-btn" onclick="selectTier(this,'pc-dc-storage',2)"><span class="tier-name">Enterprise</span><span class="tier-price">R 350,000+</span></button>
+                  </div>
+                  <div class="price-row"><span class="price-main" id="price-pc-dc-storage">R 185,000</span></div>
+                  <div class="price-note">Hardware + setup included. Annual maintenance from R 18,000/yr</div>
+                  <div class="timeline-row"><span class="timeline-badge" id="tl-pc-dc-storage">5–10 weeks</span></div>
+                  <ul class="feature-list" id="feat-pc-dc-storage"
+                    data-tiers='["Standard","High Availability","Enterprise"]'
+                    data-prices='["R 95,000","R 185,000","R 350,000+"]'
+                    data-timelines='["4–6 weeks","5–10 weeks","10–16 weeks"]'
+                    data-active="1">
+                    <li data-min="0"><i class="feat-icon">&#10003;</i>Server rack design &amp; procurement</li>
+                    <li data-min="0"><i class="feat-icon">&#10003;</i>Basic NAS / SAN storage configuration</li>
+                    <li data-min="0"><i class="feat-icon">&#10003;</i>Firewall &amp; network segmentation</li>
+                    <li data-min="1"><i class="feat-icon">&#10003;</i>Virtualisation (VMware / Hyper-V)</li>
+                    <li data-min="1"><i class="feat-icon">&#10003;</i>High-availability clustering</li>
+                    <li data-min="1"><i class="feat-icon">&#10003;</i>Environmental monitoring (temp, power, humidity)</li>
+                    <li data-min="1"><i class="feat-icon">&#10003;</i>Backup &amp; replication to cloud or offsite</li>
+                    <li data-min="2"><i class="feat-icon">&#10003;</i>Fully redundant N+1 infrastructure</li>
+                    <li data-min="2"><i class="feat-icon">&#10003;</i>IDS/IPS &amp; advanced threat protection</li>
+                    <li data-min="2"><i class="feat-icon">&#10003;</i>24/7 NOC &amp; remote hands service</li>
+                  </ul>
+                  <div class="addons-section">
+                    <div class="addons-title">Add-Ons</div>
+                    <div class="addon-item"><div class="addon-left"><div class="addon-check" onclick="toggleAddon(this,'pc-dc-storage','Annual Maintenance','R 18,000/yr')">&#10003;</div><div class="addon-info">Annual Hardware Maintenance Contract</div></div><div class="addon-price">+ R 18,000/yr</div></div>
+                    <div class="addon-item"><div class="addon-left"><div class="addon-check" onclick="toggleAddon(this,'pc-dc-storage','Remote Hands','R 4,500/mo')">&#10003;</div><div class="addon-info">Remote Hands Service</div></div><div class="addon-price">+ R 4,500/mo</div></div>
+                  </div>
+                  <br>
+                  <button class="add-to-quote-btn" id="btn-pc-dc-storage" onclick="addToQuote('pc-dc-storage','Data Center &amp; Storage')">+ Add to Quote</button>
+                </div>
+              </div>
+            </div>
+          </div>
+
+        </div><!-- /panel-infrastructure -->
+
+        <!-- MARKETING -->
+        <div class="service-panel" id="panel-marketing">
+          <div class="panel-title">Marketing &amp; Creative Studio</div>
+          <div class="panel-sub">Grow your brand and drive measurable results through creative excellence.</div>
+          <div class="product-tabs">
+            <button class="ptab active" onclick="showPTab(this,'mkt-seo')">Digital Marketing</button>
+            <button class="ptab" onclick="showPTab(this,'mkt-design')">Graphic Design</button>
+            <button class="ptab" onclick="showPTab(this,'mkt-content')">Content Management</button>
+            <button class="ptab" onclick="showPTab(this,'mkt-ads')">Advertising</button>
+          </div>
+
+          <div class="service-panel active" id="mkt-seo">
+            <div class="products-grid">
+              <div class="product-card" id="pc-mkt-seo">
+                <div class="product-card-header">
+                  <div><h4>SEO &amp; Digital Marketing</h4><div class="subtitle">Organic growth &amp; online visibility</div></div>
+                  <span class="product-badge popular">Popular</span>
+                </div>
+                <div class="product-card-body">
+                  <div class="tiers-row">
+                    <button class="tier-btn" onclick="selectTier(this,'pc-mkt-seo',0)"><span class="tier-name">Starter</span><span class="tier-price">R 4,500/mo</span></button>
+                    <button class="tier-btn active" onclick="selectTier(this,'pc-mkt-seo',1)"><span class="tier-name">Growth</span><span class="tier-price">R 9,500/mo</span></button>
+                    <button class="tier-btn" onclick="selectTier(this,'pc-mkt-seo',2)"><span class="tier-name">Dominate</span><span class="tier-price">R 18,000/mo</span></button>
+                  </div>
+                  <div class="price-row"><span class="price-main" id="price-pc-mkt-seo">R 9,500</span><span class="price-period">/month</span></div>
+                  <div class="price-note">6-month minimum. Results-focused strategy.</div>
+                  <div class="timeline-row"><span class="timeline-badge" id="tl-pc-mkt-seo">Results from month 2–3</span></div>
+                  <ul class="feature-list" id="feat-pc-mkt-seo"
+                    data-tiers='["Starter","Growth","Dominate"]'
+                    data-prices='["R 4,500/mo","R 9,500/mo","R 18,000/mo"]'
+                    data-timelines='["Results from month 3–4","Results from month 2–3","Results from month 1–2"]'
+                    data-active="1">
+                    <li data-min="0"><i class="feat-icon">&#10003;</i>Technical SEO audit &amp; on-page optimisation</li>
+                    <li data-min="0"><i class="feat-icon">&#10003;</i>Keyword research &amp; strategy</li>
+                    <li data-min="0"><i class="feat-icon">&#10003;</i>Google My Business optimisation</li>
+                    <li data-min="0"><i class="feat-icon">&#10003;</i>Monthly performance reports</li>
+                    <li data-min="1"><i class="feat-icon">&#10003;</i>Monthly link building (authority sites)</li>
+                    <li data-min="1"><i class="feat-icon">&#10003;</i>Content strategy &amp; blogging schedule</li>
+                    <li data-min="1"><i class="feat-icon">&#10003;</i>Social media management (3 platforms)</li>
+                    <li data-min="1"><i class="feat-icon">&#10003;</i>Competitor analysis &amp; benchmarking</li>
+                    <li data-min="2"><i class="feat-icon">&#10003;</i>Aggressive link acquisition campaign</li>
+                    <li data-min="2"><i class="feat-icon">&#10003;</i>Weekly reporting &amp; strategy calls</li>
+                    <li data-min="2"><i class="feat-icon">&#10003;</i>Full-funnel SEO across all target pages</li>
+                  </ul>
+                  <div class="addons-section">
+                    <div class="addons-title">Add-Ons</div>
+                    <div class="addon-item"><div class="addon-left"><div class="addon-check" onclick="toggleAddon(this,'pc-mkt-seo','Email Marketing','R 3,500/mo')">&#10003;</div><div class="addon-info">Email Marketing Campaigns</div></div><div class="addon-price">+ R 3,500/mo</div></div>
+                    <div class="addon-item"><div class="addon-left"><div class="addon-check" onclick="toggleAddon(this,'pc-mkt-seo','Video Content','R 8,000/mo')">&#10003;</div><div class="addon-info">Monthly Video Content (2 videos)</div></div><div class="addon-price">+ R 8,000/mo</div></div>
+                  </div>
+                  <br>
+                  <button class="add-to-quote-btn" id="btn-pc-mkt-seo" onclick="addToQuote('pc-mkt-seo','SEO &amp; Digital Marketing')">+ Add to Quote</button>
+                </div>
+              </div>
+            </div>
+          </div>
+
+          <div class="service-panel" id="mkt-design">
+            <div class="products-grid">
+              <div class="product-card" id="pc-mkt-branding">
+                <div class="product-card-header">
+                  <div><h4>Brand Identity &amp; Graphic Design</h4><div class="subtitle">Logo, brand kit &amp; visual assets</div></div>
+                  <span class="product-badge">Creative</span>
+                </div>
+                <div class="product-card-body">
+                  <div class="tiers-row">
+                    <button class="tier-btn" onclick="selectTier(this,'pc-mkt-branding',0)"><span class="tier-name">Logo Pack</span><span class="tier-price">R 6,500</span></button>
+                    <button class="tier-btn active" onclick="selectTier(this,'pc-mkt-branding',1)"><span class="tier-name">Brand Kit</span><span class="tier-price">R 18,000</span></button>
+                    <button class="tier-btn" onclick="selectTier(this,'pc-mkt-branding',2)"><span class="tier-name">Full Identity</span><span class="tier-price">R 38,000</span></button>
+                  </div>
+                  <div class="price-row"><span class="price-main" id="price-pc-mkt-branding">R 18,000</span></div>
+                  <div class="price-note">All source files included. Unlimited revisions (Brand Kit+)</div>
+                  <div class="timeline-row"><span class="timeline-badge" id="tl-pc-mkt-branding">2–3 weeks</span></div>
+                  <ul class="feature-list" id="feat-pc-mkt-branding"
+                    data-tiers='["Logo Pack","Brand Kit","Full Identity"]'
+                    data-prices='["R 6,500","R 18,000","R 38,000"]'
+                    data-timelines='["1 week","2–3 weeks","3–5 weeks"]'
+                    data-active="1">
+                    <li data-min="0"><i class="feat-icon">&#10003;</i>Logo design (primary variant)</li>
+                    <li data-min="0"><i class="feat-icon">&#10003;</i>2 design concepts to choose from</li>
+                    <li data-min="0"><i class="feat-icon">&#10003;</i>Basic colour palette</li>
+                    <li data-min="1"><i class="feat-icon">&#10003;</i>Primary, secondary &amp; icon logo variants</li>
+                    <li data-min="1"><i class="feat-icon">&#10003;</i>Full colour palette &amp; typography system</li>
+                    <li data-min="1"><i class="feat-icon">&#10003;</i>Business card &amp; letterhead design</li>
+                    <li data-min="1"><i class="feat-icon">&#10003;</i>Social media profile &amp; cover templates</li>
+                    <li data-min="1"><i class="feat-icon">&#10003;</i>Brand style guide (PDF)</li>
+                    <li data-min="2"><i class="feat-icon">&#10003;</i>Full stationery suite</li>
+                    <li data-min="2"><i class="feat-icon">&#10003;</i>Brand application guidelines</li>
+                    <li data-min="2"><i class="feat-icon">&#10003;</i>Signage &amp; environmental branding</li>
+                  </ul>
+                  <div class="addons-section">
+                    <div class="addons-title">Add-Ons</div>
+                    <div class="addon-item"><div class="addon-left"><div class="addon-check" onclick="toggleAddon(this,'pc-mkt-branding','Pitch Deck','R 9,500')">&#10003;</div><div class="addon-info">Pitch Deck Design</div></div><div class="addon-price">+ R 9,500</div></div>
+                    <div class="addon-item"><div class="addon-left"><div class="addon-check" onclick="toggleAddon(this,'pc-mkt-branding','Vehicle Branding','R 5,500')">&#10003;</div><div class="addon-info">Vehicle Wrap Design</div></div><div class="addon-price">+ R 5,500</div></div>
+                  </div>
+                  <br>
+                  <button class="add-to-quote-btn" id="btn-pc-mkt-branding" onclick="addToQuote('pc-mkt-branding','Brand Identity &amp; Graphic Design')">+ Add to Quote</button>
+                </div>
+              </div>
+            </div>
+          </div>
+
+          <div class="service-panel" id="mkt-content">
+            <div class="products-grid">
+              <div class="product-card" id="pc-mkt-content">
+                <div class="product-card-header">
+                  <div><h4>Content Management</h4><div class="subtitle">Strategy, creation &amp; publishing</div></div>
+                  <span class="product-badge">Ongoing</span>
+                </div>
+                <div class="product-card-body">
+                  <div class="tiers-row">
+                    <button class="tier-btn" onclick="selectTier(this,'pc-mkt-content',0)"><span class="tier-name">Basic</span><span class="tier-price">R 5,500/mo</span></button>
+                    <button class="tier-btn active" onclick="selectTier(this,'pc-mkt-content',1)"><span class="tier-name">Professional</span><span class="tier-price">R 11,000/mo</span></button>
+                    <button class="tier-btn" onclick="selectTier(this,'pc-mkt-content',2)"><span class="tier-name">Premium</span><span class="tier-price">R 20,000/mo</span></button>
+                  </div>
+                  <div class="price-row"><span class="price-main" id="price-pc-mkt-content">R 11,000</span><span class="price-period">/month</span></div>
+                  <div class="price-note">Includes copy, design &amp; scheduling. No lock-in contract.</div>
+                  <div class="timeline-row"><span class="timeline-badge" id="tl-pc-mkt-content">Monthly rolling plan</span></div>
+                  <ul class="feature-list" id="feat-pc-mkt-content"
+                    data-tiers='["Basic","Professional","Premium"]'
+                    data-prices='["R 5,500/mo","R 11,000/mo","R 20,000/mo"]'
+                    data-timelines='["Monthly rolling plan","Monthly rolling plan","Monthly rolling plan"]'
+                    data-active="1">
+                    <li data-min="0"><i class="feat-icon">&#10003;</i>Content calendar planning</li>
+                    <li data-min="0"><i class="feat-icon">&#10003;</i>2 blog articles per month</li>
+                    <li data-min="0"><i class="feat-icon">&#10003;</i>8 social media posts per month</li>
+                    <li data-min="0"><i class="feat-icon">&#10003;</i>Basic copywriting &amp; proofreading</li>
+                    <li data-min="1"><i class="feat-icon">&#10003;</i>4 blog articles per month</li>
+                    <li data-min="1"><i class="feat-icon">&#10003;</i>Daily social media posts</li>
+                    <li data-min="1"><i class="feat-icon">&#10003;</i>Community management &amp; engagement</li>
+                    <li data-min="1"><i class="feat-icon">&#10003;</i>Monthly analytics &amp; engagement report</li>
+                    <li data-min="2"><i class="feat-icon">&#10003;</i>6 blog articles + long-form content</li>
+                    <li data-min="2"><i class="feat-icon">&#10003;</i>Multi-platform scheduling &amp; automation</li>
+                    <li data-min="2"><i class="feat-icon">&#10003;</i>Dedicated content strategist</li>
+                  </ul>
+                  <div class="addons-section">
+                    <div class="addons-title">Add-Ons</div>
+                    <div class="addon-item"><div class="addon-left"><div class="addon-check" onclick="toggleAddon(this,'pc-mkt-content','Newsletter','R 3,200/mo')">&#10003;</div><div class="addon-info">Monthly Email Newsletter</div></div><div class="addon-price">+ R 3,200/mo</div></div>
+                    <div class="addon-item"><div class="addon-left"><div class="addon-check" onclick="toggleAddon(this,'pc-mkt-content','Podcast Production','R 6,500/mo')">&#10003;</div><div class="addon-info">Podcast Production (2 episodes/mo)</div></div><div class="addon-price">+ R 6,500/mo</div></div>
+                  </div>
+                  <br>
+                  <button class="add-to-quote-btn" id="btn-pc-mkt-content" onclick="addToQuote('pc-mkt-content','Content Management')">+ Add to Quote</button>
+                </div>
+              </div>
+            </div>
+          </div>
+
+          <div class="service-panel" id="mkt-ads">
+            <div class="products-grid">
+              <div class="product-card" id="pc-mkt-ads">
+                <div class="product-card-header">
+                  <div><h4>Paid Advertising Management</h4><div class="subtitle">Google, Meta, LinkedIn &amp; more</div></div>
+                  <span class="product-badge popular">Popular</span>
+                </div>
+                <div class="product-card-body">
+                  <div class="tiers-row">
+                    <button class="tier-btn" onclick="selectTier(this,'pc-mkt-ads',0)"><span class="tier-name">Starter</span><span class="tier-price">R 5,000/mo</span></button>
+                    <button class="tier-btn active" onclick="selectTier(this,'pc-mkt-ads',1)"><span class="tier-name">Growth</span><span class="tier-price">R 10,500/mo</span></button>
+                    <button class="tier-btn" onclick="selectTier(this,'pc-mkt-ads',2)"><span class="tier-name">Aggressive</span><span class="tier-price">R 22,000/mo</span></button>
+                  </div>
+                  <div class="price-row"><span class="price-main" id="price-pc-mkt-ads">R 10,500</span><span class="price-period">/month</span></div>
+                  <div class="price-note">Management fee only. Ad spend billed separately.</div>
+                  <div class="timeline-row"><span class="timeline-badge" id="tl-pc-mkt-ads">Weekly reporting</span></div>
+                  <ul class="feature-list" id="feat-pc-mkt-ads"
+                    data-tiers='["Starter","Growth","Aggressive"]'
+                    data-prices='["R 5,000/mo","R 10,500/mo","R 22,000/mo"]'
+                    data-timelines='["Bi-weekly reporting","Weekly reporting","Daily reporting &amp; live dashboard"]'
+                    data-active="1">
+                    <li data-min="0"><i class="feat-icon">&#10003;</i>Campaign strategy &amp; setup (1 platform)</li>
+                    <li data-min="0"><i class="feat-icon">&#10003;</i>Ad copywriting &amp; creative design</li>
+                    <li data-min="0"><i class="feat-icon">&#10003;</i>Basic audience targeting</li>
+                    <li data-min="0"><i class="feat-icon">&#10003;</i>Monthly ROI report</li>
+                    <li data-min="1"><i class="feat-icon">&#10003;</i>Multi-platform campaigns (Google + Meta)</li>
+                    <li data-min="1"><i class="feat-icon">&#10003;</i>A/B testing &amp; conversion optimisation</li>
+                    <li data-min="1"><i class="feat-icon">&#10003;</i>Retargeting &amp; lookalike audiences</li>
+                    <li data-min="1"><i class="feat-icon">&#10003;</i>Weekly performance reporting</li>
+                    <li data-min="2"><i class="feat-icon">&#10003;</i>All platforms (Google, Meta, LinkedIn, TikTok)</li>
+                    <li data-min="2"><i class="feat-icon">&#10003;</i>Live dashboard &amp; daily reporting</li>
+                    <li data-min="2"><i class="feat-icon">&#10003;</i>Dedicated performance marketing strategist</li>
+                  </ul>
+                  <div class="addons-section">
+                    <div class="addons-title">Add-Ons</div>
+                    <div class="addon-item"><div class="addon-left"><div class="addon-check" onclick="toggleAddon(this,'pc-mkt-ads','Video Ads','R 9,000')">&#10003;</div><div class="addon-info">Video Ad Production (2 ads)</div></div><div class="addon-price">+ R 9,000</div></div>
+                    <div class="addon-item"><div class="addon-left"><div class="addon-check" onclick="toggleAddon(this,'pc-mkt-ads','Influencer Campaign','R 12,000')">&#10003;</div><div class="addon-info">Influencer Campaign Management</div></div><div class="addon-price">+ R 12,000</div></div>
+                  </div>
+                  <br>
+                  <button class="add-to-quote-btn" id="btn-pc-mkt-ads" onclick="addToQuote('pc-mkt-ads','Paid Advertising Management')">+ Add to Quote</button>
+                </div>
+              </div>
+            </div>
+          </div>
+
+        </div><!-- /panel-marketing -->
+
+        <div class="btn-row" style="margin-top:36px">
+          <button class="btn btn-primary" onclick="goToStep(3)">Continue to Your Details</button>
+        </div>
+      </div>
+
+      <!-- STICKY SIDEBAR -->
+      <div class="sidebar-sticky-wrap">
+        <div class="quote-sidebar">
+          <div class="sidebar-head">Quote Summary</div>
+          <div class="sidebar-body">
+            <div id="quoteItems">
+              <div class="empty-quote">
+                <p>No services added yet.<br>Configure and add packages above.</p>
+              </div>
+            </div>
+            <div class="quote-total-row" id="quoteTotalRow" style="display:none">
+              <div class="quote-total-label">Estimated Total</div>
+              <div class="quote-total-amount" id="quoteTotalAmount">See items</div>
+              <div class="quote-total-note">Prices excl. VAT. Final scope may vary.</div>
+            </div>
+          </div>
+          <div class="sidebar-note">
+            This is an indicative quote. Our team will confirm the final price following a brief discovery call.
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- STEP 3 -->
+  <div class="section" id="section3">
+    <button class="back-btn" onclick="goToStep(2)">&#8592; Back to Configure</button>
+    <div class="quote-layout">
+      <div>
+        <div class="section-header">
+          <h2>Your Details</h2>
+          <p>Complete the fields below to generate your personalised quote document.</p>
+        </div>
+        <div class="form-grid">
+          <div class="form-group"><label>First Name *</label><input type="text" id="f-firstname" placeholder="John"></div>
+          <div class="form-group"><label>Last Name *</label><input type="text" id="f-lastname" placeholder="Doe"></div>
+          <div class="form-group"><label>Company Name *</label><input type="text" id="f-company" placeholder="Acme Corp (Pty) Ltd"></div>
+          <div class="form-group"><label>Industry</label>
+            <select id="f-industry">
+              <option value="">Select industry...</option>
+              <option>Technology</option><option>Finance &amp; Banking</option>
+              <option>Healthcare</option><option>Retail &amp; E-Commerce</option>
+              <option>Manufacturing</option><option>Education</option>
+              <option>Real Estate</option><option>Hospitality &amp; Tourism</option>
+              <option>Legal Services</option><option>Government / Public Sector</option>
+              <option>Other</option>
+            </select>
+          </div>
+          <div class="form-group"><label>Email Address *</label><input type="email" id="f-email" placeholder="john@company.co.za"></div>
+          <div class="form-group"><label>Phone Number</label><input type="tel" id="f-phone" placeholder="+27 81 234 5678"></div>
+          <div class="form-group"><label>Company Size</label>
+            <select id="f-size">
+              <option value="">Select...</option>
+              <option>1–10 employees</option><option>11–50 employees</option>
+              <option>51–200 employees</option><option>201–1,000 employees</option>
+              <option>1,000+ employees</option>
+            </select>
+          </div>
+          <div class="form-group"><label>Expected Start Date</label><input type="date" id="f-startdate"></div>
+          <div class="form-group"><label>Budget Range</label>
+            <select id="f-budget">
+              <option value="">Select range...</option>
+              <option>Under R 20,000</option><option>R 20,000 – R 50,000</option>
+              <option>R 50,000 – R 150,000</option><option>R 150,000 – R 500,000</option>
+              <option>R 500,000+</option>
+            </select>
+          </div>
+          <div class="form-group"><label>How did you find us?</label>
+            <select id="f-source">
+              <option value="">Select...</option>
+              <option>Google Search</option><option>Social Media</option>
+              <option>Referral</option><option>LinkedIn</option><option>Other</option>
+            </select>
+          </div>
+          <div class="form-group full"><label>Project Brief / Additional Notes</label>
+            <textarea id="f-notes" placeholder="Describe your project goals, existing systems, or any specific requirements..."></textarea>
+          </div>
+        </div>
+        <div class="btn-row">
+          <button class="btn btn-primary" onclick="generateQuote()">Generate My Quote</button>
+        </div>
+      </div>
+      <div class="sidebar-sticky-wrap">
+        <div class="quote-sidebar">
+          <div class="sidebar-head">Quote Summary</div>
+          <div class="sidebar-body">
+            <div id="quoteItems2"></div>
+            <div class="quote-total-row" id="quoteTotalRow2" style="display:none">
+              <div class="quote-total-label">Estimated Total</div>
+              <div class="quote-total-amount" id="quoteTotalAmount2">See items</div>
+              <div class="quote-total-note">Excl. VAT. Final scope pending.</div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- STEP 4 -->
+  <div class="section" id="section4">
+    <button class="back-btn" onclick="goToStep(3)">&#8592; Edit Details</button>
+    <div class="section-header">
+      <h2>Your Quote is Ready</h2>
+      <p>Review your personalised quote below, then download or print it.</p>
+    </div>
+    <div class="btn-row" style="margin-bottom:24px">
+      <button class="btn btn-download" onclick="downloadPDF()">Download as PDF</button>
+      <button class="btn btn-secondary" onclick="window.print()">Print Quote</button>
+      <button class="btn btn-secondary" onclick="goToStep(2)">Edit Quote</button>
+    </div>
+    <div class="quote-preview-wrap">
+      <div id="quote-preview-doc"></div>
+    </div>
+    <div class="btn-row" style="margin-top:24px">
+      <button class="btn btn-download" onclick="downloadPDF()">Download as PDF</button>
+      <span style="font-size:13px;color:var(--text-muted)">Our team will follow up within 24 hours &mdash; <strong style="color:var(--text-secondary)">+27 31 000 0000</strong></span>
+    </div>
+  </div>
+
+</div>
+
+<script>
+const state = { categories: [], quoteItems: [] };
+
+// ── STEP NAV ──
+function goToStep(n) {
+  document.querySelectorAll('.section').forEach((s,i) => s.classList.toggle('active', i===n-1));
+  [1,2,3,4].forEach(i => {
+    const c = document.getElementById('step'+i+'c');
+    const l = document.getElementById('step'+i+'l');
+    c.classList.toggle('active', i===n);
+    c.classList.toggle('done', i<n);
+    l.classList.toggle('active', i===n);
+    c.textContent = i<n ? '✓' : i;
+    const conn = document.getElementById('conn'+i);
+    if(conn) conn.classList.toggle('done', i<n);
+  });
+  window.scrollTo({top:0,behavior:'smooth'});
+  if(n===3) refreshSidebar2();
+  if(n===2) showActivePanels();
+}
+
+// ── CATEGORIES ──
+function selectCategory(cat) {
+  const el = document.getElementById('cat-'+cat);
+  if(state.categories.includes(cat)) {
+    state.categories = state.categories.filter(c=>c!==cat);
+    el.classList.remove('selected');
+  } else {
+    state.categories.push(cat);
+    el.classList.add('selected');
+  }
+  document.getElementById('nextBtn1').disabled = state.categories.length===0;
+}
+
+function showActivePanels() {
+  document.querySelectorAll('.service-panel[id^="panel-"]').forEach(p => {
+    p.classList.toggle('active', state.categories.includes(p.id.replace('panel-','')));
+  });
+}
+
+// ── PRODUCT TABS ──
+function showPTab(btn, panelId) {
+  const parent = btn.closest('.service-panel');
+  parent.querySelectorAll('.ptab').forEach(t=>t.classList.remove('active'));
+  btn.classList.add('active');
+  parent.querySelectorAll(':scope > .service-panel').forEach(p=>p.classList.remove('active'));
+  document.getElementById(panelId)?.classList.add('active');
+}
+
+// ── TIER SELECT (with feature visibility) ──
+function selectTier(btn, cardId, tierIndex) {
+  const card = document.getElementById(cardId);
+  card.querySelectorAll('.tier-btn').forEach(b=>b.classList.remove('active'));
+  btn.classList.add('active');
+
+  const fl = document.getElementById('feat-'+cardId);
+  if(fl) {
+    const prices = JSON.parse(fl.dataset.prices);
+    const timelines = JSON.parse(fl.dataset.timelines);
+
+    // Update price display
+    const priceEl = document.getElementById('price-'+cardId);
+    if(priceEl) priceEl.textContent = prices[tierIndex];
+
+    // Update timeline
+    const tlEl = document.getElementById('tl-'+cardId);
+    if(tlEl) tlEl.textContent = timelines[tierIndex];
+
+    // Update features: items with data-min > tierIndex get struck out
+    fl.dataset.active = tierIndex;
+    fl.querySelectorAll('li').forEach(li => {
+      const minTier = parseInt(li.dataset.min || 0);
+      li.classList.toggle('feat-unavailable', minTier > tierIndex);
+    });
+  }
+
+  // Update quote item if already added
+  const qi = state.quoteItems.find(q=>q.id===cardId);
+  if(qi) {
+    const fl2 = document.getElementById('feat-'+cardId);
+    const prices2 = fl2 ? JSON.parse(fl2.dataset.prices) : [];
+    const tiers2 = fl2 ? JSON.parse(fl2.dataset.tiers) : [];
+    qi.tier = tiers2[tierIndex] || 'Standard';
+    qi.price = prices2[tierIndex] || qi.price;
+    refreshSidebar();
+  }
+}
+
+// ── ADDON TOGGLE ──
+function toggleAddon(el, cardId, addonName, addonPrice) {
+  el.classList.toggle('checked');
+  const checked = el.classList.contains('checked');
+  const qi = state.quoteItems.find(q=>q.id===cardId);
+  if(qi) {
+    if(checked) { if(!qi.addons.find(a=>a.name===addonName)) qi.addons.push({name:addonName,price:addonPrice}); }
+    else { qi.addons = qi.addons.filter(a=>a.name!==addonName); }
+    refreshSidebar();
+  }
+}
+
+// ── ADD / REMOVE ──
+function addToQuote(id, name) {
+  const btn = document.getElementById('btn-'+id);
+  const card = document.getElementById(id);
+  const fl = document.getElementById('feat-'+id);
+  const tierIndex = fl ? parseInt(fl.dataset.active||0) : 0;
+  const tiers = fl ? JSON.parse(fl.dataset.tiers) : ['Standard'];
+  const prices = fl ? JSON.parse(fl.dataset.prices) : ['—'];
+
+  const exists = state.quoteItems.find(q=>q.id===id);
+  if(exists) {
+    state.quoteItems = state.quoteItems.filter(q=>q.id!==id);
+    if(btn) { btn.textContent = '+ Add to Quote'; btn.classList.remove('added'); }
+    card?.classList.remove('selected-product');
+  } else {
+    state.quoteItems.push({id, name: name.replace(/&amp;/g,'&'), tier: tiers[tierIndex], price: prices[tierIndex], addons:[]});
+    if(btn) { btn.textContent = 'Added to Quote'; btn.classList.add('added'); }
+    card?.classList.add('selected-product');
+  }
+  refreshSidebar();
+}
+
+// ── SIDEBAR ──
+function refreshSidebar() {
+  const c = document.getElementById('quoteItems');
+  const tr = document.getElementById('quoteTotalRow');
+  if(!c) return;
+  if(state.quoteItems.length===0) {
+    c.innerHTML='<div class="empty-quote"><p>No services added yet.<br>Configure and add packages above.</p></div>';
+    tr.style.display='none'; return;
+  }
+  c.innerHTML = state.quoteItems.map(qi=>`
+    <div class="quote-item">
+      <div style="flex:1">
+        <div class="quote-item-name">${qi.name}</div>
+        <div class="quote-item-tier">${qi.tier}${qi.addons.length?' + '+qi.addons.length+' add-on(s)':''}</div>
+      </div>
+      <div class="quote-item-price">${qi.price}</div>
+      <button class="quote-remove" onclick="removeFromQuote('${qi.id}')" title="Remove">&#215;</button>
+    </div>`).join('');
+  tr.style.display='block';
+}
+
+function refreshSidebar2() {
+  const c2 = document.getElementById('quoteItems2');
+  const tr2 = document.getElementById('quoteTotalRow2');
+  if(!c2) return;
+  if(state.quoteItems.length===0){
+    c2.innerHTML='<div class="empty-quote"><p>No items selected.</p></div>';
+    tr2.style.display='none'; return;
+  }
+  c2.innerHTML = state.quoteItems.map(qi=>`
+    <div class="quote-item">
+      <div style="flex:1"><div class="quote-item-name">${qi.name}</div><div class="quote-item-tier">${qi.tier}</div></div>
+      <div class="quote-item-price">${qi.price}</div>
+    </div>`).join('');
+  tr2.style.display='block';
+}
+
+function removeFromQuote(id) {
+  state.quoteItems = state.quoteItems.filter(q=>q.id!==id);
+  const btn = document.getElementById('btn-'+id);
+  if(btn){btn.textContent='+ Add to Quote';btn.classList.remove('added');}
+  document.getElementById(id)?.classList.remove('selected-product');
+  refreshSidebar();
+}
+
+// ── GENERATE QUOTE ──
+function generateQuote() {
+  const fn=document.getElementById('f-firstname').value.trim();
+  const ln=document.getElementById('f-lastname').value.trim();
+  const co=document.getElementById('f-company').value.trim();
+  const em=document.getElementById('f-email').value.trim();
+  if(!fn||!ln||!co||!em){alert('Please fill in your name, company, and email address.');return;}
+  const client={
+    name:fn+' '+ln, company:co,
+    industry:document.getElementById('f-industry').value,
+    email:em, phone:document.getElementById('f-phone').value,
+    size:document.getElementById('f-size').value,
+    budget:document.getElementById('f-budget').value,
+    startdate:document.getElementById('f-startdate').value,
+    source:document.getElementById('f-source').value,
+    notes:document.getElementById('f-notes').value
+  };
+  renderQuoteDoc(client);
+  goToStep(4);
+}
+
+// ── RENDER DOC ──
+function renderQuoteDoc(client) {
+  const now=new Date();
+  const valid=new Date(now.getTime()+30*24*60*60*1000);
+  const fmt=d=>d.toLocaleDateString('en-ZA',{year:'numeric',month:'long',day:'numeric'});
+  const qn='CRO-'+now.getFullYear()+'-'+String(Math.floor(Math.random()*9000)+1000);
+
+  const rows = state.quoteItems.map(qi=>{
+    const addRows=qi.addons.map(a=>`<tr><td style="padding-left:24px;color:#6b6b80;font-size:12px">&nbsp;&nbsp;&rsaquo; Add-on: ${a.name}</td><td style="color:#6b6b80;font-size:12px">${qi.tier}</td><td style="color:#6b6b80;font-size:12px">See note</td><td style="color:#1a6cf6;font-size:12px;text-align:right">${a.price}</td></tr>`).join('');
+    return `<tr><td><strong>${qi.name}</strong></td><td>${qi.tier}</td><td>As quoted</td><td>${qi.price}</td></tr>${addRows}`;
+  }).join('');
+
+  document.getElementById('quote-preview-doc').innerHTML=`
+    <div class="qp-header">
+      <div class="qp-logo-area">
+        <div class="qp-logo-img">LOGO</div>
+        <div><div class="qp-logo-text">Croloft</div><div class="qp-company-sub">IT Solutions &amp; Digital Services</div></div>
+      </div>
+      <div class="qp-doc-info">
+        <div class="qp-label">Quotation</div>
+        <div class="qp-num">${qn}</div>
+        <div class="qp-date">Issued: ${fmt(now)}</div>
+        <div class="qp-valid">Valid until: ${fmt(valid)}</div>
+      </div>
+    </div>
+    <div class="qp-divider"></div>
+    <div class="qp-parties">
+      <div class="qp-party">
+        <h5>Prepared For</h5>
+        <p><strong>${client.name}</strong>${client.company}<br>${client.industry?client.industry+'<br>':''}${client.email}${client.phone?'<br>'+client.phone:''}${client.size?'<br>'+client.size:''}</p>
+      </div>
+      <div class="qp-party">
+        <h5>Prepared By</h5>
+        <p><strong>Croloft (Pty) Ltd</strong>123 Innovation Drive<br>Umhlanga, Durban, 4319<br>info@croloft.co.za<br>+27 31 000 0000</p>
+      </div>
+    </div>
+    <table class="qp-table">
+      <thead><tr><th>Service / Product</th><th>Package Tier</th><th>Timeline</th><th style="text-align:right">Price (ZAR excl. VAT)</th></tr></thead>
+      <tbody>${rows||'<tr><td colspan="4" style="text-align:center;color:#8a90a8;padding:24px">No services selected</td></tr>'}</tbody>
+    </table>
+    <div class="qp-total-section">
+      <div class="qp-total-row"><span>Subtotal (excl. VAT)</span><span>See line items above</span></div>
+      <div class="qp-total-row"><span>VAT (15%)</span><span>To be calculated upon confirmation</span></div>
+      ${client.budget?`<div class="qp-total-row"><span>Client Budget Range</span><span>${client.budget}</span></div>`:''}
+      ${client.startdate?`<div class="qp-total-row"><span>Expected Start Date</span><span>${client.startdate}</span></div>`:''}
+      <div class="qp-total-row grand"><span>Total Estimated</span><span>Contact us for final confirmation</span></div>
+    </div>
+    ${client.notes?`<div class="qp-notes"><h6>Project Brief</h6><p>${client.notes}</p></div>`:''}
+    <div class="qp-terms"><p><strong>Terms &amp; Conditions:</strong> This quotation is valid for 30 days from the date of issue. Prices are indicative and subject to final scope confirmation. A 50% deposit is required to commence work, with the balance due upon project completion or as per agreed milestones. All prices exclude VAT at 15%. Croloft reserves the right to revise pricing after the quotation validity period or upon material change in project scope.</p></div>
+    <div class="qp-footer-doc">
+      <div><p class="qp-cta-text">Ready to proceed?</p><p>Reply to this quote or call us to book a discovery call.</p><p class="qp-cta-contact">info@croloft.co.za &nbsp;&middot;&nbsp; +27 31 000 0000</p></div>
+      <div class="qp-stamp">CROLOFT<br>OFFICIAL<br>QUOTE</div>
+    </div>`;
+}
+
+// ── DOWNLOAD PDF ──
+async function downloadPDF(){
+  const btns=document.querySelectorAll('.btn-download');
+  btns.forEach(b=>{b.textContent='Generating PDF...';b.disabled=true;});
+  try{
+    const {jsPDF}=window.jspdf;
+    const doc=document.getElementById('quote-preview-doc');
+    const canvas=await html2canvas(doc,{scale:2,useCORS:true,backgroundColor:'#ffffff',width:doc.scrollWidth,height:doc.scrollHeight});
+    const imgData=canvas.toDataURL('image/png');
+    const pdf=new jsPDF('p','mm','a4');
+    const pW=pdf.internal.pageSize.getWidth();
+    const pH=pdf.internal.pageSize.getHeight();
+    const iH=pW*(canvas.height/canvas.width);
+    let pos=0,rem=iH;
+    pdf.addImage(imgData,'PNG',0,pos,pW,iH);
+    while(rem>pH){pos-=pH;rem-=pH;pdf.addPage();pdf.addImage(imgData,'PNG',0,pos,pW,iH);}
+    const company=document.getElementById('f-company')?.value.replace(/[^a-zA-Z0-9]/g,'-')||'Client';
+    pdf.save(`Croloft-Quote-${company}.pdf`);
+  }catch(e){alert('PDF generation failed. Please use the Print option instead.');console.error(e);}
+  btns.forEach(b=>{b.textContent='Download as PDF';b.disabled=false;});
+}
+</script>
+</body>
+</html>

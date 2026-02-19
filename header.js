@@ -1069,7 +1069,7 @@ class CronosHeader extends HTMLElement {
                         </ul>
                         <div class="cronos-header-action-buttons">
 
-                            <a href="get-started.html" class="cronos-header-secondary-btn">
+                            <a href="quote.html" class="cronos-header-secondary-btn">
                             Get a quote
                             </a>
                             
