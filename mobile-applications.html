@@ -581,577 +581,307 @@
 
 
 
-<div id="webapp-pricing-root">
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Premium Hero</title>
     <style>
-        @import url('https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap');
+        /* --- SCOPED PREMIUM HERO STYLES --- */
+        @import url('https://fonts.googleapis.com/css2?family=DM+Sans:opsz,wght@9..40,400;500;700&display=swap');
 
-        #webapp-pricing-root {
-            font-family: 'Inter', sans-serif;
-            background: #f4f4f4; /* CHANGED: Light Background */
-            padding: 60px 20px;
-            color: #1e293b; /* CHANGED: Dark Text */
-            max-width: 1300px;
-            margin: 0 auto;
-        }
-
-        /* Namespace: wap- (Web App Pricing) */
-        .wap-pricing-header {
-            text-align: center;
-            margin-bottom: 60px;
-        }
-
-        .wap-badge {
-            display: inline-block;
-            background: rgba(0, 102, 255, 0.1);
-            color: #0066FF;
-            padding: 6px 16px;
-            border-radius: 30px;
-            font-size: 12px;
-            font-weight: 700;
-            text-transform: uppercase;
-            letter-spacing: 1px;
-            margin-bottom: 20px;
-            border: 1px solid rgba(0, 102, 255, 0.2);
-        }
-
-        .wap-title {
-            font-size: 42px;
-            font-weight: 800;
-            margin: 0 0 16px 0;
-            /* CHANGED: Dark gradient for title */
-            background: linear-gradient(90deg, #0f172a, #334155);
-            -webkit-background-clip: text;
-            -webkit-text-fill-color: transparent;
-        }
-
-        /* Table Container - Made Transparent */
-        .wap-table-container {
+        .it-premium-hero {
+            --it-primary: #161616;
+            --it-secondary: #636363;
+            --it-accent: #3ECF8E; 
+            --it-font: 'Circular Std', 'DM Sans', sans-serif;
+            
+            background: #ffffff;
             width: 100%;
-            overflow-x: auto;
-            /* CHANGED: Removed background and border */
-            background: transparent;
-            margin-bottom: 40px;
-        }
-
-        .wap-mega-table {
-            width: 100%;
-            /* CHANGED: Separate borders to allow spacing between rows */
-            border-collapse: separate; 
-            border-spacing: 0 15px; /* Spacing between rows */
-            min-width: 1000px;
-        }
-
-        /* Headers - Transparent background, Dark Text */
-        .wap-mega-table th {
-            padding: 20px 25px;
-            text-align: left;
-            vertical-align: top;
-            border: none; /* Removed borders */
-            background: transparent;
-        }
-
-        .wap-category-label {
-            font-size: 20px;
-            font-weight: 800;
-            color: #0f172a; /* Dark Color */
-        }
-
-        .wap-tier-name {
-            font-size: 24px;
-            font-weight: 800;
-            display: block;
-            margin-bottom: 8px;
-            color: #0f172a;
-        }
-
-        .wap-tier-desc {
-            font-size: 13px;
-            color: #64748b; /* Medium Gray */
-            line-height: 1.6;
-            font-weight: 500;
-            display: block;
-            margin-bottom: 20px;
-            min-height: 40px;
-        }
-
-        .wap-price-wrapper {
-            margin-bottom: 20px;
-        }
-
-        .wap-price-currency { font-size: 18px; vertical-align: top; color: #0066FF; font-weight: 700; }
-        .wap-price-amount { font-size: 48px; font-weight: 800; letter-spacing: -1px; color: #0f172a; }
-        .wap-price-cycle { font-size: 14px; color: #64748b; }
-
-        /* Rows Styling - The "Card" Look */
-        .wap-mega-table td {
-            padding: 25px;
-            font-size: 14px;
-            color: #334155; /* Dark Text */
-            background: #ffffff; /* CHANGED: White card background */
-            border: none;
-            /* Soft shadow for depth */
-            box-shadow: 0 2px 5px rgba(0,0,0,0.02); 
-        }
-
-        /* Border Radius Logic for Rows */
-        .wap-mega-table td:first-child {
-            border-top-left-radius: 15px;
-            border-bottom-left-radius: 15px;
-        }
-        
-        .wap-mega-table td:last-child {
-            border-top-right-radius: 15px;
-            border-bottom-right-radius: 15px;
-        }
-
-        .wap-row-title {
-            font-weight: 700;
-            color: #0f172a; /* Darkest Blue/Black */
-            display: block;
-            margin-bottom: 4px;
-            font-size: 15px;
-        }
-
-        .wap-row-sub {
-            font-size: 12px;
-            color: #64748b;
-            line-height: 1.5;
-            display: block;
-        }
-
-        /* Section Divider Styling */
-        .wap-section-divider {
-            /* CHANGED: Distinct look for section headers */
-            background: #1e293b !important; 
-            padding: 15px 25px !important;
-            font-weight: 700;
-            color: #ffffff !important; /* White text on dark divider */
-            text-transform: uppercase;
-            letter-spacing: 2px;
-            font-size: 12px;
-            /* Radius is handled by general TD rules above, but we ensure it applies here */
-        }
-
-        /* Status & Icons */
-        .wap-check { color: #059669; font-weight: 900; font-size: 18px; } /* Darker Green */
-        .wap-cross { color: #cbd5e1; font-size: 18px; } /* Light Gray Cross */
-        
-        /* Feature details styling */
-        .wap-feature-details {
-            font-size: 12px;
-            color: #64748b;
-            display: block;
-            margin-top: 5px;
-            line-height: 1.5;
-            font-weight: 500;
-        }
-
-        /* CTA Buttons */
-        .wap-cta-btn {
-            display: block;
-            text-align: center;
-            padding: 14px;
-            border-radius: 12px;
-            text-decoration: none;
-            font-weight: 700;
-            font-size: 14px;
-            transition: all 0.3s ease;
-            width: 100%;
-        }
-
-        .wap-btn-outline {
-            border: 2px solid #0066FF; /* Thicker border */
-            color: #0066FF;
-            background: transparent;
-        }
-
-        .wap-btn-outline:hover {
-            background: rgba(0, 102, 255, 0.05);
-        }
-
-        .wap-btn-primary {
-            background: #0066FF;
-            color: #ffffff;
-            border: 2px solid #0066FF;
-        }
-
-        .wap-btn-primary:hover {
-            background: #0052cc;
-            box-shadow: 0 4px 12px rgba(0, 102, 255, 0.3);
-        }
-        
-        /* Notes Section - Adapted for Light Mode */
-        .wap-notes-container {
-            background: #ffffff; /* White bg */
-            border-radius: 16px;
-            padding: 30px;
-            border: 1px solid rgba(0,0,0,0.05);
-            margin-top: 40px;
-            box-shadow: 0 4px 20px rgba(0,0,0,0.03);
-        }
-        
-        .wap-notes-title {
-            color: #0066FF;
-            font-size: 18px;
-            font-weight: 800;
-            margin-bottom: 20px;
-        }
-        
-        .wap-notes-list {
-            display: grid;
-            grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
-            gap: 15px;
-        }
-        
-        .wap-note-item {
+            min-height: 500px;
+            overflow: hidden; 
             display: flex;
-            align-items: flex-start;
-            margin-bottom: 10px;
+            align-items: center;
+            position: relative;
+            font-family: var(--it-font);
+            box-sizing: border-box;
         }
-        
-        .wap-note-bullet {
-            color: #0066FF;
-            font-weight: bold;
-            margin-right: 10px;
+
+        /* Ensure all elements inside use border-box */
+        .it-premium-hero *, .it-premium-hero *::before, .it-premium-hero *::after {
+            box-sizing: border-box;
+        }
+
+        .it-premium-container {
+            max-width: 1200px;
+            margin: 0 auto;
+            width: 100%;
+            padding: 0 20px; /* Added padding for safety on small screens */
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            z-index: 2;
+        }
+
+        /* --- Left Side: Text --- */
+        .it-premium-text-box {
+            flex: 0 0 500px; /* Slightly wider to accommodate text */
+            z-index: 10; /* Keep text above visual elements */
+        }
+
+        .it-premium-headline {
+            font-size: 50px;
+            font-weight: 500; /* Bumped weight slightly for readability */
+            line-height: 1.1;
+            color: var(--it-primary);
+            letter-spacing: -0.04em;
+            margin: 0;
+        }
+
+        /* Dynamic Text Container */
+        .it-dynamic-wrapper {
+            display: inline-block;
+            min-width: 300px; /* Prevents layout shift when text length changes */
+        }
+
+        #it-dynamic-text {
+            color: var(--it-primary);
+            transition: opacity 0.2s ease, transform 0.2s ease;
+            display: inline-block;
+            position: relative;
+        }
+
+        /* Highlight color for the dynamic text */
+        .it-highlight {
+            color: var(--it-accent); /* Optional: Use accent color when active */
+        }
+
+        .it-text-fade {
+            opacity: 0;
+            transform: translateY(10px);
+        }
+
+        /* --- Right Side: Visual Area --- */
+        .it-premium-visual-area {
+            flex: 1;
+            position: relative;
+            display: flex;
+            align-items: center;
+            height: 180px; /* Increased height slightly */
+            overflow: hidden;
+            /* Masking for the fade effect on edges */
+            -webkit-mask-image: linear-gradient(to right, transparent 0%, black 10%, black 90%, transparent 100%);
+            mask-image: linear-gradient(to right, transparent 0%, black 10%, black 90%, transparent 100%);
+            margin-left: 40px; /* Spacing from text */
+        }
+
+        .it-premium-single-row {
+            display: flex;
+            width: max-content;
+            animation: scroll-seamless 30s linear infinite; /* Slowed down slightly for elegance */
+            will-change: transform;
+        }
+
+        .it-group {
+            display: flex;
+            gap: 10px; /* Increased gap for cleaner look */
+            padding-right: 30px; 
+        }
+
+        /* Hover pauses animation */
+        .it-premium-single-row:hover {
+            animation-play-state: paused;
+        }
+
+        @keyframes scroll-seamless {
+            0% { transform: translateX(0); }
+            100% { transform: translateX(-50%); }
+        }
+
+        /* --- Card Styles --- */
+        .it-premium-card {
+            width: 100px;
+            height: 100px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            cursor: pointer;
+            transition: all 0.3s cubic-bezier(0.25, 0.8, 0.25, 1);
             flex-shrink: 0;
         }
-        
-        .wap-note-text {
-            font-size: 14px;
-            color: #475569; /* Darker text for readability */
-            line-height: 1.6;
+
+        .it-premium-card img {
+            width: 50px;
+            height: 50px;
+            object-fit: contain;
+            filter: grayscale(100%);
+            opacity: 0.9;
+            transition: all 0.3s ease;
+            pointer-events: none; /* Prevents image dragging */
         }
 
-        /* Mobile Responsive Design */
-        @media (max-width: 1024px) {
-            .wap-title { font-size: 36px; }
-            .wap-notes-list { grid-template-columns: 1fr; }
+        .it-premium-card:hover {
+            transform: translateY(-5px) scale(1.05);
+            z-index: 5;
         }
-        
-        @media (max-width: 768px) {
-            #webapp-pricing-root { padding: 40px 15px; }
-            
-            .wap-title { font-size: 28px; }
-            
-            .wap-pricing-header { margin-bottom: 40px; }
-            
-            .wap-table-container {
-                border-radius: 16px;
-                overflow-x: auto;
-                -webkit-overflow-scrolling: touch;
+
+        .it-premium-card:hover img {
+            filter: grayscale(0%);
+            opacity: 1;
+        }
+
+        /* --- Mobile Responsiveness --- */
+        @media (max-width: 992px) {
+            .it-premium-hero {
+                padding: 60px 0;
+                min-height: auto;
+                flex-direction: column;
+                justify-content: center;
+            }
+
+            .it-premium-container {
+                flex-direction: column;
+                text-align: center;
+                padding: 0 15px;
+            }
+
+            .it-premium-text-box {
+                flex: 0 0 auto;
+                width: 100%;
+                margin-bottom: 40px;
+            }
+
+            .it-premium-headline {
+                font-size: 36px; /* Smaller font on mobile */
+            }
+
+            .it-dynamic-wrapper {
+                display: block; /* Stack on mobile if needed */
+                min-width: 0;
+            }
+
+            .it-premium-visual-area {
+                width: 100%;
+                margin-left: 0;
+                /* Reset mask for fuller width visibility on mobile */
+                -webkit-mask-image: linear-gradient(to right, transparent 0%, black 5%, black 95%, transparent 100%);
+                mask-image: linear-gradient(to right, transparent 0%, black 5%, black 95%, transparent 100%);
             }
             
-            .wap-mega-table th {
-                padding: 25px 20px;
+            /* KEY FIX: Ensure single row persists on mobile */
+            .it-premium-single-row {
+                flex-wrap: nowrap; /* Prevent wrapping */
             }
             
-            .wap-mega-table td {
-                padding: 18px 20px;
+            .it-group {
+                gap: 20px;
+                padding-right: 20px;
             }
             
-            .wap-tier-name { font-size: 20px; }
+            .it-premium-card {
+                width: 80px; /* Smaller cards on mobile */
+                height: 80px;
+            }
             
-            .wap-price-amount { font-size: 36px; }
-            
-            .wap-notes-container {
-                padding: 20px;
+            .it-premium-card img {
+                width: 40px;
+                height: 40px;
             }
         }
-        
-        /* Highlight specific column */
-        .wap-highlight-col {
-            background: #EFF6FF !important; /* Very light blue for highlighted column */
-        }
-        
     </style>
+</head>
+<body>
 
-    <div class="wap-pricing-header">
-        <div class="wap-badge">Web & Mobile Application Development</div>
-        <h1 class="wap-title">Custom App Development Packages</h1>
-        <p style="color: #64748b; max-width: 700px; margin: 0 auto; line-height: 1.6; font-size: 16px;">Comprehensive development packages for web and mobile applications. Each tier includes full lifecycle support from design to deployment and maintenance.</p>
-    </div>
+<section class="it-premium-hero">
+    <div class="it-premium-container">
+        
+        <div class="it-premium-text-box">
+            <h1 class="it-premium-headline">
+                Build your solution with<br>
+                <span class="it-dynamic-wrapper">
+                    <span id="it-dynamic-text">any framework</span>
+                </span>
+            </h1>
+        </div>
 
-    <div class="wap-table-container">
-        <table class="wap-mega-table">
-            <thead>
-                <tr>
-                    <th style="width: 28%;">
-                        <div class="wap-category-label">Application Features</div>
-                        <p style="font-size: 13px; color: #64748b; margin-top: 10px; line-height: 1.5;">Detailed breakdown of what's included in each development package.</p>
-                    </th>
-                    <th style="width: 24%;">
-                        <span class="wap-tier-name">Starter</span>
-                        <span class="wap-tier-desc">Single platform app with basic functionality for small businesses.</span>
-                        <div class="wap-price-wrapper">
-                            <span class="wap-price-currency">$</span>
-                            <span class="wap-price-amount">4,999</span>
-                            <span class="wap-price-cycle">/project</span>
-                        </div>
-                        <a href="#" class="wap-cta-btn wap-btn-outline">Get Quote</a>
-                    </th>
-                    <th style="width: 24%;">
-                        <span class="wap-tier-name" style="color: #0066FF;">Professional</span>
-                        <span class="wap-tier-desc">Cross-platform app with advanced features and API integration.</span>
-                        <div class="wap-price-wrapper">
-                            <span class="wap-price-currency">$</span>
-                            <span class="wap-price-amount">14,500</span>
-                            <span class="wap-price-cycle">/project</span>
-                        </div>
-                        <a href="#" class="wap-cta-btn wap-btn-primary">Choose Plan</a>
-                    </th>
-                    <th style="width: 24%;">
-                        <span class="wap-tier-name">Enterprise</span>
-                        <span class="wap-tier-desc">Full-scale custom application with AI features and scalability.</span>
-                        <div class="wap-price-wrapper">
-                            <span class="wap-price-currency">$</span>
-                            <span class="wap-price-amount">45,000</span>
-                            <span class="wap-price-cycle">/project+</span>
-                        </div>
-                        <a href="#" class="wap-cta-btn wap-btn-outline">Contact Sales</a>
-                    </th>
-                </tr>
-            </thead>
-            <tbody>
-                <tr><td colspan="4" class="wap-section-divider">Platform & Scope</td></tr>
+        <div class="it-premium-visual-area">
+            <div class="it-premium-single-row">
+                <div class="it-group">
+                    <div class="it-premium-card" data-name="React.js"><img src="https://cdn.worldvectorlogo.com/logos/react-2.svg" alt="React"></div>
+                    <div class="it-premium-card" data-name="Next.js"><img src="https://cdn.worldvectorlogo.com/logos/next-js.svg" alt="Next"></div>
+                    <div class="it-premium-card" data-name="Vue.js"><img src="https://cdn.worldvectorlogo.com/logos/vue-9.svg" alt="Vue"></div>
+                    <div class="it-premium-card" data-name="TypeScript"><img src="https://cdn.worldvectorlogo.com/logos/typescript.svg" alt="TS"></div>
+                    <div class="it-premium-card" data-name="Node.js"><img src="https://cdn.worldvectorlogo.com/logos/nodejs-icon.svg" alt="Node"></div>
+                    <div class="it-premium-card" data-name="Angular"><img src="https://cdn.worldvectorlogo.com/logos/angular-icon-1.svg" alt="Angular"></div>
+                </div>
                 
-                <tr>
-                    <td>
-                        <span class="wap-row-title">Platform Coverage</span>
-                        <span class="wap-row-sub">Native and web platforms included</span>
-                    </td>
-                    <td>
-                        Web App OR iOS/Android
-                        <span class="wap-feature-details">Choose one platform only</span>
-                    </td>
-                    <td class="wap-highlight-col">
-                        Web + 1 Mobile Platform
-                        <span class="wap-feature-details">Responsive web + iOS or Android</span>
-                    </td>
-                    <td>
-                        Web + iOS + Android
-                        <span class="wap-feature-details">Full cross-platform coverage</span>
-                    </td>
-                </tr>
-                <tr>
-                    <td>
-                        <span class="wap-row-title">Development Timeline</span>
-                        <span class="wap-row-sub">Estimated delivery time from kickoff</span>
-                    </td>
-                    <td>
-                        4-6 Weeks
-                        <span class="wap-feature-details">Basic functionality only</span>
-                    </td>
-                    <td class="wap-highlight-col">
-                        8-12 Weeks
-                        <span class="wap-feature-details">Includes testing and refinement</span>
-                    </td>
-                    <td>
-                        12-20 Weeks
-                        <span class="wap-feature-details">Comprehensive development cycle</span>
-                    </td>
-                </tr>
-                
-                <tr><td colspan="4" class="wap-section-divider">Core Development Features</td></tr>
-                <tr>
-                    <td>
-                        <span class="wap-row-title">Custom UI/UX Design</span>
-                        <span class="wap-row-sub">Wireframes, prototypes, and visual design</span>
-                    </td>
-                    <td>
-                        Basic Design
-                        <span class="wap-feature-details">Template-based with light customization</span>
-                    </td>
-                    <td class="wap-highlight-col">
-                        Custom Design
-                        <span class="wap-feature-details">Fully custom UI with 3 revision rounds</span>
-                    </td>
-                    <td>
-                        Premium Design
-                        <span class="wap-feature-details">Custom UI/UX with unlimited revisions</span>
-                    </td>
-                </tr>
-                <tr>
-                    <td>
-                        <span class="wap-row-title">Frontend Development</span>
-                        <span class="wap-row-sub">HTML/CSS/JavaScript or framework</span>
-                    </td>
-                    <td>
-                        Basic Frontend
-                        <span class="wap-feature-details">Vanilla JS or simple React components</span>
-                    </td>
-                    <td class="wap-highlight-col">
-                        Advanced Frontend
-                        <span class="wap-feature-details">React/Vue/Angular with state management</span>
-                    </td>
-                    <td>
-                        Enterprise Frontend
-                        <span class="wap-feature-details">Micro-frontends, SSR, PWA capabilities</span>
-                    </td>
-                </tr>
-                <tr>
-                    <td>
-                        <span class="wap-row-title">Backend Development</span>
-                        <span class="wap-row-sub">Server, database, and API development</span>
-                    </td>
-                    <td>
-                        Simple Backend
-                        <span class="wap-feature-details">Firebase or basic Node.js with 5 API endpoints</span>
-                    </td>
-                    <td class="wap-highlight-col">
-                        Robust Backend
-                        <span class="wap-feature-details">Node.js/Python with 15+ API endpoints, auth, and database</span>
-                    </td>
-                    <td>
-                        Scalable Backend
-                        <span class="wap-feature-details">Microservices, cloud functions, real-time features</span>
-                    </td>
-                </tr>
-                
-                <tr><td colspan="4" class="wap-section-divider">Advanced Features</td></tr>
-                <tr>
-                    <td>
-                        <span class="wap-row-title">Third-Party API Integration</span>
-                        <span class="wap-row-sub">Payment, social media, maps, etc.</span>
-                    </td>
-                    <td>
-                        1 Basic Integration
-                        <span class="wap-feature-details">Stripe or PayPal only</span>
-                    </td>
-                    <td class="wap-highlight-col">
-                        3-5 Integrations
-                        <span class="wap-feature-details">Payment + social + maps + 2 custom</span>
-                    </td>
-                    <td>
-                        Unlimited Integrations
-                        <span class="wap-feature-details">All required APIs with custom middleware</span>
-                    </td>
-                </tr>
-                <tr>
-                    <td>
-                        <span class="wap-row-title">User Authentication</span>
-                        <span class="wap-row-sub">Login, registration, and user management</span>
-                    </td>
-                    <td>
-                        Email/Password
-                        <span class="wap-feature-details">Basic auth with email verification</span>
-                    </td>
-                    <td class="wap-highlight-col">
-                        Social + Email
-                        <span class="wap-feature-details">Google, Facebook, Apple login + email/password</span>
-                    </td>
-                    <td>
-                        Enterprise SSO
-                        <span class="wap-feature-details">SAML, OAuth2, LDAP, custom identity provider</span>
-                    </td>
-                </tr>
-                <tr>
-                    <td>
-                        <span class="wap-row-title">Admin Dashboard</span>
-                        <span class="wap-row-sub">Content management and analytics</span>
-                    </td>
-                    <td class="wap-cross">✘</td>
-                    <td class="wap-check wap-highlight-col">✔</td>
-                    <td class="wap-check">✔</td>
-                </tr>
-                <tr>
-                    <td>
-                        <span class="wap-row-title">Push Notifications</span>
-                        <span class="wap-row-sub">Mobile and web notifications</span>
-                    </td>
-                    <td class="wap-cross">✘</td>
-                    <td class="wap-check wap-highlight-col">✔</td>
-                    <td class="wap-check">✔</td>
-                </tr>
-                
-                <tr><td colspan="4" class="wap-section-divider">Post-Launch Services</td></tr>
-                <tr>
-                    <td>
-                        <span class="wap-row-title">Hosting & Deployment</span>
-                        <span class="wap-row-sub">Server setup and app store deployment</span>
-                    </td>
-                    <td>
-                        Basic Hosting (3 months)
-                        <span class="wap-feature-details">Shared hosting, manual deployment</span>
-                    </td>
-                    <td class="wap-highlight-col">
-                        Managed Hosting (6 months)
-                        <span class="wap-feature-details">Cloud hosting with CI/CD pipeline</span>
-                    </td>
-                    <td>
-                        Enterprise Hosting (12 months)
-                        <span class="wap-feature-details">Dedicated infrastructure with auto-scaling</span>
-                    </td>
-                </tr>
-                <tr>
-                    <td>
-                        <span class="wap-row-title">Maintenance & Support</span>
-                        <span class="wap-row-sub">Bug fixes, updates, and technical support</span>
-                    </td>
-                    <td>
-                        1 Month Support
-                        <span class="wap-feature-details">Critical bug fixes only</span>
-                    </td>
-                    <td class="wap-highlight-col">
-                        3 Months Support
-                        <span class="wap-feature-details">Bug fixes + minor feature updates</span>
-                    </td>
-                    <td>
-                        6 Months Support
-                        <span class="wap-feature-details">Full support including performance optimization</span>
-                    </td>
-                </tr>
-                <tr>
-                    <td>
-                        <span class="wap-row-title">Analytics & Reporting</span>
-                        <span class="wap-row-sub">User behavior and performance tracking</span>
-                    </td>
-                    <td>
-                        Basic Analytics
-                        <span class="wap-feature-details">Simple traffic and conversion tracking</span>
-                    </td>
-                    <td class="wap-highlight-col">
-                        Advanced Analytics
-                        <span class="wap-feature-details">User flow, retention, and custom events</span>
-                    </td>
-                    <td>
-                        Business Intelligence
-                        <span class="wap-feature-details">Custom dashboards, predictive analytics, AI insights</span>
-                    </td>
-                </tr>
-            </tbody>
-        </table>
-    </div>
-    
-    <div class="wap-notes-container">
-        <div class="wap-notes-title">Important Notes & Clarifications</div>
-        <div class="wap-notes-list">
-            <div class="wap-note-item">
-                <span class="wap-note-bullet">•</span>
-                <span class="wap-note-text">All prices are for complete projects. Monthly retainers are available for ongoing development at $1,500-$5,000/month depending on scope.</span>
-            </div>
-            <div class="wap-note-item">
-                <span class="wap-note-bullet">•</span>
-                <span class="wap-note-text">Timelines begin after final design approval and content delivery. Delays in client feedback may extend project timelines.</span>
-            </div>
-            <div class="wap-note-item">
-                <span class="wap-note-bullet">•</span>
-                <span class="wap-note-text">Third-party service costs (domain, hosting beyond included period, paid APIs, app store fees) are not included unless specified.</span>
-            </div>
-            <div class="wap-note-item">
-                <span class="wap-note-bullet">•</span>
-                <span class="wap-note-text">Custom Enterprise pricing varies based on specific requirements, complexity, and integrations needed. Contact for a detailed quote.</span>
-            </div>
-            <div class="wap-note-item">
-                <span class="wap-note-bullet">•</span>
-                <span class="wap-note-text">Projects require a 50% deposit to begin work, with the balance due upon completion before final delivery.</span>
-            </div>
-            <div class="wap-note-item">
-                <span class="wap-note-bullet">•</span>
-                <span class="wap-note-text">All code is delivered with documentation. Clients retain full ownership of all deliverables upon final payment.</span>
+                <div class="it-group">
+                    <div class="it-premium-card" data-name="React.js"><img src="https://cdn.worldvectorlogo.com/logos/react-2.svg" alt="React"></div>
+                    <div class="it-premium-card" data-name="Next.js"><img src="https://cdn.worldvectorlogo.com/logos/next-js.svg" alt="Next"></div>
+                    <div class="it-premium-card" data-name="Vue.js"><img src="https://cdn.worldvectorlogo.com/logos/vue-9.svg" alt="Vue"></div>
+                    <div class="it-premium-card" data-name="TypeScript"><img src="https://cdn.worldvectorlogo.com/logos/typescript.svg" alt="TS"></div>
+                    <div class="it-premium-card" data-name="Node.js"><img src="https://cdn.worldvectorlogo.com/logos/nodejs-icon.svg" alt="Node"></div>
+                    <div class="it-premium-card" data-name="Angular"><img src="https://cdn.worldvectorlogo.com/logos/angular-icon-1.svg" alt="Angular"></div>
+                </div>
             </div>
         </div>
+
     </div>
-</div>
+</section>
+
+<script>
+    document.addEventListener("DOMContentLoaded", () => {
+        const dynamicText = document.getElementById('it-dynamic-text');
+        const cards = document.querySelectorAll('.it-premium-card');
+        const defaultText = "any framework";
+        let textTimeout; // Variable to track the timer
+
+        // Function to handle text change
+        const changeText = (newName, isDefault = false) => {
+            // Clear any existing timer to prevent overlapping animations
+            clearTimeout(textTimeout);
+
+            dynamicText.classList.add('it-text-fade');
+            
+            // Wait for fade out, then change text
+            textTimeout = setTimeout(() => {
+                dynamicText.innerText = newName;
+                if(isDefault) {
+                    dynamicText.classList.remove('it-highlight');
+                } else {
+                    dynamicText.classList.add('it-highlight');
+                }
+                dynamicText.classList.remove('it-text-fade');
+            }, 150);
+        };
+
+        cards.forEach(card => {
+            card.addEventListener('mouseenter', function() {
+                const newName = this.getAttribute('data-name');
+                changeText(newName);
+            });
+
+            card.addEventListener('mouseleave', function() {
+                changeText(defaultText, true);
+            });
+            
+            // Added simple click support for mobile tap interaction
+            card.addEventListener('click', function() {
+                const newName = this.getAttribute('data-name');
+                changeText(newName);
+                
+                // Auto reset after 2 seconds on mobile tap
+                setTimeout(() => {
+                    changeText(defaultText, true);
+                }, 2000);
+            });
+        });
+    });
+</script>
+
+</body>
+</html>
 
 
 

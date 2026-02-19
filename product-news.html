@@ -37,6 +37,1095 @@
 
 
 
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Defcon | Product News & Innovations</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.2/css/all.min.css">
+
+    <style>
+        /* ─────────────────────────────────
+           RESET & TOKENS
+        ───────────────────────────────── */
+
+        @font-face {
+            font-family: 'Circular Std';
+            src: url('fonts/CircularStd-Book.ttf') format('truetype');
+            font-weight: 400;
+            font-style: normal;
+        }
+
+        /* Circular Std - Medium (500) */
+        @font-face {
+            font-family: 'Circular Std';
+            src: url('fonts/CircularStd.ttf') format('truetype');
+            font-weight: 500;
+            font-style: normal;
+        }
+
+        /* Circular Std - Bold (700) */
+        @font-face {
+            font-family: 'Circular Std';
+            src: url('fonts/CircularStd-Bold.ttf') format('truetype');
+            font-weight: 600;
+            font-style: normal;
+        }
+
+        *, *::before, *::after { margin: 0; padding: 0; box-sizing: border-box; }
+
+        :root {
+            --accent:       #0091ff;
+            --accent-dark:  #0077d4;
+            --white:        #ffffff;
+            --bg-light:     #f5f6f8;
+            --text-dark:    #151515;
+            --text-mid:     #444444;
+            --text-muted:   #888888;
+            --border:       #e2e4e9;
+            --bg-dark:      #00091e;
+            --card-shadow:  0 2px 12px rgba(0,0,0,0.07);
+            --card-shadow-h: 0 10px 28px rgba(0,0,0,0.13);
+        }
+
+        html { scroll-behavior: smooth; }
+
+        body {
+            font-family: 'Circular Std', sans-serif;
+            background: var(--white);
+            color: var(--text-dark);
+            line-height: 1.6;
+            overflow-x: hidden;
+        }
+
+        a { text-decoration: none; color: inherit; }
+        img { display: block; max-width: 100%; }
+
+
+        /* ─────────────────────────────────
+           HEADER
+        ───────────────────────────────── */
+        .defcon-news-header {
+            position: relative;
+            background-color: var(--bg-dark);
+            background-image: url('https://images.unsplash.com/photo-1518770660439-4636190af475?auto=format&fit=crop&w=1600&q=60');
+            background-size: cover;
+            background-position: center;
+            padding: 100px 0 32px;
+        }
+        .defcon-news-header::before {
+            content: '';
+            position: absolute;
+            inset: 0;
+            background: rgba(0,0,0,0.62);
+        }
+        .header-container {
+            position: relative;
+            z-index: 1;
+            max-width: 1400px;
+            margin: 0 auto;
+            padding: 0 40px;
+        }
+        .header-title {
+            font-size: clamp(1.8rem, 4vw, 2.9rem);
+            font-weight: 700;
+            color: var(--white);
+            letter-spacing: -0.03em;
+        }
+
+
+        /* ─────────────────────────────────
+           HERO BANNER
+        ───────────────────────────────── */
+        .hero-feature-banner {
+            background: var(--white);
+            padding: 32px 0 52px;
+        }
+        .hero-content-wrapper {
+            max-width: 1400px;
+            margin: 0 auto;
+            padding: 0 40px;
+            display: flex;
+            gap: 20px;
+            align-items: stretch;
+        }
+
+        .hero-visual-box {
+            flex: 3;
+            position: relative;
+            border-radius: 4px;
+            overflow: hidden;
+            box-shadow: 0 10px 32px rgba(0,0,0,0.18);
+            min-height: 420px;
+        }
+        .hero-image-placeholder {
+            width: 100%; height: 100%;
+            object-fit: cover;
+            filter: brightness(0.55);
+            aspect-ratio: 16 / 9;
+        }
+        .hero-text-overlay {
+            position: absolute;
+            inset: 0;
+            background: linear-gradient(to right, rgba(0,0,0,0.74) 0%, rgba(0,0,0,0.22) 65%, transparent 100%);
+            display: flex;
+            align-items: flex-end;
+            padding: 36px;
+            color: var(--white);
+        }
+        .overlay-inner-content { max-width: 66%; }
+        .hero-post-title {
+            font-size: clamp(1.35rem, 2.4vw, 2.05rem);
+            font-weight: 700;
+            margin-bottom: 10px;
+            line-height: 1.25;
+        }
+        .hero-post-summary {
+            font-size: clamp(0.9rem, 1.4vw, 1.1rem);
+            margin-bottom: 22px;
+            opacity: 0.87;
+        }
+        .hero-cta-button {
+            display: inline-block;
+            background: var(--accent);
+            color: var(--white);
+            padding: 10px 22px;
+            border-radius: 4px;
+            font-size: 0.9rem;
+            font-weight: 600;
+            letter-spacing: 0.01em;
+            transition: background 0.2s;
+        }
+        .hero-cta-button:hover { background: var(--accent-dark); }
+
+        .hero-side-articles {
+            flex: 1;
+            display: flex;
+            flex-direction: column;
+            gap: 16px;
+            min-width: 0;
+        }
+        .hero-side-articles .news-grid-card { flex: 1; }
+        .hero-side-articles .card-image-placeholder { height: 150px; }
+
+
+        /* ─────────────────────────────────
+           SHARED CARD
+        ───────────────────────────────── */
+        .news-grid-card {
+            display: flex;
+            flex-direction: column;
+            border-radius: 4px;
+            overflow: hidden;
+            box-shadow: var(--card-shadow);
+            background: var(--white);
+            transition: transform 0.24s ease, box-shadow 0.24s ease;
+        }
+        .news-grid-card:hover {
+            transform: translateY(-4px);
+            box-shadow: var(--card-shadow-h);
+        }
+
+        .card-image-placeholder {
+            width: 100%;
+            height: 180px;
+            background: var(--bg-dark);
+            position: relative;
+            overflow: hidden;
+            flex-shrink: 0;
+        }
+        .card-bg-image {
+            width: 100%; height: 100%;
+            object-fit: cover;
+            opacity: 0.82;
+            transition: opacity 0.28s, transform 0.38s;
+        }
+        .news-grid-card:hover .card-bg-image { opacity: 1; transform: scale(1.04); }
+
+        .visual-label {
+            position: absolute;
+            bottom: 9px; right: 10px;
+            color: var(--white);
+            font-size: 0.72rem;
+            font-weight: 500;
+            padding: 3px 9px;
+            border-radius: 3px;
+            background: rgba(0,0,0,0.52);
+            z-index: 2;
+            white-space: nowrap;
+        }
+
+        .card-details {
+            padding: 16px 18px 20px;
+            flex-grow: 1;
+        }
+        .card-tag-date {
+            font-size: 0.72rem;
+            color: var(--accent);
+            font-weight: 600;
+            margin-bottom: 6px;
+            letter-spacing: 0.04em;
+            text-transform: uppercase;
+        }
+        .card-title {
+            font-size: 1.1rem;
+            font-weight: 600;
+            line-height: 1.4;
+            color: var(--text-dark);
+        }
+
+        /* ─────────────────────────────────
+           SECTION HEADER ROW
+        ───────────────────────────────── */
+        .all-news-section {
+            max-width: 1400px;
+            margin: 48px auto 80px;
+            padding: 0 40px;
+        }
+
+        .section-header-row {
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            margin-bottom: 28px;
+            gap: 12px;
+            flex-wrap: wrap;
+        }
+
+        .section-title-group {
+            display: flex;
+            align-items: center;
+            gap: 0;
+            position: relative;
+        }
+
+        .all-news-title {
+            font-size: 1.45rem;
+            font-weight: 700;
+            color: var(--text-dark);
+            letter-spacing: -0.01em;
+            white-space: nowrap;
+        }
+
+        /* ── TOPICS TRIGGER BUTTON ── */
+        .topics-trigger {
+            display: inline-flex;
+            align-items: center;
+            gap: 5px;
+            background: none;
+            border: 1px solid #000000;
+            cursor: pointer;
+            padding: 6px 8px 6px 8px;
+            font-family: 'Inter', sans-serif;
+            font-size: 0.8rem;
+            font-weight: 600;
+            color: #000000;
+            letter-spacing: 0.03em;
+            transition: color 0.18s;
+            user-select: none;
+            white-space: nowrap;
+            border-radius: 50px;
+            margin-left: 10px;
+        }
+        
+        .topics-trigger .trigger-icon {
+            font-size: 0.65rem;
+            transition: transform 0.24s ease, color 0.18s;
+        }
+        
+        .topics-trigger.open .trigger-icon { transform: rotate(180deg); }
+
+
+        /* ── DROPDOWN MENU ── */
+        .topics-dropdown {
+            position: absolute;
+            top: calc(100% + 8px);
+            left: 0;
+            width: 290px;
+            background: var(--white);
+            border-radius: 15px;
+            box-shadow: 0 8px 40px rgba(0,0,0,0.13), 0 2px 8px rgba(0,0,0,0.05);
+            padding: 6px;
+            z-index: 200;
+
+            opacity: 0;
+            visibility: hidden;
+            transform: translateY(-6px) scale(0.98);
+            transition: opacity 0.2s ease, transform 0.2s ease, visibility 0.2s;
+            pointer-events: none;
+            transform-origin: top left;
+        }
+        .topics-dropdown.open {
+            opacity: 1;
+            visibility: visible;
+            transform: translateY(0) scale(1);
+            pointer-events: auto;
+        }
+
+        .dropdown-section-label {
+            font-size: 0.66rem;
+            font-weight: 700;
+            color: var(--text-muted);
+            letter-spacing: 0.08em;
+            text-transform: uppercase;
+            padding: 8px 10px 4px;
+        }
+
+        .topic-item {
+            display: flex;
+            align-items: center;
+            gap: 10px;
+            padding: 8px 10px;
+            border-radius: 10px;
+            cursor: pointer;
+            transition: background 0.15s;
+            font-size: 1rem;
+            font-weight: 500;
+            color: var(--text-dark);
+            user-select: none;
+        }
+        .topic-item:hover { background: var(--bg-light); }
+        .topic-item.active {
+            background: #f4f4f4;
+            color: #000000;
+            font-weight: 600;
+        }
+
+        .topic-count {
+            margin-left: auto;
+            font-size: 1rem;
+            font-weight: 600;
+            color: var(--text-muted);
+            background: var(--bg-light);
+            padding: 2px 7px;
+            border-radius: 20px;
+            flex-shrink: 0;
+        }
+
+        .topic-item.active .topic-count { background: #cde5ff; color: var(--accent); }
+
+        .dropdown-divider {
+            height: 1px;
+            background: var(--border);
+            margin: 4px 6px;
+        }
+
+        /* ── Active filter pill ── */
+        .active-filter-pill {
+            display: none;
+            align-items: center;
+            gap: 5px;
+            background: #e8f4ff;
+            color: var(--accent);
+            font-size: 0.74rem;
+            font-weight: 600;
+            padding: 3px 8px 3px 10px;
+            border-radius: 20px;
+            margin-left: 10px;
+            letter-spacing: 0.02em;
+            white-space: nowrap;
+        }
+        .active-filter-pill.visible { display: flex; }
+        .active-filter-pill button {
+            background: none;
+            border: none;
+            color: var(--accent);
+            cursor: pointer;
+            font-size: 0.68rem;
+            display: flex;
+            align-items: center;
+            padding: 0;
+            margin-left: 1px;
+            transition: color 0.15s;
+            opacity: 0.7;
+        }
+        .active-filter-pill button:hover { opacity: 1; }
+
+        .result-count {
+            font-size: 0.8rem;
+            color: var(--text-muted);
+            font-weight: 500;
+            white-space: nowrap;
+        }
+
+
+        /* ─────────────────────────────────
+           4-COLUMN GRID
+        ───────────────────────────────── */
+        .news-card-grid {
+            display: grid;
+            grid-template-columns: repeat(4, 1fr);
+            gap: 22px;
+        }
+
+        .news-grid-card.hidden { display: none; }
+
+        .grid-empty-state {
+            grid-column: 1 / -1;
+            text-align: center;
+            padding: 64px 20px;
+            color: var(--text-muted);
+            font-size: 0.93rem;
+            display: none;
+        }
+        .grid-empty-state.visible { display: block; }
+        .grid-empty-state i {
+            font-size: 2rem;
+            margin-bottom: 12px;
+            color: var(--border);
+            display: block;
+        }
+
+
+        /* ─────────────────────────────────
+           PAGINATION
+        ───────────────────────────────── */
+        .pagination-bar {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            gap: 5px;
+            margin-top: 44px;
+            flex-wrap: wrap;
+        }
+
+        .pg-btn {
+            display: inline-flex;
+            align-items: center;
+            justify-content: center;
+            gap: 5px;
+            min-width: 38px;
+            height: 38px;
+            padding: 0 10px;
+            border: 2px solid var(--border);
+            border-radius: 50px;
+            background: var(--white);
+            font-family: 'Inter', sans-serif;
+            font-size: 1rem;
+            font-weight: 600;
+            color: var(--text-mid);
+            cursor: pointer;
+            transition: background 0.17s, border-color 0.17s, color 0.17s, transform 0.13s, box-shadow 0.17s;
+            user-select: none;
+            margin-top: 2rem;
+        }
+        .pg-btn:hover:not(:disabled) {
+            background: var(--bg-light);
+            border-color: #c5cadb;
+            color: var(--text-dark);
+        }
+        .pg-btn:active:not(:disabled) { transform: scale(0.94); }
+        .pg-btn.active {
+            background: var(--accent);
+            border-color: var(--accent);
+            color: var(--white);
+        }
+        .pg-btn.active:hover { background: var(--accent-dark); border-color: var(--accent-dark); }
+        .pg-btn:disabled { opacity: 0.32; cursor: not-allowed; }
+        .pg-btn.arrow { padding: 0 14px; }
+
+        .pg-ellipsis {
+            display: inline-flex;
+            align-items: center;
+            justify-content: center;
+            min-width: 32px;
+            height: 38px;
+            color: var(--text-muted);
+            font-size: 0.9rem;
+            font-weight: 600;
+            pointer-events: none;
+        }
+
+        .pagination-info {
+            text-align: center;
+            margin-top: 12px;
+            font-size: 1rem;
+            color: var(--text-muted);
+        }
+
+
+        /* ─────────────────────────────────
+           FOOTER
+        ───────────────────────────────── */
+        .defcon-news-footer {
+            padding: 28px 40px;
+            background: var(--bg-light);
+            text-align: center;
+            border-top: 1px solid var(--border);
+        }
+        .footer-text { font-size: 0.88rem; color: var(--text-muted); }
+
+
+        /* ─────────────────────────────────
+           RESPONSIVE
+        ───────────────────────────────── */
+        @media (max-width: 1280px) {
+            .news-card-grid { grid-template-columns: repeat(3, 1fr); }
+        }
+
+        @media (max-width: 1024px) {
+            .header-container,
+            .hero-content-wrapper,
+            .all-news-section { padding-left: 24px; padding-right: 24px; }
+
+            .hero-content-wrapper { flex-direction: column; }
+            .hero-visual-box { min-height: 360px; }
+
+            .hero-side-articles { flex-direction: row; }
+            .hero-side-articles .news-grid-card { flex: 1; min-width: 0; }
+            .hero-side-articles .card-image-placeholder { height: 130px; }
+
+            .news-card-grid { grid-template-columns: repeat(2, 1fr); }
+            .overlay-inner-content { max-width: 82%; }
+        }
+
+        @media (max-width: 680px) {
+            .defcon-news-header { padding: 72px 0 24px; }
+
+            .header-container,
+            .hero-content-wrapper,
+            .all-news-section { padding-left: 16px; padding-right: 16px; }
+
+            .hero-feature-banner { padding: 20px 0 32px; }
+            .hero-visual-box { min-height: 270px; }
+            .hero-text-overlay {
+                background: linear-gradient(to top, rgba(0,0,0,0.82) 0%, rgba(0,0,0,0.20) 60%, transparent 100%);
+                padding: 20px;
+            }
+            .overlay-inner-content { max-width: 100%; }
+            .hero-post-summary { display: none; }
+
+            .hero-side-articles { flex-direction: column; }
+            .hero-side-articles .card-image-placeholder { height: 160px; }
+
+            .news-card-grid { grid-template-columns: 1fr; gap: 16px; }
+
+            .section-header-row { flex-direction: column; align-items: flex-start; }
+
+            .topics-dropdown { width: calc(100vw - 32px); max-width: 320px; }
+
+            .all-news-section { margin-top: 32px; margin-bottom: 48px; }
+            .defcon-news-footer { padding: 24px 16px; }
+
+            .pg-btn { min-width: 34px; height: 34px; font-size: 0.76rem; border-radius: 8px; }
+        }
+
+        @media (max-width: 360px) {
+            .hero-visual-box { min-height: 230px; }
+        }
+    </style>
+</head>
+<body>
+
+    <!-- ── HEADER ── -->
+    <header class="defcon-news-header">
+        <div class="header-container">
+            <h1 class="header-title">Croloft Product News</h1>
+        </div>
+    </header>
+
+
+    <!-- ── HERO ── -->
+    <section class="hero-feature-banner">
+        <div class="hero-content-wrapper">
+
+            <div class="hero-visual-box">
+                <img
+                    src="thumbnails/pexels-dominick-davis.jpg"
+                    alt="Project Nexus launch"
+                    class="hero-image-placeholder"
+                    loading="eager"
+                    onerror="this.src='https://images.unsplash.com/photo-1451187580459-43490279c0fa?auto=format&fit=crop&w=1600&q=70'; this.onerror=null;"
+                >
+                <div class="hero-text-overlay">
+                    <div class="overlay-inner-content">
+                        <h2 class="hero-post-title">Project Nexus: Lock in DevOps Automation before the Crowd</h2>
+                        <p class="hero-post-summary">Get up to a 3-week head start with Nexus Integrated MLOps Pipelines and realize efficiency gains immediately.</p>
+                        <a href="#registry" class="hero-cta-button">Learn More About Nexus</a>
+                    </div>
+                </div>
+            </div>
+
+            <div class="hero-side-articles">
+                <a href="#" class="news-grid-card">
+                    <div class="card-image-placeholder">
+                        <img src="https://images.unsplash.com/photo-1667372393119-3d4c48d07fc9?auto=format&fit=crop&w=800&q=65" alt="Kubernetes" class="card-bg-image" loading="lazy">
+                        <span class="visual-label">Cloud Deployment</span>
+                    </div>
+                    <div class="card-details">
+                        <div class="card-tag-date">Infrastructure &mdash; 07 Oct 2025</div>
+                        <h3 class="card-title">Cloud: Simplified Kubernetes Cluster Deployment</h3>
+                    </div>
+                </a>
+                <a href="#" class="news-grid-card">
+                    <div class="card-image-placeholder">
+                        <img src="https://images.unsplash.com/photo-1672133796632-0e038caf2584?auto=format&fit=crop&w=800&q=65" alt="Mobile SDK" class="card-bg-image" loading="lazy">
+                        <span class="visual-label">Mobile App Framework V2</span>
+                    </div>
+                    <div class="card-details">
+                        <div class="card-tag-date">Software Dev &mdash; 08 Oct 2025</div>
+                        <h3 class="card-title">Mobile: Introducing Faster, Lighter SDK for Android/iOS</h3>
+                    </div>
+                </a>
+            </div>
+
+        </div>
+    </section>
+
+
+    <!-- ── ALL PRODUCT NEWS ── -->
+    <section class="all-news-section" id="registry">
+
+        <div class="section-header-row">
+
+            <div class="section-title-group">
+                <h2 class="all-news-title">All Product News</h2>
+
+                <!-- Active filter pill -->
+                <span class="active-filter-pill" id="activeFilterPill">
+                    <span id="activePillLabel"></span>
+                    <button id="clearFilter" aria-label="Clear filter">
+                        <i class="fas fa-times"></i>
+                    </button>
+                </span>
+
+                <!-- Dropdown trigger -->
+                <button class="topics-trigger" id="topicsTrigger" aria-haspopup="listbox" aria-expanded="false">
+                    Topics
+                    <i class="fas fa-chevron-down trigger-icon"></i>
+                </button>
+
+                <!-- Dropdown -->
+                <div class="topics-dropdown" id="topicsDropdown" role="listbox">
+
+                    <div class="dropdown-section-label">Browse by Topic</div>
+                    <div class="topic-item active" data-topic="all" role="option" tabindex="0">
+                        All Topics
+                        <span class="topic-count">12</span>
+                    </div>
+
+                    <div class="topic-item" data-topic="infrastructure" role="option" tabindex="0">
+                        Infrastructure
+                        <span class="topic-count">2</span>
+                    </div>
+                    <div class="topic-item" data-topic="devops" role="option" tabindex="0">
+                        DevOps
+                        <span class="topic-count">2</span>
+                    </div>
+                    <div class="topic-item" data-topic="software-dev" role="option" tabindex="0">
+                        Software Dev
+                        <span class="topic-count">2</span>
+                    </div>
+
+                    <div class="topic-item" data-topic="consulting-ai" role="option" tabindex="0">
+                        Consulting &amp; AI
+                        <span class="topic-count">2</span>
+                    </div>
+                    <div class="topic-item" data-topic="creative-studio" role="option" tabindex="0">
+                        Creative Studio
+                        <span class="topic-count">2</span>
+                    </div>
+                    <div class="topic-item" data-topic="smart-home" role="option" tabindex="0">
+                        Smart Home
+                        <span class="topic-count">2</span>
+                    </div>
+
+                </div>
+            </div>
+
+            <span class="result-count" id="resultCount">Showing 12 articles</span>
+        </div>
+
+
+        <!-- 4-column card grid -->
+        <div class="news-card-grid" id="newsGrid">
+
+            <a href="#" class="news-grid-card" data-topic="software-dev">
+                <div class="card-image-placeholder">
+                    <img src="https://images.unsplash.com/photo-1672133796632-0e038caf2584?auto=format&fit=crop&w=800&q=65" alt="Mobile SDK" class="card-bg-image" loading="lazy">
+                    <span class="visual-label">Mobile App Framework V2</span>
+                </div>
+                <div class="card-details">
+                    <div class="card-tag-date">Software Dev &mdash; 08 Oct 2025</div>
+                    <h3 class="card-title">Mobile: Introducing Faster, Lighter SDK for Android/iOS</h3>
+                </div>
+            </a>
+
+            <a href="#" class="news-grid-card" data-topic="infrastructure">
+                <div class="card-image-placeholder">
+                    <img src="https://images.unsplash.com/photo-1667372393119-3d4c48d07fc9?auto=format&fit=crop&w=800&q=65" alt="Kubernetes" class="card-bg-image" loading="lazy">
+                    <span class="visual-label">Cloud Deployment</span>
+                </div>
+                <div class="card-details">
+                    <div class="card-tag-date">Infrastructure &mdash; 07 Oct 2025</div>
+                    <h3 class="card-title">Cloud: Simplified Kubernetes Cluster Deployment</h3>
+                </div>
+            </a>
+
+            <a href="#" class="news-grid-card" data-topic="creative-studio">
+                <div class="card-image-placeholder">
+                    <img src="https://images.unsplash.com/photo-1574717024453-354056adc14b?auto=format&fit=crop&w=800&q=65" alt="8K video" class="card-bg-image" loading="lazy">
+                    <span class="visual-label">8K Video Studio</span>
+                </div>
+                <div class="card-details">
+                    <div class="card-tag-date">Creative Studio &mdash; 03 Oct 2025</div>
+                    <h3 class="card-title">Multimedia: 8K Video Production Capability Now Standard</h3>
+                </div>
+            </a>
+
+            <a href="#" class="news-grid-card" data-topic="consulting-ai">
+                <div class="card-image-placeholder">
+                    <img src="https://images.unsplash.com/photo-1620712943543-bcc4688e7485?auto=format&fit=crop&w=800&q=65" alt="AI governance" class="card-bg-image" loading="lazy">
+                    <span class="visual-label">Consulting &amp; AI</span>
+                </div>
+                <div class="card-details">
+                    <div class="card-tag-date">Consulting &amp; AI &mdash; 02 Oct 2025</div>
+                    <h3 class="card-title">Introducing LLM Audit &amp; Governance Packages</h3>
+                </div>
+            </a>
+
+            <a href="#" class="news-grid-card" data-topic="devops">
+                <div class="card-image-placeholder">
+                    <img src="https://images.unsplash.com/photo-1558494949-ef010cbdcc31?auto=format&fit=crop&w=800&q=65" alt="CI/CD" class="card-bg-image" loading="lazy">
+                    <span class="visual-label">CI/CD Pipeline</span>
+                </div>
+                <div class="card-details">
+                    <div class="card-tag-date">DevOps &mdash; 28 Sep 2025</div>
+                    <h3 class="card-title">CI/CD: Automated Compliance Check Integration</h3>
+                </div>
+            </a>
+
+            <a href="#" class="news-grid-card" data-topic="smart-home">
+                <div class="card-image-placeholder">
+                    <img src="https://images.unsplash.com/photo-1558618666-fcd25c85cd64?auto=format&fit=crop&w=800&q=65" alt="Smart home" class="card-bg-image" loading="lazy">
+                    <span class="visual-label">Smart Home Tech</span>
+                </div>
+                <div class="card-details">
+                    <div class="card-tag-date">Smart Home &mdash; 22 Sep 2025</div>
+                    <h3 class="card-title">Smart Home: New Energy Optimization Service Beta</h3>
+                </div>
+            </a>
+
+            <a href="#" class="news-grid-card" data-topic="devops">
+                <div class="card-image-placeholder">
+                    <img src="https://images.unsplash.com/photo-1504868584819-f8e8b4b6d7e3?auto=format&fit=crop&w=800&q=65" alt="Monitoring" class="card-bg-image" loading="lazy">
+                    <span class="visual-label">Observability</span>
+                </div>
+                <div class="card-details">
+                    <div class="card-tag-date">DevOps &mdash; 18 Sep 2025</div>
+                    <h3 class="card-title">Observability 2.0: Real-Time Anomaly Detection Now Live</h3>
+                </div>
+            </a>
+
+            <a href="#" class="news-grid-card" data-topic="infrastructure">
+                <div class="card-image-placeholder">
+                    <img src="https://images.unsplash.com/photo-1544197150-b99a580bb7a8?auto=format&fit=crop&w=800&q=65" alt="Edge computing" class="card-bg-image" loading="lazy">
+                    <span class="visual-label">Edge Computing</span>
+                </div>
+                <div class="card-details">
+                    <div class="card-tag-date">Infrastructure &mdash; 14 Sep 2025</div>
+                    <h3 class="card-title">Edge Nodes: Deploy at the Network Perimeter in Minutes</h3>
+                </div>
+            </a>
+
+            <a href="#" class="news-grid-card" data-topic="consulting-ai">
+                <div class="card-image-placeholder">
+                    <img src="https://images.unsplash.com/photo-1677442136019-21780ecad995?auto=format&fit=crop&w=800&q=65" alt="AI analytics" class="card-bg-image" loading="lazy">
+                    <span class="visual-label">AI Analytics</span>
+                </div>
+                <div class="card-details">
+                    <div class="card-tag-date">Consulting &amp; AI &mdash; 10 Sep 2025</div>
+                    <h3 class="card-title">Predictive Analytics Suite: Now Powered by GPT-4o</h3>
+                </div>
+            </a>
+
+            <a href="#" class="news-grid-card" data-topic="software-dev">
+                <div class="card-image-placeholder">
+                    <img src="https://images.unsplash.com/photo-1461749280684-dccba630e2f6?auto=format&fit=crop&w=800&q=65" alt="API platform" class="card-bg-image" loading="lazy">
+                    <span class="visual-label">API Platform</span>
+                </div>
+                <div class="card-details">
+                    <div class="card-tag-date">Software Dev &mdash; 05 Sep 2025</div>
+                    <h3 class="card-title">REST &amp; GraphQL Unified: One Gateway, Every Service</h3>
+                </div>
+            </a>
+
+            <a href="#" class="news-grid-card" data-topic="creative-studio">
+                <div class="card-image-placeholder">
+                    <img src="https://images.unsplash.com/photo-1593720213428-28a5b9e94613?auto=format&fit=crop&w=800&q=65" alt="Design system" class="card-bg-image" loading="lazy">
+                    <span class="visual-label">Design System</span>
+                </div>
+                <div class="card-details">
+                    <div class="card-tag-date">Creative Studio &mdash; 01 Sep 2025</div>
+                    <h3 class="card-title">Hyperion Design System v3: Dark Mode &amp; Accessibility First</h3>
+                </div>
+            </a>
+
+            <a href="#" class="news-grid-card" data-topic="smart-home">
+                <div class="card-image-placeholder">
+                    <img src="https://images.unsplash.com/photo-1586892478025-2b5472316f22?auto=format&fit=crop&w=800&q=65" alt="IoT security" class="card-bg-image" loading="lazy">
+                    <span class="visual-label">IoT Security</span>
+                </div>
+                <div class="card-details">
+                    <div class="card-tag-date">Smart Home &mdash; 26 Aug 2025</div>
+                    <h3 class="card-title">IoT Firmware Shield: Zero-Trust Security for Connected Devices</h3>
+                </div>
+            </a>
+
+            <!-- Empty state -->
+            <div class="grid-empty-state" id="emptyState">
+                <i class="fas fa-filter"></i>
+                No articles found for this topic.
+            </div>
+
+        </div>
+
+        <!-- Pagination -->
+        <div class="pagination-bar" id="paginationBar" role="navigation" aria-label="Article pagination"></div>
+        <p class="pagination-info" id="paginationInfo"></p>
+
+    </section>
+
+
+    <script>
+    (() => {
+        'use strict';
+
+        const CARDS_PER_PAGE = 8;
+
+        let currentTopic  = 'all';
+        let currentPage   = 1;
+        let filteredCards = [];
+
+        const trigger       = document.getElementById('topicsTrigger');
+        const dropdown      = document.getElementById('topicsDropdown');
+        const topicItems    = Array.from(dropdown.querySelectorAll('.topic-item'));
+        const allCards      = Array.from(document.querySelectorAll('#newsGrid .news-grid-card'));
+        const emptyState    = document.getElementById('emptyState');
+        const paginationBar = document.getElementById('paginationBar');
+        const paginationInfo= document.getElementById('paginationInfo');
+        const resultCount   = document.getElementById('resultCount');
+        const pill          = document.getElementById('activeFilterPill');
+        const pillLabel     = document.getElementById('activePillLabel');
+        const clearBtn      = document.getElementById('clearFilter');
+
+        const TOPIC_NAMES = {
+            'all':            'All Topics',
+            'infrastructure': 'Infrastructure',
+            'devops':         'DevOps',
+            'software-dev':   'Software Dev',
+            'consulting-ai':  'Consulting & AI',
+            'creative-studio':'Creative Studio',
+            'smart-home':     'Smart Home'
+        };
+
+
+        /* ── DROPDOWN ── */
+        function openDropdown() {
+            dropdown.classList.add('open');
+            trigger.classList.add('open');
+            trigger.setAttribute('aria-expanded', 'true');
+        }
+        function closeDropdown() {
+            dropdown.classList.remove('open');
+            trigger.classList.remove('open');
+            trigger.setAttribute('aria-expanded', 'false');
+        }
+
+        trigger.addEventListener('click', (e) => {
+            e.stopPropagation();
+            dropdown.classList.contains('open') ? closeDropdown() : openDropdown();
+        });
+
+        document.addEventListener('click', (e) => {
+            if (!dropdown.contains(e.target) && e.target !== trigger) closeDropdown();
+        });
+
+        document.addEventListener('keydown', (e) => {
+            if (e.key === 'Escape') closeDropdown();
+        });
+
+
+        /* ── TOPIC SELECTION ── */
+        function selectTopic(topic) {
+            currentTopic = topic;
+            currentPage  = 1;
+
+            topicItems.forEach(i => i.classList.toggle('active', i.dataset.topic === topic));
+
+            if (topic === 'all') {
+                pill.classList.remove('visible');
+            } else {
+                pillLabel.textContent = TOPIC_NAMES[topic] || topic;
+                pill.classList.add('visible');
+            }
+
+            closeDropdown();
+            applyFilter();
+        }
+
+        topicItems.forEach(item => {
+            item.addEventListener('click', () => selectTopic(item.dataset.topic));
+            item.addEventListener('keydown', (e) => {
+                if (e.key === 'Enter' || e.key === ' ') {
+                    e.preventDefault();
+                    selectTopic(item.dataset.topic);
+                }
+            });
+        });
+
+        clearBtn.addEventListener('click', (e) => {
+            e.stopPropagation();
+            selectTopic('all');
+        });
+
+
+        /* ── FILTER + RENDER ── */
+        function applyFilter() {
+            filteredCards = currentTopic === 'all'
+                ? allCards
+                : allCards.filter(c => c.dataset.topic === currentTopic);
+
+            // Hide everything first
+            allCards.forEach(c => c.classList.add('hidden'));
+
+            const count = filteredCards.length;
+            resultCount.textContent = count
+                ? `Showing ${count} article${count !== 1 ? 's' : ''}`
+                : 'No articles';
+
+            if (count === 0) {
+                emptyState.classList.add('visible');
+                paginationBar.innerHTML = '';
+                paginationInfo.textContent = '';
+                return;
+            }
+
+            emptyState.classList.remove('visible');
+            renderPage();
+            renderPagination();
+        }
+
+        function renderPage() {
+            const total      = filteredCards.length;
+            const totalPages = Math.ceil(total / CARDS_PER_PAGE);
+            currentPage = Math.max(1, Math.min(currentPage, totalPages));
+
+            const start = (currentPage - 1) * CARDS_PER_PAGE;
+            const end   = Math.min(start + CARDS_PER_PAGE, total);
+
+            filteredCards.forEach((card, i) => {
+                card.classList.toggle('hidden', i < start || i >= end);
+            });
+
+            paginationInfo.textContent = totalPages > 1
+                ? `Showing ${start + 1}–${end} of ${total} article${total !== 1 ? 's' : ''}`
+                : '';
+        }
+
+        function renderPagination() {
+            paginationBar.innerHTML = '';
+            const total      = filteredCards.length;
+            const totalPages = Math.ceil(total / CARDS_PER_PAGE);
+            if (totalPages <= 1) return;
+
+            // Prev
+            const prev = mkBtn(null, 'arrow', currentPage === 1);
+            prev.innerHTML = '<i class="fas fa-chevron-left" style="font-size:.62rem"></i> Prev';
+            prev.addEventListener('click', () => goTo(currentPage - 1));
+            paginationBar.appendChild(prev);
+
+            // Pages
+            pageRange(currentPage, totalPages).forEach(p => {
+                if (p === '…') {
+                    const el = document.createElement('span');
+                    el.className = 'pg-ellipsis';
+                    el.textContent = '…';
+                    paginationBar.appendChild(el);
+                } else {
+                    const btn = mkBtn(p, '', false);
+                    if (p === currentPage) btn.classList.add('active');
+                    btn.addEventListener('click', () => goTo(p));
+                    paginationBar.appendChild(btn);
+                }
+            });
+
+            // Next
+            const next = mkBtn(null, 'arrow', currentPage === totalPages);
+            next.innerHTML = 'Next <i class="fas fa-chevron-right" style="font-size:.62rem"></i>';
+            next.addEventListener('click', () => goTo(currentPage + 1));
+            paginationBar.appendChild(next);
+        }
+
+        function mkBtn(label, extra, disabled) {
+            const b = document.createElement('button');
+            b.className = 'pg-btn' + (extra ? ' ' + extra : '');
+            if (label !== null) b.textContent = label;
+            b.disabled = disabled;
+            return b;
+        }
+
+        function pageRange(cur, total) {
+            // Show first, last, current ±1, collapse rest with ellipsis
+            const set = new Set([1, total, cur - 1, cur, cur + 1].filter(n => n >= 1 && n <= total));
+            const sorted = [...set].sort((a, b) => a - b);
+            const result = [];
+            let prev = 0;
+            for (const n of sorted) {
+                if (prev && n - prev > 1) result.push('…');
+                result.push(n);
+                prev = n;
+            }
+            return result;
+        }
+
+        function goTo(page) {
+            currentPage = page;
+            renderPage();
+            renderPagination();
+            document.getElementById('registry').scrollIntoView({ behavior: 'smooth', block: 'start' });
+        }
+
+
+        /* ── SMOOTH SCROLL ── */
+        document.querySelectorAll('a[href^="#"]').forEach(a => {
+            a.addEventListener('click', function(e) {
+                const target = document.querySelector(this.getAttribute('href'));
+                if (!target) return;
+                e.preventDefault();
+                target.scrollIntoView({ behavior: 'smooth', block: 'start' });
+            });
+        });
+
+
+        /* ── INIT ── */
+        applyFilter();
+
+    })();
+    </script>
+
+</body>
+</html>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 
 <!DOCTYPE html>
@@ -44,506 +1133,305 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Defcon | Product News & Innovations</title>
-    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;600;700;900&display=swap" rel="stylesheet">
-    <link rel="stylesheet" href="defcon-product-news-grid.css">
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.2/css/all.min.css">
-</head>
-<body class="defcon-body-clean">
+    <title>IT Company Profile Section</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
 
-    <header class="defcon-news-header">
-        <div class="header-container">
-            <h1 class="header-title">Hyperion Product News</h1>
-        </div>
-    </header>
-
-    <section class="hero-feature-banner">
-        <div class="hero-content-wrapper">
-            <div class="hero-visual-box">
-                <img src="thumbnails/pexels-dominick-davis.jpg" alt="Defcon Project Nexus launch visual" class="hero-image-placeholder">
-                <div class="hero-text-overlay">
-                    <div class="overlay-inner-content">
-                        <h2 class="hero-post-title">Project Nexus: Lock in DevOps Automation before the Crowd</h2>
-                        <p class="hero-post-summary">Get up to a 3-week head start with Nexus Integrated MLOps Pipelines and realize efficiency gains immediately.</p>
-                        <a href="#nexus-details" class="hero-cta-button">Learn More About Nexus</a>
-                    </div>
-                </div>
-            </div>
-            
-            <div class="hero-side-articles">
-                <a href="#" class="news-grid-card">
-                <div class="card-image-placeholder">
-                    <img src="https://source.unsplash.com/600x400/?kubernetes,cloud,deployment" alt="Kubernetes cloud deployment" class="card-bg-image">
-                    <span class="visual-label">Cloud Deployment</span>
-                </div>
-                <div class="card-details">
-                    <div class="card-tag-date">INFRASTRUCTURE - 07 OCT 2025</div>
-                    <h3 class="card-title">Cloud: Simplified Kubernetes Cluster Deployment</h3>
-                </div>
-            </a>
-                <a href="#" class="news-grid-card">
-                <div class="card-image-placeholder">
-                    <img src="https://images.unsplash.com/photo-1672133796632-0e038caf2584?ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&q=80&w=1170" alt="Mobile app development" class="card-bg-image">
-                    <span class="visual-label">Mobile App Framework V2</span>
-                </div>
-                <div class="card-details">
-                    <div class="card-tag-date">SOFTWARE DEV - 08 OCT 2025</div>
-                    <h3 class="card-title">Mobile: Introducing Faster, Lighter SDK for Android/iOS</h3>
-                </div>
-            </a>
-            </div>
-        </div>
-    </section>
-
-    <section class="all-news-section" id="registry">
+    <style>
+        /* IMPORTANT NOTE ON FONTS: 
+        The design specifies "Circular Std". This is a commercial font and cannot be 
+        embedded directly via CDN without a license. 
         
-        <h2 class="all-news-title"><i class="fas fa-chevron-down"></i> ALL Product News</h2>
+        To use it perfectly, you must purchase the license, host the font files 
+        (woff2/woff), and update the @font-face src paths below.
+        
+        I have included a standard sans-serif fallback stack for now.
+        */
 
-        <div class="news-card-grid">
-            
-            <a href="#" class="news-grid-card">
-                <div class="card-image-placeholder">
-                    <img src="https://images.unsplash.com/photo-1672133796632-0e038caf2584?ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&q=80&w=1170" alt="Mobile app development" class="card-bg-image">
-                    <span class="visual-label">Mobile App Framework V2</span>
-                </div>
-                <div class="card-details">
-                    <div class="card-tag-date">SOFTWARE DEV - 08 OCT 2025</div>
-                    <h3 class="card-title">Mobile: Introducing Faster, Lighter SDK for Android/iOS</h3>
-                </div>
-            </a>
-            
-            <a href="#" class="news-grid-card">
-                <div class="card-image-placeholder">
-                    <img src="https://source.unsplash.com/600x400/?kubernetes,cloud,deployment" alt="Kubernetes cloud deployment" class="card-bg-image">
-                    <span class="visual-label">Cloud Deployment</span>
-                </div>
-                <div class="card-details">
-                    <div class="card-tag-date">INFRASTRUCTURE - 07 OCT 2025</div>
-                    <h3 class="card-title">Cloud: Simplified Kubernetes Cluster Deployment</h3>
-                </div>
-            </a>
-            
-            <a href="#" class="news-grid-card">
-                <div class="card-image-placeholder">
-                    <img src="https://source.unsplash.com/600x400/?video,production,8k" alt="8K video production studio" class="card-bg-image">
-                    <span class="visual-label">8K Video Studio</span>
-                </div>
-                <div class="card-details">
-                    <div class="card-tag-date">CREATIVE STUDIO - 03 OCT 2025</div>
-                    <h3 class="card-title">Multimedia: 8K Video Production Capability Now Standard</h3>
-                </div>
-            </a>
-            
-            <a href="#" class="news-grid-card">
-                <div class="card-image-placeholder">
-                    <img src="https://source.unsplash.com/600x400/?ai,llm,governance" alt="AI LLM governance" class="card-bg-image">
-                    <span class="visual-label">Consulting & AI</span>
-                </div>
-                <div class="card-details">
-                    <div class="card-tag-date">CONSULTING & AI - 02 OCT 2025</div>
-                    <h3 class="card-title">Introducing LLM Audit & Governance Packages</h3>
-                </div>
-            </a>
-
-            <a href="#" class="news-grid-card">
-                <div class="card-image-placeholder">
-                    <img src="https://source.unsplash.com/600x400/?devops,security,compliance" alt="DevOps automated compliance" class="card-bg-image">
-                    <span class="visual-label">CI/CD Pipeline</span>
-                </div>
-                <div class="card-details">
-                    <div class="card-tag-date">DEVOPS - 28 SEP 2025</div>
-                    <h3 class="card-title">CI/CD: Automated Compliance Check Integration</h3>
-                </div>
-            </a>
-
-            <a href="#" class="news-grid-card">
-                <div class="card-image-placeholder">
-                    <img src="https://source.unsplash.com/600x400/?smart,home,energy" alt="Smart home energy optimization" class="card-bg-image">
-                    <span class="visual-label">Smart Home Tech</span>
-                </div>
-                <div class="card-details">
-                    <div class="card-tag-date">SMART HOME - 22 SEP 2025</div>
-                    <h3 class="card-title">Smart Home: New Energy Optimization Service Beta</h3>
-                </div>
-            </a>
-
-        </div>
-
-    </section>
-
-    <footer class="defcon-news-footer">
-        <p class="footer-text">Defcon: Building the future, one innovation at a time.</p>
-    </footer>
-
-    <script src="https://kit.fontawesome.com/your-font-awesome-kit.js"></script>
-    <script src="defcon-product-news-grid.js"></script>
-</body>
-</html>
-
-<style>
-    /* GLOBAL STYLES & FONT */
-* {
-    margin: 0;
-    padding: 0;
-    box-sizing: border-box;
-}
-
-@font-face {
+        @font-face {
             font-family: 'Circular Std';
-            src: local('Circular Std'), url('fonts/circular-std.ttf') format('woff'),
-                 url('fonts/CircularStd-Bold.ttf') format('woff');;
-            font-weight: normal;
+            /* REPLACE THESE URLS WITH YOUR ACTUAL HOSTED FONT PATHS */
+            src: url('/fonts/CircularStd-Medium.woff2') format('woff2'),
+                 url('/fonts/CircularStd-Medium.woff') format('woff');
+            font-weight: 500;
             font-style: normal;
+            font-display: swap;
         }
 
-body.defcon-body-clean {
-    font-family: 'Circular Std', sans-serif;
-    background-color: var(--color-white);
-    color: var(--color-text-dark);
-    line-height: 1.6;
-}
+        @font-face {
+            font-family: 'Circular Std';
+            /* REPLACE THESE URLS WITH YOUR ACTUAL HOSTED FONT PATHS */
+            src: url('/fonts/CircularStd-Book.woff2') format('woff2'),
+                 url('/fonts/CircularStd-Book.woff') format('woff');
+            font-weight: 400;
+            font-style: normal;
+            font-display: swap;
+        }
 
-a {
-    text-decoration: none;
-    color: var(--color-text-dark);
-}
+        /* --- Scoped CSS Start (Prefix: itco-) --- */
 
-/* Color Palette Variables */
-:root {
-    --color-accent-blue: #0091ff;
-    --color-black: #000;
-    --color-white: #fff;
-    --color-light-gray: #f4f4f4;
-    --color-text-dark: #212121;
-    --color-border-subtle: #e0e0e0;
-    --color-bg-dark: #00091e; /* A very dark blue for high contrast visuals */
-}
+        :root {
+            /* Defining colors based on the image palette: charcoal, white, grey */
+            --itco-bg-charcoal-dark: #0e0e2c; /* The main deep background */
+            --itco-bg-charcoal-accent: #1e1743; /* The lighter box behind the image */
+            --itco-text-white: #ffffff;
+            --itco-text-grey: #b8b8d0; /* Slightly bluish grey for better harmony */
+        }
 
-/* --- Header --- */
-.defcon-news-header {
-    background: var(--color-bg-dark) url('https://source.unsplash.com/1600x300/?abstract,tech') no-repeat center center;
-    background-size: cover;
-    padding: 150px 0 20px;
-    position: relative;
-}
-.defcon-news-header::before {
-    content: '';
-    position: absolute;
-    top: 0;
-    left: 0;
-    width: 100%;
-    height: 100%;
-    background: rgba(0, 0, 0, 0.6); /* Dark overlay for text readability */
-    z-index: 1;
-}
-.header-container {
-    max-width: 1400px;
-    margin: 0 auto;
-    padding: 0 40px;
-    position: relative; /* Ensure text is above overlay */
-    z-index: 2;
-}
-.header-title {
-    font-size: 2.9rem;
-    font-weight: 500;
-    color: var(--color-white);
-    letter-spacing: -0.04em;
-}
+        /* Resets for this section to ensure isolation */
+        .itco-section-reset {
+            box-sizing: border-box;
+            margin: 0;
+            padding: 0;
+            line-height: 1.5;
+            -webkit-font-smoothing: antialiased;
+        }
 
-/* --- HERO FEATURE BANNER --- */
-.hero-feature-banner {
-    background-color: var(--color-white);
-    padding: 30px 0 50px;
-}
-.hero-content-wrapper {
-    max-width: 1400px;
-    margin: 0 auto;
-    padding: 0 40px;
-    display: flex;
-    gap: 20px;
-}
+        .itco-section-reset *, .itco-section-reset *::before, .itco-section-reset *::after {
+            box-sizing: inherit;
+        }
 
-.hero-visual-box {
-    flex: 3;
-    position: relative;
-    height: auto;
-    border-radius: 1px;
-    overflow: hidden;
-    box-shadow: 0 10px 30px rgba(0, 0, 0, 0.2);
-}
+        /* Main Wrapper to maintain 1200px width */
+        .itco-hero-wrapper {
+            width: 100%;
+            display: flex;
+            justify-content: center;
+            background-color: var(--itco-bg-charcoal-dark);
+            padding: 200px 20px; /* Vertical padding, horizontal gap for smaller screens */
+        }
 
-.hero-image-placeholder {
-    width: 100%;
-    height: 608px;
-    object-fit: cover;
-    display: block; /* Ensures image fills the container */
-    filter: brightness(0.6); /* Darken image */
-}
+        .itco-hero-container {
+            width: 100%;
+            max-width: 1200px;
+            display: flex;
+            align-items: center; /* Vertically center content */
+            justify-content: space-between;
+            gap: 80px; /* Space between image column and text column */
+            font-family: 'Circular Std', -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
+        }
 
-.hero-text-overlay {
-    position: absolute;
-    top: 0;
-    left: 0;
-    width: 100%;
-    height: 100%;
-    background: linear-gradient(to right, rgba(0, 0, 0, 0.7), rgba(0, 0, 0, 0.3)); /* Stronger gradient for contrast */
-    display: flex;
-    align-items: flex-end;
-    color: var(--color-white);
-    padding: 30px;
-}
-.overlay-inner-content {
-    max-width: 70%;
-}
-.hero-post-title {
-    font-size: 2.3rem;
-    font-weight: 600;
-    margin-bottom: 10px;
-    line-height: 1.2;
-    text-shadow: 0 2px 5px var(--color-black);
-}
-.hero-post-summary {
-    font-size: 1.3rem;
-    margin-bottom: 20px;
-}
-.hero-cta-button {
-    display: inline-block;
-    background-color: var(--color-accent-blue);
-    color: var(--color-white);
-    padding: 10px 20px;
-    border-radius: 1px;
-    font-weight: 500;
-}
-.hero-cta-button:hover {
-    background-color: #0077d4;
-}
+        /* --- Left Column (Image & Icons) --- */
+        .itco-media-column {
+            flex: 0 0 auto;
+            position: relative;
+            /* Ensuring enough space for the offset elements */
+            padding-bottom: 20px; 
+            padding-left: 20px;
+        }
 
-/* Side Articles */
-.hero-side-articles {
-    flex: 1;
-    display: flex;
-    flex-direction: column;
-    gap: 15px;
-}
-.side-article-card {
-    background-color: var(--color-light-gray);
-    padding: 15px;
-    border-radius: 1px;
-    border: 1px solid var(--color-border-subtle);
-    display: block;
-    overflow: hidden; /* Ensure image fits */
-    height: 317px;
-}
-.side-article-card:hover {
-    background-color: #eee;
-}
-.side-tag {
-    font-size: 0.75rem;
-    color: var(--color-accent-blue);
-    font-weight: 500;
-    margin-bottom: 5px;
-}
-.side-title {
-    font-size: 1rem;
-    font-weight: 600;
-    line-height: 1.4;
-    color: var(--color-text-dark);
-}
-.side-visual-placeholder {
-    height: 200px;
-    background-color: #ddd;
-    margin-top: 10px;
-    border-radius: 1px;
-    overflow: hidden; /* Ensure image fits */
-}
-.side-visual-placeholder img {
-    width: 100%;
-    height: 100%;
-    object-fit: cover;
-    display: block;
-}
+        /* Container for the image overlap effect */
+        .itco-image-stack {
+            position: relative;
+            width: 320px;
+            height: 400px;
+            z-index: 1;
+        }
+
+        /* The actual image */
+        .itco-profile-img {
+            position: absolute;
+            top: 0;
+            right: 0;
+            width: 320px;
+            height: 400px;
+            object-fit: cover;
+            z-index: 3; /* Sits on top */
+            border-radius: 2px;
+        }
+
+        /* The lighter charcoal box behind the image */
+        .itco-image-backdrop {
+            position: absolute;
+            top: 80px; /* Shifted down */
+            right: 60px; /* Shifted left relative to image right edge */
+            width: 320px;
+            height: 400px;
+            background-color: var(--itco-bg-charcoal-accent);
+            z-index: 2; /* Sits behind image */
+            border-radius: 2px;
+            border: 1px solid #423c5ddd;
+        }
+
+        /* Social Icons Row */
+        .itco-social-row {
+            display: flex;
+            gap: 25px;
+            margin-top: 29px;
+            /* Aligning icons with the backdrop box edge */
+            margin-left: -30px; 
+            position: relative;
+            z-index: 4;
+        }
+
+        .itco-social-link {
+            color: var(--itco-text-white);
+            font-size: 18px;
+            text-decoration: none;
+            transition: opacity 0.3s ease;
+        }
+
+        .itco-social-link:hover {
+            opacity: 0.7;
+        }
 
 
-/* --- ALL PRODUCT NEWS SECTION --- */
-.all-news-section {
-    max-width: 1400px;
-    margin: 50px auto 80px;
-    padding: 0 40px;
-}
+        /* --- Right Column (Text) --- */
+        .itco-content-column {
+            flex: 1; /* Takes remaining space */
+        }
 
-.all-news-title {
-    font-size: 1.8rem;
-    font-weight: 600;
-    color: var(--color-text-dark);
-    margin-bottom: 40px;
-}
-.all-news-title i {
-    color: var(--color-accent-blue);
-    margin-right: 10px;
-    font-size: 1.2rem;
-}
+        .itco-headline {
+            color: var(--itco-text-white);
+            font-size: 40px;
+            font-weight: 400; /* Medium weight matches design */
+            line-height: 1.3;
+            margin-bottom: 32px;
+            letter-spacing: -0.5px;
+        }
 
-.news-card-grid { 
-    display: grid;
-    grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
-    gap: 30px;
-}
+        .itco-description {
+            color: var(--itco-text-grey);
+            font-size: 18px;
+            line-height: 1.6;
+            font-weight: 400;
+        }
 
-.news-grid-card {
-    display: flex;
-    flex-direction: column;
-    border-radius: 1px;
-    overflow: hidden;
-    box-shadow: 0 4px 15px rgba(0, 0, 0, 0.05);
-    transition: transform 0.3s ease, box-shadow 0.3s ease;
-}
-.news-grid-card:hover {
-    transform: translateY(-5px);
-    box-shadow: 0 10px 25px rgba(0, 0, 0, 0.1);
-}
+        /* --- Basic Responsiveness --- */
+        @media screen and (max-width: 992px) {
+            .itco-hero-container {
+                flex-direction: column;
+                text-align: center;
+                gap: 60px;
+            }
 
-.card-image-placeholder {
-    width: 100%;
-    height: 180px;
-    background-color: var(--color-bg-dark); /* Dark background for visuals */
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    position: relative;
-    overflow: hidden;
-}
+            .itco-media-column {
+                padding-left: 0;
+                margin: 0 auto; /* Center the stack block */
+            }
 
-.card-bg-image {
-    width: 100%;
-    height: 100%;
-    object-fit: cover;
-    display: block;
-    opacity: 0.7; /* Make images slightly subdued for text */
-}
+            /* Recenter stack for mobile view */
+            .itco-image-stack {
+               margin-left: 25px; /* Compensate for the backdrop shift to center visually */
+            }
 
-.visual-label {
-    position: absolute;
-    bottom: 10px;
-    right: 10px;
-    color: var(--color-white);
-    font-size: 0.8rem;
-    font-weight: 500;
-    padding: 3px 8px;
-    border-radius: 1px;
-    background: rgba(0, 0, 0, 0.5);
-    font-family: 'Circular Std', sans-serif;
-    z-index: 2; /* Ensure label is above image */
-}
+            .itco-social-row {
+                justify-content: center;
+                margin-left: 0;
+            }
 
-.card-details {
-    padding: 20px;
-    background-color: var(--color-white);
-    flex-grow: 1;
-}
+            .itco-headline {
+                font-size: 32px;
+            }
 
-.card-tag-date {
-    font-size: 0.9rem;
-    color: var(--color-accent-blue);
-    font-weight: 500;
-    margin-bottom: 8px;
-}
+            .itco-profile-img { }
 
-.card-title {
-    font-size: 1.2rem;
-    font-weight: 500;
-    line-height: 1.3;
-    color: var(--color-text-dark);
-}
+            .itco-image-backdrop {
+                right: 30px;
+            }
+        }
+        /* --- Scoped CSS End --- */
+
+        .underline-svg {
+            position: absolute;
+            bottom: -25px;
+            left: -5%;
+            width: 110%;
+            height: 30px;
+            overflow: visible;
+        }
+        
+        .underline-svg path {
+            stroke: #0091ff;
+            stroke-width: 2;
+            stroke-linecap: round;
+            fill: none;
+            stroke-dasharray: 300; /* Approximate length of the path */
+            stroke-dashoffset: 300;
+            animation: draw 1.5s ease-out 0.5s forwards;
+        }
+        
+        @keyframes draw {
+            to {
+                stroke-dashoffset: 0;
+            }
+        }
+    </style>
+</head>
+<body >
+
+    <div class="itco-section-reset itco-hero-wrapper">
+        <div class="itco-hero-container">
+            
+            <div class="itco-media-column">
+                <div class="itco-image-stack">
+                    <img src="https://images.unsplash.com/photo-1553877522-43269d4ea984?q=80&w=1470&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D" alt="John Smith Web Developer working on laptop" class="itco-profile-img">
+                    <div class="itco-image-backdrop"></div>
+                </div>
+
+                <div class="itco-social-row">
+                    <a href="#" class="itco-social-link" aria-label="Twitter"><i class="fab fa-twitter"></i></a>
+                    <a href="#" class="itco-social-link" aria-label="Facebook"><i class="fab fa-facebook-f"></i></a>
+                    <a href="#" class="itco-social-link" aria-label="Discord"><i class="fab fa-discord"></i></a>
+                    <a href="#" class="itco-social-link" aria-label="YouTube"><i class="fab fa-youtube"></i></a>
+                </div>
+            </div>
+
+            <div class="itco-content-column">
+                <h1 class="itco-headline">I’m John Smith, <span style="color: #0070f0; position: relative;">Product Manager
+                    <svg class="underline-svg" viewBox="0 0 196 20" fill="none" xmlns="http://www.w3.org/2000/svg">
+                        <path d="M3 16.9998C30.4988 9.39999 91.2223 -6.38075 193 11.0002"/>
+                    </svg>
+                </span> at Croloft. I’m passionate about crafting exceptional websites. With a blend of design skills and coding expertise, I create unique online experiences that captivate users.</h1>
+                <p class="itco-description">Looking for a top-notch web developer to revamp your hotel’s website? Look no further than John Smith. With years of experience and a keen eye for design, John can take your site to the next level, helping you attract more visitors and boost your bookings.</p>
+            </div>
+
+        </div>
+    </div>
+    </body>
+</html>
 
 
-/* --- Footer --- */
-.defcon-news-footer {
-    padding: 30px 40px;
-    background-color: var(--color-light-gray);
-    text-align: center;
-    border-top: 1px solid var(--color-border-subtle);
-}
-.footer-text {
-    font-size: 0.9rem;
-    color: #666;
-}
 
-/* RESPONSIVENESS */
-@media (max-width: 1024px) {
-    .hero-content-wrapper {
-        flex-direction: column;
-        padding: 0 20px;
-    }
-    .hero-visual-box {
-        height: 350px;
-    }
-    .hero-side-articles {
-        flex-direction: row;
-        gap: 10px;
-    }
-    .side-article-card {
-        flex: 1;
-    }
-    /* Re-enable side visual placeholder image on smaller screens */
-    .side-visual-placeholder {
-        display: block;
-    }
-    .hero-text-overlay {
-        align-items: center; /* Center text vertically if space is tight */
-        text-align: center;
-        background: linear-gradient(to top, rgba(0, 0, 0, 0.7), rgba(0, 0, 0, 0.3)); /* Adjust gradient for better readability */
-    }
-    .overlay-inner-content {
-        max-width: 90%;
-    }
-    .news-card-grid {
-        grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
-    }
-}
 
-@media (max-width: 768px) {
-    .header-title {
-        font-size: 2rem;
-    }
-    .hero-post-title {
-        font-size: 1.8rem;
-    }
-    .hero-side-articles {
-        flex-direction: column;
-    }
-    .all-news-section {
-        padding: 0 20px;
-    }
-    .news-card-grid {
-        grid-template-columns: 1fr;
-    }
-}
-</style>
 
-<script>
-    document.addEventListener('DOMContentLoaded', () => {
 
-    /**
-     * Smooth Scrolling for internal links (CTAs and navigation)
-     */
-    document.querySelectorAll('a[href^="#"]').forEach(anchor => {
-        anchor.addEventListener('click', function (e) {
-            e.preventDefault();
 
-            const targetId = this.getAttribute('href');
-            document.querySelector(targetId).scrollIntoView({
-                behavior: 'smooth',
-                block: 'start'
-            });
-        });
-    });
 
-    // The ticker animation JavaScript was removed in the previous iteration
-    // as it was deemed "cluttered" and removed. 
-    // This JS file now primarily serves smooth scrolling.
 
-});
-</script>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 
 <cronos-footer></cronos-footer>
