@@ -67,7 +67,7 @@
             --container-padding: 100px 20px;
             --section-padding-mobile: 60px 0;
             --section-padding-tablet: 80px 0;
-            --section-padding-desktop: 100px 0;
+            --section-padding-desktop: 50px 0;
             --font-size-xs: 14px;
             --font-size-sm: 16px;
             --font-size-md: 18px;
@@ -526,202 +526,6 @@
                 text-decoration: underline;
             }
         }
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-/* --- Premium Safe Dial CSS (MASSIVE HERO VERSION) --- */
-.dial-wrapper {
-    position: relative;
-    width: 100%;
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    margin-top: 80px; 
-    padding-bottom: 40px;
-    overflow: visible; /* Ensures shadows don't get cut off */
-}
-
-/* BASE SIZE: 500px 
-   This is the desktop size. 
-*/
-.dial-outer-ring {
-    width: 500px;
-    height: 500px;
-    border-radius: 50%;
-    /* Advanced metallic gradient */
-    background: linear-gradient(135deg, #e0e0e0 0%, #f3f3f3 40%, #ffffff 50%, #d9d9d9 100%);
-    box-shadow: 
-        -20px -20px 60px rgb(195, 195, 195),
-        20px 20px 60px rgba(0, 0, 0, 0.2),
-        inset 0 0 0 4px rgba(255,255,255,0.5); /* Thicker rim */
-    position: relative;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    flex-shrink: 0; /* Prevents oval squishing */
-}
-
-/* The Indicator Line */
-.dial-indicator {
-    position: absolute;
-    top: 10px;
-    width: 4px;
-    height: 30px;
-    background-color: #2b2b2b; /* Changed to red for high contrast/security look */
-    z-index: 10;
-}
-
-/* The Rotating Face: 400px */
-.dial-face {
-    width: 400px;
-    height: 400px;
-    border-radius: 50%;
-    background: conic-gradient(from 180deg, #e6e6e6, #ffffff, #e6e6e6, #cccccc, #e6e6e6);
-    position: relative;
-    box-shadow: 
-        inset 4px 4px 10px rgba(255,255,255,0.9),
-        inset -4px -4px 10px rgba(0,0,0,0.1),
-        0 10px 30px rgba(0,0,0,0.15);
-    transition: transform 0s linear;
-    will-change: transform;
-}
-
-/* Ticks */
-.dial-ticks {
-    position: absolute;
-    inset: 15px;
-    border-radius: 50%;
-    background: 
-        radial-gradient(transparent 65%, #e6e6e6 65%),
-        conic-gradient(
-            rgba(0,0,0,0.6) 0 0.6deg, 
-            transparent 0.6deg 3.6deg
-        );
-    mask-image: radial-gradient(transparent 64%, black 65%);
-    -webkit-mask-image: radial-gradient(transparent 64%, black 65%);
-    opacity: 0.7;
-}
-
-/* Numbers */
-.dial-numbers {
-    position: absolute;
-    inset: 0;
-    font-family: 'Inter', sans-serif;
-    font-weight: 700;
-    color: #000000;
-    font-size: 18px; /* Larger, readable font */
-}
-
-.dial-numbers span {
-    position: absolute;
-    top: 50%;
-    left: 50%;
-    width: 40px;
-    height: 40px;
-    margin-left: -20px;
-    margin-top: -20px;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-}
-
-/* Number Positioning Math:
-   Radius is roughly 200px. We want numbers at ~165px from center.
-*/
-.dial-numbers span:nth-child(1) { transform: rotate(0deg) translate(0, -165px) rotate(0deg); }
-.dial-numbers span:nth-child(2) { transform: rotate(36deg) translate(0, -165px) rotate(-36deg); }
-.dial-numbers span:nth-child(3) { transform: rotate(72deg) translate(0, -165px) rotate(-72deg); }
-.dial-numbers span:nth-child(4) { transform: rotate(108deg) translate(0, -165px) rotate(-108deg); }
-.dial-numbers span:nth-child(5) { transform: rotate(144deg) translate(0, -165px) rotate(-144deg); }
-.dial-numbers span:nth-child(6) { transform: rotate(180deg) translate(0, -165px) rotate(-180deg); }
-.dial-numbers span:nth-child(7) { transform: rotate(216deg) translate(0, -165px) rotate(-216deg); }
-.dial-numbers span:nth-child(8) { transform: rotate(252deg) translate(0, -165px) rotate(-252deg); }
-.dial-numbers span:nth-child(9) { transform: rotate(288deg) translate(0, -165px) rotate(-288deg); }
-.dial-numbers span:nth-child(10) { transform: rotate(324deg) translate(0, -165px) rotate(-324deg); }
-
-/* Center Knob: 240px */
-.dial-knob {
-    position: absolute;
-    top: 50%;
-    left: 50%;
-    transform: translate(-50%, -50%);
-    width: 240px;
-    height: 240px;
-    border-radius: 50%;
-    background: repeating-conic-gradient(
-        #cccccc 0deg 0.5deg,
-        #f5f5f5 0.5deg 1deg
-    );
-    box-shadow: 
-        0 10px 25px rgba(0,0,0,0.3),
-        inset 0 2px 5px rgba(255,255,255,1);
-    display: flex;
-    align-items: center;
-    justify-content: center;
-}
-
-/* Inner Knob Face: 200px */
-.dial-knob-inner {
-    width: 200px;
-    height: 200px;
-    border-radius: 50%;
-    background: radial-gradient(circle at 30% 30%, #ffffff, #dcdcdc);
-    box-shadow: 
-        inset 0 0 20px rgba(0,0,0,0.1),
-        0 4px 10px rgba(0,0,0,0.1);
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    border: 1px solid rgba(255,255,255,0.8);
-}
-
-.dial-logo-hex {
-    width: 80px;
-    height: 80px;
-    color: #999;
-    opacity: 0.5;
-}
-
-/* --- MOBILE RESPONSIVENESS --- 
-   This ensures perfect circular shape on all devices.
-   Instead of changing width (which creates ovals), we ZOOM OUT.
-*/
-
-/* Tablet: Scale down slightly */
-@media (max-width: 768px) {
-    .dial-wrapper {
-        margin-top: 50px;
-        /* Reduce height of container to account for the visual scaling */
-        margin-bottom: -50px; 
-    }
-    .dial-outer-ring {
-        transform: scale(0.8); 
-    }
-}
-
-/* Mobile: Scale down significantly (500px -> ~300px visual) */
-@media (max-width: 550px) {
-    .dial-wrapper {
-        margin-top: 30px;
-        margin-bottom: -100px; /* Pull content up since the dial visually shrinks */
-    }
-    .dial-outer-ring {
-        transform: scale(0.6); 
-    }
-}
     </style>
 </head>
 <body>
@@ -735,32 +539,518 @@
                 achieving successful digital transformation.
             </p>
 
-            <div class="dial-wrapper">
-    <div class="dial-outer-ring">
-        <div class="dial-indicator"></div>
-        
-        <div class="dial-face" id="securityDial">
-            <div class="dial-ticks"></div>
-            <div class="dial-numbers">
-                <span>0</span><span>10</span><span>20</span><span>30</span>
-                <span>40</span><span>50</span><span>60</span><span>70</span>
-                <span>80</span><span>90</span>
-            </div>
-            <div class="dial-knob">
-                <div class="dial-knob-inner">
-                    <div class="dial-logo-hex">
-                        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5">
-                            <path d="M12 2L2 8l0 8l10 6l10 -6l0 -8z" opacity="0.5"/>
-                            <path d="M12 22V12" opacity="0.3"/>
-                            <path d="M12 12L2 8" opacity="0.3"/>
-                            <path d="M12 12l10 -4" opacity="0.3"/>
-                        </svg>
-                    </div>
-                </div>
-            </div>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Premium Safe Dial</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=DM+Mono:wght@500&display=swap" rel="stylesheet">
+
+<style>
+  *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+  #body-sv {
+    min-height: 100vh;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    background: #e4e4e4;
+    background-image:
+      radial-gradient(ellipse at 25% 20%, #efefef 0%, transparent 55%),
+      radial-gradient(ellipse at 78% 82%, #d4d4d4 0%, transparent 55%);
+  }
+
+  /* ── wrapper: just centers everything, no extra space ── */
+  .dial-wrapper {
+    position: relative;
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+  }
+
+  /* ══════════════════════════════════════════
+     RING 1 — outer platform (shadow base + metallic bevel)
+     This is the STATIC, non-rotating outer ring.
+     The indicator notch lives HERE on the inner edge.
+  ══════════════════════════════════════════ */
+  .dial-outer-ring {
+    width: 500px;
+    height: 500px;
+    border-radius: 50%;
+    flex-shrink: 0;
+    position: relative;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    margin-top: 100px;
+    /* Heavy saucer shadow */
+    box-shadow:
+      0 45px 110px rgba(0,0,0,0.50),
+      0 18px 45px  rgba(0,0,0,0.32),
+      0  5px 14px  rgba(0,0,0,0.20),
+      inset 0 1px 0 rgba(255,255,255,0.70),
+      inset 0 -1px 0 rgba(0,0,0,0.18);
+
+    background:
+      /* top-left gloss arc */
+      radial-gradient(ellipse at 28% 18%, rgba(255,255,255,0.65) 0%, transparent 52%),
+      /* bottom-right shadow arc */
+      radial-gradient(ellipse at 74% 82%, rgba(0,0,0,0.30) 0%, transparent 48%),
+      /* brushed conic steel */
+      conic-gradient(
+        from 0deg,
+        #b2b2b2 0deg, #d2d2d2 25deg, #ececec 55deg,
+        #f7f7f7 90deg, #e4e4e4 120deg, #cccccc 150deg,
+        #b4b4b4 180deg, #d0d0d0 205deg, #eaeaea 235deg,
+        #f6f6f6 270deg, #e2e2e2 300deg, #c8c8c8 330deg,
+        #b2b2b2 360deg
+      );
+  }
+
+  /* ── INDICATOR NOTCH — fixed on inner edge of outer ring ──
+     A small triangular pointer that points inward toward the dial face numbers.
+     Positioned at the top-center of the inner edge of the outer ring.
+  ── */
+  .dial-indicator {
+    position: absolute;
+    /* Sits at the inner boundary of the outer ring.
+       Outer ring = 500px, inner rotating face = 380px.
+       Gap between them = (500-380)/2 = 60px.
+       We place the indicator so its tip touches the face. */
+    top: 24px;             /* from top of outer ring, inset from edge */
+    left: 50%;
+    transform: translateX(-50%);
+    z-index: 20;
+    width: 0;
+    height: 0;
+    /* Downward-pointing triangle — tip points toward dial face */
+    border-left:   7px solid transparent;
+    border-right:  7px solid transparent;
+    border-top:    20px solid #1c1c1c;
+    filter: drop-shadow(0 2px 3px rgba(0,0,0,0.45));
+  }
+
+  /* Small rectangle above triangle as the "pin stem" */
+  .dial-indicator::before {
+    content: '';
+    position: absolute;
+    bottom: 100%;
+    left: 50%;
+    transform: translateX(-50%);
+    width: 4px;
+    height: 10px;
+    background: #1c1c1c;
+    border-radius: 2px 2px 0 0;
+  }
+
+
+  /* ══════════════════════════════════════════
+     RING 2 — rotating dial face
+     Contains: tick marks (SVG), numbers (SVG), and the knob.
+  ══════════════════════════════════════════ */
+  .dial-face {
+    width: 380px;
+    height: 380px;
+    border-radius: 50%;
+    flex-shrink: 0;
+    position: relative;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    cursor: grab;
+    user-select: none;
+    will-change: transform;
+
+    box-shadow:
+      0 0 0 2.5px rgba(255,255,255,0.75),
+      0 0 0 5px    rgba(0,0,0,0.22),
+      inset 0  5px 14px rgba(255,255,255,0.65),
+      inset 0 -5px 14px rgba(0,0,0,0.20),
+      0 10px 28px rgba(0,0,0,0.28);
+
+    background:
+      radial-gradient(ellipse at 33% 22%, rgba(255,255,255,0.58) 0%, transparent 54%),
+      radial-gradient(ellipse at 68% 80%, rgba(0,0,0,0.22) 0%, transparent 46%),
+      conic-gradient(
+        from 90deg,
+        #d0d0d0 0deg, #e8e8e8 38deg, #f6f6f6 75deg,
+        #eeeeee 105deg, #dedede 140deg, #c8c8c8 180deg,
+        #d6d6d6 218deg, #eeeeee 255deg, #f6f6f6 282deg,
+        #e6e6e6 318deg, #d0d0d0 360deg
+      );
+  }
+  .dial-face:active { cursor: grabbing; }
+
+  /* The SVG tick + number overlay covers the full face */
+  .dial-face-svg {
+    position: absolute;
+    inset: 0;
+    width: 100%;
+    height: 100%;
+    pointer-events: none;
+    overflow: visible;
+  }
+
+
+  /* ══════════════════════════════════════════
+     CENTER KNOB (2 layers: knurled ring + polished face)
+  ══════════════════════════════════════════ */
+  .dial-knob {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    width: 200px;
+    height: 200px;
+    border-radius: 50%;
+    z-index: 10;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+
+    box-shadow:
+      0 0 0 2px rgba(255,255,255,0.60),
+      0 0 0 4px rgba(0,0,0,0.24),
+      0 14px 36px rgba(0,0,0,0.42),
+      0  4px 10px rgba(0,0,0,0.22),
+      inset 0 3px 8px rgba(255,255,255,0.55),
+      inset 0 -3px 8px rgba(0,0,0,0.18);
+
+    background:
+      radial-gradient(ellipse at 38% 16%, rgba(255,255,255,0.50) 0%, transparent 48%),
+      radial-gradient(ellipse at 64% 86%, rgba(0,0,0,0.28) 0%, transparent 44%),
+      /* knurled serration pattern */
+      repeating-conic-gradient(
+        #a8a8a8 0deg 1.0deg,
+        #e6e6e6 1.0deg 2.0deg,
+        #cccccc 2.0deg 3.0deg
+      );
+  }
+
+  .dial-knob-inner {
+    width: 158px;
+    height: 158px;
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+
+    box-shadow:
+      0 0 0 1.5px rgba(255,255,255,0.80),
+      0 0 0 3px rgba(0,0,0,0.18),
+      inset 0 7px 22px rgba(255,255,255,0.70),
+      inset 0 -7px 22px rgba(0,0,0,0.20),
+      inset 0 0 44px rgba(0,0,0,0.07),
+      0 5px 16px rgba(0,0,0,0.26);
+
+    background:
+      radial-gradient(ellipse at 30% 22%, rgba(255,255,255,0.92) 0%, rgba(255,255,255,0.20) 35%, transparent 58%),
+      radial-gradient(ellipse at 72% 78%, rgba(0,0,0,0.22) 0%, transparent 48%),
+      radial-gradient(circle at 50% 45%, #f5f5f5 0%, #dcdcdc 55%, #c8c8c8 100%);
+  }
+
+  /* Hexagon emblem */
+  .dial-emblem {
+    width: 66px;
+    height: 66px;
+    opacity: 0.38;
+    filter: drop-shadow(0 1px 2px rgba(0,0,0,0.28));
+  }
+  .dial-emblem svg { width: 100%; height: 100%; }
+
+
+  /* ══════════════════════════════════════════
+     RESPONSIVE — uniform scale keeps perfect circle
+  ══════════════════════════════════════════ */
+  @media (max-width: 860px) {
+    .dial-outer-ring { transform: scale(0.80); }
+    .dial-wrapper    { width: 400px; height: 400px; }
+  }
+  @media (max-width: 580px) {
+    .dial-outer-ring { transform: scale(0.60); }
+    .dial-wrapper    { width: 300px; height: 300px; }
+  }
+  @media (max-width: 380px) {
+    .dial-outer-ring { transform: scale(0.48); }
+    .dial-wrapper    { width: 240px; height: 240px; }
+  }
+</style>
+</head>
+<body-sv>
+
+<div class="dial-wrapper">
+
+  <!-- RING 1: Static outer ring with indicator notch -->
+  <div class="dial-outer-ring">
+
+    <!-- Indicator: fixed, inside the outer ring, pointing at the dial face -->
+    <div class="dial-indicator"></div>
+
+    <!-- RING 2: Rotating dial face -->
+    <div class="dial-face" id="securityDial">
+
+      <!--
+        SVG face overlay: draws all 100 tick marks + 10 numbers.
+        viewBox matches the element: 380×380, center = (190,190).
+        Outer radius of face = 190px.
+        Tick zone outer edge  = 185px from center
+        Tick zone inner edge  = 168px from center (minor), 158px (major)
+        Numbers               = 148px from center (inside tick zone)
+      -->
+      <svg class="dial-face-svg" viewBox="0 0 380 380" xmlns="http://www.w3.org/2000/svg">
+        <g id="ticks-and-numbers"></g>
+      </svg>
+
+      <!-- Knob sits on top of SVG -->
+      <div class="dial-knob">
+        <div class="dial-knob-inner">
+          <div class="dial-emblem">
+           <svg version="1.0" xmlns="http://www.w3.org/2000/svg"  width="231.000000pt" height="246.000000pt" viewBox="0 0 231.000000 246.000000"  preserveAspectRatio="xMidYMid meet"> <g transform="translate(0.000000,246.000000) scale(0.100000,-0.100000)" fill="#000000" stroke="none"> <path d="M177 2439 c7 -7 15 -10 18 -7 3 3 -2 9 -12 12 -14 6 -15 5 -6 -5z"/> <path d="M270 2407 c-36 -12 -64 -27 -63 -34 2 -7 -3 -10 -10 -7 -26 10 -105 -75 -143 -152 -34 -68 -37 -82 -41 -177 l-3 -102 17 43 c9 23 21 42 25 42 14 0 311 -145 388 -190 713 -413 1250 -1059 1286 -1547 6 -80 -3 -168 -21 -215 -7 -17 3 -18 122 -18 148 0 208 14 288 64 64 42 100 84 139 166 l31 65 2 285 3 285 -21 -40 c-12 -22 -23 -41 -24 -43 -2 -2 -34 16 -71 39 -643 390 -1054 907 -1054 1325 0 101 31 230 53 221 93 -37 98 -40 91 -56 -21 -52 -34 -111 -34 -161 0 -349 365 -824 895 -1164 50 -32 108 -70 130 -85 l40 -27 -5 605 -5 606 -27 58 c-38 80 -82 133 -143 172 -104 67 -72 65 -969 65 l-811 -1 -65 -22z m100 -8 c-12 -9 -11 -10 5 -4 28 10 755 13 761 3 3 -4 0 -8 -6 -8 -6 0 -9 -4 -5 -9 3 -5 1 -12 -4 -15 -42 -26 -24 -371 23 -438 8 -11 12 -27 9 -34 -3 -8 0 -14 6 -14 6 0 10 -3 9 -7 -1 -5 9 -30 21 -57 12 -27 19 -57 16 -65 -5 -13 -4 -13 6 -4 10 10 17 3 34 -33 12 -24 25 -41 30 -37 4 5 5 3 2 -4 -4 -6 -1 -17 6 -25 8 -7 12 -19 9 -26 -2 -7 2 -11 10 -10 7 2 12 -5 12 -14 -1 -10 2 -16 6 -13 8 5 58 -64 72 -97 4 -10 14 -18 22 -18 8 0 18 -4 21 -10 4 -6 -1 -7 -11 -3 -12 4 -15 3 -10 -5 4 -7 12 -12 17 -12 6 0 24 -14 41 -30 16 -17 27 -30 24 -30 -3 0 4 -11 16 -25 11 -13 26 -22 31 -18 6 3 7 1 3 -5 -3 -6 -2 -14 4 -17 8 -5 7 -12 -2 -23 -11 -15 -11 -15 4 -4 11 9 18 10 23 2 3 -6 12 -7 18 -4 7 4 9 4 5 -1 -4 -4 14 -23 40 -43 26 -19 39 -32 29 -28 -11 3 -16 2 -12 -4 3 -6 12 -10 20 -10 8 0 18 -7 23 -16 5 -9 13 -15 18 -14 5 1 12 -9 16 -22 3 -13 6 -17 7 -10 1 6 6 12 12 12 5 0 8 -4 5 -9 -3 -5 1 -12 10 -15 8 -3 12 -11 8 -17 -4 -8 -3 -9 4 -5 6 4 19 0 29 -8 52 -43 104 -83 128 -101 16 -11 33 -25 39 -31 6 -6 16 -9 22 -7 6 2 16 -8 24 -22 7 -14 17 -25 22 -25 5 0 6 5 3 10 -10 16 5 12 32 -10 14 -11 22 -20 17 -20 -4 0 8 -9 29 -20 20 -11 54 -29 75 -40 20 -12 45 -19 55 -16 11 3 16 0 14 -7 -3 -7 -10 -11 -17 -9 -10 2 -11 0 -2 -10 13 -16 19 -329 6 -349 -4 -8 -3 -9 4 -5 7 4 11 -3 9 -23 -1 -16 -6 -27 -11 -24 -4 3 -5 -4 -1 -16 4 -12 2 -28 -5 -36 -6 -8 -9 -19 -5 -25 3 -5 1 -10 -6 -10 -7 0 -9 -3 -6 -7 4 -3 -2 -12 -12 -19 -10 -8 -22 -26 -25 -41 -7 -27 -81 -105 -91 -95 -3 3 -5 0 -5 -7 0 -7 -4 -10 -9 -7 -12 8 -42 -4 -36 -14 13 -20 -303 -46 -323 -26 -3 3 -1 6 4 6 10 0 12 17 13 130 1 96 -6 170 -19 185 -5 6 -7 14 -4 17 3 3 -1 22 -10 41 -8 19 -12 38 -9 40 2 3 -7 27 -20 54 -13 26 -23 58 -21 71 2 13 0 21 -5 18 -10 -6 -66 100 -64 121 0 7 -3 11 -7 8 -4 -3 -10 2 -14 10 -3 8 -1 17 4 20 6 4 10 12 10 18 0 7 -4 6 -10 -3 -5 -8 -11 -12 -13 -10 -35 44 -57 81 -53 89 4 5 1 13 -5 17 -8 5 -9 3 -4 -6 6 -9 4 -11 -4 -5 -7 4 -11 16 -8 26 3 10 0 22 -5 26 -7 3 -8 1 -4 -5 4 -7 3 -12 -2 -12 -14 0 -55 72 -55 95 1 11 -1 14 -4 8 -3 -7 -9 -13 -14 -13 -6 0 -7 5 -4 10 3 6 1 10 -5 10 -6 0 -8 5 -5 10 3 6 -1 10 -9 10 -18 0 -21 16 -6 23 6 3 5 4 -2 3 -16 -4 -58 40 -58 59 0 8 -5 17 -12 21 -7 5 -8 3 -3 -7 5 -8 -5 0 -21 16 -19 20 -27 34 -21 42 6 9 3 11 -13 8 -16 -3 -26 5 -42 30 -11 19 -25 32 -30 29 -6 -4 -8 -1 -6 7 3 8 11 13 17 12 16 -4 14 2 -6 18 -9 8 -14 9 -10 3 4 -7 0 -14 -8 -18 -10 -3 -15 1 -15 11 0 9 -3 14 -6 10 -7 -6 -64 42 -64 55 0 4 5 8 11 8 5 0 7 -6 3 -12 -5 -9 -3 -9 9 1 25 20 9 35 -19 17 -21 -15 -23 -15 -17 1 4 10 2 14 -4 10 -6 -4 -14 0 -17 9 -3 8 -11 12 -17 8 -8 -4 -9 -3 -5 4 4 7 2 12 -4 12 -6 0 -8 5 -5 10 4 6 11 8 16 5 15 -10 10 2 -8 16 -9 8 -14 9 -10 3 4 -7 0 -15 -9 -18 -12 -5 -15 -2 -10 9 3 10 2 13 -5 10 -5 -4 -19 3 -30 16 -10 12 -19 19 -19 16 0 -3 -11 5 -25 18 -13 14 -29 25 -35 25 -5 0 -10 7 -10 15 0 8 -6 12 -13 9 -7 -2 -24 4 -37 16 -13 11 -19 20 -14 20 9 1 -26 24 -36 25 -9 0 -62 39 -91 67 -16 14 -29 24 -29 21 0 -3 -6 0 -13 6 -8 6 -18 7 -22 3 -5 -4 -5 1 -2 10 4 11 2 15 -7 12 -7 -3 -20 1 -27 9 -14 14 -54 37 -98 57 -20 9 -21 12 -10 27 13 14 12 15 -6 6 -24 -12 -48 -6 -38 10 4 6 0 8 -10 4 -8 -3 -21 0 -27 8 -6 7 -35 23 -65 35 -30 12 -52 27 -49 32 3 5 -2 9 -12 8 -32 -4 -40 0 -24 11 13 9 12 10 -3 5 -17 -6 -64 17 -79 39 -5 6 -8 5 -8 -2 0 -7 -5 -13 -11 -13 -5 0 -7 5 -3 12 5 8 2 9 -9 5 -10 -3 -17 -2 -17 2 0 5 -7 12 -16 15 -8 3 -12 2 -9 -3 3 -5 -8 -3 -25 5 -22 12 -30 22 -30 42 0 19 3 23 9 13 6 -9 10 -1 14 25 4 22 8 49 10 61 6 33 53 98 82 113 14 7 23 15 20 18 -2 3 -13 -1 -22 -9 -17 -12 -17 -12 -1 5 11 13 22 16 35 11 31 -14 40 -13 40 1 0 10 -4 11 -12 4 -9 -7 -17 -5 -26 7 -9 11 -10 14 -1 9 6 -4 12 -3 12 1 0 13 89 55 101 48 5 -4 9 -2 9 4 0 9 24 15 70 19 13 2 13 0 0 -9z m1575 1 c-2 -3 17 -6 41 -7 26 -1 56 -10 74 -23 16 -12 30 -19 30 -16 0 3 17 -10 37 -29 20 -19 40 -35 44 -35 10 0 48 -66 71 -125 19 -47 20 -71 19 -360 0 -170 -1 -419 -2 -552 0 -134 3 -248 6 -254 14 -21 -6 -22 -29 0 -13 12 -27 21 -32 19 -15 -4 -55 22 -49 32 3 6 -1 7 -9 4 -9 -3 -16 -2 -16 3 0 5 -18 19 -40 32 -22 12 -40 28 -39 34 0 9 2 8 6 0 2 -7 9 -13 15 -13 6 0 5 7 -3 16 -12 14 -14 14 -24 0 -11 -14 -15 -12 -36 12 -22 25 -22 25 -1 8 12 -11 22 -14 22 -9 0 11 -26 26 -46 28 -5 0 -26 15 -45 33 -18 17 -40 32 -48 32 -11 0 -11 3 -1 15 11 13 10 14 -2 10 -15 -6 -62 27 -101 70 -10 11 -16 13 -12 5 4 -8 0 -6 -9 4 -8 10 -13 23 -9 29 3 6 2 7 -4 4 -5 -3 -34 17 -64 46 -85 82 -145 154 -108 131 8 -4 8 0 0 15 -13 24 -23 28 -15 6 4 -8 3 -15 -1 -15 -8 0 -52 52 -54 63 0 4 -11 18 -23 31 -34 36 -122 166 -112 166 3 0 -3 12 -14 28 -10 15 -17 33 -14 41 3 8 0 11 -7 7 -11 -7 -15 5 -12 32 1 6 -2 12 -7 12 -13 0 -54 124 -55 169 -1 21 -4 37 -7 36 -3 -2 -6 21 -7 51 0 30 2 54 6 54 3 0 7 18 8 41 0 22 7 54 13 70 11 25 10 32 -4 42 -13 9 56 12 328 13 190 0 343 -2 341 -6z m278 -2145 c-3 -9 -8 -14 -10 -11 -3 3 -2 9 2 15 9 16 15 13 8 -4z"/> <path d="M684 1723 c1 -7 6 -16 11 -20 4 -5 5 -2 0 6 -6 10 -4 13 7 9 8 -4 15 -1 15 6 0 6 -8 12 -17 12 -10 0 -17 -6 -16 -13z"/> <path d="M843 1614 c-7 -7 -9 -15 -5 -17 4 -3 13 1 19 9 7 7 9 15 5 17 -4 3 -13 -1 -19 -9z"/> <path d="M915 1569 c-19 -9 -19 -9 2 -5 12 2 24 -1 27 -8 3 -8 5 -8 5 1 1 17 -11 22 -34 12z"/> <path d="M1226 1248 c3 -5 10 -6 15 -3 13 9 11 12 -6 12 -8 0 -12 -4 -9 -9z"/> <path d="M1610 1233 c0 -5 10 -18 23 -29 l22 -19 -20 25 c-11 14 -21 27 -22 29 -2 2 -3 0 -3 -6z"/> <path d="M1419 1087 c6 -8 7 -18 3 -22 -4 -5 -1 -5 6 -1 10 6 10 11 1 22 -6 8 -14 14 -16 14 -3 0 0 -6 6 -13z"/> <path d="M1943 955 c0 -8 4 -12 9 -9 5 3 6 10 3 15 -9 13 -12 11 -12 -6z"/> <path d="M2055 890 c-3 -6 1 -7 9 -4 18 7 21 14 7 14 -6 0 -13 -4 -16 -10z"/> <path d="M2170 816 c0 -2 7 -7 16 -10 8 -3 12 -2 9 4 -6 10 -25 14 -25 6z"/> <path d="M2166 267 c3 -10 9 -15 12 -12 3 3 0 11 -7 18 -10 9 -11 8 -5 -6z"/> <path d="M2005 110 c-3 -6 1 -7 9 -4 18 7 21 14 7 14 -6 0 -13 -4 -16 -10z"/> <path d="M2170 2240 c-6 -11 -8 -20 -6 -20 3 0 10 9 16 20 6 11 8 20 6 20 -3 0 -10 -9 -16 -20z"/> <path d="M1410 1810 c-8 -5 -18 -6 -24 -3 -5 3 -6 1 -2 -5 4 -6 14 -8 23 -5 12 5 15 2 10 -10 -9 -23 0 -21 13 2 12 23 1 34 -20 21z"/> <path d="M1640 1481 c0 -5 5 -13 10 -16 6 -3 10 -2 10 4 0 5 -4 13 -10 16 -5 3 -10 2 -10 -4z"/> <path d="M2031 1177 c2 -1 11 -8 21 -15 12 -10 18 -10 24 -1 4 7 3 9 -4 5 -6 -3 -13 -2 -17 4 -3 5 -11 10 -17 10 -6 0 -9 -1 -7 -3z"/> <path d="M10 1147 c0 -672 2 -770 16 -818 40 -133 131 -224 263 -263 48 -14 139 -16 730 -15 640 1 673 2 623 18 -40 12 -51 19 -46 31 18 41 25 130 15 200 -48 357 -361 796 -826 1161 -207 162 -509 344 -705 423 -35 14 -65 26 -67 26 -2 0 -3 -343 -3 -763z m34 721 c-5 -8 -2 -9 9 -5 9 3 19 2 22 -4 4 -5 12 -6 18 -2 8 4 7 1 -1 -9 -10 -13 -10 -18 -1 -24 8 -5 9 -3 4 6 -6 10 -4 12 9 7 11 -5 15 -3 10 5 -10 15 58 -23 73 -42 9 -11 12 -11 13 -2 0 10 4 10 19 0 11 -7 17 -16 14 -21 -3 -4 1 -7 8 -6 20 4 59 -11 59 -22 0 -5 6 -9 13 -9 6 0 23 -12 36 -25 13 -14 28 -25 34 -25 6 0 2 -7 -9 -16 -18 -14 -18 -14 6 -3 l24 12 -22 15 c-12 8 -22 20 -22 26 0 7 3 8 8 0 7 -10 99 -74 107 -74 11 0 60 -54 57 -64 -2 -7 1 -7 9 2 15 14 33 16 24 2 -3 -5 3 -10 14 -10 11 0 26 -6 33 -13 7 -7 25 -21 40 -31 15 -10 25 -23 21 -29 -3 -5 -2 -7 4 -4 5 4 23 -7 38 -23 15 -16 33 -26 39 -23 6 4 4 -2 -4 -12 -14 -17 -14 -18 9 -5 21 11 23 10 18 -4 -4 -10 -3 -15 1 -13 4 3 18 1 31 -4 18 -7 21 -12 12 -23 -11 -14 -5 -26 13 -26 6 0 4 5 -4 10 -29 19 0 10 32 -10 18 -11 29 -20 23 -20 -5 0 -2 -5 8 -11 9 -5 17 -15 17 -22 0 -7 -4 -6 -10 3 -5 8 -10 10 -10 4 0 -6 8 -18 17 -25 9 -8 14 -9 10 -3 -4 7 1 15 10 18 10 4 15 4 11 1 -6 -6 37 -55 49 -55 11 0 53 -45 53 -57 0 -7 4 -13 8 -13 19 0 99 -86 96 -103 -1 -11 0 -16 4 -13 9 9 72 -56 65 -67 -4 -6 -1 -7 6 -3 8 5 14 0 18 -13 3 -12 9 -21 13 -21 17 0 52 -61 45 -78 -9 -23 -8 -25 10 -28 13 -2 14 1 4 12 -6 8 -8 14 -3 14 11 0 55 -54 74 -90 7 -13 19 -31 27 -38 7 -8 11 -18 7 -23 -3 -5 6 -19 21 -30 19 -16 24 -26 19 -43 -4 -11 -3 -18 1 -14 8 8 46 -45 49 -68 1 -7 7 -18 12 -25 12 -15 23 -55 56 -189 20 -84 21 -227 3 -272 -7 -17 -46 -18 -636 -18 -601 0 -631 1 -681 20 -28 11 -54 23 -57 28 -3 4 -23 21 -45 37 -44 33 -90 100 -80 117 4 6 3 8 -3 5 -6 -4 -14 0 -17 9 -4 10 -2 13 6 8 6 -4 4 3 -5 17 -9 13 -17 28 -17 34 0 5 5 3 10 -5 5 -8 10 -10 10 -4 0 6 -7 17 -15 24 -13 11 -15 104 -15 731 0 673 1 719 18 729 16 11 16 11 0 6 -14 -4 -18 0 -18 19 0 14 5 25 11 25 5 0 7 -5 3 -12z"/> <path d="M245 1750 c-3 -6 1 -7 9 -4 18 7 21 14 7 14 -6 0 -13 -4 -16 -10z"/> <path d="M590 1560 c0 -5 5 -10 11 -10 5 0 7 5 4 10 -3 6 -8 10 -11 10 -2 0 -4 -4 -4 -10z"/> <path d="M1160 1051 c0 -10 19 -25 25 -20 1 2 -3 10 -11 17 -8 7 -14 8 -14 3z"/> <path d="M1390 739 c0 -5 5 -7 10 -4 6 3 10 8 10 11 0 2 -4 4 -10 4 -5 0 -10 -5 -10 -11z"/> <path d="M1366 1693 c-6 -14 -5 -15 5 -6 7 7 10 15 7 18 -3 3 -9 -2 -12 -12z"/> <path d="M845 1480 c-4 -6 -11 -7 -17 -4 -7 4 -8 2 -4 -5 6 -9 11 -9 22 0 14 11 18 19 10 19 -3 0 -8 -5 -11 -10z"/> <path d="M876 1458 c3 -5 10 -6 15 -3 13 9 11 12 -6 12 -8 0 -12 -4 -9 -9z"/> <path d="M1560 1416 c0 -2 7 -9 15 -16 9 -7 15 -8 15 -2 0 5 -7 12 -15 16 -8 3 -15 4 -15 2z"/> <path d="M1656 1312 c-3 -5 1 -9 9 -9 8 0 12 4 9 9 -3 4 -7 8 -9 8 -2 0 -6 -4 -9 -8z"/> </g> </svg>
+          </div>
         </div>
+      </div>
+
     </div>
+    <!-- /dial-face -->
+
+  </div>
+  <!-- /dial-outer-ring -->
+
 </div>
+<!-- /dial-wrapper -->
+
+
+<script>
+(() => {
+  'use strict';
+
+  /* ══════════════════════════════════════
+     BUILD SVG TICK MARKS + NUMBERS
+     100 ticks total (every 3.6°).
+     Every 10th tick = major (longer, darker).
+     10 numbers at major tick positions.
+  ══════════════════════════════════════ */
+  const svgNS  = 'http://www.w3.org/2000/svg';
+  const group  = document.getElementById('ticks-and-numbers');
+  const cx = 190, cy = 190;          // center of 380×380 viewBox
+
+  const R_OUTER_TICK  = 178;         // outer tip of all ticks (near edge)
+  const R_MINOR_INNER = 166;         // inner base of minor ticks
+  const R_MAJOR_INNER = 156;         // inner base of major ticks (longer)
+  const R_NUMBERS     = 142;         // radius where numbers are centered
+
+  const TOTAL_TICKS   = 100;         // one per 3.6°
+  const numbers       = [0,10,20,30,40,50,60,70,80,90];
+
+  for (let i = 0; i < TOTAL_TICKS; i++) {
+    const isMajor = (i % 10 === 0);
+    const angleDeg = (i / TOTAL_TICKS) * 360;   // 0° = top
+    const angleRad = (angleDeg - 90) * Math.PI / 180; // SVG: 0° = right, so offset -90
+
+    /* Tick mark */
+    const innerR = isMajor ? R_MAJOR_INNER : R_MINOR_INNER;
+    const x1 = cx + R_OUTER_TICK * Math.cos(angleRad);
+    const y1 = cy + R_OUTER_TICK * Math.sin(angleRad);
+    const x2 = cx + innerR       * Math.cos(angleRad);
+    const y2 = cy + innerR       * Math.sin(angleRad);
+
+    const line = document.createElementNS(svgNS, 'line');
+    line.setAttribute('x1', x1.toFixed(2));
+    line.setAttribute('y1', y1.toFixed(2));
+    line.setAttribute('x2', x2.toFixed(2));
+    line.setAttribute('y2', y2.toFixed(2));
+    line.setAttribute('stroke', isMajor ? 'rgba(0,0,0,0.72)' : 'rgba(0,0,0,0.38)');
+    line.setAttribute('stroke-width', isMajor ? '2.2' : '1.1');
+    line.setAttribute('stroke-linecap', 'round');
+    group.appendChild(line);
+
+    /* Number at every major tick */
+    if (isMajor) {
+      const numIndex = (i / 10);
+      const label    = numbers[numIndex];
+      const nx = cx + R_NUMBERS * Math.cos(angleRad);
+      const ny = cy + R_NUMBERS * Math.sin(angleRad);
+
+      const text = document.createElementNS(svgNS, 'text');
+      text.setAttribute('x', nx.toFixed(2));
+      text.setAttribute('y', ny.toFixed(2));
+      text.setAttribute('text-anchor', 'middle');
+      text.setAttribute('dominant-baseline', 'central');
+      text.setAttribute('font-family', "'DM Mono', monospace");
+      text.setAttribute('font-size', '17');
+      text.setAttribute('font-weight', '500');
+      text.setAttribute('fill', '#111111');
+      text.setAttribute('letter-spacing', '-0.5');
+      text.textContent = label;
+      group.appendChild(text);
+    }
+  }
+
+
+  /* ══════════════════════════════════════
+     DRAG-TO-SPIN WITH INERTIA
+  ══════════════════════════════════════ */
+  const dial = document.getElementById('securityDial');
+  let currentAngle = 0;
+  let isDragging   = false;
+  let lastAngle    = 0;
+  let velocity     = 0;
+  let lastTime     = 0;
+  let rafId        = null;
+
+  function getAngle(cx, cy, px, py) {
+    return Math.atan2(py - cy, px - cx) * (180 / Math.PI);
+  }
+
+  function getCenter() {
+    const r = dial.getBoundingClientRect();
+    return { x: r.left + r.width / 2, y: r.top + r.height / 2 };
+  }
+
+  function applyRotation(angle) {
+    dial.style.transform = `rotate(${angle}deg)`;
+  }
+
+  function applyInertia() {
+    if (Math.abs(velocity) < 0.06) { velocity = 0; return; }
+    velocity     *= 0.93;
+    currentAngle += velocity;
+    applyRotation(currentAngle);
+    rafId = requestAnimationFrame(applyInertia);
+  }
+
+  /* Mouse */
+  dial.addEventListener('mousedown', (e) => {
+    e.preventDefault();
+    if (rafId) { cancelAnimationFrame(rafId); rafId = null; }
+    isDragging = true;
+    const c = getCenter();
+    lastAngle = getAngle(c.x, c.y, e.clientX, e.clientY);
+    lastTime  = performance.now();
+    velocity  = 0;
+  });
+
+  window.addEventListener('mousemove', (e) => {
+    if (!isDragging) return;
+    const c   = getCenter();
+    const ang = getAngle(c.x, c.y, e.clientX, e.clientY);
+    let delta = ang - lastAngle;
+    if (delta >  180) delta -= 360;
+    if (delta < -180) delta += 360;
+    const now = performance.now();
+    const dt  = now - lastTime || 16;
+    velocity  = delta / dt * 16;
+    lastTime  = now;
+    currentAngle += delta;
+    lastAngle     = ang;
+    applyRotation(currentAngle);
+  });
+
+  window.addEventListener('mouseup', () => {
+    if (!isDragging) return;
+    isDragging = false;
+    rafId = requestAnimationFrame(applyInertia);
+  });
+
+  /* Touch */
+  dial.addEventListener('touchstart', (e) => {
+    if (rafId) { cancelAnimationFrame(rafId); rafId = null; }
+    isDragging = true;
+    const t = e.touches[0];
+    const c = getCenter();
+    lastAngle = getAngle(c.x, c.y, t.clientX, t.clientY);
+    lastTime  = performance.now();
+    velocity  = 0;
+  }, { passive: true });
+
+  dial.addEventListener('touchmove', (e) => {
+    if (!isDragging) return;
+    const t   = e.touches[0];
+    const c   = getCenter();
+    const ang = getAngle(c.x, c.y, t.clientX, t.clientY);
+    let delta = ang - lastAngle;
+    if (delta >  180) delta -= 360;
+    if (delta < -180) delta += 360;
+    const now = performance.now();
+    const dt  = now - lastTime || 16;
+    velocity  = delta / dt * 16;
+    lastTime  = now;
+    currentAngle += delta;
+    lastAngle     = ang;
+    applyRotation(currentAngle);
+  }, { passive: true });
+
+  dial.addEventListener('touchend', () => {
+    isDragging = false;
+    rafId = requestAnimationFrame(applyInertia);
+  });
+
+})();
+</script>
+
+</body-sv>
+</html>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
         </div>
     </section>

@@ -1,336 +1,211 @@
-
-<!DOCTYPE html>
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Premium Tech Stack</title>
+<style>
     
-    <link rel="preconnect" href="https://fonts.googleapis.com">
-    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
-    <link href="https://cdn.jsdelivr.net/npm/remixicon@3.5.0/fonts/remixicon.css" rel="stylesheet">
 
-    <style>
-        :root {
-            --tstk-bg: #0B0C0E;
-            --tstk-card: #16171A;
-            --tstk-card-hover: #1C1D21;
-            --tstk-accent: #3ECF8E; 
-            --tstk-text: #FFFFFF;
-            --tstk-muted: #888888;
-            --tstk-border: #262626;
-            --tstk-font: 'Circular Std', 'Inter', sans-serif;
-            --tstk-max-width: 1300px;
-        }
+/* --- Premium Safe Dial CSS (MASSIVE HERO VERSION) --- */
+.dial-wrapper {
+    position: relative;
+    width: 100%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    margin-top: 80px; 
+    padding-bottom: 40px;
+    overflow: visible; /* Ensures shadows don't get cut off */
+}
 
-        /* Circular Std - Book/Regular (400) */
-        @font-face {
-            font-family: 'Circular Std';
-            src: url('fonts/CircularStd-Book.ttf') format('truetype');
-            font-weight: 400;
-            font-style: normal;
-        }
+/* BASE SIZE: 500px 
+   This is the desktop size. 
+*/
+.dial-outer-ring {
+    width: 500px;
+    height: 500px;
+    border-radius: 50%;
+    /* Advanced metallic gradient */
+    background: linear-gradient(135deg, #e0e0e0 0%, #f3f3f3 40%, #ffffff 50%, #d9d9d9 100%);
+    box-shadow: 
+        -20px -20px 60px rgb(195, 195, 195),
+        20px 20px 60px rgba(0, 0, 0, 0.2),
+        inset 0 0 0 4px rgba(255,255,255,0.5); /* Thicker rim */
+    position: relative;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-shrink: 0; /* Prevents oval squishing */
+}
 
-        /* Circular Std - Medium (500) */
-        @font-face {
-            font-family: 'Circular Std';
-            src: url('fonts/CircularStd.ttf') format('truetype');
-            font-weight: 500;
-            font-style: normal;
-        }
+/* The Indicator Line */
+.dial-indicator {
+    position: absolute;
+    top: 10px;
+    width: 4px;
+    height: 30px;
+    background-color: #2b2b2b; /* Changed to red for high contrast/security look */
+    z-index: 10;
+}
 
-        /* Circular Std - Bold (700) */
-        @font-face {
-            font-family: 'Circular Std';
-            src: url('fonts/CircularStd-Bold.ttf') format('truetype');
-            font-weight: 600;
-            font-style: normal;
-        }
+/* The Rotating Face: 400px */
+.dial-face {
+    width: 400px;
+    height: 400px;
+    border-radius: 50%;
+    background: conic-gradient(from 180deg, #e6e6e6, #ffffff, #e6e6e6, #cccccc, #e6e6e6);
+    position: relative;
+    box-shadow: 
+        inset 4px 4px 10px rgba(255,255,255,0.9),
+        inset -4px -4px 10px rgba(0,0,0,0.1),
+        0 10px 30px rgba(0,0,0,0.15);
+    transition: transform 0s linear;
+    will-change: transform;
+}
 
-        .tstk-container * { box-sizing: border-box; margin: 0; padding: 0; }
+/* Ticks */
+.dial-ticks {
+    position: absolute;
+    inset: 15px;
+    border-radius: 50%;
+    background: 
+        radial-gradient(transparent 65%, #e6e6e6 65%),
+        conic-gradient(
+            rgba(0,0,0,0.6) 0 0.6deg, 
+            transparent 0.6deg 3.6deg
+        );
+    mask-image: radial-gradient(transparent 64%, black 65%);
+    -webkit-mask-image: radial-gradient(transparent 64%, black 65%);
+    opacity: 0.7;
+}
 
-        body { background-color: var(--tstk-bg); margin: 0; }
+/* Numbers */
+.dial-numbers {
+    position: absolute;
+    inset: 0;
+    font-family: 'Inter', sans-serif;
+    font-weight: 700;
+    color: #000000;
+    font-size: 18px; /* Larger, readable font */
+}
 
-        .tstk-container {
-            font-family: var(--tstk-font);
-            color: var(--tstk-text);
-            max-width: var(--tstk-max-width);
-            margin: 0 auto;
-            padding: 140px 40px;
-            display: flex;
-            gap: 80px;
-        }
+.dial-numbers span {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    width: 40px;
+    height: 40px;
+    margin-left: -20px;
+    margin-top: -20px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
 
-        /* --- SIDEBAR --- */
-        .tstk-sidebar {
-            width: 260px;
-            flex-shrink: 0;
-            position: sticky;
-            top: 100px;
-            height: calc(100vh - 120px);
-            display: flex;
-            flex-direction: column;
-        }
+/* Number Positioning Math:
+   Radius is roughly 200px. We want numbers at ~165px from center.
+*/
+.dial-numbers span:nth-child(1) { transform: rotate(0deg) translate(0, -165px) rotate(0deg); }
+.dial-numbers span:nth-child(2) { transform: rotate(36deg) translate(0, -165px) rotate(-36deg); }
+.dial-numbers span:nth-child(3) { transform: rotate(72deg) translate(0, -165px) rotate(-72deg); }
+.dial-numbers span:nth-child(4) { transform: rotate(108deg) translate(0, -165px) rotate(-108deg); }
+.dial-numbers span:nth-child(5) { transform: rotate(144deg) translate(0, -165px) rotate(-144deg); }
+.dial-numbers span:nth-child(6) { transform: rotate(180deg) translate(0, -165px) rotate(-180deg); }
+.dial-numbers span:nth-child(7) { transform: rotate(216deg) translate(0, -165px) rotate(-216deg); }
+.dial-numbers span:nth-child(8) { transform: rotate(252deg) translate(0, -165px) rotate(-252deg); }
+.dial-numbers span:nth-child(9) { transform: rotate(288deg) translate(0, -165px) rotate(-288deg); }
+.dial-numbers span:nth-child(10) { transform: rotate(324deg) translate(0, -165px) rotate(-324deg); }
 
-        .tstk-logo-area h1 { font-size: 36px; font-weight: 300; margin-bottom: 12px; }
-        .tstk-logo-area p { color: var(--tstk-muted); font-size: 18px; margin-bottom: 35px; }
+/* Center Knob: 240px */
+.dial-knob {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    width: 240px;
+    height: 240px;
+    border-radius: 50%;
+    background: repeating-conic-gradient(
+        #cccccc 0deg 0.5deg,
+        #f5f5f5 0.5deg 1deg
+    );
+    box-shadow: 
+        0 10px 25px rgba(0,0,0,0.3),
+        inset 0 2px 5px rgba(255,255,255,1);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
 
-        .tstk-search-wrapper { position: relative; margin-bottom: 30px; }
-        .tstk-search-input {
-            width: 100%;
-            background: #111111;
-            border: 1px solid var(--tstk-border);
-            padding: 11px 14px 11px 42px;
-            border-radius: 8px;
-            color: white;
-            font-size: 14px;
-            font-weight: 400;
-            outline: none;
-            font-family: var(--tstk-font);
-        }
-        .tstk-search-input:focus { border-color: var(--tstk-accent); }
-        .tstk-search-icon { position: absolute; vertical-align: middle; display: inline-flex; left: 14px; top: 15px; color: var(--tstk-muted); font-size: 18px; }
+/* Inner Knob Face: 200px */
+.dial-knob-inner {
+    width: 200px;
+    height: 200px;
+    border-radius: 50%;
+    background: radial-gradient(circle at 30% 30%, #ffffff, #dcdcdc);
+    box-shadow: 
+        inset 0 0 20px rgba(0,0,0,0.1),
+        0 4px 10px rgba(0,0,0,0.1);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    border: 1px solid rgba(255,255,255,0.8);
+}
 
-        .tstk-nav-list { list-style: none; }
-        .tstk-nav-label { font-size: 15px; color: #444; font-weight: 500; margin-bottom: 15px; }
+.dial-logo-hex {
+    width: 80px;
+    height: 80px;
+    color: #999;
+    opacity: 0.5;
+}
+
+/* --- MOBILE RESPONSIVENESS --- 
+   This ensures perfect circular shape on all devices.
+   Instead of changing width (which creates ovals), we ZOOM OUT.
+*/
+
+/* Tablet: Scale down slightly */
+@media (max-width: 768px) {
+    .dial-wrapper {
+        margin-top: 50px;
+        /* Reduce height of container to account for the visual scaling */
+        margin-bottom: -50px; 
+    }
+    .dial-outer-ring {
+        transform: scale(0.8); 
+    }
+}
+
+/* Mobile: Scale down significantly (500px -> ~300px visual) */
+@media (max-width: 550px) {
+    .dial-wrapper {
+        margin-top: 30px;
+        margin-bottom: -100px; /* Pull content up since the dial visually shrinks */
+    }
+    .dial-outer-ring {
+        transform: scale(0.6); 
+    }
+}
+</style>
+
+<div class="dial-wrapper">
+    <div class="dial-outer-ring">
+        <div class="dial-indicator"></div>
         
-        .tstk-nav-link {
-            display: block;
-            color: var(--tstk-muted);
-            text-decoration: none;
-            font-size: 16px;
-            padding: 10px 0;
-            font-weight: 300;
-            cursor: pointer;
-        }
-        .tstk-nav-link:hover { color: var(--tstk-text); }
-        .tstk-nav-link.active { color: var(--tstk-accent); font-weight: 400; }
-
-        /* --- MAIN CONTENT --- */
-        .tstk-content { flex: 1; }
-        .tstk-section { margin-bottom: 80px; scroll-margin-top: 60px; }
-        .tstk-section-title { font-size: 36px; font-weight: 300; margin-bottom: 30px; }
-
-        .tstk-grid {
-            display: grid;
-            grid-template-columns: repeat(3, 1fr);
-            gap: 20px;
-        }
-
-        /* --- CARD DESIGN: ICON LEFT, CONTENT RIGHT --- */
-        .tstk-card {
-            background: var(--tstk-card);
-            border: 1px solid var(--tstk-border);
-            border-radius: 12px;
-            padding: 26px 26px 32px 26px;
-            display: flex;
-            gap: 20px; /* Space between icon and text block */
-            transition: all 0.3s ease;
-        }
-
-        .tstk-card:hover {
-            background: var(--tstk-card-hover);
-            border-color: #333;
-            transform: translateY(-3px);
-        }
-
-        .tstk-card-icon {
-            width: 48px;
-            height: 48px;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            background: #292929;
-            border-radius: 50px;
-            font-size: 24px;
-            flex-shrink: 0; /* Prevents icon from squishing */
-        }
-
-        .tstk-card-body { display: flex; flex-direction: column; gap: 6px; }
-        .tstk-card-title { font-size: 18px; font-weight: 500; color: var(--tstk-text); }
-        .tstk-card-desc { font-size: 14px; color: var(--tstk-muted); line-height: 1.6; }
-
-        
-
-        /* Search Highlight */
-        .tstk-hidden { display: none !important; }
-
-        @media (max-width: 1100px) {
-            .tstk-grid { grid-template-columns: 1fr; }
-            .tstk-container { flex-direction: column; padding: 50px 20px; }
-            .tstk-sidebar { width: 100%; position: relative; top: 0; height: auto; }
-        }
-    </style>
-</head>
-<body>
-
-<div class="tstk-container">
-    <aside class="tstk-sidebar">
-        <div class="tstk-logo-area">
-            <h1>Technologies We Use</h1>
-            <p>The specialized tools we use to power our multipurpose IT services.</p>
+        <div class="dial-face" id="securityDial">
+            <div class="dial-ticks"></div>
+            <div class="dial-numbers">
+                <span>0</span><span>10</span><span>20</span><span>30</span>
+                <span>40</span><span>50</span><span>60</span><span>70</span>
+                <span>80</span><span>90</span>
+            </div>
+            <div class="dial-knob">
+                <div class="dial-knob-inner">
+                    <div class="dial-logo-hex">
+                        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5">
+                            <path d="M12 2L2 8l0 8l10 6l10 -6l0 -8z" opacity="0.5"/>
+                            <path d="M12 22V12" opacity="0.3"/>
+                            <path d="M12 12L2 8" opacity="0.3"/>
+                            <path d="M12 12l10 -4" opacity="0.3"/>
+                        </svg>
+                    </div>
+                </div>
+            </div>
         </div>
-
-        <div class="tstk-search-wrapper">
-            <i class="ri-search-line tstk-search-icon"></i>
-            <input type="text" id="tstkSearch" class="tstk-search-input" placeholder="Search tech or service...">
-        </div>
-
-        <nav class="tstk-nav-list">
-            <div class="tstk-nav-label">Categories</div>
-            <a href="#frontend" class="tstk-nav-link active">Frontend Development</a>
-            <a href="#backend" class="tstk-nav-link">Backend Systems</a>
-            <a href="#infrastructure" class="tstk-nav-link">Infrastructure & Cloud</a>
-            <a href="#creative" class="tstk-nav-link">Creative & CMS</a>
-        </nav>
-    </aside>
-
-    <main class="tstk-content">
-        <section id="frontend" class="tstk-section">
-            <h2 class="tstk-section-title">Frontend Development</h2>
-            <div class="tstk-grid">
-                <div class="tstk-card">
-                    <div class="tstk-card-icon tstk-ic-blue"><img src="https://img.icons8.com/?size=100&id=wU62u24brJ44&format=png&color=000000" style="height: 38px;"/></div>
-                    <div class="tstk-card-body">
-                        <div class="tstk-card-title">React.js</div>
-                        <div class="tstk-card-desc">Building modular, fast, and scalable user interfaces for our web platforms.</div>
-                    </div>
-                </div>
-                <div class="tstk-card">
-                    <div class="tstk-card-icon tstk-ic-blue"><i class="ri-tailwind-css-fill"></i></div>
-                    <div class="tstk-card-body">
-                        <div class="tstk-card-title">Tailwind CSS</div>
-                        <div class="tstk-card-desc">Utility-first styling used to maintain rapid and consistent UI development across projects.</div>
-                    </div>
-                </div>
-                <div class="tstk-card">
-                    <div class="tstk-card-icon tstk-ic-blue"><i class="ri-tailwind-css-fill"></i></div>
-                    <div class="tstk-card-body">
-                        <div class="tstk-card-title">Tailwind CSS</div>
-                        <div class="tstk-card-desc">Utility-first styling used to maintain rapid and consistent UI development across projects.</div>
-                    </div>
-                </div>
-                <div class="tstk-card">
-                    <div class="tstk-card-icon tstk-ic-blue"><i class="ri-tailwind-css-fill"></i></div>
-                    <div class="tstk-card-body">
-                        <div class="tstk-card-title">Tailwind CSS</div>
-                        <div class="tstk-card-desc">Utility-first styling used to maintain rapid and consistent UI development across projects.</div>
-                    </div>
-                </div>
-            </div>
-        </section>
-
-        <section id="backend" class="tstk-section">
-            <h2 class="tstk-section-title">Backend Systems</h2>
-            <div class="tstk-grid">
-                <div class="tstk-card">
-                    <div class="tstk-card-icon tstk-ic-green"><i class="ri-nodejs-line"></i></div>
-                    <div class="tstk-card-body">
-                        <div class="tstk-card-title">Node.js</div>
-                        <div class="tstk-card-desc">Handling high-concurrency requests and powering our real-time notification engines.</div>
-                    </div>
-                </div>
-                <div class="tstk-card">
-                    <div class="tstk-card-icon tstk-ic-orange"><i class="ri-database-2-line"></i></div>
-                    <div class="tstk-card-body">
-                        <div class="tstk-card-title">PostgreSQL</div>
-                        <div class="tstk-card-desc">Our primary relational database for complex data structures and financial reporting.</div>
-                    </div>
-                </div>
-            </div>
-        </section>
-
-        <section id="infrastructure" class="tstk-section">
-            <h2 class="tstk-section-title">Infrastructure & Cloud</h2>
-            <div class="tstk-grid">
-                <div class="tstk-card">
-                    <div class="tstk-card-icon tstk-ic-orange"><i class="ri-amazon-fill"></i></div>
-                    <div class="tstk-card-body">
-                        <div class="tstk-card-title">AWS</div>
-                        <div class="tstk-card-desc">Enterprise-grade hosting providing the security and uptime our SA clients demand.</div>
-                    </div>
-                </div>
-                <div class="tstk-card">
-                    <div class="tstk-card-icon tstk-ic-blue"><i class="ri-docker-js-fill"></i></div>
-                    <div class="tstk-card-body">
-                        <div class="tstk-card-title">Docker</div>
-                        <div class="tstk-card-desc">Streamlining our deployment workflows to ensure consistency across environments.</div>
-                    </div>
-                </div>
-            </div>
-        </section>
-
-        <section id="creative" class="tstk-section">
-            <h2 class="tstk-section-title">Creative & CMS</h2>
-            <div class="tstk-grid">
-                <div class="tstk-card">
-                    <div class="tstk-card-icon tstk-ic-purple"><i class="ri-layout-masonry-line"></i></div>
-                    <div class="tstk-card-body">
-                        <div class="tstk-card-title">Strapi CMS</div>
-                        <div class="tstk-card-desc">Powering headless content management for our mobile and web applications.</div>
-                    </div>
-                </div>
-                <div class="tstk-card">
-                    <div class="tstk-card-icon tstk-ic-purple"><i class="ri-wordpress-fill"></i></div>
-                    <div class="tstk-card-body">
-                        <div class="tstk-card-title">WordPress</div>
-                        <div class="tstk-card-desc">Fast-turnaround corporate websites for SMEs and marketing landing pages.</div>
-                    </div>
-                </div>
-            </div>
-        </section>
-    </main>
-</div>
-
-<script>
-    document.addEventListener('DOMContentLoaded', () => {
-        const searchInput = document.getElementById('tstkSearch');
-        const cards = document.querySelectorAll('.tstk-card');
-        const sections = document.querySelectorAll('.tstk-section');
-        const navLinks = document.querySelectorAll('.tstk-nav-link');
-
-        // 1. Real-time Search Functional
-        searchInput.addEventListener('input', (e) => {
-            const term = e.target.value.toLowerCase();
-            
-            cards.forEach(card => {
-                const title = card.querySelector('.tstk-card-title').innerText.toLowerCase();
-                const desc = card.querySelector('.tstk-card-desc').innerText.toLowerCase();
-                
-                if (title.includes(term) || desc.includes(term)) {
-                    card.classList.remove('tstk-hidden');
-                } else {
-                    card.classList.add('tstk-hidden');
-                }
-            });
-
-            // Hide empty sections
-            sections.forEach(section => {
-                const visibleCards = section.querySelectorAll('.tstk-card:not(.tstk-hidden)');
-                section.style.display = visibleCards.length === 0 ? 'none' : 'block';
-            });
-        });
-
-        // 2. Smooth Scroll & Active State
-        navLinks.forEach(link => {
-            link.addEventListener('click', (e) => {
-                e.preventDefault();
-                const target = document.querySelector(link.getAttribute('href'));
-                window.scrollTo({ top: target.offsetTop - 60, behavior: 'smooth' });
-            });
-        });
-
-        // 3. Intersection Observer for Sidebar Scroll Interaction
-        const observer = new IntersectionObserver((entries) => {
-            entries.forEach(entry => {
-                if (entry.isIntersecting) {
-                    navLinks.forEach(link => {
-                        link.classList.toggle('active', link.getAttribute('href') === `#${entry.target.id}`);
-                    });
-                }
-            });
-        }, { threshold: 0.5, rootMargin: "-10% 0px -70% 0px" });
-
-        sections.forEach(s => observer.observe(s));
-    });
-</script>
+    </div>
+</div>    
