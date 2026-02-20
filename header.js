@@ -731,7 +731,7 @@ class CronosHeader extends HTMLElement {
                     
                     <div class="cronos-custom-logo-container">
                         <a href="index.html" class="cronos-custom-logo-link cronos-custom-logo-text">
-                            <img src="thumbnails/logo.png" alt="Cronos Logo">
+                            <img src="thumbnails/mock.png" alt="Cronos Logo">
                         </a>
                     </div>
 
