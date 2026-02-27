@@ -41,7 +41,7 @@
     .col-heading {
       display: block;
       font-size: 14px;
-      font-weight: 700;
+      font-weight: 500;
       color: #ffffff;
       line-height: 1.35;
       letter-spacing: 0.01em;
@@ -473,7 +473,7 @@
     <div class="col">
       <span class="col-heading">Support</span>
       <div class="col-links">
-        <a href="#">Developer Hub</a>
+        <a href="developer-hub.html">Developer Hub</a>
         <a href="#">Contact Us</a>
         <a href="#">Contact our Privacy Team</a>
         <a href="#">Bot</a>

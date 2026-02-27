@@ -1,0 +1,852 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Security</title>
+    <!-- WEB TAB ICON -->
+    <link rel="icon" type="image/png" href="thumbnails/top-1.png">
+    <script src="header.js" defer></script>
+    <script src="footer.js" defer></script> 
+</head>
+<body>
+
+    <cronos-header></cronos-header>
+    
+
+</body>
+</html>
+
+
+
+
+
+
+
+
+
+
+
+
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Developer Hub</title>
+  <style>
+    /* ============================================================
+       DEVELOPER HUB — prefix "dh-" throughout, zero conflicts
+    ============================================================ */
+    @font-face {
+        font-family: 'Circular Std';
+        src: url('fonts/CircularStd-Book.ttf') format('truetype');
+        font-weight: 400;
+        font-style: normal;
+    }
+
+    /* Circular Std - Medium (500) */
+    @font-face {
+        font-family: 'Circular Std';
+        src: url('fonts/CircularStd.ttf') format('truetype');
+        font-weight: 500;
+        font-style: normal;
+    }
+
+    /* Circular Std - Bold (700) */
+    @font-face {
+        font-family: 'Circular Std';
+        src: url('fonts/CircularStd-Bold.ttf') format('truetype');
+        font-weight: 600;
+        font-style: normal;
+    }
+
+    .dh-root {
+      --dh-dark:     #080d1b;
+      --dh-blue:     #0091ff;
+      --dh-white:    #ffffff;
+      --dh-light:    #f4f4f4;
+      --dh-blue-dim: rgba(0,145,255,0.08);
+      --dh-blue-mid: rgba(0,145,255,0.18);
+      --dh-border:   rgba(255,255,255,0.07);
+      --dh-muted:    rgba(255,255,255,0.45);
+      --dh-sub:      rgba(255,255,255,0.7);
+      --dh-ease:     0.3s cubic-bezier(0.4,0,0.2,1);
+      --dh-font:     'Circular Std','CircularStd',sans-serif;
+
+      font-family: var(--dh-font);
+      background: var(--dh-dark);
+      color: var(--dh-white);
+      margin: 0; padding: 0;
+      -webkit-font-smoothing: antialiased;
+      overflow-x: hidden;
+    }
+
+    * {
+      margin: 0;
+      padding: 0;
+    }
+
+    .dh-root *, .dh-root *::before, .dh-root *::after {
+      box-sizing: border-box; margin: 0; padding: 0;
+    }
+    .dh-root a   { text-decoration: none; color: inherit; }
+    .dh-root img { display: block; max-width: 100%; }
+    .dh-root button { cursor: pointer; font-family: var(--dh-font); border: none; background: none; }
+
+    /* ── BUTTONS ── */
+    .dh-btn {
+      display: inline-flex; align-items: center; justify-content: center; gap: 8px;
+      font-family: var(--dh-font); font-size: 14px; font-weight: 600;
+      padding: 10px 22px; border-radius: 8px; transition: var(--dh-ease);
+      cursor: pointer; border: none; white-space: nowrap;
+    }
+    .dh-btn--primary { background: var(--dh-blue); color: var(--dh-white); }
+    .dh-btn--primary:hover { background: #1a9fff; transform: translateY(-1px); box-shadow: 0 8px 32px rgba(0,145,255,.3); }
+    .dh-btn--ghost   { background: transparent; color: var(--dh-sub); border: 1px solid var(--dh-border); }
+    .dh-btn--ghost:hover { background: rgba(255,255,255,.05); color: var(--dh-white); }
+    .dh-btn--outline { background: transparent; color: var(--dh-blue); border: 1px solid rgba(0,145,255,.4); }
+    .dh-btn--outline:hover { background: var(--dh-blue-dim); border-color: var(--dh-blue); }
+    .dh-btn--white   { background: var(--dh-white); color: var(--dh-dark); }
+    .dh-btn--white:hover { background: var(--dh-light); transform: translateY(-1px); box-shadow: 0 8px 28px rgba(0,0,0,.28); }
+    .dh-btn--lg { padding: 14px 30px; font-size: 15px; border-radius: 10px; }
+
+    /* ── LAYOUT ── */
+    .dh-section    { padding: 100px 24px; }
+    .dh-section--alt {
+      background: rgba(255,255,255,.015);
+      border-top: 1px solid var(--dh-border);
+      border-bottom: 1px solid var(--dh-border);
+    }
+    .dh-container  { max-width: 1140px; margin: 0 auto; }
+
+    /* ── LABELS / HEADINGS ── */
+    .dh-label {
+      font-size: 11.5px; font-weight: 700; letter-spacing: 1.5px;
+      text-transform: uppercase; color: var(--dh-blue); margin-bottom: 12px;
+    }
+    .dh-h2 {
+      font-size: clamp(28px,3.5vw,42px); font-weight: 500;
+      letter-spacing: -0.8px; line-height: 1.15; color: var(--dh-white); margin-bottom: 16px;
+    }
+    .dh-sub-text { font-size: 16px; line-height: 1.7; color: var(--dh-sub); max-width: 500px; }
+    .dh-section-header { margin-bottom: 60px; }
+
+    /* ── BADGE ── */
+    .dh-badge {
+      display: inline-flex; align-items: center; gap: 8px;
+      background: var(--dh-blue-dim); border: 1px solid rgba(0,145,255,.25);
+      color: var(--dh-blue); font-size: 12px; font-weight: 700;
+      letter-spacing: .6px; text-transform: uppercase;
+      padding: 6px 14px; border-radius: 100px; margin-bottom: 28px;
+    }
+    .dh-badge__dot {
+      width: 6px; height: 6px; border-radius: 50%; background: var(--dh-blue);
+      animation: dh-blink 2s infinite;
+    }
+    @keyframes dh-blink { 0%,100%{opacity:1;transform:scale(1)} 50%{opacity:.4;transform:scale(.75)} }
+
+    /* ═══════════════════════════════════════
+       HERO
+    ═══════════════════════════════════════ */
+    .dh-hero {
+      min-height: 100vh; display: flex; align-items: center;
+      justify-content: center; text-align: center;
+      padding: 100px 24px 80px; position: relative; overflow: hidden;
+    }
+    .dh-hero__glow {
+      position: absolute; top: -20%; left: 50%; transform: translateX(-50%);
+      width: 700px; height: 600px; pointer-events: none;
+      background: radial-gradient(ellipse at center,rgba(0,145,255,.13) 0%,transparent 70%);
+    }
+    .dh-hero__grid {
+      position: absolute; inset: 0; pointer-events: none;
+      background-image: linear-gradient(rgba(0,145,255,.04) 1px,transparent 1px),
+                        linear-gradient(90deg,rgba(0,145,255,.04) 1px,transparent 1px);
+      background-size: 60px 60px;
+      mask-image: radial-gradient(ellipse 80% 80% at 50% 0%,black 40%,transparent 100%);
+      -webkit-mask-image: radial-gradient(ellipse 80% 80% at 50% 0%,black 40%,transparent 100%);
+    }
+    .dh-hero__content { position: relative; z-index: 1; max-width: 780px; }
+    .dh-hero__title {
+      font-size: clamp(38px,6vw,62px); font-weight: 400;
+      line-height: 1.08; letter-spacing: -1.5px; margin-bottom: 22px;
+    }
+    .dh-hero__title span { color: var(--dh-blue); }
+    .dh-hero__desc {
+      font-size: clamp(16px,2vw,18px); line-height: 1.7;
+      color: var(--dh-sub); max-width: 560px; margin: 0 auto 40px;
+    }
+    .dh-hero__actions { display: flex; justify-content: center; gap: 14px; flex-wrap: wrap; }
+    .dh-hero__stats {
+      display: flex; justify-content: center; gap: 48px;
+      margin-top: 72px; padding-top: 40px; border-top: 1px solid var(--dh-border); flex-wrap: wrap;
+    }
+    .dh-stat__num   { font-size: 28px; font-weight: 500; letter-spacing: -.5px; }
+    .dh-stat__label { font-size: 13px; color: var(--dh-muted); margin-top: 4px; }
+
+    /* ═══════════════════════════════════════
+       SERVICE CARDS GRID
+    ═══════════════════════════════════════ */
+    .dh-services-grid {
+      display: grid; grid-template-columns: repeat(3,1fr);
+      gap: 2px; background: var(--dh-border);
+      border: 1px solid var(--dh-border); border-radius: 20px; overflow: hidden;
+    }
+    .dh-card {
+      background: rgba(8,13,27,.97); padding: 36px 32px; transition: var(--dh-ease);
+    }
+    .dh-card:hover { background: rgba(0,145,255,.05); }
+    .dh-card:hover .dh-card__icon { background: var(--dh-blue); border-color: var(--dh-blue); color: var(--dh-white); }
+
+    .dh-card__icon {
+      width: 46px; height: 46px; border-radius: 10px;
+      background: var(--dh-blue-dim); border: 1px solid var(--dh-blue-mid);
+      display: flex; align-items: center; justify-content: center;
+      margin-bottom: 20px; transition: var(--dh-ease); color: var(--dh-blue);
+    }
+    .dh-card__icon svg { width: 20px; height: 20px; }
+    .dh-card__cat  { font-size: 10.5px; font-weight: 700; letter-spacing: 1.2px; text-transform: uppercase; color: var(--dh-blue); margin-bottom: 8px; }
+    .dh-card__name { font-size: 17px; font-weight: 500; color: var(--dh-white); margin-bottom: 10px; }
+    .dh-card__desc { font-size: 14px; line-height: 1.65; color: var(--dh-muted); font-weight: 400; }
+    .dh-card__tags { display: flex; flex-wrap: wrap; gap: 6px; margin-top: 18px; }
+    .dh-tag {
+      font-size: 11.5px; font-weight: 500; color: var(--dh-muted);
+      background: rgba(255,255,255,.05); border: 1px solid var(--dh-border);
+      padding: 3px 10px; border-radius: 100px;
+    }
+
+    /* ═══════════════════════════════════════
+       FEATURE DEEP-DIVE ROWS
+    ═══════════════════════════════════════ */
+    .dh-feature-row {
+      display: grid; grid-template-columns: 1fr 1fr;
+      gap: 80px; align-items: center;
+      padding: 70px 0; border-bottom: 1px solid var(--dh-border);
+    }
+    .dh-feature-row:last-child { border-bottom: none; }
+    .dh-feature-row--rev .dh-feature-row__visual { order: -1; }
+
+    .dh-feature-row__title {
+      font-size: clamp(22px,2.5vw,30px); font-weight: 500;
+      letter-spacing: -.5px; color: var(--dh-white); margin-bottom: 14px; line-height: 1.2;
+    }
+    .dh-feature-row__desc { font-size: 15.5px; line-height: 1.75; color: var(--dh-sub); margin-bottom: 28px; }
+    .dh-feature-list { list-style: none; display: flex; flex-direction: column; gap: 11px; }
+    .dh-feature-list li { display: flex; align-items: flex-start; gap: 10px; font-size: 14.5px; color: var(--dh-sub); }
+    .dh-chk { flex-shrink: 0; margin-top: 2px; color: var(--dh-blue); }
+    .dh-chk svg { width: 16px; height: 16px; }
+    .dh-feature-row__visual {
+      border-radius: 18px; overflow: hidden;
+      border: 1px solid var(--dh-border); background: rgba(255,255,255,.02);
+    }
+
+    /* mock: code */
+    .dh-mock-card  { padding: 28px; background: rgba(8,13,27,.7); }
+    .dh-mock-hdr   { display: flex; align-items: center; gap: 7px; margin-bottom: 20px; }
+    .dh-mock-dot   { width: 10px; height: 10px; border-radius: 50%; }
+    .dh-mock-code  {
+      background: rgba(0,0,0,.4); border-radius: 10px; padding: 20px;
+      font-family: 'Courier New',monospace; font-size: 13px; line-height: 1.85;
+      color: var(--dh-sub); overflow-x: auto;
+    }
+    .dh-c-blue   { color: var(--dh-blue); }
+    .dh-c-green  { color: #4ade80; }
+    .dh-c-yellow { color: #facc15; }
+    .dh-c-muted  { color: var(--dh-muted); }
+
+    /* mock: infra */
+    .dh-mock-infra { padding: 24px; display: flex; flex-direction: column; gap: 10px; }
+    .dh-infra-item {
+      display: flex; align-items: center; justify-content: space-between;
+      background: rgba(0,0,0,.3); border: 1px solid var(--dh-border);
+      padding: 13px 16px; border-radius: 10px; transition: var(--dh-ease);
+    }
+    .dh-infra-item:hover { border-color: rgba(0,145,255,.3); }
+    .dh-infra-item__left { display: flex; align-items: center; gap: 12px; }
+    .dh-infra-icon {
+      width: 34px; height: 34px; border-radius: 8px;
+      background: var(--dh-blue-dim); display: flex; align-items: center; justify-content: center; color: var(--dh-blue);
+    }
+    .dh-infra-icon svg      { width: 16px; height: 16px; }
+    .dh-infra-item__name    { font-size: 14px; font-weight: 600; color: var(--dh-white); }
+    .dh-infra-item__sub     { font-size: 12px; color: var(--dh-muted); }
+    .dh-status      { display: flex; align-items: center; gap: 6px; font-size: 12px; font-weight: 600; color: #4ade80; }
+    .dh-status__dot { width: 6px; height: 6px; border-radius: 50%; background: #4ade80; animation: dh-blink 2s infinite; }
+
+    /* mock: metrics */
+    .dh-mock-metrics { padding: 24px; display: grid; grid-template-columns: 1fr 1fr; gap: 10px; }
+    .dh-metric-card  { background: rgba(0,0,0,.3); border: 1px solid var(--dh-border); border-radius: 10px; padding: 16px; }
+    .dh-metric-card__label  { font-size: 11.5px; color: var(--dh-muted); font-weight: 500; margin-bottom: 8px; }
+    .dh-metric-card__val    { font-size: 22px; font-weight: 700; color: var(--dh-white); letter-spacing: -.5px; }
+    .dh-metric-card__change { font-size: 11.5px; font-weight: 600; color: #4ade80; margin-top: 4px; }
+    .dh-metric-bar          { height: 4px; background: rgba(255,255,255,.06); border-radius: 2px; margin-top: 10px; overflow: hidden; }
+    .dh-metric-bar__fill    { height: 100%; background: var(--dh-blue); border-radius: 2px; }
+
+    /* ═══════════════════════════════════════
+       PROCESS STEPS
+    ═══════════════════════════════════════ */
+    .dh-process-wrap {
+      background: rgba(255,255,255,.015);
+      border-top: 1px solid var(--dh-border);
+      border-bottom: 1px solid var(--dh-border);
+    }
+    .dh-steps {
+      display: grid; grid-template-columns: repeat(4,1fr);
+      gap: 2px; background: var(--dh-border);
+      border: 1px solid var(--dh-border); border-radius: 16px; overflow: hidden;
+    }
+    .dh-step { background: var(--dh-dark); padding: 36px 28px; }
+    .dh-step__num   { font-size: 11px; font-weight: 700; letter-spacing: 1px; text-transform: uppercase; color: var(--dh-blue); margin-bottom: 16px; }
+    .dh-step__title { font-size: 17px; font-weight: 700; color: var(--dh-white); margin-bottom: 10px; }
+    .dh-step__desc  { font-size: 14px; line-height: 1.65; color: var(--dh-muted); }
+
+    /* ═══════════════════════════════════════
+       TECH STACK
+    ═══════════════════════════════════════ */
+    .dh-tools-header {
+      display: flex; align-items: flex-end; justify-content: space-between;
+      gap: 24px; margin-bottom: 52px; flex-wrap: wrap;
+    }
+    .dh-tools-grid {
+      display: grid; grid-template-columns: repeat(6,1fr); gap: 12px;
+    }
+    .dh-tool-chip {
+      display: flex; flex-direction: column; align-items: center; gap: 10px;
+      background: rgba(255,255,255,.03); border: 1px solid var(--dh-border);
+      border-radius: 12px; padding: 20px 12px; transition: var(--dh-ease);
+    }
+    .dh-tool-chip:hover { background: var(--dh-blue-dim); border-color: rgba(0,145,255,.3); transform: translateY(-3px); }
+    .dh-tool-chip:hover svg { color: var(--dh-blue); }
+    .dh-tool-chip svg { width: 26px; height: 26px; color: var(--dh-muted); transition: var(--dh-ease); }
+    .dh-tool-chip__name { font-size: 12px; font-weight: 600; color: var(--dh-sub); text-align: center; }
+
+    /* stack CTA link */
+    .dh-stack-link {
+      display: inline-flex; align-items: center; gap: 8px;
+      font-size: 14px; font-weight: 600; color: var(--dh-blue);
+      padding: 11px 20px; border-radius: 8px;
+      border: 1px solid rgba(0,145,255,.35); background: var(--dh-blue-dim);
+      transition: var(--dh-ease); white-space: nowrap; cursor: pointer;
+    }
+    .dh-stack-link:hover { background: rgba(0,145,255,.15); border-color: var(--dh-blue); transform: translateY(-1px); }
+    .dh-stack-link svg { width: 14px; height: 14px; }
+
+    /* ═══════════════════════════════════════
+       CTA — full photo background, right-aligned
+    ═══════════════════════════════════════ */
+    .dh-cta-section { padding: 0 24px 100px; }
+
+    .dh-cta-box {
+      position: relative; border-radius: 24px; overflow: hidden;
+      min-height: 480px; display: flex; align-items: stretch;
+    }
+
+    /* background image via CSS so we can overlay cleanly */
+    .dh-cta-box__bg {
+      position: absolute; inset: 0;
+      background-image: url('https://images.unsplash.com/photo-1451187580459-43490279c0fa?w=1400&q=80&auto=format&fit=crop');
+      background-size: cover; background-position: center;
+    }
+
+    /* gradient: transparent left → dark right for text legibility */
+    .dh-cta-box__overlay {
+      position: absolute; inset: 0;
+      background: linear-gradient(
+        105deg,
+        rgba(8,13,27,.25) 0%,
+        rgba(8,13,27,.55) 40%,
+        rgba(8,13,27,.90) 100%
+      );
+    }
+
+    .dh-cta-box__content {
+      position: relative; z-index: 2; width: 100%;
+      display: flex; align-items: center; justify-content: flex-end;
+    }
+
+    .dh-cta-box__inner {
+      max-width: 460px;
+      padding: 72px 60px 72px 24px;
+      text-align: right;
+      display: flex; flex-direction: column; align-items: flex-end;
+    }
+
+    .dh-cta-eyebrow {
+      display: inline-flex; align-items: center; gap: 7px;
+      font-size: 11px; font-weight: 700; letter-spacing: 1.4px; text-transform: uppercase;
+      color: var(--dh-blue); background: rgba(0,145,255,.1); border: 1px solid rgba(0,145,255,.25);
+      padding: 5px 13px; border-radius: 100px; margin-bottom: 22px;
+    }
+    .dh-cta-eyebrow svg { width: 11px; height: 11px; }
+
+    .dh-cta-box__title {
+      font-size: clamp(24px,3vw,38px); font-weight: 700;
+      letter-spacing: -0.8px; line-height: 1.12;
+      color: var(--dh-white); margin-bottom: 16px;
+    }
+
+    .dh-cta-box__desc {
+      font-size: 15.5px; line-height: 1.7;
+      color: rgba(255,255,255,.72); margin-bottom: 34px; max-width: 380px;
+    }
+
+    /* ── SCROLL FADE ── */
+    .dh-fade { opacity: 0; transform: translateY(22px); transition: opacity .6s ease, transform .6s ease; }
+    .dh-fade.dh-on { opacity: 1; transform: none; }
+    .dh-fd1 { transition-delay: .1s; }
+    .dh-fd2 { transition-delay: .2s; }
+
+    /* ═══════════════════════════════════════
+       RESPONSIVE
+    ═══════════════════════════════════════ */
+    @media (max-width: 1024px) {
+      .dh-services-grid { grid-template-columns: repeat(2,1fr); }
+      .dh-tools-grid    { grid-template-columns: repeat(4,1fr); }
+      .dh-steps         { grid-template-columns: repeat(2,1fr); }
+    }
+
+    @media (max-width: 768px) {
+      .dh-section { padding: 70px 20px; }
+
+      .dh-feature-row { grid-template-columns: 1fr; gap: 36px; padding: 50px 0; }
+      .dh-feature-row--rev .dh-feature-row__visual { order: 0; }
+
+      .dh-services-grid { grid-template-columns: 1fr; }
+      .dh-steps         { grid-template-columns: 1fr; }
+      .dh-tools-grid    { grid-template-columns: repeat(3,1fr); }
+      .dh-tools-header  { flex-direction: column; align-items: flex-start; }
+
+      .dh-cta-section { padding: 0 20px 70px; }
+      .dh-cta-box { min-height: 400px; }
+      .dh-cta-box__overlay {
+        background: linear-gradient(180deg,rgba(8,13,27,.3) 0%,rgba(8,13,27,.88) 60%);
+      }
+      .dh-cta-box__content { align-items: flex-end; justify-content: flex-start; }
+      .dh-cta-box__inner { padding: 40px 28px; max-width: 100%; text-align: left; align-items: flex-start; }
+      .dh-hero__stats { gap: 20px 36px; }
+      .dh-mock-metrics { grid-template-columns: 1fr 1fr; }
+    }
+
+    @media (max-width: 480px) {
+      .dh-tools-grid   { grid-template-columns: repeat(2,1fr); }
+      .dh-mock-metrics { grid-template-columns: 1fr; }
+    }
+  </style>
+</head>
+<body>
+<div class="dh-root" id="dh-page">
+
+  <!-- ═══ HERO ═══ -->
+  <section class="dh-hero">
+    <div class="dh-hero__glow"></div>
+    <div class="dh-hero__grid"></div>
+    <div class="dh-hero__content">
+      <h1 class="dh-hero__title">Build Smarter.<br /><span>Scale Faster.</span></h1>
+      <p class="dh-hero__desc">Everything you need to design, develop, and deploy — software, infrastructure, and creative solutions crafted for ambitious businesses.</p>
+      <div class="dh-hero__actions">
+        <button class="dh-btn dh-btn--primary dh-btn--lg">Explore Services</button>
+        <button class="dh-btn dh-btn--ghost dh-btn--lg">View Documentation</button>
+      </div>
+      <div class="dh-hero__stats">
+        <div class="dh-stat"><div class="dh-stat__num">200+</div><div class="dh-stat__label">Projects Delivered</div></div>
+        <div class="dh-stat"><div class="dh-stat__num">99.9%</div><div class="dh-stat__label">Uptime SLA</div></div>
+        <div class="dh-stat"><div class="dh-stat__num">50+</div><div class="dh-stat__label">Enterprise Clients</div></div>
+        <div class="dh-stat"><div class="dh-stat__num">24/7</div><div class="dh-stat__label">Support Coverage</div></div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ═══ SERVICES ═══ -->
+  <section class="dh-section" id="dh-services">
+    <div class="dh-container">
+      <div class="dh-section-header dh-fade">
+        <div class="dh-label">What We Build</div>
+        <h2 class="dh-h2">Comprehensive IT Solutions<br />Under One Roof</h2>
+        <p class="dh-sub-text">From product development to infrastructure management, we cover the full technology stack for modern businesses.</p>
+      </div>
+      <div class="dh-services-grid dh-fade dh-fd1">
+
+        <div class="dh-card">
+          <div class="dh-card__icon">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="3"/><path d="M12 2v2M12 20v2M4.93 4.93l1.41 1.41M17.66 17.66l1.41 1.41M2 12h2M20 12h2M4.93 19.07l1.41-1.41M17.66 6.34l1.41-1.41"/></svg>
+          </div>
+          <div class="dh-card__cat">Software Development</div>
+          <div class="dh-card__name">AI & Automation</div>
+          <div class="dh-card__desc">Custom ML models, workflow automation, and intelligent systems tailored to your business processes.</div>
+          <div class="dh-card__tags"><span class="dh-tag">Machine Learning</span><span class="dh-tag">NLP</span><span class="dh-tag">RPA</span></div>
+        </div>
+
+        <div class="dh-card">
+          <div class="dh-card__icon">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"><rect x="5" y="2" width="14" height="20" rx="2"/><line x1="12" y1="18" x2="12.01" y2="18" stroke-width="2"/></svg>
+          </div>
+          <div class="dh-card__cat">Software Development</div>
+          <div class="dh-card__name">Mobile & Web Apps</div>
+          <div class="dh-card__desc">Cross-platform mobile apps and high-performance web applications built for scale and user experience.</div>
+          <div class="dh-card__tags"><span class="dh-tag">React Native</span><span class="dh-tag">Next.js</span><span class="dh-tag">Flutter</span></div>
+        </div>
+
+        <div class="dh-card">
+          <div class="dh-card__icon">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"><path d="M6 2L3 6v14a2 2 0 002 2h14a2 2 0 002-2V6l-3-4z"/><line x1="3" y1="6" x2="21" y2="6"/><path d="M16 10a4 4 0 01-8 0"/></svg>
+          </div>
+          <div class="dh-card__cat">Software Development</div>
+          <div class="dh-card__name">E-Commerce</div>
+          <div class="dh-card__desc">End-to-end e-commerce solutions with seamless payment integration, inventory systems, and conversion-focused design.</div>
+          <div class="dh-card__tags"><span class="dh-tag">Shopify</span><span class="dh-tag">WooCommerce</span><span class="dh-tag">Custom</span></div>
+        </div>
+
+        <div class="dh-card">
+          <div class="dh-card__icon">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"><ellipse cx="12" cy="5" rx="9" ry="3"/><path d="M21 12c0 1.66-4.03 3-9 3S3 13.66 3 12"/><path d="M3 5v14c0 1.66 4.03 3 9 3s9-1.34 9-3V5"/></svg>
+          </div>
+          <div class="dh-card__cat">Software Development</div>
+          <div class="dh-card__name">Database Engineering</div>
+          <div class="dh-card__desc">Robust database architecture, optimization, migration, and management for data-intensive applications.</div>
+          <div class="dh-card__tags"><span class="dh-tag">PostgreSQL</span><span class="dh-tag">MongoDB</span><span class="dh-tag">Redis</span></div>
+        </div>
+
+        <div class="dh-card">
+          <div class="dh-card__icon">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"><path d="M18 10h-1.26A8 8 0 109 20h9a5 5 0 000-10z"/></svg>
+          </div>
+          <div class="dh-card__cat">IT Infrastructure</div>
+          <div class="dh-card__name">Cloud Infrastructure</div>
+          <div class="dh-card__desc">Scalable cloud architecture design, deployment, and management across AWS, Azure, and GCP environments.</div>
+          <div class="dh-card__tags"><span class="dh-tag">AWS</span><span class="dh-tag">Azure</span><span class="dh-tag">GCP</span></div>
+        </div>
+
+        <div class="dh-card">
+          <div class="dh-card__icon">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/></svg>
+          </div>
+          <div class="dh-card__cat">IT Infrastructure</div>
+          <div class="dh-card__name">Managed IT Services</div>
+          <div class="dh-card__desc">Proactive monitoring, maintenance, and support keeping your systems secure and running at peak performance.</div>
+          <div class="dh-card__tags"><span class="dh-tag">24/7 Support</span><span class="dh-tag">Monitoring</span><span class="dh-tag">Security</span></div>
+        </div>
+
+        <div class="dh-card">
+          <div class="dh-card__icon">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"><rect x="2" y="2" width="20" height="8" rx="2"/><rect x="2" y="14" width="20" height="8" rx="2"/><line x1="6" y1="6" x2="6.01" y2="6" stroke-width="2.5"/><line x1="6" y1="18" x2="6.01" y2="18" stroke-width="2.5"/></svg>
+          </div>
+          <div class="dh-card__cat">IT Infrastructure</div>
+          <div class="dh-card__name">Data Center & Storage</div>
+          <div class="dh-card__desc">Reliable data center solutions and enterprise storage systems for performance and redundancy at scale.</div>
+          <div class="dh-card__tags"><span class="dh-tag">Colocation</span><span class="dh-tag">Backup</span><span class="dh-tag">DR</span></div>
+        </div>
+
+        <div class="dh-card">
+          <div class="dh-card__icon">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"><polyline points="22 7 13.5 15.5 8.5 10.5 2 17"/><polyline points="16 7 22 7 22 13"/></svg>
+          </div>
+          <div class="dh-card__cat">Marketing & Creative</div>
+          <div class="dh-card__name">Digital Marketing</div>
+          <div class="dh-card__desc">Data-driven campaigns, SEO strategy, and paid media management to grow your digital presence and ROI.</div>
+          <div class="dh-card__tags"><span class="dh-tag">SEO</span><span class="dh-tag">PPC</span><span class="dh-tag">Analytics</span></div>
+        </div>
+
+        <div class="dh-card">
+          <div class="dh-card__icon">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"><polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"/></svg>
+          </div>
+          <div class="dh-card__cat">Marketing & Creative</div>
+          <div class="dh-card__name">Graphic Design & Content</div>
+          <div class="dh-card__desc">Brand identity, UI/UX design, content creation, and advertising that connect with your audience visually.</div>
+          <div class="dh-card__tags"><span class="dh-tag">Brand</span><span class="dh-tag">UI/UX</span><span class="dh-tag">Content</span></div>
+        </div>
+
+      </div>
+    </div>
+  </section>
+
+  <!-- ═══ SOLUTIONS IN DEPTH ═══ -->
+  <section class="dh-section dh-section--alt" id="dh-solutions">
+    <div class="dh-container">
+      <div class="dh-section-header dh-fade">
+        <div class="dh-label">Solutions in Depth</div>
+        <h2 class="dh-h2">Built for Every Layer<br />of Your Business</h2>
+      </div>
+
+      <!-- Software Dev -->
+      <div class="dh-feature-row dh-fade">
+        <div class="dh-feature-row__text">
+          <div class="dh-label">Software Development</div>
+          <h3 class="dh-feature-row__title">From Idea to Production-Ready Product</h3>
+          <p class="dh-feature-row__desc">We engineer custom software — intelligent, scalable, and built to last. Whether it's an AI-powered platform or a consumer mobile app, we handle the entire development lifecycle.</p>
+          <ul class="dh-feature-list">
+            <li><span class="dh-chk"><svg viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polyline points="2 8 6 12 14 4"/></svg></span>AI agents, automation pipelines & custom ML models</li>
+            <li><span class="dh-chk"><svg viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polyline points="2 8 6 12 14 4"/></svg></span>React Native, Flutter, Next.js — cross-platform excellence</li>
+            <li><span class="dh-chk"><svg viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polyline points="2 8 6 12 14 4"/></svg></span>Full-stack e-commerce with payment & inventory systems</li>
+            <li><span class="dh-chk"><svg viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polyline points="2 8 6 12 14 4"/></svg></span>High-performance database design and data architecture</li>
+          </ul>
+          <br/>
+          <button class="dh-btn dh-btn--outline">Learn More <svg width="13" height="13" viewBox="0 0 14 14" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M2 7h10M8 3l4 4-4 4"/></svg></button>
+        </div>
+        <div class="dh-feature-row__visual">
+          <div class="dh-mock-card">
+            <div class="dh-mock-hdr">
+              <div class="dh-mock-dot" style="background:#ff5f57"></div>
+              <div class="dh-mock-dot" style="background:#febc2e"></div>
+              <div class="dh-mock-dot" style="background:#28c840"></div>
+            </div>
+            <div class="dh-mock-code">
+<span class="dh-c-muted">// AI pipeline — automated</span><br/>
+<span class="dh-c-blue">async function</span> <span class="dh-c-yellow">analyzeData</span>(input) {<br/>
+&nbsp;&nbsp;<span class="dh-c-blue">const</span> model = <span class="dh-c-blue">await</span> AI.<span class="dh-c-green">load</span>(<span class="dh-c-yellow">'v3-pro'</span>);<br/>
+&nbsp;&nbsp;<span class="dh-c-blue">const</span> result = <span class="dh-c-blue">await</span> model<br/>
+&nbsp;&nbsp;&nbsp;&nbsp;.<span class="dh-c-green">predict</span>(input)<br/>
+&nbsp;&nbsp;&nbsp;&nbsp;.<span class="dh-c-green">filter</span>(confidence &gt; 0.92);<br/>
+&nbsp;&nbsp;<span class="dh-c-blue">return</span> result.<span class="dh-c-green">transform</span>();<br/>
+}<br/><br/>
+<span class="dh-c-muted">// ✓ Deployed to production</span><br/>
+<span class="dh-c-green">STATUS</span>: <span class="dh-c-yellow">LIVE</span> · 12ms avg latency
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <!-- Infrastructure -->
+      <div class="dh-feature-row dh-feature-row--rev dh-fade">
+        <div class="dh-feature-row__text">
+          <div class="dh-label">IT Infrastructure</div>
+          <h3 class="dh-feature-row__title">Infrastructure That Never Sleeps</h3>
+          <p class="dh-feature-row__desc">We design, deploy, and manage the backbone of your operations — from cloud environments to on-premise data centers, with 24/7 monitoring and proactive support built in.</p>
+          <ul class="dh-feature-list">
+            <li><span class="dh-chk"><svg viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polyline points="2 8 6 12 14 4"/></svg></span>Managed IT services with guaranteed SLA uptime</li>
+            <li><span class="dh-chk"><svg viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polyline points="2 8 6 12 14 4"/></svg></span>IT consulting and strategy for digital transformation</li>
+            <li><span class="dh-chk"><svg viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polyline points="2 8 6 12 14 4"/></svg></span>Cloud migration, setup, and ongoing optimization</li>
+            <li><span class="dh-chk"><svg viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polyline points="2 8 6 12 14 4"/></svg></span>Helpdesk support and endpoint management</li>
+          </ul>
+          <br/>
+          <button class="dh-btn dh-btn--outline">Learn More <svg width="13" height="13" viewBox="0 0 14 14" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M2 7h10M8 3l4 4-4 4"/></svg></button>
+        </div>
+        <div class="dh-feature-row__visual">
+          <div class="dh-mock-infra">
+            <div class="dh-infra-item">
+              <div class="dh-infra-item__left">
+                <div class="dh-infra-icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"><path d="M18 10h-1.26A8 8 0 109 20h9a5 5 0 000-10z"/></svg></div>
+                <div><div class="dh-infra-item__name">Cloud Infrastructure</div><div class="dh-infra-item__sub">AWS · Multi-region</div></div>
+              </div>
+              <div class="dh-status"><span class="dh-status__dot"></span>Operational</div>
+            </div>
+            <div class="dh-infra-item">
+              <div class="dh-infra-item__left">
+                <div class="dh-infra-icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"><rect x="2" y="2" width="20" height="8" rx="2"/><rect x="2" y="14" width="20" height="8" rx="2"/><line x1="6" y1="6" x2="6.01" y2="6" stroke-width="2.5"/><line x1="6" y1="18" x2="6.01" y2="18" stroke-width="2.5"/></svg></div>
+                <div><div class="dh-infra-item__name">Data Center</div><div class="dh-infra-item__sub">Primary + DR Failover</div></div>
+              </div>
+              <div class="dh-status"><span class="dh-status__dot"></span>Operational</div>
+            </div>
+            <div class="dh-infra-item">
+              <div class="dh-infra-item__left">
+                <div class="dh-infra-icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/></svg></div>
+                <div><div class="dh-infra-item__name">Security Shield</div><div class="dh-infra-item__sub">0 incidents · 30d</div></div>
+              </div>
+              <div class="dh-status"><span class="dh-status__dot"></span>Protected</div>
+            </div>
+            <div class="dh-infra-item">
+              <div class="dh-infra-item__left">
+                <div class="dh-infra-icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"><path d="M22 16.92v3a2 2 0 01-2.18 2 19.79 19.79 0 01-8.63-3.07A19.5 19.5 0 013.07 9.81 19.79 19.79 0 012 2h3a2 2 0 012 1.72 12.84 12.84 0 00.7 2.81 2 2 0 01-.45 2.11L6.09 9.91a16 16 0 006 6l1.27-1.27a2 2 0 012.11-.45 12.84 12.84 0 002.81.7A2 2 0 0122 16.92z"/></svg></div>
+                <div><div class="dh-infra-item__name">Helpdesk Support</div><div class="dh-infra-item__sub">Avg response: 4 min</div></div>
+              </div>
+              <div class="dh-status"><span class="dh-status__dot"></span>24/7 Active</div>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <!-- Marketing -->
+      <div class="dh-feature-row dh-fade">
+        <div class="dh-feature-row__text">
+          <div class="dh-label">Marketing & Creative Studio</div>
+          <h3 class="dh-feature-row__title">Creative That Converts, Design That Defines</h3>
+          <p class="dh-feature-row__desc">Our creative studio blends strategy with aesthetics — delivering campaigns, brands, and content that resonates with your audience and drives measurable growth.</p>
+          <ul class="dh-feature-list">
+            <li><span class="dh-chk"><svg viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polyline points="2 8 6 12 14 4"/></svg></span>Digital marketing strategy, SEO & paid advertising</li>
+            <li><span class="dh-chk"><svg viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polyline points="2 8 6 12 14 4"/></svg></span>Brand identity, graphic design & visual storytelling</li>
+            <li><span class="dh-chk"><svg viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polyline points="2 8 6 12 14 4"/></svg></span>Content management, copywriting & editorial planning</li>
+            <li><span class="dh-chk"><svg viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polyline points="2 8 6 12 14 4"/></svg></span>Multi-channel advertising across search, social & display</li>
+          </ul>
+          <br/>
+          <button class="dh-btn dh-btn--outline">Learn More <svg width="13" height="13" viewBox="0 0 14 14" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M2 7h10M8 3l4 4-4 4"/></svg></button>
+        </div>
+        <div class="dh-feature-row__visual">
+          <div class="dh-mock-metrics">
+            <div class="dh-metric-card">
+              <div class="dh-metric-card__label">Organic Traffic</div>
+              <div class="dh-metric-card__val">+148%</div>
+              <div class="dh-metric-card__change">↑ vs last quarter</div>
+              <div class="dh-metric-bar"><div class="dh-metric-bar__fill" style="width:78%"></div></div>
+            </div>
+            <div class="dh-metric-card">
+              <div class="dh-metric-card__label">Conversion Rate</div>
+              <div class="dh-metric-card__val">6.4%</div>
+              <div class="dh-metric-card__change">↑ +1.2% MoM</div>
+              <div class="dh-metric-bar"><div class="dh-metric-bar__fill" style="width:64%"></div></div>
+            </div>
+            <div class="dh-metric-card">
+              <div class="dh-metric-card__label">Avg. ROAS</div>
+              <div class="dh-metric-card__val">4.8×</div>
+              <div class="dh-metric-card__change">↑ Strong ROI</div>
+              <div class="dh-metric-bar"><div class="dh-metric-bar__fill" style="width:92%"></div></div>
+            </div>
+            <div class="dh-metric-card">
+              <div class="dh-metric-card__label">Brand Reach</div>
+              <div class="dh-metric-card__val">2.3M</div>
+              <div class="dh-metric-card__change">↑ Impressions</div>
+              <div class="dh-metric-bar"><div class="dh-metric-bar__fill" style="width:55%"></div></div>
+            </div>
+          </div>
+        </div>
+      </div>
+
+    </div>
+  </section>
+
+  <!-- ═══ PROCESS ═══ -->
+  <section class="dh-section dh-process-wrap" id="dh-process">
+    <div class="dh-container">
+      <div class="dh-section-header dh-fade">
+        <div class="dh-label">How We Work</div>
+        <h2 class="dh-h2">A Process Built for Clarity,<br />Speed & Quality</h2>
+        <p class="dh-sub-text">We follow a structured, transparent engagement model that delivers results without surprises.</p>
+      </div>
+      <div class="dh-steps dh-fade dh-fd1">
+        <div class="dh-step"><div class="dh-step__num">Step 01</div><div class="dh-step__title">Discovery & Scoping</div><div class="dh-step__desc">We start with a deep-dive into your goals, constraints, and existing systems to define a clear, actionable brief.</div></div>
+        <div class="dh-step"><div class="dh-step__num">Step 02</div><div class="dh-step__title">Architecture & Design</div><div class="dh-step__desc">Our team maps out the technical architecture and design direction before a single line of code is written.</div></div>
+        <div class="dh-step"><div class="dh-step__num">Step 03</div><div class="dh-step__title">Build & Iterate</div><div class="dh-step__desc">Agile sprints with regular demos and feedback loops ensure the product evolves with your needs in real time.</div></div>
+        <div class="dh-step"><div class="dh-step__num">Step 04</div><div class="dh-step__title">Deploy & Support</div><div class="dh-step__desc">We handle full deployment, handover documentation, and ongoing maintenance so you're never left in the dark.</div></div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ═══ TECH STACK ═══ -->
+  <section class="dh-section" id="dh-tools">
+    <div class="dh-container">
+
+      <div class="dh-tools-header dh-fade">
+        <div>
+          <div class="dh-label">Our Stack</div>
+          <h2 class="dh-h2" style="margin-bottom:0">Industry-Leading Tools<br />&amp; Technologies</h2>
+        </div>
+        <a href="/tech-stack" class="dh-stack-link">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><polyline points="16 18 22 12 16 6"/><polyline points="8 6 2 12 8 18"/></svg>
+          Explore Our Full Tech Stack
+          <svg viewBox="0 0 14 14" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M2 7h10M8 3l4 4-4 4"/></svg>
+        </a>
+      </div>
+
+      <div class="dh-tools-grid dh-fade dh-fd1">
+
+        <div class="dh-tool-chip">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.4" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="2.5"/><ellipse cx="12" cy="12" rx="10" ry="4" transform="rotate(0 12 12)"/><ellipse cx="12" cy="12" rx="10" ry="4" transform="rotate(60 12 12)"/><ellipse cx="12" cy="12" rx="10" ry="4" transform="rotate(120 12 12)"/></svg>
+          <div class="dh-tool-chip__name">React</div>
+        </div>
+
+        <div class="dh-tool-chip">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.4" stroke-linecap="round" stroke-linejoin="round"><path d="M12 2L2 7l10 5 10-5-10-5z"/><path d="M2 17l10 5 10-5"/><path d="M2 12l10 5 10-5"/></svg>
+          <div class="dh-tool-chip__name">Node.js</div>
+        </div>
+
+        <div class="dh-tool-chip">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.4" stroke-linecap="round" stroke-linejoin="round"><path d="M12 3C8.5 3 6 5.5 6 8v1H5a2 2 0 00-2 2v2a2 2 0 002 2h.5V17a2 2 0 002 2h9a2 2 0 002-2v-2h.5a2 2 0 002-2v-2a2 2 0 00-2-2H18V8c0-2.5-2.5-5-6-5z"/><line x1="9" y1="8" x2="9" y2="9"/><line x1="15" y1="8" x2="15" y2="9"/></svg>
+          <div class="dh-tool-chip__name">Python</div>
+        </div>
+
+        <div class="dh-tool-chip">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.4" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="9" width="4" height="4" rx=".5"/><rect x="8" y="9" width="4" height="4" rx=".5"/><rect x="13" y="9" width="4" height="4" rx=".5"/><rect x="8" y="4" width="4" height="4" rx=".5"/><path d="M2 18c2.5-1.5 6-2 10-2s7.5.5 10 2"/></svg>
+          <div class="dh-tool-chip__name">Docker</div>
+        </div>
+
+        <div class="dh-tool-chip">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.4" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="3"/><path d="M12 2v2M12 20v2M4.93 4.93l1.41 1.41M17.66 17.66l1.41 1.41M2 12h2M20 12h2M4.93 19.07l1.41-1.41M17.66 6.34l1.41-1.41"/></svg>
+          <div class="dh-tool-chip__name">Kubernetes</div>
+        </div>
+
+        <div class="dh-tool-chip">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.4" stroke-linecap="round" stroke-linejoin="round"><path d="M18 10h-1.26A8 8 0 109 20h9a5 5 0 000-10z"/></svg>
+          <div class="dh-tool-chip__name">AWS</div>
+        </div>
+
+        <div class="dh-tool-chip">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.4" stroke-linecap="round" stroke-linejoin="round"><path d="M3 9l9-7 9 7v11a2 2 0 01-2 2H5a2 2 0 01-2-2z"/><polyline points="9 22 9 12 15 12 15 22"/></svg>
+          <div class="dh-tool-chip__name">Azure</div>
+        </div>
+
+        <div class="dh-tool-chip">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.4" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="10"/><line x1="2" y1="12" x2="22" y2="12"/><path d="M12 2a15.3 15.3 0 014 10 15.3 15.3 0 01-4 10 15.3 15.3 0 01-4-10 15.3 15.3 0 014-10z"/></svg>
+          <div class="dh-tool-chip__name">Next.js</div>
+        </div>
+
+        <div class="dh-tool-chip">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.4" stroke-linecap="round" stroke-linejoin="round"><path d="M12 2L4 7v5c0 5.25 3.5 10.15 8 11.35C16.5 22.15 20 17.25 20 12V7L12 2z"/><polyline points="9 12 11 14 15 10"/></svg>
+          <div class="dh-tool-chip__name">Flutter</div>
+        </div>
+
+        <div class="dh-tool-chip">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.4" stroke-linecap="round" stroke-linejoin="round"><ellipse cx="12" cy="5" rx="9" ry="3"/><path d="M21 12c0 1.66-4.03 3-9 3S3 13.66 3 12"/><path d="M3 5v14c0 1.66 4.03 3 9 3s9-1.34 9-3V5"/></svg>
+          <div class="dh-tool-chip__name">PostgreSQL</div>
+        </div>
+
+        <div class="dh-tool-chip">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.4" stroke-linecap="round" stroke-linejoin="round"><path d="M12 2C9.5 2 7 4 7 7c0 4.5 3 8 5 12 2-4 5-7.5 5-12 0-3-2.5-5-5-5z"/><circle cx="12" cy="7" r="2"/></svg>
+          <div class="dh-tool-chip__name">MongoDB</div>
+        </div>
+
+        <div class="dh-tool-chip">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.4" stroke-linecap="round" stroke-linejoin="round"><path d="M21 16V8a2 2 0 00-1-1.73l-7-4a2 2 0 00-2 0l-7 4A2 2 0 003 8v8a2 2 0 001 1.73l7 4a2 2 0 002 0l7-4A2 2 0 0021 16z"/><polyline points="3.27 6.96 12 12.01 20.73 6.96"/><line x1="12" y1="22.08" x2="12" y2="12"/></svg>
+          <div class="dh-tool-chip__name">OpenAI</div>
+        </div>
+
+      </div>
+    </div>
+  </section>
+
+  <!-- ═══ CTA — PHOTO BG, CONTENT RIGHT ═══ -->
+  <section class="dh-cta-section">
+    <div class="dh-container">
+      <div class="dh-cta-box dh-fade">
+
+        <!-- background image -->
+        <div class="dh-cta-box__bg"></div>
+        <!-- directional overlay for legibility -->
+        <div class="dh-cta-box__overlay"></div>
+
+        <!-- content pinned right -->
+        <div class="dh-cta-box__content">
+          <div class="dh-cta-box__inner">
+            <div class="dh-cta-eyebrow">
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><path d="M22 16.92v3a2 2 0 01-2.18 2 19.79 19.79 0 01-8.63-3.07A19.5 19.5 0 013.07 9.81 19.79 19.79 0 012 2h3a2 2 0 012 1.72 12.84 12.84 0 00.7 2.81 2 2 0 01-.45 2.11L6.09 9.91a16 16 0 006 6l1.27-1.27a2 2 0 012.11-.45 12.84 12.84 0 002.81.7A2 2 0 0122 16.92z"/></svg>
+              Let's Talk
+            </div>
+            <h2 class="dh-cta-box__title">Ready to Build Something Remarkable?</h2>
+            <p class="dh-cta-box__desc">Talk to our team and get a tailored proposal within 48 hours. No commitment, no fluff — just clarity on what we can build together.</p>
+            <a href="/contact" class="dh-btn dh-btn--white dh-btn--lg">
+              Contact Us
+              <svg width="15" height="15" viewBox="0 0 14 14" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M2 7h10M8 3l4 4-4 4"/></svg>
+            </a>
+          </div>
+        </div>
+
+      </div>
+    </div>
+  </section>
+
+</div><!-- end .dh-root -->
+
+<script>
+  // Scroll-triggered fade-in
+  const _dhObs = new IntersectionObserver((entries) => {
+    entries.forEach(e => {
+      if (e.isIntersecting) { e.target.classList.add('dh-on'); _dhObs.unobserve(e.target); }
+    });
+  }, { threshold: 0.1 });
+
+  document.querySelectorAll('#dh-page .dh-fade').forEach(el => _dhObs.observe(el));
+</script>
+
+</body>
+</html>
+
+<cronos-footer></cronos-footer>
