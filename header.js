@@ -528,9 +528,12 @@ class CronosHeader extends HTMLElement {
                     display: none;
                 }
                 
-                /* Hide the tagline on mobile */
+                /* Show tagline on mobile */
                 .cronos-menu-group-tagline {
-                    display: none;
+                    display: block;
+                    font-size: 12px;
+                    color: var(--cronos-color-text-muted);
+                    margin-top: 2px;
                 }
                 
                 /* Show and style mobile icon */
@@ -641,41 +644,57 @@ class CronosHeader extends HTMLElement {
                 /* Back button injected via JS */
                 .cronos-mobile-back-btn {
                     display: flex;
-                    align-items: center;
-                    gap: 10px;
+                    align-items: flex-start;
+                    flex-direction: column;
+                    gap: 0;
                     width: 100%;
-                    padding: 18px 20px;
+                    padding: 18px 20px 0;
                     background: none;
                     border: none;
-                    
                     color: var(--cronos-color-text-light);
                     font-family: 'Circular Std', system-ui, sans-serif;
                     font-size: 1rem;
                     font-weight: 500;
                     cursor: pointer;
-                    margin-bottom: 8px;
+                    margin-bottom: 0;
                     text-align: left;
                     letter-spacing: 0;
                 }
 
-                .cronos-mobile-back-btn svg {
+                /* The circle back arrow */
+                .cronos-mobile-back-arrow-btn {
+                    display: inline-flex;
+                    align-items: center;
+                    justify-content: center;
+                    width: 32px;
+                    height: 32px;
+                    border-radius: 50%;
+                    border: 1px solid rgba(255,255,255,0.25);
+                    color: var(--cronos-color-text-light);
                     flex-shrink: 0;
-                    color: var(--cronos-color-text-muted);
+                    margin-bottom: 16px;
                 }
 
-                .cronos-mobile-back-btn:hover {
+                .cronos-mobile-back-btn:hover .cronos-mobile-back-arrow-btn {
+                    border-color: var(--cronos-color-accent);
                     color: var(--cronos-color-accent);
                 }
 
-                .cronos-mobile-back-btn:hover svg {
-                    color: var(--cronos-color-accent);
+                /* Sub-panel header: nav link title + sub-links below */
+                .cronos-mobile-subpanel-header {
+                    display: flex;
+                    flex-direction: column;
+                    width: 100%;
+                    padding-bottom: 16px;
+                    border-bottom: 1px solid rgba(255,255,255,0.08);
+                    margin-bottom: 4px;
                 }
 
-                /* Sub-panel section title (panel name shown in back bar) */
-                .cronos-mobile-back-label {
-                    color: var(--cronos-color-text-muted);
-                    font-size: 0.85rem;
-                    font-weight: 400;
+                .cronos-mobile-subpanel-title {
+                    font-size: 1.5rem;
+                    font-weight: 600;
+                    color: var(--cronos-color-text-light);
+                    line-height: 1.2;
                 }
 
                 .cronos-megamenu-3-column-grid {
@@ -700,6 +719,19 @@ class CronosHeader extends HTMLElement {
                     flex-direction: row;
                     align-items: center;
                     display: flex;
+                    color: white;
+                    font-size: 14px;
+                    font-weight: 500;
+                }
+
+                /* Show thumbnail icon inside mobile group heading */
+                .cronos-menu-group-card h3 .cronos-menu-group-img-icon {
+                    display: inline-block;
+                    width: auto;
+                    height: 36px;
+                    border-radius: 9px;
+                    margin-right: 10px;
+                    flex-shrink: 0;
                 }
                 
                 .cronos-mega-menu-group-list a {
@@ -762,7 +794,7 @@ class CronosHeader extends HTMLElement {
                                 <a href="#" class="cronos-custom-nav-link" data-cronos-megamenu-trigger="Crypto">
                                     Crypto
                                     <svg class="cronos-mobile-dropdown-icon" xmlns="http://www.w3.org/2000/svg" width="22" height="22" viewBox="0 0 24 24">
-                                        <path fill="#f2f2f2" d="M8.025 22L6.25 20.225L14.475 12L6.25 3.775L8.025 2l10 10l-10 10Z" stroke-width="1" stroke-linecap="round" stroke-linejoin="round"/>
+                                        <path fill="#f2f2f2" d="M8.025 22L6.25 20.225L14.475 12L6.25 3.775L8.025 2l10 10l-10 10Z" stroke-width="0.5" stroke-linecap="round" stroke-linejoin="round"/>
                                     </svg>
                                 </a>
                                 <div class="cronos-mega-menu-container">
@@ -834,7 +866,7 @@ class CronosHeader extends HTMLElement {
                                 <a href="page.html" class="cronos-custom-nav-link" data-cronos-megamenu-trigger="services">
                                     Solutions
                                     <svg class="cronos-mobile-dropdown-icon" xmlns="http://www.w3.org/2000/svg" width="22" height="22" viewBox="0 0 24 24">
-                                        <path fill="#f2f2f2" d="M8.025 22L6.25 20.225L14.475 12L6.25 3.775L8.025 2l10 10l-10 10Z" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+                                        <path fill="#f2f2f2" d="M8.025 22L6.25 20.225L14.475 12L6.25 3.775L8.025 2l10 10l-10 10Z" stroke-width="0.5" stroke-linecap="round" stroke-linejoin="round"/>
                                     </svg>
                                 </a>
                                 <div class="cronos-mega-menu-container">
@@ -843,7 +875,11 @@ class CronosHeader extends HTMLElement {
                                             
                                             <div class="cronos-menu-group-card">
                                                 <h3>
-                                                    Software Development
+                                                    <img src="thumbnails/04 (2).png" alt="Dev Icon" class="cronos-menu-group-img-icon">
+                                                    <span class="cronos-menu-group-text-container">
+                                                        Software Development
+                                                        <span class="cronos-menu-group-tagline">Custom apps &amp; platforms</span>
+                                                    </span>
                                                 </h3>
                                                 <ul class="cronos-mega-menu-group-list">
                                                     <li>
@@ -881,7 +917,11 @@ class CronosHeader extends HTMLElement {
 
                                             <div class="cronos-menu-group-card">
                                                 <h3>
-                                                    IT Infrastructure
+                                                    <img src="thumbnails/04 (2).png" alt="IT Icon" class="cronos-menu-group-img-icon">
+                                                    <span class="cronos-menu-group-text-container">
+                                                        IT Infrastructure
+                                                        <span class="cronos-menu-group-tagline">Reliable systems &amp; support</span>
+                                                    </span>
                                                 </h3>
                                                 <ul class="cronos-mega-menu-group-list">
                                                     <li>
@@ -914,7 +954,11 @@ class CronosHeader extends HTMLElement {
 
                                             <div class="cronos-menu-group-card">
                                                 <h3>
-                                                    Marketing & Creative Studio
+                                                    <img src="thumbnails/04 (2).png" alt="Marketing Icon" class="cronos-menu-group-img-icon">
+                                                    <span class="cronos-menu-group-text-container">
+                                                        Marketing &amp; Creative Studio
+                                                        <span class="cronos-menu-group-tagline">Creative content &amp; design</span>
+                                                    </span>
                                                 </h3>
                                                 <ul class="cronos-mega-menu-group-list">
                                                     <li>
@@ -952,7 +996,7 @@ class CronosHeader extends HTMLElement {
                                 <a href="#" class="cronos-custom-nav-link" data-cronos-megamenu-trigger="discover">
                                     Discover
                                     <svg class="cronos-mobile-dropdown-icon" xmlns="http://www.w3.org/2000/svg" width="22" height="22" viewBox="0 0 24 24">
-                                        <path fill="#f2f2f2" d="M8.025 22L6.25 20.225L14.475 12L6.25 3.775L8.025 2l10 10l-10 10Z" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+                                        <path fill="#f2f2f2" d="M8.025 22L6.25 20.225L14.475 12L6.25 3.775L8.025 2l10 10l-10 10Z" stroke-width="0.5" stroke-linecap="round" stroke-linejoin="round"/>
                                     </svg>
                                 </a>
                                 <div class="cronos-mega-menu-container">
@@ -1522,12 +1566,14 @@ class CronosHeader extends HTMLElement {
             backBtn.className = 'cronos-mobile-back-btn';
             backBtn.setAttribute('aria-label', 'Go back to menu');
             backBtn.innerHTML = `
-            
-                <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24">
-                    <path fill="currentColor" d="M10 22L0 12L10 2l1.775 1.775L3.55 12l8.225 8.225L10 22Z" stroke="currentColor" stroke-width="0.1" stroke-linecap="round" stroke-linejoin="round"/>
-                </svg>
-                <span style="margin-left: -10px;">Menu</span>
-                <span class="cronos-mobile-back-label" style="font-weight: 700;">/ ${labelText}</span>
+                <span class="cronos-mobile-back-arrow-btn" aria-label="Go back">
+                    <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round">
+                        <polyline points="15 18 9 12 15 6"/>
+                    </svg>
+                </span>
+                <div class="cronos-mobile-subpanel-header">
+                    <span class="cronos-mobile-subpanel-title">${labelText}</span>
+                </div>
             `;
 
             // Prepend back button before the first child of the container
