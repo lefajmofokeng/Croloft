@@ -1,0 +1,1649 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Vault — Non-Custodial Wallet</title>
+<link href="https://fonts.googleapis.com/css2?family=Syne:wght@400;500;600;700;800&family=JetBrains+Mono:wght@300;400;500&display=swap" rel="stylesheet">
+<style>
+*, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+:root {
+  --bg-0: #060810;
+  --bg-1: #0b0e1a;
+  --bg-2: #10142a;
+  --bg-3: #161b35;
+  --border: rgba(255,255,255,0.06);
+  --border-bright: rgba(255,255,255,0.12);
+  --accent: #00d4ff;
+  --accent-2: #7b61ff;
+  --accent-green: #00e5a0;
+  --accent-red: #ff4d6a;
+  --accent-orange: #ff9500;
+  --text-1: #f0f2ff;
+  --text-2: #8892b0;
+  --text-3: #4a5270;
+  --syne: 'Syne', sans-serif;
+  --mono: 'JetBrains Mono', monospace;
+}
+
+html, body {
+  background: var(--bg-0);
+  color: var(--text-1);
+  font-family: var(--syne);
+  min-height: 100vh;
+  overflow-x: hidden;
+}
+
+/* ── Scrollbar ── */
+::-webkit-scrollbar { width: 4px; }
+::-webkit-scrollbar-track { background: var(--bg-1); }
+::-webkit-scrollbar-thumb { background: var(--bg-3); border-radius: 2px; }
+
+/* ── Layout ── */
+.app {
+  display: grid;
+  grid-template-columns: 72px 1fr;
+  grid-template-rows: 1fr;
+  min-height: 100vh;
+}
+
+/* ══════════════════════════════════
+   SIDEBAR
+══════════════════════════════════ */
+.sidebar {
+  background: var(--bg-1);
+  border-right: 1px solid var(--border);
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  padding: 20px 0;
+  gap: 6px;
+  position: sticky;
+  top: 0;
+  height: 100vh;
+  z-index: 100;
+}
+
+.sidebar-logo {
+  width: 40px;
+  height: 40px;
+  margin-bottom: 20px;
+}
+
+.sidebar-logo svg { width: 40px; height: 40px; }
+
+.nav-item {
+  width: 44px;
+  height: 44px;
+  border-radius: 12px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  cursor: pointer;
+  transition: all 0.2s;
+  color: var(--text-3);
+  position: relative;
+}
+
+.nav-item:hover { background: var(--bg-2); color: var(--text-2); }
+.nav-item.active {
+  background: rgba(0, 212, 255, 0.1);
+  color: var(--accent);
+}
+.nav-item.active::before {
+  content: '';
+  position: absolute;
+  left: -1px;
+  top: 50%;
+  transform: translateY(-50%);
+  width: 2px;
+  height: 24px;
+  background: var(--accent);
+  border-radius: 0 2px 2px 0;
+}
+
+.nav-item svg { width: 20px; height: 20px; }
+
+.sidebar-spacer { flex: 1; }
+
+.avatar-btn {
+  width: 36px;
+  height: 36px;
+  border-radius: 10px;
+  background: linear-gradient(135deg, #7b61ff, #00d4ff);
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 14px;
+  font-weight: 700;
+  color: #fff;
+  letter-spacing: -0.5px;
+}
+
+/* ══════════════════════════════════
+   MAIN
+══════════════════════════════════ */
+.main {
+  display: grid;
+  grid-template-columns: 1fr 320px;
+  grid-template-rows: auto 1fr;
+  min-height: 100vh;
+  overflow: hidden;
+}
+
+/* ── Topbar ── */
+.topbar {
+  grid-column: 1 / -1;
+  display: flex;
+  align-items: center;
+  padding: 16px 28px;
+  border-bottom: 1px solid var(--border);
+  gap: 16px;
+  background: var(--bg-0);
+}
+
+.topbar-title {
+  font-size: 13px;
+  font-weight: 600;
+  color: var(--text-2);
+  letter-spacing: 1.5px;
+  text-transform: uppercase;
+}
+
+.topbar-spacer { flex: 1; }
+
+.chain-selector {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  background: var(--bg-1);
+  border: 1px solid var(--border-bright);
+  border-radius: 10px;
+  padding: 7px 14px;
+  cursor: pointer;
+  font-size: 13px;
+  font-weight: 600;
+  color: var(--text-1);
+  transition: border-color 0.2s;
+}
+.chain-selector:hover { border-color: var(--accent); }
+.chain-selector-dot {
+  width: 8px; height: 8px;
+  border-radius: 50%;
+  background: var(--accent-green);
+  box-shadow: 0 0 6px var(--accent-green);
+}
+
+.topbar-btn {
+  width: 36px; height: 36px;
+  border-radius: 10px;
+  background: var(--bg-1);
+  border: 1px solid var(--border);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  cursor: pointer;
+  color: var(--text-2);
+  transition: all 0.2s;
+}
+.topbar-btn:hover { border-color: var(--border-bright); color: var(--text-1); }
+.topbar-btn svg { width: 16px; height: 16px; }
+
+.notif-dot {
+  position: relative;
+}
+.notif-dot::after {
+  content: '';
+  position: absolute;
+  top: 7px; right: 7px;
+  width: 6px; height: 6px;
+  border-radius: 50%;
+  background: var(--accent);
+  border: 1px solid var(--bg-0);
+}
+
+/* ── Content Area ── */
+.content {
+  padding: 24px 28px;
+  overflow-y: auto;
+  display: flex;
+  flex-direction: column;
+  gap: 24px;
+}
+
+/* ══════════════════════════════════
+   BALANCE HERO
+══════════════════════════════════ */
+.balance-hero {
+  background: linear-gradient(135deg, var(--bg-2) 0%, var(--bg-1) 100%);
+  border: 1px solid var(--border-bright);
+  border-radius: 20px;
+  padding: 28px;
+  position: relative;
+  overflow: hidden;
+}
+
+.balance-hero::before {
+  content: '';
+  position: absolute;
+  top: -60px; right: -60px;
+  width: 200px; height: 200px;
+  background: radial-gradient(circle, rgba(0,212,255,0.08) 0%, transparent 70%);
+  pointer-events: none;
+}
+
+.balance-hero::after {
+  content: '';
+  position: absolute;
+  bottom: -40px; left: 30%;
+  width: 150px; height: 150px;
+  background: radial-gradient(circle, rgba(123,97,255,0.06) 0%, transparent 70%);
+  pointer-events: none;
+}
+
+.balance-label {
+  font-size: 11px;
+  font-weight: 600;
+  letter-spacing: 2px;
+  text-transform: uppercase;
+  color: var(--text-3);
+  margin-bottom: 10px;
+  font-family: var(--mono);
+}
+
+.balance-amount {
+  font-size: 48px;
+  font-weight: 800;
+  color: var(--text-1);
+  letter-spacing: -2px;
+  line-height: 1;
+  margin-bottom: 6px;
+}
+
+.balance-amount span {
+  font-size: 24px;
+  font-weight: 500;
+  color: var(--text-3);
+  letter-spacing: 0;
+}
+
+.balance-change {
+  display: flex;
+  align-items: center;
+  gap: 6px;
+  font-family: var(--mono);
+  font-size: 13px;
+  font-weight: 500;
+}
+
+.change-positive { color: var(--accent-green); }
+.change-negative { color: var(--accent-red); }
+
+.balance-actions {
+  display: flex;
+  gap: 10px;
+  margin-top: 24px;
+}
+
+.action-btn {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  padding: 10px 20px;
+  border-radius: 12px;
+  font-family: var(--syne);
+  font-size: 13px;
+  font-weight: 600;
+  cursor: pointer;
+  transition: all 0.2s;
+  border: none;
+}
+
+.action-btn svg { width: 16px; height: 16px; }
+
+.btn-primary {
+  background: var(--accent);
+  color: #000;
+}
+.btn-primary:hover { background: #33ddff; transform: translateY(-1px); }
+
+.btn-secondary {
+  background: rgba(0,212,255,0.08);
+  border: 1px solid rgba(0,212,255,0.2);
+  color: var(--accent);
+}
+.btn-secondary:hover { background: rgba(0,212,255,0.14); }
+
+.btn-ghost {
+  background: var(--bg-3);
+  border: 1px solid var(--border-bright);
+  color: var(--text-2);
+}
+.btn-ghost:hover { color: var(--text-1); border-color: var(--border-bright); }
+
+/* Portfolio mini chart line */
+.mini-chart {
+  position: absolute;
+  bottom: 0; right: 0;
+  opacity: 0.3;
+}
+
+/* ══════════════════════════════════
+   CHAIN TABS
+══════════════════════════════════ */
+.chain-tabs {
+  display: flex;
+  gap: 6px;
+  overflow-x: auto;
+  padding-bottom: 2px;
+}
+.chain-tabs::-webkit-scrollbar { display: none; }
+
+.chain-tab {
+  display: flex;
+  align-items: center;
+  gap: 7px;
+  padding: 7px 14px;
+  border-radius: 10px;
+  border: 1px solid var(--border);
+  background: var(--bg-1);
+  cursor: pointer;
+  font-size: 12px;
+  font-weight: 600;
+  color: var(--text-2);
+  white-space: nowrap;
+  transition: all 0.2s;
+  flex-shrink: 0;
+}
+.chain-tab img { width: 18px; height: 18px; border-radius: 50%; }
+.chain-tab:hover { border-color: var(--border-bright); color: var(--text-1); }
+.chain-tab.active {
+  background: var(--bg-2);
+  border-color: var(--border-bright);
+  color: var(--text-1);
+}
+
+/* ══════════════════════════════════
+   ASSETS TABLE
+══════════════════════════════════ */
+.section-header {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  margin-bottom: 12px;
+}
+
+.section-title {
+  font-size: 13px;
+  font-weight: 700;
+  letter-spacing: 0.5px;
+  color: var(--text-1);
+}
+
+.section-action {
+  font-size: 12px;
+  font-weight: 600;
+  color: var(--accent);
+  cursor: pointer;
+  letter-spacing: 0.3px;
+}
+.section-action:hover { text-decoration: underline; }
+
+.assets-table {
+  border: 1px solid var(--border);
+  border-radius: 16px;
+  overflow: hidden;
+}
+
+.table-header {
+  display: grid;
+  grid-template-columns: 2fr 1fr 1fr 1fr 90px;
+  padding: 10px 16px;
+  border-bottom: 1px solid var(--border);
+  background: var(--bg-1);
+}
+
+.th {
+  font-size: 10px;
+  font-weight: 600;
+  letter-spacing: 1.5px;
+  text-transform: uppercase;
+  color: var(--text-3);
+  font-family: var(--mono);
+}
+.th:not(:first-child) { text-align: right; }
+
+.asset-row {
+  display: grid;
+  grid-template-columns: 2fr 1fr 1fr 1fr 90px;
+  padding: 14px 16px;
+  border-bottom: 1px solid var(--border);
+  transition: background 0.15s;
+  cursor: pointer;
+  align-items: center;
+}
+.asset-row:last-child { border-bottom: none; }
+.asset-row:hover { background: rgba(255,255,255,0.02); }
+
+.asset-info {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+}
+
+.asset-icon {
+  width: 38px;
+  height: 38px;
+  border-radius: 50%;
+  flex-shrink: 0;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  position: relative;
+}
+
+.asset-icon img { width: 38px; height: 38px; border-radius: 50%; }
+
+.chain-badge {
+  position: absolute;
+  bottom: -2px; right: -2px;
+  width: 16px; height: 16px;
+  border-radius: 50%;
+  border: 1.5px solid var(--bg-1);
+  overflow: hidden;
+  background: var(--bg-2);
+}
+.chain-badge img { width: 100%; height: 100%; }
+
+.asset-name {
+  font-size: 14px;
+  font-weight: 700;
+  color: var(--text-1);
+  line-height: 1.2;
+}
+.asset-sub {
+  font-size: 11px;
+  color: var(--text-3);
+  font-family: var(--mono);
+  margin-top: 1px;
+}
+
+.asset-val {
+  text-align: right;
+  font-family: var(--mono);
+}
+.asset-val-main {
+  font-size: 13px;
+  font-weight: 500;
+  color: var(--text-1);
+}
+.asset-val-sub {
+  font-size: 11px;
+  color: var(--text-3);
+  margin-top: 1px;
+}
+
+.pct-badge {
+  display: inline-block;
+  padding: 3px 8px;
+  border-radius: 6px;
+  font-size: 11px;
+  font-weight: 700;
+  font-family: var(--mono);
+  text-align: right;
+  float: right;
+}
+.pct-up { background: rgba(0,229,160,0.1); color: var(--accent-green); }
+.pct-dn { background: rgba(255,77,106,0.1); color: var(--accent-red); }
+
+.sparkline {
+  display: flex;
+  align-items: center;
+  justify-content: flex-end;
+}
+
+/* ══════════════════════════════════
+   RIGHT PANEL
+══════════════════════════════════ */
+.right-panel {
+  border-left: 1px solid var(--border);
+  background: var(--bg-1);
+  overflow-y: auto;
+  display: flex;
+  flex-direction: column;
+  gap: 0;
+}
+
+/* ── Wallet Address Card ── */
+.wallet-card {
+  padding: 20px;
+  border-bottom: 1px solid var(--border);
+}
+
+.wallet-card-label {
+  font-size: 10px;
+  letter-spacing: 2px;
+  text-transform: uppercase;
+  color: var(--text-3);
+  font-family: var(--mono);
+  margin-bottom: 10px;
+}
+
+.wallet-address-row {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  background: var(--bg-0);
+  border: 1px solid var(--border);
+  border-radius: 10px;
+  padding: 10px 12px;
+}
+
+.wallet-address-text {
+  font-family: var(--mono);
+  font-size: 12px;
+  color: var(--text-2);
+  flex: 1;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+}
+
+.icon-btn {
+  width: 26px; height: 26px;
+  border-radius: 7px;
+  background: var(--bg-2);
+  border: 1px solid var(--border-bright);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  cursor: pointer;
+  color: var(--text-3);
+  transition: color 0.2s;
+  flex-shrink: 0;
+}
+.icon-btn:hover { color: var(--text-1); }
+.icon-btn svg { width: 12px; height: 12px; }
+
+.security-row {
+  display: flex;
+  align-items: center;
+  gap: 6px;
+  margin-top: 10px;
+  padding: 8px 12px;
+  background: rgba(0,229,160,0.05);
+  border: 1px solid rgba(0,229,160,0.12);
+  border-radius: 8px;
+}
+.security-row svg { width: 13px; height: 13px; color: var(--accent-green); flex-shrink: 0; }
+.security-text { font-size: 11px; color: var(--accent-green); font-family: var(--mono); }
+
+/* ── Portfolio Allocation ── */
+.panel-section {
+  padding: 20px;
+  border-bottom: 1px solid var(--border);
+}
+
+.panel-section-title {
+  font-size: 11px;
+  font-weight: 700;
+  letter-spacing: 1.5px;
+  text-transform: uppercase;
+  color: var(--text-3);
+  margin-bottom: 16px;
+  font-family: var(--mono);
+}
+
+.donut-wrap {
+  display: flex;
+  align-items: center;
+  gap: 16px;
+}
+
+.donut-svg {
+  width: 90px;
+  height: 90px;
+  flex-shrink: 0;
+}
+
+.alloc-list {
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+  flex: 1;
+}
+
+.alloc-item {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+}
+
+.alloc-dot {
+  width: 8px; height: 8px;
+  border-radius: 50%;
+  flex-shrink: 0;
+}
+
+.alloc-name {
+  font-size: 12px;
+  font-weight: 600;
+  color: var(--text-2);
+  flex: 1;
+}
+
+.alloc-pct {
+  font-size: 12px;
+  font-weight: 700;
+  font-family: var(--mono);
+  color: var(--text-1);
+}
+
+/* ── Recent Transactions ── */
+.tx-list {
+  display: flex;
+  flex-direction: column;
+  gap: 0;
+}
+
+.tx-item {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  padding: 12px 0;
+  border-bottom: 1px solid var(--border);
+  cursor: pointer;
+  transition: background 0.15s;
+}
+.tx-item:last-child { border-bottom: none; }
+
+.tx-icon {
+  width: 34px; height: 34px;
+  border-radius: 10px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-shrink: 0;
+}
+.tx-icon svg { width: 16px; height: 16px; }
+.tx-send { background: rgba(255,77,106,0.1); color: var(--accent-red); }
+.tx-receive { background: rgba(0,229,160,0.1); color: var(--accent-green); }
+.tx-swap { background: rgba(0,212,255,0.1); color: var(--accent); }
+.tx-nft { background: rgba(123,97,255,0.1); color: var(--accent-2); }
+
+.tx-info { flex: 1; overflow: hidden; }
+.tx-name { font-size: 13px; font-weight: 600; color: var(--text-1); white-space: nowrap; overflow: hidden; text-overflow: ellipsis; }
+.tx-meta { font-size: 11px; color: var(--text-3); font-family: var(--mono); margin-top: 2px; }
+
+.tx-amount-col { text-align: right; flex-shrink: 0; }
+.tx-amount { font-size: 13px; font-weight: 700; font-family: var(--mono); }
+.tx-amount.positive { color: var(--accent-green); }
+.tx-amount.negative { color: var(--accent-red); }
+.tx-usd { font-size: 11px; color: var(--text-3); font-family: var(--mono); margin-top: 2px; }
+
+/* ══════════════════════════════════
+   NFT SECTION
+══════════════════════════════════ */
+.nft-grid {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 10px;
+}
+
+.nft-card {
+  border-radius: 12px;
+  overflow: hidden;
+  border: 1px solid var(--border);
+  background: var(--bg-2);
+  cursor: pointer;
+  transition: transform 0.2s, border-color 0.2s;
+  position: relative;
+}
+.nft-card:hover { transform: translateY(-2px); border-color: var(--border-bright); }
+
+.nft-img {
+  width: 100%;
+  aspect-ratio: 1;
+  object-fit: cover;
+  display: block;
+}
+
+.nft-info {
+  padding: 8px 10px;
+}
+.nft-collection {
+  font-size: 9px;
+  font-weight: 600;
+  letter-spacing: 1px;
+  text-transform: uppercase;
+  color: var(--text-3);
+  margin-bottom: 2px;
+}
+.nft-name {
+  font-size: 12px;
+  font-weight: 700;
+  color: var(--text-1);
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+.nft-floor {
+  font-size: 10px;
+  font-family: var(--mono);
+  color: var(--accent);
+  margin-top: 3px;
+}
+
+.nft-badge {
+  position: absolute;
+  top: 7px; right: 7px;
+  background: rgba(0,0,0,0.6);
+  backdrop-filter: blur(8px);
+  border: 1px solid rgba(255,255,255,0.1);
+  border-radius: 6px;
+  padding: 3px 7px;
+  font-size: 10px;
+  font-weight: 700;
+  color: var(--text-1);
+  font-family: var(--mono);
+}
+
+/* ══════════════════════════════════
+   STAKING / DEFI
+══════════════════════════════════ */
+.staking-list {
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+}
+
+.staking-card {
+  background: var(--bg-2);
+  border: 1px solid var(--border);
+  border-radius: 14px;
+  padding: 14px 16px;
+  display: flex;
+  align-items: center;
+  gap: 14px;
+  cursor: pointer;
+  transition: border-color 0.2s;
+}
+.staking-card:hover { border-color: var(--border-bright); }
+
+.staking-protocol {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  flex: 1;
+}
+
+.protocol-logo {
+  width: 36px; height: 36px;
+  border-radius: 10px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-shrink: 0;
+}
+.protocol-logo img { width: 36px; height: 36px; border-radius: 10px; }
+
+.protocol-name { font-size: 13px; font-weight: 700; color: var(--text-1); }
+.protocol-sub { font-size: 11px; color: var(--text-3); font-family: var(--mono); margin-top: 1px; }
+
+.staking-apy {
+  text-align: right;
+}
+.apy-val {
+  font-size: 15px;
+  font-weight: 800;
+  color: var(--accent-green);
+  font-family: var(--mono);
+}
+.apy-label {
+  font-size: 10px;
+  color: var(--text-3);
+  letter-spacing: 1px;
+  text-transform: uppercase;
+}
+
+/* ══════════════════════════════════
+   SPARKLINE SVGs
+══════════════════════════════════ */
+.spark { width: 70px; height: 30px; }
+
+/* ══════════════════════════════════
+   ANIMATIONS
+══════════════════════════════════ */
+@keyframes fadeUp {
+  from { opacity: 0; transform: translateY(12px); }
+  to   { opacity: 1; transform: translateY(0); }
+}
+
+.balance-hero { animation: fadeUp 0.4s ease both; }
+.chain-tabs   { animation: fadeUp 0.4s 0.05s ease both; }
+.assets-table { animation: fadeUp 0.4s 0.1s ease both; }
+.nft-section  { animation: fadeUp 0.4s 0.15s ease both; }
+.staking-section { animation: fadeUp 0.4s 0.2s ease both; }
+
+@keyframes pulse-dot {
+  0%, 100% { opacity: 1; transform: scale(1); }
+  50%       { opacity: 0.5; transform: scale(0.8); }
+}
+.chain-selector-dot { animation: pulse-dot 2s ease infinite; }
+
+/* ══════════════════════════════════
+   TABS within content
+══════════════════════════════════ */
+.content-tabs {
+  display: flex;
+  gap: 2px;
+  background: var(--bg-1);
+  border: 1px solid var(--border);
+  border-radius: 10px;
+  padding: 3px;
+  width: fit-content;
+}
+.ctab {
+  padding: 6px 14px;
+  border-radius: 8px;
+  font-size: 12px;
+  font-weight: 600;
+  cursor: pointer;
+  color: var(--text-3);
+  transition: all 0.2s;
+}
+.ctab.active {
+  background: var(--bg-3);
+  color: var(--text-1);
+}
+.ctab:hover:not(.active) { color: var(--text-2); }
+
+/* ══════════════════════════════════
+   GAS TRACKER
+══════════════════════════════════ */
+.gas-bar {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  padding: 10px 16px;
+  background: var(--bg-1);
+  border: 1px solid var(--border);
+  border-radius: 12px;
+}
+.gas-icon { color: var(--accent-orange); }
+.gas-icon svg { width: 14px; height: 14px; }
+.gas-label { font-size: 11px; color: var(--text-3); font-family: var(--mono); }
+.gas-levels { display: flex; gap: 16px; margin-left: auto; }
+.gas-level {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 1px;
+}
+.gas-speed { font-size: 9px; color: var(--text-3); letter-spacing: 1px; text-transform: uppercase; }
+.gas-gwei { font-size: 12px; font-weight: 700; font-family: var(--mono); }
+.gas-slow { color: var(--accent-green); }
+.gas-med  { color: var(--accent-orange); }
+.gas-fast { color: var(--accent-red); }
+</style>
+</head>
+<body>
+
+<div class="app">
+
+  <!-- ══ SIDEBAR ══ -->
+  <aside class="sidebar">
+    <!-- Logo -->
+    <div class="sidebar-logo">
+      <svg viewBox="0 0 40 40" fill="none" xmlns="http://www.w3.org/2000/svg">
+        <rect width="40" height="40" rx="11" fill="url(#logo-grad)"/>
+        <path d="M12 20L18 14L24 20L18 26L12 20Z" fill="white" fill-opacity="0.9"/>
+        <path d="M20 20L26 14L32 20L26 26L20 20Z" fill="white" fill-opacity="0.4"/>
+        <defs>
+          <linearGradient id="logo-grad" x1="0" y1="0" x2="40" y2="40" gradientUnits="userSpaceOnUse">
+            <stop stop-color="#0b1433"/>
+            <stop offset="1" stop-color="#0f1f4a"/>
+          </linearGradient>
+        </defs>
+      </svg>
+    </div>
+
+    <!-- Nav -->
+    <div class="nav-item active" title="Portfolio">
+      <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round">
+        <rect x="3" y="3" width="7" height="7" rx="1"/><rect x="14" y="3" width="7" height="7" rx="1"/>
+        <rect x="3" y="14" width="7" height="7" rx="1"/><rect x="14" y="14" width="7" height="7" rx="1"/>
+      </svg>
+    </div>
+
+    <div class="nav-item" title="Send / Receive">
+      <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round">
+        <path d="M7 17L17 7M17 7H7M17 7V17"/>
+      </svg>
+    </div>
+
+    <div class="nav-item" title="Swap">
+      <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round">
+        <path d="M7 16V4m0 0L3 8m4-4l4 4M17 8v12m0 0l4-4m-4 4l-4-4"/>
+      </svg>
+    </div>
+
+    <div class="nav-item" title="NFTs">
+      <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round">
+        <path d="M4 5a1 1 0 0 1 1-1h4a1 1 0 0 1 1 1v4a1 1 0 0 1-1 1H5a1 1 0 0 1-1-1V5ZM14 5a1 1 0 0 1 1-1h4a1 1 0 0 1 1 1v4a1 1 0 0 1-1 1h-4a1 1 0 0 1-1-1V5ZM4 15a1 1 0 0 1 1-1h4a1 1 0 0 1 1 1v4a1 1 0 0 1-1 1H5a1 1 0 0 1-1-1v-4ZM14 15a1 1 0 0 1 1-1h4a1 1 0 0 1 1 1v4a1 1 0 0 1-1 1h-4a1 1 0 0 1-1-1v-4Z"/>
+      </svg>
+    </div>
+
+    <div class="nav-item" title="DeFi & Staking">
+      <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round">
+        <path d="M12 2L2 7l10 5 10-5-10-5ZM2 17l10 5 10-5M2 12l10 5 10-5"/>
+      </svg>
+    </div>
+
+    <div class="nav-item" title="History">
+      <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round">
+        <circle cx="12" cy="12" r="10"/><path d="M12 6v6l4 2"/>
+      </svg>
+    </div>
+
+    <div class="sidebar-spacer"></div>
+
+    <div class="nav-item" title="Settings">
+      <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round">
+        <circle cx="12" cy="12" r="3"/>
+        <path d="M12 1v2M12 21v2M4.22 4.22l1.42 1.42M18.36 18.36l1.42 1.42M1 12h2M21 12h2M4.22 19.78l1.42-1.42M18.36 5.64l1.42-1.42"/>
+      </svg>
+    </div>
+
+    <div class="avatar-btn">VX</div>
+  </aside>
+
+  <!-- ══ MAIN ══ -->
+  <div class="main">
+
+    <!-- ── Topbar ── -->
+    <header class="topbar">
+      <span class="topbar-title">Portfolio</span>
+
+      <!-- Gas tracker inline -->
+      <div class="gas-bar">
+        <span class="gas-icon">
+          <svg viewBox="0 0 24 24" fill="currentColor"><path d="M19.77 7.23l.01-.01-3.72-3.72-1.06 1.06 1.83 1.83c-.87.32-1.48 1.16-1.48 2.14 0 1.26 1.01 2.28 2.27 2.28.24 0 .47-.04.68-.1v7.16c0 .61-.49 1.1-1.1 1.1-.61 0-1.1-.49-1.1-1.1V14c0-1.1-.9-2-2-2h-1V5c0-1.1-.9-2-2-2H6c-1.1 0-2 .9-2 2v16h10v-7.5h1.5v5c0 1.38 1.12 2.5 2.5 2.5s2.5-1.12 2.5-2.5V9c0-.69-.28-1.32-.73-1.77zM18.25 10c-.41 0-.75-.34-.75-.75s.34-.75.75-.75.75.34.75.75-.34.75-.75.75zM14 19H6v-6h8v6zm0-8H6V5h8v6z"/></svg>
+        </span>
+        <span class="gas-label">Gas</span>
+        <div class="gas-levels">
+          <div class="gas-level"><span class="gas-speed">Slow</span><span class="gas-gwei gas-slow">12</span></div>
+          <div class="gas-level"><span class="gas-speed">Avg</span><span class="gas-gwei gas-med">18</span></div>
+          <div class="gas-level"><span class="gas-speed">Fast</span><span class="gas-gwei gas-fast">27</span></div>
+        </div>
+      </div>
+
+      <div class="topbar-spacer"></div>
+
+      <div class="chain-selector">
+        <div class="chain-selector-dot"></div>
+        All Networks
+        <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><path d="M6 9l6 6 6-6"/></svg>
+      </div>
+
+      <div class="topbar-btn notif-dot" title="Notifications">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round">
+          <path d="M18 8A6 6 0 0 0 6 8c0 7-3 9-3 9h18s-3-2-3-9M13.73 21a2 2 0 0 1-3.46 0"/>
+        </svg>
+      </div>
+
+      <div class="topbar-btn" title="Scan QR">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round">
+          <rect x="3" y="3" width="7" height="7" rx="1"/><rect x="14" y="3" width="7" height="7" rx="1"/>
+          <rect x="3" y="14" width="7" height="7" rx="1"/>
+          <path d="M14 14h3v3M17 17v3h3M14 17h.01"/>
+        </svg>
+      </div>
+    </header>
+
+    <!-- ── Content ── -->
+    <div class="content">
+
+      <!-- Balance Hero -->
+      <div class="balance-hero">
+        <div class="balance-label">Total Portfolio Value</div>
+        <div class="balance-amount">$84,291<span>.47</span></div>
+        <div class="balance-change">
+          <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" class="change-positive"><path d="M18 15l-6-6-6 6"/></svg>
+          <span class="change-positive">+$1,842.30 (2.23%)</span>
+          <span style="color:var(--text-3); font-size:11px; margin-left:4px;">24h</span>
+        </div>
+        <div class="balance-actions">
+          <button class="action-btn btn-primary">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M12 5v14M5 12h14"/></svg>
+            Buy Crypto
+          </button>
+          <button class="action-btn btn-secondary">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M7 17L17 7M17 7H7M17 7V17"/></svg>
+            Send
+          </button>
+          <button class="action-btn btn-ghost">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M17 7L7 17M7 17H17M7 17V7"/></svg>
+            Receive
+          </button>
+          <button class="action-btn btn-ghost">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M7 16V4m0 0L3 8m4-4l4 4M17 8v12m0 0l4-4m-4 4l-4-4"/></svg>
+            Swap
+          </button>
+        </div>
+
+        <!-- SVG sparkline chart -->
+        <svg class="mini-chart" width="260" height="90" viewBox="0 0 260 90">
+          <defs>
+            <linearGradient id="spark-grad" x1="0" y1="0" x2="0" y2="1">
+              <stop offset="0%" stop-color="#00d4ff" stop-opacity="0.3"/>
+              <stop offset="100%" stop-color="#00d4ff" stop-opacity="0"/>
+            </linearGradient>
+          </defs>
+          <path d="M0 70 L30 60 L60 65 L90 45 L120 50 L150 30 L180 35 L210 20 L240 25 L260 10" stroke="#00d4ff" stroke-width="1.5" fill="none" stroke-linecap="round" stroke-linejoin="round"/>
+          <path d="M0 70 L30 60 L60 65 L90 45 L120 50 L150 30 L180 35 L210 20 L240 25 L260 10 L260 90 L0 90Z" fill="url(#spark-grad)"/>
+        </svg>
+      </div>
+
+      <!-- Chain Tabs -->
+      <div class="chain-tabs">
+        <div class="chain-tab active">
+          <svg width="18" height="18" viewBox="0 0 32 32"><circle cx="16" cy="16" r="16" fill="#1a1a2e"/><text x="50%" y="55%" text-anchor="middle" dominant-baseline="middle" font-size="10" fill="#8892b0" font-weight="700">ALL</text></svg>
+          All Chains
+        </div>
+        <!-- Ethereum -->
+        <div class="chain-tab">
+          <svg width="18" height="18" viewBox="0 0 32 32" fill="none" xmlns="http://www.w3.org/2000/svg">
+            <circle cx="16" cy="16" r="16" fill="#627EEA"/>
+            <path d="M16.498 4v8.87l7.497 3.35L16.498 4Z" fill="white" fill-opacity="0.6"/>
+            <path d="M16.498 4L9 16.22l7.498-3.35V4Z" fill="white"/>
+            <path d="M16.498 21.968v6.027L24 17.616l-7.502 4.352Z" fill="white" fill-opacity="0.6"/>
+            <path d="M16.498 27.995v-6.028L9 17.616l7.498 10.379Z" fill="white"/>
+            <path d="M16.498 20.573l7.497-4.353-7.497-3.348v7.701Z" fill="white" fill-opacity="0.2"/>
+            <path d="M9 16.22l7.498 4.353v-7.7L9 16.22Z" fill="white" fill-opacity="0.6"/>
+          </svg>
+          Ethereum
+        </div>
+        <!-- Bitcoin -->
+        <div class="chain-tab">
+          <svg width="18" height="18" viewBox="0 0 32 32" xmlns="http://www.w3.org/2000/svg">
+            <circle cx="16" cy="16" r="16" fill="#F7931A"/>
+            <path d="M22.1 13.9c.3-2.1-1.3-3.2-3.5-3.9l.7-2.9-1.8-.4-.7 2.8-1.4-.4.7-2.8-1.8-.4-.7 2.9-1.1-.3-2.4-.6-.5 1.9s1.3.3 1.3.3c.7.2.9.7.8 1l-2 8c-.1.3-.4.7-1 .6 0 0-1.3-.3-1.3-.3L8 22l2.3.6 1.2.3-.7 2.9 1.8.4.7-2.9 1.4.4-.7 2.8 1.8.4.7-2.9c3 .6 5.3.4 6.2-2.4.8-2.2-.1-3.5-1.6-4.3 1.1-.3 2-.9 2.2-2.3Zm-4 5.6c-.6 2.2-4.5 1-5.7.7l1-4.1c1.3.3 5.4 1 4.7 3.4Zm.6-5.7c-.5 2-3.8 1-4.8.7l.9-3.7c1.1.3 4.4.8 3.9 3Z" fill="white"/>
+          </svg>
+          Bitcoin
+        </div>
+        <!-- Solana -->
+        <div class="chain-tab">
+          <svg width="18" height="18" viewBox="0 0 32 32" xmlns="http://www.w3.org/2000/svg">
+            <circle cx="16" cy="16" r="16" fill="#000"/>
+            <path d="M9.5 20.5h13l-2.5 2.5H7l2.5-2.5ZM9.5 9h13l-2.5 2.5H7L9.5 9ZM22.5 14.75H9.5l2.5-2.5H25l-2.5 2.5Z" fill="url(#sol-g)"/>
+            <defs><linearGradient id="sol-g" x1="7" y1="16" x2="25" y2="16" gradientUnits="userSpaceOnUse"><stop stop-color="#9945FF"/><stop offset="1" stop-color="#14F195"/></linearGradient></defs>
+          </svg>
+          Solana
+        </div>
+        <!-- BNB -->
+        <div class="chain-tab">
+          <svg width="18" height="18" viewBox="0 0 32 32" xmlns="http://www.w3.org/2000/svg">
+            <circle cx="16" cy="16" r="16" fill="#F3BA2F"/>
+            <path d="M16 7.6l2.6 2.6-6.9 6.9-2.6-2.6L16 7.6ZM11.4 16l2.6 2.6-2.6 2.6L8.8 18.6l2.6-2.6ZM20.6 16l2.6 2.6-2.6 2.6L18 18.6l2.6-2.6ZM16 20.8l2.6 2.6-2.6 2.6-2.6-2.6 2.6-2.6ZM16 13.4l2.6 2.6L16 18.6l-2.6-2.6 2.6-2.6Z" fill="white"/>
+          </svg>
+          BNB Chain
+        </div>
+        <!-- Polygon -->
+        <div class="chain-tab">
+          <svg width="18" height="18" viewBox="0 0 32 32" xmlns="http://www.w3.org/2000/svg">
+            <circle cx="16" cy="16" r="16" fill="#8247E5"/>
+            <path d="M20.8 12.9l-1.2-.7c-.2-.1-.4-.1-.6 0l-3.2 1.9V12c0-.2-.1-.4-.3-.5l-1.2-.7c-.2-.1-.4-.1-.6 0l-4.4 2.5c-.2.1-.3.3-.3.5v5.4c0 .2.1.4.3.5l1.2.7c.2.1.4.1.6 0l4.4-2.5v2.1c0 .2.1.4.3.5l1.2.7c.2.1.4.1.6 0l4.4-2.5c.2-.1.3-.3.3-.5v-5c-.2-.4-.3-.6-.5-.8Zm-5.8 5.3l-3.2-1.9v-3.8l3.2 1.9v3.8Zm1.5-3.7l-3.2-1.9 3.2-1.9 3.2 1.9-3.2 1.9Zm4.7 2.6-3.2 1.9v-3.8l3.2-1.9v3.8Z" fill="white"/>
+          </svg>
+          Polygon
+        </div>
+        <!-- Arbitrum -->
+        <div class="chain-tab">
+          <svg width="18" height="18" viewBox="0 0 32 32" xmlns="http://www.w3.org/2000/svg">
+            <circle cx="16" cy="16" r="16" fill="#213147"/>
+            <path d="M16 6L8 10.5v9L16 24l8-4.5v-9L16 6Zm0 2.3l5.8 3.3v6.7L16 21.6l-5.8-3.3v-6.7L16 8.3Z" fill="#96BEDC"/>
+            <path d="M13.5 14l-2 4.5L16 21l4.5-7-7-2Z" fill="#28A0F0"/>
+          </svg>
+          Arbitrum
+        </div>
+        <!-- Avalanche -->
+        <div class="chain-tab">
+          <svg width="18" height="18" viewBox="0 0 32 32" xmlns="http://www.w3.org/2000/svg">
+            <circle cx="16" cy="16" r="16" fill="#E84142"/>
+            <path d="M19.5 19.5H22l-6-10.5-6 10.5h5l1-2 1 2Zm-7 0h2.3l-.7-1.3-.7 1.3Z" fill="white"/>
+          </svg>
+          Avalanche
+        </div>
+      </div>
+
+      <!-- Content Tabs + Gas -->
+      <div style="display:flex; align-items:center; gap:12px; flex-wrap:wrap;">
+        <div class="content-tabs">
+          <div class="ctab active">Assets</div>
+          <div class="ctab">NFTs</div>
+          <div class="ctab">DeFi</div>
+          <div class="ctab">History</div>
+        </div>
+      </div>
+
+      <!-- Assets Table -->
+      <div class="nft-section">
+        <div class="section-header">
+          <span class="section-title">Holdings</span>
+          <span class="section-action">Manage →</span>
+        </div>
+        <div class="assets-table">
+          <div class="table-header">
+            <div class="th">Asset</div>
+            <div class="th">Price</div>
+            <div class="th">Holdings</div>
+            <div class="th">Value</div>
+            <div class="th">24h</div>
+          </div>
+
+          <!-- ETH -->
+          <div class="asset-row">
+            <div class="asset-info">
+              <div class="asset-icon">
+                <svg width="38" height="38" viewBox="0 0 38 38"><circle cx="19" cy="19" r="19" fill="#627EEA"/><path d="M19.498 6v10.87l7.497 3.35L19.498 6Z" fill="white" fill-opacity="0.6"/><path d="M19.498 6L12 18.22l7.498-3.35V6Z" fill="white"/><path d="M19.498 27.968v6.027L27 21.616l-7.502 6.352Z" fill="white" fill-opacity="0.6"/><path d="M19.498 33.995v-6.028L12 21.616l7.498 12.379Z" fill="white"/><path d="M19.498 26.573l7.497-4.353-7.497-3.348v7.701Z" fill="white" fill-opacity="0.2"/><path d="M12 22.22l7.498 4.353v-7.7L12 22.22Z" fill="white" fill-opacity="0.6"/></svg>
+              </div>
+              <div>
+                <div class="asset-name">Ethereum</div>
+                <div class="asset-sub">ETH · ERC-20</div>
+              </div>
+            </div>
+            <div class="asset-val">
+              <div class="asset-val-main">$3,421.50</div>
+              <div class="asset-val-sub">+1.8%</div>
+            </div>
+            <div class="asset-val">
+              <div class="asset-val-main">8.432 ETH</div>
+              <div class="asset-val-sub">—</div>
+            </div>
+            <div class="asset-val">
+              <div class="asset-val-main">$28,845</div>
+              <div class="asset-val-sub">34.2% of portfolio</div>
+            </div>
+            <div class="sparkline">
+              <svg class="spark" viewBox="0 0 70 30">
+                <polyline points="0,25 10,20 20,22 30,14 40,16 50,8 60,10 70,4" fill="none" stroke="#00e5a0" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>
+              </svg>
+            </div>
+          </div>
+
+          <!-- BTC -->
+          <div class="asset-row">
+            <div class="asset-info">
+              <div class="asset-icon">
+                <svg width="38" height="38" viewBox="0 0 38 38"><circle cx="19" cy="19" r="19" fill="#F7931A"/><path d="M26.1 17.9c.3-2.1-1.3-3.2-3.5-3.9l.7-2.9-1.8-.4-.7 2.8-1.4-.4.7-2.8-1.8-.4-.7 2.9-1.1-.3-2.4-.6-.5 1.9s1.3.3 1.3.3c.7.2.9.7.8 1l-2 8c-.1.3-.4.7-1 .6 0 0-1.3-.3-1.3-.3L11 26l2.3.6 1.2.3-.7 2.9 1.8.4.7-2.9 1.4.4-.7 2.8 1.8.4.7-2.9c3 .6 5.3.4 6.2-2.4.8-2.2-.1-3.5-1.6-4.3 1.1-.3 2-.9 2.2-2.3Zm-4 5.6c-.6 2.2-4.5 1-5.7.7l1-4.1c1.3.3 5.4 1 4.7 3.4Zm.6-5.7c-.5 2-3.8 1-4.8.7l.9-3.7c1.1.3 4.4.8 3.9 3Z" fill="white"/></svg>
+              </div>
+              <div>
+                <div class="asset-name">Bitcoin</div>
+                <div class="asset-sub">BTC · Native</div>
+              </div>
+            </div>
+            <div class="asset-val">
+              <div class="asset-val-main">$67,840.00</div>
+              <div class="asset-val-sub">+2.4%</div>
+            </div>
+            <div class="asset-val">
+              <div class="asset-val-main">0.2814 BTC</div>
+              <div class="asset-val-sub">—</div>
+            </div>
+            <div class="asset-val">
+              <div class="asset-val-main">$19,090</div>
+              <div class="asset-val-sub">22.6% of portfolio</div>
+            </div>
+            <div class="sparkline">
+              <svg class="spark" viewBox="0 0 70 30">
+                <polyline points="0,22 10,18 20,20 30,12 40,15 50,9 60,11 70,6" fill="none" stroke="#00e5a0" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>
+              </svg>
+            </div>
+          </div>
+
+          <!-- SOL -->
+          <div class="asset-row">
+            <div class="asset-info">
+              <div class="asset-icon">
+                <svg width="38" height="38" viewBox="0 0 38 38"><circle cx="19" cy="19" r="19" fill="#000"/><path d="M10.5 24.5h15l-3 3H7.5l3-3ZM10.5 10.5h15l-3 3H7.5l3-3ZM25.5 17.5H10.5l3-3H28.5l-3 3Z" fill="url(#sol-g2)"/><defs><linearGradient id="sol-g2" x1="7" y1="19" x2="29" y2="19" gradientUnits="userSpaceOnUse"><stop stop-color="#9945FF"/><stop offset="1" stop-color="#14F195"/></linearGradient></defs></svg>
+              </div>
+              <div>
+                <div class="asset-name">Solana</div>
+                <div class="asset-sub">SOL · Native</div>
+              </div>
+            </div>
+            <div class="asset-val">
+              <div class="asset-val-main">$148.20</div>
+              <div class="asset-val-sub">-0.6%</div>
+            </div>
+            <div class="asset-val">
+              <div class="asset-val-main">82.14 SOL</div>
+              <div class="asset-val-sub">—</div>
+            </div>
+            <div class="asset-val">
+              <div class="asset-val-main">$12,173</div>
+              <div class="asset-val-sub">14.4% of portfolio</div>
+            </div>
+            <div class="sparkline">
+              <svg class="spark" viewBox="0 0 70 30">
+                <polyline points="0,10 10,14 20,12 30,18 40,16 50,22 60,19 70,24" fill="none" stroke="#ff4d6a" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>
+              </svg>
+            </div>
+          </div>
+
+          <!-- MATIC -->
+          <div class="asset-row">
+            <div class="asset-info">
+              <div class="asset-icon">
+                <svg width="38" height="38" viewBox="0 0 38 38"><circle cx="19" cy="19" r="19" fill="#8247E5"/><path d="M24.8 15.9l-1.4-.8c-.2-.1-.5-.1-.7 0l-3.8 2.2V15c0-.3-.2-.5-.4-.6l-1.4-.8c-.2-.1-.5-.1-.7 0L11.2 16c-.2.1-.4.3-.4.6v6.4c0 .3.2.5.4.6l1.4.8c.2.1.5.1.7 0l5.2-3v2.5c0 .3.2.5.4.6l1.4.8c.2.1.5.1.7 0l5.2-3c.2-.1.4-.3.4-.6V16.5c-.2-.3-.4-.5-.7-.6Zm-6.9 6.3l-3.8-2.2v-4.5l3.8 2.2v4.5Zm1.8-4.4l-3.8-2.2 3.8-2.2 3.8 2.2-3.8 2.2Zm5.6 3.1l-3.8 2.2v-4.5l3.8-2.2v4.5Z" fill="white"/></svg>
+              </div>
+              <div>
+                <div class="asset-name">Polygon</div>
+                <div class="asset-sub">MATIC · Polygon</div>
+              </div>
+            </div>
+            <div class="asset-val">
+              <div class="asset-val-main">$0.892</div>
+              <div class="asset-val-sub">+3.1%</div>
+            </div>
+            <div class="asset-val">
+              <div class="asset-val-main">8,240 MATIC</div>
+              <div class="asset-val-sub">—</div>
+            </div>
+            <div class="asset-val">
+              <div class="asset-val-main">$7,350</div>
+              <div class="asset-val-sub">8.7% of portfolio</div>
+            </div>
+            <div class="sparkline">
+              <svg class="spark" viewBox="0 0 70 30">
+                <polyline points="0,20 10,16 20,18 30,10 40,12 50,8 60,10 70,5" fill="none" stroke="#00e5a0" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>
+              </svg>
+            </div>
+          </div>
+
+          <!-- USDC -->
+          <div class="asset-row">
+            <div class="asset-info">
+              <div class="asset-icon">
+                <svg width="38" height="38" viewBox="0 0 38 38"><circle cx="19" cy="19" r="19" fill="#2775CA"/><path d="M19 7C12.4 7 7 12.4 7 19s5.4 12 12 12 12-5.4 12-12S25.6 7 19 7Zm0 21.6a9.6 9.6 0 1 1 0-19.2 9.6 9.6 0 0 1 0 19.2Zm1.2-10.2c-2.6-.7-3.5-1.1-3.5-2.1 0-.9.9-1.5 2.3-1.5 1.5 0 2.1.7 2.2 1.8h1.9c-.1-1.5-1-2.8-2.7-3.2V12h-2.8v1.4c-1.6.4-2.8 1.4-2.8 3 0 1.9 1.6 2.9 3.9 3.5 2.9.7 3.5 1.3 3.5 2.2 0 .6-.4 1.7-2.3 1.7-1.8 0-2.5-.8-2.6-1.8H15c.1 1.9 1.5 3 3.4 3.3V27h2.8v-1.6c1.6-.3 2.9-1.3 2.9-3.1-.1-2.3-2-3.1-3.9-3.9Z" fill="white"/></svg>
+              </div>
+              <div>
+                <div class="asset-name">USD Coin</div>
+                <div class="asset-sub">USDC · Multi-chain</div>
+              </div>
+            </div>
+            <div class="asset-val">
+              <div class="asset-val-main">$1.000</div>
+              <div class="asset-val-sub">+0.0%</div>
+            </div>
+            <div class="asset-val">
+              <div class="asset-val-main">10,250 USDC</div>
+              <div class="asset-val-sub">—</div>
+            </div>
+            <div class="asset-val">
+              <div class="asset-val-main">$10,250</div>
+              <div class="asset-val-sub">12.2% of portfolio</div>
+            </div>
+            <div class="sparkline">
+              <svg class="spark" viewBox="0 0 70 30">
+                <polyline points="0,15 10,15 20,15 30,16 40,15 50,15 60,14 70,15" fill="none" stroke="#8892b0" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>
+              </svg>
+            </div>
+          </div>
+
+        </div>
+      </div>
+
+      <!-- NFT Section -->
+      <div class="nft-section">
+        <div class="section-header">
+          <span class="section-title">NFT Collection</span>
+          <span class="section-action">View all 24 →</span>
+        </div>
+        <div class="nft-grid">
+
+          <div class="nft-card">
+            <img class="nft-img" src="https://images.unsplash.com/photo-1634973357973-f2ed2657db3c?w=300&q=80&auto=format" alt="NFT 1" loading="lazy"/>
+            <div class="nft-badge">RARE</div>
+            <div class="nft-info">
+              <div class="nft-collection">Azuki</div>
+              <div class="nft-name">#3421</div>
+              <div class="nft-floor">Floor: 11.2 ETH</div>
+            </div>
+          </div>
+
+          <div class="nft-card">
+            <img class="nft-img" src="https://images.unsplash.com/photo-1618005182384-a83a8bd57fbe?w=300&q=80&auto=format" alt="NFT 2" loading="lazy"/>
+            <div class="nft-badge">EPIC</div>
+            <div class="nft-info">
+              <div class="nft-collection">BAYC</div>
+              <div class="nft-name">#8049</div>
+              <div class="nft-floor">Floor: 28.5 ETH</div>
+            </div>
+          </div>
+
+          <div class="nft-card">
+            <img class="nft-img" src="https://images.unsplash.com/photo-1639762681057-408e52192e55?w=300&q=80&auto=format" alt="NFT 3" loading="lazy"/>
+            <div class="nft-info">
+              <div class="nft-collection">Doodles</div>
+              <div class="nft-name">#1122</div>
+              <div class="nft-floor">Floor: 3.8 ETH</div>
+            </div>
+          </div>
+
+          <div class="nft-card">
+            <img class="nft-img" src="https://images.unsplash.com/photo-1635863138275-d9b33299680b?w=300&q=80&auto=format" alt="NFT 4" loading="lazy"/>
+            <div class="nft-badge">LEGENDARY</div>
+            <div class="nft-info">
+              <div class="nft-collection">CryptoPunks</div>
+              <div class="nft-name">#7804</div>
+              <div class="nft-floor">Floor: 52.0 ETH</div>
+            </div>
+          </div>
+
+          <div class="nft-card">
+            <img class="nft-img" src="https://images.unsplash.com/photo-1622547748225-3fc4abd2cca0?w=300&q=80&auto=format" alt="NFT 5" loading="lazy"/>
+            <div class="nft-info">
+              <div class="nft-collection">Art Blocks</div>
+              <div class="nft-name">#9382</div>
+              <div class="nft-floor">Floor: 0.9 ETH</div>
+            </div>
+          </div>
+
+          <div class="nft-card" style="background:var(--bg-3); border-style:dashed; display:flex; align-items:center; justify-content:center; cursor:pointer; min-height:120px; flex-direction:column; gap:8px;">
+            <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="var(--text-3)" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="10"/><path d="M12 8v8M8 12h8"/></svg>
+            <span style="font-size:11px; color:var(--text-3); font-weight:600;">Import NFT</span>
+          </div>
+
+        </div>
+      </div>
+
+      <!-- DeFi / Staking -->
+      <div class="staking-section">
+        <div class="section-header">
+          <span class="section-title">DeFi Positions</span>
+          <span class="section-action">Explore →</span>
+        </div>
+        <div class="staking-list">
+
+          <div class="staking-card">
+            <div class="staking-protocol">
+              <div class="protocol-logo" style="background:#ff6b35;">
+                <svg width="22" height="22" viewBox="0 0 24 24" fill="white"><path d="M12 2L4 6v6c0 5.25 3.5 10.14 8 11.38C16.5 22.14 20 17.25 20 12V6l-8-4Z"/></svg>
+              </div>
+              <div>
+                <div class="protocol-name">Lido Finance</div>
+                <div class="protocol-sub">stETH · 4.82 ETH staked</div>
+              </div>
+            </div>
+            <div style="text-align:right;">
+              <div style="font-size:11px; color:var(--text-3); font-family:var(--mono); margin-bottom:2px;">Rewards</div>
+              <div style="font-size:13px; font-weight:700; font-family:var(--mono); color:var(--accent-green);">+0.0192 ETH</div>
+            </div>
+            <div class="staking-apy">
+              <div class="apy-val">4.8%</div>
+              <div class="apy-label">APY</div>
+            </div>
+          </div>
+
+          <div class="staking-card">
+            <div class="staking-protocol">
+              <div class="protocol-logo" style="background:#FC72FF;">
+                <svg width="22" height="22" viewBox="0 0 24 24" fill="white"><path d="M22 12c0 5.52-4.48 10-10 10S2 17.52 2 12 6.48 2 12 2s10 4.48 10 10Zm-8.5-1.5h-1V9.5A.5.5 0 0 0 12 9H9.5a.5.5 0 0 0 0 1h2v.5h-1a.5.5 0 0 0 0 1h1v.5H9.5a.5.5 0 0 0 0 1H12a.5.5 0 0 0 .5-.5V12h1a.5.5 0 0 0 0-1Z"/></svg>
+              </div>
+              <div>
+                <div class="protocol-name">Uniswap V3</div>
+                <div class="protocol-sub">ETH/USDC · 0.3% Pool</div>
+              </div>
+            </div>
+            <div style="text-align:right;">
+              <div style="font-size:11px; color:var(--text-3); font-family:var(--mono); margin-bottom:2px;">Fees Earned</div>
+              <div style="font-size:13px; font-weight:700; font-family:var(--mono); color:var(--accent-green);">+$124.80</div>
+            </div>
+            <div class="staking-apy">
+              <div class="apy-val">12.4%</div>
+              <div class="apy-label">APY</div>
+            </div>
+          </div>
+
+          <div class="staking-card">
+            <div class="staking-protocol">
+              <div class="protocol-logo" style="background:#1a1a2e; border:1px solid #627EEA;">
+                <svg width="22" height="22" viewBox="0 0 24 24" fill="none"><path d="M12 3L4 7.5v9L12 21l8-4.5v-9L12 3Z" fill="#627EEA" fill-opacity="0.3"/><path d="M12 3v18M4 7.5l8 4.5 8-4.5" stroke="#627EEA" stroke-width="1.5"/></svg>
+              </div>
+              <div>
+                <div class="protocol-name">Aave V3</div>
+                <div class="protocol-sub">USDC Supply · Ethereum</div>
+              </div>
+            </div>
+            <div style="text-align:right;">
+              <div style="font-size:11px; color:var(--text-3); font-family:var(--mono); margin-bottom:2px;">Interest</div>
+              <div style="font-size:13px; font-weight:700; font-family:var(--mono); color:var(--accent-green);">+$38.20</div>
+            </div>
+            <div class="staking-apy">
+              <div class="apy-val">5.1%</div>
+              <div class="apy-label">APY</div>
+            </div>
+          </div>
+
+        </div>
+      </div>
+
+    </div><!-- /content -->
+
+    <!-- ══ RIGHT PANEL ══ -->
+    <aside class="right-panel">
+
+      <!-- Wallet Address -->
+      <div class="wallet-card">
+        <div class="wallet-card-label">Wallet Address</div>
+        <div class="wallet-address-row">
+          <div class="wallet-address-text">0x4A8b...3F9c2d</div>
+          <div class="icon-btn" title="Copy">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="9" y="9" width="13" height="13" rx="2"/><path d="M5 15H4a2 2 0 0 1-2-2V4a2 2 0 0 1 2-2h9a2 2 0 0 1 2 2v1"/></svg>
+          </div>
+          <div class="icon-btn" title="View on Explorer">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M18 13v6a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V8a2 2 0 0 1 2-2h6"/><polyline points="15 3 21 3 21 9"/><line x1="10" y1="14" x2="21" y2="3"/></svg>
+          </div>
+        </div>
+        <div class="security-row">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10Z"/><path d="m9 12 2 2 4-4"/></svg>
+          <span class="security-text">Hardware wallet secured</span>
+        </div>
+      </div>
+
+      <!-- Portfolio Allocation Donut -->
+      <div class="panel-section">
+        <div class="panel-section-title">Allocation</div>
+        <div class="donut-wrap">
+          <svg class="donut-svg" viewBox="0 0 90 90">
+            <circle cx="45" cy="45" r="35" fill="none" stroke="var(--bg-3)" stroke-width="12"/>
+            <!-- ETH 34% -->
+            <circle cx="45" cy="45" r="35" fill="none" stroke="#627EEA" stroke-width="12"
+              stroke-dasharray="74.5 145.4" stroke-dashoffset="0" transform="rotate(-90 45 45)"/>
+            <!-- BTC 22.6% -->
+            <circle cx="45" cy="45" r="35" fill="none" stroke="#F7931A" stroke-width="12"
+              stroke-dasharray="49.5 170.4" stroke-dashoffset="-74.5" transform="rotate(-90 45 45)"/>
+            <!-- SOL 14.4% -->
+            <circle cx="45" cy="45" r="35" fill="none" stroke="#9945FF" stroke-width="12"
+              stroke-dasharray="31.5 188.4" stroke-dashoffset="-124" transform="rotate(-90 45 45)"/>
+            <!-- USDC 12.2% -->
+            <circle cx="45" cy="45" r="35" fill="none" stroke="#2775CA" stroke-width="12"
+              stroke-dasharray="26.7 193.2" stroke-dashoffset="-155.5" transform="rotate(-90 45 45)"/>
+            <!-- MATIC 8.7% -->
+            <circle cx="45" cy="45" r="35" fill="none" stroke="#8247E5" stroke-width="12"
+              stroke-dasharray="19 200.9" stroke-dashoffset="-182.2" transform="rotate(-90 45 45)"/>
+            <!-- Other 8.1% -->
+            <circle cx="45" cy="45" r="35" fill="none" stroke="#4a5270" stroke-width="12"
+              stroke-dasharray="17.7 202.2" stroke-dashoffset="-201.2" transform="rotate(-90 45 45)"/>
+            <text x="45" y="41" text-anchor="middle" fill="var(--text-1)" font-size="11" font-weight="700" font-family="'Syne',sans-serif">6</text>
+            <text x="45" y="52" text-anchor="middle" fill="var(--text-3)" font-size="8" font-family="'JetBrains Mono',monospace">Assets</text>
+          </svg>
+          <div class="alloc-list">
+            <div class="alloc-item">
+              <div class="alloc-dot" style="background:#627EEA;"></div>
+              <div class="alloc-name">ETH</div>
+              <div class="alloc-pct">34.2%</div>
+            </div>
+            <div class="alloc-item">
+              <div class="alloc-dot" style="background:#F7931A;"></div>
+              <div class="alloc-name">BTC</div>
+              <div class="alloc-pct">22.6%</div>
+            </div>
+            <div class="alloc-item">
+              <div class="alloc-dot" style="background:#9945FF;"></div>
+              <div class="alloc-name">SOL</div>
+              <div class="alloc-pct">14.4%</div>
+            </div>
+            <div class="alloc-item">
+              <div class="alloc-dot" style="background:#2775CA;"></div>
+              <div class="alloc-name">USDC</div>
+              <div class="alloc-pct">12.2%</div>
+            </div>
+            <div class="alloc-item">
+              <div class="alloc-dot" style="background:#8247E5;"></div>
+              <div class="alloc-name">MATIC</div>
+              <div class="alloc-pct">8.7%</div>
+            </div>
+            <div class="alloc-item">
+              <div class="alloc-dot" style="background:#4a5270;"></div>
+              <div class="alloc-name">Other</div>
+              <div class="alloc-pct">8.1%</div>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <!-- Recent Transactions -->
+      <div class="panel-section" style="flex:1;">
+        <div class="panel-section-title">Recent Activity</div>
+        <div class="tx-list">
+
+          <div class="tx-item">
+            <div class="tx-icon tx-receive">
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M17 7L7 17M7 17H17M7 17V7"/></svg>
+            </div>
+            <div class="tx-info">
+              <div class="tx-name">Received ETH</div>
+              <div class="tx-meta">from 0x9F3a...8B2c · 2m ago</div>
+            </div>
+            <div class="tx-amount-col">
+              <div class="tx-amount positive">+1.42 ETH</div>
+              <div class="tx-usd">$4,859</div>
+            </div>
+          </div>
+
+          <div class="tx-item">
+            <div class="tx-icon tx-swap">
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M7 16V4m0 0L3 8m4-4l4 4M17 8v12m0 0l4-4m-4 4l-4-4"/></svg>
+            </div>
+            <div class="tx-info">
+              <div class="tx-name">Swap SOL → USDC</div>
+              <div class="tx-meta">Uniswap · 1h ago</div>
+            </div>
+            <div class="tx-amount-col">
+              <div class="tx-amount positive">+2,400 USDC</div>
+              <div class="tx-usd">$2,400</div>
+            </div>
+          </div>
+
+          <div class="tx-item">
+            <div class="tx-icon tx-send">
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M7 17L17 7M17 7H7M17 7V17"/></svg>
+            </div>
+            <div class="tx-info">
+              <div class="tx-name">Sent MATIC</div>
+              <div class="tx-meta">to 0x2D7f...1A4e · 3h ago</div>
+            </div>
+            <div class="tx-amount-col">
+              <div class="tx-amount negative">-500 MATIC</div>
+              <div class="tx-usd">$446</div>
+            </div>
+          </div>
+
+          <div class="tx-item">
+            <div class="tx-icon tx-nft">
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M4 5a1 1 0 0 1 1-1h4a1 1 0 0 1 1 1v4a1 1 0 0 1-1 1H5a1 1 0 0 1-1-1V5ZM14 5a1 1 0 0 1 1-1h4a1 1 0 0 1 1 1v4a1 1 0 0 1-1 1h-4a1 1 0 0 1-1-1V5ZM4 15a1 1 0 0 1 1-1h4a1 1 0 0 1 1 1v4a1 1 0 0 1-1 1H5a1 1 0 0 1-1-1v-4ZM14 15a1 1 0 0 1 1-1h4a1 1 0 0 1 1 1v4a1 1 0 0 1-1 1h-4a1 1 0 0 1-1-1v-4Z"/></svg>
+            </div>
+            <div class="tx-info">
+              <div class="tx-name">NFT Purchase</div>
+              <div class="tx-meta">Azuki #3421 · 6h ago</div>
+            </div>
+            <div class="tx-amount-col">
+              <div class="tx-amount negative">-11.2 ETH</div>
+              <div class="tx-usd">$38,320</div>
+            </div>
+          </div>
+
+          <div class="tx-item">
+            <div class="tx-icon tx-receive">
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M17 7L7 17M7 17H17M7 17V7"/></svg>
+            </div>
+            <div class="tx-info">
+              <div class="tx-name">Staking Reward</div>
+              <div class="tx-meta">Lido Finance · 12h ago</div>
+            </div>
+            <div class="tx-amount-col">
+              <div class="tx-amount positive">+0.019 ETH</div>
+              <div class="tx-usd">$65</div>
+            </div>
+          </div>
+
+          <div class="tx-item">
+            <div class="tx-icon tx-swap">
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M7 16V4m0 0L3 8m4-4l4 4M17 8v12m0 0l4-4m-4 4l-4-4"/></svg>
+            </div>
+            <div class="tx-info">
+              <div class="tx-name">Swap BTC → ETH</div>
+              <div class="tx-meta">1inch · 1d ago</div>
+            </div>
+            <div class="tx-amount-col">
+              <div class="tx-amount positive">+2.1 ETH</div>
+              <div class="tx-usd">$7,185</div>
+            </div>
+          </div>
+
+        </div>
+      </div>
+
+    </aside>
+
+  </div><!-- /main -->
+</div><!-- /app -->
+
+<script>
+// Tab switching
+document.querySelectorAll('.ctab').forEach(tab => {
+  tab.addEventListener('click', () => {
+    document.querySelectorAll('.ctab').forEach(t => t.classList.remove('active'));
+    tab.classList.add('active');
+  });
+});
+
+// Chain tabs
+document.querySelectorAll('.chain-tab').forEach(tab => {
+  tab.addEventListener('click', () => {
+    document.querySelectorAll('.chain-tab').forEach(t => t.classList.remove('active'));
+    tab.classList.add('active');
+  });
+});
+
+// Nav items
+document.querySelectorAll('.nav-item').forEach(item => {
+  item.addEventListener('click', () => {
+    document.querySelectorAll('.nav-item').forEach(n => n.classList.remove('active'));
+    item.classList.add('active');
+  });
+});
+
+// Copy address
+document.querySelector('.icon-btn').addEventListener('click', () => {
+  const btn = document.querySelector('.icon-btn');
+  btn.style.color = '#00e5a0';
+  setTimeout(() => btn.style.color = '', 1200);
+});
+</script>
+</body>
+</html>
