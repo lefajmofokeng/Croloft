@@ -1085,13 +1085,13 @@ class CronosHeader extends HTMLElement {
                                                 </h3>
                                                 <ul class="cronos-mega-menu-group-list">
                                                     <li>
-                                                        <a href="page.html">
+                                                        <a href="about.html">
                                                             <span class="cronos-mega-menu-link-title">About Us</span>
                                                             </a>
                                                     </li>
                                                     <li>
-                                                        <a href="page.html">
-                                                            <span class="cronos-mega-menu-link-title">Product News</span>
+                                                        <a href="roadmap.html">
+                                                            <span class="cronos-mega-menu-link-title">Roadmap</span>
                                                             </a>
                                                     </li>
                                                     <li>

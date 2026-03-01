@@ -2123,6 +2123,252 @@ document.addEventListener("DOMContentLoaded", function() {
 
 
 
+<section id="itc-ecommerce-showcase" class="itc-outer-wrapper">
+    <div class="itc-main-content-1200">
+        
+        <header class="itc-header-flex">
+            <div class="itc-text-group">
+                <h2 class="itc-hero-text">iOS 26. New look.</h2>
+                <h3 class="itc-sub-hero-text">Even more magic.</h3>
+            </div>
+            <a href="#" class="itc-cta-link">Learn more about iOS 26 ›</a>
+        </header>
+
+        <div class="itc-slider-viewport">
+            <div id="itc-track" class="itc-slider-track">
+                
+                <article class="itc-product-card">
+                    <div class="itc-img-container">
+                        <img src="https://images.pexels.com/photos/31121842/pexels-photo-31121842.jpeg" alt="Product Feature 1" class="itc-product-img">
+                    </div>
+                    <div class="itc-product-info">
+                        <p><strong>Liquid Glass.</strong> The new iOS design reflects and refracts what’s beneath it in real time, dynamically adapting to your content.</p>
+                    </div>
+                </article>
+
+                <article class="itc-product-card">
+                    <div class="itc-img-container">
+                        <img src="https://images.pexels.com/photos/23878615/pexels-photo-23878615.jpeg" alt="Product Feature 2" class="itc-product-img">
+                    </div>
+                    <div class="itc-product-info">
+                        <p><strong>A more vibrant Lock Screen.</strong> The time dynamically adapts to your photo wallpaper and notifications, keeping your subject in view.</p>
+                    </div>
+                </article>
+
+                <article class="itc-product-card">
+                    <div class="itc-img-container">
+                        <img src="https://images.pexels.com/photos/23533991/pexels-photo-23533991.jpeg" alt="Product Feature 3" class="itc-product-img">
+                    </div>
+                    <div class="itc-product-info">
+                        <p><strong>Call Screening.</strong> Automatically answers unknown callers. Once they share their name and reason, your phone rings.</p>
+                    </div>
+                </article>
+
+                <article class="itc-product-card">
+                    <div class="itc-img-container">
+                        <img src="https://images.pexels.com/photos/2225616/pexels-photo-2225616.jpeg" alt="Product Feature 4" class="itc-product-img">
+                    </div>
+                    <div class="itc-product-info">
+                        <p><strong>Hold Assist.</strong> Keeps your spot in the queue while you wait for a live agent and notifies you when they’re ready.</p>
+                    </div>
+                </article>
+
+            </div>
+        </div>
+
+        <div class="itc-nav-footer">
+            <button onclick="itcScrollSlide(-1)" class="itc-arrow-btn" aria-label="Previous slide">‹</button>
+            <button onclick="itcScrollSlide(1)" class="itc-arrow-btn" aria-label="Next slide">›</button>
+        </div>
+
+    </div>
+</section>
+
+<style>
+/* Reset & Scope */
+#itc-ecommerce-showcase {
+    background-color: #000;
+    color: #fff;
+    font-family: "Circular Std", "Helvetica", Arial, sans-serif;
+    padding: 60px 0;
+    width: 100%;
+}
+
+/* Strict 1200px Content Logic */
+.itc-main-content-1200 {
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: 0 20px;
+    box-sizing: border-box;
+}
+
+.itc-header-flex {
+    display: flex;
+    justify-content: space-between;
+    align-items: flex-end;
+    margin-bottom: 40px;
+}
+
+.itc-hero-text, .itc-sub-hero-text {
+    font-size: 34px;
+    font-weight: 700;
+    margin: 0;
+    line-height: 1.1;
+}
+
+.itc-sub-hero-text { color: #f5f5f7; opacity: 0.8; }
+
+.itc-cta-link {
+    color: #0071e3;
+    text-decoration: none;
+    font-size: 17px;
+}
+
+/* The Viewport (This is the 1200px window) */
+.itc-slider-viewport {
+    width: 100%;
+    overflow-x: auto; /* Allows manual swipe on mobile */
+    scroll-behavior: smooth;
+    scrollbar-width: none; /* Hide scrollbar Firefox */
+}
+.itc-slider-viewport::-webkit-scrollbar { display: none; } /* Hide scrollbar Chrome/Safari */
+
+/* The Track (This expands beyond 1200px) */
+.itc-slider-track {
+    display: flex;
+    gap: 24px;
+    width: max-content; /* Critical: allows cards to stay in one line */
+    padding-bottom: 10px;
+}
+
+/* Card Sizing */
+.itc-product-card {
+    flex: 0 0 370px; /* Fixed width for predictable scrolling */
+    display: flex;
+    flex-direction: column;
+}
+
+.itc-img-container {
+    width: 100%;
+    aspect-ratio: 1/1;
+    background: #1c1c1e;
+    border-radius: 24px;
+    overflow: hidden;
+    margin-bottom: 20px;
+}
+
+.itc-product-img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+}
+
+.itc-product-info {
+    font-size: 17px;
+    line-height: 1.5;
+    color: #86868b;
+}
+
+.itc-product-info strong { color: #fff; }
+
+/* Navigation */
+.itc-nav-footer {
+    display: flex;
+    justify-content: flex-end;
+    gap: 12px;
+    margin-top: 20px;
+}
+
+.itc-arrow-btn {
+    width: 40px;
+    height: 40px;
+    border-radius: 50%;
+    background: #333;
+    border: none;
+    color: #fff;
+    font-size: 24px;
+    cursor: pointer;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.itc-arrow-btn:hover { background: #444; }
+
+/* Mobile Adjustment */
+@media (max-width: 768px) {
+    .itc-product-card { flex: 0 0 280px; }
+    .itc-hero-text, .itc-sub-hero-text { font-size: 24px; }
+}
+</style>
+
+<script>
+/**
+ * itcScrollSlide
+ * @param {number} direction - 1 for next, -1 for prev
+ */
+function itcScrollSlide(direction) {
+    const viewport = document.querySelector('.itc-slider-viewport');
+    const firstCard = document.querySelector('.itc-product-card');
+    
+    if (viewport && firstCard) {
+        // Dynamically calculate card width + gap for pixel perfection
+        const cardWidth = firstCard.offsetWidth;
+        const gap = 24; 
+        const scrollAmount = (cardWidth + gap) * direction;
+        
+        viewport.scrollBy({
+            left: scrollAmount,
+            behavior: 'smooth'
+        });
+    }
+}
+</script>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 
 
@@ -2406,6 +2652,254 @@ document.addEventListener("DOMContentLoaded", function() {
     </div>
   </div>
 </div>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<div class="it-corp-display-section">
+    <div class="it-corp-display-wrapper">
+        
+        <p class="it-corp-display-kicker">All in the family</p>
+        <h1 class="it-corp-display-headline">All the must-haves.<br>All on Mobile.</h1>
+
+        <div class="it-corp-display-frame-container">
+            <div class="it-corp-display-image-layer"></div>
+            
+        </div>
+
+        <div class="it-corp-display-footer">
+            <p>
+                The latest iPhone models come packed with advanced capabilities. Helpful 
+                <strong>Apple Intelligence</strong> features such as visual intelligence and 
+                <strong>Writing Tools</strong> to make your everyday easier. Fast, secure 
+                connections with <strong>Wi-Fi 7, Bluetooth 6, 5G connectivity, and eSIM.</strong> 
+                And safety features like Messages via satellite designed to give you peace of mind.
+            </p>
+        </div>
+        
+    </div>
+</div>
+
+<style>
+/* 1. FONT & BASE CONFIG */
+/* Circular Std fallback provided. Ensure your local 'Circular Std' files are linked in your global CSS. */
+.it-corp-display-section {
+    --brand-orange: #ff6600;
+    --text-muted: #86868b;
+    --bg-black: #000000;
+    
+    background-color: var(--bg-black);
+    color: #ffffff;
+    font-family: "Circular Std", "Helvetica Neue", Helvetica, Arial, sans-serif;
+    padding: 80px 24px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    overflow: hidden;
+    -webkit-font-smoothing: antialiased;
+}
+
+.it-corp-display-wrapper {
+    width: 100%;
+    max-width: 1000px; /* Precise width as requested */
+    text-align: center;
+}
+
+/* 2. TEXT STYLING */
+.it-corp-display-kicker {
+    color: var(--brand-orange);
+    font-weight: 700;
+    font-size: 18px;
+    margin-bottom: 12px;
+}
+
+.it-corp-display-headline {
+    font-size: clamp(32px, 6vw, 56px);
+    line-height: 1.05;
+    font-weight: 700;
+    letter-spacing: -0.015em;
+    margin-bottom: 60px;
+}
+
+/* 3. THE UNIFIED FRAME (THE MASK) */
+.it-corp-display-frame-container {
+    position: relative;
+    width: 100%;
+    height: 720px; /* Height of the center tall segment */
+    margin: 0 auto 50px auto;
+    
+    mask-size: cover;
+    -webkit-mask-size: cover;
+    mask-repeat: no-repeat;
+    -webkit-mask-repeat: no-repeat;
+    mask-position: center;
+}
+
+.it-corp-display-image-layer {
+    width: 100%;
+    height: 100%;
+    /* PLACEHOLDER: Replace this URL with your 1000px image */
+    background-image: url('thumbnails/phone.png');
+    background-size: cover;
+    background-position: center;
+}
+
+/* 4. OVERLAY (Subtle Depth Frames) */
+.it-corp-display-overlay-grid {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    gap: 25px; /* Spacing between segments */
+    pointer-events: none;
+}
+
+.it-corp-display-segment {
+    border: 1px solid rgba(255,255,255,0.1);
+    box-shadow: inset 0 0 15px rgba(0,0,0,0.4);
+}
+
+.it-corp-display-segment.side {
+    width: 185px;
+    height: 370px;
+    border-radius: 35px;
+    margin-top: 10px; /* Visual alignment for side frames */
+}
+
+.it-corp-display-segment.center {
+    width: 250px;
+    height: 510px;
+    border-radius: 45px;
+}
+
+/* 5. FOOTER TEXT */
+.it-corp-display-footer {
+    max-width: 680px;
+    margin: 0 auto;
+}
+
+.it-corp-display-footer p {
+    font-size: 21px;
+    line-height: 1.5;
+    color: var(--text-muted);
+}
+
+.it-corp-display-footer strong {
+    color: #ffffff;
+    font-weight: 500;
+}
+
+/* 6. MOBILE ADAPTIVITY */
+@media (max-width: 768px) {
+    .it-corp-display-frame-container {
+        height: 400px; 
+        width: 100%;
+        /* Adjusted height for mobile */
+    }
+    .it-corp-display-segment.side {
+        display: none;
+    }
+}
+</style>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 
 

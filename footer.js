@@ -484,7 +484,7 @@
       <span class="col-heading">Discover</span>
       <div class="col-links">
         <a href="#">About Us</a>
-        <a href="#">Roadmap</a>
+        <a href="roadmap.html">Roadmap</a>
         <a href="careers.html">Careers</a>
         <a href="partners.html">Partners</a>
         <a href="affiliates.html">Affiliate</a>
