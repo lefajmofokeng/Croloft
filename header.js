@@ -471,6 +471,16 @@ class CronosHeader extends HTMLElement {
                 transform: translateY(-8px) rotate(-45deg);
             }
             
+            /* Desktop: back button must not appear */
+            @media (min-width: 1025px) {
+                .cronos-header-back-btn {
+                    display: none !important;
+                }
+                .cronos-custom-logo-container {
+                    display: block;
+                }
+            }
+
             /* Mobile Overrides */
             @media (max-width: 1024px) {
                 .cronos-custom-header-container {
@@ -641,7 +651,36 @@ class CronosHeader extends HTMLElement {
                     display: block;
                 }
 
-                /* Back button injected via JS */
+                /* Logo container: flex row, vertically centred */
+                .cronos-custom-logo-container {
+                    display: flex;
+                    align-items: center;
+                    height: var(--cronos-header-height);
+                }
+
+                /* Back button: hidden by default on mobile too */
+                .cronos-header-back-btn {
+                    display: none;
+                    align-items: center;
+                    justify-content: center;
+                    background: none;
+                    border: none;
+                    cursor: pointer;
+                    padding: 0;
+                    color: var(--cronos-color-text-light);
+                    height: var(--cronos-header-height);
+                }
+
+                /* When subpanel is open: hide logo, show back btn */
+                .cronos-header-wrapper.cronos-subpanel-header-open .cronos-custom-logo-link {
+                    display: none;
+                }
+
+                .cronos-header-wrapper.cronos-subpanel-header-open .cronos-header-back-btn {
+                    display: flex;
+                }
+
+                /* Back button injected via JS — now lives in header, not subpanel */
                 .cronos-mobile-back-btn {
                     display: flex;
                     align-items: flex-start;
@@ -666,13 +705,12 @@ class CronosHeader extends HTMLElement {
                     display: inline-flex;
                     align-items: center;
                     justify-content: center;
-                    width: 32px;
-                    height: 32px;
+                    width: 34px;
+                    height: 34px;
                     border-radius: 50%;
                     border: 1px solid rgba(255,255,255,0.25);
                     color: var(--cronos-color-text-light);
                     flex-shrink: 0;
-                    margin-bottom: 16px;
                 }
 
                 .cronos-mobile-back-btn:hover .cronos-mobile-back-arrow-btn {
@@ -697,6 +735,27 @@ class CronosHeader extends HTMLElement {
                     line-height: 1.2;
                 }
 
+                .cronos-mobile-group-btn {
+                    display: inline-block;
+                    color: #fff;
+                    background-color: transparent;
+                    border: 1px solid rgba(255,255,255,0.2);
+                    padding: 7px 16px;
+                    border-radius: 50px;
+                    margin-bottom: 14px;
+                    font-weight: 500;
+                    font-size: 0.85rem;
+                    font-family: 'Circular Std', system-ui, sans-serif;
+                    text-decoration: none;
+                    cursor: pointer;
+                    transition: border-color 0.2s, color 0.2s;
+                }
+
+                .cronos-mobile-group-btn:hover {
+                    border-color: var(--cronos-color-accent);
+                    color: var(--cronos-color-accent);
+                }
+
                 .cronos-megamenu-3-column-grid {
                     grid-template-columns: 1fr;
                     gap: 0;
@@ -719,7 +778,14 @@ class CronosHeader extends HTMLElement {
                     flex-direction: row;
                     align-items: center;
                     display: flex;
-                    color: white;
+                    color: var(--cronos-color-text-muted);
+                    font-size: 14px;
+                    font-weight: 500;
+                }
+
+                /* Groups with thumbnail+tagline (Solutions) use white title */
+                .cronos-menu-group-card h3 .cronos-menu-group-text-container {
+                    color: #fff;
                     font-size: 14px;
                     font-weight: 500;
                 }
@@ -765,6 +831,13 @@ class CronosHeader extends HTMLElement {
                         <a href="index.html" class="cronos-custom-logo-link cronos-custom-logo-text">
                             <img src="thumbnails/mock.png" alt="Cronos Logo">
                         </a>
+                        <button class="cronos-header-back-btn" id="cronos-headerBackBtn" aria-label="Go back to menu">
+                            <span class="cronos-mobile-back-arrow-btn">
+                                <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round">
+                                    <polyline points="15 18 9 12 15 6"/>
+                                </svg>
+                            </span>
+                        </button>
                     </div>
 
                     <nav class="cronos-custom-main-nav">
@@ -881,6 +954,7 @@ class CronosHeader extends HTMLElement {
                                                         <span class="cronos-menu-group-tagline">Custom apps &amp; platforms</span>
                                                     </span>
                                                 </h3>
+                                                <a class="cronos-mobile-group-btn" href="index.html">Start Project</a>
                                                 <ul class="cronos-mega-menu-group-list">
                                                     <li>
                                                         <a href="mobile-applications.html">
@@ -923,6 +997,7 @@ class CronosHeader extends HTMLElement {
                                                         <span class="cronos-menu-group-tagline">Reliable systems &amp; support</span>
                                                     </span>
                                                 </h3>
+                                                <a class="cronos-mobile-group-btn" href="index.html">Learn About IT</a>
                                                 <ul class="cronos-mega-menu-group-list">
                                                     <li>
                                                         <a href="page.html">
@@ -960,6 +1035,7 @@ class CronosHeader extends HTMLElement {
                                                         <span class="cronos-menu-group-tagline">Creative content &amp; design</span>
                                                     </span>
                                                 </h3>
+                                                <a class="cronos-mobile-group-btn" href="index.html">Explore Marketing</a>
                                                 <ul class="cronos-mega-menu-group-list">
                                                     <li>
                                                         <a href="page.html">
@@ -1549,43 +1625,28 @@ class CronosHeader extends HTMLElement {
         // =============================================
         const cronosMobileDropdownItems = this.shadowRoot.querySelectorAll('.cronos-custom-nav-item--has-megamenu');
         const cronosMobileMainNav = this.shadowRoot.querySelector('.cronos-custom-main-nav');
-        
-        // Inject a back button into each mobile mega-menu container (once, on init)
-        cronosMobileDropdownItems.forEach(item => {
-            const trigger = item.querySelector('.cronos-custom-nav-link');
-            const menuContainer = item.querySelector('.cronos-mega-menu-container');
-            if (!menuContainer) return;
+        const cronosHeaderBackBtn = this.shadowRoot.getElementById('cronos-headerBackBtn');
 
-            // Get the label from the trigger text (strip whitespace around SVG)
-            const labelText = trigger.childNodes[0] && trigger.childNodes[0].textContent
-                ? trigger.childNodes[0].textContent.trim()
-                : 'Back';
+        // Helper: open/close the subpanel-header state (swaps logo for back btn)
+        const cronosOpenSubpanel = (item) => {
+            item.classList.add('active');
+            cronosMobileMainNav.classList.add('cronos-subpanel-open');
+            cronosHeaderWrapper.classList.add('cronos-subpanel-header-open');
+        };
 
-            // Build back button element
-            const backBtn = document.createElement('button');
-            backBtn.className = 'cronos-mobile-back-btn';
-            backBtn.setAttribute('aria-label', 'Go back to menu');
-            backBtn.innerHTML = `
-                <span class="cronos-mobile-back-arrow-btn" aria-label="Go back">
-                    <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round">
-                        <polyline points="15 18 9 12 15 6"/>
-                    </svg>
-                </span>
-                <div class="cronos-mobile-subpanel-header">
-                    <span class="cronos-mobile-subpanel-title">${labelText}</span>
-                </div>
-            `;
+        const cronosCloseSubpanel = () => {
+            cronosMobileDropdownItems.forEach(i => i.classList.remove('active'));
+            cronosMobileMainNav.classList.remove('cronos-subpanel-open');
+            cronosHeaderWrapper.classList.remove('cronos-subpanel-header-open');
+        };
 
-            // Prepend back button before the first child of the container
-            menuContainer.insertBefore(backBtn, menuContainer.firstChild);
-
-            // Back button closes the sub-panel
-            backBtn.addEventListener('click', function(e) {
-                e.stopPropagation();
-                item.classList.remove('active');
-                cronosMobileMainNav.classList.remove('cronos-subpanel-open');
-            });
+        // Header back button click
+        cronosHeaderBackBtn.addEventListener('click', function(e) {
+            e.stopPropagation();
+            cronosCloseSubpanel();
         });
+
+        // (Back button is now in the header logo area, not injected into subpanels)
 
         cronosMobileMenuToggle.addEventListener('click', function() {
             cronosHeaderWrapper.classList.toggle('cronos-mobile-menu-open');
@@ -1593,8 +1654,7 @@ class CronosHeader extends HTMLElement {
             cronosBody.classList.toggle('cronos-mobile-menu-active');
             
             if (!cronosHeaderWrapper.classList.contains('cronos-mobile-menu-open')) {
-                 cronosMobileDropdownItems.forEach(item => item.classList.remove('active'));
-                 cronosMobileMainNav.classList.remove('cronos-subpanel-open');
+                 cronosCloseSubpanel();
                  cronosQrDropdownContent.classList.remove('show');
             }
         });
@@ -1613,9 +1673,8 @@ class CronosHeader extends HTMLElement {
                         }
                     });
 
-                    // Slide this sub-panel in and lock nav scroll
-                    item.classList.add('active');
-                    cronosMobileMainNav.classList.add('cronos-subpanel-open');
+                    // Slide this sub-panel in and swap logo for back btn
+                    cronosOpenSubpanel(item);
                     cronosQrDropdownContent.classList.remove('show');
                 }
             });
@@ -1661,8 +1720,7 @@ class CronosHeader extends HTMLElement {
                 if (window.innerWidth > 1024) {
                     cronosHeaderWrapper.classList.remove('cronos-mobile-menu-open');
                     cronosBody.classList.remove('cronos-mobile-menu-active');
-                    cronosMobileDropdownItems.forEach(item => item.classList.remove('active'));
-                    cronosMobileMainNav.classList.remove('cronos-subpanel-open');
+                    cronosCloseSubpanel();
                     cronosSetActiveMenu(null, null);
                 } else {
                     cronosQrDropdownContent.classList.remove('show');
