@@ -39,6 +39,7 @@
         { label: 'About Us',                  href: '#' },
         { label: 'Roadmap',                   href: 'roadmap.html' },
         { label: 'Careers',                   href: 'careers.html' },
+        { label: 'Events',                   href: 'events.html' },
         { label: 'Partners',                  href: 'partners.html' },
         { label: 'Affiliate',                 href: 'affiliates.html' },
         { label: 'Licenses & Registrations',  href: 'licenses-and-registrations.html' },

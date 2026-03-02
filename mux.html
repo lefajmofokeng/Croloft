@@ -1,0 +1,154 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Live Lecture | University Portal</title>
+    
+    <script src="https://unpkg.com/@mux/mux-player"></script>
+    
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;600&display=swap" rel="stylesheet">
+
+    <style>
+        :root {
+            --primary-color: #000000; /* Sleek Black */
+            --accent-color: #E63946;  /* Professional Red for 'Live' */
+            --text-main: #1A1A1A;
+            --bg-light: #F8F9FA;
+        }
+
+        body {
+            font-family: 'Inter', sans-serif;
+            background-color: var(--bg-light);
+            color: var(--text-main);
+            margin: 0;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            padding: 40px 20px;
+        }
+
+        .header {
+            text-align: center;
+            margin-bottom: 30px;
+            width: 100%;
+            max-width: 900px;
+        }
+
+        h1 {
+            font-weight: 600;
+            letter-spacing: -0.5px;
+            margin-bottom: 10px;
+        }
+
+        /* The Live Badge Styling */
+        .badge-container {
+            height: 30px;
+            margin-bottom: 15px;
+        }
+
+        #live-badge {
+            display: none; /* Hidden by default */
+            background-color: var(--accent-color);
+            color: white;
+            padding: 5px 12px;
+            border-radius: 4px;
+            font-size: 0.75rem;
+            font-weight: 600;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+            animation: pulse 2s infinite;
+        }
+
+        @keyframes pulse {
+            0% { opacity: 1; }
+            50% { opacity: 0.6; }
+            100% { opacity: 1; }
+        }
+
+        /* Video Container */
+        .video-wrapper {
+            width: 100%;
+            max-width: 900px;
+            background: #ffffff;
+            border-radius: 12px;
+            overflow: hidden;
+            box-shadow: 0 20px 40px rgba(0,0,0,0.05); /* Soft, expensive shadow */
+            border: 1px solid rgba(0,0,0,0.05);
+        }
+
+        mux-player {
+            width: 100%;
+            aspect-ratio: 16/9;
+            --media-button-color: #fff;
+            --media-range-track-color: rgba(255,255,255,0.2);
+        }
+
+        .status-message {
+            padding: 20px;
+            text-align: center;
+            color: #666;
+            font-size: 0.9rem;
+        }
+    </style>
+</head>
+<body>
+
+    <div class="header">
+        <div class="badge-container">
+            <span id="live-badge">● Live Now</span>
+        </div>
+        <h1>Global Economics 101</h1>
+        <p>Lecturer: Dr. Sarah Jenkins | Semester 1</p>
+    </div>
+
+    <div class="video-wrapper">
+        <mux-player
+            id="lecture-player"
+            playback-id="YOUR_PLAYBACK_ID"
+            metadata-video-title="Economics Live Lecture"
+            stream-type="live"
+            controls
+        ></mux-player>
+    </div>
+
+    <div id="offline-msg" class="status-message">
+        The stream is currently offline. Check back at the scheduled lecture time.
+    </div>
+
+    <script>
+        const PLAYBACK_ID = "YOUR_PLAYBACK_ID"; // Replace this
+        const liveBadge = document.getElementById('live-badge');
+        const offlineMsg = document.getElementById('offline-msg');
+
+        /**
+         * Checks if the stream is active.
+         * Note: For a "No-Backend" startup, we check the public Mux image URL.
+         * If the image loads, the stream is likely active.
+         */
+        async function checkStreamStatus() {
+            try {
+                // Mux generates a thumbnail for active streams. We check if it exists.
+                const img = new Image();
+                img.src = `https://image.mux.com/${PLAYBACK_ID}/thumbnail.jpg?time=0`;
+                
+                img.onload = () => {
+                    liveBadge.style.display = 'inline-block';
+                    offlineMsg.style.innerText = "Enjoy the live lecture.";
+                };
+                
+                img.onerror = () => {
+                    liveBadge.style.display = 'none';
+                    offlineMsg.style.display = 'block';
+                };
+            } catch (error) {
+                console.error("Status check failed", error);
+            }
+        }
+
+        // Run check on load and every 30 seconds
+        checkStreamStatus();
+        setInterval(checkStreamStatus, 30000);
+    </script>
+</body>
+</html>

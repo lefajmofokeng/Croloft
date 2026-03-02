@@ -1,686 +1,771 @@
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Glossary</title>
+    
+    <script src="header.js" defer></script>
+    <script src="footer.js" defer></script> 
+</head>
+<body>
+
+    <cronos-header></cronos-header>
+    
+
+</body>
+</html>
+
+
+<style>
+        @font-face {
+            font-family: 'Circular Std';
+            src: url('fonts/CircularStd-Book.ttf') format('truetype');
+            font-weight: 400;
+            font-style: normal;
+        }
+
+        /* Circular Std - Medium (500) */
+        @font-face {
+            font-family: 'Circular Std';
+            src: url('fonts/CircularStd.ttf') format('truetype');
+            font-weight: 500;
+            font-style: normal;
+        }
+
+        /* Circular Std - Bold (700) */
+        @font-face {
+            font-family: 'Circular Std';
+            src: url('fonts/CircularStd-Bold.ttf') format('truetype');
+            font-weight: 600;
+            font-style: normal;
+        }
+    </style>
+
+
+
+
+
+
+
+
+
+
+
+
+
 <!DOCTYPE html>
 <html lang="en">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Superpower Mega Menu Design</title>
-    <link rel="stylesheet" href="style.css">
-    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+    <title>Events & Broadcasts</title>
+    
+    <script src="header.js" defer></script>
+    <script src="footer.js" defer></script> 
+
+    <style>
+        /* FONTS */
+        @font-face {
+            font-family: 'Circular Std';
+            src: url('fonts/CircularStd-Book.ttf') format('truetype');
+            font-weight: 400;
+            font-style: normal;
+        }
+        @font-face {
+            font-family: 'Circular Std';
+            src: url('fonts/CircularStd.ttf') format('truetype');
+            font-weight: 500;
+            font-style: normal;
+        }
+        @font-face {
+            font-family: 'Circular Std';
+            src: url('fonts/CircularStd-Bold.ttf') format('truetype');
+            font-weight: 600;
+            font-style: normal;
+        }
+
+        /* NAMESPACED DESIGN SYSTEM */
+        :root {
+            --itcp-black: #080808;
+            --itcp-white: #ffffff;
+            --itcp-accent: #00ffcc; /* Tech-focused neon */
+            --itcp-gray: #1a1a1a;
+            --itcp-text-dim: #999;
+        }
+
+        .itcp-ev-cosmos {
+            font-family: 'Circular Std', 'Inter', -apple-system, sans-serif;
+            background-color: var(--itcp-black);
+            color: var(--itcp-white);
+            margin: 0;
+            overflow-x: hidden;
+        }
+
+        * {
+            box-sizing: border-box;
+            padding: 0;
+            margin: 0;
+        }
+
+        /* --- HERO PORTAL --- */
+        .itcp-ev-hero-portal {
+            height: 100vh;
+            width: 100%;
+            position: relative;
+            display: flex;
+            align-items: center;
+            padding: 0 10%;
+            box-sizing: border-box;
+        }
+
+        .itcp-ev-video-shroud {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            z-index: 1;
+        }
+
+        .itcp-ev-bg-video {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+        }
+
+        .itcp-ev-glass-overlay {
+            position: absolute;
+            inset: 0;
+            background: rgba(0,0,0,0.4);
+            z-index: 2;
+        }
+
+        .itcp-ev-hero-stage {
+            position: relative;
+            z-index: 10;
+            max-width: 800px;
+        }
+
+        .itcp-ev-live-indicator {
+            display: flex;
+            align-items: center;
+            gap: 12px;
+            margin-bottom: 30px;
+        }
+
+        .itcp-ev-pulse-core {
+            width: 10px;
+            height: 10px;
+            background: #ff3b3b;
+            border-radius: 50%;
+            box-shadow: 0 0 15px #ff3b3b;
+            animation: itcp-pulse 2s infinite;
+        }
+
+        .itcp-ev-indicator-text {
+            font-size: 11px;
+            font-weight: 500;
+            letter-spacing: 2px;
+            color: var(--itcp-white);
+            text-transform: uppercase;
+        }
+
+        .itcp-ev-mega-title {
+            font-size: clamp(48px, 8vw, 100px);
+            font-weight: 500;
+            line-height: 0.9;
+            margin: 0;
+            letter-spacing: -3px;
+        }
+
+        .itcp-ev-outline-text {
+            color: transparent;
+            -webkit-text-stroke: 1.5px var(--itcp-white);
+            opacity: 0.6;
+        }
+
+        .itcp-ev-hero-desc {
+            font-size: 18px;
+            color: var(--itcp-text-dim);
+            margin: 30px 0 50px;
+            max-width: 500px;
+            line-height: 1.6;
+        }
+
+        .itcp-ev-hero-ctrls {
+            display: flex;
+            gap: 20px;
+        }
+
+        .itcp-ev-btn-glow {
+            background: var(--itcp-white);
+            color: var(--itcp-black);
+            border: none;
+            padding: 18px 36px;
+            font-weight: 700;
+            cursor: pointer;
+            transition: 0.4s;
+            border-radius: 2px;
+        }
+
+        .itcp-ev-btn-glow:hover {
+            background: var(--itcp-accent);
+            box-shadow: 0 0 30px rgba(0, 255, 204, 0.4);
+        }
+
+        .itcp-ev-btn-ghost {
+            background: rgba(255,255,255,0.05);
+            color: var(--itcp-white);
+            border: 1px solid rgba(255,255,255,0.2);
+            padding: 18px 36px;
+            font-weight: 700;
+            cursor: pointer;
+            backdrop-filter: blur(10px);
+            transition: 0.3s;
+            border-radius: 2px;
+        }
+
+        .itcp-ev-btn-ghost:hover {
+            background: rgba(255,255,255,0.1);
+            border-color: var(--itcp-white);
+        }
+
+        /* --- HERO MODAL --- */
+        .itcp-ev-modal {
+            display: none;
+            position: fixed;
+            top: 0; left: 0;
+            width: 100%; height: 100%;
+            background: rgba(0, 0, 0, 0.85);
+            backdrop-filter: blur(15px);
+            z-index: 9999;
+            align-items: center;
+            justify-content: center;
+            opacity: 0;
+            transition: opacity 0.3s ease;
+        }
+
+        .itcp-ev-modal.active {
+            display: flex;
+            opacity: 1;
+        }
+
+        .itcp-ev-modal-content {
+            background: var(--itcp-gray);
+            padding: 60px 50px;
+            max-width: 650px;
+            width: 90%;
+            border-radius: 4px;
+            border: 1px solid rgba(255,255,255,0.1);
+            position: relative;
+            transform: translateY(20px);
+            transition: transform 0.3s ease;
+            box-shadow: 0 20px 50px rgba(0,0,0,0.5);
+        }
+
+        .itcp-ev-modal.active .itcp-ev-modal-content {
+            transform: translateY(0);
+        }
+
+        .itcp-ev-modal-close {
+            position: absolute;
+            top: 25px;
+            right: 30px;
+            background: none;
+            border: none;
+            color: var(--itcp-text-dim);
+            font-size: 28px;
+            cursor: pointer;
+            transition: color 0.3s;
+        }
+
+        .itcp-ev-modal-close:hover {
+            color: var(--itcp-accent);
+        }
+
+        /* --- GRIDS (Upcoming & Past) --- */
+        .itcp-ev-grid-container {
+            padding: 150px 10% 50px;
+            background: #000;
+        }
+
+        .itcp-ev-past-container {
+            padding: 80px 10% 100px;
+            background: #050505;
+        }
+
+        .itcp-ev-section-intro {
+            margin-bottom: 80px;
+        }
+
+        .itcp-ev-pre-title {
+            color: var(--itcp-accent);
+            font-weight: 800;
+            font-size: 12px;
+            letter-spacing: 4px;
+            text-transform: uppercase;
+            display: block;
+            margin-bottom: 15px;
+        }
+
+        .itcp-ev-h2 {
+            font-size: 48px;
+            font-weight: 700;
+            margin: 0;
+            letter-spacing: -1px;
+        }
+
+        .itcp-ev-modern-grid {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 60px;
+            padding-bottom: 100px; /* Accommodate offset */
+        }
+
+        .itcp-ev-card-item {
+            position: relative;
+            cursor: pointer;
+            transition: transform 0.3s ease;
+        }
+
+        .itcp-ev-card-item:hover {
+            transform: translateY(-10px);
+        }
+
+        .itcp-ev-offset {
+            transform: translateY(100px);
+        }
+        
+        .itcp-ev-card-item.itcp-ev-offset:hover {
+            transform: translateY(90px);
+        }
+
+        .itcp-ev-media-box {
+            position: relative;
+            aspect-ratio: 16/10;
+            background: var(--itcp-gray);
+            overflow: hidden;
+            border-radius: 4px;
+        }
+
+        .itcp-ev-thumb-video {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            opacity: 0.6;
+            transition: 0.5s transform ease;
+        }
+
+        .itcp-ev-card-item:hover .itcp-ev-thumb-video {
+            transform: scale(1.05);
+            opacity: 0.9;
+        }
+
+        .itcp-ev-card-overlay {
+            position: absolute;
+            top: 20px;
+            right: 20px;
+            opacity: 0;
+            transition: 0.3s;
+            z-index: 5;
+            display: flex;
+            gap: 10px;
+        }
+
+        .itcp-ev-card-item:hover .itcp-ev-card-overlay {
+            opacity: 1;
+        }
+
+        .itcp-ev-badge-replay {
+            background: #ff3b3b;
+            color: white;
+            font-size: 10px;
+            font-weight: bold;
+            padding: 5px 10px;
+            border-radius: 3px;
+            letter-spacing: 1px;
+            position: absolute;
+            top: 20px;
+            left: 20px;
+            z-index: 5;
+            text-transform: uppercase;
+        }
+
+        .itcp-ev-fs-btn {
+            background: var(--itcp-accent);
+            color: #000;
+            border: none;
+            width: 40px;
+            height: 40px;
+            border-radius: 50%;
+            cursor: pointer;
+            font-weight: bold;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+
+        .itcp-ev-card-info {
+            padding: 30px 0;
+        }
+
+        .itcp-ev-meta {
+            font-size: 13px;
+            font-weight: 500;
+            color: var(--itcp-text-dim);
+            margin-bottom: 12px;
+            line-height: 1.6;
+        }
+        
+        .itcp-ev-meta span {
+            color: var(--itcp-white);
+            opacity: 0.8;
+        }
+
+        .itcp-ev-meta .itcp-ev-location {
+            color: var(--itcp-accent);
+            font-weight: 600;
+            opacity: 1;
+            display: block;
+            margin-top: 4px;
+        }
+
+        .itcp-ev-card-h3 {
+            font-size: 26px;
+            margin: 0 0 15px 0;
+            transition: color 0.3s;
+        }
+
+        .itcp-ev-card-item:hover .itcp-ev-card-h3 {
+            color: var(--itcp-accent);
+        }
+
+        .itcp-ev-card-p {
+            color: var(--itcp-text-dim);
+            line-height: 1.6;
+            margin: 0;
+        }
+
+        /* --- ANNOUNCEMENTS TIMELINE --- */
+        .itcp-ev-announcements {
+            padding: 50px 10% 150px;
+            background: #000;
+        }
+
+        .itcp-ev-timeline {
+            margin-top: 60px;
+            border-left: 1px solid var(--itcp-gray);
+            padding-left: 40px;
+        }
+
+        .itcp-ev-timeline-item {
+            position: relative;
+            margin-bottom: 80px;
+        }
+
+        .itcp-ev-time-dot {
+            position: absolute;
+            left: -46px;
+            top: 5px;
+            width: 10px;
+            height: 10px;
+            background: var(--itcp-gray);
+            border: 2px solid var(--itcp-black);
+            border-radius: 50%;
+            transition: 0.3s;
+        }
+
+        .itcp-ev-timeline-item:hover .itcp-ev-time-dot {
+            background: var(--itcp-accent);
+            box-shadow: 0 0 10px var(--itcp-accent);
+        }
+
+        .itcp-ev-ann-date {
+            color: var(--itcp-accent);
+            font-size: 12px;
+            font-weight: 700;
+        }
+
+        .itcp-ev-ann-h4 {
+            font-size: 22px;
+            margin: 10px 0;
+        }
+
+        .itcp-ev-ann-desc {
+            color: var(--itcp-text-dim);
+            max-width: 600px;
+            line-height: 1.7;
+        }
+
+        .itcp-ev-link {
+            color: var(--itcp-white);
+            text-decoration: none;
+            font-weight: 700;
+            font-size: 14px;
+            display: inline-block;
+            margin-top: 15px;
+            border-bottom: 1px solid var(--itcp-gray);
+            transition: color 0.3s, border-color 0.3s;
+        }
+
+        .itcp-ev-link:hover {
+            color: var(--itcp-accent);
+            border-color: var(--itcp-accent);
+        }
+
+        /* --- UTILS & MOBILE RESPONSIVENESS --- */
+        @keyframes itcp-pulse {
+            0% { transform: scale(1); opacity: 1; }
+            50% { transform: scale(1.5); opacity: 0.4; }
+            100% { transform: scale(1); opacity: 1; }
+        }
+
+        @media (max-width: 900px) {
+            .itcp-ev-hero-portal { padding: 0 5%; }
+            .itcp-ev-mega-title { font-size: 50px; }
+            .itcp-ev-hero-ctrls { flex-direction: column; }
+            
+            /* Responsive Grid Fixes */
+            .itcp-ev-grid-container, .itcp-ev-past-container { padding: 80px 5% 40px; }
+            .itcp-ev-modern-grid { grid-template-columns: 1fr; gap: 50px; padding-bottom: 0; }
+            
+            /* Remove offset purely on mobile so rows don't break */
+            .itcp-ev-offset { transform: none !important; }
+            .itcp-ev-card-item.itcp-ev-offset:hover { transform: translateY(-10px) !important; }
+
+            .itcp-ev-announcements { padding: 50px 5% 100px; }
+            .itcp-ev-modal-content { padding: 40px 20px; }
+            .itcp-ev-h2 { font-size: 36px; }
+        }
+    </style>
 </head>
 <body>
 
-    <header class="sp-header">
-        <nav class="sp-navbar">
-            <div class="sp-nav-left">
-                <a href="#" class="sp-logo">superpower</a>
+    <cronos-header></cronos-header>
+
+    <div class="itcp-ev-cosmos">
+        
+        <section class="itcp-ev-hero-portal">
+            <div class="itcp-ev-video-shroud">
+                <video 
+                    id="itcp-hero-stream" 
+                    class="itcp-ev-bg-video" 
+                    autoplay 
+                    loop 
+                    playsinline 
+                    muted
+                >
+                    <source src="videos/background-video3.mp4" type="video/mp4">
+                </video>
+                <div class="itcp-ev-glass-overlay"></div>
             </div>
 
-            <ul class="sp-nav-center">
-                <li class="sp-nav-item"><a href="#" class="sp-nav-link">How it Works</a></li>
-                <li class="sp-nav-item"><a href="#" class="sp-nav-link">What We Test</a></li>
+            <div class="itcp-ev-hero-stage">
+                <div class="itcp-ev-live-indicator">
+                    <span class="itcp-ev-pulse-core"></span>
+                    <span class="itcp-ev-indicator-text">BROADCASTING LIVE</span>
+                </div>
+                <h1 class="itcp-ev-mega-title">Quantum <span class="itcp-ev-outline-text">Synthesis</span> 2026</h1>
+                <p class="itcp-ev-hero-desc">The premiere symposium on neuromorphic computing, distributed edge intelligence, and the future of enterprise automation.</p>
                 
-                <li class="sp-nav-item sp-dropdown-trigger" id="megaMenuTrigger">
-                    <a href="#" class="sp-nav-link sp-active">Reviews</a>
-                    
-                    <div class="sp-mega-menu-container">
-                        <div class="sp-mega-wrapper">
-                            
-                            <div class="sp-mega-banner">
-                                <img src="https://images.unsplash.com/photo-1544367567-0f2fcb009e0b?q=80&w=1000&auto=format&fit=crop" alt="Person looking at health data" class="sp-banner-img">
-                                <div class="sp-banner-overlay">
-                                    <span class="sp-banner-subtitle">Learn more about your body</span>
-                                    <h2 class="sp-banner-title">Unlock Your Biological Age Today</h2>
-                                    
-                                    <div class="sp-banner-point point-1">
-                                        <div class="sp-point-marker"></div>
-                                        <span class="sp-point-label">EARLY DETECTION</span>
-                                    </div>
-                                    <div class="sp-banner-point point-2">
-                                        <div class="sp-point-marker"></div>
-                                        <span class="sp-point-label">TRACK YOUR HEALTH</span>
-                                    </div>
-                                </div>
-                            </div>
-
-                            <div class="sp-mega-links-area">
-                                
-                                <div class="sp-mega-col sp-col-product">
-                                    <h3 class="sp-col-header">PRODUCT</h3>
-                                    <ul class="sp-product-list">
-                                        <li>
-                                            <a href="#" class="sp-product-item">
-                                                <img src="https://placehold.co/60x60/ff5a36/ffffff?text=Card" alt="How it Works" class="sp-prod-thumb">
-                                                <div class="sp-prod-info">
-                                                    <h4>How it Works</h4>
-                                                    <p>Get the most from your first premium health membership</p>
-                                                </div>
-                                            </a>
-                                        </li>
-                                        <li>
-                                            <a href="#" class="sp-product-item">
-                                                <img src="https://placehold.co/60x60/ff5a36/ffffff?text=Vial" alt="What We Test" class="sp-prod-thumb">
-                                                <div class="sp-prod-info">
-                                                    <h4>What We Test</h4>
-                                                    <p>100+ biomarkers included in your annual superpower test panel</p>
-                                                </div>
-                                            </a>
-                                        </li>
-                                        <li>
-                                            <a href="#" class="sp-product-item">
-                                                <img src="https://placehold.co/60x60/ff5a36/ffffff?text=Team" alt="Organizations" class="sp-prod-thumb">
-                                                <div class="sp-prod-info">
-                                                    <h4>Superpower for Organizations</h4>
-                                                    <p>All the benefits of Superpower tailored to your organization</p>
-                                                </div>
-                                            </a>
-                                        </li>
-                                    </ul>
-                                </div>
-
-                                <div class="sp-mega-col">
-                                    <h3 class="sp-col-header">LEARN MORE</h3>
-                                    <ul class="sp-link-list">
-                                        <li><a href="#">Reviews</a></li>
-                                        <li><a href="#">FAQs</a></li>
-                                        <li><a href="#">Our Why</a></li>
-                                        <li><a href="#">Blog</a></li>
-                                    </ul>
-                                </div>
-
-                                <div class="sp-mega-col">
-                                    <h3 class="sp-col-header">OTHER</h3>
-                                    <ul class="sp-link-list">
-                                        <li><a href="#">Privacy Policy</a></li>
-                                        <li><a href="#">Informed Medical Consent</a></li>
-                                        <li><a href="#">Terms & Conditions</a></li>
-                                    </ul>
-                                </div>
-                            </div> </div>
-                    </div>
-                    </li>
-                <li class="sp-nav-item"><a href="#" class="sp-nav-link">FAQs</a></li>
-                <li class="sp-nav-item"><a href="#" class="sp-nav-link">Our Why</a></li>
-            </ul>
-
-            <div class="sp-nav-right">
-                <a href="#" class="sp-login-btn">Login</a>
-                <a href="#" class="sp-cta-btn">Try Superpower</a>
+                <div class="itcp-ev-hero-ctrls">
+                    <button class="itcp-ev-btn-glow" onclick="itcpToggleFullScreen('itcp-hero-stream')">Enter Immersive View</button>
+                    <button class="itcp-ev-btn-ghost" onclick="itcpOpenModal()">
+                        Learn more about this event
+                    </button>
+                </div>
             </div>
-        </nav>
-    </header>
+        </section>
 
-    <section class="sp-hero-asym full-width">
-        <div class="sp-hero-wrapper">
-            <div class="sp-hero-content">
-                <span class="sp-hero-tagline">FUTURE-STATE ENTERPRISE IT</span>
-                <h1 class="sp-hero-title">Architecting the next decade of digital infrastructure.</h1>
-                <p class="sp-hero-subtitle">
-                    Our AI-driven solutions empower Fortune 500 companies to transcend traditional constraints, delivering unprecedented scale, security, and velocity in the global market.
+        <div id="itcp-hero-modal" class="itcp-ev-modal">
+            <div class="itcp-ev-modal-content">
+                <button class="itcp-ev-modal-close" onclick="itcpCloseModal()">✕</button>
+                <span class="itcp-ev-pre-title">Live Broadcast Detail</span>
+                <h2 class="itcp-ev-h2" style="font-size: 32px; margin-bottom: 20px;">Quantum Synthesis 2026</h2>
+                <p class="itcp-ev-card-p" style="margin-bottom: 20px;">
+                    Join our flagship summit as we explore the frontier of IT infrastructure and automated software ecosystems. This broadcast features keynote presentations from leading engineers discussing how AI integration is reshaping modern managed IT services.
                 </p>
-                <a href="#" class="sp-hero-cta-btn">Start Transformation</a>
-                <div class="sp-hero-stats">
-                    <div class="sp-stat-item">
-                        <span class="sp-stat-number">40%</span>
-                        <span class="sp-stat-label">Efficiency Gain</span>
-                    </div>
-                    <div class="sp-stat-item">
-                        <span class="sp-stat-number">24/7</span>
-                        <span class="sp-stat-label">System Autonomy</span>
-                    </div>
-                </div>
-            </div>
-            <div class="sp-hero-visual-container">
-                <div class="sp-hero-visual">
-                    <svg viewBox="0 0 400 400" xmlns="http://www.w3.org/2000/svg" class="sp-tech-grid-svg">
-                        <rect x="0" y="0" width="400" height="400" fill="url(#sp-hero-grad)"/>
-                        <defs>
-                            <linearGradient id="sp-hero-grad" x1="0%" y1="0%" x2="100%" y2="100%">
-                                <stop offset="0%" style="stop-color:#ff5a36; stop-opacity:1" />
-                                <stop offset="100%" style="stop-color:#000000; stop-opacity:1" />
-                            </linearGradient>
-                        </defs>
-                        <circle cx="200" cy="200" r="150" fill="none" stroke="rgba(255,255,255,0.1)" stroke-width="2"/>
-                        <line x1="100" y1="100" x2="300" y2="300" stroke="rgba(255, 90, 54, 0.7)" stroke-width="1"/>
-                        <line x1="300" y1="100" x2="100" y2="300" stroke="rgba(255, 90, 54, 0.7)" stroke-width="1"/>
-                    </svg>
-                </div>
+                <p class="itcp-ev-card-p">
+                    <strong>Topics Covered:</strong><br>
+                    • The evolution of Data Centers & Cloud Storage<br>
+                    • Building resilient HTML/JS web architectures<br>
+                    • Deploying autonomous AI bots for Enterprise Helpdesks
+                </p>
             </div>
         </div>
-    </section>
 
-    <main style="padding: 100px; text-align: center; color: #999;">
-        <h1>Page Content Below Hero Section</h1>
-        <p>Hover over "Reviews" to see the mega menu.</p>
-    </main>
+        <section class="itcp-ev-grid-container">
+            <div class="itcp-ev-section-intro">
+                <span class="itcp-ev-pre-title">Roadmap</span>
+                <h2 class="itcp-ev-h2">Upcoming Events</h2>
+            </div>
 
-    <script src="script.js"></script>
+            <div class="itcp-ev-modern-grid">
+                
+                <div class="itcp-ev-card-item" onclick="window.location.href='event-details.html?id=1'">
+                    <div class="itcp-ev-media-box">
+                        <video id="v-up-1" class="itcp-ev-thumb-video" loop muted poster="https://images.unsplash.com/photo-1550751827-4bd374c3f58b?w=800&q=80" onmouseover="this.play()" onmouseout="this.pause()">
+                            <source src="https://assets.mixkit.co/videos/preview/mixkit-data-center-server-room-with-blue-lights-2741-large.mp4" type="video/mp4">
+                        </video>
+                        <div class="itcp-ev-card-overlay">
+                            <button class="itcp-ev-fs-btn" onclick="event.stopPropagation(); itcpToggleFullScreen('v-up-1')">⛶</button>
+                        </div>
+                    </div>
+                    <div class="itcp-ev-card-info">
+                        <div class="itcp-ev-meta">
+                            <span>Mar 14, 2026</span> | <span>14:00 SAST</span>
+                            <span class="itcp-ev-location">📍 Phuthaditjhaba Tech Hub / Virtual</span>
+                        </div>
+                        <h3 class="itcp-ev-card-h3">Zero-Knowledge Proofs in Enterprise</h3>
+                        <p class="itcp-ev-card-p">Deep dive into privacy-preserving data validation at scale.</p>
+                    </div>
+                </div>
+
+                <div class="itcp-ev-card-item itcp-ev-offset" onclick="window.location.href='event-details.html?id=2'">
+                    <div class="itcp-ev-media-box">
+                        <video id="v-up-2" class="itcp-ev-thumb-video" loop muted poster="https://images.unsplash.com/photo-1518770660439-4636190af475?w=800&q=80" onmouseover="this.play()" onmouseout="this.pause()">
+                            <source src="https://assets.mixkit.co/videos/preview/mixkit-close-up-of-a-circuit-board-with-moving-lights-44242-large.mp4" type="video/mp4">
+                        </video>
+                        <div class="itcp-ev-card-overlay">
+                            <button class="itcp-ev-fs-btn" onclick="event.stopPropagation(); itcpToggleFullScreen('v-up-2')">⛶</button>
+                        </div>
+                    </div>
+                    <div class="itcp-ev-card-info">
+                        <div class="itcp-ev-meta">
+                            <span>Apr 02, 2026</span> | <span>09:00 SAST</span>
+                            <span class="itcp-ev-location">📍 Innovation Campus, Room B</span>
+                        </div>
+                        <h3 class="itcp-ev-card-h3">Custom LLM Fine-tuning</h3>
+                        <p class="itcp-ev-card-p">Training domain-specific AI bots with proprietary datasets.</p>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <section class="itcp-ev-past-container">
+            <div class="itcp-ev-section-intro">
+                <span class="itcp-ev-pre-title">Archive</span>
+                <h2 class="itcp-ev-h2">On-Demand Replays</h2>
+            </div>
+
+            <div class="itcp-ev-modern-grid">
+                
+                <div class="itcp-ev-card-item" onclick="window.location.href='event-details.html?id=3'">
+                    <div class="itcp-ev-media-box">
+                        <div class="itcp-ev-badge-replay">Replay</div>
+                        <video id="v-past-1" class="itcp-ev-thumb-video" loop muted poster="https://images.unsplash.com/photo-1451187580459-43490279c0fa?w=800&q=80" onmouseover="this.play()" onmouseout="this.pause()">
+                            <source src="https://assets.mixkit.co/videos/preview/mixkit-motherboard-with-illuminated-connections-and-microchips-32810-large.mp4" type="video/mp4">
+                        </video>
+                        <div class="itcp-ev-card-overlay">
+                            <button class="itcp-ev-fs-btn" onclick="event.stopPropagation(); itcpToggleFullScreen('v-past-1')">▶</button>
+                        </div>
+                    </div>
+                    <div class="itcp-ev-card-info">
+                        <div class="itcp-ev-meta">
+                            <span>Feb 15, 2026</span> | <span>11:00 SAST</span>
+                            <span class="itcp-ev-location">📍 Streamed via Online Portal</span>
+                        </div>
+                        <h3 class="itcp-ev-card-h3">Next-Gen Cloud Infrastructure</h3>
+                        <p class="itcp-ev-card-p">Architecting scalable cloud environments and resilient data centers.</p>
+                    </div>
+                </div>
+
+                <div class="itcp-ev-card-item itcp-ev-offset" onclick="window.location.href='event-details.html?id=4'">
+                    <div class="itcp-ev-media-box">
+                        <div class="itcp-ev-badge-replay">Replay</div>
+                        <video id="v-past-2" class="itcp-ev-thumb-video" loop muted poster="https://images.unsplash.com/photo-1555949963-ff9fe0c870eb?w=800&q=80" onmouseover="this.play()" onmouseout="this.pause()">
+                            <source src="https://assets.mixkit.co/videos/preview/mixkit-software-developer-working-on-code-1708-large.mp4" type="video/mp4">
+                        </video>
+                        <div class="itcp-ev-card-overlay">
+                            <button class="itcp-ev-fs-btn" onclick="event.stopPropagation(); itcpToggleFullScreen('v-past-2')">▶</button>
+                        </div>
+                    </div>
+                    <div class="itcp-ev-card-info">
+                        <div class="itcp-ev-meta">
+                            <span>Jan 05, 2026</span> | <span>15:30 SAST</span>
+                            <span class="itcp-ev-location">📍 Streamed via Online Portal</span>
+                        </div>
+                        <h3 class="itcp-ev-card-h3">Frontend Ecosystems for E-Commerce</h3>
+                        <p class="itcp-ev-card-p">Building high-conversion web & mobile apps using advanced JS APIs.</p>
+                    </div>
+                </div>
+
+            </div>
+        </section>
+
+        <section class="itcp-ev-announcements">
+            <div class="itcp-ev-ann-header">
+                <h2 class="itcp-ev-h2">Intelligence Feed</h2>
+            </div>
+
+            <div class="itcp-ev-timeline">
+                <div class="itcp-ev-timeline-item">
+                    <div class="itcp-ev-time-dot"></div>
+                    <div class="itcp-ev-time-data">
+                        <span class="itcp-ev-ann-date">March 02, 2026</span>
+                        <h4 class="itcp-ev-ann-h4">Series B Funding Completion</h4>
+                        <p class="itcp-ev-ann-desc">Accelerating our R&D into autonomous DevOps agents for hybrid cloud management.</p>
+                        <a href="#" class="itcp-ev-link">Read Full Report →</a>
+                    </div>
+                </div>
+
+                <div class="itcp-ev-timeline-item">
+                    <div class="itcp-ev-time-dot"></div>
+                    <div class="itcp-ev-time-data">
+                        <span class="itcp-ev-ann-date">February 28, 2026</span>
+                        <h4 class="itcp-ev-ann-h4">Open Source: 'itcp-core' Engine</h4>
+                        <p class="itcp-ev-ann-desc">We've released our proprietary latency-shaving engine to the global developer community.</p>
+                        <a href="#" class="itcp-ev-link">View GitHub Repo →</a>
+                    </div>
+                </div>
+            </div>
+        </section>
+    </div>
+
+    <script>
+        // Modal Logic
+        function itcpOpenModal() {
+            document.getElementById('itcp-hero-modal').classList.add('active');
+        }
+
+        function itcpCloseModal() {
+            document.getElementById('itcp-hero-modal').classList.remove('active');
+        }
+
+        document.getElementById('itcp-hero-modal').addEventListener('click', function(e) {
+            if (e.target === this) {
+                itcpCloseModal();
+            }
+        });
+
+        // Advanced Fullscreen handling for replays & upcoming
+        function itcpToggleFullScreen(targetId) {
+            const el = document.getElementById(targetId);
+            if (!el) return;
+
+            // Optional: Unmute the video when forcing fullscreen replay
+            el.muted = false;
+
+            if (el.requestFullscreen) el.requestFullscreen();
+            else if (el.webkitRequestFullscreen) el.webkitRequestFullscreen();
+            else if (el.mozRequestFullScreen) el.mozRequestFullScreen();
+            else if (el.msRequestFullscreen) el.msRequestFullscreen();
+            
+            el.play();
+        }
+
+        // Smooth hover effect for videos 
+        document.querySelectorAll('.itcp-ev-thumb-video').forEach(v => {
+            v.addEventListener('mouseenter', () => v.play());
+            v.addEventListener('mouseleave', () => {
+                v.pause();
+                // Reset to beginning so the poster image shows nicely next time
+                v.currentTime = 0; 
+            });
+        });
+    </script>
 </body>
 </html>
 
-<style>
-    /* --- General Resets & Typography --- */
-* {
-    margin: 0;
-    padding: 0;
-    box-sizing: border-box;
-}
-
-:root {
-    /* Variables extracted from previous context */
-    --primary-dark: #001023;
-    --primary-blue: #0c568b;
-    --accent-orange: #ff5a36; /* New Variable for the hero accent */
-    --text-grey: #a8c5dd;
-}
-
-body {
-    font-family: 'Inter', sans-serif;
-    background-color: #f4f4f4; /* Light gray background context from image */
-    -webkit-font-smoothing: antialiased;
-}
-
-ul {
-    list-style: none;
-}
-
-a {
-    text-decoration: none;
-    color: inherit;
-    transition: color 0.2s ease;
-}
-
-/* --- Navbar Styling --- */
-.sp-header {
-    /* KEY CHANGE: Fixed Positioning for Floating Bar */
-    position: fixed; /* Makes the header float */
-    top: 0;
-    left: 0;
-    width: 100%; /* Ensures it spans the full width */
-    
-    background-color: #3a3a3a; /* Dark grey from image */
-    padding: 18px 40px;
-    color: #ffffff;
-    z-index: 1000; /* High Z-index ensures it sits above all other content */
-    box-shadow: 0 2px 10px rgba(0, 0, 0, 0.2); /* Optional: A slight shadow to lift it visually */
-}
-
-/* Compensating Margin: Add padding to the top element below the header */
-/* Since the header is fixed, it is taken out of the document flow. 
-   We must push the content down by the height of the fixed header. */
-.sp-hero-asym {
-    /* Using a calculated padding value (approx. header height + existing hero padding) */
-    padding-top: calc(75px + 100px); /* 75px is the estimated header height */
-    
-    background: linear-gradient(135deg, #1A1A1A 0%, #000000 100%); 
-    color: white;
-    overflow: hidden;
-    position: relative;
-    z-index: 50;
-    /* ... rest of hero styles ... */
-}
-/* -------------------------------------- */
-/* --- NEW ASYMMETRICAL HERO STYLES --- */
-/* -------------------------------------- */
-/* ... rest of existing hero styles ... */
-.sp-navbar {
-    max-width: 1200px;
-    margin: 0 auto;
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
-}
-
-.sp-logo {
-    font-weight: 700;
-    font-size: 24px;
-    letter-spacing: -0.5px;
-}
-
-.sp-nav-center {
-    display: flex;
-    gap: 32px;
-}
-
-.sp-nav-link {
-    font-weight: 500;
-    font-size: 15px;
-    color: #b0b0b0;
-    padding: 10px 0;
-    position: relative;
-}
-
-.sp-nav-link:hover,
-.sp-nav-link.sp-active {
-    color: #ffffff;
-}
-
-.sp-dropdown-trigger {
-    position: relative;
-}
-
-.sp-dropdown-trigger.is-open .sp-nav-link {
-    color: #ffffff;
-}
-
-
-.sp-nav-right {
-    display: flex;
-    align-items: center;
-    gap: 24px;
-}
-
-.sp-login-btn {
-    font-weight: 600;
-    font-size: 15px;
-}
-
-.sp-cta-btn {
-    background-color: var(--accent-orange); /* Orange CTA */
-    color: white;
-    padding: 12px 24px;
-    border-radius: 30px;
-    font-weight: 600;
-    font-size: 15px;
-    transition: background-color 0.2s ease;
-}
-
-.sp-cta-btn:hover {
-    background-color: #e04828;
-}
-
-
-/* --- MEGA MENU STYLING (Unchanged for orange) --- */
-
-.sp-mega-menu-container {
-    position: absolute;
-    top: 100%;
-    left: 50%;
-    transform: translateX(-50%) translateY(10px);
-    opacity: 0;
-    visibility: hidden;
-    pointer-events: none;
-    padding-top: 15px;
-    z-index: 999;
-    transition: all 0.3s ease-in-out;
-}
-
-.sp-dropdown-trigger.is-open .sp-mega-menu-container {
-    opacity: 1;
-    visibility: visible;
-    pointer-events: auto;
-    transform: translateX(-50%) translateY(0);
-}
-
-.sp-mega-wrapper {
-    background-color: #ffffff;
-    width: 1200px;
-    border-radius: 24px;
-    box-shadow: 0 20px 50px -10px rgba(0,0,0,0.15);
-    padding: 12px;
-    display: flex;
-    gap: 40px;
-    overflow: hidden;
-}
-
-/* Left Banner */
-.sp-mega-banner {
-    position: relative;
-    width: 340px;
-    flex-shrink: 0;
-    border-radius: 20px;
-    overflow: hidden;
-    height: 420px;
-}
-
-.sp-banner-img {
-    width: 100%;
-    height: 100%;
-    object-fit: cover;
-    filter: brightness(0.7) sepia(0.2) hue-rotate(-10deg);
-}
-
-.sp-banner-overlay {
-    position: absolute;
-    top: 0;
-    left: 0;
-    width: 100%;
-    height: 100%;
-    padding: 40px 30px;
-    color: #ffffff;
-    display: flex;
-    flex-direction: column;
-}
-
-.sp-banner-subtitle {
-    font-size: 13px;
-    font-weight: 500;
-    opacity: 0.9;
-    margin-bottom: 12px;
-    display: block;
-}
-
-.sp-banner-title {
-    font-size: 28px;
-    font-weight: 700;
-    line-height: 1.2;
-    max-width: 240px;
-}
-
-.sp-banner-point {
-    position: absolute;
-    display: flex;
-    align-items: center;
-    gap: 10px;
-}
-
-.sp-point-marker {
-    width: 8px;
-    height: 8px;
-    background-color: #ffffff;
-    border-radius: 2px;
-}
-
-.sp-point-label {
-    font-size: 10px;
-    font-weight: 700;
-    letter-spacing: 1px;
-    text-transform: uppercase;
-}
-
-.point-1 { top: 55%; left: 15%; }
-.point-2 { bottom: 25%; right: 15%; }
-
-
-/* Right Links Area */
-.sp-mega-links-area {
-    flex-grow: 1;
-    padding: 30px 30px 30px 0;
-    display: flex;
-    gap: 40px;
-}
-
-.sp-mega-col {
-    flex: 1;
-}
-
-.sp-col-product {
-    flex: 1.4;
-}
-
-.sp-col-header {
-    font-size: 12px;
-    font-weight: 600;
-    color: #a0a0a0;
-    letter-spacing: 1.2px;
-    text-transform: uppercase;
-    margin-bottom: 24px;
-}
-
-/* Product Item Styling */
-.sp-product-list li {
-    margin-bottom: 28px;
-}
-
-.sp-product-item {
-    display: flex;
-    align-items: flex-start;
-    gap: 16px;
-    group: color;
-}
-
-.sp-prod-thumb {
-    width: 56px;
-    height: 56px;
-    border-radius: 12px;
-    object-fit: cover;
-    flex-shrink: 0;
-}
-
-.sp-prod-info h4 {
-    font-size: 15px;
-    font-weight: 600;
-    color: #1a1a1a;
-    margin-bottom: 6px;
-    transition: color 0.2s;
-}
-
-/* Hover effect changed to orange */
-.sp-product-item:hover h4 {
-    color: var(--accent-orange);
-}
-
-.sp-prod-info p {
-    font-size: 13px;
-    line-height: 1.5;
-    color: #666666;
-    max-width: 220px;
-}
-
-/* Standard Link Lists (Learn More / Other) */
-.sp-link-list li {
-    margin-bottom: 16px;
-}
-
-.sp-link-list a {
-    font-size: 15px;
-    color: #1a1a1a;
-    font-weight: 500;
-}
-
-/* Hover effect changed to orange */
-.sp-link-list a:hover {
-    color: var(--accent-orange);
-}
-
-/* -------------------------------------- */
-/* --- NEW ASYMMETRICAL HERO STYLES --- */
-/* -------------------------------------- */
-.sp-hero-asym {
-    /* Changed background to deep black/dark gray gradient */
-    background: linear-gradient(135deg, #1A1A1A 0%, #000000 100%); 
-    padding: 100px 0 0 0;
-    color: white;
-    overflow: hidden;
-    position: relative;
-    z-index: 50;
-}
-
-.sp-hero-wrapper {
-    max-width: 1400px;
-    margin: 0 auto;
-    display: grid;
-    grid-template-columns: 6fr 4fr; 
-    gap: 40px;
-    align-items: center;
-    min-height: 550px;
-}
-
-.sp-hero-content {
-    padding-left: 40px;
-    padding-bottom: 100px;
-}
-
-.sp-hero-tagline {
-    font-size: 14px;
-    font-weight: 700;
-    color: var(--accent-orange); /* Changed to orange */
-    letter-spacing: 2px;
-    text-transform: uppercase;
-    display: inline-block;
-    margin-bottom: 20px;
-}
-
-.sp-hero-title {
-    font-size: 64px;
-    font-weight: 800;
-    line-height: 1.1;
-    letter-spacing: -2px;
-    margin-bottom: 25px;
-    /* Retain gradient text for headline */
-    background: linear-gradient(to right, #ffffff, var(--text-grey));
-    -webkit-background-clip: text;
-    -webkit-text-fill-color: transparent;
-}
-
-.sp-hero-subtitle {
-    font-size: 20px;
-    color: var(--text-grey);
-    line-height: 1.6;
-    margin-bottom: 40px;
-    max-width: 550px;
-}
-
-.sp-hero-cta-btn {
-    display: inline-block;
-    background-color: var(--accent-orange); /* Changed to orange */
-    color: var(--primary-dark);
-    padding: 16px 45px;
-    border-radius: 50px;
-    font-weight: 700;
-    text-decoration: none;
-    transition: all 0.3s ease;
-    /* Updated shadow to orange */
-    box-shadow: 0 4px 20px rgba(255, 90, 54, 0.3); 
-}
-
-.sp-hero-cta-btn:hover {
-    transform: translateY(-2px);
-    background-color: white;
-}
-
-.sp-hero-stats {
-    display: flex;
-    gap: 40px;
-    margin-top: 50px;
-    border-top: 1px solid rgba(255,255,255,0.1);
-    padding-top: 30px;
-}
-
-.sp-stat-item {
-    text-align: left;
-}
-
-.sp-stat-number {
-    font-size: 36px;
-    font-weight: 800;
-    color: white;
-    display: block;
-    margin-bottom: 5px;
-}
-
-.sp-stat-label {
-    font-size: 13px;
-    font-weight: 600;
-    text-transform: uppercase;
-    color: var(--text-grey);
-    letter-spacing: 1px;
-}
-
-/* Visual Container Styling */
-.sp-hero-visual-container {
-    height: 100%;
-    position: relative;
-    /* Updated gradient to use orange accent */
-    background: radial-gradient(circle at 100% 50%, rgba(255, 90, 54, 0.1) 0%, rgba(0,0,0,0) 70%);
-}
-
-.sp-hero-visual {
-    padding: 20px;
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    height: 100%;
-}
-
-.sp-tech-grid-svg {
-    width: 400px;
-    height: 400px;
-    opacity: 0.6;
-    transform: rotate(10deg);
-    animation: sp-pulse 4s infinite alternate ease-in-out;
-}
-
-/* Animation keyframes remain the same */
-@keyframes sp-pulse {
-    from { opacity: 0.6; transform: scale(1) rotate(10deg); }
-    to { opacity: 0.8; transform: scale(1.05) rotate(10deg); }
-}
-
-
-/* Responsive adjustments for the Hero */
-@media (max-width: 1024px) {
-    .sp-hero-wrapper {
-        grid-template-columns: 1fr; /* Stack on smaller screens */
-        min-height: auto;
-    }
-    
-    .sp-hero-content {
-        padding: 40px 20px;
-        text-align: center;
-        padding-bottom: 0;
-    }
-
-    .sp-hero-title {
-        font-size: 48px;
-        letter-spacing: -1px;
-    }
-
-    .sp-hero-subtitle {
-        margin-left: auto;
-        margin-right: auto;
-    }
-
-    .sp-hero-visual-container {
-        height: 350px;
-        background: none; 
-    }
-
-    .sp-hero-stats {
-        justify-content: center;
-    }
-
-    .sp-tech-grid-svg {
-        width: 300px;
-        height: 300px;
-    }
-}
-</style>
-
-<script>
-    document.addEventListener('DOMContentLoaded', () => {
-    const trigger = document.getElementById('megaMenuTrigger');
-    const menuContainer = trigger.querySelector('.sp-mega-menu-container');
-    let timeoutId;
-
-    // Function to open the menu
-    const openMenu = () => {
-        clearTimeout(timeoutId); // Cancel any pending close action
-        trigger.classList.add('is-open');
-    };
-
-    // Function to close the menu with a slight delay
-    const closeMenu = () => {
-        timeoutId = setTimeout(() => {
-            trigger.classList.remove('is-open');
-        }, 200); // 200ms delay before closing
-    };
-
-    // Add event listeners for mouse hover (desktop)
-    trigger.addEventListener('mouseenter', openMenu);
-    trigger.addEventListener('mouseleave', closeMenu);
-    
-    // Ensure hovering over the menu itself keeps it open
-    menuContainer.addEventListener('mouseenter', openMenu);
-    menuContainer.addEventListener('mouseleave', closeMenu);
-
-    // Optional: Click support for touch devices or if preferred over hover
-    trigger.addEventListener('click', (e) => {
-        // Prevent jumping to top of page if anchor is '#'
-        if(e.target.getAttribute('href') === '#') {
-             e.preventDefault();
-        }
-        // To enable click-to-toggle functionality:
-        // trigger.classList.toggle('is-open'); 
-    });
-});
-</script>
+<cronos-footer></cronos-footer>
