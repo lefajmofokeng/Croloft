@@ -1,0 +1,840 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>My Website</title>
+    
+    <script src="header.js" defer></script> 
+    <script src="footer.js" defer></script>
+</head>
+<body>
+
+    <cronos-header></cronos-header>
+
+</body>
+</html>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Verify Asset - Cronos</title>
+    <link href="https://fonts.cdnfonts.com/css/circular-std" rel="stylesheet">
+    <style>
+        :root {
+            --bg-dark: #06080e;
+            --bg-glass: rgba(255, 255, 255, 0.05);
+            --border-glass: rgba(255, 255, 255, 0.1);
+            --text-primary: #FFFFFF;
+            --text-secondary: #a0b3d6;
+            --accent-blue: #fdfdfd;
+            --loading-color: #00A3B5;
+            --status-green-text: #17e089;
+            --status-green-bg: rgba(23, 224, 137, 0.1);
+            --status-red-text: #ff4d4d;
+            --status-red-bg: rgba(255, 77, 77, 0.1);
+            --border-radius-card: 16px;
+            --border-radius-btn: 50px;
+        }
+
+        *, *::before, *::after {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        html {
+            -webkit-text-size-adjust: 100%;
+            text-size-adjust: 100%;
+        }
+
+        body {
+            font-family: 'Circular Std', 'Circular', -apple-system, BlinkMacSystemFont, sans-serif;
+            background-color: var(--bg-dark);
+            background:
+                radial-gradient(circle at 10% 20%, rgba(0, 106, 255, 0.1), transparent 30%),
+                radial-gradient(circle at 90% 80%, rgba(0, 132, 255, 0.166), transparent 30%),
+                var(--bg-dark);
+            color: var(--text-primary);
+            line-height: 1.6;
+            min-height: 50vh;
+            /* Prevents font blurring from subpixel rendering issues */
+            -webkit-font-smoothing: antialiased;
+            -moz-osx-font-smoothing: grayscale;
+            font-smooth: always;
+        }
+
+        .verify-wrapper {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            min-height: 100vh;
+            padding: 40px 20px; 
+        }
+
+        .verify-card {
+            padding: 40px;
+            width: 100%;
+            max-width: 600px;
+            text-align: center;
+        }
+
+        .verify-card h1 {
+            font-size: clamp(26px, 5vw, 35px);
+            font-weight: 700;
+            color: var(--text-primary);
+            margin-bottom: 10px;
+            line-height: 1.2;
+            letter-spacing: -0.01em;
+        }
+
+        .verify-card h1 .brand-name {
+            padding-right: 15px;
+            font-weight: 600;
+        }
+
+        .verify-card h1 .brand-label {
+            border-left: 2px solid #b6b6b6;
+            color: #b6b6b6;
+            padding-left: 20px;
+            letter-spacing: 0.09em;
+            text-transform: uppercase;
+        }
+
+        .verify-card > p {
+            font-size: clamp(14px, 3vw, 16px);
+            color: var(--text-secondary);
+            margin-bottom: 30px;
+            line-height: 1.6;
+        }
+
+        /* --- Tabs --- */
+        .verify-tabs {
+            display: flex;
+            background-color: rgba(0, 0, 0, 0.2);
+            border-radius: var(--border-radius-btn);
+            margin-bottom: 30px;
+            padding: 3px;
+            border: 1px solid #fdfdfd;
+            gap: 3px;
+        }
+
+        .verify-tab {
+            flex: 1;
+            padding: 11px 8px;
+            border-radius: var(--border-radius-btn);
+            cursor: pointer;
+            font-weight: 600;
+            font-family: 'Circular Std', 'Circular', -apple-system, BlinkMacSystemFont, sans-serif;
+            font-size: clamp(12px, 2.5vw, 15px);
+            color: var(--text-secondary);
+            border: 1px solid transparent;
+            transition: background-color 0.25s ease, color 0.25s ease;
+            white-space: nowrap;
+            user-select: none;
+            line-height: 1.3;
+        }
+
+        .verify-tab:hover:not(.active) {
+            background-color: var(--bg-glass);
+            color: var(--text-primary);
+        }
+
+        .verify-tab.active {
+            background-color: var(--accent-blue);
+            color: var(--bg-dark);
+            font-weight: 700;
+        }
+
+        /* --- Form --- */
+        .verify-form {
+            display: flex;
+            flex-direction: column;
+            gap: 16px;
+        }
+
+        #verify-input {
+            width: 100%;
+            padding: 14px 22px;
+            border-radius: var(--border-radius-btn);
+            border: 1px solid var(--border-glass);
+            background-color: var(--bg-glass);
+            color: var(--text-primary);
+            font-size: clamp(14px, 3vw, 16px);
+            font-family: 'Circular Std', 'Circular', -apple-system, BlinkMacSystemFont, sans-serif;
+            transition: border-color 0.2s ease, box-shadow 0.2s ease;
+            /* Prevent iOS zoom on focus (font-size must be >= 16px equivalent) */
+            appearance: none;
+            -webkit-appearance: none;
+        }
+
+        #verify-input::placeholder {
+            color: var(--text-secondary);
+            opacity: 0.7;
+        }
+
+        #verify-input:focus {
+            outline: none;
+            border-color: rgba(253, 253, 253, 0.5);
+            box-shadow: 0 0 0 3px rgba(253, 253, 253, 0.08);
+        }
+
+        /* --- Button --- */
+        .btn {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            gap: 10px;
+            background-color: var(--accent-blue);
+            color: var(--bg-dark);
+            padding: 14px 30px;
+            border-radius: var(--border-radius-btn);
+            font-family: 'Circular Std', 'Circular', -apple-system, BlinkMacSystemFont, sans-serif;
+            font-weight: 700;
+            font-size: clamp(15px, 3vw, 18px);
+            letter-spacing: -0.01em;
+            border: none;
+            cursor: pointer;
+            transition: opacity 0.2s ease, transform 0.15s ease;
+            position: relative;
+            width: 100%;
+            min-height: 52px;
+            text-decoration: none;
+        }
+
+        .btn:hover:not(:disabled) {
+            opacity: 0.92;
+            transform: translateY(-1px);
+        }
+
+        .btn:active:not(:disabled) {
+            transform: translateY(0);
+        }
+
+        .btn:disabled {
+            cursor: not-allowed;
+        }
+
+        .btn.loading {
+            background-color: var(--loading-color);
+            color: transparent;
+        }
+
+        .btn.loading .btn-text {
+            opacity: 0;
+        }
+
+        .spinner {
+            display: none;
+            position: absolute;
+            width: 22px;
+            height: 22px;
+            border: 2.5px solid rgba(255, 255, 255, 0.3);
+            border-top-color: #fff;
+            border-radius: 50%;
+            animation: sos-spin 0.75s linear infinite;
+        }
+
+        .btn.loading .spinner {
+            display: block;
+        }
+
+        @keyframes sos-spin {
+            to { transform: rotate(360deg); }
+        }
+
+        .btn-secondary {
+            background-color: #07142a;
+            color: #fdfdfd;
+            border: 1px solid var(--border-glass);
+        }
+
+        .btn-secondary:hover:not(:disabled) {
+            background-color: #0c1f3d;
+        }
+
+        /* --- Modal Overlay --- */
+        .modal {
+            display: none;
+            position: fixed;
+            inset: 0;
+            background-color: rgba(0, 0, 0, 0.55);
+            z-index: 1000;
+            align-items: flex-end;
+            justify-content: center;
+            padding: 0;
+        }
+
+        .modal.open {
+            display: flex;
+        }
+
+        /* Sheet-style modal — slides up from bottom like the reference */
+        .modal-content {
+            background-color: #f2f2f2;
+            border-radius: 20px 20px 0 0;
+            width: 100%;
+            max-width: 520px;
+            overflow: hidden;
+            position: relative;
+            text-align: center;
+            animation: modal-slide-up 0.35s cubic-bezier(0.22, 1, 0.36, 1) forwards;
+        }
+
+        @keyframes modal-slide-up {
+            from { opacity: 0; transform: translateY(40px); }
+            to   { opacity: 1; transform: translateY(0); }
+        }
+
+        /* Top header bar — light grey, like crypto.com */
+        .modal-header-bar {
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            padding: 16px 20px 14px;
+            background: #ffffff;
+            border-bottom: 1px solid rgba(0,0,0,0.08);
+        }
+
+        .modal-header-logo {
+            display: flex;
+            align-items: center;
+            gap: 8px;
+        }
+
+        .modal-header-logo-icon {
+           
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            flex-shrink: 0;
+        }
+
+        .modal-header-logo-icon svg {
+            width: 16px;
+            height: 16px;
+        }
+
+        .modal-header-brand {
+            font-size: 15px;
+            font-weight: 700;
+            color: #0a0a14;
+            font-family: 'Circular Std', 'Circular', -apple-system, BlinkMacSystemFont, sans-serif;
+        }
+
+        .modal-header-divider {
+            width: 1px;
+            height: 16px;
+            background: #c0c0c0;
+            margin: 0 2px;
+        }
+
+        .modal-header-label {
+            font-size: 13px;
+            font-weight: 600;
+            letter-spacing: 0.08em;
+            text-transform: uppercase;
+            color: #888;
+            font-family: 'Circular Std', 'Circular', -apple-system, BlinkMacSystemFont, sans-serif;
+        }
+
+        .close-modal {
+            background: none;
+            border: none;
+            font-size: 22px;
+            cursor: pointer;
+            color: #555;
+            line-height: 1;
+            padding: 4px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            transition: color 0.2s ease; text-decoration: none;
+        }
+
+        .close-modal:hover { color: #111; }
+
+        /* Modal body */
+        .modal-body {
+            padding: 32px 28px 28px;
+        }
+
+        /* Shield icon container */
+        .modal-shield {
+            width: 80px;
+            height: 80px;
+            margin: 0 auto 18px;
+            position: relative;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+
+        .modal-shield svg.shield-bg {
+            width: 80px;
+            height: 80px;
+            position: absolute;
+            inset: 0;
+        }
+
+        .modal-shield .shield-inner-icon {
+            position: relative;
+            z-index: 1;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+
+        /* Asset identifier line */
+        .modal-asset-id {
+            font-size: clamp(13px, 3vw, 15px);
+            font-weight: 700;
+            margin-bottom: 14px;
+            word-break: break-all;
+            overflow-wrap: anywhere;
+            font-family: 'Circular Std', 'Circular', -apple-system, BlinkMacSystemFont, sans-serif;
+        }
+
+        .modal-asset-id.is-red   { color: #e03030; }
+        .modal-asset-id.is-green { color: #17a85a; }
+
+        /* Main heading */
+        .modal-title {
+            font-family: 'Circular Std', 'Circular', -apple-system, BlinkMacSystemFont, sans-serif;
+            font-size: clamp(18px, 4vw, 22px);
+            font-weight: 800;
+            color: #0a0a14;
+            margin-bottom: 14px;
+            line-height: 1.3;
+            letter-spacing: -0.02em;
+        }
+
+        .modal-title .highlight-red   { color: #e03030; }
+        .modal-title .highlight-green { color: #17a85a; }
+
+        /* Sub-text */
+        .modal-subtext {
+            font-family: 'Circular Std', 'Circular', -apple-system, BlinkMacSystemFont, sans-serif;
+            font-size: clamp(13px, 2.5vw, 14px);
+            color: #555;
+            line-height: 1.65;
+            margin-bottom: 28px;
+            text-align: left;
+        }
+
+        .modal-subtext a {
+            color: #0033a0;
+            font-weight: 600;
+            text-decoration: none;
+        }
+
+        /* Close button */
+        .modal-close-btn {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            width: 100%;
+            padding: 17px;
+            border-radius: 50px;
+            border: none;
+            cursor: pointer;
+            font-family: 'Circular Std', 'Circular', -apple-system, BlinkMacSystemFont, sans-serif;
+            font-size: clamp(15px, 3vw, 17px);
+            font-weight: 700;
+            letter-spacing: -0.01em;
+            transition: opacity 0.2s ease, transform 0.15s ease;
+        }
+
+        .modal-close-btn:hover { opacity: 0.9; transform: translateY(-1px); }
+        .modal-close-btn:active { transform: translateY(0); }
+
+        .modal-close-btn.btn-dark {
+            background: #0a0a14;
+            color: #fff;
+        }
+
+        .modal-close-btn.btn-success {
+            background: #17a85a;
+            color: #fff;
+        }
+
+        /* --- Responsive --- */
+        @media (max-width: 480px) {
+            .verify-wrapper {
+                padding: 28px 16px;
+                align-items: flex-start;
+                padding-top: 48px;
+            }
+
+            .verify-card {
+                padding: 0;
+            }
+
+            .verify-card h1 .brand-name {
+                padding-right: 10px;
+            }
+
+            .verify-card h1 .brand-label {
+                padding-left: 12px;
+            }
+
+            .verify-tabs {
+                padding: 3px;
+            }
+
+            .verify-tab {
+                padding: 9px 6px;
+            }
+        }
+
+        @media (max-width: 360px) {
+            .verify-tab {
+                font-size: 11px;
+                padding: 8px 4px;
+            }
+        }
+
+        @media (max-width: 768px) {
+            .verify-wrapper {
+                margin-top: 130px;
+                min-height: 70vh;
+            }
+        }
+    </style>
+</head>
+<body>
+
+    <div class="verify-wrapper">
+        <div class="verify-card">
+            <h1>
+                <span class="brand-name">Croloft</span>
+                <span class="brand-label">Verify</span>
+            </h1>
+            <p>Select an asset type and enter the identifier to confirm it's officially associated with our projects.</p>
+
+            <div class="verify-tabs" role="tablist" aria-label="Asset type">
+                <div class="verify-tab active" role="tab" aria-selected="true" data-type="link" tabindex="0">URL / Link</div>
+                <div class="verify-tab" role="tab" aria-selected="false" data-type="email" tabindex="0">Email Address</div>
+                <div class="verify-tab" role="tab" aria-selected="false" data-type="social" tabindex="0">Social ID</div>
+            </div>
+
+            <div class="verify-form">
+                <input
+                    type="text"
+                    id="verify-input"
+                    placeholder="e.g., example.com/project-link"
+                    autocomplete="off"
+                    autocorrect="off"
+                    autocapitalize="off"
+                    spellcheck="false"
+                    aria-label="Asset identifier"
+                />
+                <button class="btn" id="verify-btn" aria-live="polite">
+                    <span class="btn-text">Verify Asset</span>
+                    <span class="spinner" aria-hidden="true"></span>
+                </button>
+            </div>
+        </div>
+    </div>
+
+    <!-- Failure Modal -->
+    <div class="modal" id="failure-modal" role="dialog" aria-modal="true" aria-labelledby="failure-modal-title">
+        <div class="modal-content">
+            <!-- Header bar -->
+            <div class="modal-header-bar">
+                <div class="modal-header-logo">
+                    <div class="modal-header-logo-icon">
+                        <img src="thumbnails/logo1.png" alt="Cronos Logo" style="height: 16px;">
+                        <!-- Cronos "C" mark -->
+                    </div>
+                    <span class="modal-header-divider"></span>
+                    <span class="modal-header-label">Verify</span>
+                </div>
+                <button class="close-modal" aria-label="Close">&times;</button>
+            </div>
+
+            <!-- Body -->
+            <div class="modal-body">
+                <!-- Shield icon — red/warning -->
+                <div class="modal-shield" aria-hidden="true">
+                    <svg class="shield-bg" viewBox="0 0 80 80" fill="none" xmlns="http://www.w3.org/2000/svg">
+                        <path d="M40 6L68 18V36C68 54 55 68 40 74C25 68 12 54 12 36V18L40 6Z" fill="rgba(224,48,48,0.12)" stroke="#e03030" stroke-width="1.5"/>
+                    </svg>
+                    <div class="shield-inner-icon">
+                        <svg width="32" height="32" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+                            <circle cx="12" cy="12" r="10" fill="#e03030"/>
+                            <path d="M8 8L16 16M16 8L8 16" stroke="white" stroke-width="2.2" stroke-linecap="round"/>
+                        </svg>
+                    </div>
+                </div>
+
+                <p class="modal-asset-id is-red" id="failure-link"></p>
+
+                <h3 class="modal-title" id="failure-modal-title">
+                    This is <span class="highlight-red">NOT</span> an official<br>Cronos communication channel.
+                </h3>
+
+                <div class="modal-subtext">
+                    Please ensure you have selected the right channel and accurately entered its details.<br>
+                    Do not share sensitive information or send assets to an unverified source.<br>
+                    Contact us at <a href="#">support.cronos.com</a> if you are ever in doubt.
+                </div>
+
+                <button class="modal-close-btn btn-dark" id="failure-close-btn">Close</button>
+            </div>
+        </div>
+    </div>
+
+    <!-- Success Modal -->
+    <div class="modal" id="success-modal" role="dialog" aria-modal="true" aria-labelledby="success-modal-title">
+        <div class="modal-content">
+            <!-- Header bar -->
+            <div class="modal-header-bar">
+                <div class="modal-header-logo">
+                    <div class="modal-header-logo-icon">
+                        <svg viewBox="0 0 20 20" fill="none" xmlns="http://www.w3.org/2000/svg">
+                            <path d="M10 2L17 6V10C17 13.87 13.87 17.6 10 18.5C6.13 17.6 3 13.87 3 10V6L10 2Z" fill="rgba(255,255,255,0.15)" stroke="white" stroke-width="1.2"/>
+                            <text x="10" y="13.5" text-anchor="middle" font-size="8" font-weight="800" fill="white" font-family="sans-serif">C</text>
+                        </svg>
+                    </div>
+                    <span class="modal-header-brand">Cronos</span>
+                    <span class="modal-header-divider"></span>
+                    <span class="modal-header-label">Verify</span>
+                </div>
+                <button class="close-modal" aria-label="Close">&times;</button>
+            </div>
+
+            <!-- Body -->
+            <div class="modal-body">
+                <!-- Shield icon — green/verified -->
+                <div class="modal-shield" aria-hidden="true">
+                    <svg class="shield-bg" viewBox="0 0 80 80" fill="none" xmlns="http://www.w3.org/2000/svg">
+                        <path d="M40 6L68 18V36C68 54 55 68 40 74C25 68 12 54 12 36V18L40 6Z" fill="rgba(23,168,90,0.12)" stroke="#17a85a" stroke-width="1.5"/>
+                    </svg>
+                    <div class="shield-inner-icon">
+                        <svg width="32" height="32" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+                            <circle cx="12" cy="12" r="10" fill="#17a85a"/>
+                            <path d="M7.5 12L10.5 15L16.5 9" stroke="white" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"/>
+                        </svg>
+                    </div>
+                </div>
+
+                <p class="modal-asset-id is-green" id="success-link"></p>
+
+                <h3 class="modal-title" id="success-modal-title">
+                    This <span class="highlight-green">IS</span> an official<br>Cronos communication channel.
+                </h3>
+
+                <div class="modal-subtext">
+                    This asset has been verified as an official Cronos channel.<br>
+                    You can interact with confidence.<br>
+                    Stay vigilant — always verify before sharing sensitive information.
+                </div>
+
+                <button class="modal-close-btn btn-success" id="success-close-btn">Got It</button>
+            </div>
+        </div>
+    </div>
+
+    <script>
+        (function () {
+            'use strict';
+
+            // --- Verified asset database ---
+            const verifiedAssets = {
+                link: [
+                    'example.com/project-link',
+                    'official-client-site.com',
+                    'nexus-retail.com',
+                    'artchain.io/marketplace',
+                    'defcon.com/projects'
+                ],
+                email: [
+                    'support@defcon.com',
+                    'jessica.s@nexus-retail.com',
+                    'contact@artchain.io',
+                    'noreply@official-client-site.com'
+                ],
+                social: [
+                    '@defconofficial',
+                    '@nexusretail',
+                    '@artchain_nft',
+                    'facebook.com/defcon'
+                ]
+            };
+
+            const placeholders = {
+                link:   'e.g., example.com/project-link',
+                email:  'e.g., support@defcon.com',
+                social: 'e.g., @DefconOfficial'
+            };
+
+            // DOM references
+            const tabs          = document.querySelectorAll('.verify-tab');
+            const verifyInput   = document.getElementById('verify-input');
+            const verifyBtn     = document.getElementById('verify-btn');
+            const btnText       = verifyBtn.querySelector('.btn-text');
+            const successModal  = document.getElementById('success-modal');
+            const failureModal  = document.getElementById('failure-modal');
+            const successLink   = document.getElementById('success-link');
+            const failureLink   = document.getElementById('failure-link');
+
+            let currentType = 'link';
+            let verifyTimeout = null;
+
+            // --- Tab switching ---
+            function activateTab(tab) {
+                tabs.forEach(t => {
+                    t.classList.remove('active');
+                    t.setAttribute('aria-selected', 'false');
+                });
+                tab.classList.add('active');
+                tab.setAttribute('aria-selected', 'true');
+                currentType = tab.getAttribute('data-type');
+                verifyInput.placeholder = placeholders[currentType];
+                verifyInput.value = '';
+                verifyInput.focus();
+            }
+
+            tabs.forEach(tab => {
+                tab.addEventListener('click', () => activateTab(tab));
+                // Keyboard accessibility
+                tab.addEventListener('keydown', (e) => {
+                    if (e.key === 'Enter' || e.key === ' ') {
+                        e.preventDefault();
+                        activateTab(tab);
+                    }
+                });
+            });
+
+            // --- Modal helpers ---
+            function openModal(modal) {
+                modal.classList.add('open');
+                document.body.style.overflow = 'hidden';
+                // Focus first focusable element inside modal
+                const focusable = modal.querySelector('button, [tabindex]');
+                if (focusable) setTimeout(() => focusable.focus(), 50);
+            }
+
+            function closeAllModals() {
+                successModal.classList.remove('open');
+                failureModal.classList.remove('open');
+                document.body.style.overflow = '';
+                verifyBtn.focus();
+            }
+
+            // Close buttons
+            document.querySelectorAll('.close-modal').forEach(btn => {
+                btn.addEventListener('click', closeAllModals);
+            });
+            document.getElementById('success-close-btn').addEventListener('click', closeAllModals);
+            document.getElementById('failure-close-btn').addEventListener('click', closeAllModals);
+
+            // Close on backdrop click
+            [successModal, failureModal].forEach(modal => {
+                modal.addEventListener('click', (e) => {
+                    if (e.target === modal) closeAllModals();
+                });
+            });
+
+            // Close on Escape
+            document.addEventListener('keydown', (e) => {
+                if (e.key === 'Escape') closeAllModals();
+            });
+
+            // --- Verification logic ---
+            function runVerification(value) {
+                const normalised = value.toLowerCase().trim();
+                const pool = verifiedAssets[currentType] || [];
+                const isVerified = pool.some(item => item.toLowerCase() === normalised);
+
+                // Reset button
+                verifyBtn.classList.remove('loading');
+                verifyBtn.disabled = false;
+                btnText.textContent = 'Verify Asset';
+
+                if (isVerified) {
+                    successLink.textContent = value;
+                    openModal(successModal);
+                } else {
+                    failureLink.textContent = value;
+                    openModal(failureModal);
+                }
+            }
+
+            function startVerification() {
+                const value = verifyInput.value.trim();
+                if (!value) {
+                    verifyInput.focus();
+                    verifyInput.style.borderColor = 'rgba(255,77,77,0.6)';
+                    setTimeout(() => { verifyInput.style.borderColor = ''; }, 1500);
+                    return;
+                }
+
+                // Guard: prevent double-submit
+                if (verifyBtn.disabled) return;
+
+                // Clear any pending timeout (safety)
+                if (verifyTimeout) clearTimeout(verifyTimeout);
+
+                verifyBtn.classList.add('loading');
+                verifyBtn.disabled = true;
+                btnText.textContent = '';
+
+                verifyTimeout = setTimeout(() => runVerification(value), 1800);
+            }
+
+            verifyBtn.addEventListener('click', startVerification);
+
+            // Allow Enter key in input to submit
+            verifyInput.addEventListener('keydown', (e) => {
+                if (e.key === 'Enter') startVerification();
+            });
+
+        })();
+    </script>
+</body>
+</html>
+
+
+<cronos-footer></cronos-footer>
+</body>
+</html>
