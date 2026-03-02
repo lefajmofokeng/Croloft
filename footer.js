@@ -25,11 +25,11 @@
       ]
     },
     {
-      heading: 'Support',
+      heading: 'Support & Resources',
       links: [
         { label: 'Developer Hub',             href: 'developer-hub.html' },
         { label: 'Contact Us',                href: '#' },
-        { label: 'Contact our Privacy Team',  href: '#' },
+        { label: 'Glossary',                  href: 'glossary.html' },
         { label: 'Bot',                       href: '#' },
       ]
     },
