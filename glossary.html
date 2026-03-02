@@ -17,536 +17,7 @@
 </html>
 
 
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-<!-- Progress Indicator HTML -->
-<div class="progress-container">
-  <div class="progress-bar" id="progressBar"></div>
-  <button class="back-to-top" id="backToTop">↑ Back to Top</button>
-</div>
-
 <style>
-/* Progress Indicator Styles */
-.progress-container {
-  position: fixed;
-  top: 0;
-  left: 0;
-  width: 100%;
-  height: 4px;
-  background: transparent;
-  z-index: 1001;
-}
-
-.progress-bar {
-  height: 100%;
-  background: linear-gradient(90deg, #0091ff, #00c6ff);
-  width: 0%;
-  transition: width 0.1s ease-out;
-}
-
-.back-to-top {
-  position: fixed;
-  bottom: 30px;
-  right: 20px;
-  background: #0091ff;
-  color: white;
-  border: none;
-  border-radius: 2px;
-  padding: 10px 15px;
-  font-size: 14px;
-  cursor: pointer;
-  opacity: 0;
-  visibility: hidden;
-  transform: translateY(20px);
-  transition: all 0.3s ease;
-  box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
-  z-index: 1000;
-}
-
-.back-to-top:hover {
-  background: #0077cc;
-  transform: translateY(20px) scale(1.05);
-}
-
-.back-to-top.visible {
-  opacity: 1;
-  visibility: visible;
-  transform: translateY(0);
-}
-</style>
-
-<script>
-document.addEventListener('DOMContentLoaded', function() {
-  const progressBar = document.getElementById('progressBar');
-  const backToTop = document.getElementById('backToTop');
-  
-  // Update progress bar on scroll
-  window.addEventListener('scroll', function() {
-    const scrollTop = document.documentElement.scrollTop || document.body.scrollTop;
-    const scrollHeight = document.documentElement.scrollHeight - document.documentElement.clientHeight;
-    const scrollProgress = (scrollTop / scrollHeight) * 100;
-    
-    progressBar.style.width = scrollProgress + '%';
-    
-    // Show/hide back to top button
-    if (scrollTop > 300) {
-      backToTop.classList.add('visible');
-    } else {
-      backToTop.classList.remove('visible');
-    }
-  });
-  
-  // Back to top functionality
-  backToTop.addEventListener('click', function() {
-    window.scrollTo({
-      top: 0,
-      behavior: 'smooth'
-    });
-  });
-});
-</script>
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-<style>
-        /* =============================================
-    TRENDING TERMS SECTION CSS (Updated for Responsiveness)
-    =============================================
-    */
-    @font-face {
-        font-family: 'Circular Std';
-        src: url('fonts/CircularStd-Book.ttf') format('truetype');
-        font-weight: 400;
-        font-style: normal;
-    }
-
-    /* Circular Std - Medium (500) */
-    @font-face {
-        font-family: 'Circular Std';
-        src: url('fonts/CircularStd.ttf') format('truetype');
-        font-weight: 500;
-        font-style: normal;
-    }
-
-    /* Circular Std - Bold (700) */
-    @font-face {
-        font-family: 'Circular Std';
-        src: url('fonts/CircularStd-Bold.ttf') format('truetype');
-        font-weight: 600;
-        font-style: normal;
-    }
-
-    .content-container h1 {
-        padding-top: 40px;
-    }
-
-    .trending-terms-container {
-        max-width: 1200px;
-        margin: 60px auto;
-        padding: 0; /* Added desktop padding */
-        position: relative;
-        font-family: 'Circular Std', sans-serif;
-    }
-
-    .section-header {
-        display: flex;
-        justify-content: space-between;
-        align-items: center;
-        margin-bottom: 20px;
-    }
-    
-    .section-header h2 {
-        font-size: 2rem;
-        font-weight: 700;
-        color: #121212;
-        margin: 0;
-    }
-    
-    .terms-wrapper {
-        display: flex;
-        overflow-x: scroll;
-        scroll-behavior: smooth;
-        padding-bottom: 25px;
-        margin-bottom: 10px;
-    }
-
-    .terms-wrapper::-webkit-scrollbar {
-        display: none;
-    }
-    .terms-wrapper {
-        -ms-overflow-style: none;
-        scrollbar-width: none;
-    }
-
-    .term-card-sv {
-        flex: 0 0 360px; /* Desktop Card Size */
-        margin-right: 20px;
-        background-color: white;
-        border-radius: 30px;
-        padding: 30px 25px;
-        border: 1px solid #e0e0e0ab;
-        height: auto;
-        transition: transform 0.2s, box-shadow 0.2s;
-    }
-
-    .term-card-sv h3 {
-        font-size: 1.9rem;
-        font-weight: 500;
-        color: #000;
-        margin-bottom: 10px;
-        border-bottom: 1px solid #e0e0e055;
-        padding-bottom: 10px;
-    }
-
-    .term-card-sv p {
-        font-size: 1rem;
-        color: #333;
-        line-height: 1.6;
-        font-weight: 400;
-        padding-top: 10px;
-    }
-
-    .scroll-controls {
-        position: absolute;
-        bottom: -60px;
-        right: 50px; /* Aligned with desktop padding */
-        display: flex;
-        gap: 15px;
-    }
-
-    .scroll-btn {
-        border: none;
-        border-radius: 50%;
-        width: 60px;
-        height: 60px;
-        display: flex;
-        justify-content: center;
-        align-items: center;
-        cursor: pointer;
-        background-color: transparent;
-    }
-
-    .scroll-btn:hover {
-        color: white;
-        border: 3px solid black;
-    }
-
-    .scroll-btn svg {
-        width: 40px;
-        height: 40px;
-        fill: currentColor;
-    }
-
-    /* Tablet/Smaller Desktop Styles (1024px) */
-    @media (max-width: 1024px) {
-        .trending-terms-container {
-            padding: 0 20px; /* Reduced padding for smaller screens */
-            margin: 40px auto;
-        }
-
-        .term-card-sv {
-            flex: 0 0 300px; /* Slightly smaller card size */
-            margin-right: 15px;
-        }
-
-        .section-header h2 {
-            font-size: 1.75rem;
-        }
-
-        .scroll-controls {
-            bottom: -40px;
-            right: 20px;
-            gap: 10px;
-        }
-    }
-
-    /* Mobile Styles (600px) */
-    @media (max-width: 600px) {
-        .trending-terms-container {
-            padding: 0; /* Remove container padding to allow full width scrolling */
-            margin: 40px auto;
-        }
-        
-        .section-header {
-            padding: 0 20px; /* Apply padding only to header content */
-            margin-bottom: 15px;
-        }
-
-        .terms-wrapper {
-            /* Adjust wrapper to start scrolling from the edge, while creating a visual margin */
-            margin-left: 20px;
-            padding-right: 20px;
-            width: 100%;
-            padding-bottom: 15px;
-        }
-
-        .term-card-sv {
-            /* Make card take up 88% of the viewport width minus padding,
-               leaving a little space for the next card to peek in. */
-            flex: 0 0 88%; 
-            margin-right: 15px;
-        }
-        
-        .term-card-sv h3 {
-            font-size: 1.5rem;
-        }
-        .term-card-sv p {
-            font-size: 0.95rem;
-        }
-
-        /* Make scroll controls static and centered for mobile */
-        .scroll-controls {
-            position: static; 
-            margin-top: 15px;
-            margin-bottom: 10px;
-            justify-content: center;
-            right: auto;
-            bottom: auto;
-            transform: none;
-        }
-        
-        .scroll-btn {
-            width: 45px;
-            height: 45px;
-        }
-        .scroll-btn svg {
-            width: 25px;
-            height: 25px;
-        }
-    }
-
-</style>
-</head>
-<body>
-    
-
-    <section class="hero-section">
-        <div class="content-container">
-            <h1 style="font-weight: 500;">Cronos Glossary</h1>
-            <p>Comprehensive definitions for technical terms you need to know.</p>
-        </div>
-    </section>
-
-<section class="trending-terms-container">
-    <div class="section-header">
-        <h2>Trending Terms</h2>
-    </div>
-
-    <div class="terms-wrapper" id="trendingTermsWrapper">
-        <div class="term-card-sv">
-            <h3>DevOps</h3>
-            <p>A set of practices, cultural philosophies, and tools that increases an organization's ability to deliver applications and services at high velocity. DevOps emphasizes collaboration between development and operations teams, automation of the software delivery pipeline, continuous integration and delivery, infrastructure as code, monitoring, and rapid feedback loops to improve reliability, quality, and time to market.</p>
-        </div>
-        <div class="term-card-sv">
-            <h3>Cloud Computing</h3>
-            <p>The delivery of computing services — servers, storage, databases, networking, software, analytics, and intelligence — over the internet (the cloud). Cloud computing provides on-demand resources, elasticity, and pay-as-you-go pricing, enabling faster innovation, easier scaling, reduced operational overhead, and the ability to run workloads globally without owning physical infrastructure.</p>
-        </div>
-        <div class="term-card-sv">
-            <h3>API</h3>
-            <p>Application Programming Interface. A set of rules, protocols, and tools that defines how software components should interact. APIs expose functionality and data from applications or services in a standardized way, enabling integration, automation, and modular development by allowing clients to request and manipulate resources without needing knowledge of internal implementation details.</p>
-        </div>
-        <div class="term-card-sv">
-            <h3>CI/CD Pipeline</h3>
-            <p>Continuous Integration (CI) and Continuous Delivery/Deployment (CD) are automated practices for building, testing, and delivering code changes. CI automates merging and testing of code in a shared repository to detect issues early. CD automates the packaging, staging, and deployment of changes so teams can release reliable software faster, often with automated testing, promotion gates, and rollback mechanisms.</p>
-        </div>
-        <div class="term-card-sv">
-            <h3>Microservices</h3>
-            <p>An architectural style that structures an application as a collection of small, independently deployable services, each responsible for a single business capability. Microservices communicate over lightweight protocols (e.g., HTTP/REST, gRPC, or messaging), enable decentralized data management, allow teams to iterate and scale independently, and improve resilience by isolating failures.</p>
-        </div>
-        <div class="term-card-sv">
-            <h3>Blockchain</h3>
-            <p>A distributed ledger technology that records transactions in an ordered, append-only chain of cryptographically linked blocks across a decentralized network of nodes. Blockchains provide immutability, tamper-resistance, and transparent audit trails; they can be permissionless (public) or permissioned (private) and are used for cryptocurrencies, smart contracts, and provenance or supply-chain applications.</p>
-        </div>
-        <div class="term-card-sv">
-            <h3>Latency</h3>
-            <p>The delay between initiating an action and observing its effect. In networking, latency is the time it takes for a packet to travel from source to destination, typically measured in milliseconds. Latency is influenced by propagation, transmission, processing, and queuing delays and is a critical metric for real-time applications such as gaming, video conferencing, and high-frequency trading.</p>
-        </div>
-        <div class="term-card-sv">
-            <h3>SaaS</h3>
-            <p>Software as a Service. A cloud delivery model where software applications are hosted by a provider and made available to customers over the internet, typically on a subscription or usage-based pricing model. SaaS removes the need for local installation and maintenance, centralizes updates and security, and enables quick onboarding and access from any device with a network connection.</p>
-        </div>
-        <div class="term-card-sv">
-            <h3>Artificial Intelligence</h3>
-            <p>The field of computer science focused on creating systems that perform tasks normally requiring human intelligence. AI encompasses machine learning, deep learning, natural language processing, computer vision, and reasoning techniques to enable machines to perceive, learn from data, make decisions, and perform tasks such as classification, prediction, planning, and language understanding.</p>
-        </div>
-    </div>
-
-    <div class="scroll-controls">
-        <button class="scroll-btn" id="scrollLeft">
-            <svg xmlns="http://www.w3.org/2000/svg" width="200" height="200" viewBox="0 0 32 32"><path fill="#000000" d="M29 16a1 1 0 0 1-1 1H6.414l8.293 8.293a1 1 0 0 1-1.414 1.414l-10-10a1 1 0 0 1 0-1.414l10-10a1 1 0 1 1 1.414 1.414L6.414 15H28a1 1 0 0 1 1 1Z"/></svg>
-        </button>
-        <button class="scroll-btn" id="scrollRight">
-            <svg xmlns="http://www.w3.org/2000/svg" width="200" height="200" viewBox="0 0 32 32"><path fill="#000000" d="M3 16a1 1 0 0 1 1-1h21.586l-8.293-8.293a1 1 0 0 1 1.414-1.414l10 10a1 1 0 0 1 0 1.414l-10 10a1 1 0 0 1-1.414-1.414L25.586 17H4a1 1 0 0 1-1-1Z"/></svg>
-        </button>
-    </div>
-</section>
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-<!DOCTYPE TML>
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Defcon - IT Solutions Glossary</title>
-    <script src="https://cdn.tailwindcss.com"></script>
-    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@100..900&display=swap" rel="stylesheet">
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
-    
-    <style>
-        :root {
-            --color-accent: #0080e1;
-            --color-accent-dark: #0070cc;
-            --color-text-dark: #1a1a1a;
-            --color-background-light: #f4f4f4;
-            --color-text-muted: #555566;
-            --header-height: 60px;
-        }
-
-        * {
-            margin: 0;
-            padding: 0;
-            box-sizing: border-box;
-        }
-
         @font-face {
             font-family: 'Circular Std';
             src: url('fonts/CircularStd-Book.ttf') format('truetype');
@@ -569,652 +40,640 @@ document.addEventListener('DOMContentLoaded', function() {
             font-weight: 600;
             font-style: normal;
         }
-
-        body {
-            font-family: 'Circular Std', sans-serif;
-            background-color: var(--color-background-light);
-            color: var(--color-text-dark);
-            
-        }
-
-        .content-container {
-            max-width: 1300px;
-            width: 100%;
-            margin: 0 auto;
-            padding: 0 50px;
-            box-sizing: border-box;
-        }
-
-        /* Hero Section */
-        .hero-section {
-            padding: 20px 0;
-            background: #f4f4f4;
-            margin-top: var(--header-height);
-        }
-
-        .hero-section h1 {
-            font-size: 3.5rem;
-            font-weight: 600;
-            letter-spacing: -0.04em;
-            background: linear-gradient(135deg, #0091ff 0%, #0070cc 100%);
-            -webkit-background-clip: text;
-            -webkit-text-fill-color: #000;
-            background-clip: text;
-            margin-bottom: 1px;
-            letter-spacing: -0.02em;
-        }
-
-        .hero-section p {
-            font-size: 1.2rem;
-            font-weight: 500;
-            color: var(--color-text-muted);
-            max-width: 700px;
-        }
-
-        /* Main Layout */
-        .glossary-wrapper {
-            display: flex;
-            gap: 50px;
-            padding: 50px 0;
-            align-items: flex-start;
-        }
-
-        /* Sidebar */
-        .sidebar {
-            width: 250px;
-            flex-shrink: 0;
-            /* === FIX: Make the entire sidebar sticky with no internal scrollbar === */
-            position: sticky;
-            top: 90px; /* Header height (60px) + 20px margin */
-        }
-
-        .alphabet-nav {
-            /* === FIX: Remove sticky from child, let parent control === */
-            /* position: sticky; */
-            /* top: calc(var(--header-height) + 30px); */
-            display: grid;
-            grid-template-columns: repeat(4, 1fr);
-            gap: 8px;
-            background: transparent;
-            border-radius: 4px;
-        }
-
-        .alphabet-nav a {
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            width: 100%;
-            padding: 10px 8px;
-            font-size: 1.3rem;
-            font-weight: 700;
-            border-radius: 3px;
-            background-color: #fff;
-            color: #565f76;
-            text-decoration: none;
-            border: 1px solid #e0e0e0;
-        }
-
-        .alphabet-nav a:hover:not(.disabled) {
-            background-color: var(--color-accent);
-            color: white;
-        }
-
-        .alphabet-nav a.disabled {
-            color: #ccc;
-            cursor: default;
-            background-color: #fafbfc;
-        }
-
-        .alphabet-nav a.active-letter {
-            background-color: var(--color-accent);
-            color: white;
-            
-        }
-
-        /* Search Box */
-        .search-box {
-            margin-bottom: 20px;
-            /* === FIX: Remove sticky from child, let parent control === */
-            /* position: sticky; */
-            /* top: calc(var(--header-height) + 30px); */
-            z-index: 10;
-        }
-
-        .search-box input {
-            width: 100%;
-            padding: 12px 16px;
-            border: 1px solid #e0e0e0;
-            border-radius: 20px;
-            font-size: 0.95rem;
-            background-color: white;
-        }
-
-        .search-box input:focus {
-            outline: none;
-            border-color: var(--color-accent);
-            box-shadow: 0 0 0 3px rgba(0, 145, 255, 0.1);
-        }
-
-        /* Terms Container */
-        .terms-container {
-            flex: 1;
-            min-width: 0;
-        }
-
-        /* Term Group */
-        .term-group {
-            margin-bottom: 60px;
-        }
-
-        .term-group-header {
-            display: flex;
-            align-items: center;
-            gap: 15px;
-        }
-
-        .term-group-header h2 {
-            font-size: 3rem;
-            font-weight: 600;
-            color: var(--color-accent);
-            letter-spacing: -0.02em;
-            min-width: 80px;
-        }
-
-        .term-group-header span {
-            font-size: 0.9rem;
-            background-color: var(--color-accent);
-            color: white;
-            padding: 4px 12px;
-            border-radius: 20px;
-            font-weight: 600;
-        }
-
-        /* Term Grid */
-        .term-grid {
-            display: grid;
-            grid-template-columns: repeat(auto-fill, minmax(500px, 1fr));
-            gap: 12px;
-        }
-
-        .term-card {
-            background: white;
-            padding: 24px;
-            border-radius: 3px;
-            border: 1px solid #e8e8e8;
-            cursor: pointer;
-        }
-
-        .term-card h3 {
-            font-size: 1.4rem;
-            font-weight: 700;
-            color: var(--color-text-dark);
-            margin-bottom: 10px;
-            display: flex;
-            align-items: center;
-            gap: 8px;
-        }
-
-        .term-card h3 i {
-            font-size: 0.9rem;
-            color: var(--color-accent);
-            opacity: 0.6;
-        }
-
-        .term-card p {
-            font-size: 1.1rem;
-            font-weight: 400;
-            color: var(--color-text-muted);
-            line-height: 1.6;
-        }
-
-        /* Responsiveness */
-        @media (max-width: 1200px) {
-            .term-grid {
-                grid-template-columns: 1fr;
-            }
-
-            .content-container {
-                padding: 0 30px;
-            }
-        }
-
-        @media (max-width: 768px) {
-            .glossary-wrapper {
-                flex-direction: column;
-                gap: 30px;
-                padding: 30px 0;
-            }
-
-            .sidebar {
-                width: 100%;
-                /* Undo sticky behavior for mobile */
-                position: static;
-            }
-
-            .alphabet-nav {
-                position: static;
-                grid-template-columns: repeat(6, 1fr);
-                gap: 6px;
-                padding: 15px;
-            }
-
-            .alphabet-nav a {
-                padding: 8px 4px;
-                font-size: 0.85rem;
-            }
-
-            .search-box {
-                position: static;
-                margin-bottom: 20px;
-            }
-
-            .hero-section h1 {
-                font-size: 2.5rem;
-            }
-
-            .term-group-header h2 {
-                font-size: 2rem;
-            }
-
-            .content-container {
-                padding: 0 20px;
-            }
-        }
-
-        @media (max-width: 480px) {
-            .hero-section {
-                padding: 30px 0;
-            }
-
-            .hero-section h1 {
-                font-size: 2rem;
-            }
-
-            .hero-section p {
-                font-size: 1rem;
-            }
-
-            .term-group-header h2 {
-                font-size: 1.8rem;
-            }
-
-            .term-card {
-                padding: 16px;
-            }
-
-            .term-card h3 {
-                font-size: 1.1rem;
-            }
-
-            .alphabet-nav {
-                grid-template-columns: repeat(5, 1fr);
-            }
-        }
-
-        footer {
-            padding: 40px 0;
-            border-top: 1px solid #e0e0e0;
-            text-align: center;
-            color: var(--color-text-muted);
-            font-size: 0.9rem;
-            background-color: white;
-            margin-top: 80px;
-        }
-
-        .fade-in {
-            animation: fadeIn 0.3s ease-in;
-        }
-
-        @keyframes fadeIn {
-            from {
-                opacity: 0;
-            }
-            to {
-                opacity: 1;
-            }
-        }
     </style>
 
-    <section class="pb-20">
-        <div class="content-container">
-            <span style="font-size: 2rem; font-weight: 700;">Glossary A to Z</span>
-            <div class="glossary-wrapper">
-                <aside class="sidebar">
-                    <div class="search-box">
-                        <input type="text" id="searchInput" placeholder="Search terms...">
-                    </div>
-                    <nav class="alphabet-nav" id="alphabetIndex"></nav>
-                </aside>
 
-                <main class="terms-container" id="glossaryTermsContainer"></main>
-            </div>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Digital Finance Glossary</title>
+<style>
+  *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+  /* ─── HERO / SEARCH SECTION (original design) ─── */
+  .itcp-glossary-container {
+    font-family: 'Circular Std', 'CircularStd', -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
+    background-color: #f6fcac;
+    min-height: 80vh;
+    width: 100%;
+    padding: 5vh 10vw;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+  }
+
+  .itcp-glossary-back-button {
+    display: inline-flex;
+    align-items: center;
+    margin-bottom: 8vh;
+    cursor: pointer;
+  }
+
+  .itcp-glossary-back-icon {
+    width: 16px;
+    height: 16px;
+    fill: #000000;
+    margin-right: 8px;
+  }
+
+  .itcp-glossary-back-text {
+    font-size: 13px;
+    font-weight: 500;
+    color: #000000;
+  }
+
+  .itcp-glossary-content {
+    max-width: 790px;
+    width: 100%;
+    margin-left: auto;
+    margin-right: auto;
+    transform: translateX(-5vw);
+  }
+
+  .itcp-glossary-title {
+    font-size: 56px;
+    font-weight: 500;
+    line-height: 1.1;
+    color: #000000;
+    margin-bottom: 4vh;
+  }
+
+  .itcp-glossary-intro {
+    font-size: 15px;
+    font-weight: 400;
+    line-height: 1.6;
+    color: #000000;
+    margin-bottom: 10vh;
+    max-width: 520px;
+  }
+
+  .itcp-glossary-search-wrapper {
+    position: relative;
+    display: flex;
+    align-items: center;
+    border-bottom: 1px solid #7a7a7a;
+    padding-bottom: 10px;
+  }
+
+  .itcp-glossary-search-icon {
+    width: 18px;
+    height: 18px;
+    fill: #7a7a7a;
+    position: absolute;
+    left: 0;
+  }
+
+  .itcp-glossary-search-input {
+    flex: 1;
+    border: none;
+    background: transparent;
+    font-family: inherit;
+    font-size: 15px;
+    font-weight: 400;
+    color: #000;
+    padding-left: 28px;
+    outline: none;
+  }
+
+  .itcp-glossary-search-input::placeholder { color: #7a7a7a; }
+
+  .itcp-search-clear {
+    background: none;
+    border: none;
+    cursor: pointer;
+    color: #7a7a7a;
+    font-size: 20px;
+    line-height: 1;
+    padding: 0 4px;
+    display: none;
+    font-family: inherit;
+  }
+  .itcp-search-clear.visible { display: block; }
+
+  /* ─── GLOSSARY BODY ─── */
+  .itg-glossary-wrapper {
+    font-family: 'Circular Std', -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif;
+    background: #fff;
+    color: #000;
+    -webkit-font-smoothing: antialiased;
+  }
+
+  .itg-body-layout {
+    display: flex;
+    max-width: 1100px;
+    margin: 0 auto;
+    padding: 40px 5%;
+    align-items: flex-start;
+    gap: 80px;
+  }
+
+  /* ─── LEFT SIDEBAR ─── */
+  .itg-sidebar {
+    width: 200px;
+    flex-shrink: 0;
+    position: sticky;
+    top: 90px;
+  }
+
+  .itg-filter-label {
+    font-size: 3rem;
+    line-height: 1;
+    margin-bottom: 15px;
+    font-weight: 500;
+  }
+
+  .itg-filter-dropdown {
+    border-bottom: 2px solid #000;
+    padding: 12px 0;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    cursor: pointer;
+    font-size: 1.1rem;
+    font-weight: 500;
+    position: relative;
+    user-select: none;
+  }
+
+  .itg-arrow-icon { transition: transform 0.3s ease; }
+  .itg-filter-dropdown.active .itg-arrow-icon { transform: rotate(180deg); }
+
+  .itg-dropdown-menu {
+    display: none;
+    position: absolute;
+    top: 100%;
+    left: 0;
+    right: 0;
+    background: #fff;
+    border: 1px solid #e0e0e0;
+    z-index: 10; border: 2px solid #7a7a7a;
+  }
+
+  .itg-filter-dropdown.active .itg-dropdown-menu { display: block; }
+
+  .itg-opt {
+    padding: 15px 20px;
+    font-size: 1rem;
+    transition: background 0.2s;
+    cursor: pointer;
+  }
+  .itg-opt:hover { background: #f9f9f9; }
+  .itg-opt.selected { font-weight: 700; }
+
+  /* ─── RIGHT: DEFINITIONS ─── */
+  .itg-content-area { flex: 1; min-width: 0; }
+
+  .itg-no-results {
+    display: none;
+    padding: 80px 0;
+    color: #777;
+    font-size: 1rem;
+  }
+  .itg-no-results.visible { display: block; }
+
+  .itg-group {
+    display: flex;
+    margin-bottom: 100px;
+    scroll-margin-top: 120px;
+  }
+
+  .itg-letter-label {
+    font-size: 7rem;
+    font-weight: 400;
+    line-height: 0.75;
+    min-width: 140px;
+    color: #000;
+  }
+
+  .itg-entries { flex: 1; }
+
+  .itg-item { margin-bottom: 40px; }
+
+  .itg-title {
+    font-size: 1.7rem;
+    font-weight: 500;
+    margin: 0 0 12px 0;
+  }
+
+  .itg-text {
+    font-size: 1rem;
+    line-height: 1.6;
+    color: #777;
+    max-width: 550px;
+  }
+
+  .itg-title mark, .itg-text mark {
+    background: #f6fcac;
+    color: #000;
+    border-radius: 2px;
+    padding: 0 1px;
+  }
+
+  /* ─── RESPONSIVE ─── */
+  @media (max-width: 900px) {
+    .itcp-glossary-content { transform: none; max-width: 100%; margin-top: 5rem;}
+    .itcp-glossary-title { font-size: 40px; }
+    .itg-body-layout { flex-direction: column; gap: 32px; padding: 32px 5%; }
+    .itg-sidebar { width: 100%; position: static; }
+    .itg-letter-label { font-size: 5rem; min-width: 90px; }
+    .itg-filter-label {font-size: 1.5rem;}
+  }
+
+  @media (max-width: 600px) {
+    .itcp-glossary-container { padding: 5vh 6vw; min-height: auto; }
+    .itcp-glossary-title { font-size: 32px; }
+    .itg-group { flex-direction: column; }
+    .itg-letter-label { margin-bottom: 20px; }
+  }
+</style>
+</head>
+<body>
+
+<!-- ─── HERO ─── -->
+<div class="itcp-glossary-container">
+  
+  <div class="itcp-glossary-content">
+    <h1 class="itcp-glossary-title">Digital Croloft<br>Glossary</h1>
+    <p class="itcp-glossary-intro">Here you can find important finance terms and definitions, explained in a simple and clear way. Our goal is to enlighten you on important topics from all areas of the financial and corporate world.</p>
+    <div class="itcp-glossary-search-wrapper">
+      <svg class="itcp-glossary-search-icon" viewBox="0 0 24 24">
+        <path d="M9.5,3A6.5,6.5 0 0,1 16,9.5C16,11.11 15.41,12.59 14.44,13.73L14.71,14H15.5L20.5,19L19,20.5L14,15.5V14.71L13.73,14.44C12.59,15.41 11.11,16 9.5,16A6.5,6.5 0 0,1 3,9.5A6.5,6.5 0 0,1 9.5,3M9.5,5C7,5 5,7 5,9.5C5,12 7,14 9.5,14C12,14 14,12 14,9.5C14,7 12,5 9.5,5Z"/>
+      </svg>
+      <input type="text" class="itcp-glossary-search-input" id="glossary-search" placeholder="Search" autocomplete="off">
+      <button class="itcp-search-clear" id="search-clear">×</button>
+    </div>
+  </div>
+</div>
+
+<!-- ─── GLOSSARY BODY ─── -->
+<div class="itg-glossary-wrapper">
+  <div class="itg-body-layout">
+
+    <aside class="itg-sidebar">
+      <h2 class="itg-filter-label">Filter by category</h2>
+      <div class="itg-filter-dropdown" id="itg-filter-trigger">
+        <span id="itg-active-cat">All definitions</span>
+        <span class="itg-arrow-icon">
+          <svg width="14" height="8" viewBox="0 0 14 8" fill="none">
+            <path d="M1 1L7 7L13 1" stroke="black" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+          </svg>
+        </span>
+        <div class="itg-dropdown-menu" id="itg-filter-menu">
+          <div class="itg-opt selected" data-cat="all">All definitions</div>
+          <div class="itg-opt" data-cat="dev">Software Development</div>
+          <div class="itg-opt" data-cat="infra">Infrastructure & Cloud</div>
+          <div class="itg-opt" data-cat="sec">Cybersecurity</div>
+          <div class="itg-opt" data-cat="data">Data & AI</div>
+          <div class="itg-opt" data-cat="marketing">Marketing & Creative</div>
         </div>
-    </section>
+      </div>
+    </aside>
 
-    <footer>
-        <div class="content-container">
-            <p>&copy; 2025 Glossary. All Rights Reserved.</p>
-        </div>
-    </footer>
+    <div class="itg-content-area" id="itg-content-area">
+      <div class="itg-no-results" id="itg-no-results">No results found.</div>
+    </div>
 
-    <script>
-        document.addEventListener('DOMContentLoaded', function() {
-        const wrapper = document.getElementById('trendingTermsWrapper');
-        const scrollLeftBtn = document.getElementById('scrollLeft');
-        const scrollRightBtn = document.getElementById('scrollRight');
+  </div>
+</div>
 
-        const cardWidth = 280;
+<script>
+(function () {
 
-        scrollRightBtn.addEventListener('click', function() {
-            wrapper.scrollLeft += cardWidth * 3;
-        });
+  const TERMS = [
 
-        scrollLeftBtn.addEventListener('click', function() {
-            wrapper.scrollLeft -= cardWidth * 3;
-        });
+    // ── A ──
+    { letter: 'A', title: 'A/B Testing', cat: 'marketing', text: 'A method of comparing two versions of a webpage, ad, or piece of content against each other to determine which performs better. It is a core technique in digital marketing for optimizing conversion rates and user engagement.' },
+    { letter: 'A', title: 'Agile Development', cat: 'dev', text: 'A software development methodology that promotes iterative progress, collaboration, and flexibility. Work is broken into short cycles called sprints, allowing teams to respond quickly to change and deliver value continuously.' },
+    { letter: 'A', title: 'API (Application Programming Interface)', cat: 'dev', text: 'A set of protocols that allow different software applications to communicate. It defines the methods and data formats that applications can use to request and exchange information.' },
+    { letter: 'A', title: 'Automation', cat: 'dev', text: 'The use of technology to perform tasks with minimal human intervention. In software development and IT, automation covers everything from code deployment pipelines to robotic process automation (RPA) that handles repetitive business workflows.' },
+    { letter: 'A', title: 'Ad Network', cat: 'marketing', text: 'A platform that connects advertisers with websites and apps that want to host advertisements. Ad networks aggregate inventory from publishers and match it with relevant advertiser campaigns to maximize reach and relevance.' },
+    { letter: 'A', title: 'Analytics', cat: 'marketing', text: 'The systematic collection and interpretation of data to understand performance and guide decisions. In digital marketing, analytics tools track website traffic, campaign effectiveness, user behavior, and return on investment.' },
 
-        function checkScrollability() {
-            const isScrollable = wrapper.scrollWidth > wrapper.clientWidth;
-            scrollLeftBtn.style.display = isScrollable ? 'flex' : 'none';
-            scrollRightBtn.style.display = isScrollable ? 'flex' : 'none';
-        }
-        
-        checkScrollability();
-        window.addEventListener('resize', checkScrollability);
+    // ── B ──
+    { letter: 'B', title: 'Backend Development', cat: 'dev', text: 'The server-side layer of a web or mobile application responsible for databases, business logic, and APIs. Backend developers build the systems that power what users see, typically using languages like Python, Node.js, Java, or PHP.' },
+    { letter: 'B', title: 'Bandwidth', cat: 'infra', text: 'The maximum rate of data transfer across a given path. In IT infrastructure, it is critical for determining the capacity and speed of network communications.' },
+    { letter: 'B', title: 'Brand Identity', cat: 'marketing', text: 'The visual and conceptual elements that distinguish a company — including logo, color palette, typography, tone of voice, and design language. A strong brand identity builds recognition, trust, and differentiation in the market.' },
+    { letter: 'B', title: 'Business Intelligence (BI)', cat: 'data', text: 'Technologies and strategies used to analyze business data and convert it into actionable insights. BI tools create dashboards, reports, and visualizations that help leadership make data-driven decisions.' },
+
+    // ── C ──
+    { letter: 'C', title: 'CI/CD (Continuous Integration / Continuous Deployment)', cat: 'dev', text: 'A set of practices that automate the building, testing, and deployment of software. CI ensures code changes are regularly merged and tested; CD automates the release of validated code to production environments.' },
+    { letter: 'C', title: 'Cloud Computing', cat: 'infra', text: 'The on-demand delivery of computing services—including servers, storage, databases, and software—over the internet with pay-as-you-go pricing. It eliminates the need for businesses to own and manage physical hardware.' },
+    { letter: 'C', title: 'Cloud Infrastructure', cat: 'infra', text: 'The combination of hardware and software components — such as servers, storage, networking, and virtualization — that supports cloud computing services. Providers like AWS, Azure, and Google Cloud offer scalable cloud infrastructure.' },
+    { letter: 'C', title: 'CMS (Content Management System)', cat: 'marketing', text: 'A software platform that allows users to create, manage, and publish digital content without requiring deep technical knowledge. Popular CMS platforms include WordPress, Drupal, and Webflow.' },
+    { letter: 'C', title: 'CRM (Customer Relationship Management)', cat: 'marketing', text: 'Software that helps businesses manage interactions with current and potential customers. CRM systems centralize contact data, track sales pipelines, and enable personalized communication at scale.' },
+    { letter: 'C', title: 'Cybersecurity', cat: 'sec', text: 'The practice of protecting systems, networks, and programs from digital attacks. It encompasses a broad range of disciplines including network security, endpoint protection, identity management, and incident response.' },
+    { letter: 'C', title: 'Content Marketing', cat: 'marketing', text: 'A strategy focused on creating and distributing valuable, relevant content to attract and retain a clearly defined audience. It includes blog posts, videos, infographics, and whitepapers that educate and engage rather than directly sell.' },
+    { letter: 'C', title: 'Colocation (Colo)', cat: 'infra', text: 'A data center service where a business rents space for its servers and hardware rather than hosting them on-premises. Colocation provides enterprise-grade power, cooling, and connectivity without the full cost of owning a facility.' },
+
+    // ── D ──
+    { letter: 'D', title: 'Data Center', cat: 'infra', text: 'A physical or virtual facility that houses an organization\'s IT infrastructure, including servers, storage systems, and networking equipment. Data centers are the backbone of enterprise computing and cloud services.' },
+    { letter: 'D', title: 'Data Engineering', cat: 'data', text: 'The discipline of designing and building systems for collecting, storing, and analyzing data at scale. Data engineers create pipelines that transform raw data into formats ready for analysis and machine learning.' },
+    { letter: 'D', title: 'Database Management', cat: 'data', text: 'The administration, optimization, and maintenance of databases to ensure data is stored securely, retrieved efficiently, and remains accurate. It includes tasks like schema design, query optimization, backups, and user access control.' },
+    { letter: 'D', title: 'DevOps', cat: 'dev', text: 'A set of practices that combines software development and IT operations to shorten the development lifecycle and provide continuous, high-quality delivery. DevOps teams share responsibility for code from development through to production.' },
+    { letter: 'D', title: 'Digital Marketing', cat: 'marketing', text: 'The promotion of products, services, or brands through digital channels including search engines, social media, email, and websites. It encompasses SEO, paid advertising, content strategy, and performance analytics.' },
+    { letter: 'D', title: 'DNS (Domain Name System)', cat: 'infra', text: 'The internet\'s directory system that translates human-readable domain names into IP addresses. DNS ensures that when a user types a URL, their request is routed to the correct server hosting that website or service.' },
+    { letter: 'D', title: 'Docker', cat: 'infra', text: 'An open-source platform that uses containerization to package applications and their dependencies into isolated, portable units called containers. Docker ensures software runs consistently regardless of the underlying infrastructure.' },
+
+    // ── E ──
+    { letter: 'E', title: 'E-Commerce', cat: 'dev', text: 'The buying and selling of goods or services over the internet. E-commerce development involves building online storefronts, payment processing systems, product catalogues, and order management platforms.' },
+    { letter: 'E', title: 'Email Marketing', cat: 'marketing', text: 'The use of email to promote products, share content, nurture leads, and build customer loyalty. Effective email marketing relies on audience segmentation, personalization, and measurable campaigns with clear calls to action.' },
+    { letter: 'E', title: 'Encryption', cat: 'sec', text: 'The process of converting information into a coded format to prevent unauthorized access. Encryption is fundamental to securing data in transit (e.g. HTTPS) and at rest (e.g. encrypted databases and storage).' },
+    { letter: 'E', title: 'ERP (Enterprise Resource Planning)', cat: 'dev', text: 'Integrated software that centralizes and automates core business processes such as finance, HR, supply chain, and operations. ERP systems give organizations a unified view of data across all departments.' },
+
+    // ── F ──
+    { letter: 'F', title: 'Firewall', cat: 'sec', text: 'A network security device that monitors and filters incoming and outgoing traffic based on established security rules. Firewalls act as the first line of defence between trusted internal networks and untrusted external networks.' },
+    { letter: 'F', title: 'Frontend Development', cat: 'dev', text: 'The client-side layer of a web or mobile application that users interact with directly. Frontend developers build interfaces using HTML, CSS, and JavaScript frameworks like React, Vue, or Angular.' },
+    { letter: 'F', title: 'Full-Stack Development', cat: 'dev', text: 'Development that spans both the frontend (user interface) and backend (server, database, logic) of an application. Full-stack developers can build complete, end-to-end solutions independently or as part of a cross-functional team.' },
+
+    // ── G ──
+    { letter: 'G', title: 'Graphic Design', cat: 'marketing', text: 'The craft of creating visual content — including logos, layouts, illustrations, and brand materials — to communicate messages effectively. Professional graphic design reinforces brand identity and elevates the perceived quality of a business.' },
+    { letter: 'G', title: 'GUI (Graphical User Interface)', cat: 'dev', text: 'A form of user interface that allows users to interact with software through visual elements like icons, buttons, and menus rather than text commands. Good GUI design is essential for intuitive digital products.' },
+
+    // ── H ──
+    { letter: 'H', title: 'Helpdesk', cat: 'infra', text: 'A centralized IT support service that handles employee or customer requests, troubleshoots technical issues, and resolves incidents. Helpdesk services can be delivered on-site, remotely, or through a hybrid model.' },
+    { letter: 'H', title: 'Hybrid Cloud', cat: 'infra', text: 'An IT environment that combines on-premises infrastructure with public and private cloud services. It allows organizations to keep sensitive workloads in-house while leveraging the scalability and cost benefits of the cloud.' },
+    { letter: 'H', title: 'Hypervisor', cat: 'infra', text: 'Software that creates and runs virtual machines by abstracting physical hardware. Hypervisors allow one host server to support multiple isolated VMs, making them central to virtualization and cloud infrastructure.' },
+
+    // ── I ──
+    { letter: 'I', title: 'IDE (Integrated Development Environment)', cat: 'dev', text: 'A software application that bundles the tools developers need — code editor, debugger, compiler, and version control integration — into a single interface. Popular IDEs include VS Code, IntelliJ IDEA, and Xcode.' },
+    { letter: 'I', title: 'Incident Management', cat: 'infra', text: 'The process of identifying, logging, categorizing, and resolving IT incidents to restore normal service as quickly as possible. It is a core practice in IT service management (ITSM) frameworks like ITIL.' },
+    { letter: 'I', title: 'IT Consulting', cat: 'infra', text: 'Advisory services that help businesses align their technology strategy with their goals. IT consultants assess existing systems, identify gaps, recommend solutions, and guide digital transformation initiatives.' },
+    { letter: 'I', title: 'IT Support', cat: 'infra', text: 'Ongoing technical assistance provided to businesses to maintain, troubleshoot, and optimize their IT systems. IT support can cover hardware, software, networks, and end-user devices.' },
+
+    // ── J ──
+    { letter: 'J', title: 'JSON', cat: 'dev', text: 'JavaScript Object Notation. A lightweight, human-readable data-interchange format widely used in APIs and web services to structure and transmit data between a client and server.' },
+
+    // ── K ──
+    { letter: 'K', title: 'Kubernetes', cat: 'infra', text: 'An open-source container orchestration platform that automates the deployment, scaling, and management of containerized applications. It is the industry standard for running production workloads in cloud-native environments.' },
+    { letter: 'K', title: 'KPI (Key Performance Indicator)', cat: 'marketing', text: 'A measurable value that demonstrates how effectively an individual, team, or campaign is achieving a defined objective. In marketing, KPIs might include conversion rate, cost per acquisition, click-through rate, or return on ad spend.' },
+
+    // ── L ──
+    { letter: 'L', title: 'Landing Page', cat: 'marketing', text: 'A standalone web page designed specifically for a marketing or advertising campaign. Visitors "land" on it after clicking an ad or link, and the page is optimized to drive a single action — such as signing up or making a purchase.' },
+    { letter: 'L', title: 'Latency', cat: 'infra', text: 'The time delay between a request and the corresponding response in a network. Low latency is critical for real-time applications, cloud-hosted services, and seamless user experiences.' },
+    { letter: 'L', title: 'Load Balancing', cat: 'infra', text: 'The process of distributing network traffic or workloads across multiple servers to ensure no single server becomes overwhelmed. Load balancers improve availability, performance, and resilience of applications.' },
+
+    // ── M ──
+    { letter: 'M', title: 'Machine Learning', cat: 'data', text: 'A branch of artificial intelligence that builds systems capable of learning from data and improving their performance over time without being explicitly programmed. It powers recommendation engines, fraud detection, and predictive analytics.' },
+    { letter: 'M', title: 'Managed IT Services', cat: 'infra', text: 'A model where an external provider proactively manages a company\'s IT infrastructure and end-user systems. This includes monitoring, maintenance, security patching, and support — typically under a fixed monthly agreement.' },
+    { letter: 'M', title: 'Microservices', cat: 'dev', text: 'An architectural approach where an application is built as a collection of small, independently deployable services. Each microservice handles a specific function and communicates via APIs, making systems easier to scale and maintain.' },
+    { letter: 'M', title: 'Mobile App Development', cat: 'dev', text: 'The process of building software applications that run on smartphones and tablets. Mobile development targets iOS, Android, or both, using native frameworks like Swift and Kotlin, or cross-platform tools like Flutter and React Native.' },
+
+    // ── N ──
+    { letter: 'N', title: 'Natural Language Processing (NLP)', cat: 'data', text: 'A field of AI that enables computers to understand, interpret, and generate human language. NLP powers chatbots, voice assistants, sentiment analysis, and automated content summarization.' },
+    { letter: 'N', title: 'Network Infrastructure', cat: 'infra', text: 'The hardware and software resources that enable network connectivity, communication, and operations within an organization. This includes routers, switches, firewalls, cabling, and wireless access points.' },
+    { letter: 'N', title: 'Node', cat: 'infra', text: 'Any device connected to a network, from a server or router to a workstation or IoT device. In software architecture, a node refers to a single unit within a distributed system or data structure.' },
+
+    // ── O ──
+    { letter: 'O', title: 'Open Source', cat: 'dev', text: 'Software whose source code is publicly available for anyone to inspect, modify, and distribute. Open-source projects like Linux, PostgreSQL, and React are foundational to modern software development.' },
+    { letter: 'O', title: 'On-Premises (On-Prem)', cat: 'infra', text: 'IT infrastructure that is physically located and managed within a company\'s own facilities rather than hosted in the cloud. Organizations choose on-prem solutions for greater control, security, or regulatory compliance.' },
+
+    // ── P ──
+    { letter: 'P', title: 'Payment Gateway', cat: 'dev', text: 'A technology that facilitates online payment processing by securely transmitting transaction data between a customer, a merchant, and a payment processor. It is an essential component of any e-commerce platform.' },
+    { letter: 'P', title: 'PPC (Pay-Per-Click)', cat: 'marketing', text: 'An online advertising model where advertisers pay a fee each time their ad is clicked. PPC campaigns on platforms like Google Ads and Meta allow businesses to drive targeted traffic quickly with measurable, controllable spend.' },
+    { letter: 'P', title: 'Phishing', cat: 'sec', text: 'A social engineering attack where attackers impersonate trusted entities to trick users into revealing sensitive information like passwords or financial data. It is one of the most common vectors for data breaches.' },
+    { letter: 'P', title: 'Private Cloud', cat: 'infra', text: 'Cloud infrastructure operated exclusively for a single organization. It can be hosted on-premises or by a third-party provider, offering greater control, customization, and security than public cloud environments.' },
+
+    // ── Q ──
+    { letter: 'Q', title: 'QA (Quality Assurance)', cat: 'dev', text: 'A systematic process of evaluating software to detect defects and ensure it meets requirements before release. QA includes manual testing, automated test suites, performance testing, and security audits.' },
+
+    // ── R ──
+    { letter: 'R', title: 'RAM (Random Access Memory)', cat: 'infra', text: 'Temporary memory that a computer uses to store data it is actively working with. More RAM allows systems to handle more simultaneous processes, which is critical for servers running multiple applications or virtual machines.' },
+    { letter: 'R', title: 'Responsive Design', cat: 'dev', text: 'A web design approach that ensures a website or application looks and functions correctly across all screen sizes and devices — from desktops to tablets and smartphones. Responsive design is essential for modern web and e-commerce development.' },
+    { letter: 'R', title: 'RPA (Robotic Process Automation)', cat: 'dev', text: 'The use of software robots to automate repetitive, rule-based business tasks such as data entry, invoice processing, and report generation. RPA frees employees from manual work and reduces errors in high-volume processes.' },
+    { letter: 'R', title: 'ROI (Return on Investment)', cat: 'marketing', text: 'A measure of the profitability of an investment relative to its cost. In marketing, ROI evaluates the revenue generated by campaigns, helping businesses allocate budgets to the channels and strategies delivering the most value.' },
+
+    // ── S ──
+    { letter: 'S', title: 'SaaS (Software as a Service)', cat: 'infra', text: 'A cloud-based software delivery model where applications are hosted by a provider and accessed via the internet on a subscription basis. SaaS eliminates the need for local installation and simplifies updates and maintenance.' },
+    { letter: 'S', title: 'Scalability', cat: 'infra', text: 'The ability of a system, network, or application to handle increased demand without degrading performance. Scalable infrastructure can grow horizontally (adding more servers) or vertically (upgrading existing servers) as business needs evolve.' },
+    { letter: 'S', title: 'SEO (Search Engine Optimization)', cat: 'marketing', text: 'The practice of optimizing web content to rank higher in search engine results pages. SEO involves keyword research, on-page content improvements, technical site health, and link building to drive organic traffic.' },
+    { letter: 'S', title: 'Social Media Marketing', cat: 'marketing', text: 'The use of social media platforms — such as LinkedIn, Instagram, Facebook, and X — to build brand awareness, engage audiences, and drive traffic or conversions. It includes both organic content strategy and paid advertising.' },
+    { letter: 'S', title: 'SQL (Structured Query Language)', cat: 'data', text: 'The standard language for managing and querying relational databases. SQL is used to retrieve, insert, update, and delete data, and is a foundational skill in database engineering and data analytics.' },
+    { letter: 'S', title: 'SSL/TLS', cat: 'sec', text: 'Cryptographic protocols that provide secure, encrypted communication over a network. SSL/TLS is the technology behind HTTPS, protecting data transmitted between browsers and web servers from interception.' },
+
+    // ── T ──
+    { letter: 'T', title: 'Technical Debt', cat: 'dev', text: 'The accumulated cost of shortcuts and suboptimal decisions made during software development. Like financial debt, technical debt accrues interest — making future changes slower and riskier if not addressed through refactoring.' },
+    { letter: 'T', title: 'Two-Factor Authentication (2FA)', cat: 'sec', text: 'A security process requiring users to provide two separate forms of verification before accessing an account — typically a password and a one-time code. 2FA significantly reduces the risk of unauthorized access.' },
+
+    // ── U ──
+    { letter: 'U', title: 'UI (User Interface)', cat: 'dev', text: 'The visual layer of a software product — the screens, buttons, forms, and elements a user interacts with. Good UI design balances aesthetics with functionality to create clear, intuitive, and consistent experiences.' },
+    { letter: 'U', title: 'Uptime', cat: 'infra', text: 'The percentage of time a system, server, or service is operational and available. High uptime — typically expressed as "99.9% uptime" — is a key benchmark for managed IT services, hosting providers, and business-critical applications.' },
+    { letter: 'U', title: 'UX (User Experience)', cat: 'dev', text: 'The overall experience a person has when interacting with a product, covering usability, accessibility, performance, and emotional response. UX design research and testing ensure products are intuitive and genuinely useful.' },
+
+    // ── V ──
+    { letter: 'V', title: 'Virtualization', cat: 'infra', text: 'The process of creating software-based representations of physical resources such as servers, storage, and networks. Virtualization increases hardware utilization, reduces costs, and forms the foundation of cloud computing.' },
+    { letter: 'V', title: 'VPN (Virtual Private Network)', cat: 'sec', text: 'A service that creates an encrypted tunnel over the internet between a user\'s device and a private network. VPNs are widely used to secure remote worker connections and protect sensitive business data from interception.' },
+
+    // ── W ──
+    { letter: 'W', title: 'WAN (Wide Area Network)', cat: 'infra', text: 'A network that spans large geographic areas, connecting multiple local networks. WANs enable communication between offices, data centers, and cloud environments, and the internet itself is the world\'s largest WAN.' },
+    { letter: 'W', title: 'Web App Development', cat: 'dev', text: 'The process of building applications that run in a web browser. Web apps are accessed via URLs and can range from simple websites to complex platforms like project management tools, CRMs, and online marketplaces.' },
+
+    // ── X ──
+    { letter: 'X', title: 'XML', cat: 'dev', text: 'Extensible Markup Language. A flexible markup language used to structure and transport data between systems. While largely replaced by JSON in modern APIs, XML remains widely used in enterprise integrations and document standards.' },
+
+    // ── Y ──
+    { letter: 'Y', title: 'Yottabyte', cat: 'data', text: 'A unit of digital information equal to one septillion bytes. As global data generation accelerates, storage technologies and data engineering practices must scale to manage ever-larger volumes of information.' },
+
+    // ── Z ──
+    { letter: 'Z', title: 'Zero Trust', cat: 'sec', text: 'A security framework built on the principle of "never trust, always verify." Every user, device, and application — regardless of location — must be authenticated and authorized before accessing any resource, minimizing the risk of breaches.' },
+
+  ];
+
+  const searchInput    = document.getElementById('glossary-search');
+  const searchClear    = document.getElementById('search-clear');
+  const filterTrigger  = document.getElementById('itg-filter-trigger');
+  const filterOpts     = document.querySelectorAll('.itg-opt');
+  const activeCatLabel = document.getElementById('itg-active-cat');
+  const contentArea    = document.getElementById('itg-content-area');
+  const noResults      = document.getElementById('itg-no-results');
+
+  let currentCat   = 'all';
+  let currentQuery = '';
+
+  function escapeHtml(s) {
+    return s.replace(/&/g,'&amp;').replace(/</g,'&lt;').replace(/>/g,'&gt;');
+  }
+  function escapeRe(s) {
+    return s.replace(/[-[\]{}()*+?.,\\^$|#\s]/g,'\\$&');
+  }
+  function highlight(text, q) {
+    if (!q) return text;
+    return text.replace(new RegExp('('+escapeRe(q)+')','gi'),'<mark>$1</mark>');
+  }
+
+  function render() {
+    const q = currentQuery.trim().toLowerCase();
+
+    const filtered = TERMS.filter(t => {
+      const catOk   = currentCat === 'all' || t.cat === currentCat;
+      const queryOk = !q || t.title.toLowerCase().includes(q) || t.text.toLowerCase().includes(q);
+      return catOk && queryOk;
     });
-    </script>
-    <script>
-        
-        document.addEventListener('DOMContentLoaded', function() {
-            const glossaryData = [
-                // A
-                { term: "Agile", definition: "A project management methodology focused on iterative development, delivering work in small continuous cycles, and rapid adaptation to change." },
-                { term: "API", definition: "Application Programming Interface. A set of defined protocols and tools for building software applications that specify how software components should interact." },
-                { term: "Automation", definition: "The use of technology to perform repetitive tasks with minimal human intervention, improving speed, efficiency, and reducing errors." },
-                { term: "ARM (Architecture)", definition: "Advanced RISC Machine. A processor architecture design philosophy emphasizing reduced instruction sets, widely used in mobile devices and IoT." },
-                { term: "ACL", definition: "Access Control List. A security mechanism defining which users or systems have permission to access specific resources or perform certain operations." },
-                { term: "ARP", definition: "Address Resolution Protocol. A network protocol that maps IP addresses to physical MAC addresses on a local network." },
-                
-                // B
-                { term: "Blockchain", definition: "A decentralized, distributed digital ledger recording transactions across many computers, ensuring data integrity and resistance to tampering." },
-                { term: "Bandwidth", definition: "The maximum data transfer rate of a network or internet connection, measured in bits per second (bps), determining how much data can be sent at once." },
-                { term: "Backend", definition: "The server-side of a website or application, responsible for storing and organizing data, and ensuring client-side functionality works correctly." },
-                { term: "Bytecode", definition: "Intermediate code generated by compilers that is not specific to any hardware platform, executed by a virtual machine like the Java Virtual Machine." },
-                { term: "BGP", definition: "Border Gateway Protocol. The primary routing protocol used to exchange routing information between autonomous systems on the internet." },
-                { term: "BIOS", definition: "Basic Input/Output System. Firmware that initializes hardware during the boot process before the operating system loads." },
-                
-                // C
-                { term: "Cloud Computing", definition: "The delivery of computing services—servers, storage, databases, networking, software, analytics—over the internet." },
-                { term: "CI/CD", definition: "Continuous Integration/Continuous Delivery. A DevOps practice automating the merging of code changes and delivery of new code to users." },
-                { term: "CRM", definition: "Customer Relationship Management. Software managing company interactions with current and potential customers, focusing on customer data analysis." },
-                { term: "Containerization", definition: "A lightweight virtualization technology packaging applications and their dependencies into isolated containers for consistent deployment across environments." },
-                { term: "CDN", definition: "Content Delivery Network. A distributed network of servers delivering web content to users from geographically closer locations for improved performance." },
-                { term: "CORS", definition: "Cross-Origin Resource Sharing. A mechanism allowing web servers to permit restricted resources to be accessed from origins other than the originating domain." },
-                { term: "Caching", definition: "Storing frequently accessed data in faster, temporary storage to reduce retrieval time and improve system performance." },
-                { term: "Cryptography", definition: "The science of encoding information to prevent unauthorized access, using mathematical algorithms and keys to secure data." },
-                
-                // D
-                { term: "DevOps", definition: "A set of practices combining software development (Dev) and IT operations (Ops) to shorten the development lifecycle and provide continuous delivery." },
-                { term: "Data Center", definition: "A dedicated physical facility housing critical computer systems and associated components like telecommunications and storage systems." },
-                { term: "DDoS Attack", definition: "Distributed Denial of Service Attack. An attempt to disrupt normal traffic by overwhelming a server, service or network with internet traffic." },
-                { term: "DNS", definition: "Domain Name System. A protocol converting human-readable domain names into IP addresses that computers use to locate resources on the internet." },
-                { term: "Docker", definition: "A containerization platform enabling developers to package applications into standardized units called containers for easy deployment and scaling." },
-                { term: "DHCP", definition: "Dynamic Host Configuration Protocol. A network protocol automatically assigning IP addresses and other network configuration parameters to devices." },
-                { term: "DMS", definition: "Data Management System. Software managing the storage, retrieval, and manipulation of data within an organization." },
-                
-                // E
-                { term: "E-commerce", definition: "Electronic commerce. The buying and selling of goods or services using the internet with transfer of money and data to execute transactions." },
-                { term: "Encryption", definition: "The process of encoding information so only authorized parties can access it, typically using a secret key." },
-                { term: "ERP", definition: "Enterprise Resource Planning. Software managing day-to-day business activities such as accounting, procurement, project management, and manufacturing." },
-                { term: "Edge Computing", definition: "Computing performed at the edge of networks closer to data sources, reducing latency and enabling faster processing of real-time data." },
-                { term: "ETL", definition: "Extract, Transform, Load. A process extracting data from sources, transforming it into a suitable format, and loading it into a target system." },
-                
-                // F
-                { term: "Firewall", definition: "A network security device monitoring and filtering incoming and outgoing traffic based on established security policies." },
-                { term: "Frontend", definition: "The user-facing side of a website or application built with HTML, CSS, and JavaScript, encompassing what users see and interact with." },
-                { term: "Framework", definition: "A reusable set of libraries and tools providing a foundation for building applications, reducing development time and effort." },
-                { term: "FTP", definition: "File Transfer Protocol. A standard network protocol used to transfer files between computers over the internet." },
-                
-                // G
-                { term: "Garbage Collection", definition: "An automatic memory management process removing unused objects from memory to prevent memory leaks and optimize performance." },
-                { term: "Gateway", definition: "A network component that serves as an access point to another network or system, often translating between different protocols." },
-                { term: "GPU", definition: "Graphics Processing Unit. A specialized processor designed for parallel processing, commonly used for graphics rendering and machine learning tasks." },
-                { term: "GraphQL", definition: "A query language and runtime for APIs allowing clients to request exactly the data they need, providing more efficient alternatives to REST." },
-                
-                // H
-                { term: "Hosting", definition: "The service of running and maintaining computer systems that store websites and make them accessible on the World Wide Web." },
-                { term: "HTTPS", definition: "HyperText Transfer Protocol Secure. A secure version of HTTP encrypting data transmission between clients and servers using SSL/TLS." },
-                { term: "Hash Function", definition: "A mathematical algorithm converting input data into a fixed-size string of characters, used for security, checksums, and data integrity verification." },
-                { term: "Hypervisor", definition: "Software or firmware enabling multiple operating systems to run simultaneously on a single physical machine through virtualization." },
-                
-                // I
-                { term: "IT Infrastructure", definition: "The foundational components—hardware, software, networks, facilities—supporting a business's IT and overall operations." },
-                { term: "IoT", definition: "Internet of Things. The network of physical devices embedded with sensors and connectivity enabling data collection and exchange over the internet." },
-                { term: "IaaS", definition: "Infrastructure as a Service. A cloud computing model providing virtualized computing resources over the internet on a pay-as-you-go basis." },
-                { term: "IP Address", definition: "Internet Protocol Address. A unique numerical identifier assigned to each device connected to a computer network using the Internet Protocol." },
-                { term: "ISP", definition: "Internet Service Provider. A company providing individuals and organizations with internet connectivity and related services." },
-                
-                // J
-                { term: "JSON", definition: "JavaScript Object Notation. A lightweight, text-based data format widely used for data interchange between web servers and clients." },
-                { term: "JWT", definition: "JSON Web Token. A compact token format for securely transmitting information between parties as a JSON object, commonly used for authentication." },
-                
-                // K
-                { term: "Kubernetes", definition: "An open-source container orchestration platform automating the deployment, scaling, and management of containerized applications." },
-                
-                // L
-                { term: "Latency", definition: "The delay before data transfer begins following a transfer instruction, measured in milliseconds and impacting application responsiveness." },
-                { term: "Load Balancer", definition: "A device or software distributing network traffic across multiple servers to optimize resource utilization and prevent server overload." },
-                { term: "Logging", definition: "The process of recording system events, errors, and activities to files for monitoring, debugging, and compliance purposes." },
-                
-                // M
-                { term: "Mobile Application", definition: "Software designed to run on smartphones, tablets, and other mobile devices, built for operating systems like iOS or Android." },
-                { term: "Microservices", definition: "An architectural approach structuring an application as loosely coupled, independently deployable small services communicating via APIs." },
-                { term: "Machine Learning", definition: "A subset of artificial intelligence where algorithms learn patterns from data to make predictions or decisions without explicit programming." },
-                { term: "Middleware", definition: "Software acting as an intermediary connecting different applications or components, facilitating communication and data exchange." },
-                { term: "MVC", definition: "Model-View-Controller. An architectural pattern separating applications into three interconnected components for organized and scalable code." },
-                
-                // N
-                { term: "NAT", definition: "Network Address Translation. A technique allowing devices with private IP addresses to communicate with external networks using a gateway." },
-                { term: "NoSQL", definition: "A category of databases designed for unstructured or semi-structured data, offering flexibility and scalability alternatives to traditional SQL databases." },
-                
-                // O
-                { term: "OAuth", definition: "An open standard authorization protocol allowing users to authorize third-party applications to access their resources without sharing passwords." },
-                { term: "ORM", definition: "Object-Relational Mapping. A programming technique mapping objects in code to rows in relational databases, simplifying data persistence." },
-                { term: "OSI Model", definition: "Open Systems Interconnection Model. A conceptual framework defining how network communication occurs across seven abstraction layers." },
-                
-                // P
-                { term: "POS System", definition: "Point of Sale System. The place and equipment where customers execute payment for goods or services, often integrated digital terminals." },
-                { term: "Protocol", definition: "A set of rules governing data transmission and communication between devices and systems on a network or the internet." },
-                { term: "Proxy", definition: "An intermediary server that forwards client requests to other servers, used for caching, security, and load distribution." },
-                { term: "PaaS", definition: "Platform as a Service. A cloud computing model providing a platform for developing, testing, and deploying applications over the internet." },
-                
-                // Q
-                { term: "QoS", definition: "Quality of Service. Networking technologies and protocols ensuring consistent performance, bandwidth, and reliability for network traffic." },
-                { term: "Queue", definition: "A data structure following First-In-First-Out (FIFO) principle, widely used in task scheduling and event processing systems." },
-                
-                // R
-                { term: "REST", definition: "Representational State Transfer. An architectural style for designing networked applications using HTTP methods (GET, POST, PUT, DELETE)." },
-                { term: "Redis", definition: "An in-memory data store providing fast access to frequently used data, commonly used for caching and real-time analytics." },
-                { term: "Repository", definition: "A centralized storage location for code, configuration, and version history, typically managed by version control systems like Git." },
-                { term: "RAID", definition: "Redundant Array of Independent Disks. A data storage technology combining multiple drives for improved performance and fault tolerance." },
-                
-                // S
-                { term: "Scalability", definition: "The ability of a system to handle growing workloads by adding resources, growing efficiently with business demands." },
-                { term: "SSL Certificate", definition: "Secure Sockets Layer certificate. A digital certificate authenticating website identity and enabling encrypted connections." },
-                { term: "SaaS", definition: "Software as a Service. A cloud computing model delivering software applications over the internet via subscription or per-use pricing." },
-                { term: "Socket", definition: "An endpoint for network communication within a computer, used for data transmission between processes or over networks." },
-                { term: "SSH", definition: "Secure Shell. A protocol providing secure remote access to computers and secure file transfer, using encryption for confidentiality." },
-                { term: "SQL", definition: "Structured Query Language. A standardized language used to create, query, and manipulate relational databases." },
-                { term: "Sharding", definition: "A database scaling technique horizontally partitioning data across multiple servers based on a shard key." },
-                
-                // T
-                { term: "TCP/IP", definition: "Transmission Control Protocol/Internet Protocol. The fundamental set of protocols enabling reliable, ordered data transmission on the internet." },
-                { term: "TLS", definition: "Transport Layer Security. A cryptographic protocol ensuring secure communication over networks, the successor to SSL." },
-                { term: "Token", definition: "A piece of data representing authentication credentials or authorization rights, used in modern authentication systems." },
-                { term: "Topology", definition: "The physical or logical arrangement of nodes and connections in a network, such as star, mesh, or ring configurations." },
-                
-                // U
-                { term: "UDP", definition: "User Datagram Protocol. A connectionless transport protocol enabling fast data transmission with minimal overhead, prioritizing speed over reliability." },
-                { term: "URL", definition: "Uniform Resource Locator. The web address identifying and accessing resources on the internet." },
-                
-                // V
-                { term: "VPN", definition: "Virtual Private Network. A technology creating a safe, encrypted connection over less secure networks like the internet." },
-                { term: "Virtualization", definition: "Creating virtual versions of physical resources like servers, storage, or networks to optimize resource utilization and flexibility." },
-                { term: "Version Control", definition: "A system tracking changes to files and code over time, enabling collaboration, rollback, and history tracking." },
-                
-                // W
-                { term: "Web3", definition: "The concept of a decentralized internet built on blockchain technology, focusing on user ownership and decentralized applications." },
-                { term: "WebSocket", definition: "A protocol providing full-duplex communication channels over a single TCP connection, enabling real-time bidirectional communication." },
-                { term: "Webhook", definition: "A mechanism allowing applications to send real-time data to other applications when specific events occur." },
-                
-                // X
-                { term: "XML", definition: "Extensible Markup Language. A text-based format for storing and transporting data that is both human-readable and machine-readable." },
-                
-                // Y
-                { term: "YAML", definition: "YAML Ain't Markup Language. A human-friendly data serialization format commonly used for configuration files and data exchange." },
-                
-                // Z
-                { term: "Zero-Trust Security", definition: "A security model that verifies every user and device regardless of location or network, assuming no implicit trust." }
-            ].sort((a, b) => a.term.localeCompare(b.term));
 
-            const alphabet = 'ABCDEFGHIJKLMNOPQRSTUVWXYZ'.split('');
-            const indexContainer = document.getElementById('alphabetIndex');
-            const termsContainer = document.getElementById('glossaryTermsContainer');
-            const searchInput = document.getElementById('searchInput');
-            const headerOffset = 100;
+    contentArea.querySelectorAll('.itg-group').forEach(el => el.remove());
 
-            const termsByLetter = {};
+    if (filtered.length === 0) {
+      noResults.classList.add('visible');
+      return;
+    }
+    noResults.classList.remove('visible');
 
-            // Group terms by first letter
-            glossaryData.forEach(item => {
-                const firstLetter = item.term.charAt(0).toUpperCase();
-                if (!termsByLetter[firstLetter]) {
-                    termsByLetter[firstLetter] = [];
-                }
-                termsByLetter[firstLetter].push(item);
-            });
+    const byLetter = {};
+    filtered.forEach(t => {
+      (byLetter[t.letter] = byLetter[t.letter] || []).push(t);
+    });
 
-            // Generate alphabet index
-            alphabet.forEach(letter => {
-                const hasTerms = !!termsByLetter[letter];
-                const link = document.createElement('a');
-                link.textContent = letter;
-                link.href = hasTerms ? `#${letter}` : 'javascript:void(0)';
-                link.className = hasTerms ? '' : 'disabled';
-                
-                if (hasTerms) {
-                    link.addEventListener('click', function(e) {
-                        e.preventDefault();
-                        const target = document.getElementById(letter);
-                        if (target) {
-                            const targetPosition = target.getBoundingClientRect().top + window.scrollY - headerOffset;
-                            window.scrollTo({ top: targetPosition, behavior: 'smooth' });
-                            updateActiveIndex(letter);
-                        }
-                    });
-                }
-                
-                indexContainer.appendChild(link);
-            });
+    const frag = document.createDocumentFragment();
+    Object.keys(byLetter).sort().forEach(letter => {
+      const section = document.createElement('section');
+      section.className = 'itg-group';
+      section.id = 'itg-' + letter.toLowerCase();
 
-            // Generate glossary content
-            let contentHTML = '';
-            alphabet.forEach(letter => {
-                const terms = termsByLetter[letter];
-                if (terms && terms.length > 0) {
-                    contentHTML += `
-                        <div class="term-group fade-in" id="${letter}">
-                            <div class="term-group-header">
-                                <h2>${letter}</h2>
-                            </div>
-                            <div class="term-grid">
-                    `;
-                    
-                    terms.forEach(item => {
-                        contentHTML += `
-                            <div class="term-card">
-                                <h3>
-                                    
-                                    ${item.term}
-                                </h3>
-                                <p>${item.definition}</p>
-                            </div>
-                        `;
-                    });
-                    
-                    contentHTML += `
-                            </div>
-                        </div>
-                    `;
-                }
-            });
+      const lbl = document.createElement('div');
+      lbl.className = 'itg-letter-label';
+      lbl.textContent = letter;
 
-            termsContainer.innerHTML = contentHTML;
+      const entries = document.createElement('div');
+      entries.className = 'itg-entries';
 
-            // Search functionality
-            searchInput.addEventListener('input', function(e) {
-                const query = e.target.value.toLowerCase();
-                const termCards = document.querySelectorAll('.term-card');
-                const termGroups = document.querySelectorAll('.term-group');
+      byLetter[letter].forEach(term => {
+        const item = document.createElement('div');
+        item.className = 'itg-item';
+        item.innerHTML =
+          `<h3 class="itg-title">${highlight(escapeHtml(term.title), currentQuery)}</h3>` +
+          `<p class="itg-text">${highlight(escapeHtml(term.text), currentQuery)}</p>`;
+        entries.appendChild(item);
+      });
 
-                if (query.length === 0) {
-                    termCards.forEach(card => card.style.display = '');
-                    termGroups.forEach(group => group.style.display = '');
-                    return;
-                }
+      section.appendChild(lbl);
+      section.appendChild(entries);
+      frag.appendChild(section);
+    });
 
-                let hasVisibleCards = {};
+    contentArea.insertBefore(frag, noResults);
+  }
 
-                termCards.forEach(card => {
-                    const term = card.querySelector('h3').textContent.toLowerCase();
-                    const definition = card.querySelector('p').textContent.toLowerCase();
-                    const matches = term.includes(query) || definition.includes(query);
-                    
-                    card.style.display = matches ? '' : 'none';
-                    
-                    if (matches) {
-                        const letter = card.closest('.term-group').id;
-                        hasVisibleCards[letter] = true;
-                    }
-                });
+  // Search
+  searchInput.addEventListener('input', () => {
+    currentQuery = searchInput.value;
+    searchClear.classList.toggle('visible', currentQuery.length > 0);
+    render();
+  });
 
-                termGroups.forEach(group => {
-                    group.style.display = hasVisibleCards[group.id] ? '' : 'none';
-                });
-            });
+  searchClear.addEventListener('click', () => {
+    searchInput.value = '';
+    currentQuery = '';
+    searchClear.classList.remove('visible');
+    searchInput.focus();
+    render();
+  });
 
-            // Scroll spy
-            const termGroups = document.querySelectorAll('.term-group');
+  // Filter
+  filterTrigger.addEventListener('click', e => {
+    e.stopPropagation();
+    filterTrigger.classList.toggle('active');
+  });
 
-            function updateActiveIndex(activeLetter) {
-                document.querySelectorAll('.alphabet-nav a').forEach(a => {
-                    a.classList.remove('active-letter');
-                });
-                const activeLink = document.querySelector(`.alphabet-nav a[href="#${activeLetter}"]`);
-                if (activeLink) {
-                    activeLink.classList.add('active-letter');
-                }
-            }
+  filterOpts.forEach(opt => {
+    opt.addEventListener('click', e => {
+      e.stopPropagation();
+      currentCat = opt.getAttribute('data-cat');
+      activeCatLabel.textContent = opt.textContent;
+      filterOpts.forEach(o => o.classList.remove('selected'));
+      opt.classList.add('selected');
+      filterTrigger.classList.remove('active');
+      render();
+    });
+  });
 
-            function handleScroll() {
-                let currentLetter = '';
-                
-                for (let i = 0; i < termGroups.length; i++) {
-                    if (termGroups[i].getBoundingClientRect().top <= headerOffset) {
-                        currentLetter = termGroups[i].id;
-                    } else {
-                        break;
-                    }
-                }
-                
-                if (currentLetter) {
-                    updateActiveIndex(currentLetter);
-                }
-            }
+  window.addEventListener('click', () => filterTrigger.classList.remove('active'));
 
-            window.addEventListener('scroll', handleScroll);
-            handleScroll();
-        });
-    </script>
+  render();
+
+})();
+</script>
+
 </body>
 </html>
+
+
+
+
+
+<cronos-footer></cronos-footer>
