@@ -14,33 +14,16 @@ class CronosHeader extends HTMLElement {
     render() {
         this.shadowRoot.innerHTML = `
         <style>
-        @import url('https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;600;700;900&family=Work+Sans:wght@300;400;500;600;700&display=swap');
-
-         /* Circular Std - Book/Regular (400) */
-        @font-face {
-            font-family: 'Circular Std';
-            src: url('fonts/CircularStd-Book.ttf') format('truetype');
-            font-weight: 400;
-            font-style: normal;
-        }
-
-        /* Circular Std - Medium (500) */
-        @font-face {
-            font-family: 'Circular Std';
-            src: url('fonts/CircularStd.ttf') format('truetype');
-            font-weight: 500;
-            font-style: normal;
-        }
-
-        /* Circular Std - Bold (700) */
-        @font-face {
-            font-family: 'Circular Std';
-            src: url('fonts/CircularStd-Bold.ttf') format('truetype');
-            font-weight: 600;
-            font-style: normal;
-        }
-            @import url('https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700&display=swap');
-
+        
+        @font-face { font-family:'Circular Std'; src:url('fonts/CircularStd-Book.woff2') format('woff2'),url('fonts/CircularStd-Book.woff') format('woff'); font-weight:400; font-style:normal; font-display:swap; }
+  @font-face { font-family:'Circular Std'; src:url('fonts/CircularStd-BookItalic.woff2') format('woff2'),url('fonts/CircularStd-BookItalic.woff') format('woff'); font-weight:400; font-style:italic; font-display:swap; }
+  @font-face { font-family:'Circular Std'; src:url('fonts/CircularStd-Medium.woff2') format('woff2'),url('fonts/CircularStd-Medium.woff') format('woff'); font-weight:500; font-style:normal; font-display:swap; }
+  @font-face { font-family:'Circular Std'; src:url('fonts/CircularStd-Bold.woff2') format('woff2'),url('fonts/CircularStd-Bold.woff') format('woff'); font-weight:600; font-style:normal; font-display:swap; }
+  @font-face { font-family:'Circular Std'; src:url('fonts/CircularStd-Bold.woff2') format('woff2'),url('fonts/CircularStd-Bold.woff') format('woff'); font-weight:700; font-style:normal; font-display:swap; }
+  @font-face { font-family:'Circular Std'; src:url('fonts/CircularStd-Black.woff2') format('woff2'),url('fonts/CircularStd-Black.woff') format('woff'); font-weight:800; font-style:normal; font-display:swap; }
+  @font-face { font-family:'Circular Std'; src:url('fonts/CircularStd-Black.woff2') format('woff2'),url('fonts/CircularStd-Black.woff') format('woff'); font-weight:900; font-style:normal; font-display:swap; }
+    
+          
             /* =============================================
                 CRONOS HEADER - UNIQUE STYLES (SHADOW DOM)
                 ============================================= */
@@ -140,13 +123,13 @@ class CronosHeader extends HTMLElement {
             .cronos-custom-nav-link {
                 text-decoration: none;
                 color: #ffffff;
-                font-weight: 500;
+                font-weight: 400;
                 padding: 10px 0;
                 display: flex;
-                font-size: 15px;
+                font-size: 0.89rem;
                 align-items: center;
                 cursor: pointer;
-                font-family: 'Circular Std', sans-serif;
+                white-space: nowrap;
             }
 
             .cronos-custom-nav-link:hover {
@@ -179,13 +162,13 @@ class CronosHeader extends HTMLElement {
                 border: none;
                 padding: 9px 15px;
                 border-radius: 50px;
-                font-weight: 500;
+                font-weight: 400;
                 font-size: 16px;
                 cursor: pointer;
                 margin-left: 10px;
                 text-decoration: none;
                 border-bottom: none;
-                font-family: inherit;
+                font-family: inherit; white-space: nowrap;
             }
 
             .header-secondary-btn {
@@ -194,13 +177,13 @@ class CronosHeader extends HTMLElement {
                 border: none;
                 padding: 9px 15px;
                 border-radius: 50px;
-                font-weight: 500;
+                font-weight: 400;
                 font-size: 16px;
                 cursor: pointer;
                 margin-left: 10px;
                 text-decoration: none;
                 border-bottom: none;
-                font-family: inherit;
+                font-family: inherit; white-space: nowrap;
             }
 
             .cronos-header-action-btn a {
@@ -220,13 +203,13 @@ class CronosHeader extends HTMLElement {
                 border: none;
                 padding: 9px 15px;
                 border-radius: 50px;
-                font-weight: 500;
+                font-weight: 400;
                 font-size: 16px;
                 cursor: pointer;
                 margin-left: 10px;
                 text-decoration: none;
                 border-bottom: none;
-                font-family: inherit;
+                font-family: inherit; white-space: nowrap;
             }
 
             .cronos-header-secondary-btn a {

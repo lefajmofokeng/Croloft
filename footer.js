@@ -428,7 +428,7 @@
     }
 
     @media (max-width: 380px) {
-      .acc-trigger      { font-size: 13px; padding: 0 16px; }
+      .acc-trigger      { font-size: 13px; padding: 0 16px; font-family: 'Circular Std', sans-serif;}
       .acc-panel-inner  { padding: 6px 16px 20px 16px; }
       .acc-linkedin-row { padding: 0 16px; }
       .bottom-bar       { padding: 28px 16px 24px; }
