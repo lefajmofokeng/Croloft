@@ -268,7 +268,7 @@ class CronosHeader extends HTMLElement {
     }
 
     _buildMobileNavList() {
-        const chevronRight = `<svg class="cronos-mobile-dropdown-icon" xmlns="http://www.w3.org/2000/svg" width="22" height="22" viewBox="0 0 24 24"><path fill="#f2f2f2" d="M8.025 22L6.25 20.225L14.475 12L6.25 3.775L8.025 2l10 10l-10 10Z" stroke-width="0.5" stroke-linecap="round" stroke-linejoin="round"/></svg>`;
+        const chevronRight = `<svg class="cronos-mobile-dropdown-icon" xmlns="http://www.w3.org/2000/svg" width="15" height="15" viewBox="0 0 24 24"><path fill="#f2f2f2" d="M8.025 22L6.25 20.225L14.475 12L6.25 3.775L8.025 2l10 10l-10 10Z" stroke-width="0.1" stroke-linecap="round" stroke-linejoin="round"/></svg>`;
         const downIcon    = `<svg class="cronos-desktop-link-icon" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round"><polyline points="6 9 12 15 18 9"/></svg>`;
 
         return this.NAV_CONFIG.map(item => {
@@ -768,7 +768,7 @@ class CronosHeader extends HTMLElement {
             /* Mobile panel: single column */
             .cronos-mega-menu-panel {
                 padding: 0 20px 40px;
-                display: block;
+                display: block; margin-top:25px;
             }
             .cronos-megamenu-grid {
                 grid-template-columns: 1fr !important;
