@@ -260,7 +260,7 @@
   .tech-dupe-title {
     font-size: 64px;
     font-weight: 500;
-    line-height: 1.1;
+    line-height: 1;
     margin-bottom: 50px;
     letter-spacing: -0.04em;
   }
@@ -283,11 +283,11 @@
     font-weight: 500;
     cursor: pointer;
     transition: background-color 0.3s ease;
-    font-family: 'Inter', sans-serif;
+    font-family: 'Circular Std', sans-serif; text-decoration: none; display: inline-flex; align-items: center; gap: 8px;
   }
 
   .tech-dupe-button:hover {
-    background-color: #007bff;
+    background-color: #e5e5e5;
   }
 
   .tech-dupe-person {
@@ -298,19 +298,34 @@
     object-fit: contain;
     opacity: 0.9; /* Slight opacity to blend with background */
   }
+
+  @media (max-width: 768px) {
+    .tech-dupe-title {
+      font-size: 36px;
+    }
+
+    .tech-dupe-subtitle {
+      font-size: 16px;
+    }
+
+    .tech-dupe-button {
+      font-size: 16px;
+      padding: 8px 20px;
+    }
+  }
 </style>
 
 <div class="tech-dupe-container">
   <div class="tech-dupe-content">
     <p class="tech-dupe-subtitle">Our Vision</p>
     <h1 class="tech-dupe-title">Unlock the<br>Power of Technology<br>on your Platform</h1>
-    <button class="tech-dupe-button">View our roadmap
-        <span style="vertical-align: middle; justify-content: center; align-items: center;">
-            <svg xmlns="http://www.w3.org/2000/svg" class="arr-1" viewBox="0 0 24 24" width="24" fill="#061121" height="24">
+    <a href="roadmap.html" class="tech-dupe-button">View our roadmap
+        <span>
+            <svg style="vertical-align: middle; justify-content: center; align-items: center;" xmlns="http://www.w3.org/2000/svg" class="arr-1" viewBox="0 0 24 24" width="24" fill="#061121" height="24">
                 <path d="M16.1716 10.9999L10.8076 5.63589L12.2218 4.22168L20 11.9999L12.2218 19.778L10.8076 18.3638L16.1716 12.9999H4V10.9999H16.1716Z"></path>
             </svg>
         </span>
-    </button>
+    </a>
   </div>
 </div>
 
@@ -395,11 +410,7 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>About Us</title>
-    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
-    <link rel="preconnect" href="https://fonts.googleapis.com">
-<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link href="https://fonts.googleapis.com/css2?family=Anton&family=Arbutus&family=Bitcount+Grid+Double:wght@100..900&family=Caprasimo&family=Changa+One:ital@0;1&family=Devonshire&family=Francois+One&family=Freckle+Face&family=Fruktur:ital@0;1&family=Gorditas:wght@400;700&family=Inter:ital,opsz,wght@0,14..32,100..900;1,14..32,100..900&family=Kavoon&family=Londrina+Sketch&family=Mogra&family=Patua+One&family=Piedra&family=Protest+Riot&family=Rubik+Beastly&family=Rubik+Dirt&family=Rubik+Distressed&family=Rubik+Glitch&family=Rubik+Maze&family=Rubik+Scribble&family=Rubik+Vinyl&family=Rubik+Wet+Paint&family=Satisfy&display=swap" rel="stylesheet">
-    <style>
+     <style>
         @import url('https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700&display=swap');
         /* ===== RESET & BASE STYLES ===== */
         * {
@@ -408,13 +419,12 @@
             box-sizing: border-box;
         }
 
-        @font-face {
-            font-family: 'Circular Std';
-            src: local('Circular Std'), url('fonts/circular-std.ttf') format('woff'),
-                 url('fonts/CircularStd-Bold.ttf') format('woff');;
-            font-weight: normal;
-            font-style: normal;
-        }
+       @font-face { font-family:'Circular Std'; src:url('fonts/CircularStd-Book.woff2') format('woff2'),url('fonts/CircularStd-Book.woff') format('woff'); font-weight:400; font-style:normal; font-display:swap; }
+        @font-face { font-family:'Circular Std'; src:url('fonts/CircularStd-BookItalic.woff2') format('woff2'),url('fonts/CircularStd-BookItalic.woff') format('woff'); font-weight:400; font-style:italic; font-display:swap; }
+        @font-face { font-family:'Circular Std'; src:url('fonts/CircularStd-Medium.woff2') format('woff2'),url('fonts/CircularStd-Medium.woff') format('woff'); font-weight:500; font-style:normal; font-display:swap; }
+        @font-face { font-family:'Circular Std'; src:url('fonts/CircularStd-Bold.woff2') format('woff2'),url('fonts/CircularStd-Bold.woff') format('woff'); font-weight:600; font-style:normal; font-display:swap; }
+        @font-face { font-family:'Circular Std'; src:url('fonts/CircularStd-Black.woff2') format('woff2'),url('fonts/CircularStd-Black.woff') format('woff'); font-weight:800; font-style:normal; font-display:swap; }
+
 
         :root {
             --defcon-primary-dark: #080d1b;
@@ -474,7 +484,7 @@
             font-weight: 500;
             margin-top: 24px;
             margin-bottom: 24px;
-            letter-spacing: -0.04em;
+            letter-spacing: -0.02em;
             color: #f4f4f4;
             animation: aboutusFadeInUp 1s ease;
         }
@@ -500,7 +510,7 @@
 
         .aboutus-stat-number {
             font-size: 120px;
-            font-weight: 700;
+            font-weight: 500;
             color: #1199fa;
             margin-bottom: 8px;
         }
@@ -1505,7 +1515,7 @@
             <div class="aboutus-career-container">
                 <span class="aboutus-top-header" style="color: #0577DA;">Join Our Team</span>
                 <h2 class="aboutus-career-heading">Be part of something extraordinary<br>and shape the future with us</h2>
-                <a href="#careers" class="aboutus-career-button">Explore Careers
+                <a href="careers.html" class="aboutus-career-button">Explore Careers
                     <span style="vertical-align: middle; justify-items: center; align-items: center;">
                         <svg xmlns="http://www.w3.org/2000/svg" class="arr-1" viewBox="0 0 24 24" width="24" fill="#000" height="24">
                             <path d="M16.1716 10.9999L10.8076 5.63589L12.2218 4.22168L20 11.9999L12.2218 19.778L10.8076 18.3638L16.1716 12.9999H4V10.9999H16.1716Z"></path>

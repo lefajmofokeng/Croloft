@@ -165,7 +165,7 @@ class CronosHeader extends HTMLElement {
                     {
                         heading: 'Connect',
                         links: [
-                            { label: 'X (Twitter)', href: 'page.html' },
+                            { label: 'X', href: 'page.html' },
                             { label: 'Facebook',    href: 'page.html' },
                             { label: 'LinkedIn',    href: '#' },
                             { label: 'YouTube',     href: '#' },
@@ -397,7 +397,7 @@ class CronosHeader extends HTMLElement {
         }
 
         .cronos-custom-nav-list li {
-            margin-left: 35px;
+            margin-left: 30px;
             position: relative;
         }
 
@@ -572,13 +572,13 @@ class CronosHeader extends HTMLElement {
         }
 
         .cronos-menu-group-card h3 {
-            font-size: 15px;
+            font-size: 14px;
             font-weight: 500;
             margin: 0 0 25px;
             cursor: default;
             display: flex;
             align-items: center;
-            color: var(--cronos-color-text-muted);
+            color: var(--cronos-color-text-muted); white-space: nowrap;
         }
 
         .cronos-menu-group-img-icon {
@@ -608,7 +608,7 @@ class CronosHeader extends HTMLElement {
             display: block;
             margin: 7px 0;
             padding: 2px 0;
-            letter-spacing: -0.03em;
+            letter-spacing: -0.02em;
             font-size: 19px;
             font-weight: 500;
             color: var(--cronos-color-text-light);
