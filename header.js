@@ -147,7 +147,7 @@ class CronosHeader extends HTMLElement {
                         links: [
                             { label: 'About Us',                href: 'about.html' },
                             { label: 'Roadmap',                 href: 'roadmap.html' },
-                            { label: 'Innovations',             href: 'page.html' },
+                            { label: 'Innovations',             href: 'innovations.html' },
                             { label: 'Careers',                 href: 'careers.html' },
                             { label: 'Partners',                href: 'partners.html' },
                             { label: 'Licenses & Registrations',href: 'licenses-and-registrations.html' },
