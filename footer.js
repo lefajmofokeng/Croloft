@@ -70,11 +70,11 @@
   ══════════════════════════════════════════ */
   const BOTTOM_LINKS = [
     { label: 'Support',         href: '#' },
-    { label: 'Contact Us',      href: '#' },
+    { label: 'Contact Us',      href: 'contact-us.html' },
     { label: 'Legal',           href: '#' },
     { label: 'Certificates',    href: '#' },
-    { label: 'Privacy Portal',  href: '#' },
-    { label: 'Cookie Policy',   href: '#' },
+    { label: 'Privacy Policy',  href: 'privacy-policy.html' },
+    { label: 'Terms of Service',   href: 'terms-of-service.html' },
     { label: 'Press Enquiries', href: '#' },
   ];
 
