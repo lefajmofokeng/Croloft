@@ -158,7 +158,7 @@ class CronosHeader extends HTMLElement {
                         links: [
                             { label: 'Blog',     href: 'page.html' },
                             { label: 'eBooks',   href: 'page.html' },
-                            { label: 'Podcasts', href: 'page.html' },
+                            { label: 'Podcasts', href: 'podcasts.html' },
                             { label: 'Webinars', href: 'page.html' },
                         ]
                     },
