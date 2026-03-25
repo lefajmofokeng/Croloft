@@ -7038,7 +7038,7 @@ function itcScrollSlide(direction) {
             --crOnchain-text-main: #0B1426;
             --crOnchain-text-muted: #667085;
             --crOnchain-accent-blue: #3174EE;
-            --crOnchain-border: #D1D8E0;
+            --crOnchain-border: #030303;
         }
 
         .crOnchain-section-container {
@@ -7088,7 +7088,7 @@ function itcScrollSlide(direction) {
         .crOnchain-title {
             color: var(--crOnchain-text-main);
             font-size: 42px;
-            font-weight: 700;
+            font-weight: 500;
             margin: 0 0 20px 0;
             letter-spacing: -0.5px;
         }
@@ -7098,7 +7098,7 @@ function itcScrollSlide(direction) {
             justify-content: center;
             gap: 15px;
             margin-bottom: 45px;
-            font-size: 15px; 
+            font-size: 17px; 
         }
 
         .crOnchain-nav a {
@@ -7110,20 +7110,20 @@ function itcScrollSlide(direction) {
         /* The Card */
         .crOnchain-card {
             background: #FFFFFF;
-            border-radius: 24px;
+            border-radius: 10px;
             box-shadow: 0 20px 50px rgba(0, 0, 0, 0.04);
-            padding: 50px;
+            padding: 50px 40px;
             display: grid;
             grid-template-columns: 1fr 1fr;
             gap: 60px;
-            max-width: 800px;
+            max-width: 600px;
             margin: 0 auto;
             box-sizing: border-box;
         }
 
         .crOnchain-col-title {
-            font-size: 18px;
-            font-weight: 600;
+            font-size: 19px;
+            font-weight: 500;
             margin-bottom: 30px;
             color: var(--crOnchain-text-main);
         }
@@ -7168,16 +7168,16 @@ function itcScrollSlide(direction) {
 
         /* QR Placeholder */
         .crOnchain-qr-frame {
-            border: 1px solid #E5E8EB;
+            border: 1px solid #000;
             border-radius: 12px;
-            width: 160px;
-            height: 160px;
+            width: 180px;
+            height: 180px;
             margin: 0 auto;
             display: flex;
             align-items: center;
             justify-content: center;
             overflow: hidden;
-            padding: 10px;
+            padding: 5px;
         }
 
         .crOnchain-qr-img {
@@ -7296,28 +7296,24 @@ function itcScrollSlide(direction) {
 
 
 
-
 <!DOCTYPE html>
 <html lang="en">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <style>
-        /* CSS Variables for theme management and prefixed colors to avoid conflicts */
         :root {
             --crEcosystem-bg-dark: #000000;
             --crEcosystem-text-main: #FFFFFF;
             --crEcosystem-logo-border: rgba(255, 255, 255, 0.1);
-            --crEcosystem-logo-size: 100px; /* Base logo tile size */
-            --crEcosystem-logo-gap: 16px;
+            --crEcosystem-logo-size: 100px; 
+            --crEcosystem-logo-gap: 12px; /* Tighter gap for a more unified look */
+            --crEcosystem-anim-speed: 25s; /* Faster for smoother feel */
         }
 
-        /* CRITICAL: Prefix all classes and IDs with 'crEcosystem-' to prevent 
-          CSS collisions when this is integrated into another project.
-        */
         .crEcosystem-wrapper {
             background-color: var(--crEcosystem-bg-dark);
-            font-family: 'Circular Std', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Helvetica, Arial, sans-serif, 'Apple Color Emoji', 'Segoe UI Emoji', 'Segoe UI Symbol';
+            font-family: 'Circular Std', -apple-system, BlinkMacSystemFont, sans-serif;
             color: var(--crEcosystem-text-main);
             min-height: 100vh;
             display: flex;
@@ -7325,79 +7321,76 @@ function itcScrollSlide(direction) {
             justify-content: center;
             padding: 40px;
             box-sizing: border-box;
-            line-height: 1.2;
-            -webkit-font-smoothing: antialiased;
-            -moz-osx-font-smoothing: grayscale;
-            overflow: hidden; /* Important for the moving logos */
+            overflow: hidden;
         }
 
         .crEcosystem-main-layout {
             display: grid;
             grid-template-columns: 1fr 1fr;
-            gap: 60px;
-            max-width: 1400px;
+            gap: 40px; /* Reduced gap between text and logos */
+            max-width: 1200px; /* As per your requirement */
             width: 100%;
             align-items: center;
         }
 
-        /* Left Content Section */
+        /* Left Content */
         .crEcosystem-content-col {
-            padding-right: 40px;
+            padding-right: 20px;
+            z-index: 2;
         }
 
         .crEcosystem-main-title {
-            font-size: 80px;
+            font-size: 72px;
             font-weight: 700;
-            margin: 0 0 16px 0;
+            margin: 0;
             letter-spacing: -2px;
+            line-height: 1;
         }
 
         .crEcosystem-sub-title {
-            font-size: 64px;
+            font-size: 72px;
             font-weight: 400;
-            margin: 0 0 48px 0;
-            color: rgba(255, 255, 255, 0.8);
-            letter-spacing: -1px;
-        }
-
-        .crEcosystem-cta-wrapper {
-            margin-top: auto;
+            margin: 0 0 40px 0;
+            color: rgba(255, 255, 255, 0.7);
+            letter-spacing: -2px;
+            line-height: 1;
         }
 
         .crEcosystem-primary-btn {
             display: inline-flex;
             align-items: center;
-            padding: 12px 28px;
-            border: 1px solid rgba(255, 255, 255, 0.2);
-            border-radius: 24px;
+            padding: 14px 28px;
+            border: 1px solid rgba(255, 255, 255, 0.3);
+            border-radius: 30px;
             background: transparent;
             color: #FFFFFF;
-            font-weight: 600;
-            font-size: 16px;
+            font-weight: 500;
             text-decoration: none;
-            transition: all 0.2s ease;
-            cursor: pointer;
+            transition: all 0.3s ease;
         }
 
         .crEcosystem-primary-btn:hover {
             border-color: #FFFFFF;
             background: rgba(255, 255, 255, 0.1);
+            transform: translateY(-2px);
         }
 
-        .crEcosystem-btn-icon {
-            margin-left: 10px;
-            font-size: 1.1em;
-            line-height: 1;
-        }
-
-        /* Right Logo Moving Columns Section */
+        /* Right Logo Section */
         .crEcosystem-logos-col {
             display: grid;
             grid-template-columns: repeat(4, 1fr);
             gap: var(--crEcosystem-logo-gap);
             width: 100%;
-            height: 600px; /* Fixed height for the column area */
-            perspective: 1000px; /* Subtle 3D effect if desired */
+            height: 650px; 
+            position: relative;
+            /* Creates the fade effect at top and bottom */
+            -webkit-mask-image: linear-gradient(to bottom, transparent, black 15%, black 85%, transparent);
+            mask-image: linear-gradient(to bottom, transparent, black 15%, black 85%, transparent);
+        }
+
+        .crEcosystem-ticker-column {
+            overflow: hidden;
+            height: 100%;
         }
 
         .crEcosystem-logo-ticker-track {
@@ -7408,147 +7401,136 @@ function itcScrollSlide(direction) {
         }
 
         .crEcosystem-logo-tile {
-            width: var(--crEcosystem-logo-size);
-            height: var(--crEcosystem-logo-size);
-            background: rgba(10, 15, 30, 0.6);
+            width: 100%;
+            aspect-ratio: 1/1;
+            background: #0a0a0a;
             border: 1px solid var(--crEcosystem-logo-border);
-            border-radius: 12px;
+            border-radius: 16px;
             display: flex;
             align-items: center;
             justify-content: center;
-            padding: 20px;
+            padding: 22%;
             box-sizing: border-box;
-            overflow: hidden;
-            transition: border-color 0.2s ease;
-        }
-
-        .crEcosystem-logo-tile:hover {
-            border-color: rgba(255, 255, 255, 0.3);
         }
 
         .crEcosystem-logo-img {
-            max-width: 100%;
-            max-height: 100%;
+            width: 100%;
+            height: 100%;
             object-fit: contain;
+            filter: grayscale(1) brightness(1.5); /* Unified look */
+            opacity: 0.7;
+            transition: 0.3s;
         }
 
-        /* Moving animations for opposite directions */
-        @keyframes crEcosystem-ticker-up {
-            0% { transform: translateY(0); }
-            100% { transform: translateY(calc(-1 * (var(--crEcosystem-logo-size) + var(--crEcosystem-logo-gap)) * 5)); }
+        .crEcosystem-logo-tile:hover .crEcosystem-logo-img {
+            filter: grayscale(0) brightness(1);
+            opacity: 1;
         }
 
-        @keyframes crEcosystem-ticker-down {
-            0% { transform: translateY(calc(-1 * (var(--crEcosystem-logo-size) + var(--crEcosystem-logo-gap)) * 5)); }
-            100% { transform: translateY(0); }
+        /* Seamless Loop Logic: 
+           The track contains 5 unique logos + 5 duplicates.
+           We animate exactly the height of the first 5 logos + their gaps.
+        */
+        @keyframes ticker-up {
+            from { transform: translateY(0); }
+            to { transform: translateY(calc(-50% - (var(--crEcosystem-logo-gap) / 2))); }
         }
 
-        /* Apply opposite animations to alternate columns */
-        .crEcosystem-logo-ticker-track.crEcosystem-col-move-up {
-            animation: crEcosystem-ticker-up 40s linear infinite;
+        @keyframes ticker-down {
+            from { transform: translateY(calc(-50% - (var(--crEcosystem-logo-gap) / 2))); }
+            to { transform: translateY(0); }
         }
 
-        .crEcosystem-logo-ticker-track.crEcosystem-col-move-down {
-            animation: crEcosystem-ticker-down 40s linear infinite;
+        .crEcosystem-col-move-up {
+            animation: ticker-up var(--crEcosystem-anim-speed) linear infinite;
         }
 
-        /* Responsive Breakpoints */
-        @media (max-width: 1024px) {
-            .crEcosystem-main-title { font-size: 60px; }
-            .crEcosystem-sub-title { font-size: 48px; }
-            :root { --crEcosystem-logo-size: 80px; }
+        .crEcosystem-col-move-down {
+            animation: ticker-down var(--crEcosystem-anim-speed) linear infinite;
         }
 
-        @media (max-width: 768px) {
-            .crEcosystem-main-layout {
-                grid-template-columns: 1fr;
-                gap: 40px;
-            }
-            .crEcosystem-content-col {
-                padding-right: 0;
-                text-align: center;
-                order: 1; /* Logos first on mobile */
-            }
-            .crEcosystem-logos-col {
-                grid-template-columns: repeat(4, 1fr);
-                order: 0;
-                height: 400px; /* Reduced height on mobile */
-            }
-            :root { --crEcosystem-logo-size: 70px; }
-            .crEcosystem-main-title { font-size: 48px; margin-top: 30px;}
-            .crEcosystem-sub-title { font-size: 36px; margin-bottom: 24px;}
+        /* Responsiveness */
+        @media (max-width: 900px) {
+            .crEcosystem-main-layout { grid-template-columns: 1fr; text-align: center; }
+            .crEcosystem-content-col { padding-right: 0; order: 2; }
+            .crEcosystem-logos-col { height: 400px; order: 1; }
+            .crEcosystem-main-title, .crEcosystem-sub-title { font-size: 50px; }
         }
-
-        @media (max-width: 480px) {
-            :root {
-                --crEcosystem-logo-size: 60px;
-                --crEcosystem-logo-gap: 12px;
-            }
-            .crEcosystem-logos-col {
-                grid-template-columns: repeat(4, 1fr);
-                height: 300px;
-            }
-            .crEcosystem-main-title { font-size: 36px; }
-            .crEcosystem-sub-title { font-size: 28px; }
-        }
-
     </style>
 </head>
 <body>
 
-<div id="crEcosystem-unique-id" class="crEcosystem-wrapper">
+<div class="crEcosystem-wrapper">
     <div class="crEcosystem-main-layout">
         
         <div class="crEcosystem-content-col">
             <h1 class="crEcosystem-main-title">Explore</h1>
             <h2 class="crEcosystem-sub-title">Our Ecosystem</h2>
-            <div class="crEcosystem-cta-wrapper">
-                <a href="#" class="crEcosystem-primary-btn">
-                    Discover All DApps <span class="crEcosystem-btn-icon">↗</span>
-                </a>
-            </div>
+            <a href="#" class="crEcosystem-primary-btn">
+                Discover IT Infrastructure <span style="margin-left:8px">↗</span>
+            </a>
         </div>
 
         <div class="crEcosystem-logos-col">
             
-            <div class="crEcosystem-logo-ticker-track crEcosystem-col-move-up">
-                <div class="crEcosystem-logo-tile"><img src="https://via.placeholder.com/60/7F00FF/FFFFFF?text=L1" alt="Logo L1" class="crEcosystem-logo-img"></div>
-                <div class="crEcosystem-logo-tile"><img src="https://via.placeholder.com/60/33CC33/FFFFFF?text=L2" alt="Logo L2" class="crEcosystem-logo-img"></div>
-                <div class="crEcosystem-logo-tile"><img src="https://via.placeholder.com/60/FFCC00/000000?text=L3" alt="Logo L3" class="crEcosystem-logo-img"></div>
-                <div class="crEcosystem-logo-tile"><img src="https://via.placeholder.com/60/00CCFF/000000?text=L4" alt="Logo L4" class="crEcosystem-logo-img"></div>
-                <div class="crEcosystem-logo-tile"><img src="https://via.placeholder.com/60/FF007F/FFFFFF?text=L5" alt="Logo L5" class="crEcosystem-logo-img"></div>
-                <div class="crEcosystem-logo-tile"><img src="https://via.placeholder.com/60/7F00FF/FFFFFF?text=L1" alt="Logo L1" class="crEcosystem-logo-img"></div>
-                <div class="crEcosystem-logo-tile"><img src="https://via.placeholder.com/60/33CC33/FFFFFF?text=L2" alt="Logo L2" class="crEcosystem-logo-img"></div>
+            <div class="crEcosystem-ticker-column">
+                <div class="crEcosystem-logo-ticker-track crEcosystem-col-move-up">
+                    <div class="crEcosystem-logo-tile"><img src="https://cdn.simpleicons.org/intel/white" class="crEcosystem-logo-img"></div>
+                    <div class="crEcosystem-logo-tile"><img src="https://cdn.simpleicons.org/nvidia/white" class="crEcosystem-logo-img"></div>
+                    <div class="crEcosystem-logo-tile"><img src="https://cdn.simpleicons.org/amd/white" class="crEcosystem-logo-img"></div>
+                    <div class="crEcosystem-logo-tile"><img src="https://cdn.simpleicons.org/cisco/white" class="crEcosystem-logo-img"></div>
+                    <div class="crEcosystem-logo-tile"><img src="https://cdn.simpleicons.org/ibm/white" class="crEcosystem-logo-img"></div>
+                    <div class="crEcosystem-logo-tile"><img src="https://cdn.simpleicons.org/intel/white" class="crEcosystem-logo-img"></div>
+                    <div class="crEcosystem-logo-tile"><img src="https://cdn.simpleicons.org/nvidia/white" class="crEcosystem-logo-img"></div>
+                    <div class="crEcosystem-logo-tile"><img src="https://cdn.simpleicons.org/amd/white" class="crEcosystem-logo-img"></div>
+                    <div class="crEcosystem-logo-tile"><img src="https://cdn.simpleicons.org/cisco/white" class="crEcosystem-logo-img"></div>
+                    <div class="crEcosystem-logo-tile"><img src="https://cdn.simpleicons.org/ibm/white" class="crEcosystem-logo-img"></div>
+                </div>
             </div>
 
-            <div class="crEcosystem-logo-ticker-track crEcosystem-col-move-down">
-                <div class="crEcosystem-logo-tile"><img src="https://via.placeholder.com/60/FFFFFF/000000?text=R1" alt="Logo R1" class="crEcosystem-logo-img"></div>
-                <div class="crEcosystem-logo-tile"><img src="https://via.placeholder.com/60/CCCCCC/000000?text=R2" alt="Logo R2" class="crEcosystem-logo-img"></div>
-                <div class="crEcosystem-logo-tile"><img src="https://via.placeholder.com/60/666666/FFFFFF?text=R3" alt="Logo R3" class="crEcosystem-logo-img"></div>
-                <div class="crEcosystem-logo-tile"><img src="https://via.placeholder.com/60/FF99CC/000000?text=R4" alt="Logo R4" class="crEcosystem-logo-img"></div>
-                <div class="crEcosystem-logo-tile"><img src="https://via.placeholder.com/60/FF9900/FFFFFF?text=R5" alt="Logo R5" class="crEcosystem-logo-img"></div>
-                <div class="crEcosystem-logo-tile"><img src="https://via.placeholder.com/60/FFFFFF/000000?text=R1" alt="Logo R1" class="crEcosystem-logo-img"></div>
-                <div class="crEcosystem-logo-tile"><img src="https://via.placeholder.com/60/CCCCCC/000000?text=R2" alt="Logo R2" class="crEcosystem-logo-img"></div>
+            <div class="crEcosystem-ticker-column">
+                <div class="crEcosystem-logo-ticker-track crEcosystem-col-move-down">
+                    <div class="crEcosystem-logo-tile"><img src="https://cdn.simpleicons.org/googlecloud/white" class="crEcosystem-logo-img"></div>
+                    <div class="crEcosystem-logo-tile"><img src="https://cdn.simpleicons.org/amazonaws/white" class="crEcosystem-logo-img"></div>
+                    <div class="crEcosystem-logo-tile"><img src="https://cdn.simpleicons.org/microsoftazure/white" class="crEcosystem-logo-img"></div>
+                    <div class="crEcosystem-logo-tile"><img src="https://cdn.simpleicons.org/digitalocean/white" class="crEcosystem-logo-img"></div>
+                    <div class="crEcosystem-logo-tile"><img src="https://cdn.simpleicons.org/oracle/white" class="crEcosystem-logo-img"></div>
+                    <div class="crEcosystem-logo-tile"><img src="https://cdn.simpleicons.org/googlecloud/white" class="crEcosystem-logo-img"></div>
+                    <div class="crEcosystem-logo-tile"><img src="https://cdn.simpleicons.org/amazonaws/white" class="crEcosystem-logo-img"></div>
+                    <div class="crEcosystem-logo-tile"><img src="https://cdn.simpleicons.org/microsoftazure/white" class="crEcosystem-logo-img"></div>
+                    <div class="crEcosystem-logo-tile"><img src="https://cdn.simpleicons.org/digitalocean/white" class="crEcosystem-logo-img"></div>
+                    <div class="crEcosystem-logo-tile"><img src="https://cdn.simpleicons.org/oracle/white" class="crEcosystem-logo-img"></div>
+                </div>
             </div>
 
-            <div class="crEcosystem-logo-ticker-track crEcosystem-col-move-up">
-                <div class="crEcosystem-logo-tile"><img src="https://via.placeholder.com/60/FF3333/FFFFFF?text=C3_1" alt="Logo C3_1" class="crEcosystem-logo-img"></div>
-                <div class="crEcosystem-logo-tile"><img src="https://via.placeholder.com/60/3333FF/FFFFFF?text=C3_2" alt="Logo C3_2" class="crEcosystem-logo-img"></div>
-                <div class="crEcosystem-logo-tile"><img src="https://via.placeholder.com/60/33FF33/000000?text=C3_3" alt="Logo C3_3" class="crEcosystem-logo-img"></div>
-                <div class="crEcosystem-logo-tile"><img src="https://via.placeholder.com/60/33FFFF/000000?text=C3_4" alt="Logo C3_4" class="crEcosystem-logo-img"></div>
-                <div class="crEcosystem-logo-tile"><img src="https://via.placeholder.com/60/FFFF33/000000?text=C3_5" alt="Logo C3_5" class="crEcosystem-logo-img"></div>
-                <div class="crEcosystem-logo-tile"><img src="https://via.placeholder.com/60/FF3333/FFFFFF?text=C3_1" alt="Logo C3_1" class="crEcosystem-logo-img"></div>
-                <div class="crEcosystem-logo-tile"><img src="https://via.placeholder.com/60/3333FF/FFFFFF?text=C3_2" alt="Logo C3_2" class="crEcosystem-logo-img"></div>
+            <div class="crEcosystem-ticker-column">
+                <div class="crEcosystem-logo-ticker-track crEcosystem-col-move-up">
+                    <div class="crEcosystem-logo-tile"><img src="https://cdn.simpleicons.org/docker/white" class="crEcosystem-logo-img"></div>
+                    <div class="crEcosystem-logo-tile"><img src="https://cdn.simpleicons.org/kubernetes/white" class="crEcosystem-logo-img"></div>
+                    <div class="crEcosystem-logo-tile"><img src="https://cdn.simpleicons.org/linux/white" class="crEcosystem-logo-img"></div>
+                    <div class="crEcosystem-logo-tile"><img src="https://cdn.simpleicons.org/python/white" class="crEcosystem-logo-img"></div>
+                    <div class="crEcosystem-logo-tile"><img src="https://cdn.simpleicons.org/javascript/white" class="crEcosystem-logo-img"></div>
+                    <div class="crEcosystem-logo-tile"><img src="https://cdn.simpleicons.org/docker/white" class="crEcosystem-logo-img"></div>
+                    <div class="crEcosystem-logo-tile"><img src="https://cdn.simpleicons.org/kubernetes/white" class="crEcosystem-logo-img"></div>
+                    <div class="crEcosystem-logo-tile"><img src="https://cdn.simpleicons.org/linux/white" class="crEcosystem-logo-img"></div>
+                    <div class="crEcosystem-logo-tile"><img src="https://cdn.simpleicons.org/python/white" class="crEcosystem-logo-img"></div>
+                    <div class="crEcosystem-logo-tile"><img src="https://cdn.simpleicons.org/javascript/white" class="crEcosystem-logo-img"></div>
+                </div>
             </div>
 
-            <div class="crEcosystem-logo-ticker-track crEcosystem-col-move-down">
-                <div class="crEcosystem-logo-tile"><img src="https://via.placeholder.com/60/FF66FF/000000?text=C4_1" alt="Logo C4_1" class="crEcosystem-logo-img"></div>
-                <div class="crEcosystem-logo-tile"><img src="https://via.placeholder.com/60/66FFFF/000000?text=C4_2" alt="Logo C4_2" class="crEcosystem-logo-img"></div>
-                <div class="crEcosystem-logo-tile"><img src="https://via.placeholder.com/60/FFFF66/000000?text=C4_3" alt="Logo C4_3" class="crEcosystem-logo-img"></div>
-                <div class="crEcosystem-logo-tile"><img src="https://via.placeholder.com/60/FFCCCC/000000?text=C4_4" alt="Logo C4_4" class="crEcosystem-logo-img"></div>
-                <div class="crEcosystem-logo-tile"><img src="https://via.placeholder.com/60/CCFFCC/000000?text=C4_5" alt="Logo C4_5" class="crEcosystem-logo-img"></div>
-                <div class="crEcosystem-logo-tile"><img src="https://via.placeholder.com/60/FF66FF/000000?text=C4_1" alt="Logo C4_1" class="crEcosystem-logo-img"></div>
-                <div class="crEcosystem-logo-tile"><img src="https://via.placeholder.com/60/66FFFF/000000?text=C4_2" alt="Logo C4_2" class="crEcosystem-logo-img"></div>
+            <div class="crEcosystem-ticker-column">
+                <div class="crEcosystem-logo-ticker-track crEcosystem-col-move-down">
+                    <div class="crEcosystem-logo-tile"><img src="https://cdn.simpleicons.org/mongodb/white" class="crEcosystem-logo-img"></div>
+                    <div class="crEcosystem-logo-tile"><img src="https://cdn.simpleicons.org/postgresql/white" class="crEcosystem-logo-img"></div>
+                    <div class="crEcosystem-logo-tile"><img src="https://cdn.simpleicons.org/redis/white" class="crEcosystem-logo-img"></div>
+                    <div class="crEcosystem-logo-tile"><img src="https://cdn.simpleicons.org/cloudfare/white" class="crEcosystem-logo-img"></div>
+                    <div class="crEcosystem-logo-tile"><img src="https://cdn.simpleicons.org/nginx/white" class="crEcosystem-logo-img"></div>
+                    <div class="crEcosystem-logo-tile"><img src="https://cdn.simpleicons.org/mongodb/white" class="crEcosystem-logo-img"></div>
+                    <div class="crEcosystem-logo-tile"><img src="https://cdn.simpleicons.org/postgresql/white" class="crEcosystem-logo-img"></div>
+                    <div class="crEcosystem-logo-tile"><img src="https://cdn.simpleicons.org/redis/white" class="crEcosystem-logo-img"></div>
+                    <div class="crEcosystem-logo-tile"><img src="https://cdn.simpleicons.org/cloudfare/white" class="crEcosystem-logo-img"></div>
+                    <div class="crEcosystem-logo-tile"><img src="https://cdn.simpleicons.org/nginx/white" class="crEcosystem-logo-img"></div>
+                </div>
             </div>
 
         </div>
@@ -7557,8 +7539,6 @@ function itcScrollSlide(direction) {
 
 </body>
 </html>
-
-
 
 
 
@@ -8783,18 +8763,16 @@ function itcScrollSlide(direction) {
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>NFT Ecosystem Showcase</title>
   <style>
-    /* CSS for font (Inter, a free Circular Std alternative) */
-    @import url('https://rsms.me/inter/inter.css');
 
     :root {
       /* Define a very dark color that is slightly warmer than pure black, like the image */
-      --nft-showcase-bg-color: #0d0d12;
-      --nft-showcase-card-bg-color: #1a1a24;
+      --nft-showcase-bg-color: #000000;
+      --nft-showcase-card-bg-color: #0f0f0f;
       --nft-showcase-text-color: #ffffff;
       --nft-showcase-accent-color: #5ed8c1;
       --nft-showcase-icon-color: #ffffff;
       /* Main font (Inter), but with a fallback structure. If you have the license for Circular Std, you can uncomment it. */
-      --nft-showcase-font-family: 'Inter var', sans-serif;
+      --nft-showcase-font-family: 'Circular Std', sans-serif;
       /*
         If you have a license for Circular Std, you can use the original font.
         Link to buy: https://lineto.com/the-fonts/circular-std
@@ -8824,7 +8802,7 @@ function itcScrollSlide(direction) {
 
     .nft-showcase__container {
       display: flex;
-      max-width: 1400px;
+      max-width: 1200px;
       width: 100%;
       margin: 0 auto;
       gap: 60px;
@@ -8840,13 +8818,13 @@ function itcScrollSlide(direction) {
     .nft-showcase__subtitle {
       color: var(--nft-showcase-accent-color);
       font-size: 1.125rem; /* ~18px */
-      font-weight: 500;
+      font-weight: 400;
       margin-bottom: 16px;
     }
 
     .nft-showcase__title {
-      font-size: 2.75rem; /* ~44px */
-      font-weight: 700;
+      font-size: 1.7rem; /* ~44px */
+      font-weight: 400;
       letter-spacing: -0.015em;
       margin-bottom: 24px;
       line-height: 1.25;
@@ -8854,9 +8832,9 @@ function itcScrollSlide(direction) {
 
     .nft-showcase__description {
       color: var(--nft-showcase-text-color);
-      font-size: 1.25rem; /* ~20px */
+      font-size: 1rem; /* ~20px */
       font-weight: 300;
-      opacity: 0.8;
+      color: #86868b;
       max-width: 500px;
     }
 
@@ -8864,24 +8842,23 @@ function itcScrollSlide(direction) {
     .nft-showcase__cards {
       flex: 1;
       display: grid;
-      grid-template-columns: repeat(3, 1fr);
-      gap: 20px;
+      grid-template-columns: repeat(3, 250px);
+      gap: 10px;
     }
 
     .nft-showcase__card {
       background-color: var(--nft-showcase-card-bg-color);
-      padding: 30px;
-      border-radius: 12px;
+      padding: 15px;
+      border-radius: 4px;
       display: flex;
       flex-direction: column;
-      gap: 20px;
+      gap: 20px; border: 1px solid #2d2d2d;
     }
 
     .nft-showcase__card-icon {
-      width: 32px;
-      height: 32px;
+      width: 30px;
+      height: 30px;
       background-color: transparent;
-      border: 1px solid var(--nft-showcase-icon-color);
       border-radius: 50%;
       display: flex;
       justify-content: center;
@@ -8943,15 +8920,14 @@ function itcScrollSlide(direction) {
     }
 
     .nft-showcase__card-title {
-      font-size: 1.125rem; /* ~18px */
-      font-weight: 600;
+      font-size: 1rem; /* ~18px */
+      font-weight: 400;
     }
 
     .nft-showcase__card-description {
       font-size: 1rem; /* ~16px */
       font-weight: 300;
-      opacity: 0.7;
-      line-height: 1.4;
+      line-height: 1.2; color: #86868b;
     }
 
     /* Responsive Styles */
@@ -9010,7 +8986,7 @@ function itcScrollSlide(direction) {
         
         <article class="nft-showcase__card">
           <div class="nft-showcase__card-icon nft-showcase__card-icon--1">
-            <div class="nft-showcase__card-pattern"></div>
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"><path d="M18 10h-1.26A8 8 0 109 20h9a5 5 0 000-10z"/></svg>
           </div>
           <div class="nft-showcase__card-text">
             <h3 class="nft-showcase__card-title">MarketLink</h3>
@@ -9020,7 +8996,7 @@ function itcScrollSlide(direction) {
 
         <article class="nft-showcase__card">
           <div class="nft-showcase__card-icon nft-showcase__card-icon--2">
-            <div class="nft-showcase__card-pattern"></div>
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"><path d="M22 16.92v3a2 2 0 01-2.18 2 19.79 19.79 0 01-8.63-3.07A19.5 19.5 0 013.07 9.81 19.79 19.79 0 012 2h3a2 2 0 012 1.72 12.84 12.84 0 00.7 2.81 2 2 0 01-.45 2.11L6.09 9.91a16 16 0 006 6l1.27-1.27a2 2 0 012.11-.45 12.84 12.84 0 002.81.7A2 2 0 0122 16.92z"/></svg>
           </div>
           <div class="nft-showcase__card-text">
             <h3 class="nft-showcase__card-title">CreatorHub</h3>
@@ -9030,7 +9006,7 @@ function itcScrollSlide(direction) {
 
         <article class="nft-showcase__card">
           <div class="nft-showcase__card-icon nft-showcase__card-icon--3">
-            <div class="nft-showcase__card-pattern"></div>
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/></svg>
           </div>
           <div class="nft-showcase__card-text">
             <h3 class="nft-showcase__card-title">W3 Advisory</h3>
@@ -9040,7 +9016,7 @@ function itcScrollSlide(direction) {
 
         <article class="nft-showcase__card">
           <div class="nft-showcase__card-icon nft-showcase__card-icon--4">
-            <div class="nft-showcase__card-pattern"></div>
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"><path d="M18 10h-1.26A8 8 0 109 20h9a5 5 0 000-10z"/></svg>
           </div>
           <div class="nft-showcase__card-text">
             <h3 class="nft-showcase__card-title">Connect Protocol</h3>
@@ -9375,3 +9351,245 @@ function itcScrollSlide(direction) {
     }
   }
 </style>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Multipurpose IT Company Benefits</title>
+    <style>
+        /* Unique styles prefixed with 'itc-unique-' to prevent conflicts. */
+        .itc-unique-section {
+            font-family: 'Circular Std', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Helvetica, Arial, sans-serif;
+            background-color: #000;
+            color: #fff;
+            width: 100%;
+            padding: 100px 0;
+            box-sizing: border-box;
+            display: flex;
+            justify-content: center;
+        }
+
+        .itc-unique-container {
+            width: 1200px;
+            max-width: 100%;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            box-sizing: border-box;
+            padding: 0 20px;
+        }
+
+        .itc-unique-header {
+            text-align: center;
+            margin-bottom: 70px;
+        }
+
+        .itc-unique-heading {
+            display: block;
+            color: #7b61ff; /* Purple matched to the 'BENEFITS' text */
+            font-size: 15px;
+            font-weight: 500;
+            letter-spacing: 1.5px;
+            text-transform: uppercase;
+            margin-bottom: 24px;
+        }
+
+        .itc-unique-headline {
+            color: #e8e8e8; /* Slightly off-white to match image */
+            font-size: 56px;
+            font-weight: 500;
+            line-height: 1.1;
+            margin: 0;
+            text-transform: uppercase;
+            letter-spacing: -0.5px;
+        }
+
+        .itc-unique-grid {
+            width: 100%;
+            display: flex;
+            justify-content: center;
+            gap: 24px;
+            box-sizing: border-box;
+        }
+
+        .itc-unique-card {
+            flex: 1;
+            max-width: 580px;
+            background-color: #030303; /* Deep black for the card itself */
+            border-radius: 20px;
+            padding: 64px;
+            box-sizing: border-box;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            text-align: center;
+            position: relative;
+            z-index: 1;
+        }
+
+        /* Gradient Border Technique 
+           Uses CSS masks to create the fading border effect without a solid background
+        */
+        .itc-unique-card::before {
+            content: "";
+            position: absolute;
+            inset: -1.5px; /* Border thickness */
+            border-radius: inherit;
+            padding: 1.5px; /* Content-box size for mask */
+            z-index: -1;
+            -webkit-mask: linear-gradient(#fff 0 0) content-box, linear-gradient(#fff 0 0);
+            mask: linear-gradient(#fff 0 0) content-box, linear-gradient(#fff 0 0);
+            -webkit-mask-composite: xor;
+            mask-composite: exclude;
+        }
+
+        /* Left Card: Fades from Top-Right (colored) to Bottom-Left (transparent) */
+        .itc-unique-card-left::before {
+            background: linear-gradient(to bottom left, rgba(123, 97, 255, 0.8) 0%, rgba(255, 255, 255, 0.4) 20%, rgba(0, 0, 0, 0) 50%);
+        }
+
+        /* Right Card: Fades from Top-Left (colored) to Bottom-Right (transparent) */
+        .itc-unique-card-right::before {
+            background: linear-gradient(to bottom right, rgba(123, 97, 255, 0.8) 0%, rgba(255, 255, 255, 0.4) 20%, rgba(0, 0, 0, 0) 50%);
+        }
+
+        .itc-unique-card-title {
+            color: #d1d1d1;
+            font-size: 32px;
+            font-weight: 400;
+            margin-bottom: 24px;
+            margin-top: 0;
+        }
+
+        .itc-unique-card-description {
+            color: #7a7a7a;
+            font-size: 18px;
+            font-weight: 400;
+            line-height: 1.6;
+            margin: 0;
+            max-width: 95%;
+        }
+
+        /* Responsive Design Adjustments */
+        @media (max-width: 1200px) {
+            .itc-unique-headline {
+                font-size: 46px;
+            }
+        }
+
+        @media (max-width: 992px) {
+            .itc-unique-headline {
+                font-size: 36px;
+            }
+            .itc-unique-grid {
+                flex-direction: column;
+                align-items: center;
+                gap: 40px;
+            }
+            .itc-unique-card {
+                width: 100%;
+                max-width: 600px;
+            }
+            /* On mobile/stacked, standardizing the fade from the top down looks better */
+            .itc-unique-card-left::before,
+            .itc-unique-card-right::before {
+              background: linear-gradient(to bottom, rgba(123, 97, 255, 0.6) 0%, rgba(0, 0, 0, 0) 60%);
+            }
+        }
+
+        @media (max-width: 600px) {
+            .itc-unique-card-title {
+                font-size: 26px;
+            }
+            .itc-unique-card {
+                padding: 40px 24px;
+            }
+        }
+    </style>
+</head>
+<body>
+    <section class="itc-unique-section">
+        <div class="itc-unique-container">
+            <header class="itc-unique-header">
+                <span class="itc-unique-heading">BENEFITS</span>
+                <h2 class="itc-unique-headline">WHAT MAKES OUR IT SOLUTIONS UNIQUE?</h2>
+            </header>
+            <div class="itc-unique-grid">
+                <div class="itc-unique-card itc-unique-card-left">
+                    <h3 class="itc-unique-card-title">Efficient processing</h3>
+                    <p class="itc-unique-card-description">The cost of optimizing and managing complex IT infrastructures is relatively low compared to disjointed solutions. Our average deployment optimization reduces ongoing operational expenses significantly.</p>
+                </div>
+                <div class="itc-unique-card itc-unique-card-right">
+                    <h3 class="itc-unique-card-title">Worldwide deployment</h3>
+                    <p class="itc-unique-card-description">Our services can be fully deployed and supported worldwide. Once the initial integration and network parameters are confirmed, system availability is nearly instantaneous and resources are fully available to your team.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+</body>
+</html>

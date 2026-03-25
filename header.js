@@ -166,6 +166,7 @@ class CronosHeader extends HTMLElement {
                         heading: 'Connect',
                         links: [
                             { label: 'X', href: 'page.html' },
+                            { label: 'Product News',             href: 'product-news.html' },
                             { label: 'Facebook',    href: 'page.html' },
                             { label: 'LinkedIn',    href: '#' },
                             { label: 'YouTube',     href: '#' },

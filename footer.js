@@ -31,6 +31,7 @@
         { label: 'Contact Us',                href: '#' },
         { label: 'Glossary',                  href: 'glossary.html' },
         { label: 'Bot',                       href: '#' },
+        { label: 'Learn',                       href: 'learn.html' },
       ]
     },
     {
