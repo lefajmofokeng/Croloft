@@ -15,42 +15,6 @@
 </html>
 
 
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -96,7 +60,6 @@
             color: var(--text-primary);
             line-height: 1.6;
             min-height: 50vh;
-            /* Prevents font blurring from subpixel rendering issues */
             -webkit-font-smoothing: antialiased;
             -moz-osx-font-smoothing: grayscale;
             font-smooth: always;
@@ -106,14 +69,14 @@
             display: flex;
             align-items: center;
             justify-content: center;
-            min-height: 100vh;
+            min-height: 80vh;
             padding: 40px 20px; 
         }
 
         .verify-card {
             padding: 40px;
             width: 100%;
-            max-width: 600px;
+            max-width: 700px;
             text-align: center;
         }
 
@@ -128,7 +91,7 @@
 
         .verify-card h1 .brand-name {
             padding-right: 15px;
-            font-weight: 600;
+            font-weight: 500;
         }
 
         .verify-card h1 .brand-label {
@@ -146,78 +109,175 @@
             line-height: 1.6;
         }
 
-        /* --- Tabs --- */
-        .verify-tabs {
-            display: flex;
-            background-color: rgba(0, 0, 0, 0.2);
-            border-radius: var(--border-radius-btn);
-            margin-bottom: 30px;
-            padding: 3px;
-            border: 1px solid #fdfdfd;
-            gap: 3px;
-        }
-
-        .verify-tab {
-            flex: 1;
-            padding: 11px 8px;
-            border-radius: var(--border-radius-btn);
-            cursor: pointer;
-            font-weight: 600;
-            font-family: 'Circular Std', 'Circular', -apple-system, BlinkMacSystemFont, sans-serif;
-            font-size: clamp(12px, 2.5vw, 15px);
-            color: var(--text-secondary);
-            border: 1px solid transparent;
-            transition: background-color 0.25s ease, color 0.25s ease;
-            white-space: nowrap;
-            user-select: none;
-            line-height: 1.3;
-        }
-
-        .verify-tab:hover:not(.active) {
-            background-color: var(--bg-glass);
-            color: var(--text-primary);
-        }
-
-        .verify-tab.active {
-            background-color: var(--accent-blue);
-            color: var(--bg-dark);
-            font-weight: 700;
-        }
-
-        /* --- Form --- */
+        /* --- Unified Input Bar --- */
         .verify-form {
             display: flex;
             flex-direction: column;
-            gap: 16px;
+            gap: 12px; 
         }
 
-        #verify-input {
-            width: 100%;
-            padding: 14px 22px;
+        .verify-bar {
+            display: flex;
+            align-items: center;
+            background-color: rgba(255, 255, 255, 0.04);
+           border: 1px solid #0099fa !important;
             border-radius: var(--border-radius-btn);
-            border: 1px solid var(--border-glass);
-            background-color: var(--bg-glass);
-            color: var(--text-primary);
-            font-size: clamp(14px, 3vw, 16px);
-            font-family: 'Circular Std', 'Circular', -apple-system, BlinkMacSystemFont, sans-serif;
+            padding: 5px 5px 5px 6px;
+            gap: 4px;
             transition: border-color 0.2s ease, box-shadow 0.2s ease;
-            /* Prevent iOS zoom on focus (font-size must be >= 16px equivalent) */
+        }
+
+        .verify-bar:focus-within {
+            border-color: rgba(253, 253, 253, 0.35);
+            box-shadow: 0 0 0 3px rgba(253, 253, 253, 0.06);
+        }
+
+        /* --- Dropdown trigger (left side of bar) --- */
+        .dropdown-wrapper {
+            position: relative;
+            flex-shrink: 0;
+        }
+
+        .dropdown-trigger {
+            display: flex;
+            align-items: center;
+            gap: 7px;
+            background-color: rgba(255, 255, 255, 0.08);
+            border: none;
+            border-radius: 50px;
+            padding: 16px 14px 9px 14px;
+            cursor: pointer;
+            font-family: 'Circular Std', 'Circular', -apple-system, BlinkMacSystemFont, sans-serif;
+            font-size: clamp(12px, 2.5vw, 13px);
+            font-weight: 600;
+            color: var(--text-primary);
+            white-space: nowrap;
+            user-select: none;
+            transition: background-color 0.2s ease, border-color 0.2s ease;
+            min-width: 118px;
+            justify-content: space-between;
+        }
+
+        .dropdown-trigger:hover {
+            background-color: rgba(255, 255, 255, 0.13);
+            border-color: rgba(255, 255, 255, 0.22);
+        }
+
+        .dropdown-trigger.open {
+            background-color: rgba(255, 255, 255, 0.13);
+            border-color: rgba(255, 255, 255, 0.3);
+        }
+
+        .dropdown-trigger-label {
+            display: flex;
+            align-items: center;
+            gap: 7px;
+        }
+
+        .dropdown-trigger-icon {
+            width: 15px;
+            height: 15px;
+            opacity: 0.75;
+            flex-shrink: 0;
+        }
+
+        .dropdown-chevron {
+            width: 14px;
+            height: 14px;
+            opacity: 0.55;
+            flex-shrink: 0;
+            transition: transform 0.22s ease;
+        }
+
+        .dropdown-trigger.open .dropdown-chevron {
+            transform: rotate(180deg);
+        }
+
+        /* --- Dropdown menu --- */
+        .dropdown-menu {
+            display: none;
+            position: absolute;
+            top: calc(100% + 8px);
+            left: 0;
+            min-width: 170px;
+            background-color: #0e1420;
+            border: 1px solid rgba(255, 255, 255, 0.12);
+            border-radius: 14px;
+            padding: 5px;
+            z-index: 100;
+            box-shadow: 0 12px 40px rgba(0, 0, 0, 0.55);
+            animation: dropdown-appear 0.18s cubic-bezier(0.22, 1, 0.36, 1) forwards;
+        }
+
+        .dropdown-menu.open {
+            display: block;
+        }
+
+        @keyframes dropdown-appear {
+            from { opacity: 0; transform: translateY(-6px) scale(0.97); }
+            to   { opacity: 1; transform: translateY(0) scale(1); }
+        }
+
+        .dropdown-option {
+            display: flex;
+            align-items: center;
+            gap: 10px;
+            padding: 10px 13px;
+            border-radius: 9px;
+            cursor: pointer;
+            font-family: 'Circular Std', 'Circular', -apple-system, BlinkMacSystemFont, sans-serif;
+            font-size: 13px;
+            font-weight: 500;
+            color: var(--text-secondary);
+            transition: background-color 0.15s ease, color 0.15s ease;
+            user-select: none;
+        }
+
+        .dropdown-option:hover {
+            background-color: rgba(255, 255, 255, 0.07);
+            color: var(--text-primary);
+        }
+
+        .dropdown-option.selected {
+            background-color: rgba(255, 255, 255, 0.1);
+            color: var(--text-primary);
+            font-weight: 700;
+        }
+
+        .dropdown-option svg {
+            width: 15px;
+            height: 15px;
+            flex-shrink: 0;
+            opacity: 0.7;
+        }
+
+        .dropdown-option.selected svg {
+            opacity: 1;
+        }
+
+        /* --- Text input (middle of bar) --- */
+        #verify-input {
+            flex: 1;
+            min-width: 0;
+            padding: 10px 10px;
+            border: none;
+            background: transparent;
+            color: var(--text-primary);
+            font-size: clamp(13px, 3vw, 15px);
+            font-family: 'Circular Std', 'Circular', -apple-system, BlinkMacSystemFont, sans-serif;
             appearance: none;
             -webkit-appearance: none;
         }
 
         #verify-input::placeholder {
-            color: var(--text-secondary);
-            opacity: 0.7;
+            color: #ababab; font-weight: 300;
         }
 
         #verify-input:focus {
             outline: none;
-            border-color: rgba(253, 253, 253, 0.5);
-            box-shadow: 0 0 0 3px rgba(253, 253, 253, 0.08);
         }
 
-        /* --- Button --- */
+        /* --- Verify button (right side of bar) --- */
         .btn {
             display: flex;
             align-items: center;
@@ -225,18 +285,18 @@
             gap: 10px;
             background-color: var(--accent-blue);
             color: var(--bg-dark);
-            padding: 14px 30px;
+            padding: 11px 22px;
             border-radius: var(--border-radius-btn);
             font-family: 'Circular Std', 'Circular', -apple-system, BlinkMacSystemFont, sans-serif;
-            font-weight: 700;
-            font-size: clamp(15px, 3vw, 18px);
-            letter-spacing: -0.01em;
+            font-weight: 500;
+            font-size: clamp(16px, 2.5vw, 15px);
             border: none;
             cursor: pointer;
             transition: opacity 0.2s ease, transform 0.15s ease;
             position: relative;
-            width: 100%;
-            min-height: 52px;
+            flex-shrink: 0;
+            min-height: 42px;
+            white-space: nowrap;
             text-decoration: none;
         }
 
@@ -265,8 +325,8 @@
         .spinner {
             display: none;
             position: absolute;
-            width: 22px;
-            height: 22px;
+            width: 18px;
+            height: 18px;
             border: 2.5px solid rgba(255, 255, 255, 0.3);
             border-top-color: #fff;
             border-radius: 50%;
@@ -291,6 +351,29 @@
             background-color: #0c1f3d;
         }
 
+        /* --- Report link below bar --- */
+        .report-note {
+            font-size: clamp(12px, 2.5vw, 13px);
+            color: #888;
+            text-align: center;
+            line-height: 1.5;
+            margin-top: 2rem;
+        }
+
+        .report-note a {
+            color: #bdbdbd;
+            font-weight: 600;
+            text-decoration: underline;
+            text-underline-offset: 2px;
+            opacity: 1;
+            transition: color 0.2s ease;
+            cursor: pointer;
+        }
+
+        .report-note a:hover {
+            color: #fdfdfd;
+        }
+
         /* --- Modal Overlay --- */
         .modal {
             display: none;
@@ -307,7 +390,6 @@
             display: flex;
         }
 
-        /* Sheet-style modal — slides up from bottom like the reference */
         .modal-content {
             background-color: #f2f2f2;
             border-radius: 20px 20px 0 0;
@@ -324,7 +406,6 @@
             to   { opacity: 1; transform: translateY(0); }
         }
 
-        /* Top header bar — light grey, like crypto.com */
         .modal-header-bar {
             display: flex;
             align-items: center;
@@ -341,7 +422,6 @@
         }
 
         .modal-header-logo-icon {
-           
             display: flex;
             align-items: center;
             justify-content: center;
@@ -387,17 +467,16 @@
             display: flex;
             align-items: center;
             justify-content: center;
-            transition: color 0.2s ease; text-decoration: none;
+            transition: color 0.2s ease;
+            text-decoration: none;
         }
 
         .close-modal:hover { color: #111; }
 
-        /* Modal body */
         .modal-body {
             padding: 32px 28px 28px;
         }
 
-        /* Shield icon container */
         .modal-shield {
             width: 80px;
             height: 80px;
@@ -423,7 +502,6 @@
             justify-content: center;
         }
 
-        /* Asset identifier line */
         .modal-asset-id {
             font-size: clamp(13px, 3vw, 15px);
             font-weight: 700;
@@ -436,7 +514,6 @@
         .modal-asset-id.is-red   { color: #e03030; }
         .modal-asset-id.is-green { color: #17a85a; }
 
-        /* Main heading */
         .modal-title {
             font-family: 'Circular Std', 'Circular', -apple-system, BlinkMacSystemFont, sans-serif;
             font-size: clamp(18px, 4vw, 22px);
@@ -450,7 +527,6 @@
         .modal-title .highlight-red   { color: #e03030; }
         .modal-title .highlight-green { color: #17a85a; }
 
-        /* Sub-text */
         .modal-subtext {
             font-family: 'Circular Std', 'Circular', -apple-system, BlinkMacSystemFont, sans-serif;
             font-size: clamp(13px, 2.5vw, 14px);
@@ -466,7 +542,6 @@
             text-decoration: none;
         }
 
-        /* Close button */
         .modal-close-btn {
             display: flex;
             align-items: center;
@@ -497,6 +572,35 @@
         }
 
         /* --- Responsive --- */
+        @media (max-width: 540px) {
+            .verify-bar {
+                border-radius: 20px;
+                padding: 5px;
+                flex-wrap: nowrap;
+                gap: 4px;
+            }
+
+            .dropdown-trigger {
+                min-width: unset;
+                padding: 8px 11px;
+                font-size: 12px;
+            }
+
+            .dropdown-trigger-icon {
+                display: none;
+            }
+
+            #verify-input {
+                padding: 8px 6px;
+                font-size: 13px;
+            }
+
+            .btn {
+                padding: 9px 15px;
+                font-size: 13px;
+            }
+        }
+
         @media (max-width: 480px) {
             .verify-wrapper {
                 padding: 28px 16px;
@@ -514,21 +618,6 @@
 
             .verify-card h1 .brand-label {
                 padding-left: 12px;
-            }
-
-            .verify-tabs {
-                padding: 3px;
-            }
-
-            .verify-tab {
-                padding: 9px 6px;
-            }
-        }
-
-        @media (max-width: 360px) {
-            .verify-tab {
-                font-size: 11px;
-                padding: 8px 4px;
             }
         }
 
@@ -548,29 +637,80 @@
                 <span class="brand-name">Croloft</span>
                 <span class="brand-label">Verify</span>
             </h1>
-            <p>Select an asset type and enter the identifier to confirm it's officially associated with our projects.</p>
-
-            <div class="verify-tabs" role="tablist" aria-label="Asset type">
-                <div class="verify-tab active" role="tab" aria-selected="true" data-type="link" tabindex="0">URL / Link</div>
-                <div class="verify-tab" role="tab" aria-selected="false" data-type="email" tabindex="0">Email Address</div>
-                <div class="verify-tab" role="tab" aria-selected="false" data-type="social" tabindex="0">Social ID</div>
-            </div>
+            <p>Select an asset type and enter the identifier to confirm<br> it's officially associated with our projects.</p>
 
             <div class="verify-form">
-                <input
-                    type="text"
-                    id="verify-input"
-                    placeholder="e.g., example.com/project-link"
-                    autocomplete="off"
-                    autocorrect="off"
-                    autocapitalize="off"
-                    spellcheck="false"
-                    aria-label="Asset identifier"
-                />
-                <button class="btn" id="verify-btn" aria-live="polite">
-                    <span class="btn-text">Verify Asset</span>
-                    <span class="spinner" aria-hidden="true"></span>
-                </button>
+                <!-- Unified bar -->
+                <div class="verify-bar" id="verify-bar">
+
+                    <!-- LEFT: type dropdown -->
+                    <div class="dropdown-wrapper" id="dropdown-wrapper">
+                        <button class="dropdown-trigger" id="dropdown-trigger" aria-haspopup="listbox" aria-expanded="false" type="button">
+                            <span class="dropdown-trigger-label">
+                                <!-- icon swapped by JS -->
+                                <svg class="dropdown-trigger-icon" id="trigger-icon" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+                                    <path d="M10 13a5 5 0 0 0 7.54.54l3-3a5 5 0 0 0-7.07-7.07l-1.72 1.71" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+                                    <path d="M14 11a5 5 0 0 0-7.54-.54l-3 3a5 5 0 0 0 7.07 7.07l1.71-1.71" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+                                </svg>
+                                <span id="trigger-label">URL / Link</span>
+                            </span>
+                            <svg class="dropdown-chevron" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+                                <path d="M6 9l6 6 6-6" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"/>
+                            </svg>
+                        </button>
+
+                        <div class="dropdown-menu" id="dropdown-menu" role="listbox" aria-label="Asset type">
+                            <div class="dropdown-option selected" role="option" aria-selected="true" data-type="link" data-label="URL / Link" tabindex="0">
+                                <svg viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+                                    <path d="M10 13a5 5 0 0 0 7.54.54l3-3a5 5 0 0 0-7.07-7.07l-1.72 1.71" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+                                    <path d="M14 11a5 5 0 0 0-7.54-.54l-3 3a5 5 0 0 0 7.07 7.07l1.71-1.71" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+                                </svg>
+                                URL / Link
+                            </div>
+                            <div class="dropdown-option" role="option" aria-selected="false" data-type="email" data-label="Email Address" tabindex="0">
+                                <svg viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+                                    <path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+                                    <polyline points="22,6 12,13 2,6" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+                                </svg>
+                                Email Address
+                            </div>
+                            <div class="dropdown-option" role="option" aria-selected="false" data-type="social" data-label="Social ID" tabindex="0">
+                                <svg viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+                                    <circle cx="18" cy="5" r="3" stroke="currentColor" stroke-width="2"/>
+                                    <circle cx="6" cy="12" r="3" stroke="currentColor" stroke-width="2"/>
+                                    <circle cx="18" cy="19" r="3" stroke="currentColor" stroke-width="2"/>
+                                    <line x1="8.59" y1="13.51" x2="15.42" y2="17.49" stroke="currentColor" stroke-width="2" stroke-linecap="round"/>
+                                    <line x1="15.41" y1="6.51" x2="8.59" y2="10.49" stroke="currentColor" stroke-width="2" stroke-linecap="round"/>
+                                </svg>
+                                Social ID
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- MIDDLE: text input -->
+                    <input
+                        type="text"
+                        id="verify-input"
+                        placeholder="e.g., example.com/project-link"
+                        autocomplete="off"
+                        autocorrect="off"
+                        autocapitalize="off"
+                        spellcheck="false"
+                        aria-label="Asset identifier"
+                    />
+
+                    <!-- RIGHT: verify button -->
+                    <button class="btn" id="verify-btn" aria-live="polite" type="button">
+                        <span class="btn-text">Verify Asset</span>
+                        <span class="spinner" aria-hidden="true"></span>
+                    </button>
+                </div>
+
+                <!-- Report note below the bar -->
+                <p class="report-note">
+                    Spotted a malicious link or suspicious account?
+                    <a href="mailto:security@cronos.com" id="report-link">Report it here.</a>
+                </p>
             </div>
         </div>
     </div>
@@ -578,12 +718,10 @@
     <!-- Failure Modal -->
     <div class="modal" id="failure-modal" role="dialog" aria-modal="true" aria-labelledby="failure-modal-title">
         <div class="modal-content">
-            <!-- Header bar -->
             <div class="modal-header-bar">
                 <div class="modal-header-logo">
                     <div class="modal-header-logo-icon">
                         <img src="thumbnails/logo1.png" alt="Cronos Logo" style="height: 16px;">
-                        <!-- Cronos "C" mark -->
                     </div>
                     <span class="modal-header-divider"></span>
                     <span class="modal-header-label">Verify</span>
@@ -591,9 +729,7 @@
                 <button class="close-modal" aria-label="Close">&times;</button>
             </div>
 
-            <!-- Body -->
             <div class="modal-body">
-                <!-- Shield icon — red/warning -->
                 <div class="modal-shield" aria-hidden="true">
                     <svg class="shield-bg" viewBox="0 0 80 80" fill="none" xmlns="http://www.w3.org/2000/svg">
                         <path d="M40 6L68 18V36C68 54 55 68 40 74C25 68 12 54 12 36V18L40 6Z" fill="rgba(224,48,48,0.12)" stroke="#e03030" stroke-width="1.5"/>
@@ -626,7 +762,6 @@
     <!-- Success Modal -->
     <div class="modal" id="success-modal" role="dialog" aria-modal="true" aria-labelledby="success-modal-title">
         <div class="modal-content">
-            <!-- Header bar -->
             <div class="modal-header-bar">
                 <div class="modal-header-logo">
                     <div class="modal-header-logo-icon">
@@ -642,9 +777,7 @@
                 <button class="close-modal" aria-label="Close">&times;</button>
             </div>
 
-            <!-- Body -->
             <div class="modal-body">
-                <!-- Shield icon — green/verified -->
                 <div class="modal-shield" aria-hidden="true">
                     <svg class="shield-bg" viewBox="0 0 80 80" fill="none" xmlns="http://www.w3.org/2000/svg">
                         <path d="M40 6L68 18V36C68 54 55 68 40 74C25 68 12 54 12 36V18L40 6Z" fill="rgba(23,168,90,0.12)" stroke="#17a85a" stroke-width="1.5"/>
@@ -707,49 +840,89 @@
                 social: 'e.g., @DefconOfficial'
             };
 
+            // Icon SVG strings per type
+            const typeIcons = {
+                link: `<path d="M10 13a5 5 0 0 0 7.54.54l3-3a5 5 0 0 0-7.07-7.07l-1.72 1.71" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/><path d="M14 11a5 5 0 0 0-7.54-.54l-3 3a5 5 0 0 0 7.07 7.07l1.71-1.71" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>`,
+                email: `<path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/><polyline points="22,6 12,13 2,6" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>`,
+                social: `<circle cx="18" cy="5" r="3" stroke="currentColor" stroke-width="2"/><circle cx="6" cy="12" r="3" stroke="currentColor" stroke-width="2"/><circle cx="18" cy="19" r="3" stroke="currentColor" stroke-width="2"/><line x1="8.59" y1="13.51" x2="15.42" y2="17.49" stroke="currentColor" stroke-width="2" stroke-linecap="round"/><line x1="15.41" y1="6.51" x2="8.59" y2="10.49" stroke="currentColor" stroke-width="2" stroke-linecap="round"/>`
+            };
+
             // DOM references
-            const tabs          = document.querySelectorAll('.verify-tab');
-            const verifyInput   = document.getElementById('verify-input');
-            const verifyBtn     = document.getElementById('verify-btn');
-            const btnText       = verifyBtn.querySelector('.btn-text');
-            const successModal  = document.getElementById('success-modal');
-            const failureModal  = document.getElementById('failure-modal');
-            const successLink   = document.getElementById('success-link');
-            const failureLink   = document.getElementById('failure-link');
+            const verifyInput     = document.getElementById('verify-input');
+            const verifyBtn       = document.getElementById('verify-btn');
+            const btnText         = verifyBtn.querySelector('.btn-text');
+            const successModal    = document.getElementById('success-modal');
+            const failureModal    = document.getElementById('failure-modal');
+            const successLink     = document.getElementById('success-link');
+            const failureLink     = document.getElementById('failure-link');
+            const dropdownTrigger = document.getElementById('dropdown-trigger');
+            const dropdownMenu    = document.getElementById('dropdown-menu');
+            const triggerLabel    = document.getElementById('trigger-label');
+            const triggerIcon     = document.getElementById('trigger-icon');
+            const verifyBar       = document.getElementById('verify-bar');
 
             let currentType = 'link';
             let verifyTimeout = null;
+            let dropdownOpen = false;
 
-            // --- Tab switching ---
-            function activateTab(tab) {
-                tabs.forEach(t => {
-                    t.classList.remove('active');
-                    t.setAttribute('aria-selected', 'false');
-                });
-                tab.classList.add('active');
-                tab.setAttribute('aria-selected', 'true');
-                currentType = tab.getAttribute('data-type');
-                verifyInput.placeholder = placeholders[currentType];
-                verifyInput.value = '';
-                verifyInput.focus();
+            // --- Dropdown logic ---
+            function openDropdown() {
+                dropdownOpen = true;
+                dropdownMenu.classList.add('open');
+                dropdownTrigger.classList.add('open');
+                dropdownTrigger.setAttribute('aria-expanded', 'true');
             }
 
-            tabs.forEach(tab => {
-                tab.addEventListener('click', () => activateTab(tab));
-                // Keyboard accessibility
-                tab.addEventListener('keydown', (e) => {
+            function closeDropdown() {
+                dropdownOpen = false;
+                dropdownMenu.classList.remove('open');
+                dropdownTrigger.classList.remove('open');
+                dropdownTrigger.setAttribute('aria-expanded', 'false');
+            }
+
+            dropdownTrigger.addEventListener('click', (e) => {
+                e.stopPropagation();
+                dropdownOpen ? closeDropdown() : openDropdown();
+            });
+
+            document.addEventListener('click', (e) => {
+                if (!document.getElementById('dropdown-wrapper').contains(e.target)) {
+                    closeDropdown();
+                }
+            });
+
+            document.querySelectorAll('.dropdown-option').forEach(option => {
+                option.addEventListener('click', () => selectOption(option));
+                option.addEventListener('keydown', (e) => {
                     if (e.key === 'Enter' || e.key === ' ') {
                         e.preventDefault();
-                        activateTab(tab);
+                        selectOption(option);
                     }
                 });
             });
+
+            function selectOption(option) {
+                document.querySelectorAll('.dropdown-option').forEach(o => {
+                    o.classList.remove('selected');
+                    o.setAttribute('aria-selected', 'false');
+                });
+                option.classList.add('selected');
+                option.setAttribute('aria-selected', 'true');
+
+                currentType = option.getAttribute('data-type');
+                triggerLabel.textContent = option.getAttribute('data-label');
+                triggerIcon.innerHTML = typeIcons[currentType];
+
+                verifyInput.placeholder = placeholders[currentType];
+                verifyInput.value = '';
+                closeDropdown();
+                verifyInput.focus();
+            }
 
             // --- Modal helpers ---
             function openModal(modal) {
                 modal.classList.add('open');
                 document.body.style.overflow = 'hidden';
-                // Focus first focusable element inside modal
                 const focusable = modal.querySelector('button, [tabindex]');
                 if (focusable) setTimeout(() => focusable.focus(), 50);
             }
@@ -761,23 +934,23 @@
                 verifyBtn.focus();
             }
 
-            // Close buttons
             document.querySelectorAll('.close-modal').forEach(btn => {
                 btn.addEventListener('click', closeAllModals);
             });
             document.getElementById('success-close-btn').addEventListener('click', closeAllModals);
             document.getElementById('failure-close-btn').addEventListener('click', closeAllModals);
 
-            // Close on backdrop click
             [successModal, failureModal].forEach(modal => {
                 modal.addEventListener('click', (e) => {
                     if (e.target === modal) closeAllModals();
                 });
             });
 
-            // Close on Escape
             document.addEventListener('keydown', (e) => {
-                if (e.key === 'Escape') closeAllModals();
+                if (e.key === 'Escape') {
+                    closeAllModals();
+                    closeDropdown();
+                }
             });
 
             // --- Verification logic ---
@@ -786,10 +959,9 @@
                 const pool = verifiedAssets[currentType] || [];
                 const isVerified = pool.some(item => item.toLowerCase() === normalised);
 
-                // Reset button
                 verifyBtn.classList.remove('loading');
                 verifyBtn.disabled = false;
-                btnText.textContent = 'Verify Asset';
+                btnText.textContent = 'Verify';
 
                 if (isVerified) {
                     successLink.textContent = value;
@@ -804,15 +976,12 @@
                 const value = verifyInput.value.trim();
                 if (!value) {
                     verifyInput.focus();
-                    verifyInput.style.borderColor = 'rgba(255,77,77,0.6)';
-                    setTimeout(() => { verifyInput.style.borderColor = ''; }, 1500);
+                    verifyBar.style.borderColor = 'rgba(255,77,77,0.6)';
+                    setTimeout(() => { verifyBar.style.borderColor = ''; }, 1500);
                     return;
                 }
 
-                // Guard: prevent double-submit
                 if (verifyBtn.disabled) return;
-
-                // Clear any pending timeout (safety)
                 if (verifyTimeout) clearTimeout(verifyTimeout);
 
                 verifyBtn.classList.add('loading');
@@ -824,7 +993,6 @@
 
             verifyBtn.addEventListener('click', startVerification);
 
-            // Allow Enter key in input to submit
             verifyInput.addEventListener('keydown', (e) => {
                 if (e.key === 'Enter') startVerification();
             });
