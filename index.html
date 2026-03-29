@@ -238,7 +238,7 @@
   font-weight: 400;
   text-transform: none;
   max-width: 800px; 
-  letter-spacing: -0.04em;
+  
   line-height: 1;
   color: white;
   text-align: center;
@@ -713,7 +713,7 @@ document.addEventListener("DOMContentLoaded", function() {
             --itsvc-text-dark: #0F172A; 
             --itsvc-text-body: #475467; 
             --itsvc-text-muted: #CBD5E1; 
-            --itsvc-accent: #1F61EB; 
+            --itsvc-accent: #047ada; 
             --itsvc-border: #E2E8F0;
             --itsvc-font: 'Circular Std', sans-serif;
             --itsvc-anim-speed: 5s;
@@ -740,7 +740,7 @@ document.addEventListener("DOMContentLoaded", function() {
 
         .itsvc-eyebrow {
             color: var(--itsvc-accent);
-            font-weight: 600;
+            font-weight: 500;
             font-size: 16px;
             letter-spacing: 1.2px;
             text-transform: uppercase;
@@ -753,7 +753,7 @@ document.addEventListener("DOMContentLoaded", function() {
             line-height: 1.1;
             font-weight: 500;
             color: var(--itsvc-text-dark);
-            letter-spacing: -0.02em;
+            
             margin-bottom: 30px;
         }
 
@@ -810,7 +810,7 @@ document.addEventListener("DOMContentLoaded", function() {
         }
 
         .itsvc-tab-title {
-            font-size: 52px;
+            font-size: 45px;
             font-weight: 500;
             color: var(--itsvc-text-muted);
             transition: color 0.3s ease;
@@ -1022,13 +1022,241 @@ document.addEventListener("DOMContentLoaded", function() {
 
 
 
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <style>
+        @import url('https://fonts.cdnfonts.com/css/circular-std');
 
+        /* Namespace: it-firm-v6 to prevent code conflicts */
+        .it-firm-v6-wrapper {
+            --bg-page: #000000;
+            --card-base: #1c1c1e;
+            --font-main: 'Circular Std', -apple-system, BlinkMacSystemFont, sans-serif;
+            
+            background-color: var(--bg-page);
+            padding: 80px 20px;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            font-family: var(--font-main);
+            color: #ffffff;
+            -webkit-font-smoothing: antialiased;
+            overflow-x: hidden;
+        }
 
+        * {
+            box-sizing: border-box;
+            margin: 0;
+            padding: 0;
+        }
+        
+        .it-firm-v6-headline {
+            font-size: clamp(32px, 5vw, 52px);
+            font-weight: 400;
+            margin-bottom: 24px;
+            text-align: center;
+            letter-spacing: -0.5px;
+        }
 
+        .it-firm-v6-cta {
+            background: #ffffff;
+            color: #000000;
+            padding: 12px 28px;
+            border-radius: 100px;
+            font-weight: 400;
+            text-decoration: none;
+            margin-bottom: 60px;
+            font-size: 17px;
+            transition: transform 0.2s ease;
+        }
 
+        .it-firm-v6-cta:hover { transform: scale(1.03); }
 
+        /* Grid set to a max of 1000px with equal distribution */
+        .it-firm-v6-grid {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            gap: 24px;
+            width: 100%;
+            max-width: 1000px; 
+        }
 
+        .it-firm-v6-card {
+            /* Fading Gradient: White mist to black */
+            background: linear-gradient(180deg, 
+                rgb(127, 135, 149) 20%,  
+                rgb(30, 30, 30) 100%);
+            border-radius: 24px;
+            padding: 35px 30px;
+            height: 350px;
+            /* Ensures cards remain equal width regardless of content */
+            flex: 1 1 0px; 
+            display: flex;
+            flex-direction: column;
+            justify-content: space-between;
+            position: relative;
+            box-sizing: border-box;
+        }
 
+        .it-firm-v6-card-mid {
+            transform: scale(1.08);
+            z-index: 2;
+        }
+
+        .it-firm-v6-card-side {
+            transform: scale(0.95);
+            opacity: 0.9;
+        }
+
+        .it-firm-v6-icon {
+            font-size: 22px;
+            margin-bottom: 20px;
+            display: block;
+        }
+
+        .it-firm-v6-desc {
+            font-size: 20px;
+            line-height: 1.35;
+            font-weight: 400;
+            color: #ffffff; /* Dark text for white fade top */
+            margin: 0;
+        }
+
+        .it-firm-v6-tc {
+            font-size: 14px;
+            color: #f5f5f5;
+            display: block;
+            margin-top: 8px;
+        }
+
+        .it-firm-v6-num-wrap {
+            margin-top: auto;
+            width: 100%;
+        }
+
+        .it-firm-v6-big-num {
+            font-size: 130px;
+            font-weight: 300;
+            line-height: 0.9;
+            letter-spacing: -0.1em;
+            color: #ffffff; /* White for black bottom */
+            display: block;
+            /* Tabular numerals ensure the width doesn't jitter during animation */
+            font-variant-numeric: tabular-nums;
+            white-space: nowrap; font-family: 'Inter', sans-serif;
+        }
+
+        /* Responsive Breakpoint for Mobile */
+        @media (max-width: 850px) {
+            .it-firm-v6-grid {
+                flex-direction: column;
+                gap: 40px;
+            }
+            .it-firm-v6-card {
+                width: 100%;
+                flex: none;
+                transform: none !important;
+                height: 420px;
+            }
+            .it-firm-v6-big-num {
+                font-size: 80px;
+            }
+        }
+    </style>
+</head>
+<body>
+
+<div class="it-firm-v6-wrapper">
+    <h2 class="it-firm-v6-headline">So, why Revolut IT?</h2>
+    <a href="#" class="it-firm-v6-cta">Pick your project & get started</a>
+
+    <div class="it-firm-v6-grid">
+        <div class="it-firm-v6-card it-firm-v6-card-side">
+            <div>
+                <span class="it-firm-v6-icon">📊</span>
+                <p class="it-firm-v6-desc">Optimize systems and boost ROI by 19%.</p>
+                <span class="it-firm-v6-tc">T&Cs apply</span>
+            </div>
+            <div class="it-firm-v6-num-wrap">
+                <span class="it-firm-v6-big-num" data-target="19" data-suffix="%">0%</span>
+            </div>
+        </div>
+
+        <div class="it-firm-v6-card it-firm-v6-card-mid">
+            <div>
+                <span class="it-firm-v6-icon">⚡</span>
+                <p class="it-firm-v6-desc">Flawless execution with 0% latency on premium tiers.</p>
+            </div>
+            <div class="it-firm-v6-num-wrap">
+                <span class="it-firm-v6-big-num" data-target="0" data-suffix="%">0%</span>
+            </div>
+        </div>
+
+        <div class="it-firm-v6-card it-firm-v6-card-side">
+            <div>
+                <span class="it-firm-v6-icon">👥</span>
+                <p class="it-firm-v6-desc">Millions of assets managed daily by our IT platform.</p>
+            </div>
+            <div class="it-firm-v6-num-wrap">
+                <span class="it-firm-v6-big-num" data-target="60" data-suffix="M">0M</span>
+            </div>
+        </div>
+    </div>
+</div>
+
+<script>
+    const startItAnimation = () => {
+        const numbers = document.querySelectorAll('.it-firm-v6-big-num');
+        
+        const observer = new IntersectionObserver((entries) => {
+            entries.forEach(entry => {
+                if (entry.isIntersecting) {
+                    const el = entry.target;
+                    const target = parseInt(el.getAttribute('data-target'));
+                    const suffix = el.getAttribute('data-suffix');
+                    
+                    if (target === 0) {
+                        el.innerText = "0" + suffix;
+                    } else {
+                        let current = 0;
+                        const duration = 1800; // ms
+                        const startTime = performance.now();
+
+                        const animate = (currentTime) => {
+                            const elapsed = currentTime - startTime;
+                            const progress = Math.min(elapsed / duration, 1);
+                            
+                            // Smooth ease-out effect
+                            const ease = 1 - Math.pow(1 - progress, 3); 
+                            
+                            current = Math.floor(ease * target);
+                            el.innerText = current + suffix;
+
+                            if (progress < 1) {
+                                requestAnimationFrame(animate);
+                            } else {
+                                el.innerText = target + suffix;
+                            }
+                        };
+                        requestAnimationFrame(animate);
+                    }
+                    observer.unobserve(el);
+                }
+            });
+        }, { threshold: 0.5 });
+
+        numbers.forEach(n => observer.observe(n));
+    };
+
+    document.addEventListener('DOMContentLoaded', startItAnimation);
+</script>
+
+</body>
+</html>
 
 
 
@@ -1240,7 +1468,7 @@ document.addEventListener("DOMContentLoaded", function() {
 
         .cta-button {
             width: fit-content;
-            padding: 7px 25px;
+            padding: 10px 25px;
             background-color: transparent;
             color: #fff;
             border: 1.5px solid #fff;

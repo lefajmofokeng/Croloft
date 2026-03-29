@@ -1,0 +1,584 @@
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>My Website</title>
+    
+    <script src="header.js" defer></script>
+    <script src="footer.js" defer></script> 
+</head>
+<body>
+
+    <cronos-header></cronos-header>
+    
+
+</body>
+</html>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Why Us – IT Firm</title>
+    <style>
+        @import url('https://fonts.cdnfonts.com/css/circular-std');
+
+        /* ── Namespace: it-firm-v6 ── */
+        *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+        .it-firm-v6-wrapper {
+            --bg-page:   #000000;
+            --font-main: 'Circular Std', -apple-system, BlinkMacSystemFont, sans-serif;
+
+            background-color: var(--bg-page);
+            padding: 150px 0 110px;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            font-family: var(--font-main);
+            color: #ffffff;
+            -webkit-font-smoothing: antialiased;
+            overflow: hidden;
+            width: 100%;
+        }
+
+        .it-firm-v6-headline {
+            font-size: clamp(28px, 4.5vw, 52px);
+            font-weight: 400;
+            margin-bottom: 24px;
+            text-align: center;
+            letter-spacing: -0.5px;
+            padding: 0 20px;
+        }
+
+        .it-firm-v6-cta {
+            background: #ffffff;
+            color: #000000;
+            padding: 12px 28px;
+            border-radius: 100px;
+            font-weight: 400;
+            text-decoration: none;
+            margin-bottom: 70px;
+            font-size: 16px;
+            font-family: var(--font-main);
+            transition: transform 0.2s ease, box-shadow 0.2s ease;
+            display: inline-block;
+        }
+        .it-firm-v6-cta:hover {
+            transform: scale(1.03);
+            box-shadow: 0 6px 24px rgba(255,255,255,0.18);
+        }
+
+        /* ── Stage: clips the cards ── */
+        .it-firm-v6-stage {
+            width: 100%;
+            max-width: 1100px;
+            padding: 0 20px;
+            position: relative;
+            /* enough height to contain the tallest card + scale */
+            height: 400px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+
+        /* ── Track: holds all 5 cards in a row ── */
+        .it-firm-v6-track {
+            position: relative;
+            width: 100%;
+            height: 100%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+
+        /* ── Cards ── */
+        .it-firm-v6-card {
+            position: absolute;
+            width: 300px;
+            height: 340px;
+            border-radius: 24px;
+            padding: 30px 28px;
+            display: flex;
+            flex-direction: column;
+            justify-content: space-between;
+            cursor: pointer;
+            /* transition: all properties smoothly */
+            transition:
+                transform 0.85s cubic-bezier(0.76, 0, 0.24, 1),
+                opacity   0.85s cubic-bezier(0.76, 0, 0.24, 1),
+                filter    0.85s cubic-bezier(0.76, 0, 0.24, 1),
+                z-index   0s linear 0s;
+            will-change: transform, opacity, filter;
+            overflow: hidden;
+            user-select: none;
+        }
+
+        /* gradient: light grey-blue on top → deep black at bottom */
+        .it-firm-v6-card::before {
+            content: '';
+            position: absolute;
+            inset: 0;
+            border-radius: inherit;
+            background: linear-gradient(
+                170deg,
+                #6b7280 0%,
+                #3d4048 38%,
+                #1a1a1e 68%,
+                #000000 100%
+            );
+            z-index: 0;
+        }
+
+        /* sheen overlay */
+        .it-firm-v6-card::after {
+            content: '';
+            position: absolute;
+            inset: 0;
+            border-radius: inherit;
+            background: linear-gradient(135deg, rgba(255,255,255,0.07) 0%, transparent 55%);
+            z-index: 1;
+        }
+
+        .it-firm-v6-card > * { position: relative; z-index: 2; }
+
+        /* thin border */
+        .it-firm-v6-card-border {
+            position: absolute;
+            inset: 0;
+            border-radius: 24px;
+            border: 1px solid rgba(255,255,255,0.10);
+            z-index: 3;
+            pointer-events: none;
+        }
+
+        /* ── Position states ── */
+
+        /* far-left: hidden off screen */
+        .it-firm-v6-card[data-pos="-2"] {
+            transform: translateX(-580px) scale(0.78);
+            opacity: 0;
+            filter: blur(4px);
+            z-index: 0;
+            pointer-events: none;
+        }
+
+        /* left */
+        .it-firm-v6-card[data-pos="-1"] {
+            transform: translateX(-310px) scale(0.88);
+            opacity: 0.55;
+            filter: blur(1.5px);
+            z-index: 1;
+        }
+
+        /* center (active) */
+        .it-firm-v6-card[data-pos="0"] {
+            transform: translateX(0) scale(1.10);
+            opacity: 1;
+            filter: blur(0px);
+            z-index: 3;
+        }
+
+        /* right */
+        .it-firm-v6-card[data-pos="1"] {
+            transform: translateX(310px) scale(0.88);
+            opacity: 0.55;
+            filter: blur(1.5px);
+            z-index: 1;
+        }
+
+        /* far-right: hidden off screen */
+        .it-firm-v6-card[data-pos="2"] {
+            transform: translateX(580px) scale(0.78);
+            opacity: 0;
+            filter: blur(4px);
+            z-index: 0;
+            pointer-events: none;
+        }
+
+        /* ── Card internals ── */
+        .it-firm-v6-icon {
+            font-size: 24px;
+            margin-bottom: 12px;
+            display: block;
+        }
+
+        .it-firm-v6-desc {
+            font-size: 18px;
+            line-height: 1.4;
+            font-weight: 400;
+            color: rgba(255,255,255,0.88);
+        }
+
+        .it-firm-v6-tc {
+            font-size: 12px;
+            color: rgba(255,255,255,0.45);
+            display: block;
+            margin-top: 6px;
+        }
+
+        .it-firm-v6-big-num {
+            font-size: clamp(72px, 10vw, 110px);
+            font-weight: 300;
+            line-height: 0.9;
+            letter-spacing: -0.1em;
+            color: #ffffff;
+            display: block;
+            font-variant-numeric: tabular-nums;
+            white-space: nowrap;
+            /* gradient fade on the number */
+            background: linear-gradient(160deg, #ffffff 30%, rgba(255,255,255,0.45) 100%);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text; font-family: 'Inter', sans-serif;
+        }
+
+        /* ── Progress dots ── */
+        .it-firm-v6-dots {
+            display: flex;
+            gap: 8px;
+            margin-top: 44px;
+            align-items: center;
+        }
+
+        .it-firm-v6-dot {
+            width: 6px;
+            height: 6px;
+            border-radius: 50%;
+            background: rgba(255,255,255,0.25);
+            transition: background 0.4s ease, transform 0.4s ease;
+        }
+
+        .it-firm-v6-dot.active {
+            background: #ffffff;
+            transform: scale(1.4);
+        }
+
+        /* ── Progress bar ── */
+        .it-firm-v6-progress-wrap {
+            width: 220px;
+            height: 2px;
+            background: rgba(255,255,255,0.12);
+            border-radius: 99px;
+            margin-top: 20px;
+            overflow: hidden;
+        }
+
+        .it-firm-v6-progress-bar {
+            height: 100%;
+            width: 0%;
+            background: rgba(255,255,255,0.7);
+            border-radius: 99px;
+            transition: width 0.1s linear;
+        }
+
+        /* ── Nav arrows ── */
+        .it-firm-v6-nav {
+            display: flex;
+            gap: 12px;
+            margin-top: 24px; 
+        }
+
+        .it-firm-v6-arrow {
+            width: 40px;
+            height: 40px;
+            border: none;
+            background: transparent;
+            color: #fff;
+            cursor: pointer;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 18px;
+            
+            line-height: 1;
+        }
+        .it-firm-v6-arrow:hover {
+            transform: scale(1.08);
+        }
+
+        /* ── Responsive ── */
+        @media (max-width: 700px) {
+            .it-firm-v6-stage { height: 360px; }
+
+            .it-firm-v6-card { width: 260px; height: 300px; }
+
+            .it-firm-v6-card[data-pos="-1"] { transform: translateX(-220px) scale(0.82); }
+            .it-firm-v6-card[data-pos="1"]  { transform: translateX(220px)  scale(0.82); }
+            .it-firm-v6-card[data-pos="-2"] { transform: translateX(-440px) scale(0.7); }
+            .it-firm-v6-card[data-pos="2"]  { transform: translateX(440px)  scale(0.7); }
+        }
+    </style>
+</head>
+<body>
+
+<div class="it-firm-v6-wrapper">
+    <h2 class="it-firm-v6-headline">So, why Croloft?</h2>
+    <a href="#" class="it-firm-v6-cta">Pick your project &amp; get started</a>
+
+    <div class="it-firm-v6-stage">
+        <div class="it-firm-v6-track" id="itTrack">
+
+            <!-- Card 0 -->
+            <div class="it-firm-v6-card" data-index="0">
+                <div>
+                    <span class="it-firm-v6-icon">
+                        <svg xmlns="http://www.w3.org/2000/svg" width="30" height="30" viewBox="0 0 24 24" fill="#ffffff"><path fill="#ffffff" d="M16 19v-4.808h3V19h-3Zm-5.5 0V5h3v14h-3ZM5 19V9.808h3V19H5Z"/></svg>
+                    </span>
+                    <p class="it-firm-v6-desc">Optimize systems and boost ROI with proven IT strategy.</p>
+                    <span class="it-firm-v6-tc">T&amp;Cs apply</span>
+                </div>
+                <div>
+                    <span class="it-firm-v6-big-num" data-target="19" data-suffix="%">0%</span>
+                </div>
+                <div class="it-firm-v6-card-border"></div>
+            </div>
+
+            <!-- Card 1 -->
+            <div class="it-firm-v6-card" data-index="1">
+                <div>
+                    <span class="it-firm-v6-icon">
+                        <svg xmlns="http://www.w3.org/2000/svg" width="30" height="30" viewBox="0 0 24 24" fill="#ffffff"><path fill="#ffffff" d="m9.154 20.885l1-6.885h-4.25l7.48-10.788h.462L12.866 11h5l-8.25 9.885h-.462Z"/></svg>
+                    </span>
+                    <p class="it-firm-v6-desc">Flawless execution with near-zero latency on premium tiers.</p>
+                </div>
+                <div>
+                    <span class="it-firm-v6-big-num" data-target="0" data-suffix="%">0%</span>
+                </div>
+                <div class="it-firm-v6-card-border"></div>
+            </div>
+
+            <!-- Card 2 -->
+            <div class="it-firm-v6-card" data-index="2">
+                <div>
+                    <span class="it-firm-v6-icon">
+                        <svg xmlns="http://www.w3.org/2000/svg" width="30" height="30" viewBox="0 0 24 24"><path fill="#ffffff" d="M7.361 16.596q-.857.721-1.793.646t-1.612-.64t-.913-1.482q-.235-.916.336-1.866l1.952-3.235q-.606-.453-.969-1.152Q4 8.17 4 7.347q0-1.4.973-2.374Q5.946 4 7.346 4t2.373.973t.973 2.373T9.72 9.72t-2.373.973q-.302 0-.584-.044t-.54-.152L4.24 13.785q-.352.585-.214 1.148t.56.914t1.006.4q.584.046 1.125-.4l9.942-8.448q.838-.721 1.758-.653q.919.068 1.615.634q.696.565.948 1.481t-.338 1.886L18.669 14q.606.454.969 1.142T20 16.654q0 1.4-.983 2.373q-.982.973-2.383.973q-1.38 0-2.353-.983t-.973-2.363t.973-2.363t2.353-.983q.302 0 .592.054t.547.161l1.989-3.307q.351-.585.222-1.148t-.55-.914q-.42-.352-1.005-.409t-1.125.409z"/></svg>
+                    </span>
+                    <p class="it-firm-v6-desc">Millions of digital assets managed daily across our platform.</p>
+                </div>
+                <div>
+                    <span class="it-firm-v6-big-num" data-target="60" data-suffix="M">0M</span>
+                </div>
+                <div class="it-firm-v6-card-border"></div>
+            </div>
+
+            <!-- Card 3 -->
+            <div class="it-firm-v6-card" data-index="3">
+                <div>
+                    <span class="it-firm-v6-icon">
+                        <svg xmlns="http://www.w3.org/2000/svg" width="30" height="30" viewBox="0 0 24 24"><path fill="#ffffff" d="m12 21.77l-6.354-4.766q-.298-.217-.472-.566Q5 16.09 5 15.712V4.615q0-.69.463-1.152Q5.925 3 6.615 3h10.77q.69 0 1.152.463q.463.462.463 1.152v11.097q0 .378-.174.726q-.174.349-.472.566L12 21.769Zm-1.05-7.462l4.958-4.958l-.708-.72l-4.25 4.25l-2.138-2.138l-.72.708l2.858 2.858Z"/></svg>
+                    </span>
+                    <p class="it-firm-v6-desc">Enterprise-grade security protecting your infrastructure 24/7.</p>
+                </div>
+                <div>
+                    <span class="it-firm-v6-big-num" data-target="99" data-suffix="%">0%</span>
+                </div>
+                <div class="it-firm-v6-card-border"></div>
+            </div>
+
+            <!-- Card 4 -->
+            <div class="it-firm-v6-card" data-index="4">
+                <div>
+                    <span class="it-firm-v6-icon">
+                        <svg xmlns="http://www.w3.org/2000/svg" width="30" height="30" viewBox="0 0 24 24"><path fill="#ffffff" d="M16.749 2h4.554l.1.014l.099.028l.06.026c.08.034.153.085.219.15l.04.044l.044.057l.054.09l.039.09l.019.064l.014.064l.009.095v4.532a.75.75 0 0 1-1.493.102l-.007-.102V4.559l-6.44 6.44a.75.75 0 0 1-.976.073L13 11L9.97 8.09l-5.69 5.689a.75.75 0 0 1-1.133-.977l.073-.084l6.22-6.22a.75.75 0 0 1 .976-.072l.084.072l3.03 2.91L19.438 3.5h-2.69a.75.75 0 0 1-.742-.648l-.007-.102a.75.75 0 0 1 .648-.743L16.75 2ZM3.75 17a.75.75 0 0 1 .75.75v3.5a.75.75 0 0 1-1.5 0v-3.5a.75.75 0 0 1 .75-.75Zm5.75-3.25a.75.75 0 0 0-1.5 0v7.5a.75.75 0 0 0 1.5 0v-7.5ZM13.75 15a.75.75 0 0 1 .75.75v5.5a.75.75 0 0 1-1.5 0v-5.5a.75.75 0 0 1 .75-.75Zm5.75-4.25a.75.75 0 0 0-1.5 0v10.5a.75.75 0 0 0 1.5 0v-10.5Z"/></svg>
+                    </span>
+                    <p class="it-firm-v6-desc">Projects deployed faster with our agile delivery framework.</p>
+                    <span class="it-firm-v6-tc">Average across all sectors</span>
+                </div>
+                <div>
+                    <span class="it-firm-v6-big-num" data-target="3" data-suffix="x">0x</span>
+                </div>
+                <div class="it-firm-v6-card-border"></div>
+            </div>
+
+        </div><!-- /track -->
+    </div><!-- /stage -->
+
+    <!-- dots -->
+    <div class="it-firm-v6-dots" id="itDots">
+        <div class="it-firm-v6-dot"></div>
+        <div class="it-firm-v6-dot"></div>
+        <div class="it-firm-v6-dot"></div>
+        <div class="it-firm-v6-dot"></div>
+        <div class="it-firm-v6-dot"></div>
+    </div>
+
+    <!-- progress bar -->
+    <div class="it-firm-v6-progress-wrap">
+        <div class="it-firm-v6-progress-bar" id="itProgressBar"></div>
+    </div>
+
+    <!-- arrows -->
+    <div class="it-firm-v6-nav">
+        <button class="it-firm-v6-arrow" id="itPrev" aria-label="Previous"><svg xmlns="http://www.w3.org/2000/svg" width="200" height="200" viewBox="0 0 24 24"><path fill="#f4f4f4" d="m12 15.288l.688-.688l-2.1-2.1H15.5v-1h-4.912l2.1-2.1L12 8.712L8.712 12L12 15.288ZM12.003 21q-1.866 0-3.51-.708q-1.643-.709-2.859-1.924q-1.216-1.214-1.925-2.856Q3 13.87 3 12.003q0-1.866.708-3.51q.709-1.643 1.924-2.859q1.214-1.216 2.856-1.925Q10.13 3 11.997 3q1.866 0 3.51.708q1.643.709 2.859 1.924q1.216 1.214 1.925 2.856Q21 10.13 21 11.997q0 1.866-.708 3.51q-.709 1.643-1.924 2.859q-1.214 1.216-2.856 1.925Q13.87 21 12.003 21ZM12 20q3.35 0 5.675-2.325T20 12q0-3.35-2.325-5.675T12 4Q8.65 4 6.325 6.325T4 12q0 3.35 2.325 5.675T12 20Zm0-8Z"/></svg></button>
+        <button class="it-firm-v6-arrow" id="itNext" aria-label="Next"><svg xmlns="http://www.w3.org/2000/svg" width="200" height="200" viewBox="0 0 24 24"><path fill="#f4f4f4" d="m12 15.288l.688-.688l-2.1-2.1H15.5v-1h-4.912l2.1-2.1L12 8.712L8.712 12L12 15.288ZM12.003 21q-1.866 0-3.51-.708q-1.643-.709-2.859-1.924q-1.216-1.214-1.925-2.856Q3 13.87 3 12.003q0-1.866.708-3.51q.709-1.643 1.924-2.859q1.214-1.216 2.856-1.925Q10.13 3 11.997 3q1.866 0 3.51.708q1.643.709 2.859 1.924q1.216 1.214 1.925 2.856Q21 10.13 21 11.997q0 1.866-.708 3.51q-.709 1.643-1.924 2.859q-1.214 1.216-2.856 1.925Q13.87 21 12.003 21ZM12 20q3.35 0 5.675-2.325T20 12q0-3.35-2.325-5.675T12 4Q8.65 4 6.325 6.325T4 12q0 3.35 2.325 5.675T12 20Zm0-8Z"/></svg></button>
+    </div>
+
+</div><!-- /wrapper -->
+
+<script>
+(function () {
+    const TOTAL      = 5;
+    const INTERVAL   = 6000;   // ms each card stays centred
+    const ANIM_DUR   = 1800;   // count-up duration ms
+
+    const cards   = Array.from(document.querySelectorAll('.it-firm-v6-card'));
+    const dots    = Array.from(document.querySelectorAll('.it-firm-v6-dot'));
+    const bar     = document.getElementById('itProgressBar');
+    const btnPrev = document.getElementById('itPrev');
+    const btnNext = document.getElementById('itNext');
+
+    let current        = 0;
+    let autoTimer      = null;
+    let progressTimer  = null;
+    let animated       = new Set();   // tracks which cards have had count-up already
+
+    /* ── position helper ── */
+    // pos is relative: -2 | -1 | 0 | 1 | 2
+    function posFor(cardIndex) {
+        let diff = cardIndex - current;
+        // wrap around
+        if (diff > 2)  diff -= TOTAL;
+        if (diff < -2) diff += TOTAL;
+        return diff;
+    }
+
+    /* ── render positions ── */
+    function render() {
+        cards.forEach((card, i) => {
+            const pos = posFor(i);
+            // clamp to ±2 for the attribute (handles any extra cards if ever extended)
+            const clampedPos = Math.max(-2, Math.min(2, pos));
+            card.setAttribute('data-pos', clampedPos);
+        });
+
+        dots.forEach((d, i) => {
+            d.classList.toggle('active', i === current);
+        });
+
+        // trigger count-up for the newly centred card
+        if (!animated.has(current)) {
+            animated.add(current);
+            countUp(cards[current]);
+        }
+    }
+
+    /* ── count-up ── */
+    function easeOut(t) { return 1 - Math.pow(1 - t, 3); }
+
+    function countUp(card) {
+        const el     = card.querySelector('.it-firm-v6-big-num');
+        const target = parseInt(el.dataset.target, 10);
+        const suffix = el.dataset.suffix || '';
+
+        if (target === 0) { el.textContent = '0' + suffix; return; }
+
+        const start = performance.now();
+        (function step(now) {
+            const t   = Math.min((now - start) / ANIM_DUR, 1);
+            const val = Math.floor(easeOut(t) * target);
+            el.textContent = val + suffix;
+            if (t < 1) requestAnimationFrame(step);
+            else el.textContent = target + suffix;
+        })(start);
+    }
+
+    /* ── progress bar ── */
+    function startProgress() {
+        clearInterval(progressTimer);
+        bar.style.transition = 'none';
+        bar.style.width = '0%';
+        // force reflow
+        void bar.offsetWidth;
+        bar.style.transition = `width ${INTERVAL}ms linear`;
+        bar.style.width = '100%';
+    }
+
+    /* ── advance ── */
+    function goTo(index) {
+        current = ((index % TOTAL) + TOTAL) % TOTAL;
+        render();
+        startProgress();
+    }
+
+    function next() { goTo(current + 1); }
+    function prev() { goTo(current - 1); }
+
+    /* ── auto-play ── */
+    function startAuto() {
+        clearInterval(autoTimer);
+        autoTimer = setInterval(next, INTERVAL);
+    }
+
+    function resetAuto() {
+        startAuto();
+        startProgress();
+    }
+
+    /* ── click on side cards ── */
+    cards.forEach((card, i) => {
+        card.addEventListener('click', () => {
+            const pos = posFor(i);
+            if (pos === -1) { prev(); resetAuto(); }
+            if (pos ===  1) { next(); resetAuto(); }
+        });
+    });
+
+    /* ── arrow buttons ── */
+    btnPrev.addEventListener('click', () => { prev(); resetAuto(); });
+    btnNext.addEventListener('click', () => { next(); resetAuto(); });
+
+    /* ── keyboard ── */
+    document.addEventListener('keydown', e => {
+        if (e.key === 'ArrowLeft')  { prev(); resetAuto(); }
+        if (e.key === 'ArrowRight') { next(); resetAuto(); }
+    });
+
+    /* ── init ── */
+    render();
+    startAuto();
+    startProgress();
+
+})();
+</script>
+
+</body>
+</html>
+
+
+
+
+
+
+
+
+
+
+
+
+
+<cronos-footer></cronos-footer>

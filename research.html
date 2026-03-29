@@ -84,7 +84,7 @@
         .pit-nav-inner-container {
             display: flex;
             width: 100%;
-            max-width: 1200px;
+            max-width: 1300px;
             gap: 20px;
         }
 
@@ -254,6 +254,310 @@
 
 </body>
 </html>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<div class="cdc-v4-root-wrapper">
+    <style>
+        .cdc-v4-root-wrapper {
+            --cdc-max-width: 1300px;
+            --cdc-blue-brand: #0577DA;
+            --cdc-gold-status: #107fe0;
+            --cdc-grey-status: #e5e8eb;
+            --cdc-navy-deep: #0b2751;
+            --cdc-line-light: #e5e8eb;
+            --cdc-line-dark: #1e2b3d;
+            --cdc-gutter-size: 32px;
+
+            font-family: "Circular Std", -apple-system, system-ui, sans-serif;
+            margin: 0;
+            padding: 0;
+            background: #fff;
+        }
+
+        .cdc-v4-root-wrapper *, 
+        .cdc-v4-root-wrapper *:before, 
+        .cdc-v4-root-wrapper *:after {
+            box-sizing: border-box;
+        }
+
+        .cdc-v4-section {
+            width: 100%;
+            padding: 80px 0;
+            display: flex;
+            justify-content: center;
+        }
+
+        .cdc-v4-section-light { background-color: #ffffff; }
+        .cdc-v4-section-dark { background-color: var(--cdc-navy-deep); color: #ffffff; }
+
+        .cdc-v4-container {
+            width: var(--cdc-max-width);
+            max-width: 95%;
+            position: relative;
+        }
+
+        .cdc-v4-header {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            margin-bottom: 40px;
+        }
+
+        .cdc-v4-header h2 {
+            font-size: 32px;
+            font-weight: 700;
+            margin: 0;
+            letter-spacing: -0.5px;
+        }
+
+        .cdc-v4-link {
+            color: var(--cdc-blue-brand);
+            text-decoration: none;
+            font-weight: 500;
+            font-size: 16px;
+            display: flex;
+            align-items: center;
+            gap: 6px;
+        }
+
+        .cdc-v4-grid {
+            display: grid;
+            grid-template-columns: repeat(4, 1fr);
+            gap: var(--cdc-gutter-size);
+            position: relative;
+        }
+
+        /* DIVIDER LOGIC: Exact mid-gutter placement for Desktop */
+        @media (min-width: 1025px) {
+            .cdc-v4-card { position: relative; }
+            .cdc-v4-card:not(:last-child)::after {
+                content: "";
+                position: absolute;
+                top: 0;
+                bottom: 0;
+                right: calc((var(--cdc-gutter-size) / 2) * -1);
+                width: 1px;
+                background-color: var(--cdc-line-light);
+            }
+            .cdc-v4-section-dark .cdc-v4-card:not(:last-child)::after {
+                background-color: var(--cdc-line-dark);
+            }
+        }
+
+        .cdc-v4-card {
+            text-decoration: none;
+            color: inherit;
+            display: flex;
+            flex-direction: column;
+        }
+
+        /* IMAGE SIZE ENFORCEMENT */
+        .cdc-v4-img-frame {
+            width: 100%;
+            aspect-ratio: 14 / 9; 
+            margin-bottom: 20px;
+            overflow: hidden;
+            background: #f0f2f5;
+        }
+
+        .cdc-v4-img-frame img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover; 
+            display: block;
+        }
+
+        .cdc-v4-meta-row {
+            display: flex;
+            align-items: center;
+            gap: 8px;
+            margin-bottom: 12px;
+            font-size: 12px;
+            font-weight: 700;
+        }
+
+        .cdc-v4-badge {
+            padding: 3px 8px;
+            font-size: 12px;
+            text-transform: uppercase; letter-spacing: 0.04em;
+        }
+
+        .cdc-v4-badge-gold { background: var(--cdc-gold-status); color: #fff; }
+        .cdc-v4-badge-grey { background: var(--cdc-grey-status); color: #061121; }
+
+        .cdc-v4-category { color: var(--cdc-blue-brand); text-transform: uppercase; }
+        .cdc-v4-date { color: #707a8a; }
+        .cdc-v4-section-dark .cdc-v4-date { color: #8e96a3; }
+
+        .cdc-v4-headline {
+            font-size: 20px;
+            line-height: 1.35;
+            font-weight: 700;
+            margin: 0;
+        }
+
+        /* Responsive Breakpoints */
+        @media (max-width: 1024px) {
+            .cdc-v4-grid { grid-template-columns: repeat(2, 1fr); }
+            .cdc-v4-card::after { display: none; }
+            /* Vertical dividers for 2-column tablet layout */
+            .cdc-v4-card:nth-child(odd)::after {
+                content: "";
+                position: absolute;
+                top: 0; bottom: 0;
+                right: calc((var(--cdc-gutter-size) / 2) * -1);
+                width: 1px;
+                background-color: var(--cdc-line-light);
+            }
+        }
+
+        @media (max-width: 600px) {
+            .cdc-v4-grid { grid-template-columns: 1fr; }
+            .cdc-v4-card::after { display: none !important; }
+            .cdc-v4-card { padding-bottom: 24px; border-bottom: 1px solid var(--cdc-line-light); margin-bottom: 24px; }
+            .cdc-v4-section-dark .cdc-v4-card { border-bottom-color: var(--cdc-line-dark); }
+            .cdc-v4-card:last-child { border: none; margin-bottom: 0; }
+        }
+    </style>
+
+    <section class="cdc-v4-section cdc-v4-section-light">
+        <div class="cdc-v4-container">
+            <div class="cdc-v4-header">
+                <h2>Top Product News</h2>
+                <a href="#" class="cdc-v4-link">All Product News &rarr;</a>
+            </div>
+            <div class="cdc-v4-grid">
+                <a href="#" class="cdc-v4-card">
+                    <div class="cdc-v4-img-frame"><img src="https://crypto.com/product-news/content/images/2024/01/IPO-Early-Bird-Blog.jpg" alt="IPO"></div>
+                    <div class="cdc-v4-meta-row">
+                        <span class="cdc-v4-category">APP</span>
+                        <span class="cdc-v4-date">• 7 OCT 2025</span>
+                    </div>
+                    <h3 class="cdc-v4-headline">Introducing IPO Early Bird in the Crypto.com App</h3>
+                </a>
+                <a href="#" class="cdc-v4-card">
+                    <div class="cdc-v4-img-frame"><img src="https://crypto.com/product-news/content/images/2023/10/Send-Instantly-Blog-1.jpg" alt="Send"></div>
+                    <div class="cdc-v4-meta-row">
+                        <span class="cdc-v4-category">APP</span>
+                        <span class="cdc-v4-date">• 2 OCT 2025</span>
+                    </div>
+                    <h3 class="cdc-v4-headline">Introducing Send: Instantly Move Money Anywhere for Free</h3>
+                </a>
+                <a href="#" class="cdc-v4-card">
+                    <div class="cdc-v4-img-frame"><img src="https://crypto.com/product-news/content/images/2023/06/Dual-Invest-Exchange-Blog.jpg" alt="Dual"></div>
+                    <div class="cdc-v4-meta-row">
+                        <span class="cdc-v4-category">EXCHANGE</span>
+                        <span class="cdc-v4-date">• 22 SEP 2025</span>
+                    </div>
+                    <h3 class="cdc-v4-headline">Dual Invest Is Now Available on the Crypto.com Exchange</h3>
+                </a>
+                <a href="#" class="cdc-v4-card">
+                    <div class="cdc-v4-img-frame"><img src="https://crypto.com/product-news/content/images/2024/05/Cash-Earn-Blog.jpg" alt="Cash"></div>
+                    <div class="cdc-v4-meta-row">
+                        <span class="cdc-v4-category">APP</span>
+                        <span class="cdc-v4-date">• 2 SEP 2025</span>
+                    </div>
+                    <h3 class="cdc-v4-headline">Get Up to 5% APY with Cash Earn</h3>
+                </a>
+            </div>
+        </div>
+    </section>
+
+    <section class="cdc-v4-section cdc-v4-section-dark">
+        <div class="cdc-v4-container">
+            <div class="cdc-v4-header">
+                <h2>Latest Events</h2>
+                <a href="#" class="cdc-v4-link">All Events &rarr;</a>
+            </div>
+            <div class="cdc-v4-grid">
+                <a href="#" class="cdc-v4-card">
+                    <div class="cdc-v4-img-frame"><img src="https://crypto.com/events/content/images/2024/08/UCL-Campaign-Blog.jpg" alt="UCL"></div>
+                    <div class="cdc-v4-meta-row">
+                        <span class="cdc-v4-badge cdc-v4-badge-gold">ONGOING</span>
+                        <span class="cdc-v4-category">TRENDING</span>
+                        <span class="cdc-v4-date">• 12 SEP 2025</span>
+                    </div>
+                    <h3 class="cdc-v4-headline">Win UEFA Champions League Tickets and Fan Experiences</h3>
+                </a>
+                <a href="#" class="cdc-v4-card">
+                    <div class="cdc-v4-img-frame"><img src="https://crypto.com/events/content/images/2024/06/Power-Slap-15-Blog.jpg" alt="Slap"></div>
+                    <div class="cdc-v4-meta-row">
+                        <span class="cdc-v4-badge cdc-v4-badge-grey">ENDED</span>
+                        <span class="cdc-v4-category">TRENDING</span>
+                        <span class="cdc-v4-date">• 16 SEP 2025</span>
+                    </div>
+                    <h3 class="cdc-v4-headline">Who’s Ready For Power Slap 15? Tickets Available Now</h3>
+                </a>
+                <a href="#" class="cdc-v4-card">
+                    <div class="cdc-v4-img-frame"><img src="https://crypto.com/events/content/images/2024/07/dYdX-Onchain-Royale-Blog.jpg" alt="dYdX"></div>
+                    <div class="cdc-v4-meta-row">
+                        <span class="cdc-v4-badge cdc-v4-badge-grey">ENDED</span>
+                        <span class="cdc-v4-category">ONCHAIN</span>
+                        <span class="cdc-v4-date">• 9 JUL 2025</span>
+                    </div>
+                    <h3 class="cdc-v4-headline">Win a share of 60,000 USDC in the Onchain Royale</h3>
+                </a>
+                <a href="#" class="cdc-v4-card">
+                    <div class="cdc-v4-img-frame"><img src="https://crypto.com/events/content/images/2024/05/Bitcoin-Pizza-Day-Blog.jpg" alt="Pizza"></div>
+                    <div class="cdc-v4-meta-row">
+                        <span class="cdc-v4-badge cdc-v4-badge-grey">ENDED</span>
+                        <span class="cdc-v4-category">PROMOTIONS</span>
+                        <span class="cdc-v4-date">• 22 MAY 2025</span>
+                    </div>
+                    <h3 class="cdc-v4-headline">Win US$100 of BTC in Celebration of Bitcoin Pizza Day</h3>
+                </a>
+            </div>
+        </div>
+    </section>
+</div>
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 
 <cronos-footer></cronos-footer>

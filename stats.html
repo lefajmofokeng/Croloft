@@ -1,0 +1,289 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>SA Labour Market Statistics | Vetted</title>
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+    <style>
+        @import url('https://fonts.cdnfonts.com/css/circular-std');
+
+        :root {
+            --primary: #1a73e8;
+            --dark: #202124;
+            --grey: #5f6368;
+            --light-bg: #f8f9fa;
+            --border: #dadce0;
+            --max-width: 1200px;
+        }
+
+        body {
+            font-family: 'Circular Std', sans-serif;
+            margin: 0;
+            padding: 0;
+            background-color: #fff;
+            color: var(--dark);
+            line-height: 1.6;
+        }
+
+        /* 1200px Alignment Logic */
+        .container {
+            max-width: var(--max-width);
+            margin: 0 auto;
+            padding: 0 20px;
+            box-sizing: border-box;
+        }
+
+        header {
+            padding: 60px 0 40px;
+            border-bottom: 1px solid var(--border);
+            margin-bottom: 40px;
+        }
+
+        .stats-headline {
+            font-size: 42px;
+            font-weight: 700;
+            margin: 0 0 10px;
+            letter-spacing: -0.02em;
+        }
+
+        .stats-subheadline {
+            color: var(--grey);
+            font-size: 18px;
+            max-width: 700px;
+        }
+
+        /* Stats Grid */
+        .stats-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 24px;
+            margin-bottom: 60px;
+        }
+
+        .stat-card {
+            border: 1px solid var(--border);
+            border-radius: 8px;
+            padding: 24px;
+            background: #fff;
+        }
+
+        .stat-card h3 {
+            font-size: 16px;
+            color: var(--grey);
+            margin: 0 0 15px;
+            font-weight: 500;
+        }
+
+        .chart-container {
+            position: relative;
+            height: 250px;
+            width: 100%;
+        }
+
+        /* Industry Insight Section */
+        .industry-section {
+            background-color: var(--light-bg);
+            padding: 60px 0;
+            margin-bottom: 60px;
+        }
+
+        .section-title {
+            font-size: 28px;
+            margin-bottom: 30px;
+        }
+
+        .industry-split {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 40px;
+        }
+
+        .industry-list {
+            background: #fff;
+            border: 1px solid var(--border);
+            border-radius: 8px;
+            padding: 24px;
+        }
+
+        .industry-list h4 {
+            margin-top: 0;
+            color: var(--primary);
+            border-bottom: 2px solid var(--light-bg);
+            padding-bottom: 10px;
+        }
+
+        .industry-item {
+            display: flex;
+            justify-content: space-between;
+            padding: 12px 0;
+            border-bottom: 1px solid var(--light-bg);
+        }
+
+        .tag-high { color: #1e8e3e; font-weight: 600; }
+        .tag-low { color: #d93025; font-weight: 600; }
+
+        /* Mobile Adjustments */
+        @media (max-width: 768px) {
+            .stats-headline { font-size: 32px; }
+            .industry-split { grid-template-columns: 1fr; }
+            .container { padding: 0 20px; }
+        }
+    </style>
+</head>
+<body>
+
+    <header>
+        <div class="container">
+            <h1 class="stats-headline">Market Insights</h1>
+            <p class="stats-subheadline">An overview of South Africa's current employment landscape based on the latest Quarterly Labour Force Survey (QLFS) data.</p>
+        </div>
+    </header>
+
+    <main class="container">
+        
+        <div class="stats-grid">
+            <div class="stat-card">
+                <h3>Unemployment by Age Group</h3>
+                <div class="chart-container">
+                    <canvas id="ageChart"></canvas>
+                </div>
+            </div>
+            <div class="stat-card">
+                <h3>Unemployment by Gender</h3>
+                <div class="chart-container">
+                    <canvas id="genderChart"></canvas>
+                </div>
+            </div>
+        </div>
+
+        <div class="stats-grid" style="grid-template-columns: 1fr;">
+            <div class="stat-card">
+                <h3>Unemployment Rate by Province (%)</h3>
+                <div class="chart-container" style="height: 350px;">
+                    <canvas id="provinceChart"></canvas>
+                </div>
+            </div>
+        </div>
+
+    </main>
+
+    <div class="industry-section">
+        <div class="container">
+            <h2 class="section-title">Industry Analysis</h2>
+            <div class="industry-split">
+                
+                <div class="industry-list">
+                    <h4>Top Hiring Industries</h4>
+                    <div class="industry-item">
+                        <span>Community & Social Services</span>
+                        <span class="tag-high">+2.4%</span>
+                    </div>
+                    <div class="industry-item">
+                        <span>Finance & Business Services</span>
+                        <span class="tag-high">+1.8%</span>
+                    </div>
+                    <div class="industry-item">
+                        <span>Trade (Retail/Wholesale)</span>
+                        <span class="tag-high">+1.1%</span>
+                    </div>
+                    <div class="industry-item">
+                        <span>Transport & Logistics</span>
+                        <span class="tag-high">+0.9%</span>
+                    </div>
+                </div>
+
+                <div class="industry-list">
+                    <h4>Industries Facing Shortages / Decline</h4>
+                    <div class="industry-item">
+                        <span>Manufacturing</span>
+                        <span class="tag-low">-1.4%</span>
+                    </div>
+                    <div class="industry-item">
+                        <span>Mining & Quarrying</span>
+                        <span class="tag-low">-0.8%</span>
+                    </div>
+                    <div class="industry-item">
+                        <span>Construction</span>
+                        <span class="tag-low">-0.5%</span>
+                    </div>
+                    <div class="industry-item">
+                        <span>Agriculture</span>
+                        <span class="tag-low">-0.2%</span>
+                    </div>
+                </div>
+
+            </div>
+        </div>
+    </div>
+
+    <footer class="container" style="padding-bottom: 60px; color: var(--grey); font-size: 14px;">
+        <p>* Data sourced from Statistics South Africa (Stats SA) QLFS Reports. Figures represent the official unemployment rate (expanded definition may vary).</p>
+    </footer>
+
+    <script>
+        // Chart Global Configuration
+        Chart.defaults.font.family = "'Circular Std', sans-serif";
+        Chart.defaults.color = '#5f6368';
+
+        // 1. Age Chart
+        new Chart(document.getElementById('ageChart'), {
+            type: 'bar',
+            data: {
+                labels: ['15-24', '25-34', '35-44', '45-54', '55-64'],
+                datasets: [{
+                    label: 'Unemployment Rate %',
+                    data: [59.4, 39.0, 27.2, 18.1, 12.5],
+                    backgroundColor: '#1a73e8'
+                }]
+            },
+            options: {
+                responsive: true,
+                maintainAspectRatio: false,
+                plugins: { legend: { display: false } },
+                scales: { y: { beginAtZero: true, max: 70 } }
+            }
+        });
+
+        // 2. Gender Chart
+        new Chart(document.getElementById('genderChart'), {
+            type: 'doughnut',
+            data: {
+                labels: ['Men', 'Women'],
+                datasets: [{
+                    data: [31.2, 35.7],
+                    backgroundColor: ['#1a73e8', '#ffca28'],
+                    borderWidth: 0
+                }]
+            },
+            options: {
+                responsive: true,
+                maintainAspectRatio: false,
+                plugins: {
+                    legend: { position: 'bottom' }
+                }
+            }
+        });
+
+        // 3. Province Chart
+        new Chart(document.getElementById('provinceChart'), {
+            type: 'bar',
+            data: {
+                labels: ['Gauteng', 'Western Cape', 'KZN', 'Free State', 'Eastern Cape', 'Limpopo', 'Mpumalanga', 'North West', 'Northern Cape'],
+                datasets: [{
+                    label: 'Official Unemployment Rate %',
+                    data: [33.7, 21.4, 29.9, 37.2, 41.9, 30.3, 35.1, 38.5, 27.3],
+                    backgroundColor: '#1a73e8'
+                }]
+            },
+            options: {
+                indexAxis: 'y',
+                responsive: true,
+                maintainAspectRatio: false,
+                plugins: { legend: { display: false } },
+                scales: { x: { beginAtZero: true, max: 50 } }
+            }
+        });
+    </script>
+</body>
+</html>

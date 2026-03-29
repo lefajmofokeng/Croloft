@@ -39,6 +39,7 @@
       heading: 'Discover',
       links: [
         { label: 'About Us',                  href: '#' },
+        { label: 'Why Croloft?',                  href: 'why-croloft.html' },
         { label: 'Roadmap',                   href: 'roadmap.html' },
         { label: 'Innovations',               href: 'innovations.html' },
         { label: 'Careers',                   href: 'careers.html' },
