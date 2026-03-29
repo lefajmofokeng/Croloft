@@ -9,7 +9,7 @@
     {
       heading: 'News and Media',
       links: [
-        { label: 'Product News',     href: '#' },
+        { label: 'Product News',     href: 'product-news.html' },
         { label: 'Press Enquiries',  href: '#' },
         { label: 'Blog',             href: '#' },
       ]
@@ -38,8 +38,8 @@
     {
       heading: 'Discover',
       links: [
-        { label: 'About Us',                  href: '#' },
-        { label: 'Why Croloft?',                  href: 'why-croloft.html' },
+        { label: 'About Us',                  href: 'about.html' },
+        { label: 'Why Croloft?',              href: 'why-croloft.html' },
         { label: 'Roadmap',                   href: 'roadmap.html' },
         { label: 'Innovations',               href: 'innovations.html' },
         { label: 'Careers',                   href: 'careers.html' },

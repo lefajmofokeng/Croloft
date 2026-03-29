@@ -3,7 +3,7 @@
 <html lang="en">
 <head>
     <meta charset="UTF-8">
-    <title>Glossary</title>
+    <title>Events</title>
     
     <script src="header.js" defer></script>
     <script src="footer.js" defer></script> 
@@ -15,41 +15,6 @@
 
 </body>
 </html>
-
-
-<style>
-        @font-face {
-            font-family: 'Circular Std';
-            src: url('fonts/CircularStd-Book.ttf') format('truetype');
-            font-weight: 400;
-            font-style: normal;
-        }
-
-        /* Circular Std - Medium (500) */
-        @font-face {
-            font-family: 'Circular Std';
-            src: url('fonts/CircularStd.ttf') format('truetype');
-            font-weight: 500;
-            font-style: normal;
-        }
-
-        /* Circular Std - Bold (700) */
-        @font-face {
-            font-family: 'Circular Std';
-            src: url('fonts/CircularStd-Bold.ttf') format('truetype');
-            font-weight: 600;
-            font-style: normal;
-        }
-    </style>
-
-
-
-
-
-
-
-
-
 
 
 
@@ -57,715 +22,476 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Events & Broadcasts</title>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>IT Company Events</title>
+  <link href="https://fonts.cdnfonts.com/css/circular-std" rel="stylesheet" />
+  <style>
+
+    /* ═══════════════════════════════════════════
+       NAMESPACE: itevt-  — no global conflicts
+    ═══════════════════════════════════════════ */
+
+    .itevt-root *,
+    .itevt-root *::before,
+    .itevt-root *::after {
+      box-sizing: border-box;
+      margin: 0;
+      padding: 0;
+    }
+
+    * {
+        padding: 0;
+        margin: 0;
+    }
+
+    .itevt-root {
+      --itevt-font:   'Circular Std', -apple-system, BlinkMacSystemFont, sans-serif;
+      --itevt-bg:     #ffffff;
+      --itevt-text:   #0f0f0f;
+      --itevt-muted:  #666;
+      --itevt-border: #e2e2e2;
+      --itevt-accent: #0577da;
+
+      font-family:            var(--itevt-font);
+      background:             var(--itevt-bg);
+      color:                  var(--itevt-text);
+      -webkit-font-smoothing: antialiased;
+      padding:                90px 24px 72px;
+      max-width:              1300px;
+      margin:                 0 auto;
+      width:                  100%;
+    }
+
+    /* ════ PAGE TITLE ════ */
+    .itevt-page-title {
+      font-size: 44px;
+      font-weight: 700;
+      letter-spacing: -0.2px;
+      margin-bottom: 24px;
+    }
+
+    /* ════ BADGES ════ */
+    .itevt-badge {
+      display: inline-flex;
+      align-items: center;
+      font-size: 11px;
+      font-weight: 600;
+      letter-spacing: 0.05em;
+      text-transform: uppercase;
+      padding: 4px 6px;
+      white-space: nowrap;
+      line-height: 1.6;
+      font-family: var(--itevt-font);
+    }
+    .itevt-badge--ongoing { background: #0577da; color: #fff; }
+    .itevt-badge--ended   { background: #e2e2e2; color: #555; }
     
-    <script src="header.js" defer></script>
-    <script src="footer.js" defer></script> 
+    /* Updated tag style to mimic the text-only look in the reference */
+    .itevt-badge--tag     { background: transparent; color: var(--itevt-accent); padding: 0; }
+    .itevt-badge--orange  { background: transparent; color: var(--itevt-accent); padding: 0; }
+    .itevt-badge--green   { background: transparent; color: var(--itevt-accent); padding: 0; }
 
-    <style>
-        /* FONTS */
-        @font-face {
-            font-family: 'Circular Std';
-            src: url('fonts/CircularStd-Book.ttf') format('truetype');
-            font-weight: 400;
-            font-style: normal;
-        }
-        @font-face {
-            font-family: 'Circular Std';
-            src: url('fonts/CircularStd.ttf') format('truetype');
-            font-weight: 500;
-            font-style: normal;
-        }
-        @font-face {
-            font-family: 'Circular Std';
-            src: url('fonts/CircularStd-Bold.ttf') format('truetype');
-            font-weight: 600;
-            font-style: normal;
-        }
+    .itevt-meta-sep {
+      font-size: 12px;
+      font-weight: 400;
+      text-transform: uppercase;
+      color: #080d1b; letter-spacing: 0.08em;
+    }
 
-        /* NAMESPACED DESIGN SYSTEM */
-        :root {
-            --itcp-black: #080808;
-            --itcp-white: #ffffff;
-            --itcp-accent: #0091ff; /* Tech-focused neon */
-            --itcp-gray: #1a1a1a;
-            --itcp-text-dim: #999;
-        }
+    /* ══════════════════════════════════════════════════════
+       FEATURED BLOCK
+    ══════════════════════════════════════════════════════ */
+    .itevt-featured {
+      display: grid;
+      grid-template-columns: 1fr 300px;
+      gap: 24px; /* Added gap to detach the hero from the side stack */
+      margin-bottom: 40px;
+    }
 
-        .itcp-ev-cosmos {
-            font-family: 'Circular Std', 'Inter', -apple-system, sans-serif;
-            background-color: var(--itcp-black);
-            color: var(--itcp-white);
-            margin: 0;
-            overflow-x: hidden;
-        }
+    @media (max-width: 760px) {
+      .itevt-featured { grid-template-columns: 1fr; }
+    }
 
-        * {
-            box-sizing: border-box;
-            padding: 0;
-            margin: 0;
-        }
+    /* ── Hero ── */
+    .itevt-hero {
+      display: flex;
+      flex-direction: column;
+      text-decoration: none;
+      color: inherit; border-right: 1px solid #d1d1d1; padding-right: 20px;
+    }
 
-        /* --- HERO PORTAL --- */
-        .itcp-ev-hero-portal {
-            height: 100vh;
-            width: 100%;
-            position: relative;
-            display: flex;
-            align-items: center;
-            padding: 0 10%;
-            box-sizing: border-box;
-        }
+    .itevt-hero-img {
+      width: 100%;
+      display: block;
+      aspect-ratio: 755 / 405;
+      object-fit: cover;
+    }
 
-        .itcp-ev-video-shroud {
-            position: absolute;
-            top: 0;
-            left: 0;
-            width: 100%;
-            height: 100%;
-            z-index: 1;
-        }
+    .itevt-hero-body {
+      padding: 16px 0 0 0; /* Aligned exactly to the left edge of the image */
+    }
+    
+    .itevt-hero-meta {
+      display: flex;
+      align-items: center;
+      gap: 8px;
+      flex-wrap: wrap;
+      margin-bottom: 8px;
+    }
+    
+    .itevt-hero-title {
+      font-size: clamp(18px, 1.9vw, 56px);
+      font-weight: 600;
+      line-height: 1.25;
+      letter-spacing: -0.3px;
+      transition: color .15s;
+    }
+    .itevt-hero:hover .itevt-hero-title { color: var(--itevt-accent); }
 
-        .itcp-ev-bg-video {
-            width: 100%;
-            height: 100%;
-            object-fit: cover;
-        }
+    /* ── Side stack ── */
+    .itevt-side-stack {
+      display: flex;
+      flex-direction: column;
+      gap: 24px; /* Added vertical gap to detach the two side cards */
+    }
 
-        .itcp-ev-glass-overlay {
-            position: absolute;
-            inset: 0;
-            background: rgba(0,0,0,0.4);
-            z-index: 2;
-        }
+    .itevt-side-card {
+      display: flex;
+      flex-direction: column;
+      text-decoration: none;
+      color: inherit;
+    }
 
-        .itcp-ev-hero-stage {
-            position: relative;
-            z-index: 10;
-            max-width: 800px;
-        }
+    .itevt-side-img {
+      width: 100%;
+      display: block;
+      aspect-ratio: 200 / 130;
+      object-fit: cover;
+    }
 
-        .itcp-ev-live-indicator {
-            display: flex;
-            align-items: center;
-            gap: 12px;
-            margin-bottom: 30px;
-        }
+    .itevt-side-body {
+      padding: 12px 0 0 0; /* Aligned exactly to the left edge */
+    }
+    
+    .itevt-side-meta {
+      display: flex;
+      align-items: center;
+      gap: 8px;
+      flex-wrap: wrap;
+      margin-bottom: 6px;
+    }
+    
+    .itevt-side-title {
+      font-size: 20px;
+      font-weight: 600;
+      line-height: 1.35;
+      transition: color .15s;
+    }
+    .itevt-side-card:hover .itevt-side-title { color: var(--itevt-accent); }
 
-        .itcp-ev-pulse-core {
-            width: 10px;
-            height: 10px;
-            background: #ff3b3b;
-            border-radius: 50%;
-            box-shadow: 0 0 15px #ff3b3b;
-            animation: itcp-pulse 2s infinite;
-        }
+    /* ════ HORIZONTAL RULE ════ */
+    .itevt-hr {
+      border: none;
+      border-top: 1px solid var(--itevt-border);
+      margin: 0 0 28px;
+    }
 
-        .itcp-ev-indicator-text {
-            font-size: 11px;
-            font-weight: 500;
-            letter-spacing: 2px;
-            color: var(--itcp-white);
-            text-transform: uppercase;
-        }
+    /* ════ SECTION HEADER ════ */
+    .itevt-section-hd {
+      display: flex;
+      align-items: center;
+      gap: 6px;
+      margin-bottom: 24px;
+    }
+    .itevt-section-chevron {
+      color: var(--itevt-accent);
+      font-size: 14px;
+      line-height: 1;
+    }
+    .itevt-section-label {
+      font-size: 20px;
+      font-weight: 700;
+      letter-spacing: -0.2px;
+    }
+    .itevt-section-label em {
+      font-style: normal;
+      color: var(--itevt-accent);
+    }
 
-        .itcp-ev-mega-title {
-            font-size: clamp(48px, 8vw, 100px);
-            font-weight: 500;
-            line-height: 0.9;
-            margin: 0;
-            letter-spacing: -3px;
-        }
+    /* ══════════════════════════════════════════════════════
+       EVENTS GRID
+    ══════════════════════════════════════════════════════ */
+    .itevt-grid {
+      display: grid;
+      grid-template-columns: repeat(4, 1fr); 
+      row-gap: 36px; /* Replacing bottom borders with clean row gaps */
+    }
 
-        .itcp-ev-outline-text {
-            color: transparent;
-            -webkit-text-stroke: 1.5px var(--itcp-white);
-            opacity: 0.6;
-        }
+    .itevt-card {
+      display: flex;
+      flex-direction: column;
+      text-decoration: none;
+      color: inherit;
+      border-right: 1px solid var(--itevt-border);
+      padding-right: 20px;
+      padding-left: 20px;
+    }
 
-        .itcp-ev-hero-desc {
-            font-size: 18px;
-            color: var(--itcp-text-dim);
-            margin: 30px 0 50px;
-            max-width: 500px;
-            line-height: 1.6;
-        }
+    /* Handling standard 4 column borders/paddings */
+    .itevt-card:nth-child(4n) {
+      border-right: none;
+      padding-right: 0;
+    }
+    .itevt-card:nth-child(4n+1) {
+      padding-left: 0;
+    }
 
-        .itcp-ev-hero-ctrls {
-            display: flex;
-            gap: 20px;
-        }
+    @media (max-width: 860px) { 
+      .itevt-grid { grid-template-columns: repeat(2,1fr); }
+      .itevt-card {
+        border-right: 1px solid var(--itevt-border);
+        padding-right: 20px;
+        padding-left: 20px;
+      }
+      .itevt-card:nth-child(even) { border-right: none; padding-right: 0; }
+      .itevt-card:nth-child(odd) { padding-left: 0; }
+       .itevt-hero { border-right: none; padding-right: 0;}
+    }
+    
+    @media (max-width: 480px) { 
+      .itevt-grid { grid-template-columns: 1fr; }
+      .itevt-card { border-right: none; padding-right: 0; padding-left: 0; }
+    }
 
-        .itcp-ev-btn-glow {
-            background: var(--itcp-white);
-            color: var(--itcp-black);
-            border: none;
-            padding: 18px 36px;
-            font-weight: 700;
-            cursor: pointer;
-            transition: 0.4s;
-            border-radius: 2px;
-        }
+    .itevt-card-img-wrap {
+      /* Removed the border from the image wrappers */
+      overflow: hidden;
+      margin-bottom: 12px;
+      line-height: 0;
+    }
 
-        .itcp-ev-btn-glow:hover {
-            background: var(--itcp-accent);
-            box-shadow: 0 0 30px rgba(0, 255, 204, 0.4);
-        }
+    .itevt-card-img {
+      width: 100%;
+      display: block;
+      aspect-ratio: 5 / 3;
+      object-fit: cover;
+      transition: transform .35s ease;
+    }
+    .itevt-card:hover .itevt-card-img { transform: scale(1.03); }
 
-        .itcp-ev-btn-ghost {
-            background: rgba(255,255,255,0.05);
-            color: var(--itcp-white);
-            border: 1px solid rgba(255,255,255,0.2);
-            padding: 18px 36px;
-            font-weight: 700;
-            cursor: pointer;
-            backdrop-filter: blur(10px);
-            transition: 0.3s;
-            border-radius: 2px;
-        }
+    .itevt-card-meta {
+      display: flex;
+      align-items: center;
+      gap: 8px;
+      flex-wrap: wrap;
+      margin-bottom: 8px;
+    }
+    
+    .itevt-card-title {
+      font-size: 20px;
+      font-weight: 600;
+      line-height: 1.1;
+      display: -webkit-box;
+      -webkit-line-clamp: 3;
+      -webkit-box-orient: vertical;
+      overflow: hidden;
+      transition: color .15s; letter-spacing: -0.02em;
+    }
+    .itevt-card:hover .itevt-card-title { color: var(--itevt-accent); }
 
-        .itcp-ev-btn-ghost:hover {
-            background: rgba(255,255,255,0.1);
-            border-color: var(--itcp-white);
-        }
-
-        /* --- HERO MODAL --- */
-        .itcp-ev-modal {
-            display: none;
-            position: fixed;
-            top: 0; left: 0;
-            width: 100%; height: 100%;
-            background: rgba(0, 0, 0, 0.85);
-            backdrop-filter: blur(15px);
-            z-index: 9999;
-            align-items: center;
-            justify-content: center;
-            opacity: 0;
-            transition: opacity 0.3s ease;
-        }
-
-        .itcp-ev-modal.active {
-            display: flex;
-            opacity: 1;
-        }
-
-        .itcp-ev-modal-content {
-            background: var(--itcp-gray);
-            padding: 60px 50px;
-            max-width: 650px;
-            width: 90%;
-            border-radius: 4px;
-            border: 1px solid rgba(255,255,255,0.1);
-            position: relative;
-            transform: translateY(20px);
-            transition: transform 0.3s ease;
-            box-shadow: 0 20px 50px rgba(0,0,0,0.5);
-        }
-
-        .itcp-ev-modal.active .itcp-ev-modal-content {
-            transform: translateY(0);
-        }
-
-        .itcp-ev-modal-close {
-            position: absolute;
-            top: 25px;
-            right: 30px;
-            background: none;
-            border: none;
-            color: var(--itcp-text-dim);
-            font-size: 28px;
-            cursor: pointer;
-            transition: color 0.3s;
-        }
-
-        .itcp-ev-modal-close:hover {
-            color: var(--itcp-accent);
-        }
-
-        /* --- GRIDS (Upcoming & Past) --- */
-        .itcp-ev-grid-container {
-            padding: 150px 10% 50px;
-            background: #000;
-        }
-
-        .itcp-ev-past-container {
-            padding: 80px 10% 100px;
-            background: #050505;
-        }
-
-        .itcp-ev-section-intro {
-            margin-bottom: 80px;
-        }
-
-        .itcp-ev-pre-title {
-            color: var(--itcp-accent);
-            font-weight: 800;
-            font-size: 12px;
-            letter-spacing: 4px;
-            text-transform: uppercase;
-            display: block;
-            margin-bottom: 15px;
-        }
-
-        .itcp-ev-h2 {
-            font-size: 48px;
-            font-weight: 700;
-            margin: 0;
-            letter-spacing: -1px;
-        }
-
-        .itcp-ev-modern-grid {
-            display: grid;
-            grid-template-columns: 1fr 1fr;
-            gap: 60px;
-            padding-bottom: 100px; /* Accommodate offset */
-        }
-
-        .itcp-ev-card-item {
-            position: relative;
-            cursor: pointer;
-            transition: transform 0.3s ease;
-        }
-
-        .itcp-ev-card-item:hover {
-            transform: translateY(-10px);
-        }
-
-        .itcp-ev-offset {
-            transform: translateY(100px);
-        }
-        
-        .itcp-ev-card-item.itcp-ev-offset:hover {
-            transform: translateY(90px);
-        }
-
-        .itcp-ev-media-box {
-            position: relative;
-            aspect-ratio: 16/10;
-            background: var(--itcp-gray);
-            overflow: hidden;
-            border-radius: 4px;
-        }
-
-        .itcp-ev-thumb-video {
-            width: 100%;
-            height: 100%;
-            object-fit: cover;
-            opacity: 0.6;
-            transition: 0.5s transform ease;
-        }
-
-        .itcp-ev-card-item:hover .itcp-ev-thumb-video {
-            transform: scale(1.05);
-            opacity: 0.9;
-        }
-
-        .itcp-ev-card-overlay {
-            position: absolute;
-            top: 20px;
-            right: 20px;
-            opacity: 0;
-            transition: 0.3s;
-            z-index: 5;
-            display: flex;
-            gap: 10px;
-        }
-
-        .itcp-ev-card-item:hover .itcp-ev-card-overlay {
-            opacity: 1;
-        }
-
-        .itcp-ev-badge-replay {
-            background: #ff3b3b;
-            color: white;
-            font-size: 10px;
-            font-weight: bold;
-            padding: 5px 10px;
-            border-radius: 3px;
-            letter-spacing: 1px;
-            position: absolute;
-            top: 20px;
-            left: 20px;
-            z-index: 5;
-            text-transform: uppercase;
-        }
-
-        .itcp-ev-fs-btn {
-            background: var(--itcp-accent);
-            color: #000;
-            border: none;
-            width: 40px;
-            height: 40px;
-            border-radius: 50%;
-            cursor: pointer;
-            font-weight: bold;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-        }
-
-        .itcp-ev-card-info {
-            padding: 30px 0;
-        }
-
-        .itcp-ev-meta {
-            font-size: 13px;
-            font-weight: 500;
-            color: var(--itcp-text-dim);
-            margin-bottom: 12px;
-            line-height: 1.6;
-        }
-        
-        .itcp-ev-meta span {
-            color: var(--itcp-white);
-            opacity: 0.8;
-        }
-
-        .itcp-ev-meta .itcp-ev-location {
-            color: var(--itcp-accent);
-            font-weight: 600;
-            opacity: 1;
-            display: block;
-            margin-top: 4px;
-        }
-
-        .itcp-ev-card-h3 {
-            font-size: 26px;
-            margin: 0 0 15px 0;
-            transition: color 0.3s;
-        }
-
-        .itcp-ev-card-item:hover .itcp-ev-card-h3 {
-            color: var(--itcp-accent);
-        }
-
-        .itcp-ev-card-p {
-            color: var(--itcp-text-dim);
-            line-height: 1.6;
-            margin: 0;
-        }
-
-        /* --- ANNOUNCEMENTS TIMELINE --- */
-        .itcp-ev-announcements {
-            padding: 50px 10% 150px;
-            background: #000;
-        }
-
-        .itcp-ev-timeline {
-            margin-top: 60px;
-            border-left: 1px solid var(--itcp-gray);
-            padding-left: 40px;
-        }
-
-        .itcp-ev-timeline-item {
-            position: relative;
-            margin-bottom: 80px;
-        }
-
-        .itcp-ev-time-dot {
-            position: absolute;
-            left: -46px;
-            top: 5px;
-            width: 10px;
-            height: 10px;
-            background: var(--itcp-gray);
-            border: 2px solid var(--itcp-black);
-            border-radius: 50%;
-            transition: 0.3s;
-        }
-
-        .itcp-ev-timeline-item:hover .itcp-ev-time-dot {
-            background: var(--itcp-accent);
-            box-shadow: 0 0 10px var(--itcp-accent);
-        }
-
-        .itcp-ev-ann-date {
-            color: var(--itcp-accent);
-            font-size: 12px;
-            font-weight: 700;
-        }
-
-        .itcp-ev-ann-h4 {
-            font-size: 23px;
-            margin: 10px 0;
-        }
-
-        .itcp-ev-ann-desc {
-            color: var(--itcp-text-dim);
-            max-width: 600px;
-            line-height: 1.7;
-        }
-
-        .itcp-ev-link {
-            color: var(--itcp-white);
-            text-decoration: none;
-            font-weight: 700;
-            font-size: 14px;
-            display: inline-block;
-            margin-top: 15px;
-            border-bottom: 1px solid var(--itcp-gray);
-            transition: color 0.3s, border-color 0.3s;
-        }
-
-        .itcp-ev-link:hover {
-            color: var(--itcp-accent);
-            border-color: var(--itcp-accent);
-        }
-
-        /* --- UTILS & MOBILE RESPONSIVENESS --- */
-        @keyframes itcp-pulse {
-            0% { transform: scale(1); opacity: 1; }
-            50% { transform: scale(1.5); opacity: 0.4; }
-            100% { transform: scale(1); opacity: 1; }
-        }
-
-        @media (max-width: 900px) {
-            .itcp-ev-hero-portal { padding: 0 5%; }
-            .itcp-ev-mega-title { font-size: 50px; }
-            .itcp-ev-hero-ctrls { flex-direction: column; }
-            
-            /* Responsive Grid Fixes */
-            .itcp-ev-grid-container, .itcp-ev-past-container { padding: 80px 5% 40px; }
-            .itcp-ev-modern-grid { grid-template-columns: 1fr; gap: 50px; padding-bottom: 0; }
-            
-            /* Remove offset purely on mobile so rows don't break */
-            .itcp-ev-offset { transform: none !important; }
-            .itcp-ev-card-item.itcp-ev-offset:hover { transform: translateY(-10px) !important; }
-
-            .itcp-ev-announcements { padding: 50px 5% 100px; }
-            .itcp-ev-modal-content { padding: 40px 20px; }
-            .itcp-ev-h2 { font-size: 36px; }
-        }
-    </style>
+  </style>
 </head>
 <body>
 
-    <cronos-header></cronos-header>
+<div class="itevt-root">
 
-    <div class="itcp-ev-cosmos">
-        
-        <section class="itcp-ev-hero-portal">
-            <div class="itcp-ev-video-shroud">
-                <video 
-                    id="itcp-hero-stream" 
-                    class="itcp-ev-bg-video" 
-                    autoplay 
-                    loop 
-                    playsinline 
-                    muted
-                >
-                    <source src="videos/background-video3.mp4" type="video/mp4">
-                </video>
-                <div class="itcp-ev-glass-overlay"></div>
-            </div>
+  <h1 class="itevt-page-title">Croloft Events</h1>
 
-            <div class="itcp-ev-hero-stage">
-                <div class="itcp-ev-live-indicator">
-                    <span class="itcp-ev-pulse-core"></span>
-                    <span class="itcp-ev-indicator-text">BROADCASTING LIVE</span>
-                </div>
-                <h1 class="itcp-ev-mega-title">Quantum <span class="itcp-ev-outline-text">Synthesis</span> 2026</h1>
-                <p class="itcp-ev-hero-desc">The premiere symposium on neuromorphic computing, distributed edge intelligence, and the future of enterprise automation.</p>
-                
-                <div class="itcp-ev-hero-ctrls">
-                    <button class="itcp-ev-btn-glow" onclick="itcpToggleFullScreen('itcp-hero-stream')">Enter Immersive View</button>
-                    <button class="itcp-ev-btn-ghost" onclick="itcpOpenModal()">
-                        Learn more about this event
-                    </button>
-                </div>
-            </div>
-        </section>
+  <div class="itevt-featured">
 
-        <div id="itcp-hero-modal" class="itcp-ev-modal">
-            <div class="itcp-ev-modal-content">
-                <button class="itcp-ev-modal-close" onclick="itcpCloseModal()">✕</button>
-                <span class="itcp-ev-pre-title">Live Broadcast Detail</span>
-                <h2 class="itcp-ev-h2" style="font-size: 32px; margin-bottom: 20px;">Quantum Synthesis 2026</h2>
-                <p class="itcp-ev-card-p" style="margin-bottom: 20px;">
-                    Join our flagship summit as we explore the frontier of IT infrastructure and automated software ecosystems. This broadcast features keynote presentations from leading engineers discussing how AI integration is reshaping modern managed IT services.
-                </p>
-                <p class="itcp-ev-card-p">
-                    <strong>Topics Covered:</strong><br>
-                    • The evolution of Data Centers & Cloud Storage<br>
-                    • Building resilient HTML/JS web architectures<br>
-                    • Deploying autonomous AI bots for Enterprise Helpdesks
-                </p>
-            </div>
+    <a href="#" class="itevt-hero">
+      <img
+        class="itevt-hero-img"
+        src="https://images.unsplash.com/photo-1558494949-ef010cbdcc31?w=1000&q=80&auto=format&fit=crop"
+        alt="Microsoft Azure × YourIT Partnership"
+        loading="eager"
+      />
+      <div class="itevt-hero-body">
+        <div class="itevt-hero-meta">
+          <span class="itevt-badge itevt-badge--ongoing">ONGOING</span>
+          <span class="itevt-badge itevt-badge--tag">TRENDING</span>
+          <span class="itevt-meta-sep">- 12 Mar 2026</span>
         </div>
+        <h2 class="itevt-hero-title">Win Microsoft Azure Credits, Expert Consultation Sessions, and Exclusive IT Partner Benefits</h2>
+      </div>
+    </a>
 
-        <section class="itcp-ev-grid-container">
-            <div class="itcp-ev-section-intro">
-                <span class="itcp-ev-pre-title">Roadmap</span>
-                <h2 class="itcp-ev-h2">Upcoming Events</h2>
-            </div>
+    <div class="itevt-side-stack">
 
-            <div class="itcp-ev-modern-grid">
-                
-                <div class="itcp-ev-card-item" onclick="window.location.href='event-details.html?id=1'">
-                    <div class="itcp-ev-media-box">
-                        <video id="v-up-1" class="itcp-ev-thumb-video" loop muted poster="https://images.unsplash.com/photo-1550751827-4bd374c3f58b?w=800&q=80" onmouseover="this.play()" onmouseout="this.pause()">
-                            <source src="https://assets.mixkit.co/videos/preview/mixkit-data-center-server-room-with-blue-lights-2741-large.mp4" type="video/mp4">
-                        </video>
-                        <div class="itcp-ev-card-overlay">
-                            <button class="itcp-ev-fs-btn" onclick="event.stopPropagation(); itcpToggleFullScreen('v-up-1')">⛶</button>
-                        </div>
-                    </div>
-                    <div class="itcp-ev-card-info">
-                        <div class="itcp-ev-meta">
-                            <span>Mar 14, 2026</span> | <span>14:00 SAST</span>
-                            <span class="itcp-ev-location">Phuthaditjhaba Tech Hub / Virtual</span>
-                        </div>
-                        <h3 class="itcp-ev-card-h3">Zero-Knowledge Proofs in Enterprise</h3>
-                        <p class="itcp-ev-card-p">Deep dive into privacy-preserving data validation at scale.</p>
-                    </div>
-                </div>
+      <a href="#" class="itevt-side-card">
+        <img
+          class="itevt-side-img"
+          src="https://images.unsplash.com/photo-1550751827-4bd374c3f58b?w=600&q=80&auto=format&fit=crop"
+          alt="Cybersecurity Summit"
+          loading="lazy"
+        />
+        <div class="itevt-side-body">
+          <div class="itevt-side-meta">
+            <span class="itevt-badge itevt-badge--ended">ENDED</span>
+            <span class="itevt-badge itevt-badge--tag">SECURITY</span>
+            <span class="itevt-meta-sep">- 16 Jan 2026</span>
+          </div>
+          <p class="itevt-side-title">Who's Ready For the Annual Cybersecurity Summit 2026?</p>
+        </div>
+      </a>
 
-                <div class="itcp-ev-card-item itcp-ev-offset" onclick="window.location.href='event-details.html?id=2'">
-                    <div class="itcp-ev-media-box">
-                        <video id="v-up-2" class="itcp-ev-thumb-video" loop muted poster="https://images.unsplash.com/photo-1518770660439-4636190af475?w=800&q=80" onmouseover="this.play()" onmouseout="this.pause()">
-                            <source src="https://assets.mixkit.co/videos/preview/mixkit-close-up-of-a-circuit-board-with-moving-lights-44242-large.mp4" type="video/mp4">
-                        </video>
-                        <div class="itcp-ev-card-overlay">
-                            <button class="itcp-ev-fs-btn" onclick="event.stopPropagation(); itcpToggleFullScreen('v-up-2')">⛶</button>
-                        </div>
-                    </div>
-                    <div class="itcp-ev-card-info">
-                        <div class="itcp-ev-meta">
-                            <span>Apr 02, 2026</span> | <span>09:00 SAST</span>
-                            <span class="itcp-ev-location">Innovation Campus, Room B</span>
-                        </div>
-                        <h3 class="itcp-ev-card-h3">Custom LLM Fine-tuning</h3>
-                        <p class="itcp-ev-card-p">Training domain-specific AI bots with proprietary datasets.</p>
-                    </div>
-                </div>
-            </div>
-        </section>
+      <a href="#" class="itevt-side-card">
+        <img
+          class="itevt-side-img"
+          src="https://images.unsplash.com/photo-1451187580459-43490279c0fa?w=600&q=80&auto=format&fit=crop"
+          alt="Cloud Migration Challenge"
+          loading="lazy"
+        />
+        <div class="itevt-side-body">
+          <div class="itevt-side-meta">
+            <span class="itevt-badge itevt-badge--ended">ENDED</span>
+            <span class="itevt-badge itevt-badge--tag">CLOUD</span>
+            <span class="itevt-meta-sep">- 9 Dec 2025</span>
+          </div>
+          <p class="itevt-side-title">Win a Share of $60,000 in Cloud Credits in the YourIT × AWS Migration Challenge</p>
+        </div>
+      </a>
 
-        <section class="itcp-ev-past-container">
-            <div class="itcp-ev-section-intro">
-                <span class="itcp-ev-pre-title">Archive</span>
-                <h2 class="itcp-ev-h2">On-Demand Replays</h2>
-            </div>
-
-            <div class="itcp-ev-modern-grid">
-                
-                <div class="itcp-ev-card-item" onclick="window.location.href='event-details.html?id=3'">
-                    <div class="itcp-ev-media-box">
-                        <div class="itcp-ev-badge-replay">Replay</div>
-                        <video id="v-past-1" class="itcp-ev-thumb-video" loop muted poster="https://images.unsplash.com/photo-1451187580459-43490279c0fa?w=800&q=80" onmouseover="this.play()" onmouseout="this.pause()">
-                            <source src="https://assets.mixkit.co/videos/preview/mixkit-motherboard-with-illuminated-connections-and-microchips-32810-large.mp4" type="video/mp4">
-                        </video>
-                        <div class="itcp-ev-card-overlay">
-                            <button class="itcp-ev-fs-btn" onclick="event.stopPropagation(); itcpToggleFullScreen('v-past-1')">▶</button>
-                        </div>
-                    </div>
-                    <div class="itcp-ev-card-info">
-                        <div class="itcp-ev-meta">
-                            <span>Feb 15, 2026</span> | <span>11:00 SAST</span>
-                            <span class="itcp-ev-location">Streamed via Online Portal</span>
-                        </div>
-                        <h3 class="itcp-ev-card-h3">Next-Gen Cloud Infrastructure</h3>
-                        <p class="itcp-ev-card-p">Architecting scalable cloud environments and resilient data centers.</p>
-                    </div>
-                </div>
-
-                <div class="itcp-ev-card-item itcp-ev-offset" onclick="window.location.href='event-details.html?id=4'">
-                    <div class="itcp-ev-media-box">
-                        <div class="itcp-ev-badge-replay">Replay</div>
-                        <video id="v-past-2" class="itcp-ev-thumb-video" loop muted poster="https://images.unsplash.com/photo-1555949963-ff9fe0c870eb?w=800&q=80" onmouseover="this.play()" onmouseout="this.pause()">
-                            <source src="https://assets.mixkit.co/videos/preview/mixkit-software-developer-working-on-code-1708-large.mp4" type="video/mp4">
-                        </video>
-                        <div class="itcp-ev-card-overlay">
-                            <button class="itcp-ev-fs-btn" onclick="event.stopPropagation(); itcpToggleFullScreen('v-past-2')">▶</button>
-                        </div>
-                    </div>
-                    <div class="itcp-ev-card-info">
-                        <div class="itcp-ev-meta">
-                            <span>Jan 05, 2026</span> | <span>15:30 SAST</span>
-                            <span class="itcp-ev-location">Streamed via Online Portal</span>
-                        </div>
-                        <h3 class="itcp-ev-card-h3">Frontend Ecosystems for E-Commerce</h3>
-                        <p class="itcp-ev-card-p">Building high-conversion web & mobile apps using advanced JS APIs.</p>
-                    </div>
-                </div>
-
-            </div>
-        </section>
-
-        <section class="itcp-ev-announcements">
-            <div class="itcp-ev-ann-header">
-                <h2 class="itcp-ev-h2">Intelligence Feed</h2>
-            </div>
-
-            <div class="itcp-ev-timeline">
-                <div class="itcp-ev-timeline-item">
-                    <div class="itcp-ev-time-dot"></div>
-                    <div class="itcp-ev-time-data">
-                        <span class="itcp-ev-ann-date">March 02, 2026</span>
-                        <h4 class="itcp-ev-ann-h4">Series B Funding Completion</h4>
-                        <p class="itcp-ev-ann-desc">Accelerating our R&D into autonomous DevOps agents for hybrid cloud management.</p>
-                        <a href="#" class="itcp-ev-link">Read Full Report →</a>
-                    </div>
-                </div>
-
-                <div class="itcp-ev-timeline-item">
-                    <div class="itcp-ev-time-dot"></div>
-                    <div class="itcp-ev-time-data">
-                        <span class="itcp-ev-ann-date">February 28, 2026</span>
-                        <h4 class="itcp-ev-ann-h4">Open Source: 'itcp-core' Engine</h4>
-                        <p class="itcp-ev-ann-desc">We've released our proprietary latency-shaving engine to the global developer community.</p>
-                        <a href="#" class="itcp-ev-link">View GitHub Repo →</a>
-                    </div>
-                </div>
-            </div>
-        </section>
     </div>
+  </div><hr class="itevt-hr" />
 
-    <script>
-        // Modal Logic
-        function itcpOpenModal() {
-            document.getElementById('itcp-hero-modal').classList.add('active');
-        }
+  <div class="itevt-section-hd">
+    <h2 class="itevt-section-label"><em>ALL</em> Events</h2>
+  </div>
 
-        function itcpCloseModal() {
-            document.getElementById('itcp-hero-modal').classList.remove('active');
-        }
+  <div class="itevt-grid">
 
-        document.getElementById('itcp-hero-modal').addEventListener('click', function(e) {
-            if (e.target === this) {
-                itcpCloseModal();
-            }
-        });
+    <a href="#" class="itevt-card">
+      <div class="itevt-card-img-wrap">
+        <img class="itevt-card-img"
+          src="https://images.unsplash.com/photo-1504384308090-c894fdcc538d?w=600&q=75&auto=format&fit=crop"
+          alt="Network Challenge" loading="lazy" />
+      </div>
+      <div class="itevt-card-meta">
+        <span class="itevt-badge itevt-badge--ongoing">ONGOING</span>
+        <span class="itevt-badge itevt-badge--tag">APP</span>
+        <span class="itevt-meta-sep">&mdash; 2D AGO</span>
+      </div>
+      <p class="itevt-card-title">Win VIP Access and Premium IT Gear in the YourIT Network Infrastructure Challenge</p>
+    </a>
 
-        // Advanced Fullscreen handling for replays & upcoming
-        function itcpToggleFullScreen(targetId) {
-            const el = document.getElementById(targetId);
-            if (!el) return;
+    <a href="#" class="itevt-card">
+      <div class="itevt-card-img-wrap">
+        <img class="itevt-card-img"
+          src="https://images.unsplash.com/photo-1573164713714-d95e436ab8d6?w=600&q=75&auto=format&fit=crop"
+          alt="IT Champs" loading="lazy" />
+      </div>
+      <div class="itevt-card-meta">
+        <span class="itevt-badge itevt-badge--ongoing">ONGOING</span>
+        <span class="itevt-badge itevt-badge--tag">APP</span>
+        <span class="itevt-meta-sep">&mdash; 3D AGO</span>
+      </div>
+      <p class="itevt-card-title">Prove You're an IT Champ and Stand to Win Cloud Computing Rewards</p>
+    </a>
 
-            // Optional: Unmute the video when forcing fullscreen replay
-            el.muted = false;
+    <a href="#" class="itevt-card">
+      <div class="itevt-card-img-wrap">
+        <img class="itevt-card-img"
+          src="https://images.unsplash.com/photo-1544197150-b99a580bb7a8?w=600&q=75&auto=format&fit=crop"
+          alt="Cloud Credits" loading="lazy" />
+      </div>
+      <div class="itevt-card-meta">
+        <span class="itevt-badge itevt-badge--ongoing">ONGOING</span>
+        <span class="itevt-badge itevt-badge--tag">CLOUD</span>
+        <span class="itevt-meta-sep">&mdash; 3D AGO</span>
+      </div>
+      <p class="itevt-card-title">Cloud Infrastructure Campaign</p>
+    </a>
 
-            if (el.requestFullscreen) el.requestFullscreen();
-            else if (el.webkitRequestFullscreen) el.webkitRequestFullscreen();
-            else if (el.mozRequestFullScreen) el.mozRequestFullScreen();
-            else if (el.msRequestFullscreen) el.msRequestFullscreen();
-            
-            el.play();
-        }
+    <a href="#" class="itevt-card">
+      <div class="itevt-card-img-wrap">
+        <img class="itevt-card-img"
+          src="https://images.unsplash.com/photo-1563986768494-4dee2763ff3f?w=600&q=75&auto=format&fit=crop"
+          alt="Security Campaign" loading="lazy" />
+      </div>
+      <div class="itevt-card-meta">
+        <span class="itevt-badge itevt-badge--ongoing">ONGOING</span>
+        <span class="itevt-badge itevt-badge--tag">SECURITY</span>
+        <span class="itevt-meta-sep">&mdash; 18 Mar 2026</span>
+      </div>
+      <p class="itevt-card-title">Security Hardening Campaign</p>
+    </a>
 
-        // Smooth hover effect for videos 
-        document.querySelectorAll('.itcp-ev-thumb-video').forEach(v => {
-            v.addEventListener('mouseenter', () => v.play());
-            v.addEventListener('mouseleave', () => {
-                v.pause();
-                // Reset to beginning so the poster image shows nicely next time
-                v.currentTime = 0; 
-            });
-        });
-    </script>
-</body>
+    <a href="#" class="itevt-card">
+      <div class="itevt-card-img-wrap">
+        <img class="itevt-card-img"
+          src="https://images.unsplash.com/photo-1460925895917-afdab827c52f?w=600&q=75&auto=format&fit=crop"
+          alt="Referral Credits" loading="lazy" />
+      </div>
+      <div class="itevt-card-meta">
+        <span class="itevt-badge itevt-badge--ongoing">ONGOING</span>
+        <span class="itevt-badge itevt-badge--tag">APP</span>
+        <span class="itevt-meta-sep">&mdash; 17 Mar 2026</span>
+      </div>
+      <p class="itevt-card-title">Stand to Win Up to 500 Cloud Credits with the YourIT Referral Rewards Programme</p>
+    </a>
+
+    <a href="#" class="itevt-card">
+      <div class="itevt-card-img-wrap">
+        <img class="itevt-card-img"
+          src="https://images.unsplash.com/photo-1516321318423-f06f85e504b3?w=600&q=75&auto=format&fit=crop"
+          alt="ZA Exclusive" loading="lazy" />
+      </div>
+      <div class="itevt-card-meta">
+        <span class="itevt-badge itevt-badge--ongoing">ONGOING</span>
+        <span class="itevt-badge itevt-badge--orange">PROMOTIONS</span>
+        <span class="itevt-meta-sep">&mdash; 5 Mar 2026</span>
+      </div>
+      <p class="itevt-card-title">[ZA Exclusive] Earn 100% Back on Your First IT Service Contract</p>
+    </a>
+
+    <a href="#" class="itevt-card">
+      <div class="itevt-card-img-wrap">
+        <img class="itevt-card-img"
+          src="https://images.unsplash.com/photo-1519389950473-47ba0277781c?w=600&q=75&auto=format&fit=crop"
+          alt="Gold Tier" loading="lazy" />
+      </div>
+      <div class="itevt-card-meta">
+        <span class="itevt-badge itevt-badge--ongoing">ONGOING</span>
+        <span class="itevt-badge itevt-badge--green">PARTNER</span>
+        <span class="itevt-meta-sep">&mdash; 5 Mar 2026</span>
+      </div>
+      <p class="itevt-card-title">Gold Taker IT Delivery Competition Is Live – Top Partner Stands to Win R75,000...</p>
+    </a>
+
+    <a href="#" class="itevt-card">
+      <div class="itevt-card-img-wrap">
+        <img class="itevt-card-img"
+          src="https://images.unsplash.com/photo-1531482615713-2afd69097998?w=600&q=75&auto=format&fit=crop"
+          alt="Performance Arena" loading="lazy" />
+      </div>
+      <div class="itevt-card-meta">
+        <span class="itevt-badge itevt-badge--ongoing">ONGOING</span>
+        <span class="itevt-badge itevt-badge--tag">APP</span>
+        <span class="itevt-meta-sep">&mdash; 2 Mar 2026</span>
+      </div>
+      <p class="itevt-card-title">Stand to Win a Share of R250,000 in the YourIT Performance Arena Airdrop</p>
+    </a>
+
+  </div></div></body>
 </html>
+
+
+
+
+
+
+
 
 <cronos-footer></cronos-footer>
