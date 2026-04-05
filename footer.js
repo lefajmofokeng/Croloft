@@ -30,7 +30,7 @@
         { label: 'Developer Hub',             href: 'developer-hub.html' },
         { label: 'Contact Us',                href: '#' },
         { label: 'Glossary',                  href: 'glossary.html' },
-        { label: 'Bot',                       href: '#' },
+        { label: 'Bot',                       href: 'bot.html' },
         { label: 'Learn',                     href: 'learn.html' },
         { label: 'Research',                  href: 'research.html' },
       ]

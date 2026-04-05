@@ -1,24 +1,15 @@
-
-
-
-
-
 <!DOCTYPE html>
 <html lang="en">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Croloft - Link Everything</title>
-    
-    <link rel="preconnect" href="https://fonts.googleapis.com">
-    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800;900&display=swap" rel="stylesheet">
 
     <style>
         :root {
-            --inter: 'Inter', sans-serif;
+            --inter: 'Circular Std', sans-serif;
             --brand-blue: #0047FF;
-            --brand-yellow: #FFD700;
+            --brand-yellow: #ccff00;
             
             /* --- PRECISION VARIABLES --- */
             /* We use a larger height to ensure letters like 'g' don't get cut off */
@@ -36,39 +27,13 @@
             overflow-x: hidden;
         }
 
-        /* --- HEADER --- */
-        .header {
-            display: flex;
-            align-items: center;
-            justify-content: space-between;
-            height: 70px;
-            padding: 0 60px;
-            position: absolute;
-            top: 0;
-            width: 100%;
-            box-sizing: border-box;
-            z-index: 100;
-            border-bottom: 1px solid #ffffff60;
-        }
-
-        .logo { font-weight: 800; font-size: 22px; letter-spacing: -1px; display: flex; align-items: center; gap: 8px; }
-        .logo-box { width: 30px; height: 30px; background: white; color: var(--brand-blue); border-radius: 4px; display: flex; align-items: center; justify-content: center; font-size: 16px; }
-
-        .search-container { flex-grow: 1; display: flex; justify-content: center; max-width: 500px; margin: 0 40px; }
-        .search-bar { width: 100%; height: 40px; border-radius: 1px; border: 1px solid rgba(255,255,255,0.2); background: rgba(255,255,255,0.1); padding: 0 15px; color: white; font-family: var(--inter); }
-        .search-bar::placeholder { color: rgba(255,255,255,0.6); }
-
-        .nav-links { display: flex; align-items: center; gap: 30px; }
-        .nav-links a { color: white; text-decoration: none; font-weight: 500; font-size: 15px; }
-        .contact-btn { background: transparent; color: #fff; padding: 10px 20px; border-radius: 1px; font-weight: 700; border: 1px solid #ffffff6c; }
-
         /* --- HERO SECTION --- */
         .hero {
             height: 100vh;
             display: flex;
             align-items: center;
             justify-content: center;
-            background: radial-gradient(circle at center, #0055ff 0%, #0047FF 100%);
+            background: radial-gradient(circle at center, #000000 0%, #000000 100%);
         }
 
         .hero-wrap {
@@ -159,21 +124,6 @@
     </style>
 </head>
 <body>
-
-    <header class="header">
-        <div class="logo"><img src="thumbnails/hyperion logo (2).png" style="height: 40px;"/></div>
-        <div class="search-container">
-            <input type="text" class="search-bar" placeholder="Search tokenized assets...">
-        </div>
-        <nav class="nav-links">
-            <a href="#">Solutions</a>
-            <a href="#">Network</a>
-            <a href="#">Developers</a>
-            <a href="#">Company</a>
-            <a href="#" class="contact-btn">Contact Us</a>
-        </nav>
-    </header>
-
     <section class="hero">
         <div class="hero-wrap">
             <div class="static-link">LINK</div>
