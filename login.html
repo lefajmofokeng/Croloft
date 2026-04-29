@@ -1,0 +1,651 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover">
+  <title>NexaIT — Client & Business Portal</title>
+  <link href="https://fonts.cdnfonts.com/css/circular-std" rel="stylesheet">
+  <style>
+    /* ─── Reset & Base ──────────────────────────────────────── */
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+    :root {
+      --bg-deep:       #050c1a;
+      --bg-card:       #0b1628;
+      --bg-card-inner: #0f1e36;
+      --border:        rgba(255,255,255,0.07);
+      --border-active: rgba(41,133,255,0.6);
+      --blue-primary:  #2985ff;
+      --blue-hover:    #1a6fdf;
+      --blue-glow:     rgba(41,133,255,0.25);
+      --text-primary:  #e8edf5;
+      --text-secondary:#7a90b0;
+      --text-muted:    #4a607e;
+      --white:         #ffffff;
+      --radius-card:   4px;
+      --radius-btn:    4px;
+      --font-display:  'Circular Std', -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif;
+      --font-body:     'Circular Std', -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif;
+      --transition:    0.3s ease;
+    }
+
+    html, body {
+      height: 100%;
+      background: var(--bg-deep);
+      color: var(--text-primary);
+      font-family: var(--font-body);
+      -webkit-font-smoothing: antialiased;
+    }
+
+    /* ─── Background Atmosphere (matching crypto.com premium feel) ─── */
+    body::before {
+      content: '';
+      position: fixed;
+      inset: 0;
+      background:
+        radial-gradient(ellipse 70% 60% at 75% 50%, rgba(41,133,255,0.12) 0%, transparent 70%),
+        radial-gradient(ellipse 40% 40% at 20% 80%, rgba(10,60,140,0.18) 0%, transparent 60%),
+        radial-gradient(ellipse 50% 50% at 10% 10%, rgba(0,30,80,0.3) 0%, transparent 60%);
+      pointer-events: none;
+      z-index: 0;
+    }
+
+    /* ─── Page Layout ────────────────────────────────────────── */
+    .page {
+      position: relative;
+      z-index: 1;
+      min-height: 100vh;
+      display: flex;
+      flex-direction: column;
+    }
+
+    /* ─── Header (exactly like reference) ────────────────────── */
+    .header {
+      padding: 24px 40px;
+      display: flex;
+      align-items: center;
+    }
+
+    .logo {
+      display: flex;
+      align-items: center;
+      gap: 10px;
+      text-decoration: none;
+    }
+
+    .logo-icon {
+      width: 38px;
+      height: 38px;
+      background: linear-gradient(135deg, var(--blue-primary), #0a4aaf);
+      border-radius: 10px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+    }
+
+    .logo-icon svg {
+      width: 22px;
+      height: 22px;
+      fill: white;
+    }
+
+    .logo-text {
+      font-family: var(--font-display);
+      font-size: 1.4rem;
+      font-weight: 700;
+      color: var(--white);
+      letter-spacing: -0.02em;
+    }
+
+    .logo-text span {
+      color: var(--blue-primary);
+    }
+
+    /* ─── Main Grid: exactly 2 columns like crypto.com design ── */
+    .main {
+      flex: 1;
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      align-items: stretch;
+      gap: 0;
+      max-width: 1200px;
+      margin: 0 auto;
+      width: 100%;
+      padding: 20px 40px 40px;
+    }
+
+    /* ─── Auth Card (LEFT SIDE) ──────────────────────────────── */
+    .auth-card {
+      background: var(--bg-card);
+      border: 1px solid var(--border);
+      border-radius: var(--radius-card);
+      padding: 36px 32px;
+      width: 100%;
+      animation: slideUp 0.5s cubic-bezier(0.16,1,0.3,1) both;
+      display: flex;
+      flex-direction: column;
+    }
+
+    @keyframes slideUp {
+      from { opacity: 0; transform: translateY(24px); }
+      to   { opacity: 1; transform: translateY(0); }
+    }
+
+    /* Tab Toggle (Log In / Sign Up) */
+    .tab-group {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      background: var(--bg-card-inner);
+      border-radius: var(--radius-btn);
+      padding: 4px;
+      margin-bottom: 28px;
+    }
+
+    .tab-btn {
+      padding: 12px;
+      border: none;
+      background: transparent;
+      border-radius: 4px;
+      font-family: var(--font-body);
+      font-size: 0.9rem;
+      font-weight: 500;
+      color: var(--text-secondary);
+      cursor: pointer;
+      transition: all var(--transition);
+    }
+
+    .tab-btn.active {
+      background: #1a6fdf34;
+      color: var(--white);
+    }
+
+    .section-label {
+      font-size: 0.75rem;
+      font-weight: 500;
+      color: var(--text-secondary);
+      letter-spacing: 0.06em;
+      text-transform: uppercase;
+      margin-bottom: 12px;
+    }
+
+    /* Account Type Cards (Individual / Business) */
+    .account-types {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 12px;
+      margin-bottom: 28px;
+    }
+
+    .account-type {
+      display: flex;
+      align-items: center;
+      gap: 12px;
+      padding: 14px 16px;
+      background: var(--bg-card-inner);
+      border: 1px solid var(--border);
+      border-radius: var(--radius-btn);
+      cursor: pointer;
+      transition: all var(--transition);
+    }
+
+    .account-type:hover {
+      border-color: rgba(41,133,255,0.4);
+      transform: translateY(-1px);
+    }
+
+    .account-type.selected {
+      border-color: var(--border-active);
+      background: rgba(41,133,255,0.08);
+    }
+
+    .account-type-icon {
+      width: 40px;
+      height: 40px;
+      border-radius: 10px;
+      background: rgba(41,133,255,0.12);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      flex-shrink: 0;
+    }
+
+    .account-type-icon svg {
+      width: 20px;
+      height: 20px;
+      stroke: #ffffff;
+      fill: none;
+      stroke-width: 1.8;
+    }
+
+    .account-type-info { line-height: 1.3; }
+    .account-type-name {
+      font-size: 0.9rem;
+      font-weight: 400;
+      color: var(--text-primary);
+    }
+    .account-type-desc {
+      font-size: 0.73rem;
+      color: var(--text-secondary);
+    }
+
+    /* Input Fields */
+    .input-group {
+      display: flex;
+      flex-direction: column;
+      gap: 6px;
+      margin-bottom: 14px;
+    }
+    .input-label {
+      font-size: 0.8rem;
+      font-weight: 500;
+      color: var(--text-secondary);
+    }
+    .input-wrap {
+      position: relative;
+    }
+    .input-wrap svg {
+      position: absolute;
+      left: 14px;
+      top: 50%;
+      transform: translateY(-50%);
+      width: 18px;
+      height: 18px;
+      stroke: var(--text-muted);
+      fill: none;
+      stroke-width: 1.8;
+      pointer-events: none;
+    }
+    .input-field {
+      width: 100%;
+      padding: 14px 14px 14px 44px;
+      background: var(--bg-card-inner);
+      border: 1px solid var(--border);
+      border-radius: var(--radius-btn);
+      font-family: var(--font-body);
+      font-size: 0.9rem;
+      color: var(--text-primary);
+      outline: none;
+      transition: all var(--transition);
+    }
+    .input-field::placeholder { color: var(--text-muted); }
+    .input-field:focus {
+      border-color: var(--border-active);
+    }
+    .forgot-link {
+      display: block;
+      text-align: right;
+      font-size: 0.75rem;
+      color: var(--blue-primary);
+      text-decoration: none;
+      margin-top: 6px;
+      opacity: 0.8;
+      transition: opacity 0.2s;
+    }
+    .forgot-link:hover { opacity: 1; }
+
+    /* Buttons */
+    .btn-primary {
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      gap: 8px;
+      width: 100%;
+      padding: 14px;
+      background: var(--blue-primary);
+      border: none;
+      border-radius: var(--radius-btn);
+      font-family: var(--font-display);
+      font-size: 0.9rem;
+      font-weight: 500;
+      color: var(--white);
+      cursor: pointer;
+      transition: all var(--transition);
+      margin-top: 20px;
+    }
+    .btn-primary:hover {
+      background: var(--blue-hover);
+      box-shadow: 0 6px 20px var(--blue-glow);
+      transform: translateY(-1px);
+    }
+    .btn-primary svg {
+      width: 16px;
+      height: 16px;
+      stroke: white;
+      stroke-width: 2;
+      fill: none;
+    }
+
+    .divider {
+      display: flex;
+      align-items: center;
+      gap: 12px;
+      margin: 20px 0;
+      color: var(--text-muted);
+      font-size: 0.75rem;
+    }
+    .divider::before, .divider::after {
+      content: '';
+      flex: 1;
+      height: 1px;
+      background: var(--border);
+    }
+
+    .btn-social {
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      gap: 10px;
+      width: 100%;
+      padding: 12px;
+      background: var(--white);
+      border: 1px solid rgba(0,0,0,0.1);
+      border-radius: var(--radius-btn);
+      font-family: var(--font-body);
+      font-size: 0.85rem;
+      font-weight: 500;
+      color: #1a1a2e;
+      cursor: pointer;
+      transition: all 0.2s;
+      margin-bottom: 10px;
+    }
+    .btn-social:hover {
+      background: #f5f7fa;
+    }
+    .btn-social:last-child { margin-bottom: 0; }
+    .google-icon, .apple-icon { width: 18px; height: 18px; }
+
+    .privacy-note {
+      margin-top: 18px;
+      font-size: 0.8rem;
+      color: var(--text-muted);
+      line-height: 1.5;
+      text-align: center;
+    }
+    .privacy-note a {
+      color: var(--blue-primary);
+      text-decoration: none;
+    }
+    .privacy-note a:hover { text-decoration: underline; }
+
+    /* ─── RIGHT SIDE: FULL-BLEED IMAGE WITH OVERLAY ─────────── */
+    .image-hero {
+      display: flex;
+      align-items: stretch;
+      justify-content: center;
+      padding-left: 24px;
+    }
+
+    .image-hero-inner {
+      position: relative;
+      width: 100%;
+      border-radius: var(--radius-card);
+      overflow: hidden;
+      box-shadow: 0 30px 50px -20px rgba(0,0,0,0.5);
+    }
+
+    /* Full-bleed background image via Unsplash (dark tech/city) */
+    .image-hero-bg {
+      position: absolute;
+      inset: 0;
+      background-image: url('https://images.unsplash.com/photo-1558494949-ef010cbdcc31?w=900&auto=format&fit=crop&q=80');
+      background-size: cover;
+      background-position: center;
+      z-index: 0;
+    }
+
+    /* Dark gradient overlay so text is legible */
+    .image-hero-overlay {
+      position: absolute;
+      inset: 0;
+      background: linear-gradient(
+        160deg,
+        rgba(5,12,26,0.35) 0%,
+        rgba(5,12,26,0.55) 40%,
+        rgba(5,12,26,0.75) 100%
+      );
+      z-index: 1;
+    }
+
+    /* Content sits on top */
+    .image-hero-content {
+      position: relative;
+      z-index: 2;
+      height: 100%;
+      min-height: 420px;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+      text-align: center;
+      padding: 48px 40px;
+    }
+
+    .image-hero-content h2 {
+      font-family: var(--font-display);
+      font-size: clamp(1.8rem, 3vw, 2.8rem);
+      font-weight: 500;
+      color: var(--white);
+      line-height: 1.15;
+      margin-bottom: 16px;
+      text-shadow: 0 2px 20px rgba(0,0,0,0.4);
+    }
+
+    .image-hero-content h2 strong {
+      color: var(--blue-primary);
+    }
+
+    .image-hero-content p {
+      font-size: 1rem;
+      font-weight: 500;
+      color: rgba(255,255,255,0.75);
+      max-width: 320px;
+      line-height: 1.6;
+      text-shadow: 0 1px 8px rgba(0,0,0,0.5);
+    }
+
+    /* ─── Footer ─────────────────────────────────────────────── */
+    .footer {
+      position: relative;
+      z-index: 1;
+      border-top: 1px solid var(--border);
+      padding: 18px 40px;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      flex-wrap: wrap;
+      gap: 12px;
+      background: rgba(5,12,26,0.5);
+      backdrop-filter: blur(4px);
+    }
+    .footer-copy {
+      font-size: 0.75rem;
+      color: var(--text-muted);
+    }
+    .footer-links {
+      display: flex;
+      gap: 24px;
+      flex-wrap: wrap;
+    }
+    .footer-links a {
+      font-size: 0.75rem;
+      color: var(--text-muted);
+      text-decoration: none;
+      transition: color 0.2s;
+    }
+    .footer-links a:hover { color: var(--text-secondary); }
+
+    /* Panel display toggles */
+    [data-panel] { display: none; }
+    [data-panel].active { display: block; }
+
+    /* ─── Responsive: stack columns on mobile ────────────────── */
+    @media (max-width: 950px) {
+      .main {
+        grid-template-columns: 1fr;
+        gap: 28px;
+        padding: 16px 24px 32px;
+      }
+      .image-hero {
+        padding-left: 0;
+        order: 1;
+      }
+      .auth-card {
+        order: 2;
+      }
+      .image-hero-content {
+        min-height: 280px;
+        padding: 36px 28px;
+      }
+      .header {
+        padding: 18px 24px;
+      }
+      .footer {
+        padding: 16px 24px;
+      }
+    }
+
+    @media (max-width: 550px) {
+      .auth-card {
+        padding: 24px 20px;
+      }
+      .account-types {
+        grid-template-columns: 1fr;
+      }
+      .image-hero-content {
+        min-height: 220px;
+        padding: 28px 20px;
+      }
+      .footer-links {
+        gap: 16px;
+      }
+    }
+  </style>
+</head>
+<body>
+<div class="page">
+
+  <!-- Header with brand -->
+  <header class="header">
+    <a href="#" class="logo"><img src="thumbnails/logo.png" style="height: 30px;"/>
+      
+    </a>
+  </header>
+
+  <main class="main">
+    <!-- LEFT COLUMN: AUTH CARD (Log in / Sign Up) -->
+    <div class="auth-card">
+      <!-- Tabs: Log In & Sign Up -->
+      <div class="tab-group" role="tablist">
+        <button class="tab-btn" id="tab-login" role="tab" aria-selected="false" onclick="switchTab('login')">Log In</button>
+        <button class="tab-btn active" id="tab-signup" role="tab" aria-selected="true" onclick="switchTab('signup')">Sign Up</button>
+      </div>
+
+      <!-- LOGIN PANEL -->
+      <div id="panel-login" data-panel>
+        <div class="input-group">
+          <label class="input-label" for="login-email">Email Address</label>
+          <div class="input-wrap">
+            <svg viewBox="0 0 24 24"><rect x="2" y="4" width="20" height="16" rx="2"/><path d="M2 7l10 7 10-7"/></svg>
+            <input class="input-field" type="email" id="login-email" placeholder="client@nexait.com" autocomplete="email">
+          </div>
+        </div>
+        <div class="input-group">
+          <label class="input-label" for="login-password">Password</label>
+          <div class="input-wrap">
+            <svg viewBox="0 0 24 24"><rect x="3" y="11" width="18" height="11" rx="2"/><path d="M7 11V7a5 5 0 0110 0v4"/></svg>
+            <input class="input-field" type="password" id="login-password" placeholder="••••••••" autocomplete="current-password">
+          </div>
+          <a href="#" class="forgot-link">Forgot password?</a>
+        </div>
+        <button class="btn-primary" onclick="handleLogin()">
+          Log In to Portal
+          <svg viewBox="0 0 24 24"><path d="M5 12h14M12 5l7 7-7 7"/></svg>
+        </button>
+        <div class="divider">OR</div>
+        <button class="btn-social" onclick="handleGoogle()">
+          <svg class="google-icon" viewBox="0 0 24 24"><path fill="#4285F4" d="M22.56 12.25c0-.78-.07-1.53-.2-2.25H12v4.26h5.92c-.26 1.37-1.04 2.53-2.21 3.31v2.77h3.57c2.08-1.92 3.28-4.74 3.28-8.09z"/><path fill="#34A853" d="M12 23c2.97 0 5.46-.98 7.28-2.66l-3.57-2.77c-.98.66-2.23 1.06-3.71 1.06-2.86 0-5.29-1.93-6.16-4.53H2.18v2.84C3.99 20.53 7.7 23 12 23z"/><path fill="#FBBC05" d="M5.84 14.09c-.22-.66-.35-1.36-.35-2.09s.13-1.43.35-2.09V7.07H2.18C1.43 8.55 1 10.22 1 12s.43 3.45 1.18 4.93l2.85-2.22.81-.62z"/><path fill="#EA4335" d="M12 5.38c1.62 0 3.06.56 4.21 1.64l3.15-3.15C17.45 2.09 14.97 1 12 1 7.7 1 3.99 3.47 2.18 7.07l3.66 2.84c.87-2.6 3.3-4.53 6.16-4.53z"/></svg>
+          Continue with Google
+        </button>
+        <button class="btn-social" onclick="handleApple()">
+          <svg class="apple-icon" viewBox="0 0 814 1000" fill="#000"><path d="M788.1 340.9c-5.8 4.5-108.2 62.2-108.2 190.5 0 148.4 130.3 200.9 134.2 202.2-.6 3.2-20.7 71.9-68.7 141.9-42.8 61.6-87.5 123.1-155.5 123.1s-85.5-39.5-164-39.5c-76 0-103.7 40.8-165.9 40.8s-105-57.8-155.5-127.4C46 336 29.3 227.7 29.3 194.7c0-215.1 141.4-328.7 280.8-328.7 75 0 137.2 49.6 184.4 49.6 44.9 0 119.6-52.7 206.1-52.7 33.3 0 107.9 3.8 166.1 65.9zm-102.3-183.6c27.4-32.7 47.9-78.8 47.9-124.9 0-6.4-.6-12.9-1.9-18 0-.6-.6-1.3-.6-1.9-44.3 1.9-96.1 29.5-130.5 63.2-23.7 23.7-47.9 67.9-47.9 116.2 0 6.4 1.3 13.5 1.9 15.7 3.2.6 8.4 1.3 13.5 1.3 39.5 0 88.9-26.2 117.6-51.6z"/></svg>
+          Continue with Apple
+        </button>
+        <p class="privacy-note">By signing in, you confirm you've read the relevant <a href="#">Privacy Notice</a>.</p>
+      </div>
+
+      <!-- SIGNUP PANEL (exact design with Individual/Business) -->
+      <div id="panel-signup" data-panel class="active">
+        <p class="section-label">Account Type</p>
+        <div class="account-types">
+          <div class="account-type" id="type-client" onclick="selectType('client')">
+            <div class="account-type-icon"><svg viewBox="0 0 24 24"><circle cx="12" cy="8" r="4"/><path d="M4 20c0-4 3.6-7 8-7s8 3 8 7"/></svg></div>
+            <div class="account-type-info"><div class="account-type-name">Individual</div><div class="account-type-desc">For retail users / freelancers</div></div>
+          </div>
+          <div class="account-type selected" id="type-business" onclick="selectType('business')">
+            <div class="account-type-icon"><svg viewBox="0 0 24 24"><path d="M3 9l9-7 9 7v11a2 2 0 01-2 2H5a2 2 0 01-2-2z"/><polyline points="9 22 9 12 15 12 15 22"/></svg></div>
+            <div class="account-type-info"><div class="account-type-name">Business</div><div class="account-type-desc">For institutions & business owners</div></div>
+          </div>
+        </div>
+        <button class="btn-primary" onclick="handleSignUp()">
+          Create Account with Email
+          <svg viewBox="0 0 24 24"><path d="M5 12h14M12 5l7 7-7 7"/></svg>
+        </button>
+        <div class="divider">OR</div>
+        <button class="btn-social" onclick="handleGoogle()"><svg class="google-icon" viewBox="0 0 24 24"><path fill="#4285F4" d="M22.56 12.25c0-.78-.07-1.53-.2-2.25H12v4.26h5.92c-.26 1.37-1.04 2.53-2.21 3.31v2.77h3.57c2.08-1.92 3.28-4.74 3.28-8.09z"/><path fill="#34A853" d="M12 23c2.97 0 5.46-.98 7.28-2.66l-3.57-2.77c-.98.66-2.23 1.06-3.71 1.06-2.86 0-5.29-1.93-6.16-4.53H2.18v2.84C3.99 20.53 7.7 23 12 23z"/><path fill="#FBBC05" d="M5.84 14.09c-.22-.66-.35-1.36-.35-2.09s.13-1.43.35-2.09V7.07H2.18C1.43 8.55 1 10.22 1 12s.43 3.45 1.18 4.93l2.85-2.22.81-.62z"/><path fill="#EA4335" d="M12 5.38c1.62 0 3.06.56 4.21 1.64l3.15-3.15C17.45 2.09 14.97 1 12 1 7.7 1 3.99 3.47 2.18 7.07l3.66 2.84c.87-2.6 3.3-4.53 6.16-4.53z"/></svg>Continue with Google</button>
+        <button class="btn-social" onclick="handleApple()"><svg class="apple-icon" viewBox="0 0 814 1000" fill="#000"><path d="M788.1 340.9c-5.8 4.5-108.2 62.2-108.2 190.5 0 148.4 130.3 200.9 134.2 202.2-.6 3.2-20.7 71.9-68.7 141.9-42.8 61.6-87.5 123.1-155.5 123.1s-85.5-39.5-164-39.5c-76 0-103.7 40.8-165.9 40.8s-105-57.8-155.5-127.4C46 336 29.3 227.7 29.3 194.7c0-215.1 141.4-328.7 280.8-328.7 75 0 137.2 49.6 184.4 49.6 44.9 0 119.6-52.7 206.1-52.7 33.3 0 107.9 3.8 166.1 65.9zm-102.3-183.6c27.4-32.7 47.9-78.8 47.9-124.9 0-6.4-.6-12.9-1.9-18 0-.6-.6-1.3-.6-1.9-44.3 1.9-96.1 29.5-130.5 63.2-23.7 23.7-47.9 67.9-47.9 116.2 0 6.4 1.3 13.5 1.9 15.7 3.2.6 8.4 1.3 13.5 1.3 39.5 0 88.9-26.2 117.6-51.6z"/></svg>Continue with Apple</button>
+        <p class="privacy-note">By submitting your email, you confirm you've read the relevant <a href="#">Privacy Notice</a>.</p>
+      </div>
+    </div>
+
+    <!-- RIGHT COLUMN: FULL-BLEED IMAGE WITH OVERLAY HEADING -->
+    <div class="image-hero">
+      <div class="image-hero-inner">
+        <div class="image-hero-bg"></div>
+        <div class="image-hero-overlay"></div>
+        <div class="image-hero-content">
+          <h2>The premier IT<br>service provider</h2>
+          <p>Trusted by <strong>150+ million users</strong> globally</p>
+        </div>
+      </div>
+    </div>
+  </main>
+
+  <footer class="footer">
+    <span class="footer-copy">Copyright © 2018-2026 NexaIT. All rights reserved.</span>
+    <nav class="footer-links">
+      <a href="#">Privacy Notice</a>
+      <a href="#">Legal Status</a>
+      <a href="#">Terms and Conditions</a>
+      <a href="#">Cookie Preferences</a>
+    </nav>
+  </footer>
+</div>
+
+<script>
+  function switchTab(tab) {
+    const loginBtn = document.getElementById('tab-login');
+    const signupBtn = document.getElementById('tab-signup');
+    const loginPanel = document.getElementById('panel-login');
+    const signupPanel = document.getElementById('panel-signup');
+    if (tab === 'login') {
+      loginBtn.classList.add('active'); signupBtn.classList.remove('active');
+      loginPanel.classList.add('active'); signupPanel.classList.remove('active');
+      loginBtn.setAttribute('aria-selected', 'true'); signupBtn.setAttribute('aria-selected', 'false');
+    } else {
+      signupBtn.classList.add('active'); loginBtn.classList.remove('active');
+      signupPanel.classList.add('active'); loginPanel.classList.remove('active');
+      signupBtn.setAttribute('aria-selected', 'true'); loginBtn.setAttribute('aria-selected', 'false');
+    }
+  }
+  function selectType(type) {
+    document.getElementById('type-client').classList.remove('selected');
+    document.getElementById('type-business').classList.remove('selected');
+    document.getElementById('type-' + type).classList.add('selected');
+  }
+  function handleLogin() { alert("🔐 Login simulation — secure access granted for NexaIT portal."); }
+  function handleSignUp() { alert("📧 Account creation request received. We'll send a verification link."); }
+  function handleGoogle() { alert("🔑 Google SSO — enterprise authentication."); }
+  function handleApple() { alert("🍎 Apple ID login — secure IT partner access."); }
+</script>
+</body>
+</html>

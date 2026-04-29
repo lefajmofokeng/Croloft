@@ -183,7 +183,7 @@ class CronosHeader extends HTMLElement {
     // =============================================
     get ACTION_BUTTONS() {
         return [
-            { label: 'Get a quote', href: 'quote.html', style: 'secondary' },
+            { label: 'Log In', href: 'login.html', style: 'secondary' },
             { label: 'Contact us',  href: 'form.html',  style: 'primary' },
         ];
     }

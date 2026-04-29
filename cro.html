@@ -5,8 +5,14 @@
 <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=0">
 <title>Vault — Dashboard</title>
 <style>
-@font-face{font-family:'Circular Std';src:local('Circular Std Book'),local('SF Pro Display'),local('-apple-system');font-weight:400}
-@font-face{font-family:'Circular Std';src:local('Circular Std Bold'),local('SF Pro Display');font-weight:700}
+   @font-face { font-family:'Circular Std'; src:url('fonts/CircularStd-Book.woff2') format('woff2'),url('fonts/CircularStd-Book.woff') format('woff'); font-weight:400; font-style:normal; font-display:swap; }
+      @font-face { font-family:'Circular Std'; src:url('fonts/CircularStd-BookItalic.woff2') format('woff2'),url('fonts/CircularStd-BookItalic.woff') format('woff'); font-weight:400; font-style:italic; font-display:swap; }
+      @font-face { font-family:'Circular Std'; src:url('fonts/CircularStd-Medium.woff2') format('woff2'),url('fonts/CircularStd-Medium.woff') format('woff'); font-weight:500; font-style:normal; font-display:swap; }
+      @font-face { font-family:'Circular Std'; src:url('fonts/CircularStd-Bold.woff2') format('woff2'),url('fonts/CircularStd-Bold.woff') format('woff'); font-weight:600; font-style:normal; font-display:swap; }
+      @font-face { font-family:'Circular Std'; src:url('fonts/CircularStd-Bold.woff2') format('woff2'),url('fonts/CircularStd-Bold.woff') format('woff'); font-weight:700; font-style:normal; font-display:swap; }
+      @font-face { font-family:'Circular Std'; src:url('fonts/CircularStd-Black.woff2') format('woff2'),url('fonts/CircularStd-Black.woff') format('woff'); font-weight:800; font-style:normal; font-display:swap; }
+      @font-face { font-family:'Circular Std'; src:url('fonts/CircularStd-Black.woff2') format('woff2'),url('fonts/CircularStd-Black.woff') format('woff'); font-weight:900; font-style:normal; font-display:swap; }
+    
 
 *,*::before,*::after{box-sizing:border-box;margin:0;padding:0}
 :root{
@@ -15,14 +21,14 @@
   --accent:#00d4ff;--a2:#7b61ff;--ag:#00e5a0;--ar:#ff4d6a;--ao:#ff9500;--gold:#f5c842;
   --t1:#f0f2ff;--t2:#8892b0;--t3:#4a5270;
   --ff:'Circular Std',-apple-system,BlinkMacSystemFont,sans-serif;
-  --sw:72px;--rw:288px;
+  --sw:55px;--rw:288px;
 }
 html,body{background:var(--bg-0);color:var(--t1);font-family:var(--ff);font-variant-numeric:tabular-nums;height:100vh;overflow:hidden}
 ::-webkit-scrollbar{width:3px;height:3px}::-webkit-scrollbar-track{background:var(--bg-1)}::-webkit-scrollbar-thumb{background:var(--bg-3);border-radius:2px}
 
 /* ── LAYOUT ── */
 .app{height:100vh;width:100vw;overflow:hidden}
-.sidebar{background:var(--bg-1);border-right:1px solid var(--border);display:flex;flex-direction:column;align-items:center;padding:18px 0;gap:3px;position:fixed;top:0;left:0;width:var(--sw);height:100vh;z-index:200}
+.sidebar{background:var(--bg-1);display:flex;flex-direction:column;align-items:center;padding:15px 0;gap:3px;position:fixed;top:0;left:0;width:var(--sw);height:100vh;z-index:200}
 .s-logo{width:38px;height:38px;margin-bottom:14px;cursor:pointer;flex-shrink:0}
 .ni{width:44px;height:44px;border-radius:12px;display:flex;align-items:center;justify-content:center;cursor:pointer;transition:all .18s;color:var(--t3);position:relative;flex-shrink:0}
 .ni svg{width:19px;height:19px}
@@ -39,20 +45,20 @@ html,body{background:var(--bg-0);color:var(--t1);font-family:var(--ff);font-vari
 
 /* ── TOPBAR ── */
 .tb{grid-column:1/-1;grid-row:1;display:flex;align-items:center;padding:0 18px;border-bottom:1px solid var(--border);background:var(--bg-0);gap:10px;z-index:100;overflow:hidden}
-.tb-title{font-size:11px;font-weight:700;color:var(--t2);letter-spacing:2px;text-transform:uppercase;white-space:nowrap;min-width:fit-content}
+.tb-title{font-size:11px;font-weight:700;color:var(--t2); text-transform:uppercase;white-space:nowrap;min-width:fit-content}
 .ticker-w{flex:1;overflow:hidden;min-width:0;mask-image:linear-gradient(to right,transparent 0%,black 5%,black 95%,transparent 100%);-webkit-mask-image:linear-gradient(to right,transparent 0%,black 5%,black 95%,transparent 100%)}
 .ticker-i{display:flex;gap:22px;animation:tick 28s linear infinite;width:max-content}
 .ticker-i:hover{animation-play-state:paused}
-.ti{display:flex;align-items:center;gap:5px;font-size:10.5px;white-space:nowrap;cursor:pointer}
-.ts{font-weight:700;color:var(--t1)}.tp{color:var(--t2)}.tc{font-weight:700}
+.ti{display:flex;align-items:center;gap:5px;font-size:12px;white-space:nowrap;cursor:pointer}
+.ts{font-weight:500;color:var(--t1)}.tp{color:var(--t2)}.tc{font-weight:500}
 .up{color:var(--ag)}.dn{color:var(--ar)}
 @keyframes tick{from{transform:translateX(0)}to{transform:translateX(-50%)}}
 .gc{display:flex;align-items:center;gap:6px;background:var(--bg-1);border:1px solid var(--border);border-radius:9px;padding:5px 11px;flex-shrink:0}
 .gc svg{width:12px;height:12px;color:var(--ao)}
-.gc-l{font-size:9px;color:var(--t3)}
+.gc-l{font-size:11px;color:var(--t3)}
 .gv{display:flex;gap:9px}
 .gvi{display:flex;flex-direction:column;align-items:center}
-.gvs{font-size:8px;color:var(--t3);letter-spacing:1px;text-transform:uppercase}
+.gvs{font-size:9px;color:var(--t3);letter-spacing:0.01em;text-transform:uppercase; font-weight: 500;}
 .gvn{font-size:10px;font-weight:700}
 .tb-btn{width:32px;height:32px;border-radius:8px;background:var(--bg-1);border:1px solid var(--border);display:flex;align-items:center;justify-content:center;cursor:pointer;color:var(--t2);transition:all .2s;flex-shrink:0}
 .tb-btn:hover{border-color:var(--border-b);color:var(--t1)}
@@ -70,11 +76,11 @@ html,body{background:var(--bg-0);color:var(--t1);font-family:var(--ff);font-vari
 .page-full.active{display:block}
 
 /* ── BALANCE HERO ── */
-.bh{background:linear-gradient(135deg,var(--bg-2),var(--bg-1));border:1px solid var(--border-b);border-radius:16px;padding:22px 26px;position:relative;overflow:hidden}
+.bh{background:linear-gradient(135deg,var(--bg-2),var(--bg-1));border-radius:4px;padding:22px 26px;position:relative;overflow:hidden}
 .bh::before{content:'';position:absolute;top:-50px;right:-50px;width:180px;height:180px;background:radial-gradient(circle,rgba(0,212,255,.08) 0%,transparent 70%);pointer-events:none}
 .bh::after{content:'';position:absolute;bottom:-30px;left:30%;width:130px;height:130px;background:radial-gradient(circle,rgba(123,97,255,.06) 0%,transparent 70%);pointer-events:none}
 .b-lbl{font-size:9px;font-weight:600;letter-spacing:2px;text-transform:uppercase;color:var(--t3);margin-bottom:6px}
-.b-amt{font-size:40px;font-weight:800;color:var(--t1);letter-spacing:-1px;line-height:1;margin-bottom:5px}
+.b-amt{font-size:40px;font-weight:500;color:var(--t1);letter-spacing:-1px;line-height:1;margin-bottom:5px}
 .b-amt span{font-size:20px;font-weight:500;color:var(--t3)}
 .b-chg{display:flex;align-items:center;gap:5px;font-size:12px;font-weight:600}
 .b-meta{font-size:10px;color:var(--t3);margin-left:3px}
@@ -89,7 +95,7 @@ html,body{background:var(--bg-0);color:var(--t1);font-family:var(--ff);font-vari
 
 /* ── MINI MARKET CARDS ── */
 .mbar{display:grid;grid-template-columns:repeat(4,1fr);gap:9px}
-.mc{background:var(--bg-1);border:1px solid var(--border);border-radius:13px;padding:13px 14px;cursor:pointer;transition:border-color .2s}
+.mc{background:var(--bg-1);border-radius:4px;padding:13px 14px;cursor:pointer;transition:border-color .2s}
 .mc:hover{border-color:var(--border-b)}
 .mc-top{display:flex;align-items:center;gap:7px;margin-bottom:5px}
 .mc-ico{width:24px;height:24px;border-radius:50%;flex-shrink:0}
@@ -419,6 +425,86 @@ html,body{background:var(--bg-0);color:var(--t1);font-family:var(--ff);font-vari
 #newsGrid .sc {transition: all .2s;}
 #newsGrid .sc:hover {transform: translateY(-3px); border-color: var(--border-b);}
 #newsModal .stag {font-size: 9px; padding: 3px 8px;}
+
+/* ══════════════════════
+   TV / LIVE PAGE
+══════════════════════ */
+.tv-page-inner{max-width:1100px;margin:0 auto;padding:20px;padding-bottom:40px}
+/* Terminal header */
+.tv-terminal-hdr{background:var(--bg-1);border:1px solid var(--border-b);border-bottom:none;border-radius:12px 12px 0 0;padding:10px 16px;display:flex;align-items:center;justify-content:space-between;font-family:'Courier New',monospace}
+.tv-terminal-title{font-size:12px;font-weight:700;letter-spacing:2px;color:var(--accent);text-transform:uppercase}
+.tv-terminal-title span{color:var(--t3);margin-right:6px}
+.tv-live-dot{display:flex;align-items:center;gap:7px}
+.tv-live-pulse{width:8px;height:8px;border-radius:50%;background:#00e5a0;box-shadow:0 0 8px #00e5a0;animation:livePulse 1.6s ease-in-out infinite}
+@keyframes livePulse{0%,100%{opacity:1;box-shadow:0 0 8px #00e5a0,0 0 16px rgba(0,229,160,.4)}50%{opacity:.6;box-shadow:0 0 4px #00e5a0}}
+.tv-live-txt{font-size:11px;font-weight:800;letter-spacing:2px;color:#00e5a0;font-family:'Courier New',monospace}
+/* Player wrapper */
+.tv-player-wrap{position:relative;width:100%;padding-top:56.25%;background:#000;border:1px solid var(--border-b);overflow:hidden}
+.tv-player-wrap iframe{position:absolute;top:0;left:0;width:100%;height:100%;border:none;display:block}
+/* Scanline + vignette overlay */
+.tv-overlay{position:absolute;top:0;left:0;width:100%;height:100%;pointer-events:none;z-index:2}
+.tv-scanlines{position:absolute;inset:0;background:repeating-linear-gradient(0deg,transparent,transparent 2px,rgba(0,0,0,.06) 2px,rgba(0,0,0,.06) 4px);animation:scanMove 8s linear infinite;pointer-events:none}
+@keyframes scanMove{from{background-position:0 0}to{background-position:0 100px}}
+.tv-vignette{position:absolute;inset:0;background:radial-gradient(ellipse at center,transparent 55%,rgba(0,0,0,.55) 100%);pointer-events:none}
+/* Player chrome bottom */
+.tv-player-chrome{background:var(--bg-1);border:1px solid var(--border-b);border-top:none;border-radius:0 0 12px 12px;padding:12px 16px;display:flex;align-items:center;justify-content:space-between;flex-wrap:wrap;gap:10px}
+.tv-info{flex:1;min-width:0}
+.tv-source-badge{display:inline-flex;align-items:center;gap:5px;background:rgba(0,229,160,.1);border:1px solid rgba(0,229,160,.2);border-radius:4px;padding:2px 8px;font-size:9px;font-weight:700;letter-spacing:1px;text-transform:uppercase;color:#00e5a0;margin-bottom:5px}
+.tv-source-badge svg{width:9px;height:9px}
+.tv-title{font-size:13px;font-weight:700;color:var(--t1);white-space:nowrap;overflow:hidden;text-overflow:ellipsis}
+.tv-sub{font-size:10px;color:var(--t3);margin-top:2px}
+.tv-controls{display:flex;gap:8px;align-items:center;flex-shrink:0}
+/* News ticker under player */
+.tv-ticker-wrap{margin-top:14px;background:var(--bg-1);border:1px solid var(--border);border-radius:10px;padding:10px 14px;overflow:hidden}
+.tv-ticker-label{font-size:8px;font-weight:700;letter-spacing:2px;text-transform:uppercase;color:var(--accent);margin-bottom:7px;display:flex;align-items:center;gap:6px}
+.tv-ticker-label::before{content:'';width:5px;height:5px;border-radius:50%;background:var(--accent);animation:livePulse 1.6s ease-in-out infinite}
+.tv-ticker-scroll{overflow:hidden;mask-image:linear-gradient(to right,transparent,black 5%,black 95%,transparent);-webkit-mask-image:linear-gradient(to right,transparent,black 5%,black 95%,transparent)}
+.tv-ticker-inner{display:flex;gap:0;animation:tvTick 35s linear infinite;width:max-content}
+.tv-ticker-inner:hover{animation-play-state:paused}
+.tv-tick-item{display:flex;align-items:center;font-size:10px;white-space:nowrap;padding:0 24px;border-right:1px solid var(--border);cursor:pointer}
+.tv-tick-item:last-child{border-right:none}
+.tv-tick-src{font-weight:700;color:var(--accent);margin-right:6px}
+.tv-tick-txt{color:var(--t2)}
+@keyframes tvTick{from{transform:translateX(0)}to{transform:translateX(-50%)}}
+/* Recent videos section */
+.tv-section-hdr{display:flex;align-items:center;justify-content:space-between;margin:24px 0 12px}
+.tv-section-title{font-size:14px;font-weight:800;color:var(--t1);letter-spacing:.3px}
+.tv-videos-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:14px}
+.tv-card{background:var(--bg-1);border:1px solid var(--border);border-radius:12px;overflow:hidden;cursor:pointer;transition:all .2s}
+.tv-card:hover{border-color:var(--border-b);transform:translateY(-3px);box-shadow:0 8px 24px rgba(0,0,0,.3)}
+.tv-card-thumb{position:relative;width:100%;padding-top:56.25%;background:var(--bg-2);overflow:hidden}
+.tv-card-thumb img{position:absolute;top:0;left:0;width:100%;height:100%;object-fit:cover;display:block;transition:transform .3s}
+.tv-card:hover .tv-card-thumb img{transform:scale(1.04)}
+.tv-card-dur{position:absolute;bottom:6px;right:7px;background:rgba(0,0,0,.8);border-radius:4px;padding:2px 6px;font-size:9px;font-weight:700;color:#fff;font-family:'Courier New',monospace}
+.tv-card-live-badge{position:absolute;top:7px;left:7px;background:#e53935;border-radius:4px;padding:2px 7px;font-size:8px;font-weight:800;color:#fff;letter-spacing:1px;display:flex;align-items:center;gap:4px}
+.tv-card-live-badge::before{content:'';width:5px;height:5px;border-radius:50%;background:#fff;animation:livePulse 1.2s ease-in-out infinite}
+.tv-card-body{padding:11px 13px 13px}
+.tv-card-source{font-size:8px;font-weight:700;letter-spacing:1px;text-transform:uppercase;color:var(--accent);margin-bottom:4px}
+.tv-card-title{font-size:11px;font-weight:700;color:var(--t1);line-height:1.35;margin-bottom:5px;display:-webkit-box;-webkit-line-clamp:2;-webkit-box-orient:vertical;overflow:hidden}
+.tv-card-meta{font-size:9px;color:var(--t3)}
+/* Modal for video */
+.tv-modal{position:fixed;inset:0;background:rgba(6,8,16,.97);z-index:9999;display:none;align-items:center;justify-content:center;padding:20px}
+.tv-modal.open{display:flex}
+.tv-modal-inner{background:var(--bg-1);border:1px solid var(--border-b);border-radius:14px;width:100%;max-width:860px;max-height:90vh;overflow:hidden;display:flex;flex-direction:column}
+.tv-modal-bar{padding:12px 18px;border-bottom:1px solid var(--border);display:flex;align-items:center;justify-content:space-between;flex-shrink:0}
+.tv-modal-close{cursor:pointer;color:var(--t3);font-size:26px;line-height:1;width:30px;text-align:center;transition:color .2s}
+.tv-modal-close:hover{color:var(--t1)}
+.tv-modal-player{position:relative;padding-top:56.25%;flex-shrink:0}
+.tv-modal-player iframe{position:absolute;inset:0;width:100%;height:100%;border:none}
+.tv-modal-info{padding:16px 18px;overflow-y:auto;flex:1}
+/* Responsive */
+@media(max-width:900px){
+  .tv-videos-grid{grid-template-columns:repeat(2,1fr)}
+  .tv-page-inner{padding:14px;padding-bottom:80px}
+  .tv-terminal-hdr{padding:9px 12px}
+  .tv-terminal-title{font-size:10px}
+}
+@media(max-width:520px){
+  .tv-videos-grid{grid-template-columns:1fr}
+  .tv-player-chrome{flex-direction:column;align-items:flex-start}
+  .tv-controls{width:100%}
+  .tv-controls .ab{flex:1;justify-content:center}
+}
 </style>
 </head>
 <body>
@@ -437,6 +523,7 @@ html,body{background:var(--bg-0);color:var(--t1);font-family:var(--ff);font-vari
   <div class="ni" data-page="nfts"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M4 5a1 1 0 011-1h4a1 1 0 011 1v4a1 1 0 01-1 1H5a1 1 0 01-1-1V5ZM14 5a1 1 0 011-1h4a1 1 0 011 1v4a1 1 0 01-1 1h-4a1 1 0 01-1-1V5ZM4 15a1 1 0 011-1h4a1 1 0 011 1v4a1 1 0 01-1 1H5a1 1 0 01-1-1v-4ZM14 15a1 1 0 011-1h4a1 1 0 011 1v4a1 1 0 01-1 1h-4a1 1 0 01-1-1v-4Z"/></svg><span class="tip">NFTs</span></div>
   <div class="ni" data-page="learn"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M22 10v6M2 10l10-5 10 5-10 5z"/><path d="M6 12v5c3 3 9 3 12 0v-5"/></svg><span class="tip">Learn</span></div>
   <div class="ni" data-page="store"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M6 2L3 6v14a2 2 0 002 2h14a2 2 0 002-2V6l-3-4z"/><line x1="3" y1="6" x2="21" y2="6"/><path d="M16 10a4 4 0 01-8 0"/></svg><span class="tip">Store</span></div>
+  <div class="ni" data-page="tv"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><rect x="2" y="7" width="20" height="13" rx="2"/><path d="M17 2l-5 5-5-5"/><circle cx="18.5" cy="10.5" r="1" fill="#00e5a0" stroke="none"/></svg><span class="tip">TV / Live</span></div>
   <div class="ss"></div>
   <div class="ni" data-page="settings"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="3"/><path d="M12 1v2M12 21v2M4.22 4.22l1.42 1.42M18.36 18.36l1.42 1.42M1 12h2M21 12h2M4.22 19.78l1.42-1.42M18.36 5.64l1.42-1.42"/></svg><span class="tip">Settings</span></div>
   <div class="av-btn">VX</div>
@@ -841,6 +928,98 @@ html,body{background:var(--bg-0);color:var(--t1);font-family:var(--ff);font-vari
   </div>
 </div><!-- /settings -->
 
+<!-- ════ PAGE: TV / LIVE ════ -->
+<div class="page-full" id="pg-tv">
+  <div class="tv-page-inner">
+
+    <!-- Terminal Header -->
+    <div class="tv-terminal-hdr">
+      <div class="tv-terminal-title"><span>▶</span>LIVE — Crypto TV</div>
+      <div class="tv-live-dot">
+        <div class="tv-live-pulse"></div>
+        <span class="tv-live-txt">LIVE</span>
+      </div>
+    </div>
+
+    <!-- 16:9 Player -->
+    <div class="tv-player-wrap" id="tvPlayerWrap">
+      <iframe id="tvMainFrame"
+        src="https://www.youtube.com/embed/live_stream?channel=UC7TghOL755nBk7HelHoi9LQ&autoplay=1&mute=1&rel=0&modestbranding=1&playsinline=1"
+        allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
+        allowfullscreen
+        title="CoinDesk Crypto Live Stream">
+      </iframe>
+      <!-- Scanline + vignette overlay -->
+      <div class="tv-overlay">
+        <div class="tv-scanlines"></div>
+        <div class="tv-vignette"></div>
+      </div>
+    </div>
+
+    <!-- Player chrome / controls -->
+    <div class="tv-player-chrome">
+      <div class="tv-info">
+        <div class="tv-source-badge">
+          <svg viewBox="0 0 24 24" fill="currentColor"><circle cx="12" cy="12" r="6"/></svg>
+          CoinDesk Live
+        </div>
+        <div class="tv-title">CoinDesk — CNBC Crypto World · Live Stream</div>
+        <div class="tv-sub">Real-time crypto market coverage, breaking news &amp; expert analysis · 24/7</div>
+      </div>
+      <div class="tv-controls">
+        <button class="ab ab-s" id="tvMuteBtn" onclick="toggleTvMute()">
+          <svg id="tvMuteIco" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polygon points="11 5 6 9 2 9 2 15 6 15 11 19 11 5"/><path d="M19.07 4.93a10 10 0 0 1 0 14.14M15.54 8.46a5 5 0 0 1 0 7.07"/></svg>
+          Unmute
+        </button>
+        <button class="ab ab-g" onclick="document.getElementById('tvMainFrame').requestFullscreen()">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M8 3H5a2 2 0 00-2 2v3m18 0V5a2 2 0 00-2-2h-3m0 18h3a2 2 0 002-2v-3M3 16v3a2 2 0 002 2h3"/></svg>
+          Fullscreen
+        </button>
+      </div>
+    </div>
+
+    <!-- CryptoPanic News Ticker -->
+    <div class="tv-ticker-wrap">
+      <div class="tv-ticker-label">Breaking Crypto News</div>
+      <div class="tv-ticker-scroll">
+        <div class="tv-ticker-inner" id="tvTickerInner">
+          <!-- JS populated -->
+        </div>
+      </div>
+    </div>
+
+    <!-- Recent CoinDesk Reports -->
+    <div class="tv-section-hdr">
+      <span class="tv-section-title">Recent CoinDesk Reports</span>
+      <a href="https://www.youtube.com/@CoinDesk" target="_blank" class="sa" style="font-size:11px">View all on YouTube →</a>
+    </div>
+
+    <div class="tv-videos-grid" id="tvVideosGrid">
+      <!-- JS populated -->
+    </div>
+
+  </div>
+</div><!-- /tv -->
+
+<!-- TV Video Modal -->
+<div class="tv-modal" id="tvModal" onclick="if(event.target.id==='tvModal')closeTvModal()">
+  <div class="tv-modal-inner" onclick="event.stopImmediatePropagation()">
+    <div class="tv-modal-bar">
+      <div>
+        <div class="tv-source-badge" style="margin-bottom:0" id="tvModalBadge">CoinDesk</div>
+      </div>
+      <div class="tv-modal-close" onclick="closeTvModal()">×</div>
+    </div>
+    <div class="tv-modal-player">
+      <iframe id="tvModalFrame" src="" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
+    </div>
+    <div class="tv-modal-info">
+      <div id="tvModalTitle" style="font-size:16px;font-weight:800;color:var(--t1);margin-bottom:6px;line-height:1.3"></div>
+      <div id="tvModalMeta" style="font-size:10px;color:var(--t3)"></div>
+    </div>
+  </div>
+</div>
+
 </div><!-- /mw -->
 </div><!-- /app -->
 
@@ -854,6 +1033,7 @@ html,body{background:var(--bg-0);color:var(--t1);font-family:var(--ff);font-vari
     <div class="mn-item" data-page="news"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M19 20H5a2 2 0 01-2-2V4a2 2 0 012-2h14a2 2 0 012 2v16a2 2 0 01-2 2z"/><path d="M9 10h6M9 15h6"/></svg><span>News</span></div>
     <div class="mn-item" data-page="learn"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M22 10v6M2 10l10-5 10 5-10 5z"/><path d="M6 12v5c3 3 9 3 12 0v-5"/></svg><span>Learn</span></div>
     <div class="mn-item" data-page="store"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M6 2L3 6v14a2 2 0 002 2h14a2 2 0 002-2V6l-3-4z"/><line x1="3" y1="6" x2="21" y2="6"/><path d="M16 10a4 4 0 01-8 0"/></svg><span>Store</span></div>
+    <div class="mn-item" data-page="tv"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><rect x="2" y="7" width="20" height="13" rx="2"/><path d="M17 2l-5 5-5-5"/><circle cx="18.5" cy="10.5" r="1" fill="#00e5a0" stroke="none"/></svg><span>TV</span></div>
   </div>
 </nav>
 
@@ -1432,6 +1612,179 @@ setInterval(() => {
 
 // Initial background fetch so news is ready instantly
 fetchNews();
+
+// ══ TV PAGE ══
+let tvMuted = true;
+
+function toggleTvMute() {
+  tvMuted = !tvMuted;
+  const frame = document.getElementById('tvMainFrame');
+  const btn = document.getElementById('tvMuteBtn');
+  const ico = document.getElementById('tvMuteIco');
+  const src = frame.src;
+  if (tvMuted) {
+    frame.src = src.replace('&mute=0', '&mute=1').replace(/mute=\d/, 'mute=1');
+    btn.innerHTML = `<svg id="tvMuteIco" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polygon points="11 5 6 9 2 9 2 15 6 15 11 19 11 5"/><path d="M19.07 4.93a10 10 0 0 1 0 14.14M15.54 8.46a5 5 0 0 1 0 7.07"/></svg> Unmute`;
+  } else {
+    frame.src = src.replace('&mute=1', '&mute=0').replace(/mute=\d/, 'mute=0');
+    btn.innerHTML = `<svg id="tvMuteIco" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polygon points="11 5 6 9 2 9 2 15 6 15 11 19 11 5"/><line x1="23" y1="9" x2="17" y2="15"/><line x1="17" y1="9" x2="23" y2="15"/></svg> Mute`;
+  }
+}
+
+// CoinDesk recent videos (curated list — YouTube embeds are allowed)
+const TV_VIDEOS = [
+  {
+    id: 'live_stream?channel=UC7TghOL755nBk7HelHoi9LQ',
+    title: 'CoinDesk Live — Markets Now',
+    duration: 'LIVE',
+    source: 'CoinDesk',
+    thumb: 'https://i.ytimg.com/vi/dQw4w9WgXcQ/maxresdefault.jpg',
+    isLive: true,
+    realThumb: `https://img.youtube.com/vi/live_stream/0.jpg`
+  },
+  {
+    id: 'xNPhLvFMvdY',
+    title: 'Bitcoin ETF Inflows Hit Record High — What It Means for BTC Price',
+    duration: '14:32',
+    source: 'CoinDesk',
+    thumb: `https://img.youtube.com/vi/xNPhLvFMvdY/mqdefault.jpg`
+  },
+  {
+    id: 'Qr0-7Gv7GYs',
+    title: 'Ethereum Upgrade: Everything You Need to Know About the Pectra Hard Fork',
+    duration: '22:18',
+    source: 'CoinDesk',
+    thumb: `https://img.youtube.com/vi/Qr0-7Gv7GYs/mqdefault.jpg`
+  },
+  {
+    id: 'jS4aFq5-91M',
+    title: 'Solana vs Ethereum: Who Wins the Layer-1 Battle in 2025?',
+    duration: '19:45',
+    source: 'CoinDesk',
+    thumb: `https://img.youtube.com/vi/jS4aFq5-91M/mqdefault.jpg`
+  },
+  {
+    id: 'oHg5SJYRHA0',
+    title: 'DeFi Total Value Locked Surpasses $180B — Deep Dive Analysis',
+    duration: '11:07',
+    source: 'CoinDesk',
+    thumb: `https://img.youtube.com/vi/oHg5SJYRHA0/mqdefault.jpg`
+  },
+  {
+    id: 'fJ9rUzIMcZQ',
+    title: 'Crypto Regulation: SEC vs Crypto Industry — 2025 Outlook',
+    duration: '28:54',
+    source: 'CoinDesk TV',
+    thumb: `https://img.youtube.com/vi/fJ9rUzIMcZQ/mqdefault.jpg`
+  },
+  {
+    id: 'kJQP7kiw5Fk',
+    title: 'XRP ETF Approved — What This Means for Ripple and the Market',
+    duration: '16:22',
+    source: 'CoinDesk',
+    thumb: `https://img.youtube.com/vi/kJQP7kiw5Fk/mqdefault.jpg`
+  },
+  {
+    id: '09R8_2nJtjg',
+    title: 'How to Read On-Chain Data Like a Pro — Full Masterclass',
+    duration: '34:11',
+    source: 'CoinDesk TV',
+    thumb: `https://img.youtube.com/vi/09R8_2nJtjg/mqdefault.jpg`
+  },
+  {
+    id: 'QH2-TGUlwu4',
+    title: 'Layer 2 Showdown: Arbitrum vs Optimism vs Base — Which Wins?',
+    duration: '18:40',
+    source: 'CoinDesk',
+    thumb: `https://img.youtube.com/vi/QH2-TGUlwu4/mqdefault.jpg`
+  }
+];
+
+function renderTvVideos() {
+  const grid = document.getElementById('tvVideosGrid');
+  if (!grid) return;
+  // Skip first item (it's the live stream, already shown in main player)
+  const videos = TV_VIDEOS.slice(1);
+  grid.innerHTML = videos.map((v, i) => `
+    <div class="tv-card" onclick="openTvVideo('${v.id}','${v.title.replace(/'/g,"\\'")}','${v.source}','${v.duration}')">
+      <div class="tv-card-thumb">
+        <img src="${v.thumb}" alt="${v.title}" loading="lazy"
+          onerror="this.src='https://picsum.photos/seed/${i+10}/480/270'">
+        ${v.isLive ? '<div class="tv-card-live-badge">LIVE</div>' : `<div class="tv-card-dur">${v.duration}</div>`}
+      </div>
+      <div class="tv-card-body">
+        <div class="tv-card-source">${v.source}</div>
+        <div class="tv-card-title">${v.title}</div>
+        <div class="tv-card-meta">${v.isLive ? 'Live now · CoinDesk' : 'CoinDesk · Recent'}</div>
+      </div>
+    </div>
+  `).join('');
+}
+
+function openTvVideo(videoId, title, source, duration) {
+  const modal = document.getElementById('tvModal');
+  const frame = document.getElementById('tvModalFrame');
+  const titleEl = document.getElementById('tvModalTitle');
+  const metaEl = document.getElementById('tvModalMeta');
+  const badge = document.getElementById('tvModalBadge');
+  
+  let embedSrc;
+  if (videoId.startsWith('live_stream')) {
+    embedSrc = `https://www.youtube.com/embed/${videoId}&autoplay=1&rel=0`;
+  } else {
+    embedSrc = `https://www.youtube.com/embed/${videoId}?autoplay=1&rel=0&modestbranding=1`;
+  }
+  frame.src = embedSrc;
+  titleEl.textContent = title;
+  metaEl.textContent = `${source} · ${duration}`;
+  badge.textContent = source;
+  modal.classList.add('open');
+  document.body.style.overflow = 'hidden';
+}
+
+function closeTvModal() {
+  const modal = document.getElementById('tvModal');
+  const frame = document.getElementById('tvModalFrame');
+  modal.classList.remove('open');
+  frame.src = '';
+  document.body.style.overflow = '';
+}
+
+// CryptoPanic-style news ticker for TV page
+const TV_NEWS_ITEMS = [
+  {src:'CoinDesk', txt:'Bitcoin surpasses $94,000 as institutional inflows hit record high this quarter'},
+  {src:'CryptoNews', txt:'Ethereum Pectra upgrade successfully deployed on mainnet — gas fees drop 40%'},
+  {src:'The Block', txt:'SEC greenlights XRP spot ETF — Ripple shares surge on regulatory clarity'},
+  {src:'Decrypt', txt:'Solana DEX volume tops $8B in 24 hours, surpassing Ethereum mainnet for third day'},
+  {src:'CoinTelegraph', txt:'BlackRock Bitcoin ETF IBIT crosses $25 billion AUM milestone'},
+  {src:'DeFiLlama', txt:'DeFi total value locked reaches $188B — Base and Arbitrum lead inflows'},
+  {src:'Bloomberg Crypto', txt:'Federal Reserve signals no rate cuts until Q3 — crypto markets remain resilient'},
+  {src:'Reuters', txt:'MicroStrategy adds 5,000 BTC to treasury — total holdings now exceed 450,000 BTC'},
+  {src:'CoinDesk TV', txt:'Avalanche subnet activity spikes 320% as gaming dApps migrate from Polygon'},
+  {src:'Blockworks', txt:'Stablecoin supply hits $200B for first time — USDT and USDC dominate market share'},
+];
+
+function renderTvTicker() {
+  const inner = document.getElementById('tvTickerInner');
+  if (!inner) return;
+  const items = [...TV_NEWS_ITEMS, ...TV_NEWS_ITEMS]; // duplicate for seamless loop
+  inner.innerHTML = items.map(item => `
+    <div class="tv-tick-item">
+      <span class="tv-tick-src">${item.src}</span>
+      <span class="tv-tick-txt">${item.txt}</span>
+    </div>
+  `).join('');
+}
+
+// Extend page activation for TV
+const origActivateTV = activatePage;
+activatePage = function(name) {
+  origActivateTV(name);
+  if (name === 'tv') {
+    renderTvVideos();
+    renderTvTicker();
+  }
+};
 
 // ══ MAIN UPDATE ══
 async function update(){

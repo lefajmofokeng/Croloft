@@ -580,4 +580,522 @@
 
 
 
+
+
+
+
+
+
+
+
+
+
+<div id="nftJourney-asym-wrapper" class="nftJourney-outer">
+    <style>
+        :root {
+            --nj-bg: #000000;
+            --nj-card-dark: #111111;
+            --nj-lime: #CCFF00;
+            --nj-radius: 32px; /* Smooth, deep corners from the image */
+            --nj-font: 'Circular Std', -apple-system, sans-serif;
+        }
+
+        .nftJourney-outer {
+            background-color: var(--nj-bg);
+            color: #ffffff;
+            font-family: var(--nj-font);
+            padding: 150px 20px;
+            display: flex;
+            justify-content: center;
+        }
+
+        /* ASYMMETRICAL GRID LOGIC */
+        .nftJourney-grid {
+            display: grid;
+            max-width: 800px;
+            width: 100%;
+            gap: 15px;
+            /* Creates a 3-column foundation for asymmetry */
+            grid-template-columns: 1.2fr 0.8fr; 
+            grid-template-areas: 
+                "top top"
+                "bottom-left bottom-right";
+        }
+
+        .nj-card {
+            border-radius: var(--nj-radius);
+            padding: 40px;
+            display: flex;
+            flex-direction: column;
+            justify-content: space-between;
+            position: relative;
+            overflow: hidden;
+            min-height: 320px;
+        }
+
+        /* Layout Assignments */
+        .nj-top { grid-area: top; background: var(--nj-card-dark); min-height: 400px; }
+        .nj-left { grid-area: bottom-left; background: var(--nj-lime); color: #000; }
+        .nj-right { grid-area: bottom-right; background: var(--nj-card-dark); }
+
+        /* Typography */
+        .nj-label {
+            font-size: 14px;
+            display: flex;
+            align-items: center;
+            gap: 8px;
+            opacity: 0.8;
+            margin-bottom: 40px;
+        }
+
+        .nj-title-large {
+            font-size: clamp(40px, 6vw, 52px);
+            font-weight: 300;
+            line-height: 1;
+            letter-spacing: -3px;
+            margin: 0;
+        }
+
+        .nj-subtext {
+            font-size: 18px;
+            opacity: 0.7;
+            margin-top: 20px;
+        }
+
+        /* Avatar Group */
+        .nj-footer {
+            display: flex;
+            justify-content: space-between;
+            align-items: flex-end;
+        }
+
+        .nj-avatars {
+            display: flex;
+            margin-left: auto;
+        }
+
+        .nj-avatars img {
+            width: 40px;
+            height: 40px;
+            border-radius: 50%;
+            border: 3px solid var(--nj-card-dark);
+            margin-left: -12px;
+        }
+
+        /* Animated Numbers */
+        .nj-number-wrap {
+            font-size: clamp(60px, 8vw, 540px);
+            font-weight: 400;
+            letter-spacing: -5px;
+            line-height: 0.8;
+            margin-top: auto;
+        }
+
+        .nj-projects-val {
+            color: #444; /* Darker gray for the number in the dark card */
+            font-family: monospace; /* Digital look from image */
+        }
+
+        /* Mobile Layout */
+        @media (max-width: 850px) {
+            .nftJourney-grid {
+                grid-template-columns: 1fr;
+                grid-template-areas: 
+                    "top"
+                    "bottom-left"
+                    "bottom-right";
+            }
+            .nj-card { padding: 30px; min-height: auto; }
+            .nj-number-wrap { font-size: 80px; margin-top: 40px; }
+        }
+    </style>
+
+    <div class="nftJourney-grid">
+        <div class="nj-card nj-top">
+            <div class="nj-label"><span>●</span> My teammates and me <span style="margin-left:auto">🌐</span></div>
+            <div>
+                <h1 class="nj-title-large">Our journey in<br>Number</h1>
+            </div>
+            <div class="nj-footer">
+                <p class="nj-subtext">Great work comes from great teams</p>
+                <div class="nj-avatars">
+                    <img src="https://i.pravatar.cc/100?u=1" alt="p1">
+                    <img src="https://i.pravatar.cc/100?u=2" alt="p2">
+                    <img src="https://i.pravatar.cc/100?u=3" alt="p3">
+                </div>
+            </div>
+        </div>
+
+        <div class="nj-card nj-left">
+            <div class="nj-label"><span>●</span> Clients’ Revenue</div>
+            <h2 style="font-size: 24px; font-weight: 400; margin: 0;">Revenue Growth in 2024</h2>
+            <div class="nj-number-wrap">
+                <span class="nj-counter" data-target="100">0</span>K+
+            </div>
+            <div style="margin-top: 20px; opacity: 0.2; font-size: 30px;">⠿⠿⠿</div>
+        </div>
+
+        <div class="nj-card nj-right">
+            <div class="nj-label"><span>●</span> Work</div>
+            <h2 style="font-size: 24px; font-weight: 400; margin: 0;">Projects<br>Done</h2>
+            <div class="nj-number-wrap nj-projects-val">
+                <span class="nj-counter" data-target="23">0</span>
+            </div>
+        </div>
+    </div>
+
+    <script>
+        const njObserver = new IntersectionObserver((entries) => {
+            entries.forEach(entry => {
+                if (entry.isIntersecting) {
+                    const counter = entry.target;
+                    const target = +counter.getAttribute('data-target');
+                    const speed = 50; 
+                    
+                    const update = () => {
+                        const count = +counter.innerText;
+                        const inc = target / speed;
+                        if (count < target) {
+                            counter.innerText = Math.ceil(count + inc);
+                            setTimeout(update, 20);
+                        } else {
+                            counter.innerText = target;
+                        }
+                    };
+                    update();
+                    njObserver.unobserve(counter);
+                }
+            });
+        }, { threshold: 0.5 });
+
+        document.querySelectorAll('.nj-counter').forEach(n => njObserver.observe(n));
+    </script>
+</div>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<style>
+    :root {
+        --it-bg: #040608;
+        --it-text-main: #ffffff;
+        --it-text-muted: #999999;
+        --it-radius: 8px;
+        --it-accent: #007AFF;
+    }
+
+    .it-scroll-wrapper {
+        background-color: var(--it-bg);
+        color: var(--it-text-main);
+        font-family: 'Circular Std', sans-serif;
+        margin: 0;
+        padding: 0;
+        box-sizing: border-box;
+    }
+
+    /* Main Container */
+    .it-scroll-container {
+        display: flex;
+        max-width: 1200px;
+        margin: 0 auto;
+        position: relative;
+    }
+
+    /* --- DESKTOP: LEFT STICKY PANEL --- */
+    .it-sticky-visual {
+        flex: 0 0 50%; /* Half width */
+        height: 100vh;
+        position: sticky;
+        top: 0;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        padding: 40px;
+        /* Hidden on mobile by default via media query below */
+    }
+
+    .it-image-stack {
+        width: 100%;
+        height: 400px; /* Fixed height for consistency */
+        position: relative;
+        border-radius: var(--it-radius);
+        overflow: hidden;
+        box-shadow: 0 20px 40px rgba(0,0,0,0.5);
+    }
+
+    .it-image-stack img {
+        position: absolute;
+        top: 0;
+        left: 0;
+        width: 100%;
+        height: 100%;
+        object-fit: cover;
+        opacity: 0;
+        transition: opacity 0.6s ease;
+    }
+
+    .it-image-stack img.active {
+        opacity: 1;
+    }
+
+    /* --- RIGHT CONTENT PANEL --- */
+    .it-scroll-content {
+        flex: 0 0 50%;
+        padding: 40px;
+    }
+
+    .it-text-step {
+        min-height: 100vh; /* Ensures enough scroll space on desktop */
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+        padding: 40px 0;
+    }
+
+    .it-step-title {
+        font-size: 3rem;
+        font-weight: 400;
+        line-height: 1.1;
+        margin-bottom: 1.5rem;
+    }
+
+    .it-step-desc {
+        font-size: 1.2rem;
+        line-height: 1.6;
+        color: var(--it-text-muted);
+        max-width: 450px;
+        font-weight: 400;
+    }
+
+    /* --- MOBILE IMAGE (Hidden on Desktop) --- */
+    .it-mobile-image {
+        display: none; /* Hidden by default */
+        width: 100%;
+        height: 300px;
+        object-fit: cover;
+        border-radius: var(--it-radius);
+        margin-top: 30px;
+        margin-bottom: 30px;
+    }
+
+    /* --- RESPONSIVE LOGIC --- */
+    @media (max-width: 900px) {
+        .it-scroll-container {
+            flex-direction: column;
+        }
+
+        /* Hide the sticky desktop panel */
+        .it-sticky-visual {
+            display: none;
+        }
+
+        /* Reset right panel width */
+        .it-scroll-content {
+            flex: 0 0 100%;
+            padding: 20px 20px 60px 20px;
+        }
+
+        /* Reset step height so they stack naturally */
+        .it-text-step {
+            min-height: auto;
+            margin-bottom: 80px;
+            display: block; /* Normal block flow */
+        }
+
+        /* Show the mobile image inside the text block */
+        .it-mobile-image {
+            display: block;
+        }
+
+        .it-step-title {
+            font-size: 2.2rem;
+        }
+    }
+</style>
+
+<div class="it-scroll-wrapper">
+    <div class="it-scroll-container">
+        
+        <div class="it-sticky-visual">
+            <div class="it-image-stack">
+                <img src="https://images.unsplash.com/photo-1639322537228-f710d846310a?auto=format&fit=crop&q=80&w=1000" class="active" data-id="1">
+                <img src="https://images.unsplash.com/photo-1550751827-4bd374c3f58b?auto=format&fit=crop&q=80&w=1000" data-id="2">
+                <img src="https://images.unsplash.com/photo-1677442136019-21780ecad995?auto=format&fit=crop&q=80&w=1000" data-id="3">
+                <img src="https://images.unsplash.com/photo-1451187580459-43490279c0fa?auto=format&fit=crop&q=80&w=1000" data-id="4">
+                <img src="https://images.unsplash.com/photo-1518770660439-4636190af475?auto=format&fit=crop&q=80&w=1000" data-id="5">
+            </div>
+        </div>
+
+        <div class="it-scroll-content">
+            
+            <div class="it-text-step" data-target="1">
+                <h2 class="it-step-title">Decentralized Security</h2>
+                <p class="it-step-desc">
+                    The foundation of our stack is built on zero-trust architecture, ensuring your nodes are invisible to threats.
+                </p>
+                <img class="it-mobile-image" src="https://images.unsplash.com/photo-1639322537228-f710d846310a?auto=format&fit=crop&q=80&w=1000" alt="Security">
+            </div>
+
+            <div class="it-text-step" data-target="2">
+                <h2 class="it-step-title">Real-time Monitoring</h2>
+                <p class="it-step-desc">
+                    Watch your deployment scale in real-time with granular metrics at every layer of the infrastructure.
+                </p>
+                <img class="it-mobile-image" src="https://images.unsplash.com/photo-1550751827-4bd374c3f58b?auto=format&fit=crop&q=80&w=1000" alt="Monitoring">
+            </div>
+
+            <div class="it-text-step" data-target="3">
+                <h2 class="it-step-title">Neural Networks</h2>
+                <p class="it-step-desc">
+                    Our AI automatically optimizes traffic routing based on global latency patterns and user behavior.
+                </p>
+                <img class="it-mobile-image" src="https://images.unsplash.com/photo-1677442136019-21780ecad995?auto=format&fit=crop&q=80&w=1000" alt="AI">
+            </div>
+
+            <div class="it-text-step" data-target="4">
+                <h2 class="it-step-title">Global Connectivity</h2>
+                <p class="it-step-desc">
+                    Connect your team across 40+ countries with low-latency private tunneling and dedicated backbones.
+                </p>
+                <img class="it-mobile-image" src="https://images.unsplash.com/photo-1451187580459-43490279c0fa?auto=format&fit=crop&q=80&w=1000" alt="Connectivity">
+            </div>
+
+            <div class="it-text-step" data-target="5">
+                <h2 class="it-step-title">Edge Resilience</h2>
+                <p class="it-step-desc">
+                    Hardware-accelerated edge points ensure that even under heavy load, your users stay connected.
+                </p>
+                <img class="it-mobile-image" src="https://images.unsplash.com/photo-1518770660439-4636190af475?auto=format&fit=crop&q=80&w=1000" alt="Edge">
+            </div>
+
+        </div>
+    </div>
+</div>
+
+<script>
+    // Only run the observer logic if we are on desktop (width > 900px)
+    // However, keeping it active generally doesn't hurt mobile, but we can optimize.
+    
+    const stackImages = document.querySelectorAll('.it-image-stack img');
+    
+    const observer = new IntersectionObserver((entries) => {
+        entries.forEach(entry => {
+            if (entry.isIntersecting) {
+                // Get the ID of the text section currently in view
+                const targetId = entry.target.getAttribute('data-target');
+                
+                // Show the corresponding image in the sticky stack
+                stackImages.forEach(img => {
+                    if (img.getAttribute('data-id') === targetId) {
+                        img.classList.add('active');
+                    } else {
+                        img.classList.remove('active');
+                    }
+                });
+            }
+        });
+    }, {
+        root: null,
+        rootMargin: '-40% 0px -40% 0px', // Trigger when content is in the middle of the screen
+        threshold: 0
+    });
+
+    document.querySelectorAll('.it-text-step').forEach(step => {
+        observer.observe(step);
+    });
+</script>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 <cronos-footer></cronos-footer>

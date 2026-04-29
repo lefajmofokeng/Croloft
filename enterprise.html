@@ -1,0 +1,861 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <link href="https://fonts.cdnfonts.com/css/circular-std" rel="stylesheet">
+    <title>My Website</title>
+    
+    <script src="header.js" defer></script> 
+    <script src="footer.js" defer></script>
+</head>
+<body>
+
+    <cronos-header></cronos-header>
+
+</body>
+</html>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<style>
+  /* Unique class names to prevent conflicts */
+  .defcon-hero-section {
+    position: relative;
+    width: 100%;
+    height: 100vh;
+    min-height: 600px;
+    overflow: hidden;
+    display: flex;
+    align-items: center;
+    justify-content: flex-start;
+    background-color: #06273e; font-family: 'Circular Std', sans-serif;
+  }
+  
+  .defcon-hero-bg {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    z-index: 1;
+    opacity: 0.4;
+    background: url('thumbnails/ChatGPT\ Image\ Jul\ 19\,\ 2025\,\ 01_53_09\ AM.png') center/cover no-repeat;
+  }
+  
+  .defcon-hero-content {
+    position: relative;
+    z-index: 2;
+    width: 50%;
+    padding: 40px 170px;
+    color: #ffffff;
+    text-align: left;
+    transform: translateX(-50%);
+    opacity: 0;
+    transition: all 1.2s cubic-bezier(0.22, 1, 0.36, 1);
+  }
+  
+  .defcon-hero-content.visible {
+    transform: translateX(0);
+    opacity: 1;
+  }
+  
+  .defcon-hero-headline {
+    font-size: clamp(2rem, 4vw, 3.5rem);
+    font-weight: 700;
+    line-height: 1.2;
+    margin-bottom: 20px;
+    color: #ffffff;
+    text-shadow: 0 2px 10px rgba(0, 0, 0, 0.3);
+  }
+  
+  .defcon-hero-subhead {
+    font-size: clamp(1rem, 1.5vw, 1.3rem);
+    line-height: 1.6;
+    margin-bottom: 30px;
+    color: #e5e5e5;
+    font-weight: 400;
+    max-width: 600px;
+    
+  }
+  
+  .defcon-highlight-text {
+    color: #0091ff;
+    font-weight: 600;
+  }
+  
+ 
+  
+  @keyframes defcon-bounce {
+    0%, 20%, 50%, 80%, 100% {transform: translateY(0) translateX(-50%);}
+    40% {transform: translateY(-20px) translateX(-50%);}
+    60% {transform: translateY(-10px) translateX(-50%);}
+  }
+  
+  /* Particle effect for premium feel */
+  .defcon-particles {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    z-index: 1;
+    pointer-events: none;
+  }
+  
+  /* Responsive adjustments */
+  @media (max-width: 992px) {
+    .defcon-hero-content {
+      width: 70%;
+    }
+  }
+  
+  @media (max-width: 768px) {
+    .defcon-hero-section {
+      justify-content: center;
+      text-align: center;
+    }
+    
+    .defcon-hero-content {
+      width: 90%;
+      text-align: center;
+      padding: 20px;
+    }
+    
+    .defcon-hero-subhead {
+      margin-left: 0;
+      margin-right: auto;
+    }
+  }
+</style>
+
+<div class="defcon-hero-section">
+  <div class="defcon-hero-bg"></div>
+  
+  <div class="defcon-particles" id="defconParticles"></div>
+  
+  <div class="defcon-hero-content">
+    <h1 class="defcon-hero-headline">
+      Elevating Digital <span class="defcon-highlight-text">Experiences</span>
+    </h1>
+    
+    <p class="defcon-hero-subhead">
+      We craft premium digital solutions that transform businesses and captivate audiences. Our innovative approach combines cutting-edge technology with elegant design.
+    </p>
+  </div>
+  
+</div>
+
+<script>
+  document.addEventListener('DOMContentLoaded', function() {
+    // Animate content on load
+    const heroContent = document.querySelector('.defcon-hero-content');
+    setTimeout(() => {
+      heroContent.classList.add('visible');
+    }, 300);
+    
+    // Initialize particle effect if needed
+    initParticles();
+    
+    // Intersection observer for scroll animations
+    const observerOptions = {
+      threshold: 0.1
+    };
+    
+    const observer = new IntersectionObserver((entries) => {
+      entries.forEach(entry => {
+        if (entry.isIntersecting) {
+          entry.target.classList.add('visible');
+        }
+      });
+    }, observerOptions);
+    
+    observer.observe(heroContent);
+  });
+  
+  function initParticles() {
+    // This is a placeholder for a particle effect library
+    // In production, you might use tsParticles.js or similar
+    console.log('Particle effect would initialize here');
+    
+    // For a real implementation, you would add:
+    // tsParticles.load("defconParticles", { /* config */ });
+  }
+</script>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>IT Feature Highlight Section</title>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;700;800&display=swap" rel="stylesheet">
+    <style>
+        /* --- General Reset & Fonts --- */
+        .it-feat-body {
+            font-family: 'Circular Std', sans-serif;
+            margin: 0;
+            padding: 0;
+            background-color: #ffffff;
+            color: #1f2937;
+            overflow-x: hidden;
+            
+        }
+
+        /* --- Layout Container --- */
+        .it-feat-container {
+            max-width: 1200px;
+            margin-left: auto;
+            margin-right: auto;
+            padding: 9rem 1rem;
+        }
+
+        /* --- Main Heading --- */
+        .it-feat-main-heading {
+            font-size: 2.5rem;
+            font-weight: 500;
+            color: #1f2937;
+            text-align: center;
+            margin-bottom: 3rem;
+            line-height: 1.2;
+        }
+
+        @media (min-width: 768px) {
+            .it-feat-main-heading {
+                font-size: 3.5rem;
+                margin-bottom: 4rem;
+            }
+        }
+
+        /* --- Feature Grid --- */
+        .it-feat-grid {
+            display: grid;
+            gap: 2rem;
+            grid-template-columns: 1fr;
+            justify-items: center;
+        }
+
+        @media (min-width: 768px) {
+            .it-feat-grid {
+                grid-template-columns: repeat(2, 1fr);
+                gap: 3rem;
+            }
+        }
+
+        /* --- Feature Card Styling --- */
+        .it-feat-card {
+            max-width: 500px;
+            text-align: center;
+        }
+
+        .it-feat-image-wrapper {
+            background-color: #008080; /* Teal/Cyan background to match the style */
+            padding: 1rem;
+            overflow: hidden;
+            margin-bottom: 1.5rem;
+        }
+
+        .it-feat-card img {
+            display: block;
+            width: 100%;
+            height: auto;
+            object-fit: cover;
+        }
+
+        /* --- Card Headline and Description --- */
+        .it-feat-card-headline {
+            font-size: 1.5rem;
+            font-weight: 500;
+            color: #1f2937;
+            margin-bottom: 1rem;
+        }
+
+        .it-feat-card-description {
+            font-size: 1.2rem;
+            color: #4b5563;
+            line-height: 1.6;
+        }
+
+        /* --- Responsive Adjustments for Images --- */
+        @media (max-width: 767px) {
+            .it-feat-image-wrapper {
+                height: 250px;
+            }
+        }
+        @media (min-width: 768px) {
+            .it-feat-image-wrapper {
+                height: 350px;
+            }
+        }
+
+        /* Optional: Add a subtle geometric background pattern to mimic the original image's texture */
+        .it-feat-container::after {
+            content: '';
+            position: absolute;
+            bottom: 0;
+            right: 0;
+            width: 300px;
+            height: 300px;
+            opacity: 0.1;
+            z-index: 0;
+            pointer-events: none;
+            /* Placeholder for geometric pattern */
+            background-image: radial-gradient(#d1d5db 1px, transparent 1px), radial-gradient(#d1d5db 1px, transparent 1px);
+            background-size: 20px 20px;
+            background-position: 0 0, 10px 10px;
+        }
+
+    </style>
+</head>
+<body class="it-feat-body">
+
+    <!-- Feature Section Wrapper -->
+    <div class="it-feat-container">
+
+        <!-- Main Headline -->
+        <h1 class="it-feat-main-heading">
+            Connect to everything important in your digital life
+        </h1>
+
+        <!-- Two-Column Feature Grid -->
+        <div class="it-feat-grid">
+
+            <!-- Feature Card 1: Cloud Infrastructure -->
+            <div class="it-feat-card">
+                <div class="it-feat-image-wrapper">
+                    <img
+                        src="thumbnails/pexels-altabena-10142683.jpg"
+                        onerror="this.onerror=null;this.src='https://placehold.co/600x400/008080/FFFFFF?text=Cloud+Infrastructure';"
+                        alt="A close-up of a server or network device, symbolizing cloud infrastructure."
+                    >
+                </div>
+                <h2 class="it-feat-card-headline">An untethered cloud for an agile infrastructure.</h2>
+                <p class="it-feat-card-description">
+                    Our resilient hybrid cloud solutions connect your legacy systems with modern, scalable resources via secure VPN and dedicated fiber lines, so you can access, scale, and run your data from anywhere.
+                </p>
+            </div>
+
+            <!-- Feature Card 2: Cybersecurity -->
+            <div class="it-feat-card">
+                <div class="it-feat-image-wrapper">
+                    <img
+                        src="thumbnails/pexels-altabena-10142683.jpg"
+                        onerror="this.onerror=null;this.src='https://placehold.co/600x400/FACC15/1F2937?text=Threat+Management';"
+                        alt="A person checking their phone/wallet, symbolizing secure payments and data protection."
+                    >
+                </div>
+                <h2 class="it-feat-card-headline">Turn your data into your fortress.</h2>
+                <p class="it-feat-card-description">
+                    Forgot about security gaps? No problem—with 24/7 Managed Threat Detection right on your network, you're always ready to secure your sensitive assets and prevent breaches instantly.
+                </p>
+            </div>
+        </div>
+    </div>
+
+</body>
+</html>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<style>
+    * {
+        margin: 0; padding: 0;
+    }
+    .info-sec{
+      background: #eaeaea7d;
+      color: #333;
+      font-family: 'Circular Std', sans-serif;
+      overflow: visible; padding: 100px 0;
+    }
+
+    .section-heading {
+      text-align: center;
+      padding: 0;
+      align-items: center;
+      justify-items: center;
+      justify-content: center;
+      padding-top: 4rem;
+      position: relative;
+      min-width: 1200px;
+    }
+
+    .section-heading h1 {
+      color: #06273e;
+            font-size: 0.875rem; /* 14px */
+            font-weight: 700;
+            letter-spacing: 0.1em;
+            text-transform: uppercase;
+            margin-bottom: 1rem;
+    }
+
+    .section-heading-text {
+      font-size: 56px;
+      font-weight: 700;
+      letter-spacing: -0.03em;
+      line-height: 1.2;
+      text-transform: none;
+      color: #06273e;
+      position: relative;
+      display: inline-block;
+      margin: 0 auto;
+      width: fit-content;
+      
+    }
+
+    .section-container {
+      display: flex;
+      width: 1100px;
+      margin: 0 auto;
+      padding: 0 2rem;
+    }
+
+    /* Left content blocks */
+    .content {
+      flex: 1;
+      padding: 0;
+    }
+
+    .defcon-story-subheading {
+      font-size: 1.2rem;
+      font-weight: 600;
+      color: #053c63;
+      margin-bottom: 18px;
+      letter-spacing: 2px;
+      text-transform: uppercase;
+      transition: color 0.5s;
+      }
+
+    .defcon-story-heading {
+      font-size: 2.6rem;
+      font-weight: 800;
+      margin-bottom: 18px;
+      letter-spacing: -0.02em;
+      line-height: 1.2;
+      transition: color 0.5s;
+      background: linear-gradient(90deg, #0091ff 0%, #06273e 100%);
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent;
+      background-clip: text;
+      color: transparent;
+    }
+
+    .defcon-story-link {
+      display: inline-block;
+      color: #0091ff;
+      font-weight: 600;
+      text-decoration: none;
+      font-size: 1rem;
+      border-bottom: 2px solid #0091ff;
+      padding-bottom: 2px;
+      transition: color 0.3s, border-bottom 0.3s;
+      position: relative;
+      z-index: 2;
+      width: fit-content;
+      }
+
+      .defcon-story-link:hover {
+      color: #06273e;
+      border-bottom: 2px solid #06273e;
+      }
+
+    .block {
+      min-height: 100vh;
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+      opacity: 0.3;
+      transform: translateY(50px);
+      transition: all 0.6s ease;
+    }
+
+    .block.active {
+      opacity: 1;
+      transform: translateY(0);
+    }
+
+
+    .block p {
+      font-size: 1rem;
+      margin-bottom: 1rem;
+      line-height: 1.6;
+      width: 370px;
+    }
+
+    /* Right sticky image panel */
+    .image-panel {
+      flex: 1;
+      position: relative;
+      padding-left: 2rem;
+      max-width: 490px;
+      flex-grow: 1;
+      margin-bottom: 9rem;
+    }
+
+    .image-panel .image-wrapper {
+      position: sticky;
+      top: 160px;
+      height: 60vh;
+      max-height: 700px;
+      border-radius: 8px;
+      overflow: hidden;
+      box-shadow: 0 10px 30px rgba(1, 25, 53, 0.356);
+      width: 100%;
+      background: #eee;
+      margin-top: 7rem;
+    }
+
+    .image-panel img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      opacity: 0;
+      transform: scale(1.05);
+      transition: all 0.8s ease;
+      position: absolute;
+      top: 0;
+      left: 0;
+      
+    }
+
+    .image-panel img.active {
+      opacity: 1;
+      transform: scale(1);
+      position: relative;
+    }
+
+  </style>
+
+<div class="info-sec">
+
+  <div class="section-heading">
+    <h1>How We Work</h1>
+    <h2 class="section-heading-text">Clear steps to achieve <br> measurable results.</span></h2>
+  </div>
+
+  <div class="section-container">
+    <!-- Left Content -->
+    <div class="content">
+    <div class="block active" data-image="img1">
+      <div class="defcon-story-subheading" style="position: relative; z-index: 1;">
+        Discovery
+        <span style="
+          position: absolute;
+          left: -40px;
+          top: 50%;
+          transform: translateY(-50%);
+          font-size: 7rem;
+          font-weight: 900;
+          color: #c0c0c0;
+          opacity: 0.35;
+          z-index: -1; /* Changed from 0 to -1 to place behind heading */
+          pointer-events: none;
+          user-select: none;
+          line-height: 1;
+        ">01</span>
+      </div>
+      <div class="defcon-story-heading">Uncovering Your Vision</div>
+      <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Proin volutpat felis nec mi facilisis, sit amet.</p>
+      <a href="#" class="defcon-story-link">Learn about our process →</a>
+    </div>
+
+    <div class="block" data-image="img2">
+      <div class="defcon-story-subheading">Strategy
+        <span style="
+          position: absolute;
+          left: -40px;
+          top: 35%;
+          transform: translateY(-50%);
+          font-size: 7rem;
+          font-weight: 900;
+          color: #c0c0c0;
+          opacity: 0.35;
+          z-index: -1;
+          pointer-events: none;
+          user-select: none;
+          line-height: 1;
+        ">02</span>
+      </div>
+      <div class="defcon-story-heading">Crafting the Blueprint</div>
+      <p>We analyze your goals and challenges to develop a tailored strategy that sets the foundation for success.</p>
+      <a href="#" class="defcon-story-link">See our approach →</a>
+    </div>
+
+    <div class="block" data-image="img3">
+      <div class="defcon-story-subheading">Design
+        <span style="
+          position: absolute;
+          left: -40px;
+          top: 35%;
+          transform: translateY(-50%);
+          font-size: 7rem;
+          font-weight: 900;
+          color: #c0c0c0;
+          opacity: 0.35;
+          z-index: -1;
+          pointer-events: none;
+          user-select: none;
+          line-height: 1;
+        ">03</span>
+      </div>
+      <div class="defcon-story-heading">Bringing Ideas to Life</div>
+      <p>Our creative team transforms concepts into engaging designs that resonate with your audience.</p>
+      <a href="#" class="defcon-story-link">View our designs →</a>
+    </div>
+
+    <div class="block" data-image="img4">
+      <div class="defcon-story-subheading">Development
+        <span style="
+          position: absolute;
+          left: -40px;
+          top: 35%;
+          transform: translateY(-50%);
+          font-size: 7rem;
+          font-weight: 900;
+          color: #c0c0c0;
+          opacity: 0.35;
+          z-index: -1;
+          pointer-events: none;
+          user-select: none;
+          line-height: 1;
+        ">04</span>
+      </div>
+      <div class="defcon-story-heading">Building with Precision</div>
+      <p>We turn designs into robust, scalable solutions using the latest technologies and best practices.</p>
+      <a href="#" class="defcon-story-link">Explore our builds →</a>
+    </div>
+
+    <div class="block" data-image="img5">
+      <div class="defcon-story-subheading">Launch
+        <span style="
+          position: absolute;
+          left: -40px;
+          top: 35%;
+          transform: translateY(-50%);
+          font-size: 7rem;
+          font-weight: 900;
+          color: #c0c0c0;
+          opacity: 0.35;
+          z-index: -1;
+          pointer-events: none;
+          user-select: none;
+          line-height: 1;
+        ">05</span>
+      </div>
+      <div class="defcon-story-heading">Delivering Results</div>
+      <p>After rigorous testing, we launch your project and provide ongoing support to ensure lasting impact.</p>
+      <a href="#" class="defcon-story-link">Start your journey →</a>
+    </div>
+
+      
+    </div>
+
+    <!-- Right Image Panel -->
+    <div class="image-panel">
+      <div class="image-wrapper">
+        <img id="img1" src="https://images.pexels.com/photos/546819/pexels-photo-546819.jpeg" class="active">
+        <img id="img2" src="https://images.pexels.com/photos/1309766/pexels-photo-1309766.jpeg">
+        <img id="img3" src="https://images.pexels.com/photos/3183183/pexels-photo-3183183.jpeg">
+        <img id="img4" src="https://images.pexels.com/photos/3861972/pexels-photo-3861972.jpeg">
+        <img id="img5" src="https://images.pexels.com/photos/2566581/pexels-photo-2566581.jpeg">
+      </div>
+    </div>
+  </div>
+
+</div>
+
+  <script>
+    const blocks = document.querySelectorAll(".block");
+    const images = document.querySelectorAll(".image-panel img");
+
+    window.addEventListener("scroll", () => {
+      let index = 0;
+      blocks.forEach((block, i) => {
+        const rect = block.getBoundingClientRect();
+        if (rect.top < window.innerHeight / 2 && rect.bottom > window.innerHeight / 2) {
+          index = i;
+        }
+      });
+
+      // Update active text block
+      blocks.forEach((block, i) => block.classList.toggle("active", i === index));
+
+      // Update active image
+      images.forEach((img, i) => img.classList.toggle("active", i === index));
+    });
+  </script>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<cronos-footer></cronos-footer>

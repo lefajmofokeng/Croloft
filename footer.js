@@ -33,6 +33,7 @@
         { label: 'Bot',                       href: 'bot.html' },
         { label: 'Learn',                     href: 'learn.html' },
         { label: 'Research',                  href: 'research.html' },
+        { label: 'For SMEs',                  href: 'proof.html' },
       ]
     },
     {
@@ -48,6 +49,7 @@
         { label: 'Affiliate',                 href: 'affiliates.html' },
         { label: 'Licenses & Registrations',  href: 'licenses-and-registrations.html' },
         { label: 'Capital',                   href: 'capital.html' },
+        { label: 'Global Reach',              href: 'global.html' },
         { label: 'Security',                  href: 'security.html' },
         { label: 'Verify',                    href: 'verify.html' },
       ]
@@ -56,6 +58,7 @@
       heading: 'Updates',
       links: [
         { label: 'X',         href: '#' },
+        { label: 'Trending on Tech',         href: 'research.html' },
         { label: 'YouTube',   href: '#' },
         { label: 'Facebook',  href: '#' },
         { label: 'Instagram', href: '#' },

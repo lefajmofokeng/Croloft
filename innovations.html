@@ -23,6 +23,322 @@
 
 
 
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Innovations | Tech Portal</title>
+    <style>
+        /* --- CORE CONFIG --- */
+        :root {
+            --bg-white: #ffffff;
+            --text-dark: #121212;
+            --text-soft: #5f6368;
+            --accent-blue: #0091ff;
+            --border-color: #eeeeee;
+            --font-main: 'Circular Std', -apple-system, BlinkMacSystemFont, sans-serif;
+        }
+
+        * {
+            box-sizing: border-box;
+            margin: 0;
+            padding: 0;
+        }
+
+        body {
+            font-family: var(--font-main);
+            background-color: var(--bg-white);
+            color: var(--text-dark);
+            line-height: 1.5;
+        }
+
+        /* --- HERO SECTION (REDUCED HEIGHT) --- */
+        .hero {
+            position: relative;
+            height: 280px; /* Small height as requested */
+            display: flex;
+            align-items: center;
+            background-image: url('https://images.unsplash.com/photo-1451187580459-43490279c0fa?q=80&w=2072&auto=format&fit=crop');
+            background-size: cover;
+            background-position: center;
+            overflow: hidden;
+            margin-bottom: 60px;
+        }
+
+        /* Subtle overlay for text legibility */
+        .hero::before {
+            content: '';
+            position: absolute;
+            top: 0; left: 0; right: 0; bottom: 0;
+            background: linear-gradient(to right, rgba(0,0,0,0.7), rgba(0,0,0,0.2));
+            z-index: 1;
+        }
+
+        .hero-content {
+            position: relative;
+            z-index: 2;
+            width: 100%;
+        }
+
+        .hero h1 {
+            font-size: clamp(32px, 5vw, 48px);
+            font-weight: 500;
+            letter-spacing: -1.5px;
+            color: #ffffff;
+        }
+
+        /* --- LAYOUT --- */
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 15px;
+        }
+
+        /* --- INNOVATION GRID --- */
+        .innovation-item {
+            display: flex;
+            border-top: 1px solid var(--border-color);
+            padding: 40px 0;
+        }
+
+        .innovation-item:last-child {
+            border-bottom: 1px solid var(--border-color);
+        }
+
+        .col-left {
+            flex: 0 0 35%;
+            padding-right: 40px;
+        }
+
+        .col-right {
+            flex: 1;
+            padding-left: 40px;
+            border-left: 1px solid var(--border-color);
+        }
+
+        .innovation-name {
+            font-size: 20px;
+            font-weight: 700;
+            color: var(--text-dark);
+            text-transform: uppercase;
+            letter-spacing: 0.5px;
+        }
+
+        .category-label {
+            font-size: 11px;
+            font-weight: 500;
+            color: var(--accent-blue);
+            text-transform: uppercase;
+            letter-spacing: 1.5px;
+            display: block;
+            margin-bottom: 8px;
+        }
+
+        .description {
+            font-size: 17px;
+            color: var(--text-soft);
+            margin-bottom: 24px;
+            max-width: 650px;
+        }
+
+        /* --- LINKS --- */
+        .link-group {
+            display: flex;
+            gap: 30px;
+        }
+
+        .nav-link {
+            text-decoration: none;
+            color: var(--text-dark);
+            font-size: 15px;
+            font-weight: 500;
+            display: flex;
+            align-items: center;
+            transition: color 0.2s ease;
+        }
+
+        .nav-link:hover {
+            color: var(--accent-blue);
+        }
+
+        .nav-link::after {
+            content: '→';
+            margin-left: 8px;
+            font-size: 16px;
+        }
+
+        /* --- MOBILE RESPONSIVENESS --- */
+        @media (max-width: 768px) {
+            .hero { height: 200px; }
+
+            .innovation-item {
+                flex-direction: column;
+                padding: 30px 0;
+            }
+
+            .col-left {
+                flex: 1;
+                padding-right: 0;
+                margin-bottom: 15px;
+            }
+
+            .col-right {
+                flex: 1;
+                padding-left: 0;
+                border-left: none;
+                border-top: 1px solid #f9f9f9;
+                padding-top: 20px;
+            }
+
+            .link-group {
+                flex-direction: column;
+                gap: 15px;
+            }
+        }
+    </style>
+</head>
+<body>
+
+    <section class="hero">
+        <div class="container hero-content">
+            <h1>Our innovations</h1>
+        </div>
+    </section>
+
+    <div class="container">
+        <main>
+            <section class="innovation-item">
+                <div class="col-left">
+                    <span class="category-label">Distributed Systems</span>
+                    <h2 class="innovation-name">Autonomous Mesh</h2>
+                </div>
+                <div class="col-right">
+                    <p class="description">
+                        Decentralized network architectures where edge devices collaborate to route data without central servers, providing resilient and censorship-resistant connectivity for the next-gen web.
+                    </p>
+                    <div class="link-group">
+                        <a href="#" class="nav-link">Network Protocol</a>
+                        <a href="#" class="nav-link">Whitepaper</a>
+                    </div>
+                </div>
+            </section>
+
+            <section class="innovation-item">
+                <div class="col-left">
+                    <span class="category-label">Computation</span>
+                    <h2 class="innovation-name">Quantum Synthesis</h2>
+                </div>
+                <div class="col-right">
+                    <p class="description">
+                        Utilizing superposition to simulate complex molecular interactions, drastically reducing the time required for material science discovery and pharmaceutical development.
+                    </p>
+                    <div class="link-group">
+                        <a href="#" class="nav-link">Research Data</a>
+                        <a href="#" class="nav-link">API Access</a>
+                    </div>
+                </div>
+            </section>
+
+            <section class="innovation-item">
+                <div class="col-left">
+                    <span class="category-label">AI / Engineering</span>
+                    <h2 class="innovation-name">Generative Blueprints</h2>
+                </div>
+                <div class="col-right">
+                    <p class="description">
+                        Multi-modal AI models capable of synthesizing code and physical 3D blueprints from natural language intent, accelerating the engineering lifecycle from weeks to hours.
+                    </p>
+                    <div class="link-group">
+                        <a href="#" class="nav-link">Model Specs</a>
+                        <a href="#" class="nav-link">Documentation</a>
+                    </div>
+                </div>
+            </section>
+
+            <section class="innovation-item">
+                <div class="col-left">
+                    <span class="category-label">Energy Storage</span>
+                    <h2 class="innovation-name">Solid-State Power</h2>
+                </div>
+                <div class="col-right">
+                    <p class="description">
+                        High-density battery technology using solid electrolytes. This innovation eliminates thermal runaway risks while tripling the range of electric mobile units.
+                    </p>
+                    <div class="link-group">
+                        <a href="#" class="nav-link">Efficiency Report</a>
+                        <a href="#" class="nav-link">Patents</a>
+                    </div>
+                </div>
+            </section>
+        </main>
+    </div>
+
+</body>
+</html>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 
 

@@ -1,0 +1,351 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Hiring Process</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+
+    <header class="hiring-hero">
+        <div class="hero-overlay"></div>
+        <div class="container hero-container">
+            <span class="eyebrow text-white">HIRING PROCESS</span>
+            <h1 class="hero-title text-white">Your journey with<br>Croloft starts here</h1>
+        </div>
+        
+        <div class="hero-graphics">
+            <svg viewBox="0 0 200 200" fill="none" stroke="rgba(255,255,255,0.15)" stroke-width="1">
+                <circle cx="100" cy="100" r="80" />
+                <path d="M 100 20 L 100 180 M 20 100 L 180 100" />
+            </svg>
+        </div>
+    </header>
+
+    <section class="process-section">
+        <div class="bg-graphics">
+            <svg viewBox="0 0 200 200" fill="none" stroke="rgba(0,0,0,0.08)" stroke-width="1">
+                <circle cx="100" cy="100" r="90" />
+                <circle cx="100" cy="100" r="45" />
+            </svg>
+        </div>
+
+        <div class="container process-container">
+            
+            <div class="process-step">
+                <div class="step-indicator">
+                    <span class="step-number">1</span>
+                </div>
+                <div class="step-content">
+                    <h3 class="impact-color">Find your match</h3>
+                    <p>As a dynamic IT startup, you will find a wide variety of positions available across our core domains that fit your expertise. Learn about the types of roles we offer by visiting our Careers section.</p>
+                    <p>Apply to any positions you feel are a match with your talents. Whether you write clean JavaScript, manage cloud infrastructure, or design premium UI/UX, your application goes directly to our core engineering and creative leads, not a centralized recruiter.</p>
+                </div>
+            </div>
+
+            <div class="process-step">
+                <div class="step-indicator">
+                    <span class="step-number">2</span>
+                </div>
+                <div class="step-content">
+                    <h3 class="impact-color">Refine your portfolio and apply</h3>
+                    <p>Allow 20-30 minutes for the application process, including an updated resume and links to your GitHub, live web apps, or design portfolio referring to your specific experience for each position.</p>
+                    <p>Once you've submitted your online application, you will receive an automated email confirmation. We review technical applications carefully, so if you don't hear back immediately, it is just a reflection of our thorough review timing.</p>
+                </div>
+            </div>
+
+            <div class="process-step">
+                <div class="step-indicator">
+                    <span class="step-number">3</span>
+                </div>
+                <div class="step-content">
+                    <h3 class="impact-color">Interviewing</h3>
+                    <p>It's time for us to get to know each other! While the process may differ slightly between front-end developers, IT support, and creative staff, this is a chance for you to find out more about our no-backend serverless architecture and if we will be a good match for you.</p>
+                    
+                    <div class="accordion-container">
+                        <button class="accordion-btn">
+                            <span class="accordion-title">Types of interviews</span>
+                            <svg class="accordion-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                                <path d="M6 9l6 6 6-6" stroke-linecap="round" stroke-linejoin="round"/>
+                            </svg>
+                        </button>
+                        <div class="accordion-panel">
+                            <div class="panel-inner">
+                                <p><strong>Technical Assessment:</strong> A practical coding or design challenge related to our stack (HTML, CSS, JS, API integration).</p>
+                                <p><strong>System Architecture:</strong> Discussing how to build robust, high-end applications without traditional backend engineering.</p>
+                                <p><strong>Culture & Team Fit:</strong> A conversational interview with the founders and team leads to ensure alignment with our corporate yet simple philosophy.</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="process-step">
+                <div class="step-indicator">
+                    <span class="step-number">4</span>
+                </div>
+                <div class="step-content">
+                    <h3 class="impact-color">Review offer</h3>
+                    <p>If you've received an offer of employment, we advise you to take a moment to review our unique startup benefits, learn about our culture, and follow up with the hiring manager if you have any additional questions about the role.</p>
+                    <p>If you did not receive an offer, don't give up! First, ask for constructive feedback regarding your technical assessment. Then, keep refining your skills and look out for future opportunities as we scale.</p>
+                </div>
+            </div>
+
+        </div>
+    </section>
+
+    <script src="script.js"></script>
+</body>
+</html>
+
+<style>
+    /* --- GLOBAL STYLES --- */
+@font-face {
+    font-family: 'Circular Std';
+    src: local('Circular Std'), local('Helvetica Neue'), sans-serif; 
+}
+
+:root {
+    --bg-dark: #000000;
+    --text-dark: #222222;
+    --text-light: #ffffff;
+    --text-gray: #555555;
+    --accent-red: #8B1D24;
+    --accent-red-light: #F4EBEB; /* Pale red for the number backgrounds */
+    --border-light: #E0E0E0;
+    --border-radius: 15px;
+}
+
+* {
+    box-sizing: border-box;
+    margin: 0;
+    padding: 0;
+}
+
+body {
+    font-family: 'Circular Std', sans-serif;
+    -webkit-font-smoothing: antialiased;
+    background-color: #ffffff;
+    color: var(--text-gray);
+    line-height: 1.6;
+}
+
+.container {
+    max-width: 1000px; /* Kept slightly narrower for optimal reading line length */
+    margin: 0 auto;
+    padding: 0 5%;
+}
+
+.eyebrow {
+    display: block;
+    font-size: 11px;
+    letter-spacing: 3px;
+    text-transform: uppercase;
+    font-weight: 600;
+    margin-bottom: 20px;
+}
+
+.text-white { color: var(--text-light); }
+.impact-color { color: var(--accent-red); }
+
+/* --- HERO SECTION --- */
+.hiring-hero {
+    position: relative;
+    height: 60vh;
+    min-height: 500px;
+    background: url('https://images.unsplash.com/photo-1497215728101-856f4ea42174?q=80&w=2070&auto=format&fit=crop') center/cover no-repeat;
+    display: flex;
+    align-items: center;
+    overflow: hidden;
+}
+
+.hero-overlay {
+    position: absolute;
+    inset: 0;
+    background: linear-gradient(to right, rgba(0,0,0,0.85) 0%, rgba(0,0,0,0.4) 100%);
+    z-index: 1;
+}
+
+.hero-container {
+    position: relative;
+    z-index: 2;
+    width: 100%;
+}
+
+.hero-title {
+    font-family: 'Georgia', serif;
+    font-size: 52px;
+    font-weight: 400;
+    line-height: 1.1;
+}
+
+.hero-graphics {
+    position: absolute;
+    bottom: -50px;
+    left: -50px;
+    width: 300px;
+    height: 300px;
+    z-index: 2;
+}
+
+/* --- PROCESS SECTION --- */
+.process-section {
+    position: relative;
+    padding: 100px 0;
+    background-color: #ffffff;
+}
+
+.bg-graphics {
+    position: absolute;
+    top: 50px;
+    left: -80px;
+    width: 250px;
+    height: 250px;
+    z-index: 0;
+}
+
+.process-container {
+    position: relative;
+    z-index: 1;
+}
+
+/* --- STEPS LAYOUT --- */
+.process-step {
+    display: flex;
+    gap: 40px;
+    margin-bottom: 60px;
+}
+
+.process-step:last-child {
+    margin-bottom: 0;
+}
+
+.step-indicator {
+    flex-shrink: 0;
+}
+
+.step-number {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 48px;
+    height: 48px;
+    background-color: var(--accent-red-light);
+    color: var(--accent-red);
+    border-radius: 50%;
+    font-weight: 600;
+    font-size: 18px;
+}
+
+.step-content {
+    padding-top: 8px; /* Aligns visually with the center of the number circle */
+}
+
+.step-content h3 {
+    font-family: 'Georgia', serif;
+    font-size: 28px;
+    font-weight: 400;
+    margin-bottom: 20px;
+}
+
+.step-content p {
+    margin-bottom: 20px;
+    font-size: 15px;
+}
+
+.step-content p:last-of-type {
+    margin-bottom: 0;
+}
+
+/* --- ACCORDION COMPONENT --- */
+.accordion-container {
+    margin-top: 30px;
+    border-top: 1px solid var(--border-light);
+    border-bottom: 1px solid var(--border-light);
+}
+
+.accordion-btn {
+    width: 100%;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 20px 0;
+    background: none;
+    border: none;
+    cursor: pointer;
+    font-family: 'Circular Std', sans-serif;
+    color: var(--text-dark);
+}
+
+.accordion-title {
+    font-weight: 600;
+    font-size: 15px;
+}
+
+.accordion-icon {
+    width: 20px;
+    height: 20px;
+    color: var(--accent-red);
+    transition: transform 0.3s ease;
+}
+
+/* Active State */
+.accordion-btn.active .accordion-icon {
+    transform: rotate(180deg);
+}
+
+.accordion-panel {
+    max-height: 0;
+    overflow: hidden;
+    transition: max-height 0.35s cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+.panel-inner {
+    padding-bottom: 20px;
+    font-size: 14.5px;
+}
+
+.panel-inner p {
+    margin-bottom: 12px;
+}
+
+/* --- RESPONSIVE DESIGN --- */
+@media (max-width: 768px) {
+    .hero-title {
+        font-size: 36px;
+    }
+    
+    .process-step {
+        flex-direction: column;
+        gap: 15px;
+    }
+    
+    .step-content {
+        padding-top: 0;
+    }
+}
+</style>
+
+<script>
+    document.addEventListener('DOMContentLoaded', () => {
+    const accordionBtn = document.querySelector('.accordion-btn');
+    const accordionPanel = document.querySelector('.accordion-panel');
+
+    if (accordionBtn && accordionPanel) {
+        accordionBtn.addEventListener('click', function() {
+            // Toggle active class for icon rotation
+            this.classList.toggle('active');
+
+            // Toggle panel height for smooth transition
+            if (accordionPanel.style.maxHeight) {
+                // If it has a height, collapse it
+                accordionPanel.style.maxHeight = null;
+            } else {
+                // If it's collapsed, set height to its scrollHeight
+                accordionPanel.style.maxHeight = accordionPanel.scrollHeight + "px";
+            }
+        });
+    }
+});
+</script>
