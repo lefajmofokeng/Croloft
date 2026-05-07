@@ -36,14 +36,14 @@
     <link rel="icon" type="image/png" href="thumbnails/top-1.png">
     <style>
         /* ===== CSS VARIABLES ===== */
-         @font-face {
-            font-family: 'Circular Std';
-            src: local('Circular Std'), url('fonts/circular-std.ttf') format('woff'),
-                 url('fonts/CircularStd-Bold.ttf') format('woff');;
-            font-weight: normal;
-            font-style: normal;
-        }
-
+      @font-face { font-family:'Circular Std'; src:url('fonts/CircularStd-Book.woff2') format('woff2'),url('fonts/CircularStd-Book.woff') format('woff'); font-weight:400; font-style:normal; font-display:swap; }
+      @font-face { font-family:'Circular Std'; src:url('fonts/CircularStd-BookItalic.woff2') format('woff2'),url('fonts/CircularStd-BookItalic.woff') format('woff'); font-weight:400; font-style:italic; font-display:swap; }
+      @font-face { font-family:'Circular Std'; src:url('fonts/CircularStd-Medium.woff2') format('woff2'),url('fonts/CircularStd-Medium.woff') format('woff'); font-weight:500; font-style:normal; font-display:swap; }
+      @font-face { font-family:'Circular Std'; src:url('fonts/CircularStd-Bold.woff2') format('woff2'),url('fonts/CircularStd-Bold.woff') format('woff'); font-weight:600; font-style:normal; font-display:swap; }
+      @font-face { font-family:'Circular Std'; src:url('fonts/CircularStd-Bold.woff2') format('woff2'),url('fonts/CircularStd-Bold.woff') format('woff'); font-weight:700; font-style:normal; font-display:swap; }
+      @font-face { font-family:'Circular Std'; src:url('fonts/CircularStd-Black.woff2') format('woff2'),url('fonts/CircularStd-Black.woff') format('woff'); font-weight:800; font-style:normal; font-display:swap; }
+      @font-face { font-family:'Circular Std'; src:url('fonts/CircularStd-Black.woff2') format('woff2'),url('fonts/CircularStd-Black.woff') format('woff'); font-weight:900; font-style:normal; font-display:swap; }
+    
         :root {
             --primary-dark: #080d1b;
             --primary-accent: #1199fa;
@@ -216,13 +216,13 @@
 
         .capital-founder-name {
             font-size: 1.4rem;
-            font-weight: 500;
+            font-weight: 400;
             margin: 20px 0 10px;
             color: var(--text-white);
         }
 
         .capital-founder-title {
-            font-size: 1rem;
+            font-size: 1.3rem;
             font-weight: 500;
             color: var(--primary-accent);
             margin-bottom: 30px;
@@ -546,7 +546,7 @@
             }, observerOptions);
             
             // Observe elements for animation
-            const elementsToAnimate = document.querySelectorAll('.capital-heading, .capital-subheading, .capital-text, .capital-section-title, .capital-stat-value, .capital-section-subtitle, .capital-founder-name, .capital-founder-title');
+            const elementsToAnimate = document.querySelectorAll('.capital-heading, .capital-subheading, .capital-text, .capital-section-title, .capital-stat-value, .capital-section-subtitle, .capital-founder-name, .capital-founder-title, it-ecosystem-body');
             
             elementsToAnimate.forEach(el => {
                 el.style.opacity = '0';
@@ -714,7 +714,6 @@
     <style>
         /* --- General Reset & Fonts --- */
         .it-ecosystem-body {
-            font-family: 'Inter', sans-serif;
             margin: 0;  
             background-color: #ffffff; /* Very light gray background */
         }
@@ -738,7 +737,7 @@
         }
 
         .it-ecosystem-headline {
-            font-size: 60px;
+            font-size: 35px;
             font-weight: 500;
             letter-spacing: -0.03em;
             line-height: 1.2;
@@ -750,7 +749,7 @@
         @media (min-width: 768px) {
             .it-ecosystem-headline {
                 font-size: 3rem;
-            }
+            } 
         }
 
         /* --- Category Divider --- */
@@ -933,12 +932,299 @@
 
 
 
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <style>
+        /* CSS Variables for easy theme management */
+        :root {
+            --crOnchain-bg-gradient: linear-gradient(135deg, #FFFFFF 0%, #ffffff 100%);
+            --crOnchain-sphere-color: rgba(220, 225, 230, 0.3);
+            --crOnchain-primary-blue: #0065ad;
+            --crOnchain-text-main: #0B1426;
+            --crOnchain-text-muted: #667085;
+            --crOnchain-accent-blue: #0065ad;
+            --crOnchain-border: #030303;
+        }
+
+        .crOnchain-section-container {
+            position: relative;
+            width: 100%;
+            min-height: 600px;
+            background: var(--crOnchain-bg-gradient);
+            font-family: 'Circular Std', sans-serif;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            padding: 60px 20px 170px 20px;
+            overflow: hidden;
+            box-sizing: border-box;
+        }
+
+        /* Abstract background spheres */
+      
+
+        .crOnchain-inner-wrapper {
+            position: relative;
+            z-index: 1;
+            text-align: center;
+            max-width: 1000px;
+            width: 100%;
+        }
+
+        .crOnchain-label {
+            color: var(--crOnchain-accent-blue);
+            text-transform: uppercase;
+            font-weight: 500;
+            font-size: 17px;
+            margin-bottom: 15px;
+            display: block;
+        }
+
+        .crOnchain-title {
+            color: var(--crOnchain-text-main);
+            font-size: 50px;
+            font-weight: 500;
+            margin: 0 0 20px 0; line-height: 1.1;
+            letter-spacing: -0.5px;
+        }
+
+        .crOnchain-nav {
+            display: flex;
+            justify-content: center;
+            gap: 15px;
+            margin-bottom: 45px;
+            font-size: 17px; 
+        }
+
+        .crOnchain-nav a {
+            text-decoration: none; border-bottom: none; color: #6e6e73;
+        }
+
+        .crOnchain-nav span { color: #DDE2E8; }
+
+        /* The Card */
+        .crOnchain-card {
+            background: #FFFFFF;
+            border-radius: 10px;
+            box-shadow: 0 1px 5px rgba(0, 0, 0, 0.307);
+            padding: 50px 40px;
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 60px;
+            max-width: 600px;
+            margin: 0 auto;
+            box-sizing: border-box;
+        }
+
+        .crOnchain-col-title {
+            font-size: 19px;
+            font-weight: 500;
+            margin-bottom: 30px;
+            color: var(--crOnchain-text-main);
+        }
+
+        /* Buttons with Centered Text */
+        .crOnchain-btn-stack {
+            display: flex;
+            flex-direction: column;
+            gap: 15px;
+        }
+
+        .crOnchain-base-btn {
+            display: flex;
+            align-items: center;
+            justify-content: center; /* Centers content horizontally */
+            height: 48px;
+            border-radius: 24px;
+            font-weight: 600;
+            font-size: 15px;
+            text-decoration: none;
+            transition: all 0.2s ease;
+            position: relative;
+            padding: 0 20px;
+        }
+
+        .crOnchain-btn-primary {
+            background: var(--crOnchain-primary-blue);
+            color: #FFFFFF;
+        }
+
+        .crOnchain-btn-primary:hover { background: #00367a; }
+
+        .crOnchain-btn-secondary {
+            border: 1px solid var(--crOnchain-border);
+            color: var(--crOnchain-text-main);
+        }
+
+        .crOnchain-btn-secondary:hover { border-color: #99A9C2; }
+
+        .crOnchain-icon-right { margin-left: 8px; }
+        .crOnchain-icon-left { margin-right: 8px; }
+
+        /* QR Placeholder */
+        .crOnchain-qr-frame {
+            border: 1px solid #000;
+            border-radius: 12px;
+            width: 180px;
+            height: 180px;
+            margin: 0 auto;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            overflow: hidden;
+            padding: 5px;
+        }
+
+        .crOnchain-qr-img {
+            width: 100%;
+            height: 100%;
+            object-fit: contain;
+        }
+
+        /* Mobile Adjustments */
+        @media (max-width: 768px) {
+            .crOnchain-card {
+                grid-template-columns: 1fr;
+                padding: 40px 30px;
+                gap: 40px;
+            }
+            .crOnchain-title { font-size: 32px; }
+        }
+    </style>
+</head>
+<body>
+
+<div class="crOnchain-section-container">
+    <div class="crOnchain-bg-sphere crOnchain-sphere-1"></div>
+    <div class="crOnchain-bg-sphere crOnchain-sphere-2"></div>
+
+    <div class="crOnchain-inner-wrapper">
+        <span class="crOnchain-label">Download</span>
+        <h1 class="crOnchain-title">Access Crypto.com Onchain<br>on all your devices</h1>
+        
+        <div class="crOnchain-nav">
+            <a href="#">Web</a> <span>|</span>
+            <a href="#">Chrome Extension</a> <span>|</span>
+            <a href="#">iOS</a> <span>|</span>
+            <a href="#">Android</a>
+        </div>
+
+        <div class="crOnchain-card">
+            <div class="crOnchain-column">
+                <h3 class="crOnchain-col-title">Browser</h3>
+                <div class="crOnchain-btn-stack">
+                    <a href="#" class="crOnchain-base-btn crOnchain-btn-primary">
+                        Open Onchain Web <span class="crOnchain-icon-right">→</span>
+                    </a>
+                    <a href="#" class="crOnchain-base-btn crOnchain-btn-secondary">
+                        <svg class="crOnchain-icon-left" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="10"></circle><circle cx="12" cy="12" r="4"></circle><line x1="21.17" y1="8" x2="12" y2="8"></line><line x1="3.95" y1="6.06" x2="8.54" y2="14"></line><line x1="10.88" y1="21.94" x2="15.46" y2="14"></line></svg>
+                        Chrome® Extension
+                    </a>
+                </div>
+            </div>
+
+            <div class="crOnchain-column">
+                <h3 class="crOnchain-col-title">Mobile Wallet</h3>
+                <div class="crOnchain-qr-frame">
+                    <img src="thumbnails/frame.jpg" alt="Scan QR Code" class="crOnchain-qr-img">
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+</body>
+</html>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 <div class="mkt-comp-wrapper">
   <style>
     /*--- Variables & Font ---*/
     :root {
-      --mkt-bg: #0e0e1a; /* Deep Charcoal */
-      --mkt-accent: #4f46e5; /* Premium Blue/Indigo */
+      --mkt-bg: #0e131a; /* Deep Charcoal */
+      --mkt-accent: #0065ad; /* Premium Blue/Indigo */
       --mkt-text-main: #ffffff;
       --mkt-text-muted: #94a3b8;
       --mkt-input-bg: rgba(255, 255, 255, 0.03);
@@ -966,7 +1252,7 @@
     /*--- Typography ---*/
     .mkt-comp-heading {
       font-size: 52px;
-      font-weight: 700;
+      font-weight: 500;
       line-height: 1.1;
       margin-bottom: 24px;
       letter-spacing: -0.02em;
@@ -987,7 +1273,6 @@
 
     /*--- Form Elements ---*/
     .mkt-comp-right {
-      border-left: 1px solid var(--mkt-border);
       padding-left: 80px;
     }
 
@@ -1004,12 +1289,12 @@
     .mkt-comp-input, .mkt-comp-textarea {
       width: 100%;
       background: var(--mkt-input-bg);
-      border: 1px solid var(--mkt-border);
+      border: 2px solid var(--mkt-border);
       padding: 16px;
-      border-radius: 8px;
+      border-radius: 4px;
       color: white;
       font-size: 16px;
-      transition: all 0.3s ease;
+      transition: all 0.3s ease; 
     }
 
     .mkt-comp-input:focus, .mkt-comp-textarea:focus {
@@ -1028,8 +1313,8 @@
       color: white;
       border: none;
       padding: 16px 32px;
-      border-radius: 6px;
-      font-weight: 600;
+      border-radius: 50px; font-size: 16px;
+      font-weight: 500;
       cursor: pointer;
       width: fit-content;
       transition: transform 0.2s ease, opacity 0.2s ease;

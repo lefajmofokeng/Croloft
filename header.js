@@ -28,26 +28,34 @@ class CronosHeader extends HTMLElement {
         return [
             // ── Plans (replaces Pricing) ──────────────────────────────────
             {
-                label: 'Plans',
+                label: 'Businesses',
                 megamenu: [
                     {
-                        heading: 'Business Plans',
+                        heading: 'Level Up',
                         tagline: 'Flexible pricing for every team',
                         icon: 'thumbnails/04 (2).png',
                         links: [
-                            { label: 'Starter',        href: 'plans-starter.html' },
+                            { label: 'Startups',       href: 'plans-starter.html' },
                             { label: 'Professional',   href: 'plans-pro.html' },
                             { label: 'Enterprise',     href: 'plans-enterprise.html' },
-                            { label: 'Custom Quote',   href: 'quote.html' },
+                            { label: 'Marketplace',  href: 'compare.html' },
+                            { label: 'Schedule a Demo',  href: 'quote.html' },
                         ]
                     },
                     {
                         heading: 'Compare & Save',
                         links: [
-                            { label: 'Feature Comparison',  href: 'compare.html' },
                             { label: 'Annual vs Monthly',   href: 'billing.html' },
-                            { label: 'Volume Discounts',    href: 'discounts.html' },
-                            { label: 'Non-profit Pricing',  href: 'nonprofit.html' },
+                            { label: 'Feature Comparison',  href: 'compare.html' },
+                        ]
+                    },
+                    {
+                        heading: 'Support',
+                        links: [
+                            { label: 'Customer Support',   href: 'billing.html' },
+                            { label: 'FAQs',  href: 'compare.html' },
+                            { label: 'Contact Sales',  href: 'compare.html' },
+                            { label: 'Learn',  href: 'compare.html' },
                         ]
                     }
                 ]
@@ -55,37 +63,29 @@ class CronosHeader extends HTMLElement {
 
             // ── Finance (replaces Crypto) ─────────────────────────────────
             {
-                label: 'Finance',
+                label: 'Individuals',
                 megamenu: [
                     {
-                        heading: 'Markets',
-                        tagline: 'Live data & analytics',
-                        icon: 'thumbnails/04 (2).png',
+                        heading: 'Build',
                         links: [
-                            { label: 'Market Overview',    href: 'market-overview.html' },
-                            { label: 'Live Price Tracker', href: 'price-tracker.html' },
-                            { label: 'Portfolio Manager',  href: 'portfolio.html' },
-                            { label: 'Risk Calculator',    href: 'risk-calc.html' },
+                            { label: 'Courses',    href: 'market-overview.html' },
+                            { label: 'Open Source Pojects',  href: 'portfolio.html' },
+                            { label: 'Coding for Social Impact (Non-profit)',  href: 'coding.html' },
                         ]
                     },
                     {
-                        heading: 'Crypto & Web3',
-                        tagline: 'Blockchain-native tools',
+                        heading: 'Programs',
                         links: [
-                            { label: 'DeFi Explorer',      href: 'defi.html' },
-                            { label: 'NFT Marketplace',    href: 'nft.html' },
-                            { label: 'Token Swap',         href: 'swap.html' },
-                            { label: 'Staking & Yield',    href: 'staking.html' },
+                            { label: 'Affiliate Program',      href: 'defi.html' },
+                            { label: 'Content Creator Program',    href: 'nft.html' },
                         ]
                     },
                     {
-                        heading: 'Insights',
+                        heading: 'Engage',
                         links: [
-                            { label: 'Research Reports',   href: 'research.html' },
-                            { label: 'Market Signals',     href: 'signals.html' },
-                            { label: 'Liquidity Converter',href: 'liquidity.html' },
+                            { label: 'Community Forum',      href: 'defi.html' },
                         ]
-                    }
+                    },
                 ]
             },
 

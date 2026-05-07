@@ -1,460 +1,1081 @@
 
 
 
+
+
+
+
+
 <!DOCTYPE html>
 <html lang="en">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Affiliate Programme - IT Solutions</title>
+    <title>Defcon | Product News & Innovations</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.2/css/all.min.css">
+
     <style>
-        * {
-            margin: 0;
-            padding: 0;
-            box-sizing: border-box;
-            font-family: 'Inter', sans-serif;
+        /* ─────────────────────────────────
+           RESET & TOKENS
+        ───────────────────────────────── */
+
+        @font-face {
+            font-family: 'Circular Std';
+            src: url('fonts/CircularStd-Book.ttf') format('truetype');
+            font-weight: 400;
+            font-style: normal;
         }
+
+        /* Circular Std - Medium (500) */
+        @font-face {
+            font-family: 'Circular Std';
+            src: url('fonts/CircularStd.ttf') format('truetype');
+            font-weight: 500;
+            font-style: normal;
+        }
+
+        /* Circular Std - Bold (700) */
+        @font-face {
+            font-family: 'Circular Std';
+            src: url('fonts/CircularStd-Bold.ttf') format('truetype');
+            font-weight: 600;
+            font-style: normal;
+        }
+
+        *, *::before, *::after { margin: 0; padding: 0; box-sizing: border-box; }
+
+        :root {
+            --accent:       #0091ff;
+            --accent-dark:  #0077d4;
+            --white:        #ffffff;
+            --bg-light:     #f5f6f8;
+            --text-dark:    #151515;
+            --text-mid:     #444444;
+            --text-muted:   #888888;
+            --border:       #e2e4e9;
+            --bg-dark:      #00091e;
+            --card-shadow:  0 2px 12px rgba(0,0,0,0.07);
+            --card-shadow-h: 0 10px 28px rgba(0,0,0,0.13);
+        }
+
+        html { scroll-behavior: smooth; }
 
         body {
-            font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Helvetica Neue', sans-serif;
-            background-color: #f5f5f5;
-            color: #333;
+            font-family: 'Circular Std', sans-serif;
+            background: var(--white);
+            color: var(--text-dark);
+            line-height: 1.6;
+            overflow-x: hidden;
         }
 
-        .full-width {
-            width: 100%;
-        }
+        a { text-decoration: none; color: inherit; }
+        img { display: block; max-width: 100%; }
 
-        .container {
-            max-width: 1100px;
+
+        /* ─────────────────────────────────
+           HEADER
+        ───────────────────────────────── */
+        .defcon-news-header {
+            position: relative;
+            background-color: var(--bg-dark);
+            background-image: url('https://images.unsplash.com/photo-1518770660439-4636190af475?auto=format&fit=crop&w=1600&q=60');
+            background-size: cover;
+            background-position: center;
+            padding: 100px 0 32px;
+        }
+        .defcon-news-header::before {
+            content: '';
+            position: absolute;
+            inset: 0;
+            background: rgba(0,0,0,0.62);
+        }
+        .header-container {
+            position: relative;
+            z-index: 1;
+            max-width: 1400px;
             margin: 0 auto;
-            padding: 0 20px;
+            padding: 0 40px;
+        }
+        .header-title {
+            font-size: clamp(1.8rem, 4vw, 2.9rem);
+            font-weight: 700;
+            color: var(--white);
+            letter-spacing: -0.03em;
         }
 
-        /* Hero Section */
-        .hero {
-            background: linear-gradient(135deg, #0c568b 0%, #001023 100%);
-            color: white;
-            padding: 80px 20px;
+
+        /* ─────────────────────────────────
+           HERO BANNER
+        ───────────────────────────────── */
+        .hero-feature-banner {
+            background: var(--white);
+            padding: 52px 0 52px;
+        }
+        .hero-content-wrapper {
+            max-width: 1400px;
+            margin: 0 auto;
+            padding: 0 40px;
             display: flex;
-            align-items: center;
-            justify-content: center;
-            min-height: 700px;
+            gap: 20px;
+            align-items: stretch;
+        }
+
+        .hero-visual-box {
+            flex: 3;
+            position: relative;
+            border-radius: 1px;
+            overflow: hidden;
+            box-shadow: 0 10px 32px rgba(0,0,0,0.18);
+            min-height: 420px;
+        }
+        .hero-image-placeholder {
+            width: 100%; height: 100%;
+            object-fit: cover;
+            filter: brightness(0.55);
+            aspect-ratio: 16 / 9;
+        }
+        .hero-text-overlay {
+            position: absolute;
+            inset: 0;
+            background: linear-gradient(to right, rgba(0,0,0,0.74) 0%, rgba(0,0,0,0.22) 65%, transparent 100%);
+            display: flex;
+            align-items: flex-end;
+            padding: 36px;
+            color: var(--white);
+        }
+        .overlay-inner-content { max-width: 66%; }
+        .hero-post-title {
+            font-size: clamp(1.35rem, 2.4vw, 2.05rem);
+            font-weight: 700;
+            margin-bottom: 10px;
+            line-height: 1.25;
+        }
+        .hero-post-summary {
+            font-size: clamp(0.9rem, 1.4vw, 1.1rem);
+            margin-bottom: 22px;
+            opacity: 0.87;
+        }
+        .hero-cta-button {
+            display: inline-block;
+            background: var(--accent);
+            color: var(--white);
+            padding: 10px 22px;
+            border-radius: 4px;
+            font-size: 0.9rem;
+            font-weight: 600;
+            letter-spacing: 0.01em;
+            transition: background 0.2s;
+        }
+        .hero-cta-button:hover { background: var(--accent-dark); }
+
+        .hero-side-articles {
+            flex: 1;
+            display: flex;
+            flex-direction: column;
+            gap: 16px;
+            min-width: 0;
+        }
+        .hero-side-articles .news-grid-card { flex: 1; }
+        .hero-side-articles .card-image-placeholder { height: 150px; }
+
+
+        /* ─────────────────────────────────
+           SHARED CARD
+        ───────────────────────────────── */
+        .news-grid-card {
+            display: flex;
+            flex-direction: column;
+            border-radius: 1px;
+            overflow: hidden;
+            box-shadow: var(--card-shadow);
+            background: var(--white);
+            transition: transform 0.24s ease, box-shadow 0.24s ease;
+        }
+        .news-grid-card:hover {
+            transform: translateY(-4px);
+            box-shadow: var(--card-shadow-h);
+        }
+
+        .card-image-placeholder {
+            width: 100%;
+            height: 180px;
+            background: var(--bg-dark);
             position: relative;
             overflow: hidden;
+            flex-shrink: 0;
+        }
+        .card-bg-image {
+            width: 100%; height: 100%;
+            object-fit: cover;
+            opacity: 0.82;
+            transition: opacity 0.28s, transform 0.38s;
+        }
+        .news-grid-card:hover .card-bg-image { opacity: 1; transform: scale(1.04); }
+
+        .visual-label {
+            position: absolute;
+            bottom: 9px; right: 10px;
+            color: var(--white);
+            font-size: 0.72rem;
+            font-weight: 500;
+            padding: 3px 9px;
+            border-radius: 3px;
+            background: rgba(0,0,0,0.52);
+            z-index: 2;
+            white-space: nowrap;
         }
 
-        .hero-content {
+        .card-details {
+            padding: 16px 18px 20px;
+            flex-grow: 1;
+        }
+        .card-tag-date {
+            font-size: 0.75rem;
+            color: var(--accent);
+            font-weight: 600;
+            margin-bottom: 6px;
+            letter-spacing: 0.04em;
+            text-transform: uppercase;
+        }
+        .card-title {
+            font-size: 1.3rem;
+            font-weight: 600;
+            line-height: 1.1;
+            color: var(--text-dark);
+        }
+
+        /* ─────────────────────────────────
+           SECTION HEADER ROW
+        ───────────────────────────────── */
+        .all-news-section {
+            max-width: 1400px;
+            margin: 48px auto 80px;
+            padding: 0 40px;
+        }
+
+        .section-header-row {
             display: flex;
             align-items: center;
             justify-content: space-between;
-            gap: 60px;
-            max-width: 1100px;
-            margin: 0 auto;
-            width: 100%;
+            margin-bottom: 28px;
+            gap: 12px;
+            flex-wrap: wrap;
         }
 
-        .hero-text {
-            flex: 1;
-        }
-
-        .hero-label {
-            color: #51b0f9;
-            font-size: 15px;
-            font-weight: 600;
-            letter-spacing: 1px;
-            text-transform: uppercase;
-            margin-bottom: 20px;
-        }
-
-        .hero h1 {
-            font-size: 56px;
-            font-weight: 700;
-            line-height: 1.2;
-            margin-bottom: 30px;
-        }
-
-        .hero p {
-            font-size: 18px;
-            font-weight: 600;
-            line-height: 1.6;
-            color: #a8c5dd;
-            margin-bottom: 40px;
-        }
-
-        .btn-primary {
-            display: inline-block;
-            background-color: white;
-            color: #0a1e3e;
-            padding: 14px 40px;
-            border-radius: 50px;
-            font-weight: 600;
-            text-decoration: none;
-            cursor: pointer;
-            border: none;
-            font-size: 17px;
-            transition: all 0.3s ease;
-        }
-
-        .btn-primary:hover {
-            transform: translateY(-2px);
-            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.2);
-        }
-
-        .hero-visual {
-            flex: 1;
-            position: relative;
+        .section-title-group {
             display: flex;
-            justify-content: center;
             align-items: center;
-            height: 400px;
-        }
-
-        .hero-3d {
-            position: relative;
-            width: 300px;
-            height: 300px;
-            animation: float 6s ease-in-out infinite;
-        }
-
-        @keyframes float {
-            0%, 100% { transform: translateY(0px); }
-            50% { transform: translateY(-20px); }
-        }
-
-        .phone-mockup {
-            background: linear-gradient(135deg, #1a3a52 0%, #0f2438 100%);
-            border-radius: 40px;
-            padding: 12px;
-            width: 250px;
-            height: 280px;
-            box-shadow: 0 20px 60px rgba(0, 0, 0, 0.3);
+            gap: 0;
             position: relative;
         }
 
-        .phone-screen {
-            background: linear-gradient(135deg, #1e4d6d 0%, #0a1e3e 100%);
-            border-radius: 30px;
-            padding: 20px;
-            height: 100%;
-            display: flex;
-            flex-direction: column;
-            align-items: center;
-            justify-content: center;
-            position: relative;
-        }
-
-        .user-icon {
-            width: 60px;
-            height: 60px;
-            background: rgba(255, 255, 255, 0.1);
-            border-radius: 50%;
-            margin-bottom: 15px;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            font-size: 30px;
-        }
-
-        .speech-bubble {
-            background: white;
-            color: #0a1e3e;
-            padding: 15px 20px;
-            border-radius: 20px;
-            position: absolute;
-            top: -30px;
-            right: -20px;
-            width: 120px;
-            text-align: center;
+        .all-news-title {
+            font-size: 1.5rem;
             font-weight: 600;
-            font-size: 12px;
-            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.2);
+            color: var(--text-dark);
+            letter-spacing: -0.01em;
+            white-space: nowrap;
         }
 
-        .hexagon {
-            width: 50px;
-            height: 50px;
-            background: linear-gradient(135deg, #6ba3d4, #4a7ba7);
-            clip-path: polygon(50% 0%, 100% 25%, 100% 75%, 50% 100%, 0% 75%, 0% 25%);
-            display: flex;
+        /* ── TOPICS TRIGGER BUTTON ── */
+        .topics-trigger {
+            display: inline-flex;
             align-items: center;
-            justify-content: center;
-            font-size: 24px;
-        }
-
-        /* How It Works Section */
-        .how-it-works {
-            padding: 100px 20px;
-            background: #f7f9fa;
-        }
-
-        .section-title {
-            font-size: 42px;
-            font-weight: 600;
-            margin-bottom: 20px;
-            color: #0a1e3e;
-            letter-spacing: -0.03em;
-            backface-visibility: visible;
-        }
-
-        .section-subtitle {
-            font-size: 18px;
-            font-weight: 600;
-            color: #333;
-            margin-bottom: 30px;
-        }
-
-        .steps-grid {
-            display: grid;
-            grid-template-columns: repeat(3, 1fr);
-            gap: 15px;
-            max-width: 1100px;
-            margin: 0 auto;
-        }
-
-        .step-card {
-            background: #fff;
-            padding: 40px;
-            border-radius: 30px;
-            text-align: left;
-            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.1);
-        }
-
-        .step-icon {
-            width: 60px;
-            height: 60px;
-            
-            border-radius: 12px;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            margin-bottom: 20px;
-            font-size: 32px;
-        }
-
-        .step-title {
-            font-size: 18px;
-            font-weight: 600;
-            color: #0a1e3e;
-            margin-bottom: 12px;
-        }
-
-        .step-description {
-            font-size: 14px;
-            color: #666;
-            line-height: 1.6;
-        }
-
-        /* Why Partner Section */
-        .why-partner {
-            padding: 40px 0 80px 0;
-            background: #f7f9fa;
-        }
-
-        .benefits-grid {
-            display: grid;
-            grid-template-columns: repeat(3, 1fr);
-            gap: 40px;
-            max-width: 1100px;
-            margin: 0 auto;
-        }
-
-        .benefit-card {
-            text-align: left;
-            padding-right: 30px;
-        }
-
-        .benefit-icon {
-            width: 60px;
-            height: 60px;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            margin-bottom: 20px;
-            font-size: 32px;
-        }
-
-        .benefit-title {
-            font-size: 19px;
-            font-weight: 600;
-            color: #0066cc;
-            margin-bottom: 12px;
-        }
-
-        .benefit-description {
-            font-size: 14px;
-            color: #333;
-            line-height: 1.6;
-        }
-
-        /* CTA Section */
-        .cta-section {
+            gap: 5px;
             background: none;
-            padding: 80px 20px;
-            text-align: center;
-            background-color: #f7f9fa;
-            color: white;
-        }
-
-        .cta-content {
-            max-width: 1100px;
-            margin: 0 auto;
-            background: radial-gradient(75.83% 86.4% at 50% 100%, rgb(3, 68, 129) 0%, rgba(3, 68, 129, 0.21) 67.99%, rgba(3, 68, 129, 0.07) 88.86%, rgba(3, 68, 129, 0) 100%), rgb(1, 1, 24);
-            padding: 30px 20px;
-            border-radius: 30px;
-        }
-
-        .cta-label {
-            font-size: 12px;
+            border: 1px solid #000000;
+            cursor: pointer;
+            padding: 6px 8px 6px 8px;
+            font-family: 'Inter', sans-serif;
+            font-size: 0.8rem;
             font-weight: 600;
-            letter-spacing: 1px;
-            text-transform: uppercase;
-            color: #6ba3d4;
-            margin-bottom: 20px;
-            display: inline-block;
+            color: #000000;
+            letter-spacing: 0.03em;
+            transition: color 0.18s;
+            user-select: none;
+            white-space: nowrap;
+            border-radius: 50px;
+            margin-left: 10px;
+        }
+        
+        .topics-trigger .trigger-icon {
+            font-size: 0.65rem;
+            transition: transform 0.24s ease, color 0.18s;
+        }
+        
+        .topics-trigger.open .trigger-icon { transform: rotate(180deg); }
+
+
+        /* ── DROPDOWN MENU ── */
+        .topics-dropdown {
+            position: absolute;
+            top: calc(100% + 8px);
+            left: 0;
+            width: 290px;
+            background: var(--white);
+            border-radius: 15px;
+            box-shadow: 0 8px 40px rgba(0,0,0,0.13), 0 2px 8px rgba(0,0,0,0.05);
+            padding: 6px;
+            z-index: 200;
+
+            opacity: 0;
+            visibility: hidden;
+            transform: translateY(-6px) scale(0.98);
+            transition: opacity 0.2s ease, transform 0.2s ease, visibility 0.2s;
+            pointer-events: none;
+            transform-origin: top left;
+        }
+        .topics-dropdown.open {
+            opacity: 1;
+            visibility: visible;
+            transform: translateY(0) scale(1);
+            pointer-events: auto;
         }
 
-        .cta-title {
-            font-size: 48px;
+        .dropdown-section-label {
+            font-size: 0.66rem;
             font-weight: 700;
-            margin-bottom: 20px;
-            line-height: 1.3;
+            color: var(--text-muted);
+            letter-spacing: 0.08em;
+            text-transform: uppercase;
+            padding: 8px 10px 4px;
         }
 
-        .cta-subtitle {
-            font-size: 18px;
+        .topic-item {
+            display: flex;
+            align-items: center;
+            gap: 10px;
+            padding: 8px 10px;
+            border-radius: 10px;
+            cursor: pointer;
+            transition: background 0.15s;
+            font-size: 1rem;
+            font-weight: 500;
+            color: var(--text-dark);
+            user-select: none;
+        }
+        .topic-item:hover { background: var(--bg-light); }
+        .topic-item.active {
+            background: #f4f4f4;
+            color: #000000;
             font-weight: 600;
-            color: #a8c5dd;
-            margin-bottom: 40px;
-            line-height: 1.6;
         }
 
-        .privacy-notice {
-            font-size: 12px;
-            color: #6ba3d4;
-            margin-top: 40px;
+        .topic-count {
+            margin-left: auto;
+            font-size: 1rem;
+            font-weight: 600;
+            color: var(--text-muted);
+            background: var(--bg-light);
+            padding: 2px 7px;
+            border-radius: 20px;
+            flex-shrink: 0;
         }
 
-        .privacy-notice a {
-            color: #6ba3d4;
-            text-decoration: underline;
+        .topic-item.active .topic-count { background: #cde5ff; color: var(--accent); }
+
+        .dropdown-divider {
+            height: 1px;
+            background: var(--border);
+            margin: 4px 6px;
         }
 
-        @media (max-width: 768px) {
-            .hero-content {
-                flex-direction: column;
-                gap: 40px;
-            }
+        /* ── Active filter pill ── */
+        .active-filter-pill {
+            display: none;
+            align-items: center;
+            gap: 5px;
+            background: #e8f4ff;
+            color: var(--accent);
+            font-size: 0.74rem;
+            font-weight: 600;
+            padding: 3px 8px 3px 10px;
+            border-radius: 20px;
+            margin-left: 10px;
+            letter-spacing: 0.02em;
+            white-space: nowrap;
+        }
+        .active-filter-pill.visible { display: flex; }
+        .active-filter-pill button {
+            background: none;
+            border: none;
+            color: var(--accent);
+            cursor: pointer;
+            font-size: 0.68rem;
+            display: flex;
+            align-items: center;
+            padding: 0;
+            margin-left: 1px;
+            transition: color 0.15s;
+            opacity: 0.7;
+        }
+        .active-filter-pill button:hover { opacity: 1; }
 
-            .hero h1 {
-                font-size: 36px;
-            }
+        .result-count {
+            font-size: 0.8rem;
+            color: var(--text-muted);
+            font-weight: 500;
+            white-space: nowrap;
+        }
 
-            .steps-grid,
-            .benefits-grid {
-                grid-template-columns: 1fr;
-                gap: 30px;
-            }
 
-            .section-title,
-            .cta-title {
-                font-size: 32px;
-            }
+        /* ─────────────────────────────────
+           4-COLUMN GRID
+        ───────────────────────────────── */
+        .news-card-grid {
+            display: grid;
+            grid-template-columns: repeat(4, 1fr);
+            gap: 22px;
+        }
 
-            .hero-visual {
-                height: 300px;
+        .news-grid-card.hidden { display: none; }
+
+        .grid-empty-state {
+            grid-column: 1 / -1;
+            text-align: center;
+            padding: 64px 20px;
+            color: var(--text-muted);
+            font-size: 0.93rem;
+            display: none;
+        }
+        .grid-empty-state.visible { display: block; }
+        .grid-empty-state i {
+            font-size: 2rem;
+            margin-bottom: 12px;
+            color: var(--border);
+            display: block;
+        }
+
+
+        /* ─────────────────────────────────
+           PAGINATION
+        ───────────────────────────────── */
+        .pagination-bar {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            gap: 5px;
+            margin-top: 44px;
+            flex-wrap: wrap;
+        }
+
+        .pg-btn {
+            display: inline-flex;
+            align-items: center;
+            justify-content: center;
+            gap: 5px;
+            min-width: 38px;
+            height: 38px;
+            padding: 0 10px;
+            border: 2px solid var(--border);
+            border-radius: 50px;
+            background: var(--white);
+            font-family: 'Inter', sans-serif;
+            font-size: 1rem;
+            font-weight: 600;
+            color: var(--text-mid);
+            cursor: pointer;
+            transition: background 0.17s, border-color 0.17s, color 0.17s, transform 0.13s, box-shadow 0.17s;
+            user-select: none;
+            margin-top: 2rem;
+        }
+        .pg-btn:hover:not(:disabled) {
+            background: var(--bg-light);
+            border-color: #c5cadb;
+            color: var(--text-dark);
+        }
+        .pg-btn:active:not(:disabled) { transform: scale(0.94); }
+        .pg-btn.active {
+            background: var(--accent);
+            border-color: var(--accent);
+            color: var(--white);
+        }
+        .pg-btn.active:hover { background: var(--accent-dark); border-color: var(--accent-dark); }
+        .pg-btn:disabled { opacity: 0.32; cursor: not-allowed; }
+        .pg-btn.arrow { padding: 0 14px; }
+
+        .pg-ellipsis {
+            display: inline-flex;
+            align-items: center;
+            justify-content: center;
+            min-width: 32px;
+            height: 38px;
+            color: var(--text-muted);
+            font-size: 0.9rem;
+            font-weight: 600;
+            pointer-events: none;
+        }
+
+        .pagination-info {
+            text-align: center;
+            margin-top: 12px;
+            font-size: 1rem;
+            color: var(--text-muted);
+        }
+
+
+        /* ─────────────────────────────────
+           FOOTER
+        ───────────────────────────────── */
+        .defcon-news-footer {
+            padding: 28px 40px;
+            background: var(--bg-light);
+            text-align: center;
+            border-top: 1px solid var(--border);
+        }
+        .footer-text { font-size: 0.88rem; color: var(--text-muted); }
+
+
+        /* ─────────────────────────────────
+           RESPONSIVE
+        ───────────────────────────────── */
+        @media (max-width: 1280px) {
+            .news-card-grid { grid-template-columns: repeat(3, 1fr); }
+        }
+
+        @media (max-width: 1024px) {
+            .header-container,
+            .hero-content-wrapper,
+            .all-news-section { padding-left: 24px; padding-right: 24px; }
+
+            .hero-content-wrapper { flex-direction: column; }
+            .hero-visual-box { min-height: 360px; }
+
+            .hero-side-articles { flex-direction: row; }
+            .hero-side-articles .news-grid-card { flex: 1; min-width: 0; }
+            .hero-side-articles .card-image-placeholder { height: 130px; }
+
+            .news-card-grid { grid-template-columns: repeat(2, 1fr); }
+            .overlay-inner-content { max-width: 82%; }
+        }
+
+        @media (max-width: 680px) {
+            .defcon-news-header { padding: 72px 0 24px; }
+
+            .header-container,
+            .hero-content-wrapper,
+            .all-news-section { padding-left: 16px; padding-right: 16px; }
+
+            .hero-feature-banner { padding: 20px 0 32px; }
+            .hero-visual-box { min-height: 270px; }
+            .hero-text-overlay {
+                background: linear-gradient(to top, rgba(0,0,0,0.82) 0%, rgba(0,0,0,0.20) 60%, transparent 100%);
+                padding: 20px;
             }
+            .overlay-inner-content { max-width: 100%; }
+            .hero-post-summary { display: none; }
+
+            .hero-side-articles { flex-direction: column; }
+            .hero-side-articles .card-image-placeholder { height: 160px; }
+
+            .news-card-grid { grid-template-columns: 1fr; gap: 16px; }
+
+            .section-header-row { flex-direction: column; align-items: flex-start; }
+
+            .topics-dropdown { width: calc(100vw - 32px); max-width: 320px; }
+
+            .all-news-section { margin-top: 32px; margin-bottom: 48px; }
+            .defcon-news-footer { padding: 24px 16px; }
+
+            .pg-btn { min-width: 34px; height: 34px; font-size: 0.76rem; border-radius: 8px; }
+        }
+
+        @media (max-width: 360px) {
+            .hero-visual-box { min-height: 230px; }
         }
     </style>
 </head>
 <body>
-    <!-- Hero Section -->
-    <div class="hero full-width">
-        <div class="hero-content">
-            <div class="hero-text">
-                <div class="hero-label">Affiliate Programme</div>
-                <h1>Earn <br>industry-leading commissions</h1>
-                <p>Join our IT Solutions Affiliate Program and unlock industry-leading commissions, exclusive partner benefits, and comprehensive support to grow your business with our innovative technology solutions.</p>
-                <button class="btn-primary" onclick="window.location.href='page.html'">Start Earning</button>
-            </div>
-            <div class="hero-visual">
-            </div>
-        </div>
-    </div>
 
-    <!-- How It Works Section -->
-    <div class="how-it-works full-width">
-        <div class="container">
-            <h2 class="section-title">How it works</h2>
-            <p class="section-subtitle">Sign up and start earning in 3 steps:</p>
-            
-            <div class="steps-grid">
-                <div class="step-card">
-                    <div class="step-icon">
-                        <svg xmlns="http://www.w3.org/2000/svg" width="200" height="200" viewBox="0 0 14 14" fill="#0577da"><g fill="none" stroke="#0577da" stroke-linecap="round" stroke-linejoin="round"><path d="m7.5 9l-3 .54L5 6.5L10.73.79a1 1 0 0 1 1.42 0l1.06 1.06a1 1 0 0 1 0 1.42Z"/><path d="M12 9.5v3a1 1 0 0 1-1 1H1.5a1 1 0 0 1-1-1V3a1 1 0 0 1 1-1h3"/></g></svg>
-                    </div>
-                    <h3 class="step-title">Complete Your Application</h3>
-                    <p class="step-description">Submit your affiliate application through our partner portal with essential details about your IT company, client base, and service offerings. Our team will review and approve qualified partners within 5 business days.</p>
-                </div>
-                <div class="step-card">
-                    <div class="step-icon">
-                        <svg xmlns="http://www.w3.org/2000/svg" width="200" height="200" viewBox="0 0 24 24" stroke-width="0.7"><path fill="#0577da" d="M12 22c.8 0 1.6-.1 2.3-.3c-.4-.5-.8-1.1-1-1.8c-.4.1-.9.1-1.3.1c-4.4 0-8-3.6-8-8s3.6-8 8-8c.8 0 1.5.1 2.2.3l1.6-1.6C14.6 2.3 13.3 2 12 2C6.5 2 2 6.5 2 12s4.5 10 10 10M6.5 11.5l1.4-1.4l3.1 3.1l8.6-8.6L21 6L11 16l-4.5-4.5M19 14l-1.26 2.75L15 18l2.74 1.26L19 22l1.25-2.74L23 18l-2.75-1.25L19 14Z"/></svg>
-                    </div>
-                    <h3 class="step-title">Access Marketing Resources</h3>
-                    <p class="step-description">Get instant access to your unique referral links, customizable marketing materials, product documentation, and case studies. Use our comprehensive toolkit to promote our solutions to your existing and prospective clients.</p>
-                </div>
-                <div class="step-card">
-                    <div class="step-icon">
-                        <svg xmlns="http://www.w3.org/2000/svg" width="200" height="200" viewBox="0 0 16 16" stroke-width="0.7"><path fill="#0575da" d="M1.5 14a.5.5 0 0 1 0-1h13a.5.5 0 0 1 0 1h-13Zm.5-3.75c0 .966.784 1.75 1.75 1.75h1.5A1.75 1.75 0 0 0 7 10.25v-6.5A1.75 1.75 0 0 0 5.25 2h-1.5A1.75 1.75 0 0 0 2 3.75v6.5Zm1.75.75a.75.75 0 0 1-.75-.75v-6.5A.75.75 0 0 1 3.75 3h1.5a.75.75 0 0 1 .75.75v6.5a.75.75 0 0 1-.75.75h-1.5ZM9 10.25c0 .966.784 1.75 1.75 1.75h1.5A1.75 1.75 0 0 0 14 10.25v-4.5A1.75 1.75 0 0 0 12.25 4h-1.5A1.75 1.75 0 0 0 9 5.75v4.5Zm1.75.75a.75.75 0 0 1-.75-.75v-4.5a.75.75 0 0 1 .75-.75h1.5a.75.75 0 0 1 .75.75v4.5a.75.75 0 0 1-.75.75h-1.5Z"/></svg>
-                    </div>
-                    <h3 class="step-title">Earn Recurring Revenue</h3>
-                    <p class="step-description">Receive competitive commissions on every successful referral with transparent tracking and real-time analytics. Commissions are processed monthly, directly into your account with no hidden fees.</p>
-                </div>
-            </div>
+    <!-- ── HEADER ── -->
+    <header class="defcon-news-header">
+        <div class="header-container">
+            <h1 class="header-title">Croloft Product News</h1>
         </div>
-    </div>
+    </header>
 
-    <!-- Why Partner Section -->
-    <div class="why-partner full-width">
-        <div class="container">
-            <h2 class="section-title" style="margin-bottom: 50px;">Why partner with us</h2>
-            
-            <div class="benefits-grid">
-                <div class="benefit-card" style="border-right: 1px solid rgb(216, 216, 216);">
-                    <div class="benefit-icon">
-                        <svg xmlns="http://www.w3.org/2000/svg" width="200" height="200" viewBox="0 0 32 32"><path fill="#0577da" d="M4 20v2h4.586L2 28.586L3.414 30L10 23.414V28h2v-8H4zM30 4h-7v2h3.586L19 13.586l-4.293-4.293a1 1 0 0 0-1.414 0L8 14.586L9.414 16L14 11.414l4.293 4.293a1 1 0 0 0 1.414 0L28 7.414V11h2zM16 28h14v2H16zM2 2h2v14H2z"/></svg>                    </div>
-                    <h3 class="benefit-title">Earn up to 30% recurring commissions</h3>
-                    <p class="benefit-description">Earn substantial commissions on managed services, software licenses, and implementation projects. Our multi-tier commission structure rewards top performers with even higher rates. Build passive income from long-term customer relationships without caps or limitations.</p>
-                </div>
-                <div class="benefit-card" style="border-right: 1px solid rgb(216, 216, 216);">
-                    <div class="benefit-icon">
-                        <svg xmlns="http://www.w3.org/2000/svg" width="200" height="200" viewBox="0 0 14 14" fill="#0577da"><g fill="none" stroke="#0577da" stroke-linecap="round" stroke-linejoin="round"><rect x=".5" y=".5" rx="1" transform="rotate(180 7 7)"/><path d="M3 3h2M3 5.5h4.5m4 0l-3 5l-3.5-2l-2 3"/></g></svg>
-                    </div>
-                    <h3 class="benefit-title">Real-time tracking and analytics</h3>
-                    <p class="benefit-description">Monitor your referrals, conversions, and earnings through our advanced partner dashboard. Track commission calculations, view detailed reports, and manage all your partner activities in one centralized platform with transparent real-time data.</p>
-                </div>
-                <div class="benefit-card">
-                    <div class="benefit-icon">
-                        <svg xmlns="http://www.w3.org/2000/svg" width="200" height="200" viewBox="0 0 28 28"><path fill="#0577da" d="M14 19a2 2 0 0 1-1.839-1.212a7.94 7.94 0 0 1-.951-.288l-.017-.006A7.997 7.997 0 0 1 8.708 16a8 8 0 1 1 13.257-6.75c.039.413-.3.75-.715.75c-.414 0-.745-.337-.793-.749A6.5 6.5 0 1 0 11.496 16l.04.017c.2.082.406.154.616.217a2 2 0 0 1 3.785 1.266A2 2 0 0 1 14 19Zm-7-1.5h1.169a9.554 9.554 0 0 1-1.518-1.48A3 3 0 0 0 4 19v.715C4 23.433 8.21 26 14 26s10-2.708 10-6.285V19a3 3 0 0 0-3-3h-3.645a3.5 3.5 0 0 1 .11 1.5H21l.145.007A1.5 1.5 0 0 1 22.5 19v.715l-.005.161c-.14 2.52-3.569 4.624-8.495 4.624c-5.111 0-8.5-2.111-8.5-4.785V19l.007-.145A1.5 1.5 0 0 1 7 17.5ZM19 10a5 5 0 0 1-2.644 4.411A3.487 3.487 0 0 0 14 13.5a3.5 3.5 0 1 0 0-7a3.5 3.5 0 0 0 0 7c-.908 0-1.734.346-2.355.912a5.024 5.024 0 0 1-1.932-1.838A5 5 0 1 1 19 10Z"/></svg>
-                    </div>
-                    <h3 class="benefit-title">Dedicated partner support</h3>
-                    <p class="benefit-description">Access a dedicated account manager, technical support team, and co-marketing opportunities. Benefit from regular training sessions, priority lead handling, and exclusive partner events to maximize your earning potential.</p>
-                </div>
-            </div>
-        </div>
-    </div>
 
-    <!-- CTA Section -->
-    <div class="cta-section full-width">
-        <div class="cta-content">
-            <div class="cta-label">Partner With Us</div>
-            <h2 class="cta-title">Ready to grow your IT business?</h2>
-            <p class="cta-subtitle">Join our thriving network of successful IT partners and unlock <br> new revenue streams. Start earning today. The future of your business is waiting.</p>
-            <button class="btn-primary" onclick="window.location.href='page.html'">Apply Now</button>
-            <div class="privacy-notice">
-                We respect your privacy and are committed to protecting your business information. <br> Please read our <a href="page.html">Affiliate Programme Terms & Privacy Policy</a> carefully before applying.
+    <!-- ── HERO ── -->
+    <section class="hero-feature-banner">
+        <div class="hero-content-wrapper">
+
+            <div class="hero-visual-box">
+                <img
+                    src="thumbnails/pexels-dominick-davis.jpg"
+                    alt="Project Nexus launch"
+                    class="hero-image-placeholder"
+                    loading="eager"
+                    onerror="this.src='https://images.unsplash.com/photo-1451187580459-43490279c0fa?auto=format&fit=crop&w=1600&q=70'; this.onerror=null;"
+                >
+                <div class="hero-text-overlay">
+                    <div class="overlay-inner-content">
+                        <h2 class="hero-post-title">Project Nexus: Lock in DevOps Automation before the Crowd</h2>
+                        <p class="hero-post-summary">Get up to a 3-week head start with Nexus Integrated MLOps Pipelines and realize efficiency gains immediately.</p>
+                        <a href="#registry" class="hero-cta-button">Learn More About Nexus</a>
+                    </div>
+                </div>
             </div>
+
+            <div class="hero-side-articles">
+                <a href="#" class="news-grid-card">
+                    <div class="card-image-placeholder">
+                        <img src="https://images.unsplash.com/photo-1667372393119-3d4c48d07fc9?auto=format&fit=crop&w=800&q=65" alt="Kubernetes" class="card-bg-image" loading="lazy">
+                        <span class="visual-label">Cloud Deployment</span>
+                    </div>
+                    <div class="card-details">
+                        <div class="card-tag-date">Infrastructure &mdash; 07 Oct 2025</div>
+                        <h3 class="card-title">Cloud: Simplified Kubernetes Cluster Deployment</h3>
+                    </div>
+                </a>
+                <a href="#" class="news-grid-card">
+                    <div class="card-image-placeholder">
+                        <img src="https://images.unsplash.com/photo-1672133796632-0e038caf2584?auto=format&fit=crop&w=800&q=65" alt="Mobile SDK" class="card-bg-image" loading="lazy">
+                        <span class="visual-label">Mobile App Framework V2</span>
+                    </div>
+                    <div class="card-details">
+                        <div class="card-tag-date">Software Dev &mdash; 08 Oct 2025</div>
+                        <h3 class="card-title">Mobile: Introducing Faster, Lighter SDK for Android/iOS</h3>
+                    </div>
+                </a>
+            </div>
+
         </div>
-    </div>
+    </section>
+
+
+    <!-- ── ALL PRODUCT NEWS ── -->
+    <section class="all-news-section" id="registry">
+
+        <div class="section-header-row">
+
+            <div class="section-title-group">
+                <h2 class="all-news-title">All Product News</h2>
+
+                <!-- Active filter pill -->
+                <span class="active-filter-pill" id="activeFilterPill">
+                    <span id="activePillLabel"></span>
+                    <button id="clearFilter" aria-label="Clear filter">
+                        <i class="fas fa-times"></i>
+                    </button>
+                </span>
+
+                <!-- Dropdown trigger -->
+                <button class="topics-trigger" id="topicsTrigger" aria-haspopup="listbox" aria-expanded="false">
+                    Topics
+                    <i class="fas fa-chevron-down trigger-icon"></i>
+                </button>
+
+                <!-- Dropdown -->
+                <div class="topics-dropdown" id="topicsDropdown" role="listbox">
+
+                    <div class="dropdown-section-label">Browse by Topic</div>
+                    <div class="topic-item active" data-topic="all" role="option" tabindex="0">
+                        All Topics
+                        <span class="topic-count">12</span>
+                    </div>
+
+                    <div class="topic-item" data-topic="infrastructure" role="option" tabindex="0">
+                        Infrastructure
+                        <span class="topic-count">2</span>
+                    </div>
+                    <div class="topic-item" data-topic="devops" role="option" tabindex="0">
+                        DevOps
+                        <span class="topic-count">2</span>
+                    </div>
+                    <div class="topic-item" data-topic="software-dev" role="option" tabindex="0">
+                        Software Dev
+                        <span class="topic-count">2</span>
+                    </div>
+
+                    <div class="topic-item" data-topic="consulting-ai" role="option" tabindex="0">
+                        Consulting &amp; AI
+                        <span class="topic-count">2</span>
+                    </div>
+                    <div class="topic-item" data-topic="creative-studio" role="option" tabindex="0">
+                        Creative Studio
+                        <span class="topic-count">2</span>
+                    </div>
+                    <div class="topic-item" data-topic="smart-home" role="option" tabindex="0">
+                        Smart Home
+                        <span class="topic-count">2</span>
+                    </div>
+
+                </div>
+            </div>
+
+            <span class="result-count" id="resultCount">Showing 12 articles</span>
+        </div>
+
+
+        <!-- 4-column card grid -->
+        <div class="news-card-grid" id="newsGrid">
+
+            <a href="#" class="news-grid-card" data-topic="software-dev">
+                <div class="card-image-placeholder">
+                    <img src="https://images.unsplash.com/photo-1672133796632-0e038caf2584?auto=format&fit=crop&w=800&q=65" alt="Mobile SDK" class="card-bg-image" loading="lazy">
+                    <span class="visual-label">Mobile App Framework V2</span>
+                </div>
+                <div class="card-details">
+                    <div class="card-tag-date">Software Dev &mdash; 08 Oct 2025</div>
+                    <h3 class="card-title">Mobile: Introducing Faster, Lighter SDK for Android/iOS</h3>
+                </div>
+            </a>
+
+            <a href="#" class="news-grid-card" data-topic="infrastructure">
+                <div class="card-image-placeholder">
+                    <img src="https://images.unsplash.com/photo-1667372393119-3d4c48d07fc9?auto=format&fit=crop&w=800&q=65" alt="Kubernetes" class="card-bg-image" loading="lazy">
+                    <span class="visual-label">Cloud Deployment</span>
+                </div>
+                <div class="card-details">
+                    <div class="card-tag-date">Infrastructure &mdash; 07 Oct 2025</div>
+                    <h3 class="card-title">Cloud: Simplified Kubernetes Cluster Deployment</h3>
+                </div>
+            </a>
+
+            <a href="#" class="news-grid-card" data-topic="creative-studio">
+                <div class="card-image-placeholder">
+                    <img src="https://images.unsplash.com/photo-1574717024453-354056adc14b?auto=format&fit=crop&w=800&q=65" alt="8K video" class="card-bg-image" loading="lazy">
+                    <span class="visual-label">8K Video Studio</span>
+                </div>
+                <div class="card-details">
+                    <div class="card-tag-date">Creative Studio &mdash; 03 Oct 2025</div>
+                    <h3 class="card-title">Multimedia: 8K Video Production Capability Now Standard</h3>
+                </div>
+            </a>
+
+            <a href="#" class="news-grid-card" data-topic="consulting-ai">
+                <div class="card-image-placeholder">
+                    <img src="https://images.unsplash.com/photo-1620712943543-bcc4688e7485?auto=format&fit=crop&w=800&q=65" alt="AI governance" class="card-bg-image" loading="lazy">
+                    <span class="visual-label">Consulting &amp; AI</span>
+                </div>
+                <div class="card-details">
+                    <div class="card-tag-date">Consulting &amp; AI &mdash; 02 Oct 2025</div>
+                    <h3 class="card-title">Introducing LLM Audit &amp; Governance Packages</h3>
+                </div>
+            </a>
+
+            <a href="#" class="news-grid-card" data-topic="devops">
+                <div class="card-image-placeholder">
+                    <img src="https://images.unsplash.com/photo-1558494949-ef010cbdcc31?auto=format&fit=crop&w=800&q=65" alt="CI/CD" class="card-bg-image" loading="lazy">
+                    <span class="visual-label">CI/CD Pipeline</span>
+                </div>
+                <div class="card-details">
+                    <div class="card-tag-date">DevOps &mdash; 28 Sep 2025</div>
+                    <h3 class="card-title">CI/CD: Automated Compliance Check Integration</h3>
+                </div>
+            </a>
+
+            <a href="#" class="news-grid-card" data-topic="smart-home">
+                <div class="card-image-placeholder">
+                    <img src="https://images.unsplash.com/photo-1558618666-fcd25c85cd64?auto=format&fit=crop&w=800&q=65" alt="Smart home" class="card-bg-image" loading="lazy">
+                    <span class="visual-label">Smart Home Tech</span>
+                </div>
+                <div class="card-details">
+                    <div class="card-tag-date">Smart Home &mdash; 22 Sep 2025</div>
+                    <h3 class="card-title">Smart Home: New Energy Optimization Service Beta</h3>
+                </div>
+            </a>
+
+            <a href="#" class="news-grid-card" data-topic="devops">
+                <div class="card-image-placeholder">
+                    <img src="https://images.unsplash.com/photo-1504868584819-f8e8b4b6d7e3?auto=format&fit=crop&w=800&q=65" alt="Monitoring" class="card-bg-image" loading="lazy">
+                    <span class="visual-label">Observability</span>
+                </div>
+                <div class="card-details">
+                    <div class="card-tag-date">DevOps &mdash; 18 Sep 2025</div>
+                    <h3 class="card-title">Observability 2.0: Real-Time Anomaly Detection Now Live</h3>
+                </div>
+            </a>
+
+            <a href="#" class="news-grid-card" data-topic="infrastructure">
+                <div class="card-image-placeholder">
+                    <img src="https://images.unsplash.com/photo-1544197150-b99a580bb7a8?auto=format&fit=crop&w=800&q=65" alt="Edge computing" class="card-bg-image" loading="lazy">
+                    <span class="visual-label">Edge Computing</span>
+                </div>
+                <div class="card-details">
+                    <div class="card-tag-date">Infrastructure &mdash; 14 Sep 2025</div>
+                    <h3 class="card-title">Edge Nodes: Deploy at the Network Perimeter in Minutes</h3>
+                </div>
+            </a>
+
+            <a href="#" class="news-grid-card" data-topic="consulting-ai">
+                <div class="card-image-placeholder">
+                    <img src="https://images.unsplash.com/photo-1677442136019-21780ecad995?auto=format&fit=crop&w=800&q=65" alt="AI analytics" class="card-bg-image" loading="lazy">
+                    <span class="visual-label">AI Analytics</span>
+                </div>
+                <div class="card-details">
+                    <div class="card-tag-date">Consulting &amp; AI &mdash; 10 Sep 2025</div>
+                    <h3 class="card-title">Predictive Analytics Suite: Now Powered by GPT-4o</h3>
+                </div>
+            </a>
+
+            <a href="#" class="news-grid-card" data-topic="software-dev">
+                <div class="card-image-placeholder">
+                    <img src="https://images.unsplash.com/photo-1461749280684-dccba630e2f6?auto=format&fit=crop&w=800&q=65" alt="API platform" class="card-bg-image" loading="lazy">
+                    <span class="visual-label">API Platform</span>
+                </div>
+                <div class="card-details">
+                    <div class="card-tag-date">Software Dev &mdash; 05 Sep 2025</div>
+                    <h3 class="card-title">REST &amp; GraphQL Unified: One Gateway, Every Service</h3>
+                </div>
+            </a>
+
+            <a href="#" class="news-grid-card" data-topic="creative-studio">
+                <div class="card-image-placeholder">
+                    <img src="https://images.unsplash.com/photo-1593720213428-28a5b9e94613?auto=format&fit=crop&w=800&q=65" alt="Design system" class="card-bg-image" loading="lazy">
+                    <span class="visual-label">Design System</span>
+                </div>
+                <div class="card-details">
+                    <div class="card-tag-date">Creative Studio &mdash; 01 Sep 2025</div>
+                    <h3 class="card-title">Hyperion Design System v3: Dark Mode &amp; Accessibility First</h3>
+                </div>
+            </a>
+
+            <a href="#" class="news-grid-card" data-topic="smart-home">
+                <div class="card-image-placeholder">
+                    <img src="https://images.unsplash.com/photo-1586892478025-2b5472316f22?auto=format&fit=crop&w=800&q=65" alt="IoT security" class="card-bg-image" loading="lazy">
+                    <span class="visual-label">IoT Security</span>
+                </div>
+                <div class="card-details">
+                    <div class="card-tag-date">Smart Home &mdash; 26 Aug 2025</div>
+                    <h3 class="card-title">IoT Firmware Shield: Zero-Trust Security for Connected Devices</h3>
+                </div>
+            </a>
+
+            <!-- Empty state -->
+            <div class="grid-empty-state" id="emptyState">
+                <i class="fas fa-filter"></i>
+                No articles found for this topic.
+            </div>
+
+        </div>
+
+        <!-- Pagination -->
+        <div class="pagination-bar" id="paginationBar" role="navigation" aria-label="Article pagination"></div>
+        <p class="pagination-info" id="paginationInfo"></p>
+
+    </section>
+
+
+    <script>
+    (() => {
+        'use strict';
+
+        const CARDS_PER_PAGE = 8;
+
+        let currentTopic  = 'all';
+        let currentPage   = 1;
+        let filteredCards = [];
+
+        const trigger       = document.getElementById('topicsTrigger');
+        const dropdown      = document.getElementById('topicsDropdown');
+        const topicItems    = Array.from(dropdown.querySelectorAll('.topic-item'));
+        const allCards      = Array.from(document.querySelectorAll('#newsGrid .news-grid-card'));
+        const emptyState    = document.getElementById('emptyState');
+        const paginationBar = document.getElementById('paginationBar');
+        const paginationInfo= document.getElementById('paginationInfo');
+        const resultCount   = document.getElementById('resultCount');
+        const pill          = document.getElementById('activeFilterPill');
+        const pillLabel     = document.getElementById('activePillLabel');
+        const clearBtn      = document.getElementById('clearFilter');
+
+        const TOPIC_NAMES = {
+            'all':            'All Topics',
+            'infrastructure': 'Infrastructure',
+            'devops':         'DevOps',
+            'software-dev':   'Software Dev',
+            'consulting-ai':  'Consulting & AI',
+            'creative-studio':'Creative Studio',
+            'smart-home':     'Smart Home'
+        };
+
+
+        /* ── DROPDOWN ── */
+        function openDropdown() {
+            dropdown.classList.add('open');
+            trigger.classList.add('open');
+            trigger.setAttribute('aria-expanded', 'true');
+        }
+        function closeDropdown() {
+            dropdown.classList.remove('open');
+            trigger.classList.remove('open');
+            trigger.setAttribute('aria-expanded', 'false');
+        }
+
+        trigger.addEventListener('click', (e) => {
+            e.stopPropagation();
+            dropdown.classList.contains('open') ? closeDropdown() : openDropdown();
+        });
+
+        document.addEventListener('click', (e) => {
+            if (!dropdown.contains(e.target) && e.target !== trigger) closeDropdown();
+        });
+
+        document.addEventListener('keydown', (e) => {
+            if (e.key === 'Escape') closeDropdown();
+        });
+
+
+        /* ── TOPIC SELECTION ── */
+        function selectTopic(topic) {
+            currentTopic = topic;
+            currentPage  = 1;
+
+            topicItems.forEach(i => i.classList.toggle('active', i.dataset.topic === topic));
+
+            if (topic === 'all') {
+                pill.classList.remove('visible');
+            } else {
+                pillLabel.textContent = TOPIC_NAMES[topic] || topic;
+                pill.classList.add('visible');
+            }
+
+            closeDropdown();
+            applyFilter();
+        }
+
+        topicItems.forEach(item => {
+            item.addEventListener('click', () => selectTopic(item.dataset.topic));
+            item.addEventListener('keydown', (e) => {
+                if (e.key === 'Enter' || e.key === ' ') {
+                    e.preventDefault();
+                    selectTopic(item.dataset.topic);
+                }
+            });
+        });
+
+        clearBtn.addEventListener('click', (e) => {
+            e.stopPropagation();
+            selectTopic('all');
+        });
+
+
+        /* ── FILTER + RENDER ── */
+        function applyFilter() {
+            filteredCards = currentTopic === 'all'
+                ? allCards
+                : allCards.filter(c => c.dataset.topic === currentTopic);
+
+            // Hide everything first
+            allCards.forEach(c => c.classList.add('hidden'));
+
+            const count = filteredCards.length;
+            resultCount.textContent = count
+                ? `Showing ${count} article${count !== 1 ? 's' : ''}`
+                : 'No articles';
+
+            if (count === 0) {
+                emptyState.classList.add('visible');
+                paginationBar.innerHTML = '';
+                paginationInfo.textContent = '';
+                return;
+            }
+
+            emptyState.classList.remove('visible');
+            renderPage();
+            renderPagination();
+        }
+
+        function renderPage() {
+            const total      = filteredCards.length;
+            const totalPages = Math.ceil(total / CARDS_PER_PAGE);
+            currentPage = Math.max(1, Math.min(currentPage, totalPages));
+
+            const start = (currentPage - 1) * CARDS_PER_PAGE;
+            const end   = Math.min(start + CARDS_PER_PAGE, total);
+
+            filteredCards.forEach((card, i) => {
+                card.classList.toggle('hidden', i < start || i >= end);
+            });
+
+            paginationInfo.textContent = totalPages > 1
+                ? `Showing ${start + 1}–${end} of ${total} article${total !== 1 ? 's' : ''}`
+                : '';
+        }
+
+        function renderPagination() {
+            paginationBar.innerHTML = '';
+            const total      = filteredCards.length;
+            const totalPages = Math.ceil(total / CARDS_PER_PAGE);
+            if (totalPages <= 1) return;
+
+            // Prev
+            const prev = mkBtn(null, 'arrow', currentPage === 1);
+            prev.innerHTML = '<i class="fas fa-chevron-left" style="font-size:.62rem"></i> Prev';
+            prev.addEventListener('click', () => goTo(currentPage - 1));
+            paginationBar.appendChild(prev);
+
+            // Pages
+            pageRange(currentPage, totalPages).forEach(p => {
+                if (p === '…') {
+                    const el = document.createElement('span');
+                    el.className = 'pg-ellipsis';
+                    el.textContent = '…';
+                    paginationBar.appendChild(el);
+                } else {
+                    const btn = mkBtn(p, '', false);
+                    if (p === currentPage) btn.classList.add('active');
+                    btn.addEventListener('click', () => goTo(p));
+                    paginationBar.appendChild(btn);
+                }
+            });
+
+            // Next
+            const next = mkBtn(null, 'arrow', currentPage === totalPages);
+            next.innerHTML = 'Next <i class="fas fa-chevron-right" style="font-size:.62rem"></i>';
+            next.addEventListener('click', () => goTo(currentPage + 1));
+            paginationBar.appendChild(next);
+        }
+
+        function mkBtn(label, extra, disabled) {
+            const b = document.createElement('button');
+            b.className = 'pg-btn' + (extra ? ' ' + extra : '');
+            if (label !== null) b.textContent = label;
+            b.disabled = disabled;
+            return b;
+        }
+
+        function pageRange(cur, total) {
+            // Show first, last, current ±1, collapse rest with ellipsis
+            const set = new Set([1, total, cur - 1, cur, cur + 1].filter(n => n >= 1 && n <= total));
+            const sorted = [...set].sort((a, b) => a - b);
+            const result = [];
+            let prev = 0;
+            for (const n of sorted) {
+                if (prev && n - prev > 1) result.push('…');
+                result.push(n);
+                prev = n;
+            }
+            return result;
+        }
+
+        function goTo(page) {
+            currentPage = page;
+            renderPage();
+            renderPagination();
+            document.getElementById('registry').scrollIntoView({ behavior: 'smooth', block: 'start' });
+        }
+
+
+        /* ── SMOOTH SCROLL ── */
+        document.querySelectorAll('a[href^="#"]').forEach(a => {
+            a.addEventListener('click', function(e) {
+                const target = document.querySelector(this.getAttribute('href'));
+                if (!target) return;
+                e.preventDefault();
+                target.scrollIntoView({ behavior: 'smooth', block: 'start' });
+            });
+        });
+
+
+        /* ── INIT ── */
+        applyFilter();
+
+    })();
+    </script>
+
 </body>
 </html>
