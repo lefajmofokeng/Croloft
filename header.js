@@ -69,15 +69,15 @@ class CronosHeader extends HTMLElement {
                         heading: 'Build',
                         links: [
                             { label: 'Courses',    href: 'market-overview.html' },
-                            { label: 'Open Source Pojects',  href: 'portfolio.html' },
+                            { label: 'Open Source Projects',  href: 'portfolio.html' },
                             { label: 'Coding for Social Impact (Non-profit)',  href: 'coding.html' },
                         ]
                     },
                     {
                         heading: 'Programs',
                         links: [
-                            { label: 'Affiliate Program',      href: 'defi.html' },
-                            { label: 'Content Creator Program',    href: 'nft.html' },
+                            { label: 'Affiliate Program',      href: 'affliates.html' },
+                            { label: 'Content Creator Program',    href: 'content-creator.html' },
                         ]
                     },
                     {
@@ -143,7 +143,7 @@ class CronosHeader extends HTMLElement {
                 label: 'Discover',
                 megamenu: [
                     {
-                        heading: 'Cronos',
+                        heading: 'Croloft',
                         links: [
                             { label: 'About Us',                href: 'about.html' },
                             { label: 'Roadmap',                 href: 'roadmap.html' },
@@ -154,23 +154,12 @@ class CronosHeader extends HTMLElement {
                         ]
                     },
                     {
-                        heading: 'Resources',
-                        links: [
-                            { label: 'Blog',     href: 'page.html' },
-                            { label: 'eBooks',   href: 'page.html' },
-                            { label: 'Podcasts', href: 'podcasts.html' },
-                            { label: 'Webinars', href: 'page.html' },
-                        ]
-                    },
-                    {
                         heading: 'Connect',
                         links: [
-                            { label: 'X', href: 'page.html' },
-                            { label: 'Product News',             href: 'product-news.html' },
-                            { label: 'Facebook',    href: 'page.html' },
-                            { label: 'LinkedIn',    href: '#' },
-                            { label: 'YouTube',     href: '#' },
-                            { label: 'GitHub',      href: '#' },
+                            { label: 'X', href: 'https://x.com/croloftofficial' },
+                            { label: 'YouTube',     href: 'https://youtube.com/croloftofficial' },
+                            { label: 'Facebook',    href: 'https://facebook.com/croloftofficial' },
+                            { label: 'Instagram',     href: 'https://instagram.com/croloftofficial' },
                         ]
                     }
                 ]
@@ -832,6 +821,7 @@ class CronosHeader extends HTMLElement {
         </style>
 
         <div class="cronos-header-wrapper">
+
 
             <header class="cronos-custom-header">
                 <div class="cronos-custom-header-container">

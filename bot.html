@@ -32,6 +32,13 @@
             background: rgba(1, 4, 30, 0.85);
             z-index: -1;
         }
+
+        /* Mobile fullscreen chat: hide global chrome */
+        @media (max-width: 480px) {
+            body.mobile-chat-open {
+                overflow: hidden;
+            }
+        }
     </style>
 </head>
 <body>
@@ -121,16 +128,32 @@
                 const sendBtn = this.shadowRoot.querySelector('.c-send-btn');
                 const widgetCard = this.shadowRoot.querySelector('.c-widget-card');
 
-                // Modal Elements
+                // Modal Elements (End Chat)
                 const modal = this.shadowRoot.querySelector('.c-modal-overlay');
                 const confirmEndBtn = this.shadowRoot.querySelector('#confirm-end-chat');
                 const cancelEndBtn = this.shadowRoot.querySelector('#cancel-end-chat');
+
+                // Modal Elements (Clear Chat)
+                const clearModal = this.shadowRoot.querySelector('#c-clear-modal');
+                const confirmClearBtn = this.shadowRoot.querySelector('#confirm-clear-chat');
+                const cancelClearBtn = this.shadowRoot.querySelector('#cancel-clear-chat');
+
+                // Menu Elements
+                const menuBtn = this.shadowRoot.querySelector('#c-menu-btn');
+                const optionsDropdown = this.shadowRoot.querySelector('#c-options-dropdown');
+                const clearChatBtn = this.shadowRoot.querySelector('#c-clear-chat-btn');
+
+                const isMobile = () => window.innerWidth <= 480;
 
                 // Enter Chat Mode
                 searchInput.addEventListener('focus', () => {
                     if (!this.state.isChatActive) {
                         this.state.isChatActive = true;
                         widgetCard.classList.add('chat-mode');
+                        // Mobile: fullscreen takeover
+                        if (isMobile()) {
+                            document.body.classList.add('mobile-chat-open');
+                        }
                         this.renderCardBody(); 
                         this.startTimeUpdate(); 
                     }
@@ -139,21 +162,72 @@
                 // CLOSE BUTTON -> Open Warning Modal
                 closeBtn.addEventListener('click', (e) => {
                     e.preventDefault();
+                    optionsDropdown.classList.remove('active');
                     modal.classList.add('active');
                 });
 
-                // Modal: Cancel
+                // Modal: Cancel (End Chat)
                 cancelEndBtn.addEventListener('click', () => {
                     modal.classList.remove('active');
                 });
 
-                // Modal: Confirm
+                // Modal: Confirm (End Chat)
                 confirmEndBtn.addEventListener('click', () => {
                     this.state.isChatActive = false;
                     widgetCard.classList.remove('chat-mode');
+                    // Mobile: restore page
+                    if (isMobile()) {
+                        document.body.classList.remove('mobile-chat-open');
+                    }
                     searchInput.value = ''; 
                     this.renderCardBody();
                     modal.classList.remove('active');
+                });
+
+                // MENU BUTTON -> Toggle Dropdown
+                menuBtn.addEventListener('click', (e) => {
+                    e.stopPropagation();
+                    optionsDropdown.classList.toggle('active');
+                });
+
+                // Close dropdown when clicking elsewhere
+                this.shadowRoot.addEventListener('click', () => {
+                    optionsDropdown.classList.remove('active');
+                });
+
+                // Clear Chat Button -> Open Clear Modal
+                clearChatBtn.addEventListener('click', () => {
+                    optionsDropdown.classList.remove('active');
+                    clearModal.classList.add('active');
+                });
+
+                // Modal: Cancel (Clear)
+                cancelClearBtn.addEventListener('click', () => {
+                    clearModal.classList.remove('active');
+                });
+
+                // Modal: Confirm (Clear)
+                confirmClearBtn.addEventListener('click', () => {
+                    clearModal.classList.remove('active');
+                    // Reset chat history to fresh state
+                    const cardBody = this.shadowRoot.querySelector('.c-card-body');
+                    if (cardBody) {
+                        const now = new Date();
+                        const timeString = now.toLocaleTimeString([], { hour: '2-digit', minute: '2-digit' });
+                        cardBody.innerHTML = `
+                            <div class="c-chat-history">
+                                <div class="c-message c-message--bot">
+                                    <div class="c-bubble">
+                                        Hello! I'm your AI assistant. How can I help you?
+                                        <div class="c-timestamp">${timeString}</div>
+                                    </div>
+                                </div>
+                                <div class="c-typing-indicator" style="display:none">
+                                    <div class="dot"></div><div class="dot"></div><div class="dot"></div>
+                                </div>
+                            </div>
+                        `;
+                    }
                 });
 
                 // Send Message Logic
@@ -383,6 +457,39 @@
                     }
                     .c-close-chat:hover { background: rgba(255,255,255,0.3); }
 
+                    /* Options Menu Button (top-left in chat header) */
+                    .c-menu-btn {
+                        position: absolute; top: 16px; left: 16px;
+                        width: 32px; height: 32px;
+                        border-radius: 50%; background: rgba(255,255,255,0.2);
+                        display: flex; align-items: center; justify-content: center;
+                        opacity: 0; pointer-events: none; transition: opacity 0.3s;
+                        z-index: 100;
+                    }
+                    .c-menu-btn:hover { background: rgba(255,255,255,0.3); }
+
+                    /* Options Dropdown */
+                    .c-options-dropdown {
+                        position: absolute; top: 56px; left: 16px;
+                        background: white; border-radius: 10px;
+                        box-shadow: 0 8px 24px rgba(0,0,0,0.15);
+                        z-index: 150; min-width: 180px;
+                        overflow: hidden;
+                        opacity: 0; pointer-events: none;
+                        transform: translateY(-8px);
+                        transition: opacity 0.2s ease, transform 0.2s ease;
+                    }
+                    .c-options-dropdown.active { opacity: 1; pointer-events: auto; transform: translateY(0); }
+                    .c-option-item {
+                        display: flex; align-items: center; gap: 10px;
+                        padding: 12px 16px; font-size: 14px; color: #374151;
+                        font-weight: 500; width: 100%; text-align: left;
+                        transition: background 0.15s;
+                    }
+                    .c-option-item:hover { background: #f3f4f6; }
+                    .c-option-item.danger { color: #ef4444; }
+                    .c-option-item.danger:hover { background: #fef2f2; }
+
                     /* --- Search / Input --- */
                     .c-search-container {
                         /* Default State (Landing): Absolute Positioning */
@@ -480,13 +587,14 @@
                     /* --- STATE: CHAT MODE --- */
                     .chat-mode .c-card-header { 
                         height: 70px; 
-                        padding: 0 24px; 
+                        padding: 0 24px 0 58px; 
                         background: #06113b; 
                         display: flex; align-items: center; justify-content: flex-start;
                     }
                     .chat-mode .c-card-header-top, .chat-mode .c-greeting { display: none; }
                     .chat-mode .c-chat-header-details { display: block; opacity: 1; }
                     .chat-mode .c-close-chat { opacity: 1; pointer-events: auto; }
+                    .chat-mode .c-menu-btn { opacity: 1; pointer-events: auto; }
 
                     /* FIXED LAYOUT FOR CHAT: Make search part of flow */
                     .chat-mode .c-search-container { 
@@ -550,6 +658,23 @@
                         }
                         
                         .c-card-header { padding: 20px; }
+
+                        /* Mobile: fullscreen chat overlay */
+                        .c-widget-card.chat-mode {
+                            position: fixed !important;
+                            top: 0 !important; left: 0 !important;
+                            width: 100vw !important; height: 100vh !important;
+                            max-width: 100vw !important;
+                            border-radius: 0 !important;
+                            z-index: 9999 !important;
+                        }
+                        /* On mobile, hide global header when chat is open */
+                        .mobile-chat-open .c-global-header { display: none; }
+                        .mobile-chat-open .c-main-container { height: 100vh; }
+                    }
+                    @media (max-width: 480px) {
+                        :host-context(body.mobile-chat-open) .c-global-header { display: none !important; }
+                        :host-context(body.mobile-chat-open) .c-main-container { height: 100vh !important; }
                     }
 
                      @media (min-width: 768px) and (max-width: 992px) {
@@ -570,6 +695,15 @@
                     <div class="c-widget-card">
                         
                         <div class="c-card-header">
+                            <button class="c-menu-btn" id="c-menu-btn" title="Options">
+                                <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="2" stroke="white" width="18" height="18"><path stroke-linecap="round" stroke-linejoin="round" d="M12 6.75a.75.75 0 110-1.5.75.75 0 010 1.5zM12 12.75a.75.75 0 110-1.5.75.75 0 010 1.5zM12 18.75a.75.75 0 110-1.5.75.75 0 010 1.5z" /></svg>
+                            </button>
+                            <div class="c-options-dropdown" id="c-options-dropdown">
+                                <button class="c-option-item danger" id="c-clear-chat-btn">
+                                    <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.8" stroke="#ef4444" width="16" height="16"><path stroke-linecap="round" stroke-linejoin="round" d="M14.74 9l-.346 9m-4.788 0L9.26 9m9.968-3.21c.342.052.682.107 1.022.166m-1.022-.165L18.16 19.673a2.25 2.25 0 01-2.244 2.077H8.084a2.25 2.25 0 01-2.244-2.077L4.772 5.79m14.456 0a48.108 48.108 0 00-3.478-.397m-12 .562c.34-.059.68-.114 1.022-.165m0 0a48.11 48.11 0 013.478-.397m7.5 0v-.916c0-1.18-.91-2.164-2.09-2.201a51.964 51.964 0 00-3.32 0c-1.18.037-2.09 1.022-2.09 2.201v.916m7.5 0a48.667 48.667 0 00-7.5 0" /></svg>
+                                    Clear Conversation
+                                </button>
+                            </div>
                             <button class="c-close-chat">${icons.close}</button>
                             
                             <div class="c-card-header-top">
@@ -606,6 +740,17 @@
                                 <div class="c-modal-actions">
                                     <button class="c-btn-modal c-btn-cancel" id="cancel-end-chat">Cancel</button>
                                     <button class="c-btn-modal c-btn-confirm" id="confirm-end-chat">End Chat</button>
+                                </div>
+                            </div>
+                        </div>
+
+                        <div class="c-modal-overlay" id="c-clear-modal">
+                            <div class="c-modal-box">
+                                <div class="c-modal-title">Clear Conversation?</div>
+                                <p class="c-modal-desc">All messages will be permanently deleted and a new session will begin.</p>
+                                <div class="c-modal-actions">
+                                    <button class="c-btn-modal c-btn-cancel" id="cancel-clear-chat">Cancel</button>
+                                    <button class="c-btn-modal c-btn-confirm" id="confirm-clear-chat">Clear</button>
                                 </div>
                             </div>
                         </div>

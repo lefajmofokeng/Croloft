@@ -1,0 +1,973 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <link href="https://fonts.cdnfonts.com/css/circular-std" rel="stylesheet">
+    <title>My Website</title>
+    
+    <script src="header.js" defer></script> 
+    <script src="footer.js" defer></script>
+
+    <style>
+          
+        @font-face { font-family:'Circular Std'; src:url('fonts/CircularStd-Book.woff2') format('woff2'),url('fonts/CircularStd-Book.woff') format('woff'); font-weight:400; font-style:normal; font-display:swap; }
+        @font-face { font-family:'Circular Std'; src:url('fonts/CircularStd-BookItalic.woff2') format('woff2'),url('fonts/CircularStd-BookItalic.woff') format('woff'); font-weight:400; font-style:italic; font-display:swap; }
+        @font-face { font-family:'Circular Std'; src:url('fonts/CircularStd-Medium.woff2') format('woff2'),url('fonts/CircularStd-Medium.woff') format('woff'); font-weight:500; font-style:normal; font-display:swap; }
+        @font-face { font-family:'Circular Std'; src:url('fonts/CircularStd-Bold.woff2') format('woff2'),url('fonts/CircularStd-Bold.woff') format('woff'); font-weight:600; font-style:normal; font-display:swap; }
+        @font-face { font-family:'Circular Std'; src:url('fonts/CircularStd-Black.woff2') format('woff2'),url('fonts/CircularStd-Black.woff') format('woff'); font-weight:800; font-style:normal; font-display:swap; }
+
+    </style>
+</head>
+<body>
+
+    <cronos-header></cronos-header>
+
+</body>
+</html>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<div id="cryptHero-mobile-perfect-unique" class="cryptHero-root">
+    <style>
+        #cryptHero-mobile-perfect-unique {
+            --ch-bg: #000000;
+            --ch-font: 'DM Sans', -apple-system, BlinkMacSystemFont, sans-serif;
+            
+            background-color: var(--ch-bg);
+            color: #ffffff;
+            font-family: var(--ch-font);
+            min-height: 110vh;
+            width: 100%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            /* Padding reduces on mobile to maximize text space */
+            padding: 5vw; 
+            box-sizing: border-box;
+            /* Prevents the 'CRYPTO' offset from breaking the page width */
+            overflow-x: hidden; 
+        }
+
+        .cryptHero-content-box {
+            display: flex;
+            flex-direction: column;
+            align-items: flex-end; 
+            width: 100%;
+            max-width: 500px;
+            position: relative;
+        }
+
+        /* Typography & Gradient */
+        .cryptHero-text-line {
+            /* Perfectly scales: 40px min, 18vw preferred, 220px max */
+            font-size: clamp(40px, 16vw, 150px); 
+            font-weight: 200;
+            line-height: 0.85;
+            text-transform: uppercase;
+            letter-spacing: -0.02em;
+            margin: 0;
+            white-space: nowrap;
+            text-align: right;
+            
+            background: linear-gradient(
+                to right,
+                #f4f4f4 0%,
+                #cdcdcd 40%,
+                #666666 75%,
+                #1a1a1a 100%
+            );
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+        }
+
+        /* The Offset: Using translateX for smoother sub-pixel rendering */
+        .cryptHero-crypto-offset {
+            transform: translateX(35%);
+            z-index: 2;
+        }
+
+        /* Description Block */
+        .cryptHero-description-wrap {
+            margin-top: 40px;
+            text-align: right;
+            /* Scales width for mobile */
+            width: 100%;
+            max-width: 300px; 
+        }
+
+        .cryptHero-p-text {
+            font-size: clamp(10px, 2vw, 14px);
+            line-height: 1.4;
+            color: rgba(255, 255, 255, 0.4);
+            text-transform: uppercase;
+            letter-spacing: 0.12em;
+            font-weight: 500;
+            margin: 0;
+        }
+
+        /* Mobile-Specific Tweaks */
+        @media (max-width: 600px) {
+            .cryptHero-text-line {
+                letter-spacing: -0.03em;
+                line-height: 0.9;
+            }
+            .cryptHero-crypto-offset {
+                /* Reduced offset on mobile to prevent clipping important letters */
+                transform: translateX(5%);
+            }
+            .cryptHero-description-wrap {
+                margin-top: 25px;
+                max-width: 200px;
+            }
+        }
+    </style>
+
+    <div class="cryptHero-content-box">
+        <h1 class="cryptHero-text-line">ULTIMATE</h1>
+        
+        <h1 class="cryptHero-text-line cryptHero-crypto-offset">CRYPTO</h1>
+        
+        <h1 class="cryptHero-text-line">SOLUTION</h1>
+
+        <div class="cryptHero-description-wrap">
+            <p class="cryptHero-p-text">
+                CRYPTURE EMPOWERS YOU<br>
+                TO MANAGE YOUR DIGITAL<br>
+                ASSETS EFFORTLESSLY.
+            </p>
+        </div>
+    </div>
+</div>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Course Grid - IT Company</title>
+    <link href="https://fonts.cdnfonts.com/css/circular-std" rel="stylesheet">
+    <style>
+        /* CSS Variables for easy maintenance */
+        :root {
+            --itc-main-width: 1200px;
+            --itc-border-radius: 32px;
+            --itc-bg-color: #000000;
+            --itc-text-dark: #ffffff;
+            --itc-text-light: #ffffff;
+            --itc-accent-gray: #e8e8e8;
+            /* Font Stack - Assuming Circular Std is loaded via your system/hosting */
+            --itc-font-family: 'Circular Std', -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
+        }
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        .itc-section-wrapper {
+            width: 100%;
+            display: flex;
+            justify-content: center;
+            padding: 120px 0;
+            background-color: var(--itc-bg-color);
+            font-family: var(--itc-font-family);
+        }
+
+        .itc-container {
+            width: var(--itc-main-width);
+            display: flex;
+            flex-direction: column;
+            gap: 40px;
+        }
+
+        /* Header Section */
+        .itc-header {
+            display: flex;
+            justify-content: space-between;
+            align-items: flex-start;
+        }
+
+        .itc-title {
+            font-size: 54px;
+            font-weight: 500;
+            line-height: 1.05;
+            letter-spacing: -2px;
+            margin: 0;
+            color: var(--itc-text-dark);
+        }
+
+        .itc-badge {
+            background-color: transparent;
+            padding: 10px 20px;
+            border-radius: 50px;
+            font-size: 14px;
+            border: 1px solid #000;
+            font-weight: 500;
+            color: #000000;
+        }
+
+        /* Grid Layout */
+        .itc-grid {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 24px;
+        }
+
+        .itc-card {
+            position: relative;
+            height: 480px;
+            border-radius: var(--itc-border-radius);
+            overflow: hidden;
+            display: flex;
+            flex-direction: column;
+            justify-content: flex-end;
+            padding: 32px;
+            transition: transform 0.3s ease;
+            cursor: pointer;
+        }
+
+        .itc-card:hover {
+            transform: translateY(-5px);
+        }
+
+        /* Background Images/Overlays */
+        .itc-card-bg {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            z-index: 1;
+        }
+
+        .itc-card-overlay {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: linear-gradient(180deg, rgba(0,0,0,0) 40%, rgba(0,0,0,0.85) 100%);
+            z-index: 2;
+        }
+
+        /* Content inside card */
+        .itc-card-content {
+            position: relative;
+            z-index: 3;
+            color: var(--itc-text-light);
+        }
+
+        .itc-card-tag {
+            font-size: 13px;
+            font-weight: 400;
+            opacity: 0.8;
+            margin-bottom: 8px;
+            text-transform: capitalize;
+        }
+
+        .itc-card-headline {
+            font-size: 28px;
+            font-weight: 500;
+            margin: 0 0 12px 0;
+            line-height: 1.2;
+        }
+
+        .itc-card-description {
+            font-size: 16px;
+            line-height: 1.5;
+            opacity: 0.9;
+            margin: 0;
+            font-weight: 400;
+        }
+
+        /* Mobile Responsiveness */
+        @media (max-width: 1240px) {
+            .itc-container { width: 95%; }
+            .itc-title { font-size: 48px; }
+        }
+
+        @media (max-width: 991px) {
+            .itc-grid { grid-template-columns: repeat(2, 1fr); }
+        }
+
+        @media (max-width: 767px) {
+            .itc-grid { grid-template-columns: 1fr; }
+            .itc-header { flex-direction: column; gap: 20px; }
+        }
+    </style>
+</head>
+<body>
+
+    <section class="itc-section-wrapper">
+        <div class="itc-container">
+            
+            <header class="itc-header">
+                <h1 class="itc-title">Our Innovations</h1>
+                <div class="itc-badge">Our Approach</div>
+            </header>
+
+            <div class="itc-grid">
+                
+                <div class="itc-card">
+                    <img src="https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?auto=format&fit=crop&q=80&w=600" alt="Growth" class="itc-card-bg">
+                    <div class="itc-card-overlay"></div>
+                    <div class="itc-card-content">
+                        <div class="itc-card-tag">Real momentum</div>
+                        <h2 class="itc-card-headline">Growth that pops</h2>
+                        <p class="itc-card-description">Learn how to push your content further and spark growth you can actually see.</p>
+                    </div>
+                </div>
+
+                <div class="itc-card">
+                    <img src="https://images.unsplash.com/photo-1534528741775-53994a69daeb?auto=format&fit=crop&q=80&w=600" alt="Posting" class="itc-card-bg">
+                    <div class="itc-card-overlay"></div>
+                    <div class="itc-card-content">
+                        <div class="itc-card-tag">No more falling off</div>
+                        <h2 class="itc-card-headline">Posting on lock</h2>
+                        <p class="itc-card-description">Build a simple posting flow that keeps you showing up without overthinking it.</p>
+                    </div>
+                </div>
+
+                <div class="itc-card">
+                    <img src="https://images.unsplash.com/photo-1517841905240-472988babdf9?auto=format&fit=crop&q=80&w=600" alt="Content" class="itc-card-bg">
+                    <div class="itc-card-overlay"></div>
+                    <div class="itc-card-content">
+                        <div class="itc-card-tag">Never stuck again</div>
+                        <h2 class="itc-card-headline">Content on repeat</h2>
+                        <p class="itc-card-description">Use proven frameworks that tell you exactly what to post — again and again.</p>
+                    </div>
+                </div>
+
+                <div class="itc-card">
+                    <img src="https://images.unsplash.com/photo-1494790108377-be9c29b29330?auto=format&fit=crop&q=80&w=600" alt="Views" class="itc-card-bg">
+                    <div class="itc-card-overlay"></div>
+                    <div class="itc-card-content">
+                        <div class="itc-card-tag">Growth with profit</div>
+                        <h2 class="itc-card-headline">Monetized views</h2>
+                        <p class="itc-card-description">Learn how to turn attention into real opportunities, not just empty numbers.</p>
+                    </div>
+                </div>
+
+                <div class="itc-card">
+                    <img src="https://images.unsplash.com/photo-1506794778202-cad84cf45f1d?auto=format&fit=crop&q=80&w=600" alt="Engagement" class="itc-card-bg">
+                    <div class="itc-card-overlay"></div>
+                    <div class="itc-card-content">
+                        <div class="itc-card-tag">Likes, comments, shares</div>
+                        <h2 class="itc-card-headline">Real engagement</h2>
+                        <p class="itc-card-description">Create posts people actually stop for, react to, and share across platforms.</p>
+                    </div>
+                </div>
+
+                <div class="itc-card">
+                    <img src="https://images.unsplash.com/photo-1524504388940-b1c1722653e1?auto=format&fit=crop&q=80&w=600" alt="Energy" class="itc-card-bg">
+                    <div class="itc-card-overlay"></div>
+                    <div class="itc-card-content">
+                        <div class="itc-card-tag">You're ready now</div>
+                        <h2 class="itc-card-headline">Level-up energy</h2>
+                        <p class="itc-card-description">Know what works, why it works, and how to repeat it with confidence.</p>
+                    </div>
+                </div>
+
+            </div>
+        </div>
+    </section>
+
+</body>
+</html>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Multipurpose IT Company Benefits</title>
+    <style>
+        /* Unique styles prefixed with 'itc-unique-' to prevent conflicts. */
+        .itc-unique-section {
+            font-family: 'Circular Std', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Helvetica, Arial, sans-serif;
+            background-color: #000;
+            color: #fff;
+            width: 100%;
+            padding: 180px 0 150px 0;
+            box-sizing: border-box;
+            display: flex;
+            justify-content: center;
+        }
+
+        .itc-unique-container {
+            width: 1200px;
+            max-width: 100%;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            box-sizing: border-box;
+            padding: 0 20px;
+        }
+
+        .itc-unique-header {
+            text-align: center;
+            margin-bottom: 70px;
+        }
+
+        .itc-unique-heading {
+            display: block;
+            color: #7b61ff; /* Purple matched to the 'BENEFITS' text */
+            font-size: 15px;
+            font-weight: 500;
+            letter-spacing: 1.5px;
+            text-transform: uppercase;
+            margin-bottom: 24px;
+        }
+
+        .itc-unique-headline {
+            color: #e8e8e8; /* Slightly off-white to match image */
+            font-size: 56px;
+            font-weight: 500;
+            line-height: 1.1;
+            margin: 0;
+            text-transform: uppercase;
+            letter-spacing: -0.5px;
+        }
+
+        .itc-unique-grid {
+            width: 100%;
+            display: flex;
+            justify-content: center;
+            gap: 24px;
+            box-sizing: border-box;
+        }
+
+        .itc-unique-card {
+            flex: 1;
+            max-width: 580px;
+            background-color: #030303; /* Deep black for the card itself */
+            border-radius: 20px;
+            padding: 64px;
+            box-sizing: border-box;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            text-align: center;
+            position: relative;
+            z-index: 1;
+        }
+
+        /* Gradient Border Technique 
+           Uses CSS masks to create the fading border effect without a solid background
+        */
+        .itc-unique-card::before {
+            content: "";
+            position: absolute;
+            inset: -1.5px; /* Border thickness */
+            border-radius: inherit;
+            padding: 1.5px; /* Content-box size for mask */
+            z-index: -1;
+            -webkit-mask: linear-gradient(#fff 0 0) content-box, linear-gradient(#fff 0 0);
+            mask: linear-gradient(#fff 0 0) content-box, linear-gradient(#fff 0 0);
+            -webkit-mask-composite: xor;
+            mask-composite: exclude;
+        }
+
+        /* Left Card: Fades from Top-Right (colored) to Bottom-Left (transparent) */
+        .itc-unique-card-left::before {
+            background: linear-gradient(to bottom left, rgba(123, 97, 255, 0.8) 0%, rgba(255, 255, 255, 0.4) 20%, rgba(0, 0, 0, 0) 50%);
+        }
+
+        /* Right Card: Fades from Top-Left (colored) to Bottom-Right (transparent) */
+        .itc-unique-card-right::before {
+            background: linear-gradient(to bottom right, rgba(123, 97, 255, 0.8) 0%, rgba(255, 255, 255, 0.4) 20%, rgba(0, 0, 0, 0) 50%);
+        }
+
+        .itc-unique-card-title {
+            color: #d1d1d1;
+            font-size: 32px;
+            font-weight: 400;
+            margin-bottom: 24px;
+            margin-top: 0;
+        }
+
+        .itc-unique-card-description {
+            color: #7a7a7a;
+            font-size: 18px;
+            font-weight: 400;
+            line-height: 1.6;
+            margin: 0;
+            max-width: 95%;
+        }
+
+        /* Responsive Design Adjustments */
+        @media (max-width: 1200px) {
+            .itc-unique-headline {
+                font-size: 46px;
+            }
+        }
+
+        @media (max-width: 992px) {
+            .itc-unique-headline {
+                font-size: 36px;
+            }
+            .itc-unique-grid {
+                flex-direction: column;
+                align-items: center;
+                gap: 40px;
+            }
+            .itc-unique-card {
+                width: 100%;
+                max-width: 600px;
+            }
+            /* On mobile/stacked, standardizing the fade from the top down looks better */
+            .itc-unique-card-left::before,
+            .itc-unique-card-right::before {
+              background: linear-gradient(to bottom, rgba(123, 97, 255, 0.6) 0%, rgba(0, 0, 0, 0) 60%);
+            }
+        }
+
+        @media (max-width: 600px) {
+            .itc-unique-card-title {
+                font-size: 26px;
+            }
+            .itc-unique-card {
+                padding: 40px 24px;
+            }
+        }
+    </style>
+</head>
+<body>
+    <section class="itc-unique-section">
+        <div class="itc-unique-container">
+            <header class="itc-unique-header">
+                <span class="itc-unique-heading">BENEFITS</span>
+                <h2 class="itc-unique-headline">WHAT MAKES OUR IT SOLUTIONS UNIQUE?</h2>
+            </header>
+            <div class="itc-unique-grid">
+                <div class="itc-unique-card itc-unique-card-left">
+                    <h3 class="itc-unique-card-title">Efficient processing</h3>
+                    <p class="itc-unique-card-description">The cost of optimizing and managing complex IT infrastructures is relatively low compared to disjointed solutions. Our average deployment optimization reduces ongoing operational expenses significantly.</p>
+                </div>
+                <div class="itc-unique-card itc-unique-card-right">
+                    <h3 class="itc-unique-card-title">Worldwide deployment</h3>
+                    <p class="itc-unique-card-description">Our services can be fully deployed and supported worldwide. Once the initial integration and network parameters are confirmed, system availability is nearly instantaneous and resources are fully available to your team.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+</body>
+</html>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>IT Enterprise Infrastructure</title>
+
+    <style>
+        /* --- CSS Reset & Global Styles --- */
+        *, *::before, *::after {
+            box-sizing: border-box;
+            margin: 0;
+            padding: 0;
+        }
+
+        body {
+            /* Setting the requested font and dark theme base */
+            font-family: 'Circular Std', sans-serif;
+            background-color: #000000; /* Deep charcoal background matching the image */
+            color: #FFFFFF;
+            
+            -webkit-font-smoothing: antialiased;
+        }
+
+        /* --- Main Section Wrapper --- */
+        /* Using a semantic section tag with a descriptive class */
+        .enterprise-hero-section {
+            width: 100%;
+            min-height: 80vh; /* Ensures substantial vertical space */
+            padding: 100px 24px 200px 24px;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+        }
+
+        /* Container to constrain width on large screens */
+        .hero-container {
+            width: 100%;
+            max-width: 1200px;
+        }
+
+        /* --- Header Area Styling --- */
+        .hero-headline-block {
+            margin-bottom: 96px; /* Large spacing between title and columns */
+            max-width: 850px;
+            margin-top: 5rem;
+        }
+
+        .hero-main-title {
+            font-size: 18px;
+            font-weight: 500;
+            color: #007cda; /* Muted gray/blue for subtitle */
+            margin-bottom: 18px;
+            letter-spacing: 0.5px;
+            text-transform: uppercase;
+        }
+
+        /* The main H1 title */
+        .hero-title {
+            font-size: 44px; /* Large scale typography */
+            font-weight: 500; /* Regular weight by default */
+            line-height: 1.2;
+            color: #ffffff; /* Slightly softened white */
+        }
+
+        /* --- Three-Column Grid Styling --- */
+        .solutions-grid {
+            display: grid;
+            /* Create three equal columns */
+            grid-template-columns: repeat(3, 1fr);
+            /* Large horizontal gap between columns */
+            gap: 64px;
+            align-items: flex-start;
+        }
+
+        /* Semantic article tag for each feature block */
+        .solution-card {
+            display: flex;
+            flex-direction: column;
+            align-items: flex-start;
+        }
+
+        /* Wrapper for the icons */
+        .card-icon-wrapper {
+            margin-bottom: 24px;
+            color: #E2E8F0; /* Icon color matches soft white text */
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            height: 58px;
+            width: 58px;
+            stroke-width: 0.1;
+        }
+
+        /* The H3 headings for each column */
+        .card-heading {
+            font-size: 1.5rem;
+            font-weight: 500;
+            margin-bottom: 16px;
+            line-height: 1.3;
+            color: #FFFFFF;
+        }
+
+        /* The descriptive paragraph text */
+        .card-description {
+            font-size: 1.1rem;
+            /* Muted gray/blue for descriptions to create hierarchy */
+            color: #a8a8a8;
+            font-weight: 400; 
+            line-height: 1.6;
+            max-width: 340px; /* Ensures optimal reading width */
+        }
+
+        /* --- Responsive Adjustments --- */
+        /* Tablet breakpoints */
+        @media (max-width: 1024px) {
+            .hero-title {
+                font-size: 3rem;
+            }
+            .solutions-grid {
+                gap: 40px;
+            }
+
+            .solution-card {
+                border: 2px solid #303c55;
+                padding: 15px;
+                border-radius: 20px;
+            }
+        }
+
+        /* Mobile breakpoints */
+        @media (max-width: 768px) {
+            .enterprise-hero-section {
+                padding: 9rem 20px;
+            }
+            .hero-headline-block {
+                margin-bottom: 56px;
+            }
+            .hero-title {
+                font-size: 2.25rem;
+            }
+            /* Stack the grid columns vertically on mobile */
+            .solutions-grid {
+                grid-template-columns: 1fr;
+                gap: 48px;
+            }
+            .card-description {
+                max-width: 100%;
+            }
+        }
+
+        .service-btn {
+            font-weight: 500;
+            font-size: 16px;
+            color: #fff;
+            padding: 10px 20px;
+            border-radius: 50px;
+            border: 1px solid #fff;
+            background-color: transparent;
+            margin-top: 35px; 
+        }
+
+        .service-btn a {
+            text-decoration: none; font-family: 'Circular Std'; color: #fff;
+        }
+    </style>
+</head>
+<body>
+
+    <section class="enterprise-hero-section">
+        <div class="hero-container">
+            
+            <header class="hero-headline-block">
+                <h1 class="hero-main-title">Cronos Solutions</h1>
+                <h1 class="hero-title">
+                    Building Digital <br>Ecosystems That Work
+                </h1>
+            </header>
+
+            <div class="solutions-grid">
+                
+                <article class="solution-card">
+                    <div class="card-icon-wrapper">
+                        <svg width="70" height="70"  xmlns="http://www.w3.org/2000/svg" viewBox="0 0 32 32"><path d="M21.49 13.115l-9-5a1 1 0 0 0-1 0l-9 5A1.008 1.008 0 0 0 2 14v9.995a1 1 0 0 0 .52.87l9 5A1.004 1.004 0 0 0 12 30a1.056 1.056 0 0 0 .49-.135l9-5A.992.992 0 0 0 22 24V14a1.008 1.008 0 0 0-.51-.885zM11 27.295l-7-3.89v-7.72l7 3.89zm1-9.45L5.06 14L12 10.135l6.94 3.86zm8 5.56l-7 3.89v-7.72l7-3.89z" fill="#ffffff"/><path d="M30 6h-4V2h-2v4h-4v2h4v4h2V8h4V6z" fill="#ffffff"/></svg>
+                    </div>
+                    <h3 class="card-heading">Software Development</h3>
+                    <p class="card-description">
+                        All-in-one infrastructure. From cloud migration and cybersecurity to custom software development, data analytics, and managed network services.
+                    </p>
+                    <button class="service-btn"><a href="page.html">Learn More
+                        <svg xmlns="http://www.w3.org/2000/svg" style="vertical-align: middle;" width="20" height="20" viewBox="0 0 24 24"><path fill="#ffffff" d="m16 8.4l-8.9 8.9q-.275.275-.7.275t-.7-.275q-.275-.275-.275-.7t.275-.7L14.6 7H7q-.425 0-.713-.288T6 6q0-.425.288-.713T7 5h10q.425 0 .713.288T18 6v10q0 .425-.288.713T17 17q-.425 0-.713-.288T16 16V8.4Z"/></svg>
+                    </a></button>
+                </article>
+
+                <article class="solution-card">
+                    <div class="card-icon-wrapper">
+                         <svg width="40" height="40" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round">
+                            <path d="M12 2l8.66 5v10L12 22l-8.66-5V7L12 2z"/>
+                            <path d="M12 12m-3 0a3 3 0 1 0 6 0a3 3 0 1 0-6 0"/>
+                        </svg>
+                    </div>
+                    <h3 class="card-heading">IT Infrastructure</h3>
+                    <p class="card-description">
+                        Facilitating robust, zero-trust access to regulated data across distributed networks and hybrid cloud environments for maximum integrity.
+                    </p>
+                    <button class="service-btn"><a href="page.html">Learn More
+                        <svg xmlns="http://www.w3.org/2000/svg" style="vertical-align: middle;" width="20" height="20" viewBox="0 0 24 24"><path fill="#ffffff" d="m16 8.4l-8.9 8.9q-.275.275-.7.275t-.7-.275q-.275-.275-.275-.7t.275-.7L14.6 7H7q-.425 0-.713-.288T6 6q0-.425.288-.713T7 5h10q.425 0 .713.288T18 6v10q0 .425-.288.713T17 17q-.425 0-.713-.288T16 16V8.4Z"/></svg>
+                    </a></button>
+                </article>
+
+                <article class="solution-card">
+                    <div class="card-icon-wrapper">
+                        <svg width="40" height="40" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round">
+                            <circle cx="12" cy="12" r="3"/><circle cx="12" cy="12" r="9"/>
+                            <path d="M12 3v2"/><path d="M12 19v2"/><path d="M3 12h2"/><path d="M19 12h2"/>
+                        </svg>
+                    </div>
+                    <h3 class="card-heading">Marketing & Creative Studio</h3>
+                    <p class="card-description">
+                        Composable utility for systems across existing and new tech stacks. Instant scalability, enhanced performance, and seamless API interoperability.
+                    </p>
+                    <button class="service-btn"><a href="page.html">Learn More
+                        <svg xmlns="http://www.w3.org/2000/svg" style="vertical-align: middle;" width="20" height="20" viewBox="0 0 24 24"><path fill="#ffffff" d="m16 8.4l-8.9 8.9q-.275.275-.7.275t-.7-.275q-.275-.275-.275-.7t.275-.7L14.6 7H7q-.425 0-.713-.288T6 6q0-.425.288-.713T7 5h10q.425 0 .713.288T18 6v10q0 .425-.288.713T17 17q-.425 0-.713-.288T16 16V8.4Z"/></svg>
+                    </a></button>
+                </article>
+
+            </div>
+            </div>
+    </section>
+
+</body>
+</html>
+
+
+
+
+
+
+
+
+
+
+
+<cronos-footer></cronos-footer>
