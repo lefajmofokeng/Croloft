@@ -2557,41 +2557,188 @@ document.addEventListener("DOMContentLoaded", function() {
 
 
 
+<div class="stu-reveal-root">
+  <div class="stu-reveal-container">
+    
+    <div class="stu-reveal-header">
+      <h2 class="stu-reveal-title">What's new</h2>
+      <p class="stu-reveal-subtitle">Latest updates from the student success portal.</p>
+    </div>
 
+    <div class="stu-reveal-grid">
+      
+      <div class="stu-reveal-card">
+        <div class="stu-reveal-media">
+          <img src="https://images.unsplash.com/photo-1633356122544-f134324a6cee?q=80&w=800&auto=format&fit=crop" alt="AI Updates" class="stu-reveal-img">
+          <div class="stu-reveal-badge">Case study</div>
+        </div>
+        <div class="stu-reveal-body">
+          <h3 class="stu-reveal-card-title">Portal cut registration latency 85x with new AI Server</h3>
+          <p class="stu-reveal-card-text">The IT department used the new Micro servers to shrink costs and support 80,000+ students.</p>
+          <div class="stu-reveal-footer">
+            <div class="stu-reveal-link-group">
+              <span class="stu-reveal-text">Explore AI Case Studies</span>
+              <svg class="stu-reveal-arrow" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M5 12h14M12 5l7 7-7 7"/></svg>
+            </div>
+          </div>
+        </div>
+      </div>
 
+      <div class="stu-reveal-card">
+        <div class="stu-reveal-media">
+          <img src="https://images.unsplash.com/photo-1522202176988-66273c2fd55f?q=80&w=800&auto=format&fit=crop" alt="Campus Assistant" class="stu-reveal-img">
+          <div class="stu-reveal-badge">Campus Quick</div>
+        </div>
+        <div class="stu-reveal-body">
+          <h3 class="stu-reveal-card-title">Your campus assistant that actually gets your work</h3>
+          <p class="stu-reveal-card-text">Campus Quick connects to academic data and meets you where you study. No more switching tools.</p>
+          <div class="stu-reveal-footer">
+            <div class="stu-reveal-link-group">
+              <span class="stu-reveal-text">Try Campus Quick now</span>
+              <svg class="stu-reveal-arrow" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M5 12h14M12 5l7 7-7 7"/></svg>
+            </div>
+          </div>
+        </div>
+      </div>
 
+      <div class="stu-reveal-card">
+        <div class="stu-reveal-media">
+          <img src="https://images.unsplash.com/photo-1523240715639-93f800e98432?q=80&w=800&auto=format&fit=crop" alt="Career Path" class="stu-reveal-img">
+          <div class="stu-reveal-badge">Career Intelligence</div>
+        </div>
+        <div class="stu-reveal-body">
+          <h3 class="stu-reveal-card-title">Career Prep: Your path to production</h3>
+          <p class="stu-reveal-card-text">How to accelerate your career implementation confidently with expert guidance from alumni.</p>
+          <div class="stu-reveal-footer">
+            <div class="stu-reveal-link-group">
+              <span class="stu-reveal-text">Start your career journey with us</span>
+              <svg class="stu-reveal-arrow" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M5 12h14M12 5l7 7-7 7"/></svg>
+            </div>
+          </div>
+        </div>
+      </div>
 
+    </div>
+  </div>
+</div>
 
+<style>
+  /* Container & Base Font */
+.stu-reveal-root {
+  font-family: "Circular Std", sans-serif;
+  background-color: #ffffff;
+  padding: 120px 20px;
+}
 
+.stu-reveal-container {
+  max-width: 1200px;
+  margin: 0 auto;
+}
 
+/* Header Styles */
+.stu-reveal-title { font-size: 54px; font-weight: 500; color: #111; margin-bottom: 8px; }
+.stu-reveal-subtitle { font-size: 21px; color: #666; margin-bottom: 48px; }
 
+/* Grid Setup */
+.stu-reveal-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
+  gap: 24px;
+}
 
+/* Card & Rainbow Shadow */
+.stu-reveal-card {
+  background: #f2f3f4;
+  border-radius: 15px;
+  overflow: hidden;
+  display: flex;
+  flex-direction: column;
+  transition: transform 0.4s cubic-bezier(0.2, 1, 0.3, 1), background 0.3s;
+  cursor: pointer;
+  position: relative;
+}
 
+@keyframes stu-rainbow-glow {
+  0% { box-shadow: 0 10px 30px -10px rgba(255, 0, 128, 0.4); }
+  33% { box-shadow: 0 10px 30px 10px rgba(128, 0, 255, 0.4); }
+  66% { box-shadow: 0 10px 30px 10px rgba(0, 200, 255, 0.4); }
+  100% { box-shadow: 0 10px 30px 10px rgba(255, 0, 128, 0.4); }
+}
 
+.stu-reveal-card:hover {
+  transform: translateY(-10px);
+  animation: stu-rainbow-glow 3s linear infinite;
+}
 
+/* Media/Image Wrapper */
+.stu-reveal-media { height: 210px; position: relative; overflow: hidden; }
+.stu-reveal-img { width: 100%; height: 100%; object-fit: cover; transition: transform 0.5s ease; border-radius: 15px; }
+.stu-reveal-card:hover .stu-reveal-img {  border-radius: 15px; }
+.stu-reveal-badge {
+  position: absolute; top: 16px; left: 16px;
+  background: white; padding: 5px 12px; border-radius: 8px;
+  font-size: 11px; font-weight: 700; text-transform: uppercase;
+  box-shadow: 0 2px 4px rgba(0,0,0,0.05);
+}
 
+/* Body Content */
+.stu-reveal-body { padding: 32px; flex-grow: 1; display: flex; flex-direction: column; }
+.stu-reveal-card-title { font-size: 20px; font-weight: 700; color: #111; margin-bottom: 12px; line-height: 1.3; }
+.stu-reveal-card-text { font-size: 14px; color: #555; line-height: 1.6; margin-bottom: 24px; flex-grow: 1; }
 
+/* --- Fixed Reveal Footer Logic --- */
+.stu-reveal-footer {
+  margin-top: auto;
+  height: 24px;
+  overflow: hidden;
+  position: relative;
+}
 
+/* This group contains both text and arrow so they stay together */
+.stu-reveal-link-group {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  position: absolute;
+  left: 0;
+  top: 0;
+  /* Shift the whole group left so the text is hidden, leaving only the arrow visible */
+  transform: translateX(-100%); 
+  margin-left: 26px; /* Offset to keep arrow visible at the starting point */
+  transition: transform 0.5s cubic-bezier(0.19, 1, 0.22, 1);
+}
 
+.stu-reveal-text {
+  font-size: 16px;
+  font-weight: 500;
+  color: #111;
+  white-space: nowrap;
+  opacity: 0;
+  transition: opacity 0.3s ease;
+}
 
+.stu-reveal-arrow {
+  color: #111;
+  flex-shrink: 0;
+}
 
+/* On hover, move the whole group back to 0, revealing text + arrow in tandem */
+.stu-reveal-card:hover .stu-reveal-link-group {
+  transform: translateX(0);
+  margin-left: 0;
+}
 
+.stu-reveal-card:hover .stu-reveal-text {
+  opacity: 1;
+}
 
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
+/* Mobile Responsiveness */
+@media (max-width: 640px) {
+  .stu-reveal-root { padding: 40px 16px; }
+  .stu-reveal-title { font-size: 26px; }
+  .stu-reveal-card-title { font-size: 18px; }
+}
+</style>
 
 
 
