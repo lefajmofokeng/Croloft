@@ -1,0 +1,998 @@
+<div class="hyp-signup-container">
+  
+  <header class="hyp-signup-topbar">
+    <div class="hyp-signup-brand-group">
+      <span class="hyp-signup-logo-icon">⚙️</span>
+      <span class="hyp-signup-logo-text">hyperion</span>
+      <span class="hyp-signup-logo-sub">workshop studio</span>
+    </div>
+    <div class="hyp-signup-header-actions">
+      <a href="#" class="hyp-signup-header-link">Provide feedback</a>
+      <a href="#" class="hyp-signup-header-link">Multi-session disabled</a>
+      <a href="#" class="hyp-signup-header-link hyp-signup-lang-selector">English ▼</a>
+    </div>
+  </header>
+
+  <main class="hyp-signup-workspace-row">
+    <div class="hyp-signup-grid-wrapper">
+      
+      <div class="hyp-signup-card">
+        <h1 class="hyp-signup-card-title">Create your Account</h1>
+        
+        <div class="hyp-signup-stepper-track">
+          <div class="hyp-signup-step-node hyp-step-active" id="hypStepNode1">
+            <span class="hyp-signup-step-number">1</span>
+            <span class="hyp-signup-step-label">Account Details</span>
+          </div>
+          <div class="hyp-signup-step-node" id="hypStepNode2">
+            <span class="hyp-signup-step-number">2</span>
+            <span class="hyp-signup-step-label">Organization Profile</span>
+          </div>
+          <div class="hyp-signup-step-node" id="hypStepNode3">
+            <span class="hyp-signup-step-number">3</span>
+            <span class="hyp-signup-step-label">Review Agreement</span>
+          </div>
+        </div>
+
+        <form class="hyp-signup-interactive-form" onsubmit="return false;" id="hypSignupWizardForm">
+          
+          <div class="hyp-signup-step-view hyp-view-visible" id="hypSignupStepView1">
+            <div class="hyp-signup-input-block">
+              <label class="hyp-signup-field-label">Account Profile Configuration</label>
+              <div class="hyp-signup-toggle-matrix">
+                <label class="hyp-signup-toggle-card hyp-toggle-active" id="hypToggleLabelInd">
+                  <input type="radio" name="hypProfileClassification" value="individual" checked class="hyp-signup-native-radio" id="hypRadioInd">
+                  <div class="hyp-signup-toggle-circle"></div>
+                  <div class="hyp-signup-toggle-text-block">
+                    <span class="hyp-signup-toggle-main-title">Individual Operator</span>
+                    <span class="hyp-signup-toggle-desc">Personal sandbox accounts, independent builders, and single-operator environments.</span>
+                  </div>
+                </label>
+                
+                <label class="hyp-signup-toggle-card" id="hypToggleLabelBiz">
+                  <input type="radio" name="hypProfileClassification" value="business" class="hyp-signup-native-radio" id="hypRadioBiz">
+                  <div class="hyp-signup-toggle-circle"></div>
+                  <div class="hyp-signup-toggle-text-block">
+                    <span class="hyp-signup-toggle-main-title">Business / Enterprise</span>
+                    <span class="hyp-signup-toggle-desc">Organizations, corporate clusters, multi-user groups, and scaled resource metrics.</span>
+                  </div>
+                </label>
+              </div>
+            </div>
+
+            <div class="hyp-signup-input-block">
+              <label class="hyp-signup-field-label">Create Global Username</label>
+              <input type="text" class="hyp-signup-text-input" placeholder="e.g., hyperion_developer" required>
+            </div>
+
+            <div class="hyp-signup-input-row">
+              <div class="hyp-signup-input-block">
+                <label class="hyp-signup-field-label">Root Password</label>
+                <input type="password" class="hyp-signup-text-input" placeholder="••••••••••••" required>
+              </div>
+              <div class="hyp-signup-input-block">
+                <label class="hyp-signup-field-label">Confirm Password</label>
+                <input type="password" class="hyp-signup-text-input" placeholder="••••••••••••" required>
+              </div>
+            </div>
+          </div>
+
+          <div class="hyp-signup-step-view" id="hypSignupStepView2">
+            
+            <div class="hyp-signup-conditional-group hyp-biz-only" id="hypBizInputsField">
+              <div class="hyp-signup-input-row">
+                <div class="hyp-signup-input-block">
+                  <label class="hyp-signup-field-label">Organization Legal Name</label>
+                  <input type="text" class="hyp-signup-text-input" placeholder="e.g., Hyperion Solutions Pty Ltd">
+                </div>
+                <div class="hyp-signup-input-block">
+                  <label class="hyp-signup-field-label">Enterprise Sizing (Employees)</label>
+                  <select class="hyp-signup-select-menu">
+                    <option value="">Select organizational scale...</option>
+                    <option value="micro">1 - 20 employees</option>
+                    <option value="small">21 - 100 employees</option>
+                    <option value="medium">101 - 500 employees</option>
+                    <option value="enterprise">501 - 5,000 employees</option>
+                    <option value="scale">5,001 - 10,000+ employees</option>
+                  </select>
+                </div>
+              </div>
+
+              <div class="hyp-signup-input-block">
+                <label class="hyp-signup-field-label">Industry Classification / Business Vertical</label>
+                <select class="hyp-signup-select-menu">
+                  <option value="">Select industry segment...</option>
+                  <option value="tech">Technology, Saas & Software Infrastructure</option>
+                  <option value="fintech">Financial Services & Cryptocurrency Platforms</option>
+                  <option value="health">Healthcare, Pharmacy & Medical Systems</option>
+                  <option value="edu">Educational Institutions & E-Learning Networks</option>
+                  <option value="gov">Government Infrastructure & Public Utilities</option>
+                  <option value="retail">Retail Operations, Logistics & Supply Chain</option>
+                </select>
+              </div>
+            </div>
+
+            <div class="hyp-signup-conditional-group" id="hypIndInputsField">
+              <div class="hyp-signup-input-block">
+                <label class="hyp-signup-field-label">Primary Development Focus / Specialty</label>
+                <select class="hyp-signup-select-menu">
+                  <option value="">Select development archetype...</option>
+                  <option value="fullstack">Full-Stack Web Applications & Architecture</option>
+                  <option value="devops">DevOps, Infrastructure Automation & Cloud Pools</option>
+                  <option value="crypto">Blockchain, Smart Contracts & Web3 Tech</option>
+                  <option value="ai">AI Integration, LLMs & Intelligent Modeling</option>
+                  <option value="hobby">Independent Explorer / Academic Learner</option>
+                </select>
+              </div>
+            </div>
+
+            <div class="hyp-signup-input-block">
+              <label class="hyp-signup-field-label" id="hypDynamicEmailLabel">Primary Email Address</label>
+              <input type="email" class="hyp-signup-text-input" placeholder="operator@hyperion-node.io" required autocomplete="email">
+            </div>
+
+            <div class="hyp-signup-input-row">
+              <div class="hyp-signup-input-block">
+                <label class="hyp-signup-field-label">Contact Mobile Number</label>
+                <input type="tel" class="hyp-signup-text-input" placeholder="+27 (0) 82 123 4567" required>
+              </div>
+              <div class="hyp-signup-input-block">
+                <label class="hyp-signup-field-label">Regional Location / Country</label>
+                <select class="hyp-signup-select-menu" required>
+                  <option value="ZA" selected>South Africa (ZAR)</option>
+                  <option value="US">United States (USD)</option>
+                  <option value="UK">United Kingdom (GBP)</option>
+                  <option value="EU">Eurozone Member (EUR)</option>
+                </select>
+              </div>
+            </div>
+          </div>
+
+          <div class="hyp-signup-step-view" id="hypSignupStepView3">
+            <div class="hyp-signup-input-block">
+              <label class="hyp-signup-field-label">Hyperion Cloud Services Operational Agreement</label>
+              <div class="hyp-signup-legal-scrollbox">
+                <h3>1. Scope of Resource Allocation</h3>
+                <p>By initializing provisions inside the Hyperion cluster infrastructure, you authorize Hyperion IT Operations to map virtual computing nodes, isolated networks, and container registry channels matching your workflow metrics.</p>
+                <h3>2. Financial Tracking & Billing</h3>
+                <p>Enterprise business entities are calculated via standard metered parameters. Cost envelopes align cleanly with performance profiles spanning ZAR R90.00 to ZAR R180.00 per standard 6-hour cluster deployment sprint.</p>
+                <h3>3. Essential Cookie Deployment</h3>
+                <p>Our distributed data platforms deploy strictly native session variables to manage user state configurations and active authentication layer permissions without leakage loops.</p>
+              </div>
+            </div>
+
+            <label class="hyp-signup-checkbox-row">
+              <input type="checkbox" class="hyp-signup-native-checkbox" required>
+              <span class="hyp-signup-custom-checkbox"></span>
+              <span class="hyp-signup-checkbox-label-text">I acknowledge and accept the Hyperion Customer Agreement, standard pricing bounds, and systemic data privacy policies.</span>
+            </label>
+          </div>
+
+          <div class="hyp-signup-control-actions">
+            <button type="button" class="hyp-signup-btn-back hyp-control-hidden" id="hypBtnBack">Back</button>
+            <button type="button" class="hyp-signup-btn-forward" id="hypBtnForward">Next Step</button>
+          </div>
+
+          <div class="hyp-signup-form-divider">
+            <span class="hyp-signup-divider-string">OR</span>
+          </div>
+          <button type="button" class="hyp-signup-btn-redirect">Already have an Account? Sign In</button>
+
+        </form>
+      </div>
+
+      <div class="hyp-signup-promo-panel">
+        <div class="hyp-signup-promo-inner">
+          <div class="hyp-signup-promo-headline-group">
+            <h2 class="hyp-signup-promo-headline">Hyperion 10,000 Ecosystem nodes are live</h2>
+            <p class="hyp-signup-promo-paragraph">See how builders, startup configurations, and automated enterprise frameworks are scaling workflows effortlessly.</p>
+          </div>
+          <div class="hyp-signup-promo-cta-row">
+            <a href="#" class="hyp-signup-promo-link">See what they built ➔</a>
+          </div>
+        </div>
+      </div>
+
+    </div>
+  </main>
+
+  <footer class="hyp-signup-footer">
+    <div class="hyp-signup-footer-legal">
+      By continuing, you agree to the <a href="#" class="hyp-signup-footer-anchor">Hyperion Customer Agreement</a>, cloud platform usage boundaries, and the <a href="#" class="hyp-signup-footer-anchor">Privacy Notice</a>. This platform uses essential system data storage vectors.
+    </div>
+    <div class="hyp-signup-footer-copyright">
+      © 2008 - 2026, Hyperion IT Operations, Inc. or its affiliates. All rights reserved.
+    </div>
+  </footer>
+
+</div>
+
+<style>
+    /* ==========================================================================
+   PRODUCTION ENGINE STYLING RESET & ISOLATION HOOKS
+   ========================================================================== */
+@font-face {
+  font-family: 'Circular Std';
+  src: local('Circular Std Book'), local('CircularStd-Book'), url('#') format('woff2');
+  font-weight: 400;
+  font-style: normal;
+}
+
+@font-face {
+  font-family: 'Circular Std';
+  src: local('Circular Std Bold'), local('CircularStd-Bold'), url('#') format('woff2');
+  font-weight: 700;
+  font-style: normal;
+}
+
+/* Master container acting as the structural scope root */
+.hyp-signup-container {
+  font-family: 'Circular Std', -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif;
+  background-color: #fcfcfc;
+  color: #16191f;
+  min-height: 100vh;
+  display: flex;
+  flex-direction: column;
+  position: relative;
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+  -webkit-font-smoothing: antialiased;
+}
+
+.hyp-signup-container *,
+.hyp-signup-container *::before,
+.hyp-signup-container *::after {
+  box-sizing: inherit;
+}
+
+/* ==========================================================================
+   PINNED TOP BAR NAVIGATION
+   ========================================================================== */
+.hyp-signup-topbar {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 55px;
+  background-color: #161b22;
+  color: #ffffff;
+  padding: 0 24px;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  z-index: 1000;
+  box-shadow: 0 2px 4px rgba(0,0,0,0.05);
+}
+
+.hyp-signup-brand-group {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+}
+
+.hyp-signup-logo-icon {
+  font-size: 18px;
+}
+
+.hyp-signup-logo-text {
+  font-weight: 700;
+  font-size: 20px;
+  letter-spacing: -0.6px;
+}
+
+.hyp-signup-logo-sub {
+  color: #aab7c4;
+  font-size: 13px;
+  margin-left: 6px;
+  font-weight: 400;
+}
+
+.hyp-signup-header-actions {
+  display: flex;
+  align-items: center;
+  gap: 20px;
+}
+
+.hyp-signup-header-link {
+  font-size: 12.5px;
+  color: #aab7c4;
+  text-decoration: none;
+}
+
+.hyp-signup-header-link:hover {
+  color: #ffffff;
+  text-decoration: underline;
+}
+
+/* ==========================================================================
+   MAIN CONTENT SPLIT ARCHITECTURE (RESPONSIVE NATIVE WINDOW SCROLLING)
+   ========================================================================== */
+.hyp-signup-workspace-row {
+  flex: 1;
+  width: 100%;
+  max-width: 1240px;
+  margin: 55px auto 0 auto; /* Clearance offset for the fixed topbar */
+  padding: 40px 20px 60px 20px; /* Base bottom padding clearance for the footer */
+  display: flex;
+  align-items: start;
+}
+
+.hyp-signup-grid-wrapper {
+  display: grid;
+  grid-template-columns: minmax(400px, 540px) minmax(440px, 620px);
+  gap: 40px;
+  width: 100%;
+  justify-content: space-between;
+}
+
+/* ==========================================================================
+   LEFT CARD WIZARD FORMS
+   ========================================================================== */
+.hyp-signup-card {
+  background-color: #ffffff;
+  border: 1px solid #eaeded;
+  border-radius: 4px;
+  padding: 32px;
+  box-shadow: 0 2px 8px rgba(0,0,0,0.02);
+}
+
+.hyp-signup-card-title {
+  font-size: 24px;
+  font-weight: 700;
+  color: #16191f;
+  margin: 0 0 24px 0;
+  letter-spacing: -0.4px;
+}
+
+/* Onboarding Stepper Indicators */
+.hyp-signup-stepper-track {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 32px;
+  padding-bottom: 16px;
+  border-bottom: 1px solid #f2f3f3;
+  gap: 8px;
+}
+
+.hyp-signup-step-node {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  opacity: 0.35;
+  transition: opacity 0.2s ease;
+}
+
+.hyp-signup-step-node.hyp-step-active {
+  opacity: 1;
+}
+
+.hyp-signup-step-number {
+  width: 22px;
+  height: 22px;
+  background-color: #161b22;
+  color: #ffffff;
+  border-radius: 50%;
+  font-size: 11px;
+  font-weight: 700;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.hyp-signup-step-node.hyp-step-active .hyp-signup-step-number {
+  background-color: #1199FA; /* Premium accent color choice */
+}
+
+.hyp-signup-step-label {
+  font-size: 12px;
+  font-weight: 700;
+  color: #16191f;
+  white-space: nowrap;
+}
+
+/* Active Step Visibility Controllers */
+.hyp-signup-step-view {
+  display: none;
+}
+
+.hyp-signup-step-view.hyp-view-visible {
+  display: block;
+}
+
+/* Input Fields & Elements Architecture */
+.hyp-signup-input-block {
+  margin-bottom: 20px;
+  display: flex;
+  flex-direction: column;
+}
+
+.hyp-signup-input-row {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 16px;
+}
+
+.hyp-signup-field-label {
+  font-size: 13px;
+  font-weight: 700;
+  color: #16191f;
+  margin-bottom: 8px;
+}
+
+.hyp-signup-text-input,
+.hyp-signup-select-menu {
+  width: 100%;
+  height: 36px;
+  padding: 0 12px;
+  font-size: 13.5px;
+  color: #16191f;
+  background-color: #ffffff;
+  border: 1px solid #aab7c4;
+  border-radius: 3px;
+  font-family: inherit;
+}
+
+.hyp-signup-select-menu {
+  appearance: none;
+  background-image: url("data:image/svg+xml;charset=utf-8,%3Csvg xmlns='http://www.w3.org/2000/svg' width='12' height='12' fill='%23545b64'%3E%3Cpath d='M2 4l4 4 4-4z'/%3E%3C/svg%3E");
+  background-repeat: no-repeat;
+  background-position: right 12px center;
+  padding-right: 32px;
+}
+
+.hyp-signup-text-input:focus,
+.hyp-signup-select-menu:focus {
+  outline: none;
+  border-color: #1199FA;
+  box-shadow: 0 0 0 1px #1199FA;
+}
+
+/* Account Variant Toggle Cards (Individual vs Business Matrix) */
+.hyp-signup-toggle-matrix {
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+}
+
+.hyp-signup-toggle-card {
+  display: flex;
+  align-items: start;
+  gap: 12px;
+  padding: 16px;
+  background-color: #ffffff;
+  border: 1px solid #aab7c4;
+  border-radius: 4px;
+  cursor: pointer;
+  position: relative;
+  transition: all 0.15s ease;
+}
+
+.hyp-signup-toggle-card.hyp-toggle-active {
+  background-color: #f1faff;
+  border-color: #1199FA;
+  box-shadow: 0 0 0 1px #1199FA;
+}
+
+.hyp-signup-native-radio {
+  position: absolute;
+  opacity: 0;
+  pointer-events: none;
+}
+
+.hyp-signup-toggle-circle {
+  width: 16px;
+  height: 16px;
+  border: 1px solid #545b64;
+  border-radius: 50%;
+  margin-top: 2px;
+  position: relative;
+  flex-shrink: 0;
+  background-color: #ffffff;
+}
+
+.hyp-toggle-active .hyp-signup-toggle-circle {
+  border-color: #1199FA;
+}
+
+.hyp-toggle-active .hyp-signup-toggle-circle::after {
+  content: '';
+  position: absolute;
+  top: 4px;
+  left: 4px;
+  width: 6px;
+  height: 6px;
+  border-radius: 50%;
+  background-color: #1199FA;
+}
+
+.hyp-signup-toggle-text-block {
+  display: flex;
+  flex-direction: column;
+  gap: 4px;
+}
+
+.hyp-signup-toggle-main-title {
+  font-size: 14px;
+  font-weight: 700;
+  color: #16191f;
+}
+
+.hyp-signup-toggle-desc {
+  font-size: 12px;
+  line-height: 1.4;
+  color: #545b64;
+}
+
+/* Contextual Field Boxes Control Styles */
+.hyp-signup-conditional-group {
+  display: none;
+}
+
+.hyp-signup-conditional-group.hyp-group-visible {
+  display: block;
+}
+
+/* Step 3 Legal Agreement Scrollbox */
+.hyp-signup-legal-scrollbox {
+  width: 100%;
+  height: 160px;
+  background-color: #f2f3f3;
+  border: 1px solid #eaeded;
+  border-radius: 3px;
+  padding: 14px;
+  overflow-y: auto;
+}
+
+.hyp-signup-legal-scrollbox h3 {
+  font-size: 12.5px;
+  font-weight: 700;
+  margin: 0 0 6px 0;
+}
+
+.hyp-signup-legal-scrollbox p {
+  font-size: 12px;
+  line-height: 1.5;
+  color: #545b64;
+  margin: 0 0 14px 0;
+}
+
+.hyp-signup-checkbox-row {
+  display: flex;
+  align-items: start;
+  gap: 10px;
+  cursor: pointer;
+  margin-top: 10px;
+}
+
+.hyp-signup-native-checkbox {
+  position: absolute;
+  opacity: 0;
+  pointer-events: none;
+}
+
+.hyp-signup-custom-checkbox {
+  width: 16px;
+  height: 16px;
+  border: 1px solid #aab7c4;
+  border-radius: 2px;
+  background-color: #ffffff;
+  margin-top: 1px;
+  flex-shrink: 0;
+  position: relative;
+}
+
+.hyp-signup-native-checkbox:checked + .hyp-signup-custom-checkbox {
+  background-color: #1199FA;
+  border-color: #1199FA;
+}
+
+.hyp-signup-native-checkbox:checked + .hyp-signup-custom-checkbox::after {
+  content: "✓";
+  color: #ffffff;
+  font-size: 11px;
+  position: absolute;
+  top: -1px;
+  left: 3px;
+  font-weight: 700;
+}
+
+.hyp-signup-checkbox-label-text {
+  font-size: 12px;
+  line-height: 1.45;
+  color: #545b64;
+}
+
+/* Stepper Trigger Actions Panel Layout */
+.hyp-signup-control-actions {
+  display: flex;
+  justify-content: flex-end;
+  gap: 12px;
+  margin-top: 28px;
+}
+
+.hyp-signup-btn-forward {
+  height: 36px;
+  padding: 0 24px;
+  background-color: #1199FA;
+  color: #ffffff;
+  border: none;
+  font-size: 13.5px;
+  font-weight: 700;
+  border-radius: 3px;
+  cursor: pointer;
+}
+
+.hyp-signup-btn-forward:hover {
+  background-color: #008be6;
+}
+
+.hyp-signup-btn-back {
+  height: 36px;
+  padding: 0 20px;
+  background-color: #ffffff;
+  color: #545b64;
+  border: 1px solid #aab7c4;
+  font-size: 13.5px;
+  font-weight: 700;
+  border-radius: 3px;
+  cursor: pointer;
+}
+
+.hyp-signup-btn-back:hover {
+  background-color: #fcfcfc;
+  color: #16191f;
+}
+
+.hyp-control-hidden {
+  display: none !important;
+}
+
+.hyp-signup-form-divider {
+  display: flex;
+  align-items: center;
+  text-align: center;
+  margin: 24px 0 16px 0;
+}
+
+.hyp-signup-form-divider::before,
+.hyp-signup-form-divider::after {
+  content: '';
+  flex: 1;
+  border-bottom: 1px solid #eaeded;
+}
+
+.hyp-signup-divider-string {
+  padding: 0 12px;
+  font-size: 11px;
+  font-weight: 400;
+  color: #aab7c4;
+}
+
+.hyp-signup-btn-redirect {
+  width: 100%;
+  height: 36px;
+  background-color: #ffffff;
+  color: #16191f;
+  border: 1px solid #aab7c4;
+  font-size: 13.5px;
+  font-weight: 400;
+  border-radius: 3px;
+  cursor: pointer;
+}
+
+.hyp-signup-btn-redirect:hover {
+  background-color: #f2f3f3;
+}
+
+/* ==========================================================================
+   RIGHT MARKETING GRAPHIC (INJECTED EMBEDDED ENCAPSULATED BACKGROUND ART)
+   ========================================================================== */
+.hyp-signup-promo-panel {
+  width: 100%;
+  /* High-fidelity standalone embedded SVG to keep rendering pixel-perfect without network lookups */
+  background-image: url("https://images.pexels.com/photos/30004057/pexels-photo-30004057.jpeg");
+  background-size: cover;
+  background-position: center;
+  border-radius: 4px;
+  display: flex;
+  flex-direction: column;
+}
+
+.hyp-signup-promo-inner {
+  padding: 48px;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  height: 100%;
+  min-height: 420px;
+}
+
+.hyp-signup-promo-headline-group {
+  max-width: 440px;
+}
+
+.hyp-signup-promo-headline {
+  font-size: 26px;
+  font-weight: 700;
+  color: #ffffff;
+  margin: 0 0 16px 0;
+  line-height: 1.3;
+  letter-spacing: -0.5px;
+}
+
+.hyp-signup-promo-paragraph {
+  font-size: 14px;
+  line-height: 1.6;
+  color: #aab7c4;
+  margin: 0;
+}
+
+.hyp-signup-promo-cta-row {
+  display: flex;
+  justify-content: flex-end;
+}
+
+.hyp-signup-promo-link {
+  font-size: 13.5px;
+  font-weight: 700;
+  color: #ffffff;
+  text-decoration: none;
+  transition: transform 0.15s ease;
+}
+
+.hyp-signup-promo-link:hover {
+  text-decoration: underline;
+  transform: translateX(4px);
+}
+
+/* ==========================================================================
+   VIEWPORT ENCAPSULATION FIXED FOOTER BLOCK (MINIMUM 40PX SEPARATE HEIGHT)
+   ========================================================================== */
+.hyp-signup-footer {
+  position: fixed;
+  bottom: 0;
+  left: 0;
+  width: 100%;
+  height: 45px;
+  min-height: 45px;
+  background-color: #161b22;
+  border-top: 1px solid #24292f;
+  padding: 0 24px;
+  z-index: 1000;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.hyp-signup-footer-legal {
+  font-size: 11px;
+  color: #aab7c4;
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  max-width: 70%;
+}
+
+.hyp-signup-footer-anchor {
+  color: #1199FA;
+  text-decoration: none;
+}
+
+.hyp-signup-footer-anchor:hover {
+  text-decoration: underline;
+}
+
+.hyp-signup-footer-copyright {
+  font-size: 11px;
+  color: #aab7c4;
+  white-space: nowrap;
+}
+
+/* ==========================================================================
+   PERFECT RESPONSIVE BREAKPOINTS (NO OVERLAYS, CRISP VIEWPORT SCALING)
+   ========================================================================== */
+@media (max-width: 992px) {
+  .hyp-signup-workspace-row {
+    padding: 30px 20px 80px 20px; /* Generous padding buffer over absolute limits */
+  }
+
+  .hyp-signup-grid-wrapper {
+    grid-template-columns: 100%; /* Switch grid architecture instantly to a vertical block stack */
+    gap: 32px;
+  }
+
+  .hyp-signup-card,
+  .hyp-signup-promo-panel {
+    max-width: 560px;
+    margin: 0 auto;
+  }
+  
+  .hyp-signup-promo-inner {
+    min-height: auto;
+    padding: 32px;
+  }
+  
+  .hyp-signup-promo-cta-row {
+    margin-top: 40px;
+  }
+}
+
+@media (max-width: 576px) {
+  .hyp-signup-topbar {
+    padding: 0 16px;
+  }
+
+  .hyp-signup-logo-sub,
+  .hyp-signup-header-actions .hyp-signup-header-link:not(.hyp-signup-lang-selector) {
+    display: none !important; /* Conceal secondary elements on mobile task environments */
+  }
+
+  .hyp-signup-card {
+    padding: 20px;
+  }
+
+  .hyp-signup-stepper-track {
+    flex-direction: column;
+    align-items: flex-start;
+    gap: 12px;
+  }
+
+  .hyp-signup-input-row {
+    grid-template-columns: 100%;
+    gap: 0;
+  }
+
+  .hyp-signup-footer {
+    flex-direction: column;
+    justify-content: center;
+    align-items: flex-start;
+    height: auto;
+    min-height: 45px;
+    padding: 8px 16px;
+    gap: 4px;
+  }
+
+  .hyp-signup-footer-legal {
+    max-width: 100%;
+    white-space: normal;
+  }
+}
+</style>
+
+<script>
+    document.addEventListener('DOMContentLoaded', () => {
+  
+  // Cache Step Views & Stepper Track Coordinates
+  const stepViews = document.querySelectorAll('.hyp-signup-step-view');
+  const stepNodes = document.querySelectorAll('.hyp-signup-step-node');
+  
+  // Cache Interactive Radio Group Inputs
+  const radioInd = document.getElementById('hypRadioInd');
+  const radioBiz = document.getElementById('hypRadioBiz');
+  
+  // Cache Dynamic Context Conditional Structural Nodes
+  const indInputsField = document.getElementById('hypIndInputsField');
+  const bizInputsField = document.getElementById('hypBizInputsField');
+  const dynamicEmailLabel = document.getElementById('hypDynamicEmailLabel');
+
+  // Cache Control Buttons Mechanics
+  const btnBack = document.getElementById('hypBtnBack');
+  const btnForward = document.getElementById('hypBtnForward');
+  const wizardForm = document.getElementById('hypSignupWizardForm');
+
+  let currentStepIndex = 0; // Baseline current active stage index
+
+  /**
+   * Evaluates chosen radio configurations to toggle individual vs business parameters
+   */
+  function handleAccountTypeContextSwitch() {
+    const labelInd = document.getElementById('hypToggleLabelInd');
+    const labelBiz = document.getElementById('hypToggleLabelBiz');
+
+    if (radioBiz && radioBiz.checked) {
+      labelBiz.classList.add('hyp-toggle-active');
+      labelInd.classList.remove('hyp-toggle-active');
+      
+      // Inject specific target fields configuration parameters
+      bizInputsField.classList.add('hyp-group-visible');
+      indInputsField.classList.remove('hyp-group-visible');
+      if (dynamicEmailLabel) dynamicEmailLabel.textContent = 'Organization Enterprise Email Address';
+    } else {
+      labelInd.classList.add('hyp-toggle-active');
+      labelBiz.classList.remove('hyp-toggle-active');
+      
+      indInputsField.classList.add('hyp-group-visible');
+      bizInputsField.classList.remove('hyp-group-visible');
+      if (dynamicEmailLabel) dynamicEmailLabel.textContent = 'Primary Contact Email Address';
+    }
+  }
+
+  if (radioInd) radioInd.addEventListener('change', handleAccountTypeContextSwitch);
+  if (radioBiz) radioBiz.addEventListener('change', handleAccountTypeContextSwitch);
+  
+  // Fire initial verification scan on boot lifecycle loop
+  handleAccountTypeContextSwitch();
+
+  /**
+   * Refreshes rendering properties of step containers and tracks based on navigation indices
+   */
+  function refreshWizardLifecycleLayout() {
+    // Coordinate visibility updates across step boxes
+    stepViews.forEach((view, idx) => {
+      if (idx === currentStepIndex) {
+        view.classList.add('hyp-view-visible');
+      } else {
+        view.classList.remove('hyp-view-visible');
+      }
+    });
+
+    // Update active highlight metrics along the timeline nodes
+    stepNodes.forEach((node, idx) => {
+      if (idx <= currentStepIndex) {
+        node.classList.add('hyp-step-active');
+      } else {
+        node.classList.remove('hyp-step-active');
+      }
+    });
+
+    // Manage operational bounds of Action Buttons
+    if (currentStepIndex === 0) {
+      btnBack.classList.add('hyp-control-hidden');
+    } else {
+      btnBack.classList.remove('hyp-control-hidden');
+    }
+
+    if (currentStepIndex === stepViews.length - 1) {
+      btnForward.textContent = 'Provision Infrastructure';
+    } else {
+      btnForward.textContent = 'Next Step';
+    }
+  }
+
+  /**
+   * Validates if active inputs in current section meet system criteria before permitting advancements
+   */
+  function isCurrentStepScopeValid() {
+    const activeViewContainer = stepViews[currentStepIndex];
+    const inputs = activeViewContainer.querySelectorAll('input[required], select[required]');
+    
+    let isSectionValid = true;
+    inputs.forEach(input => {
+      if (!input.checkValidity()) {
+        isSectionValid = false;
+        input.reportValidity(); // Fire structural browser alerting flags natively
+      }
+    });
+    return isSectionValid;
+  }
+
+  // Forward Navigation Cycle Button Logic Hooks
+  if (btnForward) {
+    btnForward.addEventListener('click', () => {
+      if (!isCurrentStepScopeValid()) return;
+
+      if (currentStepIndex < stepViews.length - 1) {
+        currentStepIndex++;
+        refreshWizardLifecycleLayout();
+        window.scrollTo({ top: 0, behavior: 'smooth' });
+      } else {
+        // Form compilation finish checkpoint loop
+        alert('Configuration parameters confirmed. Directing to Node Deployment Gateway.');
+      }
+    });
+  }
+
+  // Reverse Cycle Execution Backtracking Logic Hooks
+  if (btnBack) {
+    btnBack.addEventListener('click', () => {
+      if (currentStepIndex > 0) {
+        currentStepIndex--;
+        refreshWizardLifecycleLayout();
+        window.scrollTo({ top: 0, behavior: 'smooth' });
+      }
+    });
+  }
+});
+</script>
