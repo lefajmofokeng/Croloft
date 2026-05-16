@@ -1440,6 +1440,7 @@ document.addEventListener("DOMContentLoaded", function() {
       text-decoration: none;
       white-space: nowrap;
       padding-bottom: 4px; /* align with desc baseline */
+      border: 1px solid #0065ad; padding: 10px 18px; border-radius: 50px;
     }
 
     .itco-cs__header-link:hover {
@@ -1629,7 +1630,7 @@ document.addEventListener("DOMContentLoaded", function() {
       font-weight: 600;
       color: var(--itco-white);
       text-decoration: none;
-      transition: gap .2s;
+      transition: gap .2s; 
     }
     .itco-cs__cta:hover { gap: 14px; }
     .itco-cs__cta svg {
@@ -2569,7 +2570,7 @@ document.addEventListener("DOMContentLoaded", function() {
       
       <div class="stu-reveal-card">
         <div class="stu-reveal-media">
-          <img src="https://images.unsplash.com/photo-1633356122544-f134324a6cee?q=80&w=800&auto=format&fit=crop" alt="AI Updates" class="stu-reveal-img">
+          <img src="https://images.unsplash.com/photo-1704748430013-41227f6abf2f?q=80&w=1332&auto=format&fit=crop&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D" alt="AI Updates" class="stu-reveal-img">
           <div class="stu-reveal-badge">Case study</div>
         </div>
         <div class="stu-reveal-body">
@@ -2586,7 +2587,7 @@ document.addEventListener("DOMContentLoaded", function() {
 
       <div class="stu-reveal-card">
         <div class="stu-reveal-media">
-          <img src="https://images.unsplash.com/photo-1522202176988-66273c2fd55f?q=80&w=800&auto=format&fit=crop" alt="Campus Assistant" class="stu-reveal-img">
+          <img src="https://images.unsplash.com/photo-1684446116392-051d581d1a77?q=80&w=1170&auto=format&fit=crop&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D" alt="Campus Assistant" class="stu-reveal-img">
           <div class="stu-reveal-badge">Campus Quick</div>
         </div>
         <div class="stu-reveal-body">
@@ -2603,7 +2604,7 @@ document.addEventListener("DOMContentLoaded", function() {
 
       <div class="stu-reveal-card">
         <div class="stu-reveal-media">
-          <img src="https://images.unsplash.com/photo-1523240715639-93f800e98432?q=80&w=800&auto=format&fit=crop" alt="Career Path" class="stu-reveal-img">
+          <img src="https://images.unsplash.com/photo-1721041879210-c2580ae0a8ed?q=80&w=1332&auto=format&fit=crop&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D" alt="Career Path" class="stu-reveal-img">
           <div class="stu-reveal-badge">Career Intelligence</div>
         </div>
         <div class="stu-reveal-body">
@@ -2676,14 +2677,14 @@ document.addEventListener("DOMContentLoaded", function() {
 .stu-reveal-card:hover .stu-reveal-img {  border-radius: 15px; }
 .stu-reveal-badge {
   position: absolute; top: 16px; left: 16px;
-  background: white; padding: 5px 12px; border-radius: 8px;
-  font-size: 11px; font-weight: 700; text-transform: uppercase;
+  background: rgba(255, 255, 255, 0.818); padding: 5px 12px; letter-spacing: 1px;
+  font-size: 11px; font-weight: 500; text-transform: uppercase;
   box-shadow: 0 2px 4px rgba(0,0,0,0.05);
 }
 
 /* Body Content */
 .stu-reveal-body { padding: 32px; flex-grow: 1; display: flex; flex-direction: column; }
-.stu-reveal-card-title { font-size: 20px; font-weight: 700; color: #111; margin-bottom: 12px; line-height: 1.3; }
+.stu-reveal-card-title { font-size: 20px; font-weight: 600; color: #111; margin-bottom: 12px; line-height: 1.3; }
 .stu-reveal-card-text { font-size: 14px; color: #555; line-height: 1.6; margin-bottom: 24px; flex-grow: 1; }
 
 /* --- Fixed Reveal Footer Logic --- */
@@ -2739,6 +2740,29 @@ document.addEventListener("DOMContentLoaded", function() {
   .stu-reveal-card-title { font-size: 18px; }
 }
 </style>
+
+<script>
+  document.querySelectorAll('.stu-reveal-card').forEach(card => {
+  card.addEventListener('click', (e) => {
+    // Prevents text selection during click
+    const destinationText = card.querySelector('.stu-reveal-text').textContent;
+    console.log(`Routing to: ${destinationText}`);
+    // window.location.href = "/portal-destination";
+  });
+});
+</script>
+
+
+
+
+
+
+
+
+
+
+
+
 
 
 
