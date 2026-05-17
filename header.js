@@ -38,7 +38,7 @@ class CronosHeader extends HTMLElement {
                             { label: 'Startups',       href: 'plans-starter.html' },
                             { label: 'Professional',   href: 'plans-pro.html' },
                             { label: 'Enterprise',     href: 'plans-enterprise.html' },
-                            { label: 'Marketplace',  href: 'compare.html' },
+                            { label: 'Marketplace',  href: 'compare.html', external: true },
                             { label: 'Schedule a Demo',  href: 'quote.html' },
                         ]
                     },
@@ -227,15 +227,21 @@ class CronosHeader extends HTMLElement {
             }
         }
 
-        const mobileBtnHtml = (isMobile && group.mobileBtn) ? `<a class="cronos-mobile-group-btn" href="${group.mobileBtnHref || '#'}">${group.mobileBtn}</a>` : '';
+        const desktopBtnHtml = (!isMobile && group.mobileBtn) ? `<a class="cronos-desktop-group-btn" href="${group.mobileBtnHref || '#'}">${group.mobileBtn}</a>` : '';
+        const mobileBtnHtml  = (isMobile  && group.mobileBtn) ? `<a class="cronos-mobile-group-btn"  href="${group.mobileBtnHref || '#'}">${group.mobileBtn}</a>` : '';
 
-        const linksHtml = group.links.map(l => `
-            <li><a href="${l.href}"><span class="cronos-mega-menu-link-title">${l.label}</span></a></li>
-        `).join('');
+        const linksHtml = group.links.map(l => {
+            const externalAttr = l.external ? ' target="_blank" rel="noopener noreferrer"' : '';
+            const externalIcon = l.external
+                ? `<svg class="cronos-external-link-icon" xmlns="http://www.w3.org/2000/svg" width="11" height="11" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><line x1="7" y1="17" x2="17" y2="7"/><polyline points="7 7 17 7 17 17"/></svg>`
+                : '';
+            return `<li><a href="${l.href}"${externalAttr}><span class="cronos-mega-menu-link-title">${l.label}${externalIcon}</span></a></li>`;
+        }).join('');
 
         return `
             <div class="cronos-menu-group-card">
                 ${headingHtml}
+                ${desktopBtnHtml}
                 ${mobileBtnHtml}
                 <ul class="cronos-mega-menu-group-list">${linksHtml}</ul>
             </div>`;
@@ -333,7 +339,7 @@ class CronosHeader extends HTMLElement {
             font-family: 'Circular Std', system-ui, -apple-system, sans-serif;
         }
 
-        * { box-sizing: border-box; }
+        * { box-sizing: border-box; font-family: 'Circular Std', system-ui, -apple-system, sans-serif; }
 
         /* ── Wrapper ────────────────────────────────── */
         .cronos-header-wrapper {
@@ -793,19 +799,23 @@ class CronosHeader extends HTMLElement {
                 height: var(--cronos-header-height);
             }
 
-            /* Back button */
+            /* Back button — flex row, vertically centred, same height as header */
             .cronos-header-back-btn {
                 display: none;
+                flex-direction: row;
                 align-items: center;
-                justify-content: center;
+                justify-content: flex-start;
                 background: none;
                 border: none;
                 cursor: pointer;
                 padding: 0;
                 color: var(--cronos-color-text-light);
                 height: var(--cronos-header-height);
+                gap: 0;
             }
+            /* Hide logo link when subpanel is open */
             .cronos-header-wrapper.cronos-subpanel-header-open .cronos-custom-logo-link { display: none; }
+            /* Show back btn — as flex row so arrow + label sit side by side */
             .cronos-header-wrapper.cronos-subpanel-header-open .cronos-header-back-btn { display: flex; }
 
             .cronos-mobile-back-arrow-btn {
@@ -816,7 +826,53 @@ class CronosHeader extends HTMLElement {
                 border-radius: 50%;
                 border: 1px solid rgba(255,255,255,0.25);
                 color: var(--cronos-color-text-light);
+                flex-shrink: 0;
             }
+
+            /* Active parent label — shown next to back arrow */
+            .cronos-active-parent-label {
+                color: var(--cronos-color-text-light);
+                font-size: 1rem;
+                font-weight: 400;
+                margin-left: 10px;
+                white-space: nowrap;
+                line-height: var(--cronos-header-height);
+            }
+
+            /* External link icon (NE arrow) */
+            .cronos-external-link-icon {
+                display: inline-flex;
+                vertical-align: middle;
+                margin-left: 5px;
+                opacity: 0.6;
+                position: relative;
+                top: -1px;
+            }
+        }
+
+        /* Desktop group CTA button — sits under heading, above links list */
+        .cronos-desktop-group-btn {
+            display: inline-block;
+            color: #f4f4f4;
+            background-color: transparent;
+            border: 1px solid #42484e;
+            padding: 6px 14px;
+            border-radius: 50px;
+            margin-bottom: 18px;
+            font-weight: 500;
+            font-size: 0.8rem;
+            font-family: 'Circular Std', system-ui, sans-serif;
+            text-decoration: none;
+            cursor: pointer;
+            white-space: nowrap;
+            transition: background-color 0.2s, border-color 0.2s;
+        }
+        .cronos-desktop-group-btn:hover {
+            background-color: rgba(81, 81, 81, 0.2);
+        }
+
+        @media (max-width: 1024px) {
+            .cronos-desktop-group-btn { display: none; }
         }
         </style>
 
@@ -836,6 +892,7 @@ class CronosHeader extends HTMLElement {
                                     <polyline points="15 18 9 12 15 6"/>
                                 </svg>
                             </span>
+                            <span class="cronos-active-parent-label" id="cronos-activeParentLabel"></span>
                         </button>
                     </div>
 
@@ -987,13 +1044,26 @@ class CronosHeader extends HTMLElement {
         const mobileDropdownItems = shadow.querySelectorAll('.cronos-custom-nav-item--has-megamenu');
         const mobileMainNav       = shadow.querySelector('.cronos-custom-main-nav');
         const headerBackBtn       = shadow.getElementById('cronos-headerBackBtn');
+        const activeParentLabel   = shadow.getElementById('cronos-activeParentLabel');
 
         const openSubpanel = (item) => {
+            // Set the parent label text from the nav link (strip SVG icons — text nodes only)
+            const trigger = item.querySelector('.cronos-custom-nav-link');
+            const labelText = [...trigger.childNodes]
+                .filter(n => n.nodeType === Node.TEXT_NODE)
+                .map(n => n.textContent.trim())
+                .join('').trim();
+            if (activeParentLabel) activeParentLabel.textContent = labelText;
+
             item.classList.add('active');
             mobileMainNav.classList.add('cronos-subpanel-open');
             cronosHeaderWrapper.classList.add('cronos-subpanel-header-open');
         };
+
         const closeSubpanel = () => {
+            // Clear parent label — fixes ghost arrow bug
+            if (activeParentLabel) activeParentLabel.textContent = '';
+
             mobileDropdownItems.forEach(i => i.classList.remove('active'));
             mobileMainNav.classList.remove('cronos-subpanel-open');
             cronosHeaderWrapper.classList.remove('cronos-subpanel-header-open');
