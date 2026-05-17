@@ -53,7 +53,7 @@ class CronosHeader extends HTMLElement {
                         heading: 'Support',
                         links: [
                             { label: 'Customer Support',   href: 'billing.html' },
-                            { label: 'FAQs',  href: 'compare.html' },
+                            { label: 'FAQs',  href: 'faqs.html' },
                             { label: 'Contact Sales',  href: 'compare.html' },
                             { label: 'Learn',  href: 'compare.html' },
                         ]

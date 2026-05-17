@@ -60,664 +60,6 @@
 
 
 
-<div class="its-widget-wrapper">
-
-  <button class="its-trigger-pill-btn" id="itsTriggerPill" aria-label="Open IT Services Assistant">
-    <span class="its-trigger-text">Ask anything about our IT services</span>
-    <span class="its-trigger-icon">
-      <svg viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
-        <path d="M2.01 21L23 12L2.01 3L2 10L17 12L2 14L2.01 21Z" fill="currentColor"/>
-      </svg>
-    </span>
-  </button>
-
-  <div class="its-chat-window its-state-hidden" id="itsChatWindow">
-    
-    <div class="its-window-header">
-      <div class="its-header-left">
-        <div class="its-brand-icon">
-          <svg viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
-            <path d="M12 2L2 7l10 5 10-5-10-5zM2 17l10 5 10-5M2 12l10 5 10-5" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
-          </svg>
-        </div>
-        <span class="its-header-title">IT Support Intelligence</span>
-      </div>
-      
-      <div class="its-header-actions">
-        <div class="its-options-menu-wrapper">
-          <button class="its-action-btn" id="itsOptionsBtn" aria-label="Chat Options">
-            <svg viewBox="0 0 24 24" fill="currentColor" xmlns="http://www.w3.org/2000/svg">
-              <path d="M12 8c1.1 0 2-.9 2-2s-.9-2-2-2-2 .9-2 2 .9 2 2 2zm0 2c-1.1 0-2 .9-2 2s.9 2 2 2 2-.9 2-2-.9-2-2-2zm0 6c-1.1 0-2 .9-2 2s.9 2 2 2 2-.9 2-2-.9-2-2-2z"/>
-            </svg>
-          </button>
-          <div class="its-options-dropdown its-state-hidden" id="itsOptionsDropdown">
-            <button class="its-clear-btn" id="itsClearConversation">Clear conversation</button>
-          </div>
-        </div>
-        <button class="its-action-btn its-minimize-trigger" id="itsMinimizeBtn" aria-label="Minimize Chat">
-          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" xmlns="http://www.w3.org/2000/svg">
-            <path d="M19 12H5M19 12l-7 7M19 12l-7-7" transform="rotate(-90 12 12)"/>
-          </svg>
-        </button>
-      </div>
-    </div>
-
-    <div class="its-window-body" id="itsChatBody">
-      <div class="its-message-row its-message-bot its-welcome-msg" id="itsWelcomeMsg">
-        <div class="its-bot-icon-circle">
-          <svg viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
-            <path d="M12 2L2 7l10 5 10-5-10-5zM2 17l10 5 10-5M2 12l10 5 10-5" stroke="currentColor" stroke-width="1.5"/>
-          </svg>
-        </div>
-        <div class="its-message-bubble">
-          <p class="its-response-text">
-            Hello! I am your automated IT support expert. How can I assist you with your business software setup today?
-          </p>
-        </div>
-      </div>
-    </div>
-
-    <div class="its-window-footer">
-      <div class="its-internal-input-pill">
-        <input type="text" class="its-input-field" id="itsInputField" placeholder="Ask about web apps, cloud, design or strategy..." aria-label="Type your message">
-        <button class="its-send-btn" id="itsSendBtn" aria-label="Send Query">
-          <svg viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
-            <path d="M2.01 21L23 12L2.01 3L2 10L17 12L2 14L2.01 21Z" fill="currentColor"/>
-          </svg>
-        </button>
-      </div>
-      <div class="its-attribution-text">
-        Powered by <span class="its-brand-accent">IT Architecture Intel</span>
-      </div>
-    </div>
-
-  </div>
-</div>
-<style>
-/* ==========================================================================
-   CSS STYLING ARCHITECTURE (LIGHT THEME, SCOPED & ISOLATED)
-   ========================================================================== */
-
-:root {
-  --its-font-main: 'Circular Std', system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif;
-  --its-bg-window: #ffffff;
-  --its-bg-pill: #edf2fa;
-  --its-accent: #1a73e8;
-  --its-text-primary: #1f1f1f;
-  --its-text-secondary: #5f6368;
-  --its-border-color: #e0e0e0;
-  --its-message-user-bg: #e1f0f9;
-  --its-message-bot-bg: #f1f3f4;
-  --its-shadow-premium: 0 12px 40px rgba(0, 0, 0, 0.12), 0 2px 8px rgba(0, 0, 0, 0.06);
-  --its-transition-smooth: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
-}
-
-/* Base Wrapper Scope Layer */
-.its-widget-wrapper {
-  font-family: var(--its-font-main);
-  box-sizing: border-box;
-  position: relative;
-  z-index: 999999;
-}
-
-.its-widget-wrapper *, 
-.its-widget-wrapper *::before, 
-.its-widget-wrapper *::after {
-  box-sizing: inherit;
-}
-
-/* =========================================================================
-   Minimized Entry Bar Parameter Settings
-   ========================================================================= */
-.its-trigger-pill-btn {
-  position: fixed;
-  bottom: 24px;
-  left: 50%;
-  transform: translateX(-50%);
-  width: 100%;
-  max-width: 540px;
-  height: 56px;
-  background-color: var(--its-bg-pill);
-  border: 1px solid transparent;
-  border-radius: 28px;
-  padding: 0 24px;
-  display: flex;
-  align-items: center;
-  justify-content: space-between;
-  cursor: pointer;
-  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.05);
-  transition: var(--its-transition-smooth);
-  visibility: visible;
-  opacity: 1;
-}
-
-.its-trigger-pill-btn:hover {
-  background-color: #e3e9f5;
-  box-shadow: 0 6px 16px rgba(0, 0, 0, 0.08);
-}
-
-.its-trigger-text {
-  font-size: 16px;
-  color: var(--its-text-secondary);
-  font-weight: 400;
-  white-space: nowrap;
-  overflow: hidden;
-  text-overflow: ellipsis;
-}
-
-.its-trigger-icon {
-  width: 20px;
-  height: 20px;
-  color: #7f8388;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  flex-shrink: 0;
-  margin-left: 12px;
-}
-
-.its-trigger-icon svg { width: 100%; height: 100%; }
-
-/* Swapping out bar element via transitions */
-.its-trigger-pill-btn.its-state-hidden {
-  visibility: hidden;
-  opacity: 0;
-  transform: translateX(-50%) translateY(20px);
-  pointer-events: none;
-}
-
-/* =========================================================================
-   Expanded Chat Window (Featuring Premium Custom Fixed Height Dimensions)
-   ========================================================================= */
-.its-chat-window {
-  position: fixed;
-  bottom: 24px; 
-  left: 50%;
-  transform: translateX(-50%) translateY(0);
-  width: calc(100% - 32px);
-  max-width: 600px;
-  
-  /* Fixed height parameters across standard browser engines */
-  height: 600px; 
-  max-height: calc(100vh - 48px);
-  
-  background-color: #f4f4f4;
-  border: 1px solid var(--its-border-color);
-  border-radius: 24px;
-  box-shadow: var(--its-shadow-premium);
-  display: flex;
-  flex-direction: column;
-  overflow: hidden;
-  opacity: 1;
-  visibility: visible;
-  transition: opacity 0.3s cubic-bezier(0.4, 0, 0.2, 1), transform 0.3s cubic-bezier(0.4, 0, 0.2, 1), visibility 0.3s;
-}
-
-.its-chat-window.its-state-hidden {
-  opacity: 0;
-  visibility: hidden;
-  transform: translateX(-50%) translateY(40px);
-  pointer-events: none;
-}
-
-/* Window Header Grid */
-.its-window-header {
-  padding: 14px 18px;
-  display: flex;
-  align-items: center;
-  justify-content: space-between;
-  border-bottom: 1px solid var(--its-border-color);
-  background-color: var(--its-bg-window);
-}
-
-.its-header-left {
-  display: flex;
-  align-items: center;
-  gap: 12px;
-}
-
-.its-brand-icon {
-  width: 22px;
-  height: 22px;
-  color: var(--its-accent);
-  display: flex;
-  align-items: center;
-}
-
-.its-brand-icon svg { width: 100%; height: 100%; }
-.its-header-title { font-size: 16px; font-weight: 500; color: var(--its-text-primary); }
-.its-header-actions { display: flex; align-items: center; gap: 6px; }
-
-.its-action-btn {
-  background: none;
-  border: none;
-  width: 36px;
-  height: 36px;
-  border-radius: 50%;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  color: var(--its-text-secondary);
-  cursor: pointer;
-  transition: background-color 0.2s ease, color 0.2s ease;
-}
-
-.its-action-btn:hover {
-  background-color: #f1f3f4;
-  color: var(--its-text-primary);
-}
-
-.its-action-btn svg { width: 20px; height: 20px; }
-
-/* =========================================================================
-   Live Message Feed Core Scrollway Layout
-   ========================================================================= */
-.its-window-body {
-  padding: 20px 24px;
-  overflow-y: auto;
-  flex-grow: 1;
-  background-color: var(--its-bg-window);
-  scrollbar-width: thin;
-  display: flex;
-  flex-direction: column;
-  gap: 16px;
-}
-
-.its-message-row {
-  display: flex;
-  max-width: 85%;
-  width: fit-content;
-  animation: itsFadeBubbleIn 0.25s cubic-bezier(0.4, 0, 0.2, 1) forwards;
-}
-
-@keyframes itsFadeBubbleIn {
-  from { opacity: 0; transform: translateY(8px); }
-  to { opacity: 1; transform: translateY(0); }
-}
-
-.its-message-bot { align-self: flex-start; margin-right: auto; gap: 12px; }
-.its-message-user { align-self: flex-end; margin-left: auto; justify-content: flex-end; }
-
-.its-bot-icon-circle {
-  width: 26px;
-  height: 26px;
-  border-radius: 50%;
-  background-color: #f1f3f4;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  flex-shrink: 0;
-  margin-top: 4px;
-  color: var(--its-text-secondary);
-}
-
-.its-bot-icon-circle svg { width: 14px; height: 14px; }
-
-.its-message-bubble {
-  padding: 12px 16px;
-  border-radius: 16px;
-  font-size: 17px;
-  line-height: 1.55;
-}
-
-.its-message-user .its-message-bubble {
-  background-color: var(--its-message-user-bg);
-  color: #1a4980;
-  border-bottom-right-radius: 4px;
-}
-
-.its-message-bot .its-message-bubble {
-  background-color: var(--its-message-bot-bg);
-  color: #3c4043;
-  border-bottom-left-radius: 4px;
-}
-
-/* =========================================================================
-   Footer Controls Section Layout
-   ========================================================================= */
-.its-window-footer {
-  padding: 0 18px 12px 18px;
-  background-color: var(--its-bg-window);
-}
-
-.its-internal-input-pill {
-  width: 100%;
-  height: 52px;
-  background-color: var(--its-bg-pill);
-  border-radius: 26px;
-  display: flex;
-  align-items: center;
-  padding: 0 12px 0 24px;
-  margin-bottom: 12px;
-  transition: background-color 0.2s ease, box-shadow 0.2s ease;
-}
-
-.its-internal-input-pill:focus-within {
-  background-color: #e3e9f5;
-  box-shadow: 0 0 0 2px rgba(26, 115, 232, 0.2);
-}
-
-.its-input-field {
-  flex-grow: 1;
-  background: none;
-  border: none;
-  outline: none;
-  font-family: inherit;
-  font-size: 15px;
-  color: var(--its-text-primary);
-  padding: 0;
-}
-
-.its-input-field::placeholder { color: var(--its-text-secondary); }
-
-.its-send-btn {
-  background: none;
-  border: none;
-  width: 42px;
-  height: 42px;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  color: var(--its-text-secondary);
-  cursor: pointer;
-  transition: color 0.2s ease;
-}
-
-.its-send-btn:hover { color: var(--its-accent); }
-.its-send-btn svg { width: 18px; height: 18px; }
-.its-attribution-text { font-size: 11px; color: var(--its-text-secondary); text-align: center; width: 100%; }
-.its-brand-accent { font-weight: 500; color: var(--its-accent); }
-
-/* =========================================================================
-   Context Options Overlay Menu
-   ========================================================================= */
-.its-options-menu-wrapper { position: relative; }
-
-.its-options-dropdown {
-  position: absolute;
-  top: calc(100% + 8px);
-  right: 0;
-  width: max-content;
-  background-color: var(--its-bg-window);
-  border: 1px solid var(--its-border-color);
-  border-radius: 12px;
-  box-shadow: var(--its-shadow-premium);
-  overflow: hidden;
-  z-index: 1000;
-  opacity: 1;
-  visibility: visible;
-  transition: opacity 0.2s ease, visibility 0.2s ease, transform 0.2s ease;
-  transform: translateY(0);
-}
-
-.its-options-dropdown.its-state-hidden {
-  opacity: 0;
-  visibility: hidden;
-  transform: translateY(-8px);
-}
-
-.its-clear-btn {
-  display: block;
-  width: 100%;
-  padding: 12px 20px;
-  background: none;
-  border: none;
-  font-family: inherit;
-  font-size: 14px;
-  color: var(--its-text-primary);
-  text-align: left;
-  cursor: pointer;
-}
-
-.its-clear-btn:hover { background-color: #f1f3f4; }
-
-/* =========================================================================
-   Responsive Mobile Media Threshold Rules
-   ========================================================================= */
-@media (max-width: 640px) {
-  .its-trigger-pill-btn {
-    width: calc(100% - 32px);
-    bottom: 16px;
-    height: 52px;
-  }
-  
-  .its-chat-window {
-    bottom: 16px;
-    width: calc(100% - 24px);
-    height: calc(100vh - 32px); /* Scale elegantly up to fullscreen constraints on mobile viewports */
-    border-radius: 20px;
-  }
-  
-  .its-window-body { padding: 16px; }
-  .its-window-footer { padding: 0 14px 10px 14px; }
-}
-</style>
-
-<script>
-/* ==========================================================================
-   INTERACTIVE APPLICATION ENGINE LOGIC (VANILLA JS)
-   ========================================================================== */
-document.addEventListener('DOMContentLoaded', () => {
-  const triggerPill = document.getElementById('itsTriggerPill');
-  const chatWindow = document.getElementById('itsChatWindow');
-  const minimizeBtn = document.getElementById('itsMinimizeBtn');
-  const optionsBtn = document.getElementById('itsOptionsBtn');
-  const optionsDropdown = document.getElementById('itsOptionsDropdown');
-  const clearBtn = document.getElementById('itsClearConversation');
-  const chatBody = document.getElementById('itsChatBody');
-  const welcomeMsg = document.getElementById('itsWelcomeMsg');
-  const inputField = document.getElementById('itsInputField');
-  const sendBtn = document.getElementById('itsSendBtn');
-
-  // Intelligent Response Dictionary Setup
-  const mockResponses = [
-    {
-      keywords: ["service", "offer", "what do you do", "web applications", "websites"],
-      answer: "We engineer enterprise-grade custom web applications, responsive cross-platform architectures, cloud systems migration plans, and cybersecurity vulnerability checks tailored exactly to your operations."
-    },
-    {
-      keywords: ["price", "cost", "how much", "rate", "quote"],
-      answer: "Development pricing parameters scale based on the system feature blueprints and complexity. Contact our management office directly for a custom, modular project estimate estimation mapping."
-    },
-    {
-      keywords: ["contact", "support", "help", "email", "phone"],
-      answer: "Our operations group is available directly. Drop a project brief transmission over to info@it-services.com or initiate line support calls via our digital service portals."
-    },
-    {
-      keywords: ["default", "else"],
-      answer: "Interesting question! For precise, itemized breakdowns regarding our specific technical delivery phases, please drop a note straight into our team inbox."
-    }
-  ];
-
-  /* =========================================================================
-     TRANSITION & VIEW WINDOW STATE HANDLING
-     ========================================================================= */
-
-  // INTERFACE OPEN: Hide bar element, draw full-height canvas panel visible
-  triggerPill.addEventListener('click', () => {
-    triggerPill.classList.add('its-state-hidden');
-    chatWindow.classList.remove('its-state-hidden');
-    inputField.focus();
-  });
-
-  // INTERFACE MINIMIZE: Hide window card interface layer, restore pill bar entry point
-  minimizeBtn.addEventListener('click', () => {
-    chatWindow.classList.add('its-state-hidden');
-    triggerPill.classList.remove('its-state-hidden');
-  });
-
-  // Global Key Listener for Accessibility (Escape Key minimizes panel)
-  document.addEventListener('keydown', (e) => {
-    if (e.key === 'Escape' && !chatWindow.classList.contains('its-state-hidden')) {
-      chatWindow.classList.add('its-state-hidden');
-      triggerPill.classList.remove('its-state-hidden');
-    }
-  });
-
-  /* =========================================================================
-     CONTEXT DROP-DOWN & TOTAL RE-INITIALIZATION ACTIONS
-     ========================================================================= */
-
-  // Toggle Context Dropdown Visibility
-  optionsBtn.addEventListener('click', (e) => {
-    e.stopPropagation();
-    optionsDropdown.classList.toggle('its-state-hidden');
-  });
-
-  // Document Click Boundary Watcher (Closes menu when clicking outside)
-  document.addEventListener('click', (e) => {
-    if (!optionsBtn.contains(e.target) && !optionsDropdown.classList.contains('its-state-hidden')) {
-      optionsDropdown.classList.add('its-state-hidden');
-    }
-  });
-
-  // CRITICAL FIX ACTION: Clear conversation completely resets, closes the panel, and returns to the bar
-  clearBtn.addEventListener('click', (e) => {
-    e.stopPropagation();
-    optionsDropdown.classList.add('its-state-hidden'); // close menu
-
-    // 1. Terminate all custom user/bot rows from feed body
-    chatBody.querySelectorAll('.its-message-row:not(.its-welcome-msg)').forEach(row => row.remove());
-    
-    // 2. Restore default welcome message back into view bounds
-    if (welcomeMsg) {
-      welcomeMsg.style.display = 'flex';
-    }
-
-    // 3. COMPLETE RETREAT STATE SWAP: Close full chat view window instantly and restore trigger pill bar
-    chatWindow.classList.add('its-state-hidden');
-    triggerPill.classList.remove('its-state-hidden');
-  });
-
-  /* =========================================================================
-     CORE RUNTIME MESSAGE PIPELINE HANDLERS
-     ========================================================================= */
-
-  function executeMessageSubmission() {
-    const textQuery = inputField.value.trim();
-    if (!textQuery) return;
-
-    // Append raw user speech bubble node
-    renderMessageBubble(textQuery, 'user');
-    inputField.value = '';
-
-    // Suppress greeting prompt once real logging begins
-    if (welcomeMsg) {
-      welcomeMsg.style.display = 'none';
-    }
-
-    // Direct automated feedback lookup
-    const systemResponse = resolveEngineReply(textQuery);
-
-    // Dynamic processing timeout engine (Simulated bot tracking pause)
-    setTimeout(() => {
-      renderMessageBubble(systemResponse, 'bot');
-    }, 650);
-  }
-
-  function resolveEngineReply(query) {
-    const scrubbedInput = query.toLowerCase();
-    
-    for (const ruleBlock of mockResponses) {
-      if (ruleBlock.keywords.some(k => scrubbedInput.includes(k))) {
-        return ruleBlock.answer;
-      }
-    }
-    const defaultFallback = mockResponses.find(r => r.keywords.includes("else"));
-    return defaultFallback ? defaultFallback.answer : "Message tracking complete. Connect directly with account representatives.";
-  }
-
-  function renderMessageBubble(text, speakerCode) {
-    const rowElement = document.createElement('div');
-    rowElement.className = `its-message-row its-message-${speakerCode}`;
-
-    if (speakerCode === 'bot') {
-      const iconWrap = document.createElement('div');
-      iconWrap.className = 'its-bot-icon-circle';
-      iconWrap.innerHTML = '<svg viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg"><path d="M12 2L2 7l10 5 10-5-10-5zM2 17l10 5 10-5M2 12l10 5 10-5" stroke="currentColor" stroke-width="1.5"/></svg>';
-      rowElement.appendChild(iconWrap);
-    }
-
-    const cellBubble = document.createElement('div');
-    cellBubble.className = 'its-message-bubble';
-    cellBubble.innerHTML = `<p class="its-response-text">${text}</p>`;
-    rowElement.appendChild(cellBubble);
-
-    chatBody.appendChild(rowElement);
-
-    // Auto scroll view update frame lock execution
-    setTimeout(() => {
-      chatBody.scrollTop = chatBody.scrollHeight;
-    }, 10);
-  }
-
-  /* =========================================================================
-     INPUT DEVICE LISTENERS
-     ========================================================================= */
-  inputField.addEventListener('keypress', (e) => {
-    if (e.key === 'Enter') {
-      executeMessageSubmission();
-    }
-  });
-
-  sendBtn.addEventListener('click', executeMessageSubmission);
-});
-</script>
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
 
 
 
@@ -1014,6 +356,425 @@ document.addEventListener("DOMContentLoaded", function() {
     }, 4000); // Change text every 4 seconds
 });
 </script>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>IT Tech Independent Slide</title>
+
+    <style>
+        /* Global Reset & Namespace styling */
+        * {
+            box-sizing: border-box;
+        }
+
+        :root {
+            --it-sep-font: 'Circular Std', sans-serif;
+            --it-sep-bg: #FFFFFF;
+            --it-sep-text: #0B1221;
+            --it-sep-sub: #556987;
+            --it-sep-accent: #0B1221;
+            --it-sep-line: #E5E7EB;
+        }
+
+        body {
+            margin: 0;
+            padding: 0;
+            font-family: var(--it-sep-font);
+            background: var(--it-sep-bg);
+        }
+
+        /* 1. Track: Controls total scroll depth */
+        .it-sep-track {
+            position: relative;
+            height: 400vh; /* 100vh per section */
+        }
+
+        /* 2. Sticky Container: Keeps component locked in viewport during scroll */
+        .it-sep-sticky {
+            position: sticky;
+            top: 0;
+            height: 100vh;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            overflow: hidden; 
+            padding: 40px 20px;
+        }
+
+        .it-sep-header {
+            text-align: center;
+            margin-bottom: 40px;
+            z-index: 10;
+        }
+
+        .it-sep-title {
+            font-size: clamp(28px, 4vw, 42px); /* Fluid text scaling */
+            font-weight: 500;
+            letter-spacing: -0.03em;
+            margin: 0;
+            color: var(--it-sep-text);
+        }
+
+        /* 3. Central Dynamic Layout */
+        .it-sep-grid {
+            position: relative;
+            display: grid;
+            grid-template-columns: 1fr 2px 1fr;
+            gap: 60px;
+            width: 100%;
+            max-width: 1200px;
+            height: 450px;
+            align-items: center;
+        }
+
+        /* Center Progress Line */
+        .it-sep-line-container {
+            height: 100%;
+            background: var(--it-sep-line);
+            position: relative;
+            width: 100%;
+        }
+
+        .it-sep-line-fill {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            background: var(--it-sep-accent);
+            height: 0%;
+            transition: height 0.1s ease-out;
+        }
+
+        /* 4. Content Masks */
+        .it-sep-slot {
+            position: relative;
+            height: 100%;
+            width: 100%;
+            overflow: hidden; 
+            border-radius: 20px;
+        }
+
+        .it-sep-text-slot {
+            overflow: hidden;
+            border-radius: 0;
+            display: flex;
+            align-items: center;
+        }
+
+        /* Individual Sliding Layers */
+        .it-sep-layer {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            opacity: 0;
+            pointer-events: none;
+            transition: transform 0.6s cubic-bezier(0.16, 1, 0.3, 1), opacity 0.4s ease;
+        }
+
+        /* Active Transition States */
+        .it-sep-layer.active {
+            opacity: 1;
+            transform: translateY(0) !important;
+            pointer-events: auto;
+        }
+
+        /* Directional Entry Definitions */
+        .it-sep-img-layer {
+            transform: translateY(-100%);
+        }
+
+        .it-sep-text-layer {
+            transform: translateY(100%);
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+        }
+
+        .it-sep-img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            border-radius: 20px;
+        }
+
+        .it-sep-h3 { 
+            font-size: clamp(24px, 3vw, 32px); 
+            font-weight: 600; 
+            margin: 0 0 15px 0; 
+            color: var(--it-sep-text); 
+            letter-spacing: -0.02em;
+        }
+        
+        .it-sep-p { 
+            font-size: clamp(15px, 2vw, 18px); 
+            color: var(--it-sep-sub); 
+            line-height: 1.4; 
+            margin: 0; 
+            font-weight: 400;
+        }
+
+        .it-sep-footer {
+            margin-top: 40px;
+            z-index: 10;
+        }
+
+        .it-sep-btn {
+            background: #0B1221;
+            color: white;
+            padding: 12px 30px;
+            border-radius: 50px;
+            font-weight: 600;
+            font-size: 17px;
+            border: none;
+            cursor: pointer;
+            font-family: inherit;
+            transition: transform 0.2s ease;
+        }
+
+        .it-sep-btn:hover {
+            transform: scale(1.03);
+        }
+
+        /* ==========================================================================
+           Mobile Responsiveness (Screens 900px and below)
+           ========================================================================== */
+        @media (max-width: 900px) {
+            .it-sep-sticky {
+                padding: 30px 20px;
+            }
+
+            .it-sep-header {
+                margin-bottom: 25px;
+            }
+
+            /* Restructure grid layout: Left bar (4px), Right content area (1fr) */
+            .it-sep-grid {
+                grid-template-columns: 4px 1fr;
+                grid-template-rows: 220px 140px; /* Separated row heights for img and text slots */
+                gap: 20px 25px;
+                height: 380px;
+                align-items: stretch;
+            }
+
+            /* Make progress bar track span full height of both slot rows */
+            .it-sep-line-container {
+                grid-column: 1;
+                grid-row: 1 / span 2;
+                width: 4px;
+            }
+
+            /* Send image slot cleanly into row 1 on the right */
+            .it-sep-slot:not(.it-sep-text-slot) {
+                grid-column: 2;
+                grid-row: 1;
+            }
+
+            /* Send text slot safely into row 2 on the right */
+            .it-sep-text-slot {
+                grid-column: 2;
+                grid-row: 2;
+                align-items: flex-start;
+                padding-top: 5px;
+            }
+
+            .it-sep-text-layer {
+                justify-content: flex-start;
+            }
+
+            .it-sep-footer {
+                margin-top: 25px;
+            }
+        }
+    </style>
+</head>
+<body>
+
+<div class="it-sep-track" id="itTrack">
+    <div class="it-sep-sticky">
+        
+        <div class="it-sep-header">
+            <h2 class="it-sep-title">See why 4,000+ merchants trust us</h2>
+        </div>
+
+        <div class="it-sep-grid">
+            <!-- Images Slot -->
+            <div class="it-sep-slot">
+                <div class="it-sep-layer it-sep-img-layer active" data-index="0">
+                    <img src="https://images.unsplash.com/photo-1550751827-4bd374c3f58b?auto=format&fit=crop&q=80&w=800" class="it-sep-img" alt="Tech 1">
+                </div>
+                <div class="it-sep-layer it-sep-img-layer" data-index="1">
+                    <img src="https://images.unsplash.com/photo-1451187580459-43490279c0fa?auto=format&fit=crop&q=80&w=800" class="it-sep-img" alt="Tech 2">
+                </div>
+                <div class="it-sep-layer it-sep-img-layer" data-index="2">
+                    <img src="https://images.unsplash.com/photo-1518770660439-4636190af475?auto=format&fit=crop&q=80&w=800" class="it-sep-img" alt="Tech 3">
+                </div>
+                <div class="it-sep-layer it-sep-img-layer" data-index="3">
+                    <img src="https://images.unsplash.com/photo-1563986768609-322da13575f3?auto=format&fit=crop&q=80&w=800" class="it-sep-img" alt="Tech 4">
+                </div>
+            </div>
+
+            <!-- Left / Center Progress Line -->
+            <div class="it-sep-line-container">
+                <div class="it-sep-line-fill" id="itLine"></div>
+            </div>
+
+            <!-- Text Slot -->
+            <div class="it-sep-slot it-sep-text-slot">
+                <div class="it-sep-layer it-sep-text-layer active" data-index="0">
+                    <h3 class="it-sep-h3">Advanced Data Security</h3>
+                    <p class="it-sep-p">Protect your infrastructure with hardware-level encryption and real-time threat monitoring.</p>
+                </div>
+                <div class="it-sep-layer it-sep-text-layer" data-index="1">
+                    <h3 class="it-sep-h3">Cloud Infrastructure</h3>
+                    <p class="it-sep-p">Scalable cloud solutions that grow with your business, ensuring 99.9% uptime across all regions.</p>
+                </div>
+                <div class="it-sep-layer it-sep-text-layer" data-index="2">
+                    <h3 class="it-sep-h3">AI Performance</h3>
+                    <p class="it-sep-p">Harness the power of neural networks to automate complex workflows and data analysis.</p>
+                </div>
+                <div class="it-sep-layer it-sep-text-layer" data-index="3">
+                    <h3 class="it-sep-h3">Smart Interfaces</h3>
+                    <p class="it-sep-p">Intuitive dashboards designed for deep technical oversight without the clutter.</p>
+                </div>
+            </div>
+        </div>
+
+        <div class="it-sep-footer">
+            <button class="it-sep-btn">Start Accepting Crypto</button>
+        </div>
+
+    </div>
+</div>
+
+<script>
+(function() {
+    const track = document.getElementById('itTrack');
+    const line = document.getElementById('itLine');
+    const imgLayers = document.querySelectorAll('.it-sep-img-layer');
+    const textLayers = document.querySelectorAll('.it-sep-text-layer');
+    const totalItems = 4;
+
+    function updateScroll() {
+        if (!track) return; // Removed the window width restriction to enable mobile animation
+
+        const rect = track.getBoundingClientRect();
+        const viewHeight = window.innerHeight;
+        
+        // Total scrollable distance
+        const totalDist = rect.height - viewHeight;
+        // Current progress (0 to 1)
+        let progress = -rect.top / totalDist;
+        progress = Math.max(0, Math.min(1, progress));
+
+        // Update Line progress fill height
+        line.style.height = `${progress * 100}%`;
+
+        // Determine current active index based on scroll progress
+        const activeIndex = Math.min(Math.floor(progress * totalItems), totalItems - 1);
+
+        // Update Layers
+        imgLayers.forEach((layer, idx) => {
+            if (idx === activeIndex) {
+                layer.classList.add('active');
+            } else if (idx < activeIndex) {
+                // Scrolled past: push DOWN out of box mask
+                layer.classList.remove('active');
+                layer.style.transform = 'translateY(100%)';
+            } else {
+                // Not reached: keep UP above box mask
+                layer.classList.remove('active');
+                layer.style.transform = 'translateY(-100%)';
+            }
+        });
+
+        textLayers.forEach((layer, idx) => {
+            if (idx === activeIndex) {
+                layer.classList.add('active');
+            } else if (idx < activeIndex) {
+                // Scrolled past: push UP out of box mask
+                layer.classList.remove('active');
+                layer.style.transform = 'translateY(-100%)';
+            } else {
+                // Not reached: keep DOWN below box mask
+                layer.classList.remove('active');
+                layer.style.transform = 'translateY(100%)';
+            }
+        });
+    }
+
+    window.addEventListener('scroll', updateScroll, { passive: true });
+    window.addEventListener('resize', updateScroll);
+    updateScroll();
+})();
+</script>
+
+</body>
+</html>
+
+
+
+
 
 
 
@@ -2006,7 +1767,7 @@ document.addEventListener("DOMContentLoaded", function() {
     .itco-cs__header-title {
       font-size: 54px;
       font-weight: 500;
-      line-height: 1.1;
+      line-height: 1;
       color: var(--itco-text);
       margin: 0 0 14px;
     }
@@ -2363,7 +2124,7 @@ document.addEventListener("DOMContentLoaded", function() {
   <!-- ── HEADER ───────────────────────────────────────────── -->
   <div class="itco-cs__header">
     <div class="itco-cs__header-text">
-      <h2 class="itco-cs__header-title">From startups to enterprises — we're how&nbsp;leaders have powered digital transformation</h2>
+      <h2 class="itco-cs__header-title">We're how&nbsp;leaders have powered digital transformation</h2>
       <p class="itco-cs__header-desc">Join the fastest-growing community of innovators who trust us to accelerate their technology and redefine what's possible in their industries.</p>
     </div>
     <a class="itco-cs__header-link" href="#">
@@ -3273,7 +3034,7 @@ document.addEventListener("DOMContentLoaded", function() {
 
 /* Body Content */
 .stu-reveal-body { padding: 32px; flex-grow: 1; display: flex; flex-direction: column; }
-.stu-reveal-card-title { font-size: 20px; font-weight: 500; color: #111; margin-bottom: 12px; line-height: 1.3; }
+.stu-reveal-card-title { font-size: 20px; font-weight: 500; color: #111; margin-bottom: 12px; line-height: 1.1; }
 .stu-reveal-card-text { font-size: 15px; color: #555; line-height: 1.6; margin-bottom: 24px; flex-grow: 1; }
 
 /* --- Fixed Reveal Footer Logic --- */
