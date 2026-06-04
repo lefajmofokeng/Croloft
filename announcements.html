@@ -1,0 +1,237 @@
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Glossary</title>
+    
+    <script src="header.js" defer></script>
+    <script src="footer.js" defer></script> 
+</head>
+<body>
+
+    <cronos-header></cronos-header>
+    
+
+</body>
+</html>
+
+
+    <style>
+        @font-face { font-family:'Circular Std'; src:url('fonts/CircularStd-Book.woff2') format('woff2'),url('fonts/CircularStd-Book.woff') format('woff'); font-weight:400; font-style:normal; font-display:swap; }
+        @font-face { font-family:'Circular Std'; src:url('fonts/CircularStd-BookItalic.woff2') format('woff2'),url('fonts/CircularStd-BookItalic.woff') format('woff'); font-weight:400; font-style:italic; font-display:swap; }
+        @font-face { font-family:'Circular Std'; src:url('fonts/CircularStd-Medium.woff2') format('woff2'),url('fonts/CircularStd-Medium.woff') format('woff'); font-weight:500; font-style:normal; font-display:swap; }
+        @font-face { font-family:'Circular Std'; src:url('fonts/CircularStd-Bold.woff2') format('woff2'),url('fonts/CircularStd-Bold.woff') format('woff'); font-weight:600; font-style:normal; font-display:swap; }
+        @font-face { font-family:'Circular Std'; src:url('fonts/CircularStd-Black.woff2') format('woff2'),url('fonts/CircularStd-Black.woff') format('woff'); font-weight:800; font-style:normal; font-display:swap; }
+    </style>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>IT Company Announcements</title>
+    
+    <style>
+        /* Define Circular Std Font-Face */
+      @font-face { font-family:'Circular Std'; src:url('fonts/CircularStd-Book.woff2') format('woff2'),url('fonts/CircularStd-Book.woff') format('woff'); font-weight:400; font-style:normal; font-display:swap; }
+      @font-face { font-family:'Circular Std'; src:url('fonts/CircularStd-BookItalic.woff2') format('woff2'),url('fonts/CircularStd-BookItalic.woff') format('woff'); font-weight:400; font-style:italic; font-display:swap; }
+      @font-face { font-family:'Circular Std'; src:url('fonts/CircularStd-Medium.woff2') format('woff2'),url('fonts/CircularStd-Medium.woff') format('woff'); font-weight:500; font-style:normal; font-display:swap; }
+      @font-face { font-family:'Circular Std'; src:url('fonts/CircularStd-Bold.woff2') format('woff2'),url('fonts/CircularStd-Bold.woff') format('woff'); font-weight:600; font-style:normal; font-display:swap; }
+      @font-face { font-family:'Circular Std'; src:url('fonts/CircularStd-Bold.woff2') format('woff2'),url('fonts/CircularStd-Bold.woff') format('woff'); font-weight:700; font-style:normal; font-display:swap; }
+      @font-face { font-family:'Circular Std'; src:url('fonts/CircularStd-Black.woff2') format('woff2'),url('fonts/CircularStd-Black.woff') format('woff'); font-weight:800; font-style:normal; font-display:swap; }
+      @font-face { font-family:'Circular Std'; src:url('fonts/CircularStd-Black.woff2') format('woff2'),url('fonts/CircularStd-Black.woff') format('woff'); font-weight:900; font-style:normal; font-display:swap; }
+    
+        /* Scoped Root Styles */
+        .itc-page-root { font-family: 'Circular Std', -apple-system, sans-serif; background-color: #f1f3f7; color: #1e293b; margin: 0; padding: 0; box-sizing: border-box; }
+        .itc-page-root *, .itc-page-root *::before, .itc-page-root *::after { box-sizing: inherit; }
+
+        /* -- Header -- */
+        .itc-header { background-color: #004ba7; background-image: url(''); background-size: cover; padding: 150px 40px 20px 40px; height: 250px;}
+        .itc-header-title { font-size: 36px; color: #ffffff; margin: 0; text-align: left; padding-left: 150px; font-weight: 500;; }
+
+        /* -- Main Content Layout -- */
+        .itc-main-container { max-width: 1200px; margin: 0 auto; padding: 40px 20px; padding-bottom: 150px; display: grid; grid-template-columns: 250px 1fr; gap: 40px; }
+
+        /* -- Sidebar (Mobile Responsive Layout) -- */
+        .itc-sidebar { }
+        .itc-sidebar-nav { list-style: none; padding: 0; margin: 0; display: flex; flex-direction: column; gap: 8px;  }
+        
+        .itc-nav-item { display: flex; align-items: center; gap: 12px; padding: 12px 16px; border-radius: 50px; cursor: pointer; text-decoration: none; color: #1e293b; transition: background 0.2s; font-family: 'Circular Std'; font-size: 14px; opacity: 0.8; }
+        .itc-nav-item:hover { background-color: #e2e8f0; opacity: 1; }
+        .itc-nav-item.itc-active { background-color: #d2e3f6; color: #0b1531; font-weight: 500; opacity: 1; }
+
+        /* Icons */
+        .itc-nav-icon { width: 18px; height: 18px; color: #64748b; flex-shrink: 0; }
+        .itc-nav-item.itc-active .itc-nav-icon { color: #0b1531; }
+
+        /* -- Announcement List -- */
+        .itc-announcement-panel { }
+        .itc-panel-title { font-size: 24px; color: #0b1531; margin: 0 0 30px 0; border-bottom: 1px solid #d6dfea; padding-bottom: 12px; }
+        
+        .itc-announcement-list { list-style: none; padding: 0; margin: 0; display: flex; flex-direction: column; gap: 20px; }
+        .itc-post-card {padding: 15px 0;}
+        .itc-post-card:hover { border-color: #cbd5e1; }
+
+        /* Card Meta */
+        .itc-post-meta { display: flex; align-items: center; gap: 12px; font-size: 14px; color: #94a3b8; margin-bottom: 12px; }
+        .itc-post-category { color: #94a3b8; text-decoration: none; }
+        .itc-post-category:hover { color: #64748b; }
+        .itc-post-date { color: #293039; }
+
+        /* Card Title */
+        .itc-post-title { font-size: 20px; color: #0b1531; margin: 0; line-height: 1.3; }
+
+        /* -- Mobile Responsiveness Media Queries -- */
+        @media (max-width: 900px) {
+            .itc-main-container { grid-template-columns: 1fr; gap: 30px; padding: 20px 15px; }
+            .itc-sidebar-nav { flex-direction: row; flex-wrap: wrap; justify-content: start; gap: 6px; }
+            .itc-nav-item { flex: 0 1 auto; padding: 10px 14px; font-size: 13px; border-radius: 20px; /* Pillow shape for mobile */ }
+            .itc-header-title { font-size: 28px; padding-left: 0; }
+        }
+    </style>
+</head>
+<body class="itc-page-root">
+
+    <header class="itc-header">
+        <h1 class="itc-header-title">Keep Up with Croloft</h1>
+    </header>
+
+    <div class="itc-main-container">
+        
+        <aside class="itc-sidebar">
+            <nav>
+                <ul class="itc-sidebar-nav" id="itc-filter-nav">
+                    <li class="itc-nav-item itc-active" data-filter="all">
+                        <svg class="itc-nav-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M19 11H5m14 0a2 2 0 012 2v6a2 2 0 01-2 2H5a2 2 0 01-2-2v-6a2 2 0 012-2m14 0V9a2 2 0 00-2-2M5 11V9a2 2 0 012-2m0 0V5a2 2 0 012-2h6a2 2 0 012 2v2M7 7h10"></path></svg>
+                        All Announcements
+                    </li>
+                    <li class="itc-nav-item" data-filter="listings">
+                        <svg class="itc-nav-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M9 12h6m-6 4h6m2 5H7a2 2 0 01-2-2V5a2 2 0 012-2h5.586a1 1 0 01.707.293l5.414 5.414a1 1 0 01.293.707V19a2 2 0 01-2 2z"></path></svg>
+                        Listings & Delistings
+                    </li>
+                    <li class="itc-nav-item" data-filter="events">
+                        <svg class="itc-nav-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M8 7V3m8 4V3m-9 8h10M5 21h14a2 2 0 002-2V7a2 2 0 00-2-2H5a2 2 0 00-2 2v12a2 2 0 002 2z"></path></svg>
+                        Events & Promotions
+                    </li>
+                    <li class="itc-nav-item" data-filter="products">
+                        <svg class="itc-nav-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M10.325 4.317c.426-1.756 2.924-1.756 3.35 0a1.724 1.724 0 002.573 1.066c1.543-.94 3.31.826 2.37 2.37a1.724 1.724 0 001.065 2.572c1.756.426 1.756 2.924 0 3.35a1.724 1.724 0 00-1.066 2.573c.94 1.543-.826 3.31-2.37 2.37a1.724 1.724 0 00-2.572 1.065c-.426 1.756-2.924 1.756-3.35 0a1.724 1.724 0 00-2.573-1.066c-1.543.94-3.31-.826-2.37-2.37a1.724 1.724 0 00-1.065-2.572c-1.756-.426-1.756-2.924 0-3.35a1.724 1.724 0 001.066-2.573c-.94-1.543.826-3.31 2.37-2.37.996.608 2.296.07 2.572-1.065z"></path><circle cx="12" cy="12" r="3"></circle></svg>
+                        Product Updates
+                    </li>
+                    <li class="itc-nav-item" data-filter="systems">
+                        <svg class="itc-nav-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M4 6h16M4 12h16m-7 6h7"></path></svg>
+                        System Updates
+                    </li>
+                </ul>
+            </nav>
+        </aside>
+
+        <main class="itc-announcement-panel">
+            <h2 class="itc-panel-title" id="itc-panel-header">All Announcements</h2>
+            
+            <ul class="itc-announcement-list" id="itc-posts-container">
+                <li class="itc-post-card itc-listings">
+                    <div class="itc-post-meta">
+                        <span class="itc-post-category">Listings & Delistings</span>
+                        <span class="itc-post-date">2026-05-07</span>
+                    </div>
+                    <h3 class="itc-post-title">Delisting of VET/BTC From the Crypto.com Exchange (Advanced Trading Platform)</h3>
+                </li>
+
+                <li class="itc-post-card itc-products">
+                    <div class="itc-post-meta">
+                        <span class="itc-post-category">Product Updates</span>
+                        <span class="itc-post-date">2026-05-07</span>
+                    </div>
+                    <h3 class="itc-post-title">Changes to Margin and Derivatives risk parameters - Effective May 14, 2026, 08:00 UTC</h3>
+                </li>
+
+                <li class="itc-post-card itc-listings">
+                    <div class="itc-post-meta">
+                        <span class="itc-post-category">Listings & Delistings</span>
+                        <span class="itc-post-date">2026-05-05</span>
+                    </div>
+                    <h3 class="itc-post-title">Delisting of ZETA Staking on the Crypto.com Exchange (Advanced Trading Platform)</h3>
+                </li>
+
+                <li class="itc-post-card itc-products">
+                    <div class="itc-post-meta">
+                        <span class="itc-post-category">Product Updates</span>
+                        <span class="itc-post-date">2026-05-05</span>
+                    </div>
+                    <h3 class="itc-post-title">Crypto.com Exchange (Advanced Trading Platform) Supports the Ronin (RON) Chain Migration</h3>
+                </li>
+
+                <li class="itc-post-card itc-products">
+                    <div class="itc-post-meta">
+                        <span class="itc-post-category">Product Updates</span>
+                        <span class="itc-post-date">2026-05-05</span>
+                    </div>
+                    <h3 class="itc-post-title">Index Constituents Update - Effective 7 May 2026, 08:00 UTC</h3>
+                </li>
+            </ul>
+        </main>
+    </div>
+
+    <script>
+        (function() {
+            // Strictly scope DOM access to unique prefixes
+            const nav = document.getElementById('itc-filter-nav');
+            const postsContainer = document.getElementById('itc-posts-container');
+            const headerText = document.getElementById('itc-panel-header');
+            const posts = postsContainer.querySelectorAll('.itc-post-card');
+
+            // Apply functionality to scoped sidebar elements
+            nav.addEventListener('click', function(e) {
+                const clickedItem = e.target.closest('.itc-nav-item');
+                if (!clickedItem) return;
+
+                // Update Active State within the scoped UI
+                nav.querySelector('.itc-active').classList.remove('itc-active');
+                clickedItem.classList.add('itc-active');
+
+                // Filter logic
+                const filterValue = clickedItem.getAttribute('data-filter');
+                headerText.textContent = clickedItem.textContent.trim();
+
+                posts.forEach(post => {
+                    if (filterValue === 'all') {
+                        post.style.display = 'block'; // Show all in scoped UI
+                    } else if (post.classList.contains('itc-' + filterValue)) {
+                        post.style.display = 'block'; // Show matched category
+                    } else {
+                        post.style.display = 'none'; // Hide non-matched
+                    }
+                });
+            });
+        })();
+    </script>
+
+</body>
+</html>
+
+<cronos-footer></cronos-footer>

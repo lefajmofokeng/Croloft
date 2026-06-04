@@ -1,7 +1,4 @@
 // File: header.js
-// =============================================
-// CRONOS HEADER — SINGLE SOURCE OF TRUTH
-// =============================================
 
 class CronosHeader extends HTMLElement {
     constructor() {
@@ -31,7 +28,7 @@ class CronosHeader extends HTMLElement {
                         heading: 'Compare & Save',
                         links: [
                             { label: 'Annual vs Monthly',   href: 'billing.html' },
-                            { label: 'Feature Comparison',  href: 'compare.html' },
+                            { label: 'Archictecture & Scopes',  href: 'price.html' },
                         ]
                     },
                     {
@@ -188,7 +185,7 @@ class CronosHeader extends HTMLElement {
 
         const linksHtml = group.links.map(l => {
             const target = l.external ? 'target="_blank"' : '';
-            const icon = l.external ? '<span style="margin-left:6px; font-size:0.9em;">&nearrow;</span>' : '';
+            const icon = l.external ? '<span style="margin-left:5px; font-size:0.9em; vertical-align: middle;"><svg width="18" height="18" viewBox="0 0 24 24" fill="none"><path d="M10 4H6C4.89543 4 4 4.89543 4 6V18C4 19.1046 4.89543 20 6 20H18C19.1046 20 20 19.1046 20 18V14M14 4H20M20 4V10M20 4L12 12" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"/></svg></span>' : '';
             return `<li><a href="${l.href}" ${target}><span class="cronos-mega-menu-link-title">${l.label}${icon}</span></a></li>`;
         }).join('');
 
@@ -328,14 +325,14 @@ class CronosHeader extends HTMLElement {
         .cronos-header-action-buttons { display: flex; align-items: center; }
         .cronos-header-action-btn {
             background: #0077cc; color: #f7f9fa; border: none; padding: 9px 15px;
-            border-radius: 50px; font-weight: 400; font-size: 16px; cursor: pointer;
+            border-radius: 50px; font-weight: 400; font-size: 15px; cursor: pointer;
             margin-left: 10px; text-decoration: none; font-family: inherit; white-space: nowrap;
         }
         .cronos-header-action-btn:hover { background-color: #0081ff; }
 
         .cronos-header-secondary-btn {
             background-color: #62b8fa32; color: #95d1ff; border: none; padding: 9px 15px;
-            border-radius: 50px; font-weight: 400; font-size: 16px; cursor: pointer;
+            border-radius: 50px; font-weight: 400; font-size: 15px; cursor: pointer;
             margin-left: 10px; text-decoration: none; font-family: inherit; white-space: nowrap;
         }
         .cronos-header-secondary-btn:hover { background-color: #4a4b6b; }

@@ -1,0 +1,796 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>My Website</title>
+    
+    <script src="header.js" defer></script> 
+    <script src="footer.js" defer></script>
+
+     <style>
+        @font-face { font-family:'Circular Std'; src:url('fonts/CircularStd-Book.woff2') format('woff2'),url('fonts/CircularStd-Book.woff') format('woff'); font-weight:400; font-style:normal; font-display:swap; }
+        @font-face { font-family:'Circular Std'; src:url('fonts/CircularStd-BookItalic.woff2') format('woff2'),url('fonts/CircularStd-BookItalic.woff') format('woff'); font-weight:400; font-style:italic; font-display:swap; }
+        @font-face { font-family:'Circular Std'; src:url('fonts/CircularStd-Medium.woff2') format('woff2'),url('fonts/CircularStd-Medium.woff') format('woff'); font-weight:500; font-style:normal; font-display:swap; }
+        @font-face { font-family:'Circular Std'; src:url('fonts/CircularStd-Bold.woff2') format('woff2'),url('fonts/CircularStd-Bold.woff') format('woff'); font-weight:600; font-style:normal; font-display:swap; }
+        @font-face { font-family:'Circular Std'; src:url('fonts/CircularStd-Black.woff2') format('woff2'),url('fonts/CircularStd-Black.woff') format('woff'); font-weight:800; font-style:normal; font-display:swap; }
+    </style>
+</head>
+<body>
+
+    <cronos-header></cronos-header>
+
+</body>
+</html>
+
+
+<!-- Component Stylesheet - Scoped specifically to prevent styling leaks into theme header/footer -->
+<style>
+    @font-face {
+        font-family: 'Circular Std';
+        src: url('fonts/CircularStd-Book.woff2') format('woff2'),
+             url('fonts/CircularStd-Book.woff') format('woff');
+        font-weight: 400;
+        font-style: normal;
+    }
+    @font-face {
+        font-family: 'Circular Std';
+        src: url('fonts/CircularStd-Medium.woff2') format('woff2'),
+             url('fonts/CircularStd-Medium.woff') format('woff');
+        font-weight: 500;
+        font-style: normal;
+    }
+    @font-face {
+        font-family: 'Circular Std';
+        src: url('fonts/CircularStd-Bold.woff2') format('woff2'),
+             url('fonts/CircularStd-Bold.woff') format('woff');
+        font-weight: 700;
+        font-style: normal;
+    }
+
+    :root {
+        --calc-bg-card: #ffffff;
+        --calc-border: #dadce0;
+        --calc-border-focus: #1a73e8;
+        --calc-text-primary: #202124;
+        --calc-text-secondary: #5f6368;
+        --calc-primary: #1a73e8;
+        --calc-primary-hover: #1557b0;
+        --calc-primary-light: #e8f0fe;
+        --calc-success: #1e8e3e;
+        --calc-radius: 4px;
+    }
+
+    .calc-page-wrapper * {
+        box-sizing: border-box;
+        font-family: 'Circular Std', -apple-system, BlinkMacSystemFont, sans-serif;
+        -webkit-font-smoothing: antialiased;
+    }
+
+    .calc-page-wrapper {
+        max-width: 1280px;
+        margin: 0 auto;
+        padding: 40px 24px;
+        color: var(--calc-text-primary);
+    }
+
+    /* Intro Page Headers */
+    .calc-intro-header {
+        margin-bottom: 32px;
+        border-bottom: 1px solid var(--calc-border);
+        padding-bottom: 24px;
+    }
+
+    .calc-intro-header h1 {
+        font-size: 28px;
+        font-weight: 500;
+        color: var(--calc-text-primary);
+        letter-spacing: -0.5px;
+        margin-bottom: 8px;
+    }
+
+    .calc-intro-header p {
+        font-size: 15px;
+        color: var(--calc-text-secondary);
+        max-width: 700px;
+        line-height: 1.5;
+    }
+
+    /* Core Two-Column Structural Layout */
+    .calc-layout-grid {
+        display: grid;
+        grid-template-columns: 280px 1fr 360px;
+        gap: 32px;
+        align-items: start;
+    }
+
+    /* Sticky Platform Matrix Selector (Left Anchor Column) */
+    .calc-solution-nav {
+        position: sticky;
+        top: 40px;
+        display: flex;
+        flex-direction: column;
+        gap: 24px;
+    }
+
+    .calc-nav-section-title {
+        font-size: 11px;
+        text-transform: uppercase;
+        letter-spacing: 0.8px;
+        color: var(--calc-text-secondary);
+        font-weight: 700;
+        margin-bottom: 8px;
+        padding-left: 12px;
+    }
+
+    .calc-nav-group {
+        display: flex;
+        flex-direction: column;
+        gap: 4px;
+        margin-bottom: 16px;
+    }
+
+    .calc-nav-anchor {
+        display: flex;
+        align-items: center;
+        padding: 10px 12px;
+        color: var(--calc-text-primary);
+        font-size: 13.5px;
+        font-weight: 500;
+        text-decoration: none;
+        border-radius: var(--calc-radius);
+        cursor: pointer;
+        transition: background-color 0.15s ease, color 0.15s ease;
+    }
+
+    .calc-nav-anchor:hover {
+        background-color: #f8f9fa;
+    }
+
+    .calc-nav-anchor.active {
+        color: var(--calc-primary);
+        background-color: var(--calc-primary-light);
+    }
+
+    .calc-nav-icon {
+        margin-right: 10px;
+        font-size: 16px;
+    }
+
+    /* Configuration Panel (Center Workstation) */
+    .calc-config-panel {
+        display: flex;
+        flex-direction: column;
+        gap: 32px;
+    }
+
+    .calc-section-card {
+        background: var(--calc-bg-card);
+        border: 1px solid var(--calc-border);
+        border-radius: 8px;
+        padding: 28px;
+    }
+
+    .calc-section-card h2 {
+        font-size: 18px;
+        font-weight: 500;
+        margin-bottom: 6px;
+        color: var(--calc-text-primary);
+    }
+
+    .calc-card-subtitle {
+        font-size: 13px;
+        color: var(--calc-text-secondary);
+        margin-bottom: 24px;
+    }
+
+    /* Form Design Inputs Engine */
+    .calc-form-grid {
+        display: grid;
+        grid-template-columns: repeat(2, 1fr);
+        gap: 20px;
+    }
+
+    .calc-form-group {
+        display: flex;
+        flex-direction: column;
+        gap: 6px;
+    }
+
+    .calc-form-group.full-width {
+        grid-column: span 2;
+    }
+
+    .calc-form-group label {
+        font-size: 13px;
+        font-weight: 500;
+        color: var(--calc-text-primary);
+    }
+
+    .calc-form-group select, 
+    .calc-form-group input {
+        width: 100%;
+        padding: 10px 12px;
+        border: 1px solid var(--calc-border);
+        border-radius: var(--calc-radius);
+        background-color: var(--calc-bg-card);
+        color: var(--calc-text-primary);
+        font-size: 14px;
+        outline: none;
+        transition: border-color 0.15s ease;
+    }
+
+    .calc-form-group select:focus, 
+    .calc-form-group input:focus {
+        border-color: var(--calc-border-focus);
+        box-shadow: inset 0 0 0 1px var(--calc-border-focus);
+    }
+
+    /* Add-on Component Selectors Layout */
+    .calc-matrix-list {
+        display: flex;
+        flex-direction: column;
+        gap: 12px;
+    }
+
+    .calc-matrix-item {
+        display: flex;
+        align-items: flex-start;
+        padding: 16px;
+        border: 1px solid var(--calc-border);
+        border-radius: var(--calc-radius);
+        cursor: pointer;
+        transition: background-color 0.15s ease, border-color 0.15s ease;
+    }
+
+    .calc-matrix-item:hover {
+        background-color: #f8f9fa;
+    }
+
+    .calc-matrix-item.selected {
+        border-color: var(--calc-border-focus);
+        background-color: var(--calc-primary-light);
+    }
+
+    .calc-matrix-checkbox {
+        margin-top: 3px;
+        margin-right: 14px;
+        width: 16px;
+        height: 16px;
+        accent-color: var(--calc-primary);
+    }
+
+    .calc-matrix-body {
+        flex-grow: 1;
+    }
+
+    .calc-matrix-header {
+        display: flex;
+        justify-content: space-between;
+        font-weight: 500;
+        font-size: 14px;
+        color: var(--calc-text-primary);
+        margin-bottom: 4px;
+    }
+
+    .calc-matrix-price-tag {
+        color: var(--calc-text-secondary);
+        font-size: 13px;
+        font-weight: 500;
+    }
+
+    .calc-matrix-desc {
+        font-size: 12.5px;
+        color: var(--calc-text-secondary);
+        line-height: 1.4;
+    }
+
+    /* Estimates Bill Board (Right Anchor Column) */
+    .calc-summary-anchor {
+        position: sticky;
+        top: 40px;
+        background: var(--calc-bg-card);
+        border: 1px solid var(--calc-border);
+        border-radius: 8px;
+        display: flex;
+        flex-direction: column;
+    }
+
+    .calc-summary-title {
+        padding: 20px 24px;
+        border-bottom: 1px solid var(--calc-border);
+        font-size: 15px;
+        font-weight: 500;
+        background-color: #fafafa;
+        border-top-left-radius: 8px;
+        border-top-right-radius: 8px;
+    }
+
+    .calc-bom-stream {
+        padding: 20px 24px;
+        display: flex;
+        flex-direction: column;
+        gap: 16px;
+        max-height: 380px;
+        overflow-y: auto;
+    }
+
+    .calc-bom-row {
+        display: flex;
+        justify-content: space-between;
+        align-items: flex-start;
+        font-size: 13px;
+        padding-bottom: 12px;
+        border-bottom: 1px dashed var(--calc-border);
+    }
+
+    .calc-bom-row:last-child {
+        border-bottom: none;
+        padding-bottom: 0;
+    }
+
+    .calc-bom-name {
+        font-weight: 500;
+        color: var(--calc-text-primary);
+        line-height: 1.3;
+    }
+
+    .calc-bom-category {
+        font-size: 11px;
+        color: var(--calc-text-secondary);
+        margin-top: 3px;
+    }
+
+    .calc-bom-value {
+        font-weight: 700;
+        color: var(--calc-text-primary);
+        text-align: right;
+        white-space: nowrap;
+        padding-left: 12px;
+    }
+
+    .calc-total-block {
+        padding: 24px;
+        background-color: #f1f3f4;
+        border-top: 1px solid var(--calc-border);
+        border-bottom-left-radius: 8px;
+        border-bottom-right-radius: 8px;
+    }
+
+    .calc-total-flex {
+        display: flex;
+        justify-content: space-between;
+        align-items: baseline;
+        margin-bottom: 4px;
+    }
+
+    .calc-total-label {
+        font-size: 14px;
+        font-weight: 500;
+    }
+
+    .calc-total-output {
+        font-size: 26px;
+        font-weight: 700;
+        color: var(--calc-success);
+    }
+
+    .calc-frequency-tag {
+        font-size: 11.5px;
+        color: var(--calc-text-secondary);
+        text-align: right;
+        margin-bottom: 20px;
+    }
+
+    .calc-submit-btn {
+        display: block;
+        width: 100%;
+        padding: 12px;
+        background-color: var(--calc-primary);
+        color: #ffffff;
+        border: none;
+        border-radius: var(--calc-radius);
+        font-size: 14px;
+        font-weight: 500;
+        cursor: pointer;
+        text-align: center;
+        transition: background-color 0.15s ease;
+    }
+
+    .calc-submit-btn:hover {
+        background-color: var(--calc-primary-hover);
+    }
+
+    /* Mobile Adaptability Viewport Controls */
+    @media (max-width: 1120px) {
+        .calc-layout-grid {
+            grid-template-columns: 240px 1fr;
+        }
+        .calc-summary-anchor {
+            grid-column: span 2;
+            position: relative;
+            top: auto;
+        }
+    }
+
+    @media (max-width: 768px) {
+        .calc-layout-grid {
+            grid-template-columns: 1fr;
+        }
+        .calc-solution-nav {
+            position: relative;
+            top: auto;
+            display: block;
+        }
+        .calc-nav-group {
+            display: grid;
+            grid-template-columns: repeat(2, 1fr);
+            gap: 8px;
+        }
+        .calc-summary-anchor {
+            grid-column: span 1;
+        }
+        .calc-form-grid {
+            grid-template-columns: 1fr;
+        }
+        .calc-form-group.full-width {
+            grid-column: span 1;
+        }
+    }
+</style>
+
+<!-- Component Markup Structure -->
+<div class="calc-page-wrapper">
+    
+    <header class="calc-intro-header">
+        <h1>Solution & Infrastructure Architecture Pricing Console</h1>
+        <p>Configure scope deployment modules across our technical and creative practices. Build your custom architectural profile matrix to unlock customized solution estimates in real-time.</p>
+    </header>
+
+    <div class="calc-layout-grid">
+        
+        <!-- Left Side: Nav Anchor Matrices -->
+        <nav class="calc-solution-nav">
+            <div>
+                <div class="calc-nav-section-title">Software Development</div>
+                <div class="calc-nav-group">
+                    <a class="calc-nav-anchor active" data-solution="ai_automation"><span class="calc-nav-icon">🤖</span>AI & Automation</a>
+                    <a class="calc-nav-anchor" data-solution="mobile_web_apps"><span class="calc-nav-icon">📱</span>Mobile & Web Apps</a>
+                    <a class="calc-nav-anchor" data-solution="ecommerce"><span class="calc-nav-icon">🛒</span>E-Commerce Engines</a>
+                    <a class="calc-nav-anchor" data-solution="database_eng"><span class="calc-nav-icon">🗄️</span>Database Systems</a>
+                </div>
+
+                <div class="calc-nav-section-title">IT Infrastructure</div>
+                <div class="calc-nav-group">
+                    <a class="calc-nav-anchor" data-solution="it_support"><span class="calc-nav-icon">🛠️</span>Support & Helpdesk</a>
+                    <a class="calc-nav-anchor" data-solution="managed_it"><span class="calc-nav-icon">🛡️</span>Managed IT Services</a>
+                    <a class="calc-nav-anchor" data-solution="cloud_infra"><span class="calc-nav-icon">☁️</span>Cloud & Storage</a>
+                </div>
+
+                <div class="calc-nav-section-title">Marketing Studio</div>
+                <div class="calc-nav-group">
+                    <a class="calc-nav-anchor" data-solution="digital_marketing"><span class="calc-nav-icon">📈</span>Digital Campaigns</a>
+                </div>
+            </div>
+        </nav>
+
+        <!-- Center Column: Dynamic Configuration Card Panels -->
+        <div class="calc-config-panel">
+            <section class="calc-section-card">
+                <h2 id="scaleTitle">Operational Scale Setup</h2>
+                <div class="calc-card-subtitle" id="scaleSubtitle">Define baseline operational tracking volume and capacity metrics.</div>
+                <div class="calc-form-grid" id="scaleParametersForm">
+                    <!-- JavaScript populates input arrays natively here -->
+                </div>
+            </section>
+
+            <section class="calc-section-card">
+                <h2>Functional Infrastructure Add-ons</h2>
+                <div class="calc-card-subtitle">Layer sophisticated modular functionality and deep engineering extensions onto your workspace scope.</div>
+                <div class="calc-matrix-list" id="featureMatrixForm">
+                    <!-- JavaScript populates row selections here -->
+                </div>
+            </section>
+        </div>
+
+        <!-- Right Column: Real-Time Sticky Balance Ledger -->
+        <aside class="calc-summary-anchor">
+            <div class="calc-summary-title">Bill of Materials Configuration</div>
+            <div class="calc-bom-stream" id="bomStream">
+                <!-- Calculated invoice line structures rendered instantly -->
+            </div>
+            <div class="calc-total-block">
+                <div class="calc-total-flex">
+                    <span class="calc-total-label">Estimated Allocation</span>
+                    <span class="calc-total-output" id="totalDisplay">R 0.00</span>
+                </div>
+                <div class="calc-frequency-tag" id="frequencyLabel">Excl. VAT / month</div>
+                <button class="calc-submit-btn" id="submitConfig">Request Architecture Proposal</button>
+            </div>
+        </aside>
+
+    </div>
+</div>
+
+<!-- Evaluation Calculation Script Engine -->
+<script>
+    const solutionDatabase = {
+        ai_automation: {
+            title: "AI & Automation Setup Profile",
+            frequency: "monthly operational retainer",
+            baseParameters: [
+                { id: 'scale_metric', label: 'Concurrent Automation Pipelines', options: [
+                    { label: 'Pilot Suite (1-3 Automated Workflows)', value: 'small', price: 15000 },
+                    { label: 'Business Engine (4-10 Native Pipelines)', value: 'medium', price: 35000 },
+                    { label: 'Enterprise Matrix (Unlimited Infrastructure Hub)', value: 'large', price: 75000 }
+                ]}
+            ],
+            features: [
+                { id: 'nlp_engine', name: 'Custom LLM / NLP Fine-Tuning Integration', desc: 'Domain-specific language training loops aligning with your core knowledge banks.', cost: 25000 },
+                { id: 'rpa_nodes', name: 'Legacy RPA Operations Execution Nodes', desc: 'Secure custom bot interaction scripts engineered over non-API infrastructure.', cost: 12000 }
+            ]
+        },
+        mobile_web_apps: {
+            title: "Mobile & Web Applications Framework",
+            frequency: "project deployment estimation",
+            baseParameters: [
+                { id: 'platform_target', label: 'Platform Scope Target Architecture', options: [
+                    { label: 'Single Responsive Web System Deployment', value: 'web', price: 65000 },
+                    { label: 'Cross-Platform Native Core (iOS + Android Framework)', value: 'hybrid', price: 120000 },
+                    { label: 'Dual Native Discrete Code Architecture (Swift + Kotlin)', value: 'native', price: 240000 }
+                ]}
+            ],
+            features: [
+                { id: 'offline_sync', name: 'Local-First Encrypted Offline Sync Subsystem', desc: 'Bi-directional background data synchronization engines optimized for flaky connections.', cost: 18000 },
+                { id: 'realtime_ws', name: 'Low-Latency Event WebSockets Cluster', desc: 'High-availability multi-user collaboration backend layers.', cost: 14500 }
+            ]
+        },
+        ecommerce: {
+            title: "E-Commerce Enterprise Infrastructure",
+            frequency: "project setup + execution cost",
+            baseParameters: [
+                { id: 'sku_volume', label: 'Target System Managed Stock Registry (SKUs)', options: [
+                    { label: 'Boutique Scale Catalog (Under 1,000 active listings)', value: 'small', price: 45000 },
+                    { label: 'Mid-Market Connected Warehouse (1,000 - 20,000 SKUs)', value: 'medium', price: 95000 },
+                    { label: 'Hyper-Scale High-Availability Matrix (20,000+ SKU Registry)', value: 'large', price: 185000 }
+                ]}
+            ],
+            features: [
+                { id: 'erp_sync', name: 'Real-Time ERP Sync (SAP, Syspro, Sage Ledger Link)', desc: 'Instant bi-directional financial accounting, invoicing, and inventory tracking coordination.', cost: 40000 },
+                { id: 'payment_vault', name: 'Tokenized Custom PCI-DSS Payment Gateway Vault', desc: 'Highly optimized custom multi-currency transaction structures processing split-payout loops.', cost: 15000 }
+            ]
+        },
+        database_eng: {
+            title: "Database Engineering & Management Profiles",
+            frequency: "monthly platform optimization management",
+            baseParameters: [
+                { id: 'db_topology', label: 'High Availability Clustering Infrastructure', options: [
+                    { label: 'Single Node Production Instance Setup', value: 'single', price: 8000 },
+                    { label: 'Multi-Region Read-Replica Master-Array Clustering', value: 'multi', price: 28000 },
+                    { label: 'Distributed Sharded High-Throughput NoSQL Mesh Engine', value: 'sharded', price: 62000 }
+                ]}
+            ],
+            features: [
+                { id: 'zero_mig', name: 'Zero-Downtime Hot Schema Migration Architecture', desc: 'Engineered pipeline assets ensuring safe transactional data porting operations live.', cost: 30000 },
+                { id: 'pii_enc', name: 'Dynamic Column-Level Encryption & PII Separation', desc: 'High-grade data compliance controls rendering identity vectors unreadable on hardware leakage.', cost: 19500 }
+            ]
+        },
+        it_support: {
+            title: "IT Support & Helpdesk Operations",
+            frequency: "monthly operational retainer",
+            baseParameters: [
+                { id: 'endpoints', label: 'Monitored Enterprise Fleet Seat-Allocation', options: [
+                    { label: 'SME Support Block (Up to 25 Monitored Endpoints)', value: 'sme', price: 12500 },
+                    { label: 'Corporate Fleet Operations (26 to 100 Endpoints)', value: 'corp', price: 38000 },
+                    { label: 'Enterprise Infrastructure Fleet (100+ Systems Covered)', value: 'ent', price: 85000 }
+                ]}
+            ],
+            features: [
+                { id: 'sla_247', name: 'Mission-Critical 24/7/365 On-Call Support SLA Escalation', desc: 'Guaranteed technical incident engineering response response response parameters inside 15 minutes.', cost: 15000 }
+            ]
+        },
+        managed_it: {
+            title: "Managed IT Services Retainer Profiles",
+            frequency: "monthly infrastructure operational cost",
+            baseParameters: [
+                { id: 'nodes', label: 'Managed Environments Footprint Core Range', options: [
+                    { label: 'Core Target Footprint (Up to 5 production environments)', value: 'small', price: 16000 },
+                    { label: 'Expanded Infrastructure Matrix (6 to 25 target nodes)', value: 'medium', price: 42000 },
+                    { label: 'Enterprise Infrastructure Cluster (25+ Bare-Metal Nodes Matrix)', value: 'large', price: 98000 }
+                ]}
+            ],
+            features: [
+                { id: 'siem_soc', name: 'Continuous SIEM Monitoring & Managed SOC Response Operations', desc: 'Automated infrastructure tracking maps paired with automated security block rules against hostile patterns.', cost: 24000 }
+            ]
+        },
+        cloud_infra: {
+            title: "Cloud Infrastructure & Hybrid Data Systems",
+            frequency: "monthly management cost",
+            baseParameters: [
+                { id: 'cloud_layout', label: 'Hyperscaler Target Topology Profile', options: [
+                    { label: 'Private Virtualization System (On-Premises VMware / Hyper-V Platform)', value: 'private', price: 22000 },
+                    { label: 'Public Cloud Native Mesh Deployment (AWS / GCP / Azure Target Architecture)', value: 'public', price: 45000 },
+                    { label: 'Multi-Cloud High Availability Synchronous Grid Cluster', value: 'multicloud', price: 110000 }
+                ]}
+            ],
+            features: [
+                { id: 'iac_terraform', name: 'Infrastructure as Code (IaC) Declarative Automation Core', desc: 'Every infrastructure node version-controlled, maintained via automated Terraform deployment structures.', cost: 35000 }
+            ]
+        },
+        digital_marketing: {
+            title: "Growth Marketing & Creative Studio Operations",
+            frequency: "monthly strategic retainer allocation",
+            baseParameters: [
+                { id: 'channels', label: 'Strategic Growth Distribution Scope', options: [
+                    { label: 'Focused Growth Package (Single Targeted Marketing Pipeline Engine)', value: 'single', price: 15000 },
+                    { label: 'Omnichannel Expansion Engine (Integrated Campaign Funnels Split Matrix)', value: 'multi', price: 35000 },
+                    { label: 'Enterprise System Brand Takeover Matrix Layout', value: 'complete', price: 75000 }
+                ]}
+            ],
+            features: [
+                { id: 'content_engine', name: 'High-Fidelity Content Studio Production Block', desc: 'Dedicated professional asset generation sprints optimizing active campaign funnels.', cost: 20000 }
+            ]
+        }
+    };
+
+    let activeSolution = 'ai_automation';
+    let runtimeState = {
+        baseParams: {},
+        selectedFeatures: new Set()
+    };
+
+    // DOM Wireframes mapping
+    const scaleTitle = document.getElementById('scaleTitle');
+    const scaleParametersForm = document.getElementById('scaleParametersForm');
+    const featureMatrixForm = document.getElementById('featureMatrixForm');
+    const bomStream = document.getElementById('bomStream');
+    const totalDisplay = document.getElementById('totalDisplay');
+    const frequencyLabel = document.getElementById('frequencyLabel');
+    const anchors = document.querySelectorAll('.calc-nav-anchor');
+
+    function mountCalculator() {
+        setupNavigationTriggers();
+        renderActiveWorkspace();
+    }
+
+    function setupNavigationTriggers() {
+        anchors.forEach(anchor => {
+            anchor.addEventListener('click', (e) => {
+                anchors.forEach(a => a.classList.remove('active'));
+                const clickTarget = e.currentTarget;
+                clickTarget.classList.add('active');
+
+                activeSolution = clickTarget.getAttribute('data-solution');
+                runtimeState.baseParams = {};
+                runtimeState.selectedFeatures.clear();
+
+                renderActiveWorkspace();
+            });
+        });
+    }
+
+    function renderActiveWorkspace() {
+        const profile = solutionDatabase[activeSolution];
+        
+        scaleTitle.textContent = profile.title;
+        frequencyLabel.textContent = `Excl. VAT / ${profile.frequency}`;
+
+        // 1. Generation Engine for Option Dropdown Matrices
+        scaleParametersForm.innerHTML = '';
+        profile.baseParameters.forEach(param => {
+            const formGroup = document.createElement('div');
+            formGroup.className = 'calc-form-group full-width';
+
+            const labelEl = document.createElement('label');
+            labelEl.textContent = param.label;
+            formGroup.appendChild(labelEl);
+
+            const selectEl = document.createElement('select');
+            param.options.forEach(opt => {
+                const optEl = document.createElement('option');
+                optEl.value = opt.value;
+                optEl.textContent = opt.label;
+                selectEl.appendChild(optEl);
+            });
+
+            runtimeState.baseParams[param.id] = param.options[0].value;
+            selectEl.addEventListener('change', (e) => {
+                runtimeState.baseParams[param.id] = e.target.value;
+                evaluateLiveCalculations();
+            });
+
+            formGroup.appendChild(selectEl);
+            scaleParametersForm.appendChild(formGroup);
+        });
+
+        // 2. Generation Engine for Add-on Checkbox Assemblies
+        featureMatrixForm.innerHTML = '';
+        profile.features.forEach(feat => {
+            const row = document.createElement('div');
+            row.className = 'calc-matrix-item';
+            row.setAttribute('data-id', feat.id);
+
+            const check = document.createElement('input');
+            check.type = 'checkbox';
+            check.className = 'calc-matrix-checkbox';
+            check.id = `box_${feat.id}`;
+            row.appendChild(check);
+
+            const body = document.createElement('div');
+            body.className = 'calc-matrix-body';
+
+            const header = document.createElement('div');
+            header.className = 'calc-matrix-header';
+            header.innerHTML = `<span>${feat.name}</span><span class="calc-matrix-price-tag">+ R ${feat.cost.toLocaleString('en-ZA')}</span>`;
+            body.appendChild(header);
+
+            const desc = document.createElement('div');
+            desc.className = 'calc-matrix-desc';
+            desc.textContent = feat.desc;
+            body.appendChild(desc);
+
+            row.appendChild(body);
+
+            row.addEventListener('click', (e) => {
+                if(e.target.type !== 'checkbox') {
+                    check.checked = !check.checked;
+                }
+                if(check.checked) {
+                    row.classList.add('selected');
+                    runtimeState.selectedFeatures.add(feat.id);
+                } else {
+                    row.classList.remove('selected');
+                    runtimeState.selectedFeatures.delete(feat.id);
+                }
+                evaluateLiveCalculations();
+            });
+
+            featureMatrixForm.appendChild(row);
+        });
+
+        evaluateLiveCalculations();
+    }
+
+    function evaluateLiveCalculations() {
+        const profile = solutionDatabase[activeSolution];
+        let computedSum = 0;
+        bomStream.innerHTML = '';
+
+        // Evaluate Dropdown Arrays
+        profile.baseParameters.forEach(p => {
+            const currentVal = runtimeState.baseParams[p.id];
+            const matchingOption = p.options.find(o => o.value === currentVal);
+            if(matchingOption) {
+                computedSum += matchingOption.price;
+                injectBomRow(matchingOption.label, 'Infrastructure Base Tier Configuration', matchingOption.price);
+            }
+        });
+
+        // Evaluate Active Checkboxes
+        runtimeState.selectedFeatures.forEach(fId => {
+            const matchingFeature = profile.features.find(f => f.id === fId);
+            if(matchingFeature) {
+                computedSum += matchingFeature.cost;
+                injectBomRow(matchingFeature.name, 'Modular Architecture Extension Layer', matchingFeature.cost);
+            }
+        });
+
+        totalDisplay.textContent = `R ${computedSum.toLocaleString('en-ZA', { minimumFractionDigits: 2, maximumFractionDigits: 2 })}`;
+    }
+
+    function injectBomRow(label, category, charge) {
+        const row = document.createElement('div');
+        row.className = 'calc-bom-row';
+        row.innerHTML = `
+            <div>
+                <div class="calc-bom-name">${label}</div>
+                <div class="calc-bom-category">${category}</div>
+            </div>
+            <div class="calc-bom-value">R ${charge.toLocaleString('en-ZA')}</div>
+        `;
+        bomStream.appendChild(row);
+    }
+
+    document.addEventListener('DOMContentLoaded', mountCalculator);
+</script>
+
+<cronos-footer></cronos-footer>

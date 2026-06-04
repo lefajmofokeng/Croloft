@@ -6,7 +6,18 @@
     <title>Affiliate</title>
     
     <script src="header.js" defer></script>
-    <script src="footer.js" defer></script> 
+    <script src="footer.js" defer></script>
+    
+    <style>
+      @font-face { font-family:'Circular Std'; src:url('fonts/CircularStd-Book.woff2') format('woff2'),url('fonts/CircularStd-Book.woff') format('woff'); font-weight:400; font-style:normal; font-display:swap; }
+      @font-face { font-family:'Circular Std'; src:url('fonts/CircularStd-BookItalic.woff2') format('woff2'),url('fonts/CircularStd-BookItalic.woff') format('woff'); font-weight:400; font-style:italic; font-display:swap; }
+      @font-face { font-family:'Circular Std'; src:url('fonts/CircularStd-Medium.woff2') format('woff2'),url('fonts/CircularStd-Medium.woff') format('woff'); font-weight:500; font-style:normal; font-display:swap; }
+      @font-face { font-family:'Circular Std'; src:url('fonts/CircularStd-Bold.woff2') format('woff2'),url('fonts/CircularStd-Bold.woff') format('woff'); font-weight:600; font-style:normal; font-display:swap; }
+      @font-face { font-family:'Circular Std'; src:url('fonts/CircularStd-Bold.woff2') format('woff2'),url('fonts/CircularStd-Bold.woff') format('woff'); font-weight:700; font-style:normal; font-display:swap; }
+      @font-face { font-family:'Circular Std'; src:url('fonts/CircularStd-Black.woff2') format('woff2'),url('fonts/CircularStd-Black.woff') format('woff'); font-weight:800; font-style:normal; font-display:swap; }
+      @font-face { font-family:'Circular Std'; src:url('fonts/CircularStd-Black.woff2') format('woff2'),url('fonts/CircularStd-Black.woff') format('woff'); font-weight:900; font-style:normal; font-display:swap; }
+    
+    </style>
 </head>
 <body>
 
@@ -24,15 +35,12 @@
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>IT Technology Trust Component</title>
-<link rel="preconnect" href="https://fonts.googleapis.com">
-<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
 
 <style>
     /* Unique Namespace Prefix: it-tech- */
 
     :root {
-        --it-tech-font-inter: 'Inter', sans-serif;
+        --it-tech-font-inter: 'Circular Std', sans-serif;
         --it-tech-color-dark-blue: #0C224A;
         --it-tech-color-text-main: #1F2937;
         --it-tech-color-text-sub: #4B5563;
@@ -81,8 +89,8 @@
     }
 
     .it-tech-title-large {
-        font-size: 58px;
-        font-weight: 600;
+        font-size: 54px;
+        font-weight: 500;
         letter-spacing: -0.02em;
         color: var(--it-tech-color-text-main);
         line-height: 1;
@@ -91,7 +99,7 @@
 
     .it-tech-text-sub-large {
         font-size: 19px;
-        font-weight: 600;
+        font-weight: 500;
         color: var(--it-tech-color-text-sub);
         margin-bottom: 40px;
         max-width: 480px;
@@ -104,9 +112,9 @@
     }
 
     .it-tech-btn {
-        padding: 12px 24px;
+        padding: 9px 24px;
         border-radius: 30px;
-        font-weight: 600;
+        font-weight: 500;
         font-size: 16px;
         cursor: pointer;
         transition: all 0.2s ease;

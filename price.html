@@ -1,583 +1,512 @@
-<div id="webapp-pricing-root">
-    <style>
-        @import url('https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap');
-
-        #webapp-pricing-root {
-            font-family: 'Inter', sans-serif;
-            background: transparent;
-            padding: 60px 20px;
-            color: #ffffff;
-            max-width: 1300px;
-            margin: 0 auto;
-        }
-
-        /* Namespace: wap- (Web App Pricing) */
-        .wap-pricing-header {
-            text-align: center;
-            margin-bottom: 60px;
-        }
-
-        .wap-badge {
-            display: inline-block;
-            background: rgba(0, 102, 255, 0.15);
-            color: #0066FF;
-            padding: 6px 16px;
-            border-radius: 30px;
-            font-size: 12px;
-            font-weight: 700;
-            text-transform: uppercase;
-            letter-spacing: 1px;
-            margin-bottom: 20px;
-            border: 1px solid rgba(0, 102, 255, 0.3);
-        }
-
-        .wap-title {
-            font-size: 42px;
-            font-weight: 700;
-            margin: 0 0 16px 0;
-            background: linear-gradient(90deg, #ffffff, #94a3b8);
-            -webkit-background-clip: text;
-            -webkit-text-fill-color: transparent;
-        }
-
-        /* Glass Table Styling */
-        .wap-table-container {
-            width: 100%;
-            overflow-x: auto;
-            border-radius: 24px;
-            border: 1px solid rgba(255, 255, 255, 0.1);
-            background: rgba(255, 255, 255, 0.03);
-            backdrop-filter: blur(20px);
-            -webkit-backdrop-filter: blur(20px);
-            margin-bottom: 40px;
-        }
-
-        .wap-mega-table {
-            width: 100%;
-            border-collapse: collapse;
-            min-width: 1000px;
-        }
-
-        /* Headers */
-        .wap-mega-table th {
-            padding: 40px 25px;
-            text-align: left;
-            vertical-align: top;
-            border-bottom: 1px solid rgba(255, 255, 255, 0.1);
-        }
-
-        .wap-category-label {
-            font-size: 20px;
-            font-weight: 700;
-            color: #ffffff;
-        }
-
-        .wap-tier-name {
-            font-size: 24px;
-            font-weight: 700;
-            display: block;
-            margin-bottom: 8px;
-        }
-
-        .wap-tier-desc {
-            font-size: 13px;
-            color: #8A94A6;
-            line-height: 1.6;
-            font-weight: 400;
-            display: block;
-            margin-bottom: 20px;
-            min-height: 40px;
-        }
-
-        .wap-price-wrapper {
-            margin-bottom: 20px;
-        }
-
-        .wap-price-currency { font-size: 18px; vertical-align: top; color: #0066FF; font-weight: 700; }
-        .wap-price-amount { font-size: 48px; font-weight: 700; letter-spacing: -1px; }
-        .wap-price-cycle { font-size: 14px; color: #8A94A6; }
-
-        /* Rows */
-        .wap-mega-table td {
-            padding: 20px 25px;
-            border-bottom: 1px solid rgba(255, 255, 255, 0.05);
-            font-size: 14px;
-            color: #cbd5e1;
-        }
-
-        .wap-row-title {
-            font-weight: 600;
-            color: #ffffff;
-            display: block;
-            margin-bottom: 4px;
-        }
-
-        .wap-row-sub {
-            font-size: 12px;
-            color: #64748b;
-            line-height: 1.5;
-            display: block;
-        }
-
-        .wap-section-divider {
-            background: rgba(255, 255, 255, 0.05);
-            padding: 15px 25px !important;
-            font-weight: 700;
-            color: #0066FF;
-            text-transform: uppercase;
-            letter-spacing: 2px;
-            font-size: 11px;
-        }
-
-        /* Status & Icons */
-        .wap-check { color: #34C759; font-weight: bold; font-size: 18px; }
-        .wap-cross { color: rgba(255, 255, 255, 0.1); font-size: 18px; }
-        
-        /* Feature details styling */
-        .wap-feature-details {
-            font-size: 12px;
-            color: #8A94A6;
-            display: block;
-            margin-top: 5px;
-            line-height: 1.5;
-        }
-
-        /* CTA Buttons */
-        .wap-cta-btn {
-            display: block;
-            text-align: center;
-            padding: 14px;
-            border-radius: 12px;
-            text-decoration: none;
-            font-weight: 700;
-            font-size: 14px;
-            transition: all 0.3s ease;
-            width: 100%;
-        }
-
-        .wap-btn-outline {
-            border: 1px solid rgba(0, 102, 255, 0.5);
-            color: #ffffff;
-            background: transparent;
-        }
-
-        .wap-btn-outline:hover {
-            background: rgba(0, 102, 255, 0.1);
-            border-color: #0066FF;
-        }
-
-        .wap-btn-primary {
-            background: #0066FF;
-            color: #ffffff;
-        }
-
-        .wap-btn-primary:hover {
-            background: #0052cc;
-            box-shadow: 0 0 20px rgba(0, 102, 255, 0.4);
-        }
-        
-        /* Notes Section */
-        .wap-notes-container {
-            background: rgba(255, 255, 255, 0.03);
-            border-radius: 16px;
-            padding: 30px;
-            border: 1px solid rgba(255, 255, 255, 0.1);
-            margin-top: 40px;
-        }
-        
-        .wap-notes-title {
-            color: #0066FF;
-            font-size: 18px;
-            font-weight: 700;
-            margin-bottom: 20px;
-        }
-        
-        .wap-notes-list {
-            display: grid;
-            grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
-            gap: 15px;
-        }
-        
-        .wap-note-item {
-            display: flex;
-            align-items: flex-start;
-            margin-bottom: 10px;
-        }
-        
-        .wap-note-bullet {
-            color: #0066FF;
-            font-weight: bold;
-            margin-right: 10px;
-            flex-shrink: 0;
-        }
-        
-        .wap-note-text {
-            font-size: 14px;
-            color: #cbd5e1;
-            line-height: 1.6;
-        }
-
-        /* Mobile Responsive Design */
-        @media (max-width: 1024px) {
-            .wap-title { font-size: 36px; }
-            .wap-notes-list { grid-template-columns: 1fr; }
-        }
-        
-        @media (max-width: 768px) {
-            #webapp-pricing-root { padding: 40px 15px; }
-            
-            .wap-title { font-size: 28px; }
-            
-            .wap-pricing-header { margin-bottom: 40px; }
-            
-            .wap-table-container {
-                border-radius: 16px;
-                overflow-x: auto;
-                -webkit-overflow-scrolling: touch;
-            }
-            
-            .wap-mega-table th {
-                padding: 25px 20px;
-            }
-            
-            .wap-mega-table td {
-                padding: 18px 20px;
-            }
-            
-            .wap-tier-name { font-size: 20px; }
-            
-            .wap-price-amount { font-size: 36px; }
-            
-            .wap-notes-container {
-                padding: 20px;
-            }
-        }
-        
-        @media (max-width: 480px) {
-            .wap-title { font-size: 24px; }
-            
-            .wap-mega-table th {
-                padding: 20px 15px;
-            }
-            
-            .wap-mega-table td {
-                padding: 15px;
-                font-size: 13px;
-            }
-            
-            .wap-tier-name { font-size: 18px; }
-            
-            .wap-price-amount { font-size: 32px; }
-            
-            .wap-cta-btn {
-                padding: 12px;
-                font-size: 13px;
-            }
-        }
-        
-        /* Scrollbar styling for table container */
-        .wap-table-container::-webkit-scrollbar {
-            height: 8px;
-        }
-        
-        .wap-table-container::-webkit-scrollbar-track {
-            background: rgba(255, 255, 255, 0.05);
-            border-radius: 4px;
-        }
-        
-        .wap-table-container::-webkit-scrollbar-thumb {
-            background: rgba(0, 102, 255, 0.5);
-            border-radius: 4px;
-        }
-        
-        .wap-table-container::-webkit-scrollbar-thumb:hover {
-            background: rgba(0, 102, 255, 0.7);
-        }
-    </style>
-
-    <div class="wap-pricing-header">
-        <div class="wap-badge">Web & Mobile Application Development</div>
-        <h1 class="wap-title">Custom App Development Packages</h1>
-        <p style="color: #8A94A6; max-width: 700px; margin: 0 auto; line-height: 1.6;">Comprehensive development packages for web and mobile applications. Each tier includes full lifecycle support from design to deployment and maintenance.</p>
-    </div>
-
-    <div class="wap-table-container">
-        <table class="wap-mega-table">
-            <thead>
-                <tr>
-                    <th style="width: 28%;">
-                        <div class="wap-category-label">Application Features</div>
-                        <p style="font-size: 13px; color: #64748b; margin-top: 10px; line-height: 1.5;">Detailed breakdown of what's included in each development package.</p>
-                    </th>
-                    <th style="width: 24%;">
-                        <span class="wap-tier-name">Starter</span>
-                        <span class="wap-tier-desc">Single platform app with basic functionality for small businesses.</span>
-                        <div class="wap-price-wrapper">
-                            <span class="wap-price-currency">$</span>
-                            <span class="wap-price-amount">4,999</span>
-                            <span class="wap-price-cycle">/project</span>
-                        </div>
-                        <a href="#" class="wap-cta-btn wap-btn-outline">Get Quote</a>
-                    </th>
-                    <th style="width: 24%; background: rgba(0, 102, 255, 0.05);">
-                        <span class="wap-tier-name" style="color: #0066FF;">Professional</span>
-                        <span class="wap-tier-desc">Cross-platform app with advanced features and API integration.</span>
-                        <div class="wap-price-wrapper">
-                            <span class="wap-price-currency">$</span>
-                            <span class="wap-price-amount">14,500</span>
-                            <span class="wap-price-cycle">/project</span>
-                        </div>
-                        <a href="#" class="wap-cta-btn wap-btn-primary">Choose Plan</a>
-                    </th>
-                    <th style="width: 24%;">
-                        <span class="wap-tier-name">Enterprise</span>
-                        <span class="wap-tier-desc">Full-scale custom application with AI features and scalability.</span>
-                        <div class="wap-price-wrapper">
-                            <span class="wap-price-currency">$</span>
-                            <span class="wap-price-amount">45,000</span>
-                            <span class="wap-price-cycle">/project+</span>
-                        </div>
-                        <a href="#" class="wap-cta-btn wap-btn-outline">Contact Sales</a>
-                    </th>
-                </tr>
-            </thead>
-            <tbody>
-                <tr><td colspan="4" class="wap-section-divider">Platform & Scope</td></tr>
-                <tr>
-                    <td>
-                        <span class="wap-row-title">Platform Coverage</span>
-                        <span class="wap-row-sub">Native and web platforms included</span>
-                    </td>
-                    <td>
-                        Web App OR iOS/Android
-                        <span class="wap-feature-details">Choose one platform only</span>
-                    </td>
-                    <td>
-                        Web + 1 Mobile Platform
-                        <span class="wap-feature-details">Responsive web + iOS or Android</span>
-                    </td>
-                    <td>
-                        Web + iOS + Android
-                        <span class="wap-feature-details">Full cross-platform coverage</span>
-                    </td>
-                </tr>
-                <tr>
-                    <td>
-                        <span class="wap-row-title">Development Timeline</span>
-                        <span class="wap-row-sub">Estimated delivery time from kickoff</span>
-                    </td>
-                    <td>
-                        4-6 Weeks
-                        <span class="wap-feature-details">Basic functionality only</span>
-                    </td>
-                    <td>
-                        8-12 Weeks
-                        <span class="wap-feature-details">Includes testing and refinement</span>
-                    </td>
-                    <td>
-                        12-20 Weeks
-                        <span class="wap-feature-details">Comprehensive development cycle</span>
-                    </td>
-                </tr>
-                
-                <tr><td colspan="4" class="wap-section-divider">Core Development Features</td></tr>
-                <tr>
-                    <td>
-                        <span class="wap-row-title">Custom UI/UX Design</span>
-                        <span class="wap-row-sub">Wireframes, prototypes, and visual design</span>
-                    </td>
-                    <td>
-                        Basic Design
-                        <span class="wap-feature-details">Template-based with light customization</span>
-                    </td>
-                    <td>
-                        Custom Design
-                        <span class="wap-feature-details">Fully custom UI with 3 revision rounds</span>
-                    </td>
-                    <td>
-                        Premium Design
-                        <span class="wap-feature-details">Custom UI/UX with unlimited revisions</span>
-                    </td>
-                </tr>
-                <tr>
-                    <td>
-                        <span class="wap-row-title">Frontend Development</span>
-                        <span class="wap-row-sub">HTML/CSS/JavaScript or framework</span>
-                    </td>
-                    <td>
-                        Basic Frontend
-                        <span class="wap-feature-details">Vanilla JS or simple React components</span>
-                    </td>
-                    <td>
-                        Advanced Frontend
-                        <span class="wap-feature-details">React/Vue/Angular with state management</span>
-                    </td>
-                    <td>
-                        Enterprise Frontend
-                        <span class="wap-feature-details">Micro-frontends, SSR, PWA capabilities</span>
-                    </td>
-                </tr>
-                <tr>
-                    <td>
-                        <span class="wap-row-title">Backend Development</span>
-                        <span class="wap-row-sub">Server, database, and API development</span>
-                    </td>
-                    <td>
-                        Simple Backend
-                        <span class="wap-feature-details">Firebase or basic Node.js with 5 API endpoints</span>
-                    </td>
-                    <td>
-                        Robust Backend
-                        <span class="wap-feature-details">Node.js/Python with 15+ API endpoints, auth, and database</span>
-                    </td>
-                    <td>
-                        Scalable Backend
-                        <span class="wap-feature-details">Microservices, cloud functions, real-time features</span>
-                    </td>
-                </tr>
-                
-                <tr><td colspan="4" class="wap-section-divider">Advanced Features</td></tr>
-                <tr>
-                    <td>
-                        <span class="wap-row-title">Third-Party API Integration</span>
-                        <span class="wap-row-sub">Payment, social media, maps, etc.</span>
-                    </td>
-                    <td>
-                        1 Basic Integration
-                        <span class="wap-feature-details">Stripe or PayPal only</span>
-                    </td>
-                    <td>
-                        3-5 Integrations
-                        <span class="wap-feature-details">Payment + social + maps + 2 custom</span>
-                    </td>
-                    <td>
-                        Unlimited Integrations
-                        <span class="wap-feature-details">All required APIs with custom middleware</span>
-                    </td>
-                </tr>
-                <tr>
-                    <td>
-                        <span class="wap-row-title">User Authentication</span>
-                        <span class="wap-row-sub">Login, registration, and user management</span>
-                    </td>
-                    <td>
-                        Email/Password
-                        <span class="wap-feature-details">Basic auth with email verification</span>
-                    </td>
-                    <td>
-                        Social + Email
-                        <span class="wap-feature-details">Google, Facebook, Apple login + email/password</span>
-                    </td>
-                    <td>
-                        Enterprise SSO
-                        <span class="wap-feature-details">SAML, OAuth2, LDAP, custom identity provider</span>
-                    </td>
-                </tr>
-                <tr>
-                    <td>
-                        <span class="wap-row-title">Admin Dashboard</span>
-                        <span class="wap-row-sub">Content management and analytics</span>
-                    </td>
-                    <td class="wap-cross">✘</td>
-                    <td class="wap-check">✔</td>
-                    <td class="wap-check">✔</td>
-                </tr>
-                <tr>
-                    <td>
-                        <span class="wap-row-title">Push Notifications</span>
-                        <span class="wap-row-sub">Mobile and web notifications</span>
-                    </td>
-                    <td class="wap-cross">✘</td>
-                    <td class="wap-check">✔</td>
-                    <td class="wap-check">✔</td>
-                </tr>
-                
-                <tr><td colspan="4" class="wap-section-divider">Post-Launch Services</td></tr>
-                <tr>
-                    <td>
-                        <span class="wap-row-title">Hosting & Deployment</span>
-                        <span class="wap-row-sub">Server setup and app store deployment</span>
-                    </td>
-                    <td>
-                        Basic Hosting (3 months)
-                        <span class="wap-feature-details">Shared hosting, manual deployment</span>
-                    </td>
-                    <td>
-                        Managed Hosting (6 months)
-                        <span class="wap-feature-details">Cloud hosting with CI/CD pipeline</span>
-                    </td>
-                    <td>
-                        Enterprise Hosting (12 months)
-                        <span class="wap-feature-details">Dedicated infrastructure with auto-scaling</span>
-                    </td>
-                </tr>
-                <tr>
-                    <td>
-                        <span class="wap-row-title">Maintenance & Support</span>
-                        <span class="wap-row-sub">Bug fixes, updates, and technical support</span>
-                    </td>
-                    <td>
-                        1 Month Support
-                        <span class="wap-feature-details">Critical bug fixes only</span>
-                    </td>
-                    <td>
-                        3 Months Support
-                        <span class="wap-feature-details">Bug fixes + minor feature updates</span>
-                    </td>
-                    <td>
-                        6 Months Support
-                        <span class="wap-feature-details">Full support including performance optimization</span>
-                    </td>
-                </tr>
-                <tr>
-                    <td>
-                        <span class="wap-row-title">Analytics & Reporting</span>
-                        <span class="wap-row-sub">User behavior and performance tracking</span>
-                    </td>
-                    <td>
-                        Basic Analytics
-                        <span class="wap-feature-details">Simple traffic and conversion tracking</span>
-                    </td>
-                    <td>
-                        Advanced Analytics
-                        <span class="wap-feature-details">User flow, retention, and custom events</span>
-                    </td>
-                    <td>
-                        Business Intelligence
-                        <span class="wap-feature-details">Custom dashboards, predictive analytics, AI insights</span>
-                    </td>
-                </tr>
-            </tbody>
-        </table>
-    </div>
+<!DOCTYPE html>
+<html lang="en" dir="ltr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, minimum-scale=1.0, maximum-scale=5.0, viewport-fit=cover, shrink-to-fit=no">
+    <meta http-equiv="x-ua-compatible" content="ie=edge"/>
     
-    <div class="wap-notes-container">
-        <div class="wap-notes-title">Important Notes & Clarifications</div>
-        <div class="wap-notes-list">
-            <div class="wap-note-item">
-                <span class="wap-note-bullet">•</span>
-                <span class="wap-note-text">All prices are for complete projects. Monthly retainers are available for ongoing development at $1,500-$5,000/month depending on scope.</span>
-            </div>
-            <div class="wap-note-item">
-                <span class="wap-note-bullet">•</span>
-                <span class="wap-note-text">Timelines begin after final design approval and content delivery. Delays in client feedback may extend project timelines.</span>
-            </div>
-            <div class="wap-note-item">
-                <span class="wap-note-bullet">•</span>
-                <span class="wap-note-text">Third-party service costs (domain, hosting beyond included period, paid APIs, app store fees) are not included unless specified.</span>
-            </div>
-            <div class="wap-note-item">
-                <span class="wap-note-bullet">•</span>
-                <span class="wap-note-text">Custom Enterprise pricing varies based on specific requirements, complexity, and integrations needed. Contact for a detailed quote.</span>
-            </div>
-            <div class="wap-note-item">
-                <span class="wap-note-bullet">•</span>
-                <span class="wap-note-text">Projects require a 50% deposit to begin work, with the balance due upon completion before final delivery.</span>
-            </div>
-            <div class="wap-note-item">
-                <span class="wap-note-bullet">•</span>
-                <span class="wap-note-text">All code is delivered with documentation. Clients retain full ownership of all deliverables upon final payment.</span>
-            </div>
+    <title>Cronos</title>
+
+    <!-- WEB TAB ICON -->
+    <link rel="icon" type="image/png" href="thumbnails/top-1.png">
+
+    <style>
+      @font-face { font-family:'Circular Std'; src:url('fonts/CircularStd-Book.woff2') format('woff2'),url('fonts/CircularStd-Book.woff') format('woff'); font-weight:400; font-style:normal; font-display:swap; }
+  @font-face { font-family:'Circular Std'; src:url('fonts/CircularStd-BookItalic.woff2') format('woff2'),url('fonts/CircularStd-BookItalic.woff') format('woff'); font-weight:400; font-style:italic; font-display:swap; }
+  @font-face { font-family:'Circular Std'; src:url('fonts/CircularStd-Medium.woff2') format('woff2'),url('fonts/CircularStd-Medium.woff') format('woff'); font-weight:500; font-style:normal; font-display:swap; }
+  @font-face { font-family:'Circular Std'; src:url('fonts/CircularStd-Bold.woff2') format('woff2'),url('fonts/CircularStd-Bold.woff') format('woff'); font-weight:600; font-style:normal; font-display:swap; }
+  @font-face { font-family:'Circular Std'; src:url('fonts/CircularStd-Bold.woff2') format('woff2'),url('fonts/CircularStd-Bold.woff') format('woff'); font-weight:700; font-style:normal; font-display:swap; }
+  @font-face { font-family:'Circular Std'; src:url('fonts/CircularStd-Black.woff2') format('woff2'),url('fonts/CircularStd-Black.woff') format('woff'); font-weight:800; font-style:normal; font-display:swap; }
+  @font-face { font-family:'Circular Std'; src:url('fonts/CircularStd-Black.woff2') format('woff2'),url('fonts/CircularStd-Black.woff') format('woff'); font-weight:900; font-style:normal; font-display:swap; }
+    </style>
+</head>
+
+
+
+
+
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>My Website</title>
+    
+    <script src="header.js" defer></script>
+    <script src="footer.js" defer></script> 
+</head>
+<body>
+
+    <cronos-header></cronos-header>
+    
+
+</body>
+</html>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>IT Services Matrix | Project Scopes &amp; Capabilities</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Outfit:wght@400;600;800&family=Work+Sans:wght@400;500&display=swap" rel="stylesheet">
+  <style>
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+    }
+
+    :root {
+      --primary: #1e6baf;
+      --primary-dark: #1e3a8a;
+      --primary-light: #3b82f6;
+      --success: #16a34a;
+      --text-dark: #0f172a;
+      --text-gray: #64748b;
+      --text-light: #94a3b8;
+      --bg-light: #f4f4f4;
+      --bg-white: #ffffff;
+      --border: #e2e8f0;
+    }
+
+    body {
+      font-family: 'Circular Std', -apple-system, sans-serif;
+      color: var(--text-dark);
+      background-color: var(--bg-light);
+      line-height: 1.6;
+      overflow-x: hidden;
+    }
+
+    /* Container & Wrapper */
+    .itc-pricing-wrap {
+      padding: 60px 20px 80px;
+      background: #f4f4f4;
+    }
+
+    .itc-container {
+      max-width: 1250px;
+      margin: 0 auto;
+    }
+
+    /* Comparison Section */
+    .itc-comparison-section {
+      margin: 40px 0;
+      padding: 0;
+      background: transparent;
+    }
+
+    .itc-comparison-title {
+      font-family: 'Circular Std', sans-serif;
+      font-size: clamp(1.75rem, 4vw, 2.25rem);
+      font-weight: 500;
+      text-align: left;
+      margin-bottom: 16px;
+      color: var(--text-dark);
+    }
+
+    .itc-comparison-subtitle {
+      text-align: left;
+      color: var(--text-gray);
+      font-size: 1.05rem;
+      margin-bottom: 50px;
+      max-width: 850px;
+    }
+
+    .itc-comparison-wrapper {
+      display: flex;
+      flex-direction: column;
+      gap: 30px;
+    }
+
+    .itc-table-section {
+      overflow: hidden;
+    }
+
+    /* Sticky header styles - Stays locked professionally below your 55px layout header */
+    .itc-table-section.itc-table-header {
+      position: sticky;
+      top: 75px;
+      z-index: 100;
+      background: var(--bg-light);
+      box-shadow: none;
+      border: none;
+      border-radius: 20px;
+      box-shadow: 0 4px 12px rgba(0, 0, 0, 0.08);
+    }
+
+    .itc-comparison-table {
+      overflow-x: auto;
+      -webkit-overflow-scrolling: touch;
+      background: transparent;
+    }
+
+    table {
+      width: 100%;
+      border-collapse: collapse;
+      table-layout: fixed;
+      min-width: 1200px;
+      background: transparent;
+    }
+
+    /* Unified Column widths for vertical alignment */
+    table th:first-child,
+    table td:first-child {
+      width: 25%;
+    }
+
+    table th:nth-child(2),
+    table td:nth-child(2),
+    table th:nth-child(3),
+    table td:nth-child(3),
+    table th:nth-child(4),
+    table td:nth-child(4) {
+      width: 25%;
+    }
+
+    /* Left alignment across all header cells */
+    thead th {
+      background: var(--bg-white);
+      padding: 24px 20px;
+      text-align: left;
+      font-weight: 500;
+      color: var(--text-dark);
+      font-size: 1.3rem;
+      font-family: 'Circular Std', sans-serif;
+      vertical-align: top;
+    }
+
+    thead th:first-child {
+      font-size: 1.1rem;
+      color: var(--text-gray);
+      font-family: 'Circular Std', sans-serif;
+      font-weight: 500;
+    }
+
+    tbody tr:last-child {
+      border-bottom: none;
+    }
+
+    /* Left alignment across all data cells */
+    tbody td {
+      padding: 22px 20px;
+      color: var(--text-gray);
+      font-size: 1.05rem;
+      vertical-align: top;
+      background: transparent;
+      border-bottom: 1px solid #e2e8f0;
+      text-align: left; color: #3f3f3f; line-height: 1.2;
+    }
+
+    tbody td:first-child {
+      font-weight: 500; font-size: 1.1rem;
+      color: var(--text-dark); 
+    }
+
+    /* Group Category Pill Box with Light Grey-Blue Background & 10px Border Radius */
+    .itc-feature-group td {
+        padding: 0;
+        border: none;
+    }
+
+    .itc-feature-group-inner {
+      font-weight: 500;
+      color: #334155;
+      background: #ddeaf6;
+      
+      font-size: 1.2rem;
+      
+      border-radius: 10px;
+      padding: 14px 20px;
+      margin: 25px 0 10px 0;
+      text-align: left;
+    }
+
+    .itc-check {
+      color: var(--success);
+      font-weight: bold;
+      font-family: 'Circular Std', sans-serif;
+      font-size: 1.3rem;
+    }
+
+    .itc-cross {
+      color: var(--text-light);
+      font-size: 1.4rem; 
+    }
+
+    .itc-feature-detail {
+      display: block;
+      font-size: 1rem;
+      font-weight: 400;
+      color: var(--text-gray);
+      margin-top: 5px;
+      line-height: 1.5;
+    }
+
+    .itc-financial-inline {
+      display: inline-block;
+      font-size: 0.9rem;
+      font-weight: 700;
+      color: var(--primary);
+      margin-bottom: 4px;
+    }
+
+    /* Footer Notes Listed Vertically Straight Downward */
+    .itc-footer-notes {
+      text-align: left;
+      max-width: 100%;
+      margin: 80px auto 0;
+      border-top: 1px solid var(--border);
+      padding-top: 40px;
+    }
+
+    .itc-footer-notes h3 {
+      font-family: 'Circular Std', sans-serif;
+      font-size: 1.6rem;
+      margin-bottom: 24px;
+      font-weight: 500;
+      color: var(--text-dark);
+    }
+
+    .itc-footer-notes p {
+      font-size: 1rem;
+      color: var(--text-gray);
+      line-height: 1.2;
+      padding-bottom: 12px; font-size: 400;
+      border-bottom: 1px solid #f1f5f9;
+    }
+
+    .itc-footer-notes p:last-child {
+      margin-bottom: 0;
+      padding-bottom: 0;
+      border-bottom: none;
+    }
+
+    /* Responsive Design */
+    @media (max-width: 968px) {
+      .itc-table-section.itc-table-header {
+        top: 55px;
+      }
+    }
+
+    @media (max-width: 768px) {
+      .itc-pricing-wrap {
+        padding: 40px 16px 60px;
+      }
+
+      .itc-table-section, .itc-comparison-table {
+        border-radius: 12px;
+      }
+    }
+
+    @media (max-width: 480px) {
+      table {
+        min-width: 1100px;
+      }
+
+      thead th, tbody td {
+        padding: 16px 12px;
+        font-size: 0.95rem;
+      }
+    }
+  </style>
+</head>
+<body>
+
+<section class="itc-pricing-wrap">
+  <div class="itc-container">
+
+    <div class="itc-comparison-section">
+      <h2 class="itc-comparison-title">Comprehensive Capabilities &amp; Engineering Matrix</h2>
+      <p class="itc-comparison-subtitle">A granular architectural operational guide detailing tech stack implementation structures, web development tiers, and financial delivery protocols.</p>
+      
+      <div class="itc-comparison-wrapper">
+        <!-- Strictly Left Aligned Header -->
+        <div class="itc-table-section itc-table-header">
+          <div class="itc-comparison-table">
+            <table>
+              <thead>
+                <tr>
+                  <th>Architecture Parameters</th>
+                  <th>Core Tiers</th>
+                  <th>Professional Tiers</th>
+                  <th>Enterprise Tiers</th>
+                </tr>
+              </thead>
+            </table>
+          </div>
         </div>
+
+        <div class="itc-table-section">
+          <div class="itc-comparison-table">
+            <table>
+              <tbody>
+                <!-- Group 1: Financials -->
+                <tr class="itc-feature-group">
+                  <td colspan="4"><div class="itc-feature-group-inner">Financial Structures &amp; Parameters</div></td>
+                </tr>
+                <tr>
+                  <td>Estimated Investment</td>
+                  <td><span class="itc-financial-inline">$3,500 – $8,500</span><br><span class="itc-feature-detail">Fixed cost structures evaluated explicitly on clearly predefined milestones.</span></td>
+                  <td><span class="itc-financial-inline">$10,000 – $28,000</span><br><span class="itc-feature-detail">Scaled system parameters priced per functional scope modules.</span></td>
+                  <td><span class="itc-financial-inline">Custom SOW / Retainer</span><br><span class="itc-feature-detail">Custom terms or monthly allocations engineered for institutional alignment.</span></td>
+                </tr>
+                <tr>
+                  <td>Payment Milestones</td>
+                  <td>50% Mobilization / 50% Sign-off<br><span class="itc-feature-detail">Initial advance starts execution window; balance required upon full platform handover.</span></td>
+                  <td>40% / 30% / 30% Progress Gates<br><span class="itc-feature-detail">Payments aligned with active design system sign-off and continuous frontend integration.</span></td>
+                  <td>Monthly Net-15 Retainers<br><span class="itc-feature-detail">Rolling team allocations billed transparently based on master service agreements.</span></td>
+                </tr>
+
+                <!-- Group 2: Web Dev Tiers -->
+                <tr class="itc-feature-group">
+                  <td colspan="4"><div class="itc-feature-group-inner">Web Development &amp; Application Systems</div></td>
+                </tr>
+                <tr>
+                  <td>Web Architectural Grade</td>
+                  <td>Basic / Marketing Web System<br><span class="itc-feature-detail">Sleek, premium-tier informational corporate sites or landing profiles. Up to 5 layout pages.</span></td>
+                  <td>Professional Corporate Platform<br><span class="itc-feature-detail">Highly complex interactive web applications or customized dynamic storefront setups. Up to 20 pages.</span></td>
+                  <td>Advanced Multi-Tenant App Web<br><span class="itc-feature-detail">Scalable multi-tenant portal networks, institutional dashboards, and complex custom integrations.</span></td>
+                </tr>
+                <tr>
+                  <td>Content Management System</td>
+                  <td>Static / Headless Basic Tier<br><span class="itc-feature-detail">Fixed markdown configurations or lightweight managed interfaces for easy content adjustments.</span></td>
+                  <td>Decoupled Headless CMS Engine<br><span class="itc-feature-detail">Integration of platforms like Sanity, Strapi, or tailored Supabase structures for robust admin control.</span></td>
+                  <td>Enterprise Content Hub Custom<br><span class="itc-feature-detail">Custom role permissions, internal auditing histories, multi-lingual rendering, and workflow governance.</span></td>
+                </tr>
+                <tr>
+                  <td>Typography &amp; Layout Aesthetic</td>
+                  <td>Premium Web Layouts<br><span class="itc-feature-detail">Clean, minimalist interfaces built explicitly with modern fonts like Inter or Circular Std.</span></td>
+                  <td>Bespoke Platform Design Languages<br><span class="itc-feature-detail">Fully customized interactive layouts utilizing advanced CSS modules and custom animation arrays.</span></td>
+                  <td>Global Layout Systems Engineering<br><span class="itc-feature-detail">Custom interactive tokens, micro-animations, comprehensive brand alignment, and infinite revision sprints.</span></td>
+                </tr>
+
+                <!-- Group 3: Core Engineering -->
+                <tr class="itc-feature-group">
+                  <td colspan="4"><div class="itc-feature-group-inner">Frontend &amp; Backend Engineering Specs</div></td>
+                </tr>
+                <tr>
+                  <td>Client-Side Stack Architecture</td>
+                  <td>Monolithic Rendering Pipelines<br><span class="itc-feature-detail">Single-page HTML5/CSS3/JavaScript layouts or structural client-rendered setups.</span></td>
+                  <td>Advanced SPA / Server Side Rendering<br><span class="itc-feature-detail">Framework configurations using React and Next.js for maximum client-side performance.</span></td>
+                  <td>Decoupled Micro-Frontends Web<br><span class="itc-feature-detail">Isolated, modular applications deployed independently across edge content networks.</span></td>
+                </tr>
+                <tr>
+                  <td>Backend Data Storage Engines</td>
+                  <td>Managed Relational DB Tier<br><span class="itc-feature-detail">Basic data models utilizing managed backend services like Supabase for core authentication and operations.</span></td>
+                  <td>Decoupled Relational Database Networks<br><span class="itc-feature-detail">Robust SQL configurations with multiple relation maps, automated indices, and row-level access rules.</span></td>
+                  <td>High-Availability Distributed Storage<br><span class="itc-feature-detail">Sharded database configurations, real-time message stream brokers, and dedicated failure fallbacks.</span></td>
+                </tr>
+                <tr>
+                  <td>Third-Party API Connections</td>
+                  <td>1 Core Channel Integration<br><span class="itc-feature-detail">Connecting a centralized gateway like Stripe, PayPal, or transactional mail servers.</span></td>
+                  <td>3 - 5 Consolidated Integrations<br><span class="itc-feature-detail">Complex data bridges matching inventory syncs, mapping APIs, or multi-role logic webhooks.</span></td>
+                  <td>Unlimited Enterprise Bridges<br><span class="itc-feature-detail">Custom middleware, legacy enterprise server proxies, and continuous ingestion streams.</span></td>
+                </tr>
+
+                <!-- Group 4: Product Management -->
+                <tr class="itc-feature-group">
+                  <td colspan="4"><div class="itc-feature-group-inner">Product Management &amp; System Performance</div></td>
+                </tr>
+                <tr>
+                  <td>Operational Insights &amp; Search</td>
+                  <td>Basic Built-In Query Features<br><span class="itc-feature-detail">Simple database text search layers suitable for limited catalog footprints.</span></td>
+                  <td>Advanced Search Engine Extensions<br><span class="itc-feature-detail">Integration of fuzzy-matching systems, custom filter arrays, and indexing rules.</span></td>
+                  <td>AI-Powered Interactive Chat &amp; Search<br><span class="itc-feature-detail">Custom semantic vectors, automated chat dashboards, and interactive recommendation models.</span></td>
+                </tr>
+                <tr>
+                  <td>Quality Testing Protocol</td>
+                  <td>Manual Component Validation<br><span class="itc-feature-detail">Basic functional sanity checks cross-browser before stable handover.</span></td>
+                  <td>Automated Integration Testing<br><span class="itc-feature-detail">Automated client-side testing cycles paired with regular code check regressions.</span></td>
+                  <td>Continuous E2E Performance Testing<br><span class="itc-feature-detail">Simultaneous load modeling, security threat posture reviews, and deep architectural sign-offs.</span></td>
+                </tr>
+
+                <!-- Group 5: Operations -->
+                <tr class="itc-feature-group">
+                  <td colspan="4"><div class="itc-feature-group-inner">Infrastructure, Governance &amp; Post-Launch</div></td>
+                </tr>
+                <tr>
+                  <td>DevOps Deployment Pipelines</td>
+                  <td>Standard Pipeline Provisions<br><span class="itc-feature-detail">Managed code tracking with manual web deployment triggers to stable hosting platforms.</span></td>
+                  <td>Automated CI/CD Engines<br><span class="itc-feature-detail">Automated cloud testing pipelines deploying systematically to isolated staging environments.</span></td>
+                  <td>Elastic Infrastructure Systems<br><span class="itc-feature-detail">Container clustering orchestration, high-end traffic balancing, and multi-region failovers.</span></td>
+                </tr>
+                <tr>
+                  <td>Maintenance Support SLA</td>
+                  <td>30-Day Critical Support Window<br><span class="itc-feature-detail">Direct hotfix mitigation for critical server-side errors discovered following platform deployment.</span></td>
+                  <td>90-Day Engineering SLA Support<br><span class="itc-feature-detail">Performance monitoring tuning, continuous framework updates, and small feature calibrations.</span></td>
+                  <td>Custom Long-Term Support SLA<br><span class="itc-feature-detail">Dedicated monthly sprint hours, strict response guarantees, and continuous active infrastructure logging.</span></td>
+                </tr>
+              </tbody>
+            </table>
+          </div>
+        </div>
+
+      </div>
     </div>
-</div>
+
+    <!-- Operational Principles Listed Vertically Going Downward -->
+    <div class="itc-footer-notes">
+      <h3>Operational Principles &amp; Governance</h3>
+      <p>1. Project Scopes &amp; Retainers: Financial milestones are structured explicitly around project-specific deliverables. Long-term technical advisory, core architecture oversight, and agile engineering iterations scale fluidly based on system milestones.</p>
+      
+      <p>2. Timeline Mobilization: Project roadmaps and engineering timelines trigger immediately following architecture blueprint confirmations, complete data dictionary signatures, and all required asset handovers from the client team.</p>
+      
+      <p>3. Ecosystem Boundaries: Out-of-scope digital software licensing, highly specialized real-time data integrations, application storefront directory submission fees, and premium hosting nodes are handled outside baseline delivery frameworks.</p>
+      
+      <p>4. IP Ownership Delivery: Complete system documentations, software dependency graphs, custom database schemas, and master code repositories are securely transitioned to your infrastructure. Clients retain full title and IP ownership rights upon project conclusion.</p>
+    </div>
+
+  </div>
+</section>
+
+</body>
+</html>
+
+
+
+<cronos-footer></cronos-footer>
