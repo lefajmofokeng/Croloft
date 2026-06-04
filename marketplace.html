@@ -1,0 +1,1213 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Cronos Marketplace | Premium Cloud Provisioning</title>
+  
+  <style>
+    @font-face { 
+      font-family: 'Circular Std'; 
+      src: local('Circular Std'), local('CircularStd-Book'), url('fonts/CircularStd-Book.woff2') format('woff2'); 
+      font-weight: 400; 
+      font-style: normal; 
+      font-display: swap; 
+    }
+    @font-face { 
+      font-family: 'Circular Std'; 
+      src: local('Circular Std Bold'), local('CircularStd-Bold'), url('fonts/CircularStd-Bold.woff2') format('woff2'); 
+      font-weight: 700; 
+      font-style: normal; 
+      font-display: swap; 
+    }
+
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+    }
+
+    :root {
+      --primary: #0578c4;
+      --primary-hover: #035b96;
+      --success: #16a34a;
+      --success-hover: #15803d;
+      --danger: #ef4444;
+      --text-main: #1e293b;
+      --text-muted: #64748b;
+      --bg-body: #f8fafc;
+      --bg-card: #ffffff;
+      --border-color: #e2e8f0;
+      --input-border: #cbd5e1;
+      --shadow-sm: 0 1px 3px rgba(0,0,0,0.05);
+      --shadow-md: 0 4px 6px -1px rgba(0,0,0,0.05), 0 2px 4px -1px rgba(0,0,0,0.03);
+      --shadow-lg: 0 20px 25px -5px rgba(0,0,0,0.05), 0 10px 10px -5px rgba(0,0,0,0.03);
+    }
+
+    body {
+      font-family: 'Circular Std', -apple-system, BlinkMacSystemFont, sans-serif;
+      background-color: var(--bg-body);
+      color: var(--text-main);
+      line-height: 1.5;
+    }
+
+    body.modal-open {
+      overflow: hidden;
+    }
+
+    /* ==========================================================================
+       CLEAN LIGHT UTILITY NAVBAR
+       ========================================================================== */
+    .cro-navbar {
+      background: #ffffff;
+      border-bottom: 1px solid var(--border-color);
+      position: sticky;
+      top: 0;
+      z-index: 1000;
+      padding: 16px 24px;
+    }
+
+    .cro-nav-container {
+      max-width: 1300px;
+      margin: 0 auto;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 32px;
+    }
+
+    .cro-logo {
+      font-size: 1.35rem;
+      font-weight: 700;
+      color: var(--text-main);
+      text-decoration: none;
+      letter-spacing: -0.5px;
+    }
+
+    .cro-logo span {
+      color: var(--primary);
+    }
+
+    .cro-search-box {
+      flex-grow: 1;
+      max-width: 550px;
+      position: relative;
+    }
+
+    .cro-search-box input {
+      width: 100%;
+      background: #f1f5f9;
+      border: 1px solid transparent;
+      border-radius: 8px;
+      padding: 10px 16px 10px 40px;
+      font-family: inherit;
+      font-size: 0.92rem;
+      color: var(--text-main);
+      transition: all 0.15s ease;
+    }
+
+    .cro-search-box input:focus {
+      outline: none;
+      background: #ffffff;
+      border-color: var(--primary);
+      box-shadow: 0 0 0 3px rgba(5, 120, 196, 0.15);
+    }
+
+    .cro-search-box svg {
+      position: absolute;
+      left: 14px;
+      top: 50%;
+      transform: translateY(-50%);
+      color: var(--text-muted);
+      pointer-events: none;
+    }
+
+    .cro-cart-btn {
+      background: #ffffff;
+      border: 1px solid var(--input-border);
+      border-radius: 8px;
+      padding: 10px 18px;
+      cursor: pointer;
+      display: flex;
+      align-items: center;
+      gap: 10px;
+      font-family: inherit;
+      font-size: 0.95rem;
+      font-weight: 700;
+      color: var(--text-main);
+      transition: all 0.15s;
+    }
+
+    .cro-cart-btn:hover {
+      background: #f8fafc;
+      border-color: var(--text-muted);
+    }
+
+    .cro-cart-counter {
+      background: var(--primary);
+      color: #ffffff;
+      font-size: 0.8rem;
+      min-width: 20px;
+      height: 20px;
+      border-radius: 50%;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      padding: 0 4px;
+    }
+
+    /* ==========================================================================
+       LAYOUT ARCHITECTURE
+       ========================================================================== */
+    .cro-layout-wrapper {
+      max-width: 1300px;
+      margin: 40px auto 80px;
+      padding: 0 24px;
+      display: grid;
+      grid-template-columns: 240px 1fr;
+      gap: 40px;
+    }
+
+    /* Filters sidebar */
+    .cro-sidebar-nav h3 {
+      font-size: 0.75rem;
+      text-transform: uppercase;
+      letter-spacing: 0.05em;
+      color: var(--text-muted);
+      margin-bottom: 16px;
+    }
+
+    .cro-cat-list {
+      list-style: none;
+    }
+
+    .cro-cat-item {
+      padding: 10px 12px;
+      border-radius: 6px;
+      cursor: pointer;
+      font-size: 0.95rem;
+      font-weight: 500;
+      color: #475569;
+      margin-bottom: 4px;
+      transition: all 0.15s;
+    }
+
+    .cro-cat-item:hover {
+      background: #f1f5f9;
+      color: var(--text-main);
+    }
+
+    .cro-cat-item.active {
+      background: #e0f2fe;
+      color: var(--primary);
+      font-weight: 700;
+    }
+
+    /* Product Grid */
+    .cro-products-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
+      gap: 24px;
+    }
+
+    .cro-product-card {
+      background: var(--bg-card);
+      border: 1px solid var(--border-color);
+      border-radius: 12px;
+      padding: 24px;
+      display: flex;
+      flex-direction: column;
+      justify-content: space-between;
+      box-shadow: var(--shadow-sm);
+      transition: transform 0.2s, box-shadow 0.2s;
+    }
+
+    .cro-product-card:hover {
+      transform: translateY(-2px);
+      box-shadow: var(--shadow-md);
+    }
+
+    .cro-card-category {
+      font-size: 0.75rem;
+      text-transform: uppercase;
+      font-weight: 700;
+      color: var(--primary);
+      letter-spacing: 0.05em;
+      margin-bottom: 8px;
+    }
+
+    .cro-card-title {
+      font-size: 1.15rem;
+      font-weight: 700;
+      color: var(--text-main);
+      margin-bottom: 8px;
+      line-height: 1.3;
+    }
+
+    .cro-card-desc {
+      font-size: 0.9rem;
+      color: var(--text-muted);
+      margin-bottom: 20px;
+      line-height: 1.4;
+    }
+
+    .cro-card-price-row {
+      margin-bottom: 20px;
+    }
+
+    .cro-card-price {
+      font-size: 1.5rem;
+      font-weight: 700;
+      color: var(--text-main);
+    }
+
+    .cro-card-unit {
+      font-size: 0.85rem;
+      color: var(--text-muted);
+    }
+
+    /* Actions configuration inline */
+    .cro-card-actions {
+      display: flex;
+      gap: 8px;
+    }
+
+    .cro-qty-select {
+      background: #ffffff;
+      border: 1px solid var(--input-border);
+      border-radius: 6px;
+      padding: 10px;
+      font-family: inherit;
+      font-size: 0.9rem;
+      font-weight: 500;
+      color: var(--text-main);
+      outline: none;
+      width: 75px;
+    }
+
+    .cro-add-btn {
+      flex-grow: 1;
+      background: var(--primary);
+      color: #ffffff;
+      border: none;
+      border-radius: 6px;
+      padding: 10px 16px;
+      font-family: inherit;
+      font-size: 0.92rem;
+      font-weight: 700;
+      cursor: pointer;
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      gap: 8px;
+      transition: background 0.15s;
+    }
+
+    .cro-add-btn:hover {
+      background: var(--primary-hover);
+    }
+
+    .cro-empty-state {
+      grid-column: 1 / -1;
+      text-align: center;
+      padding: 60px 24px;
+      background: #ffffff;
+      border: 1px dashed var(--input-border);
+      border-radius: 12px;
+      color: var(--text-muted);
+      display: none;
+    }
+
+    /* ==========================================================================
+       SLIDE DOWN CART SLATE DRAWER
+       ========================================================================== */
+    .cro-drawer-mask {
+      position: fixed;
+      top: 0;
+      left: 0;
+      width: 100vw;
+      height: 100vh;
+      background: rgba(15, 23, 42, 0.3);
+      backdrop-filter: blur(4px);
+      z-index: 2000;
+      opacity: 0;
+      visibility: hidden;
+      transition: opacity 0.2s, visibility 0.2s;
+    }
+
+    .cro-drawer-mask.active {
+      opacity: 1;
+      visibility: visible;
+    }
+
+    .cro-cart-panel {
+      position: fixed;
+      top: 0;
+      right: -440px;
+      width: 100%;
+      max-width: 440px;
+      height: 100vh;
+      background: #ffffff;
+      box-shadow: -4px 0 24px rgba(15, 23, 42, 0.08);
+      z-index: 2001;
+      display: flex;
+      flex-direction: column;
+      transition: right 0.25s cubic-bezier(0.16, 1, 0.3, 1);
+    }
+
+    .cro-cart-panel.active {
+      right: 0;
+    }
+
+    .cro-panel-header {
+      padding: 24px;
+      border-bottom: 1px solid var(--border-color);
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+    }
+
+    .cro-panel-header h3 {
+      font-size: 1.15rem;
+      font-weight: 700;
+    }
+
+    .cro-close-ico {
+      background: none;
+      border: none;
+      cursor: pointer;
+      color: var(--text-muted);
+      padding: 4px;
+      border-radius: 6px;
+    }
+
+    .cro-close-ico:hover {
+      background: #f1f5f9;
+      color: var(--text-main);
+    }
+
+    .cro-panel-body {
+      flex-grow: 1;
+      overflow-y: auto;
+      padding: 24px;
+    }
+
+    /* Dynamic line nodes */
+    .cro-item-node {
+      display: flex;
+      justify-content: space-between;
+      align-items: flex-start;
+      gap: 16px;
+      padding-bottom: 16px;
+      margin-bottom: 16px;
+      border-bottom: 1px solid #f1f5f9;
+    }
+
+    .cro-node-info h4 {
+      font-size: 0.95rem;
+      font-weight: 700;
+      color: var(--text-main);
+      margin-bottom: 2px;
+    }
+
+    .cro-node-meta {
+      font-size: 0.85rem;
+      color: var(--text-muted);
+    }
+
+    .cro-node-right {
+      text-align: right;
+      display: flex;
+      flex-direction: column;
+      align-items: flex-end;
+      justify-content: space-between;
+      height: 48px;
+    }
+
+    .cro-node-price {
+      font-size: 0.95rem;
+      font-weight: 700;
+    }
+
+    .cro-node-del {
+      background: none;
+      border: none;
+      color: var(--danger);
+      font-size: 0.8rem;
+      font-weight: 500;
+      cursor: pointer;
+    }
+
+    .cro-node-del:hover {
+      text-decoration: underline;
+    }
+
+    .cro-panel-footer {
+      padding: 24px;
+      background: #f8fafc;
+      border-top: 1px solid var(--border-color);
+    }
+
+    .cro-footer-summary-row {
+      display: flex;
+      justify-content: space-between;
+      font-size: 0.92rem;
+      color: var(--text-muted);
+      margin-bottom: 8px;
+    }
+
+    .cro-footer-total-row {
+      display: flex;
+      justify-content: space-between;
+      font-size: 1.15rem;
+      font-weight: 700;
+      color: var(--text-main);
+      padding-top: 12px;
+      border-top: 1px solid var(--border-color);
+      margin-bottom: 20px;
+    }
+
+    .cro-checkout-btn {
+      display: block;
+      width: 100%;
+      text-align: center;
+      background: var(--success);
+      color: #ffffff;
+      border: none;
+      border-radius: 6px;
+      padding: 14px;
+      font-family: inherit;
+      font-size: 0.98rem;
+      font-weight: 700;
+      cursor: pointer;
+      transition: background 0.15s;
+    }
+
+    .cro-checkout-btn:hover {
+      background: var(--success-hover);
+    }
+
+    /* ==========================================================================
+       CHECKOUT DIALOG WORKSPACE MODALS
+       ========================================================================== */
+    .cro-modal-mask {
+      position: fixed;
+      top: 0;
+      left: 0;
+      width: 100vw;
+      height: 100vh;
+      background: rgba(15, 23, 42, 0.4);
+      backdrop-filter: blur(4px);
+      z-index: 3000;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      opacity: 0;
+      visibility: hidden;
+      padding: 20px;
+      transition: opacity 0.2s, visibility 0.2s;
+    }
+
+    .cro-modal-mask.active {
+      opacity: 1;
+      visibility: visible;
+    }
+
+    .cro-checkout-dialog {
+      background: #ffffff;
+      border-radius: 12px;
+      width: 100%;
+      max-width: 800px;
+      max-height: 90vh;
+      box-shadow: var(--shadow-lg);
+      display: flex;
+      flex-direction: column;
+      overflow: hidden;
+      transform: scale(0.95);
+      transition: transform 0.2s cubic-bezier(0.16, 1, 0.3, 1);
+    }
+
+    .cro-modal-mask.active .cro-checkout-dialog {
+      transform: scale(1);
+    }
+
+    .cro-modal-main {
+      padding: 32px;
+      overflow-y: auto;
+      display: grid;
+      grid-template-columns: 1fr 280px;
+      gap: 32px;
+    }
+
+    .cro-checkout-step-title {
+      font-size: 1.25rem;
+      font-weight: 700;
+      margin-bottom: 20px;
+      grid-column: 1 / -1;
+    }
+
+    .cro-form-field {
+      margin-bottom: 16px;
+    }
+
+    .cro-form-field label {
+      display: block;
+      font-size: 0.85rem;
+      font-weight: 700;
+      margin-bottom: 6px;
+    }
+
+    .cro-form-field input, .cro-form-field select {
+      width: 100%;
+      border: 1px solid var(--input-border);
+      border-radius: 6px;
+      padding: 10px 12px;
+      font-family: inherit;
+      font-size: 0.92rem;
+      outline: none;
+      background: #ffffff;
+      transition: border-color 0.15s;
+    }
+
+    .cro-form-field input:focus, .cro-form-field select:focus {
+      border-color: var(--primary);
+    }
+
+    .cro-form-row {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 16px;
+    }
+
+    /* Embedded Order Summary Column */
+    .cro-embedded-summary {
+      background: #f8fafc;
+      border: 1px solid var(--border-color);
+      border-radius: 8px;
+      padding: 20px;
+      align-self: start;
+    }
+
+    .cro-summary-header {
+      font-size: 0.8rem;
+      text-transform: uppercase;
+      letter-spacing: 0.05em;
+      color: var(--text-muted);
+      font-weight: 700;
+      margin-bottom: 12px;
+    }
+
+    .cro-mini-list {
+      max-height: 160px;
+      overflow-y: auto;
+      margin-bottom: 12px;
+    }
+
+    .cro-mini-item {
+      display: flex;
+      justify-content: space-between;
+      font-size: 0.88rem;
+      margin-bottom: 6px;
+    }
+
+    .cro-mini-item span:first-child {
+      white-space: nowrap;
+      overflow: hidden;
+      text-overflow: ellipsis;
+      max-width: 150px;
+    }
+
+    .cro-modal-action-bar {
+      padding: 20px 32px;
+      border-top: 1px solid var(--border-color);
+      background: #f8fafc;
+      display: flex;
+      justify-content: flex-end;
+      gap: 12px;
+    }
+
+    .cro-btn-base {
+      font-family: inherit;
+      font-size: 0.95rem;
+      font-weight: 700;
+      padding: 10px 20px;
+      border-radius: 6px;
+      border: none;
+      cursor: pointer;
+    }
+
+    .cro-btn-muted {
+      background: #e2e8f0;
+      color: #475569;
+    }
+
+    .cro-btn-muted:hover {
+      background: #cbd5e1;
+    }
+
+    .cro-btn-prime {
+      background: var(--success);
+      color: #ffffff;
+    }
+
+    .cro-btn-prime:hover {
+      background: var(--success-hover);
+    }
+
+    /* Order Complete Frame State Mapping */
+    .cro-success-viewport {
+      grid-column: 1 / -1;
+      text-align: center;
+      padding: 20px 0;
+      display: none;
+    }
+
+    .cro-checkmark-circle {
+      width: 56px;
+      height: 56px;
+      background: #dcfce7;
+      color: var(--success);
+      border-radius: 50%;
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      margin-bottom: 16px;
+    }
+
+    .cro-success-viewport h4 {
+      font-size: 1.3rem;
+      margin-bottom: 8px;
+    }
+
+    .cro-success-viewport p {
+      color: var(--text-muted);
+      font-size: 0.95rem;
+      max-width: 420px;
+      margin: 0 auto 24px;
+    }
+
+    @media (max-width: 900px) {
+      .cro-layout-wrapper {
+        grid-template-columns: 1fr;
+        gap: 24px;
+      }
+      .cro-sidebar-nav {
+        display: flex;
+        align-items: center;
+        gap: 8px;
+        overflow-x: auto;
+        padding-bottom: 8px;
+      }
+      .cro-sidebar-nav h3 {
+        display: none;
+      }
+      .cro-cat-list {
+        display: flex;
+        gap: 8px;
+      }
+      .cro-cat-item {
+        margin-bottom: 0;
+        white-space: nowrap;
+      }
+      .cro-modal-main {
+        grid-template-columns: 1fr;
+      }
+      .cro-embedded-summary {
+        order: -1;
+      }
+    }
+  </style>
+</head>
+<body>
+
+  <!-- UTILITY NAVBAR COMPONENT -->
+  <nav class="cro-navbar">
+    <div class="cro-nav-container">
+      <a href="#" class="cro-logo" onclick="window.location.reload(); return false;">CRONOS<span>.MARKET</span></a>
+      
+      <div class="cro-search-box">
+        <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round">
+          <circle cx="11" cy="11" r="8"></circle>
+          <line x1="21" y1="21" x2="16.65" y2="16.65"></line>
+        </svg>
+        <input type="text" id="cro-product-search-input" placeholder="Search infrastructure apps, backups, compliance tools...">
+      </div>
+
+      <button class="cro-cart-btn" id="cro-drawer-trigger">
+        <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+          <path d="M6 2L3 6v14a2 2 0 0 0 2 2h14a2 2 0 0 0 2-2V6l-3-4z"></path>
+          <line x1="3" y1="6" x2="21" y2="6"></line>
+          <path d="M16 10a4 4 0 0 1-8 0"></path>
+        </svg>
+        <span>Cart</span>
+        <div class="cro-cart-counter" id="cro-basket-badge">0</div>
+      </button>
+    </div>
+  </nav>
+
+  <!-- STOREFRONT MATRIX HOUSING -->
+  <main class="cro-layout-wrapper">
+    
+    <!-- CATEGORY NAIVE FILTER LINKS -->
+    <aside class="cro-sidebar-nav">
+      <h3>Categories</h3>
+      <ul class="cro-cat-list">
+        <li class="cro-cat-item active" data-filter="all">All Solutions</li>
+        <li class="cro-cat-item" data-filter="productivity">Productivity</li>
+        <li class="cro-cat-item" data-filter="storage">Cloud Storage</li>
+        <li class="cro-cat-item" data-filter="security">Cybersecurity</li>
+      </ul>
+    </aside>
+
+    <!-- LIVE GRID SPACE -->
+    <section class="cro-products-grid" id="cro-catalog-target">
+      
+      <!-- Card Item Node -->
+      <div class="cro-product-card" data-uid="m365-basic" data-cat="productivity" data-price="115">
+        <div>
+          <span class="cro-card-category">Productivity</span>
+          <h3 class="cro-card-title">Microsoft 365 Business Basic</h3>
+          <p class="cro-card-desc">Professional corporate cloud email servers, standard secure business chat tools, and 1 TB reliable storage allocation per active user license instance.</p>
+        </div>
+        <div>
+          <div class="cro-card-price-row">
+            <span class="cro-card-price">R115</span>
+            <span class="cro-card-unit">/ seat / mo</span>
+          </div>
+          <div class="cro-card-actions">
+            <select class="cro-qty-select">
+              <option value="1">1</option>
+              <option value="5">5</option>
+              <option value="10">10</option>
+              <option value="25">25</option>
+            </select>
+            <button class="cro-add-btn">Add to Cart</button>
+          </div>
+        </div>
+      </div>
+
+      <!-- Card Item Node -->
+      <div class="cro-product-card" data-uid="m365-standard" data-cat="productivity" data-price="240">
+        <div>
+          <span class="cro-card-category">Productivity</span>
+          <h3 class="cro-card-title">Microsoft 365 Business Standard</h3>
+          <p class="cro-card-desc">Comprehensive system mapping containing fully downloaded computer desktop applications across connected employee operating configurations.</p>
+        </div>
+        <div>
+          <div class="cro-card-price-row">
+            <span class="cro-card-price">R240</span>
+            <span class="cro-card-unit">/ seat / mo</span>
+          </div>
+          <div class="cro-card-actions">
+            <select class="cro-qty-select">
+              <option value="1">1</option>
+              <option value="5">5</option>
+              <option value="10">10</option>
+              <option value="25">25</option>
+            </select>
+            <button class="cro-add-btn">Add to Cart</button>
+          </div>
+        </div>
+      </div>
+
+      <!-- Card Item Node -->
+      <div class="cro-product-card" data-uid="m365-premium" data-cat="security" data-price="420">
+        <div>
+          <span class="cro-card-category">Cybersecurity</span>
+          <h3 class="cro-card-title">Microsoft 365 Business Premium</h3>
+          <p class="cro-card-desc">Advanced infrastructure protection architecture deploying advanced ransomware data threat filters and remote device tracking controllers.</p>
+        </div>
+        <div>
+          <div class="cro-card-price-row">
+            <span class="cro-card-price">R420</span>
+            <span class="cro-card-unit">/ seat / mo</span>
+          </div>
+          <div class="cro-card-actions">
+            <select class="cro-qty-select">
+              <option value="1">1</option>
+              <option value="5">5</option>
+              <option value="10">10</option>
+            </select>
+            <button class="cro-add-btn">Add to Cart</button>
+          </div>
+        </div>
+      </div>
+
+      <!-- Card Item Node -->
+      <div class="cro-product-card" data-uid="cronos-vault" data-cat="storage" data-price="95">
+        <div>
+          <span class="cro-card-category">Cloud Storage</span>
+          <h3 class="cro-card-title">Cronos Automated Cloud Vault</h3>
+          <p class="cro-card-desc">Automated system mirror data collection engines protecting business critical records inside highly isolated external storage environments.</p>
+        </div>
+        <div>
+          <div class="cro-card-price-row">
+            <span class="cro-card-price">R95</span>
+            <span class="cro-card-unit">/ seat / mo</span>
+          </div>
+          <div class="cro-card-actions">
+            <select class="cro-qty-select">
+              <option value="1">1</option>
+              <option value="5">5</option>
+              <option value="10">10</option>
+            </select>
+            <button class="cro-add-btn">Add to Cart</button>
+          </div>
+        </div>
+      </div>
+
+      <div class="cro-empty-state" id="cro-search-empty-node">
+        <p>No matches located inside current inventory.</p>
+      </div>
+
+    </section>
+  </main>
+
+  <!-- LATENT DRAWER MATRIX -->
+  <div class="cro-drawer-mask" id="cro-cart-mask">
+    <div class="cro-cart-panel">
+      <div class="cro-panel-header">
+        <h3>Shopping Cart</h3>
+        <button class="cro-close-ico" id="cro-cart-close-ico">
+          <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><line x1="18" y1="6" x2="6" y2="18"></line><line x1="6" y1="6" x2="18" y2="18"></line></svg>
+        </button>
+      </div>
+
+      <div class="cro-panel-body" id="cro-cart-list-wrapper">
+        <!-- Injected Dynamically -->
+      </div>
+
+      <div class="cro-panel-footer">
+        <div class="cro-footer-summary-row">
+          <span>Subtotal</span>
+          <span id="cro-summary-subtotal">R0.00</span>
+        </div>
+        <div class="cro-footer-summary-row">
+          <span>VAT (15%)</span>
+          <span id="cro-summary-vat">R0.00</span>
+        </div>
+        <div class="cro-footer-total-row">
+          <span>Total Commitment</span>
+          <span id="cro-summary-total">R0.00</span>
+        </div>
+        <button class="cro-checkout-btn" id="cro-checkout-trigger-btn">Proceed to Checkout</button>
+      </div>
+    </div>
+  </div>
+
+  <!-- CHECKOUT CONTROLLER DIALOG -->
+  <div class="cro-modal-mask" id="cro-checkout-dialog-mask">
+    <div class="cro-checkout-dialog">
+      
+      <div class="cro-modal-main">
+        <h3 class="cro-checkout-step-title" id="cro-dialog-title">Secure Checkout Details</h3>
+        
+        <!-- Interactive Form Fields -->
+        <form id="cro-payment-form" style="grid-column: 1;">
+          <div class="cro-form-field">
+            <label>Authorized Company Name</label>
+            <input type="text" required placeholder="e.g. Cronos Systems Group">
+          </div>
+          <div class="cro-form-field">
+            <label>Billing Contact Email</label>
+            <input type="email" required placeholder="e.g. billing@cronos.co.za">
+          </div>
+          <div class="cro-form-field">
+            <label>Preferred Payment Term Strategy</label>
+            <select required>
+              <option value="monthly">Monthly Debit Account Routing</option>
+              <option value="annual">Annual upfront clearing allocation</option>
+            </select>
+          </div>
+          <div class="cro-form-row">
+            <div class="cro-form-field">
+              <label>Company VAT ID (If Applicable)</label>
+              <input type="text" placeholder="Optional 10-digit registration">
+            </div>
+            <div class="cro-form-field">
+              <label>Tenant Domain Hook</label>
+              <input type="text" required placeholder="e.g. cronos">
+            </div>
+          </div>
+        </form>
+
+        <!-- Inline Review Column -->
+        <div class="cro-embedded-summary" id="cro-dialog-summary-panel">
+          <div class="cro-summary-header">Items Summary</div>
+          <div class="cro-mini-list" id="cro-modal-review-list">
+            <!-- Items hook location -->
+          </div>
+          <div style="font-size:0.9rem; font-weight:700; border-top:1px solid var(--border-color); padding-top:12px; display:flex; justify-content:space-between;">
+            <span>Total:</span>
+            <span id="cro-modal-review-total-cost">R0.00</span>
+          </div>
+        </div>
+
+        <!-- Order Complete Success Block -->
+        <div class="cro-success-viewport" id="cro-order-success-screen">
+          <div class="cro-checkmark-circle">
+            <svg width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"></polyline></svg>
+          </div>
+          <h4>Order Successfully Positioned</h4>
+          <p>Your provisioning bundle routing metrics match processing schedules. Our server allocation team will relay connection configurations directly via your verified account address.</p>
+          <button type="button" class="cro-btn-base cro-btn-muted" id="cro-success-dismiss-btn">Return to Storefront</button>
+        </div>
+
+      </div>
+
+      <div class="cro-modal-action-bar" id="cro-dialog-footer-actions">
+        <button type="button" class="cro-btn-base cro-btn-muted" id="cro-checkout-cancel-btn">Back to Shop</button>
+        <button type="submit" form="cro-payment-form" class="cro-btn-base cro-btn-prime">Complete Authorization</button>
+      </div>
+
+    </div>
+  </div>
+
+  <!-- APPLICATION LOGIC STACK -->
+  <script>
+    document.addEventListener('DOMContentLoaded', () => {
+      
+      // RUNTIME SYSTEM STATE STORAGE
+      let userCartArray = [];
+
+      // DOM Node Pointers
+      const searchBoxInput = document.getElementById('cro-product-search-input');
+      const catalogCards = document.querySelectorAll('.cro-product-card');
+      const emptyStateNode = document.getElementById('cro-search-empty-node');
+      const categoryTabFilters = document.querySelectorAll('.cro-cat-item');
+      
+      const cartMask = document.getElementById('cro-cart-mask');
+      const cartPanel = document.getElementById('cro-cart-panel');
+      const openDrawerBtn = document.getElementById('cro-drawer-trigger');
+      const closeDrawerIco = document.getElementById('cro-cart-close-ico');
+      const basketBadge = document.getElementById('cro-basket-badge');
+      const listWrapperNode = document.getElementById('cro-cart-list-wrapper');
+      
+      const summarySubtotal = document.getElementById('cro-summary-subtotal');
+      const summaryVat = document.getElementById('cro-summary-vat');
+      const summaryTotal = document.getElementById('cro-summary-total');
+      
+      const checkoutTriggerBtn = document.getElementById('cro-checkout-trigger-btn');
+      const checkoutDialogMask = document.getElementById('cro-checkout-dialog-mask');
+      const checkoutCancelBtn = document.getElementById('cro-checkout-cancel-btn');
+      const checkoutFormNode = document.getElementById('cro-payment-form');
+      const dialogFooterActions = document.getElementById('cro-dialog-footer-actions');
+      const orderSuccessScreen = document.getElementById('cro-order-success-screen');
+      const dialogSummaryPanel = document.getElementById('cro-dialog-summary-panel');
+      const dialogTitleNode = document.getElementById('cro-dialog-title');
+      const successDismissBtn = document.getElementById('cro-success-dismiss-btn');
+      
+      const modalReviewList = document.getElementById('cro-modal-review-list');
+      const modalReviewTotalCost = document.getElementById('cro-modal-review-total-cost');
+
+      let currentActiveFilter = 'all';
+      let currentActiveQuery = '';
+
+      // ==========================================================================
+      // REALTIME INPUT FILTER COMPILATIONS
+      // ==========================================================================
+      function evaluateVisibleDisplayCards() {
+        let visibilityCounter = 0;
+
+        catalogCards.forEach(card => {
+          const cardTitleText = card.querySelector('.cro-card-title').textContent.toLowerCase();
+          const cardDescText = card.querySelector('.cro-card-desc').textContent.toLowerCase();
+          const cardCategoryHook = card.getAttribute('data-cat');
+
+          const queryMatch = cardTitleText.includes(currentActiveQuery) || cardDescText.includes(currentActiveQuery);
+          const filterMatch = (currentActiveFilter === 'all') || (cardCategoryHook === currentActiveFilter);
+
+          if (queryMatch && filterMatch) {
+            card.style.display = 'flex';
+            visibilityCounter++;
+          } else {
+            card.style.display = 'none';
+          }
+        });
+
+        emptyStateNode.style.display = (visibilityCounter === 0) ? 'block' : 'none';
+      }
+
+      searchBoxInput.addEventListener('input', (e) => {
+        currentActiveQuery = e.target.value.toLowerCase().trim();
+        evaluateVisibleDisplayCards();
+      });
+
+      categoryTabFilters.forEach(tab => {
+        tab.addEventListener('click', function() {
+          categoryTabFilters.forEach(t => t.classList.remove('active'));
+          this.classList.add('active');
+          currentActiveFilter = this.getAttribute('data-filter');
+          evaluateVisibleDisplayCards();
+        });
+      });
+
+
+      // ==========================================================================
+      // TRANSACTION METRIC COMPUTATIONS
+      // ==========================================================================
+      function recomputeFinancialMetrics() {
+        let totalItemsQuantity = 0;
+        let basicTotalSumValue = 0;
+
+        userCartArray.forEach(item => {
+          totalItemsQuantity += item.quantity;
+          basicTotalSumValue += (item.unitCostValue * item.quantity);
+        });
+
+        // Sync visual notification badges
+        basketBadge.textContent = totalItemsQuantity;
+
+        if (userCartArray.length === 0) {
+          listWrapperNode.innerHTML = `<p style="text-align:center; color:var(--text-muted); padding:40px 0;">Your configuration cart is empty.</p>`;
+          checkoutTriggerBtn.disabled = true;
+          checkoutTriggerBtn.style.opacity = '0.5';
+          checkoutTriggerBtn.style.pointerEvents = 'none';
+        } else {
+          checkoutTriggerBtn.disabled = false;
+          checkoutTriggerBtn.style.opacity = '1';
+          checkoutTriggerBtn.style.pointerEvents = 'auto';
+
+          listWrapperNode.innerHTML = '';
+          userCartArray.forEach(item => {
+            const itemElement = document.createElement('div');
+            itemElement.className = 'cro-item-node';
+            itemElement.innerHTML = `
+              <div class="cro-node-info">
+                <h4>${item.labelTitle}</h4>
+                <div class="cro-node-meta">R${item.unitCostValue} × ${item.quantity} Units</div>
+              </div>
+              <div class="cro-node-right">
+                <span class="cro-node-price">R${item.unitCostValue * item.quantity}</span>
+                <button class="cro-node-del" data-remove-uid="${item.id}">Remove</button>
+              </div>
+            `;
+            listWrapperNode.appendChild(itemElement);
+          });
+
+          // Bind event delegation lines immediately upon node structural rendering blocks
+          document.querySelectorAll('.cro-node-del').forEach(btn => {
+            btn.addEventListener('click', function() {
+              const removalTargetUid = this.getAttribute('data-remove-uid');
+              userCartArray = userCartArray.filter(i => i.id !== removalTargetUid);
+              recomputeFinancialMetrics();
+            });
+          });
+        }
+
+        const standardVatSum = basicTotalSumValue * 0.15;
+        const totalGrandCost = basicTotalSumValue + standardVatSum;
+
+        summarySubtotal.textContent = `R${basicTotalSumValue.toFixed(2)}`;
+        summaryVat.textContent = `R${standardVatSum.toFixed(2)}`;
+        summaryTotal.textContent = `R${totalGrandCost.toFixed(2)}`;
+        
+        modalReviewTotalCost.textContent = `R${totalGrandCost.toFixed(2)}`;
+      }
+
+      // Catalog Entry Form Button Routing
+      document.querySelectorAll('.cro-product-card').forEach(card => {
+        const actionButton = card.querySelector('.cro-add-btn');
+        
+        actionButton.addEventListener('click', function() {
+          const id = card.getAttribute('data-uid');
+          const labelTitle = card.querySelector('.cro-card-title').textContent;
+          const unitCostValue = parseFloat(card.getAttribute('data-price'));
+          const quantity = parseInt(card.querySelector('.cro-qty-select').value);
+
+          const preExistingMatchIndex = userCartArray.findIndex(item => item.id === id);
+
+          if (preExistingMatchIndex > -1) {
+            userCartArray[preExistingMatchIndex].quantity += quantity;
+          } else {
+            userCartArray.push({ id, labelTitle, unitCostValue, quantity });
+          }
+
+          recomputeFinancialMetrics();
+          
+          // Micro UX open interactions loops automatically
+          cartMask.classList.add('active');
+          cartPanel.classList.add('active');
+          document.body.classList.add('modal-open');
+        });
+      });
+
+
+      // ==========================================================================
+      // STAGE CONTROL WIZARD DIRECT ROUTING LINKS
+      // ==========================================================================
+      openDrawerBtn.addEventListener('click', () => {
+        cartMask.classList.add('active');
+        cartPanel.classList.add('active');
+        document.body.classList.add('modal-open');
+      });
+
+      function completelyCollapseDrawerPanel() {
+        cartMask.classList.remove('active');
+        cartPanel.classList.remove('active');
+        if (!checkoutDialogMask.classList.contains('active')) {
+          document.body.classList.remove('modal-open');
+        }
+      }
+      closeDrawerIco.addEventListener('click', completelyCollapseDrawerPanel);
+      cartMask.addEventListener('click', completelyCollapseDrawerPanel);
+
+      // Modal Transition Route Maps
+      checkoutTriggerBtn.addEventListener('click', (e) => {
+        e.preventDefault();
+        if (userCartArray.length === 0) return;
+
+        completelyCollapseDrawerPanel();
+
+        // Inject inside checking layout rows
+        modalReviewList.innerHTML = '';
+        userCartArray.forEach(item => {
+          const revNodeItem = document.createElement('div');
+          revNodeItem.className = 'cro-mini-item';
+          revNodeItem.innerHTML = `
+            <span>${item.labelTitle} (×${item.quantity})</span>
+            <strong>R${item.unitCostValue * item.quantity}</strong>
+          `;
+          modalReviewList.appendChild(revNodeItem);
+        });
+
+        checkoutDialogMask.classList.add('active');
+        document.body.classList.add('modal-open');
+      });
+
+      function completelyShutdownModalFrame() {
+        checkoutDialogMask.classList.remove('active');
+        document.body.classList.remove('modal-open');
+        
+        setTimeout(() => {
+          checkoutFormNode.style.display = 'block';
+          dialogSummaryPanel.style.display = 'block';
+          dialogFooterActions.style.display = 'flex';
+          orderSuccessScreen.style.display = 'none';
+          dialogTitleNode.style.display = 'block';
+          checkoutFormNode.reset();
+        }, 250);
+      }
+
+      checkoutCancelBtn.addEventListener('click', completelyShutdownModalFrame);
+      successDismissBtn.addEventListener('click', completelyShutdownModalFrame);
+
+      // Native workflow logic intercept handler
+      checkoutFormNode.addEventListener('submit', (e) => {
+        e.preventDefault();
+
+        dialogTitleNode.style.display = 'none';
+        checkoutFormNode.style.display = 'none';
+        dialogSummaryPanel.style.display = 'none';
+        dialogFooterActions.style.display = 'none';
+        orderSuccessScreen.style.display = 'block';
+
+        userCartArray = [];
+        recomputeFinancialMetrics();
+      });
+
+    });
+  </script>
+
+</body>
+</html>

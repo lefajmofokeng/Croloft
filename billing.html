@@ -70,15 +70,6 @@
 
 
 
-
-
-
-
-
-
-
-
-
 <!DOCTYPE html>
 <html lang="en" dir="ltr">
 <head>
@@ -86,7 +77,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0, minimum-scale=1.0, maximum-scale=5.0, viewport-fit=cover, shrink-to-fit=no">
     <meta http-equiv="x-ua-compatible" content="ie=edge"/>
     
-    <title>Cronos</title>
+    <title>Cronos - Financial Engagement Matrix</title>
 
     <link rel="icon" type="image/png" href="thumbnails/top-1.png">
 
@@ -114,10 +105,10 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>IT Services Matrix | Project Scopes &amp; Capabilities</title>
+  <title>Engagement Models Matrix | Annual vs Monthly vs Hourly</title>
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link href="https://fonts.googleapis.com/css2?family=Outfit:wght=400;600;800&family=Work+Sans:wght=400;500&display=swap" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css2?family=Outfit:wght@400;600;800&family=Work+Sans:wght@400;500&display=swap" rel="stylesheet">
   <style>
     * {
       margin: 0;
@@ -126,10 +117,10 @@
     }
 
     :root {
-      --primary: #1e6baf;
+      --primary: #0578c4;
       --primary-dark: #1e3a8a;
       --primary-light: #3b82f6;
-      --success: #282f3e;
+      --success: #364e61;
       --text-dark: #0f172a;
       --text-gray: #64748b;
       --text-light: #94a3b8;
@@ -200,8 +191,8 @@
       font-family: 'Circular Std', sans-serif;
       font-weight: 500;
       font-size: 0.95rem;
-      padding: 8px 20px;
-      border-radius: 50px;
+      padding: 14px 24px;
+      border-radius: 8px;
       cursor: pointer;
       text-decoration: none;
       border: 1px solid transparent;
@@ -303,15 +294,15 @@
       vertical-align: top;
       background: transparent;
       border-bottom: 1px solid #e2e8f0;
-      text-align: left; 
-      color: #3f3f3f; 
+      text-align: left;
+      color: #3f3f3f;
       line-height: 1.4;
     }
 
     tbody td:first-child {
-      font-weight: 500; 
+      font-weight: 500;
       font-size: 1.1rem;
-      color: var(--text-dark); 
+      color: var(--text-dark);
     }
 
     /* Premium functional list layouts using checkmarks instead of basic bullets */
@@ -384,6 +375,25 @@
       font-weight: 400;
       color: var(--primary);
       margin-bottom: 4px;
+    }
+
+    /* Operational Mechanics Description Box */
+    .itc-mechanics-box {
+      margin-top: 8px;
+      padding: 10px 12px;
+      background: #f8fafc;
+      border-left: 3px solid var(--primary);
+      border-radius: 4px;
+      font-size: 0.92rem;
+      color: #334155;
+    }
+
+    .itc-mechanics-title {
+      font-weight: 600;
+      color: var(--text-dark);
+      display: block;
+      margin-bottom: 2px;
+      font-size: 0.95rem;
     }
 
     /* Footer Notes Listed Vertically Straight Downward */
@@ -546,8 +556,14 @@
       }
 
       .itc-financial-inline {
-        color: #1e6baf !important;
+        color: #0578c4 !important;
         font-weight: 600 !important;
+      }
+
+      .itc-mechanics-box {
+        padding: 6px !important;
+        font-size: 7.5pt !important;
+        background: #f1f5f9 !important;
       }
 
       .itc-footer-notes {
@@ -587,7 +603,7 @@
         gap: 16px;
       }
 
-      /* UNIFIED SCROLL RESOLUTION: Wipe out split sticky frameworks on smaller viewpoint ports */
+      /* UNIFIED SCROLL RESOLUTION: Wipe out split sticky frameworks on smaller viewport ports */
       .itc-table-section.itc-table-header {
         position: static !important;
         box-shadow: none !important;
@@ -634,8 +650,8 @@
       
       <div class="itc-header-flex-container">
         <div>
-          <h2 class="itc-comparison-title">Comprehensive Capabilities &amp; Engineering Matrix</h2>
-          <p class="itc-comparison-subtitle">A granular architectural operational guide detailing tech stack implementation structures, web development tiers, and financial delivery protocols.</p>
+          <h2 class="itc-comparison-title">Financial Engagement Models &amp; Sprints Matrix</h2>
+          <p class="itc-comparison-subtitle">A comparative structural breakdown detailing operational billing plans, core digital products, service inclusions, and SLA delivery terms.</p>
         </div>
         
         <a href="#" class="itc-download-trigger" id="itc-download-pdf-btn">
@@ -655,10 +671,10 @@
             <table>
               <thead>
                 <tr>
-                  <th>Architecture Parameters</th>
-                  <th>Core Tiers</th>
-                  <th>Professional Tiers</th>
-                  <th>Enterprise Tiers</th>
+                  <th>Engagement Parameters</th>
+                  <th>Monthly Rolling Retainer</th>
+                  <th>Annual Institutional Partnership</th>
+                  <th>On-Demand / Hourly Sprint Slices</th>
                 </tr>
               </thead>
             </table>
@@ -670,232 +686,245 @@
             <table>
               <tbody>
                 <tr class="itc-feature-group">
-                  <td colspan="4"><div class="itc-feature-group-inner">Financial Structures &amp; Parameters</div></td>
+                  <td colspan="4"><div class="itc-feature-group-inner">Engineered Product Solutions &amp; Pricing Schemes</div></td>
                 </tr>
                 <tr>
-                  <td>Estimated Investment</td>
+                  <td>Custom Web Application Ecosystems</td>
                   <td>
-                    <span class="itc-financial-inline">R3,500 – R8,500</span>
-                    <span class="itc-feature-detail">Fixed cost setup evaluated on predictable milestone completions.</span>
+                    <span class="itc-financial-inline">R2,999 Once-off Base</span>
+                    <span class="itc-feature-detail">Upfront layout mobilization framework setup fee.</span>
+                    <div class="itc-mechanics-box">
+                      <span class="itc-mechanics-title">How it works:</span>
+                      Client pays a small entry once-off base to launch design wireframes, combined with flexible milestone terms for secondary components.
+                    </div>
+                  </td>
+                  <td>
+                    <span class="itc-financial-inline">R250 / Month (6 Installments)</span>
+                    <span class="itc-feature-detail">Structured micro-payments spreading technical costs safely.</span>
+                    <div class="itc-mechanics-box">
+                      <span class="itc-mechanics-title">How it works:</span>
+                      Total production parameters are broken over a 6-month timeline, ensuring small business infrastructure can scale without massive immediate cash flow drains.
+                    </div>
+                  </td>
+                  <td>
+                    <span class="itc-financial-inline">R750 / Sprint Hour Baseline</span>
+                    <span class="itc-feature-detail">Ad-hoc agile application feature additions.</span>
+                    <div class="itc-mechanics-box">
+                      <span class="itc-mechanics-title">How it works:</span>
+                      Billed strictly on a time-and-materials ledger for localized updates, script injections, or custom visual fixes without long-term overhead.
+                    </div>
+                  </td>
+                </tr>
+                <tr>
+                  <td>High-Availability Database Management</td>
+                  <td>
+                    <span class="itc-financial-inline">R2,599 / Month Rolling</span>
+                    <span class="itc-feature-detail">Ongoing database optimization, tuning, and access rules management.</span>
+                    <div class="itc-mechanics-box">
+                      <span class="itc-mechanics-title">How it works:</span>
+                      Billed monthly to secure consistent relational scheme reviews, system connection optimization, and real-time operational logs checks.
+                    </div>
+                  </td>
+                  <td>
+                    <span class="itc-financial-inline">R12,999 / Year Contractual</span>
+                    <span class="itc-feature-detail">Institutional annual backend storage package allocation.</span>
+                    <div class="itc-mechanics-box">
+                      <span class="itc-mechanics-title">How it works:</span>
+                      Secures severe fiscal savings (nearly 60% discount compared to monthly models) for enterprise pipelines requiring locked infrastructure protection for a 12-month period.
+                    </div>
+                  </td>
+                  <td>
+                    <span class="itc-financial-inline">R1,200 / Emergency Incident</span>
+                    <span class="itc-feature-detail">On-demand structural crash recovery or server migrations.</span>
+                    <div class="itc-mechanics-box">
+                      <span class="itc-mechanics-title">How it works:</span>
+                      Flat-rate ad-hoc emergency allocation to resolve immediate schema failures, data leaks, or broken server endpoints instantly.
+                    </div>
+                  </td>
+                </tr>
+
+                <tr class="itc-feature-group">
+                  <td colspan="4"><div class="itc-feature-group-inner">Financial Architecture &amp; Commitment Terms</div></td>
+                </tr>
+                <tr>
+                  <td>Invoicing Framework</td>
+                  <td>
+                    Advance Month-Ahead
                     <ul class="itc-spec-list">
-                      <li>Used to maintain tight budgetary controls over small initial software builds.</li>
+                      <li>Processed on the 1st of each calendar cycle to guarantee operational engineer availability.</li>
                     </ul>
                   </td>
                   <td>
-                    <span class="itc-financial-inline">R10,000 – R28,000</span>
-                    <span class="itc-feature-detail">Scaled parameters priced per active feature scope module.</span>
+                    Upfront / Quarterly Options
                     <ul class="itc-spec-list">
-                      <li>Used to allocate professional full-stack resources safely to complex products.</li>
+                      <li>Settled fully upfront or broken into 4 predictable milestone gates to fit enterprise budgets.</li>
                     </ul>
                   </td>
                   <td>
-                    <span class="itc-financial-inline">Custom SOW/Retainer</span>
-                    <span class="itc-feature-detail">Custom engineered terms optimized for institutional project alignments.</span>
+                    Pre-Paid Sprint Batches
                     <ul class="itc-spec-list">
-                      <li>Used for multi-phase corporate roadmaps requiring dedicated monthly support teams.</li>
+                      <li>Purchased in advance blocks (10, 20, or 40 hours) and systematically drawn down as tickets clear.</li>
                     </ul>
                   </td>
                 </tr>
                 <tr>
-                  <td>Payment Milestones</td>
+                  <td>Commitment Terms</td>
                   <td>
-                    50% Mobilization / 50% Sign-off
+                    Month-to-Month Flexible
                     <ul class="itc-spec-list">
-                      <li>Initial 50% advance is used to initiate work pipelines and secure technical setups.</li>
-                      <li>Final 50% balance is processed for complete site handover and server deployment.</li>
+                      <li>Requires a 30-day written structural notice to downscale or pause active feature pipelines safely.</li>
                     </ul>
                   </td>
                   <td>
-                    40% / 30% / 30% Progress Gates
+                    12-Month Master Agreement
                     <ul class="itc-spec-list">
-                      <li>40% mobilization initiates deep design system UI/UX wireframes.</li>
-                      <li>30% mid-point checkpoint funds core database integrations.</li>
-                      <li>30% closing milestone activates the production launch support protocol.</li>
+                      <li>Locks priority scheduling and guarantees absolute pricing protection against market inflation for 1 full year.</li>
                     </ul>
                   </td>
                   <td>
-                    Monthly Net-15 Retainers
+                    Zero Term Commitment
                     <ul class="itc-spec-list">
-                      <li>Rolling monthly billing allocations used to ensure constant software enhancements.</li>
+                      <li>Provides complete structural variability to match unpredictable or highly volatile maintenance tickets.</li>
                     </ul>
                   </td>
                 </tr>
 
                 <tr class="itc-feature-group">
-                  <td colspan="4"><div class="itc-feature-group-inner">Web Development &amp; Application Systems</div></td>
+                  <td colspan="4"><div class="itc-feature-group-inner">Capacity Allocation &amp; Sprint Cadence</div></td>
                 </tr>
                 <tr>
-                  <td>Web Architectural Grade</td>
+                  <td>Guaranteed Availability</td>
                   <td>
-                    Basic/Marketing Web System
-                    <span class="itc-feature-detail">Premium informational profiles used to build clean corporate authority.</span>
+                    20 - 40 Hours / Month
                     <ul class="itc-spec-list">
-                      <li>Up to 5 highly structured layout pages for clear product presentations.</li>
-                      <li>Fully responsive layout templates used for smooth cross-device viewing.</li>
-                      <li>Standard semantic SEO structures used to index business info accurately.</li>
+                      <li>Allocated explicitly to execute product changes, layout extensions, or performance analytics maps.</li>
                     </ul>
                   </td>
                   <td>
-                    Professional Corporate Platform
-                    <span class="itc-feature-detail">Dynamic systems used to process orders, collect customer insights, and manage tools.</span>
+                    80 - 160 Hours / Month Dedicated
                     <ul class="itc-spec-list">
-                      <li>Up to 20 rich pages used to isolate specific service models.</li>
-                      <li>Interactive components &amp; dynamic filter states used to sort data smoothly.</li>
-                      <li>Advanced backend control boards used to manage inventory or workflows easily.</li>
+                      <li>Provides an integrated full-stack engineer or UI/UX architecture specialist assigned to your codebase.</li>
                     </ul>
                   </td>
                   <td>
-                    Advanced Multi-Tenant App Web
-                    <span class="itc-feature-detail">Enterprise application platforms used to run digital business ecosystems.</span>
+                    No Availability Guarantees
                     <ul class="itc-spec-list">
-                      <li>Decoupled multi-user portals used to separate custom dashboards securely.</li>
-                      <li>Isolated structural route engines used to provide unique workspaces per client.</li>
-                      <li>Tailored administrative centers used for processing high-volume corporate tasks.</li>
+                      <li>Subject entirely to current team bandwidth and scheduled alongside primary contract timelines.</li>
                     </ul>
                   </td>
                 </tr>
                 <tr>
-                  <td>Content Management System</td>
+                  <td>Hour Rollover Architecture</td>
                   <td>
-                    Static/Headless Basic Tier
+                    Max 10% Monthly Carry-over
                     <ul class="itc-spec-list">
-                      <li>Fixed markdown configurations used for simple textual copy updates.</li>
+                      <li>Allows a maximum of 5 hours to shift into the next month to prevent loss during slow operational cycles.</li>
                     </ul>
                   </td>
                   <td>
-                    Decoupled Headless CMS Engine
+                    Full Cumulative Banking
                     <ul class="itc-spec-list">
-                      <li>Sanity, Strapi, or Supabase panels used to modify live app media instantly.</li>
+                      <li>Hours pool continuously across quarters, allowing heavy sprint groupings for major infrastructure overhauls.</li>
                     </ul>
                   </td>
                   <td>
-                    Enterprise Content Hub Custom
+                    6-Month Expiration Window
                     <ul class="itc-spec-list">
-                      <li>Multi-layered authorization matrices used for locking sensitive editorial spaces.</li>
-                    </ul>
-                  </td>
-                </tr>
-                <tr>
-                  <td>Typography &amp; Layout Aesthetic</td>
-                  <td>
-                    Premium Web Layouts
-                    <ul class="itc-spec-list">
-                      <li>Sleek fonts like Inter or Circular Std used to deliver high-end, premium vibes.</li>
-                    </ul>
-                  </td>
-                  <td>
-                    Bespoke Platform Design Languages
-                    <ul class="itc-spec-list">
-                      <li>Tailored CSS frameworks used to establish completely unique interactive experiences.</li>
-                    </ul>
-                  </td>
-                  <td>
-                    Global Layout Systems Engineering
-                    <ul class="itc-spec-list">
-                      <li>Micro-animations &amp; custom design tokens used to maintain absolute brand perfection.</li>
+                      <li>Pre-paid token hours remain valid for up to 180 days from the initial transaction ledger creation.</li>
                     </ul>
                   </td>
                 </tr>
 
                 <tr class="itc-feature-group">
-                  <td colspan="4"><div class="itc-feature-group-inner">Frontend &amp; Backend Engineering Specs</div></td>
+                  <td colspan="4"><div class="itc-feature-group-inner">Services &amp; Capabilities Delivery Profile</div></td>
                 </tr>
                 <tr>
-                  <td>Client-Side Stack Architecture</td>
+                  <td>Web Development Maintenance</td>
                   <td>
-                    Monolithic Rendering Pipelines
+                    <span class="itc-check">✓ Core Maintenance Plan</span>
                     <ul class="itc-spec-list">
-                      <li>Standard HTML5/CSS3 structures used to launch simple, fast corporate landing profiles.</li>
+                      <li>Used for minor visual tweaks, promotional configurations, text copy adjustments, and component updates.</li>
                     </ul>
                   </td>
                   <td>
-                    Advanced SPA/Server Side Rendering
+                    <span class="itc-check">✓ Comprehensive Evolution Plan</span>
                     <ul class="itc-spec-list">
-                      <li>React dynamic interface setups used to run blazing-fast desktop-like web apps.</li>
-                      <li>Next.js production frameworks used to maximize baseline loading speeds and core SEO rankings.</li>
+                      <li>Used for launching new modular UI/UX features, specialized dynamic dashboards, and deep refactoring.</li>
                     </ul>
                   </td>
                   <td>
-                    Decoupled Micro-Frontends Web
+                    <span class="itc-check">✓ On-Demand Patching</span>
                     <ul class="itc-spec-list">
-                      <li>Isolated micro-frontend components used to scale large platforms without code overlap.</li>
-                    </ul>
-                  </td>
-                </tr>
-                <tr>
-                  <td>Backend Data Storage Engines</td>
-                  <td>
-                    Managed Relational DB Tier
-                    <ul class="itc-spec-list">
-                      <li>Managed cloud tables used to collect simple client forms or transaction histories.</li>
-                    </ul>
-                  </td>
-                  <td>
-                    Decoupled Relational Database Networks
-                    <ul class="itc-spec-list">
-                      <li>Robust relational schemas used to securely map relational user metrics.</li>
-                      <li>Row-Level Security (RLS) policies used to shield private datasets from outside leaks.</li>
-                    </ul>
-                  </td>
-                  <td>
-                    High-Availability Distributed Storage
-                    <ul class="itc-spec-list">
-                      <li>Distributed cluster layers used to protect continuous operations against cloud node failures.</li>
+                      <li>Used for hot-fixing urgent broken styling bugs or visual layout glitches instantly.</li>
                     </ul>
                   </td>
                 </tr>
                 <tr>
-                  <td>Third-Party API Connections</td>
+                  <td>Backend &amp; DB Administration</td>
                   <td>
-                    1 Core Channel Integration
+                    Standard DB Optimization
                     <ul class="itc-spec-list">
-                      <li>Stripe, PayPal, or PayFast connections used to securely process financial customer checkouts.</li>
+                      <li>Used to inspect Supabase query speeds and adjust basic API schema endpoints safely.</li>
                     </ul>
                   </td>
                   <td>
-                    3 - 5 Consolidated Integrations
+                    Advanced Architecture Mapping
                     <ul class="itc-spec-list">
-                      <li>Automated synchronization hooks used to link live shipping, inventory maps, or CRM pipelines.</li>
+                      <li>Used to design complex relational schemas, scale database clusters, and secure server connections.</li>
                     </ul>
                   </td>
                   <td>
-                    Unlimited Enterprise Bridges
+                    Isolated System Fixes
                     <ul class="itc-spec-list">
-                      <li>Custom built data ingestion workers used to securely relay parameters to old legacy systems.</li>
+                      <li>Used to re-link broken third-party webhook payloads or clean temporary data bottlenecks.</li>
                     </ul>
                   </td>
                 </tr>
 
                 <tr class="itc-feature-group">
-                  <td colspan="4"><div class="itc-feature-group-inner">Product Management &amp; System Performance</div></td>
+                  <td colspan="4"><div class="itc-feature-group-inner">Infrastructure Response &amp; SLA Support</div></td>
                 </tr>
                 <tr>
-                  <td>Operational Insights &amp; Search</td>
-                  <td>Basic Built-In Query Features<br><span class="itc-feature-detail">Simple lookup tools used for small digital footprints.</span></td>
-                  <td>Advanced Search Engine Extensions<br><span class="itc-feature-detail">Fuzzy-matching algorithms used to locate products even with misspelled queries.</span></td>
-                  <td>AI-Powered Interactive Chat &amp; Search<br><span class="itc-feature-detail">Vector embedding maps used to power accurate automated student or client chat dashboards.</span></td>
+                  <td>SLA Ticket Response Time</td>
+                  <td>
+                    Within 24 - 48 Hours
+                    <ul class="itc-spec-list">
+                      <li>Standard support channel routing covering non-blocking feature requests.</li>
+                    </ul>
+                  </td>
+                  <td>
+                    Within 4 - 12 Hours Priority
+                    <ul class="itc-spec-list">
+                      <li>High-priority line routing featuring immediate engineering escalation for platform blocking events.</li>
+                    </ul>
+                  </td>
+                  <td>
+                    Best-Effort Processing
+                    <ul class="itc-spec-list">
+                      <li>Tickets queue systematically behind ongoing committed contractual project roadmaps.</li>
+                    </ul>
+                  </td>
                 </tr>
                 <tr>
-                  <td>Quality Testing Protocol</td>
-                  <td>Manual Component Validation<br><span class="itc-feature-detail">Cross-browser visual tests used to guarantee uniform component rendering.</span></td>
-                  <td>Automated Integration Testing<br><span class="itc-feature-detail">Automated unit test scripts used to keep updates from breaking existing client tools.</span></td>
-                  <td>Continuous E2E Performance Testing<br><span class="itc-feature-detail">Deep threat validation reviews and heavy user load simulations used to guarantee stability.</span></td>
-                </tr>
-
-                <tr class="itc-feature-group">
-                  <td colspan="4"><div class="itc-feature-group-inner">Infrastructure, Governance &amp; Post-Launch</div></td>
-                </tr>
-                <tr>
-                  <td>DevOps Deployment Pipelines</td>
-                  <td>Standard Pipeline Provisions<br><span class="itc-feature-detail">Manual staging handovers used to deploy files securely to the live domain.</span></td>
-                  <td>Automated CI/CD Engines<br><span class="itc-feature-detail">GitHub Action hooks used to run immediate error checks prior to going live.</span></td>
-                  <td>Elastic Infrastructure Systems<br><span class="itc-feature-detail">Automated server scaling rules used to protect servers from crashing during traffic spikes.</span></td>
-                </tr>
-                <tr>
-                  <td>Maintenance Support SLA</td>
-                  <td>30-Day Critical Support Window<br><span class="itc-feature-detail">Urgent bug patches used to guarantee the build stays completely healthy after launch.</span></td>
-                  <td>90-Day Engineering SLA Support<br><span class="itc-feature-detail">Performance tuning and data maintenance cycles used to preserve lightning-fast application speeds.</span></td>
-                  <td>Custom Long-Term Support SLA<br><span class="itc-feature-detail">Dedicated development cycles used to continuously add features as your operations expand.</span></td>
+                  <td>Production Critical Failures</td>
+                  <td>
+                    Same-Day Resolution Effort
+                    <ul class="itc-spec-list">
+                      <li>Active software tracking triggers immediate hotfixes upon server downtime alerts.</li>
+                    </ul>
+                  </td>
+                  <td>
+                    Guaranteed 2-Hour Response
+                    <ul class="itc-spec-list">
+                      <li>Elite 24/7 priority emergency pipeline established explicitly to protect institutional application uptimes.</li>
+                    </ul>
+                  </td>
+                  <td>
+                    Emergency Rates Apply
+                    <ul class="itc-spec-list">
+                      <li>Requires ad-hoc emergency premiums if active developers must clear current tasks to mitigate issues.</li>
+                    </ul>
+                  </td>
                 </tr>
               </tbody>
             </table>
@@ -906,19 +935,20 @@
     </div>
 
     <div class="itc-footer-notes">
-      <h3>Operational Principles &amp; Governance</h3>
-      <p>1. Project Scopes &amp; Retainers: Financial milestones are structured explicitly around project-specific deliverables. Long-term technical advisory, core architecture oversight, and agile engineering iterations scale fluidly based on system milestones.</p>
+      <h3>Governance &amp; Engagement Principles</h3>
+      <p>1. Capacity Planning Limitations: Monthly resource structures guarantee baseline engineering focus. Drastic expansions or emergency product additions out-of-scope from current hour pools require temporary ad-hoc sprint extensions to preserve delivery cadences.</p>
       
-      <p>2. Timeline Mobilization: Project roadmaps and engineering timelines trigger immediately following architecture blueprint confirmations, complete data dictionary signatures, and all required asset handovers from the client team.</p>
+      <p>2. Hour Ledger Verification: Transparent, itemized timesheet ledgers detailing real-time tracking points are matched against active GitHub repositories and delivered during calendar transition phases.</p>
       
-      <p>3. Ecosystem Boundaries: Out-of-scope digital software licensing, highly specialized real-time data integrations, application storefront directory submission fees, and premium hosting nodes are handled outside baseline delivery frameworks.</p>
+      <p>3. Annual Termination Clauses: Annual agreements secure premium optimized rates. Early structural terminations trigger standard baseline structural recalculations back to rolling monthly costs for verified hours used.</p>
       
-      <p>4. IP Ownership Delivery: Complete system documentations, software dependency graphs, custom database schemas, and master code repositories are securely transitioned to your infrastructure. Clients retain full title and IP ownership rights upon project conclusion.</p>
+      <p>4. Resource Allocation SOW: All custom server modifications, heavy structural code changes, and third-party API engine configurations operate strictly under signed master service statements before deployment to infrastructure.</p>
     </div>
 
   </div>
 </section>
 
+<cronos-footer></cronos-footer>
 
 <script>
   document.addEventListener('DOMContentLoaded', function() {
@@ -929,7 +959,7 @@
         
         // Dynamically alter document page title temporarily so the generated PDF file exports cleanly as the brand name
         const originalTitle = document.title;
-        document.title = "Cronos - Capabilities and Engineering Matrix";
+        document.title = "Cronos - Billing and Engagement Models Matrix";
         
         // Call native system print router configured to intercept via @media print styles
         window.print();
@@ -943,7 +973,3 @@
 
 </body>
 </html>
-
-
-
-<cronos-footer></cronos-footer>
