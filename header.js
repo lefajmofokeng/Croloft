@@ -20,7 +20,7 @@ class CronosHeader extends HTMLElement {
                             { label: 'Professional',   href: 'plans-pro.html' },
                             { label: 'Enterprise',     href: 'plans-enterprise.html' },
                             // Marketplace now includes external flag for new tab + icon
-                            { label: 'Marketplace',    href: 'compare.html', external: true }, 
+                            { label: 'Marketplace',    href: 'marketplace.html', external: true }, 
                             { label: 'Schedule a Demo',  href: 'quote.html' },
                         ]
                     },

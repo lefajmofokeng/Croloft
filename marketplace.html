@@ -1,1213 +1,1472 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Cronos Marketplace | Premium Cloud Provisioning</title>
-  
-  <style>
-    @font-face { 
-      font-family: 'Circular Std'; 
-      src: local('Circular Std'), local('CircularStd-Book'), url('fonts/CircularStd-Book.woff2') format('woff2'); 
-      font-weight: 400; 
-      font-style: normal; 
-      font-display: swap; 
-    }
-    @font-face { 
-      font-family: 'Circular Std'; 
-      src: local('Circular Std Bold'), local('CircularStd-Bold'), url('fonts/CircularStd-Bold.woff2') format('woff2'); 
-      font-weight: 700; 
-      font-style: normal; 
-      font-display: swap; 
-    }
-
-    * {
-      margin: 0;
-      padding: 0;
-      box-sizing: border-box;
-    }
-
-    :root {
-      --primary: #0578c4;
-      --primary-hover: #035b96;
-      --success: #16a34a;
-      --success-hover: #15803d;
-      --danger: #ef4444;
-      --text-main: #1e293b;
-      --text-muted: #64748b;
-      --bg-body: #f8fafc;
-      --bg-card: #ffffff;
-      --border-color: #e2e8f0;
-      --input-border: #cbd5e1;
-      --shadow-sm: 0 1px 3px rgba(0,0,0,0.05);
-      --shadow-md: 0 4px 6px -1px rgba(0,0,0,0.05), 0 2px 4px -1px rgba(0,0,0,0.03);
-      --shadow-lg: 0 20px 25px -5px rgba(0,0,0,0.05), 0 10px 10px -5px rgba(0,0,0,0.03);
-    }
-
-    body {
-      font-family: 'Circular Std', -apple-system, BlinkMacSystemFont, sans-serif;
-      background-color: var(--bg-body);
-      color: var(--text-main);
-      line-height: 1.5;
-    }
-
-    body.modal-open {
-      overflow: hidden;
-    }
-
-    /* ==========================================================================
-       CLEAN LIGHT UTILITY NAVBAR
-       ========================================================================== */
-    .cro-navbar {
-      background: #ffffff;
-      border-bottom: 1px solid var(--border-color);
-      position: sticky;
-      top: 0;
-      z-index: 1000;
-      padding: 16px 24px;
-    }
-
-    .cro-nav-container {
-      max-width: 1300px;
-      margin: 0 auto;
-      display: flex;
-      align-items: center;
-      justify-content: space-between;
-      gap: 32px;
-    }
-
-    .cro-logo {
-      font-size: 1.35rem;
-      font-weight: 700;
-      color: var(--text-main);
-      text-decoration: none;
-      letter-spacing: -0.5px;
-    }
-
-    .cro-logo span {
-      color: var(--primary);
-    }
-
-    .cro-search-box {
-      flex-grow: 1;
-      max-width: 550px;
-      position: relative;
-    }
-
-    .cro-search-box input {
-      width: 100%;
-      background: #f1f5f9;
-      border: 1px solid transparent;
-      border-radius: 8px;
-      padding: 10px 16px 10px 40px;
-      font-family: inherit;
-      font-size: 0.92rem;
-      color: var(--text-main);
-      transition: all 0.15s ease;
-    }
-
-    .cro-search-box input:focus {
-      outline: none;
-      background: #ffffff;
-      border-color: var(--primary);
-      box-shadow: 0 0 0 3px rgba(5, 120, 196, 0.15);
-    }
-
-    .cro-search-box svg {
-      position: absolute;
-      left: 14px;
-      top: 50%;
-      transform: translateY(-50%);
-      color: var(--text-muted);
-      pointer-events: none;
-    }
-
-    .cro-cart-btn {
-      background: #ffffff;
-      border: 1px solid var(--input-border);
-      border-radius: 8px;
-      padding: 10px 18px;
-      cursor: pointer;
-      display: flex;
-      align-items: center;
-      gap: 10px;
-      font-family: inherit;
-      font-size: 0.95rem;
-      font-weight: 700;
-      color: var(--text-main);
-      transition: all 0.15s;
-    }
-
-    .cro-cart-btn:hover {
-      background: #f8fafc;
-      border-color: var(--text-muted);
-    }
-
-    .cro-cart-counter {
-      background: var(--primary);
-      color: #ffffff;
-      font-size: 0.8rem;
-      min-width: 20px;
-      height: 20px;
-      border-radius: 50%;
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      padding: 0 4px;
-    }
-
-    /* ==========================================================================
-       LAYOUT ARCHITECTURE
-       ========================================================================== */
-    .cro-layout-wrapper {
-      max-width: 1300px;
-      margin: 40px auto 80px;
-      padding: 0 24px;
-      display: grid;
-      grid-template-columns: 240px 1fr;
-      gap: 40px;
-    }
-
-    /* Filters sidebar */
-    .cro-sidebar-nav h3 {
-      font-size: 0.75rem;
-      text-transform: uppercase;
-      letter-spacing: 0.05em;
-      color: var(--text-muted);
-      margin-bottom: 16px;
-    }
-
-    .cro-cat-list {
-      list-style: none;
-    }
-
-    .cro-cat-item {
-      padding: 10px 12px;
-      border-radius: 6px;
-      cursor: pointer;
-      font-size: 0.95rem;
-      font-weight: 500;
-      color: #475569;
-      margin-bottom: 4px;
-      transition: all 0.15s;
-    }
-
-    .cro-cat-item:hover {
-      background: #f1f5f9;
-      color: var(--text-main);
-    }
-
-    .cro-cat-item.active {
-      background: #e0f2fe;
-      color: var(--primary);
-      font-weight: 700;
-    }
-
-    /* Product Grid */
-    .cro-products-grid {
-      display: grid;
-      grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
-      gap: 24px;
-    }
-
-    .cro-product-card {
-      background: var(--bg-card);
-      border: 1px solid var(--border-color);
-      border-radius: 12px;
-      padding: 24px;
-      display: flex;
-      flex-direction: column;
-      justify-content: space-between;
-      box-shadow: var(--shadow-sm);
-      transition: transform 0.2s, box-shadow 0.2s;
-    }
-
-    .cro-product-card:hover {
-      transform: translateY(-2px);
-      box-shadow: var(--shadow-md);
-    }
-
-    .cro-card-category {
-      font-size: 0.75rem;
-      text-transform: uppercase;
-      font-weight: 700;
-      color: var(--primary);
-      letter-spacing: 0.05em;
-      margin-bottom: 8px;
-    }
-
-    .cro-card-title {
-      font-size: 1.15rem;
-      font-weight: 700;
-      color: var(--text-main);
-      margin-bottom: 8px;
-      line-height: 1.3;
-    }
-
-    .cro-card-desc {
-      font-size: 0.9rem;
-      color: var(--text-muted);
-      margin-bottom: 20px;
-      line-height: 1.4;
-    }
-
-    .cro-card-price-row {
-      margin-bottom: 20px;
-    }
-
-    .cro-card-price {
-      font-size: 1.5rem;
-      font-weight: 700;
-      color: var(--text-main);
-    }
-
-    .cro-card-unit {
-      font-size: 0.85rem;
-      color: var(--text-muted);
-    }
-
-    /* Actions configuration inline */
-    .cro-card-actions {
-      display: flex;
-      gap: 8px;
-    }
-
-    .cro-qty-select {
-      background: #ffffff;
-      border: 1px solid var(--input-border);
-      border-radius: 6px;
-      padding: 10px;
-      font-family: inherit;
-      font-size: 0.9rem;
-      font-weight: 500;
-      color: var(--text-main);
-      outline: none;
-      width: 75px;
-    }
-
-    .cro-add-btn {
-      flex-grow: 1;
-      background: var(--primary);
-      color: #ffffff;
-      border: none;
-      border-radius: 6px;
-      padding: 10px 16px;
-      font-family: inherit;
-      font-size: 0.92rem;
-      font-weight: 700;
-      cursor: pointer;
-      display: inline-flex;
-      align-items: center;
-      justify-content: center;
-      gap: 8px;
-      transition: background 0.15s;
-    }
-
-    .cro-add-btn:hover {
-      background: var(--primary-hover);
-    }
-
-    .cro-empty-state {
-      grid-column: 1 / -1;
-      text-align: center;
-      padding: 60px 24px;
-      background: #ffffff;
-      border: 1px dashed var(--input-border);
-      border-radius: 12px;
-      color: var(--text-muted);
-      display: none;
-    }
-
-    /* ==========================================================================
-       SLIDE DOWN CART SLATE DRAWER
-       ========================================================================== */
-    .cro-drawer-mask {
-      position: fixed;
-      top: 0;
-      left: 0;
-      width: 100vw;
-      height: 100vh;
-      background: rgba(15, 23, 42, 0.3);
-      backdrop-filter: blur(4px);
-      z-index: 2000;
-      opacity: 0;
-      visibility: hidden;
-      transition: opacity 0.2s, visibility 0.2s;
-    }
-
-    .cro-drawer-mask.active {
-      opacity: 1;
-      visibility: visible;
-    }
-
-    .cro-cart-panel {
-      position: fixed;
-      top: 0;
-      right: -440px;
-      width: 100%;
-      max-width: 440px;
-      height: 100vh;
-      background: #ffffff;
-      box-shadow: -4px 0 24px rgba(15, 23, 42, 0.08);
-      z-index: 2001;
-      display: flex;
-      flex-direction: column;
-      transition: right 0.25s cubic-bezier(0.16, 1, 0.3, 1);
-    }
-
-    .cro-cart-panel.active {
-      right: 0;
-    }
-
-    .cro-panel-header {
-      padding: 24px;
-      border-bottom: 1px solid var(--border-color);
-      display: flex;
-      justify-content: space-between;
-      align-items: center;
-    }
-
-    .cro-panel-header h3 {
-      font-size: 1.15rem;
-      font-weight: 700;
-    }
-
-    .cro-close-ico {
-      background: none;
-      border: none;
-      cursor: pointer;
-      color: var(--text-muted);
-      padding: 4px;
-      border-radius: 6px;
-    }
-
-    .cro-close-ico:hover {
-      background: #f1f5f9;
-      color: var(--text-main);
-    }
-
-    .cro-panel-body {
-      flex-grow: 1;
-      overflow-y: auto;
-      padding: 24px;
-    }
-
-    /* Dynamic line nodes */
-    .cro-item-node {
-      display: flex;
-      justify-content: space-between;
-      align-items: flex-start;
-      gap: 16px;
-      padding-bottom: 16px;
-      margin-bottom: 16px;
-      border-bottom: 1px solid #f1f5f9;
-    }
-
-    .cro-node-info h4 {
-      font-size: 0.95rem;
-      font-weight: 700;
-      color: var(--text-main);
-      margin-bottom: 2px;
-    }
-
-    .cro-node-meta {
-      font-size: 0.85rem;
-      color: var(--text-muted);
-    }
-
-    .cro-node-right {
-      text-align: right;
-      display: flex;
-      flex-direction: column;
-      align-items: flex-end;
-      justify-content: space-between;
-      height: 48px;
-    }
-
-    .cro-node-price {
-      font-size: 0.95rem;
-      font-weight: 700;
-    }
-
-    .cro-node-del {
-      background: none;
-      border: none;
-      color: var(--danger);
-      font-size: 0.8rem;
-      font-weight: 500;
-      cursor: pointer;
-    }
-
-    .cro-node-del:hover {
-      text-decoration: underline;
-    }
-
-    .cro-panel-footer {
-      padding: 24px;
-      background: #f8fafc;
-      border-top: 1px solid var(--border-color);
-    }
-
-    .cro-footer-summary-row {
-      display: flex;
-      justify-content: space-between;
-      font-size: 0.92rem;
-      color: var(--text-muted);
-      margin-bottom: 8px;
-    }
-
-    .cro-footer-total-row {
-      display: flex;
-      justify-content: space-between;
-      font-size: 1.15rem;
-      font-weight: 700;
-      color: var(--text-main);
-      padding-top: 12px;
-      border-top: 1px solid var(--border-color);
-      margin-bottom: 20px;
-    }
-
-    .cro-checkout-btn {
-      display: block;
-      width: 100%;
-      text-align: center;
-      background: var(--success);
-      color: #ffffff;
-      border: none;
-      border-radius: 6px;
-      padding: 14px;
-      font-family: inherit;
-      font-size: 0.98rem;
-      font-weight: 700;
-      cursor: pointer;
-      transition: background 0.15s;
-    }
-
-    .cro-checkout-btn:hover {
-      background: var(--success-hover);
-    }
-
-    /* ==========================================================================
-       CHECKOUT DIALOG WORKSPACE MODALS
-       ========================================================================== */
-    .cro-modal-mask {
-      position: fixed;
-      top: 0;
-      left: 0;
-      width: 100vw;
-      height: 100vh;
-      background: rgba(15, 23, 42, 0.4);
-      backdrop-filter: blur(4px);
-      z-index: 3000;
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      opacity: 0;
-      visibility: hidden;
-      padding: 20px;
-      transition: opacity 0.2s, visibility 0.2s;
-    }
-
-    .cro-modal-mask.active {
-      opacity: 1;
-      visibility: visible;
-    }
-
-    .cro-checkout-dialog {
-      background: #ffffff;
-      border-radius: 12px;
-      width: 100%;
-      max-width: 800px;
-      max-height: 90vh;
-      box-shadow: var(--shadow-lg);
-      display: flex;
-      flex-direction: column;
-      overflow: hidden;
-      transform: scale(0.95);
-      transition: transform 0.2s cubic-bezier(0.16, 1, 0.3, 1);
-    }
-
-    .cro-modal-mask.active .cro-checkout-dialog {
-      transform: scale(1);
-    }
-
-    .cro-modal-main {
-      padding: 32px;
-      overflow-y: auto;
-      display: grid;
-      grid-template-columns: 1fr 280px;
-      gap: 32px;
-    }
-
-    .cro-checkout-step-title {
-      font-size: 1.25rem;
-      font-weight: 700;
-      margin-bottom: 20px;
-      grid-column: 1 / -1;
-    }
-
-    .cro-form-field {
-      margin-bottom: 16px;
-    }
-
-    .cro-form-field label {
-      display: block;
-      font-size: 0.85rem;
-      font-weight: 700;
-      margin-bottom: 6px;
-    }
-
-    .cro-form-field input, .cro-form-field select {
-      width: 100%;
-      border: 1px solid var(--input-border);
-      border-radius: 6px;
-      padding: 10px 12px;
-      font-family: inherit;
-      font-size: 0.92rem;
-      outline: none;
-      background: #ffffff;
-      transition: border-color 0.15s;
-    }
-
-    .cro-form-field input:focus, .cro-form-field select:focus {
-      border-color: var(--primary);
-    }
-
-    .cro-form-row {
-      display: grid;
-      grid-template-columns: 1fr 1fr;
-      gap: 16px;
-    }
-
-    /* Embedded Order Summary Column */
-    .cro-embedded-summary {
-      background: #f8fafc;
-      border: 1px solid var(--border-color);
-      border-radius: 8px;
-      padding: 20px;
-      align-self: start;
-    }
-
-    .cro-summary-header {
-      font-size: 0.8rem;
-      text-transform: uppercase;
-      letter-spacing: 0.05em;
-      color: var(--text-muted);
-      font-weight: 700;
-      margin-bottom: 12px;
-    }
-
-    .cro-mini-list {
-      max-height: 160px;
-      overflow-y: auto;
-      margin-bottom: 12px;
-    }
-
-    .cro-mini-item {
-      display: flex;
-      justify-content: space-between;
-      font-size: 0.88rem;
-      margin-bottom: 6px;
-    }
-
-    .cro-mini-item span:first-child {
-      white-space: nowrap;
-      overflow: hidden;
-      text-overflow: ellipsis;
-      max-width: 150px;
-    }
-
-    .cro-modal-action-bar {
-      padding: 20px 32px;
-      border-top: 1px solid var(--border-color);
-      background: #f8fafc;
-      display: flex;
-      justify-content: flex-end;
-      gap: 12px;
-    }
-
-    .cro-btn-base {
-      font-family: inherit;
-      font-size: 0.95rem;
-      font-weight: 700;
-      padding: 10px 20px;
-      border-radius: 6px;
-      border: none;
-      cursor: pointer;
-    }
-
-    .cro-btn-muted {
-      background: #e2e8f0;
-      color: #475569;
-    }
-
-    .cro-btn-muted:hover {
-      background: #cbd5e1;
-    }
-
-    .cro-btn-prime {
-      background: var(--success);
-      color: #ffffff;
-    }
-
-    .cro-btn-prime:hover {
-      background: var(--success-hover);
-    }
-
-    /* Order Complete Frame State Mapping */
-    .cro-success-viewport {
-      grid-column: 1 / -1;
-      text-align: center;
-      padding: 20px 0;
-      display: none;
-    }
-
-    .cro-checkmark-circle {
-      width: 56px;
-      height: 56px;
-      background: #dcfce7;
-      color: var(--success);
-      border-radius: 50%;
-      display: inline-flex;
-      align-items: center;
-      justify-content: center;
-      margin-bottom: 16px;
-    }
-
-    .cro-success-viewport h4 {
-      font-size: 1.3rem;
-      margin-bottom: 8px;
-    }
-
-    .cro-success-viewport p {
-      color: var(--text-muted);
-      font-size: 0.95rem;
-      max-width: 420px;
-      margin: 0 auto 24px;
-    }
-
-    @media (max-width: 900px) {
-      .cro-layout-wrapper {
-        grid-template-columns: 1fr;
-        gap: 24px;
-      }
-      .cro-sidebar-nav {
-        display: flex;
-        align-items: center;
-        gap: 8px;
-        overflow-x: auto;
-        padding-bottom: 8px;
-      }
-      .cro-sidebar-nav h3 {
-        display: none;
-      }
-      .cro-cat-list {
-        display: flex;
-        gap: 8px;
-      }
-      .cro-cat-item {
-        margin-bottom: 0;
-        white-space: nowrap;
-      }
-      .cro-modal-main {
-        grid-template-columns: 1fr;
-      }
-      .cro-embedded-summary {
-        order: -1;
-      }
-    }
-  </style>
-</head>
-<body>
-
-  <!-- UTILITY NAVBAR COMPONENT -->
-  <nav class="cro-navbar">
-    <div class="cro-nav-container">
-      <a href="#" class="cro-logo" onclick="window.location.reload(); return false;">CRONOS<span>.MARKET</span></a>
-      
-      <div class="cro-search-box">
-        <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round">
-          <circle cx="11" cy="11" r="8"></circle>
-          <line x1="21" y1="21" x2="16.65" y2="16.65"></line>
-        </svg>
-        <input type="text" id="cro-product-search-input" placeholder="Search infrastructure apps, backups, compliance tools...">
-      </div>
-
-      <button class="cro-cart-btn" id="cro-drawer-trigger">
-        <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
-          <path d="M6 2L3 6v14a2 2 0 0 0 2 2h14a2 2 0 0 0 2-2V6l-3-4z"></path>
-          <line x1="3" y1="6" x2="21" y2="6"></line>
-          <path d="M16 10a4 4 0 0 1-8 0"></path>
-        </svg>
-        <span>Cart</span>
-        <div class="cro-cart-counter" id="cro-basket-badge">0</div>
-      </button>
-    </div>
-  </nav>
-
-  <!-- STOREFRONT MATRIX HOUSING -->
-  <main class="cro-layout-wrapper">
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>CloudSphere Marketplace</title>
+    <script defer src="https://cdn.jsdelivr.net/npm/alpinejs@3.x.x/dist/cdn.min.js"></script>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
     
-    <!-- CATEGORY NAIVE FILTER LINKS -->
-    <aside class="cro-sidebar-nav">
-      <h3>Categories</h3>
-      <ul class="cro-cat-list">
-        <li class="cro-cat-item active" data-filter="all">All Solutions</li>
-        <li class="cro-cat-item" data-filter="productivity">Productivity</li>
-        <li class="cro-cat-item" data-filter="storage">Cloud Storage</li>
-        <li class="cro-cat-item" data-filter="security">Cybersecurity</li>
-      </ul>
-    </aside>
+    <style>
+        /* Typography Architecture */
+        @font-face {
+            font-family: 'Circular Std';
+            src: local('Circular Std'), local('CircularStd-Book'), url(https://fonts.cdnfonts.com/s/15011/CircularStd-Book.woff) format('woff');
+            font-weight: normal;
+            font-style: normal;
+        }
 
-    <!-- LIVE GRID SPACE -->
-    <section class="cro-products-grid" id="cro-catalog-target">
-      
-      <!-- Card Item Node -->
-      <div class="cro-product-card" data-uid="m365-basic" data-cat="productivity" data-price="115">
-        <div>
-          <span class="cro-card-category">Productivity</span>
-          <h3 class="cro-card-title">Microsoft 365 Business Basic</h3>
-          <p class="cro-card-desc">Professional corporate cloud email servers, standard secure business chat tools, and 1 TB reliable storage allocation per active user license instance.</p>
-        </div>
-        <div>
-          <div class="cro-card-price-row">
-            <span class="cro-card-price">R115</span>
-            <span class="cro-card-unit">/ seat / mo</span>
-          </div>
-          <div class="cro-card-actions">
-            <select class="cro-qty-select">
-              <option value="1">1</option>
-              <option value="5">5</option>
-              <option value="10">10</option>
-              <option value="25">25</option>
-            </select>
-            <button class="cro-add-btn">Add to Cart</button>
-          </div>
-        </div>
-      </div>
+        /* Root Layout System Variables */
+        :root {
+            --editorial-black: #111111;
+            --editorial-muted: #666666;
+            --editorial-light: #999999;
+            --workspace-bg: #fafafa;
+            --ui-divider: #eaebed;
+            --global-max: 1200px;
+            --sharp-radius: 1px;
+            --font-family-premium: 'Circular Std', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+        }
 
-      <!-- Card Item Node -->
-      <div class="cro-product-card" data-uid="m365-standard" data-cat="productivity" data-price="240">
-        <div>
-          <span class="cro-card-category">Productivity</span>
-          <h3 class="cro-card-title">Microsoft 365 Business Standard</h3>
-          <p class="cro-card-desc">Comprehensive system mapping containing fully downloaded computer desktop applications across connected employee operating configurations.</p>
-        </div>
-        <div>
-          <div class="cro-card-price-row">
-            <span class="cro-card-price">R240</span>
-            <span class="cro-card-unit">/ seat / mo</span>
-          </div>
-          <div class="cro-card-actions">
-            <select class="cro-qty-select">
-              <option value="1">1</option>
-              <option value="5">5</option>
-              <option value="10">10</option>
-              <option value="25">25</option>
-            </select>
-            <button class="cro-add-btn">Add to Cart</button>
-          </div>
-        </div>
-      </div>
+        * {
+            box-sizing: border-box;
+            margin: 0;
+            padding: 0;
+        }
 
-      <!-- Card Item Node -->
-      <div class="cro-product-card" data-uid="m365-premium" data-cat="security" data-price="420">
-        <div>
-          <span class="cro-card-category">Cybersecurity</span>
-          <h3 class="cro-card-title">Microsoft 365 Business Premium</h3>
-          <p class="cro-card-desc">Advanced infrastructure protection architecture deploying advanced ransomware data threat filters and remote device tracking controllers.</p>
-        </div>
-        <div>
-          <div class="cro-card-price-row">
-            <span class="cro-card-price">R420</span>
-            <span class="cro-card-unit">/ seat / mo</span>
-          </div>
-          <div class="cro-card-actions">
-            <select class="cro-qty-select">
-              <option value="1">1</option>
-              <option value="5">5</option>
-              <option value="10">10</option>
-            </select>
-            <button class="cro-add-btn">Add to Cart</button>
-          </div>
-        </div>
-      </div>
+        body { 
+            font-family: var(--font-family-premium); 
+            background-color: var(--workspace-bg);
+            color: var(--editorial-black);
+            letter-spacing: -0.02em;
+            -webkit-font-smoothing: antialiased;
+        }
 
-      <!-- Card Item Node -->
-      <div class="cro-product-card" data-uid="cronos-vault" data-cat="storage" data-price="95">
-        <div>
-          <span class="cro-card-category">Cloud Storage</span>
-          <h3 class="cro-card-title">Cronos Automated Cloud Vault</h3>
-          <p class="cro-card-desc">Automated system mirror data collection engines protecting business critical records inside highly isolated external storage environments.</p>
-        </div>
-        <div>
-          <div class="cro-card-price-row">
-            <span class="cro-card-price">R95</span>
-            <span class="cro-card-unit">/ seat / mo</span>
-          </div>
-          <div class="cro-card-actions">
-            <select class="cro-qty-select">
-              <option value="1">1</option>
-              <option value="5">5</option>
-              <option value="10">10</option>
-            </select>
-            <button class="cro-add-btn">Add to Cart</button>
-          </div>
-        </div>
-      </div>
+        /* Structural Container System */
+        .max-w-1200 {
+            max-width: var(--global-max);
+            margin-left: auto;
+            margin-right: auto;
+            padding-left: 24px;
+            padding-right: 24px;
+            width: 100%;
+        }
 
-      <div class="cro-empty-state" id="cro-search-empty-node">
-        <p>No matches located inside current inventory.</p>
-      </div>
+        /* Header Architecture */
+        header {
+            position: sticky;
+            top: 0;
+            z-index: 40;
+            background-color: rgb(255, 255, 255);
+            border-bottom: 1px solid var(--ui-divider);
+        }
 
+        .header-inner {
+            height: 55px;
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+        }
+
+        .header-left {
+            display: flex;
+            align-items: center;
+            gap: 48px;
+        }
+
+        .brand-name {
+            text-transform: uppercase;
+            font-size: 14px;
+            font-weight: 700;
+            letter-spacing: 0.05em;
+        }
+
+        nav.nav-links {
+            display: flex;
+            gap: 24px;
+        }
+
+        nav.nav-links a {
+            text-decoration: none;
+            font-size: 14px;
+            font-weight: 400;
+            color: var(--editorial-muted);
+            transition: color 0.2s ease;
+        }
+
+        nav.nav-links a:hover, nav.nav-links a.active {
+            color: var(--editorial-black);
+        }
+
+        .header-right {
+            display: flex;
+            align-items: center;
+            gap: 24px;
+        }
+
+        .cart-trigger-btn {
+            position: relative;
+            background: none;
+            border: none;
+            color: var(--editorial-black);
+            cursor: pointer;
+            padding: 8px;
+        }
+
+        .cart-counter-badge {
+            position: absolute;
+            top: -2px;
+            right: -2px;
+            background: var(--editorial-black);
+            color: #ffffff;
+            font-size: 9px;
+            font-weight: 700;
+            width: 16px;
+            height: 16px;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+
+        .text-btn {
+            background: none;
+            border: none;
+            font-family: var(--font-family-premium);
+            font-size: 14px;
+            font-weight: 400;
+            color: var(--editorial-black);
+            cursor: pointer;
+        }
+
+        .action-button-black {
+            background: var(--editorial-black);
+            color: #ffffff;
+            border: none;
+            padding: 8px 20px;
+            border-radius: 50px;
+            font-family: var(--font-family-premium);
+            font-size: 14px;
+            font-weight: 400;
+            cursor: pointer;
+            transition: background 0.2s ease;
+        }
+
+        .action-button-black:hover {
+            background: #333333;
+        }
+
+        /* Hero Carousel Architecture */
+        .carousel-section {
+            padding-top: 32px;
+            padding-bottom: 48px;
+        }
+
+        .carousel-wrapper {
+            position: relative;
+            border-radius: 15px;
+            overflow: hidden;
+            background: #ffffff;
+        }
+
+        .carousel-viewport {
+            position: relative;
+            height: 520px;
+            width: 100%;
+        }
+
+        .slide-instance {
+            position: absolute;
+            inset: 0;
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            padding: 64px;
+            width: 100%;
+            height: 100%;
+        }
+
+        .slide-content-left {
+            max-width: 560px;
+            z-index: 10;
+        }
+
+        .slide-meta-badge {
+            display: inline-block;
+            background: #ffffff;
+            border: 1px solid var(--ui-divider);
+            font-size: 10px;
+            font-weight: 700;
+            padding: 6px 14px;
+            border-radius: var(--sharp-radius);
+            text-transform: uppercase;
+            letter-spacing: 0.08em;
+            color: var(--editorial-muted);
+            margin-bottom: 24px;
+        }
+
+        .slide-title {
+            font-size: 44px;
+            font-weight: 500;
+            line-height: 1.15;
+            letter-spacing: -0.03em;
+            margin-bottom: 16px;
+            color: var(--editorial-black);
+        }
+
+        .slide-desc {
+            font-size: 16px;
+            line-height: 1.5;
+            color: var(--editorial-muted);
+            margin-bottom: 32px;
+        }
+
+        .slide-media-right {
+            width: 45%;
+            height: 100%;
+            position: relative;
+        }
+
+        .slide-img {
+            position: absolute;
+            inset: 0;
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            border-radius: var(--sharp-radius);
+            opacity: 0.9;
+        }
+
+        /* Carousel Navigation Controls */
+        .carousel-controls-row {
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            margin-top: 24px;
+        }
+
+        .matrix-indicators {
+            display: flex;
+            gap: 12px;
+        }
+
+        .indicator-dot {
+            height: 3px;
+            background: #e2e8f0;
+            border: none;
+            cursor: pointer;
+            transition: all 0.3s ease;
+        }
+
+        .indicator-dot.is-active {
+            background: var(--editorial-black);
+            width: 48px;
+        }
+
+        .indicator-dot.is-inactive {
+            width: 16px;
+        }
+
+        .vector-arrow-cluster {
+            display: flex;
+            gap: 8px;
+        }
+
+        .arrow-nav-btn {
+            width: 44px;
+            height: 44px;
+            background: #ffffff;
+            border: 1px solid var(--ui-divider);
+            border-radius: var(--sharp-radius);
+            color: var(--editorial-black);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            cursor: pointer;
+            transition: background 0.2s ease;
+        }
+
+        .arrow-nav-btn:hover {
+            background: var(--workspace-bg);
+        }
+
+        /* Product Catalog Matrix Grid */
+        .catalog-section {
+            padding-bottom: 64px;
+        }
+
+        .section-header-bar {
+            display: flex;
+            align-items: flex-end;
+            justify-content: space-between;
+            margin-bottom: 32px;
+            border-bottom: 1px solid var(--ui-divider);
+            padding-bottom: 20px;
+        }
+
+        .section-heading-title {
+            font-size: 20px;
+            font-weight: 500;
+            letter-spacing: -0.02em;
+        }
+
+        .section-heading-sub {
+            font-size: 13px;
+            color: var(--editorial-light);
+            margin-top: 4px;
+        }
+
+        .editorial-section-link {
+            font-size: 12px;
+            font-weight: 600;
+            color: var(--editorial-muted);
+            text-decoration: none;
+            text-transform: uppercase;
+            letter-spacing: 0.03em;
+        }
+
+        .editorial-section-link:hover {
+            color: var(--editorial-black);
+        }
+
+        .products-grid-layout {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 32px;
+        }
+
+        .product-premium-card {
+            background: #ffffff;
+            border-radius: 12px;
+            padding: 24px;
+            display: flex;
+            flex-direction: column;
+            justify-content: space-between;
+            transition: border 0.3s ease;
+        }
+
+        .product-premium-card:hover {
+            border-color: var(--editorial-light);
+        }
+
+        .product-media-container {
+            background: var(--workspace-bg);
+            height: 180px;
+            border-radius: var(--sharp-radius);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            margin-bottom: 24px;
+            padding: 16px;
+        }
+
+        .product-showcase-img {
+            max-height: 110px;
+            object-fit: contain;
+            transition: transform 0.3s ease;
+        }
+
+        .product-premium-card:hover .product-showcase-img {
+            transform: scale(1.02);
+        }
+
+        .product-category-badge {
+            font-size: 10px;
+            font-weight: 700;
+            color: var(--editorial-light);
+            text-transform: uppercase;
+            letter-spacing: 0.05em;
+        }
+
+        .product-main-title {
+            font-size: 16px;
+            font-weight: 500;
+            color: var(--editorial-black);
+            margin-top: 6px;
+            margin-bottom: 8px;
+        }
+
+        .product-summary-desc {
+            font-size: 13px;
+            color: var(--editorial-muted);
+            line-height: 1.5;
+        }
+
+        .product-action-footer {
+            margin-top: 32px;
+            padding-top: 16px;
+            border-top: 1px solid var(--workspace-bg);
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+        }
+
+        .price-display-node {
+            font-size: 20px;
+            font-weight: 600;
+        }
+
+        .price-sub-period {
+            font-size: 10px;
+            color: var(--editorial-light);
+            display: block;
+            font-weight: normal;
+        }
+
+        .add-to-cart-btn {
+            background: var(--workspace-bg);
+            color: var(--editorial-black);
+            border: none;
+            padding: 10px 18px;
+            border-radius: var(--sharp-radius);
+            font-size: 12px;
+            font-weight: 600;
+            cursor: pointer;
+            text-transform: uppercase;
+            letter-spacing: 0.03em;
+            transition: all 0.2s ease;
+        }
+
+        .add-to-cart-btn:hover {
+            background: var(--editorial-black);
+            color: #ffffff;
+        }
+
+        /* Workspace Drawer Slide Panel System */
+        .drawer-slide-overlay {
+            position: fixed;
+            inset: 0;
+            background: rgba(17, 17, 17, 0.2);
+            backdrop-filter: blur(4px);
+            z-index: 1000;
+        }
+
+        .drawer-sliding-frame {
+            position: fixed;
+            top: 0;
+            right: 0;
+            bottom: 0;
+            width: 100%;
+            max-width: 440px;
+            background: #ffffff;
+            z-index: 1001;
+            box-shadow: -16px 0 40px rgba(0, 0, 0, 0.05);
+            display: flex;
+            flex-direction: column;
+        }
+
+        .drawer-body-container {
+            flex: 1;
+            overflow-y: auto;
+            padding: 32px;
+        }
+
+        .drawer-header-row {
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            border-bottom: 1px solid var(--ui-divider);
+            padding-bottom: 20px;
+        }
+
+        .drawer-panel-title {
+            font-size: 16px;
+            font-weight: 600;
+        }
+
+        .drawer-dismiss-btn {
+            background: none;
+            border: none;
+            color: var(--editorial-light);
+            cursor: pointer;
+            padding: 4px;
+        }
+
+        .drawer-dismiss-btn:hover {
+            color: var(--editorial-black);
+        }
+
+        .cart-queue-stream {
+            margin-top: 32px;
+        }
+
+        .cart-item-block {
+            display: flex;
+            padding: 24px 0;
+            border-bottom: 1px solid var(--ui-divider);
+        }
+
+        .cart-item-media {
+            width: 80px;
+            height: 80px;
+            background: var(--workspace-bg);
+            border-radius: var(--sharp-radius);
+            padding: 8px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            flex-shrink: 0;
+        }
+
+        .cart-item-img {
+            max-width: 100%;
+            max-height: 100%;
+            object-fit: contain;
+        }
+
+        .cart-item-details {
+            margin-left: 16px;
+            flex: 1;
+            display: flex;
+            flex-direction: column;
+            justify-content: space-between;
+        }
+
+        .cart-item-header {
+            display: flex;
+            justify-content: space-between;
+            font-size: 14px;
+            font-weight: 600;
+        }
+
+        .cart-item-tagline {
+            font-size: 12px;
+            color: var(--editorial-light);
+            margin-top: 4px;
+        }
+
+        .cart-item-footer-meta {
+            display: flex;
+            justify-content: space-between;
+            font-size: 12px;
+            color: var(--editorial-light);
+        }
+
+        .cart-remove-trigger {
+            background: none;
+            border: none;
+            color: #dc2626;
+            cursor: pointer;
+            font-weight: 500;
+        }
+
+        .cart-empty-announcement {
+            text-align: center;
+            padding: 64px 0;
+        }
+
+        .cart-empty-announcement i {
+            color: var(--ui-divider);
+            font-size: 40px;
+            margin-bottom: 16px;
+            display: block;
+        }
+
+        .cart-empty-announcement p {
+            font-size: 12px;
+            color: var(--editorial-light);
+        }
+
+        .drawer-footer-anchor {
+            border-top: 1px solid var(--ui-divider);
+            padding: 24px 32px;
+            background: var(--workspace-bg);
+        }
+
+        .summary-total-line {
+            display: flex;
+            justify-content: space-between;
+            font-size: 14px;
+            font-weight: 600;
+        }
+
+        .drawer-footer-anchor p.disclaimer-text {
+            font-size: 11px;
+            color: var(--editorial-light);
+            margin-top: 4px;
+        }
+
+        .checkout-action-btn {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            width: 100%;
+            background: var(--editorial-black);
+            color: #ffffff;
+            text-decoration: none;
+            font-size: 13px;
+            font-weight: 600;
+            padding: 16px;
+            border-radius: var(--sharp-radius);
+            margin-top: 24px;
+            text-transform: uppercase;
+            letter-spacing: 0.05em;
+        }
+
+        /* Footer Infrastructure Area */
+        footer {
+            background: #ffffff;
+            border-top: 1px solid var(--ui-divider);
+            font-size: 12px;
+            color: var(--editorial-muted);
+        }
+
+        /* High-Priority Continuous Vertical Notification Area */
+        .vertical-notice-banner {
+            background: var(--editorial-black);
+            color: #d4d4d8;
+            padding: 40px 0;
+        }
+
+        .vertical-notice-inner {
+            display: flex;
+            flex-direction: column;
+            gap: 32px;
+        }
+
+        .vertical-message-node {
+            display: flex;
+            align-items: flex-start;
+            gap: 16px;
+            max-width: 900px;
+            line-height: 1.6;
+            font-size: 12px;
+        }
+
+        .vertical-message-node i {
+            color: var(--editorial-light);
+            font-size: 14px;
+            margin-top: 2px;
+            flex-shrink: 0;
+        }
+
+        .vertical-message-node strong {
+            color: #ffffff;
+        }
+
+        /* Footer Navigation Matrix Container */
+        .footer-nav-container {
+            padding: 48px 0;
+        }
+
+        /* Desktop View Navigation Layout Grid */
+        .footer-nav-links-grid {
+            display: grid;
+            grid-template-columns: repeat(4, 1fr);
+            gap: 32px;
+        }
+
+        .footer-link-group-node {
+            display: flex;
+            flex-direction: column;
+            gap: 12px;
+        }
+
+        .footer-link-group-node h4 {
+            font-size: 11px;
+            font-weight: 700;
+            color: var(--editorial-black);
+            text-transform: uppercase;
+            letter-spacing: 0.05em;
+        }
+
+        .footer-link-group-node ul {
+            list-style: none;
+            display: flex;
+            flex-direction: column;
+            gap: 8px;
+        }
+
+        .footer-link-group-node ul a {
+            color: var(--editorial-muted);
+            text-decoration: none;
+            transition: color 0.2s ease;
+        }
+
+        .footer-link-group-node ul a:hover {
+            color: var(--editorial-black);
+        }
+
+        .corporate-registry-paragraph {
+            font-size: 11px;
+            line-height: 1.5;
+            color: var(--editorial-light);
+        }
+
+        /* Mobile Accordion Elements (Hidden on Desktop) */
+        .footer-mobile-accordion {
+            display: none;
+            flex-direction: column;
+        }
+
+        .accordion-item-node {
+            border-bottom: 1px solid var(--ui-divider);
+        }
+
+        .accordion-trigger-header {
+            width: 100%;
+            background: none;
+            border: none;
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            padding: 18px 0;
+            font-family: var(--font-family-premium);
+            font-size: 11px;
+            font-weight: 700;
+            color: var(--editorial-black);
+            text-transform: uppercase;
+            letter-spacing: 0.05em;
+            cursor: pointer;
+        }
+
+        .accordion-panel-content {
+            padding-bottom: 18px;
+        }
+
+        .accordion-panel-content ul {
+            list-style: none;
+            display: flex;
+            flex-direction: column;
+            gap: 12px;
+        }
+
+        .accordion-panel-content ul a {
+            color: var(--editorial-muted);
+            text-decoration: none;
+            font-size: 13px;
+        }
+
+        .footer-copyright-row {
+            padding: 24px 0;
+            border-top: 1px solid var(--ui-divider);
+            text-align: center;
+            font-size: 10px;
+            color: var(--editorial-light);
+        }
+
+        /* ── RESPONSIVE MEDIA BREAKPOINTS ── */
+        @media (max-width: 1024px) {
+            .products-grid-layout {
+                grid-template-columns: repeat(2, 1fr);
+                gap: 24px;
+            }
+            .slide-instance {
+                padding: 48px;
+            }
+            .slide-title {
+                font-size: 36px;
+            }
+        }
+
+        @media (max-width: 768px) {
+            /* Navbar Mobile Compression */
+            nav.nav-links, 
+            .header-right .text-btn {
+                display: none;
+            }
+            
+            .header-inner {
+                height: 72px;
+            }
+
+            .header-right {
+                gap: 16px;
+            }
+
+            .action-button-black {
+                padding: 10px 18px;
+                font-size: 11px;
+            }
+
+            /* Carousel Layout Shifts */
+            .carousel-section {
+                padding-top: 16px;
+                padding-bottom: 32px;
+            }
+
+            .carousel-viewport {
+                height: auto;
+                min-height: 340px;
+            }
+
+            .slide-instance {
+                position: relative;
+                flex-direction: column;
+                align-items: flex-start;
+                justify-content: center;
+                padding: 32px 24px;
+            }
+
+            .slide-media-right {
+                display: none;
+            }
+
+            .slide-content-left {
+                max-width: 100%;
+            }
+
+            .slide-meta-badge {
+                margin-bottom: 16px;
+            }
+
+            .slide-title {
+                font-size: 28px;
+                margin-bottom: 12px;
+            }
+
+            .slide-desc {
+                font-size: 14px;
+                margin-bottom: 24px;
+            }
+
+            /* Catalog Header Adaptation */
+            .section-header-bar {
+                flex-direction: column;
+                align-items: flex-start;
+                gap: 12px;
+                margin-bottom: 24px;
+            }
+
+            /* Products Stacked Layout */
+            .products-grid-layout {
+                grid-template-columns: 1fr;
+                gap: 20px;
+            }
+
+            .product-premium-card {
+                padding: 20px;
+            }
+
+            /* Swapping Desktop Grid for sleek Accordions */
+            .footer-nav-links-grid {
+                display: none;
+            }
+
+            .footer-mobile-accordion {
+                display: flex;
+            }
+
+            .footer-nav-container {
+                padding: 16px 0 32px 0;
+            }
+        }
+
+        @media (max-width: 480px) {
+            .max-w-1200 {
+                padding-left: 16px;
+                padding-right: 16px;
+            }
+
+            .brand-name {
+                font-size: 12px;
+            }
+
+            .logo-icon-box {
+                padding: 8px;
+            }
+
+            .drawer-sliding-frame {
+                width: 100%;
+            }
+        }
+    </style>
+</head>
+<body x-data="{ cartOpen: false, cartCount: 0 }">
+
+    <header>
+        <div class="max-w-1200 header-inner">
+            <div class="header-left">
+                <div class="brand-logo-block">
+                    <img src="thumbnails/logo1.png" style="height: 35px;"/>
+                </div>
+                <nav class="nav-links">
+                    <a href="#" class="active">Marketplace</a>
+                    <a href="#">Solutions</a>
+                    <a href="#">Pricing</a>
+                    <a href="#">Support</a>
+                </nav>
+            </div>
+
+            <div class="header-right">
+                <button @click="cartOpen = true" class="cart-trigger-btn" aria-label="View shopping cart row">
+                    <i class="fa-solid fa-bag-shopping" style="font-size: 20px;"></i>
+                    <span x-show="cartCount > 0" x-text="cartCount" class="cart-counter-badge" style="display: none;">0</span>
+                </button>
+                <button class="text-btn">Sign In</button>
+                <button class="action-button-black">Get Started</button>
+            </div>
+        </div>
+    </header>
+
+    <section class="max-w-1200 carousel-section" 
+             x-data="{ 
+                activeSlide: 0, 
+                slides: [
+                    { title: 'Microsoft 365 Business Premium', desc: 'The ultimate cloud productivity, collaboration, and enterprise-grade security ecosystem customized perfectly for modern operational environments.', tag: 'Enterprise Suite', image: 'https://images.unsplash.com/photo-1618005182384-a83a8bd57fbe?auto=format&fit=crop&w=1200&q=80', color: '#f5f5f5' },
+                    { title: 'Next-Gen Workspace Infrastructure', desc: 'Equip hybrid distributed networks with state-of-the-art server virtualization capabilities and lightning-fast deployment cycles.', tag: 'Cloud Compute', image: 'https://images.unsplash.com/photo-1639762681485-074b7f938ba0?auto=format&fit=crop&w=1200&q=80', color: '#f4f4f5' }
+                ],
+                init() {
+                    setInterval(() => {
+                        this.activeSlide = (this.activeSlide === this.slides.length - 1) ? 0 : this.activeSlide + 1;
+                    }, 5000);
+                }
+             }">
+        
+        <div class="carousel-wrapper">
+            <div class="carousel-viewport">
+                <template x-for="(slide, index) in slides" :key="index">
+                    <div x-show="activeSlide === index" 
+                         style="display: none;"
+                         class="slide-instance"
+                         :style="'background-color: ' + slide.color">
+                        
+                        <div class="slide-content-left">
+                            <span x-text="slide.tag" class="slide-meta-badge"></span>
+                            <h1 x-text="slide.title" class="slide-title"></h1>
+                            <p x-text="slide.desc" class="slide-desc"></p>
+                            <div>
+                                <button @click="cartCount++" class="action-button-black" style="display: inline-flex; align-items: center; gap: 12px; padding: 16px 28px;">
+                                    <span>Provision Instantly</span>
+                                    <i class="fa-solid fa-arrow-right" style="font-size: 11px;"></i>
+                                </button>
+                            </div>
+                        </div>
+                        
+                        <div class="slide-media-right">
+                            <img :src="slide.image" class="slide-img" alt="Hero Product Visual">
+                        </div>
+                    </div>
+                </template>
+            </div>
+        </div>
+
+        <div class="carousel-controls-row">
+            <div class="matrix-indicators">
+                <template x-for="(slide, index) in slides" :key="index">
+                    <button @click="activeSlide = index" class="indicator-dot" :class="activeSlide === index ? 'is-active' : 'is-inactive'"></button>
+                </template>
+            </div>
+            
+            <div class="vector-arrow-cluster">
+                <button @click="activeSlide = activeSlide === 0 ? slides.length - 1 : activeSlide - 1" class="arrow-nav-btn" aria-label="Previous image block shift">
+                    <i class="fa-solid fa-chevron-left" style="font-size: 12px;"></i>
+                </button>
+                <button @click="activeSlide = activeSlide === slides.length - 1 ? 0 : activeSlide + 1" class="arrow-nav-btn" aria-label="Next image block shift">
+                    <i class="fa-solid fa-chevron-right" style="font-size: 12px;"></i>
+                </button>
+            </div>
+        </div>
     </section>
-  </main>
 
-  <!-- LATENT DRAWER MATRIX -->
-  <div class="cro-drawer-mask" id="cro-cart-mask">
-    <div class="cro-cart-panel">
-      <div class="cro-panel-header">
-        <h3>Shopping Cart</h3>
-        <button class="cro-close-ico" id="cro-cart-close-ico">
-          <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><line x1="18" y1="6" x2="6" y2="18"></line><line x1="6" y1="6" x2="18" y2="18"></line></svg>
-        </button>
-      </div>
-
-      <div class="cro-panel-body" id="cro-cart-list-wrapper">
-        <!-- Injected Dynamically -->
-      </div>
-
-      <div class="cro-panel-footer">
-        <div class="cro-footer-summary-row">
-          <span>Subtotal</span>
-          <span id="cro-summary-subtotal">R0.00</span>
-        </div>
-        <div class="cro-footer-summary-row">
-          <span>VAT (15%)</span>
-          <span id="cro-summary-vat">R0.00</span>
-        </div>
-        <div class="cro-footer-total-row">
-          <span>Total Commitment</span>
-          <span id="cro-summary-total">R0.00</span>
-        </div>
-        <button class="cro-checkout-btn" id="cro-checkout-trigger-btn">Proceed to Checkout</button>
-      </div>
-    </div>
-  </div>
-
-  <!-- CHECKOUT CONTROLLER DIALOG -->
-  <div class="cro-modal-mask" id="cro-checkout-dialog-mask">
-    <div class="cro-checkout-dialog">
-      
-      <div class="cro-modal-main">
-        <h3 class="cro-checkout-step-title" id="cro-dialog-title">Secure Checkout Details</h3>
-        
-        <!-- Interactive Form Fields -->
-        <form id="cro-payment-form" style="grid-column: 1;">
-          <div class="cro-form-field">
-            <label>Authorized Company Name</label>
-            <input type="text" required placeholder="e.g. Cronos Systems Group">
-          </div>
-          <div class="cro-form-field">
-            <label>Billing Contact Email</label>
-            <input type="email" required placeholder="e.g. billing@cronos.co.za">
-          </div>
-          <div class="cro-form-field">
-            <label>Preferred Payment Term Strategy</label>
-            <select required>
-              <option value="monthly">Monthly Debit Account Routing</option>
-              <option value="annual">Annual upfront clearing allocation</option>
-            </select>
-          </div>
-          <div class="cro-form-row">
-            <div class="cro-form-field">
-              <label>Company VAT ID (If Applicable)</label>
-              <input type="text" placeholder="Optional 10-digit registration">
+    <main class="max-w-1200 catalog-section">
+        <div class="section-header-bar">
+            <div>
+                <h2 class="section-heading-title">Cloud Software & Licenses</h2>
+                <p class="section-heading-sub">Instantly provisioned enterprise productivity digital infrastructure solutions.</p>
             </div>
-            <div class="cro-form-field">
-              <label>Tenant Domain Hook</label>
-              <input type="text" required placeholder="e.g. cronos">
+            <a href="#" class="editorial-section-link">Browse all software &rarr;</a>
+        </div>
+
+        <div class="products-grid-layout">
+            
+            <div class="product-premium-card">
+                <div>
+                    <div class="product-media-container">
+                        <img src="https://images.unsplash.com/photo-1633419461186-7d40a38105ec?auto=format&fit=crop&w=300&q=80" alt="M365 Basic" class="product-showcase-img">
+                    </div>
+                    <span class="product-category-badge">Microsoft Tier</span>
+                    <h3 class="product-main-title">Microsoft 365 Business Basic</h3>
+                    <p class="product-summary-desc">Web and mobile versions of core workspace configurations alongside secure identity protections.</p>
+                </div>
+                <div class="product-action-footer">
+                    <div>
+                        <span class="price-display-node">$6.00</span>
+                        <span class="price-sub-period">user / month</span>
+                    </div>
+                    <button @click="cartCount++" class="add-to-cart-btn">Add to Cart</button>
+                </div>
             </div>
-          </div>
-        </form>
 
-        <!-- Inline Review Column -->
-        <div class="cro-embedded-summary" id="cro-dialog-summary-panel">
-          <div class="cro-summary-header">Items Summary</div>
-          <div class="cro-mini-list" id="cro-modal-review-list">
-            <!-- Items hook location -->
-          </div>
-          <div style="font-size:0.9rem; font-weight:700; border-top:1px solid var(--border-color); padding-top:12px; display:flex; justify-content:space-between;">
-            <span>Total:</span>
-            <span id="cro-modal-review-total-cost">R0.00</span>
-          </div>
+            <div class="product-premium-card">
+                <div>
+                    <div class="product-media-container">
+                        <img src="https://images.unsplash.com/photo-1611162617213-7d7a39e9b1d7?auto=format&fit=crop&w=300&q=80" alt="M365 Standard" class="product-showcase-img">
+                    </div>
+                    <span class="product-category-badge">Most Popular</span>
+                    <h3 class="product-main-title">Microsoft 365 Business Standard</h3>
+                    <p class="product-summary-desc">Fully functional premium localized desktop applications deployable across comprehensive network layers.</p>
+                </div>
+                <div class="product-action-footer">
+                    <div>
+                        <span class="price-display-node">$12.50</span>
+                        <span class="price-sub-period">user / month</span>
+                    </div>
+                    <button @click="cartCount++" class="action-button-black" style="padding: 10px 18px; font-size: 12px;">Add to Cart</button>
+                </div>
+            </div>
+
+            <div class="product-premium-card">
+                <div>
+                    <div class="product-media-container">
+                        <img src="https://images.unsplash.com/photo-1620712943543-bcc4688e7485?auto=format&fit=crop&w=300&q=80" alt="M365 Enterprise" class="product-showcase-img">
+                    </div>
+                    <span class="product-category-badge">Premium Scale</span>
+                    <h3 class="product-main-title">Microsoft 365 Enterprise E5</h3>
+                    <p class="product-summary-desc">Advanced analytics structures combined with voice integration systems built for global configurations.</p>
+                </div>
+                <div class="product-action-footer">
+                    <div>
+                        <span class="price-display-node">$36.00</span>
+                        <span class="price-sub-period">user / month</span>
+                    </div>
+                    <button @click="cartCount++" class="add-to-cart-btn">Add to Cart</button>
+                </div>
+            </div>
+
+        </div>
+    </main>
+
+    <section class="max-w-1200 catalog-section">
+        <div class="section-header-bar">
+            <div>
+                <h2 class="section-heading-title">Devices & Hardware Components</h2>
+                <p class="section-heading-sub">Premium engineered hardware components and high-throughput endpoint terminals.</p>
+            </div>
+            <a href="#" class="editorial-section-link">View full hardware catalogue &rarr;</a>
         </div>
 
-        <!-- Order Complete Success Block -->
-        <div class="cro-success-viewport" id="cro-order-success-screen">
-          <div class="cro-checkmark-circle">
-            <svg width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"></polyline></svg>
-          </div>
-          <h4>Order Successfully Positioned</h4>
-          <p>Your provisioning bundle routing metrics match processing schedules. Our server allocation team will relay connection configurations directly via your verified account address.</p>
-          <button type="button" class="cro-btn-base cro-btn-muted" id="cro-success-dismiss-btn">Return to Storefront</button>
+        <div class="products-grid-layout">
+            
+            <div class="product-premium-card">
+                <div>
+                    <div class="product-media-container">
+                        <img src="https://images.unsplash.com/photo-1587829741301-dc798b83add3?auto=format&fit=crop&w=350&q=80" alt="Workstation Terminal" class="product-showcase-img" style="max-height: 120px;">
+                    </div>
+                    <span class="product-category-badge">Endpoints</span>
+                    <h3 class="product-main-title">ProStation Elite Client Terminal</h3>
+                    <p class="product-summary-desc">Thin-client workspace computer optimized for seamless interaction with provisioned enterprise cloud platforms.</p>
+                </div>
+                <div class="product-action-footer">
+                    <div>
+                        <span class="price-display-node">$849.00</span>
+                        <span class="price-sub-period">per unit hardware</span>
+                    </div>
+                    <button @click="cartCount++" class="add-to-cart-btn">Add to Cart</button>
+                </div>
+            </div>
+
+            <div class="product-premium-card">
+                <div>
+                    <div class="product-media-container">
+                        <img src="https://images.unsplash.com/photo-1544244015-0df4b3ffc6b0?auto=format&fit=crop&w=350&q=80" alt="Tablet Device" class="product-showcase-img" style="max-height: 120px;">
+                    </div>
+                    <span class="product-category-badge">Mobile Devices</span>
+                    <h3 class="product-main-title">CloudTab 10" Enterprise Edition</h3>
+                    <p class="product-summary-desc">Secured biometric workspace slate featuring preloaded mobile configuration nodes for field arrays.</p>
+                </div>
+                <div class="product-action-footer">
+                    <div>
+                        <span class="price-display-node">$429.00</span>
+                        <span class="price-sub-period">per unit hardware</span>
+                    </div>
+                    <button @click="cartCount++" class="add-to-cart-btn">Add to Cart</button>
+                </div>
+            </div>
+
+            <div class="product-premium-card">
+                <div>
+                    <div class="product-media-container">
+                        <img src="https://images.unsplash.com/photo-1601524909162-be87252be298?auto=format&fit=crop&w=350&q=80" alt="PCIe Storage Matrix" class="product-showcase-img" style="max-height: 120px;">
+                    </div>
+                    <span class="product-category-badge">Components</span>
+                    <h3 class="product-main-title">QuantumLink 2TB NVMe Component Matrix</h3>
+                    <p class="product-summary-desc">PCIe Gen-5 high-throughput hardware caching blocks engineered for local edge database replication arrays.</p>
+                </div>
+                <div class="product-action-footer">
+                    <div>
+                        <span class="price-display-node">$189.00</span>
+                        <span class="price-sub-period">per system module</span>
+                    </div>
+                    <button @click="cartCount++" class="add-to-cart-btn">Add to Cart</button>
+                </div>
+            </div>
+
+        </div>
+    </section>
+
+    <div x-show="cartOpen" class="drawer-slide-overlay" role="dialog" aria-modal="true" style="display: none;" @click="cartOpen = false"></div>
+    
+    <div x-show="cartOpen" 
+         style="display: none;"
+         x-transition:enter="transition ease-in-out duration-300"
+         x-transition:enter-start="transform translate-x-full"
+         x-transition:enter-end="transform translate-x-0"
+         x-transition:leave="transition ease-in-out duration-300"
+         x-transition:leave-start="transform translate-x-0"
+         x-transition:leave-end="transform translate-x-full"
+         class="drawer-sliding-frame">
+        
+        <div class="drawer-body-container">
+            <div class="drawer-header-row">
+                <h2 class="drawer-panel-title">Marketplace Shopping Cart</h2>
+                <button type="button" @click="cartOpen = false" class="drawer-dismiss-btn">
+                    <i class="fa-solid fa-xmark" style="font-size: 18px;"></i>
+                </button>
+            </div>
+
+            <div class="cart-queue-stream">
+                <div class="flow-root" x-show="cartCount > 0">
+                    <ul role="list">
+                        <li class="cart-item-block">
+                            <div class="cart-item-media">
+                                <img src="https://images.unsplash.com/photo-1611162617213-7d7a39e9b1d7?auto=format&fit=crop&w=150&q=80" class="cart-item-img" alt="Thumbnail product image inside sidebar queue list">
+                            </div>
+                            <div class="cart-item-details">
+                                <div>
+                                    <div class="cart-item-header">
+                                        <h3>M365 Business Standard</h3>
+                                        <p>$12.50</p>
+                                    </div>
+                                    <p class="cart-item-tagline">Digital provisioning node</p>
+                                </div>
+                                <div class="cart-item-footer-meta">
+                                    <p>Quantity: <span style="color: var(--editorial-black); font-weight: 600;" x-text="cartCount">1</span></p>
+                                    <button type="button" @click="cartCount = 0" class="cart-remove-trigger">Remove</button>
+                                </div>
+                            </div>
+                        </li>
+                    </ul>
+                </div>
+                
+                <div class="cart-empty-announcement" x-show="cartCount === 0">
+                    <i class="fa-solid fa-basket-shopping"></i>
+                    <p>Your cloud provisioning queue is empty.</p>
+                </div>
+            </div>
         </div>
 
-      </div>
-
-      <div class="cro-modal-action-bar" id="cro-dialog-footer-actions">
-        <button type="button" class="cro-btn-base cro-btn-muted" id="cro-checkout-cancel-btn">Back to Shop</button>
-        <button type="submit" form="cro-payment-form" class="cro-btn-base cro-btn-prime">Complete Authorization</button>
-      </div>
-
+        <div class="drawer-footer-anchor">
+            <div class="summary-total-line">
+                <p>Estimated Subtotal</p>
+                <p x-text="'$' + (cartCount * 12.50).toFixed(2)">$0.00</p>
+            </div>
+            <p class="disclaimer-text">Fulfillment parameters and tier processing applied on step 2.</p>
+            <a href="#" class="checkout-action-btn">Proceed to Secure Checkout</a>
+        </div>
     </div>
-  </div>
 
-  <!-- APPLICATION LOGIC STACK -->
-  <script>
-    document.addEventListener('DOMContentLoaded', () => {
-      
-      // RUNTIME SYSTEM STATE STORAGE
-      let userCartArray = [];
-
-      // DOM Node Pointers
-      const searchBoxInput = document.getElementById('cro-product-search-input');
-      const catalogCards = document.querySelectorAll('.cro-product-card');
-      const emptyStateNode = document.getElementById('cro-search-empty-node');
-      const categoryTabFilters = document.querySelectorAll('.cro-cat-item');
-      
-      const cartMask = document.getElementById('cro-cart-mask');
-      const cartPanel = document.getElementById('cro-cart-panel');
-      const openDrawerBtn = document.getElementById('cro-drawer-trigger');
-      const closeDrawerIco = document.getElementById('cro-cart-close-ico');
-      const basketBadge = document.getElementById('cro-basket-badge');
-      const listWrapperNode = document.getElementById('cro-cart-list-wrapper');
-      
-      const summarySubtotal = document.getElementById('cro-summary-subtotal');
-      const summaryVat = document.getElementById('cro-summary-vat');
-      const summaryTotal = document.getElementById('cro-summary-total');
-      
-      const checkoutTriggerBtn = document.getElementById('cro-checkout-trigger-btn');
-      const checkoutDialogMask = document.getElementById('cro-checkout-dialog-mask');
-      const checkoutCancelBtn = document.getElementById('cro-checkout-cancel-btn');
-      const checkoutFormNode = document.getElementById('cro-payment-form');
-      const dialogFooterActions = document.getElementById('cro-dialog-footer-actions');
-      const orderSuccessScreen = document.getElementById('cro-order-success-screen');
-      const dialogSummaryPanel = document.getElementById('cro-dialog-summary-panel');
-      const dialogTitleNode = document.getElementById('cro-dialog-title');
-      const successDismissBtn = document.getElementById('cro-success-dismiss-btn');
-      
-      const modalReviewList = document.getElementById('cro-modal-review-list');
-      const modalReviewTotalCost = document.getElementById('cro-modal-review-total-cost');
-
-      let currentActiveFilter = 'all';
-      let currentActiveQuery = '';
-
-      // ==========================================================================
-      // REALTIME INPUT FILTER COMPILATIONS
-      // ==========================================================================
-      function evaluateVisibleDisplayCards() {
-        let visibilityCounter = 0;
-
-        catalogCards.forEach(card => {
-          const cardTitleText = card.querySelector('.cro-card-title').textContent.toLowerCase();
-          const cardDescText = card.querySelector('.cro-card-desc').textContent.toLowerCase();
-          const cardCategoryHook = card.getAttribute('data-cat');
-
-          const queryMatch = cardTitleText.includes(currentActiveQuery) || cardDescText.includes(currentActiveQuery);
-          const filterMatch = (currentActiveFilter === 'all') || (cardCategoryHook === currentActiveFilter);
-
-          if (queryMatch && filterMatch) {
-            card.style.display = 'flex';
-            visibilityCounter++;
-          } else {
-            card.style.display = 'none';
-          }
-        });
-
-        emptyStateNode.style.display = (visibilityCounter === 0) ? 'block' : 'none';
-      }
-
-      searchBoxInput.addEventListener('input', (e) => {
-        currentActiveQuery = e.target.value.toLowerCase().trim();
-        evaluateVisibleDisplayCards();
-      });
-
-      categoryTabFilters.forEach(tab => {
-        tab.addEventListener('click', function() {
-          categoryTabFilters.forEach(t => t.classList.remove('active'));
-          this.classList.add('active');
-          currentActiveFilter = this.getAttribute('data-filter');
-          evaluateVisibleDisplayCards();
-        });
-      });
-
-
-      // ==========================================================================
-      // TRANSACTION METRIC COMPUTATIONS
-      // ==========================================================================
-      function recomputeFinancialMetrics() {
-        let totalItemsQuantity = 0;
-        let basicTotalSumValue = 0;
-
-        userCartArray.forEach(item => {
-          totalItemsQuantity += item.quantity;
-          basicTotalSumValue += (item.unitCostValue * item.quantity);
-        });
-
-        // Sync visual notification badges
-        basketBadge.textContent = totalItemsQuantity;
-
-        if (userCartArray.length === 0) {
-          listWrapperNode.innerHTML = `<p style="text-align:center; color:var(--text-muted); padding:40px 0;">Your configuration cart is empty.</p>`;
-          checkoutTriggerBtn.disabled = true;
-          checkoutTriggerBtn.style.opacity = '0.5';
-          checkoutTriggerBtn.style.pointerEvents = 'none';
-        } else {
-          checkoutTriggerBtn.disabled = false;
-          checkoutTriggerBtn.style.opacity = '1';
-          checkoutTriggerBtn.style.pointerEvents = 'auto';
-
-          listWrapperNode.innerHTML = '';
-          userCartArray.forEach(item => {
-            const itemElement = document.createElement('div');
-            itemElement.className = 'cro-item-node';
-            itemElement.innerHTML = `
-              <div class="cro-node-info">
-                <h4>${item.labelTitle}</h4>
-                <div class="cro-node-meta">R${item.unitCostValue} × ${item.quantity} Units</div>
-              </div>
-              <div class="cro-node-right">
-                <span class="cro-node-price">R${item.unitCostValue * item.quantity}</span>
-                <button class="cro-node-del" data-remove-uid="${item.id}">Remove</button>
-              </div>
-            `;
-            listWrapperNode.appendChild(itemElement);
-          });
-
-          // Bind event delegation lines immediately upon node structural rendering blocks
-          document.querySelectorAll('.cro-node-del').forEach(btn => {
-            btn.addEventListener('click', function() {
-              const removalTargetUid = this.getAttribute('data-remove-uid');
-              userCartArray = userCartArray.filter(i => i.id !== removalTargetUid);
-              recomputeFinancialMetrics();
-            });
-          });
-        }
-
-        const standardVatSum = basicTotalSumValue * 0.15;
-        const totalGrandCost = basicTotalSumValue + standardVatSum;
-
-        summarySubtotal.textContent = `R${basicTotalSumValue.toFixed(2)}`;
-        summaryVat.textContent = `R${standardVatSum.toFixed(2)}`;
-        summaryTotal.textContent = `R${totalGrandCost.toFixed(2)}`;
+    <footer x-data="{ openGroup: null }">
         
-        modalReviewTotalCost.textContent = `R${totalGrandCost.toFixed(2)}`;
-      }
+        <div class="vertical-notice-banner">
+            <div class="max-w-1200 vertical-notice-inner">
+                <div class="vertical-message-node">
+                    <i class="fa-solid fa-bolt"></i>
+                    <p>
+                        <strong>Digital & Hardware Shipping Parameters:</strong> All digital cloud license software allocations and workspace environment configurations instances are processed instantly and deployed directly onto tenancy parameters. Physical hardware endpoint components, thin terminal arrays, and component matrices dispatch daily via localized, fully audited next-day secure logistics transit courier networks.
+                    </p>
+                </div>
+                <div class="vertical-message-node">
+                    <i class="fa-solid fa-arrow-rotate-left"></i>
+                    <p>
+                        <strong>Transparent Return Operational Protocol:</strong> Digital core cloud license provisions retain standard enterprise flexibility parameters and are fully covered by our mandatory 14-day zero-prior-use tenancy return structural validation guarantees. Unopened localized engineering equipment models and boxed physical hardware component blocks maintain complete structural baseline return processing criteria.
+                    </p>
+                </div>
+                <div class="vertical-message-node">
+                    <i class="fa-solid fa-tags"></i>
+                    <p>
+                        <strong>Automated Scale Matrix Discounts:</strong> Local institutional volume tier parameters, educational workspace scale arrangements, and bulk multi-seat corporate provisioning configurations process cost reductions dynamically across baseline frameworks. Scale-based adjustments apply variable programmatic price metric discounts natively directly during transactional checkout calculations.
+                    </p>
+                </div>
+            </div>
+        </div>
 
-      // Catalog Entry Form Button Routing
-      document.querySelectorAll('.cro-product-card').forEach(card => {
-        const actionButton = card.querySelector('.cro-add-btn');
-        
-        actionButton.addEventListener('click', function() {
-          const id = card.getAttribute('data-uid');
-          const labelTitle = card.querySelector('.cro-card-title').textContent;
-          const unitCostValue = parseFloat(card.getAttribute('data-price'));
-          const quantity = parseInt(card.querySelector('.cro-qty-select').value);
+        <div class="max-w-1200 footer-nav-container">
+            
+            <div class="footer-nav-links-grid">
+                <div class="footer-link-group-node">
+                    <h4>Solutions</h4>
+                    <ul>
+                        <li><a href="#">Enterprise Microsoft 365</a></li>
+                        <li><a href="#">Edge Computing Terminal Nodes</a></li>
+                        <li><a href="#">Component Storage Networks</a></li>
+                    </ul>
+                </div>
+                <div class="footer-link-group-node">
+                    <h4>Framework</h4>
+                    <ul>
+                        <li><a href="#">Terms of Operations</a></li>
+                        <li><a href="#">Data Security Charters</a></li>
+                        <li><a href="#">Service Level Frameworks</a></li>
+                    </ul>
+                </div>
+                <div class="footer-link-group-node">
+                    <h4>Support</h4>
+                    <ul>
+                        <li><a href="#">Deployment Documentation</a></li>
+                        <li><a href="#">Global Registry API</a></li>
+                        <li><a href="#">Infrastructure Health Status</a></li>
+                    </ul>
+                </div>
+                <div class="footer-link-group-node">
+                    <h4>Corporate Registry</h4>
+                    <p class="corporate-registry-paragraph">
+                        All distribution loops across software environments and structural physical endpoints are verified under regulatory international standards.
+                    </p>
+                </div>
+            </div>
 
-          const preExistingMatchIndex = userCartArray.findIndex(item => item.id === id);
+            <div class="footer-mobile-accordion">
+                <div class="accordion-item-node">
+                    <button class="accordion-trigger-header" @click="openGroup = openGroup === 'solutions' ? null : 'solutions'">
+                        <span>Solutions</span>
+                        <i class="fa-solid" :class="openGroup === 'solutions' ? 'fa-minus' : 'fa-plus'"></i>
+                    </button>
+                    <div class="accordion-panel-content" x-show="openGroup === 'solutions'" style="display: none;">
+                        <ul>
+                            <li><a href="#">Enterprise Microsoft 365</a></li>
+                            <li><a href="#">Edge Computing Terminal Nodes</a></li>
+                            <li><a href="#">Component Storage Networks</a></li>
+                        </ul>
+                    </div>
+                </div>
 
-          if (preExistingMatchIndex > -1) {
-            userCartArray[preExistingMatchIndex].quantity += quantity;
-          } else {
-            userCartArray.push({ id, labelTitle, unitCostValue, quantity });
-          }
+                <div class="accordion-item-node">
+                    <button class="accordion-trigger-header" @click="openGroup = openGroup === 'framework' ? null : 'framework'">
+                        <span>Framework</span>
+                        <i class="fa-solid" :class="openGroup === 'framework' ? 'fa-minus' : 'fa-plus'"></i>
+                    </button>
+                    <div class="accordion-panel-content" x-show="openGroup === 'framework'" style="display: none;">
+                        <ul>
+                            <li><a href="#">Terms of Operations</a></li>
+                            <li><a href="#">Data Security Charters</a></li>
+                            <li><a href="#">Service Level Frameworks</a></li>
+                        </ul>
+                    </div>
+                </div>
 
-          recomputeFinancialMetrics();
-          
-          // Micro UX open interactions loops automatically
-          cartMask.classList.add('active');
-          cartPanel.classList.add('active');
-          document.body.classList.add('modal-open');
-        });
-      });
+                <div class="accordion-item-node">
+                    <button class="accordion-trigger-header" @click="openGroup = openGroup === 'support' ? null : 'support'">
+                        <span>Support</span>
+                        <i class="fa-solid" :class="openGroup === 'support' ? 'fa-minus' : 'fa-plus'"></i>
+                    </button>
+                    <div class="accordion-panel-content" x-show="openGroup === 'support'" style="display: none;">
+                        <ul>
+                            <li><a href="#">Deployment Documentation</a></li>
+                            <li><a href="#">Global Registry API</a></li>
+                            <li><a href="#">Infrastructure Health Status</a></li>
+                        </ul>
+                    </div>
+                </div>
 
+                <div class="accordion-item-node" style="border-bottom: none;">
+                    <div class="accordion-trigger-header" style="cursor: default;">
+                        <span>Corporate Registry</span>
+                    </div>
+                    <div class="accordion-panel-content" style="padding-bottom: 24px;">
+                        <p class="corporate-registry-paragraph">
+                            All distribution loops across software environments and structural physical endpoints are verified under regulatory international standards.
+                        </p>
+                    </div>
+                </div>
+            </div>
 
-      // ==========================================================================
-      // STAGE CONTROL WIZARD DIRECT ROUTING LINKS
-      // ==========================================================================
-      openDrawerBtn.addEventListener('click', () => {
-        cartMask.classList.add('active');
-        cartPanel.classList.add('active');
-        document.body.classList.add('modal-open');
-      });
+        </div>
 
-      function completelyCollapseDrawerPanel() {
-        cartMask.classList.remove('active');
-        cartPanel.classList.remove('active');
-        if (!checkoutDialogMask.classList.contains('active')) {
-          document.body.classList.remove('modal-open');
-        }
-      }
-      closeDrawerIco.addEventListener('click', completelyCollapseDrawerPanel);
-      cartMask.addEventListener('click', completelyCollapseDrawerPanel);
-
-      // Modal Transition Route Maps
-      checkoutTriggerBtn.addEventListener('click', (e) => {
-        e.preventDefault();
-        if (userCartArray.length === 0) return;
-
-        completelyCollapseDrawerPanel();
-
-        // Inject inside checking layout rows
-        modalReviewList.innerHTML = '';
-        userCartArray.forEach(item => {
-          const revNodeItem = document.createElement('div');
-          revNodeItem.className = 'cro-mini-item';
-          revNodeItem.innerHTML = `
-            <span>${item.labelTitle} (×${item.quantity})</span>
-            <strong>R${item.unitCostValue * item.quantity}</strong>
-          `;
-          modalReviewList.appendChild(revNodeItem);
-        });
-
-        checkoutDialogMask.classList.add('active');
-        document.body.classList.add('modal-open');
-      });
-
-      function completelyShutdownModalFrame() {
-        checkoutDialogMask.classList.remove('active');
-        document.body.classList.remove('modal-open');
-        
-        setTimeout(() => {
-          checkoutFormNode.style.display = 'block';
-          dialogSummaryPanel.style.display = 'block';
-          dialogFooterActions.style.display = 'flex';
-          orderSuccessScreen.style.display = 'none';
-          dialogTitleNode.style.display = 'block';
-          checkoutFormNode.reset();
-        }, 250);
-      }
-
-      checkoutCancelBtn.addEventListener('click', completelyShutdownModalFrame);
-      successDismissBtn.addEventListener('click', completelyShutdownModalFrame);
-
-      // Native workflow logic intercept handler
-      checkoutFormNode.addEventListener('submit', (e) => {
-        e.preventDefault();
-
-        dialogTitleNode.style.display = 'none';
-        checkoutFormNode.style.display = 'none';
-        dialogSummaryPanel.style.display = 'none';
-        dialogFooterActions.style.display = 'none';
-        orderSuccessScreen.style.display = 'block';
-
-        userCartArray = [];
-        recomputeFinancialMetrics();
-      });
-
-    });
-  </script>
+        <div class="footer-copyright-row">
+            &copy; 2026 CloudSphere Inc. All structural workspace infrastructure parameters active.
+        </div>
+    </footer>
 
 </body>
 </html>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>CloudSphere Marketplace</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    
+    <style>
+        /* Loading Circular Std font family fallback chain */
+        @font-face {
+            font-family: 'Circular Std';
+            src: local('Circular Std'), local('CircularStd-Book'), url(https://fonts.cdnfonts.com/s/15011/CircularStd-Book.woff) format('woff');
+            font-weight: normal;
+            font-style: normal;
+        }
+        body { 
+            font-family: 'Circular Std', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Helvetica, Arial, sans-serif; 
+            letter-spacing: -0.02em;
+        }
+        /* Lock layout container specifically to your 1200px requirement */
+        .max-w-1200 {
+            max-width: 1200px !important;
+        }
+
+        /* --- Custom Plain CSS automatic scroll animation for Hero --- */
+        @keyframes scrollHero {
+            0%, 45% { transform: translateX(0%); }    
+            50%, 95% { transform: translateX(-100%); } 
+            100% { transform: translateX(0%); }       
+        }
+
+        .hero-carousel-track {
+            display: flex;
+            width: 200%; 
+            animation: scrollHero 12s infinite ease-in-out; 
+            will-change: transform;
+        }
+
+        .hero-slide {
+            width: 50%; 
+            flex-shrink: 0;
+        }
+
+        /* --- Plain CSS Floating Left Social Media Bar --- */
+        .social-sidebar {
+            position: fixed;
+            top: 50%;
+            left: 0;
+            transform: translateY(-50%);
+            z-index: 50;
+            display: flex;
+            flex-direction: column;
+            background-color: #ffffff;
+            border: 1px solid #f3f4f6;
+            border-left: none;
+            border-top-right-radius: 1rem;
+            border-bottom-right-radius: 1rem;
+            box-shadow: 0 4px 12px rgba(0, 0, 0, 0.03);
+            overflow: hidden;
+            padding: 0.5rem 0;
+        }
+
+        .social-link {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            width: 3.25rem;
+            height: 3.25rem;
+            color: #6b7280;
+            text-decoration: none;
+            transition: all 0.2s ease-in-out;
+            position: relative;
+        }
+
+        /* Hover states with clean interactions */
+        .social-link:hover {
+            color: #111111;
+            background-color: #f9fafb;
+            padding-left: 0.25rem; /* Subtle nudge effect */
+        }
+
+        /* Brand matching on specific hover overrides */
+        .social-link.linkedin:hover { color: #0077b5; }
+        .social-link.twitter:hover { color: #1da1f2; }
+        .social-link.github:hover { color: #24292e; }
+        .social-link.youtube:hover { color: #ff0000; }
+    </style>
+</head>
+<body class="bg-[#fafafa] text-[#111111]">
+
+    <div class="social-sidebar">
+        <a href="#" class="social-link linkedin" title="LinkedIn" target="_blank">
+            <i class="fa-brands fa-linkedin-in text-lg"></i>
+        </a>
+        <a href="#" class="social-link twitter" title="X / Twitter" target="_blank">
+            <i class="fa-brands fa-x-twitter text-lg"></i>
+        </a>
+        <a href="#" class="social-link github" title="GitHub" target="_blank">
+            <i class="fa-brands fa-github text-lg"></i>
+        </a>
+        <a href="#" class="social-link youtube" title="YouTube" target="_blank">
+            <i class="fa-brands fa-youtube text-lg"></i>
+        </a>
+    </div>
