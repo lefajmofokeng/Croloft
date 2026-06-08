@@ -8,6 +8,13 @@
     
     <script src="header.js" defer></script>
     <script src="footer.js" defer></script> 
+    <style>
+        @font-face { font-family:'Circular Std'; src:url('fonts/CircularStd-Book.woff2') format('woff2'),url('fonts/CircularStd-Book.woff') format('woff'); font-weight:400; font-style:normal; font-display:swap; }
+        @font-face { font-family:'Circular Std'; src:url('fonts/CircularStd-BookItalic.woff2') format('woff2'),url('fonts/CircularStd-BookItalic.woff') format('woff'); font-weight:400; font-style:italic; font-display:swap; }
+        @font-face { font-family:'Circular Std'; src:url('fonts/CircularStd-Medium.woff2') format('woff2'),url('fonts/CircularStd-Medium.woff') format('woff'); font-weight:500; font-style:normal; font-display:swap; }
+        @font-face { font-family:'Circular Std'; src:url('fonts/CircularStd-Bold.woff2') format('woff2'),url('fonts/CircularStd-Bold.woff') format('woff'); font-weight:600; font-style:normal; font-display:swap; }
+        @font-face { font-family:'Circular Std'; src:url('fonts/CircularStd-Black.woff2') format('woff2'),url('fonts/CircularStd-Black.woff') format('woff'); font-weight:800; font-style:normal; font-display:swap; }
+    </style>
 </head>
 <body>
 
@@ -79,37 +86,14 @@
             --defcon-primary: #1199fa;
             --defcon-dark: #010119;
             --defcon-darker: #000011;
-            --defcon-white: #fff;
+            --defcon-white: #000000;
             --defcon-light: #f4f4f4;
             --defcon-black: #000;
             --defcon-gray: #e5e5e5;
             --defcon-container-width: 1200px;
-            --defcon-border-radius: 8px;
+            --defcon-border-radius: 15px;
             --defcon-box-shadow: 0 5px 15px rgba(0, 0, 0, 0.08);
             --defcon-transition: all 0.3s ease;
-        }
-
-        @font-face {
-            font-family: 'Circular Std';
-            src: url('fonts/CircularStd-Book.ttf') format('truetype');
-            font-weight: 400;
-            font-style: normal;
-        }
-
-        /* Circular Std - Medium (500) */
-        @font-face {
-            font-family: 'Circular Std';
-            src: url('fonts/CircularStd.ttf') format('truetype');
-            font-weight: 500;
-            font-style: normal;
-        }
-
-        /* Circular Std - Bold (700) */
-        @font-face {
-            font-family: 'Circular Std';
-            src: url('fonts/CircularStd-Bold.ttf') format('truetype');
-            font-weight: 600;
-            font-style: normal;
         }
 
         /* ===== RESET & BASE STYLES ===== */
@@ -138,12 +122,10 @@
             top: -100px;
             left: 0;
             right: 0;
-            height: 60px;
-            background: white;
-            border-bottom: 1px solid #e0e0e0;
+            height: 55px;
+            background: #0087e1;
             z-index: 999;
             transition: top 0.3s ease, box-shadow 0.3s ease;
-            box-shadow: 0 2px 10px rgba(0, 0, 0, 0.05);
         }
 
         .defcon-sticky-nav.visible {
@@ -177,9 +159,9 @@
 
         .defcon-sticky-nav-link {
             text-decoration: none;
-            color: #475569;
+            color: #ffffff;
             font-size: 0.9rem;
-            font-weight: 500;
+            font-weight: 400;
             white-space: nowrap;
             padding: 8px 0;
             border-bottom: 2px solid transparent;
@@ -187,32 +169,25 @@
         }
 
         .defcon-sticky-nav-link:hover {
-            color: var(--defcon-primary);
+            color: #fff;
             border-bottom-color: var(--defcon-primary);
         }
 
         .defcon-sticky-nav-link.active {
-            color: var(--defcon-primary);
+            color: #fff;
             border-bottom-color: var(--defcon-primary);
         }
 
         .defcon-sticky-nav-cta {
-            padding: 8px 28px;
-            background: linear-gradient(135deg, var(--defcon-primary) 0%, #2ac7ff 100%);
-            color: white;
+            color: #ffffff;
             border: none;
             border-radius: 50px;
-            font-size: 0.95rem;
-            font-weight: 500;
+            font-size: 0.9rem;
+            font-weight: 400;
             cursor: pointer;
             white-space: nowrap;
             text-decoration: none;
-            display: inline-block;
-        }
-
-        .defcon-sticky-nav-cta:hover {
-            transform: translateY(-2px);
-            box-shadow: 0 6px 20px rgba(17, 153, 250, 0.4);
+            display: inline-block; border: 2px solid #fff; padding: 5px 20px;
         }
 
         .defcon-container {
@@ -229,52 +204,41 @@
             display: flex;
             align-items: center;
             overflow: hidden;
-            background: linear-gradient(135deg, rgba(1, 1, 25, 0.95) 0%, rgba(17, 153, 250, 0.15) 100%), 
+            background: linear-gradient(135deg, rgb(1, 1, 25) 0%, rgba(17, 153, 250, 0.633) 100%), 
                         url('https://images.unsplash.com/photo-1639762681485-074b7f938ba0?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1770&q=80') center/cover no-repeat;
         }
 
         .defcon-hero-content {
-            position: relative;
             z-index: 2;
             color: var(--defcon-white);
-            max-width: 750px;
+            max-width: 100%;
         }
 
         .defcon-hero-badge {
             display: inline-block;
-            background: linear-gradient(90deg, var(--defcon-primary), #2ac7ff);
-            color: var(--defcon-white);
-            padding: 8px 20px;
-            border-radius: 30px;
-            font-size: 0.85rem;
-            font-weight: 600;
+            color: #0099fa;
+            font-size: 1rem;
+            line-height: 0.02em; text-transform: uppercase;
+            font-weight: 500;
             margin-bottom: 25px;
-            box-shadow: 0 0 25px rgba(17, 153, 250, 0.6);
-            animation: pulse 2s infinite;
-        }
-
-        @keyframes pulse {
-            0% { box-shadow: 0 0 25px rgba(17, 153, 250, 0.6); }
-            50% { box-shadow: 0 0 35px rgba(17, 153, 250, 0.9); }
-            100% { box-shadow: 0 0 25px rgba(17, 153, 250, 0.6); }
         }
 
         .defcon-hero-title {
             font-size: 3.75rem;
-            font-weight: 600;
+            font-weight: 500;
             letter-spacing: -0.02em;
             line-height: 1.15;
             margin-bottom: 25px;
             background: linear-gradient(to right, #ffffff, #e0f4ff);
             -webkit-background-clip: text;
-            -webkit-text-fill-color: transparent;
+            -webkit-text-fill-color: transparent; font-family: 'Circular Std', sans-serif;
         }
 
         .defcon-hero-subtitle {
             font-size: 1.3rem;
             margin-bottom: 35px;
             color: #e5e5e5;
-            font-weight: 600;
+            font-weight: 400;
             line-height: 1.7;
             max-width: 600px;
         }
@@ -287,38 +251,24 @@
 
         .defcon-btn {
             display: inline-block;
-            padding: 10px 25px;
+            padding: 10px 20px;
             border-radius: 50px;
-            font-weight: 600;
+            font-weight: 500;
             text-decoration: none;
             transition: var(--defcon-transition);
             cursor: pointer;
             border: none;
-            font-family: 'Inter', sans-serif;
+            font-family: 'Circular Std', sans-serif;
             font-size: 1rem;
         }
 
         .defcon-btn-primary {
-            background-color: transparent;
-            border: 1px solid #A0A9BE;
-            color: #f4f4f4;
+            background-color: #ffffff;
+            color: #080d1b;
         }
 
         .defcon-btn-primary:hover {
             background-color: #f4f4f4;
-    
-        }
-
-        .defcon-btn-secondary {
-            background-color: transparent;
-            color: var(--defcon-white);
-            border: 2px solid rgba(255, 255, 255, 0.4);
-        }
-
-        .defcon-btn-secondary:hover {
-            background-color: rgba(255, 255, 255, 0.1);
-            border-color: rgba(255, 255, 255, 0.7);
-            transform: translateY(-3px);
         }
 
         /* ===== FEATURES SECTION ===== */
@@ -352,14 +302,13 @@
         .defcon-features-grid {
             display: grid;
             grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
-            gap: 35px;
+            gap: 20px;
         }
 
         .defcon-feature-card {
             background: #f8f9fa;
             border-radius: var(--defcon-border-radius);
             padding: 40px 30px;
-            box-shadow: 0 2px 8px rgba(0, 0, 0, 0.08);
             transition: var(--defcon-transition);
             height: 100%;
             display: flex;
@@ -386,7 +335,6 @@
             margin-bottom: 25px;
             color: var(--defcon-white);
             font-size: 1.8rem;
-            box-shadow: 0 5px 15px rgba(17, 153, 250, 0.3);
         }
 
         .defcon-feature-title {
@@ -1302,7 +1250,9 @@
                 <a class="defcon-sticky-nav-link" data-section="integration">Integration</a>
                 <a class="defcon-sticky-nav-link" data-section="faq">FAQ</a>
             </div>
-            <a href="#contact" class="defcon-sticky-nav-cta">Contact Sales</a>
+            <a href="#contact" class="defcon-sticky-nav-cta">Contact Sales
+                <svg style="vertical-align: middle;" width="18" height="18" strokeWidth="3" viewBox="0 0 24 24" fill="none"><path d="M10 4H6C4.89543 4 4 4.89543 4 6V18C4 19.1046 4.89543 20 6 20H18C19.1046 20 20 19.1046 20 18V14M14 4H20M20 4V10M20 4L12 12" stroke="#fff" strokeWidth="4" strokeLinecap="round" strokeLinejoin="round"/></svg>
+            </a>
         </div>
     </nav>
 
@@ -1310,12 +1260,11 @@
     <section class="defcon-blockchain-hero">
         <div class="defcon-container">
             <div class="defcon-hero-content">
-                <span class="defcon-hero-badge">NEW: Advanced MPC Wallet Technology</span>
-                <h1 class="defcon-hero-title">Enterprise Blockchain & Web3 Solutions</h1>
-                <p class="defcon-hero-subtitle">Build secure, scalable blockchain infrastructure and decentralized applications with our comprehensive Web3 development services. Transform your business with cutting-edge distributed ledger technology.</p>
+                <span class="defcon-hero-badge">Advanced MPC Wallet Technology</span>
+                <h1 class="defcon-hero-title">Enterprise Blockchain & Web3</h1>
+                <p class="defcon-hero-subtitle">Build secure, scalable blockchain infrastructure and decentralized applications with cutting-edge distributed ledger technology.</p>
                 <div class="defcon-hero-cta">
                     <a href="#defcon-blockchain-solutions" class="defcon-btn defcon-btn-primary">Explore Blockchain Solutions</a>
-                    <a href="#defcon-blockchain-consultation" class="defcon-btn defcon-btn-secondary">Schedule Technical Consultation</a>
                 </div>
             </div>
         </div>

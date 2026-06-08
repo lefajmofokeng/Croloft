@@ -10898,3 +10898,755 @@ function itcScrollSlide(direction) {
 
 
 
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>IT Tech Independent Slide</title>
+
+    <style>
+        /* Global Reset & Namespace styling */
+        * {
+            box-sizing: border-box;
+        }
+
+        :root {
+            --it-sep-font: 'Circular Std', sans-serif;
+            --it-sep-bg: #FFFFFF;
+            --it-sep-text: #0B1221;
+            --it-sep-sub: #556987;
+            --it-sep-accent: #0B1221;
+            --it-sep-line: #E5E7EB;
+        }
+
+        body {
+            margin: 0;
+            padding: 0;
+            font-family: var(--it-sep-font);
+            background: var(--it-sep-bg);
+        }
+
+        /* 1. Track: Controls total scroll depth */
+        .it-sep-track {
+            position: relative; padding: 120px 0;
+            height: 400vh; /* 100vh per section */
+        }
+
+        /* 2. Sticky Container: Keeps component locked in viewport during scroll */
+        .it-sep-sticky {
+            position: sticky;
+            top: 60px;
+            height: 90vh;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            overflow: hidden; 
+            padding: 40px 20px;
+        }
+
+        .it-sep-header {
+            text-align: center;
+            margin-bottom: 40px;
+            z-index: 10;
+        }
+
+        .it-sep-title {
+            font-size: clamp(28px, 4vw, 42px); /* Fluid text scaling */
+            font-weight: 500;
+            letter-spacing: -0.03em;
+            margin: 0;
+            color: var(--it-sep-text);
+        }
+
+        /* 3. Central Dynamic Layout */
+        .it-sep-grid {
+            position: relative;
+            display: grid;
+            grid-template-columns: 1fr 2px 1fr;
+            gap: 60px;
+            width: 100%;
+            max-width: 1100px;
+            height: 450px;
+            align-items: center;
+        }
+
+        /* Center Progress Line */
+        .it-sep-line-container {
+            height: 100%;
+            background: var(--it-sep-line);
+            position: relative;
+            width: 100%;
+        }
+
+        .it-sep-line-fill {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            background: var(--it-sep-accent);
+            height: 0%;
+            transition: height 0.1s ease-out;
+        }
+
+        /* 4. Content Masks */
+        .it-sep-slot {
+            position: relative;
+            height: 100%;
+            width: 100%;
+            overflow: hidden; 
+            border-radius: 20px;
+        }
+
+        .it-sep-text-slot {
+            overflow: hidden;
+            border-radius: 0;
+            display: flex;
+            align-items: center;
+        }
+
+        /* Individual Sliding Layers */
+        .it-sep-layer {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            opacity: 0;
+            pointer-events: none;
+            transition: transform 0.6s cubic-bezier(0.16, 1, 0.3, 1), opacity 0.4s ease;
+        }
+
+        /* Active Transition States */
+        .it-sep-layer.active {
+            opacity: 1;
+            transform: translateY(0) !important;
+            pointer-events: auto;
+        }
+
+        /* Directional Entry Definitions */
+        .it-sep-img-layer {
+            transform: translateY(-100%);
+        }
+
+        .it-sep-text-layer {
+            transform: translateY(100%);
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+        }
+
+        .it-sep-img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            border-radius: 20px;
+        }
+
+        .it-sep-h3 { 
+            font-size: clamp(24px, 3vw, 32px); 
+            font-weight: 600; 
+            margin: 0 0 15px 0; 
+            color: var(--it-sep-text); 
+            letter-spacing: -0.02em;
+        }
+        
+        .it-sep-p { 
+            font-size: clamp(15px, 2vw, 18px); 
+            color: var(--it-sep-sub); 
+            line-height: 1.4; 
+            margin: 0; 
+            font-weight: 400;
+        }
+
+        .it-sep-footer {
+            margin-top: 40px;
+            z-index: 10;
+        }
+
+        .it-sep-btn {
+            background: #0B1221;
+            color: white;
+            padding: 12px 30px;
+            border-radius: 50px;
+            font-weight: 600;
+            font-size: 17px;
+            border: none;
+            cursor: pointer;
+            font-family: inherit;
+            transition: transform 0.2s ease;
+        }
+
+        .it-sep-btn:hover {
+            transform: scale(1.03);
+        }
+
+        /* ==========================================================================
+           Mobile Responsiveness (Screens 900px and below)
+           ========================================================================== */
+        @media (max-width: 900px) {
+            .it-sep-sticky {
+                padding: 30px 20px; top:70px
+            }
+
+            .it-sep-header {
+                margin-bottom: 25px;
+            }
+
+            /* Restructure grid layout: Left bar (4px), Right content area (1fr) */
+            .it-sep-grid {
+                grid-template-columns: 4px 1fr;
+                grid-template-rows: 220px 140px; /* Separated row heights for img and text slots */
+                gap: 20px 25px;
+                height: 380px;
+                align-items: stretch; 
+            }
+
+            /* Make progress bar track span full height of both slot rows */
+            .it-sep-line-container {
+                grid-column: 1;
+                grid-row: 1 / span 2;
+                width: 4px;
+            }
+
+            /* Send image slot cleanly into row 1 on the right */
+            .it-sep-slot:not(.it-sep-text-slot) {
+                grid-column: 2;
+                grid-row: 1;
+            }
+
+            /* Send text slot safely into row 2 on the right */
+            .it-sep-text-slot {
+                grid-column: 2;
+                grid-row: 2;
+                align-items: flex-start;
+                padding-top: 5px;
+            }
+
+            .it-sep-text-layer {
+                justify-content: flex-start;
+            }
+
+            .it-sep-footer {
+                margin-top: 25px;
+            }
+        }
+    </style>
+</head>
+<body>
+
+<div class="it-sep-track" id="itTrack">
+    <div class="it-sep-sticky">
+        
+        <div class="it-sep-header">
+            <h2 class="it-sep-title">See why 4,000+ merchants trust us</h2>
+        </div>
+
+        <div class="it-sep-grid">
+            <!-- Images Slot -->
+            <div class="it-sep-slot">
+                <div class="it-sep-layer it-sep-img-layer active" data-index="0">
+                    <img src="https://images.unsplash.com/photo-1550751827-4bd374c3f58b?auto=format&fit=crop&q=80&w=800" class="it-sep-img" alt="Tech 1">
+                </div>
+                <div class="it-sep-layer it-sep-img-layer" data-index="1">
+                    <img src="https://images.unsplash.com/photo-1451187580459-43490279c0fa?auto=format&fit=crop&q=80&w=800" class="it-sep-img" alt="Tech 2">
+                </div>
+                <div class="it-sep-layer it-sep-img-layer" data-index="2">
+                    <img src="https://images.unsplash.com/photo-1518770660439-4636190af475?auto=format&fit=crop&q=80&w=800" class="it-sep-img" alt="Tech 3">
+                </div>
+                <div class="it-sep-layer it-sep-img-layer" data-index="3">
+                    <img src="https://images.unsplash.com/photo-1563986768609-322da13575f3?auto=format&fit=crop&q=80&w=800" class="it-sep-img" alt="Tech 4">
+                </div>
+            </div>
+
+            <!-- Left / Center Progress Line -->
+            <div class="it-sep-line-container">
+                <div class="it-sep-line-fill" id="itLine"></div>
+            </div>
+
+            <!-- Text Slot -->
+            <div class="it-sep-slot it-sep-text-slot">
+                <div class="it-sep-layer it-sep-text-layer active" data-index="0">
+                    <h3 class="it-sep-h3">Advanced Data Security</h3>
+                    <p class="it-sep-p">Protect your infrastructure with hardware-level encryption and real-time threat monitoring.</p>
+                </div>
+                <div class="it-sep-layer it-sep-text-layer" data-index="1">
+                    <h3 class="it-sep-h3">Cloud Infrastructure</h3>
+                    <p class="it-sep-p">Scalable cloud solutions that grow with your business, ensuring 99.9% uptime across all regions.</p>
+                </div>
+                <div class="it-sep-layer it-sep-text-layer" data-index="2">
+                    <h3 class="it-sep-h3">AI Performance</h3>
+                    <p class="it-sep-p">Harness the power of neural networks to automate complex workflows and data analysis.</p>
+                </div>
+                <div class="it-sep-layer it-sep-text-layer" data-index="3">
+                    <h3 class="it-sep-h3">Smart Interfaces</h3>
+                    <p class="it-sep-p">Intuitive dashboards designed for deep technical oversight without the clutter.</p>
+                </div>
+            </div>
+        </div>
+
+        <div class="it-sep-footer">
+            <button class="it-sep-btn">Start Accepting Crypto</button>
+        </div>
+
+    </div>
+</div>
+
+<script>
+(function() {
+    const track = document.getElementById('itTrack');
+    const line = document.getElementById('itLine');
+    const imgLayers = document.querySelectorAll('.it-sep-img-layer');
+    const textLayers = document.querySelectorAll('.it-sep-text-layer');
+    const totalItems = 4;
+
+    function updateScroll() {
+        if (!track) return; // Removed the window width restriction to enable mobile animation
+
+        const rect = track.getBoundingClientRect();
+        const viewHeight = window.innerHeight;
+        
+        // Total scrollable distance
+        const totalDist = rect.height - viewHeight;
+        // Current progress (0 to 1)
+        let progress = -rect.top / totalDist;
+        progress = Math.max(0, Math.min(1, progress));
+
+        // Update Line progress fill height
+        line.style.height = `${progress * 100}%`;
+
+        // Determine current active index based on scroll progress
+        const activeIndex = Math.min(Math.floor(progress * totalItems), totalItems - 1);
+
+        // Update Layers
+        imgLayers.forEach((layer, idx) => {
+            if (idx === activeIndex) {
+                layer.classList.add('active');
+            } else if (idx < activeIndex) {
+                // Scrolled past: push DOWN out of box mask
+                layer.classList.remove('active');
+                layer.style.transform = 'translateY(100%)';
+            } else {
+                // Not reached: keep UP above box mask
+                layer.classList.remove('active');
+                layer.style.transform = 'translateY(-100%)';
+            }
+        });
+
+        textLayers.forEach((layer, idx) => {
+            if (idx === activeIndex) {
+                layer.classList.add('active');
+            } else if (idx < activeIndex) {
+                // Scrolled past: push UP out of box mask
+                layer.classList.remove('active');
+                layer.style.transform = 'translateY(-100%)';
+            } else {
+                // Not reached: keep DOWN below box mask
+                layer.classList.remove('active');
+                layer.style.transform = 'translateY(100%)';
+            }
+        });
+    }
+
+    window.addEventListener('scroll', updateScroll, { passive: true });
+    window.addEventListener('resize', updateScroll);
+    updateScroll();
+})();
+</script>
+
+</body>
+</html>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<div class="stu-reveal-root">
+  <div class="stu-reveal-container">
+    
+    <div class="stu-reveal-header">
+      <h2 class="stu-reveal-title">What's new</h2>
+      <p class="stu-reveal-subtitle">Latest updates from the student success portal.</p>
+    </div>
+
+    <div class="stu-reveal-grid">
+      
+      <div class="stu-reveal-card">
+        <div class="stu-reveal-media">
+          <img src="https://images.unsplash.com/photo-1704748430013-41227f6abf2f?q=80&w=1332&auto=format&fit=crop&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D" alt="AI Updates" class="stu-reveal-img">
+          <div class="stu-reveal-badge">Case study</div>
+        </div>
+        <div class="stu-reveal-body">
+          <h3 class="stu-reveal-card-title">Portal cut registration latency 85x with new AI Server</h3>
+          <p class="stu-reveal-card-text">The IT department used the new Micro servers to shrink costs and support 80,000+ students.</p>
+          <div class="stu-reveal-footer">
+            <div class="stu-reveal-link-group">
+              <span class="stu-reveal-text">Explore AI Case Studies</span>
+              <svg class="stu-reveal-arrow" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M5 12h14M12 5l7 7-7 7"/></svg>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <div class="stu-reveal-card">
+        <div class="stu-reveal-media">
+          <img src="https://images.unsplash.com/photo-1684446116392-051d581d1a77?q=80&w=1170&auto=format&fit=crop&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D" alt="Campus Assistant" class="stu-reveal-img">
+          <div class="stu-reveal-badge">Campus Quick</div>
+        </div>
+        <div class="stu-reveal-body">
+          <h3 class="stu-reveal-card-title">Your campus assistant that actually gets your work</h3>
+          <p class="stu-reveal-card-text">Campus Quick connects to academic data and meets you where you study. No more switching tools.</p>
+          <div class="stu-reveal-footer">
+            <div class="stu-reveal-link-group">
+              <span class="stu-reveal-text">Try Campus Quick now</span>
+              <svg class="stu-reveal-arrow" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M5 12h14M12 5l7 7-7 7"/></svg>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <div class="stu-reveal-card">
+        <div class="stu-reveal-media">
+          <img src="https://images.unsplash.com/photo-1721041879210-c2580ae0a8ed?q=80&w=1332&auto=format&fit=crop&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D" alt="Career Path" class="stu-reveal-img">
+          <div class="stu-reveal-badge">Career Intelligence</div>
+        </div>
+        <div class="stu-reveal-body">
+          <h3 class="stu-reveal-card-title">Career Prep: Your path to production</h3>
+          <p class="stu-reveal-card-text">How to accelerate your career implementation confidently with expert guidance from alumni.</p>
+          <div class="stu-reveal-footer">
+            <div class="stu-reveal-link-group">
+              <span class="stu-reveal-text">Start your career journey with us</span>
+              <svg class="stu-reveal-arrow" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M5 12h14M12 5l7 7-7 7"/></svg>
+            </div>
+          </div>
+        </div>
+      </div>
+
+    </div>
+  </div>
+</div>
+
+<style>
+  /* Container & Base Font */
+.stu-reveal-root {
+  font-family: "Circular Std", sans-serif;
+  background-color: #ffffff;
+  padding: 120px 20px;
+}
+
+.stu-reveal-container {
+  max-width: 1200px;
+  margin: 0 auto;
+}
+
+/* Header Styles */
+.stu-reveal-title { font-size: 54px; font-weight: 500; color: #111; margin-bottom: 8px; }
+.stu-reveal-subtitle { font-size: 21px; color: #666; margin-bottom: 48px; }
+
+/* Grid Setup */
+.stu-reveal-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
+  gap: 24px;
+}
+
+/* Card & Rainbow Shadow */
+.stu-reveal-card {
+  background: #f2f3f4;
+  border-radius: 15px;
+  overflow: hidden;
+  display: flex;
+  flex-direction: column;
+  transition: transform 0.4s cubic-bezier(0.2, 1, 0.3, 1), background 0.3s;
+  cursor: pointer;
+  position: relative;
+}
+
+@keyframes stu-rainbow-glow {
+  0% { box-shadow: 0 10px 30px -10px rgba(255, 0, 128, 0.4); }
+  33% { box-shadow: 0 10px 30px 10px rgba(128, 0, 255, 0.4); }
+  66% { box-shadow: 0 10px 30px 10px rgba(0, 200, 255, 0.4); }
+  100% { box-shadow: 0 10px 30px 10px rgba(255, 0, 128, 0.4); }
+}
+
+.stu-reveal-card:hover {
+  transform: translateY(-10px);
+  animation: stu-rainbow-glow 3s linear infinite;
+}
+
+/* Media/Image Wrapper */
+.stu-reveal-media { height: 210px; position: relative; overflow: hidden; }
+.stu-reveal-img { width: 100%; height: 100%; object-fit: cover; transition: transform 0.5s ease; border-radius: 15px; }
+.stu-reveal-card:hover .stu-reveal-img {  border-radius: 15px; }
+.stu-reveal-badge {
+  position: absolute; top: 16px; left: 16px;
+  background: rgba(255, 255, 255, 0.818); padding: 5px 12px; letter-spacing: 1px;
+  font-size: 11px; font-weight: 500; text-transform: uppercase;
+  box-shadow: 0 2px 4px rgba(0,0,0,0.05);
+}
+
+/* Body Content */
+.stu-reveal-body { padding: 32px; flex-grow: 1; display: flex; flex-direction: column; }
+.stu-reveal-card-title { font-size: 20px; font-weight: 500; color: #111; margin-bottom: 12px; line-height: 1.1; }
+.stu-reveal-card-text { font-size: 15px; color: #555; line-height: 1.6; margin-bottom: 24px; flex-grow: 1; }
+
+/* --- Fixed Reveal Footer Logic --- */
+.stu-reveal-footer {
+  margin-top: auto;
+  height: 24px;
+  overflow: hidden;
+  position: relative;
+}
+
+/* This group contains both text and arrow so they stay together */
+.stu-reveal-link-group {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  position: absolute;
+  left: 0;
+  top: 0;
+  /* Shift the whole group left so the text is hidden, leaving only the arrow visible */
+  transform: translateX(-100%); 
+  margin-left: 26px; /* Offset to keep arrow visible at the starting point */
+  transition: transform 0.5s cubic-bezier(0.19, 1, 0.22, 1);
+}
+
+.stu-reveal-text {
+  font-size: 16px;
+  font-weight: 500;
+  color: #111;
+  white-space: nowrap;
+  opacity: 0;
+  transition: opacity 0.3s ease;
+}
+
+.stu-reveal-arrow {
+  color: #111;
+  flex-shrink: 0;
+}
+
+/* On hover, move the whole group back to 0, revealing text + arrow in tandem */
+.stu-reveal-card:hover .stu-reveal-link-group {
+  transform: translateX(0);
+  margin-left: 0;
+}
+
+.stu-reveal-card:hover .stu-reveal-text {
+  opacity: 1;
+}
+
+/* Mobile Responsiveness */
+@media (max-width: 640px) {
+  .stu-reveal-root { padding: 40px 16px; }
+  .stu-reveal-title { font-size: 26px; }
+  .stu-reveal-card-title { font-size: 18px; }
+}
+</style>
+
+<script>
+  document.querySelectorAll('.stu-reveal-card').forEach(card => {
+  card.addEventListener('click', (e) => {
+    // Prevents text selection during click
+    const destinationText = card.querySelector('.stu-reveal-text').textContent;
+    console.log(`Routing to: ${destinationText}`);
+    // window.location.href = "/portal-destination";
+  });
+});
+</script>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+

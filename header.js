@@ -56,7 +56,7 @@ class CronosHeader extends HTMLElement {
                     {
                         heading: 'Programs',
                         links: [
-                            { label: 'Affiliate Program',      href: 'affliates.html' },
+                            { label: 'Affiliate Program',      href: 'affiliates.html' },
                             { label: 'Content Creator Program',    href: 'content-creator.html' },
                         ]
                     },

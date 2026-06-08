@@ -414,10 +414,8 @@
       font-size: 1rem;
       color: #0f172a;
       line-height: 1.4;
-      padding-bottom: 12px; 
       font-size: 400;
-      border-bottom: 1px solid #f1f5f9;
-      margin-bottom: 12px;
+      margin-bottom: 8px;
     }
 
     .itc-footer-notes p:last-child {
@@ -438,7 +436,8 @@
       body {
         background: #ffffff !important;
         color: #0d172a !important;
-        font-size: 9pt !important;
+        font-size: 9pt !important; 
+        padding: 0 50px;
       }
 
       /* Strip away unnecessary web headers, components, and action items */
@@ -612,10 +611,6 @@
       .itc-comparison-wrapper {
         overflow-x: auto;
         -webkit-overflow-scrolling: touch;
-        border-radius: 12px;
-        background: #ffffff;
-        padding: 10px;
-        box-shadow: 0 4px 12px rgba(0, 0, 0, 0.05);
       }
 
       .itc-table-section {
@@ -634,6 +629,14 @@
       thead th, tbody td {
         padding: 16px 12px;
         font-size: 0.95rem;
+      }
+
+      thead th:first-child { 
+        border-radius: 15px 0 0 15px;
+      }
+
+      thead th:last-child {
+        border-radius: 0 15px 15px 0;
       }
     }
   </style>

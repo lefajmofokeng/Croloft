@@ -129,18 +129,8 @@
             justify-content: center;
         }
 
-        .text-btn {
-            background: none;
-            border: none;
-            font-family: var(--font-family-premium);
-            font-size: 14px;
-            font-weight: 400;
-            color: var(--editorial-black);
-            cursor: pointer;
-        }
-
         .action-button-black {
-            background: var(--editorial-black);
+            background: black;
             color: #ffffff;
             border: none;
             padding: 8px 20px;
@@ -276,8 +266,7 @@
             width: 44px;
             height: 44px;
             background: #ffffff;
-            border: 1px solid var(--ui-divider);
-            border-radius: var(--sharp-radius);
+            border-radius: 50px;
             color: var(--editorial-black);
             display: flex;
             align-items: center;
@@ -350,14 +339,15 @@
         }
 
         .product-media-container {
-            background: var(--workspace-bg);
-            height: 180px;
+            background: transparent;
+            height: 250px;
             border-radius: var(--sharp-radius);
             display: flex;
             align-items: center;
             justify-content: center;
             margin-bottom: 24px;
             padding: 16px;
+            box-shadow: 
         }
 
         .product-showcase-img {
@@ -664,7 +654,7 @@
 
         .footer-link-group-node h4 {
             font-size: 11px;
-            font-weight: 700;
+            font-weight: 500;
             color: var(--editorial-black);
             text-transform: uppercase;
             letter-spacing: 0.05em;
@@ -734,7 +724,7 @@
         .accordion-panel-content ul a {
             color: var(--editorial-muted);
             text-decoration: none;
-            font-size: 13px;
+            font-size: 18px;
         }
 
         .footer-copyright-row {
@@ -893,8 +883,7 @@
                     <i class="fa-solid fa-bag-shopping" style="font-size: 20px;"></i>
                     <span x-show="cartCount > 0" x-text="cartCount" class="cart-counter-badge" style="display: none;">0</span>
                 </button>
-                <button class="text-btn">Sign In</button>
-                <button class="action-button-black">Get Started</button>
+                <button class="action-button-black">Sign In</button>
             </div>
         </div>
     </header>
@@ -1418,8 +1407,7 @@
             z-index: 50;
             display: flex;
             flex-direction: column;
-            background-color: #ffffff;
-            border: 1px solid #f3f4f6;
+            background-color: #080d1b;
             border-left: none;
             border-top-right-radius: 1rem;
             border-bottom-right-radius: 1rem;
@@ -1434,7 +1422,7 @@
             justify-content: center;
             width: 3.25rem;
             height: 3.25rem;
-            color: #6b7280;
+            color: #c2c9d7;
             text-decoration: none;
             transition: all 0.2s ease-in-out;
             position: relative;
@@ -1461,7 +1449,7 @@
             <i class="fa-brands fa-linkedin-in text-lg"></i>
         </a>
         <a href="#" class="social-link twitter" title="X / Twitter" target="_blank">
-            <i class="fa-brands fa-x-twitter text-lg"></i>
+            <i class="fa-brands fa-facebook text-lg"></i>
         </a>
         <a href="#" class="social-link github" title="GitHub" target="_blank">
             <i class="fa-brands fa-github text-lg"></i>
