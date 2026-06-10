@@ -159,7 +159,7 @@
 
   </div>
 
-  <button class="defcon-crypto-cta" onclick="window.location.href='page.html'">
+  <button class="defcon-crypto-cta" onclick="window.location.href='blueprint.html'">
     <span class="defcon-crypto-text">Discover the Blueprint</span>
     <span class="defcon-crypto-icon">
       <svg width="30" height="30" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
@@ -444,6 +444,385 @@ document.addEventListener("DOMContentLoaded", function() {
 
 
 
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Enterprise Solution Stack — Defcon</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        :root {
+            --defcon-navy: #0b1426;
+            --defcon-blue: #0091ff;
+            --defcon-light-gray: #f4f4f4;
+            --defcon-white: #ffffff;
+            --defcon-muted: #64748b;
+            --font-family-inter: 'Circular Std', sans-serif;
+            --content-max-width: 1200px;
+        }
+
+        body {
+            font-family: var(--font-family-inter);
+            background-color: var(--defcon-white);
+            color: var(--defcon-navy);
+            -webkit-font-smoothing: antialiased;
+            /* Extra breathing space to demonstrate the scroll stacking engine */
+            padding-bottom: 60vh; 
+        }
+
+        /* ---------------------------------- */
+        /* Component Container Layout         */
+        /* ---------------------------------- */
+        .defcon-stack-component {
+            width: 90%;
+            max-width: var(--content-max-width);
+            margin: 80px auto;
+            display: flex;
+            flex-direction: column;
+            gap: 48px;
+        }
+
+        /* Pure Editorial Typography Header */
+        .defcon-stack-header {
+            padding-bottom: 10px;
+        }
+
+        .defcon-stack-header h2 {
+            font-size: 3rem;
+            font-weight: 500;
+            line-height: 1.1; letter-spacing: -0.02em;
+        }
+
+        .defcon-stack-header p {
+            font-size: 1.05rem;
+            color: var(--defcon-muted);
+            margin-top: 8px;
+            max-width: 600px;
+        }
+
+        /* ---------------------------------- */
+        /* Sticky Stack Engine Block          */
+        /* ---------------------------------- */
+        .defcon-scroll-deck {
+            position: relative;
+            display: flex;
+            flex-direction: column;
+            /* Controls spacing overlap behavior during transit */
+            gap: 20px; 
+        }
+
+        /* Card Frame Outer Frame Wrapper with strict 15px border radius */
+        .defcon-stack-card-outer {
+            position: sticky;
+            /* Offsets cards slightly so they line up cleanly under each other */
+            top: 80px; 
+            width: 100%;
+            aspect-ratio: 18 / 9;
+            min-height: 300px;
+            margin-bottom: 10vh; /* Exposes the scroll physics during transit */
+            background-color: var(--defcon-white);
+            border-radius: 15px; 
+            overflow: visible; /* Allows the box-shadow glow to spread beyond the boundaries */
+            transition: border-color 0.3s ease, box-shadow 0.4s ease;
+        }
+
+        /* Rainbow box-shadow activation routine on hover using hardware-accelerated transitions */
+        .defcon-stack-card-outer:hover {
+            border-color: rgba(11, 20, 38, 0.05);
+            animation: defconRainbowShadowFlow 6s linear infinite;
+        }
+
+        /* Card Inner Media Body viewport window container with matching 15px border radius */
+        .defcon-stack-card-inner {
+            width: 100%;
+            height: 100%;
+            background-color: var(--defcon-navy);
+            position: relative;
+            overflow: hidden;
+            border-radius: 15px;
+        }
+
+        /* Background image sizing behavior properties */
+        .defcon-card-image-bg {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            opacity: 1;
+            transition: transform 0.6s cubic-bezier(0.1, 0.8, 0.3, 1);
+        }
+
+        .defcon-stack-card-outer:hover .defcon-card-image-bg {
+            transform: scale(1.03);
+        }
+
+        /* Ambient Dark Vignette Overlay Matrix */
+        .defcon-card-overlay-mesh {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: linear-gradient(180deg, rgba(11, 20, 38, 0.7) 0%, rgba(11, 20, 38, 0.1) 40%, rgba(11, 20, 38, 0.85) 100%);
+            z-index: 2;
+        }
+
+        /* ---------------------------------- */
+        /* Absolute Content Overlays          */
+        /* ---------------------------------- */
+        
+        /* Top Left Logo Placement Frame */
+        .defcon-overlay-logo-frame {
+            position: absolute;
+            top: 50px;
+            left: 60px;
+            z-index: 3;
+            display: flex;
+            align-items: center;
+            gap: 12px;
+            color: var(--defcon-white);
+            font-family: monospace;
+            font-weight: 700;
+            letter-spacing: 0.1em;
+            text-transform: uppercase;
+            font-size: 0.85rem;
+        }
+
+        .defcon-logo-icon-box {
+            width: 16px;
+            height: 16px;
+            border: 2px solid var(--defcon-blue);
+            transform: rotate(45deg);
+        }
+
+        /* Bottom Floating Metadata Plate Anchor */
+        .defcon-overlay-content-bottom {
+            position: absolute;
+            bottom: 60px;
+            left: 60px;
+            right: 60px;
+            z-index: 3;
+            display: flex;
+            justify-content: space-between;
+            align-items: flex-end;
+            gap: 40px;
+        }
+
+        .defcon-bottom-text h3 {
+            font-size: 2.5rem;
+            font-weight: 400;
+            color: var(--defcon-white);
+            line-height: 1.1;
+            max-width: 600px;
+        }
+
+        .defcon-bottom-text p {
+            font-size: 1rem;
+            color: rgba(255, 255, 255, 0.7);
+            margin-top: 8px;
+            max-width: 500px;
+            line-height: 1.5;
+        }
+
+        /* Action Anchor Blueprint Channel Button */
+        .defcon-card-link-cta {
+            background-color: #fff;
+            color: var(--defcon-navy);
+            padding: 12px 25px;
+            text-decoration: none;
+            font-weight: 400;
+            font-size: 1rem; border-radius: 60px;
+            transition: all 0.2s ease;
+            white-space: nowrap;
+        }
+
+        .defcon-card-link-cta:hover {
+            background-color: var(--defcon-white);
+            color: var(--defcon-navy);
+            border-color: var(--defcon-white);
+        }
+
+        /* ---------------------------------- */
+        /* Keyframe Rainbow Shadow Engine     */
+        /* ---------------------------------- */
+        @keyframes defconRainbowShadowFlow {
+            0% {
+                box-shadow: 0 5px 30px 10px rgb(255, 0, 85), 0 10px 30px -15px rgb(123, 0, 255);
+            }
+            20% {
+                box-shadow: 0 5px 30px 10px rgba(123, 0, 255, 0.977), 0 10px 20px -15px rgb(0, 145, 255);
+            }
+            40% {
+                box-shadow: 0 5px 30px 10px rgba(0, 145, 255, 0.989), 0 10px 20px -15px rgb(0, 255, 170);
+            }
+            60% {
+                box-shadow: 0 5px 30px 10px rgba(0, 255, 170, 0.963), 0 10px 20px -15px rgb(255, 204, 0);
+            }
+            80% {
+                box-shadow: 0 5px 20px 10px rgba(255, 204, 0, 0.997), 0 10px 20px -15px rgb(255, 0, 85);
+            }
+            100% {
+                box-shadow: 0 5px 20px 10px rgb(255, 0, 85), 0 10px 30px -15px rgb(123, 0, 255);
+            }
+        }
+
+        /* ---------------------------------- */
+        /* Fluid Responsive Adjustments       */
+        /* ---------------------------------- */
+        @media (max-width: 900px) {
+            .defcon-stack-header h2 { font-size: 2rem; }
+            
+            .defcon-stack-card-outer {
+                aspect-ratio: auto;
+                height: 500px; /* Locks height to keep layouts stable on smaller screens */
+                margin-bottom: 6vh;
+            }
+
+            .defcon-overlay-content-bottom {
+                flex-direction: column;
+                align-items: flex-start;
+                gap: 24px;
+                bottom: 32px;
+                left: 32px;
+                right: 32px;
+            }
+
+            .defcon-bottom-text h3 { font-size: 1.6rem; }
+            
+            .defcon-card-link-cta {
+                width: 100%;
+                text-align: center;
+            }
+        }
+
+        @media (max-width: 500px) {
+            .defcon-stack-card-outer { height: 450px; }
+            .defcon-overlay-logo-frame { top: 20px; left: 20px; }
+            .defcon-overlay-content-bottom { left: 20px; right: 20px; bottom: 20px; }
+            .defcon-bottom-text h3 { font-size: 1.3rem; }
+        }
+    </style>
+</head>
+<body>
+
+<div class="defcon-stack-component">
+    
+    <header class="defcon-stack-header">
+        <h2>Infrastructure Stack Systems</h2>
+        <p>Explore our core deployment architecture. Scroll downward to traverse through active solution frameworks layered chronologically.</p>
+    </header>
+
+    <div class="defcon-scroll-deck">
+        
+        <div class="defcon-stack-card-outer">
+            <div class="defcon-stack-card-inner">
+                <img src="https://images.unsplash.com/photo-1618005182384-a83a8bd57fbe?auto=format&fit=crop&w=1100&q=80" alt="Cloud Network Topology Matrix" class="defcon-card-image-bg">
+                <div class="defcon-card-overlay-mesh"></div>
+                
+                <div class="defcon-overlay-logo-frame">
+                  <img src="thumbnails/logo.png" style="height: 30px;"/>
+                </div>
+
+                <div class="defcon-overlay-content-bottom">
+                    <div class="defcon-bottom-text">
+                        <h3>01. Scalable Cluster Engine</h3>
+                        <p>Distributed technical operations provisioning high-performance routing with sub-millisecond edge orchestration matrices.</p>
+                    </div>
+                    <a href="systems-cluster.html" class="defcon-card-link-cta">Examine Blueprint &rarr;</a>
+                </div>
+            </div>
+        </div>
+
+        <div class="defcon-stack-card-outer">
+            <div class="defcon-stack-card-inner">
+                <img src="https://images.unsplash.com/photo-1634017839464-5c339ebe3cb4?auto=format&fit=crop&w=1100&q=80" alt="Encrypted Ledger Ledger Systems" class="defcon-card-image-bg">
+                <div class="defcon-card-overlay-mesh"></div>
+                
+                <div class="defcon-overlay-logo-frame">
+                    <img src="thumbnails/colored-logo.png" style="height: 50px;"/>
+                </div>
+
+                <div class="defcon-overlay-content-bottom">
+                    <div class="defcon-bottom-text">
+                        <h3>02. Ledger Quarantine Shield</h3>
+                        <p>Real-time technical pipeline analysis securing asset layers with zero-trust cryptographic verification keys.</p>
+                    </div>
+                    <a href="security-shield.html" class="defcon-card-link-cta">Verify Compliance &rarr;</a>
+                </div>
+            </div>
+        </div>
+
+        <div class="defcon-stack-card-outer">
+            <div class="defcon-stack-card-inner">
+                <img src="https://images.unsplash.com/photo-1639762681485-074b7f938ba0?auto=format&fit=crop&w=1100&q=80" alt="Telemetry Transmission Streams" class="defcon-card-image-bg">
+                <div class="defcon-card-overlay-mesh"></div>
+                
+                <div class="defcon-overlay-logo-frame">
+                   <img src="thumbnails/hyperion logo (2).png" style="height: 30px;"/>
+                </div>
+
+                <div class="defcon-overlay-content-bottom">
+                    <div class="defcon-bottom-text">
+                        <h3>03. Stream Telemetry Monitor</h3>
+                        <p>Consolidated hardware data streams displayed on visual data dashboards to monitor active compute nodes.</p>
+                    </div>
+                    <a href="analytics-monitor.html" class="defcon-card-link-cta">Launch Console &rarr;</a>
+                </div>
+            </div>
+        </div>
+
+        <div class="defcon-stack-card-outer">
+            <div class="defcon-stack-card-inner">
+                <img src="https://images.unsplash.com/photo-1600132806370-bf17e65e942f?auto=format&fit=crop&w=1100&q=80" alt="Global Architecture CDN Infrastructure" class="defcon-card-image-bg">
+                <div class="defcon-card-overlay-mesh"></div>
+                
+                <div class="defcon-overlay-logo-frame">
+                    <div class="defcon-logo-icon-box" style="border-color: #ffcc00;"></div>
+                    <span>Defcon / Network Global</span>
+                </div>
+
+                <div class="defcon-overlay-content-bottom">
+                    <div class="defcon-bottom-text">
+                        <h3>04. Global Content Edge Hub</h3>
+                        <p>Fully cached distribution framework ensuring localized system assets load fast across international availability zones.</p>
+                    </div>
+                    <a href="network-global.html" class="defcon-card-link-cta">Trace Latency &rarr;</a>
+                </div>
+            </div>
+        </div>
+
+    </div>
+</div>
+
+</body>
+</html>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 
 
@@ -531,10 +910,6 @@ document.addEventListener("DOMContentLoaded", function() {
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Tech Hero Component</title>
-    <link rel="preconnect" href="https://fonts.googleapis.com">
-    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700&display=swap" rel="stylesheet">
     <style>
       @font-face { font-family:'Circular Std'; src:url('fonts/CircularStd-Book.woff2') format('woff2'),url('fonts/CircularStd-Book.woff') format('woff'); font-weight:400; font-style:normal; font-display:swap; }
       @font-face { font-family:'Circular Std'; src:url('fonts/CircularStd-BookItalic.woff2') format('woff2'),url('fonts/CircularStd-BookItalic.woff') format('woff'); font-weight:400; font-style:italic; font-display:swap; }
@@ -1893,19 +2268,15 @@ document.addEventListener("DOMContentLoaded", function() {
     }
 
     .itco-cs__header-link {
-      flex-shrink: 0;
-      display: inline-flex;
+     
+      display: flex;
       gap: 5px;
-      font-size: 1.1rem;
+      font-size: 1rem;
       font-weight: 400;
       color: #FFF;
       text-decoration: none;
       padding-bottom: 4px; /* align with desc baseline */
       background: #0065c3; padding: 10px 18px; border-radius: 50px; vertical-align: middle;
-    }
-
-    .itco-cs__header-link:hover {
-      text-decoration: underline;
     }
 
     .itco-cs__header-link svg {
@@ -2073,8 +2444,8 @@ document.addEventListener("DOMContentLoaded", function() {
 
     /* ─── HEADLINE ───────────────────────────────────────────── */
     .itco-cs__headline {
-      font-size: clamp(1.1rem, 2.2vw, 2.5rem);
-      font-weight: 500;
+      font-size: clamp(1.1rem, 2.2vw, 3rem);
+      font-weight: 400;
       line-height: 1.3;
       color: var(--itco-white);
       max-width: 750px;
@@ -2088,15 +2459,14 @@ document.addEventListener("DOMContentLoaded", function() {
       align-items: center;
       gap: 8px;
       font-size: 1rem;
-      font-weight: 500;
-      color: var(--itco-white);
+      font-weight: 400;
       text-decoration: none;
-      transition: gap .2s; 
+      transition: gap .2s; background: #fff; border-radius: 50px; color: #000; width: fit-content; padding: 10px 25px;
     }
     .itco-cs__cta:hover { gap: 14px; }
     .itco-cs__cta svg {
       width: 16px; height: 16px;
-      stroke: var(--itco-white);
+      stroke: #000;
       flex-shrink: 0;
     }
 
@@ -2157,7 +2527,6 @@ document.addEventListener("DOMContentLoaded", function() {
         align-items: flex-start;
         gap: 16px;
       }
-      .itco-cs__header-link { padding-bottom: 0; }
       .itco-cs__slide-body {
         aspect-ratio: 16 / 8;
         padding: 28px 30px 32px;

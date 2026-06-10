@@ -1,0 +1,492 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>My Website</title>
+    
+    <script src="header.js" defer></script> 
+    <script src="footer.js" defer></script>
+
+     <style>
+        @font-face { font-family:'Circular Std'; src:url('fonts/CircularStd-Book.woff2') format('woff2'),url('fonts/CircularStd-Book.woff') format('woff'); font-weight:400; font-style:normal; font-display:swap; }
+        @font-face { font-family:'Circular Std'; src:url('fonts/CircularStd-BookItalic.woff2') format('woff2'),url('fonts/CircularStd-BookItalic.woff') format('woff'); font-weight:400; font-style:italic; font-display:swap; }
+        @font-face { font-family:'Circular Std'; src:url('fonts/CircularStd-Medium.woff2') format('woff2'),url('fonts/CircularStd-Medium.woff') format('woff'); font-weight:500; font-style:normal; font-display:swap; }
+        @font-face { font-family:'Circular Std'; src:url('fonts/CircularStd-Bold.woff2') format('woff2'),url('fonts/CircularStd-Bold.woff') format('woff'); font-weight:600; font-style:normal; font-display:swap; }
+        @font-face { font-family:'Circular Std'; src:url('fonts/CircularStd-Black.woff2') format('woff2'),url('fonts/CircularStd-Black.woff') format('woff'); font-weight:800; font-style:normal; font-display:swap; }
+    </style>
+</head>
+<body>
+
+    <cronos-header></cronos-header>
+
+</body>
+</html>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Contact Sales — Enterprise Specification</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        :root {
+            --defcon-navy: #0b1426;
+            --defcon-blue: #0091ff;
+            --defcon-light-gray: #f4f4f4;
+            --defcon-border-color: #0b1426;
+            --defcon-muted: #64748b;
+            --defcon-white: #ffffff;
+            --font-family-inter: 'Circular Std', sans-serif;
+            --content-max-width: 1100px;
+        }
+
+        body {
+            font-family: var(--font-family-inter);
+            background-color: var(--defcon-white);
+            color: var(--defcon-navy);
+            -webkit-font-smoothing: antialiased;
+        }
+
+        .defcon-sales-container {
+            width: 100%;
+            padding: 120px 0;
+            display: flex;
+            justify-content: center;
+        }
+
+        .defcon-sales-wrapper {
+            width: 90%;
+            max-width: var(--content-max-width);
+            display: flex;
+            flex-direction: column;
+            gap: 60px;
+        }
+
+        /* Editorial Header */
+        .defcon-sales-header {
+            border-bottom: 1px solid var(--defcon-navy);
+            padding-bottom: 40px;
+        }
+
+        .defcon-sales-header h1 {
+            font-size: 4rem;
+            font-weight: 700;
+            letter-spacing: -0.04em;
+            line-height: 1;
+            text-transform: uppercase;
+            margin-bottom: 20px;
+        }
+
+        .defcon-sales-header p {
+            font-size: 1.15rem;
+            color: var(--defcon-muted);
+            max-width: 600px;
+            line-height: 1.6;
+        }
+
+        /* Layout Split */
+        .defcon-sales-body {
+            display: grid;
+            grid-template-columns: 1.3fr 1fr;
+            gap: 80px;
+            align-items: start;
+        }
+
+        /* Form Configuration Left Side */
+        .defcon-sales-configurator {
+            display: flex;
+            flex-direction: column;
+            gap: 48px;
+        }
+
+        .defcon-config-step {
+            display: flex;
+            flex-direction: column;
+            gap: 8px;
+        }
+
+        .defcon-step-label {
+            font-size: 0.9rem;
+            text-transform: uppercase;
+            letter-spacing: 0.04em;
+            font-weight: 500;
+            color: var(--defcon-blue);
+            margin-bottom: 12px;
+        }
+
+        /* Continuous Row Choice List */
+        .defcon-list-selector {
+            display: flex;
+            flex-direction: column;
+            border-top: 1px solid rgba(11, 20, 38, 0.15);
+        }
+
+        .defcon-select-row {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 18px 8px;
+            border-bottom: 1px solid rgba(11, 20, 38, 0.15);
+            background: none;
+            cursor: pointer;
+            text-align: left;
+            font-family: var(--font-family-inter);
+            font-size: 1.05rem;
+            font-weight: 500;
+            color: var(--defcon-navy);
+            transition: background-color 0.15s ease;  
+        }
+
+        .defcon-select-row:hover {
+            background-color: var(--defcon-light-gray); 
+        }
+
+        /* Custom Pure CSS Box Indicator Minimalist Markup */
+        .defcon-row-box {
+            width: 18px;
+            height: 18px;
+            border: 2px solid #8893a2; 
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            position: relative;
+            transition: all 0.15s ease; border-radius: 4px;
+        }
+
+        .defcon-select-row.active {
+            background-color: var(--defcon-light-gray);
+        }
+
+        .defcon-select-row.active .defcon-row-box {
+            background-color: var(--defcon-navy);
+            border-color: var(--defcon-navy);
+        }
+
+        .defcon-select-row.active .defcon-row-box::after {
+            content: '';
+            width: 6px;
+            height: 6px;
+            background-color: var(--defcon-white);
+        }
+
+        /* Identity Field Blocks */
+        .defcon-input-group {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 16px;
+            margin-top: 10px;
+        }
+
+        .defcon-text-input {
+            width: 100%;
+            background-color: var(--defcon-light-gray);
+            border: 1px solid transparent;
+            padding: 18px;
+            font-family: var(--font-family-inter);
+            font-size: 1rem;
+            color: var(--defcon-navy);
+            outline: none;
+            transition: all 0.2s ease; border-radius: 8px;
+        }
+
+        .defcon-text-input:focus {
+            background-color: var(--defcon-white);
+            border-color: var(--defcon-navy);
+        }
+
+        .defcon-span-full {
+            grid-column: span 2;
+        }
+
+        /* Action Form Button */
+        .defcon-submit-cta {
+            background-color: var(--defcon-navy);
+            color: var(--defcon-white);
+            border: none;
+            padding: 12px 25px;
+            font-size: 1rem;
+            font-weight: 400;
+            cursor: pointer;
+            width: fit-content;
+            transition: background-color 0.2s ease;
+            margin-top: 12px; border-radius: 50px; font-family: 'Circular Std', sans-serif;
+        }
+
+        .defcon-submit-cta:hover {
+            background-color: var(--defcon-blue);
+        }
+
+        /* Sidebar Metadata Right Side */
+        .defcon-sales-sidebar {
+            display: flex;
+            flex-direction: column;
+            gap: 40px;
+            border-left: 1px solid rgba(11, 20, 38, 0.15);
+            padding-left: 40px;
+        }
+
+        .defcon-info-block {
+            display: flex;
+            flex-direction: column;
+            gap: 12px;
+        }
+
+        .defcon-info-title {
+            font-size: 1rem;
+            text-transform: uppercase;
+            letter-spacing: 0.04em;
+            font-weight: 500;
+            color: var(--defcon-muted);
+        }
+
+        .defcon-info-value {
+            font-size: 1.2rem;
+            font-weight: 400;
+            line-height: 1.5;
+        }
+
+        .defcon-sidebar-card {
+            background-color: var(--defcon-light-gray);
+            padding: 30px;
+            display: flex;
+            flex-direction: column;
+            gap: 15px; border-radius: 10px;
+        }
+
+        .defcon-card-stat {
+            font-size: 2.7rem;
+            font-weight: 500;
+            color: var(--defcon-navy);
+            line-height: 1.1;
+        }
+
+        .defcon-card-label {
+            font-size: 1rem;
+            color: var(--defcon-muted);
+            line-height: 1.4;
+        }
+
+        /* Responsive Breakpoints */
+        @media (max-width: 900px) {
+            .defcon-sales-header h1 {
+                font-size: 3rem;
+            }
+
+            .defcon-sales-body {
+                grid-template-columns: 1fr;
+                gap: 60px;
+            }
+
+            .defcon-sales-sidebar {
+                border-left: none;
+                border-top: 1px solid rgba(11, 20, 38, 0.15);
+                padding-left: 0;
+                padding-top: 40px;
+            }
+        }
+
+        @media (max-width: 600px) {
+            .defcon-sales-container {
+                padding: 60px 0;
+            }
+
+            .defcon-sales-header h1 {
+                font-size: 2.5rem;
+            }
+
+            .defcon-input-group {
+                grid-template-columns: 1fr;
+            }
+
+            .defcon-span-full {
+                grid-column: span 1;
+            }
+
+            .defcon-submit-cta {
+                width: 100%;
+                text-align: center;
+            }
+        }
+    </style>
+</head>
+<body>
+
+<main class="defcon-sales-container">
+    <div class="defcon-sales-wrapper">
+        
+        <!-- Header -->
+        <header class="defcon-sales-header">
+            <h1>Initiate<br>Project</h1>
+            <p>Tell us what you are building. Our architecture team will review your specifications and prepare a resource framework blueprint within one business cycle.</p>
+        </header>
+
+        <!-- Main Form Split -->
+        <section class="defcon-sales-body">
+            
+            <!-- Left Interactive Row Checklist Configurator -->
+            <form class="defcon-sales-configurator" onsubmit="event.preventDefault();">
+                
+                <!-- Section 01: Capabilities Select Array -->
+                <div class="defcon-config-step">
+                    <span class="defcon-step-label">01 / Choose Systems Strategy</span>
+                    <div class="defcon-list-selector">
+                        <div class="defcon-select-row" onclick="toggleRow(this)">
+                            <span>Web Applications Engineering</span>
+                            <div class="defcon-row-box"></div>
+                        </div>
+                        <div class="defcon-select-row" onclick="toggleRow(this)">
+                            <span>Cloud Infrastructure Architecture</span>
+                            <div class="defcon-row-box"></div>
+                        </div>
+                        <div class="defcon-select-row" onclick="toggleRow(this)">
+                            <span>Product UI/UX System Design</span>
+                            <div class="defcon-row-box"></div>
+                        </div>
+                        <div class="defcon-select-row" onclick="toggleRow(this)">
+                            <span>Full-Scale Infrastructure Security Auditing</span>
+                            <div class="defcon-row-box"></div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Section 02: Budget Scales Select Matrix -->
+                <div class="defcon-config-step">
+                    <span class="defcon-step-label">02 / Project Allocation Bracket</span>
+                    <div class="defcon-list-selector" id="scale-list-container">
+                        <div class="defcon-select-row" onclick="selectSingleRow(this, 'scale-list-container')">
+                            <span>R2.5K &mdash; R8K Scale Allocation</span>
+                            <div class="defcon-row-box"></div>
+                        </div>
+                        <div class="defcon-select-row" onclick="selectSingleRow(this, 'scale-list-container')">
+                            <span>R8K &mdash; R25K Scale Allocation</span>
+                            <div class="defcon-row-box"></div>
+                        </div>
+                        <div class="defcon-select-row" onclick="selectSingleRow(this, 'scale-list-container')">
+                            <span>R25K &mdash; R60K Scale Allocation</span>
+                            <div class="defcon-row-box"></div>
+                        </div>
+                        <div class="defcon-select-row" onclick="selectSingleRow(this, 'scale-list-container')">
+                            <span>R60K+ Enterprise Scale Allocation</span>
+                            <div class="defcon-row-box"></div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Section 03: Communications Identity Details -->
+                <div class="defcon-config-step">
+                    <span class="defcon-step-label">03 / Identity & Communication</span>
+                    <div class="defcon-input-group">
+                        <input type="text" placeholder="Your Name" class="defcon-text-input" required>
+                        <input type="email" placeholder="Corporate Email Address" class="defcon-text-input" required>
+                        <input type="text" placeholder="Organization / Company" class="defcon-text-input defcon-span-full" required>
+                        <textarea placeholder="Briefly describe the operational bottleneck or scope parameters..." class="defcon-text-input defcon-span-full" rows="4" style="resize: none; font-family: var(--font-family-inter);"></textarea>
+                    </div>
+                </div>
+
+                <button type="submit" class="defcon-submit-cta">Submit Brief &rarr;</button>
+
+            </form>
+
+            <!-- Right Verification Sidebar -->
+            <aside class="defcon-sales-sidebar">
+                
+                <div class="defcon-info-block">
+                    <span class="defcon-info-title">Direct Corporate Routing</span>
+                    <p class="defcon-info-value">solutions@cronos.com</p>
+                </div>
+
+                <div class="defcon-info-block">
+                    <span class="defcon-info-title">Expected Turnaround</span>
+                    <p class="defcon-info-value">Under 15 minutes for verified enterprise accounts during standard operations.</p>
+                </div>
+
+                <!-- Metrics style feeling from workspace.html reference -->
+                <div class="defcon-sidebar-card">
+                    <span class="defcon-card-stat">&lt;15m</span>
+                    <p class="defcon-card-label">Average response loop contextually matched directly to active project pipelines.</p>
+                </div>
+
+                <div class="defcon-sidebar-card">
+                    <span class="defcon-card-stat">100%</span>
+                    <p class="defcon-card-label">In-house development. Zero arbitrary sub-contracting or hidden framework wrappers.</p>
+                </div>
+
+            </aside>
+
+        </section>
+    </div>
+</main>
+
+<script>
+    // Handles multi-selection row states
+    function toggleRow(element) {
+        element.classList.toggle('active');
+    }
+
+    // Handles strict single selection grouping (Budget Lockouts)
+    function selectSingleRow(element, parentId) {
+        const rows = document.getElementById(parentId).getElementsByClassName('defcon-select-row');
+        for (let i = 0; i < rows.length; i++) {
+            rows[i].classList.remove('active');
+        }
+        element.classList.add('active');
+    }
+</script>
+
+</body>
+</html>
+
+
+
+<cronos-footer></cronos-footer>

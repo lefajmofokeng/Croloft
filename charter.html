@@ -1,0 +1,540 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>My Website</title>
+    
+    <script src="header.js" defer></script> 
+    <script src="footer.js" defer></script>
+
+     <style>
+        @font-face { font-family:'Circular Std'; src:url('fonts/CircularStd-Book.woff2') format('woff2'),url('fonts/CircularStd-Book.woff') format('woff'); font-weight:400; font-style:normal; font-display:swap; }
+        @font-face { font-family:'Circular Std'; src:url('fonts/CircularStd-BookItalic.woff2') format('woff2'),url('fonts/CircularStd-BookItalic.woff') format('woff'); font-weight:400; font-style:italic; font-display:swap; }
+        @font-face { font-family:'Circular Std'; src:url('fonts/CircularStd-Medium.woff2') format('woff2'),url('fonts/CircularStd-Medium.woff') format('woff'); font-weight:500; font-style:normal; font-display:swap; }
+        @font-face { font-family:'Circular Std'; src:url('fonts/CircularStd-Bold.woff2') format('woff2'),url('fonts/CircularStd-Bold.woff') format('woff'); font-weight:600; font-style:normal; font-display:swap; }
+        @font-face { font-family:'Circular Std'; src:url('fonts/CircularStd-Black.woff2') format('woff2'),url('fonts/CircularStd-Black.woff') format('woff'); font-weight:800; font-style:normal; font-display:swap; }
+    </style>
+</head>
+<body>
+
+    <cronos-header></cronos-header>
+
+</body>
+</html>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Technology Ethics Charter — Defcon</title>
+
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        :root {
+            --defcon-navy: #0b1426;
+            --defcon-blue: #0091ff;
+            --defcon-light-gray: #f4f4f4;
+            --defcon-border-color: #0b1426;
+            --defcon-muted: #64748b;
+            --defcon-white: #f4f4f4;
+            --font-family-inter: 'Circular Std', sans-serif;
+            --content-max-width: 1100px;
+        }
+
+        body {
+            font-family: var(--font-family-inter);
+            background-color: var(--defcon-white);
+            color: var(--defcon-navy);
+            -webkit-font-smoothing: antialiased;
+        }
+
+        /* Light-Dark Blue Hero Section */
+        .defcon-charter-hero {
+            width: 100%;
+            background: radial-gradient(100% 100% at 50% 0%, rgba(0, 145, 255, 0.4) 0%, rgba(11, 20, 38, 0) 80%), linear-gradient(180deg, #0266cc 0%, var(--defcon-navy) 100%);
+            color: var(--defcon-white);
+            padding: 140px 0 100px 0;
+            display: flex;
+            justify-content: center;
+            border-bottom: 1px solid var(--defcon-navy);
+        }
+
+        .defcon-hero-wrapper {
+            width: 90%;
+            max-width: var(--content-max-width);
+            display: flex;
+            justify-content: space-between;
+            align-items: flex-end;
+        }
+
+        .defcon-charter-hero h1 {
+            font-size: 4rem;
+            font-weight: 500;
+            line-height: 1;
+        }
+
+        .defcon-charter-meta {
+            text-align: right;
+            font-size: 0.85rem;
+            line-height: 1.8;
+            color: rgba(255, 255, 255, 0.7);
+            font-family: monospace;
+        }
+
+        .defcon-charter-meta strong {
+            color: var(--defcon-white);
+        }
+
+        /* Light-Theme Content Section */
+        .defcon-charter-main {
+            width: 100%;
+            padding: 100px 0;
+            display: flex;
+            justify-content: center;
+        }
+
+        .defcon-charter-wrapper {
+            width: 90%;
+            max-width: var(--content-max-width);
+            display: flex;
+            flex-direction: column;
+            gap: 80px;
+        }
+
+        /* Layout Grid Split */
+        .defcon-charter-body {
+            display: grid;
+            grid-template-columns: 1fr 2fr;
+            gap: 80px;
+            align-items: start;
+        }
+
+        /* Left Side: Navigation Manifest (Sticky) */
+        .defcon-charter-index {
+            position: sticky;
+            top: 140px;
+            display: flex;
+            flex-direction: column;
+            gap: 24px;
+        }
+
+        .defcon-index-title {
+            font-size: 1rem;
+            font-weight: 400;
+            color: var(--defcon-blue);
+        }
+
+        .defcon-index-list {
+            display: flex;
+            flex-direction: column;
+            gap: 14px;
+            list-style: none;
+        }
+
+        .defcon-index-link {
+            font-size: 1.1rem;
+            font-weight: 500;
+            color: var(--defcon-navy);
+            text-decoration: none;
+            transition: color 0.2s ease;
+        }
+
+        .defcon-index-link:hover {
+            color: var(--defcon-blue);
+        }
+
+        /* Right Side: Deep Text Architecture */
+        .defcon-charter-content {
+            display: flex;
+            flex-direction: column;
+            gap: 60px;
+        }
+
+        .defcon-content-block {
+            display: flex;
+            flex-direction: column;
+            gap: 20px;
+            border-bottom: 1px solid rgba(11, 20, 38, 0.1);
+            padding-bottom: 40px;
+        }
+
+        .defcon-content-block:last-child {
+            border-bottom: none;
+        }
+
+        .defcon-block-num {
+            font-size: 0.85rem;
+            font-weight: 700;
+            color: var(--defcon-blue);
+            font-family: monospace;
+        }
+
+        .defcon-block-title {
+            font-size: 2.5rem;
+            font-weight: 500;
+            letter-spacing: -0.02em;
+            line-height: 1.2;
+        }
+
+        .defcon-block-text {
+            font-size: 1.1rem;
+            line-height: 1.7;
+            color: #334155;
+        }
+
+        /* Bottom Institutional Footer Notice */
+        .defcon-charter-footer {
+            border-top: 1px solid var(--defcon-navy);
+            padding-top: 30px;
+        }
+
+        .defcon-compliance-text {
+            font-size: 0.85rem;
+            color: var(--defcon-muted);
+            max-width: 700px;
+            line-height: 1.6;
+        }
+
+        /* Responsive Breakpoints */
+        @media (max-width: 900px) {
+            .defcon-charter-hero {
+                padding: 100px 0 60px 0;
+            }
+
+            .defcon-hero-wrapper {
+                flex-direction: column;
+                align-items: flex-start;
+                gap: 30px;
+            }
+
+            .defcon-charter-hero h1 {
+                font-size: 3.2rem;
+            }
+
+            .defcon-charter-meta {
+                text-align: left;
+            }
+
+            .defcon-charter-body {
+                grid-template-columns: 1fr;
+                gap: 50px;
+            }
+
+            .defcon-charter-index {
+                position: relative;
+                top: 0;
+                border-bottom: 1px solid rgba(11, 20, 38, 0.1);
+                padding-bottom: 30px;
+            }
+        }
+
+        @media (max-width: 600px) {
+            .defcon-charter-hero h1 {
+                font-size: 2.5rem;
+            }
+
+            .defcon-charter-main {
+                padding: 60px 0;
+            }
+
+            .defcon-block-title {
+                font-size: 1.4rem;
+            }
+        }
+    </style>
+</head>
+<body>
+
+<!-- Light-to-Dark Blue Hero Segment -->
+<header class="defcon-charter-hero">
+    <div class="defcon-hero-wrapper">
+        <div>
+            <h1>Technology<br>Ethics Charter</h1>
+        </div>
+       
+    </div>
+</header>
+
+<!-- Main Document Content Body -->
+<main class="defcon-charter-main">
+    <div class="defcon-charter-wrapper">
+        
+        <section class="defcon-charter-body">
+            
+            <!-- Left Navigation Menu -->
+            <aside class="defcon-charter-index">
+                <span class="defcon-index-title">Core Principles</span>
+                <nav>
+                    <ul class="defcon-index-list">
+                        <li><a href="#algorithmic-sovereignty" class="defcon-index-link">01. Algorithmic Sovereignty</a></li>
+                        <li><a href="#architectural-honesty" class="defcon-index-link">02. Architectural Honesty</a></li>
+                        <li><a href="#data-dignity" class="defcon-index-link">03. Data Dignity & Isolation</a></li>
+                        <li><a href="#engineered-durability" class="defcon-index-link">04. Engineered Durability</a></li>
+                    </ul>
+                </nav>
+            </aside>
+
+            <!-- Right Content Stream -->
+            <div class="defcon-charter-content">
+                
+                <!-- Block 1 -->
+                <div class="defcon-content-block" id="algorithmic-sovereignty">
+                    <span class="defcon-block-num">[SEC_01]</span>
+                    <h2 class="defcon-block-title">Algorithmic Sovereignty & Human Autonomy</h2>
+                    <p class="defcon-block-text">
+                        We believe computational systems must act as extensions of human capability, never as deceptive proxies. Every automated decision engine, real-time data flow, or processing matrix we design must preserve absolute user autonomy. We reject predatory tracking loops, engineered dependency mechanics, and behavioral manipulation dark patterns. Systems must remain transparent, predictable, and fully answerable to their operators.
+                    </p>
+                </div>
+
+                <!-- Block 2 -->
+                <div class="defcon-content-block" id="architectural-honesty">
+                    <span class="defcon-block-num">[SEC_02]</span>
+                    <h2 class="defcon-block-title">Architectural Honesty & Technical Integrity</h2>
+                    <p class="defcon-block-text">
+                        Software design must reflect reality without artificial layers or deceptive marketing bloat. We refuse to compromise core codebases with unvetted, arbitrary script inclusions or wrapper abstraction layers simply to meet artificial deployment timelines. Technical debt must be transparently declared, not buried underneath user interfaces. We pledge architectural purity: clean, high-performance, and intentionally constructed code bases that value structural stability over superficial trends.
+                    </p>
+                </div>
+
+                <!-- Block 3 -->
+                <div class="defcon-content-block" id="data-dignity">
+                    <span class="defcon-block-num">[SEC_03]</span>
+                    <h2 class="defcon-block-title">Data Dignity & Complete Ledger Isolation</h2>
+                    <p class="defcon-block-text">
+                        User data is an inviolable record of personal intent, not an open-source corporate oil field. Our system design paradigm strictly isolates sensitive transactions, personal identity assets, and private system logs. We mandate localized storage architectures and robust endpoint security wherever possible, engineering data transmission paths to rely on minimal metadata footprints. We do not participate in unnotified diagnostic collection or the silent commercial monetization of tenant databases.
+                    </p>
+                </div>
+
+                <!-- Block 4 -->
+                <div class="defcon-content-block" id="engineered-durability">
+                    <span class="defcon-block-num">[SEC_04]</span>
+                    <h2 class="defcon-block-title">Engineered Durability & Digital Sustainability</h2>
+                    <p class="defcon-block-text">
+                        The systems we deploy are built to endure, avoiding the continuous cycles of planned digital obsolescence. By decoupling technical infrastructure from heavy, volatile frameworks, we drastically lower localized processing workloads and maximize system lifetime efficiency. Our engineering choices intentionally limit hardware degradation, building light, fast, modular logic blocks designed to run uninterrupted for decades without demanding system configuration overrides.
+                    </p>
+                </div>
+
+            </div>
+
+        </section>
+
+        <!-- Compliance Footer -->
+        <footer class="defcon-charter-footer">
+            <p class="defcon-compliance-text">
+                This charter serves as the operational baseline for all software engineering, system provisioning, and product design pipelines handled across our platforms. Adherence to these strict parameters is mandatory for all active deployment pipelines.
+            </p>
+        </footer>
+
+    </div>
+</main>
+
+</body>
+</html>
+
+
+<cronos-footer></cronos-footer>
+
+
+
+
+
+
+<!-- =========================================================
+     FLOATING LEGAL LINKS BAR (BOTTOM LEFT CORNER - HORIZONTAL)
+     ========================================================= -->
+<style>
+    /* Fixed Container anchored precisely to the bottom-left corner */
+    .legal-corner-bar {
+        position: fixed;
+        bottom: 20px;
+        left: 34%;
+        z-index: 9999; /* Keeps it above all underlying main layout components */
+        
+        /* Smooth Light Blue to Dark Blue Horizontal Gradient */
+        background: linear-gradient(90deg, #0091ff 0%, #0b1426 100%);
+        
+        /* Framing & Geometry */
+        padding: 0 24px;
+        height: 48px;
+        display: flex;
+        align-items: center;
+        gap: 24px;
+        
+        /* Corner aesthetic: clean border on top/right, rounded top-right corner */
+      
+        border-radius: 8px;
+        
+        font-family: 'Circular Std', -apple-system, BlinkMacSystemFont, sans-serif;
+    }
+
+    /* Individual Link Mechanics */
+    .legal-corner-link {
+        color: rgba(255, 255, 255, 0.8);
+        text-decoration: none;
+        font-size: 0.8rem;
+        font-weight: 400;
+        transition: all 0.2s ease-in-out;
+        white-space: nowrap;
+    }
+
+    /* Subtle lift and glow color shift on hover */
+    .legal-corner-link:hover {
+        color: #ffffff;
+        transform: translateY(-1px);
+    }
+
+    /* Responsive crunch protection for narrow viewports */
+    @media (max-width: 640px) {
+        .legal-corner-bar {
+            width: 100%;
+            border-top-right-radius: 0;
+            border-right: none;
+            justify-content: center;
+            gap: 16px;
+            padding: 0 12px;
+        }
+        .legal-corner-link {
+            font-size: 0.75rem;
+        }
+    }
+</style>
+
+<!-- Horizontal Layout Link Structure -->
+<div class="legal-corner-bar">
+    <a href="#" class="legal-corner-link">Terms of Service</a>
+    <a href="#" class="legal-corner-link">Privacy Policy</a>
+    <a href="#" class="legal-corner-link">SLA Parameters</a>
+    <a href="#" class="legal-corner-link">Information Security</a>
+</div>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+

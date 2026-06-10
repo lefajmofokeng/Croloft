@@ -1,0 +1,523 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>My Website</title>
+    
+    <script src="header.js" defer></script> 
+    <script src="footer.js" defer></script>
+
+     <style>
+        @font-face { font-family:'Circular Std'; src:url('fonts/CircularStd-Book.woff2') format('woff2'),url('fonts/CircularStd-Book.woff') format('woff'); font-weight:400; font-style:normal; font-display:swap; }
+        @font-face { font-family:'Circular Std'; src:url('fonts/CircularStd-BookItalic.woff2') format('woff2'),url('fonts/CircularStd-BookItalic.woff') format('woff'); font-weight:400; font-style:italic; font-display:swap; }
+        @font-face { font-family:'Circular Std'; src:url('fonts/CircularStd-Medium.woff2') format('woff2'),url('fonts/CircularStd-Medium.woff') format('woff'); font-weight:500; font-style:normal; font-display:swap; }
+        @font-face { font-family:'Circular Std'; src:url('fonts/CircularStd-Bold.woff2') format('woff2'),url('fonts/CircularStd-Bold.woff') format('woff'); font-weight:600; font-style:normal; font-display:swap; }
+        @font-face { font-family:'Circular Std'; src:url('fonts/CircularStd-Black.woff2') format('woff2'),url('fonts/CircularStd-Black.woff') format('woff'); font-weight:800; font-style:normal; font-display:swap; }
+    </style>
+</head>
+<body>
+
+    <cronos-header></cronos-header>
+
+</body>
+</html>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Graphic Design & Brand Systems — Defcon</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        :root {
+            --defcon-navy: #0b1426;
+            --defcon-blue: #0091ff;
+            --defcon-light-gray: #f4f4f4;
+            --defcon-border-color: #0b1426;
+            --defcon-muted: #64748b;
+            --defcon-white: #ffffff;
+            --font-family-inter: 'Circular Std', sans-serif;
+            --content-max-width: 1100px;
+        }
+
+        body {
+            font-family: var(--font-family-inter);
+            background-color: var(--defcon-white);
+            color: var(--defcon-navy);
+            -webkit-font-smoothing: antialiased;
+        }
+
+        /* Light-Dark Blue Hero Section */
+        .defcon-service-hero {
+            width: 100%;
+            background: radial-gradient(100% 100% at 50% 0%, rgba(0, 145, 255, 0.4) 0%, rgba(11, 20, 38, 0) 80%), linear-gradient(180deg, #0266cc 0%, var(--defcon-navy) 100%);
+            color: var(--defcon-white);
+            padding: 160px 0 100px 0;
+            display: flex;
+            justify-content: center;
+            border-bottom: 1px solid var(--defcon-navy);
+        }
+
+        .defcon-hero-wrapper {
+            width: 90%;
+            max-width: var(--content-max-width);
+            display: grid;
+            grid-template-columns: 1.2fr 1fr;
+            gap: 60px;
+            align-items: end;
+        }
+
+        .defcon-service-hero h1 {
+            font-size: 4.5rem;
+            font-weight: 700;
+            letter-spacing: -0.04em;
+            line-height: 1;
+            text-transform: uppercase;
+        }
+
+        .defcon-hero-right p {
+            font-size: 1.2rem;
+            line-height: 1.6;
+            color: rgba(255, 255, 255, 0.8);
+            margin-bottom: 24px;
+        }
+
+        .defcon-hero-cta {
+            display: inline-flex;
+            align-items: center;
+            gap: 8px;
+            color: var(--defcon-blue);
+            text-decoration: none;
+            font-weight: 600;
+            font-size: 1rem;
+            text-transform: uppercase;
+            letter-spacing: 0.05em;
+        }
+
+        /* Main Structural Body */
+        .defcon-service-main {
+            width: 100%;
+            padding: 120px 0;
+            display: flex;
+            justify-content: center;
+        }
+
+        .defcon-main-wrapper {
+            width: 90%;
+            max-width: var(--content-max-width);
+            display: flex;
+            flex-direction: column;
+            gap: 100px;
+        }
+
+        /* Section Label Utilities */
+        .defcon-section-label {
+            font-size: 0.75rem;
+            text-transform: uppercase;
+            letter-spacing: 0.1em;
+            font-weight: 700;
+            color: var(--defcon-blue);
+            margin-bottom: 24px;
+            display: block;
+        }
+
+        /* Asymmetric Feature Grid — Reused Layout Logic from workspace.html */
+        .defcon-asym-capability-grid {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 12px;
+        }
+
+        .defcon-capability-card {
+            background-color: var(--defcon-light-gray);
+            padding: 40px;
+            display: flex;
+            flex-direction: column;
+            justify-content: space-between;
+            min-height: 240px;
+            transition: background-color 0.2s ease;
+        }
+
+        .defcon-capability-card:hover {
+            background-color: #e2e8f0;
+        }
+
+        .defcon-grid-span-2 {
+            grid-column: span 2;
+        }
+
+        .defcon-card-top .defcon-card-index {
+            font-family: monospace;
+            font-size: 0.85rem;
+            font-weight: 700;
+            color: var(--defcon-blue);
+            display: block;
+            margin-bottom: 16px;
+        }
+
+        .defcon-card-top h3 {
+            font-size: 1.6rem;
+            font-weight: 600;
+            letter-spacing: -0.02em;
+            line-height: 1.2;
+            color: var(--defcon-navy);
+        }
+
+        .defcon-card-desc {
+            font-size: 1rem;
+            line-height: 1.5;
+            color: var(--defcon-muted);
+            margin-top: 20px;
+        }
+
+        /* AWS Style Blueprint Architecture Switcher */
+        .defcon-blueprint-section {
+            border-top: 1px solid rgba(11, 20, 38, 0.1);
+            padding-top: 60px;
+        }
+
+        .defcon-blueprint-container {
+            display: grid;
+            grid-template-columns: 1fr 2fr;
+            gap: 60px;
+            margin-top: 32px;
+        }
+
+        .defcon-blueprint-tabs {
+            display: flex;
+            flex-direction: column;
+            gap: 4px;
+        }
+
+        .defcon-tab-trigger {
+            background: none;
+            border: 1px solid transparent;
+            padding: 20px;
+            text-align: left;
+            font-family: var(--font-family-inter);
+            font-size: 1.05rem;
+            font-weight: 600;
+            color: var(--defcon-navy);
+            cursor: pointer;
+            transition: all 0.2s ease;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        .defcon-tab-trigger:hover {
+            background-color: var(--defcon-light-gray);
+        }
+
+        .defcon-tab-trigger.active {
+            background-color: var(--defcon-navy);
+            color: var(--defcon-white);
+        }
+
+        .defcon-tab-trigger .defcon-tab-arrow {
+            opacity: 0;
+            transition: opacity 0.2s ease;
+        }
+
+        .defcon-tab-trigger.active .defcon-tab-arrow {
+            opacity: 1;
+            color: var(--defcon-blue);
+        }
+
+        .defcon-blueprint-content {
+            background-color: var(--defcon-light-gray);
+            padding: 50px;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            min-height: 320px;
+        }
+
+        .defcon-panel {
+            display: none;
+            flex-direction: column;
+            gap: 16px;
+        }
+
+        .defcon-panel.active {
+            display: flex;
+        }
+
+        .defcon-panel h4 {
+            font-size: 1.8rem;
+            font-weight: 600;
+            letter-spacing: -0.02em;
+        }
+
+        .defcon-panel p {
+            font-size: 1.05rem;
+            line-height: 1.6;
+            color: var(--defcon-muted);
+        }
+
+        /* Non-Price Callout Panel */
+        .defcon-cost-callout {
+            border: 1px solid var(--defcon-border-color);
+            padding: 50px;
+            display: grid;
+            grid-template-columns: 1.5fr 1fr;
+            gap: 40px;
+            align-items: center;
+        }
+
+        .defcon-callout-left h3 {
+            font-size: 2rem;
+            font-weight: 700;
+            letter-spacing: -0.03em;
+            text-transform: uppercase;
+            margin-bottom: 12px;
+        }
+
+        .defcon-callout-left p {
+            font-size: 1.05rem;
+            line-height: 1.6;
+            color: var(--defcon-muted);
+        }
+
+        .defcon-callout-right {
+            text-align: right;
+        }
+
+        .defcon-btn-calc {
+            display: inline-block;
+            background-color: var(--defcon-navy);
+            color: var(--defcon-white);
+            padding: 20px 40px;
+            text-decoration: none;
+            font-weight: 600;
+            text-transform: uppercase;
+            letter-spacing: 0.05em;
+            font-size: 0.95rem;
+            transition: background-color 0.2s ease;
+        }
+
+        .defcon-btn-calc:hover {
+            background-color: var(--defcon-blue);
+        }
+
+        /* Responsive Mechanics */
+        @media (max-width: 900px) {
+            .defcon-hero-wrapper {
+                grid-template-columns: 1fr;
+                gap: 30px;
+            }
+
+            .defcon-service-hero h1 {
+                font-size: 3.2rem;
+            }
+
+            .defcon-asym-capability-grid {
+                grid-template-columns: 1fr;
+            }
+
+            .defcon-grid-span-2 {
+                grid-column: span 1;
+            }
+
+            .defcon-blueprint-container {
+                grid-template-columns: 1fr;
+                gap: 30px;
+            }
+
+            .defcon-cost-callout {
+                grid-template-columns: 1fr;
+                gap: 30px;
+            }
+
+            .defcon-callout-right {
+                text-align: left;
+            }
+
+            .defcon-btn-calc {
+                width: 100%;
+                text-align: center;
+            }
+        }
+
+        @media (max-width: 600px) {
+            .defcon-service-hero h1 {
+                font-size: 2.5rem;
+            }
+
+            .defcon-blueprint-content {
+                padding: 30px;
+            }
+        }
+    </style>
+</head>
+<body>
+
+<!-- Light-Dark Blue Hero Section -->
+<header class="defcon-service-hero">
+    <div class="defcon-hero-wrapper">
+        <div>
+            <h1>Brand Systems &<br>Interface Design</h1>
+        </div>
+        <div class="defcon-hero-right">
+            <p>We deploy deterministic corporate identities, complex user interfaces, and modular design tokens structured identically to modern engineering codebases.</p>
+            <a href="#explore-capabilities" class="defcon-hero-cta">View System Capabilities &darr;</a>
+        </div>
+    </div>
+</header>
+
+<!-- Main Page Body Content -->
+<main class="defcon-service-main" id="explore-capabilities">
+    <div class="defcon-main-wrapper">
+        
+        <!-- Capabilities Component using reference asymmetric layout mechanics -->
+        <section>
+            <span class="defcon-section-label">01 / Functional Core Frameworks</span>
+            <div class="defcon-asym-capability-grid">
+                
+                <div class="defcon-capability-card defcon-grid-span-2">
+                    <div class="defcon-card-top">
+                        <span class="defcon-card-index">[SYS_01]</span>
+                        <h3>Scalable Component Design Systems</h3>
+                    </div>
+                    <p class="defcon-card-desc">Production of cohesive atomic libraries containing strict typography grids, dynamic interface tokens, and responsive web elements mapped to prevent integration collision.</p>
+                </div>
+
+                <div class="defcon-capability-card defcon-grid-span-1">
+                    <div class="defcon-card-top">
+                        <span class="defcon-card-index">[SYS_02]</span>
+                        <h3>Corporate Identity Vectors</h3>
+                    </div>
+                    <p class="defcon-card-desc">Engineering high-fidelity mathematical markings and functional corporate branding structures built to retain clarity across all scales.</p>
+                </div>
+
+                <div class="defcon-capability-card defcon-grid-span-1">
+                    <div class="defcon-card-top">
+                        <span class="defcon-card-index">[SYS_03]</span>
+                        <h3>Data Visualization Frameworks</h3>
+                    </div>
+                    <p class="defcon-card-desc">Translating abstract system telemetry metrics and live ledger info into structural graphical formats.</p>
+                </div>
+
+                <div class="defcon-capability-card defcon-grid-span-2">
+                    <div class="defcon-card-top">
+                        <span class="defcon-card-index">[SYS_04]</span>
+                        <h3>Immersive Product Layouts</h3>
+                    </div>
+                    <p class="defcon-card-desc">High-end structural concept design for custom decentralized apps and digital platforms, strictly balancing premium aesthetic pacing with elite mobile responsiveness.</p>
+                </div>
+
+            </div>
+        </section>
+
+        <!-- AWS-style Architecture Production Blueprint -->
+        <section class="defcon-blueprint-section">
+            <span class="defcon-section-label">02 / Execution Framework Pipelines</span>
+            
+            <div class="defcon-blueprint-container">
+                
+                <!-- Left Tab Controls -->
+                <div class="defcon-blueprint-tabs">
+                    <button class="defcon-tab-trigger active" onclick="switchBlueprintTab(this, 'pipeline-discovery')">
+                        <span>01 . Discovery Protocol</span> <span class="defcon-tab-arrow">&rarr;</span>
+                        </button>
+                    <button class="defcon-tab-trigger" onclick="switchBlueprintTab(this, 'pipeline-geometry')">
+                        <span>02 . Structural Geometry</span> <span class="defcon-tab-arrow">&rarr;</span>
+                    </button>
+                    <button class="defcon-tab-trigger" onclick="switchBlueprintTab(this, 'pipeline-tokenization')">
+                        <span>03 . Token Production</span> <span class="defcon-tab-arrow">&rarr;</span>
+                    </button>
+                </div>
+
+                <!-- Right View Panel Dynamic Container -->
+                <div class="defcon-blueprint-content">
+                    
+                    <div class="defcon-panel active" id="pipeline-discovery">
+                        <h4>Telemetry & Requirements Analysis</h4>
+                        <p>We trace your direct operational objectives, target platform layouts, and architectural benchmarks. No arbitrary guessing—every vector alignment is backed by solid research parameters.</p>
+                    </div>
+
+                    <div class="defcon-panel" id="pipeline-geometry">
+                        <h4>Asymmetric Layout Drafting</h4>
+                        <p>We draft rigorous typographical hierarchies and responsive spatial compositions. Interfaces undergo early layout strain testing across extreme mobile-first viewport coordinates.</p>
+                    </div>
+
+                    <div class="defcon-panel" id="pipeline-tokenization">
+                        <h4>System Asset Production</h4>
+                        <p>Final graphic assets are compiled down into pristine SVGs, layout documentation sheets, and strict theme properties optimized for immediate application compilation.</p>
+                    </div>
+
+                </div>
+
+            </div>
+        </section>
+
+        <!-- AWS Style Cost Orientation Notice (No fixed prices listed) -->
+        <section>
+            <div class="defcon-cost-callout">
+                <div class="defcon-callout-left">
+                    <h3>On-Demand Architecture Provisioning</h3>
+                    <p>Like core computing services, our design system fees scale contextually with your pipeline's scope, operational assets, and infrastructure timeline matrix. Explore custom allocations on our pricing console.</p>
+                </div>
+                <div class="defcon-callout-right">
+                    <a href="calculator.html" class="defcon-btn-calc">Access Cost Console &rarr;</a>
+                </div>
+            </div>
+        </section>
+
+    </div>
+</main>
+
+<script>
+    // Tab Controller for the AWS style Execution Blueprint
+    function switchBlueprintTab(buttonElement, targetId) {
+        const tabs = document.querySelectorAll('.defcon-tab-trigger');
+        const panels = document.querySelectorAll('.defcon-panel');
+
+        // Remove active flags
+        tabs.forEach(tab => tab.classList.remove('active'));
+        panels.forEach(panel => panel.classList.remove('active'));
+
+        // Inject active state
+        buttonElement.classList.add('active');
+        document.getElementById(targetId).classList.add('active');
+    }
+</script>
+
+</body>
+</html>
+
+
+
+
+

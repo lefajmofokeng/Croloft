@@ -1,0 +1,437 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>My Website</title>
+    
+    <script src="header.js" defer></script> 
+    <script src="footer.js" defer></script>
+
+     <style>
+        @font-face { font-family:'Circular Std'; src:url('fonts/CircularStd-Book.woff2') format('woff2'),url('fonts/CircularStd-Book.woff') format('woff'); font-weight:400; font-style:normal; font-display:swap; }
+        @font-face { font-family:'Circular Std'; src:url('fonts/CircularStd-BookItalic.woff2') format('woff2'),url('fonts/CircularStd-BookItalic.woff') format('woff'); font-weight:400; font-style:italic; font-display:swap; }
+        @font-face { font-family:'Circular Std'; src:url('fonts/CircularStd-Medium.woff2') format('woff2'),url('fonts/CircularStd-Medium.woff') format('woff'); font-weight:500; font-style:normal; font-display:swap; }
+        @font-face { font-family:'Circular Std'; src:url('fonts/CircularStd-Bold.woff2') format('woff2'),url('fonts/CircularStd-Bold.woff') format('woff'); font-weight:600; font-style:normal; font-display:swap; }
+        @font-face { font-family:'Circular Std'; src:url('fonts/CircularStd-Black.woff2') format('woff2'),url('fonts/CircularStd-Black.woff') format('woff'); font-weight:800; font-style:normal; font-display:swap; }
+    </style>
+</head>
+<body>
+
+    <cronos-header></cronos-header>
+
+</body>
+</html>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Press Enquiries — Defcon</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        :root {
+            --defcon-navy: #0b1426;
+            --defcon-blue: #0091ff;
+            --defcon-light-gray: #f4f4f4;
+            --defcon-border-color: #e2e8f0;
+            --defcon-muted: #64748b;
+            --defcon-white: #ffffff;
+            --font-family-inter: 'Circular Std', sans-serif;
+            --content-max-width: 1100px;
+        }
+
+        body {
+            font-family: var(--font-family-inter);
+            background-color: var(--defcon-white);
+            color: var(--defcon-navy);
+            -webkit-font-smoothing: antialiased;
+        }
+
+        /* Main Container */
+        .defcon-press-container {
+            width: 100%;
+            padding: 120px 0;
+            display: flex;
+            justify-content: center;
+        }
+
+        .defcon-press-wrapper {
+            width: 90%;
+            max-width: var(--content-max-width);
+            display: flex;
+            flex-direction: column;
+            gap: 80px;
+        }
+
+        /* Editorial Header Split */
+        .defcon-press-header {
+            display: grid;
+            grid-template-columns: 1.2fr 1fr;
+            gap: 60px;
+            align-items: end;
+            border-bottom: 1px solid var(--defcon-navy);
+            padding-bottom: 40px;
+        }
+
+        .defcon-press-title-area h1 {
+            font-size: 4rem;
+            font-weight: 600;
+            letter-spacing: -0.04em;
+            line-height: 1;
+            text-transform: uppercase;
+        }
+
+        .defcon-press-subtitle-area p {
+            font-size: 1.15rem;
+            line-height: 1.6;
+            color: var(--defcon-muted);
+        }
+
+        /* Split Layout: Contact channels & Kit Downloads */
+        .defcon-press-body {
+            display: grid;
+            grid-template-columns: 1fr 1.2fr;
+            gap: 80px;
+        }
+
+        /* Left Side: Hyper-minimal Channels */
+        .defcon-contact-channels {
+            display: flex;
+            flex-direction: column;
+            gap: 48px;
+        }
+
+        .defcon-channel-block {
+            display: flex;
+            flex-direction: column;
+            gap: 12px;
+        }
+
+        .defcon-channel-label {
+            font-size: 1rem;
+            text-transform: uppercase;
+            letter-spacing: 0.04em;
+            font-weight: 500;
+            color: var(--defcon-blue);
+        }
+
+        .defcon-channel-link {
+            font-size: 1.75rem;
+            font-weight: 600;
+            color: var(--defcon-navy);
+            text-decoration: none;
+            letter-spacing: -0.02em;
+            transition: color 0.2s ease;
+            width: fit-content;
+        }
+
+        .defcon-channel-link:hover {
+            color: var(--defcon-blue);
+        }
+
+        .defcon-channel-meta {
+            font-size: 0.9rem;
+            color: var(--defcon-muted);
+            line-height: 1.5;
+        }
+
+        /* Right Side: Asymmetric Press Kit Grid */
+        .defcon-kit-section {
+            display: flex;
+            flex-direction: column;
+            gap: 24px;
+        }
+
+        .defcon-kit-section-title {
+            font-size: 1rem;
+            text-transform: uppercase;
+            letter-spacing: 0.04em;
+            font-weight: 500;
+            color: var(--defcon-muted);
+        }
+
+        .defcon-asym-kit-grid {
+            display: grid;
+            grid-template-columns: repeat(2, 1fr);
+            gap: 12px;
+        }
+
+        /* Kit Items pulling structural cues from your reference */
+        .defcon-kit-card {
+            background-color: var(--defcon-light-gray);
+            padding: 32px;
+            text-decoration: none;
+            color: var(--defcon-navy);
+            display: flex;
+            flex-direction: column;
+            justify-content: space-between;
+            min-height: 160px; border-radius: 15px;
+        }
+
+        .defcon-span-2 {
+            grid-column: span 2;
+        }
+
+        .defcon-kit-meta {
+            font-size: 0.8rem;
+            font-weight: 500;
+            text-transform: uppercase;
+            letter-spacing: 0.04em;
+            color: var(--defcon-muted);
+        }
+
+        .defcon-kit-title {
+            font-size: 1.35rem;
+            font-weight: 600;
+            letter-spacing: -0.02em;
+            line-height: 1.2;
+            margin-top: 20px;
+        }
+
+        .defcon-kit-action {
+            font-size: 1rem;
+            font-weight: 400;
+            color: #f9f9f9;
+            display: flex;
+            align-items: center;
+            gap: 6px;
+            margin-top: 12px;
+            background: #0b1426;
+            width: fit-content;
+            border-radius: 50px; padding: 10px 25px;
+        }
+
+        /* Footer Guidelines Notice */
+        .defcon-press-footer {
+            border-top: 1px solid var(--defcon-border-color);
+            padding-top: 30px;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        .defcon-guidelines-text {
+            font-size: 0.85rem;
+            color: var(--defcon-muted);
+            max-width: 600px;
+            line-height: 1.5;
+        }
+
+        /* Responsive Breakpoints */
+        @media (max-width: 900px) {
+            .defcon-press-header {
+                grid-template-columns: 1fr;
+                gap: 24px;
+            }
+
+            .defcon-press-title-area h1 {
+                font-size: 3rem;
+            }
+
+            .defcon-press-body {
+                grid-template-columns: 1fr;
+                gap: 60px;
+            }
+        }
+
+        @media (max-width: 600px) {
+            .defcon-press-container {
+                padding: 60px 0;
+            }
+
+            .defcon-press-title-area h1 {
+                font-size: 2.5rem;
+            }
+
+            .defcon-channel-link {
+                font-size: 1.4rem;
+            }
+
+            .defcon-asym-kit-grid {
+                grid-template-columns: 1fr;
+            }
+
+            .defcon-span-2 {
+                grid-column: span 1;
+            }
+
+            .defcon-press-footer {
+                flex-direction: column;
+                align-items: flex-start;
+                gap: 20px;
+            }
+        }
+    </style>
+</head>
+<body>
+
+<main class="defcon-press-container">
+    <div class="defcon-press-wrapper">
+        
+        <!-- Editorial Header Block -->
+        <header class="defcon-press-header">
+            <div class="defcon-press-title-area">
+                <h1>Press<br>Enquiries</h1>
+            </div>
+            <div class="defcon-press-subtitle-area">
+                <p>Official resources, media assets, and direct communication channels for journalists, publishers, and industry researchers tracking our software ecosystem.</p>
+            </div>
+        </header>
+
+        <!-- Main Content Split -->
+        <section class="defcon-press-body">
+            
+            <!-- Communication Channels -->
+            <div class="defcon-contact-channels">
+                
+                <div class="defcon-channel-block">
+                    <span class="defcon-channel-label">Immediate Response</span>
+                    <a href="mailto:press@cronos.com" class="defcon-channel-link">press@cronos.com</a>
+                    <p class="defcon-channel-meta">Monitored 24/7 by our corporate communications desk. Urgent broadcast/print deadlines receive prioritized routing.</p>
+                </div>
+
+                <div class="defcon-channel-block">
+                    <span class="defcon-channel-label">Direct Media Desk</span>
+                    <a href="tel:+27110000000" class="defcon-channel-link">+27 (0) 11 000 0000</a>
+                    <p class="defcon-channel-meta">Strictly for verified media inquiries, interview bookings, and keynote scheduling.</p>
+                </div>
+
+                <div class="defcon-channel-block">
+                    <span class="defcon-channel-label">Response Commitment</span>
+                    <p class="defcon-channel-meta" style="color: var(--defcon-navy); font-weight: 500;">
+                        We aim to fulfill verified technical commentary requests within 2 hours during standard market trading windows.
+                    </p>
+                </div>
+
+            </div>
+
+            <!-- Asymmetric Asset Downloads -->
+            <div class="defcon-kit-section">
+                <span class="defcon-kit-section-title">Verified Media Assets</span>
+                
+                <div class="defcon-asym-kit-grid">
+                    
+                    <a href="#" class="defcon-kit-card defcon-span-2">
+                        <div>
+                            <span class="defcon-kit-meta">Complete Suite &middot; ZIP [24MB]</span>
+                            <h3 class="defcon-kit-title">Core Brand Press Kit</h3>
+                        </div>
+                        <div class="defcon-kit-action">Download Bundle &rarr;</div>
+                    </a>
+
+                    <a href="#" class="defcon-kit-card">
+                        <div>
+                            <span class="defcon-kit-meta">Vector Asset &middot; SVG</span>
+                            <h3 class="defcon-kit-title">Official Logos & Markings</h3>
+                        </div>
+                        <div class="defcon-kit-action">Download &rarr;</div>
+                    </a>
+
+                    <a href="#" class="defcon-kit-card">
+                        <div>
+                            <span class="defcon-kit-meta">High-Res &middot; Pack</span>
+                            <h3 class="defcon-kit-title">Leadership Headshots</h3>
+                        </div>
+                        <div class="defcon-kit-action">Download &rarr;</div>
+                    </a>
+
+                    <a href="#" class="defcon-kit-card defcon-span-2">
+                        <div>
+                            <span class="defcon-kit-meta">Documentation &middot; PDF</span>
+                            <h3 class="defcon-kit-title">Company Fact Sheet & Architecture Milestones</h3>
+                        </div>
+                        <div class="defcon-kit-action">View Document &rarr;</div>
+                    </a>
+
+                </div>
+            </div>
+
+        </section>
+
+        <!-- Footer Policy Note -->
+        <footer class="defcon-press-footer">
+            <p class="defcon-guidelines-text">
+                All brand identity resources, interface schematics, and leadership photography provided in these kits are protected trademarks. Media assets may be reproduced solely for editorial coverage regarding our platforms.
+            </p>
+        </footer>
+
+    </div>
+</main>
+
+</body>
+</html>
+
+
+
+<cronos-footer></cronos-footer>

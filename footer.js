@@ -17,11 +17,11 @@
     {
       heading: 'Legal',
       links: [
-        { label: 'Technology Ethics Charter',    href: '#' },
-        { label: 'Privacy Statement',            href: '#' },
+        { label: 'Technology Ethics Charter',    href: 'charter.html' },
+        { label: 'SLA Parameters',            href: '#' },
         { label: 'Privacy Portal',               href: '#' },
         { label: 'Responsible Disclosure Policy',href: '#' },
-        { label: 'Privacy Principles',           href: '#' },
+        { label: 'Information Security',           href: '#' },
       ]
     },
     {
@@ -73,13 +73,11 @@
      BOTTOM BAR QUICK LINKS — edit here only.
   ══════════════════════════════════════════ */
   const BOTTOM_LINKS = [
-    { label: 'Support',         href: '#' },
-    { label: 'Contact Us',      href: 'contact-us.html' },
-    { label: 'Legal',           href: '#' },
-    { label: 'Certificates',    href: '#' },
+    { label: 'Help Center',         href: '#' },
+    { label: 'Contact Sales',      href: 'contact-us.html' },
     { label: 'Privacy Policy',  href: 'privacy-policy.html' },
     { label: 'Terms of Service',   href: 'terms-of-service.html' },
-    { label: 'Press Enquiries', href: '#' },
+    { label: 'Press Enquiries', href: 'press-enquiries.html' },
   ];
 
   /* ══════════════════════════════════════════
@@ -470,7 +468,7 @@
         <nav class="bottom-links" aria-label="Footer Quick Links">
           ${buildBottomLinks()}
         </nav>
-        <p class="copyright">&copy; Copyright 2026, Cronos IT. All rights are reserved</p>
+        <p class="copyright">Copyright &copy; Croloft 2026. All rights are reserved.</p>
       </div>
     </section>
 

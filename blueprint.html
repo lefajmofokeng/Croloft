@@ -1,0 +1,711 @@
+<!DOCTYPE html>
+<html lang="en" dir="ltr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, minimum-scale=1.0, maximum-scale=5.0, viewport-fit=cover, shrink-to-fit=no">
+    <meta http-equiv="x-ua-compatible" content="ie=edge"/>
+    
+    <title>Cronos</title>
+
+    <!-- WEB TAB ICON -->
+    <link rel="icon" type="image/png" href="thumbnails/top-1.png">
+
+    <style>
+        @font-face { font-family:'Circular Std'; src:url('fonts/CircularStd-Book.woff2') format('woff2'),url('fonts/CircularStd-Book.woff') format('woff'); font-weight:400; font-style:normal; font-display:swap; }
+        @font-face { font-family:'Circular Std'; src:url('fonts/CircularStd-BookItalic.woff2') format('woff2'),url('fonts/CircularStd-BookItalic.woff') format('woff'); font-weight:400; font-style:italic; font-display:swap; }
+        @font-face { font-family:'Circular Std'; src:url('fonts/CircularStd-Medium.woff2') format('woff2'),url('fonts/CircularStd-Medium.woff') format('woff'); font-weight:500; font-style:normal; font-display:swap; }
+        @font-face { font-family:'Circular Std'; src:url('fonts/CircularStd-Bold.woff2') format('woff2'),url('fonts/CircularStd-Bold.woff') format('woff'); font-weight:600; font-style:normal; font-display:swap; }
+        @font-face { font-family:'Circular Std'; src:url('fonts/CircularStd-Bold.woff2') format('woff2'),url('fonts/CircularStd-Bold.woff') format('woff'); font-weight:700; font-style:normal; font-display:swap; }
+        @font-face { font-family:'Circular Std'; src:url('fonts/CircularStd-Black.woff2') format('woff2'),url('fonts/CircularStd-Black.woff') format('woff'); font-weight:800; font-style:normal; font-display:swap; }
+        @font-face { font-family:'Circular Std'; src:url('fonts/CircularStd-Black.woff2') format('woff2'),url('fonts/CircularStd-Black.woff') format('woff'); font-weight:900; font-style:normal; font-display:swap; }
+    </style>
+</head>
+
+
+
+
+
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>My Website</title>
+    
+    <script src="header.js" defer></script>
+    <script src="footer.js" defer></script> 
+</head>
+<body>
+
+    <cronos-header></cronos-header>
+    
+
+</body>
+</html>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<title>IT Managed Services Section</title>
+
+<style>
+@import url('https://fonts.googleapis.com/css2?family=DM+Sans:ital,opsz,wght@0,9..40,300;0,9..40,400;0,9..40,500;0,9..40,600;0,9..40,700;1,9..40,400&display=swap');
+
+/* ─── scoped reset ─── */
+.ims-root *,
+.ims-root *::before,
+.ims-root *::after {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+}
+
+* {
+  padding: 0;
+  margin: 0;
+  box-sizing: border-box;
+}
+
+/* ─── root ─── */
+.ims-root {
+  font-family: 'Circular Std', 'DM Sans', -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+  background: #ffffff;
+  color: #111827;
+  width: 100%;
+}
+
+/* ─── container ─── */
+.ims-container {
+  max-width: 1200px;
+  margin: 0 auto;
+  padding: 0 32px;
+}
+
+/* ══════════════════════════════════
+   INTRO
+══════════════════════════════════ */
+.ims-intro {
+  padding: 80px 0 52px;
+}
+
+.ims-intro__heading {
+  font-size: clamp(24px, 3.2vw, 50px);
+  font-weight: 500;
+  line-height: 1.12;
+  color: #111827;
+  margin-bottom: 20px;
+  letter-spacing: -0.6px;
+}
+
+.ims-intro__body {
+  font-size: clamp(14px, 1.6vw, 16px);
+  line-height: 1.78;
+  color: #4b5563;
+  max-width: 700px;
+  font-weight: 400;
+}
+
+/* ══════════════════════════════════
+   VIDEO
+══════════════════════════════════ */
+.ims-video-outer {
+  margin-bottom: 88px;
+  border-radius: 14px;
+  position: relative;
+  display: block;
+  transition: box-shadow 0.5s ease;
+}
+
+/* Rainbow shadow on hover */
+.ims-video-outer:hover {
+  animation: ims-rainbow-shadow 2s linear infinite;
+}
+
+@keyframes ims-rainbow-shadow {
+  0%   { box-shadow: 0 0 20px 2px rgb(255, 59, 59); }
+  16%  { box-shadow: 0 0 20px 2px rgb(255, 149, 0); }
+  33%  { box-shadow: 0 0 20px 2px rgba(255, 217, 0, 0.8); }
+  50%  { box-shadow: 0 0 20px 2px rgb(0, 199, 99); }
+  66%  { box-shadow: 0 0 20px 2px rgb(0, 190, 219); }
+  83%  { box-shadow: 0 0 20px 2px rgb(111, 60, 220); }
+  100% { box-shadow: 0 0 20px 2px rgb(255, 59, 59); }
+}
+
+/* ─ Thumbnail wrapper — shown by default ─ */
+.ims-video-thumb {
+  position: relative;
+  width: 100%;
+  border-radius: 14px;
+  overflow: hidden;
+  cursor: pointer;
+  display: block;
+  background: #0d1117;
+}
+
+.ims-video-thumb::before {
+  content: '';
+  display: block;
+  padding-top: 52.08%; /* 1200:625 ratio */
+}
+
+.ims-video-thumb__img {
+  position: absolute;
+  inset: 0;
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  display: block;
+  /* Dark overlay so play button reads cleanly */
+  filter: brightness(0.78);
+  transition: filter 0.3s ease;
+}
+
+.ims-video-thumb:hover .ims-video-thumb__img {
+  filter: brightness(0.65);
+}
+
+/* ─── Play pill ─── */
+.ims-video-play {
+  position: absolute;
+  bottom: 20px;
+  left: 20px;
+  height: 44px;
+  border-radius: 22px;
+  background: rgba(0, 0, 0, 0.78);
+  border: none;
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  overflow: hidden;
+  z-index: 2;
+  /* Start at circle width, expand on hover */
+  width: 44px;
+  transition: width 0.3s cubic-bezier(0.4, 0, 0.2, 1), background 0.2s ease;
+  white-space: nowrap;
+}
+
+.ims-video-play:hover {
+  background: rgba(0, 0, 0, 0.92);
+  width: 148px; /* icon + text */
+}
+
+/* Icon circle — fixed, always visible */
+.ims-play-icon {
+  width: 44px;
+  height: 44px;
+  flex-shrink: 0;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.ims-play-icon svg {
+  width: 18px;
+  height: 18px;
+  margin-left: 3px;
+}
+
+/* "Play video" label — slides in */
+.ims-play-label {
+  font-size: 13px;
+  font-weight: 600;
+  color: #ffffff;
+  letter-spacing: 0.1px;
+  opacity: 0;
+  transform: translateX(-6px);
+  transition: opacity 0.2s ease 0.08s, transform 0.2s ease 0.08s;
+  padding-right: 14px;
+  font-family: 'Circular Std', 'DM Sans', sans-serif;
+}
+
+.ims-video-play:hover .ims-play-label {
+  opacity: 1;
+  transform: translateX(0);
+}
+
+/* ─ YouTube iframe — hidden until play clicked ─ */
+.ims-video-iframe-wrap {
+  position: relative;
+  width: 100%;
+  border-radius: 14px;
+  overflow: hidden;
+  display: none;
+}
+
+.ims-video-iframe-wrap::before {
+  content: '';
+  display: block;
+  padding-top: 52.08%;
+}
+
+.ims-video-iframe-wrap iframe {
+  position: absolute;
+  inset: 0;
+  width: 100%;
+  height: 100%;
+  border: none;
+  display: block;
+}
+
+/* Active state */
+.ims-video-outer.ims-playing .ims-video-thumb {
+  display: none;
+}
+.ims-video-outer.ims-playing .ims-video-iframe-wrap {
+  display: block;
+}
+
+/* ══════════════════════════════════
+   ROLE CARDS SECTION
+══════════════════════════════════ */
+.ims-roles {
+  padding-bottom: 96px;
+}
+
+.ims-roles__heading {
+  font-size: clamp(19px, 2.4vw, 50px);
+  font-weight: 500;
+  color: #111827;
+  margin-bottom: 36px;
+  letter-spacing: -0.3px;
+}
+
+/* 3-column grid matching screenshot exactly */
+.ims-grid {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 25px;
+}
+
+/* ─── Card ─── */
+.ims-card {
+  position: relative;
+  border-radius: 14px;
+  padding: 28px 26px 26px;
+  min-height: 300px;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  background: #f4f4f4;
+  cursor: pointer;
+  overflow: hidden;
+  transition:
+    transform 0.22s ease,
+    border-color 0.3s ease;
+}
+
+/* Rainbow shadow — not border — on card hover */
+.ims-card:hover {
+  transform: translateY(-3px);
+  border-color: transparent;
+  animation: ims-card-rainbow 2s linear infinite;
+}
+
+@keyframes ims-card-rainbow {
+  0%   { box-shadow: 0 0 20px 2px rgba(255, 59, 59, 0.8); }
+  16%  { box-shadow: 0 0 20px 2px rgba(255, 149, 0, 0.8); }
+  33%  { box-shadow: 0 0 20px 2px rgba(255, 217, 0, 0.8); }
+  50%  { box-shadow: 0 0 20px 2px rgba(0, 199, 99, 0.8); }
+  66%  { box-shadow: 0 0 20px 2px rgba(0, 190, 219, 0.8); }
+  83%  { box-shadow: 0 0 20px 2px rgba(111, 60, 220, 0.8); }
+  100% { box-shadow: 0 0 20px 2px rgba(255, 59, 59, 0.8); }
+}
+
+/* Card top */
+.ims-card__top {
+  flex: 1;
+}
+
+.ims-card__title {
+  font-size: 25px;
+  font-weight: 500;
+  color: #111827;
+  margin-bottom: 11px;
+  letter-spacing: -0.2px;
+}
+
+.ims-card__desc {
+  font-size: 16px;
+  line-height: 1.68;
+  color: #6b7280;
+  font-weight: 400;
+}
+
+/* Card footer — arrow + sliding text as one unit */
+.ims-card__footer {
+  margin-top: 24px;
+  display: flex;
+  align-items: center;
+  overflow: hidden;
+}
+
+.ims-card__footer-text {
+  font-size: 13px;
+  font-weight: 600;
+  color: #111827;
+  white-space: nowrap;
+  max-width: 0;
+  opacity: 0;
+  transform: translateX(-10px);
+  transition:
+    max-width 0.32s cubic-bezier(0.4, 0, 0.2, 1),
+    opacity 0.22s ease,
+    transform 0.28s ease;
+  overflow: hidden;
+  letter-spacing: -0.1px;
+}
+
+.ims-card:hover .ims-card__footer-text {
+  max-width: 220px;
+  opacity: 1;
+  transform: translateX(0);
+}
+
+.ims-card__arrow {
+  font-size: 20px;
+  color: #111827;
+  display: inline-block;
+  line-height: 1;
+  font-weight: 400;
+  flex-shrink: 0;
+  transition: transform 0.22s ease;
+}
+
+.ims-card:hover .ims-card__arrow {
+  transform: translateX(4px);
+}
+
+/* ══════════════════════════════════
+   RESPONSIVE
+══════════════════════════════════ */
+@media (max-width: 960px) {
+  .ims-grid {
+    grid-template-columns: repeat(2, 1fr);
+  }
+}
+
+@media (max-width: 640px) {
+  .ims-container {
+    padding: 0 20px;
+  }
+
+  .ims-intro {
+    padding: 56px 0 36px;
+  }
+
+  .ims-video-outer {
+    border-radius: 10px;
+    margin-bottom: 64px;
+  }
+
+  .ims-video-thumb {
+    border-radius: 10px;
+  }
+
+  .ims-video-iframe-wrap {
+    border-radius: 10px;
+  }
+
+  .ims-grid {
+    grid-template-columns: 1fr;
+    gap: 10px;
+  }
+
+  .ims-card {
+    min-height: 190px;
+  }
+
+  .ims-roles {
+    padding-bottom: 64px;
+  }
+
+  .ims-video-play {
+    bottom: 14px;
+    left: 14px;
+    width: 40px;
+    height: 40px;
+  }
+}
+</style>
+</head>
+<body>
+
+<section class="ims-root">
+  <div class="ims-container">
+
+    <!-- ── Intro text ── -->
+    <div class="ims-intro">
+      <h2 class="ims-intro__heading">Everything you need. One platform.</h2>
+      <p class="ims-intro__body">
+        Your IT operations are scattered across vendors, tickets, and support queues. Vetted is a verified recruitment platform for South African enterprises — purpose-built to connect managed service providers and enterprise IT teams with qualified helpdesk, infrastructure, and operations professionals. It eliminates agency overhead, surfaces pre-vetted candidates, and gives your team a structured pipeline to manage every hire from first application to onboarding.
+      </p>
+    </div>
+
+    <!-- ── Video with thumbnail ── -->
+    <!--
+      HOW TO CUSTOMISE:
+      1. Replace the img src with your own thumbnail URL.
+      2. Replace data-video-id="dQw4w9WgXcQ" with your YouTube video ID.
+         The iframe is only created once the play button is clicked (no cookies loaded on page load).
+    -->
+    <div class="ims-video-outer" id="ims-video-outer">
+
+      <!-- Thumbnail (shown by default) -->
+      <div class="ims-video-thumb" id="ims-thumb">
+        <img
+          class="ims-video-thumb__img"
+          src="https://images.unsplash.com/photo-1558494949-ef010cbdcc31?w=1200&q=80&auto=format&fit=crop"
+          alt="IT operations team managing infrastructure"
+        />
+        <button
+          class="ims-video-play"
+          id="ims-play-btn"
+          aria-label="Play video"
+          data-video-id="dQw4w9WgXcQ"
+        >
+          <span class="ims-play-icon">
+            <svg viewBox="0 0 24 24" fill="white" xmlns="http://www.w3.org/2000/svg">
+              <path d="M8 5.14v14.72a1 1 0 0 0 1.5.86l11-7.36a1 1 0 0 0 0-1.72l-11-7.36A1 1 0 0 0 8 5.14z"/>
+            </svg>
+          </span>
+          <span class="ims-play-label">Play video</span>
+        </button>
+      </div>
+
+      <!-- YouTube iframe (hidden until play is clicked) -->
+      <div class="ims-video-iframe-wrap" id="ims-iframe-wrap">
+        <!-- iframe injected by JS on play click -->
+      </div>
+
+    </div>
+
+    <!-- ── Role cards ── -->
+    <div class="ims-roles">
+      <h2 class="ims-roles__heading">How can Vetted support your IT staffing needs?</h2>
+
+      <div class="ims-grid">
+
+        <div class="ims-card">
+          <div class="ims-card__top">
+            <div class="ims-card__title">Helpdesk &amp; IT Support</div>
+            <p class="ims-card__desc">
+              Hire Tier 1–3 support analysts and helpdesk engineers who reduce ticket resolution times and keep end users productive across every department.
+            </p>
+          </div>
+          <div class="ims-card__footer">
+            <span class="ims-card__footer-text">Hire the right support team</span>
+            <span class="ims-card__arrow">→</span>
+          </div>
+        </div>
+
+        <div class="ims-card">
+          <div class="ims-card__top">
+            <div class="ims-card__title">NOC &amp; Infrastructure</div>
+            <p class="ims-card__desc">
+              Source network operations centre engineers and infrastructure specialists who monitor, maintain, and respond to critical system events around the clock.
+            </p>
+          </div>
+          <div class="ims-card__footer">
+            <span class="ims-card__footer-text">Keep systems online with expert NOC engineers</span>
+            <span class="ims-card__arrow">→</span>
+          </div>
+        </div>
+
+        <div class="ims-card">
+          <div class="ims-card__top">
+            <div class="ims-card__title">Managed Services (MSP)</div>
+            <p class="ims-card__desc">
+              Find service delivery managers, client-side IT coordinators, and field engineers experienced in multi-tenant MSP environments and SLA-driven operations.
+            </p>
+          </div>
+          <div class="ims-card__footer">
+            <span class="ims-card__footer-text">Scale your MSP practice with verified talent</span>
+            <span class="ims-card__arrow">→</span>
+          </div>
+        </div>
+
+        <div class="ims-card">
+          <div class="ims-card__top">
+            <div class="ims-card__title">Cybersecurity Operations</div>
+            <p class="ims-card__desc">
+              Recruit SOC analysts, incident responders, and security engineers who can protect your clients' environments before threats become breaches.
+            </p>
+          </div>
+          <div class="ims-card__footer">
+            <span class="ims-card__footer-text">Defend your clients with proven security hires</span>
+            <span class="ims-card__arrow">→</span>
+          </div>
+        </div>
+
+        <div class="ims-card">
+          <div class="ims-card__top">
+            <div class="ims-card__title">Cloud &amp; Systems Admin</div>
+            <p class="ims-card__desc">
+              Connect with Azure, AWS, and GCP administrators who provision, configure, and maintain cloud workloads for enterprise and mid-market clients.
+            </p>
+          </div>
+          <div class="ims-card__footer">
+            <span class="ims-card__footer-text">Modernise your cloud ops with the right admin</span>
+            <span class="ims-card__arrow">→</span>
+          </div>
+        </div>
+
+        <div class="ims-card">
+          <div class="ims-card__top">
+            <div class="ims-card__title">Field &amp; Onsite Support</div>
+            <p class="ims-card__desc">
+              Staff your field operations with hardware technicians, onsite support engineers, and desktop rollout specialists available across all nine provinces.
+            </p>
+          </div>
+          <div class="ims-card__footer">
+            <span class="ims-card__footer-text">Put the right hands on the ground, anywhere</span>
+            <span class="ims-card__arrow">→</span>
+          </div>
+        </div>
+
+      </div>
+    </div>
+
+  </div>
+</section>
+
+<script>
+(function () {
+  var playBtn = document.getElementById('ims-play-btn');
+  var outer   = document.getElementById('ims-video-outer');
+  var iframeW = document.getElementById('ims-iframe-wrap');
+
+  if (!playBtn) return;
+
+  playBtn.addEventListener('click', function () {
+    var videoId = playBtn.getAttribute('data-video-id');
+    if (!videoId) return;
+
+    /* Build iframe only on click — no cookies/requests loaded on page load */
+    var iframe = document.createElement('iframe');
+    iframe.src = 'https://www.youtube.com/watch?v=DYHCG6G5R_k' + videoId + '?autoplay=1&rel=0&modestbranding=1&color=white';
+    iframe.title = 'Video player';
+    iframe.allow = 'accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share';
+    iframe.allowFullscreen = true;
+    iframeW.appendChild(iframe);
+
+    /* Swap thumbnail → iframe */
+    outer.classList.add('ims-playing');
+  });
+}());
+</script>
+
+</body>
+</html>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<cronos-footer></cronos-footer>
+
+
+
+
