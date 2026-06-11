@@ -359,7 +359,7 @@ class CronosHeader extends HTMLElement {
         }
         .cronos-qr-dropdown-content.show { visibility: visible; opacity: 1; transform: translateY(0); }
         .cronos-qr-dropdown-content img { width: 100px; height: 100px; background-color: #fff; padding: 10px; border-radius: 8px; margin-bottom: 15px; }
-        .cronos-qr-dropdown-content p { color: var(--cronos-color-text-light); font-size: 14px; font-weight: 500; text-align: center; margin: 0; line-height: 1.4; }
+        .cronos-qr-dropdown-content p { color: var(--cronos-color-text-light); font-size: 14px; font-weight: 400; text-align: center; margin: 0; line-height: 1.4; }
 
         /* Profile Modal Dropdown Styles */
         .cronos-profile-dropdown {
