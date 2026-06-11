@@ -145,7 +145,7 @@ class CronosHeader extends HTMLElement {
 
     get ACTION_BUTTONS() {
         return [
-            { label: 'Log In', href: 'login.html', style: 'secondary' },
+            { label: 'Log In', href: 'login.html', style: 'secondary', id: 'cronos-loginTrigger' },
             { label: 'Contact us',  href: 'form.html',  style: 'primary' },
         ];
     }
@@ -246,7 +246,10 @@ class CronosHeader extends HTMLElement {
     _buildActionButtons() {
         return this.ACTION_BUTTONS.map(btn => {
             const cls = btn.style === 'primary' ? 'cronos-header-action-btn' : 'cronos-header-secondary-btn';
-            return `<a href="${btn.href}" class="${cls}">${btn.label}</a>`;
+            const idAttr = btn.id ? `id="${btn.id}"` : '';
+            // Swapped simple anchors for interactive trigger handling if it is the login button
+            const hrefAttr = btn.id === 'cronos-loginTrigger' ? 'href="javascript:void(0)"' : `href="${btn.href}"`;
+            return `<a ${hrefAttr} ${idAttr} class="${cls}">${btn.label}</a>`;
         }).join('');
     }
 
@@ -322,7 +325,7 @@ class CronosHeader extends HTMLElement {
         .cronos-custom-nav-link:hover { color: var(--cronos-color-text-muted); }
         .cronos-desktop-link-icon { display: none; }
 
-        .cronos-header-action-buttons { display: flex; align-items: center; }
+        .cronos-header-action-buttons { display: flex; align-items: center; position: relative; }
         .cronos-header-action-btn {
             background: #0077cc; color: #f7f9fa; border: none; padding: 9px 15px;
             border-radius: 50px; font-weight: 400; font-size: 15px; cursor: pointer;
@@ -348,7 +351,7 @@ class CronosHeader extends HTMLElement {
         .cronos-qr-dropdown-trigger svg { width: 25px; height: 25px; }
 
         .cronos-qr-dropdown-content {
-            position: absolute; top: calc(100% + 10px); right: 0;
+            position: absolute; top: calc(100% + 13px); right: 0;
             background-color: #080d1b; border-radius: 15px; padding: 10px 0;
             display: flex; flex-direction: column; align-items: center; width: 120px;
             visibility: hidden; opacity: 0; transform: translateY(-10px);
@@ -357,6 +360,99 @@ class CronosHeader extends HTMLElement {
         .cronos-qr-dropdown-content.show { visibility: visible; opacity: 1; transform: translateY(0); }
         .cronos-qr-dropdown-content img { width: 100px; height: 100px; background-color: #fff; padding: 10px; border-radius: 8px; margin-bottom: 15px; }
         .cronos-qr-dropdown-content p { color: var(--cronos-color-text-light); font-size: 14px; font-weight: 500; text-align: center; margin: 0; line-height: 1.4; }
+
+        /* Profile Modal Dropdown Styles */
+        .cronos-profile-dropdown {
+            position: absolute;
+            top: calc(100% + 13px);
+            right: 100px;
+            width: 320px;
+            background-color: #0d1527;
+            border-radius: 18px;
+            padding: 24px;
+           
+            visibility: hidden;
+            opacity: 0;
+            transform: translateY(-10px);
+            transition: visibility 0.2s, opacity 0.2s, transform 0.2s;
+            z-index: 1100;
+        }
+        .cronos-profile-dropdown.show {
+            visibility: visible;
+            opacity: 1;
+            transform: translateY(0);
+        }
+        .cronos-profile-close {
+            position: absolute;
+            top: 16px;
+            right: 16px;
+            background: none;
+            border: none;
+            color: var(--cronos-color-text-muted);
+            cursor: pointer;
+            padding: 4px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            border-radius: 50%;
+            transition: color 0.2s, background-color 0.2s;
+        }
+        .cronos-profile-close:hover {
+            color: #fff;
+            background-color: rgba(255, 255, 255, 0.1);
+        }
+        .cronos-profile-title {
+            color: #fff;
+            font-size: 1.28rem;
+            font-weight: 500;
+            margin: 0 0 12px 0;
+            letter-spacing: -0.01em;
+        }
+        .cronos-profile-desc {
+            color: var(--cronos-color-text-muted);
+            font-size: 0.95rem;
+            line-height: 1.5;
+            margin: 0 0 24px 0;
+        }
+        .cronos-profile-actions {
+            display: flex;
+            gap: 12px;
+            align-items: center;
+        }
+        .cronos-profile-btn-login {
+            flex: 1;
+            background: transparent;
+            color: #fff;
+            border: 1px solid rgba(255, 255, 255, 0.4);
+            padding: 11px 16px;
+            border-radius: 50px;
+            font-size: 0.95rem;
+            font-weight: 500;
+            text-align: center;
+            text-decoration: none;
+            cursor: pointer;
+            transition: border-color 0.2s, background-color 0.2s;
+        }
+        .cronos-profile-btn-login:hover {
+            border-color: #fff;
+            background-color: rgba(255, 255, 255, 0.05);
+        }
+        .cronos-profile-btn-create {
+            flex: 1.2;
+            background-color: #ebebeb;
+            color: #080d1b;
+            padding: 11px 16px;
+            border-radius: 50px;
+            font-size: 0.95rem;
+            font-weight: 500;
+            text-align: center;
+            text-decoration: none;
+            cursor: pointer;
+            transition: background-color 0.2s, border-color 0.2s;
+        }
+        .cronos-profile-btn-create:hover {
+            background-color: #e8e8e8;
+        }
 
         .cronos-desktop-mega-menu {
             position: absolute; top: var(--cronos-header-height); left: 0; width: 100%;
@@ -426,6 +522,25 @@ class CronosHeader extends HTMLElement {
             .cronos-header-action-buttons { flex-direction: column; width: 100%; padding: 0 20px; margin-top: 20px; }
             .cronos-header-action-btn, .cronos-header-secondary-btn { width: 100%; margin: 10px 0 0 0; padding: 15px 20px; text-align: center; font-size: 19px; }
             .cronos-qr-dropdown-trigger, .cronos-qr-dropdown-content { display: none; }
+            
+            /* Reposition profile dropdown context for mobile layouts */
+            .cronos-profile-dropdown {
+                position: static;
+                width: 100%;
+                margin-top: 15px;
+                box-shadow: none;
+                visibility: visible;
+                opacity: 1;
+                transform: none;
+                display: none;
+                background-color: #11192e;
+            }
+            .cronos-profile-dropdown.show {
+                display: block;
+            }
+            .cronos-profile-close {
+                display: none;
+            }
 
             .cronos-custom-nav-item--has-megamenu .cronos-mega-menu-container {
                 display: block; position: absolute; top: 0; left: 0; width: 100%; height: 100%;
@@ -489,6 +604,22 @@ class CronosHeader extends HTMLElement {
                         <ul class="cronos-custom-nav-list">${this._buildMobileNavList()}</ul>
                         <div class="cronos-header-action-buttons">
                             ${this._buildActionButtons()}
+                            
+                            <div class="cronos-profile-dropdown" id="cronos-profileDropdown">
+                                <button class="cronos-profile-close" id="cronos-profileClose" aria-label="Close profile options">
+                                    <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                                        <line x1="18" y1="6" x2="6" y2="18"></line>
+                                        <line x1="6" y1="6" x2="18" y2="18"></line>
+                                    </svg>
+                                </button>
+                                <h4 class="cronos-profile-title">Croloft Profile</h4>
+                                <p class="cronos-profile-desc">Your profile helps improve your interactions with select Cronos experiences.</p>
+                                <div class="cronos-profile-actions">
+                                    <a href="login.html" class="cronos-profile-btn-login">Log in</a>
+                                    <a href="register.html" class="cronos-profile-btn-create">Create profile</a>
+                                </div>
+                            </div>
+
                             <div class="cronos-qr-dropdown-trigger" id="cronos-qrDropdownTrigger">
                                 <svg width="200" height="200" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><g fill="none" fill-rule="evenodd" clip-rule="evenodd"><path fill="#8fbffa" d="M2 1H1v8h2V3h6V1zm0 22H1v-8h2v6h6v2zM23 1v8h-2V3h-6V1zm0 21v1h-8v-2h6v-6h2z"/><path fill="#2859c5" d="M5 10v1h6V5H5zm4-1H7V7h2zm4 1v1h6V5h-6zm4-1h-2V7h2zM5 19v-6h6v6zm2-2h2v-2H7zm6 .5V19h6v-2h-4v-4h-2zm4-4.5v2h2v-2z"/></g></svg>
                                 <div class="cronos-qr-dropdown-content" id="cronos-qrDropdownContent">
@@ -523,6 +654,11 @@ class CronosHeader extends HTMLElement {
         const cronosMobileActiveTitle   = shadow.getElementById('cronos-mobileActiveTitle');
         const cronosBody                = document.body;
 
+        // Custom Profile Selectors
+        const loginTrigger              = shadow.getElementById('cronos-loginTrigger');
+        const profileDropdown           = shadow.getElementById('cronos-profileDropdown');
+        const profileClose              = shadow.getElementById('cronos-profileClose');
+
         let cronosCloseTimer   = null;
         let cronosQrCloseTimer = null;
 
@@ -551,6 +687,8 @@ class CronosHeader extends HTMLElement {
                 panel.classList.add('active');
                 alignPanel(trigger, panel);
                 cronosHeaderWrapper.classList.add('cronos-mega-menu-open');
+                // Close profile dropdown if mega menu expands
+                profileDropdown.classList.remove('show');
             } else {
                 cronosHeaderWrapper.classList.remove('cronos-mega-menu-open');
             }
@@ -591,6 +729,7 @@ class CronosHeader extends HTMLElement {
                 clearTimeout(cronosQrCloseTimer);
                 cronosQrDropdownContent.classList.add('show');
                 setActiveMenu(null, null);
+                profileDropdown.classList.remove('show');
             }
         };
         const hideQrDropdown = () => {
@@ -601,6 +740,34 @@ class CronosHeader extends HTMLElement {
 
         cronosQrDropdownTrigger.addEventListener('mouseenter', showQrDropdown);
         cronosQrDropdownTrigger.addEventListener('mouseleave', hideQrDropdown);
+
+        // Click handler for profile card initialization
+        if (loginTrigger) {
+            loginTrigger.addEventListener('click', (e) => {
+                e.preventDefault();
+                e.stopPropagation();
+                // Close open menus first
+                setActiveMenu(null, null);
+                if (cronosQrDropdownContent) cronosQrDropdownContent.classList.remove('show');
+                
+                profileDropdown.classList.toggle('show');
+            });
+        }
+
+        if (profileClose) {
+            profileClose.addEventListener('click', (e) => {
+                e.stopPropagation();
+                profileDropdown.classList.remove('show');
+            });
+        }
+
+        // Global Document listener to safely collapse when clicking outside inside Shadow Context
+        document.addEventListener('click', (e) => {
+            const path = e.composedPath();
+            if (!path.includes(profileDropdown) && !path.includes(loginTrigger)) {
+                profileDropdown.classList.remove('show');
+            }
+        });
 
         // Mobile Logic Updates
         const mobileDropdownItems = shadow.querySelectorAll('.cronos-custom-nav-item--has-megamenu');
@@ -629,6 +796,7 @@ class CronosHeader extends HTMLElement {
             cronosBody.classList.toggle('cronos-mobile-menu-active');
             if (!cronosHeaderWrapper.classList.contains('cronos-mobile-menu-open')) {
                 closeSubpanel();
+                profileDropdown.classList.remove('show');
             }
         });
 
