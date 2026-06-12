@@ -27,6 +27,7 @@ class CronosHeader extends HTMLElement {
                     {
                         heading: 'Compare & Save',
                         links: [
+                            { label: 'Configure',  href: 'calculator.html' },
                             { label: 'Annual vs Monthly',   href: 'billing.html' },
                             { label: 'Archictecture & Scopes',  href: 'price.html' },
                         ]
@@ -338,7 +339,7 @@ class CronosHeader extends HTMLElement {
             border-radius: 50px; font-weight: 400; font-size: 15px; cursor: pointer;
             margin-left: 10px; text-decoration: none; font-family: inherit; white-space: nowrap;
         }
-        .cronos-header-secondary-btn:hover { background-color: #4a4b6b; }
+        .cronos-header-secondary-btn:hover { background-color: #4a4b6b6d; }
 
         .cronos-qr-dropdown-trigger {
             position: relative; margin-left: 10px; width: 40px; height: 40px;
@@ -427,7 +428,7 @@ class CronosHeader extends HTMLElement {
             padding: 11px 16px;
             border-radius: 50px;
             font-size: 0.95rem;
-            font-weight: 500;
+            font-weight: 400;
             text-align: center;
             text-decoration: none;
             cursor: pointer;
@@ -444,7 +445,7 @@ class CronosHeader extends HTMLElement {
             padding: 11px 16px;
             border-radius: 50px;
             font-size: 0.95rem;
-            font-weight: 500;
+            font-weight: 400;
             text-align: center;
             text-decoration: none;
             cursor: pointer;

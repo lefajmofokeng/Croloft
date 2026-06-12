@@ -1,769 +1,2033 @@
 <!DOCTYPE html>
+<html lang="en" dir="ltr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, minimum-scale=1.0, maximum-scale=5.0, viewport-fit=cover, shrink-to-fit=no">
+    <meta http-equiv="x-ua-compatible" content="ie=edge"/>
+    
+    <title>Cronos</title>
+
+    <!-- WEB TAB ICON -->
+    <link rel="icon" type="image/png" href="thumbnails/top-1.png">
+
+    <style>
+      @font-face { font-family:'Circular Std'; src:url('fonts/CircularStd-Book.woff2') format('woff2'),url('fonts/CircularStd-Book.woff') format('woff'); font-weight:400; font-style:normal; font-display:swap; }
+  @font-face { font-family:'Circular Std'; src:url('fonts/CircularStd-BookItalic.woff2') format('woff2'),url('fonts/CircularStd-BookItalic.woff') format('woff'); font-weight:400; font-style:italic; font-display:swap; }
+  @font-face { font-family:'Circular Std'; src:url('fonts/CircularStd-Medium.woff2') format('woff2'),url('fonts/CircularStd-Medium.woff') format('woff'); font-weight:500; font-style:normal; font-display:swap; }
+  @font-face { font-family:'Circular Std'; src:url('fonts/CircularStd-Bold.woff2') format('woff2'),url('fonts/CircularStd-Bold.woff') format('woff'); font-weight:600; font-style:normal; font-display:swap; }
+  @font-face { font-family:'Circular Std'; src:url('fonts/CircularStd-Bold.woff2') format('woff2'),url('fonts/CircularStd-Bold.woff') format('woff'); font-weight:700; font-style:normal; font-display:swap; }
+  @font-face { font-family:'Circular Std'; src:url('fonts/CircularStd-Black.woff2') format('woff2'),url('fonts/CircularStd-Black.woff') format('woff'); font-weight:800; font-style:normal; font-display:swap; }
+  @font-face { font-family:'Circular Std'; src:url('fonts/CircularStd-Black.woff2') format('woff2'),url('fonts/CircularStd-Black.woff') format('woff'); font-weight:900; font-style:normal; font-display:swap; }
+    </style>
+</head>
+
+
+
+
+
+
+<!DOCTYPE html>
 <html lang="en">
 <head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover">
-  <title>T Company | services & project calculator</title>
-  <!-- Font Awesome 6 for crisp icons -->
-  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
-  <style>
-    * {
-      margin: 0;
-      padding: 0;
-      box-sizing: border-box;
-    }
-
-    body {
-      font-family: 'Inter', system-ui, -apple-system, 'Segoe UI', Roboto, sans-serif;
-      background: #f4f7fc;
-      color: #1a2b3c;
-      line-height: 1.5;
-      min-height: 100vh;
-      display: flex;
-      flex-direction: column;
-    }
-
-    /* main layout: sidebar + content */
-    .app-wrapper {
-      display: flex;
-      flex: 1;
-    }
-
-    /* ---- sleek sidebar (steps) ---- */
-    .config-sidebar {
-      width: 260px;
-      background: white;
-      border-right: 1px solid rgba(0,0,0,0.05);
-      box-shadow: 2px 0 12px rgba(0,20,50,0.04);
-      padding: 2rem 1.25rem;
-      display: flex;
-      flex-direction: column;
-      background: #ffffff;
-      backdrop-filter: blur(2px);
-    }
-
-    .step-list {
-      list-style: none;
-      display: flex;
-      flex-direction: column;
-      gap: 1.75rem;
-      position: relative;
-    }
-
-    .step-item {
-      display: flex;
-      align-items: flex-start;
-      gap: 0.85rem;
-      opacity: 0.9;
-      transition: all 0.2s ease;
-    }
-
-    .step-marker {
-      display: flex;
-      flex-direction: column;
-      align-items: center;
-    }
-
-    .step-circle {
-      width: 32px;
-      height: 32px;
-      border-radius: 50%;
-      background: #eef2f6;
-      color: #5b6e8c;
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      font-weight: 600;
-      font-size: 0.9rem;
-      transition: 0.2s;
-      border: 2px solid transparent;
-    }
-
-    .step-item.active .step-circle {
-      background: #2d3b5a;
-      color: white;
-      border-color: #2d3b5a;
-      box-shadow: 0 6px 12px rgba(45,59,90,0.25);
-    }
-
-    .step-connector {
-      width: 2px;
-      height: 20px;
-      background: #dce2ec;
-      margin: 4px 0;
-    }
-
-    .step-text {
-      font-size: 0.9rem;
-      font-weight: 500;
-      color: #3e4a5c;
-    }
-
-    .step-item.active .step-text {
-      font-weight: 600;
-      color: #0f1a2e;
-    }
-
-    .sidebar-title {
-      font-weight: 600;
-      letter-spacing: 0.5px;
-      color: #4a5b79;
-      font-size: 0.8rem;
-      text-transform: uppercase;
-      margin-bottom: 2rem;
-    }
-
-    /* main content area */
-    .main-panel {
-      flex: 1;
-      display: flex;
-      flex-direction: column;
-      background: #f4f7fc;
-    }
-
-    /* hero section - dark blue/light blue gradient fading to grey */
-    .hero {
-      background: linear-gradient(160deg, #0b1c3a 0%, #1e3b5c 30%, #3a5f8b 70%, #7b9bc0 100%);
-      padding: 2.5rem 2.5rem 3rem 2.5rem;
-      color: white;
-      position: relative;
-      overflow: hidden;
-    }
-
-    .hero::after {
-      content: '';
-      position: absolute;
-      bottom: 0;
-      left: 0;
-      width: 100%;
-      height: 50px;
-      background: linear-gradient(to bottom, transparent, #f4f7fc);
-      pointer-events: none;
-    }
-
-    .hero-content {
-      max-width: 1300px;
-      margin: 0 auto;
-      text-align: left;
-      position: relative;
-      z-index: 2;
-    }
-
-    .hero h1 {
-      font-size: 2.8rem;
-      font-weight: 600;
-      letter-spacing: -0.5px;
-      margin-bottom: 0.6rem;
-      text-shadow: 0 4px 12px rgba(0,0,0,0.2);
-      color: #ffffff;
-    }
-
-    .hero .subtitle {
-      font-size: 1.2rem;
-      font-weight: 400;
-      opacity: 0.9;
-      max-width: 700px;
-      margin-bottom: 0.25rem;
-      color: #eef3ff;
-    }
-
-    /* cards grid 3 columns */
-    .services-grid {
-      display: grid;
-      grid-template-columns: repeat(3, 1fr);
-      gap: 1.8rem;
-      padding: 2rem 2.5rem 2.5rem;
-      max-width: 1400px;
-      margin: 0 auto;
-      width: 100%;
-      position: relative;
-      z-index: 5;
-      margin-top: -10px;
-    }
-
-    .service-card {
-      background: white;
-      border-radius: 1.25rem;
-      padding: 1.8rem 1.5rem 1.8rem;
-      box-shadow: 0 15px 30px rgba(0,0,0,0.05), 0 2px 8px rgba(0,20,40,0.06);
-      transition: transform 0.25s ease, box-shadow 0.3s;
-      display: flex;
-      flex-direction: column;
-      border: 1px solid rgba(255,255,255,0.5);
-      backdrop-filter: blur(2px);
-      background: rgba(255,255,255,0.95);
-    }
-
-    .service-card:hover {
-      transform: translateY(-5px);
-      box-shadow: 0 25px 35px rgba(20, 40, 70, 0.12);
-    }
-
-    .service-icon {
-      font-size: 2rem;
-      color: #2c4c7c;
-      margin-bottom: 1.25rem;
-      background: #eef3fe;
-      width: 48px;
-      height: 48px;
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      border-radius: 14px;
-    }
-
-    .service-name {
-      font-size: 1.4rem;
-      font-weight: 650;
-      margin-bottom: 0.7rem;
-      color: #0b1f38;
-      letter-spacing: -0.3px;
-    }
-
-    .service-desc {
-      color: #4b5a6e;
-      font-size: 0.95rem;
-      margin-bottom: 1.8rem;
-      flex: 1;
-      line-height: 1.5;
-    }
-
-    .card-buttons {
-      display: flex;
-      gap: 0.75rem;
-      margin-top: auto;
-      flex-wrap: wrap;
-    }
-
-    .btn {
-      padding: 0.6rem 1.2rem;
-      border-radius: 2.5rem;
-      font-weight: 550;
-      font-size: 0.9rem;
-      border: none;
-      cursor: pointer;
-      transition: all 0.2s ease;
-      display: inline-flex;
-      align-items: center;
-      gap: 0.3rem;
-      background: white;
-      border: 1px solid #d0daea;
-      color: #1f2c44;
-      background: #f8faff;
-    }
-
-    .btn-primary {
-      background: #1f2f4f;
-      border: 1px solid #1f2f4f;
-      color: white;
-      box-shadow: 0 4px 10px rgba(20,40,80,0.15);
-    }
-
-    .btn-primary:hover {
-      background: #12233d;
-    }
-
-    .btn-outline:hover {
-      background: #e9eff8;
-      border-color: #9aafcf;
-    }
-
-    /* calculator slide panel (hidden by default, appears like a new page) */
-    .calc-panel {
-      position: fixed;
-      top: 0;
-      right: 0;
-      width: 580px;
-      max-width: 92vw;
-      height: 100vh;
-      background: white;
-      box-shadow: -10px 0 40px rgba(0,0,0,0.15);
-      z-index: 1000;
-      transform: translateX(100%);
-      transition: transform 0.35s cubic-bezier(0.23, 1, 0.32, 1);
-      display: flex;
-      flex-direction: column;
-      overflow-y: auto;
-      background: #fafbfd;
-    }
-
-    .calc-panel.open {
-      transform: translateX(0);
-    }
-
-    .calc-header {
-      padding: 1.5rem 2rem;
-      background: white;
-      border-bottom: 1px solid #e9eef3;
-      display: flex;
-      align-items: center;
-      justify-content: space-between;
-      position: sticky;
-      top: 0;
-      z-index: 5;
-    }
-
-    .calc-header h3 {
-      font-weight: 600;
-      font-size: 1.4rem;
-      color: #0b1f38;
-    }
-
-    .close-calc {
-      background: none;
-      border: none;
-      font-size: 1.6rem;
-      cursor: pointer;
-      color: #4b5568;
-      padding: 0.4rem;
-      border-radius: 50%;
-      transition: 0.2s;
-    }
-
-    .close-calc:hover {
-      background: #edf2f9;
-    }
-
-    .calc-body {
-      padding: 1.8rem 2rem;
-      display: flex;
-      flex-direction: column;
-      gap: 2rem;
-    }
-
-    .service-group {
-      background: #ffffff;
-      border-radius: 1rem;
-      padding: 1.3rem 1.3rem 1.3rem;
-      box-shadow: 0 6px 18px rgba(0,0,0,0.03);
-      border: 1px solid #ecf0f5;
-    }
-
-    .group-title {
-      font-weight: 650;
-      margin-bottom: 1.2rem;
-      color: #162b44;
-      display: flex;
-      align-items: center;
-      gap: 0.4rem;
-      font-size: 1.1rem;
-    }
-
-    .option-row {
-      display: flex;
-      align-items: center;
-      justify-content: space-between;
-      margin-bottom: 0.9rem;
-      flex-wrap: wrap;
-      gap: 0.5rem;
-    }
-
-    .option-label {
-      font-size: 0.95rem;
-      color: #2c3a4e;
-    }
-
-    select, input[type="number"] {
-      padding: 0.5rem 0.8rem;
-      border-radius: 0.6rem;
-      border: 1px solid #dae0ea;
-      background: white;
-      font-size: 0.9rem;
-      width: 140px;
-    }
-
-    .price-tag {
-      font-weight: 600;
-      color: #1f3a5e;
-      margin-left: 0.5rem;
-    }
-
-    .estimate-box {
-      background: #eef3fe;
-      border-radius: 1rem;
-      padding: 1.2rem;
-      margin-top: 1rem;
-      font-weight: 600;
-      display: flex;
-      justify-content: space-between;
-      color: #0b1f38;
-    }
-
-    .overlay {
-      position: fixed;
-      top:0; left:0; width:100%; height:100%;
-      background: rgba(0,0,0,0.25);
-      z-index: 999;
-      opacity: 0;
-      pointer-events: none;
-      transition: opacity 0.3s;
-    }
-
-    .overlay.active {
-      opacity: 1;
-      pointer-events: auto;
-    }
-
-    .placeholder-note {
-      font-size: 0.8rem;
-      color: #7b8aa3;
-      border-left: 3px solid #b0c4e0;
-      padding-left: 0.8rem;
-      margin: 0.8rem 0;
-      font-style: italic;
-    }
-
-    @media (max-width: 1000px) {
-      .services-grid {
-        grid-template-columns: 1fr;
-      }
-      .config-sidebar {
-        display: none;
-      }
-    }
-  </style>
+    <meta charset="UTF-8">
+    <title>My Website</title>
+    
+    <script src="header.js" defer></script>
+    <script src="footer.js" defer></script> 
 </head>
 <body>
-  <div class="app-wrapper">
-    <!-- Sidebar with configuration steps -->
-    <aside class="config-sidebar">
-      <div class="sidebar-title"><i class="far fa-list-alt"></i> CONFIGURATION STEPS</div>
-      <ul class="step-list">
-        <li class="step-item active" id="step1">
-          <div class="step-marker">
-            <div class="step-circle">1</div>
-            <div class="step-connector"></div>
-          </div>
-          <span class="step-text">Choose Service</span>
-        </li>
-        <li class="step-item" id="step2">
-          <div class="step-marker">
-            <div class="step-circle">2</div>
-            <div class="step-connector"></div>
-          </div>
-          <span class="step-text">Configure Options</span>
-        </li>
-        <li class="step-item" id="step3">
-          <div class="step-marker">
-            <div class="step-circle">3</div>
-          </div>
-          <span class="step-text">Get Estimate</span>
-        </li>
-      </ul>
-      <div style="margin-top: auto; font-size:0.8rem; color:#6b7b95; padding-top:2rem;">
-        <i class="fas fa-calculator"></i> smart estimate
-      </div>
-    </aside>
 
-    <!-- Main content: hero + cards -->
-    <main class="main-panel">
-      <section class="hero">
-        <div class="hero-content">
-          <h1>T Company</h1>
-          <div class="subtitle">intelligent solutions · software, infrastructure, creative studio</div>
-        </div>
-      </section>
+    <cronos-header></cronos-header>
+    
 
-      <!-- 3-column service cards -->
-      <div class="services-grid" id="servicesGrid">
-        <!-- Card 1: Software Development (AI & automation focus) -->
-        <div class="service-card">
-          <div class="service-icon"><i class="fas fa-robot"></i></div>
-          <h3 class="service-name">AI & Automation</h3>
-          <p class="service-desc">AI-powered chatbots, intelligent process automation, custom ML integrations.</p>
-          <div class="card-buttons">
-            <button class="btn btn-outline product-page-btn"><i class="fas fa-book-open"></i> Product page</button>
-            <button class="btn btn-primary configure-btn" data-service="ai-automation"><i class="fas fa-sliders-h"></i> Configure</button>
-          </div>
-        </div>
-
-        <!-- Card 2: Mobile & Web Apps -->
-        <div class="service-card">
-          <div class="service-icon"><i class="fas fa-mobile-alt"></i></div>
-          <h3 class="service-name">Mobile & Web Apps</h3>
-          <p class="service-desc">Web apps (PWA), professional websites, enterprise platforms, e-commerce.</p>
-          <div class="card-buttons">
-            <button class="btn btn-outline product-page-btn"><i class="fas fa-book-open"></i> Product page</button>
-            <button class="btn btn-primary configure-btn" data-service="web-mobile"><i class="fas fa-sliders-h"></i> Configure</button>
-          </div>
-        </div>
-
-        <!-- Card 3: IT Infrastructure & Managed Services -->
-        <div class="service-card">
-          <div class="service-icon"><i class="fas fa-cloud"></i></div>
-          <h3 class="service-name">IT Infrastructure</h3>
-          <p class="service-desc">Managed IT, helpdesk, cloud infrastructure, data center, 24/7 support.</p>
-          <div class="card-buttons">
-            <button class="btn btn-outline product-page-btn"><i class="fas fa-book-open"></i> Product page</button>
-            <button class="btn btn-primary configure-btn" data-service="it-infra"><i class="fas fa-sliders-h"></i> Configure</button>
-          </div>
-        </div>
-      </div>
-      <!-- labels for future insertion -->
-      <div style="padding: 0 2.5rem 2rem; color: #6f7e99; font-size:0.85rem; max-width:1400px; margin:0 auto; width:100%;">
-        <i class="fas fa-info-circle"></i> <!-- INSERT MORE SERVICE CARDS HERE (Marketing & Creative Studio, etc.) --> 
-      </div>
-    </main>
-  </div>
-
-  <!-- Overlay for calculator -->
-  <div class="overlay" id="overlay"></div>
-
-  <!-- Slide-in Calculator Panel -->
-  <div class="calc-panel" id="calcPanel">
-    <div class="calc-header">
-      <h3 id="calcTitle">Configure Service</h3>
-      <button class="close-calc" id="closeCalcBtn"><i class="fas fa-times"></i></button>
-    </div>
-    <div class="calc-body" id="calcContent">
-      <!-- dynamic content injected by js -->
-    </div>
-  </div>
-
-  <script>
-    (function() {
-      // ----- service definitions with sub-services and pricing logic -----
-      const serviceConfigs = {
-        'ai-automation': {
-          title: 'AI & Automation',
-          solutions: [
-            {
-              name: 'AI Powered Chatbot',
-              options: [
-                { label: 'Channels', type: 'select', values: ['Web + WhatsApp', 'Web only', 'Omnichannel'], priceImpact: [4500, 3200, 6200] },
-                { label: 'Monthly interactions', type: 'select', values: ['1,000', '5,000', 'Unlimited'], priceImpact: [800, 1800, 3200] }
-              ],
-              baseEstimate: 2800
-            },
-            {
-              name: 'Process Automation (RPA)',
-              options: [
-                { label: 'Automation complexity', type: 'select', values: ['Basic workflows', 'Advanced AI decision', 'Enterprise'], priceImpact: [5000, 9500, 18000] }
-              ]
-            }
-          ]
-        },
-        'web-mobile': {
-          title: 'Mobile & Web Apps',
-          solutions: [
-            {
-              name: 'Web App (PWA)',
-              options: [
-                { label: 'Type', type: 'select', values: ['Standard PWA', 'Complex dashboard'], priceImpact: [6800, 12500] },
-                { label: 'User accounts', type: 'select', values: ['No', 'Yes (basic)', 'Advanced auth'], priceImpact: [0, 1800, 3200] }
-              ]
-            },
-            {
-              name: 'Professional Website',
-              options: [
-                { label: 'Number of pages', type: 'number', placeholder: 'e.g., 5', default: 5, pricePerUnit: 350 },
-                { label: 'Google Maps integration', type: 'select', values: ['None', 'Simple', 'Advanced'], priceImpact: [0, 500, 1200] },
-                { label: 'CMS', type: 'select', values: ['No CMS', 'WordPress/Headless'], priceImpact: [0, 1800] }
-              ]
-            },
-            {
-              name: 'Enterprise Platform',
-              options: [
-                { label: 'Scale', type: 'select', values: ['MVP', 'Full platform'], priceImpact: [19000, 42000] }
-              ]
-            }
-          ]
-        },
-        'it-infra': {
-          title: 'IT Infrastructure & Managed Services',
-          solutions: [
-            {
-              name: 'IT Tech Support',
-              options: [
-                { label: 'Plan', type: 'select', values: ['Hourly (adhoc)', 'Monthly retainer', '24/7 Helpdesk'], priceImpact: [85, 2200, 4800] }
-              ]
-            },
-            {
-              name: 'Cloud Infrastructure',
-              options: [
-                { label: 'Environment', type: 'select', values: ['AWS/Azure setup', 'Hybrid cloud', 'Full migration'], priceImpact: [4500, 8900, 16500] }
-              ]
-            },
-            {
-              name: 'Data Center & Storage',
-              options: [
-                { label: 'Storage size', type: 'select', values: ['Up to 1TB', '1-10TB', 'Enterprise SAN'], priceImpact: [1200, 3800, 9500] }
-              ]
-            }
-          ]
-        }
-      };
-
-      // Current active service
-      let currentServiceKey = null;
-
-      // DOM elements
-      const overlay = document.getElementById('overlay');
-      const calcPanel = document.getElementById('calcPanel');
-      const calcTitle = document.getElementById('calcTitle');
-      const calcContent = document.getElementById('calcContent');
-      const closeCalcBtn = document.getElementById('closeCalcBtn');
-      const configureBtns = document.querySelectorAll('.configure-btn');
-      const stepItems = document.querySelectorAll('.step-item');
-
-      // Helper to update step indicators
-      function setActiveStep(stepNumber) {
-        stepItems.forEach((item, idx) => {
-          if (idx === stepNumber - 1) item.classList.add('active');
-          else item.classList.remove('active');
-        });
-      }
-
-      // Open calculator
-      function openCalculator(serviceKey) {
-        currentServiceKey = serviceKey;
-        const config = serviceConfigs[serviceKey];
-        if (!config) return;
-        
-        calcTitle.textContent = config.title;
-        renderCalculatorContent(config);
-        
-        calcPanel.classList.add('open');
-        overlay.classList.add('active');
-        setActiveStep(2); // step 2: configure options
-      }
-
-      // Close calculator
-      function closeCalculator() {
-        calcPanel.classList.remove('open');
-        overlay.classList.remove('active');
-        setActiveStep(1);
-        currentServiceKey = null;
-      }
-
-      // Recalculate estimates based on current selections
-      function calculateTotal() {
-        if (!currentServiceKey) return;
-        const config = serviceConfigs[currentServiceKey];
-        let grandTotal = 0;
-        const solutionContainers = document.querySelectorAll('.solution-block');
-        
-        solutionContainers.forEach((block, index) => {
-          const solution = config.solutions[index];
-          let solutionSum = solution.baseEstimate || 0;
-          
-          // process selects and number inputs
-          const selects = block.querySelectorAll('select');
-          const numberInputs = block.querySelectorAll('input[type="number"]');
-          
-          selects.forEach((select, optIndex) => {
-            const selectedIndex = select.selectedIndex;
-            if (solution.options[optIndex] && solution.options[optIndex].priceImpact) {
-              const impact = solution.options[optIndex].priceImpact[selectedIndex];
-              if (typeof impact === 'number') solutionSum += impact;
-            }
-          });
-          
-          numberInputs.forEach((input, numIdx) => {
-            // find corresponding option with pricePerUnit
-            const relatedOption = solution.options.find(opt => opt.type === 'number');
-            if (relatedOption && relatedOption.pricePerUnit && input.value) {
-              const val = parseInt(input.value, 10);
-              if (!isNaN(val) && val > 0) {
-                solutionSum += val * relatedOption.pricePerUnit;
-              }
-            }
-          });
-          
-          // Update solution estimate display
-          const estimateSpan = block.querySelector('.solution-estimate');
-          if (estimateSpan) {
-            estimateSpan.textContent = `$${solutionSum.toLocaleString()}`;
-          }
-          grandTotal += solutionSum;
-        });
-        
-        const totalDisplay = document.getElementById('grandTotalDisplay');
-        if (totalDisplay) {
-          totalDisplay.textContent = `$${grandTotal.toLocaleString()}`;
-        }
-      }
-
-      // Render calculator HTML based on config
-      function renderCalculatorContent(config) {
-        let html = '';
-        config.solutions.forEach((sol, idx) => {
-          html += `<div class="service-group solution-block" data-solution-index="${idx}">`;
-          html += `<div class="group-title"><i class="fas fa-cube"></i> ${sol.name}</div>`;
-          
-          sol.options.forEach((opt, optIdx) => {
-            if (opt.type === 'select') {
-              html += `<div class="option-row">`;
-              html += `<span class="option-label">${opt.label}</span>`;
-              html += `<select class="calc-select" data-solution="${idx}" data-option="${optIdx}">`;
-              opt.values.forEach((val, vi) => {
-                html += `<option value="${vi}">${val}</option>`;
-              });
-              html += `</select>`;
-              html += `</div>`;
-            } else if (opt.type === 'number') {
-              html += `<div class="option-row">`;
-              html += `<span class="option-label">${opt.label}</span>`;
-              html += `<input type="number" class="calc-number" data-solution="${idx}" data-option="${optIdx}" placeholder="${opt.placeholder || '0'}" value="${opt.default || ''}" min="0" step="1">`;
-              html += `</div>`;
-            }
-          });
-          
-          html += `<div class="estimate-box"><span>Estimated</span> <span class="solution-estimate">$${(sol.baseEstimate || 0).toLocaleString()}</span></div>`;
-          html += `</div>`;
-        });
-        
-        html += `<div class="service-group" style="background:#e5edfb; border-color:#b8cef0;">
-                    <div style="display:flex; justify-content:space-between; font-size:1.2rem; font-weight:700;">
-                      <span>Total Estimate</span>
-                      <span id="grandTotalDisplay">$0</span>
-                    </div>
-                  </div>`;
-        
-        // placeholder for additional services
-        html += `<div class="placeholder-note"><i class="fas fa-plus-circle"></i> <!-- INSERT MORE SOLUTIONS HERE (Marketing, Creative Studio, etc.) --> </div>`;
-        
-        calcContent.innerHTML = html;
-        
-        // Attach event listeners to recalculate
-        document.querySelectorAll('.calc-select, .calc-number').forEach(el => {
-          el.addEventListener('change', calculateTotal);
-          el.addEventListener('input', calculateTotal);
-        });
-        
-        // initial calculation
-        calculateTotal();
-      }
-
-      // Event Listeners
-      configureBtns.forEach(btn => {
-        btn.addEventListener('click', (e) => {
-          const service = btn.getAttribute('data-service');
-          if (service) openCalculator(service);
-        });
-      });
-
-      closeCalcBtn.addEventListener('click', closeCalculator);
-      overlay.addEventListener('click', closeCalculator);
-
-      // Product page buttons (dummy action)
-      document.querySelectorAll('.product-page-btn').forEach(btn => {
-        btn.addEventListener('click', () => {
-          alert('Product page (demo) – details about the service.');
-        });
-      });
-
-      // Initial step set
-      setActiveStep(1);
-
-      // close with escape key
-      document.addEventListener('keydown', (e) => {
-        if (e.key === 'Escape' && calcPanel.classList.contains('open')) {
-          closeCalculator();
-        }
-      });
-
-    })();
-  </script>
 </body>
 </html>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<!DOCTYPE html>
+<html lang="en" dir="ltr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, minimum-scale=1.0, maximum-scale=5.0, viewport-fit=cover, shrink-to-fit=no">
+    <meta http-equiv="x-ua-compatible" content="ie=edge"/>
+    
+    <title>Our Services & Configuration | Cronos</title>
+
+    <link rel="icon" type="image/png" href="thumbnails/top-1.png">
+
+    <style>
+        /* ─── FONTS & CORES ─── */
+        @font-face { font-family:'Circular Std'; src:url('fonts/CircularStd-Book.woff2') format('woff2'),url('fonts/CircularStd-Book.woff') format('woff'); font-weight:400; font-style:normal; font-display:swap; }
+        @font-face { font-family:'Circular Std'; src:url('fonts/CircularStd-BookItalic.woff2') format('woff2'),url('fonts/CircularStd-BookItalic.woff') format('woff'); font-weight:400; font-style:italic; font-display:swap; }
+        @font-face { font-family:'Circular Std'; src:url('fonts/CircularStd-Medium.woff2') format('woff2'),url('fonts/CircularStd-Medium.woff') format('woff'); font-weight:500; font-style:normal; font-display:swap; }
+        @font-face { font-family:'Circular Std'; src:url('fonts/CircularStd-Bold.woff2') format('woff2'),url('fonts/CircularStd-Bold.woff') format('woff'); font-weight:600; font-style:normal; font-display:swap; }
+        @font-face { font-family:'Circular Std'; src:url('fonts/CircularStd-Bold.woff2') format('woff2'),url('fonts/CircularStd-Bold.woff') format('woff'); font-weight:700; font-style:normal; font-display:swap; }
+        @font-face { font-family:'Circular Std'; src:url('fonts/CircularStd-Black.woff2') format('woff2'),url('fonts/CircularStd-Black.woff') format('woff'); font-weight:800; font-style:normal; font-display:swap; }
+        @font-face { font-family:'Circular Std'; src:url('fonts/CircularStd-Black.woff2') format('woff2'),url('fonts/CircularStd-Black.woff') format('woff'); font-weight:900; font-style:normal; font-display:swap; }
+
+        /* ─── SCOPED NAMESPACED RESET ─── */
+        .cr-solutions-root *,
+        .cr-solutions-root *::before,
+        .cr-solutions-root *::after {
+            box-sizing: border-box;
+            margin: 0;
+            padding: 0;
+        }
+
+        * {
+            padding: 0;
+            margin: 0;
+            box-sizing: border-box;
+        }
+
+        .cr-solutions-root {
+            font-family: 'Circular Std', -apple-system, BlinkMacSystemFont, sans-serif;
+            -webkit-font-smoothing: antialiased;
+            background: #fff;
+            color: #111827;
+            width: 100%;
+            overflow-x: hidden;
+        }
+
+        .cr-sol-container {
+            width: 100%;
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 16px;
+        }
+        @media (min-width: 768px) {
+            .cr-sol-container {
+                padding: 0 24px;
+            }
+        }
+
+        /* ─── HERO SECTION WITH SEAMLESS CHROMATIC BACKGROUND FLOW ─── */
+        .cr-sol-hero {
+            position: relative;
+            padding: 120px 0 80px;
+            text-align: left;
+            overflow: hidden;
+            background-color: #0b121f;
+        }
+        @media (min-width: 768px) {
+            .cr-sol-hero {
+                padding: 160px 0 120px;
+            }
+        }
+
+        .cr-sol-hero::before {
+            content: '';
+            position: absolute;
+            inset: 0;
+            background: linear-gradient(90deg, 
+                #0b121f 0%,
+                #1d4ed8 15%, 
+                #6d28d9 35%, 
+                #db2777 55%, 
+                #ea580c 75%,
+                #1d4ed8 90%,
+                #0b121f 100%
+            );
+            background-size: 600% 100%;
+            animation: cr-hero-seamless-flow 22s cubic-bezier(0.4, 0, 0.2, 1) infinite;
+            z-index: 1;
+            opacity: 0.85;
+        }
+
+        .cr-sol-hero::after {
+            content: '';
+            position: absolute;
+            inset: 0;
+            background: linear-gradient(180deg, 
+                rgba(11, 18, 31, 0) 0%, 
+                rgba(254, 254, 254, 0.74) 70%, 
+                #fff 100%
+            );
+            z-index: 2;
+        }
+
+        @keyframes cr-hero-seamless-flow {
+            0% { background-position: 0% 50%; }
+            50% { background-position: 100% 50%; }
+            100% { background-position: 0% 50%; }
+        }
+
+        .cr-sol-hero__content {
+            position: relative;
+            max-width: 820px;
+            z-index: 3;
+        }
+
+        .cr-sol-hero__title {
+            font-size: clamp(32px, 6vw, 64px);
+            font-weight: 500;
+            line-height: 1.1;
+            color: #ffffff;
+            margin-bottom: 20px;
+        }
+
+        .cr-sol-hero__desc {
+            font-size: clamp(15px, 2vw, 19px);
+            line-height: 1.6;
+            color: #f1f5f9;
+            margin-bottom: 32px;
+            max-width: 680px;
+        }
+
+        /* ─── ACTIONS & BUTTONS (1PX BORDER RADIUS) ─── */
+        .cr-sol-btn {
+            display: inline-flex;
+            align-items: center;
+            justify-content: center;
+            padding: 14px 28px;
+            font-size: 16px;
+            font-weight: 500;
+            text-decoration: none;
+            cursor: pointer;
+            border-radius: 50px;
+            transition: all 0.2s ease;
+            outline: none;
+            width: 100%;
+            text-align: center;
+            position: relative;
+        }
+        @media (min-width: 480px) {
+            .cr-sol-btn {
+                width: auto;
+            }
+        }
+
+        .cr-sol-btn--primary {
+            background: #111827;
+            color: #ffffff; border: none;
+        }
+
+        .cr-sol-btn--primary:hover {
+            background: #000000;
+            border-color: #000000;
+        }
+
+        .cr-sol-btn--secondary {
+            background: #ffffff;
+            color: #111827; border: none;
+        }
+
+        .cr-sol-btn--secondary:hover {
+            border-color: #111827;
+            background: #f9fafb;
+        }
+
+        /* Interactivity Loading Parameter Class Override */
+        .cr-sol-btn.cr-is-loading {
+            color: transparent !important;
+            pointer-events: none;
+            cursor: not-allowed;
+        }
+
+        .cr-sol-btn.cr-is-loading::after {
+            content: '';
+            position: absolute;
+            width: 18px;
+            height: 18px;
+            border: 2px solid currentColor;
+            border-top-color: transparent;
+            border-radius: 50%;
+            animation: cr-btn-spin 0.6s linear infinite;
+            left: calc(50% - 9px);
+            top: calc(50% - 9px);
+            color: #ffffff;
+        }
+        .cr-sol-btn--secondary.cr-is-loading::after {
+            color: #111827;
+        }
+
+        @keyframes cr-btn-spin {
+            to { transform: rotate(360deg); }
+        }
+
+        /* ─── HIGH VISIBILITY SYSTEM LOAD PROGRESS STRIP ─── */
+        .cr-system-progress-strip {
+            position: fixed;
+            top: 0;
+            left: 0;
+            height: 2px;
+            width: 0;
+            z-index: 100000;
+            background: linear-gradient(90deg, #1d4ed8, #6d28d9, #db2777, #ea580c);
+            transition: width 0.4s cubic-bezier(0.1, 0.8, 0.3, 1);
+            pointer-events: none;
+            opacity: 0;
+        }
+        .cr-system-progress-strip.cr-active {
+            opacity: 1;
+        }
+
+        /* ─── SERVICES DIRECTORY LAYOUT ─── */
+        .cr-sol-main {
+            padding: 40px 0 80px;
+        }
+        @media (min-width: 768px) {
+            .cr-sol-main {
+                padding: 60px 0 120px;
+            }
+        }
+
+        .cr-sol-cat-section {
+            margin-bottom: 56px;
+        }
+        @media (min-width: 768px) {
+            .cr-sol-cat-section {
+                margin-bottom: 80px;
+            }
+        }
+
+        .cr-sol-cat-header {
+            margin-bottom: 24px;
+            padding-bottom: 12px;
+        }
+
+        .cr-sol-cat-title {
+            font-size: clamp(20px, 4vw, 24px);
+            font-weight: 600;
+            letter-spacing: -0.5px;
+            color: #111827;
+        }
+
+        .cr-sol-grid {
+            display: grid;
+            grid-template-columns: 1fr;
+            gap: 20px;
+        }
+        @media (min-width: 640px) {
+            .cr-sol-grid {
+                grid-template-columns: repeat(2, 1fr);
+            }
+        }
+        @media (min-width: 1024px) {
+            .cr-sol-grid {
+                grid-template-columns: repeat(3, 1fr);
+            }
+        }
+
+        /* ─── PREMIUM CARDS (1PX BORDER RADIUS & BLENDED SHADOWS) ─── */
+        .cr-sol-card {
+            background: #f4f4f4;
+            border-radius: 15px;
+            padding: 24px;
+            display: flex;
+            flex-direction: column;
+            justify-content: space-between;
+            min-height: 280px;
+            position: relative;
+            transition: transform 0.25s cubic-bezier(0.4, 0, 0.2, 1), border-color 0.25s ease;
+        }
+        @media (min-width: 768px) {
+            .cr-sol-card {
+                padding: 32px;
+                min-height: 310px;
+            }
+        }
+
+        .cr-sol-card:hover {
+            animation: cr-card-seamless-rainbow 3s linear infinite;
+        }
+
+        @keyframes cr-card-seamless-rainbow {
+            0%   { box-shadow: 0 5px 30px -4px rgba(29, 79, 216, 0.995); }
+            33%  { box-shadow: 0 5px 30px -4px rgb(108, 40, 217); }
+            66%  { box-shadow: 0 5px 30px -4px rgb(219, 39, 120); }
+            100% { box-shadow: 0 5px 30px -4px rgb(29, 79, 216); }
+        }
+
+        .cr-sol-card__title {
+            font-size: clamp(18px, 3vw, 24px);
+            font-weight: 500;
+            color: #111827;
+            margin-bottom: 12px;
+            letter-spacing: -0.4px;
+        }
+
+        .cr-sol-card__desc {
+            font-size: 15px;
+            line-height: 1.6;
+            color: #4b5563;
+            font-weight: 400;
+            margin-bottom: 24px;
+        }
+
+        .cr-sol-card__actions {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 10px;
+            margin-top: auto;
+        }
+
+        .cr-sol-card__actions .cr-sol-btn {
+            padding: 12px 10px;
+            font-size: 15px; font-weight: 400;
+            width: 100%; font-family: inherit;
+        }
+
+        /* ─── FULL SCREEN CONFIGURATOR LAYOUT WITH STYLE TRANSITIONS ─── */
+        .cr-calc-page {
+            position: fixed;
+            inset: 0;
+            background: #f9fafb;
+            z-index: 9999;
+            display: none; 
+            overflow-y: auto;
+            -webkit-overflow-scrolling: touch;
+            opacity: 0;
+            transform: scale(0.98);
+            transition: opacity 0.4s cubic-bezier(0.16, 1, 0.3, 1), transform 0.4s cubic-bezier(0.16, 1, 0.3, 1);
+        }
+
+        /* Active cinematic initialization phase triggers */
+        .cr-calc-page.cr-active {
+            display: block;
+        }
+
+        .cr-calc-page.cr-visible {
+            opacity: 1;
+            transform: scale(1);
+        }
+
+        .cr-calc-nav {
+            background: #ffffff;
+            border-bottom: 1px solid #e5e7eb;
+            padding: 16px 0;
+            position: sticky;
+            top: 0;
+            z-index: 10;
+        }
+
+        .cr-calc-nav__box {
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            gap: 16px;
+        }
+
+        .cr-calc-back-btn {
+            background: transparent;
+            border: none;
+            font-size: 14px;
+            font-weight: 600;
+            color: #4b5563;
+            cursor: pointer;
+            display: flex;
+            align-items: center;
+            gap: 8px;
+            padding: 4px 0;
+        }
+
+        .cr-calc-back-btn:hover {
+            color: #111827;
+        }
+
+        .cr-calc-layout {
+            display: grid;
+            grid-template-columns: 1fr;
+            gap: 24px;
+            padding: 24px 0 80px;
+        }
+        @media (min-width: 1024px) {
+            .cr-calc-layout {
+                grid-template-columns: 280px 1fr;
+                gap: 32px;
+                padding: 48px 0 100px;
+            }
+        }
+
+        /* CONFIGURATOR SIDEBAR */
+        .cr-calc-sidebar {
+            background: #ffffff;
+            border: 1px solid #e5e7eb;
+            border-radius: 1px;
+            padding: 24px;
+            height: fit-content;
+        }
+
+        .cr-sidebar-title {
+            font-size: 13px;
+            font-weight: 600;
+            text-transform: uppercase;
+            letter-spacing: 0.5px;
+            color: #9ca3af;
+            margin-bottom: 20px;
+        }
+
+        .cr-step-list {
+            list-style: none;
+            display: flex;
+            flex-direction: row;
+            gap: 16px;
+            overflow-x: auto;
+            padding-bottom: 12px;
+            scrollbar-width: none;
+        }
+        .cr-step-list::-webkit-scrollbar {
+            display: none;
+        }
+        @media (min-width: 1024px) {
+            .cr-step-list {
+                flex-direction: column;
+                gap: 20px;
+                overflow-x: visible;
+                padding-bottom: 0;
+            }
+        }
+
+        .cr-step-item {
+            display: flex;
+            align-items: center;
+            gap: 10px;
+            color: #9ca3af;
+            white-space: nowrap;
+        }
+        @media (min-width: 1024px) {
+            .cr-step-item {
+                align-items: flex-start;
+                white-space: normal;
+            }
+        }
+
+        .cr-step-item.cr-done {
+            color: #00c763;
+        }
+
+        .cr-step-item.cr-current {
+            color: #111827;
+            font-weight: 600;
+        }
+
+        .cr-step-icon {
+            width: 20px;
+            height: 20px;
+            border-radius: 50%;
+            border: 2px solid currentColor;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 10px;
+            font-weight: 700;
+            flex-shrink: 0;
+        }
+
+        .cr-step-text h4 {
+            font-size: 14px;
+            line-height: 1.2;
+        }
+
+        .cr-step-text p {
+            font-size: 12px;
+            color: #6b7280;
+            font-weight: 400;
+            display: none;
+        }
+        @media (min-width: 1024px) {
+            .cr-step-text p {
+                display: block;
+            }
+        }
+
+        /* MAIN PARAMETERS SPLIT MATRIX */
+        .cr-calc-main-grid {
+            display: grid;
+            grid-template-columns: 1fr;
+            gap: 24px;
+        }
+        @media (min-width: 1024px) {
+            .cr-calc-main-grid {
+                grid-template-columns: 1fr 340px;
+                gap: 32px;
+                align-items: start;
+            }
+        }
+
+        .cr-calc-card {
+            background: #ffffff;
+            border: 1px solid #e5e7eb;
+            border-radius: 1px;
+            padding: 24px;
+        }
+        @media (min-width: 768px) {
+            .cr-calc-card {
+                padding: 40px;
+            }
+        }
+
+        .cr-calc-card__title {
+            font-size: clamp(22px, 4vw, 26px);
+            font-weight: 600;
+            letter-spacing: -0.5px;
+            color: #111827;
+            margin-bottom: 8px;
+        }
+
+        .cr-calc-card__subtitle {
+            font-size: 14px;
+            color: #6b7280;
+            margin-bottom: 24px;
+        }
+
+        .cr-calc-group {
+            margin-bottom: 24px;
+        }
+
+        .cr-calc-label {
+            display: block;
+            font-size: 14px;
+            font-weight: 600;
+            color: #374151;
+            margin-bottom: 10px;
+        }
+
+        .cr-calc-select {
+            width: 100%;
+            padding: 14px;
+            border: 1px solid #e5e7eb;
+            border-radius: 1px;
+            font-family: inherit;
+            font-size: 15px;
+            background: #f9fafb;
+            color: #111827;
+            outline: none;
+            appearance: none;
+            background-image: url("data:image/svg+xml;utf8,<svg xmlns='http://www.w3.org/2000/svg' width='24' height='24' viewBox='0 0 24 24' fill='none' stroke='%234b5563' stroke-width='2' stroke-linecap='round' stroke-linejoin='round'><polyline points='6 9 12 15 18 9'></polyline></svg>");
+            background-repeat: no-repeat;
+            background-position: right 14px center;
+            background-size: 16px;
+        }
+
+        .cr-calc-select:focus {
+            border-color: #111827;
+            background-color: #ffffff;
+        }
+
+        .cr-calc-checkbox-group {
+            display: flex;
+            flex-direction: column;
+            gap: 12px;
+        }
+
+        .cr-calc-check-label {
+            display: flex;
+            align-items: flex-start;
+            gap: 12px;
+            font-size: 14px;
+            color: #374151;
+            cursor: pointer;
+            padding: 14px;
+            border: 1px solid #e5e7eb;
+            border-radius: 1px;
+            background: #f9fafb;
+            transition: all 0.2s ease;
+        }
+        @media (min-width: 768px) {
+            .cr-calc-check-label {
+                padding: 16px;
+                font-size: 15px;
+            }
+        }
+
+        .cr-calc-check-label input {
+            accent-color: #111827;
+            width: 18px;
+            height: 18px;
+            flex-shrink: 0;
+            margin-top: 2px;
+        }
+
+        .cr-calc-check-label:hover {
+            border-color: #111827;
+            background: #ffffff;
+        }
+
+        /* PERSISTENT COST BALANCE BOX */
+        .cr-calc-summary-box {
+            background: #111827;
+            color: #ffffff;
+            border-radius: 1px;
+            padding: 24px;
+            display: flex;
+            flex-direction: column;
+            justify-content: space-between;
+            gap: 24px;
+        }
+        @media (min-width: 768px) {
+            .cr-calc-summary-box {
+                padding: 40px;
+            }
+        }
+
+        .cr-summary-title {
+            font-size: 13px;
+            font-weight: 600;
+            color: #9ca3af;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+            margin-bottom: 16px;
+        }
+
+        .cr-summary-price-wrap {
+            margin-bottom: 8px;
+        }
+
+        .cr-summary-label {
+            font-size: 13px;
+            color: #9ca3af;
+            display: block;
+            margin-bottom: 4px;
+        }
+
+        .cr-summary-price {
+            font-size: clamp(32px, 5vw, 42px);
+            font-weight: 700;
+            letter-spacing: -1px;
+            color: #ffffff;
+            display: block;
+        }
+    </style>
+</head>
+<body>
+
+    <div id="crProgressStrip" class="cr-system-progress-strip"></div>
+
+    <cronos-header></cronos-header>
+
+    <section class="cr-solutions-root">
+        
+        <div id="cr-directory-view">
+            
+            <div class="cr-sol-hero">
+                <div class="cr-sol-container">
+                    <div class="cr-sol-hero__content">
+                        <h1 class="cr-sol-hero__title">Engineered solutions for ambitious enterprises.</h1>
+                        <p class="cr-sol-hero__desc">
+                            We deploy highly optimized ecosystems, modern user interfaces, and reliable technology solutions tailored to your operational scale. Select an execution unit below to calculate scopes.
+                        </p>
+                        <a href="#services-display" class="cr-sol-btn cr-sol-btn--secondary">Browse Catalog</a>
+                    </div>
+                </div>
+            </div>
+
+            <div class="cr-sol-main" id="services-display">
+                <div class="cr-sol-container">
+
+                    <div class="cr-sol-cat-section">
+                        <div class="cr-sol-cat-header">
+                            <h2 class="cr-sol-cat-title">Software Development</h2>
+                        </div>
+                        <div class="cr-sol-grid">
+                            
+                            <div class="cr-sol-card">
+                                <div>
+                                    <h3 class="cr-sol-card__title">AI Powered Chatbots</h3>
+                                    <p class="cr-sol-card__desc">Intelligent NLP interfaces custom-integrated to institutional parameters, engineered to respect user interaction and automate customer retention pathways.</p>
+                                </div>
+                                <div class="cr-sol-card__actions">
+                                    <a href="#" class="cr-sol-btn cr-sol-btn--secondary">Product Page</a>
+                                    <button class="cr-sol-btn cr-sol-btn--primary" onclick="launchScreenEstimator(this, 'AI Powered Chatbots', 'software', 45000)">Configure</button>
+                                </div>
+                            </div>
+
+                            <div class="cr-sol-card">
+                                <div>
+                                    <h3 class="cr-sol-card__title">Progressive Web Apps (PWA)</h3>
+                                    <p class="cr-sol-card__desc">High-performance applications built layout-first with offline operational support, push notification channels, and zero reliance on heavy frameworks.</p>
+                                </div>
+                                <div class="cr-sol-card__actions">
+                                    <a href="#" class="cr-sol-btn cr-sol-btn--secondary">Product Page</a>
+                                    <button class="cr-sol-btn cr-sol-btn--primary" onclick="launchScreenEstimator(this, 'Progressive Web Apps (PWA)', 'software', 35000)">Configure</button>
+                                </div>
+                            </div>
+
+                            <div class="cr-sol-card">
+                                <div>
+                                    <h3 class="cr-sol-card__title">Professional Websites</h3>
+                                    <p class="cr-sol-card__desc">Stunning minimalist web presences presenting typography hierarchies and clean pixel ratios to assert absolute design clarity.</p>
+                                </div>
+                                <div class="cr-sol-card__actions">
+                                    <a href="#" class="cr-sol-btn cr-sol-btn--secondary">Product Page</a>
+                                    <button class="cr-sol-btn cr-sol-btn--primary" onclick="launchScreenEstimator(this, 'Professional Websites', 'software', 25000)">Configure</button>
+                                </div>
+                            </div>
+
+                            <div class="cr-sol-card">
+                                <div>
+                                    <h3 class="cr-sol-card__title">Enterprise Platforms</h3>
+                                    <p class="cr-sol-card__desc">Secure, distributed software networks incorporating multi-tier data handling pipelines and complex organizational logic matrices.</p>
+                                </div>
+                                <div class="cr-sol-card__actions">
+                                    <a href="#" class="cr-sol-btn cr-sol-btn--secondary">Product Page</a>
+                                    <button class="cr-sol-btn cr-sol-btn--primary" onclick="launchScreenEstimator(this, 'Enterprise Platforms', 'software', 85000)">Configure</button>
+                                </div>
+                            </div>
+
+                            <div class="cr-sol-card">
+                                <div>
+                                    <h3 class="cr-sol-card__title">E-Commerce Platforms</h3>
+                                    <p class="cr-sol-card__desc">Custom transactional architectures engineered for fast checkout journeys, localized inventory tracking, and payment gateways.</p>
+                                </div>
+                                <div class="cr-sol-card__actions">
+                                    <a href="#" class="cr-sol-btn cr-sol-btn--secondary">Product Page</a>
+                                    <button class="cr-sol-btn cr-sol-btn--primary" onclick="launchScreenEstimator(this, 'E-Commerce Platforms', 'software', 45000)">Configure</button>
+                                </div>
+                            </div>
+
+                            <div class="cr-sol-card">
+                                <div>
+                                    <h3 class="cr-sol-card__title">Database Systems</h3>
+                                    <p class="cr-sol-card__desc">High-throughput relational modeling, index optimizations, and bright, clear administrative analytics panels.</p>
+                                </div>
+                                <div class="cr-sol-card__actions">
+                                    <a href="#" class="cr-sol-btn cr-sol-btn--secondary">Product Page</a>
+                                    <button class="cr-sol-btn cr-sol-btn--primary" onclick="launchScreenEstimator(this, 'Database Systems & Management', 'software', 35000)">Configure</button>
+                                </div>
+                            </div>
+
+                        </div>
+                    </div>
+
+                    <div class="cr-sol-cat-section">
+                        <div class="cr-sol-cat-header">
+                            <h2 class="cr-sol-cat-title">IT Infrastructure &amp; Helpdesk</h2>
+                        </div>
+                        <div class="cr-sol-grid">
+                            
+                            <div class="cr-sol-card">
+                                <div>
+                                    <h3 class="cr-sol-card__title">IT Technical Support</h3>
+                                    <p class="cr-sol-card__desc">On-demand diagnosis, user level terminal repair configurations, SLA metrics monitoring, and operational helpdesk response setups.</p>
+                                </div>
+                                <div class="cr-sol-card__actions">
+                                    <a href="#" class="cr-sol-btn cr-sol-btn--secondary">Product Page</a>
+                                    <button class="cr-sol-btn cr-sol-btn--primary" onclick="launchScreenEstimator(this, 'IT Technical Support', 'infra', 15000)">Configure</button>
+                                </div>
+                            </div>
+
+                            <div class="cr-sol-card">
+                                <div>
+                                    <h3 class="cr-sol-card__title">IT Strategic Consulting</h3>
+                                    <p class="cr-sol-card__desc">In-depth technical architecture auditing, system vulnerability plotting, and future-proof digital transformation scaling steps.</p>
+                                </div>
+                                <div class="cr-sol-card__actions">
+                                    <a href="#" class="cr-sol-btn cr-sol-btn--secondary">Product Page</a>
+                                    <button class="cr-sol-btn cr-sol-btn--primary" onclick="launchScreenEstimator(this, 'IT Strategic Consulting', 'infra', 20000)">Configure</button>
+                                </div>
+                            </div>
+
+                            <div class="cr-sol-card">
+                                <div>
+                                    <h3 class="cr-sol-card__title">Managed IT Services</h3>
+                                    <p class="cr-sol-card__desc">Full-scale corporate infrastructure administration, zero-downtime health polling, and remote site support coordination.</p>
+                                </div>
+                                <div class="cr-sol-card__actions">
+                                    <a href="#" class="cr-sol-btn cr-sol-btn--secondary">Product Page</a>
+                                    <button class="cr-sol-btn cr-sol-btn--primary" onclick="launchScreenEstimator(this, 'Managed IT Services', 'infra', 30000)">Configure</button>
+                                </div>
+                            </div>
+
+                            <div class="cr-sol-card">
+                                <div>
+                                    <h3 class="cr-sol-card__title">Cloud Architecture</h3>
+                                    <p class="cr-sol-card__desc">Provisioning serverless instances, continuous deployment loops, database partitions, and enterprise migration strategies across AWS or Azure.</p>
+                                </div>
+                                <div class="cr-sol-card__actions">
+                                    <a href="#" class="cr-sol-btn cr-sol-btn--secondary">Product Page</a>
+                                    <button class="cr-sol-btn cr-sol-btn--primary" onclick="launchScreenEstimator(this, 'Cloud Architecture', 'infra', 40000)">Configure</button>
+                                </div>
+                            </div>
+
+                            <div class="cr-sol-card">
+                                <div>
+                                    <h3 class="cr-sol-card__title">Data Center Solutions</h3>
+                                    <p class="cr-sol-card__desc">Physical deployment plans, hardware virtualization layers, network area storage architecture, and strict backup routines.</p>
+                                </div>
+                                <div class="cr-sol-card__actions">
+                                    <a href="#" class="cr-sol-btn cr-sol-btn--secondary">Product Page</a>
+                                    <button class="cr-sol-btn cr-sol-btn--primary" onclick="launchScreenEstimator(this, 'Data Center Solutions', 'infra', 45000)">Configure</button>
+                                </div>
+                            </div>
+
+                        </div>
+                    </div>
+
+                    <div class="cr-sol-cat-section">
+                        <div class="cr-sol-cat-header">
+                            <h2 class="cr-sol-cat-title">Marketing &amp; Creative Studio</h2>
+                        </div>
+                        <div class="cr-sol-grid">
+                            
+                            <div class="cr-sol-card">
+                                <div>
+                                    <h3 class="cr-sol-card__title">Digital Marketing</h3>
+                                    <p class="cr-sol-card__desc">Data campaigns focused entirely on conversion acquisition channels, performance loops, and calculated tracking analytics.</p>
+                                </div>
+                                <div class="cr-sol-card__actions">
+                                    <a href="#" class="cr-sol-btn cr-sol-btn--secondary">Product Page</a>
+                                    <button class="cr-sol-btn cr-sol-btn--primary" onclick="launchScreenEstimator(this, 'Digital Marketing', 'creative', 12000)">Configure</button>
+                                </div>
+                            </div>
+
+                            <div class="cr-sol-card">
+                                <div>
+                                    <h3 class="cr-sol-card__title">Graphic Design Matrix</h3>
+                                    <p class="cr-sol-card__desc">High-end visual corporate assets, minimal component layouts, and design guides mapped for professional clarity.</p>
+                                </div>
+                                <div class="cr-sol-card__actions">
+                                    <a href="#" class="cr-sol-btn cr-sol-btn--secondary">Product Page</a>
+                                    <button class="cr-sol-btn cr-sol-btn--primary" onclick="launchScreenEstimator(this, 'Graphic Design Matrix', 'creative', 9500)">Configure</button>
+                                </div>
+                            </div>
+
+                            <div class="cr-sol-card">
+                                <div>
+                                    <h3 class="cr-sol-card__title">Content Management</h3>
+                                    <p class="cr-sol-card__desc">Strategic production of original technical materials, educational resources, glossaries, and clean informational feeds.</p>
+                                </div>
+                                <div class="cr-sol-card__actions">
+                                    <a href="#" class="cr-sol-btn cr-sol-btn--secondary">Product Page</a>
+                                    <button class="cr-sol-btn cr-sol-btn--primary" onclick="launchScreenEstimator(this, 'Content Management', 'creative', 11000)">Configure</button>
+                                </div>
+                            </div>
+
+                            <div class="cr-sol-card">
+                                <div>
+                                    <h3 class="cr-sol-card__title">Targeted Advertising</h3>
+                                    <p class="cr-sol-card__desc">Deploying non-generic ad parameters and copy structures designed to avoid common automated rhythms.</p>
+                                </div>
+                                <div class="cr-sol-card__actions">
+                                    <a href="#" class="cr-sol-btn cr-sol-btn--secondary">Product Page</a>
+                                    <button class="cr-sol-btn cr-sol-btn--primary" onclick="launchScreenEstimator(this, 'Targeted Advertising', 'creative', 15000)">Configure</button>
+                                </div>
+                            </div>
+
+                        </div>
+                    </div>
+
+                </div>
+            </div>
+        </div>
+
+        <div id="cr-calculator-view" class="cr-calc-page">
+            
+            <nav class="cr-calc-nav">
+                <div class="cr-sol-container cr-calc-nav__box">
+                    <button class="cr-calc-back-btn" onclick="exitScreenEstimator()">
+                        <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><line x1="19" y1="12" x2="5" y2="12"></line><polyline points="12 19 5 12 12 5"></polyline></svg>
+                        Back to Catalog
+                    </button>
+                    <div style="font-size: 11px; font-weight: 700; text-transform: uppercase; letter-spacing: 1px; color: #6b7280; text-align: right;">Workspace</div>
+                </div>
+            </nav>
+
+            <div class="cr-sol-container">
+                <div class="cr-calc-layout">
+                    
+                    <aside class="cr-calc-sidebar">
+                        <div class="cr-sidebar-title">Progress Timeline</div>
+                        <ul class="cr-step-list">
+                            <li class="cr-step-item cr-done">
+                                <div class="cr-step-icon">✓</div>
+                                <div class="cr-step-text">
+                                    <h4>Step 1</h4>
+                                    <p>Select Base Core</p>
+                                </div>
+                            </li>
+                            <li class="cr-step-item cr-current" id="step-two-node">
+                                <div class="cr-step-icon">2</div>
+                                <div class="cr-step-text">
+                                    <h4>Step 2</h4>
+                                    <p>Tune Architecture</p>
+                                </div>
+                            </li>
+                            <li class="cr-step-item" id="step-three-node">
+                                <div class="cr-step-icon">3</div>
+                                <div class="cr-step-text">
+                                    <h4>Step 3</h4>
+                                    <p>Review SLA Pricing</p>
+                                </div>
+                            </li>
+                        </ul>
+                    </aside>
+
+                    <div class="cr-calc-main-grid">
+                        
+                        <div class="cr-calc-card">
+                            <h2 class="cr-calc-card__title" id="calcTargetTitle">Configure Solution</h2>
+                            <p class="cr-calc-card__subtitle">Adjust the scope parameters below to compute an accurate operational estimate.</p>
+                            
+                            <div id="dynamicFormFields"></div>
+
+                            <div class="cr-calc-group" style="margin-top: 24px; padding-top: 24px; border-top: 1px solid #e5e7eb;">
+                                <label class="cr-calc-label">Step 3: Ongoing Technical Management SLA</label>
+                                <div class="cr-calc-checkbox-group">
+                                    <label class="cr-calc-check-label">
+                                        <input type="checkbox" id="paramSLA" onchange="runCostCalculations()">
+                                        <span>Attach Dedicated Priority Support SLA Architecture (+ R8,500 / mo)</span>
+                                    </label>
+                                </div>
+                            </div>
+                        </div>
+
+                        <div class="cr-calc-summary-box">
+                            <div>
+                                <div class="cr-summary-title">Scope Cost Profile</div>
+                                <div class="cr-summary-price-wrap">
+                                    <span class="cr-summary-label">Estimated Price (ZAR)</span> 
+                                    <span class="cr-summary-price" id="computedDisplayPrice">R0</span>
+                                </div>
+                            </div>
+                            <button class="cr-sol-btn cr-sol-btn--secondary" style="width: 100%; color: #111827; background: #ffffff; border: 1px solid #e5e7eb; border-radius: 1px;" onclick="commitConfigurationSpec()">
+                                Submit Scope Request
+                            </button>
+                        </div>
+
+                    </div>
+
+                </div>
+            </div>
+
+        </div>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<div class="aws-fb-container">
+    
+    <div id="aws-fb-step-1" class="aws-fb-layout-row">
+        <div class="aws-fb-text-block">
+            <h2 class="aws-fb-title">Did you find what you were looking for today?</h2>
+            <p class="aws-fb-subtitle">Let us know so we can improve the quality of the content on our pages</p>
+        </div>
+        
+        <div class="aws-fb-button-group">
+            <button type="button" onclick="awsFeedbackHandleChoice('yes')" class="aws-fb-btn">
+                <span class="aws-fb-btn-text">Yes</span>
+                <svg class="aws-fb-icon-thumb" viewBox="0 0 24 24"><path d="M4 21h1v-8H4v8zM20 14c.55 0 1-.45 1-1v-1.5c0-.55-.45-1-1-1h-5.67l.92-4.47.03-.32c0-.41-.17-.79-.44-1.06L14.17 5 8.59 10.59C8.22 10.95 8 11.45 8 12v7c0 1.1.9 2 2 2h7c.66 0 1.22-.41 1.42-1l2.42-5.65c.1-.24.16-.51.16-.79v-1.5h-1z"/></svg>
+            </button>
+            <button type="button" onclick="awsFeedbackHandleChoice('no')" class="aws-fb-btn">
+                <span class="aws-fb-btn-text">No</span>
+                <svg class="aws-fb-icon-thumb" viewBox="0 0 24 24"><path d="M20 3h-1v8h1V3zM4 10c-.55 0-1 .45-1 1v1.5c0 .55.45 1 1 1h5.67l-.92 4.47-.03.32c0 .41.17.79.44 1.06L9.83 19l5.59-5.59c.37-.36.58-.86.58-1.41V5c0-1.1-.9-2-2-2H7c-.66 0-1.22.41-1.42 1L3.16 9.35c-.1.24-.16.51-.16.79v1.5h1z"/></svg>
+            </button>
+        </div>
+    </div>
+
+    <div id="aws-fb-step-2" class="aws-fb-layout-row aws-fb-hidden">
+        <div class="aws-fb-text-block">
+            <div class="aws-fb-checkmark-wrapper">
+                <svg class="aws-fb-icon-check" fill="none" stroke="currentColor" stroke-width="2.5" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" d="M9 12l2 2 4-4m6 2a9 9 0 11-18 0 9 9 0 0118 0z"></path></svg>
+            </div>
+            <h2 id="aws-fb-heading" class="aws-fb-title">Please share any comments or feedback...</h2>
+            <p class="aws-fb-disclaimer">Don't disclose any personal, commercially sensitive, or confidential information.</p>
+        </div>
+
+        <div class="aws-fb-input-block">
+            <textarea id="aws-fb-text" rows="6" class="aws-fb-textarea" placeholder="Your feedback..."></textarea>
+            <button type="button" onclick="awsFeedbackSubmit()" class="aws-fb-btn-submit">Submit</button>
+        </div>
+    </div>
+
+    <div id="aws-fb-step-3" class="aws-fb-thankyou aws-fb-hidden">
+        <h2 class="aws-fb-title">Thank you for your feedback!</h2>
+        <p class="aws-fb-subtitle">We appreciate your help in making our website better.</p>
+    </div>
+
+</div>
+
+<style>
+    .aws-fb-container {
+        width: 100%;
+        max-width: 1150px;
+        margin: 0 auto;
+        box-sizing: border-box;
+        padding: 40px; /* Increased padding for more height */
+        border-radius: 12px;
+        background: linear-gradient(90deg, #ffbfa3 0%, #fcd98c 100%);
+        font-family: 'Circular Std', sans-serif;
+        color: #111625;
+    }
+    .aws-fb-container *, .aws-fb-container *::before, .aws-fb-container *::after {
+        box-sizing: border-box;
+    }
+    .aws-fb-layout-row {
+        display: flex;
+        flex-direction: column;
+        justify-content: space-between;
+        align-items: flex-start;
+        gap: 32px;
+        transition: all 0.3s ease;
+    }
+    .aws-fb-text-block {
+        max-width: 100%;
+    }
+    .aws-fb-title {
+        font-size: 1.5rem; /* Noticeably larger text */
+        font-weight: 500;
+        margin: 0 0 12px 0;
+        line-height: 1.3;
+        letter-spacing: -0.01em;
+    }
+    .aws-fb-subtitle {
+        font-size: 1.05rem; /* Larger subtext */
+        margin: 0;
+        color: #1c2230;
+        opacity: 0.95;
+        line-height: 1.4;
+    }
+    .aws-fb-disclaimer {
+        font-size: 1rem; /* Larger distinct disclaimer text */
+        margin: 0;
+        color: #2b3447;
+        line-height: 1.5;
+    }
+    .aws-fb-button-group {
+        display: flex;
+        flex-direction: row;
+        gap: 16px;
+        width: 100%;
+    }
+    .aws-fb-btn {
+        flex: 1;
+        display: inline-flex;
+        align-items: center;
+        justify-content: center;
+        gap: 10px;
+        background-color: #161b26;
+        color: #ffffff;
+        border: none;
+        padding: 12px 25px; /* Taller action items */
+        border-radius: 9999px;
+        cursor: pointer;
+        min-width: 140px;
+        transition: background-color 0.2s ease; font-family: inherit;
+    }
+    .aws-fb-btn:hover {
+        background-color: #232b3c;
+    }
+    /* Dedicated scope for button typography to completely prevent leakage */
+    .aws-fb-btn-text {
+        font-size: 1rem; 
+        font-weight: 400;
+    }
+    .aws-fb-icon-thumb {
+        width: 18px;
+        height: 18px;
+        fill: currentColor;
+    }
+    .aws-fb-checkmark-wrapper {
+        color: #161b26;
+        margin-bottom: 12px;
+    }
+    .aws-fb-icon-check {
+        width: 32px;
+        height: 32px;
+    }
+    .aws-fb-input-block {
+        display: flex;
+        flex-direction: column;
+        align-items: flex-end;
+        gap: 16px;
+        width: 100%;
+    }
+    .aws-fb-textarea {
+        width: 100%;
+        padding: 18px;
+        border-radius: 8px;
+        background-color: #ffffff;
+        border: 1px solid #303030;
+        font-size: 1rem; /* Clearer font input */
+        font-family: inherit;
+        color: #111625;
+        resize: vertical;
+        box-shadow: inset 0 1px 2px rgba(0,0,0,0.05);
+    }
+    .aws-fb-textarea:focus {
+        outline: none;
+        border-color: #2e2e2e;
+        box-shadow: 0 0 0 2px rgba(22, 27, 38, 0.2);
+    }
+    .aws-fb-btn-submit {
+        width: 100%;
+        background-color: #161b26;
+        color: #ffffff;
+        font-weight: 400;
+        font-size: 1rem;
+        border: none; font-family: inherit;
+        padding: 14px 36px;
+        border-radius: 9999px;
+        cursor: pointer;
+        transition: background-color 0.2s ease;
+    }
+    .aws-fb-btn-submit:hover {
+        background-color: #232b3c;
+    }
+    .aws-fb-thankyou {
+        text-align: center;
+        padding: 32px 0;
+    }
+    .aws-fb-hidden {
+        display: none !important;
+    }
+
+    /* Media Queries for Layout Shifts */
+    @media (min-width: 640px) {
+        .aws-fb-button-group {
+            width: auto;
+        }
+        .aws-fb-btn {
+            flex: none;
+            min-width: 160px;
+        }
+        .aws-fb-btn-submit {
+            width: auto;
+        }
+    }
+    @media (min-width: 768px) {
+        .aws-fb-layout-row {
+            flex-direction: row;
+            align-items: center;
+        }
+        .aws-fb-text-block {
+            max-width: 50%;
+        }
+        .aws-fb-input-block {
+            max-width: 50%;
+        }
+    }
+</style>
+
+<script>
+    (function() {
+        let choiceMade = '';
+
+        window.awsFeedbackHandleChoice = function(choice) {
+            choiceMade = choice;
+            const step1 = document.getElementById('aws-fb-step-1');
+            const step2 = document.getElementById('aws-fb-step-2');
+            const heading = document.getElementById('aws-fb-heading');
+
+            if (choice === 'yes') {
+                heading.innerText = "Please share what you liked or what we should add to improve your experience.";
+            } else {
+                heading.innerText = "Please share how we can improve our website to find what you were looking for.";
+            }
+
+            if(step1) step1.classList.add('aws-fb-hidden');
+            if(step2) step2.classList.remove('aws-fb-hidden');
+        };
+
+        window.awsFeedbackSubmit = function() {
+            const feedbackText = document.getElementById('aws-fb-text') ? document.getElementById('aws-fb-text').value : '';
+            
+            console.log("Feedback data securely passed:", {
+                foundItem: choiceMade,
+                userComment: feedbackText
+            });
+
+            const step2 = document.getElementById('aws-fb-step-2');
+            const step3 = document.getElementById('aws-fb-step-3');
+
+            if(step2) step2.classList.add('aws-fb-hidden');
+            if(step3) step3.classList.remove('aws-fb-hidden');
+        };
+    })();
+</script>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+    </section>
+
+    <script>
+        let activeServiceName = '';
+        let activeCategoryKey = '';
+        let currentSelectedBasePrice = 0;
+
+        function launchScreenEstimator(btnElement, serviceName, category, basePrice) {
+            if (btnElement.classList.contains('cr-is-loading')) return;
+
+            // Step 1: Engage native structural configurations
+            activeServiceName = serviceName;
+            activeCategoryKey = category;
+            currentSelectedBasePrice = basePrice;
+            document.getElementById('calcTargetTitle').innerText = serviceName;
+
+            // Step 2: Fire premium interactive loading sequences
+            btnElement.classList.add('cr-is-loading');
+            
+            let progressStrip = document.getElementById('crProgressStrip');
+            progressStrip.style.width = '0%';
+            progressStrip.classList.add('cr-active');
+            
+            // Initial swift animation movement
+            setTimeout(() => { progressStrip.style.width = '45%'; }, 50);
+            setTimeout(() => { progressStrip.style.width = '85%'; }, 350);
+
+            // Step 3: Switch view frames smoothly after deliberate 800ms loading sequence
+            setTimeout(() => {
+                progressStrip.style.width = '100%';
+                
+                setTimeout(() => {
+                    // Tear down states
+                    btnElement.classList.remove('cr-is-loading');
+                    progressStrip.classList.remove('cr-active');
+                    progressStrip.style.width = '0%';
+
+                    // Toggle page trees
+                    document.getElementById('cr-directory-view').style.display = 'none';
+                    let calcView = document.getElementById('cr-calculator-view');
+                    calcView.classList.add('cr-active');
+                    window.scrollTo(0, 0);
+
+                    // Multi-staged requestAnimationFrame timeline rendering for cinematic ease-in
+                    requestAnimationFrame(() => {
+                        setTimeout(() => {
+                            calcView.classList.add('cr-visible');
+                        }, 20);
+                    });
+
+                    buildFormControls(category);
+                    runCostCalculations();
+                }, 150);
+            }, 800);
+        }
+
+        function exitScreenEstimator() {
+            let calcView = document.getElementById('cr-calculator-view');
+            
+            // Graceful drop out transition sequence
+            calcView.classList.remove('cr-visible');
+            
+            setTimeout(() => {
+                calcView.classList.remove('cr-active');
+                document.getElementById('cr-directory-view').style.display = 'block';
+                window.scrollTo(0, 0);
+                
+                // Reset tracking timeline components
+                document.getElementById('step-three-node').classList.remove('cr-done');
+                document.getElementById('step-two-node').className = 'cr-step-item cr-current';
+            }, 400); // Maps directly to CSS transition duration variables
+        }
+
+        function buildFormControls(cat) {
+            let fieldContainer = document.getElementById('dynamicFormFields');
+            fieldContainer.innerHTML = '';
+
+            if(cat === 'software') {
+                fieldContainer.innerHTML = `
+                    <div class="cr-calc-group">
+                        <label class="cr-calc-label">Step 2: Operational Scale & Complexity</label>
+                        <select class="cr-calc-select" id="softwareScale" onchange="runCostCalculations()">
+                            <option value="mvp" data-multiplier="1.0">Standard Single Instance Stack (Base Cost)</option>
+                            <option value="mid" data-multiplier="1.5">Multi-tenant Framework Matrix (x1.5 Scaling)</option>
+                            <option value="ent" data-multiplier="2.2">High-Availability Corporate Cluster (x2.2 Scaling)</option>
+                        </select>
+                    </div>
+                    <div class="cr-calc-group">
+                        <label class="cr-calc-label">Ecosystem Upgrades</label>
+                        <div class="cr-calc-checkbox-group">
+                            <label class="cr-calc-check-label">
+                                <input type="checkbox" class="addon-check" value="9500" onchange="runCostCalculations()">
+                                <span>Custom API Processing Layer / Multi-endpoint Sync (+ R9,500)</span>
+                            </label>
+                            <label class="cr-calc-check-label">
+                                <input type="checkbox" class="addon-check" value="12000" onchange="runCostCalculations()">
+                                <span>Enhanced Data Vault / Granular Encryption Controls (+ R12,000)</span>
+                            </label>
+                        </div>
+                    </div>
+                `;
+            } else if(cat === 'infra') {
+                fieldContainer.innerHTML = `
+                    <div class="cr-calc-group">
+                        <label class="cr-calc-label">Step 2: Environment Volume (Endpoints / Node Map)</label>
+                        <select class="cr-calc-select" id="infraScale" onchange="runCostCalculations()">
+                            <option value="small" data-add="0">Local Cluster Profile (Up to 30 Active Nodes)</option>
+                            <option value="medium" data-add="14000">Distributed Medium Node Layout (+ R14,000)</option>
+                            <option value="large" data-add="38000">Enterprise Scale Dynamic Multi-site Node Network (+ R38,000)</option>
+                        </select>
+                    </div>
+                    <div class="cr-calc-group">
+                        <label class="cr-calc-label">Infrastructure Safety Parameters</label>
+                        <div class="cr-calc-checkbox-group">
+                            <label class="cr-calc-check-label">
+                                <input type="checkbox" class="addon-check" value="11000" onchange="runCostCalculations()">
+                                <span>Automated Cross-Province Backup Arrays (+ R11,000)</span>
+                            </label>
+                        </div>
+                    </div>
+                `;
+            } else if(cat === 'creative') {
+                fieldContainer.innerHTML = `
+                    <div class="cr-calc-group">
+                        <label class="cr-calc-label">Step 2: Production Pipeline Cycles</label>
+                        <select class="cr-calc-select" id="creativeScale" onchange="runCostCalculations()">
+                            <option value="once" data-mult="1.0">Single Targeted Delivery Sprint</option>
+                            <option value="long" data-mult="2.5">Extended Multi-Quarter Project Engagement (x2.5 Scaling)</option>
+                        </select>
+                    </div>
+                    <div class="cr-calc-group">
+                        <label class="cr-calc-label">Asset Pipeline Additions</label>
+                        <div class="cr-calc-checkbox-group">
+                            <label class="cr-calc-check-label">
+                                <input type="checkbox" class="addon-check" value="7000" onchange="runCostCalculations()">
+                                <span>Expedited Vector/Layout Timeline Options (+ R7,000)</span>
+                            </label>
+                        </div>
+                    </div>
+                `;
+            }
+        }
+
+        function runCostCalculations() {
+            let runningTotal = currentSelectedBasePrice;
+
+            let softwareSelect = document.getElementById('softwareScale');
+            if(softwareSelect) {
+                let mult = parseFloat(softwareSelect.options[softwareSelect.selectedIndex].getAttribute('data-multiplier'));
+                runningTotal = runningTotal * mult;
+            }
+
+            let infraSelect = document.getElementById('infraScale');
+            if(infraSelect) {
+                let addVal = parseFloat(infraSelect.options[infraSelect.selectedIndex].getAttribute('data-add'));
+                runningTotal += addVal;
+            }
+
+            let creativeSelect = document.getElementById('creativeScale');
+            if(creativeSelect) {
+                let mult = parseFloat(creativeSelect.options[creativeSelect.selectedIndex].getAttribute('data-mult'));
+                runningTotal = runningTotal * mult;
+            }
+
+            let individualAddons = document.querySelectorAll('.addon-check');
+            individualAddons.forEach(checkbox => {
+                if(checkbox.checked) {
+                    runningTotal += parseFloat(checkbox.value);
+                }
+            });
+
+            let supportCheck = document.getElementById('paramSLA');
+            if(supportCheck && supportCheck.checked) {
+                runningTotal += 8500;
+                document.getElementById('step-three-node').className = 'cr-step-item cr-done';
+                document.getElementById('step-two-node').className = 'cr-step-item cr-done';
+            } else {
+                document.getElementById('step-three-node').className = 'cr-step-item';
+                document.getElementById('step-two-node').className = 'cr-step-item cr-current';
+            }
+
+            document.getElementById('computedDisplayPrice').innerText = 'R' + runningTotal.toLocaleString('en-ZA');
+        }
+
+        function commitConfigurationSpec() {
+            alert('Configuration saved for ' + activeServiceName + '. Scope breakdown and ZAR target costs logged.');
+            exitScreenEstimator();
+        }
+    </script>
+
+</body>
+</html>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<div class="cr-ack-minimal">
+    <p class="cr-ack-text-line">
+        All pricing matrices, operational scaling metrics, and platform baseline configurations generated through this workspace are formulated on standard independent scope definitions. <a href="about-framework.html" class="cr-ack-inline-link"><span>Learn more</span><span class="cr-arrow">→</span></a>
+    </p>
+</div>
+
+<style>
+    /* ─── STREAMLINED EDITORIAL NOTE (1200PX MAXIMUM STRIP) ─── */
+.cr-ack-minimal {
+    width: 100%;
+    max-width: 1200px;
+    margin: 64px auto 0;
+    padding: 60px 16px;
+}
+@media (min-width: 768px) {
+    .cr-ack-minimal {
+        padding: 0 24px;
+        margin-top: 80px;
+    }
+}
+
+.cr-ack-text-line {
+    border-top: 1px solid #e5e7eb;
+    padding-top: 24px;
+    font-size: 14px;
+    line-height: 1.6;
+    color: #4b5563;
+    font-weight: 400;
+    padding-bottom: 50px;
+    font-family: 'Circular Std', sans-serif;
+}
+
+.cr-ack-text-line strong {
+    color: #111827;
+    font-weight: 500;
+}
+
+.cr-ack-inline-link {
+    font-weight: 600;
+    color: #111827;
+    text-decoration: none;
+    display: inline-flex;
+    align-items: center;
+    gap: 4px;
+    margin-left: 4px;
+    white-space: nowrap;
+    transition: color 0.15s ease;
+}
+
+.cr-ack-inline-link:hover {
+    color: #000000;
+}
+
+.cr-ack-inline-link .cr-arrow {
+    transition: transform 0.15s ease;
+}
+
+.cr-ack-inline-link:hover .cr-arrow {
+    transform: translateX(3px);
+}
+</style>
+
+
+
+
+
+
+
+
+<cronos-footer></cronos-footer>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<style>
+    /* ─── ENTERPRISE SYSTEM ASSISTANT ARCHITECTURE ─── */
+.cr-assistant-trigger {
+    position: fixed;
+    bottom: 24px;
+    right: 24px;
+    width: 56px;
+    height: 56px;
+    background: #111827;
+    color: #ffffff;
+    border: 1px solid #111827;
+    border-radius: 1px;
+    cursor: pointer;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    z-index: 100000;
+    outline: none;
+    box-shadow: 0 4px 12px rgba(17, 24, 39, 0.15);
+    transition: transform 0.25s cubic-bezier(0.16, 1, 0.3, 1), background-color 0.2s ease, border-color 0.2s ease;
+}
+
+/* Chromatic Shadow Animation Sequence on Hover */
+.cr-assistant-trigger:hover {
+    background: #000000;
+    border-color: #000000;
+    transform: translateY(-2px) scale(1.02);
+    animation: cr-trigger-chromatic-glow 3s linear infinite;
+}
+
+@keyframes cr-trigger-chromatic-glow {
+    0%   { box-shadow: 0 12px 32px -4px rgba(29, 78, 216, 0.6); }
+    33%  { box-shadow: 0 12px 32px -4px rgba(109, 40, 217, 0.6); }
+    66%  { box-shadow: 0 12px 32px -4px rgba(219, 39, 119, 0.6); }
+    100% { box-shadow: 0 12px 32px -4px rgba(29, 78, 216, 0.6); }
+}
+
+.cr-assistant-trigger svg {
+    width: 22px;
+    height: 22px;
+    fill: none;
+    stroke: currentColor;
+    stroke-width: 2;
+    stroke-linecap: round;
+    stroke-linejoin: round;
+}
+
+/* Master Chat Panel View */
+.cr-chat-window {
+    position: fixed;
+    bottom: 96px;
+    right: 24px;
+    width: calc(100% - 48px);
+    max-width: 400px;
+    height: 580px;
+    max-height: calc(100vh - 140px);
+    background: #ffffff;
+    border: 1px solid #e5e7eb;
+    border-radius: 1px;
+    box-shadow: 0 24px 60px -16px rgba(11, 12, 31, 0.12);
+    z-index: 100000;
+    display: flex;
+    flex-direction: column;
+    overflow: hidden;
+    opacity: 0;
+    transform: translateY(16px) scale(0.98);
+    pointer-events: none;
+    transition: opacity 0.35s cubic-bezier(0.16, 1, 0.3, 1), transform 0.35s cubic-bezier(0.16, 1, 0.3, 1);
+}
+
+.cr-chat-window.cr-open {
+    opacity: 1;
+    transform: translateY(0) scale(1);
+    pointer-events: all;
+}
+
+/* Header UI Bar */
+.cr-chat-header {
+    background: #111827;
+    color: #ffffff;
+    padding: 18px 20px;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    border-bottom: 1px solid #111827;
+}
+
+.cr-chat-meta-block h4 {
+    font-size: 14px;
+    font-weight: 600;
+    letter-spacing: -0.3px;
+    color: #ffffff;
+    margin-bottom: 2px;
+}
+
+.cr-chat-meta-block p {
+    font-size: 10px;
+    font-family: monospace;
+    color: #9ca3af;
+    letter-spacing: 0.5px;
+}
+
+/* Functional Page Redirect Link Button */
+.cr-chat-sales-anchor {
+    font-size: 12px;
+    font-weight: 600;
+    color: #111827;
+    background: #ffffff;
+    border: 1px solid #ffffff;
+    padding: 8px 14px;
+    border-radius: 1px;
+    text-decoration: none;
+    transition: all 0.15s ease;
+}
+
+.cr-chat-sales-anchor:hover {
+    background: #f3f4f6;
+    border-color: #f3f4f6;
+}
+
+/* Chat Messages Display Board */
+.cr-chat-body {
+    flex: 1;
+    padding: 24px;
+    overflow-y: auto;
+    background: #f9fafb;
+    display: flex;
+    flex-direction: column;
+    gap: 18px;
+    scrollbar-width: thin;
+}
+
+.cr-chat-msg {
+    max-width: 88%;
+    padding: 14px 16px;
+    font-size: 13.5px;
+    line-height: 1.55;
+    border-radius: 1px;
+}
+
+.cr-chat-msg--bot {
+    background: #ffffff;
+    color: #374151;
+    border: 1px solid #e5e7eb;
+    align-self: flex-start;
+    box-shadow: 0 1px 2px rgba(0, 0, 0, 0.02);
+}
+
+.cr-chat-msg--user {
+    background: #111827;
+    color: #ffffff;
+    align-self: flex-end;
+}
+
+/* Minimalist Context Control Blocks */
+.cr-chat-options-block {
+    margin-top: 8px;
+    display: flex;
+    flex-direction: column;
+    gap: 6px;
+}
+
+.cr-chat-option-pill {
+    background: #ffffff;
+    border: 1px solid #e5e7eb;
+    color: #4b5563;
+    padding: 10px 14px;
+    font-size: 12.5px;
+    font-weight: 500;
+    cursor: pointer;
+    border-radius: 1px;
+    text-align: left;
+    transition: all 0.15s ease;
+}
+
+.cr-chat-option-pill:hover {
+    border-color: #111827;
+    color: #111827;
+    background: #f9fafb;
+}
+
+/* Footer Control Elements */
+.cr-chat-footer {
+    padding: 16px 20px;
+    background: #ffffff;
+    border-top: 1px solid #e5e7eb;
+    display: flex;
+    gap: 12px;
+}
+
+.cr-chat-input-element {
+    flex: 1;
+    border: 1px solid #e5e7eb;
+    border-radius: 1px;
+    padding: 12px 14px;
+    font-family: inherit;
+    font-size: 14px;
+    color: #111827;
+    outline: none;
+    background: #f9fafb;
+    transition: border-color 0.15s ease, background-color 0.15s ease;
+}
+
+.cr-chat-input-element:focus {
+    border-color: #111827;
+    background: #ffffff;
+}
+
+.cr-chat-dispatch-btn {
+    background: #111827;
+    color: #ffffff;
+    border: 1px solid #111827;
+    border-radius: 1px;
+    padding: 0 20px;
+    cursor: pointer;
+    font-size: 13.5px;
+    font-weight: 600;
+    transition: background-color 0.15s ease;
+}
+
+.cr-chat-dispatch-btn:hover {
+    background: #000000;
+}
+
+@media (max-width: 480px) {
+    .cr-assistant-trigger { bottom: 16px; right: 16px; }
+    .cr-chat-window {
+        bottom: 84px;
+        right: 16px;
+        width: calc(100% - 32px);
+        height: calc(100vh - 120px);
+    }
+}
+</style>
+
+<button class="cr-assistant-trigger" id="crAssistantToggle" onclick="toggleAssistantInterface()" aria-label="Toggle Systems Assistant Panel">
+    <svg id="crIconOpen" viewBox="0 0 24 24"><path d="M21 15a2 2 0 0 1-2 2H7l-4 4V5a2 2 0 0 1 2-2h14a2 2 0 0 1 2 2z"></path></svg>
+    <svg id="crIconClose" viewBox="0 0 24 24" style="display:none;"><line x1="18" y1="6" x2="6" y2="18"></line><line x1="6" y1="6" x2="18" y2="18"></line></svg>
+</button>
+
+<div class="cr-chat-window" id="crChatWindow">
+    <div class="cr-chat-header">
+        <div class="cr-chat-meta-block">
+            <h4>System Assistant</h4>
+            <p>SYS_OK // NODE_01</p>
+        </div>
+        <a href="sales.html" class="cr-chat-sales-anchor">Contact Sales</a>
+    </div>
+
+    <div class="cr-chat-body" id="crChatBody">
+        <div class="cr-chat-msg cr-chat-msg--bot">
+            System initialization complete. Accessing Cronos service metrics repository. How can I assist you with your architecture parameters today?
+        </div>
+        <div class="cr-chat-msg cr-chat-msg--bot">
+            <strong>Select an index topic or query directly:</strong>
+            <div class="cr-chat-options-block">
+                <button class="cr-chat-option-pill" onclick="triggerPresetQuery('How do platform scope multipliers calculate?')">Understanding Scope Multipliers</button>
+                <button class="cr-chat-option-pill" onclick="triggerPresetQuery('What parameters define an AI Chatbot project?')">AI Powered Chatbot Specs</button>
+                <button class="cr-chat-option-pill" onclick="triggerPresetQuery('What are the execution terms for the R8,500 SLA support?')">SLA Support Infrastructure</button>
+            </div>
+        </div>
+    </div>
+
+    <div class="cr-chat-footer">
+        <input type="text" class="cr-chat-input-element" id="crChatInput" placeholder="Enter system query parameter..." onkeydown="handleChatInputKey(event)">
+        <button class="cr-chat-dispatch-btn" onclick="executeUserTransmission()">Send</button>
+    </div>
+</div>
+
+<script>
+    /* ─── TECHNICAL ASSISTANT CORE CONTROLLER ENGINE ─── */
+const RUNTIME_KNOWLEDGE_MATRIX = {
+    chatbot: "Our AI Powered Chatbots deploy custom natural language parsing pipelines isolated cleanly to your parameters. Base deployment values initialize at R45,000, covering full core configurations tailored to support corporate throughput.",
+    pwa: "Progressive Web Apps (PWA) focus entirely on responsive layout structures without heavy framing weights. This includes native offline tracking modules and prompt architectures starting at a base scope of R35,000.",
+    multipliers: "Step 2 multipliers account for environmental engineering complexity. Standard Single Instance stacks utilize a standard 1.0 baseline. Multi-tenant clusters scale the values by 1.5, and High-Availability Corporate Clusters compute at 2.2 due to redundant database requirements.",
+    sla: "The Dedicated Priority Support SLA handles physical management and continuous validation routines for R8,500 / month. It includes zero-downtime diagnostic loops and rapid remote engineering interventions.",
+    pricing: "Because high-density infrastructures differ wildly based on usage criteria, we look at modular scope specifications inside this configurator engine rather than using flat pricing arrays. This offers explicit cost definitions.",
+    fallback: "System can process structural parameters for apps, cloud instances, and brand layouts. Adjust options inside the Project Configurator workspace grid or direct queries through the 'Contact Sales' pipeline above."
+};
+
+function toggleAssistantInterface() {
+    const windowNode = document.getElementById('crChatWindow');
+    const openGraphic = document.getElementById('crIconOpen');
+    const closeGraphic = document.getElementById('crIconClose');
+
+    if (windowNode.classList.contains('cr-open')) {
+        windowNode.classList.remove('cr-open');
+        openGraphic.style.display = 'block';
+        closeGraphic.style.display = 'none';
+    } else {
+        windowNode.classList.add('cr-open');
+        openGraphic.style.display = 'none';
+        closeGraphic.style.display = 'block';
+        setTimeout(() => { document.getElementById('crChatInput').focus(); }, 100);
+    }
+}
+
+function handleChatInputKey(event) {
+    if (event.key === 'Enter') {
+        executeUserTransmission();
+    }
+}
+
+function triggerPresetQuery(textPhrase) {
+    postMessageNode(textPhrase, 'user');
+    evaluateEngineResponse(textPhrase);
+}
+
+function executeUserTransmission() {
+    const inputField = document.getElementById('crChatInput');
+    const filteredText = inputField.value.trim();
+    if (!filteredText) return;
+
+    postMessageNode(filteredText, 'user');
+    inputField.value = '';
+
+    setTimeout(() => {
+        evaluateEngineResponse(filteredText);
+    }, 400);
+}
+
+function postMessageNode(messageText, styleContext) {
+    const messageCanvas = document.getElementById('crChatBody');
+    const creationNode = document.createElement('div');
+    creationNode.className = `cr-chat-msg cr-chat-msg--${styleContext}`;
+    creationNode.innerHTML = messageText;
+    messageCanvas.appendChild(creationNode);
+    messageCanvas.scrollTop = messageCanvas.scrollHeight;
+}
+
+function evaluateEngineResponse(rawInputText) {
+    const normalizedText = rawInputText.toLowerCase();
+    let computedOutput = RUNTIME_KNOWLEDGE_MATRIX.fallback;
+
+    if (normalizedText.includes('chatbot') || normalizedText.includes('bot') || normalizedText.includes('ai')) {
+        computedOutput = RUNTIME_KNOWLEDGE_MATRIX.chatbot;
+    } else if (normalizedText.includes('pwa') || normalizedText.includes('progressive') || normalizedText.includes('app')) {
+        computedOutput = RUNTIME_KNOWLEDGE_MATRIX.pwa;
+    } else if (normalizedText.includes('multiplier') || normalizedText.includes('scale') || normalizedText.includes('complexity')) {
+        computedOutput = RUNTIME_KNOWLEDGE_MATRIX.multipliers;
+    } else if (normalizedText.includes('sla') || normalizedText.includes('support') || normalizedText.includes('management')) {
+        computedOutput = RUNTIME_KNOWLEDGE_MATRIX.sla;
+    } else if (normalizedText.includes('price') || normalizedText.includes('cost') || normalizedText.includes('pricing')) {
+        computedOutput = RUNTIME_KNOWLEDGE_MATRIX.pricing;
+    }
+
+    postMessageNode(computedOutput, 'bot');
+}
+</script>
