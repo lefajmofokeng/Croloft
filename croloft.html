@@ -1,0 +1,1860 @@
+<!DOCTYPE html>
+<html lang="en" dir="ltr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, minimum-scale=1.0, maximum-scale=5.0, viewport-fit=cover, shrink-to-fit=no">
+    <meta http-equiv="x-ua-compatible" content="ie=edge"/>
+    
+    <title>Cronos</title>
+
+    <!-- WEB TAB ICON -->
+    <link rel="icon" type="image/png" href="thumbnails/top-1.png">
+
+    <style>
+      @font-face { font-family:'Circular Std'; src:url('fonts/CircularStd-Book.woff2') format('woff2'),url('fonts/CircularStd-Book.woff') format('woff'); font-weight:400; font-style:normal; font-display:swap; }
+  @font-face { font-family:'Circular Std'; src:url('fonts/CircularStd-BookItalic.woff2') format('woff2'),url('fonts/CircularStd-BookItalic.woff') format('woff'); font-weight:400; font-style:italic; font-display:swap; }
+  @font-face { font-family:'Circular Std'; src:url('fonts/CircularStd-Medium.woff2') format('woff2'),url('fonts/CircularStd-Medium.woff') format('woff'); font-weight:500; font-style:normal; font-display:swap; }
+  @font-face { font-family:'Circular Std'; src:url('fonts/CircularStd-Bold.woff2') format('woff2'),url('fonts/CircularStd-Bold.woff') format('woff'); font-weight:600; font-style:normal; font-display:swap; }
+  @font-face { font-family:'Circular Std'; src:url('fonts/CircularStd-Bold.woff2') format('woff2'),url('fonts/CircularStd-Bold.woff') format('woff'); font-weight:700; font-style:normal; font-display:swap; }
+  @font-face { font-family:'Circular Std'; src:url('fonts/CircularStd-Black.woff2') format('woff2'),url('fonts/CircularStd-Black.woff') format('woff'); font-weight:800; font-style:normal; font-display:swap; }
+  @font-face { font-family:'Circular Std'; src:url('fonts/CircularStd-Black.woff2') format('woff2'),url('fonts/CircularStd-Black.woff') format('woff'); font-weight:900; font-style:normal; font-display:swap; }
+    </style>
+</head>
+
+
+
+
+
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>My Website</title>
+    
+    <script src="header.js" defer></script>
+    <script src="footer.js" defer></script> 
+</head>
+<body>
+
+    <cronos-header></cronos-header>
+    
+
+</body>
+</html>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Graphic Design & Brand Systems — Defcon</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        :root {
+            --defcon-navy: #0b142600;
+            --defcon-blue: #0091ff;
+            --defcon-light-gray: #f4f4f4;
+            --defcon-border-color: #0b1426;
+            --defcon-muted: #64748b;
+            --defcon-white: #ffffff;
+            --font-family-inter: 'Circular Std', sans-serif;
+            --content-max-width: 1200px;
+        }
+
+        body {
+            font-family: var(--font-family-inter);
+            background-color: var(--defcon-white);
+            color: var(--defcon-navy);
+            -webkit-font-smoothing: antialiased;
+            overflow-x: hidden;
+        }
+
+        /* ---------------------------------- */
+        /* Immersive Kinetic Mouse Matrix     */
+        /* ---------------------------------- */
+        #defcon-interactive-matrix {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100vw;
+            height: 100vh;
+            pointer-events: none;
+            z-index: 9999;
+            mix-blend-mode: difference;
+        }
+
+        .defcon-matrix-pointer {
+            position: absolute;
+            width: 20px;
+            height: 20px;
+            border: 1px solid var(--defcon-blue);
+            border-radius: 50%;
+            transform: translate(-50%, -50%);
+            transition: width 0.3s cubic-bezier(0.1, 0.8, 0.3, 1), height 0.3s cubic-bezier(0.1, 0.8, 0.3, 1);
+            will-change: left, top, width, height;
+        }
+
+        /* ---------------------------------- */
+        /* Background Video Hero Framework   */
+        /* ---------------------------------- */
+        .defcon-video-hero {
+            width: 100%;
+            height: 100vh;
+            min-height: 550px;
+            position: relative;
+            color: var(--defcon-white);
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            overflow: hidden;
+            border-bottom: 1px solid var(--defcon-navy);
+        }
+
+        /* Ambient Blue Grading Overlay Over Video */
+        .defcon-video-hero::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: radial-gradient(circle at 50% 30%, rgba(0, 145, 255, 0.005) 0%, rgba(11, 20, 38, 0.86) 80%), linear-gradient(180deg, rgba(2, 103, 204, 0) 0%, var(--defcon-navy) 100%);
+            z-index: 2;
+        }
+
+        .defcon-hero-video-asset {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            z-index: 1;
+        }
+
+        .defcon-hero-content {
+            width: 90%;
+            max-width: var(--content-max-width);
+            position: relative;
+            z-index: 3;
+            display: flex;
+            flex-direction: column;
+            gap: 24px; padding: 0 20px; 
+        }
+
+        .defcon-video-hero h1 {
+            font-size: 3rem;
+            font-weight: 500;
+            line-height: 1.2;
+            max-width: 800px;
+        }
+
+        .defcon-hero-content p {
+            font-size: 1.2rem;
+            line-height: 1.6;
+            color: rgba(255, 255, 255, 0.8);
+            max-width: 750px; font-weight: 400;
+        }
+
+     
+        /* ---------------------------------- */
+        /* Responsive Framework Adjustments   */
+        /* ---------------------------------- */
+        @media (max-width: 960px) {
+            .defcon-video-hero h1 {
+                font-size: 3.5rem;
+            }
+
+            .defcon-exhibition-row {
+                grid-template-columns: 1fr;
+                gap: 40px;
+            }
+
+            .defcon-exhibition-row:nth-child(even) .defcon-row-media-box {
+                order: 0;
+            }
+
+            .defcon-console-panel {
+                flex-direction: column;
+                align-items: flex-start;
+                gap: 40px;
+                padding: 40px;
+            }
+
+            .defcon-btn-console {
+                width: 100%;
+                text-align: center;
+            }
+        }
+
+        @media (max-width: 600px) {
+            .defcon-video-hero h1 {
+                font-size: 2.6rem;
+            }
+
+            .defcon-row-text-container h2 {
+                font-size: 1.8rem;
+            }
+        }
+    </style>
+</head>
+<body>
+
+<!-- Interactive Matrix Pointer Layer -->
+<div id="defcon-interactive-matrix">
+    <div class="defcon-matrix-pointer" id="matrix-node"></div>
+</div>
+
+<!-- Background Video Hero Frame -->
+<header class="defcon-video-hero">
+    <!-- Replace source URL with your specific background video stream (.mp4 / .webm) -->
+    <video class="defcon-hero-video-asset" autoplay loop muted playsinline>
+        <source src="videos/background-video3.mp4" type="video/mp4">
+    </video>
+    
+    <div class="defcon-hero-content">
+        <h1>The new standard<br>inbusiness technology.</h1>
+    </div>
+</header>
+
+
+<script>
+    // Kinetic Tracking Matrix Logic
+    const node = document.getElementById('matrix-node');
+    let targetX = 0, targetY = 0;
+    let currentX = 0, currentY = 0;
+    let scrollVelocity = 0;
+    let lastScrollTop = 0;
+
+    // Capture cursor absolute coordinates
+    window.addEventListener('mousemove', (e) => {
+        targetX = e.clientX;
+        targetY = e.clientY;
+    });
+
+    // Capture scrolling delta metrics to mutate matrix weight
+    window.addEventListener('scroll', () => {
+        const st = window.pageYOffset || document.documentElement.scrollTop;
+        scrollVelocity = Math.abs(st - lastScrollTop);
+        lastScrollTop = st <= 0 ? 0 : st;
+
+        // Momentarily expand node scale on intense scroll velocity
+        if(scrollVelocity > 5) {
+            node.style.width = `${20 + Math.min(scrollVelocity * 0.8, 60)}px`;
+            node.style.height = `${20 + Math.min(scrollVelocity * 0.8, 60)}px`;
+            node.style.backgroundColor = 'rgba(0, 145, 255, 0.1)';
+        }
+    });
+
+    // Precision Lerp Tick Loop for high-performance animation tracking
+    function MatrixRenderTick() {
+        // Smooth linear interpolation (lerp) formulation
+        currentX += (targetX - currentX) * 0.12;
+        currentY += (targetY - currentY) * 0.12;
+
+        node.style.left = `${currentX}px`;
+        node.style.top = `${currentY}px`;
+
+        // Decay velocity scale expansion smoothly back to base dimension parameters
+        const computedWidth = parseFloat(node.style.width) || 20;
+        if (computedWidth > 20) {
+            const decayedSize = computedWidth - 1.5;
+            node.style.width = `${Math.max(decayedSize, 20)}px`;
+            node.style.height = `${Math.max(decayedSize, 20)}px`;
+        } else {
+            node.style.backgroundColor = 'transparent';
+        }
+
+        requestAnimationFrame(MatrixRenderTick);
+    }
+
+    // Initialize animation execution stream
+    requestAnimationFrame(MatrixRenderTick);
+</script>
+
+</body>
+</html>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Detailed Feature Breakdown</title>
+    <!-- Load Inter Font -->
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@100..900&display=swap" rel="stylesheet">
+    <style>
+        /* =========================================
+           A. GLOBAL & BASE STYLES
+           ========================================= */
+        :root {
+            --qa-color-primary-text: #010119;
+            --qa-color-accent: #1199fA;
+            --qa-color-light-bg: #f4f4f4;
+            --qa-color-white: #fff;
+            --qa-color-line: #e5e5e5;
+            --qa-font-family: 'Circular Std', sans-serif;
+        }
+
+        body {
+            font-family: var(--qa-font-family);
+            background-color: var(--qa-color-white);
+            color: var(--qa-color-primary-text);
+            line-height: 1.6;
+            margin: 0;
+        }
+
+        .qa-container {
+            width: 90%;
+            max-width: 1200px;
+            margin: 4rem auto;
+            padding: 2rem 20px;
+        }
+
+        .qa-title {
+            font-size: 40px;
+            font-weight: 500;
+            margin-bottom: 3rem;
+            line-height: 1.1;
+        }
+
+        /* =========================================
+           B. LAYOUT (Two-Column Grid)
+           ========================================= */
+
+        .qa-content-wrapper {
+            display: grid;
+            grid-template-columns: 1fr 1fr; /* Two equal columns on desktop */
+            gap: 5rem;
+            align-items: start;
+        }
+
+        .qa-text-column {
+            font-size: 1.1rem;
+            padding-right: 2rem;
+        }
+
+        /* =========================================
+           C. ACCORDION STYLES (Right Column)
+           ========================================= */
+
+        .qa-accordion-item {
+            border-bottom: 1px solid var(--qa-color-line);
+            padding: 1.2rem 0;
+            cursor: pointer;
+        }
+
+        .qa-accordion-header {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            font-size: 1.5rem;
+            font-weight: 500;
+            color: var(--qa-color-primary-text);
+            transition: color 0.2s ease;
+        }
+        
+        .qa-accordion-header:hover {
+            color: var(--qa-color-accent);
+        }
+
+        .qa-toggle-icon {
+            font-size: 2rem;
+            font-weight: 400;
+            color: var(--qa-color-accent);
+            line-height: 1;
+            transform: rotate(0deg);
+            transition: transform 0.3s ease;
+        }
+        
+        /* State change for active (open) accordion */
+        .qa-accordion-item.qa-active .qa-toggle-icon {
+            transform: rotate(45deg); /* Plus becomes an 'X' or rotates */
+        }
+        .qa-accordion-item.qa-active .qa-accordion-header {
+            color: var(--qa-color-accent);
+        }
+        
+        .qa-accordion-body {
+            max-height: 0;
+            overflow: hidden;
+            padding-top: 0;
+            transition: max-height 0.2s ease-out, padding-top 0.2s ease-out;
+            color: #444; /* Slightly lighter text for body */
+            font-size: 1.1rem;
+        }
+
+        .qa-accordion-item.qa-active .qa-accordion-body {
+            max-height: 500px; /* Adjust based on max content size */
+            margin-top: 1rem;
+            transition: max-height 0.2s ease-in, padding-top 0.2s ease-in;
+        }
+        
+        /* =========================================
+           D. MOBILE RESPONSIVENESS
+           ========================================= */
+        @media (max-width: 900px) {
+            .qa-content-wrapper {
+                grid-template-columns: 1fr; /* Stack columns on mobile */
+                gap: 3rem;
+            }
+            .qa-title {
+                font-size: 2.5rem;
+                margin-bottom: 2rem;
+            }
+            .qa-text-column {
+                padding-right: 0;
+            }
+            .qa-accordion-header {
+                font-size: 1.15rem;
+            }
+        }
+    </style>
+</head>
+<body>
+
+    <div class="qa-container">
+        
+        <!-- MAIN TITLE (Aligned with the left text column) -->
+        <h1 class="qa-title">
+            What is Croloft?
+        </h1>
+
+        <div class="qa-content-wrapper">
+            
+            <!-- LEFT COLUMN: Introductory Text -->
+            <div class="qa-text-column">
+                <p class="qa-intro-text">
+                    Cronos is an all-in-one technology suite engineered to power modern organizations. We seamlessly unify intelligent software engineering, premium IT infrastructure management, and a dynamic creative studio to turn your complex technical operational challenges into streamlined business growth.
+                </p>
+
+            </div>
+
+            <!-- RIGHT COLUMN: Interactive Accordion/FAQ -->
+            <div class="qa-accordion-column">
+                
+                <!-- ACCORDION ITEM 1 -->
+                <div class="qa-accordion-item" data-index="1">
+                    <div class="qa-accordion-header">
+                        Benefits of staking your crypto on-chain
+                        <span class="qa-toggle-icon">+</span>
+                    </div>
+                    <div class="qa-accordion-body">
+                        <p>Staking provides network security, earns passive income, and is generally more environmentally friendly than traditional Proof-of-Work mining. It allows you to contribute directly to the decentralized governance and operation of the protocol.</p>
+                    </div>
+                </div>
+
+                <!-- ACCORDION ITEM 2 -->
+                <div class="qa-accordion-item" data-index="2">
+                    <div class="qa-accordion-header">
+                        How staking works
+                        <span class="qa-toggle-icon">+</span>
+                    </div>
+                    <div class="qa-accordion-body">
+                        <p>In a Proof-of-Stake system, validators lock up (stake) a certain amount of the cryptocurrency as collateral. The protocol then randomly selects validators to propose and attest to new blocks, rewarding them with new coins or transaction fees for their honest work.</p>
+                    </div>
+                </div>
+
+                <!-- ACCORDION ITEM 3 -->
+                <div class="qa-accordion-item" data-index="3">
+                    <div class="qa-accordion-header">
+                        Considerations when staking crypto on-chain
+                        <span class="qa-toggle-icon">+</span>
+                    </div>
+                    <div class="qa-accordion-body">
+                        <p>Key considerations include the 'lock-up' period (the time your funds are inaccessible), the risk of 'slashing' (losing staked funds due to validator misconduct), and the liquidity of your staked asset. Always research the protocol's reputation and underlying security mechanisms.</p>
+                    </div>
+                </div>
+
+                <!-- ACCORDION ITEM 4 -->
+                <div class="qa-accordion-item" data-index="4">
+                    <div class="qa-accordion-header">
+                        Is on-chain staking for you?
+                        <span class="qa-toggle-icon">+</span>
+                    </div>
+                    <div class="qa-accordion-body">
+                        <p>Staking is ideal for long-term holders comfortable with the volatility of crypto assets and willing to commit their holdings for periods of time to earn rewards. If you require instant access to your funds, liquid staking solutions or other investment methods might be preferable.</p>
+                    </div>
+                </div>
+                
+            </div>
+        </div>
+    </div>
+
+    <script>
+        // =========================================
+        // JAVASCRIPT: ACCORDION INTERACTIVITY
+        // =========================================
+        document.addEventListener('DOMContentLoaded', () => {
+            const items = document.querySelectorAll('.qa-accordion-item');
+
+            items.forEach(item => {
+                item.addEventListener('click', () => {
+                    // Check if the current item is already active
+                    const isActive = item.classList.contains('qa-active');
+
+                    // Close all other items (optional: uncomment to allow only one open at a time)
+                    items.forEach(i => {
+                        if (i !== item) {
+                            i.classList.remove('qa-active');
+                            i.querySelector('.qa-accordion-body').style.maxHeight = 0;
+                        }
+                    });
+
+                    // Toggle the clicked item
+                    if (!isActive) {
+                        item.classList.add('qa-active');
+                        // Calculate content height dynamically for smooth transition
+                        const body = item.querySelector('.qa-accordion-body');
+                        // Set maxHeight to scrollHeight to ensure content fits
+                        body.style.maxHeight = body.scrollHeight + "px"; 
+                    } else {
+                        item.classList.remove('qa-active');
+                        item.querySelector('.qa-accordion-body').style.maxHeight = 0;
+                    }
+                });
+            });
+            
+            // To ensure the max-height works correctly on load/resize,
+            // we initialize the closed state visually:
+            items.forEach(item => {
+                item.querySelector('.qa-accordion-body').style.maxHeight = 0;
+            });
+        });
+    </script>
+</body>
+</html>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<title>IT Managed Services Section</title>
+
+<style>
+@import url('https://fonts.googleapis.com/css2?family=DM+Sans:ital,opsz,wght@0,9..40,300;0,9..40,400;0,9..40,500;0,9..40,600;0,9..40,700;1,9..40,400&display=swap');
+
+/* ─── scoped reset ─── */
+.ims-root *,
+.ims-root *::before,
+.ims-root *::after {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+}
+
+* {
+  padding: 0;
+  margin: 0;
+  box-sizing: border-box;
+}
+
+/* ─── root ─── */
+.ims-root {
+  font-family: 'Circular Std', 'DM Sans', -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+  background: #ffffff;
+  color: #111827;
+  width: 100%;
+}
+
+/* ─── container ─── */
+.ims-container {
+  max-width: 1200px;
+  margin: 0 auto;
+  padding: 0 20px;
+}
+
+/* ══════════════════════════════════
+   INTRO
+══════════════════════════════════ */
+.ims-intro {
+  padding: 80px 0 52px;
+}
+
+.ims-intro__heading {
+  font-size: clamp(24px, 3.2vw, 40px);
+  font-weight: 500;
+  line-height: 1.12;
+  color: #111827;
+}
+
+/* ══════════════════════════════════
+   VIDEO
+══════════════════════════════════ */
+.ims-video-outer {
+  margin-bottom: 88px;
+  border-radius: 14px;
+  position: relative;
+  display: block;
+  transition: box-shadow 0.5s ease;
+}
+
+/* Rainbow shadow on hover */
+.ims-video-outer:hover {
+  animation: ims-rainbow-shadow 2s linear infinite;
+}
+
+@keyframes ims-rainbow-shadow {
+  0% {
+    box-shadow: 0 5px 30px 10px rgb(255, 0, 85), 0 10px 30px -15px rgb(123, 0, 255);
+}
+20% {
+    box-shadow: 0 5px 30px 10px rgba(123, 0, 255, 0.977), 0 10px 20px -15px rgb(0, 145, 255);
+}
+40% {
+    box-shadow: 0 5px 30px 10px rgba(0, 145, 255, 0.989), 0 10px 20px -15px rgb(0, 255, 170);
+}
+60% {
+    box-shadow: 0 5px 30px 10px rgba(0, 255, 170, 0.963), 0 10px 20px -15px rgb(255, 204, 0);
+}
+80% {
+    box-shadow: 0 5px 20px 10px rgba(255, 204, 0, 0.997), 0 10px 20px -15px rgb(255, 0, 85);
+}
+100% {
+    box-shadow: 0 5px 20px 10px rgb(255, 0, 85), 0 10px 30px -15px rgb(123, 0, 255);
+}
+}
+
+/* ─ Thumbnail wrapper — shown by default ─ */
+.ims-video-thumb {
+  position: relative;
+  width: 100%;
+  border-radius: 14px;
+  overflow: hidden;
+  cursor: pointer;
+  display: block;
+  background: #0d1117;
+}
+
+.ims-video-thumb::before {
+  content: '';
+  display: block;
+  padding-top: 52.08%; /* 1200:625 ratio */
+}
+
+.ims-video-thumb__img {
+  position: absolute;
+  inset: 0;
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  display: block;
+  /* Dark overlay so play button reads cleanly */
+  filter: brightness(0.78);
+  transition: filter 0.3s ease;
+}
+
+.ims-video-thumb:hover .ims-video-thumb__img {
+  filter: brightness(0.65);
+}
+
+/* ─── Play pill ─── */
+.ims-video-play {
+  position: absolute;
+  bottom: 20px;
+  left: 20px;
+  height: 44px;
+  border-radius: 22px;
+  background: rgba(0, 0, 0, 0.78);
+  border: none;
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  overflow: hidden;
+  z-index: 2;
+  /* Start at circle width, expand on hover */
+  width: 44px;
+  transition: width 0.3s cubic-bezier(0.4, 0, 0.2, 1), background 0.2s ease;
+  white-space: nowrap;
+}
+
+.ims-video-play:hover {
+  background: rgba(0, 0, 0, 0.92);
+  width: 148px; /* icon + text */
+}
+
+/* Icon circle — fixed, always visible */
+.ims-play-icon {
+  width: 44px;
+  height: 44px;
+  flex-shrink: 0;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.ims-play-icon svg {
+  width: 18px;
+  height: 18px;
+  margin-left: 3px;
+}
+
+/* "Play video" label — slides in */
+.ims-play-label {
+  font-size: 13px;
+  font-weight: 600;
+  color: #ffffff;
+  letter-spacing: 0.1px;
+  opacity: 0;
+  transform: translateX(-6px);
+  transition: opacity 0.2s ease 0.08s, transform 0.2s ease 0.08s;
+  padding-right: 14px;
+  font-family: 'Circular Std', 'DM Sans', sans-serif;
+}
+
+.ims-video-play:hover .ims-play-label {
+  opacity: 1;
+  transform: translateX(0);
+}
+
+/* ─ YouTube iframe — hidden until play clicked ─ */
+.ims-video-iframe-wrap {
+  position: relative;
+  width: 100%;
+  border-radius: 14px;
+  overflow: hidden;
+  display: none;
+}
+
+.ims-video-iframe-wrap::before {
+  content: '';
+  display: block;
+  padding-top: 52.08%;
+}
+
+.ims-video-iframe-wrap iframe {
+  position: absolute;
+  inset: 0;
+  width: 100%;
+  height: 100%;
+  border: none;
+  display: block;
+}
+
+/* Active state */
+.ims-video-outer.ims-playing .ims-video-thumb {
+  display: none;
+}
+.ims-video-outer.ims-playing .ims-video-iframe-wrap {
+  display: block;
+}
+
+/* ══════════════════════════════════
+   ROLE CARDS SECTION
+══════════════════════════════════ */
+.ims-roles {
+  padding-bottom: 96px;
+}
+
+.ims-roles__heading {
+  font-size: clamp(19px, 2.4vw, 50px);
+  font-weight: 500;
+  color: #111827;
+  margin-bottom: 36px;
+  letter-spacing: -0.3px;
+}
+
+/* 3-column grid matching screenshot exactly */
+.ims-grid {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 25px;
+}
+
+/* ─── Card ─── */
+.ims-card {
+  position: relative;
+  border-radius: 14px;
+  padding: 28px 26px 26px;
+  min-height: 300px;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  background: #f4f4f4;
+  cursor: pointer;
+  overflow: hidden;
+  transition:
+    transform 0.22s ease,
+    border-color 0.3s ease;
+}
+
+/* Rainbow shadow — not border — on card hover */
+.ims-card:hover {
+  border-color: transparent;
+  animation: ims-card-rainbow 2s linear infinite;
+}
+
+@keyframes ims-card-rainbow {
+  0%   { box-shadow: 0 0 20px 2px rgba(255, 59, 59, 0.8); }
+  16%  { box-shadow: 0 0 20px 2px rgba(255, 149, 0, 0.8); }
+  33%  { box-shadow: 0 0 20px 2px rgba(255, 217, 0, 0.8); }
+  50%  { box-shadow: 0 0 20px 2px rgba(0, 199, 99, 0.8); }
+  66%  { box-shadow: 0 0 20px 2px rgba(0, 190, 219, 0.8); }
+  83%  { box-shadow: 0 0 20px 2px rgba(111, 60, 220, 0.8); }
+  100% { box-shadow: 0 0 20px 2px rgba(255, 59, 59, 0.8); }
+}
+
+/* Card top */
+.ims-card__top {
+  flex: 1;
+}
+
+.ims-card__title {
+  font-size: 25px;
+  font-weight: 500;
+  color: #111827;
+  margin-bottom: 11px;
+  letter-spacing: -0.2px;
+}
+
+.ims-card__desc {
+  font-size: 16px;
+  line-height: 1.68;
+  color: #6b7280;
+  font-weight: 400;
+}
+
+/* Card footer — arrow + sliding text as one unit */
+.ims-card__footer {
+  margin-top: 24px;
+  display: flex;
+  align-items: center;
+  overflow: hidden;
+}
+
+.ims-card__footer-text {
+  font-size: 17px;
+  font-weight: 500;
+  color: #111827;
+  white-space: nowrap;
+  max-width: 0;
+  opacity: 0;
+  transform: translateX(-10px);
+  transition:
+    max-width 0.32s cubic-bezier(0.4, 0, 0.2, 1),
+    opacity 0.22s ease,
+    transform 0.28s ease;
+  overflow: hidden;
+  letter-spacing: -0.1px;
+}
+
+.ims-card:hover .ims-card__footer-text {
+  max-width: 240px;
+  opacity: 1;
+  transform: translateX(0);
+}
+
+.ims-card__arrow {
+  font-size: 20px;
+  color: #111827;
+  display: inline-block;
+  line-height: 1;
+  font-weight: 400;
+  flex-shrink: 0;
+  transition: transform 0.22s ease;
+}
+
+.ims-card:hover .ims-card__arrow {
+  transform: translateX(4px);
+}
+
+/* ══════════════════════════════════
+   RESPONSIVE
+══════════════════════════════════ */
+@media (max-width: 960px) {
+  .ims-grid {
+    grid-template-columns: repeat(2, 1fr);
+  }
+}
+
+@media (max-width: 640px) {
+  .ims-container {
+    padding: 0 20px;
+  }
+
+  .ims-intro {
+    padding: 56px 0 36px;
+  }
+
+  .ims-video-outer {
+    border-radius: 10px;
+    margin-bottom: 64px;
+  }
+
+  .ims-video-thumb {
+    border-radius: 10px;
+  }
+
+  .ims-video-iframe-wrap {
+    border-radius: 10px;
+  }
+
+  .ims-grid {
+    grid-template-columns: 1fr;
+    gap: 10px;
+  }
+
+  .ims-card {
+    min-height: 190px;
+  }
+
+  .ims-roles {
+    padding-bottom: 64px;
+  }
+
+  .ims-video-play {
+    bottom: 14px;
+    left: 14px;
+    width: 40px;
+    height: 40px;
+  }
+}
+</style>
+</head>
+<body>
+
+<section class="ims-root">
+  <div class="ims-container">
+
+    <!-- ── Intro text ── -->
+    <div class="ims-intro">
+      <h2 class="ims-intro__heading">Everything you need. One platform.</h2>
+    </div>
+
+    <!-- ── Video with thumbnail ── -->
+    <!--
+      HOW TO CUSTOMISE:
+      1. Replace the img src with your own thumbnail URL.
+      2. Replace data-video-id="dQw4w9WgXcQ" with your YouTube video ID.
+         The iframe is only created once the play button is clicked (no cookies loaded on page load).
+    -->
+    <div class="ims-video-outer" id="ims-video-outer">
+
+      <!-- Thumbnail (shown by default) -->
+      <div class="ims-video-thumb" id="ims-thumb">
+        <img
+          class="ims-video-thumb__img"
+          src="https://images.unsplash.com/photo-1558494949-ef010cbdcc31?w=1200&q=80&auto=format&fit=crop"
+          alt="IT operations team managing infrastructure"
+        />
+        <button
+          class="ims-video-play"
+          id="ims-play-btn"
+          aria-label="Play video"
+          data-video-id="videos/background-video3.mp4"
+        >
+          <span class="ims-play-icon">
+            <svg viewBox="0 0 24 24" fill="white" xmlns="http://www.w3.org/2000/svg">
+              <path d="M8 5.14v14.72a1 1 0 0 0 1.5.86l11-7.36a1 1 0 0 0 0-1.72l-11-7.36A1 1 0 0 0 8 5.14z"/>
+            </svg>
+          </span>
+          <span class="ims-play-label">Play video</span>
+        </button>
+      </div>
+
+      <!-- YouTube iframe (hidden until play is clicked) -->
+      <div class="ims-video-iframe-wrap" id="ims-iframe-wrap">
+        <!-- iframe injected by JS on play click -->
+      </div>
+
+    </div>
+
+    <!-- ── Role cards ── -->
+    <div class="ims-roles">
+      <h2 class="ims-roles__heading">How can Vetted support your IT staffing needs?</h2>
+
+      <div class="ims-grid">
+
+        <div class="ims-card">
+          <div class="ims-card__top">
+            <div class="ims-card__title">Helpdesk &amp; IT Support</div>
+            <p class="ims-card__desc">
+              Hire Tier 1–3 support analysts and helpdesk engineers who reduce ticket resolution times and keep end users productive across every department.
+            </p>
+          </div>
+          <div class="ims-card__footer">
+            <span class="ims-card__footer-text">Hire the right support team</span>
+            <span class="ims-card__arrow">→</span>
+          </div>
+        </div>
+
+        <div class="ims-card">
+          <div class="ims-card__top">
+            <div class="ims-card__title">NOC &amp; Infrastructure</div>
+            <p class="ims-card__desc">
+              Source network operations centre engineers and infrastructure specialists who monitor, maintain, and respond to critical system events around the clock.
+            </p>
+          </div>
+          <div class="ims-card__footer">
+            <span class="ims-card__footer-text">Keep systems online with expert NOC engineers</span>
+            <span class="ims-card__arrow">→</span>
+          </div>
+        </div>
+
+        <div class="ims-card">
+          <div class="ims-card__top">
+            <div class="ims-card__title">Managed Services (MSP)</div>
+            <p class="ims-card__desc">
+              Find service delivery managers, client-side IT coordinators, and field engineers experienced in multi-tenant MSP environments and SLA-driven operations.
+            </p>
+          </div>
+          <div class="ims-card__footer">
+            <span class="ims-card__footer-text">Scale your MSP practice with verified talent</span>
+            <span class="ims-card__arrow">→</span>
+          </div>
+        </div>
+
+        <div class="ims-card">
+          <div class="ims-card__top">
+            <div class="ims-card__title">Cybersecurity Operations</div>
+            <p class="ims-card__desc">
+              Recruit SOC analysts, incident responders, and security engineers who can protect your clients' environments before threats become breaches.
+            </p>
+          </div>
+          <div class="ims-card__footer">
+            <span class="ims-card__footer-text">Defend your clients with proven security hires</span>
+            <span class="ims-card__arrow">→</span>
+          </div>
+        </div>
+
+        <div class="ims-card">
+          <div class="ims-card__top">
+            <div class="ims-card__title">Cloud &amp; Systems Admin</div>
+            <p class="ims-card__desc">
+              Connect with Azure, AWS, and GCP administrators who provision, configure, and maintain cloud workloads for enterprise and mid-market clients.
+            </p>
+          </div>
+          <div class="ims-card__footer">
+            <span class="ims-card__footer-text">Modernise your cloud ops with the right admin</span>
+            <span class="ims-card__arrow">→</span>
+          </div>
+        </div>
+
+        <div class="ims-card">
+          <div class="ims-card__top">
+            <div class="ims-card__title">Field &amp; Onsite Support</div>
+            <p class="ims-card__desc">
+              Staff your field operations with hardware technicians, onsite support engineers, and desktop rollout specialists available across all nine provinces.
+            </p>
+          </div>
+          <div class="ims-card__footer">
+            <span class="ims-card__footer-text">Put the right hands on the ground, anywhere</span>
+            <span class="ims-card__arrow">→</span>
+          </div>
+        </div>
+
+      </div>
+    </div>
+
+  </div>
+</section>
+
+<script>
+(function () {
+  var playBtn = document.getElementById('ims-play-btn');
+  var outer   = document.getElementById('ims-video-outer');
+  var iframeW = document.getElementById('ims-iframe-wrap');
+
+  if (!playBtn) return;
+
+  playBtn.addEventListener('click', function () {
+    var videoId = playBtn.getAttribute('data-video-id');
+    if (!videoId) return;
+
+    /* Build iframe only on click — no cookies/requests loaded on page load */
+    var iframe = document.createElement('iframe');
+    iframe.src = 'https://www.youtube.com/watch?v=DYHCG6G5R_k' + videoId + '?autoplay=1&rel=0&modestbranding=1&color=white';
+    iframe.title = 'Video player';
+    iframe.allow = 'accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share';
+    iframe.allowFullscreen = true;
+    iframeW.appendChild(iframe);
+
+    /* Swap thumbnail → iframe */
+    outer.classList.add('ims-playing');
+  });
+}());
+</script>
+
+</body>
+</html>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<!-- IT Business Solutions Component -->
+<div class="w11c-wrapper">
+  
+  <!-- Header Section -->
+  <header class="w11c-header">
+    <h1 class="w11c-main-title">Scale your enterprise infrastructure</h1>
+    <p class="w11c-subtitle">
+      Deploy robust IT environments with optimal performance at the ready. Embrace modern cloud architectures to secure and refine your digital enterprise.
+    </p>
+    <a href="#" class="w11c-btn-primary">Explore Solutions</a>
+  </header>
+
+  <!-- Features Grid -->
+  <div class="w11c-grid">
+    
+    <!-- Card 1: Managed Security -->
+    <div class="w11c-card">
+      <div class="w11c-icon-container">
+        <!-- Cybersecurity Shield & Check Icon -->
+        <svg class="w11c-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round">
+          <path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/>
+          <path d="m9 11 2 2 4-4"/>
+        </svg>
+      </div>
+      <div class="w11c-card-content">
+        <h2 class="w11c-card-title">Managed cybersecurity</h2>
+        <p class="w11c-card-text">
+          Before a threat even reaches your network, our active monitoring is at work. Safeguard your infrastructure from phishing, ransomware, and zero-day cyber-attacks.
+        </p>
+        <a href="#" class="w11c-link">
+          Learn more 
+          <span class="w11c-arrow">&gt;</span>
+        </a>
+      </div>
+    </div>
+
+    <!-- Card 2: Hybrid Workspace -->
+    <div class="w11c-card">
+      <div class="w11c-icon-container">
+        <!-- Hybrid Network / Users Icon -->
+        <svg class="w11c-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round">
+          <path d="M16 21v-2a4 4 0 0 0-4-4H6a4 4 0 0 0-4 4v2"/>
+          <circle cx="9" cy="7" r="4"/>
+          <path d="M22 21v-2a4 4 0 0 0-3-3.87"/>
+          <path d="M16 3.13a4 4 0 0 1 0 7.75"/>
+        </svg>
+      </div>
+      <div class="w11c-card-content">
+        <h2 class="w11c-card-title">Hybrid work infrastructure</h2>
+        <p class="w11c-card-text">
+          Connect your remote workforce seamlessly. Adapt your digital ecosystems to your unique operational and visual needs. Our architecture is made for uptime, and for the teams you manage.
+        </p>
+        <a href="#" class="w11c-link">
+          Learn more 
+          <span class="w11c-arrow">&gt;</span>
+        </a>
+      </div>
+    </div>
+
+    <!-- Card 3: Cloud Optimization -->
+    <div class="w11c-card">
+      <div class="w11c-icon-container">
+        <!-- Cloud Server Icon -->
+        <svg class="w11c-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round">
+          <path d="M20 16.58A5 5 0 0 0 18 7h-1.26A8 8 0 1 0 4 15.25"/>
+          <path d="M8 16h.01"/>
+          <path d="M12 16h.01"/>
+          <path d="M16 16h.01"/>
+        </svg>
+      </div>
+      <div class="w11c-card-content">
+        <h2 class="w11c-card-title">Cloud never looked so good</h2>
+        <p class="w11c-card-text">
+          Immerse your business in a frictionless ecosystem with next-level performance, smoother database syncing, and natural microservice lighting. Run legacy and cloud-native applications together.
+        </p>
+        <a href="#" class="w11c-link">
+          Learn more 
+          <span class="w11c-arrow">&gt;</span>
+        </a>
+      </div>
+    </div>
+
+    <!-- Card 4: Business Intelligence -->
+    <div class="w11c-card">
+      <div class="w11c-icon-container">
+        <!-- Analytics/AI Intelligence Icon -->
+        <svg class="w11c-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round">
+          <line x1="18" x2="18" y1="20" y2="10"/>
+          <line x1="12" x2="12" y1="20" y2="4"/>
+          <line x1="6" x2="6" y1="20" y2="14"/>
+        </svg>
+      </div>
+      <div class="w11c-card-content">
+        <h2 class="w11c-card-title">Analytics meets intelligence</h2>
+        <p class="w11c-card-text">
+          Use enterprise AI to focus on the business metrics that matter most. Modernize your data pipelines and workflows with predictive reporting dashboards.
+        </p>
+        <a href="#" class="w11c-link">
+          Learn more 
+          <span class="w11c-arrow">&gt;</span>
+        </a>
+      </div>
+    </div>
+
+  </div>
+</div>
+
+<style>
+/* Encapsulated Component Styles */
+.w11c-wrapper {
+  font-family: 'Circular Std', -apple-system, BlinkMacSystemFont, Roboto, Helvetica, Arial, sans-serif;
+  max-width: 1200px;
+  margin: 0 auto;
+  padding: 100px 20px 170px 20px;
+  background-color: #ffffff;
+  color: #000000;
+  box-sizing: border-box;
+}
+
+.w11c-wrapper * {
+  box-sizing: border-box;
+}
+
+/* Header styling */
+.w11c-header {
+  text-align: center;
+  margin-bottom: 48px;
+}
+
+.w11c-main-title {
+  font-size: 45px;
+  font-weight: 500;
+  margin: 0 0 16px 0;
+}
+
+.w11c-subtitle {
+  font-size: 18px;
+  line-height: 1.5;
+  max-width: 800px;
+  margin: 0 auto 32px auto;
+  color: #111111;
+}
+
+.w11c-btn-primary {
+  display: inline-block;
+  background-color: #001A66; 
+  color: #ffffff;
+  padding: 12px 32px;
+  font-size: 16px;
+  font-weight: 400;
+  text-decoration: none;
+  border-radius: 60px;
+  transition: background-color 0.2s ease;
+}
+
+.w11c-btn-primary:hover {
+  background-color: #001144;
+}
+
+/* Grid Layout */
+.w11c-grid {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  gap: 24px;
+}
+
+/* Card Structure */
+.w11c-card {
+  background-color: #E8F0FE; 
+  padding: 40px;
+  display: flex;
+  align-items: flex-start;
+  gap: 24px;
+  min-height: 260px; border-radius: 15px;
+}
+
+/* Icons */
+.w11c-icon-container {
+  flex-shrink: 0;
+  width: 48px;
+  height: 48px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  color: #001A66;
+}
+
+.w11c-icon {
+  width: 100%;
+  height: 100%;
+}
+
+/* Card Typography & Links */
+.w11c-card-content {
+  display: flex;
+  flex-direction: column;
+  height: 100%;
+}
+
+.w11c-card-title {
+  font-size: 22px;
+  font-weight: 500;
+  margin: 0 0 12px 0;
+  color: #000000;
+}
+
+.w11c-card-text {
+  font-size: 15px;
+  line-height: 1.5;
+  color: #222222;
+  margin: 0 0 24px 0;
+  flex-grow: 1; 
+}
+
+.w11c-link {
+  display: inline-flex;
+  align-items: center;
+  font-size: 17px;
+  font-weight: 500;
+  color: #001A66;
+  text-decoration: none;
+}
+
+.w11c-link:hover {
+  text-decoration: underline;
+}
+
+.w11c-arrow {
+  margin-left: 6px;
+  font-family: Arial, sans-serif; 
+  font-size: 13px;
+}
+
+/* Responsive adjustments */
+@media (max-width: 900px) {
+  .w11c-main-title {
+    font-size: 44px;
+  }
+  .w11c-grid {
+    grid-template-columns: 1fr;
+  }
+  .w11c-card {
+    padding: 32px;
+    min-height: auto;
+  }
+}
+</style>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<take-the-next-step-component class="ttns-container">
+  <h2 class="ttns-heading">Take the next step</h2>
+
+  <div class="ttns-grid">
+    <a href="#" class="ttns-card card-linkedin">
+      <div class="ttns-card-content">
+        <span class="ttns-card-title">Follow us on LinkedIn</span>
+        <div class="ttns-arrow-wrapper">
+          <span class="ttns-arrow">→</span>
+          <span class="ttns-link-text">Connect with us</span>
+        </div>
+      </div>
+    </a>
+
+    <a href="#" class="ttns-card card-podcast">
+      <div class="ttns-card-content">
+        <span class="ttns-card-title">Listen to our podcast</span>
+        <div class="ttns-arrow-wrapper">
+          <span class="ttns-arrow">→</span>
+          <span class="ttns-link-text">Listen now</span>
+        </div>
+      </div>
+    </a>
+
+    <a href="#" class="ttns-card card-ai">
+      <div class="ttns-card-content">
+        <span class="ttns-card-title">Learn how to integrate generative AI</span>
+        <div class="ttns-arrow-wrapper">
+          <span class="ttns-arrow">→</span>
+          <span class="ttns-link-text">Read guide</span>
+        </div>
+      </div>
+    </a>
+
+    <a href="#" class="ttns-card card-aws">
+      <div class="ttns-card-content">
+        <span class="ttns-card-title">Join conversations with AWS and customer execs</span>
+        <div class="ttns-arrow-wrapper">
+          <span class="ttns-arrow">→</span>
+          <span class="ttns-link-text">Join community</span>
+        </div>
+      </div>
+    </a>
+  </div>
+
+  <style>
+    /* Scoped Container Styles */
+    ttns-container, .ttns-container {
+      display: block;
+      font-family: 'Circular Std', -apple-system, BlinkMacSystemFont, sans-serif;
+      max-width: 1200px;
+      margin: 0 auto;
+      padding: 40px 20px 140px 20px;
+      background-color: transparent;
+      box-sizing: border-box;
+    }
+
+    .ttns-container *, .ttns-container *::before, .ttns-container *::after {
+      box-sizing: border-box;
+    }
+
+    .ttns-heading {
+      font-size: 40px;
+      font-weight: 500;
+      color: #16191f;
+      margin-bottom: 32px;
+      letter-spacing: -0.5px;
+    }
+
+    /* Grid Layout */
+    .ttns-grid {
+      display: grid;
+      grid-template-columns: repeat(2, 1fr);
+      gap: 24px;
+    }
+
+    @media (max-width: 768px) {
+      .ttns-grid {
+        grid-template-columns: 1fr;
+      }
+    }
+
+    /* Base Card Styling */
+    .ttns-card {
+      position: relative;
+      display: flex;
+      align-items: flex-end;
+      height: 500px;
+      border-radius: 20px;
+      text-decoration: none;
+      overflow: hidden;
+      background-size: cover;
+      background-position: center;
+      background-repeat: no-repeat;
+      transition: transform 0.3s ease, box-shadow 0.3s ease;
+    }
+
+    /* Backgrounds mapped to your image assets */
+    .card-linkedin {
+      /* Geometric Dark Cubes */
+      background-color: #1e252b; 
+      background-image: linear-gradient(rgba(0,0,0,0.2), rgba(0,0,0,0.4)), url('https://images.unsplash.com/photo-1618005182384-a83a8bd57fbe?auto=format&fit=crop&w=800&q=80'); 
+    }
+
+    .card-podcast {
+      /* Blue Fluid Waves */
+      background-color: #001f3f;
+      background-image: linear-gradient(rgba(0,0,0,0.1), rgba(0,0,0,0.5)), url('https://images.unsplash.com/photo-1634017839464-5c339ebe3cb4?auto=format&fit=crop&w=800&q=80');
+    }
+
+    .card-ai {
+      /* Blue Tech Mesh/Grid */
+      background-color: #0055ff;
+      background-image: linear-gradient(rgba(0,0,0,0.1), rgba(0,0,0,0.5)), url('https://images.unsplash.com/photo-1639322537228-f710d846310a?auto=format&fit=crop&w=800&q=80');
+    }
+
+    .card-aws {
+      /* Red/Orange Warm Core Micro-texture */
+      background-color: #cc3300;
+      background-image: linear-gradient(rgba(0,0,0,0.1), rgba(0,0,0,0.5)), url('https://images.unsplash.com/photo-1579546929518-9e396f3cc809?auto=format&fit=crop&w=800&q=80');
+    }
+
+    /* Card Content Placement */
+    .ttns-card-content {
+      position: relative;
+      z-index: 2;
+      width: 100%;
+      padding: 40px;
+      display: flex;
+      flex-direction: column;
+      gap: 16px;
+    }
+
+    .ttns-card-title {
+      color: #ffffff;
+      font-size: 26px;
+      font-weight: 500;
+      line-height: 1.3;
+      max-width: 85%;
+    }
+
+    /* --- Interactive Hover Effects --- */
+
+    /* Rainbow Shadow Effect */
+    @keyframes ttns-rainbow-glow {
+        0% {
+                box-shadow: 0 5px 30px 10px rgb(255, 0, 85), 0 10px 30px -15px rgb(123, 0, 255);
+            }
+            20% {
+                box-shadow: 0 5px 30px 10px rgba(123, 0, 255, 0.977), 0 10px 20px -15px rgb(0, 145, 255);
+            }
+            40% {
+                box-shadow: 0 5px 30px 10px rgba(0, 145, 255, 0.989), 0 10px 20px -15px rgb(0, 255, 170);
+            }
+            60% {
+                box-shadow: 0 5px 30px 10px rgba(0, 255, 170, 0.963), 0 10px 20px -15px rgb(255, 204, 0);
+            }
+            80% {
+                box-shadow: 0 5px 20px 10px rgba(255, 204, 0, 0.997), 0 10px 20px -15px rgb(255, 0, 85);
+            }
+            100% {
+                box-shadow: 0 5px 20px 10px rgb(255, 0, 85), 0 10px 30px -15px rgb(123, 0, 255);
+            }
+    }
+
+    .ttns-card:hover {
+      animation: ttns-rainbow-glow 3s linear infinite;
+    }
+
+    /* Arrow and Sliding Text Mechanics */
+    .ttns-arrow-wrapper {
+      display: flex;
+      align-items: center;
+      gap: 12px;
+      overflow: hidden;
+      height: 24px;
+    }
+
+    .ttns-arrow {
+      color: #ffffff;
+      font-size: 20px;
+      transition: transform 0.3s cubic-bezier(0.25, 0.8, 0.25, 1);
+    }
+
+    .ttns-link-text {
+      color: #ffffff;
+      font-size: 16px;
+      font-weight: 500;
+      opacity: 0;
+      transform: translateX(-30px); /* Starts hidden out to the left */
+      transition: transform 0.4s cubic-bezier(0.25, 0.8, 0.25, 1), opacity 0.3s ease;
+      white-space: nowrap;
+    }
+
+    /* Triggering the transition on Hover */
+    .ttns-card:hover .ttns-link-text {
+      opacity: 1;
+      transform: translateX(0); /* Slides into view from the left */
+    }
+
+    .ttns-card:hover .ttns-arrow {
+      transform: translateX(4px); /* Subtle nudge forward for the arrow */
+    }
+  </style>
+</take-the-next-step-component>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<cronos-footer></cronos-footer>
