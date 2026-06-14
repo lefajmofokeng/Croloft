@@ -1,0 +1,476 @@
+<!DOCTYPE html>
+<html lang="en" dir="ltr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, minimum-scale=1.0, maximum-scale=5.0, viewport-fit=cover, shrink-to-fit=no">
+    <meta http-equiv="x-ua-compatible" content="ie=edge"/>
+    
+    <title>Cronos</title>
+
+    <!-- WEB TAB ICON -->
+    <link rel="icon" type="image/png" href="thumbnails/top-1.png">
+
+    <style>
+        @font-face { font-family:'Circular Std'; src:url('fonts/CircularStd-Book.woff2') format('woff2'),url('fonts/CircularStd-Book.woff') format('woff'); font-weight:400; font-style:normal; font-display:swap; }
+        @font-face { font-family:'Circular Std'; src:url('fonts/CircularStd-BookItalic.woff2') format('woff2'),url('fonts/CircularStd-BookItalic.woff') format('woff'); font-weight:400; font-style:italic; font-display:swap; }
+        @font-face { font-family:'Circular Std'; src:url('fonts/CircularStd-Medium.woff2') format('woff2'),url('fonts/CircularStd-Medium.woff') format('woff'); font-weight:500; font-style:normal; font-display:swap; }
+        @font-face { font-family:'Circular Std'; src:url('fonts/CircularStd-Bold.woff2') format('woff2'),url('fonts/CircularStd-Bold.woff') format('woff'); font-weight:600; font-style:normal; font-display:swap; }
+        @font-face { font-family:'Circular Std'; src:url('fonts/CircularStd-Bold.woff2') format('woff2'),url('fonts/CircularStd-Bold.woff') format('woff'); font-weight:700; font-style:normal; font-display:swap; }
+        @font-face { font-family:'Circular Std'; src:url('fonts/CircularStd-Black.woff2') format('woff2'),url('fonts/CircularStd-Black.woff') format('woff'); font-weight:800; font-style:normal; font-display:swap; }
+        @font-face { font-family:'Circular Std'; src:url('fonts/CircularStd-Black.woff2') format('woff2'),url('fonts/CircularStd-Black.woff') format('woff'); font-weight:900; font-style:normal; font-display:swap; }
+    </style>
+</head>
+
+
+
+
+
+
+
+
+
+
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>My Website</title>
+    
+    <script src="header.js" defer></script>
+    <script src="footer.js" defer></script> 
+</head>
+<body>
+
+    <cronos-header></cronos-header>
+    
+
+</body>
+</html>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<style>
+  /* ─── SCOPED NAMESPACED RESET ─── */
+        .cr-solutions-root *,
+        .cr-solutions-root *::before,
+        .cr-solutions-root *::after {
+            box-sizing: border-box;
+            margin: 0;
+            padding: 0;
+        }
+
+        * {
+            padding: 0;
+            margin: 0;
+            box-sizing: border-box; font-family: 'Circular Std', -apple-system, BlinkMacSystemFont, sans-serif;
+        }
+
+        .cr-solutions-root {
+            font-family: 'Circular Std', -apple-system, BlinkMacSystemFont, sans-serif;
+            -webkit-font-smoothing: antialiased;
+            background: #fff;
+            color: #111827;
+            width: 100%;
+            overflow-x: hidden;
+        }
+
+        .cr-sol-container {
+            width: 100%;
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 16px;
+        }
+        @media (min-width: 768px) {
+            .cr-sol-container {
+                padding: 0 24px;
+            }
+        }
+
+  /* ─── HERO SECTION WITH SEAMLESS CHROMATIC BACKGROUND FLOW ─── */
+        .cr-sol-hero {
+            position: relative;
+            padding: 120px 0 80px;
+            text-align: left;
+            overflow: hidden;
+            background-color: #5d22c9;
+        }
+        @media (min-width: 768px) {
+            .cr-sol-hero {
+                padding: 160px 0 120px;
+            }
+        }
+
+       
+
+        .cr-sol-hero::after {
+            content: '';
+            position: absolute;
+            inset: 0;
+            background: linear-gradient(180deg, 
+                rgba(11, 18, 31, 0) 0%, 
+                rgba(254, 254, 254, 0.822) 70%, 
+                #fff 100%
+            );
+            z-index: 2;
+        }
+
+        @keyframes cr-hero-seamless-flow {
+            0% { background-position: 0% 50%; }
+            50% { background-position: 100% 50%; }
+            100% { background-position: 0% 50%; }
+        }
+
+        .cr-sol-hero__content {
+            position: relative;
+            max-width: 820px;
+            z-index: 3;
+        }
+
+        .cr-sol-hero__title {
+            font-size: clamp(32px, 6vw, 64px);
+            font-weight: 500;
+            line-height: 1.1;
+            color: #ffffff;
+            margin-bottom: 20px;
+        }
+
+        .cr-sol-hero__desc {
+            font-size: clamp(15px, 2vw, 19px);
+            line-height: 1.6;
+            color: #ffffff;
+            margin-bottom: 32px;
+            max-width: 680px;
+        }
+
+        /* ─── ACTIONS & BUTTONS (1PX BORDER RADIUS) ─── */
+        .cr-sol-btn {
+            display: inline-flex;
+            align-items: center;
+            justify-content: center;
+            padding: 14px 28px;
+            font-size: 16px;
+            font-weight: 400;
+            text-decoration: none;
+            cursor: pointer;
+            border-radius: 50px;
+            transition: all 0.2s ease;
+            outline: none;
+            width: 100%;
+            text-align: center;
+            position: relative;
+        }
+        @media (min-width: 480px) {
+            .cr-sol-btn {
+                width: auto;
+            }
+        }
+
+        .cr-sol-btn--primary {
+            background: #111827;
+            color: #ffffff; border: none;
+        }
+
+        .cr-sol-btn--primary:hover {
+            background: #000000;
+            border-color: #000000;
+        }
+
+        .cr-sol-btn--secondary {
+            background: #080d1b;
+            color: #f9fbff; border: none;
+        }
+
+        .cr-sol-btn--secondary:hover {
+            border-color: #111827;
+            background: #f9fafb;
+        }
+</style>
+<div id="cr-directory-view">
+            
+            <div class="cr-sol-hero">
+                <div class="cr-sol-container">
+                    <div class="cr-sol-hero__content">
+                      <a href="" style="color: #fff;">What is Croloft?</a>
+                        <h1 class="cr-sol-hero__title">Contact Croloft</h1>
+                        <p class="cr-sol-hero__desc">
+                            Accelerating business transformation with a culture of innovation
+                        </p>
+                        <a href="#services-display" class="cr-sol-btn cr-sol-btn--secondary">Browse Catalog</a>
+                    </div>
+                </div>
+            </div>
+  </div>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<aws-sales-specialist-component class="awsss-container">
+  <h2 class="awsss-heading">Want to speak with an AWS sales specialist?</h2>
+
+  <div class="awsss-grid">
+    <a href="#" class="awsss-card card-contact">
+      <div class="awsss-badge">Get in touch</div>
+      <div class="awsss-card-content">
+        <h3 class="awsss-card-title">Chat online or talk by phone</h3>
+        <div class="awsss-arrow-wrapper">
+          <div class="awsss-interactive-box">
+            <span class="awsss-link-text">Contact options</span>
+            <span class="awsss-arrow">→</span>
+          </div>
+        </div>
+      </div>
+    </a>
+
+    <a href="#" class="awsss-card card-form">
+      <div class="awsss-badge">Request form</div>
+      <div class="awsss-card-content">
+        <h3 class="awsss-card-title">Request AWS sales support</h3>
+        <p class="awsss-card-description">Submit a sales support form</p>
+        <div class="awsss-arrow-wrapper">
+          <div class="awsss-interactive-box">
+            <span class="awsss-link-text">Submit request</span>
+            <span class="awsss-arrow">→</span>
+          </div>
+        </div>
+      </div>
+    </a>
+  </div>
+
+  <style>
+    /* Scoped Container Styles */
+    aws-sales-specialist-component, .awsss-container {
+      display: block;
+      font-family: 'Circular Std', -apple-system, BlinkMacSystemFont, sans-serif;
+      max-width: 1200px;
+      width: calc(100% - 40px);
+      margin: 0 auto;
+      padding: 40px 0;
+      box-sizing: border-box;
+      background-color: transparent;
+    }
+
+    .awsss-container *, .awsss-container *::before, .awsss-container *::after {
+      box-sizing: border-box;
+    }
+
+    .awsss-heading {
+      font-size: 28px;
+      font-weight: 500;
+      color: #16191f;
+      margin: 0 0 32px 0;
+      letter-spacing: -0.5px;
+    }
+
+    /* 2-Column Grid Layout */
+    .awsss-grid {
+      display: grid;
+      grid-template-columns: repeat(2, 1fr);
+      gap: 24px;
+    }
+
+    @media (max-width: 768px) {
+      .awsss-grid {
+        grid-template-columns: 1fr;
+      }
+      .awsss-container {
+        margin: 0 20px;
+      }
+    }
+
+    /* Base Card Layout Structure */
+    .awsss-card {
+      position: relative;
+      display: flex;
+      flex-direction: column;
+      justify-content: space-between;
+      height: 440px; /* Taller form profile matching screenshot aspect ratio */
+      border-radius: 24px;
+      text-decoration: none;
+      overflow: hidden;
+      transition: box-shadow 0.3s ease; 
+    }
+
+    /* Card 1 Specific - Photo Background with Overlay */
+    .card-contact {
+      background-size: cover;
+      background-position: center center;
+      background-image: linear-gradient(to top, rgba(0, 0, 0, 0.85) 0%, rgba(0, 0, 0, 0.2) 50%, rgba(0, 0, 0, 0) 100%), 
+                        url('https://images.unsplash.com/photo-1573497019940-1c28c88b4f3e?auto=format&fit=crop&w=1000&q=80');
+    }
+    .card-contact .awsss-card-title {
+      color: #ffffff;
+    }
+    .card-contact .awsss-arrow {
+      color: #ffffff;
+    }
+    .card-contact .awsss-link-text {
+      color: #ffffff;
+    }
+
+    /* Card 2 Specific - Gray Container Panel */
+    .card-form {
+      background-color: #f1f3f6;
+    }
+    .card-form .awsss-card-title {
+      color: #16191f;
+      margin-bottom: 8px;
+    }
+    .card-form .awsss-card-content {
+      /* Gives space layout to description */
+      justify-content: flex-end; 
+    }
+
+    /* Pill Badges at top left */
+    .awsss-badge {
+      position: absolute;
+      top: 32px;
+      left: 32px;
+      background-color: rgba(255, 255, 255, 0.9);
+      color: #414750;
+      font-size: 12px;
+      font-weight: 500;
+      padding: 6px 14px;
+      border-radius: 6px;
+      letter-spacing: 0.2px;
+      box-shadow: 0 2px 4px rgba(0,0,0,0.04);
+      z-index: 2;
+    }
+
+    .awsss-card-content {
+      display: flex;
+      flex-direction: column;
+      padding: 40px 32px 32px 32px;
+      margin-top: auto; /* Snaps text content base to card floor */
+      z-index: 2;
+    }
+
+    .awsss-card-title {
+      font-size: 26px;
+      font-weight: 500;
+      line-height: 1.3;
+      margin: 0;
+    }
+
+    .awsss-card-description {
+      font-size: 15px;
+      color: #414750;
+      margin: 0 0 4px 0;
+    }
+
+    /* --- Imprinted Neon Rainbow Shadow Animation --- */
+    @keyframes awsss-vibrant-rainbow {
+      0% { box-shadow: 0 12px 36px rgba(236, 72, 153, 0.75), 0 0 20px rgba(139, 92, 246, 0.5); }
+      33% { box-shadow: 0 12px 36px rgba(59, 130, 246, 0.75), 0 0 20px rgba(6, 182, 212, 0.5); }
+      66% { box-shadow: 0 12px 36px rgba(245, 158, 11, 0.75), 0 0 20px rgba(236, 72, 153, 0.5); }
+      100% { box-shadow: 0 12px 36px rgba(236, 72, 153, 0.75), 0 0 20px rgba(139, 92, 246, 0.5); }
+    }
+
+    .awsss-card:hover {
+      animation: awsss-vibrant-rainbow 3s linear infinite;
+    }
+
+    /* --- Seamless Text Reveal & Arrow Shifting Mechanics --- */
+    .awsss-arrow-wrapper {
+      position: relative;
+      overflow: hidden;
+      height: 24px;
+      margin-top: 16px;
+    }
+
+    .awsss-interactive-box {
+      display: inline-flex;
+      align-items: center;
+      position: absolute;
+      left: 0;
+      bottom: 0;
+      /* Shifts the container left exactly by the text's width on rest */
+      transform: translateX(calc(-100% + 18px)); 
+      transition: transform 0.35s cubic-bezier(0.25, 0.8, 0.25, 1);
+    }
+
+    .awsss-link-text {
+      font-size: 15px;
+      font-weight: 500;
+      opacity: 0;
+      white-space: nowrap;
+      padding-right: 8px; /* Buffer spacing before the arrow */
+      transition: opacity 0.25s ease;
+    }
+
+    .card-form .awsss-link-text, .card-form .awsss-arrow {
+      color: #16191f;
+    }
+
+    .awsss-arrow {
+      font-size: 18px;
+      font-weight: bold;
+      display: inline-block;
+    }
+
+    /* Hover States: Pull back box container to translate arrow seamlessly forward */
+    .awsss-card:hover .awsss-interactive-box {
+      transform: translateX(0);
+    }
+
+    .awsss-card:hover .awsss-link-text {
+      opacity: 1;
+    }
+  </style>
+</aws-sales-specialist-component>

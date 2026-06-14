@@ -1,0 +1,545 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>My Website</title>
+    
+    <script src="header.js" defer></script> 
+    <script src="footer.js" defer></script>
+
+     <style>
+        @font-face { font-family:'Circular Std'; src:url('fonts/CircularStd-Book.woff2') format('woff2'),url('fonts/CircularStd-Book.woff') format('woff'); font-weight:400; font-style:normal; font-display:swap; }
+        @font-face { font-family:'Circular Std'; src:url('fonts/CircularStd-BookItalic.woff2') format('woff2'),url('fonts/CircularStd-BookItalic.woff') format('woff'); font-weight:400; font-style:italic; font-display:swap; }
+        @font-face { font-family:'Circular Std'; src:url('fonts/CircularStd-Medium.woff2') format('woff2'),url('fonts/CircularStd-Medium.woff') format('woff'); font-weight:500; font-style:normal; font-display:swap; }
+        @font-face { font-family:'Circular Std'; src:url('fonts/CircularStd-Bold.woff2') format('woff2'),url('fonts/CircularStd-Bold.woff') format('woff'); font-weight:600; font-style:normal; font-display:swap; }
+        @font-face { font-family:'Circular Std'; src:url('fonts/CircularStd-Black.woff2') format('woff2'),url('fonts/CircularStd-Black.woff') format('woff'); font-weight:800; font-style:normal; font-display:swap; }
+    </style>
+</head>
+<body>
+
+    <cronos-header></cronos-header>
+
+</body>
+</html>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<style>
+  /* ─── SCOPED NAMESPACED RESET ─── */
+        .cr-solutions-root *,
+        .cr-solutions-root *::before,
+        .cr-solutions-root *::after {
+            box-sizing: border-box;
+            margin: 0;
+            padding: 0;
+        }
+
+        * {
+            padding: 0;
+            margin: 0;
+            box-sizing: border-box; font-family: 'Circular Std', -apple-system, BlinkMacSystemFont, sans-serif;
+        }
+
+        .cr-solutions-root {
+            font-family: 'Circular Std', -apple-system, BlinkMacSystemFont, sans-serif;
+            -webkit-font-smoothing: antialiased;
+            background: #fff;
+            color: #111827;
+            width: 100%;
+            overflow-x: hidden;
+        }
+
+        .cr-sol-container {
+            width: 100%;
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 16px;
+        }
+        @media (min-width: 768px) {
+            .cr-sol-container {
+                padding: 0 24px;
+            }
+        }
+
+  /* ─── HERO SECTION WITH SEAMLESS CHROMATIC BACKGROUND FLOW ─── */
+        .cr-sol-hero {
+            position: relative;
+            padding: 120px 0 80px;
+            text-align: left;
+            overflow: hidden;
+            background-color: #5d22c9;
+        }
+        @media (min-width: 768px) {
+            .cr-sol-hero {
+                padding: 160px 0 120px;
+            }
+        }
+
+       
+
+        .cr-sol-hero::after {
+            content: '';
+            position: absolute;
+            inset: 0;
+            background: linear-gradient(180deg, 
+                rgba(11, 18, 31, 0) 0%, 
+                rgba(254, 254, 254, 0.822) 70%, 
+                #fff 100%
+            );
+            z-index: 2;
+        }
+
+        @keyframes cr-hero-seamless-flow {
+            0% { background-position: 0% 50%; }
+            50% { background-position: 100% 50%; }
+            100% { background-position: 0% 50%; }
+        }
+
+        .cr-sol-hero__content {
+            position: relative;
+            max-width: 820px;
+            z-index: 3;
+        }
+
+        .cr-sol-hero__title {
+            font-size: clamp(32px, 6vw, 64px);
+            font-weight: 500;
+            line-height: 1.1;
+            color: #ffffff;
+            margin-bottom: 20px;
+        }
+
+        .cr-sol-hero__desc {
+            font-size: clamp(15px, 2vw, 19px);
+            line-height: 1.6;
+            color: #ffffff;
+            margin-bottom: 32px;
+            max-width: 680px;
+        }
+
+        /* ─── ACTIONS & BUTTONS (1PX BORDER RADIUS) ─── */
+        .cr-sol-btn {
+            display: inline-flex;
+            align-items: center;
+            justify-content: center;
+            padding: 14px 28px;
+            font-size: 16px;
+            font-weight: 400;
+            text-decoration: none;
+            cursor: pointer;
+            border-radius: 50px;
+            transition: all 0.2s ease;
+            outline: none;
+            width: 100%;
+            text-align: center;
+            position: relative;
+        }
+        @media (min-width: 480px) {
+            .cr-sol-btn {
+                width: auto;
+            }
+        }
+
+        .cr-sol-btn--primary {
+            background: #111827;
+            color: #ffffff; border: none;
+        }
+
+        .cr-sol-btn--primary:hover {
+            background: #000000;
+            border-color: #000000;
+        }
+
+        .cr-sol-btn--secondary {
+            background: #080d1b;
+            color: #f9fbff; border: none;
+        }
+
+        .cr-sol-btn--secondary:hover {
+            border-color: #111827;
+            background: #f9fafb;
+        }
+</style>
+<div id="cr-directory-view">
+            
+            <div class="cr-sol-hero">
+                <div class="cr-sol-container">
+                    <div class="cr-sol-hero__content">
+                      <a href="" style="color: #fff;">What is Croloft?</a>
+                        <h1 class="cr-sol-hero__title">Sales Support</h1>
+                        <p class="cr-sol-hero__desc">
+                            Please complete the form to reach a Croloft sales representative. An asterisk (*) indicates required information.
+                        </p>
+                        <a href="#services-display" class="cr-sol-btn cr-sol-btn--secondary">Browse Catalog</a>
+                    </div>
+                </div>
+            </div>
+  </div>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+  <!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Account & Billing Architecture Support</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        :root {
+            --aws-navy: #111625;
+            --aws-blue: #0091ff;
+            --aws-emerald: #00a170;
+            --aws-light-gray: #f1f3f6;
+            --aws-muted: #64748b;
+            --aws-white: #ffffff;
+            --font-family-circular: 'Circular Std', -apple-system, BlinkMacSystemFont, sans-serif;
+            --content-max-width: 1200px;
+        }
+
+        body {
+            font-family: var(--font-family-circular);
+            background-color: var(--aws-white);
+            color: var(--aws-navy);
+            -webkit-font-smoothing: antialiased;
+        }
+
+        /* Scoped Parent Custom Block */
+        aws-billing-support-component, .aws-billing-container {
+            display: block;
+            width: 100%;
+            padding: 80px 0;
+            display: flex;
+            justify-content: center;
+        }
+
+        .aws-billing-wrapper {
+            width: calc(100% - 40px);
+            max-width: var(--content-max-width);
+            display: grid;
+            grid-template-columns: 1fr 1.6fr; /* Split View Structure */
+            gap: 64px;
+            align-items: start;
+        }
+
+        /* Left Split Side: Fixed Typography Header & Navigation System */
+        .aws-billing-left-pane {
+            display: flex;
+            flex-direction: column;
+            gap: 32px;
+            position: sticky;
+            top: 40px;
+        }
+
+        .aws-billing-left-pane h1 {
+            font-size: 3.5rem;
+            font-weight: 500;
+            letter-spacing: -0.03em;
+            line-height: 1.1;
+            color: var(--aws-navy);
+        }
+
+        /* Interactive Sidebar Navigation Filters */
+        .aws-billing-nav-list {
+            display: flex;
+            flex-direction: column;
+            gap: 8px;
+            list-style: none;
+            border-top: 1px solid rgba(17, 22, 37, 0.1);
+            padding-top: 24px;
+        }
+
+        .aws-billing-nav-item {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 16px 20px;
+            background-color: transparent;
+            color: var(--aws-navy);
+            font-size: 1rem;
+            font-weight: 500;
+            border-radius: 8px;
+            cursor: pointer;
+            transition: all 0.2s cubic-bezier(0.25, 0.8, 0.25, 1);
+        }
+
+        .aws-billing-nav-item:hover {
+            background-color: var(--aws-light-gray);
+        }
+
+        .aws-billing-nav-item.active {
+            background-color: var(--aws-navy);
+            color: var(--aws-white);
+        }
+
+        .aws-billing-nav-badge {
+            font-size: 0.75rem;
+            padding: 4px 8px;
+            border-radius: 4px;
+            background-color: var(--aws-light-gray);
+            color: var(--aws-muted);
+            font-weight: 600;
+        }
+
+        .aws-billing-nav-item.active .aws-billing-nav-badge {
+            background-color: rgba(255, 255, 255, 0.15);
+            color: var(--aws-white);
+        }
+
+        /* Right Split Side: Dynamic Card Content Panes */
+        .aws-billing-right-pane {
+            background-color: var(--aws-white);
+        }
+
+        .aws-billing-form-card {
+            display: none;
+            flex-direction: column;
+            gap: 32px;
+            animation: paneFadeIn 0.35s cubic-bezier(0.25, 0.8, 0.25, 1);
+        }
+
+        .aws-billing-form-card.active {
+            display: flex;
+        }
+
+        @keyframes paneFadeIn {
+            from { opacity: 0; transform: translateY(10px); }
+            to { opacity: 1; transform: translateY(0); }
+        }
+
+        /* Grid Setup inside Cards */
+        .aws-billing-field-grid {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 16px;
+        }
+
+        .aws-span-full {
+            grid-column: span 2;
+        }
+
+        /* Text Input Styling Elements */
+        .aws-billing-input {
+            width: 100%;
+            background-color: var(--aws-light-gray);
+            border: 1px solid transparent;
+            padding: 18px;
+            font-family: var(--font-family-circular);
+            font-size: 1rem;
+            color: var(--aws-navy);
+            outline: none;
+            border-radius: 8px;
+            transition: all 0.2s ease;
+        }
+
+        .aws-billing-input:focus {
+            background-color: var(--aws-white);
+            border-color: var(--aws-navy);
+            box-shadow: 0 0 0 2px rgba(17, 22, 37, 0.04);
+        }
+
+        /* Action Executables */
+        .aws-billing-submit {
+            background-color: var(--aws-navy);
+            color: var(--aws-white);
+            border: none;
+            padding: 16px 36px;
+            font-size: 1rem;
+            font-weight: 500;
+            cursor: pointer;
+            width: fit-content;
+            border-radius: 50px;
+            transition: background-color 0.2s ease;
+            font-family: var(--font-family-circular);
+        }
+
+        .aws-billing-submit:hover {
+            background-color: var(--aws-blue);
+        }
+
+        /* Security Assurance Elements */
+        .aws-secure-badge-box {
+            display: flex;
+            align-items: center;
+            gap: 8px;
+            margin-top: 8px;
+            padding: 14px 18px;
+            background-color: rgba(0, 161, 112, 0.06);
+            border-radius: 8px;
+            color: var(--aws-emerald);
+            font-size: 0.85rem;
+            font-weight: 500;
+        }
+
+        /* Responsive Mechanics */
+        @media (max-width: 900px) {
+            .aws-billing-wrapper {
+                grid-template-columns: 1fr;
+                gap: 48px;
+            }
+            .aws-billing-left-pane {
+                position: static;
+            }
+            .aws-billing-left-pane h1 {
+                font-size: 2.5rem;
+            }
+        }
+
+        @media (max-width: 600px) {
+            .aws-billing-field-grid {
+                grid-template-columns: 1fr;
+            }
+            .aws-span-full {
+                grid-column: span 1;
+            }
+            .aws-billing-submit {
+                width: 100%;
+                text-align: center;
+            }
+        }
+    </style>
+</head>
+<body>
+
+<aws-billing-support-component class="aws-billing-container">
+    <div class="aws-billing-wrapper">
+        
+        <div class="aws-billing-left-pane">
+            <h1>Billing & Account</h1>
+            
+            <ul class="aws-billing-nav-list">
+                <li class="aws-billing-nav-item active" onclick="switchBillingTab(this, 'tab-dispute')">
+                    <span>Invoice Queries & Disputes</span>
+                    <span class="aws-billing-nav-badge">Finance</span>
+                </li>
+                <li class="aws-billing-nav-item" onclick="switchBillingTab(this, 'tab-payment')">
+                    <span>Payment Method Updates</span>
+                    <span class="aws-billing-nav-badge">Secure</span>
+                </li>
+                <li class="aws-billing-nav-item" onclick="switchBillingTab(this, 'tab-access')">
+                    <span>Corporate IAM & Access Management</span>
+                    <span class="aws-billing-nav-badge">Security</span>
+                </li>
+            </ul>
+        </div>
+
+        <div class="aws-billing-right-pane">
+
+            <form id="tab-dispute" class="aws-billing-form-card active" onsubmit="event.preventDefault(); alert('Financial query logged for analysis.');">
+                <div class="aws-billing-field-grid">
+                    <input type="text" placeholder="Corporate Account ID" class="aws-billing-input" required>
+                    <input type="text" placeholder="Target Invoice Number (e.g., INV-2026-09)" class="aws-billing-input" required>
+                    <input type="text" placeholder="Disputed Line-Item Amount (ZAR / USD)" class="aws-billing-input">
+                    <input type="email" placeholder="Billing Representative Email" class="aws-billing-input" required>
+                    <textarea placeholder="Please describe the ledger mismatch or usage metrics discrepancy you wish our accounts team to auditing..." class="aws-billing-input aws-span-full" rows="5" style="resize: none;" required></textarea>
+                </div>
+                <button type="submit" class="aws-billing-submit">Submit Invoice Query</button>
+            </form>
+
+            <form id="tab-payment" class="aws-billing-form-card" onsubmit="event.preventDefault(); alert('Secure callback scheduled with the merchant desk.');">
+                <div class="aws-billing-field-grid">
+                    <input type="text" placeholder="Registered Company Name" class="aws-billing-input aws-span-full" required>
+                    <input type="text" placeholder="Current Payment Method Reference Token" class="aws-billing-input" required>
+                    <input type="tel" placeholder="Authorized Financial Officer Cellphone" class="aws-billing-input" required>
+                    
+                    <div class="aws-secure-badge-box aws-span-full">
+                        <span>🔒</span>
+                        <span>Do not provide raw credit card numbers or banking hashes here. A secure payment update gateway session token will be sent directly to your authorized contact number.</span>
+                    </div>
+                </div>
+                <button type="submit" class="aws-billing-submit">Initiate Secure Vault Update</button>
+            </form>
+
+            <form id="tab-access" class="aws-billing-form-card" onsubmit="event.preventDefault(); alert('Security engineering ticket assigned.');">
+                <div class="aws-billing-field-grid">
+                    <input type="text" placeholder="Root Account Owner Email" class="aws-billing-input aws-span-full" required>
+                    <input type="text" placeholder="Affected Account Namespace Domain" class="aws-billing-input" required>
+                    <input type="text" placeholder="Specific Resource ARN / Path" class="aws-billing-input" required>
+                    <textarea placeholder="Describe permissions configuration faults, active IAM blockades, federated single sign-on (SSO) failures, or unexpected organization structure locks..." class="aws-billing-input aws-span-full" rows="5" style="resize: none;" required></textarea>
+                </div>
+                <button type="submit" class="aws-billing-submit">Authorize IAM Investigation</button>
+            </form>
+
+        </div>
+
+    </div>
+</aws-billing-support-component>
+
+<script>
+    // Handles tab panel toggles cleanly based on active state parameters
+    function switchBillingTab(navItem, targetTabId) {
+        // 1. Reset all left nav items states
+        const navItems = document.querySelectorAll('.aws-billing-nav-item');
+        navItems.forEach(item => item.classList.remove('active'));
+        
+        // 2. Set newly clicked item as active row indicator
+        navItem.classList.add('active');
+
+        // 3. Hide all form cards on the right side
+        const forms = document.querySelectorAll('.aws-billing-form-card');
+        forms.forEach(form => form.classList.remove('active'));
+
+        // 4. Reveal targeted workbench structure layout
+        document.getElementById(targetTabId).classList.add('active');
+    }
+</script>
+
+</body>
+</html>

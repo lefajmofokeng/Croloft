@@ -201,108 +201,42 @@
 
 
 
-<aws-get-started-banner class="awsgs-container">
-  <div class="awsgs-wrapper">
-    
-    <div class="awsgs-left-col">
-      <h2 class="awsgs-heading">Get Started</h2>
-    </div>
 
-    <div class="awsgs-right-col">
-      <p class="awsgs-description">
-        Organizations of all sizes across all industries are transforming their businesses 
-        and delivering on their missions every day using AWS. Contact our experts and 
-        start your own AWS journey today.
-      </p>
-      <a href="#" class="awsgs-link">Contact Sales</a>
-    </div>
 
-  </div>
 
-  <style>
-    /* Scoped Container Styles */
-    aws-get-started-banner, .awsgs-container {
-      display: block;
-      font-family: 'Circular Std', -apple-system, BlinkMacSystemFont, sans-serif;
-      width: 100%;
-      background-color: #ffffff;
-      padding: 60px 0;
-      box-sizing: border-box;
-    }
 
-    .awsgs-container *, .awsgs-container *::before, .awsgs-container *::after {
-      box-sizing: border-box;
-    }
 
-    /* Minimalist Split Row Alignment */
-    .awsgs-wrapper {
-      max-width: 1200px;
-      width: calc(100% - 40px);
-      margin: 0 auto;
-      display: grid;
-      grid-template-columns: 1fr 1.5fr; /* Matches the visual weight split */
-      gap: 40px;
-      align-items: start;
-    }
 
-    /* Left Typography Mechanics */
-    .awsgs-heading {
-      font-size: 38px;
-      font-weight: 500;
-      color: #16191f;
-      margin: 0;
-      letter-spacing: -0.5px;
-      line-height: 1.1;
-    }
 
-    /* Right Copy Mechanics */
-    .awsgs-right-col {
-      display: flex;
-      flex-direction: column;
-      gap: 16px;
-    }
 
-    .awsgs-description {
-      font-size: 16px;
-      line-height: 1.5;
-      color: #16191f;
-      margin: 0;
-      max-width: 540px; /* Keeps the text block beautifully readable */
-    }
 
-    /* Classic Underlined Text-Link */
-    .awsgs-link {
-      font-size: 16px;
-      font-weight: 500;
-      color: #0073bb; /* Clean AWS interactive blue signature */
-      text-decoration: underline;
-      text-underline-offset: 4px;
-      text-decoration-thickness: 1.5px;
-      width: fit-content;
-      transition: color 0.15s ease;
-    }
 
-    .awsgs-link:hover {
-      color: #005a93; /* Subtle darkening depth transition on interaction */
-    }
 
-    /* Responsive Configurations */
-    @media (max-width: 768px) {
-      .awsgs-wrapper {
-        grid-template-columns: 1fr; /* Stacks seamlessly on tablet and mobile */
-        gap: 20px;
-      }
-      
-      .awsgs-heading {
-        font-size: 32px;
-      }
-      
-      .awsgs-container {
-        padding: 40px 0;
-      }
-    }
-  </style>
-</aws-get-started-banner>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 
 
@@ -322,7 +256,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Contact IT Solutions — Enterprise Specification</title>
+    <title>Technical Support Request — Enterprise Specification</title>
     <style>
         * {
             margin: 0;
@@ -333,6 +267,7 @@
         :root {
             --aws-navy: #111625;
             --aws-blue: #0091ff;
+            --aws-red: #df0e1f;
             --aws-light-gray: #f1f3f6;
             --aws-muted: #64748b;
             --aws-white: #ffffff;
@@ -348,7 +283,7 @@
         }
 
         /* Scoped Container Custom Selector to avoid codebase clashes */
-        aws-contact-form-component, .aws-form-container {
+        aws-support-form-component, .aws-form-container {
             display: block;
             width: 100%;
             padding: 80px 0;
@@ -431,7 +366,7 @@
             box-shadow: 0 0 0 2px rgba(17, 22, 37, 0.05);
         }
 
-        /* Drops Custom Selector Styling (Replacing Checkboxes) */
+        /* Drops Custom Selector Styling */
         .aws-drop-selector-container {
             position: relative;
             width: 100%;
@@ -532,6 +467,12 @@
             background-color: var(--aws-blue);
         }
 
+        /* Severity Badges for UI Detail */
+        .aws-severity-high {
+            color: var(--aws-red);
+            font-weight: 600;
+        }
+
         /* Responsive Breakpoints */
         @media (max-width: 900px) {
             .aws-form-wrapper {
@@ -571,99 +512,85 @@
 </head>
 <body>
 
-<aws-contact-form-component class="aws-form-container">
+<aws-support-form-component class="aws-form-container">
     <div class="aws-form-wrapper">
         
         <div class="aws-form-left-col">
-            <h1>Contact Us</h1>
+            <h1>Technical Support</h1>
         </div>
 
         <div class="aws-form-right-col">
-            <form class="aws-form-block" onsubmit="event.preventDefault(); alert('IT Solutions brief received. Our architecture team will respond shortly.');">
+            <form class="aws-form-block" onsubmit="event.preventDefault(); alert('Technical support ticket successfully generated. Engineering has been routed.');">
                 
                 <div class="aws-form-step">
-                    <span class="aws-step-label">01 / Personal Details</span>
+                    <span class="aws-step-label">01 / Account Identity</span>
                     <div class="aws-input-group">
-                        <input type="text" placeholder="First Name" class="aws-text-input" required>
-                        <input type="text" placeholder="Last Name" class="aws-text-input" required>
-                        <input type="email" placeholder="Email Address" class="aws-text-input aws-span-full" required>
-                        <input type="tel" placeholder="Cellphone Number" class="aws-text-input" id="personal-cellphone" required>
-                        <input type="text" placeholder="Location / Region (e.g., South Africa, Gauteng)" class="aws-text-input" required>
+                        <input type="text" placeholder="Full Name" class="aws-text-input" required>
+                        <input type="email" placeholder="Associated Account Email" class="aws-text-input" required>
+                        <input type="text" placeholder="Organization / Customer ID" class="aws-text-input" required>
+                        <input type="text" placeholder="Infrastructure Region (e.g., eu-west-1, us-east-1)" class="aws-text-input" required>
                     </div>
                 </div>
 
                 <div class="aws-form-step">
-                    <span class="aws-step-label">02 / What environment is this inquiry regarding?</span>
+                    <span class="aws-step-label">02 / What type of incident are you experiencing?</span>
                     
-                    <div class="aws-drop-selector-container" id="intent-dropdown">
-                        <div class="aws-drop-selected-box" onclick="toggleDropdown('intent-dropdown')">
-                            <span id="aws-selected-value-label">Select your structural path...</span>
+                    <div class="aws-drop-selector-container" id="incident-dropdown">
+                        <div class="aws-drop-selected-box" onclick="toggleDropdown('incident-dropdown')">
+                            <span id="aws-selected-incident-label">Select system issue class...</span>
                             <span class="aws-drop-caret">▼</span>
                         </div>
                         <div class="aws-drop-options-list">
-                            <div class="aws-drop-item" onclick="selectIntentOption('Personal Interests', 'personal-fields')">Personal Interests</div>
-                            <div class="aws-drop-item" onclick="selectIntentOption('Business', 'business-fields')">Business</div>
-                            <div class="aws-drop-item" onclick="selectIntentOption('Work', 'work-fields')">Work</div>
+                            <div class="aws-drop-item" onclick="selectIncidentOption('System Down / Outage', 'outage-fields')"><span class="aws-severity-high">⚠ Critical:</span> System Down / Outage</div>
+                            <div class="aws-drop-item" onclick="selectIncidentOption('Bug Report / Software Error', 'bug-fields')">Bug Report / Software Error</div>
+                            <div class="aws-drop-item" onclick="selectIncidentOption('General Optimization Request', 'optimization-fields')">General Optimization Request</div>
                         </div>
                     </div>
 
-                    <div id="business-fields" class="aws-conditional-fields">
+                    <div id="outage-fields" class="aws-conditional-fields">
                         <div class="aws-input-group">
-                            <input type="text" placeholder="Company Name" class="aws-text-input" data-required="true">
-                            <input type="tel" placeholder="Company Telephone" class="aws-text-input" data-required="true">
-                            <input type="text" placeholder="Company Size (e.g., 10-50, 500+)" class="aws-text-input">
-                            <input type="text" placeholder="Industry Vertical" class="aws-text-input">
+                            <input type="text" placeholder="Affected Service URL / Endpoint" class="aws-text-input aws-span-full" data-required="true">
+                            <input type="text" placeholder="Estimated Impact Duration (e.g., 20 mins)" class="aws-text-input" data-required="true">
+                            <input type="tel" placeholder="Emergency Contact Number" class="aws-text-input" data-required="true">
                         </div>
                     </div>
 
-                    <div id="work-fields" class="aws-conditional-fields">
+                    <div id="bug-fields" class="aws-conditional-fields">
                         <div class="aws-input-group">
-                            <input type="text" placeholder="Your Corporate Position / Title" class="aws-text-input" data-required="true">
-                            <input type="tel" placeholder="Direct Office Extension" class="aws-text-input" data-required="true">
-                            <input type="text" placeholder="Operational Industry" class="aws-text-input aws-span-full">
+                            <input type="text" placeholder="Component/Module Path (e.g., /api/auth)" class="aws-text-input" data-required="true">
+                            <input type="text" placeholder="Error Code / Console Log Snip" class="aws-text-input" data-required="true">
+                            <input type="text" placeholder="Steps to Reproduce" class="aws-text-input aws-span-full">
                         </div>
                     </div>
 
-                    <div id="personal-fields" class="aws-conditional-fields">
+                    <div id="optimization-fields" class="aws-conditional-fields">
+                        <div class="aws-input-group">
+                            <input type="text" placeholder="Target Infrastructure Node / Stack" class="aws-text-input aws-span-full">
                         </div>
+                    </div>
                 </div>
 
                 <div class="aws-form-step">
-                    <span class="aws-step-label">03 / Project Details</span>
+                    <span class="aws-step-label">03 / Case Context Parameters</span>
                     <div class="aws-input-group">
                         
-                        <div class="aws-drop-selector-container aws-span-full" id="dept-dropdown">
-                            <div class="aws-drop-selected-box" onclick="toggleDropdown('dept-dropdown')">
-                                <span id="aws-selected-dept-label">Target IT Architecture Department...</span>
+                        <div class="aws-drop-selector-container aws-span-full" id="priority-dropdown">
+                            <div class="aws-drop-selected-box" onclick="toggleDropdown('priority-dropdown')">
+                                <span id="aws-selected-priority-label">Case Severity Priority Level...</span>
                                 <span class="aws-drop-caret">▼</span>
                             </div>
                             <div class="aws-drop-options-list">
-                                <div class="aws-drop-item" onclick="selectSecondaryOption('Cloud Infrastructure & DevOps', 'aws-selected-dept-label', 'dept-dropdown')">Cloud Infrastructure & DevOps</div>
-                                <div class="aws-drop-item" onclick="selectSecondaryOption('Custom Software & Web Engineering', 'aws-selected-dept-label', 'dept-dropdown')">Custom Software & Web Engineering</div>
-                                <div class="aws-drop-item" onclick="selectSecondaryOption('Cybersecurity & Risk Auditing', 'aws-selected-dept-label', 'dept-dropdown')">Cybersecurity & Risk Auditing</div>
-                                <div class="aws-drop-item" onclick="selectSecondaryOption('Managed IT Support & Networks', 'aws-selected-dept-label', 'dept-dropdown')">Managed IT Support & Networks</div>
-                                <div class="aws-drop-item" onclick="selectSecondaryOption('Generative AI & Data Analytics Integration', 'aws-selected-dept-label', 'dept-dropdown')">Generative AI & Data Analytics Integration</div>
+                                <div class="aws-drop-item" onclick="selectSecondaryOption('Severity 1 — Critical Business Impairment (Production Blocked)', 'aws-selected-priority-label', 'priority-dropdown')">Severity 1 — Critical Business Impairment (Production Blocked)</div>
+                                <div class="aws-drop-item" onclick="selectSecondaryOption('Severity 2 — Moderate System Degradation (Core Operations Running)', 'aws-selected-priority-label', 'priority-dropdown')">Severity 2 — Moderate System Degradation (Core Operations Running)</div>
+                                <div class="aws-drop-item" onclick="selectSecondaryOption('Severity 3 — General Technical Inquiry / Low Impact', 'aws-selected-priority-label', 'priority-dropdown')">Severity 3 — General Technical Inquiry / Low Impact</div>
                             </div>
                         </div>
 
-                        <div class="aws-drop-selector-container aws-span-full" id="nature-dropdown">
-                            <div class="aws-drop-selected-box" onclick="toggleDropdown('nature-dropdown')">
-                                <span id="aws-selected-nature-label">Nature of Inquiry...</span>
-                                <span class="aws-drop-caret">▼</span>
-                            </div>
-                            <div class="aws-drop-options-list">
-                                <div class="aws-drop-item" onclick="selectSecondaryOption('Request a Quote / Project Briefing', 'aws-selected-nature-label', 'nature-dropdown')">Request a Quote / Project Briefing</div>
-                                <div class="aws-drop-item" onclick="selectSecondaryOption('Emergency IT System Down / Incident Support', 'aws-selected-nature-label', 'nature-dropdown')">Emergency IT System Down / Incident Support</div>
-                                <div class="aws-drop-item" onclick="selectSecondaryOption('Long-term Outsourcing Consultation', 'aws-selected-nature-label', 'nature-dropdown')">Long-term Outsourcing Consultation</div>
-                                <div class="aws-drop-item" onclick="selectSecondaryOption('Vendor Partnership / RFQ Submission', 'aws-selected-nature-label', 'nature-dropdown')">Vendor Partnership / RFQ Submission</div>
-                            </div>
-                        </div>
-
-                        <textarea placeholder="Briefly detail your operational bottlenecks, system objectives, architecture limits, or scope parameters..." class="aws-text-input aws-span-full" rows="5" style="resize: none;" required></textarea>
+                        <textarea placeholder="Provide details regarding the system logs, unexpected behavior, environment versions, or deployment configuration changes..." class="aws-text-input aws-span-full" rows="5" style="resize: none;" required></textarea>
                     </div>
                 </div>
 
-                <button type="submit" class="aws-submit-cta">Submit Brief &rarr;</button>
+                <button type="submit" class="aws-submit-cta">Open Support Ticket &rarr;</button>
 
             </form>
         </div>
@@ -674,7 +601,6 @@
 <script>
     // Toggles targeted dropdown containers cleanly using IDs
     function toggleDropdown(dropdownId) {
-        // Close all other dropdowns first to keep UI completely clean
         const activeDropdowns = document.querySelectorAll('.aws-drop-selector-container');
         activeDropdowns.forEach(drop => {
             if (drop.id !== dropdownId) drop.classList.remove('open');
@@ -683,10 +609,10 @@
         document.getElementById(dropdownId).classList.toggle('open');
     }
 
-    // Handles the environment selection routing paths and reallocates form constraint laws
-    function selectIntentOption(labelValue, targetSectionId) {
-        document.getElementById('aws-selected-value-label').innerText = labelValue;
-        document.getElementById('intent-dropdown').classList.remove('open');
+    // Handles the primary incident type routing paths and alters dynamic field rules
+    function selectIncidentOption(labelValue, targetSectionId) {
+        document.getElementById('aws-selected-incident-label').innerText = labelValue;
+        document.getElementById('incident-dropdown').classList.remove('open');
 
         // Hide all conditional element spaces
         const sections = document.getElementsByClassName('aws-conditional-fields');
@@ -698,7 +624,7 @@
             conditionallyRequiredInputs.forEach(input => input.removeAttribute('required'));
         }
 
-        // Display targeted architecture block
+        // Display targeted environment field group block
         const visibleSection = document.getElementById(targetSectionId);
         if (visibleSection) {
             visibleSection.classList.add('active');
@@ -707,23 +633,15 @@
             const activeRequiredInputs = visibleSection.querySelectorAll('[data-required="true"]');
             activeRequiredInputs.forEach(input => input.setAttribute('required', 'true'));
         }
-        
-        // Dynamically alter personal cellphone rule state
-        const personalCell = document.getElementById('personal-cellphone');
-        if (labelValue === 'Personal Interests') {
-            personalCell.setAttribute('placeholder', 'Cellphone Number (Required)');
-        } else {
-            personalCell.setAttribute('placeholder', 'Personal Cellphone');
-        }
     }
 
-    // Handles secondary project drops cleanly without disrupting main toggle loops
+    // Handles secondary context options dropdowns cleanly
     function selectSecondaryOption(labelValue, labelId, dropdownId) {
         document.getElementById(labelId).innerText = labelValue;
         document.getElementById(dropdownId).classList.remove('open');
     }
 
-    // Dismisses menus gracefully if clicking outside active form vectors
+    // Dismisses drop selectors gracefully if clicking outside active markup vectors
     window.addEventListener('click', function(e) {
         if (!e.target.closest('.aws-drop-selector-container')) {
             const dropdowns = document.querySelectorAll('.aws-drop-selector-container');
@@ -734,74 +652,3 @@
 
 </body>
 </html>
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-<cronos-footer></cronos-footer>

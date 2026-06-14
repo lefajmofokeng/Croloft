@@ -1,0 +1,339 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>My Website</title>
+    
+    <script src="header.js" defer></script> 
+    <script src="footer.js" defer></script>
+
+     <style>
+        @font-face { font-family:'Circular Std'; src:url('fonts/CircularStd-Book.woff2') format('woff2'),url('fonts/CircularStd-Book.woff') format('woff'); font-weight:400; font-style:normal; font-display:swap; }
+        @font-face { font-family:'Circular Std'; src:url('fonts/CircularStd-BookItalic.woff2') format('woff2'),url('fonts/CircularStd-BookItalic.woff') format('woff'); font-weight:400; font-style:italic; font-display:swap; }
+        @font-face { font-family:'Circular Std'; src:url('fonts/CircularStd-Medium.woff2') format('woff2'),url('fonts/CircularStd-Medium.woff') format('woff'); font-weight:500; font-style:normal; font-display:swap; }
+        @font-face { font-family:'Circular Std'; src:url('fonts/CircularStd-Bold.woff2') format('woff2'),url('fonts/CircularStd-Bold.woff') format('woff'); font-weight:600; font-style:normal; font-display:swap; }
+        @font-face { font-family:'Circular Std'; src:url('fonts/CircularStd-Black.woff2') format('woff2'),url('fonts/CircularStd-Black.woff') format('woff'); font-weight:800; font-style:normal; font-display:swap; }
+    </style>
+</head>
+<body>
+
+    <cronos-header></cronos-header>
+
+</body>
+</html>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<style>
+  /* ─── SCOPED NAMESPACED RESET ─── */
+        .cr-solutions-root *,
+        .cr-solutions-root *::before,
+        .cr-solutions-root *::after {
+            box-sizing: border-box;
+            margin: 0;
+            padding: 0;
+        }
+
+        * {
+            padding: 0;
+            margin: 0;
+            box-sizing: border-box; font-family: 'Circular Std', -apple-system, BlinkMacSystemFont, sans-serif;
+        }
+
+        .cr-solutions-root {
+            font-family: 'Circular Std', -apple-system, BlinkMacSystemFont, sans-serif;
+            -webkit-font-smoothing: antialiased;
+            background: #fff;
+            color: #111827;
+            width: 100%;
+            overflow-x: hidden;
+        }
+
+        .cr-sol-container {
+            width: 100%;
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 16px;
+        }
+        @media (min-width: 768px) {
+            .cr-sol-container {
+                padding: 0 24px;
+            }
+        }
+
+  /* ─── HERO SECTION WITH SEAMLESS CHROMATIC BACKGROUND FLOW ─── */
+        .cr-sol-hero {
+            position: relative;
+            padding: 120px 0 80px;
+            text-align: left;
+            overflow: hidden;
+            background-color: #5d22c9;
+        }
+        @media (min-width: 768px) {
+            .cr-sol-hero {
+                padding: 160px 0 120px;
+            }
+        }
+
+       
+
+        .cr-sol-hero::after {
+            content: '';
+            position: absolute;
+            inset: 0;
+            background: linear-gradient(180deg, 
+                rgba(11, 18, 31, 0) 0%, 
+                rgba(254, 254, 254, 0.822) 70%, 
+                #fff 100%
+            );
+            z-index: 2;
+        }
+
+        @keyframes cr-hero-seamless-flow {
+            0% { background-position: 0% 50%; }
+            50% { background-position: 100% 50%; }
+            100% { background-position: 0% 50%; }
+        }
+
+        .cr-sol-hero__content {
+            position: relative;
+            max-width: 820px;
+            z-index: 3;
+        }
+
+        .cr-sol-hero__title {
+            font-size: clamp(32px, 6vw, 64px);
+            font-weight: 500;
+            line-height: 1.1;
+            color: #ffffff;
+            margin-bottom: 20px;
+        }
+
+        .cr-sol-hero__desc {
+            font-size: clamp(15px, 2vw, 19px);
+            line-height: 1.6;
+            color: #ffffff;
+            margin-bottom: 32px;
+            max-width: 680px;
+        }
+
+        /* ─── ACTIONS & BUTTONS (1PX BORDER RADIUS) ─── */
+        .cr-sol-btn {
+            display: inline-flex;
+            align-items: center;
+            justify-content: center;
+            padding: 14px 28px;
+            font-size: 16px;
+            font-weight: 400;
+            text-decoration: none;
+            cursor: pointer;
+            border-radius: 50px;
+            transition: all 0.2s ease;
+            outline: none;
+            width: 100%;
+            text-align: center;
+            position: relative;
+        }
+        @media (min-width: 480px) {
+            .cr-sol-btn {
+                width: auto;
+            }
+        }
+
+        .cr-sol-btn--primary {
+            background: #111827;
+            color: #ffffff; border: none;
+        }
+
+        .cr-sol-btn--primary:hover {
+            background: #000000;
+            border-color: #000000;
+        }
+
+        .cr-sol-btn--secondary {
+            background: #080d1b;
+            color: #f9fbff; border: none;
+        }
+
+        .cr-sol-btn--secondary:hover {
+            border-color: #111827;
+            background: #f9fafb;
+        }
+</style>
+<div id="cr-directory-view">
+            
+            <div class="cr-sol-hero">
+                <div class="cr-sol-container">
+                    <div class="cr-sol-hero__content">
+                      <a href="" style="color: #fff;">What is Croloft?</a>
+                        <h1 class="cr-sol-hero__title">Sales Support</h1>
+                        <p class="cr-sol-hero__desc">
+                            Please complete the form to reach a Croloft sales representative. An asterisk (*) indicates required information.
+                        </p>
+                        <a href="#services-display" class="cr-sol-btn cr-sol-btn--secondary">Browse Catalog</a>
+                    </div>
+                </div>
+            </div>
+  </div>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<aws-developer-support-component class="awsdv-container">
+    <div class="awsdv-wrapper">
+        <div class="awsdv-left-col">
+            <h1>Developer & API Support</h1>
+        </div>
+
+        <div class="awsdv-right-col">
+            <form class="awsdv-form-block" onsubmit="event.preventDefault(); alert('Developer support payload queued for core engineering analysis.');">
+                
+                <div class="awsdv-form-step">
+                    <span class="awsdv-step-label">01 / Environment Handshake</span>
+                    <div class="awsdv-input-group">
+                        <input type="text" placeholder="Developer / App Name" class="awsdv-text-input" required>
+                        <input type="email" placeholder="Dev Account Email Address" class="awsdv-text-input" required>
+                        <input type="text" placeholder="App Client ID / Integration Hash" class="awsdv-text-input awsdv-span-full" required>
+                    </div>
+                </div>
+
+                <div class="awsdv-form-step">
+                    <span class="awsdv-step-label">02 / Select Target Protocol Environment</span>
+                    
+                    <div class="awsdv-drop-selector-container" id="dev-env-dropdown">
+                        <div class="awsdv-drop-selected-box" onclick="toggleDevDropdown('dev-env-dropdown')">
+                            <span id="awsdv-selected-env-label">Target Protocol/Endpoint...</span>
+                            <span class="awsdv-drop-caret">▼</span>
+                        </div>
+                        <div class="awsdv-drop-options-list">
+                            <div class="awsdv-drop-item" onclick="selectDevOption('REST / GraphQL API Endpoints', 'awsdv-selected-env-label', 'dev-env-dropdown')">REST / GraphQL API Endpoints</div>
+                            <div class="awsdv-drop-item" onclick="selectDevOption('Webhooks & Event Stream Triggers', 'awsdv-selected-env-label', 'dev-env-dropdown')">Webhooks & Event Stream Triggers</div>
+                            <div class="awsdv-drop-item" onclick="selectDevOption('OAuth 2.0 / JWT Identity Federation', 'awsdv-selected-env-label', 'dev-env-dropdown')">OAuth 2.0 / JWT Identity Federation</div>
+                            <div class="awsdv-drop-item" onclick="selectDevOption('SDK / Component Library Frameworks', 'awsdv-selected-env-label', 'dev-env-dropdown')">SDK / Component Library Frameworks</div>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="awsdv-form-step">
+                    <span class="awsdv-step-label">03 / Payload Parameters & Error Context</span>
+                    <div class="awsdv-input-group">
+                        <input type="text" placeholder="Request URI / Resource Route" class="awsdv-text-input awsdv-span-full" required>
+                        <textarea placeholder="Paste relevant header specifications, JSON payloads, schema mutations, or terminal stack traces..." class="awsdv-text-input awsdv-span-full" rows="5" style="resize: none;" required></textarea>
+                    </div>
+                </div>
+
+                <button type="submit" class="awsdv-submit-cta">Dispatch Engineering Payload &rarr;</button>
+            </form>
+        </div>
+    </div>
+</aws-developer-support-component>
+
+<style>
+    :root {
+        --awsdv-navy: #111625;
+        --awsdv-blue: #0091ff;
+        --awsdv-light-gray: #f1f3f6;
+        --awsdv-white: #ffffff;
+    }
+    aws-developer-support-component, .awsdv-container {
+        display: block; width: 100%; padding: 80px 0; display: flex; justify-content: center;
+        font-family: 'Circular Std', -apple-system, BlinkMacSystemFont, sans-serif;
+    }
+    .awsdv-wrapper { width: calc(100% - 40px); max-width: 1200px; display: grid; grid-template-columns: 1fr 1.6fr; gap: 80px; align-items: start; }
+    .awsdv-left-col h1 { font-size: 3.5rem; font-weight: 500; letter-spacing: -0.03em; line-height: 1.1; color: var(--awsdv-navy); position: sticky; top: 40px; }
+    .awsdv-form-block { display: flex; flex-direction: column; gap: 48px; }
+    .awsdv-form-step { display: flex; flex-direction: column; gap: 16px; }
+    .awsdv-step-label { font-size: 0.85rem; text-transform: uppercase; letter-spacing: 0.05em; font-weight: 600; color: var(--awsdv-blue); }
+    .awsdv-input-group { display: grid; grid-template-columns: 1fr 1fr; gap: 16px; }
+    .awsdv-span-full { grid-column: span 2; }
+    .awsdv-text-input { width: 100%; background-color: var(--awsdv-light-gray); border: 1px solid transparent; padding: 18px; font-family: inherit; font-size: 1rem; color: var(--awsdv-navy); outline: none; border-radius: 8px; transition: all 0.2s ease; }
+    .awsdv-text-input:focus { background-color: var(--awsdv-white); border-color: var(--awsdv-navy); box-shadow: 0 0 0 2px rgba(17, 22, 37, 0.05); }
+    .awsdv-drop-selector-container { position: relative; width: 100%; }
+    .awsdv-drop-selected-box { display: flex; justify-content: space-between; align-items: center; width: 100%; background-color: var(--awsdv-light-gray); padding: 18px; font-size: 1rem; font-weight: 500; color: var(--awsdv-navy); border-radius: 8px; cursor: pointer; user-select: none; }
+    .awsdv-drop-caret { font-size: 10px; color: #64748b; transition: transform 0.2s ease; }
+    .awsdv-drop-selector-container.open .awsdv-drop-caret { transform: rotate(180deg); }
+    .awsdv-drop-options-list { position: absolute; top: calc(100% + 6px); left: 0; width: 100%; background-color: var(--awsdv-white); border: 1px solid rgba(17, 22, 37, 0.1); border-radius: 8px; box-shadow: 0 10px 25px rgba(0, 0, 0, 0.08); z-index: 10; display: none; overflow: hidden; }
+    .awsdv-drop-selector-container.open .awsdv-drop-options-list { display: block; }
+    .awsdv-drop-item { padding: 16px 18px; font-size: 1rem; color: var(--awsdv-navy); cursor: pointer; }
+    .awsdv-drop-item:hover { background-color: var(--awsdv-light-gray); }
+    .awsdv-submit-cta { background-color: var(--awsdv-navy); color: var(--awsdv-white); border: none; padding: 14px 36px; font-size: 1rem; font-weight: 500; cursor: pointer; width: fit-content; border-radius: 50px; font-family: inherit; transition: background-color 0.2s ease; }
+    .awsdv-submit-cta:hover { background-color: var(--awsdv-blue); }
+    @media (max-width: 900px) { .awsdv-wrapper { grid-template-columns: 1fr; gap: 40px; } .awsdv-left-col h1 { font-size: 2.5rem; position: static; } }
+    @media (max-width: 600px) { .awsdv-input-group { grid-template-columns: 1fr; } .awsdv-span-full { grid-column: span 1; } .awsdv-submit-cta { width: 100%; text-align: center; } }
+</style>
+
+<script>
+    function toggleDevDropdown(id) {
+        document.getElementById(id).classList.toggle('open');
+    }
+    function selectDevOption(val, labelId, dropId) {
+        document.getElementById(labelId).innerText = val;
+        document.getElementById(dropId).classList.remove('open');
+    }
+    window.addEventListener('click', function(e) {
+        if (!e.target.closest('.awsdv-drop-selector-container')) {
+            document.querySelectorAll('.awsdv-drop-selector-container').forEach(d => d.classList.remove('open'));
+        }
+    });
+</script>

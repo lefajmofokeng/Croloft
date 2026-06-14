@@ -176,7 +176,7 @@
             justify-content: center;
             padding: 14px 28px;
             font-size: 16px;
-            font-weight: 500;
+            font-weight: 400;
             text-decoration: none;
             cursor: pointer;
             border-radius: 50px;
@@ -203,8 +203,8 @@
         }
 
         .cr-sol-btn--secondary {
-            background: #ffffff;
-            color: #111827; border: none;
+            background: #080d1b;
+            color: #f9fbff; border: none;
         }
 
         .cr-sol-btn--secondary:hover {
@@ -217,7 +217,7 @@
             <div class="cr-sol-hero">
                 <div class="cr-sol-container">
                     <div class="cr-sol-hero__content">
-                      <a href="" style="color: #fff; margin-bottom: 2rem;">What is Croloft?</a>
+                      <a href="" style="color: #fff;">What is Croloft?</a>
                         <h1 class="cr-sol-hero__title">Innovation</h1>
                         <p class="cr-sol-hero__desc">
                             Accelerating business transformation with a culture of innovation
@@ -248,13 +248,210 @@
 
 
 
+<aws-learn-more-component class="awslm-container">
+  <h2 class="awslm-heading">Learn more about cloud computing on AWS</h2>
 
+  <div class="awslm-grid">
+    <a href="#" class="awslm-card">
+      <div class="awslm-card-content">
+        <h3 class="awslm-card-title">Pricing</h3>
+        <p class="awslm-card-description">
+          AWS offers a pay-as-you-go approach for pricing. Pricing for each service is unique.
+        </p>
+        <div class="awslm-arrow-wrapper">
+          <div class="awslm-interactive-box">
+            <span class="awslm-link-text">Learn more</span>
+            <span class="awslm-arrow">→</span>
+          </div>
+        </div>
+      </div>
+    </a>
 
+    <a href="#" class="awslm-card">
+      <div class="awslm-card-content">
+        <h3 class="awslm-card-title">Products</h3>
+        <p class="awslm-card-description">
+          AWS has over 200 fully featured services for a wide range of technologies, industries, and use cases.
+        </p>
+        <div class="awslm-arrow-wrapper">
+          <div class="awslm-interactive-box">
+            <span class="awslm-link-text">Explore products</span>
+            <span class="awslm-arrow">→</span>
+          </div>
+        </div>
+      </div>
+    </a>
 
+    <a href="#" class="awslm-card">
+      <div class="awslm-card-content">
+        <h3 class="awslm-card-title">Global infrastructure</h3>
+        <p class="awslm-card-description">
+          AWS has the most extensive, reliable, and secure global cloud infrastructure.
+        </p>
+        <div class="awslm-arrow-wrapper">
+          <div class="awslm-interactive-box">
+            <span class="awslm-link-text">View regions</span>
+            <span class="awslm-arrow">→</span>
+          </div>
+        </div>
+      </div>
+    </a>
 
+    <a href="#" class="awslm-card">
+      <div class="awslm-card-content">
+        <h3 class="awslm-card-title">Get started</h3>
+        <p class="awslm-card-description">
+          Ready to get started with AWS?
+        </p>
+        <div class="awslm-arrow-wrapper">
+          <div class="awslm-interactive-box">
+            <span class="awslm-link-text">Get started</span>
+            <span class="awslm-arrow">→</span>
+          </div>
+        </div>
+      </div>
+    </a>
+  </div>
 
+  <style>
+    /* Scoped Container Styles */
+    aws-learn-more-component, .awslm-container {
+      display: block;
+      font-family: 'Circular Std', -apple-system, BlinkMacSystemFont, sans-serif;
+      max-width: 1200px;
+      width: calc(100% - 40px);
+      margin: 0 auto;
+      padding: 40px 0;
+      box-sizing: border-box;
+      background-color: transparent;
+    }
 
+    .awslm-container *, .awslm-container *::before, .awslm-container *::after {
+      box-sizing: border-box;
+    }
 
+    .awslm-heading {
+      font-size: 28px;
+      font-weight: 500;
+      color: #16191f;
+      margin: 0 0 32px 0;
+      letter-spacing: -0.5px;
+    }
+
+    /* Grid Layout */
+    .awslm-grid {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 24px;
+    }
+
+    @media (max-width: 992px) {
+      .awslm-grid {
+        grid-template-columns: repeat(2, 1fr);
+      }
+    }
+    @media (max-width: 640px) {
+      .awslm-grid {
+        grid-template-columns: 1fr;
+      }
+      .awslm-container {
+        margin: 0 20px;
+      }
+    }
+
+    /* Base Card Styling (Stays static on hover) */
+    .awslm-card {
+      position: relative;
+      display: flex;
+      flex-direction: column;
+      height: 320px;
+      border-radius: 24px;
+      background-color: #f1f3f6; 
+      text-decoration: none;
+      transition: box-shadow 0.3s ease; 
+    }
+
+    .awslm-card-content {
+      display: flex;
+      flex-direction: column;
+      height: 100%;
+      padding: 32px;
+    }
+
+    .awslm-card-title {
+      font-size: 22px;
+      font-weight: 500;
+      color: #16191f;
+      margin: 0 0 12px 0;
+    }
+
+    .awslm-card-description {
+      font-size: 14px;
+      line-height: 1.5;
+      color: #414750;
+      margin: 0;
+      flex-grow: 1;
+    }
+
+    /* --- Imprinted Neon Rainbow Shadow Animation --- */
+    @keyframes awslm-vibrant-rainbow {
+      0% { box-shadow: 0 8px 30px rgba(236, 72, 153, 0.75), 0 0 15px rgba(139, 92, 246, 0.5); }
+      33% { box-shadow: 0 8px 30px rgba(59, 130, 246, 0.75), 0 0 15px rgba(6, 182, 212, 0.5); }
+      66% { box-shadow: 0 8px 30px rgba(245, 158, 11, 0.75), 0 0 15px rgba(236, 72, 153, 0.5); }
+      100% { box-shadow: 0 8px 30px rgba(236, 72, 153, 0.75), 0 0 15px rgba(139, 92, 246, 0.5); }
+    }
+
+    .awslm-card:hover {
+      animation: awslm-vibrant-rainbow 3s linear infinite;
+    }
+
+    /* --- Seamless Text Reveal & Arrow Shifting Mechanics --- */
+    .awslm-arrow-wrapper {
+      position: relative;
+      overflow: hidden;
+      height: 24px;
+      margin-top: 16px;
+    }
+
+    /* Inner box handles the absolute positioning shift */
+    .awslm-interactive-box {
+      display: inline-flex;
+      align-items: center;
+      position: absolute;
+      left: 0;
+      bottom: 0;
+      /* Shifts the container left by the text's width initially */
+      transform: translateX(calc(-100% + 18px)); 
+      transition: transform 0.35s cubic-bezier(0.25, 0.8, 0.25, 1);
+    }
+
+    .awslm-link-text {
+      color: #16191f;
+      font-size: 15px;
+      font-weight: 500;
+      opacity: 0;
+      white-space: nowrap;
+      padding-right: 8px; /* Safe distance gap before the arrow */
+      transition: opacity 0.25s ease;
+    }
+
+    .awslm-arrow {
+      color: #16191f;
+      font-size: 18px;
+      font-weight: bold;
+      display: inline-block;
+    }
+
+    /* Hover States: Slide container back right and fade in the label text */
+    .awslm-card:hover .awslm-interactive-box {
+      transform: translateX(0); /* Text fully pushes the arrow forward */
+    }
+
+    .awslm-card:hover .awslm-link-text {
+      opacity: 1;
+    }
+  </style>
+</aws-learn-more-component>
 
 
 
