@@ -73,8 +73,8 @@
      BOTTOM BAR QUICK LINKS — edit here only.
   ══════════════════════════════════════════ */
   const BOTTOM_LINKS = [
-    { label: 'Help Center',         href: '#' },
-    { label: 'Contact Sales',      href: 'contact-us.html' },
+    { label: 'Help Center',         href: 'help-center.html' },
+    { label: 'Contact Sales',      href: 'contact-sales.html' },
     { label: 'Privacy Policy',  href: 'privacy-policy.html' },
     { label: 'Terms of Service',   href: 'terms-of-service.html' },
     { label: 'Press Enquiries', href: 'press-enquiries.html' },
