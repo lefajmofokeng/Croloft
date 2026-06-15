@@ -85,7 +85,7 @@
             padding: 120px 0 80px;
             text-align: left;
             overflow: hidden;
-            background-color: #5d22c9;
+            background-color: #0794ad;
         }
         @media (min-width: 768px) {
             .cr-sol-hero {
@@ -201,108 +201,25 @@
 
 
 
-<aws-get-started-banner class="awsgs-container">
-  <div class="awsgs-wrapper">
-    
-    <div class="awsgs-left-col">
-      <h2 class="awsgs-heading">Get Started</h2>
-    </div>
 
-    <div class="awsgs-right-col">
-      <p class="awsgs-description">
-        Organizations of all sizes across all industries are transforming their businesses 
-        and delivering on their missions every day using AWS. Contact our experts and 
-        start your own AWS journey today.
-      </p>
-      <a href="#" class="awsgs-link">Contact Sales</a>
-    </div>
 
-  </div>
 
-  <style>
-    /* Scoped Container Styles */
-    aws-get-started-banner, .awsgs-container {
-      display: block;
-      font-family: 'Circular Std', -apple-system, BlinkMacSystemFont, sans-serif;
-      width: 100%;
-      background-color: #ffffff;
-      padding: 60px 0;
-      box-sizing: border-box;
-    }
 
-    .awsgs-container *, .awsgs-container *::before, .awsgs-container *::after {
-      box-sizing: border-box;
-    }
 
-    /* Minimalist Split Row Alignment */
-    .awsgs-wrapper {
-      max-width: 1200px;
-      width: calc(100% - 40px);
-      margin: 0 auto;
-      display: grid;
-      grid-template-columns: 1fr 1.5fr; /* Matches the visual weight split */
-      gap: 40px;
-      align-items: start;
-    }
 
-    /* Left Typography Mechanics */
-    .awsgs-heading {
-      font-size: 38px;
-      font-weight: 500;
-      color: #16191f;
-      margin: 0;
-      letter-spacing: -0.5px;
-      line-height: 1.1;
-    }
 
-    /* Right Copy Mechanics */
-    .awsgs-right-col {
-      display: flex;
-      flex-direction: column;
-      gap: 16px;
-    }
 
-    .awsgs-description {
-      font-size: 16px;
-      line-height: 1.5;
-      color: #16191f;
-      margin: 0;
-      max-width: 540px; /* Keeps the text block beautifully readable */
-    }
 
-    /* Classic Underlined Text-Link */
-    .awsgs-link {
-      font-size: 16px;
-      font-weight: 500;
-      color: #0073bb; /* Clean AWS interactive blue signature */
-      text-decoration: underline;
-      text-underline-offset: 4px;
-      text-decoration-thickness: 1.5px;
-      width: fit-content;
-      transition: color 0.15s ease;
-    }
 
-    .awsgs-link:hover {
-      color: #005a93; /* Subtle darkening depth transition on interaction */
-    }
 
-    /* Responsive Configurations */
-    @media (max-width: 768px) {
-      .awsgs-wrapper {
-        grid-template-columns: 1fr; /* Stacks seamlessly on tablet and mobile */
-        gap: 20px;
-      }
-      
-      .awsgs-heading {
-        font-size: 32px;
-      }
-      
-      .awsgs-container {
-        padding: 40px 0;
-      }
-    }
-  </style>
-</aws-get-started-banner>
+
+
+
+
+
+
+
+
 
 
 
@@ -344,7 +261,7 @@
             font-family: var(--font-family-circular);
             background-color: var(--aws-white);
             color: var(--aws-navy);
-            -webkit-font-smoothing: antialiased;
+            -webkit-font-smoothing: antialiased; 
         }
 
         /* Scoped Container Custom Selector to avoid codebase clashes */
@@ -362,7 +279,7 @@
             display: grid;
             grid-template-columns: 1fr 1.6fr; /* Split: Heading Left, Form Right */
             gap: 80px;
-            align-items: start;
+            align-items: start; padding: 0 20px;
         }
 
         /* Left Side Column Heading */
@@ -394,10 +311,8 @@
         }
 
         .aws-step-label {
-            font-size: 0.85rem;
-            text-transform: uppercase;
-            letter-spacing: 0.05em;
-            font-weight: 600;
+            font-size: 1rem;
+            font-weight: 500;
             color: var(--aws-blue);
         }
 

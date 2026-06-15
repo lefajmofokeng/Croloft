@@ -458,7 +458,7 @@
     <section class="bottom-bar">
       <div class="brand-block">
         <div class="logo-placeholder">
-          <img src="thumbnails/logo.png" alt="Cronos IT"/>
+          <img src="thumbnails/mock.png" alt="Cronos IT"/>
         </div>
         <p class="brand-tagline">
           Operating across 30+ countries, Cronos IT is a leader in enterprise technology solutions and digital transformation.
