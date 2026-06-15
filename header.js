@@ -312,7 +312,7 @@ class CronosHeader extends HTMLElement {
             align-items: center;
         }
 
-        .cronos-custom-logo-text img { height: 37px; vertical-align: middle; }
+        .cronos-custom-logo-text img { height: 30px; vertical-align: middle; }
         .cronos-custom-logo-text { color: var(--cronos-color-text-light); transition: color 0.3s; }
         .cronos-custom-logo-text:hover { color: var(--cronos-color-accent); }
 
