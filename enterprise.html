@@ -24,797 +24,621 @@
 
 
 
-
-
-
-
-
-
-
-
-
-
-<style>
-  /* Unique class names to prevent conflicts */
-  .defcon-hero-section {
-    position: relative;
-    width: 100%;
-    height: 100vh;
-    min-height: 600px;
-    overflow: hidden;
-    display: flex;
-    align-items: center;
-    justify-content: flex-start;
-    background-color: #06273e; font-family: 'Circular Std', sans-serif;
-  }
-  
-  .defcon-hero-bg {
-    position: absolute;
-    top: 0;
-    left: 0;
-    width: 100%;
-    height: 100%;
-    object-fit: cover;
-    z-index: 1;
-    opacity: 0.4;
-    background: url('thumbnails/ChatGPT\ Image\ Jul\ 19\,\ 2025\,\ 01_53_09\ AM.png') center/cover no-repeat;
-  }
-  
-  .defcon-hero-content {
-    position: relative;
-    z-index: 2;
-    width: 50%;
-    padding: 40px 170px;
-    color: #ffffff;
-    text-align: left;
-    transform: translateX(-50%);
-    opacity: 0;
-    transition: all 1.2s cubic-bezier(0.22, 1, 0.36, 1);
-  }
-  
-  .defcon-hero-content.visible {
-    transform: translateX(0);
-    opacity: 1;
-  }
-  
-  .defcon-hero-headline {
-    font-size: clamp(2rem, 4vw, 3.5rem);
-    font-weight: 700;
-    line-height: 1.2;
-    margin-bottom: 20px;
-    color: #ffffff;
-    text-shadow: 0 2px 10px rgba(0, 0, 0, 0.3);
-  }
-  
-  .defcon-hero-subhead {
-    font-size: clamp(1rem, 1.5vw, 1.3rem);
-    line-height: 1.6;
-    margin-bottom: 30px;
-    color: #e5e5e5;
-    font-weight: 400;
-    max-width: 600px;
-    
-  }
-  
-  .defcon-highlight-text {
-    color: #0091ff;
-    font-weight: 600;
-  }
-  
- 
-  
-  @keyframes defcon-bounce {
-    0%, 20%, 50%, 80%, 100% {transform: translateY(0) translateX(-50%);}
-    40% {transform: translateY(-20px) translateX(-50%);}
-    60% {transform: translateY(-10px) translateX(-50%);}
-  }
-  
-  /* Particle effect for premium feel */
-  .defcon-particles {
-    position: absolute;
-    top: 0;
-    left: 0;
-    width: 100%;
-    height: 100%;
-    z-index: 1;
-    pointer-events: none;
-  }
-  
-  /* Responsive adjustments */
-  @media (max-width: 992px) {
-    .defcon-hero-content {
-      width: 70%;
-    }
-  }
-  
-  @media (max-width: 768px) {
-    .defcon-hero-section {
-      justify-content: center;
-      text-align: center;
-    }
-    
-    .defcon-hero-content {
-      width: 90%;
-      text-align: center;
-      padding: 20px;
-    }
-    
-    .defcon-hero-subhead {
-      margin-left: 0;
-      margin-right: auto;
-    }
-  }
-</style>
-
-<div class="defcon-hero-section">
-  <div class="defcon-hero-bg"></div>
-  
-  <div class="defcon-particles" id="defconParticles"></div>
-  
-  <div class="defcon-hero-content">
-    <h1 class="defcon-hero-headline">
-      Elevating Digital <span class="defcon-highlight-text">Experiences</span>
-    </h1>
-    
-    <p class="defcon-hero-subhead">
-      We craft premium digital solutions that transform businesses and captivate audiences. Our innovative approach combines cutting-edge technology with elegant design.
-    </p>
-  </div>
-  
-</div>
-
-<script>
-  document.addEventListener('DOMContentLoaded', function() {
-    // Animate content on load
-    const heroContent = document.querySelector('.defcon-hero-content');
-    setTimeout(() => {
-      heroContent.classList.add('visible');
-    }, 300);
-    
-    // Initialize particle effect if needed
-    initParticles();
-    
-    // Intersection observer for scroll animations
-    const observerOptions = {
-      threshold: 0.1
-    };
-    
-    const observer = new IntersectionObserver((entries) => {
-      entries.forEach(entry => {
-        if (entry.isIntersecting) {
-          entry.target.classList.add('visible');
-        }
-      });
-    }, observerOptions);
-    
-    observer.observe(heroContent);
-  });
-  
-  function initParticles() {
-    // This is a placeholder for a particle effect library
-    // In production, you might use tsParticles.js or similar
-    console.log('Particle effect would initialize here');
-    
-    // For a real implementation, you would add:
-    // tsParticles.load("defconParticles", { /* config */ });
-  }
-</script>
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
 <!DOCTYPE html>
 <html lang="en">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>IT Feature Highlight Section</title>
-    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;700;800&display=swap" rel="stylesheet">
-    <style>
-        /* --- General Reset & Fonts --- */
-        .it-feat-body {
-            font-family: 'Circular Std', sans-serif;
-            margin: 0;
-            padding: 0;
-            background-color: #ffffff;
-            color: #1f2937;
-            overflow-x: hidden;
-            
-        }
-
-        /* --- Layout Container --- */
-        .it-feat-container {
-            max-width: 1200px;
-            margin-left: auto;
-            margin-right: auto;
-            padding: 9rem 1rem;
-        }
-
-        /* --- Main Heading --- */
-        .it-feat-main-heading {
-            font-size: 2.5rem;
-            font-weight: 500;
-            color: #1f2937;
-            text-align: center;
-            margin-bottom: 3rem;
-            line-height: 1.2;
-        }
-
-        @media (min-width: 768px) {
-            .it-feat-main-heading {
-                font-size: 3.5rem;
-                margin-bottom: 4rem;
-            }
-        }
-
-        /* --- Feature Grid --- */
-        .it-feat-grid {
-            display: grid;
-            gap: 2rem;
-            grid-template-columns: 1fr;
-            justify-items: center;
-        }
-
-        @media (min-width: 768px) {
-            .it-feat-grid {
-                grid-template-columns: repeat(2, 1fr);
-                gap: 3rem;
-            }
-        }
-
-        /* --- Feature Card Styling --- */
-        .it-feat-card {
-            max-width: 500px;
-            text-align: center;
-        }
-
-        .it-feat-image-wrapper {
-            background-color: #008080; /* Teal/Cyan background to match the style */
-            padding: 1rem;
-            overflow: hidden;
-            margin-bottom: 1.5rem;
-        }
-
-        .it-feat-card img {
-            display: block;
-            width: 100%;
-            height: auto;
-            object-fit: cover;
-        }
-
-        /* --- Card Headline and Description --- */
-        .it-feat-card-headline {
-            font-size: 1.5rem;
-            font-weight: 500;
-            color: #1f2937;
-            margin-bottom: 1rem;
-        }
-
-        .it-feat-card-description {
-            font-size: 1.2rem;
-            color: #4b5563;
-            line-height: 1.6;
-        }
-
-        /* --- Responsive Adjustments for Images --- */
-        @media (max-width: 767px) {
-            .it-feat-image-wrapper {
-                height: 250px;
-            }
-        }
-        @media (min-width: 768px) {
-            .it-feat-image-wrapper {
-                height: 350px;
-            }
-        }
-
-        /* Optional: Add a subtle geometric background pattern to mimic the original image's texture */
-        .it-feat-container::after {
-            content: '';
-            position: absolute;
-            bottom: 0;
-            right: 0;
-            width: 300px;
-            height: 300px;
-            opacity: 0.1;
-            z-index: 0;
-            pointer-events: none;
-            /* Placeholder for geometric pattern */
-            background-image: radial-gradient(#d1d5db 1px, transparent 1px), radial-gradient(#d1d5db 1px, transparent 1px);
-            background-size: 20px 20px;
-            background-position: 0 0, 10px 10px;
-        }
-
-    </style>
-</head>
-<body class="it-feat-body">
-
-    <!-- Feature Section Wrapper -->
-    <div class="it-feat-container">
-
-        <!-- Main Headline -->
-        <h1 class="it-feat-main-heading">
-            Connect to everything important in your digital life
-        </h1>
-
-        <!-- Two-Column Feature Grid -->
-        <div class="it-feat-grid">
-
-            <!-- Feature Card 1: Cloud Infrastructure -->
-            <div class="it-feat-card">
-                <div class="it-feat-image-wrapper">
-                    <img
-                        src="thumbnails/pexels-altabena-10142683.jpg"
-                        onerror="this.onerror=null;this.src='https://placehold.co/600x400/008080/FFFFFF?text=Cloud+Infrastructure';"
-                        alt="A close-up of a server or network device, symbolizing cloud infrastructure."
-                    >
-                </div>
-                <h2 class="it-feat-card-headline">An untethered cloud for an agile infrastructure.</h2>
-                <p class="it-feat-card-description">
-                    Our resilient hybrid cloud solutions connect your legacy systems with modern, scalable resources via secure VPN and dedicated fiber lines, so you can access, scale, and run your data from anywhere.
-                </p>
-            </div>
-
-            <!-- Feature Card 2: Cybersecurity -->
-            <div class="it-feat-card">
-                <div class="it-feat-image-wrapper">
-                    <img
-                        src="thumbnails/pexels-altabena-10142683.jpg"
-                        onerror="this.onerror=null;this.src='https://placehold.co/600x400/FACC15/1F2937?text=Threat+Management';"
-                        alt="A person checking their phone/wallet, symbolizing secure payments and data protection."
-                    >
-                </div>
-                <h2 class="it-feat-card-headline">Turn your data into your fortress.</h2>
-                <p class="it-feat-card-description">
-                    Forgot about security gaps? No problem—with 24/7 Managed Threat Detection right on your network, you're always ready to secure your sensitive assets and prevent breaches instantly.
-                </p>
-            </div>
-        </div>
-    </div>
-
-</body>
-</html>
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-<style>
-    * {
-        margin: 0; padding: 0;
-    }
-    .info-sec{
-      background: #eaeaea7d;
-      color: #333;
-      font-family: 'Circular Std', sans-serif;
-      overflow: visible; padding: 100px 0;
-    }
-
-    .section-heading {
-      text-align: center;
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Enterprise Infrastructure Dossier</title>
+  <style>
+    /* Global Page Baseline Reset */
+    html, body {
+      margin: 0;
       padding: 0;
-      align-items: center;
-      justify-items: center;
-      justify-content: center;
-      padding-top: 4rem;
-      position: relative;
-      min-width: 1200px;
+      background-color: #090a0d;
+      color: #f4f4f6;
+      font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
     }
 
-    .section-heading h1 {
-      color: #06273e;
-            font-size: 0.875rem; /* 14px */
-            font-weight: 700;
-            letter-spacing: 0.1em;
-            text-transform: uppercase;
-            margin-bottom: 1rem;
+    /* =========================================================================
+       SECTION 1: EDITORIAL DOSSIER DESIGN TOKENS & STYLES (ene-)
+       ========================================================================= */
+    .ene-dossier-viewport {
+      --ene-bg: #090a0d;
+      --ene-surface: #101216;
+      --ene-border: #1e222b;
+      --ene-txt-primary: #f4f4f6;
+      --ene-txt-muted: #848a9c;
+      --ene-accent: #c5a880; 
+      --ene-mono: "SFMono-Regular", Consolas, Menlo, monospace;
+      --ene-sans: 'Circular Std', sans-serif;
+
+      background-color: var(--ene-bg);
+      color: var(--ene-txt-primary);
+      font-family: var(--ene-sans);
+      -webkit-font-smoothing: antialiased;
+      box-sizing: border-box;
+      padding: 80px 0 40px 0;
     }
 
-    .section-heading-text {
-      font-size: 56px;
-      font-weight: 700;
-      letter-spacing: -0.03em;
-      line-height: 1.2;
-      text-transform: none;
-      color: #06273e;
-      position: relative;
-      display: inline-block;
-      margin: 0 auto;
-      width: fit-content;
-      
+    .ene-dossier-viewport *,
+    .ene-dossier-viewport *::before,
+    .ene-dossier-viewport *::after {
+      box-sizing: inherit;
     }
 
-    .section-container {
+    .ene-dossier-container { max-width: 1200px; margin: 0 auto; padding: 0 40px; }
+    .ene-dossier-divider { border: none; border-top: 1px solid var(--ene-border); margin: 60px 0 100px 0; }
+    .ene-dossier-row-divider { border: none; border-top: 1px solid var(--ene-border); margin: 100px 0; }
+
+    .ene-dossier-meta-strip {
       display: flex;
-      width: 1100px;
-      margin: 0 auto;
-      padding: 0 2rem;
+      justify-content: space-between;
+      font-family: var(--ene-mono);
+      font-size: 0.75rem;
+      color: var(--ene-accent);
+      letter-spacing: 0.15em;
+      margin-bottom: 32px; margin-top: 80px;
     }
 
-    /* Left content blocks */
-    .content {
-      flex: 1;
-      padding: 0;
+    .ene-dossier-title {
+      font-size: 4rem;
+      font-weight: 500;
+      letter-spacing: -0.04em;
+      line-height: 1;
+      color: var(--ene-txt-primary);
+      margin: 0 0 24px 0;
     }
 
-    .defcon-story-subheading {
-      font-size: 1.2rem;
-      font-weight: 600;
-      color: #053c63;
-      margin-bottom: 18px;
-      letter-spacing: 2px;
-      text-transform: uppercase;
-      transition: color 0.5s;
-      }
-
-    .defcon-story-heading {
-      font-size: 2.6rem;
-      font-weight: 800;
-      margin-bottom: 18px;
-      letter-spacing: -0.02em;
-      line-height: 1.2;
-      transition: color 0.5s;
-      background: linear-gradient(90deg, #0091ff 0%, #06273e 100%);
-      -webkit-background-clip: text;
-      -webkit-text-fill-color: transparent;
-      background-clip: text;
-      color: transparent;
+    .ene-dossier-abstract {
+      font-size: 1.4rem;
+      line-height: 1.5;
+      color: var(--ene-txt-muted);
+      max-width: 900px;
+      margin: 0;
     }
 
-    .defcon-story-link {
-      display: inline-block;
-      color: #0091ff;
-      font-weight: 600;
-      text-decoration: none;
-      font-size: 1rem;
-      border-bottom: 2px solid #0091ff;
-      padding-bottom: 2px;
-      transition: color 0.3s, border-bottom 0.3s;
-      position: relative;
-      z-index: 2;
-      width: fit-content;
-      }
-
-      .defcon-story-link:hover {
-      color: #06273e;
-      border-bottom: 2px solid #06273e;
-      }
-
-    .block {
-      min-height: 100vh;
-      display: flex;
-      flex-direction: column;
-      justify-content: center;
-      opacity: 0.3;
-      transform: translateY(50px);
-      transition: all 0.6s ease;
+    .ene-dossier-row {
+      display: grid;
+      grid-template-columns: 4fr 8fr;
+      gap: 60px;
+      align-items: flex-start;
     }
 
-    .block.active {
-      opacity: 1;
-      transform: translateY(0);
-    }
-
-
-    .block p {
-      font-size: 1rem;
-      margin-bottom: 1rem;
-      line-height: 1.6;
-      width: 370px;
-    }
-
-    /* Right sticky image panel */
-    .image-panel {
-      flex: 1;
-      position: relative;
-      padding-left: 2rem;
-      max-width: 490px;
-      flex-grow: 1;
-      margin-bottom: 9rem;
-    }
-
-    .image-panel .image-wrapper {
+    .ene-dossier-label-col {
       position: sticky;
-      top: 160px;
-      height: 60vh;
-      max-height: 700px;
-      border-radius: 8px;
-      overflow: hidden;
-      box-shadow: 0 10px 30px rgba(1, 25, 53, 0.356);
-      width: 100%;
-      background: #eee;
-      margin-top: 7rem;
+      top: 40px;
     }
 
-    .image-panel img {
+    .ene-dossier-index {
+      font-family: var(--ene-mono);
+      font-size: 0.8rem;
+      color: var(--ene-accent);
+      display: block;
+      margin-bottom: 16px;
+      letter-spacing: 0.05em;
+    }
+
+    .ene-dossier-label-col h2 {
+      font-size: 2.25rem;
+      font-weight: 700;
+      letter-spacing: -0.02em;
+      color: var(--ene-txt-primary);
+      margin: 0;
+    }
+
+    .ene-dossier-lead-text {
+      font-size: 1.5rem;
+      line-height: 1.5;
+      font-weight: 500;
+      color: var(--ene-txt-primary);
+      margin: 0 0 40px 0;
+    }
+
+    .ene-dossier-details {
+      font-size: 1.05rem;
+      line-height: 1.65;
+      color: var(--ene-txt-muted);
+    }
+    .ene-dossier-details p { margin: 0 0 40px 0; }
+
+    .ene-dossier-sub-grid {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 40px;
+      border-top: 1px solid var(--ene-border);
+      padding-top: 40px;
+    }
+
+    .ene-dossier-sub-grid h4 {
+      font-size: 1.1rem;
+      font-weight: 600;
+      color: var(--ene-txt-primary);
+      margin: 0 0 12px 0;
+    }
+
+    .ene-dossier-sub-grid p {
+      font-size: 0.95rem;
+      line-height: 1.6;
+      color: var(--ene-txt-muted);
+      margin: 0;
+    }
+
+    .ene-dossier-table {
+      width: 100%;
+      border-collapse: collapse;
+      text-align: left;
+      margin-top: 20px;
+    }
+
+    .ene-dossier-table th, .ene-dossier-table td {
+      padding: 20px 0;
+      border-bottom: 1px solid var(--ene-border);
+      font-size: 1rem;
+      line-height: 1.5;
+      vertical-align: top;
+    }
+
+    .ene-dossier-table th {
+      font-family: var(--ene-mono);
+      font-size: 0.75rem;
+      color: var(--ene-txt-muted);
+      text-transform: uppercase;
+      letter-spacing: 0.1em;
+      font-weight: 400;
+      padding-top: 0;
+    }
+
+    .ene-dossier-table td strong {
+      color: var(--ene-txt-primary);
+      font-weight: 600;
+    }
+
+    .ene-dossier-table tr:last-child td {
+      border-bottom: none;
+    }
+
+    .ene-dossier-industry-list {
+      display: grid;
+      grid-template-columns: 1fr;
+      gap: 48px;
+    }
+
+    .ene-dossier-industry-item {
+      border-left: 2px solid var(--ene-accent);
+      padding-left: 32px;
+    }
+
+    .ene-dossier-industry-item h3 {
+      font-size: 1.35rem;
+      font-weight: 600;
+      color: var(--ene-txt-primary);
+      margin: 0 0 12px 0;
+      letter-spacing: -0.01em;
+    }
+
+    .ene-dossier-industry-item p {
+      font-size: 1rem;
+      line-height: 1.6;
+      color: var(--ene-txt-muted);
+      margin: 0;
+    }
+
+    /* =========================================================================
+       SECTION 2: SEAMLESS VIDEO SHOWCASE DESIGN TOKENS & STYLES (evc-)
+       ========================================================================= */
+    .evc-video-section {
+      --evc-bg: #090a0d;
+      --evc-surface: #101216;
+      --evc-txt-main: #f4f4f6;
+      --evc-txt-sub: #848a9c;
+      --evc-accent-gold: #c5a880;
+      --evc-mono-stack: "SFMono-Regular", Consolas, Menlo, monospace;
+      --evc-sans-stack: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif;
+
+      background-color: var(--evc-bg);
+      padding: 60px 0 120px 0;
+      font-family: var(--evc-sans-stack);
+      -webkit-font-smoothing: antialiased;
+      box-sizing: border-box;
+    }
+
+    .evc-video-section *,
+    .evc-video-section *::before,
+    .evc-video-section *::after {
+      box-sizing: inherit;
+    }
+
+    .evc-container { max-width: 1200px; margin: 0 auto; padding: 0 40px; }
+
+    .evc-header-block {
+      max-width: 800px;
+      margin-bottom: 56px;
+    }
+
+    .evc-meta-mono {
+      font-family: var(--evc-mono-stack);
+      font-size: 0.8rem;
+      color: var(--evc-accent-gold);
+      letter-spacing: 0.15em;
+      display: block;
+      margin-bottom: 16px;
+    }
+
+    .evc-header-block h2 {
+      font-size: 2.5rem;
+      font-weight: 800;
+      letter-spacing: -0.02em;
+      color: var(--evc-txt-main);
+      margin: 0 0 20px 0;
+    }
+
+    .evc-description {
+      font-size: 1.15rem;
+      line-height: 1.6;
+      color: var(--evc-txt-sub);
+      margin: 0;
+    }
+
+    .evc-video-frame {
+      position: relative;
+      width: 100%;
+      border-radius: 15px; /* Clean 15px Geometry */
+      z-index: 1;
+    }
+
+    /* Equal Distribution Rainbow Blur Shadow Engine */
+    .evc-video-frame::before {
+      content: '';
+      position: absolute;
+      top: 0; left: 0; right: 0; bottom: 0;
+      border-radius: 15px;
+      background: linear-gradient(45deg, #ff0000, #ff7f00, #ffff00, #00ff00, #0000ff, #4b0082, #9400d3, #ff0000);
+      background-size: 400% 400%;
+      z-index: -1;
+      opacity: 0;
+      filter: blur(40px);
+      transition: opacity 0.6s cubic-bezier(0.16, 1, 0.3, 1);
+      animation: evcRainbowMovement 8s linear infinite;
+    }
+
+    @keyframes evcRainbowMovement {
+      0% { background-position: 0% 50%; }
+      50% { background-position: 100% 50%; }
+      100% { background-position: 0% 50%; }
+    }
+
+    .evc-video-frame:hover::before {
+      opacity: 0.85;
+    }
+
+    .evc-player-wrapper {
+      position: relative;
+      width: 100%;
+      aspect-ratio: 16 / 9;
+      border-radius: 15px;
+      overflow: hidden;
+      background-color: #000000;
+    }
+
+    .evc-video-poster {
       width: 100%;
       height: 100%;
       object-fit: cover;
-      opacity: 0;
-      transform: scale(1.05);
-      transition: all 0.8s ease;
+      transition: transform 0.6s cubic-bezier(0.16, 1, 0.3, 1);
+    }
+
+    .evc-player-scrim {
       position: absolute;
-      top: 0;
-      left: 0;
-      
+      top: 0; left: 0; right: 0; bottom: 0;
+      background: linear-gradient(to top, rgba(9,10,13,0.4) 0%, transparent 30%);
+      z-index: 2;
     }
 
-    .image-panel img.active {
+    .evc-interface-overlay {
+      position: absolute;
+      top: 0; left: 0; right: 0; bottom: 0;
+      z-index: 5;
+    }
+
+    /* Unified Seamless Slide-out Pill Button Controls */
+    .evc-play-trigger {
+      position: absolute;
+      bottom: 32px; 
+      left: 32px;
+      height: 46px; 
+      background-color: #ffffff;
+      border: none;
+      border-radius: 23px;
+      cursor: pointer;
+      outline: none;
+      padding: 0;
+      display: flex;
+      align-items: center;
+      justify-content: flex-end;
+      overflow: hidden;
+      box-shadow: 0 10px 30px rgba(0,0,0,0.5);
+      transition: all 0.5s cubic-bezier(0.16, 1, 0.3, 1);
+    }
+
+    .evc-play-text {
+      font-family: var(--evc-mono-stack);
+      font-size: 0.75rem;
+      font-weight: 700;
+      color: #090a0d;
+      letter-spacing: 0.12em;
+      text-transform: uppercase;
+      white-space: nowrap;
+      max-width: 0; 
+      opacity: 0;
+      padding: 0;
+      transition: max-width 0.5s cubic-bezier(0.16, 1, 0.3, 1), 
+                  opacity 0.4s cubic-bezier(0.16, 1, 0.3, 1), 
+                  padding 0.5s cubic-bezier(0.16, 1, 0.3, 1);
+      pointer-events: none;
+    }
+
+    .evc-play-icon-box {
+      width: 46px;
+      height: 46px;
+      background-color: #ffffff;
+      border-radius: 50%;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      color: #090a0d;
+      flex-shrink: 0;
+      transition: background-color 0.3s ease, color 0.3s ease;
+    }
+
+    .evc-svg-icon {
+      width: 16px;
+      height: 16px;
+      margin-left: 2px;
+    }
+
+    /* Hover Micro-interactions */
+    .evc-play-trigger:hover .evc-play-text {
+      max-width: 120px; 
       opacity: 1;
-      transform: scale(1);
-      position: relative;
+      padding-left: 24px;
+      padding-right: 8px;
     }
 
-  </style>
+    .evc-play-trigger:hover .evc-play-icon-box {
+      background-color: var(--evc-accent-gold);
+      color: #ffffff;
+    }
 
-<div class="info-sec">
+    .evc-player-wrapper:hover .evc-video-poster {
+      transform: scale(1.01);
+    }
 
-  <div class="section-heading">
-    <h1>How We Work</h1>
-    <h2 class="section-heading-text">Clear steps to achieve <br> measurable results.</span></h2>
-  </div>
+    /* =========================================================================
+       SECTION 3: RESPONSIVE MEDIA QUERIES (SHARED CROSS-COMPONENT RULES)
+       ========================================================================= */
+    @media (max-width: 1024px) {
+      .ene-dossier-row { grid-template-columns: 1fr; gap: 32px; }
+      .ene-dossier-label-col { position: relative; top: 0; }
+      .ene-dossier-title { font-size: 3.5rem; }
+      .ene-dossier-abstract { font-size: 1.2rem; }
+      .ene-dossier-row-divider { margin: 60px 0; }
+      .evc-header-block h2 { font-size: 2.25rem; }
+      .evc-play-trigger { bottom: 24px; left: 24px; }
+    }
 
-  <div class="section-container">
-    <!-- Left Content -->
-    <div class="content">
-    <div class="block active" data-image="img1">
-      <div class="defcon-story-subheading" style="position: relative; z-index: 1;">
-        Discovery
-        <span style="
-          position: absolute;
-          left: -40px;
-          top: 50%;
-          transform: translateY(-50%);
-          font-size: 7rem;
-          font-weight: 900;
-          color: #c0c0c0;
-          opacity: 0.35;
-          z-index: -1; /* Changed from 0 to -1 to place behind heading */
-          pointer-events: none;
-          user-select: none;
-          line-height: 1;
-        ">01</span>
-      </div>
-      <div class="defcon-story-heading">Uncovering Your Vision</div>
-      <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Proin volutpat felis nec mi facilisis, sit amet.</p>
-      <a href="#" class="defcon-story-link">Learn about our process →</a>
-    </div>
-
-    <div class="block" data-image="img2">
-      <div class="defcon-story-subheading">Strategy
-        <span style="
-          position: absolute;
-          left: -40px;
-          top: 35%;
-          transform: translateY(-50%);
-          font-size: 7rem;
-          font-weight: 900;
-          color: #c0c0c0;
-          opacity: 0.35;
-          z-index: -1;
-          pointer-events: none;
-          user-select: none;
-          line-height: 1;
-        ">02</span>
-      </div>
-      <div class="defcon-story-heading">Crafting the Blueprint</div>
-      <p>We analyze your goals and challenges to develop a tailored strategy that sets the foundation for success.</p>
-      <a href="#" class="defcon-story-link">See our approach →</a>
-    </div>
-
-    <div class="block" data-image="img3">
-      <div class="defcon-story-subheading">Design
-        <span style="
-          position: absolute;
-          left: -40px;
-          top: 35%;
-          transform: translateY(-50%);
-          font-size: 7rem;
-          font-weight: 900;
-          color: #c0c0c0;
-          opacity: 0.35;
-          z-index: -1;
-          pointer-events: none;
-          user-select: none;
-          line-height: 1;
-        ">03</span>
-      </div>
-      <div class="defcon-story-heading">Bringing Ideas to Life</div>
-      <p>Our creative team transforms concepts into engaging designs that resonate with your audience.</p>
-      <a href="#" class="defcon-story-link">View our designs →</a>
-    </div>
-
-    <div class="block" data-image="img4">
-      <div class="defcon-story-subheading">Development
-        <span style="
-          position: absolute;
-          left: -40px;
-          top: 35%;
-          transform: translateY(-50%);
-          font-size: 7rem;
-          font-weight: 900;
-          color: #c0c0c0;
-          opacity: 0.35;
-          z-index: -1;
-          pointer-events: none;
-          user-select: none;
-          line-height: 1;
-        ">04</span>
-      </div>
-      <div class="defcon-story-heading">Building with Precision</div>
-      <p>We turn designs into robust, scalable solutions using the latest technologies and best practices.</p>
-      <a href="#" class="defcon-story-link">Explore our builds →</a>
-    </div>
-
-    <div class="block" data-image="img5">
-      <div class="defcon-story-subheading">Launch
-        <span style="
-          position: absolute;
-          left: -40px;
-          top: 35%;
-          transform: translateY(-50%);
-          font-size: 7rem;
-          font-weight: 900;
-          color: #c0c0c0;
-          opacity: 0.35;
-          z-index: -1;
-          pointer-events: none;
-          user-select: none;
-          line-height: 1;
-        ">05</span>
-      </div>
-      <div class="defcon-story-heading">Delivering Results</div>
-      <p>After rigorous testing, we launch your project and provide ongoing support to ensure lasting impact.</p>
-      <a href="#" class="defcon-story-link">Start your journey →</a>
-    </div>
-
+    @media (max-width: 768px) {
+      .ene-dossier-container, .evc-container { padding: 0 24px; }
+      .ene-dossier-viewport { padding: 40px 0 20px 0; }
+      .ene-dossier-title { font-size: 2.75rem; }
+      .ene-dossier-sub-grid { grid-template-columns: 1fr; gap: 32px; }
+      .ene-dossier-table th { display: none; }
+      .ene-dossier-table tr { display: flex; flex-direction: column; padding: 16px 0; border-bottom: 1px solid var(--ene-border); }
+      .ene-dossier-table td { padding: 4px 0; border: none; }
+      .ene-dossier-lead-text { font-size: 1.25rem; margin-bottom: 24px; }
+      .ene-dossier-industry-item { padding-left: 20px; }
       
-    </div>
+      .evc-video-section { padding: 40px 0 80px 0; }
+      .evc-header-block h2 { font-size: 1.75rem; margin-bottom: 12px; }
+      .evc-description { font-size: 1rem; }
+      .evc-play-trigger { bottom: 20px; left: 20px; height: 40px; border-radius: 20px; }
+      .evc-play-icon-box { width: 40px; height: 40px; }
+      .evc-svg-icon { width: 14px; height: 14px; }
+      .evc-play-trigger:hover .evc-play-text { font-size: 0.7rem; padding-left: 16px; padding-right: 4px; }
+    }
+  </style>
+</head>
+<body>
 
-    <!-- Right Image Panel -->
-    <div class="image-panel">
-      <div class="image-wrapper">
-        <img id="img1" src="https://images.pexels.com/photos/546819/pexels-photo-546819.jpeg" class="active">
-        <img id="img2" src="https://images.pexels.com/photos/1309766/pexels-photo-1309766.jpeg">
-        <img id="img3" src="https://images.pexels.com/photos/3183183/pexels-photo-3183183.jpeg">
-        <img id="img4" src="https://images.pexels.com/photos/3861972/pexels-photo-3861972.jpeg">
-        <img id="img5" src="https://images.pexels.com/photos/2566581/pexels-photo-2566581.jpeg">
+  <div class="ene-dossier-viewport">
+    <header class="ene-dossier-hero">
+      <div class="ene-dossier-container">
+        <div class="ene-dossier-meta-strip">
+          <span>CLASSIFICATION: ENTERPRISE LAYER</span>
+          <span>SPEC_REF: NXS-2026</span>
+        </div>
+        <h1 class="ene-dossier-title">The Operational Blueprint.</h1>
+        <p class="ene-dossier-abstract">
+          A precise breakdown of our closed-loop infrastructure system: what we build, who we optimize for, and the industry ecosystems where our deployments operate at absolute scale.
+        </p>
       </div>
-    </div>
+    </header>
+
+    <hr class="ene-dossier-divider">
+
+    <main class="ene-dossier-matrix-section">
+      <div class="ene-dossier-container">
+        
+        <div class="ene-dossier-row">
+          <div class="ene-dossier-label-col">
+            <span class="ene-dossier-index">01 // DEFINITION</span>
+            <h2>What This Is</h2>
+          </div>
+          <div class="ene-dossier-content-col">
+            <p class="ene-dossier-lead-text">
+              An unbroken, end-to-end workspace infrastructure loop that unites hardware deployment, network security protocols, and live hot-swap physical logistics into a single corporate subscription model.
+            </p>
+            <div class="ene-dossier-details">
+              <p>Instead of managing fragmented contracts across disparate device vendors, security consultants, and shipping companies, enterprise operations run on our unified engine. We handle your entire asset ecosystem from production line allocation directly to your workforce's physical coordinates.</p>
+              
+              <div class="ene-dossier-sub-grid">
+                <div>
+                  <h4>Continuous Lifecycle</h4>
+                  <p>Automated hardware replacement cycles every 12 to 24 months keep your distributed nodes running on modern architecture with zero asset-disposal friction.</p>
+                </div>
+                <div>
+                  <h4>Native Compliance</h4>
+                  <p>Cryptographic configurations and single-sign-on tokens are baked into the device at the firmware level prior to delivery, minimizing human error.</p>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <hr class="ene-dossier-row-divider">
+
+        <div class="ene-dossier-row">
+          <div class="ene-dossier-label-col">
+            <span class="ene-dossier-index">02 // TARGET MATRIX</span>
+            <h2>For Whom</h2>
+          </div>
+          <div class="ene-dossier-content-col">
+            <p class="ene-dossier-lead-text">
+              Engineered exclusively for scaling organizations, multi-regional operations, and executive leadership teams looking to detach from the manual cycles of internal IT provisioning.
+            </p>
+            
+            <table class="ene-dossier-table">
+              <thead>
+                <tr>
+                  <th>Stakeholder Node</th>
+                  <th>Core Operational Impact</th>
+                </tr>
+              </thead>
+              <tbody>
+                <tr>
+                  <td><strong>Chief Information Officers (CIOs)</strong></td>
+                  <td>Complete network perimeter isolation, automated zero-touch patch deployment, and standardized fleet hardware baselines.</td>
+                </tr>
+                <tr>
+                  <td><strong>Chief Financial Officers (CFOs)</strong></td>
+                  <td>Conversion of heavy hardware CapEx into predictable, tax-optimized operational expenses (OpEx) with direct VAT deductions.</td>
+                </tr>
+                <tr>
+                  <td><strong>Operations & HR Directors</strong></td>
+                  <td>Immediate corporate onboarding agility. New personnel receive a pre-configured, instantly active setup on day one, anywhere nationwide.</td>
+                </tr>
+              </tbody>
+            </table>
+          </div>
+        </div>
+
+        <hr class="ene-dossier-row-divider">
+
+        <div class="ene-dossier-row">
+          <div class="ene-dossier-label-col">
+            <span class="ene-dossier-index">03 // VERTICAL SECTORS</span>
+            <h2>Industries Served</h2>
+          </div>
+          <div class="ene-dossier-content-col">
+            <p class="ene-dossier-lead-text">
+              Our ecosystem thrives in highly compliant, fast-moving, or geographically distributed commercial sectors where a single hour of network downtime causes operational risk.
+            </p>
+
+            <div class="ene-dossier-industry-list">
+              <div class="ene-dossier-industry-item">
+                <h3>FinTech, Banking & Legal Networks</h3>
+                <p>Environments requiring absolute data sovereignty and active endpoint protection. Our native MDM profiles enforce strict data containment fields, preventing customer record leakage and securing remote transactions on the fly.</p>
+              </div>
+              <div class="ene-dossier-industry-item">
+                <h3>High-Scale Healthcare & Clinical Logistics</h3>
+                <p>Distributed medical, clinical, and administrative networks. We provision ruggedized, secure terminals configured for immediate connection to central healthcare mainframes, keeping remote practitioners securely aligned.</p>
+              </div>
+              <div class="ene-dossier-industry-item">
+                <h3>Distributed Field Ops & Heavy Industry Logistics</h3>
+                <p>Supply chains, mining operators, and regional transport infrastructure. Our 4-hour metropolitan replacement loop minimizes down-time for critical off-site personnel navigating complex ground operations.</p>
+              </div>
+              <div class="ene-dossier-industry-item">
+                <h3>Enterprise Tech Consultancies & Agencies</h3>
+                <p>High-output teams requiring rapid scalability. We deploy elite computing nodes to engineering clusters instantly, accommodating sudden changes in project team size without long-term procurement drag.</p>
+              </div>
+            </div>
+          </div>
+        </div>
+
+      </div>
+    </main>
   </div>
 
-</div>
+  <section class="evc-video-section">
+    <div class="evc-container">
+      
+      <div class="evc-header-block">
+        <span class="evc-meta-mono">// 04 / INTERFACE DEMONSTRATION</span>
+        <h2>System Runtime in Action</h2>
+        <p class="evc-description">
+          Watch a technical walkthrough of our zero-touch firmware provisioning pipeline, remote network isolation deployment, and the 4-hour physical asset hot-swap sequence in active commercial environments.
+        </p>
+      </div>
+
+      <div class="evc-video-frame">
+        <div class="evc-player-wrapper">
+          
+          <video id="evcRealVideo" poster="https://images.unsplash.com/photo-1550751827-4bd374c3f58b?auto=format&fit=crop&w=1600&q=80" class="evc-video-poster">
+            <source src="https://www.pexels.com/download/video/8675543/" type="video/mp4">
+            Your browser does not support the video tag.
+          </video>
+          
+          <div class="evc-player-scrim"></div>
+
+          <div class="evc-interface-overlay">
+            
+            <button class="evc-play-trigger" id="evcPlayButton" onclick="initiateVideoPlayback();" aria-label="Play Ecosystem Walkthrough Video">
+              <span class="evc-play-text">Play Video</span>
+              <div class="evc-play-icon-box">
+                <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="currentColor" class="evc-svg-icon">
+                  <path d="M8 5v14l11-7z"/>
+                </svg>
+              </div>
+            </button>
+
+          </div>
+
+        </div>
+      </div>
+
+    </div>
+  </section>
 
   <script>
-    const blocks = document.querySelectorAll(".block");
-    const images = document.querySelectorAll(".image-panel img");
+    function initiateVideoPlayback() {
+      const video = document.getElementById('evcRealVideo');
+      const playButton = document.getElementById('evcPlayButton');
+      const scrim = document.querySelector('.evc-player-scrim');
 
-    window.addEventListener("scroll", () => {
-      let index = 0;
-      blocks.forEach((block, i) => {
-        const rect = block.getBoundingClientRect();
-        if (rect.top < window.innerHeight / 2 && rect.bottom > window.innerHeight / 2) {
-          index = i;
+      if (video) {
+        // Play directly with sound enabled
+        video.play();
+        
+        // Expose native tracking controls for post-click utility
+        video.controls = true;
+        
+        // Remove interactive custom overlays cleanly
+        if (playButton) {
+          playButton.style.opacity = '0';
+          playButton.style.pointerEvents = 'none';
+          playButton.style.transition = 'opacity 0.4s ease';
         }
-      });
-
-      // Update active text block
-      blocks.forEach((block, i) => block.classList.toggle("active", i === index));
-
-      // Update active image
-      images.forEach((img, i) => img.classList.toggle("active", i === index));
-    });
+        if (scrim) {
+          scrim.style.opacity = '0';
+          scrim.style.pointerEvents = 'none';
+          scrim.style.transition = 'opacity 0.4s ease';
+        }
+      }
+    }
   </script>
 
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
+</body>
+</html>
 
 
 

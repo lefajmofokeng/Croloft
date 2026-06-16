@@ -16,9 +16,9 @@ class CronosHeader extends HTMLElement {
                         tagline: 'Flexible pricing for every team',
                         icon: 'thumbnails/04 (2).png',
                         links: [
-                            { label: 'Startups',       href: 'plans-starter.html' },
-                            { label: 'Professional',   href: 'plans-pro.html' },
-                            { label: 'Enterprise',     href: 'plans-enterprise.html' },
+                            { label: 'Startups',       href: 'startups.html' },
+                            { label: 'Professional',   href: 'professional.html' },
+                            { label: 'Enterprise',     href: 'enterprise.html' },
                             // Marketplace now includes external flag for new tab + icon
                             { label: 'Marketplace',    href: 'marketplace.html', external: true }, 
                             { label: 'Schedule a Demo',  href: 'quote.html' },
@@ -77,7 +77,7 @@ class CronosHeader extends HTMLElement {
                         heading: 'Software Development',
                         tagline: 'Custom apps & platforms',
                         icon: 'thumbnails/04 (2).png',
-                        mobileBtn: 'Start Project',
+                        mobileBtn: 'Learn more',
                         mobileBtnHref: 'index.html',
                         links: [
                             { label: 'AI & Workflow Automation',         href: 'mobile-applications.html' },
@@ -91,7 +91,7 @@ class CronosHeader extends HTMLElement {
                         heading: 'IT Infrastructure',
                         tagline: 'Reliable systems & support',
                         icon: 'thumbnails/04 (2).png',
-                        mobileBtn: 'Learn About IT',
+                        mobileBtn: 'Learn more',
                         mobileBtnHref: 'index.html',
                         links: [
                             { label: 'Managed IT Services & Helpdesk', href: 'managed-it-services.html' },
@@ -105,7 +105,7 @@ class CronosHeader extends HTMLElement {
                         heading: 'Marketing & Creative Studio',
                         tagline: 'Creative content & design',
                         icon: 'thumbnails/04 (2).png',
-                        mobileBtn: 'Explore Marketing',
+                        mobileBtn: 'Learn more',
                         mobileBtnHref: 'index.html',
                         links: [
                             { label: 'Digital Marketing',   href: 'digital-marketing.html' },
