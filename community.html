@@ -1,0 +1,293 @@
+<!DOCTYPE html>
+<html lang="en" dir="ltr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, minimum-scale=1.0, maximum-scale=5.0, viewport-fit=cover, shrink-to-fit=no">
+    <meta http-equiv="x-ua-compatible" content="ie=edge"/>
+    
+    <title>Cronos</title>
+
+    <!-- WEB TAB ICON -->
+    <link rel="icon" type="image/png" href="thumbnails/top-1.png">
+
+    <style>
+      @font-face { font-family:'Circular Std'; src:url('fonts/CircularStd-Book.woff2') format('woff2'),url('fonts/CircularStd-Book.woff') format('woff'); font-weight:400; font-style:normal; font-display:swap; }
+  @font-face { font-family:'Circular Std'; src:url('fonts/CircularStd-BookItalic.woff2') format('woff2'),url('fonts/CircularStd-BookItalic.woff') format('woff'); font-weight:400; font-style:italic; font-display:swap; }
+  @font-face { font-family:'Circular Std'; src:url('fonts/CircularStd-Medium.woff2') format('woff2'),url('fonts/CircularStd-Medium.woff') format('woff'); font-weight:500; font-style:normal; font-display:swap; }
+  @font-face { font-family:'Circular Std'; src:url('fonts/CircularStd-Bold.woff2') format('woff2'),url('fonts/CircularStd-Bold.woff') format('woff'); font-weight:600; font-style:normal; font-display:swap; }
+  @font-face { font-family:'Circular Std'; src:url('fonts/CircularStd-Bold.woff2') format('woff2'),url('fonts/CircularStd-Bold.woff') format('woff'); font-weight:700; font-style:normal; font-display:swap; }
+  @font-face { font-family:'Circular Std'; src:url('fonts/CircularStd-Black.woff2') format('woff2'),url('fonts/CircularStd-Black.woff') format('woff'); font-weight:800; font-style:normal; font-display:swap; }
+  @font-face { font-family:'Circular Std'; src:url('fonts/CircularStd-Black.woff2') format('woff2'),url('fonts/CircularStd-Black.woff') format('woff'); font-weight:900; font-style:normal; font-display:swap; }
+    </style>
+</head>
+
+
+
+
+
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>My Website</title>
+    
+    <script src="header.js" defer></script>
+    <script src="footer.js" defer></script> 
+</head>
+<body>
+
+    <cronos-header></cronos-header>
+    
+
+</body>
+</html>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<style>
+    /* --- Typography & Design System Foundations --- */
+    @import url('https://fonts.googleapis.com/css2?family=Fraunces:ital,opsz,wght@0,9..144,400;0,9..144,500;1,9..144,400&family=Inter:wght@400;500;600&display=swap');
+
+    /* Centering Wrapper with dedicated vertical padding */
+    .cronos-center-wrapper {
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        width: 100%;
+        min-height: 100vh; /* Ensures vertical centering on full viewports */
+        padding: 3rem 2rem 0.5rem 2rem; /* Substantial padding on top/bottom and sides */
+        box-sizing: border-box;
+    }
+
+    .cronos-scope {
+        --bg-card: #fff2e4;
+        --text-heading: #1e2229;
+        --text-body: #4a515e;
+        --brand-blue: #2b44b6;
+        --brand-orange: #f36d43;
+        --brand-orange-hover: #e05c32;
+        
+        --font-serif: 'Fraunces', Georgia, serif;
+        --font-sans: 'Circular Std', -apple-system, BlinkMacSystemFont, sans-serif;
+        --transition: all 0.25s ease-in-out;
+        
+        width: 100%;
+        display: flex;
+        justify-content: center;
+    }
+
+    * {
+        box-sizing: border-box;
+        margin: 0;
+        padding: 0;
+    }
+
+    /* --- Main Container Card --- */
+    .cronos-scope .community-container {
+        background-color: var(--bg-card);
+        border-radius: 24px;
+        width: 100%;
+        max-width: 1500px;
+        padding: 5.5rem 4rem;
+        display: grid;
+        grid-template-columns: 1fr 1fr;
+        gap: 1px;
+        position: relative;
+        box-sizing: border-box;
+    }
+
+    /* --- Column Wrapper --- */
+    .cronos-scope .community-column {
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        text-align: center;
+        position: relative;
+        z-index: 1;
+        box-sizing: border-box;
+    }
+
+    /* --- Sketch Icon Styling --- */
+    .cronos-scope .icon-wrapper {
+        position: relative;
+        width: 130px;
+        height: 130px;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        margin-bottom: 2rem;
+        color: var(--brand-blue);
+    }
+
+    .cronos-scope .icon-wrapper svg {
+        width: 100%;
+        height: 100%;
+        object-fit: contain;
+    }
+
+    /* --- Typography --- */
+    .cronos-scope .column-title {
+        font-family: var(--font-serif);
+        font-size: 2.5rem;
+        font-weight: 400;
+        color: var(--text-heading);
+        margin-bottom: 1.25rem;
+        letter-spacing: -0.01em;
+        line-height: 1.2;
+    }
+
+    .cronos-scope .column-description {
+        font-family: var(--font-sans);
+        font-size: 1.05rem;
+        line-height: 1.6;
+        color: var(--text-body);
+        max-width: 360px;
+        margin-bottom: 2.75rem;
+        font-weight: 400;
+    }
+
+    /* --- Interactive Button --- */
+    .cronos-scope .cta-button {
+        display: inline-block;
+        font-family: var(--font-sans);
+        font-size: 0.95rem;
+        font-weight: 500;
+        color: #ffffff;
+        background-color: var(--brand-orange);
+        padding: 0.9rem 2.5rem;
+        border-radius: 100px;
+        text-decoration: none;
+        transition: var(--transition);
+        border: none;
+        cursor: pointer;
+        box-shadow: 0 4px 14px rgba(243, 109, 67, 0.15);
+    }
+
+    .cronos-scope .cta-button:hover {
+        background-color: var(--brand-orange-hover);
+        transform: translateY(-1px);
+        box-shadow: 0 6px 20px rgba(243, 109, 67, 0.25);
+    }
+
+    /* --- Responsive Design (Mobile-First Breakdown) --- */
+    @media (max-width: 912px) {
+        .cronos-center-wrapper {
+            padding: 4rem 1rem;
+        }
+
+        .cronos-scope .community-container {
+            grid-template-columns: 1fr;
+            gap: 5rem;
+            padding: 4rem 2.5rem;
+        }
+
+        .cronos-scope .community-container::after {
+            display: none; 
+        }
+        
+        .cronos-scope .column-title {
+            font-size: 2.2rem;
+        }
+        
+        .cronos-scope .column-description {
+            max-width: 420px;
+        }
+    }
+
+    @media (max-width: 480px) {
+        .cronos-center-wrapper {
+            padding: 2.5rem 0.75rem;
+        }
+
+        .cronos-scope .community-container {
+            padding: 3.5rem 1.5rem;
+            border-radius: 18px;
+        }
+
+        .cronos-scope .column-title {
+            font-size: 1.85rem;
+        }
+
+        .cronos-scope .icon-wrapper {
+            width: 110px;
+            height: 110px;
+            margin-bottom: 1.5rem;
+        }
+    }
+</style>
+
+<div class="cronos-center-wrapper">
+    <div class="cronos-scope">
+        <div class="community-container">
+
+            <div class="community-column">
+                <div class="icon-wrapper">
+                    <svg viewBox="0 0 100 100" fill="none" xmlns="http://www.w3.org/2000/svg">
+                        <path d="M32 28C30 26 26 26 24 28M68 28C70 26 74 26 76 28M15 50C10 52 12 58 15 62M85 50C90 52 88 58 85 62" stroke="currentColor" stroke-width="2.5" stroke-linecap="round"/>
+                        <path d="M28 36C28 36 33 32 40 31M72 36C72 36 67 32 60 31" stroke="currentColor" stroke-width="2.5" stroke-linecap="round"/>
+                        <path d="M32 45C35 40 42 38 50 38C58 38 65 40 68 45C72 52 70 65 64 69C58 73 54 70 50 70C46 70 42 73 36 69C30 65 28 52 32 45Z" stroke="currentColor" stroke-width="3" stroke-linejoin="round" stroke-linecap="round"/>
+                        <circle cx="42" cy="52" r="3.5" fill="currentColor"/>
+                        <circle cx="58" cy="52" r="3.5" fill="currentColor"/>
+                        <path d="M44 61C46 63 54 63 56 61" stroke="currentColor" stroke-width="2.5" stroke-linecap="round"/>
+                    </svg>
+                </div>
+                <h2 class="column-title">Join Discord</h2>
+                <p class="column-description">
+                    Ready to sync with the Cronos dev ecosystem? Jump in to chat infrastructure, debug setups, or just hang out with the team.
+                </p>
+                <a href="#" class="cta-button">Open Discord</a>
+            </div>
+
+            <div class="community-column">
+                <div class="icon-wrapper">
+                    <svg viewBox="0 0 100 100" fill="none" xmlns="http://www.w3.org/2000/svg">
+                        <path d="M50 15V25M50 75V85M15 50H25M75 50H85" stroke="currentColor" stroke-width="2.5" stroke-linecap="round"/>
+                        <path d="M25 25L33 33M75 25L67 33M25 75L33 67M75 75L67 66" stroke="currentColor" stroke-width="2.5" stroke-linecap="round"/>
+                        <circle cx="50" cy="50" r="14" stroke="currentColor" stroke-width="3" stroke-dasharray="2 4"/>
+                        <path d="M42 46C45 42 55 42 58 46M42 54C45 58 55 58 58 54" stroke="currentColor" stroke-width="2.5" stroke-linecap="round"/>
+                        <circle cx="50" cy="50" r="6" fill="currentColor"/>
+                    </svg>
+                </div>
+                <h2 class="column-title">Other Channels</h2>
+                <p class="column-description">
+                    Have a quick tech stack question or want to keep track of our latest open-source modules? Catch us across our active spaces.
+                </p>
+                <a href="#" class="cta-button">Explore socials</a>
+            </div>
+
+        </div>
+    </div>
+</div>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<cronos-footer></cronos-footer>

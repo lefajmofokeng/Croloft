@@ -88,13 +88,313 @@
     <div class="epd-hero-scrim"></div>
 
     <div class="epd-container epd-hero-content">
-      <h1 class="epd-hero-display">Pro Businesses</h1>
-      <p class="epd-hero-lead">Level up&#174; with a unified infrastructure solution designed for modern enterprises.</p>
+      <h1 class="epd-hero-display">Go Pro</h1>
+      <p class="epd-hero-lead">Level Up&#174; with a unified infrastructure solution designed for modern enterprises.</p>
       <div class="epd-hero-actions">
         <a href="#epd-intake" class="epd-btn-solid">Initiate Infrastructure Review</a>
       </div>
     </div>
   </header>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<!-- Scoped Presentation Grid Block -->
+<div class="ecomp-dashboard-section">
+  <div class="ecomp-grid-container">
+    
+    <!-- Left Panel: Tall Portrait Feature -->
+    <div class="ecomp-panel ecomp-panel--tall">
+      <img src="https://images.unsplash.com/photo-1573496359142-b8d87734a5a2?auto=format&fit=crop&w=800&q=80" alt="Executive holding terminal device" class="ecomp-panel-img">
+    </div>
+
+    <!-- Center Panel: Dual Horizontal Split Configuration -->
+    <div class="ecomp-split-column">
+      
+      <!-- Top Component: Social Validation Pill -->
+      <div class="ecomp-validation-pill">
+        <div class="ecomp-avatar-stack">
+          <img src="https://images.unsplash.com/photo-1534528741775-53994a69daeb?auto=format&fit=crop&w=100&h=100&q=80" alt="User Avatar" class="ecomp-avatar">
+          <img src="https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?auto=format&fit=crop&w=100&h=100&q=80" alt="User Avatar" class="ecomp-avatar">
+          <img src="https://images.unsplash.com/photo-1500648767791-00dcc994a43e?auto=format&fit=crop&w=100&h=100&q=80" alt="User Avatar" class="ecomp-avatar">
+          <img src="https://images.unsplash.com/photo-1494790108377-be9c29b29330?auto=format&fit=crop&w=100&h=100&q=80" alt="User Avatar" class="ecomp-avatar">
+        </div>
+        <span class="ecomp-validation-text">Rated 4.97/5 from 175+ reviews</span>
+      </div>
+
+      <!-- Bottom Component: Metrics Card with Ambient Gradient Mesh -->
+      <div class="ecomp-metric-card">
+        <div class="ecomp-metric-mesh"></div>
+        <div class="ecomp-metric-content">
+          <div class="ecomp-metric-display">1M+</div>
+          <div class="ecomp-metric-label">Sales Pipeline<br>Influenced</div>
+        </div>
+      </div>
+
+    </div>
+
+    <!-- Right Panel: Tall Portrait with Graphic Letter Overlay -->
+    <div class="ecomp-panel ecomp-panel--tall ecomp-panel--graphic">
+      <img src="https://images.pexels.com/photos/17485820/pexels-photo-17485820.png" alt="Collaborative corporate team" class="ecomp-panel-img">
+    </div>
+
+  </div>
+</div>
+
+<style>
+/* Component Variable System */
+.ecomp-dashboard-section {
+  --ecomp-bg-canvas: #f4f4f4;
+  --ecomp-bg-card: #e6e6e6;
+  --ecomp-radius: 14px;
+  --ecomp-gap: 10px;
+  --ecomp-text-dark: #1a1d20;
+  --ecomp-font: 'Circular Std', -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif;
+
+  background-color: var(--ecomp-bg-canvas);
+  padding: 150px 20px;
+  font-family: var(--ecomp-font);
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+/* Master Layout Framework */
+.ecomp-grid-container {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: var(--ecomp-gap);
+  max-width: 1200px;
+  width: 100%; padding: 0 20px;
+}
+
+/* Base Panel Rules */
+.ecomp-panel {
+  position: relative;
+  background-color: var(--ecomp-bg-card);
+  border-radius: var(--ecomp-radius);
+  overflow: hidden;
+  display: flex;
+}
+
+.ecomp-panel--tall {
+  aspect-ratio: 0.92 / 1;
+}
+
+.ecomp-panel-img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
+
+/* Split Middle Column Flexbox arrangement */
+.ecomp-split-column {
+  display: flex;
+  flex-direction: column;
+  gap: var(--ecomp-gap);
+  height: 100%;
+}
+
+/* Social Proof Component Styling */
+.ecomp-validation-pill {
+  background-color: var(--ecomp-bg-card);
+  border-radius: var(--ecomp-radius);
+  padding: 24px;
+  display: flex;
+  align-items: center;
+  gap: 16px;
+}
+
+.ecomp-avatar-stack {
+  display: flex;
+  align-items: center;
+}
+
+.ecomp-avatar {
+  width: 38px;
+  height: 38px;
+  border-radius: 50%;
+  border: 2.5px solid var(--ecomp-bg-card);
+  object-fit: cover;
+  margin-left: -10px;
+}
+
+.ecomp-avatar:first-child {
+  margin-left: 0;
+}
+
+.ecomp-validation-text {
+  font-size: 1rem;
+  font-weight: 500;
+  color: var(--ecomp-text-dark);
+}
+
+/* Metric Display Container with Fluid Mesh Backing */
+.ecomp-metric-card {
+  position: relative;
+  background-color: #000000;
+  border-radius: var(--ecomp-radius);
+  padding: 36px;
+  flex-grow: 1;
+  overflow: hidden;
+  display: flex;
+  align-items: flex-end;
+}
+
+/* Ambient Vector Lighting Simulator */
+.ecomp-metric-mesh {
+  position: absolute;
+  top: -20%; right: -20%; bottom: -20%; left: -20%;
+  background: radial-gradient(circle at 75% 30%, #4facfe 0%, transparent 45%),
+              radial-gradient(circle at 30% 65%, #ffb300 0%, transparent 55%),
+              radial-gradient(circle at 50% 40%, #ff3d00 0%, #000000 70%);
+  opacity: 0.95;
+  z-index: 1;
+}
+
+.ecomp-metric-content {
+  position: relative;
+  z-index: 5;
+  display: flex;
+  align-items: flex-end;
+  gap: 18px;
+  color: #ffffff;
+}
+
+.ecomp-metric-display {
+  font-size: 4.5rem;
+  font-weight: 400;
+  line-height: 0.85;
+  letter-spacing: -0.03em;
+}
+
+.ecomp-metric-label {
+  font-size: 0.95rem;
+  font-weight: 500;
+  line-height: 1.3;
+  color: rgba(255, 255, 255, 0.9);
+  padding-bottom: 2px;
+}
+
+/* Right Panel Overlapping Typography Element */
+.ecomp-panel--graphic {
+  position: relative;
+}
+
+/* Responsive Structural Breakpoints */
+@media (max-width: 992px) {
+  .ecomp-grid-container {
+    grid-template-columns: 1fr;
+  }
+  .ecomp-panel--tall {
+    aspect-ratio: 1.3 / 1;
+  }
+  .ecomp-overlay-letter {
+    font-size: 9rem;
+  }
+}
+
+@media (max-width: 480px) {
+  .ecomp-validation-pill {
+    flex-direction: column;
+    align-items: flex-start;
+    gap: 12px;
+  }
+  .ecomp-metric-content {
+    flex-direction: column;
+    align-items: flex-start;
+    gap: 8px;
+  }
+  .ecomp-panel--tall {
+    aspect-ratio: 1 / 1;
+  }
+}
+</style>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
   <!-- Section: The Unified Ecosystem Flow (No Cards, Asymmetric Line Layout) -->
   <section class="epd-ecosystem-section" id="epd-ecosystem">
@@ -275,7 +575,7 @@
 
 .epd-hero-display {
   font-size: 4rem;
-  font-weight: 500;
+  font-weight: 400;
   line-height: 1.05;
   letter-spacing: -0.03em;
   margin: 0 0 24px 0;
@@ -313,8 +613,8 @@
 }
 
 .epd-section-intro { max-width: 750px; margin-bottom: 96px; }
-.epd-index { font-size: 0.75rem; font-weight: 700; letter-spacing: 0.15em; color: var(--epd-accent-blue); display: block; margin-bottom: 12px; }
-.epd-ecosystem-section h2 { font-size: 2.5rem; font-weight: 800; margin: 0 0 16px 0; letter-spacing: -0.02em; }
+.epd-index { font-size: 0.75rem; font-weight: 500; letter-spacing: 0.15em; color: var(--epd-accent-blue); display: block; margin-bottom: 12px; }
+.epd-ecosystem-section h2 { font-size: 3rem; font-weight: 500; margin: 0 0 16px 0; letter-spacing: -0.02em; }
 .epd-lead-sub { font-size: 1.15rem; line-height: 1.55; color: var(--epd-text-slate); margin: 0; }
 
 /* Structural Ecosystem Timeline Weave without cards */
@@ -337,10 +637,9 @@
 .epd-intake-section {
   padding: 140px 0;
   background-color: var(--epd-bg-surface);
-  border-top: 1px solid var(--epd-line-color);
 }
 .epd-intake-grid { display: grid; grid-template-columns: 5fr 7fr; gap: 80px; align-items: flex-start; }
-.epd-intake-text h2 { font-size: 2.5rem; font-weight: 800; margin: 0 0 16px 0; letter-spacing: -0.02em; }
+.epd-intake-text h2 { font-size: 2.5rem; font-weight: 500; margin: 0 0 16px 0; letter-spacing: -0.02em; }
 .epd-intake-text p { font-size: 1.1rem; line-height: 1.6; color: var(--epd-text-slate); margin: 0; }
 
 /* Pure Minimal Form Inputs Frame */
@@ -377,25 +676,25 @@
 .epd-minimal-form input:focus ~ label,
 .epd-minimal-form input:not(:placeholder-shown) ~ label {
   top: -16px;
-  font-size: 0.75rem;
-  font-weight: 700;
+  font-size: 1rem;
+  font-weight: 500;
   color: var(--epd-text-pure);
   letter-spacing: 0.05em;
 }
 
 .epd-minimal-form select { color-scheme: dark; cursor: pointer; }
-.epd-select-label { top: -16px !important; font-size: 0.75rem !important; font-weight: 700; }
+.epd-select-label { top: -16px !important; font-size: 1.05rem !important; font-weight: 400; }
 
 .epd-submit-action {
   align-self: flex-start;
   background-color: var(--epd-text-pure);
   color: var(--epd-bg-deep);
   border: none;
-  font-size: 0.95rem;
-  font-weight: 700;
+  font-size: 1rem;
+  font-weight: 500;
   padding: 13px 25px;
   border-radius: 50px;
-  cursor: pointer;
+  cursor: pointer; font-family: 'Circular Std', sans-serif;
   transition: opacity 0.2s ease;
 }
 .epd-submit-action:hover { opacity: 0.9; }
@@ -433,251 +732,502 @@
 
 
 
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-<!-- Scoped Presentation Grid Block -->
-<div class="ecomp-dashboard-section">
-  <div class="ecomp-grid-container">
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Strategic Excellence Component</title>
     
-    <!-- Left Panel: Tall Portrait Feature -->
-    <div class="ecomp-panel ecomp-panel--tall">
-      <img src="https://images.unsplash.com/photo-1573496359142-b8d87734a5a2?auto=format&fit=crop&w=800&q=80" alt="Executive holding terminal device" class="ecomp-panel-img">
-    </div>
+    <style>
+        /* --- Reset & Base Styles --- */
+        * {
+            box-sizing: border-box;
+            margin: 0;
+            padding: 0;  font-family: 'Circular Std', sans-serif;
+        }
 
-    <!-- Center Panel: Dual Horizontal Split Configuration -->
-    <div class="ecomp-split-column">
-      
-      <!-- Top Component: Social Validation Pill -->
-      <div class="ecomp-validation-pill">
-        <div class="ecomp-avatar-stack">
-          <img src="https://images.unsplash.com/photo-1534528741775-53994a69daeb?auto=format&fit=crop&w=100&h=100&q=80" alt="User Avatar" class="ecomp-avatar">
-          <img src="https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?auto=format&fit=crop&w=100&h=100&q=80" alt="User Avatar" class="ecomp-avatar">
-          <img src="https://images.unsplash.com/photo-1500648767791-00dcc994a43e?auto=format&fit=crop&w=100&h=100&q=80" alt="User Avatar" class="ecomp-avatar">
-          <img src="https://images.unsplash.com/photo-1494790108377-be9c29b29330?auto=format&fit=crop&w=100&h=100&q=80" alt="User Avatar" class="ecomp-avatar">
+        #body-sv {
+            font-family: 'Circular Std', sans-serif;
+            background-color: #ffffff;
+            color: #111;
+            line-height: 1.5;
+            -webkit-font-smoothing: antialiased;
+            display: flex;
+            justify-content: center;
+            padding: 60px 20px;
+        }
+
+        /* --- Main Container --- */
+        .se-container {
+            width: 100%;
+            max-width: 1200px;
+            margin: 0 auto; padding: 150px 20px;
+        }
+
+        /* --- Header Section --- */
+        .se-header {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            margin-bottom: 60px;
+        }
+
+        .se-title-wrapper {
+            font-size: 56px;
+            line-height: 1.1;
+            color: #000;
+        }
+
+        .se-title-sans {
+            font-weight: 500; /* Medium weight Inter */
+        }
+
+        .se-title-serif {
+            font-family: 'Circular Std', serif;
+            font-weight: 500;
+            margin-left: 8px;
+        }
+
+        /* --- Contact Button --- */
+        .se-btn {
+            background-color: #0084e3; /* Vibrant blue/purple from image */
+            color: #fff;
+            padding: 4px 4px 4px 28px;
+            border-radius: 100px;
+            text-decoration: none;
+            display: inline-flex;
+            align-items: center;
+            gap: 16px;
+            font-size: 16px;
+            font-weight: 400;
+            transition: background-color 0.2s ease;
+        }
+
+        .se-btn:hover {
+            background-color: #0084e3;
+        }
+
+        .se-btn-icon-circle {
+            width: 36px;
+            height: 36px;
+            background-color: #fff;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: #0084e3;
+        }
+
+        /* --- Main Content Grid --- */
+        .se-grid {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 60px;
+            align-items: flex-start;
+        }
+
+        /* --- Left Side: Accordion --- */
+        .se-accordion {
+            display: flex;
+            flex-direction: column;
+            border-top: 1px solid #e5e5e5;
+        }
+
+        .se-acc-item {
+            border-bottom: 1px solid #e5e5e5;
+            overflow: hidden;
+        }
+
+        .se-acc-header {
+            padding: 32px 0;
+            display: flex;
+            align-items: baseline;
+            cursor: pointer;
+            transition: opacity 0.2s;
+        }
+
+        .se-acc-header:hover {
+            opacity: 0.7;
+        }
+
+        .se-acc-number {
+            font-size: 20px;
+            font-weight: 500;
+            margin-right: 24px;
+            font-feature-settings: "tnum";
+            color: #000;
+        }
+
+        .se-acc-title {
+            font-size: 26px;
+            font-weight: 500;
+            color: #000;
+            letter-spacing: -0.5px;
+        }
+
+        /* Content Area */
+        .se-acc-content {
+            height: 0;
+            opacity: 0;
+            overflow: hidden;
+            transition: height 0.4s cubic-bezier(0.4, 0, 0.2, 1), opacity 0.3s ease;
+        }
+
+        .se-acc-item.active .se-acc-content {
+            height: auto;
+            opacity: 1;
+            padding-bottom: 32px;
+        }
+
+        .se-acc-description {
+            padding-left: 60px; /* Align with title (number width + margin) */
+            max-width: 480px;
+        }
+
+        .se-text {
+            color: #666;
+            font-size: 16px;
+            line-height: 1.6;
+            margin-bottom: 24px;
+        }
+
+        .se-list {
+            list-style: none;
+        }
+
+        .se-list-item {
+            display: flex;
+            align-items: center;
+            margin-bottom: 12px;
+            font-size: 16px;
+            font-weight: 400;
+            color: #111;
+        }
+
+        .se-checkmark {
+            margin-right: 12px;
+            width: 20px;
+            height: 20px;
+        }
+
+        /* --- Right Side: Image --- */
+        .se-image-wrapper {
+            position: relative;
+            border-radius: 12px;
+            overflow: hidden;
+            background-color: #f0f0f0;
+            height: 600px; /* Fixed height to match layout */
+        }
+
+        .se-image {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            display: block;
+        }
+
+        /* --- Responsive Design --- */
+        @media (max-width: 1024px) {
+            .se-title-wrapper {
+                font-size: 42px;
+            }
+            
+            .se-grid {
+                gap: 40px;
+            }
+        }
+
+        @media (max-width: 900px) {
+            .se-grid {
+                grid-template-columns: 1fr;
+            }
+
+            .se-header {
+                flex-direction: column;
+                align-items: flex-start;
+                gap: 24px;
+            }
+
+            .se-image-wrapper {
+                height: 400px;
+                order: -1; /* Move image to top on mobile if desired, or keep at bottom */
+            }
+        }
+    </style>
+</head>
+<body-sv>
+
+    <section class="se-container">
+        <!-- Header -->
+        <header class="se-header">
+            <h1 class="se-title-wrapper">
+                <span class="se-title-sans">Strategic</span>
+                <span class="se-title-serif">Excellence</span>
+            </h1>
+            
+            <a href="#" class="se-btn">
+                Contact Us
+                <span class="se-btn-icon-circle">
+                    <!-- Arrow Up Right Icon -->
+                    <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round">
+                        <line x1="7" y1="17" x2="17" y2="7"></line>
+                        <polyline points="7 7 17 7 17 17"></polyline>
+                    </svg>
+                </span>
+            </a>
+        </header>
+
+        <!-- Content Grid -->
+        <div class="se-grid">
+            
+            <!-- Left: Accordion -->
+            <div class="se-accordion">
+                
+                <!-- Item 1 (Active by default) -->
+                <div class="se-acc-item active">
+                    <div class="se-acc-header" onclick="toggleAccordion(this)">
+                        <span class="se-acc-number">[01]</span>
+                        <h3 class="se-acc-title">Strategy Consulting</h3>
+                    </div>
+                    <div class="se-acc-content">
+                        <div class="se-acc-description">
+                            <p class="se-text">
+                                Guiding individuals and businesses with smart financial planning, investment advice, and long-term wealth strategies.
+                            </p>
+                            <ul class="se-list">
+                                <li class="se-list-item">
+                                    <!-- Checkmark Icon -->
+                                    <svg class="se-checkmark" viewBox="0 0 24 24" fill="none" stroke="#000" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                                        <polyline points="20 6 9 17 4 12"></polyline>
+                                    </svg>
+                                    Personalized Financial Planning
+                                </li>
+                                <li class="se-list-item">
+                                    <svg class="se-checkmark" viewBox="0 0 24 24" fill="none" stroke="#000" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                                        <polyline points="20 6 9 17 4 12"></polyline>
+                                    </svg>
+                                    Investment & Portfolio Guidance
+                                </li>
+                                <li class="se-list-item">
+                                    <svg class="se-checkmark" viewBox="0 0 24 24" fill="none" stroke="#000" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                                        <polyline points="20 6 9 17 4 12"></polyline>
+                                    </svg>
+                                    Risk Management & Wealth Protection
+                                </li>
+                            </ul>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Item 2 -->
+                <div class="se-acc-item">
+                    <div class="se-acc-header" onclick="toggleAccordion(this)">
+                        <span class="se-acc-number">[02]</span>
+                        <h3 class="se-acc-title">Market Insights and Analysis</h3>
+                    </div>
+                    <div class="se-acc-content">
+                        <div class="se-acc-description">
+                            <p class="se-text">
+                                Deep dive analysis into market trends to position your business ahead of the curve.
+                            </p>
+                            <ul class="se-list">
+                                <li class="se-list-item">
+                                    <svg class="se-checkmark" viewBox="0 0 24 24" fill="none" stroke="#000" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                                        <polyline points="20 6 9 17 4 12"></polyline>
+                                    </svg>
+                                    Competitor Analysis
+                                </li>
+                                <li class="se-list-item">
+                                    <svg class="se-checkmark" viewBox="0 0 24 24" fill="none" stroke="#000" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                                        <polyline points="20 6 9 17 4 12"></polyline>
+                                    </svg>
+                                    Trend Forecasting
+                                </li>
+                            </ul>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Item 3 -->
+                <div class="se-acc-item">
+                    <div class="se-acc-header" onclick="toggleAccordion(this)">
+                        <span class="se-acc-number">[03]</span>
+                        <h3 class="se-acc-title">Wealth & Finance Advisory</h3>
+                    </div>
+                    <div class="se-acc-content">
+                        <div class="se-acc-description">
+                            <p class="se-text">
+                                Expert advice on managing assets and optimizing financial growth for long-term stability.
+                            </p>
+                            <ul class="se-list">
+                                <li class="se-list-item">
+                                    <svg class="se-checkmark" viewBox="0 0 24 24" fill="none" stroke="#000" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                                        <polyline points="20 6 9 17 4 12"></polyline>
+                                    </svg>
+                                    Asset Allocation
+                                </li>
+                                <li class="se-list-item">
+                                    <svg class="se-checkmark" viewBox="0 0 24 24" fill="none" stroke="#000" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                                        <polyline points="20 6 9 17 4 12"></polyline>
+                                    </svg>
+                                    Tax Optimization
+                                </li>
+                            </ul>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Item 4 -->
+                <div class="se-acc-item">
+                    <div class="se-acc-header" onclick="toggleAccordion(this)">
+                        <span class="se-acc-number">[04]</span>
+                        <h3 class="se-acc-title">Digital Transformation</h3>
+                    </div>
+                    <div class="se-acc-content">
+                        <div class="se-acc-description">
+                            <p class="se-text">
+                                Leveraging modern technology to streamline operations and enhance digital presence.
+                            </p>
+                            <ul class="se-list">
+                                <li class="se-list-item">
+                                    <svg class="se-checkmark" viewBox="0 0 24 24" fill="none" stroke="#000" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                                        <polyline points="20 6 9 17 4 12"></polyline>
+                                    </svg>
+                                    Process Automation
+                                </li>
+                                <li class="se-list-item">
+                                    <svg class="se-checkmark" viewBox="0 0 24 24" fill="none" stroke="#000" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                                        <polyline points="20 6 9 17 4 12"></polyline>
+                                    </svg>
+                                    Digital Strategy Implementation
+                                </li>
+                            </ul>
+                        </div>
+                    </div>
+                </div>
+
+            </div>
+
+            <!-- Right: Image -->
+            <div class="se-image-wrapper">
+                <!-- Sourced a professional "man in suit with tablet" image to match context -->
+                <img src="https://images.pexels.com/photos/17485820/pexels-photo-17485820.png" alt="Strategic Consultant" class="se-image">
+            </div>
+
         </div>
-        <span class="ecomp-validation-text">Rated 4.97/5 from 175+ reviews</span>
-      </div>
+    </section>
 
-      <!-- Bottom Component: Metrics Card with Ambient Gradient Mesh -->
-      <div class="ecomp-metric-card">
-        <div class="ecomp-metric-mesh"></div>
-        <div class="ecomp-metric-content">
-          <div class="ecomp-metric-display">1M+</div>
-          <div class="ecomp-metric-label">Sales Pipeline<br>Influenced</div>
-        </div>
-      </div>
+    <script>
+        function toggleAccordion(headerElement) {
+            const item = headerElement.parentElement;
+            const content = item.querySelector('.se-acc-content');
+            const allItems = document.querySelectorAll('.se-acc-item');
 
-    </div>
+            // If this item is already active, close it
+            if (item.classList.contains('active')) {
+                // Optional: Allow collapsing all items. 
+                // To force one always open, comment out the line below.
+                // item.classList.remove('active');
+                // content.style.height = '0';
+                return; // Do nothing if clicking already active one (standard accordion behavior often keeps one open)
+            }
 
-    <!-- Right Panel: Tall Portrait with Graphic Letter Overlay -->
-    <div class="ecomp-panel ecomp-panel--tall ecomp-panel--graphic">
-      <img src="https://images.unsplash.com/photo-1600880292203-757bb62b4baf?auto=format&fit=crop&w=800&q=80" alt="Collaborative corporate team" class="ecomp-panel-img">
-      <!-- Decorative Typographic Spec Element -->
-      <div class="ecomp-overlay-letter">A</div>
-    </div>
+            // Close all other items
+            allItems.forEach(otherItem => {
+                if (otherItem !== item) {
+                    otherItem.classList.remove('active');
+                    const otherContent = otherItem.querySelector('.se-acc-content');
+                    if(otherContent) otherContent.style.height = '0';
+                }
+            });
 
-  </div>
-</div>
+            // Open clicked item
+            item.classList.add('active');
+            
+            // Set height to scrollHeight to animate to full height
+            content.style.height = content.scrollHeight + 'px';
+        }
 
-<style>
-/* Component Variable System */
-.ecomp-dashboard-section {
-  --ecomp-bg-canvas: #f0f0f2;
-  --ecomp-bg-card: #ffffff;
-  --ecomp-radius: 14px;
-  --ecomp-gap: 20px;
-  --ecomp-text-dark: #1a1d20;
-  --ecomp-font: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif;
+        // Initialize: Set height for the default active item
+        document.addEventListener('DOMContentLoaded', () => {
+            const activeItem = document.querySelector('.se-acc-item.active');
+            if (activeItem) {
+                const content = activeItem.querySelector('.se-acc-content');
+                content.style.height = content.scrollHeight + 'px';
+            }
+        });
+    </script>
+</body-sv>
+</html>
 
-  background-color: var(--ecomp-bg-canvas);
-  padding: 60px 24px;
-  font-family: var(--ecomp-font);
-  display: flex;
-  justify-content: center;
-  align-items: center;
-}
 
-/* Master Layout Framework */
-.ecomp-grid-container {
-  display: grid;
-  grid-template-columns: repeat(3, 1fr);
-  gap: var(--ecomp-gap);
-  max-width: 1200px;
-  width: 100%;
-}
 
-/* Base Panel Rules */
-.ecomp-panel {
-  position: relative;
-  background-color: var(--ecomp-bg-card);
-  border-radius: var(--ecomp-radius);
-  overflow: hidden;
-  display: flex;
-}
 
-.ecomp-panel--tall {
-  aspect-ratio: 0.92 / 1;
-}
 
-.ecomp-panel-img {
-  width: 100%;
-  height: 100%;
-  object-fit: cover;
-}
 
-/* Split Middle Column Flexbox arrangement */
-.ecomp-split-column {
-  display: flex;
-  flex-direction: column;
-  gap: var(--ecomp-gap);
-  height: 100%;
-}
 
-/* Social Proof Component Styling */
-.ecomp-validation-pill {
-  background-color: var(--ecomp-bg-card);
-  border-radius: var(--ecomp-radius);
-  padding: 24px;
-  display: flex;
-  align-items: center;
-  gap: 16px;
-}
 
-.ecomp-avatar-stack {
-  display: flex;
-  align-items: center;
-}
 
-.ecomp-avatar {
-  width: 38px;
-  height: 38px;
-  border-radius: 50%;
-  border: 2.5px solid var(--ecomp-bg-card);
-  object-fit: cover;
-  margin-left: -10px;
-}
 
-.ecomp-avatar:first-child {
-  margin-left: 0;
-}
 
-.ecomp-validation-text {
-  font-size: 0.9rem;
-  font-weight: 600;
-  color: var(--ecomp-text-dark);
-}
 
-/* Metric Display Container with Fluid Mesh Backing */
-.ecomp-metric-card {
-  position: relative;
-  background-color: #000000;
-  border-radius: var(--ecomp-radius);
-  padding: 36px;
-  flex-grow: 1;
-  overflow: hidden;
-  display: flex;
-  align-items: flex-end;
-}
 
-/* Ambient Vector Lighting Simulator */
-.ecomp-metric-mesh {
-  position: absolute;
-  top: -20%; right: -20%; bottom: -20%; left: -20%;
-  background: radial-gradient(circle at 75% 30%, #4facfe 0%, transparent 45%),
-              radial-gradient(circle at 30% 65%, #ffb300 0%, transparent 55%),
-              radial-gradient(circle at 50% 40%, #ff3d00 0%, #000000 70%);
-  opacity: 0.95;
-  z-index: 1;
-}
 
-.ecomp-metric-content {
-  position: relative;
-  z-index: 5;
-  display: flex;
-  align-items: flex-end;
-  gap: 18px;
-  color: #ffffff;
-}
 
-.ecomp-metric-display {
-  font-size: 4.5rem;
-  font-weight: 800;
-  line-height: 0.85;
-  letter-spacing: -0.03em;
-}
 
-.ecomp-metric-label {
-  font-size: 0.95rem;
-  font-weight: 600;
-  line-height: 1.3;
-  color: rgba(255, 255, 255, 0.9);
-  padding-bottom: 2px;
-}
 
-/* Right Panel Overlapping Typography Element */
-.ecomp-panel--graphic {
-  position: relative;
-}
 
-.ecomp-overlay-letter {
-  position: absolute;
-  top: 50%;
-  left: 55%;
-  transform: translate(-50%, -50%);
-  font-size: 11rem;
-  font-weight: 900;
-  font-family: Arial, Helvetica, sans-serif;
-  color: #ffffff;
-  pointer-events: none;
-  z-index: 10;
-  letter-spacing: -0.05em;
-  text-shadow: 0 4px 20px rgba(0, 0, 0, 0.05);
-}
 
-/* Responsive Structural Breakpoints */
-@media (max-width: 992px) {
-  .ecomp-grid-container {
-    grid-template-columns: 1fr;
-  }
-  .ecomp-panel--tall {
-    aspect-ratio: 1.3 / 1;
-  }
-  .ecomp-overlay-letter {
-    font-size: 9rem;
-  }
-}
 
-@media (max-width: 480px) {
-  .ecomp-validation-pill {
-    flex-direction: column;
-    align-items: flex-start;
-    gap: 12px;
-  }
-  .ecomp-metric-content {
-    flex-direction: column;
-    align-items: flex-start;
-    gap: 8px;
-  }
-  .ecomp-panel--tall {
-    aspect-ratio: 1 / 1;
-  }
-}
-</style>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 
 

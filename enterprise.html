@@ -35,8 +35,8 @@
     html, body {
       margin: 0;
       padding: 0;
-      background-color: #090a0d;
-      color: #f4f4f6;
+      background-color: #ffffff;
+      color: #323232;
       font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
     }
 
@@ -44,12 +44,12 @@
        SECTION 1: EDITORIAL DOSSIER DESIGN TOKENS & STYLES (ene-)
        ========================================================================= */
     .ene-dossier-viewport {
-      --ene-bg: #090a0d;
+      --ene-bg: #ffffff;
       --ene-surface: #101216;
       --ene-border: #1e222b;
-      --ene-txt-primary: #f4f4f6;
-      --ene-txt-muted: #848a9c;
-      --ene-accent: #c5a880; 
+      --ene-txt-primary: #080808;
+      --ene-txt-muted: #3a3a3a;
+      --ene-accent: #007bc7; 
       --ene-mono: "SFMono-Regular", Consolas, Menlo, monospace;
       --ene-sans: 'Circular Std', sans-serif;
 
@@ -68,8 +68,8 @@
     }
 
     .ene-dossier-container { max-width: 1200px; margin: 0 auto; padding: 0 40px; }
-    .ene-dossier-divider { border: none; border-top: 1px solid var(--ene-border); margin: 60px 0 100px 0; }
-    .ene-dossier-row-divider { border: none; border-top: 1px solid var(--ene-border); margin: 100px 0; }
+    .ene-dossier-divider { border: none; margin: 60px 0 100px 0; }
+    .ene-dossier-row-divider { border: none; margin: 100px 0; }
 
     .ene-dossier-meta-strip {
       display: flex;
@@ -82,7 +82,7 @@
     }
 
     .ene-dossier-title {
-      font-size: 4rem;
+      font-size: 3rem;
       font-weight: 500;
       letter-spacing: -0.04em;
       line-height: 1;
@@ -105,23 +105,18 @@
       align-items: flex-start;
     }
 
-    .ene-dossier-label-col {
-      position: sticky;
-      top: 40px;
-    }
-
     .ene-dossier-index {
-      font-family: var(--ene-mono);
-      font-size: 0.8rem;
+      font-family: 'Circular std', sans-serif;
+      font-size: 1rem;
       color: var(--ene-accent);
       display: block;
-      margin-bottom: 16px;
-      letter-spacing: 0.05em;
+      margin-bottom: 16px; font-weight: 500;
+      letter-spacing: 0.02em; text-transform: uppercase;
     }
 
     .ene-dossier-label-col h2 {
-      font-size: 2.25rem;
-      font-weight: 700;
+      font-size: 3rem;
+      font-weight: 500;
       letter-spacing: -0.02em;
       color: var(--ene-txt-primary);
       margin: 0;
@@ -146,7 +141,6 @@
       display: grid;
       grid-template-columns: 1fr 1fr;
       gap: 40px;
-      border-top: 1px solid var(--ene-border);
       padding-top: 40px;
     }
 
@@ -204,11 +198,6 @@
       gap: 48px;
     }
 
-    .ene-dossier-industry-item {
-      border-left: 2px solid var(--ene-accent);
-      padding-left: 32px;
-    }
-
     .ene-dossier-industry-item h3 {
       font-size: 1.35rem;
       font-weight: 600;
@@ -228,16 +217,16 @@
        SECTION 2: SEAMLESS VIDEO SHOWCASE DESIGN TOKENS & STYLES (evc-)
        ========================================================================= */
     .evc-video-section {
-      --evc-bg: #090a0d;
+      --evc-bg: #ffffff;
       --evc-surface: #101216;
-      --evc-txt-main: #f4f4f6;
-      --evc-txt-sub: #848a9c;
-      --evc-accent-gold: #c5a880;
-      --evc-mono-stack: "SFMono-Regular", Consolas, Menlo, monospace;
-      --evc-sans-stack: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif;
+      --evc-txt-main: #0c0c0c;
+      --evc-txt-sub: #272727;
+      --evc-accent-gold: #0054b5;
+      --evc-mono-stack: 'Circular Std', monospace;
+      --evc-sans-stack: 'Circular Std', -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif;
 
       background-color: var(--evc-bg);
-      padding: 60px 0 120px 0;
+      padding: 120px 0 120px 0;
       font-family: var(--evc-sans-stack);
       -webkit-font-smoothing: antialiased;
       box-sizing: border-box;
@@ -256,18 +245,9 @@
       margin-bottom: 56px;
     }
 
-    .evc-meta-mono {
-      font-family: var(--evc-mono-stack);
-      font-size: 0.8rem;
-      color: var(--evc-accent-gold);
-      letter-spacing: 0.15em;
-      display: block;
-      margin-bottom: 16px;
-    }
-
     .evc-header-block h2 {
-      font-size: 2.5rem;
-      font-weight: 800;
+      font-size: 3rem;
+      font-weight: 500;
       letter-spacing: -0.02em;
       color: var(--evc-txt-main);
       margin: 0 0 20px 0;
@@ -293,11 +273,11 @@
       position: absolute;
       top: 0; left: 0; right: 0; bottom: 0;
       border-radius: 15px;
-      background: linear-gradient(45deg, #ff0000, #ff7f00, #ffff00, #00ff00, #0000ff, #4b0082, #9400d3, #ff0000);
+      background: linear-gradient(45deg, #ff0000, #ff7f00, #ffff00, #00ff00, #0000ff, #7d00d6, #9400d3, #ff0000);
       background-size: 400% 400%;
       z-index: -1;
       opacity: 0;
-      filter: blur(40px);
+      filter: blur(30px);
       transition: opacity 0.6s cubic-bezier(0.16, 1, 0.3, 1);
       animation: evcRainbowMovement 8s linear infinite;
     }
@@ -309,7 +289,7 @@
     }
 
     .evc-video-frame:hover::before {
-      opacity: 0.85;
+      opacity: 1;
     }
 
     .evc-player-wrapper {
@@ -408,10 +388,6 @@
     .evc-play-trigger:hover .evc-play-icon-box {
       background-color: var(--evc-accent-gold);
       color: #ffffff;
-    }
-
-    .evc-player-wrapper:hover .evc-video-poster {
-      transform: scale(1.01);
     }
 
     /* =========================================================================
@@ -573,7 +549,6 @@
     <div class="evc-container">
       
       <div class="evc-header-block">
-        <span class="evc-meta-mono">// 04 / INTERFACE DEMONSTRATION</span>
         <h2>System Runtime in Action</h2>
         <p class="evc-description">
           Watch a technical walkthrough of our zero-touch firmware provisioning pipeline, remote network isolation deployment, and the 4-hour physical asset hot-swap sequence in active commercial environments.
@@ -583,8 +558,8 @@
       <div class="evc-video-frame">
         <div class="evc-player-wrapper">
           
-          <video id="evcRealVideo" poster="https://images.unsplash.com/photo-1550751827-4bd374c3f58b?auto=format&fit=crop&w=1600&q=80" class="evc-video-poster">
-            <source src="https://www.pexels.com/download/video/8675543/" type="video/mp4">
+          <video id="evcRealVideo" poster="https://images.pexels.com/photos/17485820/pexels-photo-17485820.png" class="evc-video-poster">
+            <source src="videos/Recording 2026-03-31 124020.mp4" type="video/mp4">
             Your browser does not support the video tag.
           </video>
           

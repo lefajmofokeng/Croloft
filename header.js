@@ -64,7 +64,7 @@ class CronosHeader extends HTMLElement {
                     {
                         heading: 'Engage',
                         links: [
-                            { label: 'Community Forum',      href: 'defi.html' },
+                            { label: 'Community',      href: 'community.html' },
                         ]
                     },
                 ]
