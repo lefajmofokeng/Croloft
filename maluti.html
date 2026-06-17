@@ -1,0 +1,2846 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Complete Responsive Theme Navbar</title>
+    
+    <!-- Link for Inter and Karla font families to match your theme -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=Karla:wght@400;500;600&display=swap" rel="stylesheet">
+    
+    <style>
+        /* Shared Core Design Theme Variables */
+        :root {
+            --font-primary: 'Karla', sans-serif;
+            --font-display: 'Inter', sans-serif;
+            --color-background: #efefef;
+            --color-text-dark: #1a1a1a;
+            --color-text-muted: #666666;
+            --color-card-bg: #ffffff;
+            --card-radius: 20px;
+            --image-radius: 12px;
+            --nav-height: 80px;
+        }
+
+        * {
+            box-sizing: border-box;
+            margin: 0;
+            padding: 0;
+            text-decoration: none;
+            list-style: none;
+        }
+
+        body {
+            font-family: var(--font-primary);
+            background-color: var(--color-background);
+            color: var(--color-text-dark);
+        }
+
+        /* --- Header & Navbar Layout --- */
+        .site-header {
+            background-color: var(--color-card-bg);
+            width: 100%;
+            height: var(--nav-height);
+            position: sticky;
+            top: 0;
+            z-index: 1000;
+            box-shadow: 0 2px 10px rgba(0, 0, 0, 0.03);
+            display: flex;
+            justify-content: center;
+        }
+
+        .navbar {
+            max-width: 1200px;
+            width: 100%;
+            height: 100%;
+            padding: 0 1rem;
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+        }
+
+        /* Group logo and nav-menu closely to the left side */
+        .nav-left-group {
+            display: flex;
+            align-items: center;
+            height: 100%;
+            gap: 3rem; /* Spacing between logo and first navigation menu link */
+        }
+
+        .nav-logo {
+            font-family: var(--font-display);
+            font-size: 1.25rem;
+            font-weight: 700;
+            letter-spacing: -0.04em;
+            color: var(--color-text-dark);
+            white-space: nowrap;
+        }
+
+        .nav-menu {
+            display: flex;
+            height: 100%;
+        }
+
+        .nav-item {
+            height: 100%;
+        }
+
+        .nav-link {
+            font-family: var(--font-display);
+            font-size: 0.95rem;
+            font-weight: 600;
+            color: var(--color-text-dark);
+            padding: 0 1.25rem;
+            height: 100%;
+            display: flex;
+            align-items: center;
+            transition: color 0.2s ease;
+            cursor: pointer;
+        }
+
+        .nav-item:hover .nav-link {
+            color: var(--color-text-muted);
+        }
+
+        /* --- Desktop Full Width Mega Menu --- */
+        .mega-menu {
+            position: absolute;
+            top: var(--nav-height);
+            left: 0;
+            width: 100%;
+            background-color: var(--color-card-bg);
+            border-top: 1px solid #e5e5e5;
+            box-shadow: 0 15px 30px rgba(0, 0, 0, 0.05);
+            display: flex;
+            justify-content: center;
+            padding: 3.5rem 1rem;
+            
+            opacity: 0;
+            visibility: hidden;
+            transform: translateY(10px);
+            transition: opacity 0.25s ease, transform 0.25s ease, visibility 0.25s;
+        }
+
+        .nav-item:hover .mega-menu {
+            opacity: 1;
+            visibility: visible;
+            transform: translateY(0);
+        }
+
+        .mega-menu-inner {
+            max-width: 1200px;
+            width: 100%;
+        }
+
+        /* --- Programs of Study Structure (Faculties + Short Courses) --- */
+        .programs-layout {
+            display: grid;
+            grid-template-columns: 3.5fr 1.2fr; /* Layout favoring faculties with an isolated column for short courses */
+            gap: 3rem;
+        }
+
+        .faculty-grid {
+            display: grid;
+            grid-template-columns: repeat(2, 1fr);
+            gap: 1.25rem;
+        }
+
+        .faculty-card {
+            display: flex;
+            background-color: #f9f9f9;
+            border-radius: var(--card-radius);
+            overflow: hidden;
+            align-items: center;
+            transition: transform 0.3s ease, background-color 0.3s ease, box-shadow 0.3s ease;
+        }
+
+        .faculty-card:hover {
+            transform: translateY(-3px);
+            background-color: #f2f2f2;
+            box-shadow: 0 8px 20px rgba(0, 0, 0, 0.04);
+        }
+
+        /* Signature 0.3rem padding rule around images */
+        .faculty-img-wrapper {
+            padding: 0.3rem;
+            width: 120px;
+            height: 100px;
+            flex-shrink: 0;
+        }
+
+        .faculty-img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            border-radius: var(--image-radius);
+            background-color: #d1d1d1;
+        }
+
+        .faculty-info {
+            padding: 1rem 1.25rem;
+        }
+
+        .faculty-title {
+            font-family: var(--font-display);
+            font-size: 1.05rem;
+            font-weight: 600;
+            color: var(--color-text-dark);
+            margin-bottom: 0.25rem;
+        }
+
+        .faculty-meta {
+            font-size: 0.85rem;
+            color: var(--color-text-muted);
+        }
+
+        /* Short Courses Column Layout */
+        .short-courses-panel {
+            border-left: 1px solid #e5e5e5;
+            padding-left: 2.5rem;
+        }
+
+        .panel-heading {
+            font-family: var(--font-display);
+            font-size: 0.875rem;
+            text-transform: uppercase;
+            letter-spacing: 0.05em;
+            color: var(--color-text-muted);
+            font-weight: 700;
+            margin-bottom: 1.25rem;
+        }
+
+        .short-course-link {
+            display: block;
+            margin-bottom: 1rem;
+            group: hover;
+        }
+
+        .short-course-title {
+            font-family: var(--font-display);
+            font-size: 0.95rem;
+            font-weight: 600;
+            color: var(--color-text-dark);
+            transition: color 0.2s ease;
+        }
+
+        .short-course-link:hover .short-course-title {
+            color: var(--color-text-muted);
+        }
+
+        .short-course-duration {
+            font-size: 0.8rem;
+            color: var(--color-text-muted);
+            margin-top: 0.15rem;
+        }
+
+        /* Placeholder styles for other simple panels */
+        .placeholder-menu-content {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 2rem;
+        }
+        .placeholder-column a {
+            display: block;
+            font-size: 1rem;
+            color: var(--color-text-dark);
+            margin-bottom: 0.75rem;
+            font-weight: 500;
+        }
+
+        /* Header CTA button elements */
+        .nav-right-group {
+            display: flex;
+            align-items: center;
+            gap: 1rem;
+        }
+
+        .nav-cta {
+            font-family: var(--font-display);
+            background-color: var(--color-text-dark);
+            color: #ffffff;
+            padding: 0.65rem 1.25rem;
+            border-radius: 50px;
+            font-weight: 600;
+            font-size: 0.875rem;
+            transition: opacity 0.2s ease;
+        }
+
+        .nav-cta:hover {
+            opacity: 0.85;
+        }
+
+        /* --- Mobile Toggle Menu Buttons --- */
+        .mobile-toggle {
+            display: none;
+            background: none;
+            border: none;
+            cursor: pointer;
+            padding: 0.5rem;
+            z-index: 2000;
+        }
+
+        .mobile-toggle svg {
+            stroke: var(--color-text-dark);
+        }
+
+        /* --- Responsive Viewport Overrides --- */
+        @media (max-width: 968px) {
+            .mobile-toggle {
+                display: block; /* Show hamburger button */
+            }
+
+            /* Restructure Desktop elements to safely lock down out of sight */
+            .nav-menu, .nav-cta {
+                display: none;
+            }
+
+            /* Transform the desktop nav group into full-viewport drawer layer when active */
+            .nav-menu.mobile-active {
+                display: flex;
+                flex-direction: column;
+                position: fixed;
+                top: 0;
+                left: 0;
+                width: 100%;
+                height: 100vh;
+                background-color: var(--color-card-bg);
+                padding: calc(var(--nav-height) + 1rem) 1.5rem 3rem 1.5rem;
+                overflow-y: auto;
+                z-index: 1500;
+            }
+
+            .nav-menu.mobile-active .nav-item {
+                height: auto;
+                width: 100%;
+                border-bottom: 1px solid #eee;
+            }
+
+            .nav-menu.mobile-active .nav-link {
+                height: 64px;
+                padding: 0;
+                justify-content: space-between;
+                font-size: 1.15rem;
+            }
+
+            /* Add visual indicator down arrows for accordions on mobile */
+            .nav-menu.mobile-active .nav-link::after {
+                content: '↓';
+                font-size: 0.9rem;
+                color: var(--color-text-muted);
+            }
+
+            /* Convert full width desktop Mega Menu to stacked accordion strips */
+            .nav-menu.mobile-active .mega-menu {
+                position: relative;
+                top: 0;
+                box-shadow: none;
+                border: none;
+                padding: 0 0 1.5rem 0;
+                display: none; /* Controlled via active logic */
+                opacity: 1;
+                visibility: visible;
+                transform: none;
+            }
+
+            /* Toggle dynamic displays when running via interaction toggles */
+            .nav-menu.mobile-active .nav-item.accordion-open .mega-menu {
+                display: block;
+            }
+
+            .nav-menu.mobile-active .programs-layout {
+                grid-template-columns: 1fr;
+                gap: 2rem;
+            }
+
+            .nav-menu.mobile-active .faculty-grid {
+                grid-template-columns: 1fr;
+            }
+
+            .nav-menu.mobile-active .short-courses-panel {
+                border-left: none;
+                padding-left: 0;
+                border-top: 1px solid #eee;
+                padding-top: 1.5rem;
+            }
+
+            .nav-menu.mobile-active .placeholder-menu-content {
+                grid-template-columns: 1fr;
+                gap: 1.5rem;
+            }
+        }
+    </style>
+</head>
+<body>
+
+    <header class="site-header">
+        <nav class="navbar" aria-label="Main Framework Navigation">
+            
+            <!-- Left-aligned Logo + Navigation Link Cluster -->
+            <div class="nav-left-group">
+                <a href="#" class="nav-logo">Nexus // Uni</a>
+
+                <!-- Nav list transforms dynamically on mobile devices -->
+                <ul class="nav-menu" id="navMenu">
+                    
+                    <!-- Link 1: Programs of Study (Faculties + Short Courses combo) -->
+                    <li class="nav-item">
+                        <div class="nav-link" onclick="toggleAccordion(this)">Programs of Study</div>
+                        <div class="mega-menu">
+                            <div class="mega-menu-inner">
+                                <div class="programs-layout">
+                                    
+                                    <!-- Left Side: 4 Core Faculties -->
+                                    <div class="faculty-grid">
+                                        <a href="#" class="faculty-card">
+                                            <div class="faculty-img-wrapper">
+                                                <img src="https://images.unsplash.com/photo-1497366754035-f200968a6e72?q=80&w=400&auto=format&fit=crop" class="faculty-img" alt="Faculty Space">
+                                            </div>
+                                            <div class="faculty-info">
+                                                <h4 class="faculty-title">Architecture & Design</h4>
+                                                <span class="faculty-meta">Spatial Dynamics & Synthesis</span>
+                                            </div>
+                                        </a>
+                                        <a href="#" class="faculty-card">
+                                            <div class="faculty-img-wrapper">
+                                                <img src="https://images.unsplash.com/photo-1600585154340-be6161a56a0c?q=80&w=400&auto=format&fit=crop" class="faculty-img" alt="Faculty Space">
+                                            </div>
+                                            <div class="faculty-info">
+                                                <h4 class="faculty-title">Engineering & Tech</h4>
+                                                <span class="faculty-meta">Systems Logic & Automation</span>
+                                            </div>
+                                        </a>
+                                        <a href="#" class="faculty-card">
+                                            <div class="faculty-img-wrapper">
+                                                <img src="https://images.unsplash.com/photo-1618005182384-a83a8bd57fbe?q=80&w=400&auto=format&fit=crop" class="faculty-img" alt="Faculty Space">
+                                            </div>
+                                            <div class="faculty-info">
+                                                <h4 class="faculty-title">Environmental Science</h4>
+                                                <span class="faculty-meta">Ecological Infrastructure</span>
+                                            </div>
+                                        </a>
+                                        <a href="#" class="faculty-card">
+                                            <div class="faculty-img-wrapper">
+                                                <img src="https://images.unsplash.com/photo-1662633271540-b7e2f4df2bcb?q=80&w=400&auto=format&fit=crop" class="faculty-img" alt="Faculty Space">
+                                            </div>
+                                            <div class="faculty-info">
+                                                <h4 class="faculty-title">Humanities & Culture</h4>
+                                                <span class="faculty-meta">Contextual Media Study</span>
+                                            </div>
+                                        </a>
+                                    </div>
+
+                                    <!-- Right Side Component: Short Courses Section -->
+                                    <div class="short-courses-panel">
+                                        <div class="panel-heading">Short Courses</div>
+                                        
+                                        <a href="#" class="short-course-link">
+                                            <div class="short-course-title">UX/UI Architecture Foundations</div>
+                                            <div class="short-course-duration">6 Weeks • Online</div>
+                                        </a>
+                                        <a href="#" class="short-course-link">
+                                            <div class="short-course-title">Sustainable Systems Modeling</div>
+                                            <div class="short-course-duration">8 Weeks • Hybrid</div>
+                                        </a>
+                                        <a href="#" class="short-course-link">
+                                            <div class="short-course-title">Advanced Data Structures</div>
+                                            <div class="short-course-duration">4 Weeks • Intensive</div>
+                                        </a>
+                                    </div>
+
+                                </div>
+                            </div>
+                        </div>
+                    </li>
+
+                    <!-- Link 2: Research -->
+                    <li class="nav-item">
+                        <div class="nav-link" onclick="toggleAccordion(this)">Research</div>
+                        <div class="mega-menu">
+                            <div class="mega-menu-inner">
+                                <div class="placeholder-menu-content">
+                                    <div class="placeholder-column">
+                                        <div class="panel-heading">Laboratories</div>
+                                        <a href="#">Quantum Systems</a>
+                                        <a href="#">Density Modeling Hub</a>
+                                    </div>
+                                    <div class="placeholder-column">
+                                        <div class="panel-heading">Publications</div>
+                                        <a href="#">Annual Architecture Review</a>
+                                        <a href="#">Computational Papers</a>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </li>
+
+                    <!-- Link 3: Admissions -->
+                    <li class="nav-item">
+                        <div class="nav-link" onclick="toggleAccordion(this)">Admissions</div>
+                        <div class="mega-menu">
+                            <div class="mega-menu-inner">
+                                <div class="placeholder-menu-content">
+                                    <div class="placeholder-column">
+                                        <div class="panel-heading">Undergraduate</div>
+                                        <a href="#">Application Portal</a>
+                                        <a href="#">Requirements Matrix</a>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </li>
+
+                    <!-- Link 4: About -->
+                    <li class="nav-item">
+                        <div class="nav-link" onclick="toggleAccordion(this)">About Us</div>
+                        <div class="mega-menu">
+                            <div class="mega-menu-inner">
+                                <div class="placeholder-menu-content">
+                                    <div class="placeholder-column">
+                                        <div class="panel-heading">Our Institution</div>
+                                        <a href="#">Systemic History</a>
+                                        <a href="#">Directory Map</a>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </li>
+
+                </ul>
+            </div>
+
+            <!-- Right-aligned Actions Layer -->
+            <div class="nav-right-group">
+                <a href="#" class="nav-cta">Apply Now</a>
+                
+                <!-- Hamburger Action Button Toggle -->
+                <button class="mobile-toggle" id="menuToggle" aria-label="Toggle Navigation Menu">
+                    <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke-width="2.5" stroke-linecap="round">
+                        <line x1="3" y1="12" x2="21" y2="12" id="lineMid"></line>
+                        <line x1="3" y1="6" x2="21" y2="6" id="lineTop"></line>
+                        <line x1="3" y1="18" x2="21" y2="18" id="lineBot"></line>
+                    </svg>
+                </button>
+            </div>
+
+        </nav>
+    </header>
+
+    <!-- Navigation Control Script -->
+    <script>
+        const menuToggle = document.getElementById('menuToggle');
+        const navMenu = document.getElementById('navMenu');
+
+        // Toggle full menu overlay drawer on mobile screens
+        menuToggle.addEventListener('click', () => {
+            navMenu.classList.toggle('mobile-active');
+            
+            // Minimal icon switch from lines to cross
+            const isOpen = navMenu.classList.contains('mobile-active');
+            document.getElementById('lineMid').style.opacity = isOpen ? '0' : '1';
+            document.getElementById('lineTop').style.transform = isOpen ? 'translateY(6px) rotate(45deg)' : 'none';
+            document.getElementById('lineTop').style.transformOrigin = 'center';
+            document.getElementById('lineBot').style.transform = isOpen ? 'translateY(-6px) rotate(-45deg)' : 'none';
+            document.getElementById('lineBot').style.transformOrigin = 'center';
+        });
+
+        // Toggle drop-down accordions cleanly when running inside mobile container states
+        function toggleAccordion(element) {
+            if (window.innerWidth <= 968) {
+                const parent = element.parentElement;
+                parent.classList.toggle('accordion-open');
+            }
+        }
+    </script>
+
+</body>
+</html>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Fully Equipped AI Assistant Widget</title>
+    
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=Karla:wght@400;500;600&display=swap" rel="stylesheet">
+    
+    <style>
+        /* Shared Core Design Theme Variables */
+        :root {
+            --font-primary: 'Karla', sans-serif;
+            --font-display: 'Inter', sans-serif;
+            --color-background: #efefef;
+            --color-text-dark: #1a1a1a;
+            --color-text-muted: #666666;
+            --color-card-bg: #ffffff;
+            --card-radius: 20px;
+            --image-radius: 12px;
+            
+            --color-accent: #1a1a1a;
+            --color-accent-hover: #333333;
+        }
+
+        body {
+            font-family: var(--font-primary);
+            background-color: var(--color-background);
+            margin: 0;
+            padding: 0;
+        }
+
+        /* --- Floating Interface Elements (Bottom Right Placement) --- */
+        .ai-assistant-wrapper {
+            position: fixed;
+            bottom: 2rem;
+            right: 2rem;
+            z-index: 9999;
+            display: flex;
+            flex-direction: column;
+            align-items: flex-end;
+            gap: 1rem;
+        }
+
+        /* Launcher Floating Action Button */
+        .ai-launcher-btn {
+            background-color: var(--color-accent);
+            border: none;
+            width: 60px;
+            height: 60px;
+            border-radius: 50%;
+            cursor: pointer;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            box-shadow: 0 10px 25px rgba(0, 0, 0, 0.15);
+            transition: transform 0.3s cubic-bezier(0.175, 0.885, 0.32, 1.275), background-color 0.2s ease;
+        }
+
+        .ai-launcher-btn:hover {
+            background-color: var(--color-accent-hover);
+            transform: scale(1.05);
+        }
+
+        .ai-launcher-btn svg {
+            stroke: #ffffff;
+            transition: transform 0.3s ease;
+        }
+
+        .ai-launcher-btn.active svg {
+            transform: rotate(135deg);
+        }
+
+        /* --- Principal Chat Display Card --- */
+        .ai-chat-card {
+            background-color: var(--color-card-bg);
+            width: 420px;
+            height: 580px;
+            border-radius: var(--card-radius);
+            box-shadow: 0 15px 45px rgba(0, 0, 0, 0.1);
+            display: flex;
+            flex-direction: column;
+            overflow: hidden;
+            
+            opacity: 0;
+            visibility: hidden;
+            transform: translateY(20px) scale(0.95);
+            transform-origin: bottom right;
+            transition: opacity 0.3s ease, transform 0.3s ease, visibility 0.3s;
+        }
+
+        .ai-chat-card.active {
+            opacity: 1;
+            visibility: visible;
+            transform: translateY(0) scale(1);
+        }
+
+        /* --- Header Section (With Date & Time Trackers) --- */
+        .ai-chat-header {
+            padding: 1.25rem 1.5rem;
+            border-bottom: 1px solid #eeeeee;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            background-color: #ffffff;
+        }
+
+        .ai-header-left {
+            display: flex;
+            align-items: center;
+            gap: 0.75rem;
+        }
+
+        .ai-avatar-wrapper {
+            padding: 0.2rem;
+            background-color: #f0f0f0;
+            border-radius: 50%;
+            width: 38px;
+            height: 38px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+
+        .ai-avatar {
+            width: 100%;
+            height: 100%;
+            border-radius: 50%;
+            background-color: var(--color-text-dark);
+        }
+
+        .ai-header-info h3 {
+            font-family: var(--font-display);
+            font-size: 1rem;
+            font-weight: 600;
+            margin: 0 0 0.15rem 0;
+            color: var(--color-text-dark);
+        }
+
+        .ai-header-info span {
+            font-size: 0.75rem;
+            font-weight: 600;
+            text-transform: uppercase;
+            letter-spacing: 0.03em;
+            color: var(--color-text-muted);
+        }
+
+        /* Live Clock Panel on the Right Side of the Header */
+        .ai-header-clock {
+            text-align: right;
+            font-family: var(--font-display);
+        }
+
+        .ai-clock-time {
+            font-size: 0.85rem;
+            font-weight: 700;
+            color: var(--color-text-dark);
+            margin-bottom: 0.15rem;
+        }
+
+        .ai-clock-date {
+            font-size: 0.725rem;
+            color: var(--color-text-muted);
+            font-weight: 500;
+        }
+
+        /* --- Scrollable Log Stream Panel --- */
+        .ai-message-log {
+            flex: 1;
+            padding: 1.5rem;
+            overflow-y: auto;
+            display: flex;
+            flex-direction: column;
+            gap: 1.5rem;
+            background-color: #fafafa;
+            -ms-overflow-style: none;
+            scrollbar-width: none;
+        }
+
+        .ai-message-log::-webkit-scrollbar {
+            display: none;
+        }
+
+        /* Messaging Bubble Layouts */
+        .chat-bubble {
+            display: flex;
+            flex-direction: column;
+            max-width: 85%;
+            animation: bubbleIntro 0.25s ease forwards;
+        }
+
+        @keyframes bubbleIntro {
+            from { opacity: 0; transform: translateY(8px); }
+            to { opacity: 1; transform: translateY(0); }
+        }
+
+        /* Exact 0.3rem card frame context for user/bot renders */
+        .chat-bubble .bubble-frame {
+            padding: 0.3rem; 
+            background-color: var(--color-card-bg);
+            border-radius: var(--card-radius);
+            box-shadow: 0 2px 6px rgba(0,0,0,0.02);
+        }
+
+        .chat-bubble .bubble-text {
+            padding: 0.8rem 1.1rem;
+            font-size: 0.95rem;
+            line-height: 1.55;
+            border-radius: var(--image-radius);
+        }
+
+        /* Message Timestamps */
+        .bubble-timestamp {
+            font-size: 0.7rem;
+            color: var(--color-text-muted);
+            margin-top: 0.4rem;
+            font-weight: 500;
+            padding: 0 0.4rem;
+        }
+
+        /* System Bot Message Modifications */
+        .chat-bubble.bot {
+            align-self: flex-start;
+        }
+        .chat-bubble.bot .bubble-text {
+            background-color: #f3f3f3;
+            color: var(--color-text-dark);
+        }
+        .chat-bubble.bot .bubble-timestamp {
+            align-self: flex-start;
+        }
+
+        /* User Message Modifications */
+        .chat-bubble.user {
+            align-self: flex-end;
+        }
+        .chat-bubble.user .bubble-frame {
+            background-color: var(--color-text-dark);
+        }
+        .chat-bubble.user .bubble-text {
+            background-color: var(--color-text-dark);
+            color: #ffffff;
+        }
+        .chat-bubble.user .bubble-timestamp {
+            align-self: flex-end;
+        }
+
+        /* --- Footer Input Actions Form Box + Legal Disclaimer --- */
+        .ai-chat-footer-block {
+            background-color: var(--color-card-bg);
+            border-top: 1px solid #eeeeee;
+            display: flex;
+            flex-direction: column;
+        }
+
+        .ai-chat-input-form {
+            padding: 1rem 1.25rem 0.5rem 1.25rem;
+            display: flex;
+            gap: 0.75rem;
+            align-items: center;
+        }
+
+        .ai-text-input {
+            flex: 1;
+            font-family: var(--font-primary);
+            font-size: 0.95rem;
+            border: 1px solid #e5e5e5;
+            padding: 0.8rem 1.25rem;
+            border-radius: 50px;
+            outline: none;
+            color: var(--color-text-dark);
+            transition: border-color 0.2s ease;
+        }
+
+        .ai-text-input:focus {
+            border-color: var(--color-text-dark);
+        }
+
+        .ai-submit-btn {
+            background-color: var(--color-text-dark);
+            border: none;
+            width: 42px;
+            height: 42px;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            cursor: pointer;
+            transition: opacity 0.2s ease;
+            flex-shrink: 0;
+        }
+
+        .ai-submit-btn:hover {
+            opacity: 0.85;
+        }
+
+        .ai-submit-btn svg {
+            stroke: #ffffff;
+        }
+
+        /* Legal Context Disclaimer Bar */
+        .ai-legal-disclaimer {
+            padding: 0.25rem 1.5rem 0.85rem 1.5rem;
+            text-align: center;
+            font-size: 0.725rem;
+            line-height: 1.4;
+            color: var(--color-text-muted);
+            font-weight: 500;
+        }
+
+        .ai-legal-disclaimer a {
+            color: var(--color-text-dark);
+            text-decoration: underline;
+            font-weight: 600;
+        }
+
+        /* --- Thinking Animation CSS Dots --- */
+        .thinking-dots {
+            display: flex;
+            gap: 0.35rem;
+            padding: 0.5rem 0.5rem;
+            align-items: center;
+        }
+        .thinking-dots span {
+            width: 7px;
+            height: 7px;
+            background-color: var(--color-text-muted);
+            border-radius: 50%;
+            display: inline-block;
+            animation: dotWave 1.2s infinite ease-in-out both;
+        }
+        .thinking-dots span:nth-child(1) { animation-delay: -0.32s; }
+        .thinking-dots span:nth-child(2) { animation-delay: -0.16s; }
+
+        @keyframes dotWave {
+            0%, 80%, 100% { transform: scale(0.6); opacity: 0.4; }
+            40% { transform: scale(1); opacity: 1; }
+        }
+
+        /* --- Responsive Screen Scaling --- */
+        @media (max-width: 480px) {
+            .ai-assistant-wrapper {
+                bottom: 1rem;
+                right: 1rem;
+                left: 1rem;
+            }
+            .ai-chat-card {
+                width: 100%;
+                height: calc(100vh - 100px);
+            }
+        }
+    </style>
+</head>
+<body>
+
+    <div class="ai-assistant-wrapper">
+        
+        <div class="ai-chat-card" id="aiChatCard">
+            
+            <div class="ai-chat-header">
+                <div class="ai-header-left">
+                    <div class="ai-avatar-wrapper">
+                        <div class="ai-avatar"></div>
+                    </div>
+                    <div class="ai-header-info">
+                        <h3>Nexus Assistant</h3>
+                        <span>System Instance v2.6</span>
+                    </div>
+                </div>
+                <div class="ai-header-clock">
+                    <div class="ai-clock-time" id="liveTime">00:00 AM</div>
+                    <div class="ai-clock-date" id="liveDate">Jan 01, 2026</div>
+                </div>
+            </div>
+
+            <div class="ai-message-log" id="aiMessageLog">
+                
+                <div class="chat-bubble bot">
+                    <div class="bubble-frame">
+                        <div class="bubble-text">
+                            Welcome to the Nexus Academic Infrastructure Framework. I am calibrated to assist you with inquiries regarding our structural faculties, geometric stacking campuses, or accelerated short course paths. What can I synthesize for you today?
+                        </div>
+                    </div>
+                    <div class="bubble-timestamp">Just now</div>
+                </div>
+
+            </div>
+
+            <div class="ai-chat-footer-block">
+                <form class="ai-chat-input-form" id="aiInputForm" autocomplete="off">
+                    <input type="text" id="aiInputField" class="ai-text-input" placeholder="Inquire about campus programs..." required>
+                    <button type="submit" class="ai-submit-btn" aria-label="Send message">
+                        <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><line x1="22" y1="2" x2="11" y2="13"></line><polygon points="22 2 15 22 11 13 2 9 22 2"></polygon></svg>
+                    </button>
+                </form>
+                <div class="ai-legal-disclaimer">
+                    By interacting with this AI bot, you accept our structural <a href="#" target="_blank">Privacy & AI Data Terms</a>. Generated replies are programmatic vectors.
+                </div>
+            </div>
+
+        </div>
+
+        <button class="ai-launcher-btn" id="aiLauncherToggle" aria-label="Open AI Assistant">
+            <svg width="26" height="26" viewBox="0 0 24 24" fill="none" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><line x1="12" y1="5" x2="12" y2="19"></line><line x1="5" y1="12" x2="19" y2="12"></line></svg>
+        </button>
+
+    </div>
+
+    <script>
+        const launcherToggle = document.getElementById('aiLauncherToggle');
+        const chatCard = document.getElementById('aiChatCard');
+        const inputForm = document.getElementById('aiInputForm');
+        const inputField = document.getElementById('aiInputField');
+        const messageLog = document.getElementById('aiMessageLog');
+
+        // Clock Engine Updates
+        function updateSystemClock() {
+            const now = new Date();
+            
+            // Format time accurately
+            let hours = now.getHours();
+            const minutes = String(now.getMinutes()).padStart(2, '0');
+            const ampm = hours >= 12 ? 'PM' : 'AM';
+            hours = hours % 12;
+            hours = hours ? hours : 12; // convert 0 hour indicator to 12
+            document.getElementById('liveTime').textContent = `${hours}:${minutes} ${ampm}`;
+            
+            // Format date string context
+            const options = { month: 'short', day: 'numeric', year: 'numeric' };
+            document.getElementById('liveDate').textContent = now.toLocaleDateString('en-US', options);
+        }
+        setInterval(updateSystemClock, 1000);
+        updateSystemClock(); // Initial runtime synchronization
+
+        function getTimestampString() {
+            const now = new Date();
+            let hours = now.getHours();
+            const minutes = String(now.getMinutes()).padStart(2, '0');
+            const ampm = hours >= 12 ? 'PM' : 'AM';
+            hours = hours % 12;
+            hours = hours ? hours : 12;
+            return `${hours}:${minutes} ${ampm}`;
+        }
+
+        // Widget Toggle Actions
+        launcherToggle.addEventListener('click', () => {
+            chatCard.classList.toggle('active');
+            launcherToggle.classList.toggle('active');
+            if (chatCard.classList.contains('active')) {
+                inputField.focus();
+            }
+        });
+
+        // Form pipeline controller
+        inputForm.addEventListener('submit', (e) => {
+            e.preventDefault();
+            const query = inputField.value.trim();
+            if (!query) return;
+
+            // Render out User Query instance
+            appendBubble(query, 'user');
+            inputField.value = '';
+
+            // Generate asynchronous thinking indicator 
+            const thinkingId = appendThinkingBubble();
+            
+            // Trigger mocked contextual response loops
+            setTimeout(() => {
+                removeThinkingBubble(thinkingId);
+                const botReply = generateContextualContent(query);
+                appendBubble(botReply, 'bot');
+            }, 1100);
+        });
+
+        // Element Generation Utilities
+        function appendBubble(text, sender) {
+            const bubble = document.createElement('div');
+            bubble.classList.add('chat-bubble', sender);
+            bubble.innerHTML = `
+                <div class="bubble-frame">
+                    <div class="bubble-text">${text}</div>
+                </div>
+                <div class="bubble-timestamp">${getTimestampString()}</div>
+            `;
+            messageLog.appendChild(bubble);
+            scrollToBottom();
+        }
+
+        function appendThinkingBubble() {
+            const id = 'thinking-' + Date.now();
+            const bubble = document.createElement('div');
+            bubble.classList.add('chat-bubble', 'bot');
+            bubble.id = id;
+            bubble.innerHTML = `
+                <div class="bubble-frame">
+                    <div class="bubble-text">
+                        <div class="thinking-dots"><span></span><span></span><span></span></div>
+                    </div>
+                </div>
+            `;
+            messageLog.appendChild(bubble);
+            scrollToBottom();
+            return id;
+        }
+
+        function removeThinkingBubble(id) {
+            const element = document.getElementById(id);
+            if (element) element.remove();
+        }
+
+        function scrollToBottom() {
+            messageLog.scrollTop = messageLog.scrollHeight;
+        }
+
+        // Deep response matrix matching platform content rules
+        function generateContextualContent(input) {
+            const lower = input.toLowerCase();
+            if (lower.includes('program') || lower.includes('faculty') || lower.includes('study')) {
+                return "Nexus Uni organizes its parameters across 4 foundational pillars: Architecture & Design (Spatial Dynamics), Engineering & Tech (Systems Automation), Environmental Science (Ecological Infrastructure), and Humanities & Culture (Contextual Media Studies).";
+            }
+            if (lower.includes('campus') || lower.includes('location') || lower.includes('stack')) {
+                return "Our infrastructure contains 4 campuses optimized for uninterrupted focus: The Innovation Hub (North technical wing), The Marina Pavilion (Coastal daylight system), Metropolitan Tower (Urban high-density operations), and The Forest Commons (East Valley research sanctuary). Each is structured as an interconnected stacking block matrix.";
+            }
+            if (lower.includes('short course') || lower.includes('course') || lower.includes('week')) {
+                return "We operate specialized, credentialed short paths including: UX/UI Architecture Foundations (6 Weeks • Online Delivery) and Sustainable Systems Modeling (8 Weeks • Hybrid Tracking). Direct paths to application portals can be initialized by typing 'apply'.";
+            }
+            if (lower.includes('apply') || lower.includes('admissions') || lower.includes('join')) {
+                return "Admissions for the current term are actively processing. You may submit your parameters through our centralized Undergraduate Portal or Postgraduate Requirements Matrix. Select the primary action element on the desktop navbar banner to log your application.";
+            }
+            return "Query contextualized. Our structural matrices process information through strict geometric conditions. Let me know if you would like deep analytical details concerning our structural campuses or faculty branches.";
+        }
+    </script>
+
+</body>
+</html>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Hero Section Component</title>
+    
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&family=Karla:wght@400;500;600&display=swap" rel="stylesheet">
+    
+    <style>
+        /* Shared Core Design Theme Variables */
+        :root {
+            --font-primary: 'Karla', sans-serif;
+            --font-display: 'p22', sans-serif; /* Fallback for 'p22' style consistency */
+            --color-background: #efefef; /* Light grey background */
+            --color-text-dark: #1a1a1a;
+            --color-text-muted: #666666;
+            --color-card-bg: #ffffff;
+            --card-radius: 20px;
+            --image-radius: 15px;
+            
+            /* Added accent to complement the established aesthetic */
+            --color-accent: #1a1a1a;
+            --color-accent-hover: #333333;
+        }
+
+        * {
+            box-sizing: border-box;
+            text-decoration: none;
+        }
+
+        /* Hero Wrapper Container */
+        .hero-section {
+            font-family: var(--font-primary);
+            background-color: var(--color-background);
+            color: var(--color-text-dark);
+            margin: 0;
+            padding: 6rem 1rem 3rem 1rem; /* Proportional spacing to sit cleanly above articles */
+            display: flex;
+            justify-content: center;
+        }
+
+        /* Matches max-width of .article-container */
+        .hero-container {
+            max-width: 1200px;
+            width: 100%;
+            display: grid;
+            grid-template-columns: 1.2fr 1fr; /* Asymmetric split for focus on typography */
+            gap: 2rem;
+            align-items: center;
+        }
+
+        /* Left Side Content */
+        .hero-content {
+            padding-right: 1rem;
+        }
+
+        /* Small eyebrow badge to match metadata styling */
+        .hero-tagline {
+            font-family: var(--font-display);
+            font-size: 0.875rem;
+            text-transform: uppercase;
+            letter-spacing: 0.05em;
+            font-weight: 700;
+            color: var(--color-text-muted);
+            margin-bottom: 1rem;
+            display: inline-block;
+        }
+
+        /* Matches the weight, tracking, and sizing scale of .section-title */
+        .hero-title {
+            font-family: var(--font-display);
+            font-size: 3.5rem;
+            font-weight: 700;
+            line-height: 1.1;
+            letter-spacing: -0.04em;
+            margin: 0 0 1.5rem 0;
+            color: var(--color-text-dark);
+        }
+
+        .hero-title span {
+            color: var(--color-text-muted);
+            font-weight: 400;
+        }
+
+        /* Body narrative text copying the muted color structure */
+        .hero-description {
+            font-size: 1.125rem;
+            line-height: 1.6;
+            color: var(--color-text-muted);
+            margin: 0 0 2.5rem 0;
+            max-width: 540px;
+        }
+
+        /* Action Buttons mimicking the polished, clean card logic */
+        .hero-actions {
+            display: flex;
+            gap: 1rem;
+            align-items: center;
+        }
+
+        .btn-primary {
+            font-family: var(--font-display);
+            background-color: var(--color-accent);
+            color: #ffffff;
+            padding: 0.85rem 2rem;
+            border-radius: 50px; /* Pillow radius for smooth modern CTA look */
+            font-weight: 600;
+            font-size: 0.95rem;
+            transition: background-color 0.3s ease, transform 0.3s ease;
+        }
+
+        .btn-primary:hover {
+            background-color: var(--color-accent-hover);
+            transform: translateY(-2px);
+        }
+
+        .btn-secondary {
+            font-family: var(--font-display);
+            color: var(--color-text-dark);
+            padding: 0.85rem 1.5rem;
+            font-weight: 600;
+            font-size: 0.95rem;
+            display: inline-flex;
+            align-items: center;
+            gap: 0.25rem;
+            transition: opacity 0.3s ease;
+        }
+
+        .btn-secondary:hover {
+            opacity: 0.7;
+        }
+
+        /* Right Side: Visual Frame explicitly matching the .article-card wrapper design */
+        .hero-visual-frame {
+            background-color: var(--color-card-bg);
+            border-radius: var(--card-radius);
+            padding: 0.3rem; /* Small inner padding layout choice inherited from your design */
+            box-shadow: 0 4px 10px rgba(0, 0, 0, 0.05);
+            height: 480px;
+            overflow: hidden;
+            display: flex;
+        }
+
+        .hero-image {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            border-radius: var(--image-radius);
+            background-color: #d1d1d1;
+        }
+
+        /* --- Responsive Structure Adaptations --- */
+        @media (max-width: 1024px) {
+            .hero-container {
+                grid-template-columns: 1fr; /* Stack visually on tablets */
+                gap: 3rem;
+            }
+            .hero-content {
+                padding-right: 0;
+                text-align: center;
+            }
+            .hero-description {
+                margin-left: auto;
+                margin-right: auto;
+            }
+            .hero-actions {
+                justify-content: center;
+            }
+            .hero-visual-frame {
+                height: 380px;
+            }
+        }
+
+        @media (max-width: 640px) {
+            .hero-section {
+                padding: 4rem 1rem 2rem 1rem;
+            }
+            .hero-title {
+                font-size: 2.5rem;
+            }
+            .hero-actions {
+                flex-direction: column;
+                width: 100%;
+                gap: 0.5rem;
+            }
+            .btn-primary {
+                width: 100%;
+                text-align: center;
+            }
+            .hero-visual-frame {
+                height: 280px;
+            }
+        }
+    </style>
+</head>
+<body>
+
+    <section class="hero-section">
+        <div class="hero-container">
+            
+            <div class="hero-content">
+                <span class="hero-tagline">Welcome & Perspective</span>
+                <h1 class="hero-title">
+                    Digital frameworks crafted <span>to elevate structural logic.</span>
+                </h1>
+                <p class="hero-description">
+                    A curated assembly of conceptual design models, modern component environments, and operational workflows structured to transform regular modern frontends.
+                </p>
+                <div class="hero-actions">
+                    <a href="#" class="btn-primary">Explore Platform</a>
+                    <a href="#" class="btn-secondary">
+                        View Documentation 
+                        <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><line x1="5" y1="12" x2="19" y2="12"></line><polyline points="12 5 19 12 12 19"></polyline></svg>
+                    </a>
+                </div>
+            </div>
+
+            <div class="hero-visual-frame">
+                <img 
+                    src="https://images.unsplash.com/photo-1618005182384-a83a8bd57fbe?q=80&w=1364&auto=format&fit=crop" 
+                    alt="Minimalist 3D abstract illustration modeling smooth surfaces" 
+                    class="hero-image"
+                    onerror="this.onerror=null;this.src='https://placehold.co/600x480/445566/ffffff?text=Hero+Platform';"
+                >
+            </div>
+
+        </div>
+    </section>
+
+</body>
+</html>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Theme Matched Carousel</title>
+    
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=Karla:wght@400;500;600&display=swap" rel="stylesheet">
+    
+    <style>
+        /* Shared Core Design Theme Variables */
+        :root {
+            --font-primary: 'Karla', sans-serif;
+            --font-display: 'p22', sans-serif;
+            --color-background: #efefef;
+            --color-text-dark: #1a1a1a;
+            --color-text-muted: #666666;
+            --color-divider: #666;
+            --color-card-bg: #ffffff;
+            --card-radius: 20px;
+            --image-radius: 15px;
+        }
+
+        * {
+            box-sizing: border-box;
+            text-decoration: none;
+        }
+
+        .carousel-section {
+            font-family: var(--font-primary);
+            background-color: var(--color-background);
+            color: var(--color-text-dark);
+            padding: 5rem 1rem;
+            display: flex;
+            justify-content: center;
+        }
+
+        .carousel-container {
+            max-width: 1200px;
+            width: 100%;
+            position: relative;
+        }
+
+        /* Carousel Header Area with Navigation Buttons */
+        .carousel-header {
+            display: flex;
+            justify-content: space-between;
+            align-items: flex-end;
+            margin-bottom: 2.5rem;
+        }
+
+        .carousel-title {
+            font-family: var(--font-display);
+            font-size: 2.5rem;
+            font-weight: 700;
+            letter-spacing: -0.04em;
+            margin: 0;
+        }
+
+        .carousel-nav-buttons {
+            display: flex;
+            gap: 0.75rem;
+        }
+
+        /* Minimalist circular buttons matching the theme tone */
+        .nav-btn {
+            background-color: var(--color-card-bg);
+            border: none;
+            width: 44px;
+            height: 44px;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            cursor: pointer;
+            box-shadow: 0 4px 10px rgba(0, 0, 0, 0.05);
+            transition: transform 0.2s ease, background-color 0.2s ease;
+        }
+
+        .nav-btn:hover {
+            transform: translateY(-2px);
+            background-color: #f7f7f7;
+        }
+
+        .nav-btn:active {
+            transform: translateY(0);
+        }
+
+        .nav-btn svg {
+            stroke: var(--color-text-dark);
+        }
+
+        /* Core Carousel Slider Layout */
+        .carousel-slider-track {
+            display: flex;
+            gap: 1.5rem;
+            overflow-x: auto;
+            scroll-snap-type: x mandatory;
+            scroll-behavior: smooth;
+            padding-bottom: 1.5rem; /* Space for the subtle card shadow drops */
+            /* Hide default scrollbars across modern browsers */
+            -ms-overflow-style: none;  
+            scrollbar-width: none; 
+        }
+
+        .carousel-slider-track::-webkit-scrollbar {
+            display: none; 
+        }
+
+        /* Carousel Item Card Structural Rules */
+        .carousel-card {
+            flex: 0 0 calc(33.333% - 1rem); /* 3 Columns on Desktop */
+            scroll-snap-align: start;
+            background-color: var(--color-card-bg);
+            border-radius: var(--card-radius);
+            overflow: hidden;
+            box-shadow: 0 4px 10px rgba(0, 0, 0, 0.05);
+            transition: transform 0.3s ease, box-shadow 0.3s ease;
+        }
+
+        .carousel-card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 10px 20px rgba(0, 0, 0, 0.1);
+        }
+
+        /* Matching your exact 0.3rem card frame image padding wrapper rules */
+        .card-image-wrapper {
+            padding: 0.3rem;
+            height: 240px;
+            overflow: hidden;
+        }
+
+        .card-image {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            border-radius: var(--image-radius);
+            background-color: #d1d1d1;
+        }
+
+        /* Content Areas */
+        .card-content {
+            padding: 1.5rem 1.5rem 2rem 1.5rem;
+        }
+
+        .card-meta {
+            display: flex;
+            align-items: center;
+            font-size: 0.875rem;
+            color: var(--color-text-muted);
+            margin-bottom: 0.75rem;
+            font-weight: 500;
+        }
+
+        .meta-divider {
+            color: var(--color-divider);
+            font-weight: 700;
+            margin: 0 0.5rem;
+        }
+
+        .card-title {
+            font-family: var(--font-display);
+            font-size: 1.25rem;
+            font-weight: 600;
+            line-height: 1.4;
+            letter-spacing: -0.03em;
+            margin: 0;
+            color: var(--color-text-dark);
+        }
+
+        /* --- Responsive Viewport Mixers --- */
+        @media (max-width: 1024px) {
+            .carousel-card {
+                flex: 0 0 calc(50% - 0.75rem); /* 2 Columns on Tablets */
+            }
+            .carousel-title {
+                font-size: 2rem;
+            }
+        }
+
+        @media (max-width: 640px) {
+            .carousel-card {
+                flex: 0 0 100%; /* Single card viewport focus on Mobile */
+            }
+            .carousel-title {
+                font-size: 1.75rem;
+            }
+            .card-image-wrapper {
+                height: 210px;
+            }
+        }
+    </style>
+</head>
+<body>
+
+    <section class="carousel-section">
+        <div class="carousel-container">
+            
+            <div class="carousel-header">
+                <h2 class="carousel-title">Featured Projects</h2>
+                <div class="carousel-nav-buttons">
+                    <button class="nav-btn" id="prevBtn" aria-label="Slide Left">
+                        <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><line x1="19" y1="12" x2="5" y2="12"></line><polyline points="12 19 5 12 12 5"></polyline></svg>
+                    </button>
+                    <button class="nav-btn" id="nextBtn" aria-label="Slide Right">
+                        <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><line x1="5" y1="12" x2="19" y2="12"></line><polyline points="12 5 19 12 12 19"></polyline></svg>
+                    </button>
+                </div>
+            </div>
+
+            <div class="carousel-slider-track" id="sliderTrack">
+                
+                <a href="#" class="carousel-card">
+                    <div class="card-image-wrapper">
+                        <img src="https://images.unsplash.com/photo-1618005182384-a83a8bd57fbe?q=80&w=600&auto=format&fit=crop" class="card-image" alt="Project presentation visual">
+                    </div>
+                    <div class="card-content">
+                        <div class="card-meta">
+                            <span>Case Study</span>
+                            <span class="meta-divider">•</span>
+                            <span>2026</span>
+                        </div>
+                        <h3 class="card-title">Systemic architecture integration for unified web viewports</h3>
+                    </div>
+                </a>
+
+                <a href="#" class="carousel-card">
+                    <div class="card-image-wrapper">
+                        <img src="https://images.unsplash.com/photo-1600585154340-be6161a56a0c?q=80&w=600&auto=format&fit=crop" class="card-image" alt="Project presentation visual">
+                    </div>
+                    <div class="card-content">
+                        <div class="card-meta">
+                            <span>Research</span>
+                            <span class="meta-divider">•</span>
+                            <span>2026</span>
+                        </div>
+                        <h3 class="card-title">Analyzing asynchronous modular layout patterns and scaling limits</h3>
+                    </div>
+                </a>
+
+                <a href="#" class="carousel-card">
+                    <div class="card-image-wrapper">
+                        <img src="https://images.unsplash.com/photo-1497366754035-f200968a6e72?q=80&w=600&auto=format&fit=crop" class="card-image" alt="Project presentation visual">
+                    </div>
+                    <div class="card-content">
+                        <div class="card-meta">
+                            <span>Production</span>
+                            <span class="meta-divider">•</span>
+                            <span>2025</span>
+                        </div>
+                        <h3 class="card-title">Applying geometric constraints within fast client rendering scopes</h3>
+                    </div>
+                </a>
+
+                <a href="#" class="carousel-card">
+                    <div class="card-image-wrapper">
+                        <img src="https://images.unsplash.com/photo-1666597107756-ef489e9f1f09?q=80&w=600&auto=format&fit=crop" class="card-image" alt="Project presentation visual">
+                    </div>
+                    <div class="card-content">
+                        <div class="card-meta">
+                            <span>Interface</span>
+                            <span class="meta-divider">•</span>
+                            <span>2025</span>
+                        </div>
+                        <h3 class="card-title">Developing minimalist interactive spaces for high data volume</h3>
+                    </div>
+                </a>
+
+            </div>
+        </div>
+    </section>
+
+    <script>
+        const track = document.getElementById('sliderTrack');
+        const prevBtn = document.getElementById('prevBtn');
+        const nextBtn = document.getElementById('nextBtn');
+
+        // Dynamic step calculation based on first card sizing rules
+        function getScrollStep() {
+            const firstCard = track.querySelector('.carousel-card');
+            return firstCard ? firstCard.offsetWidth + 24 : 300; // card size + gap width
+        }
+
+        nextBtn.addEventListener('click', () => {
+            track.scrollBy({ left: getScrollStep(), behavior: 'smooth' });
+        });
+
+        prevBtn.addEventListener('click', () => {
+            track.scrollBy({ left: -getScrollStep(), behavior: 'smooth' });
+        });
+    </script>
+
+</body>
+</html>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Fully Masking Stacking Cards</title>
+    
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=Karla:wght@400;500;600&display=swap" rel="stylesheet">
+    
+    <style>
+        /* Shared Core Design Theme Variables */
+        :root {
+            --font-primary: 'Karla', sans-serif;
+            --font-display: 'p22', sans-serif;
+            --color-background: #efefef; /* Light grey background */
+            --color-text-dark: #1a1a1a;
+            --color-text-muted: #666666;
+            --color-card-bg: #ffffff;
+            --card-radius: 20px;
+            --image-radius: 15px;
+            
+            --color-accent: #1a1a1a;
+            --color-accent-hover: #333333;
+        }
+
+        * {
+            box-sizing: border-box;
+            text-decoration: none;
+        }
+
+        .stack-section {
+            font-family: var(--font-primary);
+            background-color: var(--color-background);
+            color: var(--color-text-dark);
+            padding: 6rem 1rem 6rem 1rem; /* Added bottom padding so the final card can be scrolled past cleanly */
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+        }
+
+        .stack-intro {
+            text-align: center;
+            max-width: 600px;
+            margin-bottom: 5rem;
+        }
+
+        .stack-section-title {
+            font-family: var(--font-display);
+            font-size: 3rem;
+            font-weight: 700;
+            letter-spacing: -0.04em;
+            margin: 0;
+        }
+
+        /* Container holding the items */
+        .stack-container {
+            max-width: 1200px;
+            width: 100%;
+            position: relative;
+            /* Using grid or explicit spacing to allow individual card containers to scroll naturally */
+            display: flex;
+            flex-direction: column;
+        }
+
+        /* Wrapper that gives each card room to breathe before it starts sticking */
+        .card-window {
+            position: sticky;
+            top: 12vh; /* Every card catches at this exact line, causing them to stack perfectly on top of each other */
+            padding-bottom: 8rem; /* Creates the scrolling runway before the next card catches up */
+        }
+
+        /* The Core Card Layout */
+        .campus-card {
+            background-color: var(--color-card-bg);
+            border-radius: var(--card-radius);
+            box-shadow: 0 15px 40px rgba(0, 0, 0, 0.08);
+            display: grid;
+            grid-template-columns: 1.1fr 1fr;
+            align-items: center;
+            overflow: hidden;
+            min-height: 480px;
+        }
+
+        /* Left Side Text Panel */
+        .campus-content {
+            padding: 4rem;
+            display: flex;
+            flex-direction: column;
+            align-items: flex-start;
+        }
+
+        .campus-location {
+            font-family: var(--font-display);
+            font-size: 0.875rem;
+            text-transform: uppercase;
+            letter-spacing: 0.05em;
+            font-weight: 700;
+            color: var(--color-text-muted);
+            margin-bottom: 1rem;
+        }
+
+        .campus-name {
+            font-family: var(--font-display);
+            font-size: 2.5rem;
+            font-weight: 700;
+            line-height: 1.2;
+            letter-spacing: -0.04em;
+            margin: 0 0 1.25rem 0;
+        }
+
+        .campus-desc {
+            font-size: 1.05rem;
+            line-height: 1.6;
+            color: var(--color-text-muted);
+            margin: 0 0 2.5rem 0;
+        }
+
+        .campus-btn {
+            font-family: var(--font-display);
+            background-color: var(--color-accent);
+            color: #ffffff;
+            padding: 0.85rem 1.75rem;
+            border-radius: 50px;
+            font-weight: 600;
+            font-size: 0.9rem;
+            transition: background-color 0.3s ease, transform 0.3s ease;
+        }
+
+        .campus-btn:hover {
+            background-color: var(--color-accent-hover);
+            transform: translateY(-2px);
+        }
+
+        /* Right Side Image Panel matching your signature 0.3rem frame */
+        .campus-image-frame {
+            padding: 0.3rem; 
+            height: 100%;
+            min-height: 480px;
+            width: 100%;
+        }
+
+        .campus-image {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            border-radius: var(--image-radius);
+            background-color: #d1d1d1;
+        }
+
+        /* --- Responsive Structure Control --- */
+        @media (max-width: 1024px) {
+            .campus-content {
+                padding: 2.5rem;
+            }
+            .campus-name {
+                font-size: 2rem;
+            }
+        }
+
+        @media (max-width: 768px) {
+            .card-window {
+                top: 6vh;
+                padding-bottom: 4rem; /* Tighten runway on mobile screens */
+            }
+            .campus-card {
+                grid-template-columns: 1fr;
+                min-height: auto;
+            }
+            .campus-image-frame {
+                min-height: 260px;
+                height: 260px;
+                order: 1;
+            }
+            .campus-content {
+                order: 2;
+                padding: 2rem 1.5rem;
+            }
+            .campus-desc {
+                margin-bottom: 1.5rem;
+            }
+        }
+    </style>
+</head>
+<body>
+
+    <section class="stack-section">
+        
+        <header class="stack-intro">
+            <h2 class="stack-section-title">Our Campuses</h2>
+        </header>
+
+        <div class="stack-container">
+            
+            <div class="card-window">
+                <article class="campus-card">
+                    <div class="campus-content">
+                        <span class="campus-location">North District</span>
+                        <h3 class="campus-name">The Innovation Hub</h3>
+                        <p class="campus-desc">
+                            Our primary technical facility designed to integrate cutting-edge laboratory spaces with cooperative open environments. Focused heavily on interface mechanics and hardware workflows.
+                        </p>
+                        <a href="#" class="campus-btn">Explore Campus</a>
+                    </div>
+                    <div class="campus-image-frame">
+                        <img src="https://images.unsplash.com/photo-1497366754035-f200968a6e72?q=80&w=800&auto=format&fit=crop" class="campus-image" alt="Modern clean interior architecture workspace">
+                    </div>
+                </article>
+            </div>
+
+            <div class="card-window">
+                <article class="campus-card">
+                    <div class="campus-content">
+                        <span class="campus-location">Coastal Sector</span>
+                        <h3 class="campus-name">The Marina Pavilion</h3>
+                        <p class="campus-desc">
+                            Constructed intentionally around natural lighting systems, the coastal environment brings architectural design parameters directly in touch with sustainable, fluid workspaces.
+                        </p>
+                        <a href="#" class="campus-btn">Explore Campus</a>
+                    </div>
+                    <div class="campus-image-frame">
+                        <img src="https://images.unsplash.com/photo-1600585154340-be6161a56a0c?q=80&w=800&auto=format&fit=crop" class="campus-image" alt="Minimalist house facade highlighting geometric symmetry">
+                    </div>
+                </article>
+            </div>
+
+            <div class="card-window">
+                <article class="campus-card">
+                    <div class="campus-content">
+                        <span class="campus-location">Urban Center</span>
+                        <h3 class="campus-name">Metropolitan Tower</h3>
+                        <p class="campus-desc">
+                            A vertical workspace optimized for fast network scaling operations and density modeling. Located in the core infrastructure zone for immediate structural accessibility.
+                        </p>
+                        <a href="#" class="campus-btn">Explore Campus</a>
+                    </div>
+                    <div class="campus-image-frame">
+                        <img src="https://images.unsplash.com/photo-1618005182384-a83a8bd57fbe?q=80&w=800&auto=format&fit=crop" class="campus-image" alt="Abstract rendering with elegant flowing textures">
+                    </div>
+                </article>
+            </div>
+
+            <div class="card-window">
+                <article class="campus-card">
+                    <div class="campus-content">
+                        <span class="campus-location">East Valley</span>
+                        <h3 class="campus-name">The Forest Commons</h3>
+                        <p class="campus-desc">
+                            Where raw materials integrate directly with deep research modules. A quiet sanctuary design ecosystem optimized for continuous focus, deep architectural logic, and systems building.
+                        </p>
+                        <a href="#" class="campus-btn">Explore Campus</a>
+                    </div>
+                    <div class="campus-image-frame">
+                        <img src="https://images.unsplash.com/photo-1662633271540-b7e2f4df2bcb?q=80&w=800&auto=format&fit=crop" class="campus-image" alt="3D visualization framing smooth materials">
+                    </div>
+                </article>
+            </div>
+
+        </div>
+    </section>
+
+</body>
+</html>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Blog & Articles Section</title>
+    
+    <!-- Link for Inter font family -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700;800&display=swap" rel="stylesheet">
+    
+    <style>
+        /* CSS Variables for Clean Design */
+        :root {
+            --font-primary: 'Karla', sans-serif;
+            --color-background: #efefef; /* Light grey background */
+            --color-text-dark: #1a1a1a;
+            --color-text-muted: #666666;
+            --color-divider: #666;
+            --color-card-bg: #ffffff;
+            --card-radius: 20px;
+            --image-radius: 12px;
+        }
+
+        * {
+            border-bottom: none;
+            text-decoration: none;
+        }
+
+        /* Base Body Styles */
+        .life {
+            font-family: var(--font-primary);
+            background-color: var(--color-background);
+            color: var(--color-text-dark);
+            margin: 0;
+            padding: 5rem 1rem;
+            display: flex;
+            justify-content: center;
+        }
+
+        /* Main Container for Centering and Max Width */
+        .article-container {
+            max-width: 1200px;
+            width: 100%;
+        }
+
+        /* Section Header */
+        .section-header {
+            text-align: center;
+            margin-bottom: 4rem;
+        }
+
+        .section-title {
+            font-size: 3rem;
+            font-weight: 600;
+            letter-spacing: -0.04em;
+            margin: 0; font-family: 'p22', sans-serif;
+        }
+
+        /* Article Grid Layout */
+        .article-grid {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 1rem; /* Spacing between cards */
+        }
+
+        /* Individual Article Card */
+        .article-card {
+            background-color: var(--color-card-bg);
+            border-radius: var(--card-radius);
+            overflow: hidden;
+            box-shadow: 0 4px 10px rgba(0, 0, 0, 0.05);
+            transition: transform 0.3s ease, box-shadow 0.3s ease;
+        }
+
+        .article-card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 10px 20px rgba(0, 0, 0, 0.1);
+        }
+
+        /* Image Wrapper */
+        .article-image-wrapper {
+            /* Padding inside the wrapper to achieve the small margin effect around the image in the card */
+            padding: 0.3rem; 
+            height: 250px; 
+            overflow: hidden;
+            background-color: transparent; /* Card background handles the edges */
+        }
+
+        .article-image {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            border-radius: 15px;
+            /* Placeholder style to mimic the image's appearance */
+            background-color: #d1d1d1; 
+        }
+
+        /* Content Area */
+        .article-content {
+            padding: 1.5rem 1.5rem 2rem 1.5rem;
+        }
+
+        /* Metadata (Date and Read Time) */
+        .article-meta {
+            display: flex;
+            align-items: center;
+            font-size: 0.875rem; /* 14px */
+            color: var(--color-text-muted);
+            margin-bottom: 0.75rem;
+            font-weight: 500;
+        }
+
+        .meta-divider {
+            color: var(--color-divider);
+            font-weight: 700;
+            margin: 0 0.5rem;
+        }
+
+        /* Article Title */
+        .article-title {
+            font-size: 1.25rem; /* 20px */
+            font-weight: 600;
+            line-height: 1.4;
+            letter-spacing: -0.03em;
+            margin: 0;
+            color: var(--color-text-dark);
+        }
+
+        /* --- Responsive Design --- */
+        @media (max-width: 1024px) {
+            .article-grid {
+                grid-template-columns: repeat(2, 1fr);
+            }
+        }
+
+        @media (max-width: 640px) {
+            .article-grid {
+                grid-template-columns: 1fr;
+            }
+            .section-title {
+                font-size: 2.25rem;
+            }
+            .article-image-wrapper {
+                height: 200px; 
+            }
+        }
+    </style>
+</head>
+<div class="life">
+
+    <div class="article-container">
+        
+        <!-- Blog Section Header -->
+        <header class="section-header">
+            <h2 class="section-title">Blog & Articles</h2>
+        </header>
+
+        <!-- Article Grid -->
+        <section class="article-grid">
+            
+            <!-- Article Card 1: Design Principles -->
+            <a href="#" class="article-card" aria-label="Read 5 design principles that elevate your projects">
+                <div class="article-image-wrapper">
+                    <!-- Placeholder image to match the visual style, use the onerror for safety -->
+                    <img 
+                        src="https://images.unsplash.com/photo-1497366754035-f200968a6e72?q=80&w=1169&auto=format&fit=crop&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D"
+                        alt="3D render of moss-covered abstract structure" 
+                        class="article-image"
+                        onerror="this.onerror=null;this.src='https://placehold.co/400x250/788863/ffffff?text=Design+Principles';"
+                    >
+                </div>
+                <div class="article-content">
+                    <div class="article-meta">
+                        <span>July 13, 2025</span>
+                        <span class="meta-divider">•</span>
+                        <span>10 minute read</span>
+                    </div>
+                    <h3 class="article-title">
+                        5 design principles that elevate your projects
+                    </h3>
+                </div>
+            </a>
+
+            <!-- Article Card 2: Innovative Strategies -->
+            <a href="#" class="article-card" aria-label="Read 5 innovative strategies to enhance your projects">
+                <div class="article-image-wrapper">
+                    <!-- Placeholder image to match the visual style -->
+                    <img 
+                        src="https://images.unsplash.com/photo-1666597107756-ef489e9f1f09?q=80&w=1332&auto=format&fit=crop&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D"
+                        alt="3D render of interconnected orange and white cubes" 
+                        class="article-image"
+                        onerror="this.onerror=null;this.src='https://placehold.co/400x250/995544/ffffff?text=Innovative+Strategies';"
+                    >
+                </div>
+                <div class="article-content">
+                    <div class="article-meta">
+                        <span>July 13, 2025</span>
+                        <span class="meta-divider">•</span>
+                        <span>8 minute read</span>
+                    </div>
+                    <h3 class="article-title">
+                        5 innovative strategies to enhance your projects
+                    </h3>
+                </div>
+            </a>
+
+            <!-- Article Card 3: Design Workflow -->
+            <a href="#" class="article-card" aria-label="Read Creative ways to enhance your design workflow">
+                <div class="article-image-wrapper">
+                    <!-- Placeholder image to match the visual style -->
+                    <img 
+                        src="https://images.unsplash.com/photo-1662633271540-b7e2f4df2bcb?q=80&w=1170&auto=format&fit=crop&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D"
+                        alt="3D render of stylized architectural elements" 
+                        class="article-image"
+                        onerror="this.onerror=null;this.src='https://placehold.co/400x250/6688aa/ffffff?text=Design+Workflow';"
+                    >
+                </div>
+                <div class="article-content">
+                    <div class="article-meta">
+                        <span>July 13, 2025</span>
+                        <span class="meta-divider">•</span>
+                        <span>6 minute read</span>
+                    </div>
+                    <h3 class="article-title">
+                        Creative ways to enhance your design workflow
+                    </h3>
+                </div>
+            </a>
+
+        </section>
+
+    </div>
+
+</div>
+</html>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Theme Matched Curved Directory Footer</title>
+    
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=Karla:wght@400;500;600&display=swap" rel="stylesheet">
+
+    <style>
+        /* Shared Core Design Theme Variables */
+        :root {
+            --font-primary: 'Karla', sans-serif;
+            --font-display: 'Inter', sans-serif;
+            
+            /* Clean Light Theme Matching Your Settings */
+            --color-bg-main: #efefef; 
+            --color-directory-bg: #ffffff;
+            --color-base-row-bg: #e5e5e5;
+            
+            --color-text-dark: #1a1a1a;
+            --color-text-muted: #666666;
+            --color-border: #dbdbdb;
+            --max-width: 1200px;
+        }
+
+        body {
+            margin: 0;
+            padding: 0;
+            font-family: var(--font-primary);
+            background-color: var(--color-bg-main);
+        }
+
+        .page-content-spacer {
+            height: 40vh;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: var(--color-text-muted);
+            font-family: var(--font-display);
+        }
+
+        /* --- Principal Footer Layout Container --- */
+        .site-footer {
+            background-color: var(--color-directory-bg);
+            color: var(--color-text-dark);
+            position: relative;
+            width: 100%;
+        }
+
+        /* Top Directory Section containing link columns */
+        .footer-directory-section {
+            max-width: var(--max-width);
+            margin: 0 auto;
+            padding: 5rem 2rem 4rem 2rem;
+            display: grid;
+            grid-template-columns: 1.5fr repeat(4, 1fr);
+            gap: 2rem;
+        }
+
+        .footer-column-title {
+            font-family: var(--font-display);
+            font-size: 0.95rem;
+            font-weight: 600;
+            margin: 0 0 1.5rem 0;
+            color: var(--color-text-dark);
+        }
+
+        .accordion-chevron {
+            display: none;
+            transition: transform 0.3s ease;
+            stroke: var(--color-text-muted);
+        }
+
+        .footer-links {
+            list-style: none;
+            padding: 0;
+            margin: 0;
+            display: flex;
+            flex-direction: column;
+            gap: 0.9rem;
+        }
+
+        .footer-links a {
+            color: var(--color-text-muted);
+            text-decoration: none;
+            font-size: 0.95rem;
+            transition: color 0.2s ease;
+            font-weight: 400;
+        }
+
+        .footer-links a:hover {
+            color: var(--color-text-dark);
+        }
+
+        /* --- Asymmetric Base Row matching screenshot architecture --- */
+        .footer-base-wrapper {
+            background-color: var(--color-base-row-bg);
+            position: relative;
+            padding: 3.5rem 2rem 3rem 2rem;
+        }
+
+        /* Pure CSS SVG curve injection mimicking the design reference shape */
+        .footer-curve-divider {
+            position: absolute;
+            top: -45px;
+            left: 0;
+            width: 100%;
+            height: 50px;
+            overflow: hidden;
+            line-height: 0;
+        }
+
+        .footer-curve-divider svg {
+            position: relative;
+            display: block;
+            width: calc(100% + 1.3px);
+            height: 100%;
+        }
+
+        .footer-curve-divider .shape-fill {
+            fill: var(--color-base-row-bg);
+        }
+
+        .footer-base-container {
+            max-width: var(--max-width);
+            margin: 0 auto;
+            display: flex;
+            justify-content: space-between;
+            align-items: flex-start;
+            gap: 3rem;
+        }
+
+        /* Left Branding Identity Framework */
+        .footer-base-brand {
+            max-width: 360px;
+        }
+
+        .footer-logo-group {
+            display: flex;
+            align-items: center;
+            gap: 0.5rem;
+            margin-bottom: 0.75rem;
+        }
+
+        /* Custom geometry vector logo icon block */
+        .footer-logo-icon {
+            width: 24px;
+            height: 24px;
+            background-color: var(--color-text-dark);
+            border-radius: 6px;
+        }
+
+        .footer-logo-text {
+            font-family: var(--font-display);
+            font-size: 1.2rem;
+            font-weight: 700;
+            letter-spacing: -0.03em;
+            color: var(--color-text-dark);
+        }
+
+        .footer-brand-desc {
+            font-size: 0.85rem;
+            line-height: 1.5;
+            color: var(--color-text-muted);
+            margin: 0;
+        }
+
+        /* Right Meta Links Stack */
+        .footer-base-meta-panel {
+            display: flex;
+            flex-direction: column;
+            align-items: flex-end;
+            gap: 1rem;
+        }
+
+        .meta-nav-links {
+            display: flex;
+            gap: 1.5rem;
+            flex-wrap: wrap;
+        }
+
+        .meta-nav-links a {
+            font-family: var(--font-display);
+            color: var(--color-text-muted);
+            text-decoration: none;
+            font-size: 0.875rem;
+            font-weight: 500;
+            transition: color 0.2s ease;
+        }
+
+        .meta-nav-links a:hover {
+            color: var(--color-text-dark);
+        }
+
+        .copyright-notice {
+            font-size: 0.8rem;
+            color: var(--color-text-muted);
+            margin: 0;
+        }
+
+        /* --- Mobile Responsive & Accordion Rules --- */
+        @media (max-width: 900px) {
+            .footer-directory-section {
+                grid-template-columns: 1fr;
+                gap: 0;
+                padding: 3rem 1.5rem 1.5rem 1.5rem;
+            }
+
+            .footer-column-title {
+                display: flex;
+                justify-content: space-between;
+                align-items: center;
+                margin: 0;
+                padding: 1.25rem 0;
+                cursor: pointer;
+                border-bottom: 1px solid var(--color-border);
+                user-select: none;
+            }
+
+            .accordion-chevron {
+                display: block;
+            }
+
+            .footer-links-wrapper {
+                max-height: 0;
+                overflow: hidden;
+                transition: max-height 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+            }
+
+            .footer-column.active .footer-column-title {
+                border-bottom: 1px solid transparent;
+            }
+
+            .footer-column.active .accordion-chevron {
+                transform: rotate(180deg);
+            }
+
+            .footer-column.active .footer-links-wrapper {
+                border-bottom: 1px solid var(--color-border);
+            }
+
+            .footer-links {
+                padding: 0 0 1.25rem 0;
+            }
+
+            /* Remap structural layout rows at base level */
+            .footer-base-wrapper {
+                padding: 2.5rem 1.5rem 2.5rem 1.5rem;
+            }
+
+            .footer-base-container {
+                flex-direction: column;
+                align-items: flex-start;
+                gap: 2rem;
+            }
+
+            .footer-base-meta-panel {
+                align-items: flex-start;
+                width: 100%;
+            }
+
+            .meta-nav-links {
+                gap: 1rem 1.25rem;
+            }
+        }
+    </style>
+</head>
+<body>
+
+    <div class="page-content-spacer">
+        <p>Main website body container layout layer.</p>
+    </div>
+
+    <footer class="site-footer">
+        
+        <div class="footer-directory-section">
+            
+            <div class="footer-column" style="@media(max-width:900px){display:none;}"></div>
+
+            <div class="footer-column">
+                <h3 class="footer-column-title" onclick="toggleFooterAccordion(this)">
+                    Policy
+                    <svg class="accordion-chevron" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><polyline points="6 9 12 15 18 9"></polyline></svg>
+                </h3>
+                <div class="footer-links-wrapper">
+                    <ul class="footer-links">
+                        <li><a href="#">Information Security</a></li>
+                        <li><a href="#">Data Frameworks</a></li>
+                        <li><a href="#">Compliance Review</a></li>
+                    </ul>
+                </div>
+            </div>
+
+            <div class="footer-column">
+                <h3 class="footer-column-title" onclick="toggleFooterAccordion(this)">
+                    Learn
+                    <svg class="accordion-chevron" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><polyline points="6 9 12 15 18 9"></polyline></svg>
+                </h3>
+                <div class="footer-links-wrapper">
+                    <ul class="footer-links">
+                        <li><a href="#">Research Units</a></li>
+                        <li><a href="#">For SMEs</a></li>
+                        <li><a href="#">Academic Streams</a></li>
+                    </ul>
+                </div>
+            </div>
+
+            <div class="footer-column">
+                <h3 class="footer-column-title" onclick="toggleFooterAccordion(this)">
+                    Careers
+                    <svg class="accordion-chevron" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><polyline points="6 9 12 15 18 9"></polyline></svg>
+                </h3>
+                <div class="footer-links-wrapper">
+                    <ul class="footer-links">
+                        <li><a href="#">Events Calendar</a></li>
+                        <li><a href="#">Partners Network</a></li>
+                        <li><a href="#">Licenses & Registrations</a></li>
+                        <li><a href="#">Capital Funding</a></li>
+                        <li><a href="#">Global Reach</a></li>
+                        <li><a href="#">Security Access</a></li>
+                        <li><a href="#">Verification Node</a></li>
+                    </ul>
+                </div>
+            </div>
+
+            <div class="footer-column">
+                <h3 class="footer-column-title" onclick="toggleFooterAccordion(this)">
+                    Instagram
+                    <svg class="accordion-chevron" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><polyline points="6 9 12 15 18 9"></polyline></svg>
+                </h3>
+                <div class="footer-links-wrapper">
+                    <ul class="footer-links">
+                        <li><a href="#">@NexusDigital</a></li>
+                        <li><a href="#">@NexusFaculties</a></li>
+                    </ul>
+                </div>
+            </div>
+
+        </div>
+
+        <div class="footer-base-wrapper">
+            
+            <div class="footer-curve-divider">
+                <svg data-name="Layer 1" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1200 120" preserveAspectRatio="none">
+                    <path d="M0,0C150,90,350,110,600,60C850,10,1050,40,1200,80L1200,120L0,120Z" class="shape-fill"></path>
+                </svg>
+            </div>
+
+            <div class="footer-base-container">
+                
+                <div class="footer-base-brand">
+                    <div class="footer-logo-group">
+                        <div class="footer-logo-icon"></div>
+                        <span class="footer-logo-text">Nexus // Uni</span>
+                    </div>
+                    <p class="footer-brand-desc">
+                        Operating across multiple functional vectors, Nexus IT is an established leader in enterprise infrastructure architecture solutions and spatial network digital transformation.
+                    </p>
+                </div>
+
+                <div class="footer-base-meta-panel">
+                    <nav class="meta-nav-links" aria-label="Utility Links">
+                        <a href="#">Help Center</a>
+                        <a href="#">Contact Sales</a>
+                        <a href="#">Privacy Policy</a>
+                        <a href="#">Terms of Service</a>
+                        <a href="#">Press Enquiries</a>
+                    </nav>
+                    <p class="copyright-notice">Copyright &copy; Nexus 2026. All programmatic vectors reserved.</p>
+                </div>
+
+            </div>
+        </div>
+
+    </footer>
+
+    <script>
+        function toggleFooterAccordion(element) {
+            if (window.innerWidth > 900) return;
+
+            const currentColumn = element.parentElement;
+            const linksWrapper = currentColumn.querySelector('.footer-links-wrapper');
+            const isOpen = currentColumn.classList.contains('active');
+
+            // Close all other groups cleanly for responsive view handling
+            document.querySelectorAll('.footer-column').forEach(col => {
+                if (col !== currentColumn && col.classList.contains('active')) {
+                    col.classList.remove('active');
+                    col.querySelector('.footer-links-wrapper').style.maxHeight = null;
+                }
+            });
+
+            if (isOpen) {
+                currentColumn.classList.remove('active');
+                linksWrapper.style.maxHeight = null;
+            } else {
+                currentColumn.classList.add('active');
+                linksWrapper.style.maxHeight = linksWrapper.scrollHeight + "px";
+            }
+        }
+
+        // Auto-collapse reset metrics on browser resize events
+        window.addEventListener('resize', () => {
+            if (window.innerWidth > 900) {
+                document.querySelectorAll('.footer-links-wrapper').forEach(wrapper => {
+                    wrapper.style.maxHeight = null;
+                });
+                document.querySelectorAll('.footer-column').forEach(col => {
+                    col.classList.remove('active');
+                });
+            }
+        });
+    </script>
+
+</body>
+</html>
