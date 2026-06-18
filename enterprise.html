@@ -1773,4 +1773,589 @@ customElements.define('maluti-cta-section', MalutiCtaSection);
 
 
 
+
+
+
+
+
+
+
+
+<video-testimonial-slider></video-testimonial-slider>
+
+<script>
+class VideoTestimonialSlider extends HTMLElement {
+    constructor() {
+        super();
+        this.attachShadow({ mode: 'open' });
+        
+        // Re-integrated the quote texts into every single card item
+        this.baseTestimonials = [
+            {
+                videoUrl: 'https://www.pexels.com/download/video/13801270/', 
+                poster: 'https://images.unsplash.com/photo-1534528741775-53994a69daeb?q=80&w=600',
+                text: '“The course structure completely transformed how our team approaches architecture.”',
+                author: 'Sarah Jenkins',
+                role: 'Lead Architect at TechCorp'
+            },
+            {
+                videoUrl: 'https://www.w3schools.com/html/mov_bbb.mp4', 
+                poster: 'https://images.unsplash.com/photo-1506794778202-cad84cf45f1d?q=80&w=600',
+                text: '“The lessons were clear, practical, and easy to apply right away.”',
+                author: 'James Hook',
+                role: 'UI Designer at Olax'
+            },
+            {
+                videoUrl: 'https://vjs.zencdn.net/v/oceans.mp4', 
+                poster: 'https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?q=80&w=600',
+                text: '“Everything was explained in a simple, no-fluff way.”',
+                author: 'Alex Rivera',
+                role: 'Founder at Alpha'
+            },
+            {
+                videoUrl: 'https://www.w3schools.com/html/movie.mp4', 
+                poster: 'https://images.unsplash.com/photo-1500648767791-00dcc994a43e?q=80&w=600',
+                text: '“Tutorly’s platform changed the pace of our organic growth completely.”',
+                author: 'Brock Clinton',
+                role: 'AI Engineer at Frebrik'
+            },
+            {
+                videoUrl: 'https://vjs.zencdn.net/v/oceans.mp4', 
+                poster: 'https://images.unsplash.com/photo-1519085360753-af0119f7cbe7?q=80&w=600',
+                text: '“Exceptional depth in mentorship. Outperformed our expectations completely.”',
+                author: 'Jonathan West',
+                role: 'SEO Expert at GrowthCo'
+            }
+        ];
+
+        // Mirror data arrays for dynamic infinite wrap-around track looping
+        this.testimonials = [...this.baseTestimonials, ...this.baseTestimonials, ...this.baseTestimonials];
+        this.currentIndex = this.baseTestimonials.length; 
+    }
+
+    connectedCallback() {
+        this.render();
+        this.initSlider();
+    }
+
+    render() {
+        this.shadowRoot.innerHTML = `
+            <style>
+                @font-face { 
+                    font-family: 'Circular Std'; 
+                    src: url('fonts/CircularStd-Book.woff2') format('woff2'); 
+                    font-weight: 400; 
+                    font-style: normal; 
+                    font-display: swap; 
+                }
+                @font-face { 
+                    font-family: 'Circular Std'; 
+                    src: url('fonts/CircularStd-Bold.woff2') format('woff2'); 
+                    font-weight: 700; 
+                    font-style: normal; 
+                    font-display: swap; 
+                }
+
+                :host {
+                    display: block;
+                    background-color: #f3f3f3;
+                    font-family: 'Circular Std', sans-serif;
+                    padding: 5rem 0;
+                    overflow: hidden;
+                    user-select: none;
+                }
+
+                * {
+                    box-sizing: border-box;
+                    margin: 0;
+                    padding: 0;
+                }
+
+                .main-container {
+                    max-width: 1200px;
+                    margin: 0 auto;
+                    padding: 0 1rem;
+                }
+
+                .section-header {
+                    margin-bottom: 2.5rem;
+                }
+
+                .section-badge {
+                    font-size: 0.813rem;
+                    text-transform: uppercase;
+                    letter-spacing: 0.15em;
+                    font-weight: 700;
+                    color: #666666;
+                    display: inline-block;
+                    margin-bottom: 0.5rem;
+                }
+
+                .section-title {
+                    font-size: 2.5rem;
+                    font-weight: 700;
+                    letter-spacing: -0.03em;
+                    color: #1a1a1a;
+                }
+
+                .slider-viewport {
+                    position: relative;
+                    width: 100%;
+                    overflow: visible;
+                }
+
+                .slider-track {
+                    display: flex;
+                    gap: 1.5rem;
+                    will-change: transform;
+                }
+
+                .card {
+                    flex: 0 0 340px;
+                    height: 460px;
+                    border-radius: 24px;
+                    overflow: hidden;
+                    position: relative;
+                    background-color: #000;
+                    display: flex;
+                    flex-direction: column;
+                    justify-content: flex-end;
+                    box-shadow: 0 4px 30px rgba(0, 0, 0, 0.02);
+                    cursor: pointer;
+                }
+
+                .card-bg-img {
+                    position: absolute;
+                    top: 0;
+                    left: 0;
+                    width: 100%;
+                    height: 100%;
+                    object-fit: cover;
+                    z-index: 1;
+                    transition: opacity 0.35s ease;
+                }
+
+                .card-overlay {
+                    position: absolute;
+                    inset: 0;
+                    background: linear-gradient(to top, rgba(0,0,0,0.9) 0%, rgba(0,0,0,0.4) 60%, rgba(0,0,0,0.1) 100%);
+                    z-index: 2;
+                    transition: opacity 0.35s ease;
+                }
+
+                .card-content {
+                    position: relative;
+                    z-index: 3;
+                    padding: 2rem 1.75rem;
+                    color: #ffffff;
+                    transition: transform 0.4s cubic-bezier(0.25, 1, 0.5, 1), opacity 0.35s ease;
+                    transform: translateY(0);
+                    opacity: 1;
+                }
+
+                .quote-text {
+                    font-size: 1.25rem;
+                    line-height: 1.4;
+                    font-weight: 700;
+                    margin-bottom: 2rem;
+                    letter-spacing: -0.02em;
+                }
+
+                .author-name {
+                    font-size: 1.05rem;
+                    font-weight: 700;
+                    letter-spacing: -0.01em;
+                }
+
+                .author-role {
+                    font-size: 0.85rem;
+                    opacity: 0.75;
+                    margin-top: 0.25rem;
+                }
+
+                /* --- Media Components Infrastructure --- */
+                video {
+                    position: absolute;
+                    inset: 0;
+                    width: 100%;
+                    height: 100%;
+                    object-fit: cover;
+                    z-index: 1;
+                    opacity: 0;
+                    pointer-events: none;
+                    transition: opacity 0.3s ease;
+                }
+
+                .play-trigger-btn {
+                    position: absolute;
+                    top: 50%;
+                    left: 50%;
+                    transform: translate(-50%, -50%) scale(0.85);
+                    background: #ffffff;
+                    color: #111111;
+                    border: none;
+                    padding: 0.85rem 1.65rem;
+                    border-radius: 30px;
+                    font-family: 'Circular Std', sans-serif;
+                    font-size: 0.9rem;
+                    font-weight: 700;
+                    display: flex;
+                    align-items: center;
+                    gap: 0.5rem;
+                    z-index: 4;
+                    opacity: 0;
+                    pointer-events: none;
+                    box-shadow: 0 10px 25px rgba(0,0,0,0.15);
+                    transition: transform 0.35s cubic-bezier(0.34, 1.56, 0.64, 1), opacity 0.25s ease;
+                }
+
+                .play-trigger-btn svg {
+                    width: 12px;
+                    height: 12px;
+                    fill: currentColor;
+                }
+
+                /* --- Hover Actions Engine --- */
+                .card:hover .card-content {
+                    transform: translateY(100%);
+                    opacity: 0;
+                }
+
+                .card:hover .play-trigger-btn {
+                    opacity: 1;
+                    transform: translate(-50%, -50%) scale(1);
+                }
+
+                /* Active Player Layer Classes */
+                .card.is-playing .card-overlay,
+                .card.is-playing .card-bg-img,
+                .card.is-playing .card-content {
+                    opacity: 0 !important;
+                }
+                
+                .card.is-playing video {
+                    opacity: 1;
+                    pointer-events: auto;
+                }
+
+                .card.is-playing .play-trigger-btn {
+                    opacity: 0 !important;
+                }
+
+                /* --- Navigation Center Components --- */
+                .controls-wrapper {
+                    display: flex;
+                    align-items: center;
+                    justify-content: center;
+                    gap: 1.5rem;
+                    margin-top: 2.5rem;
+                }
+
+                .arrow-btn {
+                    width: 40px;
+                    height: 40px;
+                    border-radius: 50%;
+                    background-color: #ffffff;
+                    border: 1px solid #e5e5e5;
+                    display: flex;
+                    align-items: center;
+                    justify-content: center;
+                    cursor: pointer;
+                    box-shadow: 0 2px 8px rgba(0,0,0,0.04);
+                    transition: background-color 0.2s ease, transform 0.2s ease;
+                }
+
+                .arrow-btn:hover {
+                    background-color: #fcfcfc;
+                    transform: scale(1.05);
+                }
+
+                .arrow-btn svg {
+                    width: 16px;
+                    height: 16px;
+                    fill: #111111;
+                }
+
+                .slider-navigation {
+                    display: flex;
+                    gap: 0.5rem;
+                }
+
+                .nav-dot {
+                    width: 10px;
+                    height: 10px;
+                    border-radius: 50%;
+                    background-color: #b5b5b5;
+                    cursor: pointer;
+                    transition: background-color 0.3s ease, transform 0.3s ease;
+                }
+
+                .nav-dot.is-active {
+                    background-color: #111111;
+                    transform: scale(1.1);
+                }
+
+                @media (max-width: 768px) {
+                    .card {
+                        flex: 0 0 290px;
+                        height: 400px;
+                    }
+                    .section-title {
+                        font-size: 2rem;
+                    }
+                }
+            </style>
+
+            <div class="main-container">
+                <div class="section-header">
+                    <span class="section-badge">Testimonials</span>
+                    <h2 class="section-title">What Our Community Says</h2>
+                </div>
+
+                <div class="slider-viewport">
+                    <div class="slider-track" id="track">
+                        ${this.testimonials.map((item, index) => this.generateCardHtml(item, index)).join('')}
+                    </div>
+                </div>
+
+                <div class="controls-wrapper">
+                    <button class="arrow-btn" id="prevBtn" aria-label="Previous template slide">
+                        <svg viewBox="0 0 24 24"><path d="M15.41 16.59L10.83 12l4.58-4.59L14 6l-6 6 6 6 1.41-1.41z"/></svg>
+                    </button>
+                    
+                    <div class="slider-navigation" id="navigationContainer">
+                        ${this.baseTestimonials.map((_, index) => `<span class="nav-dot" data-base-index="${index}"></span>`).join('')}
+                    </div>
+
+                    <button class="arrow-btn" id="nextBtn" aria-label="Next template slide">
+                        <svg viewBox="0 0 24 24"><path d="M8.59 16.59L13.17 12 8.59 7.41 10 6l6 6-6 6-1.41-1.41z"/></svg>
+                    </button>
+                </div>
+            </div>
+        `;
+    }
+
+    generateCardHtml(item, index) {
+        const baseIndex = index % this.baseTestimonials.length;
+
+        return `
+            <div class="card" data-index="${index}" data-base-index="${baseIndex}">
+                <img class="card-bg-img" src="${item.poster}" alt="Video preview thumbnail for ${item.author}">
+                <video src="${item.videoUrl}" controls loop playsinline></video>
+                <div class="card-overlay"></div>
+                <button class="play-trigger-btn">
+                    <svg viewBox="0 0 24 24"><path d="M8 5v14l11-7z"/></svg>
+                    Play Story
+                </button>
+                <div class="card-content">
+                    <p class="quote-text">${item.text}</p>
+                    <div class="author-name">${item.author}</div>
+                    <div class="author-role">${item.role}</div>
+                </div>
+            </div>
+        `;
+    }
+
+    initSlider() {
+        const shadow = this.shadowRoot;
+        const track = shadow.getElementById('track');
+        const dots = shadow.querySelectorAll('.nav-dot');
+        const cards = shadow.querySelectorAll('.card');
+        const prevBtn = shadow.getElementById('prevBtn');
+        const nextBtn = shadow.getElementById('nextBtn');
+
+        let isTransitioning = false;
+
+        const getSlidingParams = () => {
+            const cardElement = track.querySelector('.card');
+            const cardWidth = cardElement ? cardElement.offsetWidth : 340;
+            const gap = parseFloat(window.getComputedStyle(track).gap) || 24;
+            return { cardWidth, gap };
+        };
+
+        const updateSliderPosition = (animated = true) => {
+            const { cardWidth, gap } = getSlidingParams();
+            const viewportWidth = this.offsetWidth || window.innerWidth;
+
+            const centerOffset = (viewportWidth / 2) - (cardWidth / 2);
+            const targetTranslateX = centerOffset - (this.currentIndex * (cardWidth + gap));
+
+            track.style.transition = animated ? 'transform 0.6s cubic-bezier(0.16, 1, 0.3, 1)' : 'none';
+            track.style.transform = `translateX(${targetTranslateX}px)`;
+
+            const activeBaseIndex = this.currentIndex % this.baseTestimonials.length;
+            dots.forEach((dot, idx) => {
+                dot.classList.toggle('is-active', idx === activeBaseIndex);
+            });
+        };
+
+        const handleLoopJump = () => {
+            const baseCount = this.baseTestimonials.length;
+            if (this.currentIndex >= baseCount * 2) {
+                this.currentIndex = this.currentIndex - baseCount;
+                updateSliderPosition(false);
+            } else if (this.currentIndex < baseCount) {
+                this.currentIndex = this.currentIndex + baseCount;
+                updateSliderPosition(false);
+            }
+            isTransitioning = false;
+        };
+
+        track.addEventListener('transitionend', handleLoopJump);
+
+        const moveNext = () => {
+            if (isTransitioning) return;
+            isTransitioning = true;
+            this.currentIndex++;
+            resetVideoStates();
+            updateSliderPosition(true);
+        };
+
+        const movePrev = () => {
+            if (isTransitioning) return;
+            isTransitioning = true;
+            this.currentIndex--;
+            resetVideoStates();
+            updateSliderPosition(true);
+        };
+
+        nextBtn.addEventListener('click', moveNext);
+        prevBtn.addEventListener('click', movePrev);
+
+        cards.forEach(card => {
+            card.addEventListener('click', (e) => {
+                if (e.target.tagName === 'VIDEO') return;
+
+                const targetIdx = parseInt(card.getAttribute('data-index'), 10);
+                
+                if (targetIdx !== this.currentIndex) {
+                    this.currentIndex = targetIdx;
+                    resetVideoStates();
+                    updateSliderPosition(true);
+                    return;
+                }
+
+                const video = card.querySelector('video');
+                if (card.classList.contains('is-playing')) {
+                    video.pause();
+                    card.classList.remove('is-playing');
+                } else {
+                    video.muted = false;
+                    video.play().catch(err => console.warn(err));
+                    card.classList.add('is-playing');
+                }
+            });
+        });
+
+        dots.forEach(dot => {
+            dot.addEventListener('click', () => {
+                const baseIdx = parseInt(dot.getAttribute('data-base-index'), 10);
+                this.currentIndex = this.baseTestimonials.length + baseIdx;
+                resetVideoStates();
+                updateSliderPosition(true);
+            });
+        });
+
+        const resetVideoStates = () => {
+            shadow.querySelectorAll('video').forEach(v => {
+                v.pause();
+                v.currentTime = 0; 
+            });
+            cards.forEach(c => c.classList.remove('is-playing'));
+        };
+
+        window.addEventListener('resize', () => updateSliderPosition(false));
+        setTimeout(() => updateSliderPosition(false), 50);
+    }
+}
+
+customElements.define('video-testimonial-slider', VideoTestimonialSlider);
+</script>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 <cronos-footer></cronos-footer>
