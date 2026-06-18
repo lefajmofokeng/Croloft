@@ -1905,8 +1905,8 @@
         /* Wrapper that gives each card room to breathe before it starts sticking */
         .card-window {
             position: sticky;
-            top: 12vh; /* Every card catches at this exact line, causing them to stack perfectly on top of each other */
-            padding-bottom: 8rem; /* Creates the scrolling runway before the next card catches up */
+            top: 20vh; /* Every card catches at this exact line, causing them to stack perfectly on top of each other */
+            padding-bottom: 2rem; /* Creates the scrolling runway before the next card catches up */
         }
 
         /* The Core Card Layout */
@@ -2422,15 +2422,12 @@
 
 
 
-
-
-
 <!DOCTYPE html>
 <html lang="en">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Theme Matched Curved Directory Footer</title>
+    <title>Theme Matched Curved Directory Footer - Perfected Stack</title>
     
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
@@ -2493,6 +2490,17 @@
             font-weight: 600;
             margin: 0 0 1.5rem 0;
             color: var(--color-text-dark);
+        }
+
+        /* Perfectly matched subtitle style: standard casing, matches regular link scale */
+        .footer-column-subtitle {
+            font-family: var(--font-primary);
+            font-size: 0.95rem;
+            font-weight: 500;
+            margin: 1.5rem 0 0.9rem 0;
+            color: var(--color-text-dark);
+            text-transform: none;
+            letter-spacing: normal;
         }
 
         .accordion-chevron {
@@ -2651,10 +2659,13 @@
                 display: block;
             }
 
+            /* Core Drawer layout fix - handles multiple inner lists smoothly */
             .footer-links-wrapper {
                 max-height: 0;
                 overflow: hidden;
                 transition: max-height 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+                display: flex;
+                flex-direction: column;
             }
 
             .footer-column.active .footer-column-title {
@@ -2667,10 +2678,12 @@
 
             .footer-column.active .footer-links-wrapper {
                 border-bottom: 1px solid var(--color-border);
+                padding-bottom: 1.25rem;
             }
 
-            .footer-links {
-                padding: 0 0 1.25rem 0;
+            /* Responsive tuning for matching subtitle layout flows */
+            .footer-column-subtitle {
+                margin: 1.25rem 0 0.9rem 0;
             }
 
             /* Remap structural layout rows at base level */
@@ -2705,8 +2718,10 @@
         
         <div class="footer-directory-section">
             
+            <!-- Structural offset spacer block -->
             <div class="footer-column" style="@media(max-width:900px){display:none;}"></div>
 
+            <!-- Column 1: Policy -->
             <div class="footer-column">
                 <h3 class="footer-column-title" onclick="toggleFooterAccordion(this)">
                     Policy
@@ -2721,6 +2736,7 @@
                 </div>
             </div>
 
+            <!-- Column 2: Learn (Dual List Stacked) -->
             <div class="footer-column">
                 <h3 class="footer-column-title" onclick="toggleFooterAccordion(this)">
                     Learn
@@ -2732,9 +2748,19 @@
                         <li><a href="#">For SMEs</a></li>
                         <li><a href="#">Academic Streams</a></li>
                     </ul>
+
+                    <!-- Un-capitalized subtitle that handles clean multi-tier mobile lists -->
+                    <h4 class="footer-column-subtitle">Sub-faculties</h4>
+                    
+                    <ul class="footer-links">
+                        <li><a href="#">Applied Analytics</a></li>
+                        <li><a href="#">Neural Systems</a></li>
+                        <li><a href="#">Digital Ethics</a></li>
+                    </ul>
                 </div>
             </div>
 
+            <!-- Column 3: Careers -->
             <div class="footer-column">
                 <h3 class="footer-column-title" onclick="toggleFooterAccordion(this)">
                     Careers
@@ -2753,6 +2779,7 @@
                 </div>
             </div>
 
+            <!-- Column 4: Instagram (Dual List Stacked) -->
             <div class="footer-column">
                 <h3 class="footer-column-title" onclick="toggleFooterAccordion(this)">
                     Instagram
@@ -2763,11 +2790,20 @@
                         <li><a href="#">@NexusDigital</a></li>
                         <li><a href="#">@NexusFaculties</a></li>
                     </ul>
+
+                    <!-- Un-capitalized subtitle that handles clean multi-tier mobile lists -->
+                    <h4 class="footer-column-subtitle">Other networks</h4>
+                    
+                    <ul class="footer-links">
+                        <li><a href="#">LinkedIn Hub</a></li>
+                        <li><a href="#">System Repositories</a></li>
+                    </ul>
                 </div>
             </div>
 
         </div>
 
+        <!-- Asymmetric Bottom Wrapper Bar -->
         <div class="footer-base-wrapper">
             
             <div class="footer-curve-divider">
@@ -2805,6 +2841,7 @@
     </footer>
 
     <script>
+        // High-precision dynamic accordion operational script
         function toggleFooterAccordion(element) {
             if (window.innerWidth > 900) return;
 
@@ -2812,7 +2849,7 @@
             const linksWrapper = currentColumn.querySelector('.footer-links-wrapper');
             const isOpen = currentColumn.classList.contains('active');
 
-            // Close all other groups cleanly for responsive view handling
+            // Reset and close any other open dropdown columns to save vertical viewport space
             document.querySelectorAll('.footer-column').forEach(col => {
                 if (col !== currentColumn && col.classList.contains('active')) {
                     col.classList.remove('active');
@@ -2825,11 +2862,12 @@
                 linksWrapper.style.maxHeight = null;
             } else {
                 currentColumn.classList.add('active');
+                // Calculate entire cumulative height of both lists and subtitle blocks automatically
                 linksWrapper.style.maxHeight = linksWrapper.scrollHeight + "px";
             }
         }
 
-        // Auto-collapse reset metrics on browser resize events
+        // Structural monitor to safely flush dynamic heights during viewport orientation flips
         window.addEventListener('resize', () => {
             if (window.innerWidth > 900) {
                 document.querySelectorAll('.footer-links-wrapper').forEach(wrapper => {

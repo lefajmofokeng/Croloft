@@ -657,4 +657,1082 @@
 
 
 
+
+
+
+
+
+
+
+
+
+
+<div class="pf-sticky-isolated-wrapper">
+  <style>
+    /* CSS Encapsulated Namespace */
+    .pf-sticky-isolated-wrapper {
+      --pf-bg-primary: #ffffff;
+      --pf-text-main: #000000;
+      --pf-text-muted: #71717a;
+      --pf-border-color: #e4e4e7;
+      --pf-font-stack: 'Inter', -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif;
+      --pf-section-spacing-bottom: 12rem;
+      
+      background-color: var(--pf-bg-primary);
+      font-family: var(--pf-font-stack);
+      margin: 0 0 var(--pf-section-spacing-bottom) 0;
+      padding: 0;
+      width: 100%;
+      box-sizing: border-box;
+    }
+
+    .pf-sticky-isolated-wrapper *, 
+    .pf-sticky-isolated-wrapper *::before, 
+    .pf-sticky-isolated-wrapper *::after {
+      box-sizing: border-box;
+    }
+
+    /* Scroll Track Container */
+    .pf-scroll-track {
+      position: relative;
+      height: 340vh; /* Controlled pacing for the scroll injection */
+    }
+
+    /* Sticky Viewport Container - Overflow set to visible to eliminate clipping */
+    .pf-scroll-sticky {
+      position: sticky;
+      top: 0;
+      height: 100vh;
+      width: 100%;
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+      overflow: visible; /* CRITICAL FIX: Allows cards to slide up naturally without truncation */
+    }
+
+    .pf-grid-container {
+      width: 100%;
+      max-width: 1200px;
+      margin: 0 auto;
+      padding: 0 20px;
+    }
+
+    /* Section Header Styles */
+    .pf-grid-header {
+      text-align: left;
+      margin-bottom: 3rem;
+      width: 100%;
+    }
+
+    .pf-header-sub {
+      font-size: 0.85rem;
+      text-transform: uppercase;
+      letter-spacing: 0.1em;
+      color: var(--pf-text-muted);
+      display: block;
+      margin-bottom: 0.5rem;
+      font-weight: 600;
+    }
+
+    .pf-header-title {
+      font-size: 2.5rem;
+      font-weight: 700;
+      color: var(--pf-text-main);
+      margin: 0;
+      letter-spacing: -0.03em;
+    }
+
+    /* Responsive Grid Layout */
+    .pf-grid-layout {
+      display: grid;
+      grid-template-columns: repeat(1, 1fr);
+      gap: 1.5rem;
+      width: 100%;
+    }
+
+    @media (min-width: 1024px) {
+      .pf-grid-layout {
+        grid-template-columns: repeat(4, 1fr);
+      }
+    }
+
+    /* Column Configurations */
+    .pf-grid-col {
+      display: flex;
+      flex-direction: column;
+      gap: 1.5rem;
+      will-change: transform;
+    }
+
+    /* Card Sizing Engine - Fixed heights on desktop guarantee zero overflow cutting */
+    .pf-grid-card {
+      background: #ffffff;
+      border: 1px solid var(--pf-border-color);
+      border-radius: 14px; /* Uniform pristine border radius across all cards */
+      overflow: hidden;    /* Forces images and content to respect the rounded corner matrix */
+      display: flex;
+      flex-direction: column;
+      justify-content: flex-start;
+      position: relative;
+      width: 100%;
+    }
+    
+    @media (min-width: 1024px) {
+      .pf-grid-card {
+        height: 260px; /* Rigid safe height ensuring perfect fits on small and large monitors */
+      }
+    }
+
+    /* Text Block Styling */
+    .pf-grid-text-content {
+      padding: 2.2rem 1.75rem;
+      display: flex;
+      flex-direction: column;
+      height: 100%;
+      justify-content: flex-start;
+    }
+
+    .pf-grid-step-tag {
+      font-size: 0.75rem;
+      text-transform: uppercase;
+      letter-spacing: 0.05em;
+      color: var(--pf-text-muted);
+      margin-bottom: 1.5rem;
+      font-weight: 600;
+    }
+
+    .pf-grid-title {
+      font-size: 1.35rem;
+      font-weight: 600;
+      color: var(--pf-text-main);
+      margin: 0 0 0.75rem 0;
+      letter-spacing: -0.02em;
+    }
+
+    .pf-grid-desc {
+      font-size: 0.9rem;
+      line-height: 1.45;
+      color: var(--pf-text-muted);
+      margin: 0;
+    }
+
+    /* Image Asset Management */
+    .pf-grid-image-wrapper img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      display: block;
+    }
+
+    /* Fallback/Mobile Fluid Layout Degradation */
+    @media (max-width: 1023px) {
+      .pf-sticky-isolated-wrapper {
+        --pf-section-spacing-bottom: 6rem;
+      }
+      .pf-scroll-track {
+        height: auto !important;
+      }
+      .pf-scroll-sticky {
+        position: relative !important;
+        height: auto !important;
+        padding: 4rem 0 0 0;
+      }
+      .pf-grid-header {
+        margin-bottom: 2rem;
+      }
+      .pf-header-title {
+        font-size: 2rem;
+      }
+      .pf-grid-card {
+        aspect-ratio: 1 / 1.05;
+      }
+      .pf-grid-col {
+        transform: none !important;
+        margin-bottom: 2rem;
+      }
+    }
+  </style>
+
+  <div class="pf-scroll-track">
+    <div class="pf-scroll-sticky">
+      <div class="pf-grid-container">
+        
+        <div class="pf-grid-header">
+          <span class="pf-header-sub">Workflow Matrix</span>
+          <h2 class="pf-header-title">Our execution methodology.</h2>
+        </div>
+
+        <div class="pf-grid-layout">
+
+          <div class="pf-grid-col" id="pf-col-1">
+            <div class="pf-grid-card">
+              <div class="pf-grid-text-content">
+                <span class="pf-grid-step-tag">(STEP - 01)</span>
+                <h3 class="pf-grid-title">Discover goals</h3>
+                <p class="pf-grid-desc">We research business needs, users, competitors, and scope thoroughly to lay a pristine foundation.</p>
+              </div>
+            </div>
+            <div class="pf-grid-card pf-grid-image-wrapper">
+              <img src="https://images.unsplash.com/photo-1618005182384-a83a8bd57fbe?auto=format&fit=crop&w=600&q=80" alt="Minimalist glass blocks">
+            </div>
+          </div>
+
+          <div class="pf-grid-col" id="pf-col-2">
+            <div class="pf-grid-card pf-grid-image-wrapper">
+              <img src="https://images.unsplash.com/photo-1634017839464-5c339ebe3cb4?auto=format&fit=crop&w=600&q=80" alt="3D translucent hand">
+            </div>
+            <div class="pf-grid-card">
+              <div class="pf-grid-text-content">
+                <span class="pf-grid-step-tag">(STEP - 02)</span>
+                <h3 class="pf-grid-title">Plan strategy</h3>
+                <p class="pf-grid-desc">We define structures, timelines, priorities, and system requirements clearly together before a single pixel moves.</p>
+              </div>
+            </div>
+          </div>
+
+          <div class="pf-grid-col" id="pf-col-3">
+            <div class="pf-grid-card">
+              <div class="pf-grid-text-content">
+                <span class="pf-grid-step-tag">(STEP - 03)</span>
+                <h3 class="pf-grid-title">Design solutions</h3>
+                <p class="pf-grid-desc">We craft highly intuitive, premium interfaces focused strictly on clarity, elite usability, and structural consistency.</p>
+              </div>
+            </div>
+            <div class="pf-grid-card pf-grid-image-wrapper">
+              <img src="https://images.unsplash.com/photo-1635070041078-e363dbe005cb?auto=format&fit=crop&w=600&q=80" alt="Stacked crystal prisms">
+            </div>
+          </div>
+
+          <div class="pf-grid-col" id="pf-col-4">
+            <div class="pf-grid-card pf-grid-image-wrapper">
+              <img src="https://images.unsplash.com/photo-1614850523459-c2f4c699c52e?auto=format&fit=crop&w=600&q=80" alt="Iridescent glass torus">
+            </div>
+            <div class="pf-grid-card">
+              <div class="pf-grid-text-content">
+                <span class="pf-grid-step-tag">(STEP - 04)</span>
+                <h3 class="pf-grid-title">Execute & Refine</h3>
+                <p class="pf-grid-desc">We build out the production-ready application infrastructure with rigorous precision and micro-interaction polish.</p>
+              </div>
+            </div>
+          </div>
+
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <script>
+    (function () {
+      document.addEventListener("DOMContentLoaded", function () {
+        const track = document.querySelector('.pf-scroll-track');
+        const col1 = document.getElementById('pf-col-1');
+        const col2 = document.getElementById('pf-col-2');
+        const col3 = document.getElementById('pf-col-3');
+        const col4 = document.getElementById('pf-col-4');
+
+        function processScrollMatrix() {
+          if (window.innerWidth < 1024) {
+            return;
+          }
+
+          const trackRect = track.getBoundingClientRect();
+          const totalScrollableHeight = trackRect.height - window.innerHeight;
+          
+          if (totalScrollableHeight <= 0) return;
+
+          let globalProgress = -trackRect.top / totalScrollableHeight;
+          globalProgress = Math.max(0, Math.min(1, globalProgress));
+
+          // Configured translation properties safely coordinated with structural layout heights
+          const matrixTimeline = [
+            { el: col1, start: 0.00, end: 0.15, startY: 10 },
+            { el: col2, start: 0.12, end: 0.42, startY: 100 },
+            { el: col3, start: 0.38, end: 0.68, startY: 100 },
+            { el: col4, start: 0.64, end: 0.92, startY: 100 }
+          ];
+
+          matrixTimeline.forEach((layer) => {
+            let localProgress = (globalProgress - layer.start) / (layer.end - layer.start);
+            localProgress = Math.max(0, Math.min(1, localProgress));
+
+            const easedProgress = 1 - Math.pow(1 - localProgress, 3);
+            const activeYTranslation = layer.startY * (1 - easedProgress);
+            
+            layer.el.style.transform = `translateY(${activeYTranslation}vh)`;
+          });
+        }
+
+        window.addEventListener('scroll', processScrollMatrix, { passive: true });
+        window.addEventListener('resize', processScrollMatrix, { passive: true });
+        
+        processScrollMatrix();
+      });
+    })();
+  </script>
+</div>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<!-- Custom Isolated Web Component Wrapper -->
+<maluti-video-showcase></maluti-video-showcase>
+
+<script>
+class MalutiVideoShowcase extends HTMLElement {
+    constructor() {
+        super();
+        this.attachShadow({ mode: 'open' });
+    }
+
+    connectedCallback() {
+        this.shadowRoot.innerHTML = `
+            <style>
+                :host {
+                    display: block;
+                    background-color: #ffffff;
+                    font-family: 'Karla', sans-serif;
+                    padding: 4rem 1rem;
+                    overflow: visible;
+                }
+
+                * {
+                    box-sizing: border-box;
+                    margin: 0;
+                    padding: 0;
+                }
+
+                .main-layout-wrapper {
+                    max-width: 1200px;
+                    margin: 0 auto;
+                    display: flex;
+                    flex-direction: column;
+                    position: relative;
+                }
+
+                /* Section Title Styling - Left Aligned */
+                .section-header {
+                    margin-bottom: 2.5rem;
+                }
+
+                .section-badge {
+                    font-family: 'Inter', sans-serif;
+                    font-size: 0.813rem;
+                    text-transform: uppercase;
+                    letter-spacing: 0.15em;
+                    font-weight: 700;
+                    color: #666666;
+                    display: inline-block;
+                    margin-bottom: 0.5rem;
+                }
+
+                .section-title {
+                    font-family: 'Inter', sans-serif;
+                    font-size: 2.5rem;
+                    font-weight: 700;
+                    letter-spacing: -0.03em;
+                    color: #1a1a1a;
+                }
+
+                /* Row 1: Profile Grid setup matching Screenshot 2026-06-18 101934.jpg */
+                .grid-row {
+                    display: grid;
+                    grid-template-columns: 1fr 2fr 1fr;
+                    gap: 1.25rem;
+                    position: relative;
+                }
+
+                .side-card {
+                    position: relative;
+                    border-radius: 24px;
+                    overflow: hidden;
+                    height: 500px;
+                    background-color: #f5f5f5;
+                    transition: opacity 0.2s ease;
+                }
+
+                .side-card img {
+                    width: 100%;
+                    height: 100%;
+                    object-fit: cover;
+                }
+
+                /* Stationary anchor placeholder holding space in the grid row */
+                .center-stage-anchor {
+                    position: relative;
+                    height: 500px;
+                }
+
+                /* Row 2: Standalone Expanded Video Space Frame Target Row */
+                .next-section-target {
+                    width: 100%;
+                    height: 600px; 
+                    margin-top: 4rem;
+                    position: relative;
+                }
+
+                /* The Exact Center-Outward Scroll-Driven Morpher Frame Container */
+                .media-morpher {
+                    position: absolute;
+                    top: var(--morph-top, 0px);
+                    left: var(--morph-left, 0px);
+                    width: var(--morph-width, 100%);
+                    height: var(--morph-height, 500px);
+                    
+                    border-radius: 24px;
+                    overflow: hidden;
+                    background-color: #000;
+                    z-index: 10;
+                    will-change: top, left, width, height;
+                }
+
+                video {
+                    position: absolute;
+                    top: 0;
+                    left: 0;
+                    width: 100%;
+                    height: 100%;
+                    object-fit: cover;
+                    pointer-events: none;
+                }
+
+                /* Graphic overlay alignments styling */
+                .overlay {
+                    position: absolute;
+                    bottom: 0;
+                    left: 0;
+                    right: 0;
+                    padding: 2.5rem 2rem;
+                    background: linear-gradient(to top, rgba(0,0,0,0.85) 0%, rgba(0,0,0,0) 100%);
+                    color: #ffffff;
+                    z-index: 5;
+                    pointer-events: none;
+                }
+
+                .title {
+                    font-family: 'Inter', sans-serif;
+                    font-size: 1.5rem;
+                    font-weight: 700;
+                    line-height: 1.2;
+                }
+
+                .sub {
+                    font-size: 0.95rem;
+                    opacity: 0.8;
+                    margin-top: 0.25rem;
+                }
+
+                /* Isolated Action Toggle Widget Overlay Component */
+                .action-toggle {
+                    position: absolute;
+                    bottom: 2.5rem;
+                    right: 2rem;
+                    width: 36px;
+                    height: 36px;
+                    background-color: rgba(255, 255, 255, 0.25);
+                    backdrop-filter: blur(8px);
+                    -webkit-backdrop-filter: blur(8px);
+                    border: none;
+                    border-radius: 50%;
+                    display: flex;
+                    align-items: center;
+                    justify-content: center;
+                    cursor: pointer;
+                    z-index: 6;
+                }
+
+                .action-toggle svg {
+                    width: 14px;
+                    height: 14px;
+                    fill: #ffffff;
+                }
+
+                /* --- Mobile Responsive Rules --- */
+                @media (max-width: 900px) {
+                    .section-title {
+                        font-size: 2rem;
+                    }
+
+                    .grid-row { 
+                        grid-template-columns: 1fr;
+                        gap: 1.5rem;
+                    }
+
+                    /* Order arrangement: video stays in center spot while thumbnails render sequentially */
+                    #leftCard { order: 1; }
+                    .center-stage-anchor { order: 2; height: 400px; }
+                    #rightCard { order: 3; }
+
+                    .side-card { 
+                        display: block; 
+                        height: 400px;
+                        opacity: 1 !important; /* Forces visible thumbnails regardless of script calculations */
+                    }
+
+                    .media-morpher { 
+                        position: relative !important; 
+                        width: 100% !important; 
+                        height: 100% !important;
+                        top: 0 !important; 
+                        left: 0 !important; 
+                    }
+
+                    .next-section-target {
+                        display: none; /* Disables secondary row scroll-morph on mobile viewports safely */
+                    }
+                }
+            </style>
+
+            <div class="main-layout-wrapper">
+                
+                <!-- Section Header -->
+                <div class="section-header">
+                    <span class="section-badge">Our Community</span>
+                    <h2 class="section-title">Academic Leadership</h2>
+                </div>
+                
+                <div class="grid-row" id="gridRow">
+                    <div class="side-card" id="leftCard">
+                        <img src="https://images.unsplash.com/photo-1534528741775-53994a69daeb?q=80&w=600" alt="Success rate profile context">
+                        <div class="overlay">
+                            <div class="title">92% Career Outcome Success</div>
+                        </div>
+                    </div>
+
+                    <!-- Layout host anchor point -->
+                    <div class="center-stage-anchor" id="stageAnchor">
+                        <div class="media-morpher" id="morpher">
+                            
+                            <video id="video" autoplay loop muted playsinline>
+                                <source src="https://www.pexels.com/download/video/13801270/" type="video/mp4">
+                            </video>
+
+                            <div class="overlay">
+                                <div class="title" id="txtTitle">Mark Jhongson</div>
+                                <div class="sub" id="txtSub">CEO at Tutorly</div>
+                            </div>
+
+                            <button class="action-toggle" id="ctrlBtn" aria-label="Media layout control link">
+                                <svg id="ctrlIcon" viewBox="0 0 24 24"><path d="M6 19h4V5H6v14zm8-14v14h4V5h-4z"/></svg>
+                            </button>
+                        </div>
+                    </div>
+
+                    <div class="side-card" id="rightCard">
+                        <img src="https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?q=80&w=600" alt="Tutor avatar overview reference">
+                        <div class="overlay">
+                            <div class="title">100+ Experienced tutor</div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- 1200px destination frame target for row landing zone -->
+                <div class="next-section-target" id="targetRow"></div>
+
+            </div>
+        `;
+
+        this.initLogic();
+    }
+
+    initLogic() {
+        const shadow = this.shadowRoot;
+        const video = shadow.getElementById('video');
+        const ctrlBtn = shadow.getElementById('ctrlBtn');
+        const ctrlIcon = shadow.getElementById('ctrlIcon');
+        
+        const stageAnchor = shadow.getElementById('stageAnchor');
+        const targetRow = shadow.getElementById('targetRow');
+        const morpher = shadow.getElementById('morpher');
+        const leftCard = shadow.getElementById('leftCard');
+        const rightCard = shadow.getElementById('rightCard');
+        
+        const txtTitle = shadow.getElementById('txtTitle');
+        const txtSub = shadow.getElementById('txtSub');
+
+        // Play/Pause Explicit Control Action
+        ctrlBtn.addEventListener('click', (e) => {
+            e.stopPropagation();
+            if (video.paused) {
+                video.play();
+                ctrlIcon.innerHTML = '<path d="M6 19h4V5H6v14zm8-14v14h4V5h-4z"/>';
+            } else {
+                video.pause();
+                ctrlIcon.innerHTML = '<path d="M8 5v14l11-7z"/>';
+            }
+        });
+
+        // Center-Outward Interpolation Engine
+        const performScrollSync = () => {
+            if (window.innerWidth <= 900) {
+                // Clear any leftover properties if resized from desktop down to mobile
+                morpher.style.removeProperty('--morph-top');
+                morpher.style.removeProperty('--morph-left');
+                morpher.style.removeProperty('--morph-width');
+                morpher.style.removeProperty('--morph-height');
+                return;
+            }
+
+            const anchorRect = stageAnchor.getBoundingClientRect();
+            const targetRect = targetRow.getBoundingClientRect();
+
+            const startY = anchorRect.top + window.scrollY;
+            const endY = targetRect.top + window.scrollY;
+            const totalTravelDistance = endY - startY;
+
+            const currentScrollY = window.scrollY;
+            
+            let progress = (currentScrollY - (startY - 60)) / totalTravelDistance;
+            progress = Math.max(0, Math.min(1, progress));
+
+            if (progress > 0) {
+                const currentTop = progress * totalTravelDistance;
+                const currentWidth = anchorRect.width + (progress * (targetRect.width - anchorRect.width));
+                const currentHeight = 500 + (progress * (600 - 500));
+                
+                const currentLeft = -((currentWidth - anchorRect.width) / 2);
+
+                morpher.style.setProperty('--morph-top', `${currentTop}px`);
+                morpher.style.setProperty('--morph-left', `${currentLeft}px`);
+                morpher.style.setProperty('--morph-width', `${currentWidth}px`);
+                morpher.style.setProperty('--morph-height', `${currentHeight}px`);
+
+                leftCard.style.opacity = 1 - (progress * 2.5);
+                rightCard.style.opacity = 1 - (progress * 2.5);
+
+                if (progress > 0.6) {
+                    txtTitle.textContent = "Maluti TVET College";
+                    txtSub.textContent = "Empowering Communities through Skills Innovation";
+                } else {
+                    txtTitle.textContent = "Mark Jhongson";
+                    txtSub.textContent = "CEO at Tutorly";
+                }
+            } else {
+                morpher.style.removeProperty('--morph-top');
+                morpher.style.removeProperty('--morph-left');
+                morpher.style.removeProperty('--morph-width');
+                morpher.style.removeProperty('--morph-height');
+                
+                leftCard.style.opacity = 1;
+                rightCard.style.opacity = 1;
+                txtTitle.textContent = "Mark Jhongson";
+                txtSub.textContent = "CEO at Tutorly";
+            }
+        };
+
+        window.addEventListener('scroll', performScrollSync);
+        window.addEventListener('resize', performScrollSync);
+    }
+}
+
+customElements.define('maluti-video-showcase', MalutiVideoShowcase);
+</script>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<maluti-cta-section></maluti-cta-section>
+
+<script>
+class MalutiCtaSection extends HTMLElement {
+    constructor() {
+        super();
+        this.attachShadow({ mode: 'open' });
+    }
+
+    connectedCallback() {
+        this.shadowRoot.innerHTML = `
+            <style>
+                :host {
+                    display: block;
+                    background-color: #ededed;
+                    font-family: 'Karla', sans-serif;
+                    padding: 4rem 1rem;
+                    position: relative;
+                    overflow: hidden;
+                }
+
+                * {
+                    box-sizing: border-box;
+                    margin: 0;
+                    padding: 0;
+                }
+
+                /* Layout Constraint matching your 1200px footprint */
+                .blueprint-container {
+                    max-width: 1200px;
+                    margin: 0 auto;
+                    position: relative;
+                    min-height: 550px;
+                    display: flex;
+                    align-items: center;
+                    justify-content: center;
+                }
+
+                /* --- Geometric Blueprint Vector Guides with Linear-Gradient End Fading --- */
+                .guide-line {
+                    position: absolute;
+                    z-index: 1;
+                }
+
+                /* Horizontal Lines: Pushed further out to 10% to create clear headroom and footroom */
+                .guide-line.horizontal {
+                    height: 1px;
+                    left: 2%;
+                    right: 2%;
+                    background-image: linear-gradient(to right, #5142be 3px, transparent 3px);
+                    background-size: 8px 1px;
+                    -webkit-mask-image: linear-gradient(to right, transparent, #000 15%, #000 85%, transparent);
+                    mask-image: linear-gradient(to right, transparent, #000 15%, #000 85%, transparent);
+                }
+
+                .guide-line.horizontal-top {
+                    top: 10%;
+                }
+
+                .guide-line.horizontal-bottom {
+                    bottom: 10%;
+                }
+
+                /* Vertical Lines */
+                .guide-line.vertical {
+                    width: 1px;
+                    top: 2%;
+                    bottom: 2%;
+                    background-image: linear-gradient(to bottom, #5142be 3px, transparent 3px);
+                    background-size: 1px 8px;
+                    -webkit-mask-image: linear-gradient(to bottom, transparent, #000 15%, #000 85%, transparent);
+                    mask-image: linear-gradient(to bottom, transparent, #000 15%, #000 85%, transparent);
+                }
+
+                .guide-line.vertical-left {
+                    left: 15%;
+                }
+
+                .guide-line.vertical-right {
+                    right: 15%;
+                }
+
+                /* Architectural Node Points matching the intersect areas */
+                .blueprint-node {
+                    position: absolute;
+                    width: 14px;
+                    height: 14px;
+                    background-color: #5142be;
+                    border: 3px solid #ededed;
+                    border-radius: 50%;
+                    z-index: 2;
+                    box-shadow: 0 0 0 3px rgba(81, 66, 190, 0.2);
+                }
+
+                .node-top-left {
+                    top: calc(10% - 7px);
+                    left: calc(15% - 7px);
+                }
+
+                .node-bottom-right {
+                    bottom: calc(10% - 7px);
+                    right: calc(15% - 7px);
+                }
+
+                /* --- Content Panel Block (Strict Spacing Isolation) --- */
+                .content-box {
+                    position: relative;
+                    z-index: 3;
+                    max-width: 650px;
+                    text-align: center;
+                    
+                    /* Generous inner padding to hold content away from boundaries */
+                    padding: 4rem 3rem; 
+                    
+                    display: flex;
+                    flex-direction: column;
+                    align-items: center;
+                    justify-content: center;
+                }
+
+                /* Specialized Mini Label Bracket Wrapper Container */
+                .badge-wrapper {
+                    position: relative;
+                    padding: 0.4rem 0.8rem;
+                    margin-bottom: 1.75rem;
+                }
+
+                .badge-wrapper::before {
+                    content: '';
+                    position: absolute;
+                    top: 0;
+                    left: 0;
+                    width: 6px;
+                    height: 6px;
+                    border-top: 1px solid #5142be;
+                    border-left: 1px solid #5142be;
+                }
+
+                .badge-wrapper::after {
+                    content: '';
+                    position: absolute;
+                    bottom: 0;
+                    right: 0;
+                    width: 6px;
+                    height: 6px;
+                    border-bottom: 1px solid #5142be;
+                    border-right: 1px solid #5142be;
+                }
+
+                .badge-text {
+                    font-family: 'Inter', sans-serif;
+                    font-size: 0.813rem;
+                    font-weight: 700;
+                    text-transform: uppercase;
+                    letter-spacing: 0.05em;
+                    color: #5142be;
+                }
+
+                /* Typography Layout */
+                .headline {
+                    font-family: 'Inter', sans-serif;
+                    font-size: 3.25rem;
+                    font-weight: 700;
+                    line-height: 1.15;
+                    letter-spacing: -0.03em;
+                    color: #2b2b2b;
+                    margin-bottom: 1.5rem;
+                }
+
+                .description {
+                    font-size: 1.05rem;
+                    line-height: 1.6;
+                    color: #555555;
+                    margin-bottom: 2.5rem;
+                    max-width: 580px;
+                }
+
+                /* --- Buttons Matrix Actions --- */
+                .action-group {
+                    display: flex;
+                    gap: 1rem;
+                    align-items: center;
+                }
+
+                .btn {
+                    font-family: 'Inter', sans-serif;
+                    font-size: 0.938rem;
+                    font-weight: 600;
+                    padding: 0.95rem 2rem;
+                    border-radius: 10px;
+                    cursor: pointer;
+                    display: inline-flex;
+                    align-items: center;
+                    gap: 0.5rem;
+                    text-decoration: none;
+                    transition: transform 0.2s cubic-bezier(0.16, 1, 0.3, 1), filter 0.2s ease;
+                    border: none;
+                }
+
+                .btn:hover {
+                    transform: translateY(-2px);
+                    filter: brightness(0.95);
+                }
+
+                .btn-primary {
+                    background-color: #5142be;
+                    color: #ffffff;
+                }
+
+                .btn-secondary {
+                    background-color: #ffc914;
+                    color: #1a1a1a;
+                }
+
+                .btn svg {
+                    width: 16px;
+                    height: 16px;
+                    fill: currentColor;
+                }
+
+                /* --- Responsive Breakpoint Optimization Scaling --- */
+                @media (max-width: 768px) {
+                    .content-box {
+                        padding: 2rem 1rem;
+                    }
+                    .headline {
+                        font-size: 2.25rem;
+                    }
+                    .action-group {
+                        flex-direction: column;
+                        width: 100%;
+                    }
+                    .btn {
+                        width: 100%;
+                        justify-content: center;
+                    }
+                    .guide-line.vertical {
+                        display: none;
+                    }
+                    .blueprint-node {
+                        display: none;
+                    }
+                }
+            </style>
+
+            <div class="blueprint-container">
+                
+                <div class="guide-line horizontal horizontal-top"></div>
+                <div class="guide-line horizontal horizontal-bottom"></div>
+                <div class="guide-line vertical vertical-left"></div>
+                <div class="guide-line vertical vertical-right"></div>
+
+                <div class="blueprint-node node-top-left"></div>
+                <div class="blueprint-node node-bottom-right"></div>
+
+                <div class="content-box">
+                    
+                    <div class="badge-wrapper">
+                        <span class="badge-text">Join Our Community Now</span>
+                    </div>
+
+                    <h2 class="headline">Start Learning Today.</h2>
+                    
+                    <p class="description">
+                        Stop guessing about your communication weaknesses. Take the first step toward influential leadership by booking a personalized consultation with us.
+                    </p>
+
+                    <div class="action-group">
+                        <a href="#" class="btn btn-primary">
+                            Enroll Now
+                            <svg viewBox="0 0 24 24"><path d="M5 12h14M12 5l7 7-7 7" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" fill="none"/></svg>
+                        </a>
+                        <a href="#" class="btn btn-secondary">
+                            Start Free Courses
+                            <svg viewBox="0 0 24 24"><path d="M5 12h14M12 5l7 7-7 7" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" fill="none"/></svg>
+                        </a>
+                    </div>
+
+                </div>
+
+            </div>
+        `;
+    }
+}
+
+customElements.define('maluti-cta-section', MalutiCtaSection);
+</script>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 <cronos-footer></cronos-footer>
