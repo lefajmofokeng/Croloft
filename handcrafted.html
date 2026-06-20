@@ -117,15 +117,12 @@
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Handcrafted Code Component</title>
-  <link rel="preconnect" href="https://fonts.googleapis.com">
-  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
-
+ 
   <style>
     /* --- SCOPED COMPONENT STYLES (Prefix: hcc-) --- */
     
     .hcc-component-root {
-      font-family: 'Inter', -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif;
+      font-family: 'Circular Std', -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif;
       background-color: #f8f9fa;
       color: #111111;
       line-height: 1.6;
@@ -143,6 +140,11 @@
       box-sizing: inherit;
     }
 
+    * {
+        padding: 0;
+        margin: 0;
+    }
+
     /* Shared Content Alignment Container */
     .hcc-container {
       max-width: 1200px;
@@ -155,7 +157,7 @@
     .hcc-hero {
       background-color: #6126f5;
       color: #ffffff;
-      padding: 6rem 0;
+      padding: 8rem 0 5rem 0;
       width: 100%;
     }
 
@@ -170,7 +172,7 @@
 
     .hcc-hero-title {
       font-size: clamp(2.25rem, 5vw, 3.5rem);
-      font-weight: 700;
+      font-weight: 500;
       line-height: 1.15;
       letter-spacing: -0.03em;
       margin: 0 0 2rem 0;
@@ -184,7 +186,7 @@
       font-weight: 600;
       font-size: 0.95rem;
       padding: 0.75rem 1.5rem;
-      border-radius: 8px;
+      border-radius: 50px;
       text-decoration: none;
       transition: background-color 0.2s ease;
     }
@@ -473,15 +475,12 @@
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Related Products Component</title>
-  <link rel="preconnect" href="https://fonts.googleapis.com">
-  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
 
   <style>
     /* --- SCOPED COMPONENT STYLES (Prefix: rpc-) --- */
     
     .rpc-component-root {
-      font-family: 'Inter', -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif;
+      font-family: 'Circular Std', -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif;
       background-color: #ffffff;
       color: #111111;
       line-height: 1.6;
@@ -513,7 +512,7 @@
 
     .rpc-main-title {
       font-size: clamp(2.5rem, 5vw, 3.5rem);
-      font-weight: 700;
+      font-weight: 500;
       letter-spacing: -0.03em;
       color: #111111;
       margin: 0 0 2rem 0;
@@ -521,7 +520,7 @@
 
     .rpc-toggle-container {
       display: inline-flex;
-      background-color: #f1f3f5;
+      background-color: #c8e3ff;
       padding: 0.35rem;
       border-radius: 100px;
       position: relative;
@@ -532,7 +531,7 @@
       border: none;
       font-family: inherit;
       font-size: 0.95rem;
-      font-weight: 600;
+      font-weight: 500;
       padding: 0.6rem 2rem;
       cursor: pointer;
       color: #555555;
@@ -543,7 +542,7 @@
 
     .rpc-toggle-btn.rpc-active {
       color: #ffffff;
-      background-color: #555555;
+      background-color: #080d1b;
     }
 
     /* Product Display Layout */
@@ -576,7 +575,7 @@
 
     .rpc-product-name {
       font-size: clamp(2.25rem, 4vw, 3.25rem);
-      font-weight: 700;
+      font-weight: 500;
       letter-spacing: -0.02em;
       margin: 0 0 1rem 0;
     }
@@ -723,7 +722,7 @@
           </div>
           <div class="rpc-media-side">
             <div class="rpc-fixed-image-box">
-              <img src="eotc-dashboard-mockup.png" alt="eOTC Dashboard Showcase" class="rpc-image-showcase">
+              <img src="https://images.pexels.com/photos/4590387/pexels-photo-4590387.jpeg" alt="eOTC Dashboard Showcase" class="rpc-image-showcase">
             </div>
           </div>
         </div>
@@ -779,3 +778,34 @@
 
 </body>
 </html>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<cronos-footer></cronos-footer>
