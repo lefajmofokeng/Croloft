@@ -1,0 +1,1122 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Cronos — Timeline</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600&display=swap" rel="stylesheet">
+    
+    <style>
+        :root {
+            --bg-color: #02040a;
+            --text-primary: #ffffff;
+            --text-secondary: #8892b0;
+            /* Using one consistent premium blue color across all accents, text highlights, and lines */
+            --cronos-blue: #2563eb; 
+            --line-glow: rgba(37, 99, 235, 0.5);
+            --line-spine: rgba(37, 99, 235, 0.3);
+            --font-family: 'Inter', sans-serif;
+        }
+
+        * {
+            box-sizing: border-box;
+            margin: 0;
+            padding: 0;
+        }
+
+        body {
+            background-color: var(--bg-color);
+            color: var(--text-primary);
+            font-family: var(--font-family);
+            padding: 100px 20px;
+            overflow-x: hidden;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+        }
+
+        /* Header Section */
+        .timeline-header {
+            text-align: center;
+            margin-bottom: 140px;
+            max-width: 650px;
+            width: 100%;
+        }
+
+        .timeline-header h1 {
+            font-size: 3.8rem;
+            font-weight: 500;
+            letter-spacing: -0.05em;
+            margin-bottom: 20px;
+        }
+
+        .timeline-header p {
+            color: var(--text-secondary);
+            font-size: 0.95rem;
+            line-height: 1.6;
+            letter-spacing: -0.01em;
+        }
+
+        /* Timeline Container */
+        .timeline-container {
+            position: relative;
+            max-width: 1100px;
+            width: 100%;
+            margin: 0 auto;
+        }
+
+        /* The central vertical spine line */
+        .timeline-container::after {
+            content: '';
+            position: absolute;
+            width: 1px;
+            background: linear-gradient(to bottom, 
+                transparent 0%, 
+                var(--line-spine) 8%, 
+                var(--line-spine) 92%, 
+                transparent 100%
+            );
+            top: 0;
+            bottom: 0;
+            left: 50%;
+            transform: translateX(-50%);
+            z-index: 1;
+        }
+
+        /* Timeline Row Container */
+        .timeline-block {
+            position: relative;
+            width: 100%;
+            margin-bottom: 120px;
+            display: flex;
+        }
+
+        .timeline-block:last-child {
+            margin-bottom: 0;
+        }
+
+        .timeline-block-left {
+            justify-content: flex-start;
+        }
+
+        .timeline-block-right {
+            justify-content: flex-end;
+        }
+
+        /* Content Card Wrapper */
+        .timeline-content {
+            width: 50%;
+            position: relative;
+            padding-bottom: 20px;
+        }
+
+        /* Fading horizontal overhead line for Left Blocks */
+        .timeline-block-left .timeline-content::before {
+            content: '';
+            position: absolute;
+            top: -40px;
+            right: 0;
+            width: 85%;
+            height: 1px;
+            background: linear-gradient(to left, var(--line-glow) 0%, transparent 100%);
+            z-index: 2;
+        }
+
+        /* Fading horizontal overhead line for Right Blocks */
+        .timeline-block-right .timeline-content::before {
+            content: '';
+            position: absolute;
+            top: -40px;
+            left: 0;
+            width: 85%;
+            height: 1px;
+            background: linear-gradient(to right, var(--line-glow) 0%, transparent 100%);
+            z-index: 2;
+        }
+
+        /* Text Alignments */
+        .timeline-block-left .timeline-content {
+            text-align: right;
+            padding-right: 60px;
+        }
+
+        .timeline-block-right .timeline-content {
+            text-align: left;
+            padding-left: 60px;
+        }
+
+        /* Year Layout */
+        .timeline-year {
+            font-size: 5rem;
+            font-weight: 400;
+            line-height: 1;
+            margin-bottom: 14px;
+            color: var(--cronos-blue);
+            letter-spacing: -0.04em;
+            display: inline-block;
+        }
+
+        /* Short Bold Innovation Tagline in Blue */
+        .timeline-innovation {
+            font-size: 1.1rem;
+            font-weight: 500;
+            line-height: 1.4;
+            color: var(--cronos-blue);
+            margin-bottom: 16px;
+            letter-spacing: -0.01em;
+        }
+
+        /* Paragraph Content Typography */
+        .timeline-text {
+            font-size: 0.95rem;
+            line-height: 1.7;
+            color: var(--text-secondary);
+            font-weight: 400;
+            max-width: 440px;
+            display: inline-block;
+        }
+
+        .timeline-block-left .timeline-text {
+            text-align: right;
+        }
+
+        .timeline-block-right .timeline-text {
+            text-align: left;
+        }
+
+        .timeline-text strong {
+            color: var(--text-primary);
+            font-weight: 500;
+        }
+
+        .timeline-list {
+            list-style: none;
+            margin-top: 16px;
+            text-align: left;
+            display: inline-block;
+            width: 100%;
+        }
+
+        .timeline-block-left .timeline-list li {
+            text-align: right;
+        }
+
+        .timeline-list li {
+            margin-bottom: 12px;
+            font-size: 0.92rem;
+            line-height: 1.6;
+        }
+
+        .timeline-list li:last-child {
+            margin-bottom: 0;
+        }
+
+        /* Perfect Mobile Responsive Layout */
+        @media (max-width: 768px) {
+            body {
+                padding: 60px 24px;
+            }
+
+            .timeline-header h1 {
+                font-size: 2.8rem;
+                margin-bottom: 16px;
+            }
+
+            .timeline-header {
+                margin-bottom: 80px;
+            }
+
+            /* Shift vertical spine line to the far left margin */
+            .timeline-container::after {
+                left: 0;
+                transform: none;
+            }
+
+            .timeline-block {
+                width: 100%;
+                justify-content: flex-start !important;
+                margin-bottom: 80px;
+            }
+
+            .timeline-content {
+                width: 100%;
+                text-align: left !important;
+                padding-left: 35px !important;
+                padding-right: 0 !important;
+            }
+
+            /* Readjust overhead fading line structure for mobile stack */
+            .timeline-block-left .timeline-content::before,
+            .timeline-block-right .timeline-content::before {
+                left: 0;
+                right: auto;
+                top: -30px;
+                width: 100%;
+                background: linear-gradient(to right, var(--line-glow) 0%, transparent 100%);
+            }
+
+            .timeline-year {
+                font-size: 3.8rem;
+                margin-bottom: 12px;
+            }
+
+            .timeline-block-left .timeline-text,
+            .timeline-block-right .timeline-text {
+                text-align: left;
+                max-width: 100%;
+            }
+
+            .timeline-block-left .timeline-list li {
+                text-align: left;
+            }
+        }
+    </style>
+</head>
+<body>
+
+    <header class="timeline-header">
+        <h1>The timeline</h1>
+        <p>How we evolved from an independent development ecosystem into an enterprise tech stack executor, infrastructure asset manager, and digital vanguard.</p>
+    </header>
+
+    <main class="timeline-container">
+
+        <div class="timeline-block timeline-block-right">
+            <div class="timeline-content">
+                <div class="timeline-year">2022</div>
+                <div class="timeline-innovation">Launched Premium Vanilla Architectures.</div>
+                <div>
+                    <div class="timeline-text">
+                        Founded with a sharp focus on engineering <strong>high-end, premium minimalist web applications</strong>. Built a reputation for delivering custom vanilla codebases stripped of bloated framework overhead to prioritize flawless performance and structural control.
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <div class="timeline-block timeline-block-left">
+            <div class="timeline-content">
+                <div class="timeline-year">2023</div>
+                <div class="timeline-innovation">Expanded into Enterprise Infrastructure & Digital Scale.</div>
+                <div>
+                    <div class="timeline-text">
+                        Expanded operations to bridge the gap between architectural development and commercial scale. Integrated advanced cloud infrastructure deployment pipelines alongside data-driven digital marketing architectures to provide end-to-end operational capacity for growing enterprises.
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <div class="timeline-block timeline-block-right">
+            <div class="timeline-content">
+                <div class="timeline-year">2024</div>
+                <div class="timeline-innovation">Standardized the Unified Tech Stack System.</div>
+                <div>
+                    <div class="timeline-text">
+                        Crossed milestone growth vectors by formalizing our unified <strong>Enterprise Tech Stack Gallery</strong>. Standardized precise, modular component development workflows that guarantee flawless mobile-first responsiveness across complex client-side portfolios.
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <div class="timeline-block timeline-block-left">
+            <div class="timeline-content">
+                <div class="timeline-year">2025</div>
+                <div class="timeline-innovation">Consolidated Cronos Identity & Executed Landmark TVET Redesign.</div>
+                <div>
+                    <div class="timeline-text">
+                        A groundbreaking year of scale, engineering execution, and transition:
+                        <ul class="timeline-list">
+                            <li>Consolidated all engineering assets and infrastructure operations under a singular, premium corporate identity: <strong>Cronos</strong>.</li>
+                            <li>Designed and executed the comprehensive end-to-end portal redesign for <strong>Maluti TVET College</strong>, introducing a custom structural navigation ecosystem and a bespoke AI-driven chat assistant.</li>
+                            <li>Initiated research architectures for secure decentralized ledgers and automated liquidity/staking interfaces.</li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <div class="timeline-block timeline-block-right">
+            <div class="timeline-content">
+                <div class="timeline-year">2026</div>
+                <div class="timeline-innovation">Shipped Verified Anti-Scam Ecosystems & Real-Time Trackers.</div>
+                <div>
+                    <div class="timeline-text">
+                        Currently pushing the boundaries of software utility and community security. Launched our proprietary <strong>verified job listing ecosystem</strong>, systematically engineering an anti-scam vetting framework to safeguard modern career paths, alongside shipping real-time financial tracking protocols.
+                    </div>
+                </div>
+            </div>
+        </div>
+
+    </main>
+
+</body>
+</html>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Cronos — Level Up Program</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    
+    <style>
+        :root {
+            --bg-color: #ffffff;
+            --text-main: #000000;
+            --text-muted: #555555;
+            --card-bg-light: #f4f4f6;
+            --card-bg-accent: #b09eff; /* Distinct premium purple-blue accent header */
+            --card-bg-dark: #000000;
+            --text-dark-card: #ffffff;
+            --font-family: 'Inter', sans-serif;
+            --border-radius: 12px;
+        }
+
+        * {
+            box-sizing: border-box;
+            margin: 0;
+            padding: 0;
+        }
+
+        body {
+            background-color: var(--bg-color);
+            color: var(--text-main);
+            font-family: var(--font-family);
+            padding: 80px 24px;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+        }
+
+        /* Title Area */
+        .pricing-title {
+            font-size: 3.5rem;
+            font-weight: 500;
+            letter-spacing: -0.05em;
+            margin-bottom: 16px;
+            text-align: center;
+        }
+
+        .pricing-subtitle {
+            font-size: 1.1rem;
+            color: var(--text-muted);
+            text-align: center;
+            margin-bottom: 60px;
+            max-width: 600px;
+            line-height: 1.6;
+        }
+
+        /* Pricing Grid Workspace */
+        .pricing-grid {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 24px;
+            max-width: 1280px;
+            width: 100%;
+            /* Ensures row items match heights naturally */
+            align-items: stretch; 
+        }
+
+        /* Pricing Card Structure */
+        .pricing-card {
+            background-color: #f8f8fa;
+            border-radius: var(--border-radius);
+            overflow: hidden;
+            display: flex;
+            flex-direction: column;
+            height: 100%; /* Forces card container to fill out grid row height completely */
+        }
+
+        /* Header Varieties */
+        .card-header {
+            padding: 40px 32px;
+            min-height: 240px;
+            display: flex;
+            flex-direction: column;
+            justify-content: flex-start;
+        }
+
+        .card-header.starter {
+            background-color: #f4f4f6;
+            color: var(--text-main);
+        }
+
+        .card-header.advanced {
+            background-color: var(--card-bg-accent);
+            color: var(--text-main);
+        }
+
+        .card-header.premium {
+            background-color: var(--card-bg-dark);
+            color: var(--text-dark-card);
+        }
+
+        /* Header Inner Typography */
+        .plan-name {
+            font-size: 3.2rem;
+            font-weight: 500;
+            letter-spacing: -0.04em;
+            margin-bottom: 24px;
+            line-height: 1;
+        }
+
+        .plan-price {
+            font-size: 1.5rem;
+            font-weight: 600;
+            letter-spacing: -0.02em;
+            line-height: 1.2;
+        }
+
+        .plan-subtext {
+            font-size: 0.92rem;
+            font-weight: 400;
+            color: var(--text-muted);
+            margin-top: 4px;
+            line-height: 1.4;
+        }
+
+        .premium .plan-subtext {
+            color: #aaaaaa;
+        }
+
+        .premium .plan-price-custom {
+            font-size: 1.35rem;
+            font-weight: 600;
+            line-height: 1.4;
+        }
+
+        .premium .plan-price-custom strong {
+            font-weight: 700;
+            text-decoration: underline;
+            cursor: pointer;
+        }
+
+        /* Card Body Features Area */
+        .card-body {
+            padding: 40px 32px;
+            flex-grow: 1; /* Instructs the body container to expand vertically and take all leftover row space */
+            display: flex;
+            flex-direction: column;
+        }
+
+        .body-headline {
+            font-size: 1.15rem;
+            font-weight: 600;
+            letter-spacing: -0.02em;
+            margin-bottom: 28px;
+        }
+
+        /* Section Feature Groupings */
+        .feature-group {
+            margin-bottom: 28px;
+        }
+
+        .feature-group:last-child {
+            margin-bottom: 0;
+        }
+
+        .group-title {
+            font-size: 0.85rem;
+            font-weight: 700;
+            text-transform: uppercase;
+            letter-spacing: 0.05em;
+            color: var(--text-muted);
+            margin-bottom: 16px;
+        }
+
+        /* Features List */
+        .features-list {
+            list-style: none;
+        }
+
+        .feature-item {
+            display: flex;
+            align-items: flex-start;
+            font-size: 0.92rem;
+            line-height: 1.5;
+            color: #333333;
+            margin-bottom: 14px;
+        }
+
+        .feature-item:last-child {
+            margin-bottom: 0;
+        }
+
+        /* Purple checkmark reproduction */
+        .feature-item::before {
+            content: '✓';
+            color: #8b5cf6; 
+            font-weight: 700;
+            margin-right: 12px;
+            font-size: 1rem;
+            flex-shrink: 0;
+            line-height: 1.3;
+        }
+
+        /* Mobile Responsive Breakpoints */
+        @media (max-width: 1024px) {
+            .pricing-grid {
+                grid-template-columns: 1fr;
+                gap: 32px;
+                max-width: 500px;
+            }
+
+            .pricing-title {
+                font-size: 2.8rem;
+                margin-bottom: 12px;
+            }
+
+            .card-header {
+                min-height: auto;
+            }
+        }
+    </style>
+</head>
+<body>
+
+    <h1 class="pricing-title">Level Up</h1>
+    <p class="pricing-subtitle">Special, end-to-end bundled solutions engineered to catalyze scaling models across early infrastructure, pro execution, and enterprise transformation ecosystems.</p>
+
+    <main class="pricing-grid">
+
+        <section class="pricing-card">
+            <div class="card-header starter">
+                <h2 class="plan-name">Startups</h2>
+                <div class="plan-price">$750/month</div>
+                <div class="plan-subtext">or $7,650 upfront annually (15% discount)</div>
+            </div>
+            <div class="card-body">
+                <h3 class="body-headline">What's included in this plan:</h3>
+                
+                <div class="feature-group">
+                    <h4 class="group-title">Development & Growth</h4>
+                    <ul class="features-list">
+                        <li class="feature-item">High-end premium minimalist web application deployment</li>
+                        <li class="feature-item">Clean vanilla codebases optimized for rapid validation</li>
+                        <li class="feature-item">Flawless, mobile-first fluid user experiences</li>
+                    </ul>
+                </div>
+
+                <div class="feature-group">
+                    <h4 class="group-title">Infrastructure</h4>
+                    <ul class="features-list">
+                        <li class="feature-item">Up to 3 high-availability live testing parameters</li>
+                        <li class="feature-item">Integrated speed optimization and performance caching</li>
+                    </ul>
+                </div>
+
+                <div class="feature-group">
+                    <h4 class="group-title">Key highlights</h4>
+                    <ul class="features-list">
+                        <li class="feature-item">Rapid engineering setup and deployment pipeline</li>
+                        <li class="feature-item">24/7 support: Direct email integration</li>
+                    </ul>
+                </div>
+            </div>
+        </section>
+
+        <section class="pricing-card">
+            <div class="card-header advanced">
+                <h2 class="plan-name">Pro Biz</h2>
+                <div class="plan-price">$1,500/month</div>
+                <div class="plan-subtext">or $15,300 upfront annually (15% discount)</div>
+            </div>
+            <div class="card-body">
+                <h3 class="body-headline">Everything in Startups, plus:</h3>
+                
+                <div class="feature-group">
+                    <h4 class="group-title">Architectural Scaling</h4>
+                    <ul class="features-list">
+                        <li class="feature-item">Complex custom database architecture and asset registries</li>
+                        <li class="feature-item">Integrated systems modules for CRM and transaction handling</li>
+                    </ul>
+                </div>
+
+                <div class="feature-group">
+                    <h4 class="group-title">System Infrastructure</h4>
+                    <ul class="features-list">
+                        <li class="feature-item">Up to 10 automated server-less operational environments</li>
+                        <li class="feature-item">Unified backend integration pipelines</li>
+                    </ul>
+                </div>
+
+                <div class="feature-group">
+                    <h4 class="group-title">Key highlights</h4>
+                    <ul class="features-list">
+                        <li class="feature-item">24/7 priority support: Email and live chat channels</li>
+                        <li class="feature-item">Bi-weekly architectural strategic health checks</li>
+                    </ul>
+                </div>
+            </div>
+        </section>
+
+        <section class="pricing-card">
+            <div class="card-header premium">
+                <h2 class="plan-name">Enterprise</h2>
+                <div class="plan-price-custom">
+                    Custom<br>
+                    <strong>Contact us</strong> for pricing
+                </div>
+                <div class="plan-subtext">Comprehensive engineering allocations for massive scale requirements, custom governance models, and complex systems architecture</div>
+            </div>
+            <div class="card-body">
+                <h3 class="body-headline">Everything in Pro Biz, plus:</h3>
+                
+                <div class="feature-group">
+                    <h4 class="group-title">Custom Ecosystem Execution</h4>
+                    <ul class="features-list">
+                        <li class="feature-item">Tailor-made system designs built purely from scratch</li>
+                        <li class="feature-item">Bespoke technical execution, custom automated logic layers, and internal tool structures</li>
+                    </ul>
+                </div>
+
+                <div class="feature-group">
+                    <h4 class="group-title">Dedicated Infrastructure</h4>
+                    <ul class="features-list">
+                        <li class="feature-item">Unlimited isolated cloud staging frameworks</li>
+                        <li class="feature-item">Strict corporate-grade security containment systems</li>
+                    </ul>
+                </div>
+
+                <div class="feature-group">
+                    <h4 class="group-title">Key highlights</h4>
+                    <ul class="features-list">
+                        <li class="feature-item">Dedicated consulting director allocation</li>
+                        <li class="feature-item">Direct feature pipeline prioritizations</li>
+                        <li class="feature-item">24/7 premier tech support: Voice, chat, and video lines directly with engineering personnel</li>
+                    </ul>
+                </div>
+            </div>
+        </section>
+
+    </main>
+
+</body>
+</html>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Cronos — Tier Ecosystem Component</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    
+    <style>
+        /* Global reset rule to strip default browser outer body margins */
+        html, body {
+            margin: 0;
+            padding: 0;
+            width: 100%;
+            background-color: #0c0d0e;
+        }
+
+        /* Isolated section wrapper covering 100% viewport width seamlessly */
+        .cronos-matrix-section {
+            --cm-bg-color: #0c0d0e;
+            --cm-card-bg: #121316;
+            --cm-border-color: #1e2229;
+            --cm-text-main: #ffffff;
+            --cm-text-muted: #717684;
+            --cm-btn-bg: #22252d;
+            --cm-btn-hover: #2d313c;
+            --cm-font-family: 'Inter', sans-serif;
+            --cm-border-radius: 16px;
+
+            background-color: var(--cm-bg-color);
+            color: var(--cm-text-main);
+            font-family: var(--cm-font-family);
+            padding: 120px 0; /* Vertical padding only, let wrapper handle internal safe space */
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            width: 100%;
+            box-sizing: border-box;
+        }
+
+        .cronos-matrix-section * {
+            box-sizing: border-box;
+            margin: 0;
+            padding: 0;
+        }
+
+        /* Centered Inner Body Container restricted to exactly 1200px */
+        .cm-layout-wrapper {
+            width: 100%;
+            max-width: 1200px;
+            display: flex;
+            flex-direction: column;
+            align-items: flex-start;
+            padding: 0 24px; /* Added internal inline padding for mobile screen protection */
+        }
+
+        /* Left-Aligned Header & Description Area */
+        .cm-intro-header {
+            max-width: 640px;
+            text-align: left;
+            margin-bottom: 56px;
+            align-self: flex-start;
+        }
+
+        .cm-intro-title {
+            font-size: 3rem;
+            font-weight: 500;
+            letter-spacing: -0.04em;
+            margin-bottom: 16px;
+            line-height: 1.15;
+            color: var(--cm-text-main);
+        }
+
+        .cm-intro-desc {
+            font-size: 1.05rem;
+            color: var(--cm-text-muted);
+            line-height: 1.6;
+            font-weight: 400;
+        }
+
+        /* 3-Column Premium Grid Workspace */
+        .cm-tier-grid {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 24px;
+            width: 100%;
+            align-items: stretch;
+        }
+
+        /* Premium Card Structure */
+        .cm-tier-card {
+            background-color: var(--cm-card-bg);
+            border: 1px solid var(--cm-border-color);
+            border-radius: var(--cm-border-radius);
+            overflow: hidden;
+            display: flex;
+            flex-direction: column;
+            text-align: center;
+            transition: border-color 0.3s ease;
+        }
+
+        .cm-tier-card:hover {
+            border-color: #313745;
+        }
+
+        /* Top Media Slot: 100% Width & Height Filling */
+        .cm-media-banner-slot {
+            width: 100%;
+            height: 240px;
+            position: relative;
+            overflow: hidden;
+            background-color: #16181d;
+        }
+
+        /* Visual Graphic Element Box filling space edge-to-edge */
+        .cm-card-graphic-full {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            transition: transform 0.5s cubic-bezier(0.25, 1, 0.5, 1);
+        }
+
+        .cm-tier-card:hover .cm-card-graphic-full {
+            transform: scale(1.05);
+        }
+
+        /* Details Body Compartment */
+        .cm-card-content {
+            padding: 40px 32px;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            flex-grow: 1;
+        }
+
+        /* Typography */
+        .cm-tier-label {
+            font-size: 1.15rem;
+            font-weight: 500;
+            text-transform: uppercase;
+            letter-spacing: 0.1em;
+            color: var(--cm-text-main);
+            margin-bottom: 14px;
+        }
+
+        .cm-tier-headline {
+            font-size: 3rem;
+            font-weight: 600;
+            letter-spacing: -0.04em;
+            line-height: 1.1;
+            margin-bottom: 6px;
+        }
+
+        .cm-tier-sub-headline {
+            font-size: 0.9rem;
+            color: var(--cm-text-muted);
+            margin-bottom: 36px;
+            letter-spacing: 0.02em;
+        }
+
+        /* Action Component */
+        .cm-btn-action {
+            width: 100%;
+            background-color: var(--cm-btn-bg);
+            color: var(--cm-text-main);
+            border: none;
+            border-radius: 30px;
+            padding: 14px 24px;
+            font-family: var(--cm-font-family);
+            font-size: 0.95rem;
+            font-weight: 500;
+            cursor: pointer;
+            transition: background-color 0.2s ease;
+            margin-bottom: 20px;
+            text-decoration: none;
+            display: inline-block;
+        }
+
+        .cm-btn-action:hover {
+            background-color: var(--cm-btn-hover);
+        }
+
+        .cm-link-secondary {
+            font-size: 0.92rem;
+            color: var(--cm-text-muted);
+            text-decoration: none;
+            font-weight: 400;
+            transition: color 0.2s ease;
+            margin-bottom: 32px;
+        }
+
+        .cm-link-secondary:hover {
+            color: var(--cm-text-main);
+        }
+
+        /* Bottom Details Meta Block */
+        .cm-tier-meta {
+            margin-top: auto;
+            width: 100%;
+            padding-top: 24px;
+            border-top: 1px solid #1a1d24;
+        }
+
+        .cm-meta-primary {
+            font-size: 0.95rem;
+            font-weight: 500;
+            color: var(--cm-text-main);
+            margin-bottom: 4px;
+        }
+
+        .cm-meta-secondary {
+            font-size: 0.82rem;
+            color: var(--cm-text-muted);
+            line-height: 1.4;
+        }
+
+        .cm-meta-secondary strong {
+            color: #d1d5db;
+        }
+
+        /* Mobile Responsive Constraints */
+        @media (max-width: 968px) {
+            .cronos-matrix-section {
+                padding: 60px 0;
+            }
+
+            .cm-intro-title {
+                font-size: 2.4rem;
+            }
+
+            .cm-tier-grid {
+                grid-template-columns: 1fr;
+                gap: 32px;
+                max-width: 440px;
+            }
+            
+            .cm-intro-header {
+                align-self: center;
+                text-align: center;
+                margin-bottom: 40px;
+            }
+        }
+    </style>
+</head>
+<body>
+
+    <section class="cronos-matrix-section">
+        
+        <div class="cm-layout-wrapper">
+            
+            <header class="cm-intro-header">
+                <h1 class="cm-intro-title">Choose your ecosystem trajectory</h1>
+                <p class="cm-intro-desc">Select a premium membership tier meticulously tailored to your deployment velocity, structural capital needs, and scale thresholds.</p>
+            </header>
+
+            <main class="cm-tier-grid">
+
+                <article class="cm-tier-card">
+                    <div class="cm-media-banner-slot">
+                        <img src="https://images.unsplash.com/photo-1618005182384-a83a8bd57fbe?auto=format&fit=crop&w=600&q=80" alt="Plus Tier Edge-to-Edge Asset" class="cm-card-graphic-full">
+                    </div>
+                    <div class="cm-card-content">
+                        <h2 class="cm-tier-label">Plus</h2>
+                        <div class="cm-tier-headline">2.0% back</div>
+                        <p class="cm-tier-sub-headline">On program execution</p>
+                        
+                        <a href="#" class="cm-btn-action">Join PLUS →</a>
+                        <a href="#" class="cm-link-secondary">Learn more</a>
+
+                        <div class="cm-tier-meta">
+                            <div class="cm-meta-primary">$4.99 monthly</div>
+                            <div class="cm-meta-secondary">Or $49.90 yearly ($4.16/month)</div>
+                        </div>
+                    </div>
+                </article>
+
+                <article class="cm-tier-card">
+                    <div class="cm-media-banner-slot">
+                        <img src="https://images.unsplash.com/photo-1634017839464-5c339ebe3cb4?auto=format&fit=crop&w=600&q=80" alt="Pro Tier Edge-to-Edge Asset" class="cm-card-graphic-full">
+                    </div>
+                    <div class="cm-card-content">
+                        <h2 class="cm-tier-label">Pro</h2>
+                        <div class="cm-tier-headline">3.0% back</div>
+                        <p class="cm-tier-sub-headline">On program execution</p>
+                        
+                        <a href="#" class="cm-btn-action">Join PRO →</a>
+                        <a href="#" class="cm-link-secondary">Learn more</a>
+
+                        <div class="cm-tier-meta">
+                            <div class="cm-meta-primary">$29.99 per month</div>
+                            <div class="cm-meta-secondary">Or $299.90 yearly ($24.99/month)</div>
+                        </div>
+                    </div>
+                </article>
+
+                <article class="cm-tier-card">
+                    <div class="cm-media-banner-slot">
+                        <img src="https://images.unsplash.com/photo-1633356122544-f134324a6cee?auto=format&fit=crop&w=600&q=80" alt="Private Tier Edge-to-Edge Asset" class="cm-card-graphic-full">
+                    </div>
+                    <div class="cm-card-content">
+                        <h2 class="cm-tier-label">Private</h2>
+                        <div class="cm-tier-headline">4-6% back</div>
+                        <p class="cm-tier-sub-headline">On program execution</p>
+                        
+                        <a href="#" class="cm-btn-action">Join PRIVATE →</a>
+                        <a href="#" class="cm-link-secondary">Learn more</a>
+
+                        <div class="cm-tier-meta">
+                            <div class="cm-meta-primary">12-month platform contract</div>
+                            <div class="cm-meta-secondary">Custom metrics allocation thresholds at <strong>8.5% yield / 9.5% yield</strong></div>
+                        </div>
+                    </div>
+                </article>
+
+            </main>
+        </div>
+    </section>
+
+</body>
+</html>
