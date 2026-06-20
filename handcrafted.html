@@ -1,0 +1,781 @@
+<!DOCTYPE html>
+<html lang="en" dir="ltr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, minimum-scale=1.0, maximum-scale=5.0, viewport-fit=cover, shrink-to-fit=no">
+    <meta http-equiv="x-ua-compatible" content="ie=edge"/>
+    
+    <title>Cronos</title>
+
+    <!-- WEB TAB ICON -->
+    <link rel="icon" type="image/png" href="thumbnails/top-1.png">
+
+    <style>
+      @font-face { font-family:'Circular Std'; src:url('fonts/CircularStd-Book.woff2') format('woff2'),url('fonts/CircularStd-Book.woff') format('woff'); font-weight:400; font-style:normal; font-display:swap; }
+  @font-face { font-family:'Circular Std'; src:url('fonts/CircularStd-BookItalic.woff2') format('woff2'),url('fonts/CircularStd-BookItalic.woff') format('woff'); font-weight:400; font-style:italic; font-display:swap; }
+  @font-face { font-family:'Circular Std'; src:url('fonts/CircularStd-Medium.woff2') format('woff2'),url('fonts/CircularStd-Medium.woff') format('woff'); font-weight:500; font-style:normal; font-display:swap; }
+  @font-face { font-family:'Circular Std'; src:url('fonts/CircularStd-Bold.woff2') format('woff2'),url('fonts/CircularStd-Bold.woff') format('woff'); font-weight:600; font-style:normal; font-display:swap; }
+  @font-face { font-family:'Circular Std'; src:url('fonts/CircularStd-Bold.woff2') format('woff2'),url('fonts/CircularStd-Bold.woff') format('woff'); font-weight:700; font-style:normal; font-display:swap; }
+  @font-face { font-family:'Circular Std'; src:url('fonts/CircularStd-Black.woff2') format('woff2'),url('fonts/CircularStd-Black.woff') format('woff'); font-weight:800; font-style:normal; font-display:swap; }
+  @font-face { font-family:'Circular Std'; src:url('fonts/CircularStd-Black.woff2') format('woff2'),url('fonts/CircularStd-Black.woff') format('woff'); font-weight:900; font-style:normal; font-display:swap; }
+    </style>
+</head>
+
+
+
+
+
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>My Website</title>
+    
+    <script src="header.js" defer></script>
+    <script src="footer.js" defer></script> 
+</head>
+<body>
+
+    <cronos-header></cronos-header>
+    
+
+</body>
+</html>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Handcrafted Code Component</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+
+  <style>
+    /* --- SCOPED COMPONENT STYLES (Prefix: hcc-) --- */
+    
+    .hcc-component-root {
+      font-family: 'Inter', -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif;
+      background-color: #f8f9fa;
+      color: #111111;
+      line-height: 1.6;
+      -webkit-font-smoothing: antialiased;
+      -moz-osx-font-smoothing: grayscale;
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+      width: 100%;
+    }
+
+    .hcc-component-root *, 
+    .hcc-component-root *::before, 
+    .hcc-component-root *::after {
+      box-sizing: inherit;
+    }
+
+    /* Shared Content Alignment Container */
+    .hcc-container {
+      max-width: 1200px;
+      margin: 0 auto;
+      padding-left: 2rem;
+      padding-right: 2rem;
+    }
+
+    /* Hero Section */
+    .hcc-hero {
+      background-color: #6126f5;
+      color: #ffffff;
+      padding: 6rem 0;
+      width: 100%;
+    }
+
+    .hcc-hero-tag {
+      font-size: 0.875rem;
+      text-transform: uppercase;
+      letter-spacing: 0.05em;
+      font-weight: 600;
+      margin-bottom: 1.5rem;
+      color: rgba(255, 255, 255, 0.85);
+    }
+
+    .hcc-hero-title {
+      font-size: clamp(2.25rem, 5vw, 3.5rem);
+      font-weight: 700;
+      line-height: 1.15;
+      letter-spacing: -0.03em;
+      margin: 0 0 2rem 0;
+      max-width: 700px;
+    }
+
+    .hcc-btn-primary {
+      display: inline-block;
+      background-color: #ffffff;
+      color: #111111;
+      font-weight: 600;
+      font-size: 0.95rem;
+      padding: 0.75rem 1.5rem;
+      border-radius: 8px;
+      text-decoration: none;
+      transition: background-color 0.2s ease;
+    }
+
+    .hcc-btn-primary:hover {
+      background-color: #f1f1f1;
+    }
+
+    /* Main Layout Content */
+    .hcc-main-content {
+      padding-top: 5rem;
+      padding-bottom: 6rem;
+    }
+
+    /* Content Constraints */
+    .hcc-text-block {
+      max-width: 760px;
+    }
+
+    /* Section Typography */
+    .hcc-section-title {
+      font-size: clamp(1.75rem, 4vw, 2.25rem);
+      font-weight: 700;
+      line-height: 1.2;
+      letter-spacing: -0.02em;
+      margin-top: 0;
+      margin-bottom: 1.5rem;
+    }
+
+    .hcc-sub-title {
+      font-size: 1.35rem;
+      font-weight: 700;
+      letter-spacing: -0.01em;
+      margin-top: 3.5rem;
+      margin-bottom: 1rem;
+    }
+
+    .hcc-paragraph {
+      font-size: 1.05rem;
+      color: #444444;
+      margin-bottom: 1.5rem;
+    }
+
+    .hcc-paragraph strong {
+      color: #111111;
+    }
+
+    /* Features Grid (Enforces a strict 2x2 grid layout layout match) */
+    .hcc-grid {
+      display: grid;
+      grid-template-columns: repeat(1, 1fr);
+      gap: 1.25rem;
+      margin: 2.5rem 0;
+      max-width: 1200px;
+    }
+
+    @media (min-width: 640px) {
+      .hcc-grid {
+        /* Strictly two columns on desktop/tablet to force a 2 on top, 2 under grid pattern */
+        grid-template-columns: repeat(2, 1fr);
+      }
+    }
+
+    .hcc-card {
+      background: #ffffff;
+      border: 1px solid rgba(0, 0, 0, 0.04);
+      border-radius: 12px;
+      padding: 2.25rem 1.75rem;
+      box-shadow: 0 4px 12px rgba(0, 0, 0, 0.01);
+      transition: transform 0.2s ease, box-shadow 0.2s ease;
+    }
+
+    .hcc-card:hover {
+      transform: translateY(-2px);
+      box-shadow: 0 6px 18px rgba(0, 0, 0, 0.02);
+    }
+
+    .hcc-icon-box {
+      color: #6126f5;
+      margin-bottom: 1.25rem;
+      display: flex;
+      align-items: center;
+    }
+
+    .hcc-icon-box svg {
+      width: 24px;
+      height: 24px;
+    }
+
+    .hcc-card-title {
+      font-size: 1.05rem;
+      font-weight: 700;
+      margin: 0 0 0.5rem 0;
+    }
+
+    .hcc-card-text {
+      font-size: 0.95rem;
+      color: #555555;
+      margin: 0;
+      line-height: 1.5;
+    }
+
+    /* Links System */
+    .hcc-links-list {
+      list-style: none;
+      padding: 0;
+      margin: 1.5rem 0 0 0;
+    }
+
+    .hcc-link-item {
+      margin-bottom: 0.85rem;
+      padding-left: 1.25rem;
+      position: relative;
+    }
+
+    .hcc-link-item a {
+      color: #6126f5;
+      text-decoration: none;
+      font-weight: 500;
+      font-size: 1rem;
+      display: inline-flex;
+      align-items: center;
+    }
+
+    .hcc-link-item a:hover {
+      text-decoration: underline;
+    }
+
+    .hcc-link-item ::before {
+      content: "•";
+      color: #6126f5;
+      font-weight: bold;
+      display: inline-block;
+      position: absolute;
+      left: 0;
+    }
+
+    /* Global alignment responsiveness override */
+    @media (max-width: 1240px) {
+      .hcc-container {
+        padding-left: 1.5rem;
+        padding-right: 1.5rem;
+      }
+    }
+  </style>
+</head>
+<body>
+
+  <div class="hcc-component-root">
+    
+    <header class="hcc-hero">
+      <div class="hcc-container">
+        <div class="hcc-hero-tag">Engineering Quality</div>
+        <h1 class="hcc-hero-title">Handcrafted Code and Absolute Architecture</h1>
+        <a href="#explore" class="hcc-btn-primary">Explore services</a>
+      </div>
+    </header>
+
+    <main class="hcc-main-content" id="explore">
+      <div class="hcc-container">
+        
+        <div class="hcc-text-block">
+          <h2 class="hcc-section-title">Zero dependencies, maximum performance engineering</h2>
+          <p class="hcc-paragraph">
+            Application stability shouldn't depend on unpredictable third-party ecosystems. By building software entirely from scratch, we ensure execution environments perform exactly as planned—<strong>with latency minimized and codebase footprints as tight as possible.</strong>
+          </p>
+
+          <h3 class="hcc-sub-title">What is handcrafted code?</h3>
+          <p class="hcc-paragraph">
+            Handcrafted code refers to the practice of building web ecosystems deliberately and natively without bloated visual builders or heavy wrapper frameworks. The closer your runtime is to pure, standalone scripts, the faster pages settle, search layouts optimize, and security architectures remain pristine.
+          </p>
+
+          <h3 class="hcc-sub-title">What drives core codebase performance</h3>
+        </div>
+
+        <div class="hcc-grid">
+          
+          <div class="hcc-card">
+            <div class="hcc-icon-box">
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polyline points="16 18 22 12 16 6"></polyline><polyline points="8 6 2 12 8 18"></polyline></svg>
+            </div>
+            <h4 class="hcc-card-title">Native execution</h4>
+            <p class="hcc-card-text">for all core features and logic modules we deploy.</p>
+          </div>
+
+          <div class="hcc-card">
+            <div class="hcc-icon-box">
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polygon points="12 2 2 7 12 12 22 7 12 2"></polygon><polyline points="2 17 12 22 22 17"></polyline><polyline points="2 12 12 17 22 12"></polyline></svg>
+            </div>
+            <h4 class="hcc-card-title">Zero framework bloat</h4>
+            <p class="hcc-card-text">that incentivizes search crawlers to rank pages seamlessly.</p>
+          </div>
+
+          <div class="hcc-card">
+            <div class="hcc-icon-box">
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"></path></svg>
+            </div>
+            <h4 class="hcc-card-title">Isolated structures</h4>
+            <p class="hcc-card-text">means it's significantly easier to extend and safe from external vulnerability supply chains.</p>
+          </div>
+
+          <div class="hcc-card">
+            <div class="hcc-icon-box">
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polygon points="13 2 3 14 12 14 11 22 21 10 12 10 13 2"></polygon></svg>
+            </div>
+            <h4 class="hcc-card-title">High responsiveness</h4>
+            <p class="hcc-card-text">on any device screen size to fill transactional user funnels natively.</p>
+          </div>
+
+        </div>
+
+        <div class="hcc-text-block">
+          <h3 class="hcc-sub-title">Sustained mobile-first speed</h3>
+          <p class="hcc-paragraph">
+            How fluid is your app? It depends entirely on your markup strategy. More abstract layers mean browser rendering engines must process heavier assets before paint timelines settle. We rely on pristine, semantic code formatting so your application delivers instant interactivity.
+          </p>
+
+          <h3 class="hcc-sub-title">Meticulously organized CSS</h3>
+          <p class="hcc-paragraph">
+            Speed isn't the only metric that custom craftsmanship addresses. Clean, structured style rules prevent layout shifting across dynamic Viewports. By avoiding massive boilerplate configurations, global script footprints stay lean—resulting in optimal layout control exactly where it counts.
+          </p>
+
+          <h3 class="hcc-sub-title">What's next?</h3>
+          <ul class="hcc-links-list">
+            <li class="hcc-link-item"><a href="#">I'd like to see project architectures built from scratch</a></li>
+            <li class="hcc-link-item"><a href="#">I'm curious how native web components optimize system performance</a></li>
+            <li class="hcc-link-item"><a href="#">Show me how to initialize custom engineering templates</a></li>
+            <li class="hcc-link-item"><a href="#">Tell me how decoupled logic scales enterprise systems</a></li>
+          </ul>
+        </div>
+
+      </div>
+    </main>
+  </div>
+
+</body>
+</html>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Related Products Component</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+
+  <style>
+    /* --- SCOPED COMPONENT STYLES (Prefix: rpc-) --- */
+    
+    .rpc-component-root {
+      font-family: 'Inter', -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif;
+      background-color: #ffffff;
+      color: #111111;
+      line-height: 1.6;
+      -webkit-font-smoothing: antialiased;
+      -moz-osx-font-smoothing: grayscale;
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+      width: 100%;
+    }
+
+    .rpc-component-root *, 
+    .rpc-component-root *::before, 
+    .rpc-component-root *::after {
+      box-sizing: inherit;
+    }
+
+    .rpc-container {
+      max-width: 1200px;
+      margin: 0 auto;
+      padding: 5rem 2rem;
+    }
+
+    /* Header & Toggle System */
+    .rpc-header {
+      text-align: center;
+      margin-bottom: 5rem;
+    }
+
+    .rpc-main-title {
+      font-size: clamp(2.5rem, 5vw, 3.5rem);
+      font-weight: 700;
+      letter-spacing: -0.03em;
+      color: #111111;
+      margin: 0 0 2rem 0;
+    }
+
+    .rpc-toggle-container {
+      display: inline-flex;
+      background-color: #f1f3f5;
+      padding: 0.35rem;
+      border-radius: 100px;
+      position: relative;
+    }
+
+    .rpc-toggle-btn {
+      background: none;
+      border: none;
+      font-family: inherit;
+      font-size: 0.95rem;
+      font-weight: 600;
+      padding: 0.6rem 2rem;
+      cursor: pointer;
+      color: #555555;
+      border-radius: 100px;
+      z-index: 2;
+      transition: color 0.25s ease;
+    }
+
+    .rpc-toggle-btn.rpc-active {
+      color: #ffffff;
+      background-color: #555555;
+    }
+
+    /* Product Display Layout */
+    .rpc-product-panel {
+      display: none;
+      animation: rpcFadeIn 0.4s ease forwards;
+    }
+
+    .rpc-product-panel.rpc-active-panel {
+      display: block;
+    }
+
+    .rpc-hero-row {
+      display: grid;
+      grid-template-columns: repeat(1, 1fr);
+      gap: 4rem;
+      align-items: center;
+      margin-bottom: 5rem;
+    }
+
+    @media (min-width: 768px) {
+      .rpc-hero-row {
+        grid-template-columns: 1fr 1.4fr;
+      }
+    }
+
+    .rpc-info-side {
+      max-width: 380px;
+    }
+
+    .rpc-product-name {
+      font-size: clamp(2.25rem, 4vw, 3.25rem);
+      font-weight: 700;
+      letter-spacing: -0.02em;
+      margin: 0 0 1rem 0;
+    }
+
+    .rpc-product-desc {
+      font-size: 1.15rem;
+      color: #555555;
+      margin-bottom: 1.5rem;
+    }
+
+    .rpc-link-more {
+      color: #0066cc;
+      text-decoration: underline;
+      font-weight: 600;
+      font-size: 1.05rem;
+    }
+
+    /* Fixed Portable Media Frame Side */
+    .rpc-media-side {
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      width: 100%;
+    }
+
+    /* Strict container wrapper box that never changes layout shape */
+    .rpc-fixed-image-box {
+      width: 100%;
+      height: 400px; /* Rigorous portable height */
+      max-width: 600px; /* Rigorous max width limitation */
+      position: relative;
+      overflow: hidden;
+      display: block;
+    }
+
+    /* Image parameters completely decoupled from changing layout constraints */
+    .rpc-image-showcase {
+      width: 100%;
+      height: 100%;
+      display: block;
+      object-fit: cover; /* Keeps frame layout stable. Use 'contain' if image slicing is undesired */
+      object-position: center;
+    }
+
+    @media (max-width: 900px) {
+      .rpc-fixed-image-box {
+        height: 360px;
+      }
+    }
+
+    @media (max-width: 600px) {
+      .rpc-fixed-image-box {
+        height: 260px;
+      }
+    }
+
+    /* Features Grid Footer Layout */
+    .rpc-features-heading {
+      font-size: 1.35rem;
+      font-weight: 700;
+      margin-bottom: 2rem;
+      border-bottom: 1px solid #e5e7eb;
+      padding-bottom: 0.75rem;
+    }
+
+    .rpc-features-grid {
+      display: grid;
+      grid-template-columns: repeat(1, 1fr);
+      gap: 2.5rem;
+    }
+
+    @media (min-width: 768px) {
+      .rpc-features-grid {
+        grid-template-columns: repeat(3, 1fr);
+      }
+    }
+
+    .rpc-feature-item {
+      font-size: 1.05rem;
+      color: #444444;
+      line-height: 1.6;
+    }
+
+    .rpc-feature-item strong {
+      color: #111111;
+      display: block;
+      margin-bottom: 0.5rem;
+      font-size: 1.1rem;
+    }
+
+    @keyframes rpcFadeIn {
+      from { opacity: 0; transform: translateY(8px); }
+      to { opacity: 1; transform: translateY(0); }
+    }
+  </style>
+</head>
+<body>
+
+  <div class="rpc-component-root">
+    <div class="rpc-container">
+      
+      <header class="rpc-header">
+        <h2 class="rpc-main-title">Related Products</h2>
+        <div class="rpc-toggle-container" role="tablist">
+          <button class="rpc-toggle-btn rpc-active" data-target="custody-panel" role="tab" aria-selected="true">Custody</button>
+          <button class="rpc-toggle-btn" data-target="eotc-panel" role="tab" aria-selected="false">eOTC</button>
+        </div>
+      </header>
+
+      <div id="custody-panel" class="rpc-product-panel rpc-active-panel" role="tabpanel">
+        <div class="rpc-hero-row">
+          <div class="rpc-info-side">
+            <h3 class="rpc-product-name">Custody</h3>
+            <p class="rpc-product-desc">Safeguard your digital assets with secure and regulated cold storage architecture engineered directly from the ground up.</p>
+            <a href="#" class="rpc-link-more">Learn More</a>
+          </div>
+          <div class="rpc-media-side">
+            <div class="rpc-fixed-image-box">
+              <img src="https://images.pexels.com/photos/5533732/pexels-photo-5533732.jpeg" alt="Custody Dashboard Showcase" class="rpc-image-showcase">
+            </div>
+          </div>
+        </div>
+
+        <h4 class="rpc-features-heading">Features</h4>
+        <div class="rpc-features-grid">
+          <div class="rpc-feature-item">
+            Your assets are safe in offline storage systems that use multisignature technology, role-based governance protocols, and multiple layers of biometric access controls and physical security.
+          </div>
+          <div class="rpc-feature-item">
+            With the Gemini Instant Trade™ feature, you can trade directly on native systems with assets held entirely within standalone, decoupled offline configurations.
+          </div>
+          <div class="rpc-feature-item">
+            Customized deployment parameters aligned to the needs of your scale requirements. We work natively to build tailored, explicit transaction pipelines.
+          </div>
+        </div>
+      </div>
+
+      <div id="eotc-panel" class="rpc-product-panel" role="tabpanel">
+        <div class="rpc-hero-row">
+          <div class="rpc-info-side">
+            <h3 class="rpc-product-name">eOTC</h3>
+            <p class="rpc-product-desc">Execute high-volume execution requests instantly with zero slippage via our native, algorithmic liquidity desk built with pure performance code.</p>
+            <a href="#" class="rpc-link-more">Learn More</a>
+          </div>
+          <div class="rpc-media-side">
+            <div class="rpc-fixed-image-box">
+              <img src="eotc-dashboard-mockup.png" alt="eOTC Dashboard Showcase" class="rpc-image-showcase">
+            </div>
+          </div>
+        </div>
+
+        <h4 class="rpc-features-heading">Engineered Advantages</h4>
+        <div class="rpc-features-grid">
+          <div class="rpc-feature-item">
+            <strong>Deep Liquidity Access</strong>
+            Access institutional quotes directly with split-second trade matching capabilities completely independent of external dependencies.
+          </div>
+          <div class="rpc-feature-item">
+            <strong>Minimized Slippage</strong>
+            Engineered routing pathways ensure massive size executions match targeted prints without disturbing broader systemic book structures.
+          </div>
+          <div class="rpc-feature-item">
+            <strong>Instant Native Clearance</strong>
+            Settlement logic transitions happen raw and instantly inside execution loops, rendering third-party structural delays obsolete.
+          </div>
+        </div>
+      </div>
+
+    </div>
+  </div>
+
+  <script>
+    document.addEventListener('DOMContentLoaded', () => {
+      const toggleButtons = document.querySelectorAll('.rpc-toggle-btn');
+      const productPanels = document.querySelectorAll('.rpc-product-panel');
+
+      toggleButtons.forEach(button => {
+        button.addEventListener('click', () => {
+          toggleButtons.forEach(btn => {
+            btn.classList.remove('rpc-active');
+            btn.setAttribute('aria-selected', 'false');
+          });
+
+          button.classList.add('rpc-active');
+          button.setAttribute('aria-selected', 'true');
+
+          productPanels.forEach(panel => {
+            panel.classList.remove('rpc-active-panel');
+          });
+
+          const targetId = button.getAttribute('data-target');
+          const targetPanel = document.getElementById(targetId);
+          if (targetPanel) {
+            targetPanel.classList.add('rpc-active-panel');
+          }
+        });
+      });
+    });
+  </script>
+
+</body>
+</html>

@@ -1,3 +1,30 @@
+<!DOCTYPE html>
+<html lang="en" dir="ltr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, minimum-scale=1.0, maximum-scale=5.0, viewport-fit=cover, shrink-to-fit=no">
+    <meta http-equiv="x-ua-compatible" content="ie=edge"/>
+    
+    <title>Cronos</title>
+
+    <!-- WEB TAB ICON -->
+    <link rel="icon" type="image/png" href="thumbnails/top-1.png">
+
+    <style>
+      @font-face { font-family:'Circular Std'; src:url('fonts/CircularStd-Book.woff2') format('woff2'),url('fonts/CircularStd-Book.woff') format('woff'); font-weight:400; font-style:normal; font-display:swap; }
+  @font-face { font-family:'Circular Std'; src:url('fonts/CircularStd-BookItalic.woff2') format('woff2'),url('fonts/CircularStd-BookItalic.woff') format('woff'); font-weight:400; font-style:italic; font-display:swap; }
+  @font-face { font-family:'Circular Std'; src:url('fonts/CircularStd-Medium.woff2') format('woff2'),url('fonts/CircularStd-Medium.woff') format('woff'); font-weight:500; font-style:normal; font-display:swap; }
+  @font-face { font-family:'Circular Std'; src:url('fonts/CircularStd-Bold.woff2') format('woff2'),url('fonts/CircularStd-Bold.woff') format('woff'); font-weight:600; font-style:normal; font-display:swap; }
+  @font-face { font-family:'Circular Std'; src:url('fonts/CircularStd-Bold.woff2') format('woff2'),url('fonts/CircularStd-Bold.woff') format('woff'); font-weight:700; font-style:normal; font-display:swap; }
+  @font-face { font-family:'Circular Std'; src:url('fonts/CircularStd-Black.woff2') format('woff2'),url('fonts/CircularStd-Black.woff') format('woff'); font-weight:800; font-style:normal; font-display:swap; }
+  @font-face { font-family:'Circular Std'; src:url('fonts/CircularStd-Black.woff2') format('woff2'),url('fonts/CircularStd-Black.woff') format('woff'); font-weight:900; font-style:normal; font-display:swap; }
+    </style>
+</head>
+
+
+
+
+
 
 <!DOCTYPE html>
 <html lang="en">
@@ -23,6 +50,163 @@
 
 
 
+
+
+
+
+
+
+
+
+
+
+<section id="lfm-hero-section" class="lfm-hero">
+  <div class="lfm-hero__overlay"></div>
+  
+  <div class="lfm-hero__container">
+    <div class="lfm-hero__content-box">
+      <h1 class="lfm-hero__title">Next Generation<br> Digital Architecture</h1>
+      <p class="lfm-hero__description">
+        New capabilities across work, development, and infrastructure removing every constraint between idea and production.
+      </p>
+      <div class="lfm-hero__actions">
+        <a href="#explore" class="lfm-hero__btn lfm-hero__btn--primary">Explore Platform</a>
+      </div>
+    </div>
+  </div>
+</section>
+
+<style>
+  /* ==========================================================================
+   LFM Hero Section Stylesheet (Scoped under #lfm-hero-section)
+   ========================================================================== */
+
+/* Main Section Wrapper */
+#lfm-hero-section.lfm-hero {
+  position: relative;
+  width: 100%;
+  min-height: 100vh;
+  display: flex;
+  align-items: center;
+  /* Replace the URL below with your premium background image asset */
+  background: url('https://images.pexels.com/photos/17485820/pexels-photo-17485820.png') no-repeat center center / cover;
+  overflow: hidden;
+  font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Helvetica, Arial, sans-serif;
+  box-sizing: border-box;
+}
+
+#lfm-hero-section.lfm-hero *,
+#lfm-hero-section.lfm-hero *::before,
+#lfm-hero-section.lfm-hero *::after {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+}
+
+/* Layout Container */
+#lfm-hero-section .lfm-hero__container {
+  position: relative;
+  width: 100%;
+  max-width: 1200px;
+  margin: 0 auto;
+  padding: 0 24px;
+  z-index: 2;
+  display: flex;
+  justify-content: flex-start;
+}
+
+/* Content Box (Grey Premium Glassmorphism Effect) */
+#lfm-hero-section .lfm-hero__content-box {
+  width: 100%;
+  max-width: 600px;
+ 
+}
+
+/* Typography */
+#lfm-hero-section .lfm-hero__title {
+  font-size: 3rem;
+  font-weight: 500;
+  line-height: 1.2;
+  color: #ffffff;
+  margin-bottom: 16px;
+  letter-spacing: -0.02em;
+}
+
+#lfm-hero-section .lfm-hero__description {
+  font-size: 1.125rem;
+  line-height: 1.6;
+  color: #efefef;
+  font-weight: 400;
+  margin-bottom: 32px;
+}
+
+/* Interactive Elements */
+#lfm-hero-section .lfm-hero__actions {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 16px;
+}
+
+#lfm-hero-section .lfm-hero__btn {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  padding: 14px 28px;
+  font-size: 1rem;
+  font-weight: 400;
+  text-decoration: none;
+  border-radius: 50px;
+  transition: all 0.3s ease;
+}
+
+#lfm-hero-section .lfm-hero__btn--primary {
+  background-color: #ffffff;
+  color: #080d1b;
+}
+
+#lfm-hero-section .lfm-hero__btn--primary:hover {
+  background-color: #0084e0;
+  transform: translateY(-2px);
+  box-shadow: 0 6px 20px rgba(17, 153, 250, 0.6);
+}
+
+/* ==========================================================================
+   Responsive Breakpoints (Mobile First Design Adaptations)
+   ========================================================================== */
+
+/* Media Query for Mobile and Tablets */
+@media (max-width: 768px) {
+  #lfm-hero-section.lfm-hero {
+    min-height: 90vh; /* Better viewport adaptation for mobile headers */
+    padding: 80px 0;
+  }
+
+  #lfm-hero-section .lfm-hero__container {
+    padding: 0 16px;
+  }
+
+  #lfm-hero-section .lfm-hero__content-box {
+    padding: 32px 24px;
+    background: rgba(20, 20, 25, 0.9); /* Slightly more opaque for outdoor readability */
+    border-radius: 12px;
+  }
+
+  #lfm-hero-section .lfm-hero__title {
+    font-size: 2rem;
+    margin-bottom: 12px;
+  }
+
+  #lfm-hero-section .lfm-hero__description {
+    font-size: 1rem;
+    margin-bottom: 24px;
+  }
+  
+  #lfm-hero-section .lfm-hero__btn {
+    width: 100%; /* Full-width button on mobile for optimal thumb-reach */
+    padding: 16px 24px;
+  }
+}
+</style>
 
 
 
