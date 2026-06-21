@@ -1,1867 +1,1291 @@
+
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>My Website</title>
+    
+    <script src="header.js" defer></script>
+    <script src="footer.js" defer></script> 
+</head>
+<body>
+
+    <cronos-header></cronos-header>
+    
+
+</body>
+</html>
+
+
+ <style>
+      @font-face { font-family:'Circular Std'; src:url('fonts/CircularStd-Book.woff2') format('woff2'),url('fonts/CircularStd-Book.woff') format('woff'); font-weight:400; font-style:normal; font-display:swap; }
+        @font-face { font-family:'Circular Std'; src:url('fonts/CircularStd-BookItalic.woff2') format('woff2'),url('fonts/CircularStd-BookItalic.woff') format('woff'); font-weight:400; font-style:italic; font-display:swap; }
+        @font-face { font-family:'Circular Std'; src:url('fonts/CircularStd-Medium.woff2') format('woff2'),url('fonts/CircularStd-Medium.woff') format('woff'); font-weight:500; font-style:normal; font-display:swap; }
+        @font-face { font-family:'Circular Std'; src:url('fonts/CircularStd-Bold.woff2') format('woff2'),url('fonts/CircularStd-Bold.woff') format('woff'); font-weight:600; font-style:normal; font-display:swap; }
+        @font-face { font-family:'Circular Std'; src:url('fonts/CircularStd-Black.woff2') format('woff2'),url('fonts/CircularStd-Black.woff') format('woff'); font-weight:800; font-style:normal; font-display:swap; }
+
+    </style>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 <!DOCTYPE html>
 <html lang="en">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Level Up Your Business - Defcon</title>
+    <title>Cronos — Level Up Program</title>
     
-    <link rel="preconnect" href="https://fonts.googleapis.com">
-    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
-
     <style>
-        /* ------------------------- */
-        /* --- GLOBAL STYLES & SETUP --- */
-        /* ------------------------- */
-
         :root {
-            --primary-gold: #FFD700;
-            --primary-silver: #C0C0C0;
-            --primary-platinum: #E5E4E2;
-            --accent-bronze: #CD7F32;
-            --dark-navy: #0a1929;
-            --pure-black: #000;
-            --pure-white: #fff;
-            --dark-gray: #1a1a1a;
-            --medium-gray: #2a2a2a;
-            --light-gray: #3a3a3a;
-
-            --font-main: 'Inter', sans-serif;
+            --bg-color: #ffffff;
+            --text-main: #000000;
+            --text-muted: #555555;
+            --card-bg-light: #f4f4f6;
+            --card-bg-accent: #b09eff; /* Distinct premium purple-blue accent header */
+            --card-bg-dark: #000000;
+            --text-dark-card: #ffffff;
+            --font-family: 'Circular Std', sans-serif;
+            --border-radius: 12px;
         }
 
         * {
+            box-sizing: border-box;
             margin: 0;
             padding: 0;
-            box-sizing: border-box;
-        }
-
-        html {
-            scroll-behavior: smooth;
         }
 
         body {
-            font-family: var(--font-main);
-            background-color: var(--pure-black);
-            color: var(--pure-white);
+            background-color: var(--bg-color);
+            color: var(--text-main);
+            font-family: var(--font-family);
+            padding: 80px 24px;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+        }
+
+        /* Title Area */
+        .pricing-title {
+            font-size: 3.5rem;
+            font-weight: 500;
+            letter-spacing: -0.05em;
+            margin-bottom: 16px;
+            text-align: center;
+        }
+
+        .pricing-subtitle {
+            font-size: 1.1rem;
+            color: var(--text-muted);
+            text-align: center;
+            margin-bottom: 60px;
+            max-width: 600px;
             line-height: 1.6;
-            -webkit-font-smoothing: antialiased;
-            -moz-osx-font-smoothing: grayscale;
         }
 
-        .level-up-page-container {
+        /* Pricing Grid Workspace */
+        .pricing-grid {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 24px;
+            max-width: 1280px;
             width: 100%;
-            overflow-x: hidden;
+            /* Ensures row items match heights naturally */
+            align-items: stretch; 
         }
 
-        .section-wrapper {
-            width: 100%;
-            padding: 100px 5%;
-            max-width: 1200px;
-            margin: 0 auto;
+        /* Pricing Card Structure */
+        .pricing-card {
+            background-color: #f8f8fa;
+            border-radius: var(--border-radius);
+            overflow: hidden;
+            display: flex;
+            flex-direction: column;
+            height: 100%; /* Forces card container to fill out grid row height completely */
         }
 
-        h1, h2, h3 {
-            font-weight: 700;
+        /* Header Varieties */
+        .card-header {
+            padding: 40px 32px;
+            min-height: 240px;
+            display: flex;
+            flex-direction: column;
+            justify-content: flex-start;
+        }
+
+        .card-header.starter {
+            background-color: #f4f4f6;
+            color: var(--text-main);
+        }
+
+        .card-header.advanced {
+            background-color: var(--card-bg-accent);
+            color: var(--text-main);
+        }
+
+        .card-header.premium {
+            background-color: var(--card-bg-dark);
+            color: var(--text-dark-card);
+        }
+
+        /* Header Inner Typography */
+        .plan-name {
+            font-size: 3.2rem;
+            font-weight: 500;
+            letter-spacing: -0.04em;
+            margin-bottom: 24px;
+            line-height: 1;
+        }
+
+        .plan-price {
+            font-size: 1.5rem;
+            font-weight: 600;
+            letter-spacing: -0.02em;
             line-height: 1.2;
         }
-        
-        h1 { font-size: 3.5rem; }
-        h2 { font-size: 2.5rem; }
-        h3 { font-size: 1.75rem; }
-        p { font-size: 1.1rem; color: #ccc; }
 
-        /* Animation class */
-        .fade-in-up {
-            opacity: 0;
-            transform: translateY(30px);
-            transition: opacity 0.6s ease-out, transform 0.6s ease-out;
+        .plan-subtext {
+            font-size: 0.92rem;
+            font-weight: 400;
+            color: var(--text-muted);
+            margin-top: 4px;
+            line-height: 1.4;
         }
 
-        .fade-in-up.visible {
-            opacity: 1;
-            transform: translateY(0);
+        .premium .plan-subtext {
+            color: #aaaaaa;
         }
 
-        /* ------------------------- */
-        /* --- HERO SECTION (Asymmetrical Layout) --- */
-        /* ------------------------- */
-        
-
-        .hero-section {
-            min-height: 80vh;
-            display: flex;
-            align-items: center;
-            background-color: var(--dark-navy);
-            color: var(--pure-white);
-            background-image: 
-                radial-gradient(circle at 15% 15%, rgba(255, 215, 0, 0.1), transparent 30%),
-                radial-gradient(circle at 85% 75%, rgba(192, 192, 192, 0.15), transparent 40%);
-            background: linear-gradient(rgba(0, 0, 0, 0.7), rgba(0, 0, 0, 0.7)), url('https://images.unsplash.com/photo-1506744038136-46273834b3fb?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1470&q=80') no-repeat center center/cover;
-            position: relative;
-        }
-
-        .hero-content {
-            display: grid;
-            grid-template-columns: 1fr 1fr;
-            gap: 40px;
-            align-items: center;
-        }
-
-        .hero-text {
-            z-index: 2;
-        }
-
-        .hero-text .subtitle {
+        .premium .plan-price-custom {
+            font-size: 1.35rem;
             font-weight: 600;
-            color: var(--primary-gold);
-            letter-spacing: 1px;
-            margin-bottom: 15px;
-            text-transform: uppercase;
+            line-height: 1.4;
         }
 
-        .hero-text h1 {
-            margin-bottom: 20px;
-        }
-
-        .hero-text p {
-            font-size: 1.2rem;
-            color: rgba(255, 255, 255, 0.8);
-            margin-bottom: 30px;
-        }
-
-        .hero-cta-button {
-            display: inline-block;
-            background: linear-gradient(135deg, var(--primary-gold), #FFA500);
-            color: var(--pure-black);
-            margin-top: 1.5rem;
-            padding: 15px 35px;
-            border-radius: 50px;
-            text-decoration: none;
-            font-weight: 600;
-            text-align: center;
-            transition: transform 0.3s ease, box-shadow 0.3s ease;
-        }
-
-        .hero-cta-button:hover {
-            transform: translateY(-3px);
-            box-shadow: 0 10px 20px rgba(255, 215, 0, 0.4);
-        }
-
-        .hero-visual {
-            position: relative;
-            height: 100%;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-        }
-        
-        .hero-visual-shape {
-            width: 350px;
-            height: 350px;
-            background: linear-gradient(45deg, var(--primary-gold), #FFA500);
-            border-radius: 30% 70% 70% 30% / 30% 30% 70% 70%;
-            animation: morph 8s ease-in-out infinite;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            font-size: 5rem;
-            color: var(--dark-navy);
-            font-weight: 800;
-        }
-
-        @keyframes morph {
-            0% { border-radius: 30% 70% 70% 30% / 30% 30% 70% 70%; transform: rotate(0deg); }
-            50% { border-radius: 60% 40% 30% 70% / 70% 50% 50% 30%; transform: rotate(180deg); }
-            100% { border-radius: 30% 70% 70% 30% / 30% 30% 70% 70%; transform: rotate(360deg); }
-        }
-
-        /* ------------------------- */
-        /* --- PLANS SECTION (F-Layout Implied) --- */
-        /* ------------------------- */
-
-        .plans-section {
-            background-color: var(--pure-black);
-        }
-        
-        .plans-intro {
-            text-align: center;
-            max-width: 800px;
-            margin: 0 auto 60px auto;
-        }
-
-        .plans-intro h2 {
-            margin-bottom: 15px;
-        }
-
-        .plan-tabs-container {
-            display: flex;
-            justify-content: center;
-            margin-bottom: 40px;
-            background: var(--medium-gray);
-            padding: 10px;
-            border-radius: 50px;
-            box-shadow: 0 5px 15px rgba(0,0,0,0.3);
-        }
-
-        .plan-tab-button {
-            padding: 12px 30px;
-            border: none;
-            background: transparent;
-            font-family: var(--font-main);
-            font-size: 1rem;
-            font-weight: 600;
-            color: var(--pure-white);
-            cursor: pointer;
-            border-radius: 50px;
-            transition: all 0.3s ease;
-        }
-
-        .plan-tab-button.active {
-            background: linear-gradient(135deg, var(--primary-gold), #FFA500);
-            color: var(--pure-black);
-            box-shadow: 0 5px 15px rgba(255, 215, 0, 0.4);
-        }
-
-        .plan-content {
-            display: none;
-        }
-
-        .plan-content.active {
-            display: block;
-        }
-
-        .plan-details-grid {
-            display: grid;
-            grid-template-columns: 1fr 1fr;
-            gap: 50px;
-            align-items: center;
-        }
-
-        .plan-description .plan-badge {
-            display: inline-block;
-            background: linear-gradient(135deg, var(--primary-gold), #FFA500);
-            color: var(--pure-black);
-            padding: 5px 15px;
-            border-radius: 20px;
-            font-weight: 600;
-            font-size: 0.875rem;
-            margin-bottom: 15px;
-            letter-spacing: 0.04em;
-            text-transform: uppercase;
-        }
-        
-        .plan-description h3 {
-            margin-bottom: 15px;
-            color: var(--pure-white);
-        }
-        
-        .plan-description p {
-            margin-bottom: 25px;
-        }
-
-        .plan-features-list {
-            list-style: none;
-            padding: 2rem 2rem;
-            display: grid;
-            grid-template-columns: 1fr;
-            gap: 15px;
-            border-radius: 20px;
-            width: 390px;
-            background: linear-gradient(145deg, #1a1a1a, #2a2a2a);
-            box-shadow: 0 10px 30px rgba(255, 255, 255, 0);
-            border: 1px solid rgba(255, 255, 255, 0.1);
-        }
-
-        .plan-features-list li {
-            padding-left: 30px;
-            position: relative;
-            font-weight: 500;
-        }
-
-        .plan-features-list li::before {
-            content: '✔';
-            position: absolute;
-            left: 0;
-            color: var(--primary-gold);
-            font-weight: bold;
-        }
-
-        /* ------------------------- */
-        /* --- PROCESS SECTION (Z-Layout) --- */
-        /* ------------------------- */
-
-        .process-section {
-            background-color: var(--pure-black);
-        }
-
-        .process-intro {
-            text-align: center;
-            max-width: 700px;
-            margin: 0 auto 80px auto;
-        }
-
-        .process-grid {
-            display: grid;
-            grid-template-columns: repeat(4, 1fr);
-            gap: 30px;
-            position: relative;
-        }
-        
-        .process-step {
-            text-align: center;
-            padding: 20px;
-            background: var(--medium-gray);
-            border-radius: 15px;
-            box-shadow: 0 5px 15px rgba(0,0,0,0.3);
-        }
-
-        .process-icon {
-            width: 80px;
-            height: 80px;
-            border-radius: 50%;
-            background: linear-gradient(135deg, var(--primary-gold), #FFA500);
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            margin: 0 auto 20px auto;
-            border: 2px solid var(--primary-gold);
-            font-size: 2rem;
-            color: var(--pure-black);
-            font-weight: bold;
-        }
-
-        .process-step h4 {
-            font-size: 1.2rem;
-            margin-bottom: 10px;
-        }
-
-        .process-step p {
-            font-size: 0.95rem;
-        }
-
-        /* Z-Layout Connecting Lines */
-        .process-grid::before {
-            content: '';
-            position: absolute;
-            top: 40px;
-            left: 12.5%;
-            width: 75%;
-            height: 2px;
-            background: repeating-linear-gradient(90deg, var(--primary-gold), var(--primary-gold) 5px, transparent 5px, transparent 10px);
-            z-index: -1;
-        }
-        
-        /* ------------------------- */
-        /* --- COMPARISON TABLE SECTION --- */
-        /* ------------------------- */
-
-        .comparison-section {
-            background-color: var(--dark-navy);
-            color: var(--pure-white);
-        }
-
-        .comparison-intro {
-            text-align: center;
-            margin-bottom: 50px;
-        }
-        
-        .comparison-intro h2 {
-            margin-bottom: 10px;
-        }
-
-        .comparison-intro p {
-            color: rgba(255,255,255,0.7);
-        }
-
-        .comparison-table-wrapper {
-            overflow-x: auto;
-            border-radius: 15px;
-            box-shadow: 0 10px 30px rgba(0,0,0,0.5);
-        }
-        
-        .comparison-table {
-            width: 100%;
-            border-collapse: collapse;
-            min-width: 900px;
-            background: var(--medium-gray);
-        }
-
-        .comparison-table th, .comparison-table td {
-            padding: 20px;
-            text-align: left;
-            border: 1px solid rgba(255, 255, 255, 0.1);
-        }
-
-        .comparison-table th {
-            font-size: 1.1rem;
-            font-weight: 600;
-        }
-        
-        .comparison-table thead th {
-            text-align: center;
-            font-size: 1.3rem;
-            background: var(--dark-gray);
-        }
-        
-        .comparison-table tbody th {
-            text-align: left;
-            font-weight: 500;
-        }
-
-        .comparison-table td {
-            text-align: center;
-            font-size: 1.2rem;
-        }
-
-        .comparison-table .feature-category {
+        .premium .plan-price-custom strong {
             font-weight: 700;
-            background: linear-gradient(135deg, var(--primary-gold), #FFA500);
-            font-size: 1.1rem;
-            color: var(--pure-black);
-        }
-        
-        .comparison-table .check {
-            color: var(--primary-gold);
-        }
-        .comparison-table .cross {
-            color: #dc3545;
+            text-decoration: underline;
+            cursor: pointer;
         }
 
-        /* ------------------------- */
-        /* --- FINAL CTA SECTION --- */
-        /* ------------------------- */
-
-        .final-cta-section {
-            background-color: var(--pure-black);
-        }
-        
-        .final-cta-content {
-            background: linear-gradient(135deg, var(--dark-navy) 0%, #1a2b3c 100%);
-            color: white;
-            padding: 80px;
-            border-radius: 20px;
-            text-align: center;
-            box-shadow: 0 20px 40px rgba(0,0,0,0.3);
-            border: 1px solid rgba(255, 215, 0, 0.2);
-        }
-
-        .final-cta-content h2 {
-            margin-bottom: 20px;
-        }
-        
-        .final-cta-content p {
-            max-width: 600px;
-            margin: 0 auto 30px auto;
-            color: rgba(255,255,255,0.8);
-        }
-
-        /* ------------------------- */
-        /* --- RESPONSIVE DESIGN --- */
-        /* ------------------------- */
-
-        @media (max-width: 992px) {
-            h1 { font-size: 2.8rem; }
-            h2 { font-size: 2rem; }
-
-            .hero-content {
-                grid-template-columns: 1fr;
-                text-align: center;
-            }
-
-            .hero-visual {
-                display: none;
-            }
-
-            .plan-details-grid {
-                grid-template-columns: 1fr;
-            }
-
-            .plan-features-list {
-                margin-top: 30px;
-            }
-
-            .process-grid {
-                grid-template-columns: 1fr 1fr;
-            }
-            .process-grid::before { display: none; }
-        }
-        
-        @media (max-width: 768px) {
-            .section-wrapper { padding: 60px 5%; }
-            .plan-tabs-container {
-                flex-direction: column;
-                border-radius: 10px;
-                padding: 10px;
-            }
-            .plan-tab-button { width: 100%; margin: 5px 0; }
-            .plan-features-list { grid-template-columns: 1fr; }
-            .process-grid { grid-template-columns: 1fr; }
-            .final-cta-content { padding: 50px 30px; }
-        }
-
-        .plan-benefits {
-            margin: 25px 0;
-        }
-
-        .plan-benefits h4 {
-            font-size: 1.1rem;
-            margin-bottom: 10px;
-            color: var(--pure-white);
-        }
-
-        .plan-benefits ul {
-            list-style: none;
-            padding-left: 0;
-        }
-
-        .plan-benefits li {
-            padding: 8px 0;
-            padding-left: 40px;
-            position: relative;
-            font-weight: 500;
-            border-bottom: 1px solid var(--light-gray);
-            padding-bottom: 14px;
-            padding-top: 14px;
-        }
-
-        .plan-benefits li::before {
-            content: '';
-            position: absolute;
-            left: 0;
-            top: 50%;
-            transform: translateY(-50%);
-            width: 28px;
-            height: 28px;
-            background: var(--primary-gold);
-            border-radius: 50%;
+        /* Card Body Features Area */
+        .card-body {
+            padding: 40px 32px;
+            flex-grow: 1; /* Instructs the body container to expand vertically and take all leftover row space */
             display: flex;
-            align-items: center;
-            justify-content: center;
+            flex-direction: column;
         }
 
-        .plan-benefits li::after {
-            content: '✔';
-            position: absolute;
-            left: 8px;
-            top: 50%;
-            transform: translateY(-50%);
-            color: var(--pure-black);
-            font-weight: bold;
-            font-size: 0.9rem;
+        .body-headline {
+            font-size: 1.15rem;
+            font-weight: 600;
+            letter-spacing: -0.02em;
+            margin-bottom: 28px;
         }
 
-        /* Metallic plan styling */
-        .plan-personal .plan-badge {
-            background: linear-gradient(135deg, var(--primary-silver), #A0A0A0);
+        /* Section Feature Groupings */
+        .feature-group {
+            margin-bottom: 28px;
         }
-        
-        .plan-startup .plan-badge {
-            background: linear-gradient(135deg, var(--primary-gold), #FFA500);
+
+        .feature-group:last-child {
+            margin-bottom: 0;
         }
-        
-        .plan-pro .plan-badge {
-            background: linear-gradient(135deg, var(--primary-platinum), #C0C0C0);
+
+        .group-title {
+            font-size: 0.85rem;
+            font-weight: 700;
+            text-transform: uppercase;
+            letter-spacing: 0.05em;
+            color: var(--text-muted);
+            margin-bottom: 16px;
         }
-        
-        .plan-enterprise .plan-badge {
-            background: linear-gradient(135deg, var(--accent-bronze), #8B4513);
+
+        /* Features List */
+        .features-list {
+            list-style: none;
         }
-        
-        .plan-personal .hero-cta-button {
-            background: linear-gradient(135deg, var(--primary-silver), #A0A0A0);
+
+        .feature-item {
+            display: flex;
+            align-items: flex-start;
+            font-size: 0.92rem;
+            line-height: 1.5;
+            color: #333333;
+            margin-bottom: 14px;
         }
-        
-        .plan-startup .hero-cta-button {
-            background: linear-gradient(135deg, var(--primary-gold), #FFA500);
+
+        .feature-item:last-child {
+            margin-bottom: 0;
         }
-        
-        .plan-pro .hero-cta-button {
-            background: linear-gradient(135deg, var(--primary-platinum), #C0C0C0);
+
+        /* Purple checkmark reproduction */
+        .feature-item::before {
+            content: '✓';
+            color: #8b5cf6; 
+            font-weight: 700;
+            margin-right: 12px;
+            font-size: 1rem;
+            flex-shrink: 0;
+            line-height: 1.3;
         }
-        
-        .plan-enterprise .hero-cta-button {
-            background: linear-gradient(135deg, var(--accent-bronze), #8B4513);
+
+        /* Mobile Responsive Breakpoints */
+        @media (max-width: 1024px) {
+            .pricing-grid {
+                grid-template-columns: 1fr;
+                gap: 32px;
+                max-width: 500px;
+            }
+
+            .pricing-title {
+                font-size: 2.8rem;
+                margin-bottom: 12px;
+            }
+
+            .card-header {
+                min-height: auto;
+            }
         }
     </style>
 </head>
 <body>
 
-    <main class="level-up-page-container">
+    <h1 class="pricing-title">Level Up</h1>
+    <p class="pricing-subtitle">Special, end-to-end bundled solutions engineered to catalyze scaling models across early infrastructure, pro execution, and enterprise transformation ecosystems.</p>
 
-        <section class="hero-section">
-            <div class="section-wrapper hero-content">
-                <div class="hero-text fade-in-up">
-                    <span class="subtitle">Defcon Growth Engine</span>
-                    <h1>Beyond Services. Your Evolution.</h1>
-                    <p>Stop buying individual services. Invest in a holistic growth strategy. Our "Level Up" plans are comprehensive solutions designed to propel your business to the next stage, whatever that may be.</p>
-                    <a href="#plans" class="hero-cta-button">Find Your Level</a>
-                </div>
-                <div class="hero-visual fade-in-up">
-                    <div class="hero-visual-shape">UP</div>
-                </div>
+    <main class="pricing-grid">
+
+        <section class="pricing-card">
+            <div class="card-header starter">
+                <h2 class="plan-name">Startups</h2>
+                <div class="plan-price">$750/month</div>
+                <div class="plan-subtext">or $7,650 upfront annually (15% discount)</div>
             </div>
-        </section>
-
-        <section id="plans" class="plans-section">
-            <div class="section-wrapper">
-                <div class="plans-intro fade-in-up">
-                    <h2>Find Your Level. Ignite Your Growth.</h2>
-                    <p>We've packaged our expertise into four distinct levels. Each is a powerful engine built with the precise combination of technology, marketing, and infrastructure you need right now. Select a level to see the blueprint for your success.</p>
-                </div>
-
-                <div class="plan-tabs-container fade-in-up">
-                    <button class="plan-tab-button active" data-plan="personal">Personal</button>
-                    <button class="plan-tab-button" data-plan="startup">Startup</button>
-                    <button class="plan-tab-button" data-plan="pro">Pro Business</button>
-                    <button class="plan-tab-button" data-plan="enterprise">Enterprise</button>
-                </div>
-
-                <div id="plan-personal" class="plan-content active fade-in-up plan-personal">
-                    <div class="plan-details-grid">
-                        <div class="plan-description">
-                            <span class="plan-badge">Foundation</span>
-                            <h3>The Personal Brand Engine</h3>
-                            <p>Perfect for consultants, freelancers, and creators. Establish a professional digital identity, automate your client intake, and build a platform to showcase your expertise and attract opportunities.</p>
-                        
-                            <div class="plan-benefits">
-                                <h4>Key Benefits:</h4>
-                                <ul>
-                                    <li>Establish professional credibility instantly</li>
-                                    <li>Automate client inquiries and lead generation</li>
-                                    <li>Showcase your work 24/7 to global audience</li>
-                                    <li>Streamline your personal brand management</li>
-                                </ul>
-                            </div>
-                        </div>
-                        <div class="plan-features">
-                            <ul class="plan-features-list">
-                                <span style="letter-spacing: 0.18em; font-size: 0.9rem; color: var(--primary-silver); text-transform: uppercase; font-weight: 700; border-bottom: 1px solid #858585; padding-bottom: 10px;">Personal</span>
-                                <h2 style="color: var(--pure-white); font-size: 2.4rem; font-weight: 800;">Starter</h2>
-                                <p style="font-size: 0.95rem; font-weight: 400;">This is the starting point for your personal brand journey. Give your brand the visibility it deserves with a tailored online presence.</p>
-                                <span style="font-size: 2.4rem; font-weight: 700; color: var(--primary-silver); margin-bottom: 20px; display: block;">R1200 <span style="font-size: 0.9rem; color: #ccc; font-weight: 600;">/month</span></span>
-                                <li>Portfolio Web Application</li>
-                                <li>Graphic Design (Branding Kit)</li>
-                                <li>Content Writing (Core Pages)</li>
-                                <li>IT Consulting (1-on-1)</li>
-                                <li>Smart Home Tech Setup</li>
-                                <li>Basic SEO & Analytics</li>
-                                <a href="#" class="hero-cta-button">Get Started</a>
-                            </ul>
-                        </div>
-                    </div>
-                </div>
-
-                <div id="plan-startup" class="plan-content plan-startup">
-                    <div class="plan-details-grid">
-                        <div class="plan-description">
-                            <span class="plan-badge">Launchpad</span>
-                            <h3>The Startup Launch Engine</h3>
-                            <p>You have the idea, we build the machine. This package is designed for rapid market entry. We deliver a scalable MVP, foundational marketing, and the cloud infrastructure to grow without limits.</p>
-                            <div class="plan-benefits">
-                                <h4>Key Benefits:</h4>
-                                <ul>
-                                    <li>Launch to market 3x faster than traditional development</li>
-                                    <li>Validate your business idea with real users quickly</li>
-                                    <li>Scale seamlessly as your user base grows</li>
-                                    <li>Attract investors with professional MVP</li>
-                                </ul>
-                            </div>
-                        </div>
-                        <div class="plan-features">
-                            <ul class="plan-features-list">
-                                <span style="letter-spacing: 0.08em; font-size: 0.9rem; color: var(--primary-gold); text-transform: uppercase; font-weight: 700;">Startup</span>
-                                <h2 style="color: var(--pure-white); font-size: 2.2rem; font-weight: 800;">Launch</h2>
-                                <p style="font-size: 0.95rem; font-weight: 500;">This is the starting point for your startup journey. Give your business the launchpad it needs with a scalable MVP and foundational marketing.</p>
-                                <span style="font-size: 2.2rem; font-weight: 700; color: var(--primary-gold); margin-bottom: 20px; display: block;">R2500 <span style="font-size: 0.9rem; color: #ccc; font-weight: 600;">/month</span></span>
-                                
-                                <li>MVP Mobile/Web App Dev</li>
-                                <li>Cloud Computing Setup (AWS/GCP)</li>
-                                <li>Digital Marketing Campaign</li>
-                                <li>API Development (Core)</li>
-                                <li>IT Support Infrastructure</li>
-                                <li>Multimedia Production (Launch Video)</li>
-                                <a href="#" class="hero-cta-button">Get Started</a>
-                            </ul>
-                        </div>
-                    </div>
-                </div>
-
-                <div id="plan-pro" class="plan-content plan-pro">
-                     <div class="plan-details-grid">
-                        <div class="plan-description">
-                            <span class="plan-badge">Accelerator</span>
-                            <h3>The Pro Business Engine</h3>
-                            <p>For established businesses ready to scale. We optimize your operations, expand your digital footprint, and implement automation to increase efficiency and market share. This is about transforming operations into a competitive advantage.</p>
-                            <div class="plan-benefits">
-                                <h4>Key Benefits:</h4>
-                                <ul>
-                                    <li>Increase operational efficiency by 40-60%</li>
-                                    <li>Expand market reach through digital channels</li>
-                                    <li>Reduce manual workload with smart automation</li>
-                                    <li>Gain competitive advantage with advanced technology</li>
-                                </ul>
-                            </div>
-                        </div>
-                        <div class="plan-features">
-                            <ul class="plan-features-list">
-                                <span style="letter-spacing: 0.08em; font-size: 0.9rem; color: var(--primary-platinum); text-transform: uppercase; font-weight: 700;">Pro Business</span>
-                                <h2 style="color: var(--pure-white); font-size: 2.2rem; font-weight: 800;">Scale</h2>
-                                <p style="font-size: 0.95rem; font-weight: 500;">This is the acceleration point for your business. Transform your operations with advanced automation and optimization.</p>
-                                <span style="font-size: 2.2rem; font-weight: 700; color: var(--primary-platinum); margin-bottom: 20px; display: block;">R4500 <span style="font-size: 0.9rem; color: #ccc; font-weight: 600;">/month</span></span>
-                                
-                                <li>E-commerce Platform Dev</li>
-                                <li>DevOps & CI/CD Implementation</li>
-                                <li>Advanced Digital Marketing</li>
-                                <li>Automation & AI Solutions</li>
-                                <li>Ongoing IT Support & Consulting</li>
-                                <li>Advanced API Development</li>
-                                <a href="#" class="hero-cta-button">Get Started</a>
-                            </ul>
-                        </div>
-                    </div>
-                </div>
-
-                <div id="plan-enterprise" class="plan-content plan-enterprise">
-                    <div class="plan-details-grid">
-                        <div class="plan-description">
-                            <span class="plan-badge">Dominion</span>
-                            <h3>The Enterprise Engine</h3>
-                            <p>Lead your industry through technological dominance. This is a bespoke partnership focused on innovation, large-scale system architecture, enterprise-grade AI integration, and comprehensive multimedia advertising campaigns.</p>
-                            <div class="plan-benefits">
-                                <h4>Key Benefits:</h4>
-                                <ul>
-                                    <li>Achieve market leadership through innovation</li>
-                                    <li>Future-proof your technology infrastructure</li>
-                                    <li>Drive digital transformation across organization</li>
-                                    <li>Maximize ROI with enterprise-grade solutions</li>
-                                </ul>
-                            </div>
-                        </div>
-                        <div class="plan-features">
-                            <ul class="plan-features-list">
-                                <span style="letter-spacing: 0.08em; font-size: 0.9rem; color: var(--accent-bronze); text-transform: uppercase; font-weight: 700;">Enterprise</span>
-                                <h2 style="color: var(--pure-white); font-size: 2.2rem; font-weight: 800;">Dominate</h2>
-                                <p style="font-size: 0.95rem; font-weight: 500;">This is the domination point for your industry. Lead through technological innovation and enterprise-grade solutions.</p>
-                                <span style="font-size: 2.2rem; font-weight: 700; color: var(--accent-bronze); margin-bottom: 20px; display: block;">R8500 <span style="font-size: 0.9rem; color: #ccc; font-weight: 600;">/month</span></span>
-                                
-                                <li>Custom Enterprise Software</li>
-                                <li>Full Cloud & IT Infrastructure Mgmt</li>
-                                <li>Enterprise AI & Automation</li>
-                                <li>Full-scale Advertising Campaigns</li>
-                                <li>Dedicated DevOps Team</li>
-                                <li>Priority IT & Strategic Consulting</li>
-                                <a href="#" class="hero-cta-button">Get Started</a>
-                            </ul>
-                        </div>
-                    </div>
-                </div>
-
-            </div>
-        </section>
-
-
-         <!-- ==================== INTRO SECTION - Z LAYOUT ==================== -->
-<section class="intro-section">
-    <div class="container">
-        <!-- Layout 1 -->
-        <div class="z-layout">
-            <div class="intro-content">
-                <h2>Designed for Growth at Every Stage</h2>
-                <p>
-                    Whether you're an individual creator, a growing startup, or an established enterprise, DEFCON's Level Up tiers provide the exact services and support you need to scale efficiently.
-                </p>
-                <ul class="feature-list">
-                    <li>Comprehensive service packages across all divisions</li>
-                    <li>Scalable solutions that grow with your business</li>
-                    <li>Expert support from strategy to execution</li>
-                    <li>Premium results without the enterprise complexity</li>
-                </ul>
-            </div>
-            <div class="intro-visual">
-                <div class="intro-visual-pattern">
-                    <img src="https://images.unsplash.com/photo-1496205856088-91b021308c54?q=80&w=1120&auto=format&fit=crop&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D" alt="Growth at Every Stage" />
-                </div>
-            </div>
-        </div>
-
-        <!-- Layout 2 -->
-        <div class="z-layout">
-            <div class="intro-content">
-                <h2>Three Divisions, Infinite Possibilities</h2>
-                <p>
-                    DEFCON's unique approach combines Software Development, IT Infrastructure, and Marketing & Creative Studio services into seamless growth packages that deliver measurable results.
-                </p>
-                <ul class="feature-list">
-                    <li>Full-stack development capabilities</li>
-                    <li>Enterprise-grade infrastructure management</li>
-                    <li>Award-winning creative and marketing</li>
-                    <li>Integrated solutions for maximum impact</li>
-                </ul>
-            </div>
-            <div class="intro-visual">
-                <div class="intro-visual-pattern">
-                    <img src="https://images.unsplash.com/photo-1586592527426-1218645a16cc?q=80&w=1074&auto=format&fit=crop&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D" alt="Three Divisions" />
-                </div>
-            </div>
-        </div>
-
-        <!-- Layout 3 -->
-        <div class="z-layout">
-            <div class="intro-content">
-                <h2>Proven Results Across Industries</h2>
-                <p>
-                    Our methodology has been tested and refined across multiple sectors, delivering consistent growth and transformation for businesses of all sizes and industries.
-                </p>
-                <ul class="feature-list">
-                    <li>100+ successful project implementations</li>
-                    <li>Average 3.2x ROI within first year</li>
-                    <li>95% client retention rate</li>
-                    <li>Industry-specific expertise and insights</li>
-                </ul>
-            </div>
-            <div class="intro-visual">
-                <div class="intro-visual-pattern">
-                    <img src="https://images.unsplash.com/photo-1656231906673-23f902cf31e4?q=80&w=1062&auto=format&fit=crop&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D" alt="Proven Results" />
-                </div>
-            </div>
-        </div>
-
-        <!-- Layout 4 -->
-        <div class="z-layout">
-            <div class="intro-content">
-                <h2>Future-Proof Your Business</h2>
-                <p>
-                    Stay ahead of the curve with cutting-edge technology and forward-thinking strategies that prepare your business for tomorrow's challenges and opportunities.
-                </p>
-                <ul class="feature-list">
-                    <li>AI-powered automation and insights</li>
-                    <li>Scalable cloud infrastructure</li>
-                    <li>Continuous innovation and updates</li>
-                    <li>Strategic technology roadmap planning</li>
-                </ul>
-            </div>
-            <div class="intro-visual">
-                <div class="intro-visual-pattern">
-                    <img src="https://images.unsplash.com/photo-1638414154639-0fbc5bceb80f?q=80&w=1170&auto=format&fit=crop&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D" alt="Future-Proof Business" />
-                </div>
-            </div>
-        </div>
-    </div>
-</section>
-
-<style>
-    /* ==================== INTRO SECTION - Z LAYOUT ==================== */
-    .intro-section {
-        padding: 120px 20px;
-        background: var(--white, #000000);
-    }
-
-    .container {
-        max-width: 1200px;
-        margin: 0 auto;
-    }
-
-    .z-layout {
-        display: grid;
-        grid-template-columns: 1fr 1fr;
-        gap: 80px;
-        align-items: center;
-        margin-bottom: 100px;
-    }
-
-    .z-layout:last-child {
-        margin-bottom: 0;
-    }
-
-    .z-layout:nth-child(even) {
-        direction: rtl;
-    }
-
-    .z-layout:nth-child(even) > * {
-        direction: ltr;
-    }
-
-    .intro-content h2 {
-        font-size: 48px;
-        font-weight: 700;
-        color: var(--dark, #ffffff);
-        margin-bottom: 24px;
-        line-height: 1.2;
-        letter-spacing: -0.04em;
-    }
-
-    .intro-content p {
-        font-size: 18px;
-        color: #666;
-        margin-bottom: 32px;
-        line-height: 1.8;
-    }
-
-    .feature-list {
-        list-style: none;
-    }
-
-    .feature-list li {
-        display: flex;
-        align-items: center;
-        gap: 16px;
-        margin-bottom: 16px;
-        font-size: 16px;
-        color: var(--dark, #e7e7e7);
-    }
-
-    .feature-list li::before {
-        content: '✓';
-        display: flex;
-        align-items: center;
-        justify-content: center;
-        width: 28px;
-        height: 28px;
-        background: var(--primary, #ff8c00);
-        color: var(--white, #ffffff);
-        border-radius: 50%;
-        font-weight: 700;
-        flex-shrink: 0;
-    }
-
-    .intro-visual {
-        position: relative;
-        height: 400px;
-        
-        border-radius: 16px;
-        overflow: hidden;
-        display: flex;
-        align-items: center;
-        justify-content: center;
-    }
-
-    .intro-visual-pattern {
-        position: relative;
-        width: 100%;
-        height: 100%;
-        background-image: 
-            repeating-linear-gradient(45deg, transparent, transparent 35px, rgba(255,255,255,.05) 35px, rgba(255,255,255,.05) 70px);
-        display: flex;
-        align-items: center;
-        justify-content: center;
-    }
-
-    .intro-visual-pattern img {
-        width: 100%;
-        height: 100%;
-        object-fit: cover;
-        object-position: center;
-    }
-
-    /* Add subtle animation on hover */
-    .intro-visual {
-        transition: transform 0.3s ease, box-shadow 0.3s ease;
-    }
-
-    /* Responsive Design */
-    @media (max-width: 968px) {
-        .z-layout {
-            grid-template-columns: 1fr;
-            gap: 50px;
-            margin-bottom: 80px;
-        }
-
-        .z-layout:nth-child(even) {
-            direction: ltr;
-        }
-
-        .intro-content h2 {
-            font-size: 36px;
-        }
-
-        .intro-visual {
-            height: 300px;
-            order: -1;
-        }
-    }
-
-    @media (max-width: 640px) {
-        .intro-section {
-            padding: 80px 20px;
-        }
-
-        .z-layout {
-            gap: 40px;
-            margin-bottom: 60px;
-        }
-
-        .intro-content h2 {
-            font-size: 28px;
-        }
-
-        .intro-content p {
-            font-size: 16px;
-        }
-
-        .intro-visual {
-            height: 250px;
-        }
-    }
-</style>
-        
-        <section class="process-section">
-            <div class="section-wrapper">
-                <div class="process-intro fade-in-up">
-                    <h2>Your Growth Path, Simplified</h2>
-                    <p>Leveling up with Defcon is a strategic, transparent process designed for maximum impact and minimal friction.</p>
-                </div>
-                <div class="process-grid">
-                    <div class="process-step fade-in-up">
-                        <div class="process-icon">1</div>
-                        <h4>Discover & Strategize</h4>
-                        <p>We align with your vision, analyze your current state, and define clear, measurable goals for your chosen level.</p>
-                    </div>
-                    <div class="process-step fade-in-up" style="transition-delay: 0.1s;">
-                        <div class="process-icon">2</div>
-                        <h4>Design & Develop</h4>
-                        <p>Our teams collaborate to build your solution—from code and infrastructure to creative assets and marketing campaigns.</p>
-                    </div>
-                    <div class="process-step fade-in-up" style="transition-delay: 0.2s;">
-                        <div class="process-icon">3</div>
-                        <h4>Deploy & Launch</h4>
-                        <p>We execute a seamless launch, ensuring all systems are robust, scalable, and ready for your users and customers.</p>
-                    </div>
-                    <div class="process-step fade-in-up" style="transition-delay: 0.3s;">
-                        <div class="process-icon">4</div>
-                        <h4>Optimize & Evolve</h4>
-                        <p>Your journey doesn't end at launch. We monitor performance, provide support, and identify the next steps to continue your ascent.</p>
-                    </div>
-                </div>
-            </div>
-        </section>
-
-        <div class="comparison-section">
-    <div class="section-wrapper">
-        <div class="comparison-intro fade-in-up">
-            <h2>Enterprise-Grade Feature Comparison</h2>
-            <p>Comprehensive analysis of capabilities across all service tiers. Compare features, limitations, and scalability options.</p>
-        </div>
-        
-        <div class="comparison-table-wrapper fade-in-up">
-            <div class="comparison-table-container">
-                <!-- Table Header -->
-                <div class="table-header">
-                    <div class="feature-column">
-                        <h3>Features & Capabilities</h3>
-                    </div>
-                    <div class="plan-column personal-plan">
-                        <div class="plan-header">
-                            <div class="plan-badge personal">Personal</div>
-                            <div class="plan-price">R1,200<span>/month</span></div>
-                            <div class="plan-desc">Individual Professional</div>
-                        </div>
-                    </div>
-                    <div class="plan-column startup-plan">
-                        <div class="plan-header">
-                            <div class="plan-badge startup">Startup</div>
-                            <div class="plan-price">R2,500<span>/month</span></div>
-                            <div class="plan-desc">Early Stage Business</div>
-                        </div>
-                    </div>
-                    <div class="plan-column pro-plan">
-                        <div class="plan-header">
-                            <div class="plan-badge pro">Pro Business</div>
-                            <div class="plan-price">R4,500<span>/month</span></div>
-                            <div class="plan-desc">Growing Organization</div>
-                        </div>
-                    </div>
-                    <div class="plan-column enterprise-plan">
-                        <div class="plan-header">
-                            <div class="plan-badge enterprise">Enterprise</div>
-                            <div class="plan-price">R8,500<span>/month</span></div>
-                            <div class="plan-desc">Market Leader</div>
-                        </div>
-                    </div>
-                </div>
+            <div class="card-body">
+                <h3 class="body-headline">What's included in this plan:</h3>
                 
-                <!-- Table Body -->
-                <div class="table-body">
-                    <!-- Development Category -->
-                    <div class="category-row">
-                        <div class="category-header">
-                            <div class="category-icon">💻</div>
-                            <h4>Software Development</h4>
-                        </div>
-                        <div class="plan-features personal-plan">
-                            <div class="feature-status limited">Limited</div>
-                        </div>
-                        <div class="plan-features startup-plan">
-                            <div class="feature-status basic">Basic</div>
-                        </div>
-                        <div class="plan-features pro-plan">
-                            <div class="feature-status advanced">Advanced</div>
-                        </div>
-                        <div class="plan-features enterprise-plan">
-                            <div class="feature-status enterprise">Enterprise</div>
-                        </div>
-                    </div>
-                    
-                    <div class="feature-row">
-                        <div class="feature-name">
-                            <span class="feature-title">Web Application</span>
-                            <span class="feature-desc">Custom responsive web application</span>
-                        </div>
-                        <div class="feature-value personal-plan">
-                            <div class="feature-indicator yes">✓</div>
-                            <span>Portfolio Site</span>
-                        </div>
-                        <div class="feature-value startup-plan">
-                            <div class="feature-indicator yes">✓</div>
-                            <span>MVP Application</span>
-                        </div>
-                        <div class="feature-value pro-plan">
-                            <div class="feature-indicator yes">✓</div>
-                            <span>E-commerce Platform</span>
-                        </div>
-                        <div class="feature-value enterprise-plan">
-                            <div class="feature-indicator yes">✓</div>
-                            <span>Custom Enterprise Platform</span>
-                        </div>
-                    </div>
-                    
-                    <div class="feature-row">
-                        <div class="feature-name">
-                            <span class="feature-title">Mobile Application</span>
-                            <span class="feature-desc">Native iOS/Android development</span>
-                        </div>
-                        <div class="feature-value personal-plan">
-                            <div class="feature-indicator no">✗</div>
-                            <span>Not Included</span>
-                        </div>
-                        <div class="feature-value startup-plan">
-                            <div class="feature-indicator yes">✓</div>
-                            <span>Cross-platform MVP</span>
-                        </div>
-                        <div class="feature-value pro-plan">
-                            <div class="feature-indicator yes">✓</div>
-                            <span>Native Applications</span>
-                        </div>
-                        <div class="feature-value enterprise-plan">
-                            <div class="feature-indicator yes">✓</div>
-                            <span>Multi-platform Suite</span>
-                        </div>
-                    </div>
-                    
-                    <div class="feature-row">
-                        <div class="feature-name">
-                            <span class="feature-title">API Development</span>
-                            <span class="feature-desc">REST/GraphQL API endpoints</span>
-                        </div>
-                        <div class="feature-value personal-plan">
-                            <div class="feature-indicator no">✗</div>
-                            <span>Not Included</span>
-                        </div>
-                        <div class="feature-value startup-plan">
-                            <div class="feature-indicator yes">✓</div>
-                            <span>Core APIs</span>
-                        </div>
-                        <div class="feature-value pro-plan">
-                            <div class="feature-indicator yes">✓</div>
-                            <span>Advanced APIs</span>
-                        </div>
-                        <div class="feature-value enterprise-plan">
-                            <div class="feature-indicator yes">✓</div>
-                            <span>Full API Ecosystem</span>
-                        </div>
-                    </div>
-                    
-                    <div class="feature-row">
-                        <div class="feature-name">
-                            <span class="feature-title">Database Management</span>
-                            <span class="feature-desc">Data storage and management solutions</span>
-                        </div>
-                        <div class="feature-value personal-plan">
-                            <div class="feature-indicator limited">~</div>
-                            <span>Basic SQL</span>
-                        </div>
-                        <div class="feature-value startup-plan">
-                            <div class="feature-indicator yes">✓</div>
-                            <span>Managed Database</span>
-                        </div>
-                        <div class="feature-value pro-plan">
-                            <div class="feature-indicator yes">✓</div>
-                            <span>Advanced DB Architecture</span>
-                        </div>
-                        <div class="feature-value enterprise-plan">
-                            <div class="feature-indicator yes">✓</div>
-                            <span>Multi-database Cluster</span>
-                        </div>
-                    </div>
-                    
-                    <!-- Infrastructure Category -->
-                    <div class="category-row">
-                        <div class="category-header">
-                            <div class="category-icon">⚙️</div>
-                            <h4>IT Infrastructure</h4>
-                        </div>
-                        <div class="plan-features personal-plan">
-                            <div class="feature-status limited">Limited</div>
-                        </div>
-                        <div class="plan-features startup-plan">
-                            <div class="feature-status basic">Basic</div>
-                        </div>
-                        <div class="plan-features pro-plan">
-                            <div class="feature-status advanced">Advanced</div>
-                        </div>
-                        <div class="plan-features enterprise-plan">
-                            <div class="feature-status enterprise">Enterprise</div>
-                        </div>
-                    </div>
-                    
-                    <div class="feature-row">
-                        <div class="feature-name">
-                            <span class="feature-title">Cloud Computing</span>
-                            <span class="feature-desc">Cloud infrastructure and hosting</span>
-                        </div>
-                        <div class="feature-value personal-plan">
-                            <div class="feature-indicator no">✗</div>
-                            <span>Shared Hosting</span>
-                        </div>
-                        <div class="feature-value startup-plan">
-                            <div class="feature-indicator yes">✓</div>
-                            <span>Basic Cloud Setup</span>
-                        </div>
-                        <div class="feature-value pro-plan">
-                            <div class="feature-indicator yes">✓</div>
-                            <span>Optimized Infrastructure</span>
-                        </div>
-                        <div class="feature-value enterprise-plan">
-                            <div class="feature-indicator yes">✓</div>
-                            <span>Full Cloud Management</span>
-                        </div>
-                    </div>
-                    
-                    <div class="feature-row">
-                        <div class="feature-name">
-                            <span class="feature-title">DevOps & CI/CD</span>
-                            <span class="feature-desc">Automated deployment pipelines</span>
-                        </div>
-                        <div class="feature-value personal-plan">
-                            <div class="feature-indicator no">✗</div>
-                            <span>Manual Deployment</span>
-                        </div>
-                        <div class="feature-value startup-plan">
-                            <div class="feature-indicator yes">✓</div>
-                            <span>Basic CI/CD</span>
-                        </div>
-                        <div class="feature-value pro-plan">
-                            <div class="feature-indicator yes">✓</div>
-                            <span>Advanced Pipeline</span>
-                        </div>
-                        <div class="feature-value enterprise-plan">
-                            <div class="feature-indicator yes">✓</div>
-                            <span>Dedicated DevOps Team</span>
-                        </div>
-                    </div>
-                    
-                    <div class="feature-row">
-                        <div class="feature-name">
-                            <span class="feature-title">Security Features</span>
-                            <span class="feature-desc">Security protocols and compliance</span>
-                        </div>
-                        <div class="feature-value personal-plan">
-                            <div class="feature-indicator limited">~</div>
-                            <span>Basic SSL</span>
-                        </div>
-                        <div class="feature-value startup-plan">
-                            <div class="feature-indicator yes">✓</div>
-                            <span>Standard Security</span>
-                        </div>
-                        <div class="feature-value pro-plan">
-                            <div class="feature-indicator yes">✓</div>
-                            <span>Advanced Security</span>
-                        </div>
-                        <div class="feature-value enterprise-plan">
-                            <div class="feature-indicator yes">✓</div>
-                            <span>Enterprise Security Suite</span>
-                        </div>
-                    </div>
-                    
-                    <div class="feature-row">
-                        <div class="feature-name">
-                            <span class="feature-title">Backup & Recovery</span>
-                            <span class="feature-desc">Data protection and disaster recovery</span>
-                        </div>
-                        <div class="feature-value personal-plan">
-                            <div class="feature-indicator limited">~</div>
-                            <span>Manual Backups</span>
-                        </div>
-                        <div class="feature-value startup-plan">
-                            <div class="feature-indicator yes">✓</div>
-                            <span>Automated Backups</span>
-                        </div>
-                        <div class="feature-value pro-plan">
-                            <div class="feature-indicator yes">✓</div>
-                            <span>Advanced Recovery</span>
-                        </div>
-                        <div class="feature-value enterprise-plan">
-                            <div class="feature-indicator yes">✓</div>
-                            <span>Enterprise DR Plan</span>
-                        </div>
-                    </div>
-                    
-                    <!-- Marketing Category -->
-                    <div class="category-row">
-                        <div class="category-header">
-                            <div class="category-icon">📈</div>
-                            <h4>Marketing & Creative</h4>
-                        </div>
-                        <div class="plan-features personal-plan">
-                            <div class="feature-status limited">Limited</div>
-                        </div>
-                        <div class="plan-features startup-plan">
-                            <div class="feature-status basic">Basic</div>
-                        </div>
-                        <div class="plan-features pro-plan">
-                            <div class="feature-status advanced">Advanced</div>
-                        </div>
-                        <div class="plan-features enterprise-plan">
-                            <div class="feature-status enterprise">Enterprise</div>
-                        </div>
-                    </div>
-                    
-                    <div class="feature-row">
-                        <div class="feature-name">
-                            <span class="feature-title">Digital Marketing</span>
-                            <span class="feature-desc">Online marketing campaigns</span>
-                        </div>
-                        <div class="feature-value personal-plan">
-                            <div class="feature-indicator limited">~</div>
-                            <span>SEO Basics</span>
-                        </div>
-                        <div class="feature-value startup-plan">
-                            <div class="feature-indicator yes">✓</div>
-                            <span>Launch Campaign</span>
-                        </div>
-                        <div class="feature-value pro-plan">
-                            <div class="feature-indicator yes">✓</div>
-                            <span>Multi-channel Strategy</span>
-                        </div>
-                        <div class="feature-value enterprise-plan">
-                            <div class="feature-indicator yes">✓</div>
-                            <span>Full Advertising Suite</span>
-                        </div>
-                    </div>
-                    
-                    <div class="feature-row">
-                        <div class="feature-name">
-                            <span class="feature-title">Content Strategy</span>
-                            <span class="feature-desc">Content planning and creation</span>
-                        </div>
-                        <div class="feature-value personal-plan">
-                            <div class="feature-indicator no">✗</div>
-                            <span>Not Included</span>
-                        </div>
-                        <div class="feature-value startup-plan">
-                            <div class="feature-indicator yes">✓</div>
-                            <span>Basic Content Plan</span>
-                        </div>
-                        <div class="feature-value pro-plan">
-                            <div class="feature-indicator yes">✓</div>
-                            <span>Advanced Strategy</span>
-                        </div>
-                        <div class="feature-value enterprise-plan">
-                            <div class="feature-indicator yes">✓</div>
-                            <span>Enterprise Content Engine</span>
-                        </div>
-                    </div>
-                    
-                    <div class="feature-row">
-                        <div class="feature-name">
-                            <span class="feature-title">Social Media Management</span>
-                            <span class="feature-desc">Social presence and engagement</span>
-                        </div>
-                        <div class="feature-value personal-plan">
-                            <div class="feature-indicator no">✗</div>
-                            <span>Not Included</span>
-                        </div>
-                        <div class="feature-value startup-plan">
-                            <div class="feature-indicator limited">~</div>
-                            <span>Basic Setup</span>
-                        </div>
-                        <div class="feature-value pro-plan">
-                            <div class="feature-indicator yes">✓</div>
-                            <span>Advanced Management</span>
-                        </div>
-                        <div class="feature-value enterprise-plan">
-                            <div class="feature-indicator yes">✓</div>
-                            <span>Full Campaign Management</span>
-                        </div>
-                    </div>
-                    
-                    <div class="feature-row">
-                        <div class="feature-name">
-                            <span class="feature-title">Analytics & Reporting</span>
-                            <span class="feature-desc">Performance tracking and insights</span>
-                        </div>
-                        <div class="feature-value personal-plan">
-                            <div class="feature-indicator limited">~</div>
-                            <span>Basic Analytics</span>
-                        </div>
-                        <div class="feature-value startup-plan">
-                            <div class="feature-indicator yes">✓</div>
-                            <span>Standard Reports</span>
-                        </div>
-                        <div class="feature-value pro-plan">
-                            <div class="feature-indicator yes">✓</div>
-                            <span>Advanced Analytics</span>
-                        </div>
-                        <div class="feature-value enterprise-plan">
-                            <div class="feature-indicator yes">✓</div>
-                            <span>Enterprise Dashboard</span>
-                        </div>
-                    </div>
+                <div class="feature-group">
+                    <h4 class="group-title">Development & Growth</h4>
+                    <ul class="features-list">
+                        <li class="feature-item">High-end premium minimalist web application deployment</li>
+                        <li class="feature-item">Clean vanilla codebases optimized for rapid validation</li>
+                        <li class="feature-item">Flawless, mobile-first fluid user experiences</li>
+                    </ul>
                 </div>
-                
-                <!-- Table Footer -->
-                <div class="table-footer">
-                    <div class="footer-column">
-                        <div class="support-note">Need custom features? <a href="#">Contact our team</a></div>
-                    </div>
-                    <div class="footer-column personal-plan">
-                        <a href="#" class="cta-button personal">Get Started</a>
-                    </div>
-                    <div class="footer-column startup-plan">
-                        <a href="#" class="cta-button startup">Start Free Trial</a>
-                    </div>
-                    <div class="footer-column pro-plan">
-                        <a href="#" class="cta-button pro">Schedule Demo</a>
-                    </div>
-                    <div class="footer-column enterprise-plan">
-                        <a href="#" class="cta-button enterprise">Contact Sales</a>
-                    </div>
+
+                <div class="feature-group">
+                    <h4 class="group-title">Infrastructure</h4>
+                    <ul class="features-list">
+                        <li class="feature-item">Up to 3 high-availability live testing parameters</li>
+                        <li class="feature-item">Integrated speed optimization and performance caching</li>
+                    </ul>
                 </div>
-            </div>
-        </div>
-        
-        <div class="comparison-notes fade-in-up">
-            <div class="note">
-                <strong>Note:</strong> All plans include 24/7 customer support, regular updates, and access to our knowledge base.
-            </div>
-            <div class="note">
-                <strong>Enterprise:</strong> Custom solutions available with dedicated account management and SLAs.
-            </div>
-        </div>
-    </div>
-</div>
 
-<style>
-.comparison-section {
-    background: linear-gradient(135deg, #0a1929 0%, #1a2b3c 100%);
-    color: #fff;
-    padding: 100px 0;
-}
-
-.comparison-intro {
-    text-align: center;
-    margin-bottom: 60px;
-}
-
-.comparison-intro h2 {
-    font-size: 2.5rem;
-    margin-bottom: 15px;
-    background: linear-gradient(135deg, #FFD700, #FFA500);
-    -webkit-background-clip: text;
-    -webkit-text-fill-color: transparent;
-    background-clip: text;
-}
-
-.comparison-intro p {
-    font-size: 1.1rem;
-    color: #ccc;
-    max-width: 600px;
-    margin: 0 auto;
-}
-
-.comparison-table-container {
-    background: rgba(255, 255, 255, 0.05);
-    border-radius: 15px;
-    overflow: hidden;
-    box-shadow: 0 20px 40px rgba(0, 0, 0, 0.3);
-    border: 1px solid rgba(255, 255, 255, 0.1);
-    backdrop-filter: blur(10px);
-}
-
-.table-header {
-    display: grid;
-    grid-template-columns: 1fr 1fr 1fr 1fr 1fr;
-    background: rgba(0, 0, 0, 0.3);
-    border-bottom: 1px solid rgba(255, 255, 255, 0.1);
-}
-
-.feature-column {
-    padding: 30px 20px;
-    display: flex;
-    align-items: center;
-}
-
-.feature-column h3 {
-    font-size: 1.3rem;
-    font-weight: 600;
-}
-
-.plan-column {
-    padding: 25px 15px;
-    text-align: center;
-    border-left: 1px solid rgba(255, 255, 255, 0.1);
-}
-
-.plan-header {
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-}
-
-.plan-badge {
-    padding: 8px 16px;
-    border-radius: 20px;
-    font-weight: 700;
-    font-size: 0.9rem;
-    margin-bottom: 10px;
-    text-transform: uppercase;
-    letter-spacing: 0.5px;
-}
-
-.plan-badge.personal {
-    background: linear-gradient(135deg, #C0C0C0, #A0A0A0);
-    color: #000;
-}
-
-.plan-badge.startup {
-    background: linear-gradient(135deg, #FFD700, #FFA500);
-    color: #000;
-}
-
-.plan-badge.pro {
-    background: linear-gradient(135deg, #E5E4E2, #C0C0C0);
-    color: #000;
-}
-
-.plan-badge.enterprise {
-    background: linear-gradient(135deg, #CD7F32, #8B4513);
-    color: #fff;
-}
-
-.plan-price {
-    font-size: 1.8rem;
-    font-weight: 700;
-    margin: 5px 0;
-}
-
-.plan-price span {
-    font-size: 1rem;
-    font-weight: 400;
-    color: #ccc;
-}
-
-.plan-desc {
-    font-size: 0.9rem;
-    color: #aaa;
-}
-
-.table-body {
-    display: flex;
-    flex-direction: column;
-}
-
-.category-row {
-    display: grid;
-    grid-template-columns: 1fr 1fr 1fr 1fr 1fr;
-    background: rgba(255, 255, 255, 0.03);
-    border-bottom: 1px solid rgba(255, 255, 255, 0.05);
-}
-
-.category-header {
-    padding: 20px;
-    display: flex;
-    align-items: center;
-    gap: 10px;
-}
-
-.category-header h4 {
-    font-size: 1.1rem;
-    font-weight: 600;
-}
-
-.plan-features {
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    padding: 20px 15px;
-    border-left: 1px solid rgba(255, 255, 255, 0.1);
-}
-
-.feature-status {
-    padding: 6px 12px;
-    border-radius: 15px;
-    font-size: 0.8rem;
-    font-weight: 600;
-    text-transform: uppercase;
-    letter-spacing: 0.5px;
-}
-
-.feature-status.limited {
-    background: rgba(192, 192, 192, 0.2);
-    color: #C0C0C0;
-    border: 1px solid rgba(192, 192, 192, 0.3);
-}
-
-.feature-status.basic {
-    background: rgba(255, 215, 0, 0.2);
-    color: #FFD700;
-    border: 1px solid rgba(255, 215, 0, 0.3);
-}
-
-.feature-status.advanced {
-    background: rgba(229, 228, 226, 0.2);
-    color: #E5E4E2;
-    border: 1px solid rgba(229, 228, 226, 0.3);
-}
-
-.feature-status.enterprise {
-    background: rgba(205, 127, 50, 0.2);
-    color: #CD7F32;
-    border: 1px solid rgba(205, 127, 50, 0.3);
-}
-
-.feature-row {
-    display: grid;
-    grid-template-columns: 1fr 1fr 1fr 1fr 1fr;
-    border-bottom: 1px solid rgba(255, 255, 255, 0.05);
-    transition: background 0.3s ease;
-}
-
-.feature-row:hover {
-    background: rgba(255, 255, 255, 0.03);
-}
-
-.feature-name {
-    padding: 20px;
-    display: flex;
-    flex-direction: column;
-    justify-content: center;
-}
-
-.feature-title {
-    font-weight: 600;
-    margin-bottom: 5px;
-}
-
-.feature-desc {
-    font-size: 0.85rem;
-    color: #aaa;
-}
-
-.feature-value {
-    padding: 20px 15px;
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    justify-content: center;
-    text-align: center;
-    border-left: 1px solid rgba(255, 255, 255, 0.1);
-}
-
-.feature-indicator {
-    width: 30px;
-    height: 30px;
-    border-radius: 50%;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    margin-bottom: 8px;
-    font-weight: bold;
-}
-
-.feature-indicator.yes {
-    background: rgba(76, 175, 80, 0.2);
-    color: #4CAF50;
-    border: 1px solid rgba(76, 175, 80, 0.3);
-}
-
-.feature-indicator.no {
-    background: rgba(244, 67, 54, 0.2);
-    color: #F44336;
-    border: 1px solid rgba(244, 67, 54, 0.3);
-}
-
-.feature-indicator.limited {
-    background: rgba(255, 193, 7, 0.2);
-    color: #FFC107;
-    border: 1px solid rgba(255, 193, 7, 0.3);
-}
-
-.feature-value span {
-    font-size: 0.9rem;
-    color: #ddd;
-}
-
-.table-footer {
-    display: grid;
-    grid-template-columns: 1fr 1fr 1fr 1fr 1fr;
-    background: rgba(0, 0, 0, 0.3);
-    padding: 25px 20px;
-    border-top: 1px solid rgba(255, 255, 255, 0.1);
-}
-
-.footer-column {
-    display: flex;
-    align-items: center;
-    justify-content: center;
-}
-
-.footer-column:first-child {
-    justify-content: flex-start;
-}
-
-.support-note {
-    font-size: 0.9rem;
-    color: #aaa;
-}
-
-.support-note a {
-    color: #FFD700;
-    text-decoration: none;
-    transition: color 0.3s ease;
-}
-
-.support-note a:hover {
-    color: #FFA500;
-    text-decoration: underline;
-}
-
-.cta-button {
-    padding: 12px 24px;
-    border-radius: 30px;
-    text-decoration: none;
-    font-weight: 600;
-    font-size: 0.9rem;
-    transition: all 0.3s ease;
-    text-align: center;
-    min-width: 140px;
-}
-
-.cta-button.personal {
-    background: linear-gradient(135deg, #C0C0C0, #A0A0A0);
-    color: #000;
-}
-
-.cta-button.startup {
-    background: linear-gradient(135deg, #FFD700, #FFA500);
-    color: #000;
-}
-
-.cta-button.pro {
-    background: linear-gradient(135deg, #E5E4E2, #C0C0C0);
-    color: #000;
-}
-
-.cta-button.enterprise {
-    background: linear-gradient(135deg, #CD7F32, #8B4513);
-    color: #fff;
-}
-
-.cta-button:hover {
-    transform: translateY(-2px);
-    box-shadow: 0 5px 15px rgba(0, 0, 0, 0.3);
-}
-
-.comparison-notes {
-    margin-top: 40px;
-    display: flex;
-    flex-direction: column;
-    gap: 10px;
-}
-
-.note {
-    font-size: 0.9rem;
-    color: #aaa;
-    padding: 10px 15px;
-    background: rgba(255, 255, 255, 0.05);
-    border-radius: 8px;
-}
-
-/* Responsive Design */
-@media (max-width: 1200px) {
-    .comparison-table-container {
-        overflow-x: auto;
-    }
-    
-    .table-header,
-    .category-row,
-    .feature-row,
-    .table-footer {
-        min-width: 1000px;
-    }
-}
-
-@media (max-width: 768px) {
-    .comparison-section {
-        padding: 60px 0;
-    }
-    
-    .comparison-intro h2 {
-        font-size: 2rem;
-    }
-}
-</style>
-
-        <section class="final-cta-section">
-            <div class="section-wrapper">
-                <div class="final-cta-content fade-in-up">
-                    <h2>Ready to Level Up Your Business?</h2>
-                    <p>Don't just adapt to the future—define it. Our team is ready to build the growth engine your business deserves. Let's discuss which level is right for you.</p>
-                    <a href="#plans" class="hero-cta-button">Choose Your Level</a>
+                <div class="feature-group">
+                    <h4 class="group-title">Key highlights</h4>
+                    <ul class="features-list">
+                        <li class="feature-item">Rapid engineering setup and deployment pipeline</li>
+                        <li class="feature-item">24/7 support: Direct email integration</li>
+                    </ul>
                 </div>
             </div>
         </section>
+
+        <section class="pricing-card">
+            <div class="card-header advanced">
+                <h2 class="plan-name">Pro Biz</h2>
+                <div class="plan-price">$1,500/month</div>
+                <div class="plan-subtext">or $15,300 upfront annually (15% discount)</div>
+            </div>
+            <div class="card-body">
+                <h3 class="body-headline">Everything in Startups, plus:</h3>
+                
+                <div class="feature-group">
+                    <h4 class="group-title">Architectural Scaling</h4>
+                    <ul class="features-list">
+                        <li class="feature-item">Complex custom database architecture and asset registries</li>
+                        <li class="feature-item">Integrated systems modules for CRM and transaction handling</li>
+                    </ul>
+                </div>
+
+                <div class="feature-group">
+                    <h4 class="group-title">System Infrastructure</h4>
+                    <ul class="features-list">
+                        <li class="feature-item">Up to 10 automated server-less operational environments</li>
+                        <li class="feature-item">Unified backend integration pipelines</li>
+                    </ul>
+                </div>
+
+                <div class="feature-group">
+                    <h4 class="group-title">Key highlights</h4>
+                    <ul class="features-list">
+                        <li class="feature-item">24/7 priority support: Email and live chat channels</li>
+                        <li class="feature-item">Bi-weekly architectural strategic health checks</li>
+                    </ul>
+                </div>
+            </div>
+        </section>
+
+        <section class="pricing-card">
+            <div class="card-header premium">
+                <h2 class="plan-name">Enterprise</h2>
+                <div class="plan-price-custom">
+                    Custom<br>
+                    <strong>Contact us</strong> for pricing
+                </div>
+                <div class="plan-subtext">Comprehensive engineering allocations for massive scale requirements, custom governance models, and complex systems architecture</div>
+            </div>
+            <div class="card-body">
+                <h3 class="body-headline">Everything in Pro Biz, plus:</h3>
+                
+                <div class="feature-group">
+                    <h4 class="group-title">Custom Ecosystem Execution</h4>
+                    <ul class="features-list">
+                        <li class="feature-item">Tailor-made system designs built purely from scratch</li>
+                        <li class="feature-item">Bespoke technical execution, custom automated logic layers, and internal tool structures</li>
+                    </ul>
+                </div>
+
+                <div class="feature-group">
+                    <h4 class="group-title">Dedicated Infrastructure</h4>
+                    <ul class="features-list">
+                        <li class="feature-item">Unlimited isolated cloud staging frameworks</li>
+                        <li class="feature-item">Strict corporate-grade security containment systems</li>
+                    </ul>
+                </div>
+
+                <div class="feature-group">
+                    <h4 class="group-title">Key highlights</h4>
+                    <ul class="features-list">
+                        <li class="feature-item">Dedicated consulting director allocation</li>
+                        <li class="feature-item">Direct feature pipeline prioritizations</li>
+                        <li class="feature-item">24/7 premier tech support: Voice, chat, and video lines directly with engineering personnel</li>
+                    </ul>
+                </div>
+            </div>
+        </section>
+
     </main>
 
+</body>
+</html>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Cronos — Level Up Program Matrix</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    
+    <style>
+        /* Global resets targeting the document boundaries to ensure a true edge-to-edge section container */
+        html, body {
+            margin: 0;
+            padding: 0;
+            width: 100%;
+            background-color: #0c0d0e;
+        }
+
+        /* Scoped root block using precise custom properties to prevent external CSS leakage */
+        .cronos-level-up-section {
+            --lvl-bg-color: #0c0d0e;
+            --lvl-card-bg: #121316;
+            --lvl-border-color: #1e2229;
+            --lvl-text-main: #ffffff;
+            --lvl-text-muted: #717684;
+            --lvl-btn-bg: #22252d;
+            --lvl-btn-hover: #2d313c;
+            --lvl-font-family: 'Inter', sans-serif;
+            --lvl-border-radius: 16px;
+
+            background-color: var(--lvl-bg-color);
+            color: var(--lvl-text-main);
+            font-family: var(--lvl-font-family);
+            padding: 120px 0; /* Vertical structure padding only */
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            width: 100%;
+            box-sizing: border-box;
+        }
+
+        .cronos-level-up-section * {
+            box-sizing: border-box;
+            margin: 0;
+            padding: 0;
+        }
+
+        /* Inner Layout Frame fixed exactly to 1200px width limit */
+        .lvl-layout-wrapper {
+            width: 100%;
+            max-width: 1200px;
+            display: flex;
+            flex-direction: column;
+            align-items: flex-start;
+            padding: 0 24px; /* Fluid buffer area protecting layout integrity on mobile screen sizes */
+        }
+
+        /* Headings and Descriptions Perfectly Aligned to the Left */
+        .lvl-intro-header {
+            max-width: 680px;
+            text-align: left;
+            margin-bottom: 64px;
+            align-self: flex-start;
+        }
+
+        .lvl-intro-title {
+            font-size: 3.2rem;
+            font-weight: 500;
+            letter-spacing: -0.04em;
+            margin-bottom: 16px;
+            line-height: 1.15;
+            color: var(--lvl-text-main);
+        }
+
+        .lvl-intro-desc {
+            font-size: 1.05rem;
+            color: var(--lvl-text-muted);
+            line-height: 1.6;
+            font-weight: 400;
+        }
+
+        /* Equal-Height 3-Column Content Matrix Work area */
+        .lvl-tier-grid {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 24px;
+            width: 100%;
+            align-items: stretch; /* Maintains strict equal height parameters across all cards */
+        }
+
+        /* Structural Framework for Individual Tier Cards */
+        .lvl-tier-card {
+            background-color: var(--lvl-card-bg);
+            border: 1px solid var(--lvl-border-color);
+            border-radius: var(--lvl-border-radius);
+            overflow: hidden;
+            display: flex;
+            flex-direction: column;
+            transition: border-color 0.3s ease;
+        }
+
+        .lvl-tier-card:hover {
+            border-color: #313745;
+        }
+
+        /* Media Header Area: 100% Width Full Fill */
+        .lvl-media-banner-slot {
+            width: 100%;
+            height: 220px;
+            position: relative;
+            overflow: hidden;
+            background-color: #16181d;
+        }
+
+        /* Graphic Object filling outer asset frame borders completely */
+        .lvl-card-graphic-full {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            transition: transform 0.5s cubic-bezier(0.25, 1, 0.5, 1);
+        }
+
+        .lvl-tier-card:hover .lvl-card-graphic-full {
+            transform: scale(1.05);
+        }
+
+        /* Internal Details Compartment Container */
+        .lvl-card-content {
+            padding: 40px 32px;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            text-align: center;
+            flex-grow: 1; /* Instructs inner element boxes to scale smoothly together */
+        }
+
+        /* Typography & Headings */
+        .lvl-tier-label {
+            font-size: 1.15rem;
+            font-weight: 500;
+            text-transform: uppercase;
+            letter-spacing: 0.1em;
+            color: var(--lvl-text-main);
+            margin-bottom: 14px;
+        }
+
+        .lvl-tier-headline {
+            font-size: 2.8rem;
+            font-weight: 600;
+            letter-spacing: -0.04em;
+            line-height: 1.1;
+            margin-bottom: 6px;
+        }
+
+        .lvl-tier-sub-headline {
+            font-size: 0.9rem;
+            color: var(--lvl-text-muted);
+            margin-bottom: 36px;
+            letter-spacing: 0.02em;
+        }
+
+        /* Action Triggers */
+        .lvl-btn-action {
+            width: 100%;
+            background-color: var(--lvl-btn-bg);
+            color: var(--lvl-text-main);
+            border: none;
+            border-radius: 30px;
+            padding: 14px 24px;
+            font-family: var(--lvl-font-family);
+            font-size: 0.95rem;
+            font-weight: 500;
+            cursor: pointer;
+            transition: background-color 0.2s ease;
+            margin-bottom: 20px;
+            text-decoration: none;
+            display: inline-block;
+        }
+
+        .lvl-btn-action:hover {
+            background-color: var(--lvl-btn-hover);
+        }
+
+        .lvl-link-secondary {
+            font-size: 0.92rem;
+            color: var(--lvl-text-muted);
+            text-decoration: none;
+            font-weight: 400;
+            transition: color 0.2s ease;
+            margin-bottom: 36px;
+        }
+
+        .lvl-link-secondary:hover {
+            color: var(--lvl-text-main);
+        }
+
+        /* Footer Meta Block detailing specific price metrics */
+        .lvl-tier-meta {
+            margin-top: auto; /* Locks metadata panel smoothly into row floor position */
+            width: 100%;
+            padding-top: 28px;
+            border-top: 1px solid #1a1d24;
+        }
+
+        .lvl-meta-primary {
+            font-size: 0.95rem;
+            font-weight: 500;
+            color: var(--lvl-text-main);
+            margin-bottom: 6px;
+        }
+
+        .lvl-meta-secondary {
+            font-size: 0.82rem;
+            color: var(--lvl-text-muted);
+            line-height: 1.5;
+        }
+
+        .lvl-meta-secondary strong {
+            color: #e2e8f0;
+        }
+
+        /* Mobile Layout & Adaptive Design Configurations */
+        @media (max-width: 968px) {
+            .cronos-level-up-section {
+                padding: 80px 0;
+            }
+
+            .lvl-intro-title {
+                font-size: 2.4rem;
+            }
+
+            .lvl-tier-grid {
+                grid-template-columns: 1fr;
+                gap: 32px;
+                max-width: 440px;
+            }
+            
+            .lvl-intro-header {
+                align-self: center;
+                text-align: center;
+                margin-bottom: 48px;
+            }
+        }
+    </style>
+</head>
+<body>
+
+    <section class="cronos-level-up-section">
+        
+        <div class="lvl-layout-wrapper">
+            
+            <header class="lvl-intro-header">
+                <h1 class="lvl-intro-title">The Level Up Program</h1>
+                <p class="lvl-intro-desc">Accelerate your company trajectory. Access end-to-end bundled premium solutions across brand engineering, scalable database architecture, and performance-driven web applications built completely from scratch.</p>
+            </header>
+
+            <main class="lvl-tier-grid">
+
+                <article class="lvl-tier-card">
+                    <div class="lvl-media-banner-slot">
+                        <img src="https://images.unsplash.com/photo-1618005182384-a83a8bd57fbe?auto=format&fit=crop&w=600&q=80" alt="Startups Core Solution Suite" class="lvl-card-graphic-full">
+                    </div>
+                    <div class="lvl-card-content">
+                        <h2 class="lvl-tier-label">Startups</h2>
+                        <div class="lvl-tier-headline">Identity & Launch</div>
+                        <p class="lvl-tier-sub-headline">Essential production ready parameters</p>
+                        
+                        <a href="#" class="lvl-btn-action">Join Startups →</a>
+                        <a href="#" class="lvl-link-secondary">View execution timeline</a>
+
+                        <div class="lvl-tier-meta">
+                            <div class="lvl-meta-primary">$750 per month</div>
+                            <div class="lvl-meta-secondary">Includes premium <strong>brand design guidelines</strong>, single-page fluid applications, and streamlined setup structures.</div>
+                        </div>
+                    </div>
+                </article>
+
+                <article class="lvl-tier-card">
+                    <div class="lvl-media-banner-slot">
+                        <img src="https://images.unsplash.com/photo-1634017839464-5c339ebe3cb4?auto=format&fit=crop&w=600&q=80" alt="Pro Business Integration Module" class="lvl-card-graphic-full">
+                    </div>
+                    <div class="lvl-card-content">
+                        <h2 class="lvl-tier-label">Pro Biz</h2>
+                        <div class="lvl-tier-headline">Scale & Deploy</div>
+                        <p class="lvl-tier-sub-headline">Advanced application ecosystem parameters</p>
+                        
+                        <a href="#" class="lvl-btn-action">Join Pro Biz →</a>
+                        <a href="#" class="lvl-link-secondary">View execution timeline</a>
+
+                        <div class="lvl-tier-meta">
+                            <div class="lvl-meta-primary">$1,500 per month</div>
+                            <div class="lvl-meta-secondary">Includes extensive <strong>database systems design</strong>, comprehensive web application engines, and optimization pipelines.</div>
+                        </div>
+                    </div>
+                </article>
+
+                <article class="lvl-tier-card">
+                    <div class="lvl-media-banner-slot">
+                        <img src="https://images.unsplash.com/photo-1633356122544-f134324a6cee?auto=format&fit=crop&w=600&q=80" alt="Enterprise Architecture Execution" class="lvl-card-graphic-full">
+                    </div>
+                    <div class="lvl-card-content">
+                        <h2 class="lvl-tier-label">Enterprise</h2>
+                        <div class="lvl-tier-headline">Custom Matrix</div>
+                        <p class="lvl-tier-sub-headline">Bespoke software execution parameters</p>
+                        
+                        <a href="#" class="lvl-btn-action">Join Enterprise →</a>
+                        <a href="#" class="lvl-link-secondary">View execution timeline</a>
+
+                        <div class="lvl-tier-meta">
+                            <div class="lvl-meta-primary">Custom Contract Routing</div>
+                            <div class="lvl-meta-secondary">Dedicated infrastructure development built completely <strong>from scratch</strong> to match massive scale governance frameworks.</div>
+                        </div>
+                    </div>
+                </article>
+
+            </main>
+        </div>
+    </section>
+
+</body>
+</html>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Cronos — Events & Ecosystem Showcase</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    
+    <style>
+        /* Document-level reset to maintain perfect alignment with no outer layout gaps */
+        html, body {
+            margin: 0;
+            padding: 0;
+            width: 100%;
+            background-color: #0c0d0e;
+        }
+
+        /* Scoped root wrapper strictly using custom properties to preserve context isolation */
+        .cronos-events-section {
+            --ev-bg: #0c0d0e;
+            --ev-text-main: #ffffff;
+            --ev-text-muted: #646975;
+            --ev-blue: #0066cc;
+            --ev-blue-hover: #0052a3;
+            --ev-font: 'Inter', sans-serif;
+
+            background-color: var(--ev-bg);
+            color: var(--ev-text-main);
+            font-family: var(--ev-font);
+            padding: 120px 0;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            width: 100%;
+            box-sizing: border-box;
+        }
+
+        .cronos-events-section * {
+            box-sizing: border-box;
+            margin: 0;
+            padding: 0;
+        }
+
+        /* 1200px Content Core Boundary Box */
+        .ev-layout-wrapper {
+            width: 100%;
+            max-width: 1200px;
+            padding: 0 24px;
+            display: flex;
+            flex-direction: column;
+        }
+
+        /* Section Pre-title tag precisely tracking Left Alignment rules */
+        .ev-section-tag {
+            font-size: 1rem;
+            color: var(--ev-text-muted);
+            margin-bottom: 24px;
+            font-weight: 400;
+            align-self: flex-start;
+        }
+
+        /* Zig-Zag Staggered Hero Section Layout */
+        .ev-zigzag-header {
+            display: flex;
+            flex-direction: column;
+            width: 100%;
+            margin-bottom: 88px;
+        }
+
+        /* Top row: Left-aligned title */
+        .ev-header-title-row {
+            width: 100%;
+            display: flex;
+            justify-content: flex-start;
+        }
+
+        .ev-header-left-title {
+            font-size: 4.2rem;
+            font-weight: 400;
+            letter-spacing: -0.04em;
+            line-height: 1.08;
+            color: var(--ev-text-main);
+            max-width: 800px;
+        }
+
+        /* Bottom row: Displaced under and completely right-aligned */
+        .ev-header-desc-row {
+            width: 100%;
+            display: flex;
+            justify-content: flex-end;
+            margin-top: 32px; /* Generates clear vertical rhythm separating the stack */
+        }
+
+        .ev-header-right-desc {
+            font-size: 1.05rem;
+            color: #a3a8b4;
+            line-height: 1.6;
+            font-weight: 400;
+            max-width: 500px; /* Forces optimal reading width while creating structural asymmetry */
+            text-align: left; /* Text remains legible but block box sits on the far right edge */
+        }
+
+        /* Main Featured Card Layer Workspace */
+        .ev-featured-showcase {
+            width: 100%;
+            height: 480px;
+            border-radius: 12px;
+            position: relative;
+            overflow: hidden;
+            margin-bottom: 96px;
+            display: flex;
+            align-items: flex-end; /* Locks content area to bottom left */
+        }
+
+        /* Background Graphic covering 100% canvas bounds */
+        .ev-featured-image-bg {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            z-index: 1;
+        }
+
+        /* Text Layer on top of Featured Background */
+        .ev-featured-overlay-box {
+            position: relative;
+            z-index: 2;
+            padding: 56px;
+            max-width: 560px;
+            display: flex;
+            flex-direction: column;
+            align-items: flex-start;
+        }
+
+        .ev-feat-label {
+            font-size: 0.75rem;
+            text-transform: uppercase;
+            letter-spacing: 0.15em;
+            color: #94a3b8;
+            margin-bottom: 16px;
+            font-weight: 600;
+        }
+
+        .ev-feat-title {
+            font-size: 3.5rem;
+            font-weight: 500;
+            letter-spacing: -0.03em;
+            margin-bottom: 16px;
+            line-height: 1.1;
+        }
+
+        .ev-feat-desc {
+            font-size: 0.98rem;
+            color: #cbd5e1;
+            line-height: 1.55;
+            margin-bottom: 28px;
+        }
+
+        /* Pill Action Design Component */
+        .ev-action-pill {
+            background-color: var(--ev-blue);
+            color: var(--ev-text-main);
+            padding: 10px 24px;
+            border-radius: 20px;
+            font-size: 0.88rem;
+            font-weight: 500;
+            text-decoration: none;
+            transition: background-color 0.2s ease;
+            display: inline-flex;
+            align-items: center;
+        }
+
+        .ev-action-pill:hover {
+            background-color: var(--ev-blue-hover);
+        }
+
+        /* Carousel Title Row Layout with Far Right Anchored Navigation Link */
+        .ev-carousel-header-row {
+            display: flex;
+            justify-content: space-between;
+            align-items: flex-end;
+            margin-bottom: 40px;
+            width: 100%;
+        }
+
+        .ev-carousel-main-title {
+            font-size: 1.8rem;
+            font-weight: 400;
+            letter-spacing: -0.02em;
+        }
+
+        /* Premium Floating Right Text Link with Nested Visual Arrow Component */
+        .ev-browse-link {
+            color: var(--ev-blue);
+            text-decoration: none;
+            font-size: 0.92rem;
+            font-weight: 500;
+            transition: color 0.2s ease;
+            display: inline-flex;
+            align-items: center;
+            gap: 4px;
+            padding-bottom: 4px;
+        }
+
+        .ev-browse-link:hover {
+            color: #33b5e5;
+        }
+
+        /* Horizontal Carousel Matrix Track Framework */
+        .ev-slider-outer-frame {
+            width: 100%;
+            position: relative;
+            margin-bottom: 40px;
+        }
+
+        .ev-slider-viewport-track {
+            display: flex;
+            gap: 24px;
+            scroll-behavior: smooth;
+            overflow-x: auto;
+            scrollbar-width: none; /* Disables scrollbar indicators on Firefox engine */
+        }
+
+        .ev-slider-viewport-track::-webkit-scrollbar {
+            display: none; /* Disables scrollbar indicators on Chromium/Webkit engines */
+        }
+
+        /* Dynamic Grid Layout Item Elements */
+        .ev-carousel-card-item {
+            min-width: 384px;
+            max-width: 384px;
+            display: flex;
+            flex-direction: column;
+            background-color: transparent;
+        }
+
+        .ev-item-media-container {
+            width: 100%;
+            height: 230px;
+            border-radius: 8px;
+            overflow: hidden;
+            margin-bottom: 24px;
+            background-color: #16181d;
+        }
+
+        .ev-item-graphic-node {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            transition: transform 0.4s ease;
+        }
+
+        .ev-carousel-card-item:hover .ev-item-graphic-node {
+            transform: scale(1.02);
+        }
+
+        /* Meta Timeline Block Typography Grid */
+        .ev-item-date {
+            font-size: 0.78rem;
+            text-transform: uppercase;
+            letter-spacing: 0.08em;
+            color: var(--ev-text-muted);
+            margin-bottom: 12px;
+            font-weight: 500;
+        }
+
+        .ev-item-headline {
+            font-size: 1.25rem;
+            font-weight: 500;
+            margin-bottom: 8px;
+            color: var(--ev-text-main);
+            letter-spacing: -0.01em;
+        }
+
+        .ev-item-location-sub {
+            font-size: 0.8rem;
+            color: var(--ev-text-muted);
+            text-transform: uppercase;
+            letter-spacing: 0.05em;
+        }
+
+        /* Navigation Controls Panel Row */
+        .ev-control-panel-row {
+            display: flex;
+            gap: 12px;
+            justify-content: flex-start;
+            width: 100%;
+        }
+
+        /* Exact Circular Outline Action Controls Wrapper */
+        .ev-nav-circle-trigger {
+            width: 48px;
+            height: 48px;
+            border-radius: 50%;
+            border: 1px solid #2d313c;
+            background-color: transparent;
+            color: var(--ev-text-main);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            cursor: pointer;
+            transition: border-color 0.2s ease, background-color 0.2s ease;
+            user-select: none;
+        }
+
+        .ev-nav-circle-trigger:hover {
+            border-color: #ffffff;
+            background-color: #121316;
+        }
+
+        .ev-nav-circle-trigger svg {
+            width: 18px;
+            height: 18px;
+            fill: currentColor;
+        }
+
+        /* Mobile Layout Breakpoint Configurations */
+        @media (max-width: 968px) {
+            .cronos-events-section {
+                padding: 80px 0;
+            }
+
+            .ev-header-left-title {
+                font-size: 2.8rem;
+            }
+
+            .ev-header-desc-row {
+                justify-content: flex-start;
+                margin-top: 20px;
+            }
+
+            .ev-header-right-desc {
+                max-width: 100%;
+            }
+
+            .ev-featured-showcase {
+                height: auto;
+                min-height: 440px;
+            }
+
+            .ev-featured-overlay-box {
+                padding: 40px 24px;
+            }
+
+            .ev-feat-title {
+                font-size: 2.6rem;
+            }
+
+            .ev-carousel-card-item {
+                min-width: 290px;
+                max-width: 290px;
+            }
+
+            .ev-item-media-container {
+                height: 180px;
+            }
+        }
+    </style>
+</head>
+<body>
+
+    <section class="cronos-events-section">
+        <div class="ev-layout-wrapper">
+            
+            <span class="ev-section-tag">Events</span>
+
+            <header class="ev-zigzag-header">
+                <div class="ev-header-title-row">
+                    <h1 class="ev-header-left-title">Connect, converse<br>and collaborate</h1>
+                </div>
+                <div class="ev-header-desc-row">
+                    <p class="ev-header-right-desc">Connection and discussion are two important keys to unlocking innovation in the crypto industry. Here's where you can meet the Ripple team to build connections and start the conversation.</p>
+                </div>
+            </header>
+
+            <article class="ev-featured-showcase">
+                <img src="https://images.unsplash.com/photo-1618005182384-a83a8bd57fbe?auto=format&fit=crop&w=1200&q=80" alt="Featured Swell Matrix Layer Graphic" class="ev-featured-image-bg">
+                <div class="ev-featured-overlay-box">
+                    <span class="ev-feat-label">Featured</span>
+                    <h2 class="ev-feat-title">Swell</h2>
+                    <p class="ev-feat-desc">Join us for an unforgettable two-days. Make connections with the brightest minds in blockchain technologies and join a wide range of discussions from the latest in payments and digital currencies to the future of finance.</p>
+                    <a href="#" class="ev-action-pill">Learn More &nbsp;&rsaquo;</a>
+                </div>
+            </article>
+
+            <div class="ev-carousel-header-row">
+                <h3 class="ev-carousel-main-title">Upcoming Events</h3>
+                <a href="#" class="ev-browse-link">Browse All &nbsp;<span style="font-size: 1.1rem; line-height: 1;">&rsaquo;</span></a>
+            </div>
+
+            <div class="ev-slider-outer-frame">
+                <div class="ev-slider-viewport-track" id="evMainSliderTrack">
+                    
+                    <article class="ev-carousel-card-item">
+                        <div class="ev-item-media-container">
+                            <img src="https://images.unsplash.com/photo-1486406146926-c627a92ad1ab?auto=format&fit=crop&w=400&q=80" alt="Zurich Point Zero Showcase Graphic" class="ev-item-graphic-node">
+                        </div>
+                        <div class="ev-item-date">June 23-25, 2026</div>
+                        <h4 class="ev-item-headline">Point Zero Forum</h4>
+                        <div class="ev-item-location-sub">Zurich, Switzerland</div>
+                    </article>
+
+                    <article class="ev-carousel-card-item">
+                        <div class="ev-item-media-container">
+                            <img src="https://images.unsplash.com/photo-1519501025264-65ba15a82390?auto=format&fit=crop&w=400&q=80" alt="São Paulo Febraban System Infrastructure" class="ev-item-graphic-node">
+                        </div>
+                        <div class="ev-item-date">August 24-26, 2026</div>
+                        <h4 class="ev-item-headline">Febraban Tech</h4>
+                        <div class="ev-item-location-sub">São Paulo, Brazil</div>
+                    </article>
+
+                    <article class="ev-carousel-card-item">
+                        <div class="ev-item-media-container">
+                            <img src="https://images.unsplash.com/photo-1540959733332-eab4deceeaf7?auto=format&fit=crop&w=400&q=80" alt="Washington Stablecon Panel Interface" class="ev-item-graphic-node">
+                        </div>
+                        <div class="ev-item-date">September 9-11, 2026</div>
+                        <h4 class="ev-item-headline">Stablecon USA</h4>
+                        <div class="ev-item-location-sub">Washington D.C.</div>
+                    </article>
+
+                    <article class="ev-carousel-card-item">
+                        <div class="ev-item-media-container">
+                            <img src="https://images.unsplash.com/photo-1507525428034-b723cf961d3e?auto=format&fit=crop&w=400&q=80" alt="Ecosystem Strategy Node" class="ev-item-graphic-node">
+                        </div>
+                        <div class="ev-item-date">October 14-16, 2026</div>
+                        <h4 class="ev-item-headline">Ecosystem Summit</h4>
+                        <div class="ev-item-location-sub">Cape Town, South Africa</div>
+                    </article>
+
+                </div>
+            </div>
+
+            <div class="ev-control-panel-row">
+                <button class="ev-nav-circle-trigger" id="evMoveLeftAction" aria-label="Slide Left">
+                    <svg viewBox="0 0 24 24"><path d="M15.41 7.41L14 6l-6 6 6 6 1.41-1.41L10.83 12z"/></svg>
+                </button>
+                <button class="ev-nav-circle-trigger" id="evMoveRightAction" aria-label="Slide Right">
+                    <svg viewBox="0 0 24 24"><path d="M10 6L8.59 7.41 13.17 12l-4.58 4.59L10 18l6-6z"/></svg>
+                </button>
+            </div>
+
+        </div>
+    </section>
+
     <script>
-        // Tab functionality for plan switching
-        document.addEventListener('DOMContentLoaded', function() {
-            const tabButtons = document.querySelectorAll('.plan-tab-button');
-            const planContents = document.querySelectorAll('.plan-content');
-            
-            tabButtons.forEach(button => {
-                button.addEventListener('click', () => {
-                    // Remove active class from all buttons and contents
-                    tabButtons.forEach(btn => btn.classList.remove('active'));
-                    planContents.forEach(content => content.classList.remove('active'));
-                    
-                    // Add active class to clicked button
-                    button.classList.add('active');
-                    
-                    // Show corresponding content
-                    const planId = button.getAttribute('data-plan');
-                    document.getElementById(`plan-${planId}`).classList.add('active');
+        document.addEventListener('DOMContentLoaded', () => {
+            const trackElement = document.getElementById('evMainSliderTrack');
+            const leftActionBtn = document.getElementById('evMoveLeftAction');
+            const rightActionBtn = document.getElementById('evMoveRightAction');
+
+            if (trackElement && leftActionBtn && rightActionBtn) {
+                const transitionStepSize = 408;
+
+                rightActionBtn.addEventListener('click', () => {
+                    trackElement.scrollBy({ left: transitionStepSize, behavior: 'smooth' });
                 });
-            });
-            
-            // Scroll animation
-            const fadeElements = document.querySelectorAll('.fade-in-up');
-            
-            const fadeInOnScroll = () => {
-                fadeElements.forEach(element => {
-                    const elementTop = element.getBoundingClientRect().top;
-                    const elementVisible = 150;
-                    
-                    if (elementTop < window.innerHeight - elementVisible) {
-                        element.classList.add('visible');
-                    }
+
+                leftActionBtn.addEventListener('click', () => {
+                    trackElement.scrollBy({ left: -transitionStepSize, behavior: 'smooth' });
                 });
-            };
-            
-            // Initial check
-            fadeInOnScroll();
-            
-            // Check on scroll
-            window.addEventListener('scroll', fadeInOnScroll);
+            }
         });
     </script>
 
@@ -1887,3 +1311,518 @@
 
 
 
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Ripple Clone Component - Full Width Layout</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <script>
+        tailwind.config = {
+            theme: {
+                extend: {
+                    colors: {
+                        darkBg: '#0f141c',
+                        rippleBlue: '#0060ff',
+                        lightBg: '#f9fbfd',
+                    }
+                }
+            }
+        }
+    </script>
+    <style>
+        body {
+            font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
+        }
+    </style>
+</head>
+<body class="bg-lightBg text-gray-900 antialiased m-0 p-0">
+
+    <section class="w-full bg-darkBg text-white pt-20 pb-40 px-6 md:px-12">
+        <div class="max-w-[1200px] mx-auto w-full">
+            
+            <p class="text-sm uppercase tracking-wider text-gray-400 mb-4">About Ripple</p>
+            
+            <div class="max-w-2xl mb-16">
+                <h1 class="text-4xl md:text-6xl font-light tracking-tight leading-tight">
+                    Enabling the Internet of Value
+                </h1>
+                <p class="text-gray-400 mt-6 text-lg font-light">
+                    Using the power of blockchain to move value the way information moves today.
+                </p>
+            </div>
+
+            <div class="grid grid-cols-1 md:grid-cols-2 gap-8 items-start mt-24">
+                <div>
+                    <p class="text-sm uppercase tracking-wider text-gray-400 mb-3">Mission</p>
+                    <h2 class="text-2xl md:text-3xl font-light leading-snug max-w-md">
+                        Build breakthrough crypto solutions for a world without economic borders
+                    </h2>
+                </div>
+                
+                <div class="md:mt-16 text-gray-300 font-light leading-relaxed text-sm md:text-base max-w-md md:justify-self-end">
+                    <p>
+                        Ripple is the leading crypto solutions company that offers solutions for businesses. We enable global financial institutions, businesses, governments and developers to share, move and exchange value, helping to unlock greater economic opportunity for everyone, everywhere.
+                    </p>
+                </div>
+            </div>
+
+        </div>
+    </section>
+
+    <section class="w-full px-6 md:px-12 -mt-24 relative z-10">
+        <div class="max-w-[1200px] mx-auto w-full">
+            <div class="rounded-xl overflow-hidden shadow-2xl bg-black aspect-video flex items-center justify-center">
+                <video 
+                    class="w-full h-full object-cover" 
+                    controls 
+                    poster="https://images.unsplash.com/photo-1639762681485-074b7f938ba0?auto=format&fit=crop&w=1200&q=80">
+                    <source src="https://assets.mixkit.co/videos/preview/mixkit-abstract-laser-lights-background-42250-large.mp4" type="video/mp4">
+                    Your browser does not support the video tag.
+                </video>
+            </div>
+        </div>
+    </section>
+
+    <section class="w-full py-24 px-6 md:px-12 mt-12">
+        <div class="max-w-[1200px] mx-auto w-full grid grid-cols-1 md:grid-cols-3 gap-12">
+            <div class="space-y-12 col-span-1">
+                <div>
+                    <h3 class="text-4xl font-light text-rippleBlue">1000+</h3>
+                    <p class="text-xs text-gray-500 mt-2 uppercase tracking-wider font-semibold">Employees with a passion for purpose and deeply rooted in diversity</p>
+                </div>
+                <div>
+                    <h3 class="text-4xl font-light text-rippleBlue">15+</h3>
+                    <p class="text-xs text-gray-500 mt-2 uppercase tracking-wider font-semibold">Offices in key global financial centers around the world</p>
+                </div>
+                <div>
+                    <h3 class="text-4xl font-light text-rippleBlue">90+</h3>
+                    <p class="text-xs text-gray-500 mt-2 uppercase tracking-wider font-semibold">Countries where Ripple is driving transformative value</p>
+                </div>
+            </div>
+
+            <div class="col-span-1 md:col-span-2 md:pl-12">
+                <p class="text-xs uppercase tracking-wider text-gray-500 mb-3">Impact</p>
+                <h2 class="text-2xl md:text-3xl font-light text-gray-900 leading-snug mb-6">
+                    Increasing global access and equity by building an inclusive, streamlined, sustainable financial system
+                </h2>
+                <div class="text-gray-600 space-y-4 font-light text-sm md:text-base leading-relaxed">
+                    <p>
+                        Together with our customers and partners, we’re thinking bigger about how transparent businesses and whole financial institutions function today.
+                    </p>
+                    <p>
+                        We also proudly partner with mission-driven organizations that are creating greater economic fairness and opportunity through research, education and philanthropy.
+                    </p>
+                </div>
+                <button class="mt-8 bg-rippleBlue text-white px-6 py-2.5 rounded-full text-sm font-medium hover:bg-blue-700 transition">
+                    Learn More ›
+                </button>
+            </div>
+        </div>
+    </section>
+
+    <div class="w-full px-6 md:px-12">
+        <hr class="border-gray-200 max-w-[1200px] mx-auto">
+    </div>
+
+    <section class="w-full py-24 px-6 md:px-12">
+        <div class="max-w-[1200px] mx-auto w-full">
+            <h2 class="text-2xl md:text-3xl font-light text-gray-900 mb-12 max-w-xl">
+                Transformative crypto solutions built to connect an evolving world
+            </h2>
+            
+            <div class="grid grid-cols-1 md:grid-cols-3 gap-8">
+                <div class="flex flex-col justify-between">
+                    <div>
+                        <h4 class="text-lg font-medium text-gray-900 mb-3">Collaborative Vision</h4>
+                        <p class="text-gray-600 text-sm font-light leading-relaxed">
+                            We work side-by-side with businesses to improve infrastructure, align with statutory systems, and support our systems, governments and communities to develop solutions standard and optimize transaction velocity and throughput.
+                        </p>
+                    </div>
+                    <a href="#" class="text-rippleBlue text-sm font-medium mt-6 block hover:underline">Explore Policy Solutions ›</a>
+                </div>
+                <div class="flex flex-col justify-between">
+                    <div>
+                        <h4 class="text-lg font-medium text-gray-900 mb-3">Powerful Innovation</h4>
+                        <p class="text-gray-600 text-sm font-light leading-relaxed">
+                            Technology turns action faster to assist people. We champion developers—the builders of tomorrow—by providing tools and support for building state-of-the-art applications and applications on the public blockchain, the XRP Ledger.
+                        </p>
+                    </div>
+                    <a href="#" class="text-rippleBlue text-sm font-medium mt-6 block hover:underline">Explore Developer Innovation ›</a>
+                </div>
+                <div class="flex flex-col justify-between">
+                    <div>
+                        <h4 class="text-lg font-medium text-gray-900 mb-3">Global Impact</h4>
+                        <p class="text-gray-600 text-sm font-light leading-relaxed">
+                            Ripple has solutions operating in production commercial entities to solve the needs of businesses across 50+ countries. These commercial systems footprint helps to open markets, access alternative liquidity for users and generate opportunities around connected networks.
+                        </p>
+                    </div>
+                    <a href="#" class="text-rippleBlue text-sm font-medium mt-6 block hover:underline">See our Customers ›</a>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section class="w-full py-16 bg-white border-t border-b border-gray-100 px-6 md:px-12">
+        <div class="max-w-[1200px] mx-auto w-full">
+            <h3 class="text-xl md:text-2xl font-light mb-6 text-gray-900">Investing in the future of finance</h3>
+            <p class="text-gray-600 font-light text-sm md:text-base leading-relaxed max-w-4xl mb-6">
+                As part of our mission to enable the Internet of Value, Ripple has deployed over $500M+ across 70+ direct investments and 10+ limited partner frameworks since 2018 to support companies and fund managers developing Web3 solutions and scaling the ecosystem.
+            </p>
+            <button class="bg-rippleBlue text-white px-6 py-2.5 rounded-full text-sm font-medium hover:bg-blue-700 transition">
+                Learn More ›
+            </button>
+        </div>
+    </section>
+
+    <section class="w-full py-20 px-6 md:px-12">
+        <div class="max-w-[1200px] mx-auto w-full">
+            <div class="bg-darkBg rounded-2xl overflow-hidden grid grid-cols-1 md:grid-cols-2 min-h-[320px]">
+                <div class="p-8 md:p-12 flex flex-col justify-between text-white">
+                    <div>
+                        <h3 class="text-2xl font-light mb-4">Join our team</h3>
+                        <p class="text-gray-400 font-light text-sm leading-relaxed max-w-xs">
+                            We’re looking for looking-forward individuals and crypto solutioners who ready to transforming financial services and standard platforms around the world.
+                        </p>
+                    </div>
+                    <button class="mt-8 bg-rippleBlue text-white px-6 py-2.5 rounded-full text-sm font-medium w-fit hover:bg-blue-700 transition">
+                        Find Your Role ›
+                    </button>
+                </div>
+                <div class="bg-gradient-to-br from-gray-700 to-gray-800 flex items-center justify-center p-8 text-gray-400 text-center font-light text-sm">
+                    <div>
+                        <p class="text-white font-medium mb-1">[Office Workspace View]</p>
+                        Collaborative environment illustration
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+</body>
+</html>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Ripple Public Policy Page</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <script>
+        tailwind.config = {
+            theme: {
+                extend: {
+                    colors: {
+                        darkBg: '#0f141c',
+                        rippleBlue: '#0060ff',
+                        lightBg: '#f9fbfd',
+                    }
+                }
+            }
+        }
+    </script>
+    <style>
+        body {
+            font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
+        }
+    </style>
+</head>
+<body class="bg-lightBg text-gray-900 antialiased m-0 p-0">
+
+    <section class="w-full bg-[#f4f6f9] text-gray-900 pt-24 pb-24 px-6 md:px-12">
+        <div class="max-w-[1200px] mx-auto w-full grid grid-cols-1 md:grid-cols-12 gap-8 items-start">
+            <div class="md:col-span-7">
+                <h1 class="text-4xl md:text-6xl font-light tracking-tight leading-none text-gray-900">
+                    Ripple’s Global<br>Public Policy
+                </h1>
+            </div>
+            
+            <div class="md:col-span-5 md:mt-20">
+                <p class="text-gray-600 font-light text-base leading-relaxed mb-6">
+                    Ripple collaborates with financial institutions, regulators, and central banks worldwide to shape regulatory frameworks for crypto and blockchain.
+                </p>
+                <button class="bg-rippleBlue text-white px-6 py-2.5 rounded-full text-sm font-medium hover:bg-blue-700 transition">
+                    Read Our Policy Principles ›
+                </button>
+            </div>
+        </div>
+    </section>
+
+    <section class="w-full bg-white py-24 px-6 md:px-12">
+        <div class="max-w-[1200px] mx-auto w-full">
+            
+            <h2 class="text-xl uppercase tracking-wider text-gray-500 font-normal mb-16">
+                Public Policy Page
+            </h2>
+
+            <div class="grid grid-cols-1 md:grid-cols-2 gap-x-16 gap-y-16">
+                
+                <div class="space-y-4">
+                    <div class="w-8 h-8 text-rippleBlue">
+                        <svg fill="currentColor" viewBox="0 0 24 24"><path d="M19 3H5c-1.1 0-2 .9-2 2v14c0 1.1.9 2 2 2h14c1.1 0 2-.9 2-2V5c0-1.1-.9-2-2-2zm-5 14H7v-2h7v2zm3-4H7v-2h10v2zm0-4H7V7h10v2z"/></svg>
+                    </div>
+                    <h3 class="text-lg font-medium text-gray-900 pt-2">Crypto Regulation</h3>
+                    <p class="text-gray-600 font-light text-sm leading-relaxed">
+                        Ripple collaborates with international governments and standard-setting bodies on regulatory standards to support clear regulatory guidance that leads to predictable outcomes to help crypto innovation and growth flourish.
+                    </p>
+                    <a href="#" class="text-rippleBlue text-sm font-medium inline-block hover:underline">Learn More ›</a>
+                </div>
+
+                <div class="space-y-4">
+                    <div class="w-8 h-8 text-rippleBlue">
+                        <svg fill="currentColor" viewBox="0 0 24 24"><path d="M18 8h-1V6c0-2.76-2.24-5-5-5S7 3.24 7 6v2H6c-1.1 0-2 .9-2 2v10c0 1.1.9 2 2 2h12c1.1 0 2-.9 2-2V10c0-1.1-.9-2-2-2zm-6 9c-1.1 0-2-.9-2-2s.9-2 2-2 2 .9 2 2-.9 2-2 2zm3.1-9H8.9V6c0-1.71 1.39-3.1 3.1-3.1 1.71 0 3.1 1.39 3.1 3.1v2z"/></svg>
+                    </div>
+                    <h3 class="text-lg font-medium text-gray-900 pt-2">Anti-Money Laundering</h3>
+                    <p class="text-gray-600 font-light text-sm leading-relaxed">
+                        Ripple’s regulated subsidiaries are committed to complying with applicable Anti-Money Laundering ("AML") and counter-financing of terrorism ("CFT") laws.
+                    </p>
+                    <a href="#" class="text-rippleBlue text-sm font-medium inline-block hover:underline">Learn More ›</a>
+                </div>
+
+                <div class="space-y-4">
+                    <div class="w-8 h-8 text-rippleBlue">
+                        <svg fill="currentColor" viewBox="0 0 24 24"><path d="M12 2C6.48 2 2 6.48 2 12s4.48 10 12 10 10-4.48 10-10S17.52 2 12 2zm1 17.93c-3.95-.49-7-3.85-7-7.93 0-.62.08-1.21.21-1.79L9 15v1c0 1.1.9 2 2 2v1.93zm6.9-2.53c-.26-.81-1-1.4-1.9-1.4h-1v-3c0-.55-.45-1-1-1h-6v-2h2c.55 0 1-.45 1-1V7h2c1.1 0 2-.9 2-2v-.41c2.93 1.19 5 4.06 5 7.41 0 2.08-.8 3.97-2.1 5.39z"/></svg>
+                    </div>
+                    <h3 class="text-lg font-medium text-gray-900 pt-2">Climate Change</h3>
+                    <p class="text-gray-600 font-light text-sm leading-relaxed">
+                        Ripple is committed to a clean, prosperous and secure low-carbon future, <span class="text-rippleBlue underline">with a plan to reach carbon net-zero</span> by 2030.
+                    </p>
+                    <a href="#" class="text-rippleBlue text-sm font-medium inline-block hover:underline">Learn More ›</a>
+                </div>
+
+                <div class="space-y-4">
+                    <div class="w-8 h-8 text-rippleBlue">
+                        <svg fill="currentColor" viewBox="0 0 24 24"><path d="M16.5 13c-1.2 0-3.07.34-3.74 1-1 .67-1.26 1.41-1.26 2v1h10v-1c0-.59-.26-1.33-1.26-2-.67-.66-2.54-1-3.74-1zm-9-1c1.66 0 3-1.34 3-3s-1.34-3-3-3-3 1.34-3 3 1.34 3 3 3zm0 2c-1.5 0-4.5.75-4.5 2.25V18h9v-1.75c0-1.5-3-2.25-4.5-2.25zm9-3c1.38 0 2.5-1.12 2.5-2.5S17.88 6 16.5 6 14 7.12 14 8.5s1.12 2.5 2.5 2.5z"/></svg>
+                    </div>
+                    <h3 class="text-lg font-medium text-gray-900 pt-2">Financial Inclusion</h3>
+                    <p class="text-gray-600 font-light text-sm leading-relaxed">
+                        We invest in building blockchain and digital asset technology that can accelerate <span class="text-rippleBlue underline">global financial inclusion</span> by transforming how unbanked and underbanked populations access basic financial services.
+                    </p>
+                    <a href="#" class="text-rippleBlue text-sm font-medium inline-block hover:underline">Learn More ›</a>
+                </div>
+
+            </div>
+        </div>
+    </section>
+
+    <section class="w-full bg-[#f8fafc] py-24 px-6 md:px-12 border-t border-gray-100">
+        <div class="max-w-[1200px] mx-auto w-full grid grid-cols-1 md:grid-cols-12 gap-12 items-start">
+            
+            <div class="md:col-span-5 space-y-6">
+                <div>
+                    <h2 class="text-2xl md:text-3xl font-light text-gray-900 mb-4">
+                        Fact Sheets and Other Material
+                    </h2>
+                    <p class="text-gray-600 font-light text-sm leading-relaxed mb-8">
+                        Explore topics related to Ripple, crypto, and XRP in more detail
+                    </p>
+                </div>
+
+                <div class="space-y-3.5 border-t border-gray-200 pt-6">
+                    <a href="#" class="block text-rippleBlue text-sm font-normal hover:underline">Introduction to Ripple</a>
+                    <a href="#" class="block text-rippleBlue text-sm font-normal hover:underline">Introduction to Crypto</a>
+                    <a href="#" class="block text-rippleBlue text-sm font-normal hover:underline">Common Crypto Myths</a>
+                    <a href="#" class="block text-rippleBlue text-sm font-normal hover:underline">Introduction to XRP and the XRP Ledger</a>
+                    <a href="#" class="block text-rippleBlue text-sm font-normal hover:underline">Financial Inclusion</a>
+                    <a href="#" class="block text-rippleBlue text-sm font-normal hover:underline">How to Spot Crypto Giveaway Scams</a>
+                    <a href="#" class="block text-rippleBlue text-sm font-normal hover:underline">Sustainable Future Through Crypto</a>
+                    <a href="#" class="block text-rippleBlue text-sm font-normal hover:underline">SEC vs. Ripple Fact Sheet</a>
+                    <a href="#" class="block text-rippleBlue text-sm font-normal hover:underline">Ripple's Commitment to Safety</a>
+                    <a href="#" class="block text-rippleBlue text-sm font-normal hover:underline">SEC Appeal Fact Sheet</a>
+                </div>
+            </div>
+
+            <div class="md:col-span-7 h-full flex items-center">
+                <div class="rounded-xl overflow-hidden shadow-md w-full">
+                    <img 
+                        src="https://images.unsplash.com/photo-1554118811-1e0d58224f24?auto=format&fit=crop&w=1200&q=80" 
+                        alt="Outdoor cafe workspace style setting" 
+                        class="w-full h-auto object-cover max-h-[480px]"
+                    />
+                </div>
+            </div>
+
+        </div>
+    </section>
+
+</body>
+</html>
