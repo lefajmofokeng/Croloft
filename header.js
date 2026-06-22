@@ -49,7 +49,7 @@ class CronosHeader extends HTMLElement {
                     {
                         heading: 'Build',
                         links: [
-                            { label: 'Courses',    href: 'market-overview.html' },
+                            { label: 'Courses',    href: 'console.html' },
                             { label: 'Open Source Projects',  href: 'portfolio.html' },
                             { label: 'Coding for Social Impact (Non-profit)',  href: 'coding.html' },
                         ]
