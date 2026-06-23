@@ -5,97 +5,19 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0, minimum-scale=1.0, maximum-scale=5.0, viewport-fit=cover, shrink-to-fit=no">
     <meta http-equiv="x-ua-compatible" content="ie=edge"/>
     
-    <title>Cronos</title>
+    <title>Cronos - Pricing Console</title>
 
-    <!-- WEB TAB ICON -->
     <link rel="icon" type="image/png" href="thumbnails/top-1.png">
 
     <style>
       @font-face { font-family:'Circular Std'; src:url('fonts/CircularStd-Book.woff2') format('woff2'),url('fonts/CircularStd-Book.woff') format('woff'); font-weight:400; font-style:normal; font-display:swap; }
-  @font-face { font-family:'Circular Std'; src:url('fonts/CircularStd-BookItalic.woff2') format('woff2'),url('fonts/CircularStd-BookItalic.woff') format('woff'); font-weight:400; font-style:italic; font-display:swap; }
-  @font-face { font-family:'Circular Std'; src:url('fonts/CircularStd-Medium.woff2') format('woff2'),url('fonts/CircularStd-Medium.woff') format('woff'); font-weight:500; font-style:normal; font-display:swap; }
-  @font-face { font-family:'Circular Std'; src:url('fonts/CircularStd-Bold.woff2') format('woff2'),url('fonts/CircularStd-Bold.woff') format('woff'); font-weight:600; font-style:normal; font-display:swap; }
-  @font-face { font-family:'Circular Std'; src:url('fonts/CircularStd-Bold.woff2') format('woff2'),url('fonts/CircularStd-Bold.woff') format('woff'); font-weight:700; font-style:normal; font-display:swap; }
-  @font-face { font-family:'Circular Std'; src:url('fonts/CircularStd-Black.woff2') format('woff2'),url('fonts/CircularStd-Black.woff') format('woff'); font-weight:800; font-style:normal; font-display:swap; }
-  @font-face { font-family:'Circular Std'; src:url('fonts/CircularStd-Black.woff2') format('woff2'),url('fonts/CircularStd-Black.woff') format('woff'); font-weight:900; font-style:normal; font-display:swap; }
-    </style>
-</head>
+      @font-face { font-family:'Circular Std'; src:url('fonts/CircularStd-BookItalic.woff2') format('woff2'),url('fonts/CircularStd-BookItalic.woff') format('woff'); font-weight:400; font-style:italic; font-display:swap; }
+      @font-face { font-family:'Circular Std'; src:url('fonts/CircularStd-Medium.woff2') format('woff2'),url('fonts/CircularStd-Medium.woff') format('woff'); font-weight:500; font-style:normal; font-display:swap; }
+      @font-face { font-family:'Circular Std'; src:url('fonts/CircularStd-Bold.woff2') format('woff2'),url('fonts/CircularStd-Bold.woff') format('woff'); font-weight:600; font-style:normal; font-display:swap; }
+      @font-face { font-family:'Circular Std'; src:url('fonts/CircularStd-Bold.woff2') format('woff2'),url('fonts/CircularStd-Bold.woff') format('woff'); font-weight:700; font-style:normal; font-display:swap; }
+      @font-face { font-family:'Circular Std'; src:url('fonts/CircularStd-Black.woff2') format('woff2'),url('fonts/CircularStd-Black.woff') format('woff'); font-weight:800; font-style:normal; font-display:swap; }
+      @font-face { font-family:'Circular Std'; src:url('fonts/CircularStd-Black.woff2') format('woff2'),url('fonts/CircularStd-Black.woff') format('woff'); font-weight:900; font-style:normal; font-display:swap; }
 
-
-
-
-
-
-<!DOCTYPE html>
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <title>My Website</title>
-    
-    <script src="header.js" defer></script>
-    <script src="footer.js" defer></script> 
-</head>
-<body>
-
-    <cronos-header></cronos-header>
-    
-
-</body>
-</html>
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-<!DOCTYPE html>
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Web Applications & Platforms Pricing Console</title>
-    <style>
         /* Base Reset & Corporate Font Face Design */
         * {
             box-sizing: border-box;
@@ -238,18 +160,16 @@
         /* Sticky Section Service Dashboard Header */
         .service-header {
             position: sticky;
-            top: 55px;
+            top: 65px;
             z-index: 100;
-            background-color: #ffffff;
-            border: 1px solid #dadce0;
-            border-radius: 15px;
+            background-color: #080d1b;
+            border-radius: 12px;
             display: flex;
             flex-direction: column;
             justify-content: space-between;
             align-items: flex-start;
-            padding: 16px;
+            padding: 18px;
             margin-bottom: 16px;
-            box-shadow: 0 1px 3px rgba(60,64,67,0.05);
             gap: 8px;
         }
 
@@ -257,7 +177,7 @@
             .service-header {
                 flex-direction: row;
                 align-items: center;
-                padding: 18px 24px;
+                padding: 28px 24px;
                 margin-bottom: 24px;
                 gap: 0;
             }
@@ -280,7 +200,7 @@
         .service-title {
             font-size: 18px;
             font-weight: 500;
-            color: #202124;
+            color: #ffffff;
             display: flex;
             align-items: center;
             gap: 6px;
@@ -306,20 +226,19 @@
             line-height: 14px;
             font-weight: bold;
             cursor: pointer;
+            margin-left: 4px;
         }
 
         .top-running-total {
             font-size: 18px;
             font-weight: 500;
-            color: #1a73e8;
+            color: #0091ff;
         }
 
         /* High-Fidelity Configuration Content Blocks */
         .config-card {
             background-color: #ffffff;
-            border-left: 1px solid #dadce0;
-            border-right: 1px solid #dadce0;
-            border-bottom: 1px solid #dadce0;
+            box-shadow: 0 1px 2px 0 rgba(60,64,67,0.3), 0 2px 6px 2px rgba(60,64,67,0.15);
             padding: 20px 20px;
         }
 
@@ -362,7 +281,7 @@
         /* Custom Dropdown Input Fields */
         .gcp-field-wrap {
             position: relative;
-            margin-top: 12px;
+            margin-bottom: 24px;
             width: 100%;
         }
 
@@ -376,14 +295,16 @@
             color: #5f6368;
             font-weight: 400;
             z-index: 2;
+            display: flex;
+            align-items: center;
         }
 
         .gcp-select, .gcp-input {
             width: 100%;
-            padding: 12px;
+            padding: 18px;
             border: 1px solid #797b7e;
             border-radius: 4px;
-            font-size: 14px;
+            font-size: 16px;
             color: #202124;
             background-color: #ffffff;
             outline: none;
@@ -409,14 +330,6 @@
 
         .gcp-field-wrap.no-arrow::after {
             content: none;
-        }
-
-        .field-subtext {
-            font-size: 12px;
-            color: #5f6368;
-            margin-top: 6px;
-            padding-left: 2px;
-            line-height: 1.4;
         }
 
         /* Toggle Switches */
@@ -463,6 +376,8 @@
         .toggle-label {
             font-size: 14px;
             color: #202124;
+            display: flex;
+            align-items: center;
         }
 
         /* Premium Segmented Controls */
@@ -485,7 +400,7 @@
             width: 100%;
             border: 1px solid #797b7e;
             background-color: #ffffff;
-            padding: 12px 16px;
+            padding: 20px 16px;
             text-align: center;
             font-size: 13px;
             font-weight: 500;
@@ -510,13 +425,13 @@
             background-color: #e8f0fe;
             border-color: #1a73e8;
             border-width: 2px;
-            padding: 11px 15px;
+            padding: 20px 16px;
             color: #1967d2;
         }
 
         @media (min-width: 576px) {
             .segment-option-node.selected {
-                padding: 11px 23px;
+                padding: 20px 23px;
             }
         }
 
@@ -598,38 +513,6 @@
             background-color: #ffffff;
         }
 
-        /* Utility Pill Layout */
-        .pills-group-container {
-            display: flex;
-            flex-wrap: wrap;
-            gap: 8px;
-            margin-top: 12px;
-        }
-
-        .utility-pill-node {
-            padding: 8px 16px;
-            background-color: #ffffff;
-            border: 1px solid #dadce0;
-            border-radius: 100px;
-            font-size: 13px;
-            font-weight: 500;
-            color: #3c4043;
-            cursor: pointer;
-            user-select: none;
-            transition: all 0.15s ease;
-        }
-
-        .utility-pill-node:hover {
-            background-color: #f8f9fa;
-            border-color: #9aa0a6;
-        }
-
-        .utility-pill-node.selected {
-            background-color: #e8f0fe;
-            border-color: #1a73e8;
-            color: #1967d2;
-        }
-
         /* Base Content Counters */
         .counter-grid {
             display: flex;
@@ -686,6 +569,8 @@
             font-size: 13px;
             color: #5f6368;
             margin-bottom: 4px;
+            display: flex;
+            align-items: center;
         }
 
         .info-pane-main-value {
@@ -725,7 +610,7 @@
             .cost-details-panel {
                 width: 340px;
                 position: sticky;
-                top: 55px;
+                top: 65px;
                 bottom: auto;
                 left: auto;
                 right: auto;
@@ -1178,9 +1063,59 @@
         }
 
         .hidden-node { display: none !important; }
+
+        /* --- POPUP INFO MODALS OVERLAY (RIGHT ANCHORED) --- */
+        .info-popover-modal {
+            position: absolute;
+            z-index: 9999;
+            background-color: #ffffff;
+            color: #3c4043;
+            border: 1px solid #dadce0;
+            border-radius: 8px;
+            box-shadow: 0 4px 16px rgba(60,64,67,0.25);
+            padding: 12px 16px;
+            font-size: 13px;
+            line-height: 1.5;
+            max-width: 280px;
+            width: max-content;
+            display: none;
+            font-weight: 400;
+            pointer-events: none;
+            transition: opacity 0.15s ease-in-out;
+            opacity: 0;
+        }
+
+        .info-popover-modal::after {
+            content: "";
+            position: absolute;
+            border-width: 6px;
+            border-style: solid;
+            display: block;
+            width: 0;
+        }
+
+        /* Default Left Side Arrow (When popover sits safely on the right) */
+        .info-popover-modal.pos-right::after {
+            left: -12px;
+            top: 50%;
+            transform: translateY(-50%);
+            border-color: transparent #ffffff transparent transparent;
+        }
+
+        /* Fallback Right Side Arrow (When popover hits screen walls and jumps to the left side) */
+        .info-popover-modal.pos-left::after {
+            right: -12px;
+            top: 50%;
+            transform: translateY(-50%);
+            border-color: transparent transparent transparent #ffffff;
+        }
     </style>
+    <script src="header.js" defer></script>
+    <script src="footer.js" defer></script> 
 </head>
 <body>
+
+    <cronos-header></cronos-header>
 
     <div class="global-header-mock">
         <span>Console Infrastructure Core Suite</span>
@@ -1214,30 +1149,28 @@
                             
                             <div class="toggle-row" id="toggle_usage_tracker" onclick="toggleSwitchNode('toggle_usage_tracker', 'usage_time_fields')">
                                 <div class="switch-box"><div class="switch-circle"></div></div>
-                                <div class="toggle-label">Specify custom usage scheduling window vectors per instance</div>
+                                <div class="toggle-label">Specify custom usage scheduling window vectors per instance <span class="info-icon">i</span></div>
                             </div>
 
                             <div id="usage_time_fields" class="hidden-node" style="margin-bottom: 24px;">
                                 <div class="counter-grid">
                                     <div class="counter-unit">
-                                        <div style="font-size:13px; color:#5f6368; margin-right:8px;">Instances *</div>
+                                        <div style="font-size:13px; color:#5f6368; margin-right:8px;">Instances * <span class="info-icon">i</span></div>
                                         <button class="counter-btn minus" onclick="stepCounter('instances_qty_val', -1)">-</button>
                                         <input type="text" class="counter-value-input" id="instances_qty_val" value="1" readonly>
                                         <button class="counter-btn plus" onclick="stepCounter('instances_qty_val', 1)">+</button>
                                     </div>
                                 </div>
-                                <div class="field-subtext">Calculates operation metrics relative to standard 730 hours runtime cycles monthly.</div>
                             </div>
 
                             <div class="section-row">
                                 <div class="gcp-field-wrap">
-                                    <label>Platform Layer Instance Type *</label>
+                                    <label>Platform Layer Instance Type * <span class="info-icon">i</span></label>
                                     <select class="gcp-select" id="base_tier" onchange="onBaseTierChanged()">
                                         <option value="3500">Core Modular Web Build (Includes 5 Base Pages, Contact Route, Maps API, Legal Shells) — R3,500</option>
                                         <option value="9500">Custom High-Availability Portal Engine Layer — R9,500</option>
                                         <option value="18000">Enterprise Scale Dynamic Cloud Web App Stack — R18,000</option>
                                     </select>
-                                    <div class="field-subtext">The foundational engineering blueprint of your system. Higher tiers grant robust infrastructure patterns for complex operations.</div>
                                 </div>
                             </div>
 
@@ -1247,7 +1180,6 @@
                                     <div class="segment-option-node selected" id="seg_regular" onclick="selectSegmentedNode('seg_regular', 'seg_spot', 0)">Regular Standard SLA</div>
                                     <div class="segment-option-node" id="seg_spot" onclick="selectSegmentedNode('seg_spot', 'seg_regular', -400)">Spot Discounted VM (-R400)</div>
                                 </div>
-                                <div class="field-subtext">Regular gives full uninterrupted system run guarantees. Spot cuts costs by utilizing spare virtual infrastructure power pools.</div>
                             </div>
                         </div>
 
@@ -1256,25 +1188,59 @@
                             
                             <div class="section-row">
                                 <div class="gcp-field-wrap">
-                                    <label>Cloud Node Deployment & Hosting Plan *</label>
+                                    <label>Cloud Node Deployment & Hosting Plan * <span class="info-icon">i</span></label>
                                     <select class="gcp-select" id="hosting_tier" onchange="updateCalculations()">
                                         <option value="450">Shared SSD Edge Cloud Hosting — R450</option>
                                         <option value="1450" selected>Dedicated Scalable Performance Instance — R1,450</option>
                                         <option value="4900">Multi-Region Load-Balanced Enterprise Cluster — R4,900</option>
                                     </select>
-                                    <div class="field-subtext">Where your application physically lives. Shared is perfect for basic traffic. Dedicated isolates processing power so your system stays blazing fast under heavy usage loops.</div>
                                 </div>
                             </div>
 
                             <div class="section-row">
                                 <div class="gcp-field-wrap">
-                                    <label>Monthly Traffic & Bandwidth Scale *</label>
+                                    <label>Monthly Traffic & Bandwidth Scale * <span class="info-icon">i</span></label>
                                     <select class="gcp-select" id="bandwidth_tier" onchange="updateCalculations()">
                                         <option value="0">Standard Threshold (Up to 25,000 monthly active users) — Included</option>
                                         <option value="850">High-Volume Scale Array (Up to 100,000 active visitors) — R850</option>
                                         <option value="2200">Uncapped Data Pipeline Delivery Network Layer — R2,200</option>
                                     </select>
-                                    <div class="field-subtext">Ensures your site loads instantly even if thousands of users log in simultaneously. Prevents traffic bottlenecks.</div>
+                                </div>
+                            </div>
+
+                            <div class="section-row">
+                                <div class="gcp-field-wrap">
+                                    <label>Deployment Region * <span class="info-icon">i</span></label>
+                                    <select class="gcp-select" id="region_tier" onchange="updateCalculations()">
+                                        <option value="0">South Africa (Johannesburg) — Included</option>
+                                        <option value="300">African Multi-Zone (JHB + Lagos + Nairobi) — R300</option>
+                                        <option value="700">Global Edge Deployment (Africa + EU + US East) — R700</option>
+                                        <option value="1200">Full Global Distribution Network (All Regions) — R1,200</option>
+                                    </select>
+                                </div>
+                            </div>
+
+                            <div class="section-row">
+                                <div class="gcp-field-wrap">
+                                    <label>SSL/TLS Security Certificate Layer * <span class="info-icon">i</span></label>
+                                    <select class="gcp-select" id="ssl_tier" onchange="updateCalculations()">
+                                        <option value="0">Standard Domain Validation SSL (DV) — Included</option>
+                                        <option value="250">Organisation Validation Certificate (OV) — R250</option>
+                                        <option value="600">Extended Validation Certificate + Green Bar Trust Seal (EV) — R600</option>
+                                        <option value="1100">Wildcard Multi-Domain SSL Matrix (Unlimited Sub-Domains) — R1,100</option>
+                                    </select>
+                                </div>
+                            </div>
+
+                            <div class="section-row">
+                                <div class="gcp-field-wrap">
+                                    <label>Content Delivery Network (CDN) Edge Cache * <span class="info-icon">i</span></label>
+                                    <select class="gcp-select" id="cdn_tier" onchange="updateCalculations()">
+                                        <option value="0">None — Origin server delivery only</option>
+                                        <option value="400">Regional CDN Edge Cache (50 Points of Presence) — R400</option>
+                                        <option value="900">Global CDN with Image Optimisation & Lazy-Load Pipeline — R900</option>
+                                        <option value="1800">Enterprise CDN + DDoS Mitigation Shield + WAF Layer — R1,800</option>
+                                    </select>
                                 </div>
                             </div>
                         </div>
@@ -1291,21 +1257,22 @@
                                     </div>
                                     <input type="text" class="slider-manual-entry-box" id="slider_manual_box" value="20" readonly>
                                 </div>
-                                <div class="field-subtext">Baseline allocations provide 20 GB baseline SSD space free. Overages calculate at R4.50/GB.</div>
                             </div>
 
                             <div class="section-row">
-                                <div style="font-size:13px; font-weight:500; color:#202124;">Target Operational Deployment Pipeline Environments</div>
-                                <div class="pills-group-container">
-                                    <div class="utility-pill-node selected" id="pill_dev" onclick="togglePillNode('pill_dev', 0)">Development Sandbox (Included)</div>
-                                    <div class="utility-pill-node" id="pill_staging" onclick="togglePillNode('pill_staging', 450)">Isolated Staging Array (+R450)</div>
-                                    <div class="utility-pill-node" id="pill_dr" onclick="togglePillNode('pill_dr', 1150)">Multi-Region Redundancy Sync (+R1,150)</div>
+                                <div class="gcp-field-wrap">
+                                    <label>Target Operational Deployment Pipeline Environments * <span class="info-icon">i</span></label>
+                                    <select class="gcp-select" id="deployment_env_tier" onchange="updateCalculations()">
+                                        <option value="0">Development Sandbox Only (Included) — R0</option>
+                                        <option value="450">Development + Isolated Staging Array — R450</option>
+                                        <option value="1150">Development + Multi-Region Redundancy Sync — R1,150</option>
+                                        <option value="1600">Full Pipeline: Dev + Staging + Multi-Region DR — R1,600</option>
+                                    </select>
                                 </div>
-                                <div class="field-subtext">Staging gives an un-published mirror sandpit to safely test system changes or page designs privately before pushing them live to real users.</div>
                             </div>
 
                             <div class="inline-card-info-pane">
-                                <div class="info-pane-title">Allocated Provisioning Target Tier</div>
+                                <div class="info-pane-title">Allocated Provisioning Target Tier <span class="info-icon">i</span></div>
                                 <div class="info-pane-main-value" id="info_pane_tier_title">n4-standard-modular-web</div>
                                 <div class="info-pane-sub" id="info_pane_tier_desc">Core baseline web layout framework structures.</div>
                             </div>
@@ -1316,39 +1283,89 @@
 
                             <div class="section-row">
                                 <div class="gcp-field-wrap">
-                                    <label>Identity Management & Access Control Layer *</label>
+                                    <label>Identity Management & Access Control Layer * <span class="info-icon">i</span></label>
                                     <select class="gcp-select" id="auth_tier" onchange="updateCalculations()">
                                         <option value="0">None — No login requirements provisioned</option>
                                         <option value="2200">Standard Crypto Account Hub (Secure Sign-In + Private Account Spaces) — R2,200</option>
                                         <option value="4000">Advanced RBAC Engine Dashboard Matrix (Differentiated Permissions Control Layers) — R4,000</option>
                                     </select>
-                                    <div class="field-subtext">Adds iron-clad encryption registration frameworks. Essential if customers require private profiles or custom dashboards to access digital assets.</div>
                                 </div>
                             </div>
 
                             <div class="section-row">
                                 <div class="gcp-field-wrap">
-                                    <label>Form Processing & Workflow Tracker Logic *</label>
+                                    <label>Form Processing & Workflow Tracker Logic * <span class="info-icon">i</span></label>
                                     <select class="gcp-select" id="form_tier" onchange="updateCalculations()">
                                         <option value="0">Baseline Routing Components Included — R0</option>
                                         <option value="120">Additional Unique Form Destination Target Route — R120</option>
                                         <option value="350">HR Career Capture Pipeline (Direct File Forwarding via Email Node) — R350</option>
                                         <option value="1400">Enterprise Recruitment Module Stack & Data Table Tracker System — R1,400</option>
                                     </select>
-                                    <div class="field-subtext">Manages interactive customer data submittals. Captures files, routes CVs securely, or logs structural request forms straight into persistent data systems.</div>
                                 </div>
                             </div>
 
                             <div class="section-row">
                                 <div class="gcp-field-wrap">
-                                    <label>Relational Publishing Engine & CMS Frameworks *</label>
+                                    <label>Relational Publishing Engine & CMS Frameworks * <span class="info-icon">i</span></label>
                                     <select class="gcp-select" id="cms_tier" onchange="updateCalculations()">
                                         <option value="0">None — Completely static layout directory</option>
                                         <option value="1400">Dynamic Press Room, Blogging System, & News Desk Engine Layout — R1,400</option>
                                         <option value="1200">Dynamic Creative Work / Portfolio Showcase Grid with Search Filtering — R1,200</option>
                                         <option value="2600">Enterprise Omni-Channel Content Suite (Blogging Workspace + Filtering Showcase Hub) — R2,600</option>
                                     </select>
-                                    <div class="field-subtext">Empowers your internal team to publish new articles, swap case studies, and change structural gallery assets instantly without touching complex code layers.</div>
+                                </div>
+                            </div>
+
+                            <div class="section-row">
+                                <div class="gcp-field-wrap">
+                                    <label>E-Commerce & Payment Gateway Integration * <span class="info-icon">i</span></label>
+                                    <select class="gcp-select" id="ecommerce_tier" onchange="updateCalculations()">
+                                        <option value="0">None — No transactional commerce required</option>
+                                        <option value="2800">Basic Product Catalogue + PayFast / Yoco Checkout Integration — R2,800</option>
+                                        <option value="5500">Full E-Commerce Suite (Cart, Checkout, Orders, Inventory Management) — R5,500</option>
+                                        <option value="9800">Enterprise Commerce Platform (Multi-Currency, Subscriptions, B2B Quotes, ERP Link) — R9,800</option>
+                                    </select>
+                                </div>
+                            </div>
+
+                            <div class="section-row">
+                                <div class="gcp-field-wrap">
+                                    <label>Transactional Email Infrastructure Layer * <span class="info-icon">i</span></label>
+                                    <select class="gcp-select" id="email_tier" onchange="updateCalculations()">
+                                        <option value="0">None — No automated email delivery</option>
+                                        <option value="350">SMTP Relay + Branded Email Templates (Welcome, OTP, Password Reset) — R350</option>
+                                        <option value="750">Marketing Automation Suite (Newsletters, Campaign Triggers, Open-Rate Tracking) — R750</option>
+                                        <option value="1400">Enterprise Email Engine (Drip Sequences, Segmentation, A/B Testing, CRM Sync) — R1,400</option>
+                                    </select>
+                                </div>
+                            </div>
+                        </div>
+
+                        <div class="config-card">
+                            <div class="card-inner-heading">SEO, Analytics & Growth Intelligence</div>
+
+                            <div class="section-row">
+                                <div class="gcp-field-wrap">
+                                    <label>Search Engine Optimisation (SEO) Foundation Layer * <span class="info-icon">i</span></label>
+                                    <select class="gcp-select" id="seo_tier" onchange="updateCalculations()">
+                                        <option value="0">None — Basic metadata only</option>
+                                        <option value="650">On-Page SEO Setup (Schema Markup, Sitemap, Robots.txt, Meta Optimisation) — R650</option>
+                                        <option value="1400">Technical SEO Audit + Core Web Vitals Optimisation Pass — R1,400</option>
+                                        <option value="2800">Full SEO Architecture (Technical + Content Strategy Mapping + Monthly Reporting) — R2,800</option>
+                                    </select>
+                                </div>
+                            </div>
+
+                            <div class="section-row">
+                                <div class="gcp-field-wrap">
+                                    <label>Analytics & Business Intelligence Dashboard * <span class="info-icon">i</span></label>
+                                    <select class="gcp-select" id="analytics_tier" onchange="updateCalculations()">
+                                        <option value="0">None — No tracking integrated</option>
+                                        <option value="0">Google Analytics 4 (GA4) Basic Integration — Included</option>
+                                        <option value="450">GA4 + Google Tag Manager + Conversion Event Tracking — R450</option>
+                                        <option value="1100">Custom BI Dashboard (Session Heatmaps, Funnel Reports, Revenue Attribution) — R1,100</option>
+                                        <option value="2200">Enterprise Data Lake (Multi-Property Analytics + CRM Sync + Monthly Insights Report) — R2,200</option>
+                                    </select>
                                 </div>
                             </div>
                         </div>
@@ -1358,43 +1375,39 @@
 
                             <div class="section-row">
                                 <div class="gcp-field-wrap">
-                                    <label>System Maintenance SLA Plan, Security Patches & Core Updates *</label>
+                                    <label>System Maintenance SLA Plan, Security Patches & Core Updates * <span class="info-icon">i</span></label>
                                     <select class="gcp-select" id="maintenance_tier" onchange="updateCalculations()">
                                         <option value="tier_eco">Eco Essentials SLA Package (Core security validations + monthly codebase audits)</option>
                                         <option value="tier_pro" selected>Professional SLA Lifecycle Supervision (Weekly patches + uptime monitoring)</option>
                                         <option value="tier_ent">Enterprise High-Availability SLA Matrix (Realtime mitigation + priority ticketing)</option>
                                     </select>
-                                    <div class="field-subtext" id="maintenance_subtext">Calculating support matrix criteria...</div>
-                                    <div class="field-subtext" style="color: #1a73e8; margin-top: 8px;">💡 <b>Why clients need a Maintenance Plan:</b> Modern application ecosystems run on thousands of micro-code dependencies. If servers patch or mobile software upgrades, unchecked applications can break or suffer from security exploits. Proactive maintenance ensures database scripts are continually optimized, core framework libraries are updated weekly, and critical security patches protect user databases before threats materialize. This keeps your system operational 24/7 without costly emergency rebuild fees.</div>
                                 </div>
                             </div>
 
                             <div class="section-row">
                                 <div class="gcp-field-wrap">
-                                    <label>Automated Server Back-up & Data Archiving Array *</label>
+                                    <label>Automated Server Back-up & Data Archiving Array * <span class="info-icon">i</span></label>
                                     <select class="gcp-select" id="backup_tier" onchange="updateCalculations()">
                                         <option value="250">Weekly System Snapshot Array (7-day historical rollbacks) — R250</option>
                                         <option value="600" selected>Daily Snapshot Lifecycle Matrix (30-day isolated point-in-time restores) — R600</option>
                                         <option value="1400">Real-time Continuous Transactional Journal Logging — R1,400</option>
                                     </select>
-                                    <div class="field-subtext">Your data disaster safety net. If a team member accidentally deletes a product directory or an internal database error occurs, snapshots let us restore the exact environment state instantly.</div>
                                 </div>
                             </div>
 
                             <div class="section-row">
                                 <div class="gcp-field-wrap">
-                                    <label>Cognitive LLM AI Framework Automation Modules *</label>
+                                    <label>Cognitive LLM AI Framework Automation Modules * <span class="info-icon">i</span></label>
                                     <select class="gcp-select" id="ai_tier" onchange="updateCalculations()">
                                         <option value="0">None — Standard structural asset layouts</option>
                                         <option value="600">Omni-Channel Customer Messaging Engine Layer (Human Live Desk App Integration) — R600</option>
                                         <option value="1300">Contextually Trained Cognitive AI Chatbot Core Engine Integration — R1,300</option>
                                         <option value="1900">Advanced Hybrid Chat Suite (Context AI Agent + Instant Live Desk Human Hand-Off Bridge) — R1,900</option>
                                     </select>
-                                    <div class="field-subtext">Injects smart natural language modules into your software interface, letting artificial agents automate raw lookup queries or support requests directly.</div>
                                 </div>
                             </div>
 
-                            </div>
+                        </div>
                     </div>
 
                     <div class="mobile-drawer-shield" id="drawer_shield" onclick="toggleMobileDrawer(false)"></div>
@@ -1410,13 +1423,13 @@
                         </div>
 
                         <div class="billing-nag-bar">
-                            <span class="info-icon" style="background-color: #5f6368; color: #ffffff; border:none;">🔒</span> 
+                            <span class="info-icon" style="background-color: #5f6368; color: #ffffff; border:none; margin-left:0;">🔒</span> 
                             <span><a href="#" onclick="alert('Routing authentication hook to core billing infrastructure...')">Link billing account</a> to evaluate negotiated partner metrics.</span>
                         </div>
 
                         <div class="panel-padding-box">
                             <div class="cost-details-title-row">
-                                <div class="cost-details-title">Cost details <span class="info-icon" style="font-size:12px; width:18px; height:18px; line-height:16px;">⚙️</span></div>
+                                <div class="cost-details-title">Cost details <span class="info-icon" style="font-size:12px; width:18px; height:18px; line-height:16px; margin-left:0;">⚙️</span></div>
                                 <div class="currency-select-wrap">ZAR <span>▼</span></div>
                             </div>
 
@@ -1511,15 +1524,7 @@
 
     <script>
         let segmentedOffset = 0;
-        let pillPrices = { 'pill_dev': 0, 'pill_staging': 0, 'pill_dr': 0 };
 
-        /* ============================================================
-          FUTURE REGISTRATION SYSTEM FOR ADDITIONAL DROPDOWNS
-          ============================================================
-          Whenever you introduce a new <select id="example_id"> dropdown element block,
-          simply append its exact HTML 'id' tag string below into this list array.
-          The calculator engine reads this map loop dynamically to compute accurate matrix states.
-        */
         const customDropdowns = [
             'hosting_tier',
             'bandwidth_tier',
@@ -1527,10 +1532,44 @@
             'form_tier',
             'cms_tier',
             'backup_tier',
-            'ai_tier'
-            // 'my_future_dropdown_id' <-- Just uncomment/add items here
+            'ai_tier',
+            'deployment_env_tier',
+            'ssl_tier',
+            'cdn_tier',
+            'seo_tier',
+            'analytics_tier',
+            'ecommerce_tier',
+            'email_tier',
+            'region_tier'
         ];
-        // ============================================================
+
+        // Explanations Object Map
+        const infoDescriptionsMap = {
+            "Web Application Architecture Engine": "The overall software design framework powering your digital solution. It dictates foundational structures, load profiles, baseline delivery capabilities, and technical constraints.",
+            "Specify custom usage scheduling window vectors per instance": "Allows instances to run dynamically on specified calendar schedules or operational clock times to match localized target business hours, significantly reducing continuous computation overhead costs.",
+            "Instances": "The precise count of parallel server copies or load-balanced infrastructure components concurrently active to deliver steady performance thresholds.",
+            "Platform Layer Instance Type": "The structural computing package profile chosen for your software—ranging from lightweight informational layouts up to high-capacity transactional clusters.",
+            "Provisioning Service Level Model": "Determines server environment profiles. Selecting Spot models optimizes baseline operations with excess global capacity zones at a heavy discount rate.",
+            "Cloud Node Deployment & Hosting Plan": "The structural virtual host design model. Dedicated environments guarantee non-shared RAM channels and zero shared computing interference from multi-tenant traffic strains.",
+            "Monthly Traffic & Bandwidth Scale": "The maximum data delivery volume allocated for your system. Elevating this threshold protects high-volume production builds from unexpected performance downgrades.",
+            "Deployment Region": "The physical geography of the web servers. Selecting infrastructure geographically near your primary end-user baseline directly drops delivery latency gaps.",
+            "SSL/TLS Security Certificate Layer": "Secures data transfers. Advanced validation profiles confirm company registration indicators inside modern browser addresses to maximize business authority.",
+            "Content Delivery Network (CDN) Edge Cache": "Saves static system assets on countless edge locations globally. Drops asset load burdens off the master origin server while keeping worldwide interaction response speeds uniform.",
+            "Allocated SSD Workspace Storage Profile": "High-speed continuous solid-state drive space explicitly reserved for managing localized application runtime configurations, uploaded files, and rapid database lookups.",
+            "Target Operational Deployment Pipeline Environments": "Isolated code iteration stages. Deploying dedicated staging parameters ensures an insulated test environment to validate updates cleanly before production pushes.",
+            "Allocated Provisioning Target Tier": "The computed hardware signature blueprint designation mapped directly out of your current architectural core selection thresholds.",
+            "Identity Management & Access Control Layer": "Handles client credential storage, protected login environments, and secure operational boundaries. Premium tiers implement advanced role-based access profiles.",
+            "Form Processing & Workflow Tracker Logic": "Backend system logic parsing incoming client queries, contact maps, dynamic documentation submissions, and multi-step pipeline lead pipelines safely.",
+            "Relational Publishing Engine & CMS Frameworks": "Deploys a robust, editable content system letting administrator teams seamlessly design, alter, clean, or schedule system blog articles or media showcase blocks without changing live source code files.",
+            "E-Commerce & Payment Gateway Integration": "Enables end-to-end purchasing environments. Syncs secure transactional state structures like digital carts, automated invoice generation, and real-time payment hooks.",
+            "Transactional Email Infrastructure Layer": "Secure email relay protocols optimized to guarantee high deliverability rates for transactional notifications, user onboarding pins, and automatic system alerts.",
+            "Search Engine Optimisation (SEO) Foundation Layer": "Embeds customized schema layouts, crawler instructions, structural sitemaps, and optimized markup strategies to ensure search crawl scripts easily evaluate and rank your platform.",
+            "Analytics & Business Intelligence Dashboard": "Gathers behavioral performance telemetry, custom funnels, and event triggers into an ordered desk view to systematically track platform growth.",
+            "System Maintenance SLA Plan, Security Patches & Core Updates": "Continuous developer oversight containing regular dependency optimizations, platform framework modifications, and security audits to avoid production failures.",
+            "Automated Server Back-up & Data Archiving Array": "Continuous background snapshot arrays allowing immediate data rollbacks to safe past restoration points in case an anomaly occurs.",
+            "Cognitive LLM AI Framework Automation Modules": "Deploys real-time conversational processing systems, letting customized large language agents directly resolve client workflows, interface tasks, or support requests.",
+            "Cost details": "Aggregated summary of infrastructure resource variables, base tier coefficients, and active operational options translated into your localized currency targets."
+        };
 
         function handleDrawerTriggerClick() {
             if (window.innerWidth < 992) {
@@ -1558,19 +1597,6 @@
             document.getElementById(selectedId).classList.add('selected');
             document.getElementById(unselectedId).classList.remove('selected');
             segmentedOffset = priceOffsetValue;
-            updateCalculations();
-        }
-
-        function togglePillNode(elementId, basePrice) {
-            const pill = document.getElementById(elementId);
-            if(pill.classList.contains('selected')) {
-                if(elementId === 'pill_dev') return; 
-                pill.classList.remove('selected');
-                pillPrices[elementId] = 0;
-            } else {
-                pill.classList.add('selected');
-                pillPrices[elementId] = basePrice;
-            }
             updateCalculations();
         }
 
@@ -1632,7 +1658,6 @@
         function updateCalculations() {
             const baseValue = parseInt(document.getElementById('base_tier').value) || 3500;
 
-            // Compute registered custom options loop array tracking automatically
             let combinedDynamicDropdownSum = 0;
             customDropdowns.forEach(id => {
                 const element = document.getElementById(id);
@@ -1646,9 +1671,8 @@
 
             const sliderVol = parseInt(document.getElementById('storage_slider').value) || 20;
             const computedStoragePrice = (sliderVol - 20) * 4.50;
-            const totalPillValues = pillPrices['pill_dev'] + pillPrices['pill_staging'] + pillPrices['pill_dr'];
+            const totalPillValues = 0;
 
-            // Maintenance SLA Factor Pricing Context Allocation Setup
             const maintenanceKey = document.getElementById('maintenance_tier').value;
             let maintenanceFactor = 0.10;
             let maintenanceTitleText = "Eco Essentials Maintenance SLA";
@@ -1663,11 +1687,9 @@
 
             const computedMaintenancePrice = Math.round(baseValue * maintenanceFactor);
             
-            document.getElementById('maintenance_subtext').innerText = maintenanceTitleText + " allocated dynamically at R" + computedMaintenancePrice.toLocaleString('en-ZA') + " / month.";
             document.getElementById('sla_token_price').innerText = "R" + computedMaintenancePrice.toLocaleString('en-ZA', { minimumFractionDigits: 2 });
             document.getElementById('sla_token_sub').innerText = maintenanceTitleText;
 
-            // Final Formula Summation Output
             const aggregateTotal = ((baseValue + segmentedOffset) * instancesMultiplier) + combinedDynamicDropdownSum + computedStoragePrice + totalPillValues + computedMaintenancePrice;
             const finalFormattedString = "R" + aggregateTotal.toLocaleString('en-ZA', { minimumFractionDigits: 2, maximumFractionDigits: 2 });
 
@@ -1706,7 +1728,6 @@
             window.scrollTo(0, 0);
         }
 
-        // Reset drawer positions cleanly if viewport resets to desktop view modes
         window.onresize = function() {
             if (window.innerWidth >= 992) {
                 toggleMobileDrawer(false);
@@ -1717,33 +1738,110 @@
             onSliderDragValueUpdate();
             onBaseTierChanged();
             evaluatePromptInputState();
+            setupPopoverModalEngine();
         };
+
+        // Vanilla Modal Popover Processing Engine (Anchored Right Layout)
+        function setupPopoverModalEngine() {
+            const popover = document.createElement('div');
+            popover.className = 'info-popover-modal';
+            document.body.appendChild(popover);
+
+            let activeTriggerNode = null;
+
+            const positionPopover = (triggerElement) => {
+                const triggerRect = triggerElement.getBoundingClientRect();
+                const scrollX = window.scrollX || window.pageXOffset;
+                const scrollY = window.scrollY || window.pageYOffset;
+
+                // Place the modal directly to the right side of the icon (+10px padding clearance)
+                let leftPosition = triggerRect.right + scrollX + 10;
+                popover.className = 'info-popover-modal pos-right';
+
+                // Check edge wall collision bounds: if the modal overflows the screen edge, flip it to the left side
+                if (leftPosition + popover.offsetWidth > window.innerWidth - 12) {
+                    leftPosition = triggerRect.left + scrollX - popover.offsetWidth - 10;
+                    popover.className = 'info-popover-modal pos-left';
+                }
+
+                // Center the modal vertically relative to the target info icon
+                let topPosition = (triggerRect.top + scrollY + (triggerRect.height / 2)) - (popover.offsetHeight / 2);
+                
+                // Keep inside vertical viewport visibility frames
+                if (topPosition < scrollY + 12) {
+                    topPosition = scrollY + 12;
+                }
+
+                popover.style.left = `${leftPosition}px`;
+                popover.style.top = `${topPosition}px`;
+            };
+
+            const triggerHide = () => {
+                popover.style.opacity = '0';
+                popover.style.display = 'none';
+                activeTriggerNode = null;
+            };
+
+            const targetInfoIcons = document.querySelectorAll('.info-icon');
+            targetInfoIcons.forEach(icon => {
+                if (icon.innerText.trim() !== 'i' && icon.innerText.trim() !== '⚙️') return;
+
+                icon.addEventListener('click', (e) => {
+                    e.stopPropagation();
+                    
+                    if (activeTriggerNode === icon) {
+                        triggerHide();
+                        return;
+                    }
+
+                    activeTriggerNode = icon;
+                    let parsedTextKey = "";
+                    const parentElementNode = icon.parentElement;
+
+                    if (parentElementNode) {
+                        parsedTextKey = Array.from(parentElementNode.childNodes)
+                            .filter(node => node !== icon)
+                            .map(node => node.textContent.trim())
+                            .join(" ")
+                            .replace(/\s+/g, ' ')
+                            .trim();
+                    }
+
+                    if (parsedTextKey.endsWith(":") || parsedTextKey.endsWith("*")) {
+                        parsedTextKey = parsedTextKey.replace(/[:*]+$/, '').trim();
+                    }
+
+                    const explanationText = infoDescriptionsMap[parsedTextKey] || `Configuration parameter guide for: "${parsedTextKey}".`;
+                    popover.innerText = explanationText;
+                    
+                    popover.style.display = 'block';
+                    positionPopover(icon);
+                    
+                    setTimeout(() => {
+                        popover.style.opacity = '1';
+                    }, 10);
+                });
+            });
+
+            document.addEventListener('click', (e) => {
+                if (!popover.contains(e.target) && e.target !== activeTriggerNode) {
+                    triggerHide();
+                }
+            });
+
+            window.addEventListener('resize', () => {
+                if (activeTriggerNode && popover.style.display === 'block') {
+                    positionPopover(activeTriggerNode);
+                }
+            });
+
+            window.addEventListener('scroll', () => {
+                if (activeTriggerNode && popover.style.display === 'block') {
+                    positionPopover(activeTriggerNode);
+                }
+            }, true);
+        }
     </script>
 </body>
 </html>
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
 <cronos-footer></cronos-footer>

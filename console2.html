@@ -88,9 +88,13 @@
         }
 
         .sparkle-icon {
+            display: inline-flex;
+            align-items: center;
+            justify-content: center;
             color: #1a73e8;
-            font-weight: bold;
-            font-size: 16px;
+            width: 16px;
+            height: 16px;
+            flex-shrink: 0;
         }
 
         .ai-banner-btn {
@@ -193,6 +197,7 @@
             display: flex;
             align-items: center;
             gap: 6px;
+            position: relative;
         }
 
         @media (min-width: 768px) {
@@ -202,19 +207,69 @@
             }
         }
 
+        /* Modal Trigger & Styling Elements */
+        .info-container-wrapper {
+            position: relative;
+            display: inline-flex;
+            align-items: center;
+            vertical-align: middle;
+        }
+
         .info-icon {
-            display: inline-block;
+            display: inline-flex;
+            align-items: center;
+            justify-content: center;
             width: 16px;
             height: 16px;
             background-color: transparent;
             border: 1px solid #80868b;
             border-radius: 50%;
             color: #80868b;
-            text-align: center;
             font-size: 11px;
-            line-height: 14px;
             font-weight: bold;
             cursor: pointer;
+            user-select: none;
+            transition: background-color 0.2s, color 0.2s;
+        }
+
+        .info-icon:hover {
+            background-color: #f1f3f4;
+            color: #202124;
+        }
+
+        .context-explanation-modal {
+            position: absolute;
+            top: 50%;
+            left: 24px;
+            transform: translateY(-50%);
+            width: 280px;
+            background: #ffffff;
+            border: 1px solid #dadce0;
+            border-radius: 8px;
+            box-shadow: 0 4px 16px rgba(60,64,67,0.15);
+            padding: 14px;
+            z-index: 300;
+            display: none;
+        }
+
+        .context-explanation-modal::before {
+            content: "";
+            position: absolute;
+            top: 50%;
+            left: -6px;
+            transform: translateY(-50%) rotate(45deg);
+            width: 10px;
+            height: 10px;
+            background: #ffffff;
+            border-left: 1px solid #dadce0;
+            border-bottom: 1px solid #dadce0;
+        }
+
+        .modal-body-txt {
+            font-size: 13px;
+            color: #3c4043;
+            line-height: 1.4;
+            font-weight: normal;
         }
 
         .top-running-total {
@@ -579,28 +634,30 @@
 
         .inline-card-info-pane {
             background-color: #f8f9fa;
-            border-radius: 16px;
+            border-radius: 8px;
             padding: 20px;
-            margin-top: 16px;
             border: 1px solid #e0e0e0;
         }
 
         .info-pane-title {
-            font-size: 13px;
+            font-size: 12px;
             color: #5f6368;
-            margin-bottom: 4px;
+            margin-bottom: 6px;
+            text-transform: uppercase;
+            letter-spacing: 0.5px;
         }
 
         .info-pane-main-value {
-            font-size: 18px;
+            font-size: 20px;
             font-weight: 500;
             color: #137333;
-            margin-bottom: 2px;
+            margin-bottom: 6px;
         }
 
         .info-pane-sub {
-            font-size: 11px;
+            font-size: 13px;
             color: #5f6368;
+            line-height: 1.4;
         }
 
         /* Sticky Pricing Summary Layout Layer */
@@ -778,7 +835,9 @@
         .trash-icon {
             cursor: pointer;
             color: #5f6368;
-            font-size: 14px;
+            display: inline-flex;
+            align-items: center;
+            justify-content: center;
         }
 
         /* Token Layout Blocks */
@@ -792,12 +851,15 @@
         }
 
         .active-token-block::before {
-            content: "📱";
+            content: "";
             position: absolute;
             left: 14px;
-            top: 22px;
-            font-size: 14px;
-            color: #1a73e8;
+            top: 16px;
+            width: 18px;
+            height: 18px;
+            background-color: #1a73e8;
+            mask: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24'%3E%3Cpath d='M17 1.01L7 1c-1.1 0-2 .9-2 2v18c0 1.1.9 2 2 2h10c1.1 0 2-.9 2-2V3c0-1.1-.9-1.99-2-1.99zM17 19H7V5h10v14z'/%3E%3C/svg%3E") no-repeat center;
+            -webkit-mask: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24'%3E%3Cpath d='M17 1.01L7 1c-1.1 0-2 .9-2 2v18c0 1.1.9 2 2 2h10c1.1 0 2-.9 2-2V3c0-1.1-.9-1.99-2-1.99zM17 19H7V5h10v14z'/%3E%3C/svg%3E") no-repeat center;
         }
 
         .token-header {
@@ -811,7 +873,7 @@
         }
 
         .token-sub { font-size: 11px; color: #5f6368; }
-        .token-options-dot { position: absolute; right: 14px; top: 18px; cursor: pointer; color: #5f6368; font-size: 16px; font-weight: bold; }
+        .token-options-dot { position: absolute; right: 14px; top: 14px; cursor: pointer; color: #5f6368; display: inline-flex; }
 
         /* Bottom Fixed Drawer Total Segment */
         .black-total-footer {
@@ -1094,7 +1156,9 @@
 
                 <div class="ai-banner">
                     <div class="ai-banner-text">
-                        <span class="sparkle-icon">✦</span> 
+                        <span class="sparkle-icon">
+                            <svg width="16" height="16" viewBox="0 0 24 24" fill="currentColor"><path d="M12 2l2.4 4.9 5.4.8-3.9 3.8.9 5.4-4.8-2.5-4.8 2.5.9-5.4-3.9-3.8 5.4-.8z"/></svg>
+                        </span> 
                         <span>Skip manual option mapping. Describe your mobile ecosystem and features to generate custom native platform architectures instantly.</span>
                     </div>
                     <button class="ai-banner-btn" onclick="navigateToAiWorkspace()">Chat to configure</button>
@@ -1106,7 +1170,15 @@
                         <div class="service-header">
                             <div class="service-title-container">
                                 <div class="service-icon"></div>
-                                <div class="service-title">Mobile Application Engineering Core <span class="info-icon">i</span></div>
+                                <div class="service-title">
+                                    Mobile Application Engineering Core 
+                                    <div class="info-container-wrapper">
+                                        <span class="info-icon" onclick="toggleExplanationModal(event, 'modal_core_engineering')">i</span>
+                                        <div class="context-explanation-modal" id="modal_core_engineering">
+                                            <div class="modal-body-txt">This manages foundational parameters regarding runtime wrappers, underlying multi-store compilers, and baseline engineering constraints.</div>
+                                        </div>
+                                    </div>
+                                </div>
                             </div>
                             <div class="top-running-total" id="top_total">R22,000.00 / month</div>
                         </div>
@@ -1144,7 +1216,15 @@
                             </div>
 
                             <div class="section-row">
-                                <div style="font-size:13px; font-weight:500; color:#202124;">Target Store Deployment Profiles <span class="info-icon">i</span></div>
+                                <div style="font-size:13px; font-weight:500; color:#202124;">
+                                    Target Store Deployment Profiles 
+                                    <div class="info-container-wrapper">
+                                        <span class="info-icon" onclick="toggleExplanationModal(event, 'modal_store_profiles')">i</span>
+                                        <div class="context-explanation-modal" id="modal_store_profiles">
+                                            <div class="modal-body-txt">Determines whether provisioning allocations target solitary app distribution centers or deploy mirrors across Apple and Google networks cleanly.</div>
+                                        </div>
+                                    </div>
+                                </div>
                                 <div class="segmented-block-row">
                                     <div class="segment-option-node selected" id="seg_single_store" onclick="selectSegmentedNode('seg_single_store', 'seg_dual_store', 0)">Single OS Store Hub</div>
                                     <div class="segment-option-node" id="seg_dual_store" onclick="selectSegmentedNode('seg_dual_store', 'seg_single_store', 8500)">Dual Store Launch (Apple App + Google Play) (+R8,500)</div>
@@ -1183,32 +1263,51 @@
                         <div class="config-card">
                             <div class="card-inner-heading">Backend Cloud Pipelines & Synclabs</div>
 
-                            <div class="section-row">
-                                <div style="font-size:13px; font-weight:500; color:#202124;">Allocated Persistent Cloud Memory Cache <span class="info-icon">i</span></div>
-                                <div class="slider-row-workspace">
-                                    <div class="slider-bar-cell">
-                                        <div class="slider-floating-tooltip" id="storage_tooltip">10 GB</div>
-                                        <input type="range" class="gcp-range-slider" id="storage_slider" min="10" max="200" step="10" value="10" oninput="onSliderDragValueUpdate()">
+                            <!-- Flex container replicates the twin column horizontal alignment structure from your image -->
+                            <div style="display: flex; gap: 24px; align-items: stretch; flex-wrap: wrap;">
+                                
+                                <!-- Left side controls -->
+                                <div style="flex: 1.2; min-width: 280px;">
+                                    <div class="section-row">
+                                        <div style="font-size:13px; font-weight:500; color:#202124;">
+                                            Allocated Persistent Cloud Memory Cache 
+                                            <div class="info-container-wrapper">
+                                                <span class="info-icon" onclick="toggleExplanationModal(event, 'modal_storage_cache')">i</span>
+                                                <div class="context-explanation-modal" id="modal_storage_cache">
+                                                    <div class="modal-body-txt">Specifies the sandbox caching boundaries allocated to background operational ledgers and localized file sync assets.</div>
+                                                </div>
+                                            </div>
+                                        </div>
+                                        <div class="slider-row-workspace">
+                                            <div class="slider-bar-cell">
+                                                <div class="slider-floating-tooltip" id="storage_tooltip">10 GB</div>
+                                                <input type="range" class="gcp-range-slider" id="storage_slider" min="10" max="200" step="10" value="10" oninput="onSliderDragValueUpdate()">
+                                            </div>
+                                            <input type="text" class="slider-manual-entry-box" id="storage_manual_box" value="10" readonly>
+                                        </div>
+                                        <div class="field-subtext">Baseline allocations provide 10 GB secure cloud ledger database indexing. Overages compute at R8.50/GB.</div>
                                     </div>
-                                    <input type="text" class="slider-manual-entry-box" id="storage_manual_box" value="10" readonly>
-                                </div>
-                                <div class="field-subtext">Baseline allocations provide 10 GB secure cloud ledger database indexing. Overages compute at R8.50/GB.</div>
-                            </div>
 
-                            <div class="section-row">
-                                <div style="font-size:13px; font-weight:500; color:#202124;">Asynchronous Sync Synchronization Profiles</div>
-                                <div class="pills-group-container">
-                                    <div class="utility-pill-node selected" id="pill_online" onclick="togglePillNode('pill_online', 0)">Standard Restful Sync (Included)</div>
-                                    <div class="utility-pill-node" id="pill_offline" onclick="togglePillNode('pill_offline', 5400)">Offline-First local SQLite caching (+R5,400)</div>
-                                    <div class="utility-pill-node" id="pill_realtime" onclick="togglePillNode('pill_realtime', 7200)">Real-time WebSockets Event Stream Hub (+R7,200)</div>
+                                    <div class="section-row" style="margin-bottom: 0;">
+                                        <div style="font-size:13px; font-weight:500; color:#202124;">Asynchronous Sync Synchronization Profiles</div>
+                                        <div class="pills-group-container">
+                                            <div class="utility-pill-node selected" id="pill_online" onclick="togglePillNode('pill_online', 0)">Standard Restful Sync (Included)</div>
+                                            <div class="utility-pill-node" id="pill_offline" onclick="togglePillNode('pill_offline', 5400)">Offline-First local SQLite caching (+R5,400)</div>
+                                            <div class="utility-pill-node" id="pill_realtime" onclick="togglePillNode('pill_realtime', 7200)">Real-time WebSockets Event Stream Hub (+R7,200)</div>
+                                        </div>
+                                        <div class="field-subtext">Offline-first retains structural transactions on user phone data partitions while roaming, syncing cleanly when networks reappear. Real-time drops data latency to milliseconds.</div>
+                                    </div>
                                 </div>
-                                <div class="field-subtext">Offline-first retains structural transactions on user phone data partitions while roaming, syncing cleanly when networks reappear. Real-time drops data latency to milliseconds.</div>
-                            </div>
 
-                            <div class="inline-card-info-pane">
-                                <div class="info-pane-title">Provisioned Core System Blueprint</div>
-                                <div class="info-pane-main-value" id="info_pane_tier_title">m1-unified-cross-engine</div>
-                                <div class="info-pane-sub" id="info_pane_tier_desc">Optimized core performance delivery structures via high-efficiency cross-platform bundles.</div>
+                                <!-- Right side info panel matching Screenshot 2026-06-23 133558_2.png positioning -->
+                                <div style="flex: 1; min-width: 260px; display: flex; flex-direction: column; justify-content: flex-start;">
+                                    <div class="inline-card-info-pane" style="margin-top: 22px; height: calc(100% - 22px); display: flex; flex-direction: column; justify-content: center; background-color: #f8f9fa;">
+                                        <div class="info-pane-title">Provisioned Core System Blueprint</div>
+                                        <div class="info-pane-main-value" id="info_pane_tier_title">m1-unified-cross-engine</div>
+                                        <div class="info-pane-sub" id="info_pane_tier_desc">Optimized core performance delivery structures via high-efficiency cross-platform bundles.</div>
+                                    </div>
+                                </div>
+
                             </div>
                         </div>
 
@@ -1220,8 +1319,8 @@
                                     <label>Identity Management & Native Cryptographic Biometrics *</label>
                                     <select class="gcp-select" id="auth_tier" onchange="updateCalculations()">
                                         <option value="0">None — Pure public operational data</option>
-                                        <option value="3200">Secure Account Space (Email/OTP + Native FaceID / TouchID Integration) — R3,200</option>
-                                        <option value="6500">Advanced Decentralized Multi-Tenant Core (RBAC Control + Partner OAuth Links) — R6,500</option>
+                                        <option value="3200">Secure Account Space (Email/OTP + Native FaceID / TouchID Integration) — R32,000</option>
+                                        <option value="6500">Advanced Decentralized Multi-Tenant Core (RBAC Control + Partner OAuth Links) — R65,000</option>
                                     </select>
                                     <div class="field-subtext">Secures data paths using local hardware keys. Essential for sensitive personal dashboards or transactions.</div>
                                 </div>
@@ -1281,7 +1380,7 @@
                                 </div>
                             </div>
 
-                            </div>
+                        </div>
                     </div>
 
                     <div class="mobile-drawer-shield" id="drawer_shield" onclick="toggleMobileDrawer(false)"></div>
@@ -1297,13 +1396,20 @@
                         </div>
 
                         <div class="billing-nag-bar">
-                            <span class="info-icon" style="background-color: #5f6368; color: #ffffff; border:none;">🔒</span> 
+                            <span class="trash-icon" style="color: #5f6368; margin-right: 4px;">
+                                <svg width="14" height="14" viewBox="0 0 24 24" fill="currentColor"><path d="M18 8h-1V6c0-2.76-2.24-5-5-5S7 3.24 7 6v2H6c-1.1 0-2 .9-2 2v10c0 1.1.9 2 2 2h12c1.1 0 2-.9 2-2V10c0-1.1-.9-2-2-2zm-6 9c-1.1 0-2-.9-2-2s.9-2 2-2 2 .9 2 2-.9 2-2 2zm3.1-9H8.9V6c0-1.71 1.39-3.1 3.1-3.1 1.71 0 3.1 1.39 3.1 3.1v2z"/></svg>
+                            </span> 
                             <span><a href="#" onclick="alert('Routing authentication hook to core billing infrastructure...')">Link developer account</a> to evaluate enterprise pipeline distributions.</span>
                         </div>
 
                         <div class="panel-padding-box">
                             <div class="cost-details-title-row">
-                                <div class="cost-details-title">Cost details <span class="info-icon" style="font-size:12px; width:18px; height:18px; line-height:16px;">⚙️</span></div>
+                                <div class="cost-details-title">
+                                    Cost details 
+                                    <span class="trash-icon" style="color: #5f6368; margin-left: 4px;">
+                                        <svg width="16" height="16" viewBox="0 0 24 24" fill="currentColor"><path d="M19.43 12.98c.04-.32.07-.64.07-.98s-.03-.66-.07-.98l2.11-1.65c.19-.15.24-.42.12-.64l-2-3.46c-.12-.22-.39-.3-.61-.22l-2.49 1c-.52-.4-1.08-.73-1.69-.98l-.38-2.65C14.46 2.18 14.25 2 14 2h-4c-.25 0-.46.18-.49.42l-.38 2.65c-.61.25-1.17.59-1.69.98l-2.49-1c-.23-.09-.49 0-.61.22l-2 3.46c-.13.22-.07.49.12.64l2.11 1.65c-.04.32-.07.65-.07.98s.03.66.07.98l-2.11 1.65c-.19.15-.24.42-.12.64l2 3.46c.12.22.39.3.61.22l2.49-1c.52.4 1.08.73 1.69.98l.38 2.65c.03.24.24.42.49.42h4c.25 0 .46-.18.49-.42l.38-2.65c.61-.25 1.17-.59 1.69-.98l2.49 1c.23.09.49 0 .61-.22l2-3.46c.12-.22.07-.49-.12-.64l-2.11-1.65zM12 15.5c-1.93 0-3.5-1.57-3.5-3.5s1.57-3.5 3.5-3.5 3.5 1.57 3.5 3.5-1.57 3.5-3.5 3.5z"/></svg>
+                                    </span>
+                                </div>
                                 <div class="currency-select-wrap">ZAR <span>▼</span></div>
                             </div>
 
@@ -1313,7 +1419,9 @@
 
                             <div class="sidebar-section-lbl">
                                 <span>Platform Engineering</span>
-                                <span class="trash-icon">🗑️</span>
+                                <span class="trash-icon" style="color: #5f6368;">
+                                    <svg width="14" height="14" viewBox="0 0 24 24" fill="currentColor"><path d="M6 19c0 1.1.9 2 2 2h8c1.1 0 2-.9 2-2V7H6v12zM19 4h-3.5l-1-1h-5l-1 1H5v2h14V4z"/></svg>
+                                </span>
                             </div>
 
                             <div class="active-token-block">
@@ -1322,7 +1430,9 @@
                                     <span id="token_price">R22,000.00</span>
                                 </div>
                                 <div class="token-sub" id="token_framework_lbl">Cross-Platform Unified Single-Target Engine</div>
-                                <div class="token-options-dot">⋮</div>
+                                <div class="token-options-dot">
+                                    <svg width="16" height="16" viewBox="0 0 24 24" fill="currentColor"><path d="M12 8c1.1 0 2-.9 2-2s-.9-2-2-2-2 .9-2 2 .9 2 2 2zm0 2c-1.1 0-2 .9-2 2s.9 2 2 2 2-.9 2-2-.9-2-2-2zm0 6c-1.1 0-2 .9-2 2s.9 2 2 2 2-.9 2-2-.9-2-2-2z"/></svg>
+                                </div>
                             </div>
                             
                             <div class="active-token-block" id="sla_token_block" style="background-color: #ffffff; border: 1px solid #dadce0;">
@@ -1331,7 +1441,9 @@
                                     <span id="sla_token_price">R0.00</span>
                                 </div>
                                 <div class="token-sub" id="sla_token_sub">Proportional Maintenance Allocation</div>
-                                <div class="token-options-dot">⋮</div>
+                                <div class="token-options-dot">
+                                    <svg width="16" height="16" viewBox="0 0 24 24" fill="currentColor"><path d="M12 8c1.1 0 2-.9 2-2s-.9-2-2-2-2 .9-2 2 .9 2 2 2zm0 2c-1.1 0-2 .9-2 2s.9 2 2 2 2-.9 2-2-.9-2-2-2zm0 6c-1.1 0-2 .9-2 2s.9 2 2 2 2-.9 2-2-.9-2-2-2z"/></svg>
+                                </div>
                             </div>
                         </div>
 
@@ -1400,13 +1512,6 @@
         let segmentedOffset = 0;
         let pillPrices = { 'pill_online': 0, 'pill_offline': 0, 'pill_realtime': 0 };
 
-        /* ============================================================
-          FUTURE REGISTRATION SYSTEM FOR ADDITIONAL DROPDOWNS
-          ============================================================
-          Whenever you introduce a new <select id="example_id"> dropdown element block,
-          simply append its exact HTML 'id' tag string below into this list array.
-          The calculator engine reads this map loop dynamically to compute accurate matrix states.
-        */
         const customDropdowns = [
             'ui_tier',
             'theme_tier',
@@ -1414,9 +1519,30 @@
             'hardware_tier',
             'push_tier',
             'ai_tier'
-            // 'my_future_dropdown_id' <-- Just append items cleanly here
         ];
-        // ============================================================
+
+        /* Context Explanation Micro-Modals Handler Logic */
+        function toggleExplanationModal(event, modalId) {
+            event.stopPropagation();
+            const targetModal = document.getElementById(modalId);
+            const isOpen = targetModal.style.display === 'block';
+            
+            // Hide all active modals first
+            document.querySelectorAll('.context-explanation-modal').forEach(modal => {
+                modal.style.display = 'none';
+            });
+
+            if (!isOpen) {
+                targetModal.style.display = 'block';
+            }
+        }
+
+        // Global event listener to safely clear explanation modals on structural background clicks
+        document.addEventListener('click', function() {
+            document.querySelectorAll('.context-explanation-modal').forEach(modal => {
+                modal.style.display = 'none';
+            });
+        });
 
         function handleDrawerTriggerClick() {
             if (window.innerWidth < 992) {
@@ -1518,7 +1644,6 @@
         function updateCalculations() {
             const baseValue = parseInt(document.getElementById('base_tier').value) || 22000;
 
-            // Compute registered custom options loop array tracking automatically
             let combinedDynamicDropdownSum = 0;
             customDropdowns.forEach(id => {
                 const element = document.getElementById(id);
@@ -1534,7 +1659,6 @@
             const computedStoragePrice = (sliderVol - 10) * 8.50;
             const totalPillValues = pillPrices['pill_online'] + pillPrices['pill_offline'] + pillPrices['pill_realtime'];
 
-            // Maintenance SLA Factor Pricing Context Allocation Setup
             const maintenanceKey = document.getElementById('maintenance_tier').value;
             let maintenanceFactor = 0.15;
             let maintenanceTitleText = "Standard Operating SLA Support";
@@ -1553,7 +1677,6 @@
             document.getElementById('sla_token_price').innerText = "R" + computedMaintenancePrice.toLocaleString('en-ZA', { minimumFractionDigits: 2 });
             document.getElementById('sla_token_sub').innerText = maintenanceTitleText;
 
-            // Final Formula Summation Output
             const aggregateTotal = ((baseValue + segmentedOffset) * appMultiplier) + combinedDynamicDropdownSum + computedStoragePrice + totalPillValues + computedMaintenancePrice;
             const finalFormattedString = "R" + aggregateTotal.toLocaleString('en-ZA', { minimumFractionDigits: 2, maximumFractionDigits: 2 });
 
@@ -1592,7 +1715,6 @@
             window.scrollTo(0, 0);
         }
 
-        // Reset drawer positions cleanly if viewport resets to desktop view modes
         window.onresize = function() {
             if (window.innerWidth >= 992) {
                 toggleMobileDrawer(false);
