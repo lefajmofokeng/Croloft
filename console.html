@@ -7,6 +7,7 @@
     
     <title>Cronos - Pricing Console</title>
 
+    <!-- WEB TAB ICON -->
     <link rel="icon" type="image/png" href="thumbnails/top-1.png">
 
     <style>
@@ -104,6 +105,8 @@
             color: #1a73e8;
             font-weight: bold;
             font-size: 16px;
+            display: flex;
+            align-items: center;
         }
 
         .ai-banner-btn {
@@ -170,14 +173,14 @@
             align-items: flex-start;
             padding: 18px;
             margin-bottom: 16px;
-            gap: 8px;
+            gap: 12px;
         }
 
         @media (min-width: 576px) {
             .service-header {
                 flex-direction: row;
                 align-items: center;
-                padding: 28px 24px;
+                padding: 24px 24px;
                 margin-bottom: 24px;
                 gap: 0;
             }
@@ -186,15 +189,7 @@
         .service-title-container {
             display: flex;
             align-items: center;
-            gap: 12px;
-        }
-
-        .service-icon {
-            width: 24px;
-            height: 24px;
-            background-color: #1a73e8;
-            mask: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24'%3E%3Cpath d='M19 3H5c-1.1 0-2 .9-2 2v14c0 1.1.9 2 2 2h14c1.1 0 2-.9 2-2V5c0-1.1-.9-2-2-2zm-2 10h-4v4h-2v-4H7v-2h4V7h2v4h4v2z'/%3E%3C/svg%3E") no-repeat center;
-            -webkit-mask: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24'%3E%3Cpath d='M19 3H5c-1.1 0-2 .9-2 2v14c0 1.1.9 2 2 2h14c1.1 0 2-.9 2-2V5c0-1.1-.9-2-2-2zm-2 10h-4v4h-2v-4H7v-2h4V7h2v4h4v2z'/%3E%3C/svg%3E") no-repeat center;
+            gap: 8px;
         }
 
         .service-title {
@@ -214,7 +209,9 @@
         }
 
         .info-icon {
-            display: inline-block;
+            display: inline-flex;
+            align-items: center;
+            justify-content: center;
             width: 16px;
             height: 16px;
             background-color: transparent;
@@ -223,17 +220,36 @@
             color: #80868b;
             text-align: center;
             font-size: 11px;
-            line-height: 14px;
             font-weight: bold;
             cursor: pointer;
             margin-left: 4px;
+            user-select: none;
         }
 
-        .top-running-total {
-            font-size: 18px;
-            font-weight: 500;
-            color: #0091ff;
+        .header-pricing-summary-block {
+            display: flex;
+            flex-direction: column;
+            align-items: flex-start;
+            gap: 4px;
         }
+
+        @media (min-width: 576px) {
+            .header-pricing-summary-block {
+                align-items: flex-end;
+            }
+        }
+
+        .header-price-row {
+            font-size: 15px;
+            font-weight: 500;
+            color: #ffffff;
+        }
+        
+        .header-price-row .highlight-val {
+            font-weight: 500;
+        }
+        .header-price-row .once-off { color: #0091ff; }
+        .header-price-row .monthly { color: #0091ff; }
 
         /* High-Fidelity Configuration Content Blocks */
         .config-card {
@@ -646,17 +662,21 @@
 
         .mobile-trigger-value-block {
             display: flex;
-            align-items: center;
-            gap: 8px;
-            font-size: 18px;
-            font-weight: 500;
-            color: #34a853;
+            flex-direction: column;
+            align-items: flex-end;
+            font-size: 12px;
+            color: #bdc1c6;
+        }
+
+        .mobile-trigger-value-block span b {
+            font-size: 14px;
         }
 
         .drawer-arrow-indicator {
-            font-size: 12px;
+            font-size: 10px;
             color: #ffffff;
             transition: transform 0.3s;
+            margin-left: 4px;
         }
 
         .cost-details-panel.drawer-open .drawer-arrow-indicator {
@@ -681,9 +701,8 @@
             }
         }
 
-        .billing-nag-bar a {
-            color: #1a73e8;
-            text-decoration: none;
+        .billing-nag-bar svg {
+            flex-shrink: 0;
         }
 
         .panel-padding-box {
@@ -761,7 +780,8 @@
         .trash-icon {
             cursor: pointer;
             color: #5f6368;
-            font-size: 14px;
+            display: flex;
+            align-items: center;
         }
 
         /* Token Layout Blocks */
@@ -769,18 +789,21 @@
             background-color: #e8f0fe;
             border: 1px solid #1a73e8;
             border-radius: 8px;
-            padding: 14px 12px 14px 44px;
+            padding: 14px 12px 14px 40px;
             position: relative;
             margin-bottom: 8px;
         }
 
         .active-token-block::before {
-            content: "✏️";
+            content: "";
             position: absolute;
             left: 14px;
-            top: 22px;
-            font-size: 14px;
-            color: #1a73e8;
+            top: 16px;
+            width: 14px;
+            height: 14px;
+            background-color: #1a73e8;
+            mask: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24'%3E%3Cpath d='M3 17.25V21h3.75L17.81 9.94l-3.75-3.75L3 17.25zM20.71 7.04c.39-.39.39-1.02 0-1.41l-2.34-2.34c-.39-.39-1.02-.39-1.41 0l-1.83 1.83 3.75 3.75 1.83-1.83z'/%3E%3C/svg%3E") no-repeat center;
+            -webkit-mask: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24'%3E%3Cpath d='M3 17.25V21h3.75L17.81 9.94l-3.75-3.75L3 17.25zM20.71 7.04c.39-.39.39-1.02 0-1.41l-2.34-2.34c-.39-.39-1.02-.39-1.41 0l-1.83 1.83 3.75 3.75 1.83-1.83z'/%3E%3C/svg%3E") no-repeat center;
         }
 
         .token-header {
@@ -794,7 +817,6 @@
         }
 
         .token-sub { font-size: 11px; color: #5f6368; }
-        .token-options-dot { position: absolute; right: 14px; top: 18px; cursor: pointer; color: #5f6368; font-size: 16px; font-weight: bold; }
 
         /* Bottom Fixed Drawer Total Segment */
         .black-total-footer {
@@ -811,6 +833,12 @@
             }
         }
 
+        .footer-price-block {
+            display: flex;
+            flex-direction: column;
+            gap: 6px;
+        }
+
         .footer-price-row {
             display: flex;
             justify-content: space-between;
@@ -818,20 +846,20 @@
         }
 
         .footer-label {
-            font-size: 12px;
+            font-size: 11px;
             text-transform: uppercase;
             letter-spacing: 0.5px;
-            color: #ffffff;
+            color: #9aa0a6;
             font-weight: 500;
         }
 
         .footer-grand-price {
-            font-size: 22px;
+            font-size: 18px;
             font-weight: 500;
-            color: #34a853;
+            color: #ffffff;
         }
-
-        .footer-grand-price span { font-size: 13px; color: #9aa0a6; font-weight: normal; }
+        .footer-grand-price.once-off-color { color: #0091ff; }
+        .footer-grand-price.monthly-color { color: #34a853; }
 
         /* Dark Mobile Underlay Shield */
         .mobile-drawer-shield {
@@ -1064,7 +1092,7 @@
 
         .hidden-node { display: none !important; }
 
-        /* --- POPUP INFO MODALS OVERLAY (RIGHT ANCHORED) --- */
+        /* --- POPUP INFO MODALS OVERLAY (RIGHT ANCHORED / MOBILE CENTERED) --- */
         .info-popover-modal {
             position: absolute;
             z-index: 9999;
@@ -1080,34 +1108,59 @@
             width: max-content;
             display: none;
             font-weight: 400;
-            pointer-events: none;
             transition: opacity 0.15s ease-in-out;
             opacity: 0;
         }
 
-        .info-popover-modal::after {
-            content: "";
-            position: absolute;
-            border-width: 6px;
-            border-style: solid;
-            display: block;
-            width: 0;
+        /* Desktop arrow pointer vectors */
+        @media (min-width: 768px) {
+            .info-popover-modal::after {
+                content: "";
+                position: absolute;
+                border-width: 6px;
+                border-style: solid;
+                display: block;
+                width: 0;
+            }
+            .info-popover-modal.pos-right::after {
+                left: -12px;
+                top: 50%;
+                transform: translateY(-50%);
+                border-color: transparent #ffffff transparent transparent;
+            }
+            .info-popover-modal.pos-left::after {
+                right: -12px;
+                top: 50%;
+                transform: translateY(-50%);
+                border-color: transparent transparent transparent #ffffff;
+            }
         }
 
-        /* Default Left Side Arrow (When popover sits safely on the right) */
-        .info-popover-modal.pos-right::after {
-            left: -12px;
-            top: 50%;
-            transform: translateY(-50%);
-            border-color: transparent #ffffff transparent transparent;
-        }
-
-        /* Fallback Right Side Arrow (When popover hits screen walls and jumps to the left side) */
-        .info-popover-modal.pos-left::after {
-            right: -12px;
-            top: 50%;
-            transform: translateY(-50%);
-            border-color: transparent transparent transparent #ffffff;
+        /* Mobile specific centered modal behavior */
+        @media (max-width: 767px) {
+            .info-popover-modal {
+                position: fixed !important;
+                top: 50% !important;
+                left: 50% !important;
+                transform: translate(-50%, -50%) !important;
+                max-width: 85% !important;
+                width: 320px;
+                box-shadow: 0 10px 30px rgba(0,0,0,0.3);
+            }
+            /* Modal structural dismissal backdrop overlay element style */
+            .mobile-popover-underlay {
+                position: fixed;
+                top: 0;
+                left: 0;
+                width: 100vw;
+                height: 100vh;
+                background-color: rgba(0,0,0,0.4);
+                z-index: 9998;
+                display: none;
+            }
+            .mobile-popover-underlay.active {
+                display: block;
+            }
         }
     </style>
     <script src="header.js" defer></script>
@@ -1127,7 +1180,9 @@
 
                 <div class="ai-banner">
                     <div class="ai-banner-text">
-                        <span class="sparkle-icon">✦</span> 
+                        <span class="sparkle-icon">
+                            <svg width="16" height="16" viewBox="0 0 24 24" fill="currentColor"><path d="M12 2l2.4 4.9 5.4.8-3.9 3.8.9 5.4-4.8-2.5-4.8 2.5.9-5.4-3.9-3.8 5.4-.8z"/></svg>
+                        </span> 
                         <span>Skip manual configuration adjustments. Describe your project workloads to generate automated cloud deployment traces.</span>
                     </div>
                     <button class="ai-banner-btn" onclick="navigateToAiWorkspace()">Chat to configure</button>
@@ -1138,10 +1193,12 @@
 
                         <div class="service-header">
                             <div class="service-title-container">
-                                <div class="service-icon"></div>
                                 <div class="service-title">Web Application Architecture Engine <span class="info-icon">i</span></div>
                             </div>
-                            <div class="top-running-total" id="top_total">R3,500.00 / month</div>
+                            <div class="header-pricing-summary-block">
+                                <div class="header-price-row">One-Time Provisioning: <span class="highlight-val once-off" id="header_once_off">R0.00</span></div>
+                                <div class="header-price-row">Monthly Maintenance: <span class="highlight-val monthly" id="header_monthly">R0.00 / mo</span></div>
+                            </div>
                         </div>
 
                         <div class="config-card first-node">
@@ -1175,10 +1232,12 @@
                             </div>
 
                             <div class="section-row">
-                                <div style="font-size:13px; font-weight:500; color:#202124;">Provisioning Service Level Model <span class="info-icon">i</span></div>
-                                <div class="segmented-block-row">
-                                    <div class="segment-option-node selected" id="seg_regular" onclick="selectSegmentedNode('seg_regular', 'seg_spot', 0)">Regular Standard SLA</div>
-                                    <div class="segment-option-node" id="seg_spot" onclick="selectSegmentedNode('seg_spot', 'seg_regular', -400)">Spot Discounted VM (-R400)</div>
+                                <div class="gcp-field-wrap">
+                                    <label>Provisioning Service Level Model <span class="info-icon">i</span></label>
+                                    <select class="gcp-select" id="service_model_select" onchange="updateCalculations()">
+                                        <option value="0">Regular Standard SLA</option>
+                                        <option value="-400">Spot Discounted VM (-R400)</option>
+                                    </select>
                                 </div>
                             </div>
                         </div>
@@ -1417,19 +1476,20 @@
                         <div class="mobile-drawer-trigger-bar" onclick="handleDrawerTriggerClick()">
                             <span class="mobile-trigger-lbl">Summary Details</span>
                             <div class="mobile-trigger-value-block">
-                                <span id="drawer_total">R3,500.00</span>
-                                <span class="drawer-arrow-indicator">▲</span>
+                                <span>Once-off: <b id="drawer_once_off">R0.00</b></span>
+                                <span>Monthly: <b id="drawer_monthly">R0.00</b></span>
                             </div>
+                            <span class="drawer-arrow-indicator">▲</span>
                         </div>
 
                         <div class="billing-nag-bar">
-                            <span class="info-icon" style="background-color: #5f6368; color: #ffffff; border:none; margin-left:0;">🔒</span> 
-                            <span><a href="#" onclick="alert('Routing authentication hook to core billing infrastructure...')">Link billing account</a> to evaluate negotiated partner metrics.</span>
+                            <svg width="14" height="14" viewBox="0 0 24 24" fill="#5f6368"><path d="M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2zm1 15h-2v-6h2v6zm0-8h-2V7h2v2z"/></svg>
+                            <span>Review estimated resource metrics matching the selected configuration layers below.</span>
                         </div>
 
                         <div class="panel-padding-box">
                             <div class="cost-details-title-row">
-                                <div class="cost-details-title">Cost details <span class="info-icon" style="font-size:12px; width:18px; height:18px; line-height:16px; margin-left:0;">⚙️</span></div>
+                                <div class="cost-details-title">Cost details</div>
                                 <div class="currency-select-wrap">ZAR <span>▼</span></div>
                             </div>
 
@@ -1439,16 +1499,17 @@
 
                             <div class="sidebar-section-lbl">
                                 <span>Compute Architecture</span>
-                                <span class="trash-icon">🗑️</span>
+                                <span class="trash-icon">
+                                    <svg width="14" height="14" viewBox="0 0 24 24" fill="currentColor"><path d="M6 19c0 1.1.9 2 2 2h8c1.1 0 2-.9 2-2V7H6v12zM19 4h-3.5l-1-1h-5l-1 1H5v2h14V4z"/></svg>
+                                </span>
                             </div>
 
                             <div class="active-token-block">
                                 <div class="token-header">
-                                    <span>Deployment Instances</span>
+                                    <span>One-Time Setup</span>
                                     <span id="token_price">R3,500.00</span>
                                 </div>
                                 <div class="token-sub" id="token_framework_lbl">Core Modular Web Build Instance</div>
-                                <div class="token-options-dot">⋮</div>
                             </div>
                             
                             <div class="active-token-block" id="sla_token_block" style="background-color: #ffffff; border: 1px solid #dadce0;">
@@ -1457,14 +1518,19 @@
                                     <span id="sla_token_price">R0.00</span>
                                 </div>
                                 <div class="token-sub" id="sla_token_sub">Proportional Maintenance Allocation</div>
-                                <div class="token-options-dot">⋮</div>
                             </div>
                         </div>
 
                         <div class="black-total-footer">
-                            <div class="footer-price-row">
-                                <div class="footer-label">Estimated Cost</div>
-                                <div class="footer-grand-price" id="footer_total">R3,500.00<span style="font-size:13px; color:#bdc1c6;"> / mo</span></div>
+                            <div class="footer-price-block">
+                                <div class="footer-price-row">
+                                    <div class="footer-label">One-Time Fees</div>
+                                    <div class="footer-grand-price once-off-color" id="footer_once_off">R0.00</div>
+                                </div>
+                                <div class="footer-price-row">
+                                    <div class="footer-label">Monthly Services</div>
+                                    <div class="footer-grand-price monthly-color" id="footer_monthly">R0.00 <span style="font-size:12px; color:#9aa0a6;">/ mo</span></div>
+                                </div>
                             </div>
                         </div>
                     </div>
@@ -1522,6 +1588,9 @@
         <div class="loading-text">INITIALIZING HIGH-FIDELITY ASSET BLUEPRINT MAP...</div>
     </div>
 
+    <!-- Mobile specific underlay backdrop node to allow easy modal tap-away dismissals -->
+    <div class="mobile-popover-underlay" id="mobile_popover_underlay"></div>
+
     <script>
         let segmentedOffset = 0;
 
@@ -1567,8 +1636,7 @@
             "Analytics & Business Intelligence Dashboard": "Gathers behavioral performance telemetry, custom funnels, and event triggers into an ordered desk view to systematically track platform growth.",
             "System Maintenance SLA Plan, Security Patches & Core Updates": "Continuous developer oversight containing regular dependency optimizations, platform framework modifications, and security audits to avoid production failures.",
             "Automated Server Back-up & Data Archiving Array": "Continuous background snapshot arrays allowing immediate data rollbacks to safe past restoration points in case an anomaly occurs.",
-            "Cognitive LLM AI Framework Automation Modules": "Deploys real-time conversational processing systems, letting customized large language agents directly resolve client workflows, interface tasks, or support requests.",
-            "Cost details": "Aggregated summary of infrastructure resource variables, base tier coefficients, and active operational options translated into your localized currency targets."
+            "Cognitive LLM AI Framework Automation Modules": "Deploys real-time conversational processing systems, letting customized large language agents directly resolve client workflows, interface tasks, or support requests."
         };
 
         function handleDrawerTriggerClick() {
@@ -1591,13 +1659,6 @@
                 shield.classList.remove('active');
                 document.body.style.overflow = ''; 
             }
-        }
-
-        function selectSegmentedNode(selectedId, unselectedId, priceOffsetValue) {
-            document.getElementById(selectedId).classList.add('selected');
-            document.getElementById(unselectedId).classList.remove('selected');
-            segmentedOffset = priceOffsetValue;
-            updateCalculations();
         }
 
         function toggleSwitchNode(toggleId, targetId) {
@@ -1657,21 +1718,38 @@
 
         function updateCalculations() {
             const baseValue = parseInt(document.getElementById('base_tier').value) || 3500;
-
-            let combinedDynamicDropdownSum = 0;
-            customDropdowns.forEach(id => {
-                const element = document.getElementById(id);
-                if (element) {
-                    combinedDynamicDropdownSum += (parseInt(element.value) || 0);
-                }
-            });
+            const modelOffset = parseInt(document.getElementById('service_model_select').value) || 0;
 
             const isUsageScheduled = document.getElementById('toggle_usage_tracker').classList.contains('active');
             const instancesMultiplier = isUsageScheduled ? (parseInt(document.getElementById('instances_qty_val').value) || 1) : 1;
 
+            // --- ONE-TIME PROVISIONING COSTS ---
+            // Base Core Template Framework Setup is Once-Off
+            let computedOnceOffTotal = (baseValue + modelOffset) * instancesMultiplier;
+            
+            // Infrastructure Hardware Scales, Layout Options, and Integrations are treated as Once-Off setups
+            computedOnceOffTotal += parseInt(document.getElementById('hosting_tier').value) || 0;
+            computedOnceOffTotal += parseInt(document.getElementById('bandwidth_tier').value) || 0;
+            computedOnceOffTotal += parseInt(document.getElementById('region_tier').value) || 0;
+            computedOnceOffTotal += parseInt(document.getElementById('ssl_tier').value) || 0;
+            computedOnceOffTotal += parseInt(document.getElementById('cdn_tier').value) || 0;
+            computedOnceOffTotal += parseInt(document.getElementById('deployment_env_tier').value) || 0;
+            computedOnceOffTotal += parseInt(document.getElementById('auth_tier').value) || 0;
+            computedOnceOffTotal += parseInt(document.getElementById('form_tier').value) || 0;
+            computedOnceOffTotal += parseInt(document.getElementById('cms_tier').value) || 0;
+            computedOnceOffTotal += parseInt(document.getElementById('ecommerce_tier').value) || 0;
+            computedOnceOffTotal += parseInt(document.getElementById('email_tier').value) || 0;
+            computedOnceOffTotal += parseInt(document.getElementById('seo_tier').value) || 0;
+            computedOnceOffTotal += parseInt(document.getElementById('analytics_tier').value) || 0;
+            computedOnceOffTotal += parseInt(document.getElementById('ai_tier').value) || 0;
+
             const sliderVol = parseInt(document.getElementById('storage_slider').value) || 20;
             const computedStoragePrice = (sliderVol - 20) * 4.50;
-            const totalPillValues = 0;
+            computedOnceOffTotal += computedStoragePrice;
+
+            // --- MONTHLY RECURRING OPERATIONAL COSTS ---
+            // Ongoing server backups and lifecycle support SLA plans are treated as Monthly Costs
+            let computedMonthlyTotal = parseInt(document.getElementById('backup_tier').value) || 0;
 
             const maintenanceKey = document.getElementById('maintenance_tier').value;
             let maintenanceFactor = 0.10;
@@ -1686,17 +1764,26 @@
             }
 
             const computedMaintenancePrice = Math.round(baseValue * maintenanceFactor);
+            computedMonthlyTotal += computedMaintenancePrice;
             
-            document.getElementById('sla_token_price').innerText = "R" + computedMaintenancePrice.toLocaleString('en-ZA', { minimumFractionDigits: 2 });
+            // Update Summary Token Layout Fields
+            document.getElementById('sla_token_price').innerText = "R" + computedMonthlyTotal.toLocaleString('en-ZA', { minimumFractionDigits: 2 });
             document.getElementById('sla_token_sub').innerText = maintenanceTitleText;
+            document.getElementById('token_price').innerText = "R" + ((baseValue + modelOffset) * instancesMultiplier).toLocaleString('en-ZA', { minimumFractionDigits: 2 });
 
-            const aggregateTotal = ((baseValue + segmentedOffset) * instancesMultiplier) + combinedDynamicDropdownSum + computedStoragePrice + totalPillValues + computedMaintenancePrice;
-            const finalFormattedString = "R" + aggregateTotal.toLocaleString('en-ZA', { minimumFractionDigits: 2, maximumFractionDigits: 2 });
+            // Format Output Figures Cleanly
+            const formattedOnceOff = "R" + computedOnceOffTotal.toLocaleString('en-ZA', { minimumFractionDigits: 2, maximumFractionDigits: 2 });
+            const formattedMonthly = "R" + computedMonthlyTotal.toLocaleString('en-ZA', { minimumFractionDigits: 2, maximumFractionDigits: 2 });
 
-            document.getElementById('top_total').innerText = finalFormattedString + " / month";
-            document.getElementById('token_price').innerText = "R" + (baseValue * instancesMultiplier).toLocaleString('en-ZA', { minimumFractionDigits: 2 });
-            document.getElementById('drawer_total').innerText = finalFormattedString;
-            document.getElementById('footer_total').innerHTML = finalFormattedString + `<span style="font-size:13px; color:#bdc1c6;"> / mo</span>`;
+            // Write output to presentation vectors
+            document.getElementById('header_once_off').innerText = formattedOnceOff;
+            document.getElementById('header_monthly').innerText = formattedMonthly + " / mo";
+
+            document.getElementById('drawer_once_off').innerText = formattedOnceOff;
+            document.getElementById('drawer_monthly').innerText = formattedMonthly;
+
+            document.getElementById('footer_once_off').innerText = formattedOnceOff;
+            document.getElementById('footer_monthly').innerHTML = formattedMonthly + `<span style="font-size:12px; color:#9aa0a6;"> / mo</span>`;
         }
 
         function evaluatePromptInputState() {
@@ -1741,15 +1828,23 @@
             setupPopoverModalEngine();
         };
 
-        // Vanilla Modal Popover Processing Engine (Anchored Right Layout)
+        // Vanilla Modal Popover Processing Engine (Anchored Right Layout / Centered Mobile Overlay)
         function setupPopoverModalEngine() {
             const popover = document.createElement('div');
             popover.className = 'info-popover-modal';
             document.body.appendChild(popover);
 
+            const underlay = document.getElementById('mobile_popover_underlay');
             let activeTriggerNode = null;
 
             const positionPopover = (triggerElement) => {
+                if (window.innerWidth < 767) {
+                    // Mobile constraints are fully centered via viewport layout definitions in stylesheet rules
+                    popover.style.left = '';
+                    popover.style.top = '';
+                    return;
+                }
+
                 const triggerRect = triggerElement.getBoundingClientRect();
                 const scrollX = window.scrollX || window.pageXOffset;
                 const scrollY = window.scrollY || window.pageYOffset;
@@ -1779,12 +1874,16 @@
             const triggerHide = () => {
                 popover.style.opacity = '0';
                 popover.style.display = 'none';
+                underlay.classList.remove('active');
                 activeTriggerNode = null;
             };
 
+            // Set up dismissal tap events directly to mobile structural shield
+            underlay.addEventListener('click', triggerHide);
+
             const targetInfoIcons = document.querySelectorAll('.info-icon');
             targetInfoIcons.forEach(icon => {
-                if (icon.innerText.trim() !== 'i' && icon.innerText.trim() !== '⚙️') return;
+                if (icon.innerText.trim() !== 'i') return;
 
                 icon.addEventListener('click', (e) => {
                     e.stopPropagation();
@@ -1817,6 +1916,10 @@
                     popover.style.display = 'block';
                     positionPopover(icon);
                     
+                    if (window.innerWidth < 767) {
+                        underlay.classList.add('active');
+                    }
+
                     setTimeout(() => {
                         popover.style.opacity = '1';
                     }, 10);
@@ -1832,11 +1935,14 @@
             window.addEventListener('resize', () => {
                 if (activeTriggerNode && popover.style.display === 'block') {
                     positionPopover(activeTriggerNode);
+                    if (window.innerWidth >= 767) {
+                        underlay.classList.remove('active');
+                    }
                 }
             });
 
             window.addEventListener('scroll', () => {
-                if (activeTriggerNode && popover.style.display === 'block') {
+                if (activeTriggerNode && popover.style.display === 'block' && window.innerWidth >= 767) {
                     positionPopover(activeTriggerNode);
                 }
             }, true);
