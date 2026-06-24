@@ -617,7 +617,7 @@ class CronosHeader extends HTMLElement {
                                 <p class="cronos-profile-desc">Your profile helps improve your interactions with select Cronos experiences.</p>
                                 <div class="cronos-profile-actions">
                                     <a href="login.html" class="cronos-profile-btn-login">Log in</a>
-                                    <a href="register.html" class="cronos-profile-btn-create">Create profile</a>
+                                    <a href="register.html" class="cronos-profile-btn-create">Create account</a>
                                 </div>
                             </div>
 

@@ -33,26 +33,9 @@
             overflow-x: hidden;
         }
 
-        /* Fixed Navigation Header */
-        .global-header-mock {
-            height: 55px;
-            background-color: #ffffff;
-            border-bottom: 1px solid #e0e0e0;
-            display: flex;
-            align-items: center;
-            padding: 0 24px;
-            font-weight: 500;
-            color: #5f6368;
-            position: fixed;
-            top: 0;
-            left: 0;
-            right: 0;
-            z-index: 200;
-        }
-
-        /* Clearance Layout Body Offset */
+        /* Body sits directly under website's 55px fixed header */
         .app-view-body {
-            padding-top: 55px;
+            padding-top: 0;
         }
 
         /* Primary View Container Framework */
@@ -75,9 +58,9 @@
             justify-content: space-between;
             align-items: flex-start;
             background-color: #e8f0fe;
-            border-radius: 12px;
-            padding: 16px;
-            margin: 16px 0;
+            border-radius: 50px;
+            padding: 11px 16px;
+            margin: 0 0 16px 0;
             gap: 12px;
         }
 
@@ -85,9 +68,9 @@
             .ai-banner {
                 flex-direction: row;
                 align-items: center;
-                padding: 16px 24px;
-                margin: 24px 0;
-                gap: 0;
+                padding: 11px 12px 11px 24px;
+                margin: 0 0 24px 0;
+                gap: 0;  margin-top: 4rem;
             }
         }
 
@@ -95,9 +78,9 @@
             display: flex;
             align-items: flex-start;
             gap: 10px;
-            font-size: 14px;
+            font-size: 17px;
             color: #1967d2;
-            font-weight: 500;
+            font-weight: 400;
             line-height: 1.4;
         }
 
@@ -111,13 +94,13 @@
 
         .ai-banner-btn {
             background-color: #ffffff;
-            border: 1px solid #dadce0;
-            padding: 8px 18px;
+            border: none;
+            padding: 15px 18px;
             border-radius: 100px;
-            font-size: 13px;
+            font-size: 15px;
             font-weight: 500;
             color: #1a73e8;
-            box-shadow: 0 1px 2px rgba(0,0,0,0.05);
+            
             cursor: pointer;
             white-space: nowrap;
             transition: all 0.2s ease;
@@ -160,28 +143,37 @@
             flex-direction: column;
         }
 
-        /* Sticky Section Service Dashboard Header */
+        /* GCP-Style Service Header - sticky beneath site's 55px header, full width */
         .service-header {
             position: sticky;
-            top: 65px;
+            top: 55px;
             z-index: 100;
-            background-color: #080d1b;
-            border-radius: 12px;
+            background-color: #f8f9fa;
+            border-bottom: none;
+            box-shadow: none;
+            clip-path: inset(0 0 -20px 0);
+            transition: box-shadow 0.2s ease;
             display: flex;
             flex-direction: column;
             justify-content: space-between;
             align-items: flex-start;
-            padding: 18px;
-            margin-bottom: 16px;
-            gap: 12px;
+            padding: 30px 16px;
+            margin-left: -16px;
+            margin-right: -16px;
+            gap: 10px; 
+        }
+
+        .service-header.scrolled {
+            box-shadow: 18px 5px 10px 0 rgba(60,64,67,0.22); 
         }
 
         @media (min-width: 576px) {
             .service-header {
                 flex-direction: row;
                 align-items: center;
-                padding: 24px 24px;
-                margin-bottom: 24px;
+                padding: 30px 24px;
+                margin-left: -24px;
+                margin-right: -24px;
                 gap: 0;
             }
         }
@@ -195,7 +187,7 @@
         .service-title {
             font-size: 18px;
             font-weight: 500;
-            color: #ffffff;
+            color: #202124;
             display: flex;
             align-items: center;
             gap: 6px;
@@ -203,7 +195,7 @@
 
         @media (min-width: 768px) {
             .service-title {
-                font-size: 20px;
+                font-size: 19px;
                 gap: 8px;
             }
         }
@@ -223,33 +215,32 @@
             font-weight: bold;
             cursor: pointer;
             margin-left: 4px;
-            user-select: none;
+            user-select: none; vertical-align: middle;
         }
 
         .header-pricing-summary-block {
             display: flex;
-            flex-direction: column;
-            align-items: flex-start;
-            gap: 4px;
-        }
-
-        @media (min-width: 576px) {
-            .header-pricing-summary-block {
-                align-items: flex-end;
-            }
+            flex-direction: row;
+            align-items: baseline;
+            gap: 20px;
         }
 
         .header-price-row {
+            display: flex;
+            align-items: baseline;
+            gap: 5px;
             font-size: 15px;
-            font-weight: 500;
-            color: #ffffff;
+            font-weight: 400;
+            color: #5f6368;
+            white-space: nowrap;
         }
-        
+
         .header-price-row .highlight-val {
+            font-size: 19px;
             font-weight: 500;
         }
-        .header-price-row .once-off { color: #0091ff; }
-        .header-price-row .monthly { color: #0091ff; }
+        .header-price-row .once-off { color: #000000; }
+        .header-price-row .monthly { color: #000000; }
 
         /* High-Fidelity Configuration Content Blocks */
         .config-card {
@@ -266,13 +257,13 @@
 
         .config-card.first-node {
             border-top: 1px solid #dadce0;
-            border-top-left-radius: 8px;
-            border-top-right-radius: 8px;
+            border-top-left-radius: 20px;
+            border-top-right-radius: 20px;
         }
 
         .config-card.last-node {
-            border-bottom-left-radius: 8px;
-            border-bottom-right-radius: 8px;
+            border-bottom-left-radius:20px;
+            border-bottom-right-radius: 20px;
             margin-bottom: 0;
         }
 
@@ -592,7 +583,7 @@
         .info-pane-main-value {
             font-size: 18px;
             font-weight: 500;
-            color: #137333;
+            color: #1a73e8;
             margin-bottom: 2px;
         }
 
@@ -605,7 +596,6 @@
         .cost-details-panel {
             width: 100%;
             background-color: #ffffff;
-            border: 1px solid #dadce0;
             border-radius: 8px;
             box-shadow: 0 1px 2px 0 rgba(60,64,67,0.3), 0 2px 6px 2px rgba(60,64,67,0.15);
             position: fixed;
@@ -626,7 +616,7 @@
             .cost-details-panel {
                 width: 340px;
                 position: sticky;
-                top: 65px;
+                top: 150px;
                 bottom: auto;
                 left: auto;
                 right: auto;
@@ -858,8 +848,8 @@
             font-weight: 500;
             color: #ffffff;
         }
-        .footer-grand-price.once-off-color { color: #0091ff; }
-        .footer-grand-price.monthly-color { color: #34a853; }
+        .footer-grand-price.once-off-color { color: #1a73e8; }
+        .footer-grand-price.monthly-color { color: #1a73e8; }
 
         /* Dark Mobile Underlay Shield */
         .mobile-drawer-shield {
@@ -1095,14 +1085,14 @@
         /* --- POPUP INFO MODALS OVERLAY (RIGHT ANCHORED / MOBILE CENTERED) --- */
         .info-popover-modal {
             position: absolute;
-            z-index: 9999;
+            z-index: 999;
             background-color: #ffffff;
             color: #3c4043;
-            border: 1px solid #dadce0;
+           
             border-radius: 8px;
             box-shadow: 0 4px 16px rgba(60,64,67,0.25);
-            padding: 12px 16px;
-            font-size: 13px;
+            padding: 15px 20px;
+            font-size: 15px;
             line-height: 1.5;
             max-width: 280px;
             width: max-content;
@@ -1162,6 +1152,294 @@
                 display: block;
             }
         }
+        /* Generate Quote Button */
+        .generate-quote-btn {
+            width: 100%;
+            background: #0077cc;
+            border: none;
+            color: #ffffff;
+            padding: 12px 10px;
+            border-radius: 50px;
+            font-size: 14px;
+            font-weight: 500;
+            cursor: pointer;
+            margin-bottom: 20px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            gap: 8px;
+            
+        }
+        .generate-quote-btn:hover {
+            box-shadow: 0 4px 16px rgba(26,115,232,0.45);
+        }
+
+        /* PDF Quote Modal Overlay */
+        .quote-modal-overlay {
+            position: fixed;
+            inset: 0;
+            background: rgba(0,0,0,0.55);
+            z-index: 2000;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            padding: 16px;
+        }
+        .quote-modal-overlay.hidden-node { display: none !important; }
+        .quote-modal-box {
+            background: #ffffff;
+            border-radius: 16px;
+            max-width: 860px;
+            width: 100%;
+            max-height: 92vh;
+            overflow-y: auto;
+            box-shadow: 0 24px 64px rgba(0,0,0,0.25);
+            display: flex;
+            flex-direction: column;
+        }
+        .quote-modal-header {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 20px 28px;
+            border-bottom: 1px solid #e0e0e0;
+            position: sticky;
+            top: 0;
+            background: #fff;
+            border-radius: 16px 16px 0 0;
+            z-index: 10;
+        }
+        .quote-modal-title {
+            font-size: 16px;
+            font-weight: 600;
+            color: #202124;
+        }
+        .quote-modal-actions {
+            display: flex;
+            gap: 10px;
+            align-items: center;
+        }
+        .quote-close-btn {
+            background: none;
+            border: none;
+            font-size: 22px;
+            color: #5f6368;
+            cursor: pointer;
+            line-height: 1;
+            padding: 2px 6px;
+        }
+        .quote-download-btn {
+            background: #1a73e8;
+            color: #fff;
+            border: none;
+            padding: 9px 20px;
+            border-radius: 100px;
+            font-size: 13px;
+            font-weight: 600;
+            cursor: pointer;
+            display: flex;
+            align-items: center;
+            gap: 6px;
+        }
+        .quote-download-btn:hover { background: #1558c0; }
+
+        /* PDF Preview Document Styles (rendered inside modal) */
+        #quote-preview-doc {
+            padding: 0;
+        }
+        .qpdf-page {
+            width: 100%;
+            background: #ffffff;
+            font-family: "Circular Std", "Segoe UI", Roboto, Arial, sans-serif;
+            color: #202124;
+        }
+        .qpdf-hero {
+            background: linear-gradient(135deg, #0a1628 0%, #1a2d4f 60%, #0d3b7a 100%);
+            padding: 48px 56px 36px 56px;
+            position: relative;
+            overflow: hidden;
+        }
+        .qpdf-hero::after {
+            content: "";
+            position: absolute;
+            right: -60px;
+            top: -60px;
+            width: 300px;
+            height: 300px;
+            border-radius: 50%;
+            background: rgba(26,115,232,0.12);
+        }
+        .qpdf-hero-grid {
+            display: flex;
+            justify-content: space-between;
+            align-items: flex-start;
+            position: relative;
+            z-index: 1;
+        }
+        .qpdf-logo-zone {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: rgba(255,255,255,0.4);
+            font-size: 11px;
+            font-weight: 500;
+            letter-spacing: 0.5px;
+            text-transform: uppercase;
+        }
+        .qpdf-doc-meta {
+            text-align: right;
+        }
+        .qpdf-doc-label {
+            font-size: 11px;
+            font-weight: 600;
+            letter-spacing: 1.5px;
+            text-transform: uppercase;
+            color: rgba(255,255,255,0.5);
+            margin-bottom: 4px;
+        }
+        .qpdf-doc-number {
+            font-size: 22px;
+            font-weight: 700;
+            color: #ffffff;
+            margin-bottom: 6px;
+        }
+        .qpdf-doc-date {
+            font-size: 12px;
+            color: rgba(255,255,255,0.6);
+        }
+        .qpdf-hero-title {
+            margin-top: 32px;
+            position: relative;
+            z-index: 1;
+        }
+        .qpdf-hero-title h1 {
+            font-size: 28px;
+            font-weight: 700;
+            color: #ffffff;
+            margin: 0 0 6px 0;
+            letter-spacing: -0.3px;
+        }
+        .qpdf-hero-title p {
+            font-size: 13px;
+            color: rgba(255,255,255,0.55);
+            margin: 0;
+        }
+        .qpdf-body {
+            padding: 40px 56px;
+        }
+        .qpdf-section-label {
+            font-size: 10px;
+            font-weight: 700;
+            letter-spacing: 1.5px;
+            text-transform: uppercase;
+            color: #1a73e8;
+            margin-bottom: 14px;
+            padding-bottom: 6px;
+            border-bottom: 2px solid #e8f0fe;
+        }
+        .qpdf-line-table {
+            width: 100%;
+            border-collapse: collapse;
+            margin-bottom: 32px;
+        }
+        .qpdf-line-table thead th {
+            font-size: 10px;
+            font-weight: 700;
+            letter-spacing: 0.8px;
+            text-transform: uppercase;
+            color: #80868b;
+            padding: 0 12px 10px 12px;
+            text-align: left;
+            border-bottom: 1px solid #e0e0e0;
+        }
+        .qpdf-line-table thead th:last-child { text-align: right; }
+        .qpdf-line-table tbody tr {
+            border-bottom: 1px solid #f1f3f4;
+        }
+        .qpdf-line-table tbody tr:last-child { border-bottom: none; }
+        .qpdf-line-table tbody td {
+            padding: 13px 12px;
+            font-size: 13px;
+            color: #202124;
+            vertical-align: top;
+        }
+        .qpdf-line-table tbody td:last-child {
+            text-align: right;
+            font-weight: 600;
+            white-space: nowrap;
+            color: #202124;
+        }
+        .qpdf-line-table tbody td.line-desc {
+            font-size: 12px;
+            color: #5f6368;
+            padding-top: 0;
+            padding-bottom: 13px;
+        }
+        .qpdf-totals-box {
+            background: #f8f9fa;
+            border-radius: 12px;
+            padding: 24px 28px;
+            margin-bottom: 32px;
+        }
+        .qpdf-total-row {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 8px 0;
+            font-size: 13px;
+        }
+        .qpdf-total-row.divider { border-top: 1px solid #e0e0e0; margin-top: 8px; padding-top: 16px; }
+        .qpdf-total-row .tot-label { color: #5f6368; font-weight: 400; }
+        .qpdf-total-row .tot-val { color: #202124; font-weight: 600; }
+        .qpdf-total-row.grand .tot-label { font-size: 15px; font-weight: 700; color: #202124; }
+        .qpdf-total-row.grand .tot-val { font-size: 20px; font-weight: 700; color: #1a73e8; }
+        .qpdf-total-row.monthly-row .tot-val { color: #1a73e8; }
+        .qpdf-validity-box {
+            background: #e8f0fe;
+            border-left: 4px solid #1a73e8;
+            border-radius: 0 8px 8px 0;
+            padding: 16px 20px;
+            margin-bottom: 32px;
+            font-size: 12px;
+            color: #1967d2;
+            line-height: 1.6;
+        }
+        .qpdf-validity-box strong { font-weight: 700; }
+        .qpdf-footer {
+            background: #f8f9fa;
+            border-top: 1px solid #e0e0e0;
+            padding: 24px 56px;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            gap: 16px;
+        }
+        .qpdf-footer-seal {
+            display: flex;
+            align-items: center;
+            gap: 10px;
+            font-size: 11px;
+            color: #5f6368;
+        }
+        .qpdf-seal-icon {
+            width: 32px;
+            height: 32px;
+            background: linear-gradient(135deg, #1a73e8, #0d47a1);
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: #fff;
+            font-size: 14px;
+            flex-shrink: 0;
+        }
+        .qpdf-footer-contact {
+            text-align: right;
+            font-size: 11px;
+            color: #5f6368;
+            line-height: 1.6;
+        }
+
     </style>
     <script src="header.js" defer></script>
     <script src="footer.js" defer></script> 
@@ -1170,35 +1448,35 @@
 
     <cronos-header></cronos-header>
 
-    <div class="global-header-mock">
-        <span>Console Infrastructure Core Suite</span>
-    </div>
-
     <div class="app-view-body">
         <div id="pricing_console_view">
             <div class="console-container-view">
 
-                <div class="ai-banner">
-                    <div class="ai-banner-text">
-                        <span class="sparkle-icon">
-                            <svg width="16" height="16" viewBox="0 0 24 24" fill="currentColor"><path d="M12 2l2.4 4.9 5.4.8-3.9 3.8.9 5.4-4.8-2.5-4.8 2.5.9-5.4-3.9-3.8 5.4-.8z"/></svg>
-                        </span> 
-                        <span>Skip manual configuration adjustments. Describe your project workloads to generate automated cloud deployment traces.</span>
+                <div class="service-header">
+                    <div class="service-title-container">
+                        <svg width="22" height="22" viewBox="0 0 24 24" fill="#1a73e8" style="flex-shrink:0;"><path d="M20 4H4c-1.1 0-2 .9-2 2v12c0 1.1.9 2 2 2h16c1.1 0 2-.9 2-2V6c0-1.1-.9-2-2-2zm0 14H4V6h16v12zM6 10h2v2H6zm0 4h8v2H6zm10 0h2v2h-2zm-6-4h8v2h-8z"/></svg>
+                        <div class="service-title">
+                            Web Application Architecture Engine
+                            <span class="info-icon">i</span>
+                        </div>
                     </div>
-                    <button class="ai-banner-btn" onclick="navigateToAiWorkspace()">Chat to configure</button>
+                    <div class="header-pricing-summary-block">
+                        <div class="header-price-row"><span class="highlight-val once-off" id="header_once_off">R0.00</span> /Estimated upfront cost</div>
+                        <div class="header-price-row"><span class="highlight-val monthly" id="header_monthly">R0.00</span> /Estimated monthly cost</div>
+                    </div>
                 </div>
-                
+
                 <div class="console-workspace">
                     <div class="left-config-column">
 
-                        <div class="service-header">
-                            <div class="service-title-container">
-                                <div class="service-title">Web Application Architecture Engine <span class="info-icon">i</span></div>
+                        <div class="ai-banner">
+                            <div class="ai-banner-text">
+                                <span class="sparkle-icon">
+                                    <svg width="16" height="16" viewBox="0 0 24 24" fill="currentColor"><path d="M12 2l2.4 4.9 5.4.8-3.9 3.8.9 5.4-4.8-2.5-4.8 2.5.9-5.4-3.9-3.8 5.4-.8z"/></svg>
+                                </span> 
+                                <span>Skip manual configuration adjustments. Describe your project workloads to generate automated cloud deployment traces.</span>
                             </div>
-                            <div class="header-pricing-summary-block">
-                                <div class="header-price-row">One-Time Provisioning: <span class="highlight-val once-off" id="header_once_off">R0.00</span></div>
-                                <div class="header-price-row">Monthly Maintenance: <span class="highlight-val monthly" id="header_monthly">R0.00 / mo</span></div>
-                            </div>
+                            <button class="ai-banner-btn" onclick="navigateToAiWorkspace()">Chat to configure</button>
                         </div>
 
                         <div class="config-card first-node">
@@ -1490,16 +1768,16 @@
                         <div class="panel-padding-box">
                             <div class="cost-details-title-row">
                                 <div class="cost-details-title">Cost details</div>
-                                <div class="currency-select-wrap">ZAR <span>▼</span></div>
                             </div>
 
-                            <button class="add-estimate-btn" onclick="alert('Configuration stack synced into global multi-tier architecture trace.')">
-                                <span style="font-weight:bold; font-size:15px; margin-right:4px;">+</span> Add to estimate
+                            <button class="generate-quote-btn" onclick="openQuoteModal()">
+                                <svg width="15" height="15" viewBox="0 0 24 24" fill="currentColor"><path d="M14 2H6c-1.1 0-2 .9-2 2v16c0 1.1.9 2 2 2h12c1.1 0 2-.9 2-2V8l-6-6zm-1 7V3.5L18.5 9H13zm-2 8H7v-2h4v2zm4-4H7v-2h8v2z"/></svg>
+                                Generate Quote
                             </button>
 
                             <div class="sidebar-section-lbl">
                                 <span>Compute Architecture</span>
-                                <span class="trash-icon">
+                                <span class="trash-icon" onclick="resetAllSelections()" title="Reset all selections">
                                     <svg width="14" height="14" viewBox="0 0 24 24" fill="currentColor"><path d="M6 19c0 1.1.9 2 2 2h8c1.1 0 2-.9 2-2V7H6v12zM19 4h-3.5l-1-1h-5l-1 1H5v2h14V4z"/></svg>
                                 </span>
                             </div>
@@ -1579,6 +1857,28 @@
                         </div>
                     </div>
                 </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- PDF Quote Modal -->
+    <div class="quote-modal-overlay hidden-node" id="quote_modal_overlay">
+        <div class="quote-modal-box">
+            <div class="quote-modal-header">
+                <div class="quote-modal-title">
+                    <svg width="16" height="16" viewBox="0 0 24 24" fill="#1a73e8" style="margin-right:6px; vertical-align:middle;"><path d="M14 2H6c-1.1 0-2 .9-2 2v16c0 1.1.9 2 2 2h12c1.1 0 2-.9 2-2V8l-6-6zm-1 7V3.5L18.5 9H13zm-2 8H7v-2h4v2zm4-4H7v-2h8v2z"/></svg>
+                    Official Quotation Document
+                </div>
+                <div class="quote-modal-actions">
+                    <button class="quote-download-btn" onclick="downloadQuotePDF()">
+                        <svg width="13" height="13" viewBox="0 0 24 24" fill="currentColor"><path d="M19 9h-4V3H9v6H5l7 7 7-7zm-8 2V5h2v6h1.17L12 13.17 9.83 11H11zm-6 8h14v2H5v-2z"/></svg>
+                        Download PDF
+                    </button>
+                    <button class="quote-close-btn" onclick="closeQuoteModal()">✕</button>
+                </div>
+            </div>
+            <div id="quote-preview-doc">
+                <!-- Generated dynamically by openQuoteModal() -->
             </div>
         </div>
     </div>
@@ -1777,7 +2077,7 @@
 
             // Write output to presentation vectors
             document.getElementById('header_once_off').innerText = formattedOnceOff;
-            document.getElementById('header_monthly').innerText = formattedMonthly + " / mo";
+            document.getElementById('header_monthly').innerText = formattedMonthly;
 
             document.getElementById('drawer_once_off').innerText = formattedOnceOff;
             document.getElementById('drawer_monthly').innerText = formattedMonthly;
@@ -1815,17 +2115,286 @@
             window.scrollTo(0, 0);
         }
 
-        window.onresize = function() {
+        // ─── RESET ALL SELECTIONS ──────────────────────────────────────────────
+        function resetAllSelections() {
+            // Reset all registered dropdowns to first option
+            const allDropdowns = [
+                'hosting_tier','bandwidth_tier','auth_tier','form_tier',
+                'cms_tier','backup_tier','ai_tier','deployment_env_tier',
+                'ssl_tier','cdn_tier','seo_tier','analytics_tier',
+                'ecommerce_tier','email_tier','region_tier',
+                'base_tier','service_model_select','maintenance_tier'
+            ];
+            allDropdowns.forEach(id => {
+                const el = document.getElementById(id);
+                if (el) el.selectedIndex = 0;
+            });
+
+            // Reset toggle switches
+            ['toggle_usage_tracker'].forEach(id => {
+                const el = document.getElementById(id);
+                if (el && el.classList.contains('active')) {
+                    el.classList.remove('active');
+                    const targetId = id === 'toggle_usage_tracker' ? 'usage_time_fields' : null;
+                    if (targetId) document.getElementById(targetId)?.classList.add('hidden-node');
+                }
+            });
+
+            // Reset counter
+            const instancesInput = document.getElementById('instances_qty_val');
+            if (instancesInput) instancesInput.value = 1;
+
+            // Reset slider
+            const slider = document.getElementById('storage_slider');
+            if (slider) { slider.value = slider.min; onSliderDragValueUpdate(); }
+
+            // Re-run base tier logic and calculations
+            onBaseTierChanged();
+            updateCalculations();
+        }
+
+        // ─── QUOTE MODAL ───────────────────────────────────────────────────────
+        function openQuoteModal() {
+            const quoteNumber = 'QT-' + Date.now().toString(36).toUpperCase().slice(-8);
+            const now = new Date();
+            const dateStr = now.toLocaleDateString('en-ZA', { year: 'numeric', month: 'long', day: 'numeric' });
+            const validUntil = new Date(now.setDate(now.getDate() + 30)).toLocaleDateString('en-ZA', { year: 'numeric', month: 'long', day: 'numeric' });
+
+            // Gather all configured line items
+            const lines = gatherQuoteLineItems();
+
+            const onceOffTotal = parseFloat(document.getElementById('header_once_off').innerText.replace('R','').replace(/\s/g,'').replace(/,/g,'')) || 0;
+            const monthlyTotal = parseFloat(document.getElementById('header_monthly').innerText.replace('R','').replace(/\s/g,'').replace(/[\s\/mo]/g,'').replace(/,/g,'')) || 0;
+
+            const fmtR = (n) => 'R\u00A0' + n.toLocaleString('en-ZA', { minimumFractionDigits: 2, maximumFractionDigits: 2 });
+
+            // Build line rows HTML
+            let onceOffRows = '';
+            let monthlyRows = '';
+            lines.once_off.forEach(l => {
+                onceOffRows += `<tr>
+                    <td>${l.name}</td>
+                    <td>${l.desc}</td>
+                    <td>${fmtR(l.price)}</td>
+                </tr>`;
+            });
+            lines.monthly.forEach(l => {
+                monthlyRows += `<tr>
+                    <td>${l.name}</td>
+                    <td>${l.desc}</td>
+                    <td>${fmtR(l.price)}</td>
+                </tr>`;
+            });
+
+            const html = `
+            <div class="qpdf-page">
+                <div class="qpdf-hero">
+                    <div class="qpdf-hero-grid">
+                        <div class="qpdf-logo-zone"><img src="thumbnails/mock.png" style="height: 30px;"/></div>
+                        <div class="qpdf-doc-meta">
+                            <div class="qpdf-doc-label">Quotation Reference</div>
+                            <div class="qpdf-doc-number">${quoteNumber}</div>
+                            <div class="qpdf-doc-date">Generated: ${dateStr}</div>
+                        </div>
+                    </div>
+                    <div class="qpdf-hero-title">
+                        <h1>Official Service Quotation</h1>
+                        <p>Web Application Architecture & Digital Infrastructure Services</p>
+                    </div>
+                </div>
+
+                <div class="qpdf-body">
+                    ${onceOffRows ? `
+                    <div class="qpdf-section-label">One-Time Provisioning Services</div>
+                    <table class="qpdf-line-table">
+                        <thead><tr><th>Service</th><th>Specification</th><th>Investment</th></tr></thead>
+                        <tbody>${onceOffRows}</tbody>
+                    </table>` : ''}
+
+                    ${monthlyRows ? `
+                    <div class="qpdf-section-label">Monthly Recurring Services</div>
+                    <table class="qpdf-line-table">
+                        <thead><tr><th>Service</th><th>Specification</th><th>Per Month</th></tr></thead>
+                        <tbody>${monthlyRows}</tbody>
+                    </table>` : ''}
+
+                    <div class="qpdf-totals-box">
+                        <div class="qpdf-total-row">
+                            <span class="tot-label">One-Time Provisioning Total</span>
+                            <span class="tot-val">${fmtR(onceOffTotal)}</span>
+                        </div>
+                        <div class="qpdf-total-row monthly-row">
+                            <span class="tot-label">Monthly Recurring Total</span>
+                            <span class="tot-val">${fmtR(monthlyTotal)} / mo</span>
+                        </div>
+                        <div class="qpdf-total-row divider grand">
+                            <span class="tot-label">Total Project Investment</span>
+                            <span class="tot-val">${fmtR(onceOffTotal + monthlyTotal)}</span>
+                        </div>
+                        <div class="qpdf-total-row" style="padding-top:4px;">
+                            <span class="tot-label" style="font-size:11px; color:#80868b;">All amounts are exclusive of VAT (15%). VAT will be applied on final invoice.</span>
+                            <span></span>
+                        </div>
+                    </div>
+
+                    <div class="qpdf-validity-box">
+                        <strong>✦ Quotation Validity & Terms</strong><br>
+                        This quotation is valid for <strong>30 days</strong> from the date of issue, expiring on <strong>${validUntil}</strong>. Prices are subject to change after the validity period. Project timelines and deliverables will be confirmed upon acceptance of this quotation. A 50% deposit is required to commence work; the remaining balance is due upon project completion.
+                    </div>
+
+                    <div style="background:#e8f0fe; border-left:4px solid #1a73e8; border-radius:0 8px 8px 0; padding:14px 20px; margin-bottom:32px; font-size:12px; color:#1967d2; line-height:1.6;">
+                        <strong>✔ Digital Verification Statement</strong><br>
+                        This is an officially generated digital quotation document produced by the Cronos Pricing Console. Quote reference <strong>${quoteNumber}</strong> is a traceable, system-generated record. This document serves as a formal commercial proposal and may be used for procurement, budgetary approval, and client record-keeping purposes.
+                    </div>
+                </div>
+
+                <div class="qpdf-footer">
+                    <div class="qpdf-footer-seal">
+                        <div class="qpdf-seal-icon">✦</div>
+                        <div>
+                            <div style="font-weight:600; color:#202124; font-size:12px;">Cronos Technologies</div>
+                            <div>Digital Infrastructure & Cloud Services</div>
+                            <div style="margin-top:2px; color:#9aa0a6;">Ref: ${quoteNumber} &nbsp;|&nbsp; ${dateStr}</div>
+                        </div>
+                    </div>
+                    <div class="qpdf-footer-contact">
+                        <div style="font-weight:600; color:#202124; margin-bottom:2px;">Get in touch</div>
+                        <div>info@cronos.co.za</div>
+                        <div>www.cronos.co.za</div>
+                        <div>South Africa</div>
+                    </div>
+                </div>
+            </div>`;
+
+            document.getElementById('quote-preview-doc').innerHTML = html;
+            document.getElementById('quote_modal_overlay').classList.remove('hidden-node');
+            document.body.style.overflow = 'hidden';
+        }
+
+        function closeQuoteModal() {
+            document.getElementById('quote_modal_overlay').classList.add('hidden-node');
+            document.body.style.overflow = '';
+        }
+
+        function gatherQuoteLineItems() {
+            const lines = { once_off: [], monthly: [] };
+
+            const baseTierEl = document.getElementById('base_tier');
+            if (baseTierEl) {
+                const sel = baseTierEl.options[baseTierEl.selectedIndex];
+                lines.once_off.push({ name: 'Platform Instance Type', desc: sel.text.split('—')[0].trim(), price: parseInt(baseTierEl.value) || 0 });
+            }
+
+            const onceOffDropdowns = [
+                { id: 'hosting_tier', name: 'Hosting Plan' },
+                { id: 'bandwidth_tier', name: 'Bandwidth Scale' },
+                { id: 'region_tier', name: 'Deployment Region' },
+                { id: 'ssl_tier', name: 'SSL Certificate' },
+                { id: 'cdn_tier', name: 'CDN Edge Cache' },
+                { id: 'deployment_env_tier', name: 'Deployment Environments' },
+                { id: 'auth_tier', name: 'Identity & Access Control' },
+                { id: 'form_tier', name: 'Form Processing' },
+                { id: 'cms_tier', name: 'CMS / Publishing Engine' },
+                { id: 'ecommerce_tier', name: 'E-Commerce & Payments' },
+                { id: 'email_tier', name: 'Email Infrastructure' },
+                { id: 'seo_tier', name: 'SEO Foundation' },
+                { id: 'analytics_tier', name: 'Analytics & BI' },
+                { id: 'ai_tier', name: 'AI / LLM Modules' },
+            ];
+
+            onceOffDropdowns.forEach(({ id, name }) => {
+                const el = document.getElementById(id);
+                if (!el) return;
+                const val = parseInt(el.value) || 0;
+                if (val > 0) {
+                    const desc = el.options[el.selectedIndex].text.split('—')[0].trim();
+                    lines.once_off.push({ name, desc, price: val });
+                }
+            });
+
+            const sliderVol = parseInt(document.getElementById('storage_slider').value) || 20;
+            const storagePrice = (sliderVol - 20) * 4.50;
+            if (storagePrice > 0) lines.once_off.push({ name: 'SSD Storage', desc: `${sliderVol} GB Allocated SSD Workspace`, price: storagePrice });
+
+            // Monthly items
+            const backupEl = document.getElementById('backup_tier');
+            if (backupEl) {
+                const bval = parseInt(backupEl.value) || 0;
+                if (bval > 0) lines.monthly.push({ name: 'Backup & Archiving', desc: backupEl.options[backupEl.selectedIndex].text.split('—')[0].trim(), price: bval });
+            }
+
+            const maintEl = document.getElementById('maintenance_tier');
+            if (maintEl) {
+                const baseValue = parseInt(document.getElementById('base_tier').value) || 3500;
+                const key = maintEl.value;
+                const factor = key === 'tier_pro' ? 0.20 : key === 'tier_ent' ? 0.35 : 0.10;
+                const maintPrice = Math.round(baseValue * factor);
+                const maintName = key === 'tier_pro' ? 'Professional SLA Support' : key === 'tier_ent' ? 'Enterprise SLA Matrix' : 'Eco Essentials SLA';
+                lines.monthly.push({ name: 'SLA Maintenance', desc: maintName, price: maintPrice });
+            }
+
+            return lines;
+        }
+
+        function downloadQuotePDF() {
+            const quoteContent = document.getElementById('quote-preview-doc').innerHTML;
+            const printWindow = window.open('', '_blank', 'width=900,height=700');
+            printWindow.document.write(`<!DOCTYPE html><html><head>
+                <meta charset="UTF-8">
+                <title>Cronos Quotation</title>
+                <style>
+                    * { box-sizing: border-box; font-family: "Segoe UI", Arial, sans-serif; margin: 0; padding: 0; }
+                    body { background: #fff; }
+                    ${getComputedStyles()}
+                    @media print {
+                        @page { margin: 0; size: A4 portrait; }
+                        body { -webkit-print-color-adjust: exact; print-color-adjust: exact; }
+                    }
+                </style>
+            </head><body>${quoteContent}</body></html>`);
+            printWindow.document.close();
+            printWindow.onload = () => {
+                setTimeout(() => { printWindow.print(); }, 300);
+            };
+        }
+
+        function getComputedStyles() {
+            // Extract qpdf styles from main document for print window
+            const sheets = document.styleSheets;
+            let cssText = '';
+            for (let i = 0; i < sheets.length; i++) {
+                try {
+                    const rules = sheets[i].cssRules || sheets[i].rules;
+                    for (let j = 0; j < rules.length; j++) {
+                        const selector = rules[j].selectorText || '';
+                        if (selector.includes('qpdf') || selector.includes('quote-modal') || selector === 'body' || selector === '*') {
+                            cssText += rules[j].cssText + '\n';
+                        }
+                    }
+                } catch(e) {}
+            }
+            return cssText;
+        }
+
+    
             if (window.innerWidth >= 992) {
                 toggleMobileDrawer(false);
             }
-        };
+        
 
         window.onload = function() {
             onSliderDragValueUpdate();
             onBaseTierChanged();
             evaluatePromptInputState();
             setupPopoverModalEngine();
+
+            // Shadow appears on service header only after user scrolls
+            const svcHeader = document.querySelector('.service-header');
+            if (svcHeader) {
+                window.addEventListener('scroll', function() {
+                    svcHeader.classList.toggle('scrolled', window.scrollY > 10);
+                }, { passive: true });
+            }
         };
 
         // Vanilla Modal Popover Processing Engine (Anchored Right Layout / Centered Mobile Overlay)
