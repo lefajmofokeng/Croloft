@@ -1,0 +1,660 @@
+<!DOCTYPE html>
+<html lang="en" dir="ltr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, minimum-scale=1.0, maximum-scale=5.0, viewport-fit=cover, shrink-to-fit=no">
+    <meta http-equiv="x-ua-compatible" content="ie=edge"/>
+    
+    <title>Cronos</title>
+
+    <link rel="icon" type="image/png" href="thumbnails/top-1.png">
+
+    <style>
+      @font-face { font-family:'Circular Std'; src:url('fonts/CircularStd-Book.woff2') format('woff2'),url('fonts/CircularStd-Book.woff') format('woff'); font-weight:400; font-style:normal; font-display:swap; }
+  @font-face { font-family:'Circular Std'; src:url('fonts/CircularStd-BookItalic.woff2') format('woff2'),url('fonts/CircularStd-BookItalic.woff') format('woff'); font-weight:400; font-style:italic; font-display:swap; }
+  @font-face { font-family:'Circular Std'; src:url('fonts/CircularStd-Medium.woff2') format('woff2'),url('fonts/CircularStd-Medium.woff') format('woff'); font-weight:500; font-style:normal; font-display:swap; }
+  @font-face { font-family:'Circular Std'; src:url('fonts/CircularStd-Bold.woff2') format('woff2'),url('fonts/CircularStd-Bold.woff') format('woff'); font-weight:600; font-style:normal; font-display:swap; }
+  @font-face { font-family:'Circular Std'; src:url('fonts/CircularStd-Bold.woff2') format('woff2'),url('fonts/CircularStd-Bold.woff') format('woff'); font-weight:700; font-style:normal; font-display:swap; }
+  @font-face { font-family:'Circular Std'; src:url('fonts/CircularStd-Black.woff2') format('woff2'),url('fonts/CircularStd-Black.woff') format('woff'); font-weight:800; font-style:normal; font-display:swap; }
+  @font-face { font-family:'Circular Std'; src:url('fonts/CircularStd-Black.woff2') format('woff2'),url('fonts/CircularStd-Black.woff') format('woff'); font-weight:900; font-style:normal; font-display:swap; }
+    </style>
+</head>
+
+
+
+
+
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>My Website</title>
+    
+    <script src="header.js" defer></script>
+    <script src="footer.js" defer></script> 
+</head>
+<body>
+
+    <cronos-header></cronos-header>
+    
+
+</body>
+</html>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Request a Solution Demo | Cronos Ecosystem</title>
+  <style>
+    /* Global System Resets */
+    *, *::before, *::after {
+      box-sizing: border-box;
+      margin: 0;
+      padding: 0;
+    }
+
+    :root {
+      --cronos-bg: #fafafa;
+      --cronos-surface: #ffffff;
+      --cronos-text-primary: #111111;
+      --cronos-text-secondary: #555555;
+      --cronos-text-muted: #999999;
+      --cronos-accent: #007fdf;
+      --cronos-accent-hover: #0077dd;
+      --cronos-border: #e5e5e5;
+      --cronos-input-bg: #e9e9e9;
+      --cronos-radius: 50px; /* Mandated sharp premium finish */
+    }
+
+    body {
+      font-family: 'Circular Std', -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif;
+      background-color: var(--cronos-bg);
+      color: var(--cronos-text-primary);
+      line-height: 1.5;
+      -webkit-font-smoothing: antialiased;
+      display: flex;
+      flex-direction: column;
+      min-height: 100vh;
+    }
+
+    /* Main Showcase & Console Layout */
+    .cronos-main {
+      flex: 1;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+      padding: 150px 24px 170px 24px;
+      width: 100%;
+    }
+
+    .cronos-hero-container {
+      max-width: 720px;
+      width: 100%;
+      text-align: center;
+    }
+
+    .cronos-title {
+      font-size: 3rem;
+      font-weight: 500;
+      line-height: 1.05;
+      letter-spacing: -0.04em;
+      color: var(--cronos-text-primary);
+      margin-bottom: 20px;
+    }
+
+    .cronos-subtitle {
+      font-size: 1.15rem;
+      line-height: 1.6;
+      color: var(--cronos-text-secondary);
+      max-width: 540px;
+      margin: 0 auto 48px auto;
+    }
+
+    .cronos-console-box {
+        width: 100%;
+        max-width: 520px;
+        margin: 0 auto;
+        overflow: visible; /* Changed from hidden to allow dropdown visibility */
+        }
+
+    /* Step 1: Inline Multi-Stage Input Wrapper */
+    .cronos-capture-bar {
+      display: flex;
+      align-items: center;
+      background-color: var(--cronos-input-bg);
+      padding: 6px;
+      border-radius: var(--cronos-radius);
+      width: 100%;
+    }
+
+    .cronos-init-wrapper {
+      padding: 24px;
+    }
+
+    .cronos-input-field {
+      flex: 1;
+      border: none;
+      background: transparent;
+      padding: 14px 18px;
+      font-size: 1rem;
+      color: var(--cronos-text-primary);
+      font-family: inherit;
+      outline: none;
+      width: 100%;
+    }
+
+    .cronos-input-field::placeholder {
+      color: var(--cronos-text-muted);
+    }
+
+    .cronos-primary-btn {
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      gap: 8px;
+      background-color: var(--cronos-accent);
+      color: #ffffff;
+      border: none;
+      padding: 14px 28px;
+      font-size: 0.95rem;
+      font-weight: 400;
+      cursor: pointer;
+      border-radius: var(--cronos-radius);
+      transition: background-color 0.15s ease;
+      white-space: nowrap;
+      font-family: inherit;
+    }
+
+    .cronos-primary-btn:hover {
+      background-color: var(--cronos-accent-hover);
+    }
+
+    .cronos-btn-icon {
+      transition: transform 0.15s ease;
+    }
+
+    .cronos-primary-btn:hover .cronos-btn-icon {
+      transform: translateX(3px);
+    }
+
+    /* Step 2: Minimal Configuration Dashboard Pane */
+    .cronos-config-pane {
+      padding: 32px;
+      text-align: left;
+      animation: cronosSlideUp 0.35s cubic-bezier(0.16, 1, 0.3, 1);
+    }
+
+    .cronos-pane-header {
+      margin-bottom: 24px;
+      border-bottom: 1px solid var(--cronos-border);
+      padding-bottom: 16px;
+    }
+
+    .cronos-pane-title {
+      font-size: 1.1rem;
+      font-weight: 700;
+      letter-spacing: -0.02em;
+    }
+
+    .cronos-pane-desc {
+      font-size: 0.85rem;
+      color: var(--cronos-text-secondary);
+      margin-top: 4px;
+    }
+
+    .cronos-field-group {
+      display: flex;
+      flex-direction: column;
+      gap: 8px;
+      margin-bottom: 20px;
+    }
+
+    .cronos-field-label {
+      font-size: 0.8rem;
+      font-weight: 700;
+      color: var(--cronos-text-primary);
+      text-transform: uppercase;
+      letter-spacing: 0.04em;
+    }
+
+    .cronos-text-input {
+      width: 100%;
+      padding: 14px;
+      font-size: 0.95rem;
+      border: 1px solid var(--cronos-border);
+      background-color: var(--cronos-input-bg);
+      color: var(--cronos-text-primary);
+      border-radius: var(--cronos-radius);
+      font-family: inherit;
+      outline: none;
+      transition: all 0.15s ease;
+    }
+
+    .cronos-text-input:focus {
+      border-color: var(--cronos-accent);
+      background-color: var(--cronos-surface);
+    }
+
+    /* Premium Custom Dropdown Ecosystem */
+    .cronos-custom-select-container {
+      position: relative;
+      width: 100%;
+    }
+
+    .cronos-custom-select-trigger {
+      width: 100%;
+      padding: 14px 20px;
+      font-size: 0.95rem;
+      border: 1px solid var(--cronos-border);
+      background-color: var(--cronos-input-bg);
+      color: var(--cronos-text-primary);
+      border-radius: var(--cronos-radius);
+      font-family: inherit;
+      cursor: pointer;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      transition: all 0.15s ease;
+      user-select: none;
+    }
+
+    .cronos-custom-select-container.is-open .cronos-custom-select-trigger {
+        border-color: var(--cronos-accent);
+        background-color: var(--cronos-surface);
+        /* Removed the flattening border-radius to keep it perfectly round */
+        }
+    .cronos-custom-select-trigger.is-placeholder {
+      color: var(--cronos-text-muted);
+    }
+
+    .cronos-select-arrow {
+      transition: transform 0.2s ease;
+      color: var(--cronos-text-secondary);
+    }
+
+    .cronos-custom-select-container.is-open .cronos-select-arrow {
+      transform: rotate(180deg);
+    }
+
+    .cronos-custom-options-dropdown {
+    position: absolute;
+    top: calc(100% + 8px); /* Added an 8px gap below the input */
+    left: 0;
+    right: 0;
+    background-color: var(--cronos-surface);
+    border: 1px solid var(--cronos-border); /* Restored full borders */
+    border-radius: 16px; /* Uniform rounded corners for a modern floating look */
+    box-shadow: 0 8px 32px rgba(0,0,0,0.08); /* Enhanced shadow for depth */
+    z-index: 100;
+    max-height: none; /* Removed the height limit so all options display */
+    overflow-y: auto;
+    display: none;
+    }
+
+    .cronos-custom-select-container.is-open .cronos-custom-options-dropdown {
+      display: block;
+    }
+
+    .cronos-custom-option {
+      padding: 12px 20px;
+      font-size: 0.95rem;
+      color: var(--cronos-text-secondary);
+      cursor: pointer;
+      transition: background 0.1s ease, color 0.1s ease;
+    }
+
+    .cronos-custom-option:hover {
+      background-color: var(--cronos-input-bg);
+      color: var(--cronos-text-primary);
+    }
+
+    .cronos-custom-option.is-selected {
+      background-color: #e6f4fe;
+      color: var(--cronos-accent);
+      font-weight: 500;
+    }
+
+    /* Custom Scrollbar for Options Framework */
+    .cronos-custom-options-dropdown::-webkit-scrollbar {
+      width: 6px;
+    }
+    .cronos-custom-options-dropdown::-webkit-scrollbar-track {
+      background: transparent;
+    }
+    .cronos-custom-options-dropdown::-webkit-scrollbar-thumb {
+      background-color: var(--cronos-border);
+      border-radius: 10px;
+    }
+
+    /* Step 3: Success Console Frame */
+    .cronos-success-pane {
+      padding: 48px 32px;
+      text-align: center;
+      animation: cronosSlideUp 0.35s cubic-bezier(0.16, 1, 0.3, 1);
+    }
+
+    .cronos-success-icon {
+      width: 44px;
+      height: 44px;
+      background-color: #e6f4fe;
+      color: var(--cronos-accent);
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      border-radius: var(--cronos-radius);
+      margin-bottom: 20px;
+    }
+
+    .cronos-success-heading {
+      font-size: 1.25rem;
+      font-weight: 700;
+      letter-spacing: -0.02em;
+      margin-bottom: 8px;
+    }
+
+    .cronos-success-desc {
+      font-size: 0.95rem;
+      color: var(--cronos-text-secondary);
+      max-width: 360px;
+      margin: 0 auto;
+    }
+
+    /* Animation Timings */
+    @keyframes cronosSlideUp {
+      from { opacity: 0; transform: translateY(12px); }
+      to { opacity: 1; transform: translateY(0); }
+    }
+
+    /* Responsiveness Rules */
+    @media (max-width: 640px) {
+      .cronos-title {
+        font-size: 2.5rem;
+      }
+      .cronos-capture-bar {
+        flex-direction: column;
+        background-color: transparent;
+        padding: 0;
+        gap: 12px;
+      }
+      .cronos-input-field {
+        background-color: var(--cronos-input-bg);
+        border-radius: var(--cronos-radius);
+      }
+      .cronos-primary-btn {
+        width: 100%;
+      }
+      .cronos-config-pane {
+        padding: 24px;
+      }
+    }
+  </style>
+</head>
+<body>
+
+  <header class="cronos-nav">
+    <div class="cronos-brand">
+      Cronos<span class="cronos-brand-dot"></span>
+    </div>
+    <a href="#" class="cronos-nav-link" onclick="window.location.reload();">Reset Workspace</a>
+  </header>
+
+  <main class="cronos-main">
+    <div class="cronos-hero-container">
+      <h1 class="cronos-title">Request a demo <br> for Croloft Modules</h1>
+      <p class="cronos-subtitle">
+        Configure your dedicated sandbox profile below to inspect our premium custom application components, cloud frameworks, and architectures in real-time.
+      </p>
+      
+      <div class="cronos-console-box">
+        
+        <div id="stage-email" class="cronos-init-wrapper">
+          <div class="cronos-capture-bar">
+            <input 
+              type="email" 
+              id="user-email" 
+              class="cronos-input-field" 
+              placeholder="Enter your professional email" 
+              required
+            >
+            <button class="cronos-primary-btn" onclick="goToConfig()">
+              Request Demo Access
+              <svg class="cronos-btn-icon" width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round">
+                <line x1="5" y1="12" x2="19" y2="12"></line>
+                <polyline points="12 5 19 12 12 19"></polyline>
+              </svg>
+            </button>
+          </div>
+        </div>
+
+        <div id="stage-config" class="cronos-config-pane" style="display: none;">
+          <div class="cronos-pane-header">
+            <h3 class="cronos-pane-title">Configure Sandbox Environment</h3>
+            <p class="cronos-pane-desc">Identify the precise engineering application track you want to observe.</p>
+          </div>
+          
+          <form onsubmit="submitConsole(event)">
+            <div class="cronos-field-group">
+              <label class="cronos-field-label">Primary Solution Interest</label>
+              
+              <div class="cronos-custom-select-container" id="custom-select-container">
+                <div class="cronos-custom-select-trigger is-placeholder" id="select-trigger" onclick="toggleCustomDropdown(event)">
+                  <span id="select-trigger-text">Choose pipeline framework...</span>
+                  <svg class="cronos-select-arrow" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round">
+                    <polyline points="6 9 12 15 18 9"></polyline>
+                  </svg>
+                </div>
+                <div class="cronos-custom-options-dropdown" id="options-dropdown">
+                  <div class="cronos-custom-option" data-value="web-app" onclick="selectCustomOption(this)">Custom Web Application Ecosystems</div>
+                  <div class="cronos-custom-option" data-value="mobile-app" onclick="selectCustomOption(this)">Cross-Platform Mobile Applications</div>
+                  <div class="cronos-custom-option" data-value="infrastructure" onclick="selectCustomOption(this)">Managed Cloud Infrastructure & Tooling</div>
+                  <div class="cronos-custom-option" data-value="marketing" onclick="selectCustomOption(this)">Creative High-Conversion Digital Marketing Hubs</div>
+                  <div class="cronos-custom-option" data-value="ecommerce" onclick="selectCustomOption(this)">E-Commerce & Digital Storefronts</div>
+                  <div class="cronos-custom-option" data-value="ai-integration" onclick="selectCustomOption(this)">AI & Machine Learning Integrations</div>
+                  <div class="cronos-custom-option" data-value="custom-other" onclick="selectCustomOption(this)">Other (Please specify...)</div>
+                </div>
+              </div>
+              
+              <input type="hidden" id="solution-type" required>
+            </div>
+
+            <div id="custom-specification-group" class="cronos-field-group" style="display: none; animation: cronosSlideUp 0.2s cubic-bezier(0.16, 1, 0.3, 1);">
+              <label class="cronos-field-label">Specify your custom requirement</label>
+              <input type="text" id="custom-solution-text" class="cronos-text-input" placeholder="e.g., Custom Blockchain Dashboard">
+            </div>
+
+            <div class="cronos-field-group">
+              <label class="cronos-field-label">Your Name</label>
+              <input type="text" id="user-name" class="cronos-text-input" placeholder="e.g. Lefa Mofokeng" required>
+            </div>
+
+            <button type="submit" class="cronos-primary-btn" style="width: 100%; margin-top: 8px;">
+              Initialize Demo Sandbox
+            </button>
+          </form>
+        </div>
+
+        <div id="stage-success" class="cronos-success-pane" style="display: none;">
+          <div class="cronos-success-icon">
+            <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round" stroke-linejoin="round">
+              <polyline points="20 6 9 17 4 12"></polyline>
+            </svg>
+          </div>
+          <h3 class="cronos-success-heading">Pipeline Instantiated</h3>
+          <p class="cronos-success-desc">
+            Thank you, <span id="display-name" style="font-weight: 600;"></span>. We've routed your architecture preferences. A secure preview link is heading to <span id="display-email" style="font-weight: 600; color: var(--cronos-accent);"></span>.
+          </p>
+        </div>
+
+      </div>
+    </div>
+  </main>
+
+  <script>
+    function goToConfig() {
+      const emailInput = document.getElementById('user-email');
+      if (emailInput.checkValidity() && emailInput.value.trim() !== "") {
+        document.getElementById('stage-email').style.display = 'none';
+        document.getElementById('stage-config').style.display = 'block';
+      } else {
+        emailInput.reportValidity();
+      }
+    }
+
+    /* Custom Dropdown Shell State Operations */
+    function toggleCustomDropdown(event) {
+      event.stopPropagation();
+      document.getElementById('custom-select-container').classList.toggle('is-open');
+    }
+
+    function selectCustomOption(element) {
+      const selectedValue = element.getAttribute('data-value');
+      const selectedText = element.textContent;
+      
+      // Update proxy structure metrics
+      document.getElementById('solution-type').value = selectedValue;
+      
+      const trigger = document.getElementById('select-trigger');
+      document.getElementById('select-trigger-text').textContent = selectedText;
+      trigger.classList.remove('is-placeholder');
+
+      // Update active selection presentation state
+      document.querySelectorAll('.cronos-custom-option').forEach(opt => opt.classList.remove('is-selected'));
+      element.classList.add('is-selected');
+
+      // Route conditional display pipeline rules
+      const customGroup = document.getElementById('custom-specification-group');
+      const customInput = document.getElementById('custom-solution-text');
+      
+      if (selectedValue === 'custom-other') {
+        customGroup.style.display = 'flex';
+        customInput.setAttribute('required', 'required');
+        customInput.focus();
+      } else {
+        customGroup.style.display = 'none';
+        customInput.removeAttribute('required');
+      }
+
+      document.getElementById('custom-select-container').classList.remove('is-open');
+    }
+
+    // Explicitly safe window execution block to shut dropdown frame if user clicks outward
+    window.addEventListener('click', function() {
+      document.getElementById('custom-select-container').classList.remove('is-open');
+    });
+
+    function submitConsole(event) {
+      event.preventDefault();
+      
+      // Enforce custom dropdown validation checks
+      const hiddenSelectValue = document.getElementById('solution-type').value;
+      if(!hiddenSelectValue) {
+        alert('Please select a pipeline framework.');
+        return;
+      }
+      
+      const email = document.getElementById('user-email').value;
+      const name = document.getElementById('user-name').value;
+      let type = hiddenSelectValue;
+
+      if (type === 'custom-other') {
+        type = document.getElementById('custom-solution-text').value;
+      }
+
+      // Map display parameters
+      document.getElementById('display-name').textContent = name;
+      document.getElementById('display-email').textContent = email;
+
+      // Print telemetry context securely to console terminal mockup
+      console.log('Cronos Sandbox Pipeline Dispatched:', { email, name, framework: type });
+
+      // Shift framework visibility state to compilation confirmation
+      document.getElementById('stage-config').style.display = 'none';
+      document.getElementById('stage-success').style.display = 'block';
+    }
+  </script>
+</body>
+</html>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<cronos-footer></cronos-footer>

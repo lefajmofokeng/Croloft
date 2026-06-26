@@ -21,7 +21,7 @@ class CronosHeader extends HTMLElement {
                             { label: 'Enterprise',     href: 'enterprise.html' },
                             // Marketplace now includes external flag for new tab + icon
                             { label: 'Marketplace',    href: 'marketplace.html', external: true }, 
-                            { label: 'Schedule a Demo',  href: 'quote.html' },
+                            { label: 'Schedule a Demo',  href: 'demo.html' },
                         ]
                     },
                     {
@@ -80,29 +80,42 @@ class CronosHeader extends HTMLElement {
                         mobileBtn: 'Learn more',
                         mobileBtnHref: 'index.html',
                         links: [
-                            { label: 'AI & Workflow Automation',         href: 'mobile-applications.html' },
-                            { label: 'Mobile & Web Applications',        href: 'mobile-applications.html' },
-                            { label: 'E-commerce',                       href: 'e-commerce.html' },
-                            { label: 'Blockchain & Web3',                href: 'blockchain-and-web3.html' },
-                            { label: 'Database Engineering & Management',href: 'database-engineering.html' },
+                            { label: 'Artificial Intelligence',         href: 'mobile-applications.html' },
+                            { label: 'Web Development',        href: 'mobile-applications.html' },
+                            { label: 'E-commerce',                      href: 'e-commerce.html' },
+                            { label: 'Blockchain',                      href: 'blockchain-and-web3.html' },
+                            { label: 'Databases',                       href: 'database-engineering.html' },
+                            { label: 'Business Systems',                href: 'database-engineering.html' },
                         ]
                     },
                     {
-                        heading: 'IT Infrastructure',
+                        heading: 'IT Services & Infrastructure',
                         tagline: 'Reliable systems & support',
                         icon: 'thumbnails/04 (2).png',
                         mobileBtn: 'Learn more',
                         mobileBtnHref: 'index.html',
                         links: [
-                            { label: 'Managed IT Services & Helpdesk', href: 'managed-it-services.html' },
-                            { label: 'IT Consulting',                   href: 'it-consulting.html' },
-                            { label: 'Cybersecurity',                   href: 'cybersecurity.html' },
-                            { label: 'Cloud Infrastructure',            href: 'cloud-infrastructure.html' },
-                            { label: 'Data Center & Storage',           href: 'data-center.html' },
+                            { label: 'Managed IT Services & Helpdesk',   href: 'managed-it-services.html' },
+                            { label: 'IT Consulting',                    href: 'it-consulting.html' },
+                            { label: 'Cybersecurity',                    href: 'cybersecurity.html' },
+                            { label: 'Cloud Services',                   href: 'cloud-infrastructure.html' },
+                            { label: 'Data Center',                      href: 'data-center.html' },
                         ]
                     },
                     {
-                        heading: 'Marketing & Creative Studio',
+                        heading: 'Training & Consulting',
+                        tagline: 'Protect your business & data',
+                        icon: 'thumbnails/04 (2).png',
+                        mobileBtn: 'Learn more',
+                        mobileBtnHref: 'index.html',
+                        links: [
+                            { label: 'Cybersecurity Training',           href: 'cybersecurity.html' },
+                            { label: 'AI Training',                     href: 'graphic-design.html' },
+                            { label: 'Digital Skills Training',          href: 'content-management.html' },
+                        ]
+                    },
+                    {
+                        heading: 'Advertising & Marketing',
                         tagline: 'Creative content & design',
                         icon: 'thumbnails/04 (2).png',
                         mobileBtn: 'Learn more',

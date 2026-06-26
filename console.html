@@ -70,7 +70,7 @@
                 align-items: center;
                 padding: 11px 12px 11px 24px;
                 margin: 0 0 24px 0;
-                gap: 0;  margin-top: 4rem;
+                gap: 0;  margin-top: 5.3rem;
             }
         }
 
@@ -146,25 +146,21 @@
         /* GCP-Style Service Header - sticky beneath site's 55px header, full width */
         .service-header {
             position: sticky;
-            top: 55px;
+            top: 65px;
             z-index: 100;
-            background-color: #f8f9fa;
+            background-color: #080d1b;
             border-bottom: none;
             box-shadow: none;
             clip-path: inset(0 0 -20px 0);
             transition: box-shadow 0.2s ease;
             display: flex;
-            flex-direction: column;
+            flex-direction: column; border-radius: 15px;
             justify-content: space-between;
             align-items: flex-start;
             padding: 30px 16px;
             margin-left: -16px;
             margin-right: -16px;
             gap: 10px; 
-        }
-
-        .service-header.scrolled {
-            box-shadow: 18px 5px 10px 0 rgba(60,64,67,0.22); 
         }
 
         @media (min-width: 576px) {
@@ -187,7 +183,7 @@
         .service-title {
             font-size: 18px;
             font-weight: 500;
-            color: #202124;
+            color: #ffffff;
             display: flex;
             align-items: center;
             gap: 6px;
@@ -198,6 +194,10 @@
                 font-size: 19px;
                 gap: 8px;
             }
+
+             .header-price-row{
+                display: none;
+             }
         }
 
         .info-icon {
@@ -231,7 +231,7 @@
             gap: 5px;
             font-size: 15px;
             font-weight: 400;
-            color: #5f6368;
+            color: #a3a7ab;
             white-space: nowrap;
         }
 
@@ -239,8 +239,8 @@
             font-size: 19px;
             font-weight: 500;
         }
-        .header-price-row .once-off { color: #000000; }
-        .header-price-row .monthly { color: #000000; }
+        .header-price-row .once-off { color: #ffffff; }
+        .header-price-row .monthly { color: #ffffff; }
 
         /* High-Fidelity Configuration Content Blocks */
         .config-card {
@@ -256,7 +256,7 @@
         }
 
         .config-card.first-node {
-            border-top: 1px solid #dadce0;
+
             border-top-left-radius: 20px;
             border-top-right-radius: 20px;
         }
@@ -309,7 +309,7 @@
         .gcp-select, .gcp-input {
             width: 100%;
             padding: 18px;
-            border: 1px solid #797b7e;
+            border: 2px solid #a1a4a8;
             border-radius: 4px;
             font-size: 16px;
             color: #202124;
@@ -602,7 +602,7 @@
             bottom: 0;
             left: 0;
             right: 0;
-            z-index: 150;
+            z-index: 150; 
             transform: translateY(calc(100% - 60px));
             transition: transform 0.3s cubic-bezier(0.4, 0, 0.2, 1);
         }
@@ -616,7 +616,7 @@
             .cost-details-panel {
                 width: 340px;
                 position: sticky;
-                top: 150px;
+                top: 170px;
                 bottom: auto;
                 left: auto;
                 right: auto;
@@ -1454,8 +1454,7 @@
 
                 <div class="service-header">
                     <div class="service-title-container">
-                        <svg width="22" height="22" viewBox="0 0 24 24" fill="#1a73e8" style="flex-shrink:0;"><path d="M20 4H4c-1.1 0-2 .9-2 2v12c0 1.1.9 2 2 2h16c1.1 0 2-.9 2-2V6c0-1.1-.9-2-2-2zm0 14H4V6h16v12zM6 10h2v2H6zm0 4h8v2H6zm10 0h2v2h-2zm-6-4h8v2h-8z"/></svg>
-                        <div class="service-title">
+                       <div class="service-title">
                             Web Application Architecture Engine
                             <span class="info-icon">i</span>
                         </div>
