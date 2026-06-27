@@ -11,82 +11,21 @@
 
     <style>
       @font-face { font-family:'Circular Std'; src:url('fonts/CircularStd-Book.woff2') format('woff2'),url('fonts/CircularStd-Book.woff') format('woff'); font-weight:400; font-style:normal; font-display:swap; }
-  @font-face { font-family:'Circular Std'; src:url('fonts/CircularStd-BookItalic.woff2') format('woff2'),url('fonts/CircularStd-BookItalic.woff') format('woff'); font-weight:400; font-style:italic; font-display:swap; }
-  @font-face { font-family:'Circular Std'; src:url('fonts/CircularStd-Medium.woff2') format('woff2'),url('fonts/CircularStd-Medium.woff') format('woff'); font-weight:500; font-style:normal; font-display:swap; }
-  @font-face { font-family:'Circular Std'; src:url('fonts/CircularStd-Bold.woff2') format('woff2'),url('fonts/CircularStd-Bold.woff') format('woff'); font-weight:600; font-style:normal; font-display:swap; }
-  @font-face { font-family:'Circular Std'; src:url('fonts/CircularStd-Bold.woff2') format('woff2'),url('fonts/CircularStd-Bold.woff') format('woff'); font-weight:700; font-style:normal; font-display:swap; }
-  @font-face { font-family:'Circular Std'; src:url('fonts/CircularStd-Black.woff2') format('woff2'),url('fonts/CircularStd-Black.woff') format('woff'); font-weight:800; font-style:normal; font-display:swap; }
-  @font-face { font-family:'Circular Std'; src:url('fonts/CircularStd-Black.woff2') format('woff2'),url('fonts/CircularStd-Black.woff') format('woff'); font-weight:900; font-style:normal; font-display:swap; }
+      @font-face { font-family:'Circular Std'; src:url('fonts/CircularStd-BookItalic.woff2') format('woff2'),url('fonts/CircularStd-BookItalic.woff') format('woff'); font-weight:400; font-style:italic; font-display:swap; }
+      @font-face { font-family:'Circular Std'; src:url('fonts/CircularStd-Medium.woff2') format('woff2'),url('fonts/CircularStd-Medium.woff') format('woff'); font-weight:500; font-style:normal; font-display:swap; }
+      @font-face { font-family:'Circular Std'; src:url('fonts/CircularStd-Bold.woff2') format('woff2'),url('fonts/CircularStd-Bold.woff') format('woff'); font-weight:600; font-style:normal; font-display:swap; }
+      @font-face { font-family:'Circular Std'; src:url('fonts/CircularStd-Bold.woff2') format('woff2'),url('fonts/CircularStd-Bold.woff') format('woff'); font-weight:700; font-style:normal; font-display:swap; }
+      @font-face { font-family:'Circular Std'; src:url('fonts/CircularStd-Black.woff2') format('woff2'),url('fonts/CircularStd-Black.woff') format('woff'); font-weight:800; font-style:normal; font-display:swap; }
+      @font-face { font-family:'Circular Std'; src:url('fonts/CircularStd-Black.woff2') format('woff2'),url('fonts/CircularStd-Black.woff') format('woff'); font-weight:900; font-style:normal; font-display:swap; }
     </style>
-</head>
-
-
-
-
-
-
-<!DOCTYPE html>
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <title>My Website</title>
     
     <script src="header.js" defer></script>
     <script src="footer.js" defer></script> 
 </head>
 <body>
 
-    <cronos-header></cronos-header>
-    
+  <cronos-header></cronos-header>
 
-</body>
-</html>
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-<!DOCTYPE html>
-<html lang="en">
-<head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Request a Solution Demo | Cronos Ecosystem</title>
   <style>
     /* Global System Resets */
     *, *::before, *::after {
@@ -105,7 +44,7 @@
       --cronos-accent-hover: #0077dd;
       --cronos-border: #e5e5e5;
       --cronos-input-bg: #e9e9e9;
-      --cronos-radius: 50px; /* Mandated sharp premium finish */
+      --cronos-radius: 50px;
     }
 
     body {
@@ -126,7 +65,7 @@
       flex-direction: column;
       align-items: center;
       justify-content: center;
-      padding: 150px 24px 170px 24px;
+      padding: 100px 24px 170px 24px;
       width: 100%;
     }
 
@@ -154,11 +93,19 @@
     }
 
     .cronos-console-box {
-        width: 100%;
-        max-width: 520px;
-        margin: 0 auto;
-        overflow: visible; /* Changed from hidden to allow dropdown visibility */
-        }
+      width: 100%;
+      max-width: 520px;
+      margin: 0 auto;
+      overflow: visible; /* Dropdown visibility parent clearance */
+    }
+
+    /* Interlocking Locker Utility Layer */
+    .cronos-console-locked {
+      opacity: 0.4;
+      pointer-events: none;
+      user-select: none;
+      transition: opacity 0.25s ease;
+    }
 
     /* Step 1: Inline Multi-Stage Input Wrapper */
     .cronos-capture-bar {
@@ -302,10 +249,10 @@
     }
 
     .cronos-custom-select-container.is-open .cronos-custom-select-trigger {
-        border-color: var(--cronos-accent);
-        background-color: var(--cronos-surface);
-        /* Removed the flattening border-radius to keep it perfectly round */
-        }
+      border-color: var(--cronos-accent);
+      background-color: var(--cronos-surface);
+    }
+
     .cronos-custom-select-trigger.is-placeholder {
       color: var(--cronos-text-muted);
     }
@@ -320,18 +267,18 @@
     }
 
     .cronos-custom-options-dropdown {
-    position: absolute;
-    top: calc(100% + 8px); /* Added an 8px gap below the input */
-    left: 0;
-    right: 0;
-    background-color: var(--cronos-surface);
-    border: 1px solid var(--cronos-border); /* Restored full borders */
-    border-radius: 16px; /* Uniform rounded corners for a modern floating look */
-    box-shadow: 0 8px 32px rgba(0,0,0,0.08); /* Enhanced shadow for depth */
-    z-index: 100;
-    max-height: none; /* Removed the height limit so all options display */
-    overflow-y: auto;
-    display: none;
+      position: absolute;
+      top: calc(100% + 8px);
+      left: 0;
+      right: 0;
+      background-color: var(--cronos-surface);
+      border: 1px solid var(--cronos-border);
+      border-radius: 16px;
+      box-shadow: 0 8px 32px rgba(0,0,0,0.08);
+      z-index: 100;
+      max-height: none; /* Opens fully downward showing all options */
+      overflow-y: auto;
+      display: none;
     }
 
     .cronos-custom-select-container.is-open .cronos-custom-options-dropdown {
@@ -355,18 +302,6 @@
       background-color: #e6f4fe;
       color: var(--cronos-accent);
       font-weight: 500;
-    }
-
-    /* Custom Scrollbar for Options Framework */
-    .cronos-custom-options-dropdown::-webkit-scrollbar {
-      width: 6px;
-    }
-    .cronos-custom-options-dropdown::-webkit-scrollbar-track {
-      background: transparent;
-    }
-    .cronos-custom-options-dropdown::-webkit-scrollbar-thumb {
-      background-color: var(--cronos-border);
-      border-radius: 10px;
     }
 
     /* Step 3: Success Console Frame */
@@ -402,13 +337,11 @@
       margin: 0 auto;
     }
 
-    /* Animation Timings */
     @keyframes cronosSlideUp {
       from { opacity: 0; transform: translateY(12px); }
       to { opacity: 1; transform: translateY(0); }
     }
 
-    /* Responsiveness Rules */
     @media (max-width: 640px) {
       .cronos-title {
         font-size: 2.5rem;
@@ -431,14 +364,12 @@
       }
     }
   </style>
-</head>
-<body>
 
-  <header class="cronos-nav">
-    <div class="cronos-brand">
-      Cronos<span class="cronos-brand-dot"></span>
+  <header class="cronos-nav" style="padding: 24px; display: flex; justify-content: space-between; align-items: center;">
+    <div class="cronos-brand" style="font-weight: 700; font-size: 1.2rem; color: var(--cronos-text-primary);">
+      Cronos<span class="cronos-brand-dot" style="color: var(--cronos-accent);">.</span>
     </div>
-    <a href="#" class="cronos-nav-link" onclick="window.location.reload();">Reset Workspace</a>
+    <a href="#" class="cronos-nav-link" onclick="window.location.reload();" style="text-decoration: none; color: var(--cronos-text-secondary); font-size: 0.9rem;">Reset Workspace</a>
   </header>
 
   <main class="cronos-main">
@@ -447,7 +378,27 @@
       <p class="cronos-subtitle">
         Configure your dedicated sandbox profile below to inspect our premium custom application components, cloud frameworks, and architectures in real-time.
       </p>
-      
+
+      <div id="cronos-protocol-wrapper">
+        <hr style="border: 0; border-top: 1px solid #e5e5e5; margin: 40px 0;">
+
+        <div style="max-width: 920px; text-align: left; margin: 0 auto; padding: 0 20px 50px 20px; font-family: inherit; font-size: 0.9rem; line-height: 1.6; color: #555555;">
+          <p style="margin-bottom: 12px;">
+            <strong>01. Scope of Authorized Use:</strong> Environments provisioned through this console are intended strictly for evaluation and structural review. Production deployment, commercial exploitation, or reverse-engineering of compiled custom component modules within the sandbox is explicitly prohibited.
+          </p>
+          <p style="margin-bottom: 12px;">
+            <strong>02. Infrastructure Isolation:</strong> Demo pipelines run on ephemeral virtual infrastructure. Automated telemetry data, configuration maps, and input logs generated during runtime are processed cleanly for quality auditing and are handled in compliance with regional data security policies.
+          </p>
+          <p style="margin-bottom: 24px;">
+            <strong>03. Intellectual Property & Design:</strong> All interface layouts, high-contrast typography styling, plain namespaced CSS architectures, and specialized system components remain the exclusive intellectual property of Cronos. Access tokens expire automatically post-compilation.
+          </p>
+
+          <label style="display: flex; align-items: flex-start; gap: 8px; color: #111111; cursor: pointer;">
+            <input type="checkbox" id="protocol-checkbox" onchange="handleProtocolAgreement(this)" style="margin-top: 4px;">
+            <span>I acknowledge the Cronos Sandbox Operational Protocol and authorize the provision of cloud infrastructure.</span>
+          </label>
+        </div>
+      </div>
       <div class="cronos-console-box">
         
         <div id="stage-email" class="cronos-init-wrapper">
@@ -533,11 +484,36 @@
   </main>
 
   <script>
+    // Initialize standard interlocking blocker sequence states
+    document.addEventListener("DOMContentLoaded", function() {
+      const consoleBox = document.querySelector('.cronos-console-box');
+      if (consoleBox) {
+        consoleBox.classList.add('cronos-console-locked');
+      }
+    });
+
+    function handleProtocolAgreement(checkbox) {
+      const consoleBox = document.querySelector('.cronos-console-box');
+      if (!consoleBox) return;
+
+      if (checkbox.checked) {
+        consoleBox.classList.remove('cronos-console-locked');
+      } else {
+        consoleBox.classList.add('cronos-console-locked');
+      }
+    }
+
     function goToConfig() {
       const emailInput = document.getElementById('user-email');
       if (emailInput.checkValidity() && emailInput.value.trim() !== "") {
         document.getElementById('stage-email').style.display = 'none';
         document.getElementById('stage-config').style.display = 'block';
+        
+        // Hide the entire operational protocol writing block as requested
+        const protocolWrapper = document.getElementById('cronos-protocol-wrapper');
+        if (protocolWrapper) {
+          protocolWrapper.style.display = 'none';
+        }
       } else {
         emailInput.reportValidity();
       }
@@ -553,18 +529,15 @@
       const selectedValue = element.getAttribute('data-value');
       const selectedText = element.textContent;
       
-      // Update proxy structure metrics
       document.getElementById('solution-type').value = selectedValue;
       
       const trigger = document.getElementById('select-trigger');
       document.getElementById('select-trigger-text').textContent = selectedText;
       trigger.classList.remove('is-placeholder');
 
-      // Update active selection presentation state
       document.querySelectorAll('.cronos-custom-option').forEach(opt => opt.classList.remove('is-selected'));
       element.classList.add('is-selected');
 
-      // Route conditional display pipeline rules
       const customGroup = document.getElementById('custom-specification-group');
       const customInput = document.getElementById('custom-solution-text');
       
@@ -580,7 +553,6 @@
       document.getElementById('custom-select-container').classList.remove('is-open');
     }
 
-    // Explicitly safe window execution block to shut dropdown frame if user clicks outward
     window.addEventListener('click', function() {
       document.getElementById('custom-select-container').classList.remove('is-open');
     });
@@ -588,7 +560,6 @@
     function submitConsole(event) {
       event.preventDefault();
       
-      // Enforce custom dropdown validation checks
       const hiddenSelectValue = document.getElementById('solution-type').value;
       if(!hiddenSelectValue) {
         alert('Please select a pipeline framework.');
@@ -603,58 +574,491 @@
         type = document.getElementById('custom-solution-text').value;
       }
 
-      // Map display parameters
       document.getElementById('display-name').textContent = name;
       document.getElementById('display-email').textContent = email;
 
-      // Print telemetry context securely to console terminal mockup
       console.log('Cronos Sandbox Pipeline Dispatched:', { email, name, framework: type });
 
-      // Shift framework visibility state to compilation confirmation
       document.getElementById('stage-config').style.display = 'none';
       document.getElementById('stage-success').style.display = 'block';
     }
   </script>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<!-- Unique wrapper to ensure zero style conflicts when pasting -->
+<div class="rf-inc-wrapper">
+  <style>
+    @import url('https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600&display=swap');
+
+    .rf-inc-wrapper {
+      font-family: 'Inter', -apple-system, BlinkMacSystemFont, sans-serif;
+      background-color: #ffffff;
+      padding: 80px 10%;
+      color: #1a1a1a;
+      display: flex;
+      justify-content: center;
+      align-items: flex-start;
+      box-sizing: border-box;
+    }
+
+    .rf-inc-container {
+      max-width: 1200px;
+      width: 100%;
+      display: grid;
+      grid-template-columns: 1.2fr 1fr;
+      column-gap: 80px;
+      row-gap: 40px;
+    }
+
+    /* Left Column Styles */
+    .rf-inc-left {
+      display: flex;
+      flex-direction: column;
+    }
+
+    .rf-inc-eyebrow {
+      font-size: 16px;
+      font-weight: 400;
+      color: #5f6368;
+      margin-bottom: 12px;
+      letter-spacing: -0.01em;
+    }
+
+    .rf-inc-heading {
+      font-size: 42px;
+      font-weight: 400;
+      color: #000000;
+      margin: 0 0 48px 0;
+      letter-spacing: -0.02em;
+      line-height: 1.15;
+    }
+
+    .rf-inc-body-text {
+      font-size: 16px;
+      line-height: 1.6;
+      color: #202124;
+      margin: 0 0 24px 0;
+      font-weight: 400;
+      max-width: 540px;
+    }
+
+    .rf-inc-body-text:last-child {
+      margin-bottom: 0;
+    }
+
+    /* Right Column (Stats) Styles */
+    .rf-inc-right {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      column-gap: 40px;
+      padding-top: 64px; /* Aligns visually with the body text start */
+    }
+
+    .rf-inc-stat-box {
+      display: flex;
+      flex-direction: column;
+    }
+
+    .rf-inc-stat-number {
+      font-size: 64px;
+      font-weight: 400;
+      color: #0060df; /* Vivid premium blue matching the original graphic */
+      line-height: 1;
+      margin-bottom: 16px;
+      letter-spacing: -0.03em;
+    }
+
+    .rf-inc-stat-label {
+      font-size: 15px;
+      line-height: 1.5;
+      color: #202124;
+      max-width: 160px;
+    }
+
+    /* Responsive Adjustments */
+    @media (max-width: 960px) {
+      .rf-inc-container {
+        grid-template-columns: 1fr;
+        row-gap: 48px;
+      }
+      .rf-inc-wrapper {
+        padding: 60px 5%;
+      }
+      .rf-inc-right {
+        padding-top: 0;
+      }
+      .rf-inc-heading {
+        font-size: 34px;
+        margin-bottom: 32px;
+      }
+    }
+  </style>
+
+  <div class="rf-inc-container">
+    <!-- Left content side -->
+    <div class="rf-inc-left">
+      <span class="rf-inc-eyebrow">Economic Access and Opportunity</span>
+      <h2 class="rf-inc-heading">Financial inclusion is a human right</h2>
+      
+      <p class="rf-inc-body-text">
+        Adoption of crypto and blockchain can help dramatically increase global economic participation, opportunity, and resilience for billions of under-banked and unbanked people.
+      </p>
+      <p class="rf-inc-body-text">
+        From enabling low-cost and always-on remittances in emerging markets to building Central Bank Digital Currency solutions for governments working to increase financial inclusion, our global crypto solutions are underpinned with the democratizing power of blockchain technology. Together with our partners and customers, we are working to transform a global financial system to meet the ever-evolving, everyday needs of everyone, everywhere.
+      </p>
+    </div>
+
+    <!-- Right metrics side -->
+    <div class="rf-inc-right">
+      <div class="rf-inc-stat-box">
+        <span class="rf-inc-stat-number">$170M</span>
+        <span class="rf-inc-stat-label">Donations since 2018</span>
+      </div>
+      
+      <div class="rf-inc-stat-box">
+        <span class="rf-inc-stat-number">80+</span>
+        <span class="rf-inc-stat-label">Countries where Ripple NGO partners operate</span>
+      </div>
+    </div>
+  </div>
+</div>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<div class="rf-hero-wrapper">
+  <style>
+    @import url('https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600&display=swap');
+
+    .rf-hero-wrapper {
+      font-family: 'Inter', -apple-system, BlinkMacSystemFont, sans-serif;
+      /* Using the exact layout image as a background container */
+      background-image: linear-gradient(rgba(0, 0, 0, 0.2), rgba(0, 0, 0, 0.2)), url('https://images.pexels.com/photos/593158/pexels-photo-593158.jpeg');
+      background-size: cover;
+      background-position: center bottom;
+      background-repeat: no-repeat;
+      min-height: 100vh;
+      width: 100%;
+      color: #ffffff;
+      display: flex;
+      justify-content: center;
+      align-items: flex-start;
+      box-sizing: border-box;
+      padding: 80px 8%;
+    }
+
+    .rf-hero-container {
+      max-width: 1280px;
+      width: 100%;
+      display: grid;
+      grid-template-columns: 1.3fr 1fr;
+      column-gap: 60px;
+      row-gap: 40px;
+    }
+
+    /* Left Column (Main Brand Message) */
+    .rf-hero-left {
+      display: flex;
+      flex-direction: column;
+      align-items: flex-start;
+    }
+
+    /* News Pill Badge */
+    .rf-hero-badge {
+      display: inline-flex;
+      align-items: center;
+      background: rgba(255, 255, 255, 0.08);
+      border: 1px solid rgba(255, 255, 255, 0.2);
+      padding: 6px 16px 6px 6px;
+      border-radius: 100px;
+      font-size: 13px;
+      color: #e2e8f0;
+      text-decoration: none;
+      margin-bottom: 40px;
+      transition: background 0.2s ease;
+      cursor: pointer;
+    }
+
+    .rf-hero-badge:hover {
+      background: rgba(255, 255, 255, 0.15);
+    }
+
+    .rf-hero-badge-tag {
+      background: #ffffff;
+      color: #000000;
+      font-weight: 600;
+      padding: 3px 10px;
+      border-radius: 100px;
+      margin-right: 10px;
+      font-size: 12px;
+    }
+
+    .rf-hero-badge-text {
+      display: flex;
+      align-items: center;
+      font-weight: 400;
+    }
+
+    .rf-hero-badge-text::after {
+      content: "›";
+      margin-left: 8px;
+      font-size: 16px;
+      line-height: 1;
+    }
+
+    /* Massive Typography Statement */
+    .rf-hero-title {
+      font-size: 84px;
+      font-weight: 500;
+      line-height: 1.05;
+      letter-spacing: -0.03em;
+      margin: 0;
+      background: linear-gradient(180deg, #ffffff 40%, rgba(255, 255, 255, 0.45) 100%);
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent;
+      background-clip: text;
+    }
+
+    /* Right Column (Value Prop & CTA Actions) */
+    .rf-hero-right {
+      display: flex;
+      flex-direction: column;
+      justify-content: flex-start;
+      padding-top: 100px; /* Aligns with the main text block */
+    }
+
+    .rf-hero-description {
+      font-size: 19px;
+      line-height: 1.6;
+      color: #cbd5e1;
+      margin-bottom: 48px;
+      max-width: 420px;
+      font-weight: 400;
+    }
+
+    /* Action Links & Buttons */
+    .rf-hero-actions {
+      display: flex;
+      align-items: center;
+      gap: 32px;
+    }
+
+    .rf-hero-btn-primary {
+      background: #ffffff;
+      color: #000000;
+      padding: 14px 28px;
+      border-radius: 100px;
+      font-size: 16px;
+      font-weight: 500;
+      text-decoration: none;
+      transition: transform 0.2s ease, background-color 0.2s ease;
+    }
+
+    .rf-hero-btn-primary:hover {
+      background: #f1f5f9;
+      transform: translateY(-1px);
+    }
+
+    .rf-hero-meta-cta {
+      display: flex;
+      flex-direction: column;
+    }
+
+    .rf-hero-meta-label {
+      font-size: 13px;
+      color: #64748b;
+      margin-bottom: 2px;
+    }
+
+    .rf-hero-link-secondary {
+      color: #ffffff;
+      font-size: 16px;
+      font-weight: 500;
+      text-decoration: none;
+      transition: color 0.2s ease;
+    }
+
+    .rf-hero-link-secondary:hover {
+      color: #cbd5e1;
+      text-decoration: underline;
+    }
+
+    /* Responsive Breakdown adjustments */
+    @media (max-width: 1024px) {
+      .rf-hero-container {
+        grid-template-columns: 1fr;
+        row-gap: 32px;
+      }
+      .rf-hero-right {
+        padding-top: 0;
+      }
+      .rf-hero-title {
+        font-size: 60px;
+      }
+      .rf-hero-wrapper {
+        padding: 60px 5%;
+      }
+    }
+  </style>
+
+  <div class="rf-hero-container">
+    <div class="rf-hero-left">
+      <a class="rf-hero-badge" href="#">
+        <span class="rf-hero-badge-tag">News</span>
+        <span class="rf-hero-badge-text">Seed fundraising and product launch featured in TechCrunch</span>
+      </a>
+      <h1 class="rf-hero-title">
+        From audio to<br>knowledge
+      </h1>
+    </div>
+
+    <div class="rf-hero-right">
+      <p class="rf-hero-description">
+        Unlock the full potential of your audio data with AI transcription, translation and audio intelligence add-ons using a single API.
+      </p>
+      
+      <div class="rf-hero-actions">
+        <a href="#" class="rf-hero-btn-primary">Try for free</a>
+        
+        <div class="rf-hero-meta-cta">
+          <span class="rf-hero-meta-label">Have a question?</span>
+          <a href="#" class="rf-hero-link-secondary">Schedule a demo</a>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+  <cronos-footer></cronos-footer>
 </body>
 </html>
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-<cronos-footer></cronos-footer>
