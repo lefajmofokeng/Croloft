@@ -26,6 +26,296 @@
 
 
 
+
+
+
+
+
+
+
+
+
+
+
+<div class="rf-hero-wrapper">
+  <style>
+
+    .rf-hero-wrapper {
+      font-family: 'Circular Std', -apple-system, BlinkMacSystemFont, sans-serif;
+      /* Using the exact layout image as a background container */
+      background-image: linear-gradient(rgba(0, 0, 0, 0.456), rgba(0, 0, 0, 0.653)), url('https://images.pexels.com/photos/31622984/pexels-photo-31622984.jpeg');
+      background-size: cover;
+      background-position: center bottom;
+      background-repeat: no-repeat;
+      min-height: 100vh;
+      width: 100%;
+      color: #ffffff;
+      display: flex;
+      justify-content: center;
+      align-items: flex-start;
+      box-sizing: border-box;
+      padding: 140px 8%; 
+    }
+
+    .rf-hero-container {
+      max-width: 1200px;
+      width: 100%;
+      display: grid;
+      grid-template-columns: 1.6fr 1fr;
+      column-gap: 60px;
+      row-gap: 40px;
+    }
+
+    /* Left Column (Main Brand Message) */
+    .rf-hero-left {
+      display: flex;
+      flex-direction: column;
+      align-items: flex-start;
+    }
+
+    /* News Pill Badge */
+    .rf-hero-badge {
+      display: inline-flex;
+      align-items: center;
+      background: rgba(255, 255, 255, 0.08);
+      border: 1px solid rgba(255, 255, 255, 0.2);
+      padding: 5px 16px 5px 5px;
+      border-radius: 100px;
+      font-size: 13px;
+      color: #e2e8f0;
+      text-decoration: none;
+      margin-bottom: 40px;
+      transition: background 0.2s ease;
+      cursor: pointer;
+    }
+
+    .rf-hero-badge:hover {
+      background: rgba(255, 255, 255, 0.15);
+    }
+
+    .rf-hero-badge-tag {
+      background: #ffffff;
+      color: #000000;
+      font-weight: 500;
+      padding: 5px 10px;
+      border-radius: 100px;
+      margin-right: 10px;
+      font-size: 14px;
+    }
+
+    .rf-hero-badge-text {
+      display: flex;
+      align-items: center;
+      font-weight: 400;
+      font-size: 14px;
+    }
+
+    .rf-hero-badge-text::after {
+      content: "›";
+      margin-left: 8px;
+      font-size: 16px;
+      line-height: 1;
+    }
+
+    /* Massive Typography Statement */
+    .rf-hero-title {
+      font-size: 84px;
+      font-weight: 500;
+      line-height: 1.05;
+      letter-spacing: -0.03em;
+      margin: 0;
+      background: linear-gradient(180deg, #ffffff 40%, rgba(255, 255, 255, 0.323) 100%);
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent;
+      background-clip: text;
+    }
+
+    /* Right Column (Value Prop & CTA Actions) */
+    .rf-hero-right {
+      display: flex;
+      flex-direction: column;
+      justify-content: flex-start;
+      padding-top: 100px; /* Aligns with the main text block */
+    }
+
+    .rf-hero-description {
+      font-size: 19px;
+      line-height: 1.6;
+      color: #ffffff;
+      margin-bottom: 48px;
+      max-width: 420px;
+      font-weight: 400;
+    }
+
+    /* Action Links & Buttons */
+    .rf-hero-actions {
+      display: flex;
+      align-items: center;
+      gap: 32px;
+    }
+
+    .rf-hero-btn-primary {
+      background: #ffffff;
+      color: #000000;
+      padding: 13px 28px;
+      border-radius: 100px;
+      font-size: 16px;
+      font-weight: 500;
+      text-decoration: none;
+      transition: transform 0.2s ease, background-color 0.2s ease;
+    }
+
+    .rf-hero-btn-primary:hover {
+      background: #f1f5f9;
+      transform: translateY(-1px);
+    }
+
+    .rf-hero-meta-cta {
+      display: flex;
+      flex-direction: column;
+    }
+
+    .rf-hero-meta-label {
+      font-size: 15px;
+      color: #bcc5d2;
+      margin-bottom: 2px;
+    }
+
+    .rf-hero-link-secondary {
+      color: #ffffff;
+      font-size: 16px;
+      font-weight: 500;
+      text-decoration: none;
+      transition: color 0.2s ease;
+    }
+
+    .rf-hero-link-secondary:hover {
+      color: #cbd5e1;
+      text-decoration: underline;
+    }
+
+    /* Responsive Breakdown adjustments */
+    @media (max-width: 1024px) {
+      .rf-hero-container {
+        grid-template-columns: 1fr;
+        row-gap: 32px;
+      }
+      .rf-hero-right {
+        padding-top: 0;
+      }
+      .rf-hero-title {
+        font-size: 40px;
+      }
+      .rf-hero-wrapper {
+        padding: 90px 5%;
+      }
+    }
+  </style>
+
+  <div class="rf-hero-container">
+    <div class="rf-hero-left">
+      <a class="rf-hero-badge" href="#">
+        <span class="rf-hero-badge-tag">News</span>
+        <span class="rf-hero-badge-text">Seed fundraising and product launch featured in Croloft</span>
+      </a>
+      <h1 class="rf-hero-title">
+        From audio to<br>knowledge
+      </h1>
+    </div>
+
+    <div class="rf-hero-right">
+      <p class="rf-hero-description">
+        Unlock the full potential of your audio data with AI transcription, translation and audio intelligence add-ons using a single API.
+      </p>
+      
+      <div class="rf-hero-actions">
+        <a href="#" class="rf-hero-btn-primary">Try for free</a>
+        
+        <div class="rf-hero-meta-cta">
+          <span class="rf-hero-meta-label">Have a question?</span>
+          <a href="#" class="rf-hero-link-secondary">Schedule a demo</a>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -744,7 +1034,7 @@
     /* Section Header Styles */
     .pf-grid-header {
       text-align: left;
-      margin-bottom: 3rem;
+      margin-bottom: 2rem;
       width: 100%;
     }
 
@@ -1139,7 +1429,7 @@ class MalutiVideoShowcase extends HTMLElement {
                 /* The Exact Center-Outward Scroll-Driven Morpher Frame Container */
                 .media-morpher {
                     position: absolute;
-                    top: var(--morph-top, 0px);
+                    top: var(--morph-top, 0);
                     left: var(--morph-left, 0px);
                     width: var(--morph-width, 100%);
                     height: var(--morph-height, 500px);
@@ -1346,7 +1636,7 @@ class MalutiVideoShowcase extends HTMLElement {
 
             const currentScrollY = window.scrollY;
             
-            let progress = (currentScrollY - (startY - 60)) / totalTravelDistance;
+            let progress = (currentScrollY - (startY - 85)) / totalTravelDistance;
             progress = Math.max(0, Math.min(1, progress));
 
             if (progress > 0) {

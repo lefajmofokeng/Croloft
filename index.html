@@ -144,6 +144,264 @@
 
 
 
+<div class="cronos-adv-popup-anchor" id="cronos-standalone-ad">
+  <button class="cronos-adv-popup-toggle" onclick="toggleCronosStandaloneAd()" aria-label="Toggle Advertisement View">
+    <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round" stroke-linejoin="round">
+      <polyline points="6 9 12 15 18 9"></polyline>
+    </svg>
+  </button>
+
+  <div class="cronos-adv-popup-container">
+    <div class="cronos-adv-video-wrapper">
+      
+      <video id="cronos-advert-video" controls muted autoplay loop poster="thumbnails/video-poster.jpg">
+        <source src="https://www.pexels.com/download/video/5943777/" type="video/mp4">
+        <source src="video/your-video.webm" type="video/webm">
+        Your browser does not support the video tag.
+      </video>
+
+    </div>
+    
+    <div class="cronos-adv-meta-tray">
+      <div class="cronos-adv-meta-left">
+        <span class="cronos-adv-pill">Ad</span>
+        <span class="cronos-adv-meta-title">Get 50% Off on all solutions</span>
+      </div>
+      <a href="https://yourcompany.com/solutions" target="_blank" rel="noopener noreferrer" class="cronos-adv-router-link">
+        Learn More
+        <svg width="11" height="11" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round">
+          <line x1="7" y1="17" x2="17" y2="7"></line>
+          <polyline points="7 7 17 7 17 17"></polyline>
+        </svg>
+      </a>
+    </div>
+  </div>
+</div>
+
+<style>
+  /* Base Anchor Placement Layout */
+  .cronos-adv-popup-anchor {
+    position: fixed;
+    bottom: 24px;
+    right: 24px;
+    z-index: 9999;
+    display: flex;
+    flex-direction: column;
+    align-items: flex-end;
+    width: 360px;
+    font-family: 'Circular Std', -apple-system, BlinkMacSystemFont, sans-serif;
+    transition: transform 0.4s cubic-bezier(0.16, 1, 0.3, 1);
+  }
+
+  /* External Toggle Mechanism Component */
+  .cronos-adv-popup-toggle {
+    background-color: #080d1b;
+    color: #ffffff;
+    border: none;
+    padding: 14px;
+    font-family: inherit;
+    font-size: 0.9rem;
+    font-weight: 400;
+    cursor: pointer;
+    border-radius: 50px;
+    margin-bottom: 8px;
+    box-shadow: 0 4px 16px rgba(0, 0, 0, 0.1);
+    display: inline-flex;
+    align-items: center;
+    gap: 6px;
+    transition: background-color 0.2s ease, transform 0.2s ease;
+  }
+
+  .cronos-adv-popup-toggle:hover {
+    background-color: #007fdf;
+  }
+
+  .cronos-adv-popup-toggle svg {
+    transition: transform 0.3s ease;
+  }
+
+  /* Video Panel Body & Frame Layer Setup */
+  .cronos-adv-popup-container {
+    width: 100%;
+    background-color: #ffffff;
+    border-radius: 10px; /* Premium 15px Border Radius */
+    box-shadow: 0 12px 40px rgba(0, 0, 0, 0.12);
+    overflow: hidden;
+    display: flex;
+    flex-direction: column;
+    transition: max-height 0.4s cubic-bezier(0.16, 1, 0.3, 1), opacity 0.3s ease, border-color 0.3s ease;
+    max-height: 270px;
+  }
+
+  .cronos-adv-video-wrapper {
+    position: relative;
+    width: 100%;
+    padding-top: 56.25%; /* Standard widescreen 16:9 aspect constraint */
+    background-color: #000000;
+  }
+
+  .cronos-adv-video-wrapper video {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    border: none;
+  }
+
+  /* Metadata Action Tray Context */
+  .cronos-adv-meta-tray {
+    padding: 14px 16px;
+    background-color: #ffffff;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    gap: 12px;
+  }
+
+  .cronos-adv-meta-left {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    overflow: hidden;
+  }
+
+  /* Clean High-Contrast Premium Ad Pill */
+  .cronos-adv-pill {
+    font-size: 0.68rem;
+    font-weight: 700;
+    text-transform: uppercase;
+    color: #111111;
+    background-color: #e9e9e9;
+    padding: 2px 6px;
+    letter-spacing: 0.04em;
+    flex-shrink: 0;
+  }
+
+  .cronos-adv-meta-title {
+    font-size: 0.82rem;
+    font-weight: 500;
+    color: #111111;
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+  }
+
+  /* Interactive Target Routing Link */
+  .cronos-adv-router-link {
+    font-size: 0.82rem;
+    font-weight: 500;
+    color: #007fdf;
+    text-decoration: none;
+    display: inline-flex;
+    align-items: center;
+    gap: 4px;
+    flex-shrink: 0;
+    transition: color 0.15s ease;
+  }
+
+  .cronos-adv-router-link:hover {
+    color: #0066b3;
+  }
+
+  .cronos-adv-router-link svg {
+    transition: transform 0.15s ease;
+  }
+
+  .cronos-adv-router-link:hover svg {
+    transform: translate(1px, -1px);
+  }
+
+  /* Toggle Collapse Interlocking Dynamic Classes */
+  .cronos-adv-popup-anchor.is-minimized .cronos-adv-popup-container {
+    max-height: 0;
+    opacity: 0;
+    border-color: transparent;
+    pointer-events: none;
+  }
+
+  .cronos-adv-popup-anchor.is-minimized .cronos-adv-popup-toggle svg {
+    transform: rotate(180deg);
+  }
+
+  /* Responsive Support Boundaries */
+  @media (max-width: 480px) {
+    .cronos-adv-popup-anchor {
+      width: calc(100% - 32px);
+      bottom: 16px;
+      right: 16px;
+    }
+  }
+</style>
+
+<script>
+  function toggleCronosStandaloneAd() {
+    const popupAnchor = document.getElementById('cronos-standalone-ad');
+    const buttonLabel = document.getElementById('cronos-adv-btn-text');
+    const mediaVideo = document.getElementById('cronos-advert-video');
+    
+    if (!popupAnchor) return;
+
+    if (popupAnchor.classList.contains('is-minimized')) {
+      popupAnchor.classList.remove('is-minimized');
+      buttonLabel.textContent = 'Hide Panel';
+      
+      if (mediaVideo) {
+        mediaVideo.play().catch(function(err) {
+          console.log("Playback interaction catch block:", err);
+        });
+      }
+    } else {
+      popupAnchor.classList.add('is-minimized');
+      buttonLabel.textContent = 'Show Panel';
+      
+      if (mediaVideo) {
+        mediaVideo.pause();
+      }
+    }
+  }
+</script>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 
 
