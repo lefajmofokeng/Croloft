@@ -352,12 +352,12 @@
     <div class="cronos-spec-main-layout">
       
       <div class="cronos-spec-content-panel">
-        <div class="cronos-spec-meta-tag" id="cronosSpecMeta">01 / CAPABILITY</div>
+        <div class="cronos-spec-meta-tag" id="cronosSpecMeta">01 - CAPABILITY</div>
         <h1 class="cronos-spec-title" id="cronosSpecTitle">SOFTWARE</h1>
         <p class="cronos-spec-description" id="cronosSpecDesc">
           Building tailored, robust web applications and digital products optimized for high performance, maximum isolation, and native scalability.
         </p>
-        <button class="cronos-spec-action-btn">DISCOVER</button>
+        <button class="cronos-spec-action-btn">Learn more</button>
         
         <div class="cronos-spec-context-nav">
           <span class="cronos-spec-nav-link cronos-active" data-index="0">SOFTWARE</span>
@@ -401,10 +401,10 @@
   /* Container Isolation & Global Settings */
 .cronos-spec-slider-wrapper {
   --cronos-primary: #0091ff;
-  --cronos-dark: #111111;
-  --cronos-light: #ffffff;
-  --cronos-muted: #b0b0b0;
-  --cronos-font: 'Inter', -apple-system, BlinkMacSystemFont, sans-serif;
+  --cronos-dark: #080d1b;
+  --cronos-light: #f4f4f4;
+  --cronos-muted: #737373;
+  --cronos-font: 'Circular Std', -apple-system, BlinkMacSystemFont, sans-serif;
   
   position: relative;
   width: 100%;
@@ -464,15 +464,14 @@
 
 .cronos-spec-title {
   font-size: 64px;
-  font-weight: 800;
+  font-weight: 500;
   letter-spacing: -0.03em;
   line-height: 1.1;
   margin-bottom: 20px;
-  text-transform: uppercase;
 }
 
 .cronos-spec-description {
-  font-size: 16px;
+  font-size: 18px;
   line-height: 1.6;
   color: var(--cronos-muted);
   max-width: 550px;
@@ -480,16 +479,16 @@
 }
 
 .cronos-spec-action-btn {
-  background: transparent;
-  color: var(--cronos-dark);
+  background: #080d1b;
+  color: #fff;
   border: 1px solid var(--cronos-dark);
   padding: 12px 36px;
-  font-size: 12px;
-  font-weight: 700;
-  letter-spacing: 0.15em;
+  font-size: 15px; 
+  font-weight: 400;
   cursor: pointer;
   border-radius: 50px; /* Uniform sharp edges */
   transition: all 0.3s ease;
+  font-family: inherit;
 }
 
 .cronos-spec-action-btn:hover {
@@ -545,6 +544,7 @@
   line-height: 0.8;
   letter-spacing: -0.05em;
   user-select: none;
+  font-family:'DM Sans', Tahoma, Geneva, Verdana, sans-serif;
   
   /* Text Clipping Effect Engine */
   background-size: cover;
@@ -552,7 +552,6 @@
   background-repeat: no-repeat;
   -webkit-background-clip: text;
   -webkit-text-fill-color: rgba(17, 17, 17, 0.04);
-  
   transition: all 0.8s cubic-bezier(0.25, 1, 0.5, 1);
 }
 
@@ -592,10 +591,10 @@
 
 /* Static anchor numbers at the left and right ends */
 .cronos-spec-time-label {
-  font-size: 18px;
-  font-weight: 700;
+  font-size: 28px;
+  font-weight: 800;
   color: var(--cronos-muted);
-  font-family: monospace, var(--cronos-font);
+  font-family: 'DM Sans', sans-serif;
   background-color: var(--cronos-light); /* Matches your site's canvas background */
   padding: 0 8px; /* Pushes the line away from the numbers slightly */
   transition: all 0.6s ease;
@@ -608,9 +607,9 @@
   top: 50%;
   transform: translate(-50%, -50%);
   color: var(--cronos-dark);
-  font-size: 24px;
+  font-size: 28px;
   font-weight: 800;
-  font-family: monospace, var(--cronos-font);
+  font-family: 'Inter', sans-serif;
   background-color: var(--cronos-light); /* Masks out the underlying axis lines */
   padding: 0 10px; /* Clean spatial padding for the line mask */
   transition: left 0.8s cubic-bezier(0.25, 1, 0.5, 1), opacity 0.4s ease, transform 0.4s ease;
@@ -630,8 +629,8 @@
 
 .cronos-spec-range-line-left,
 .cronos-spec-range-line-right {
-  height: 1px;
-  background-color: #e0e0e0;
+  height: 3px;
+  background-color: #cacaca;
   transition: width 0.8s cubic-bezier(0.25, 1, 0.5, 1);
 }
 
@@ -675,21 +674,21 @@
     {
       num: "01",
       title: "SOFTWARE",
-      meta: "01 / CAPABILITY",
+      meta: "01 - CAPABILITY",
       desc: "Building tailored, robust web applications and digital products optimized for high performance, maximum isolation, and native scalability.",
       img: "url('https://images.unsplash.com/photo-1555066931-4365d14bab8c?auto=format&fit=crop&w=1200&q=80')"
     },
     {
       num: "02",
       title: "INFRASTRUCTURE",
-      meta: "02 / ARCHITECTURE",
+      meta: "02 - ARCHITECTURE",
       desc: "Architecting managed cloud environments, CI/CD pipelines, and global delivery networks serving applications securely with zero downtime.",
       img: "url('https://images.unsplash.com/photo-1600132806370-bf17e65e942f?auto=format&fit=crop&w=1200&q=80')"
     },
     {
       num: "03",
       title: "MARKETING",
-      meta: "03 / GROWTH",
+      meta: "03 - GROWTH",
       desc: "Deploying high-impact engineering-driven digital marketing campaigns and clean visual assets that elevate high-end modern brands.",
       img: "url('https://images.unsplash.com/photo-1460925895917-afdab827c52f?auto=format&fit=crop&w=1200&q=80')"
     }
@@ -794,6 +793,536 @@
   resetTimelineCycle();
 });
 </script>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Cronos Systems — Performance Architecture</title>
+  <style>
+    /* Premium Minimalist Design Tokens */
+    :root {
+      --cronos-bg: #f4f3ef; /* Warm high-end corporate cream canvas */
+      --cronos-dark: #111111;
+      --cronos-muted: #666666;
+      --cronos-line: rgba(0, 0, 0, 0.08);
+      --cronos-font: 'Inter', -apple-system, BlinkMacSystemFont, sans-serif;
+    }
+
+    * {
+      box-sizing: border-box;
+      margin: 0;
+      padding: 0;
+    }
+
+    body {
+      background-color: var(--cronos-bg);
+      color: var(--cronos-dark);
+      font-family: var(--cronos-font);
+      -webkit-font-smoothing: antialiased;
+      overflow-x: hidden;
+    }
+
+    /* Isolated Structural Component Namespace Wrapper */
+    .crns-site-wrapper {
+      width: 100%;
+      min-height: 100vh;
+      display: flex;
+      flex-direction: column;
+      padding: 0 4%;
+    }
+
+    /* Minimalist Header Navigation Layout */
+    .crns-header {
+      width: 100%;
+      height: 90px;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      border-bottom: 1px solid var(--cronos-line);
+      position: relative;
+      z-index: 100;
+    }
+
+    .crns-brand {
+      font-size: 24px;
+      font-weight: 700;
+      letter-spacing: -0.03em;
+      display: flex;
+      align-items: center;
+      gap: 10px;
+      z-index: 110;
+    }
+
+    .crns-brand-icon {
+      width: 16px;
+      height: 16px;
+      background-color: var(--cronos-dark);
+      transform: rotate(45deg);
+    }
+
+    /* Nav Links Aligned to the Right with the Button */
+    .crns-nav-container {
+      display: flex;
+      align-items: center;
+      gap: 40px;
+    }
+
+    .crns-nav {
+      display: flex;
+      align-items: center;
+      gap: 32px;
+    }
+
+    .crns-nav-link {
+      font-size: 14px;
+      font-weight: 500;
+      color: var(--cronos-muted);
+      text-decoration: none;
+      transition: color 0.2s ease;
+    }
+
+    .crns-nav-link:hover {
+      color: var(--cronos-dark);
+    }
+
+    .crns-cta-btn {
+      font-size: 13px;
+      font-weight: 600;
+      color: var(--cronos-dark);
+      text-decoration: none;
+      border: 1px solid rgba(0, 0, 0, 0.15);
+      padding: 10px 20px;
+      border-radius: 1px; /* Uniform sharp premium finish */
+      transition: all 0.2s ease;
+      white-space: nowrap;
+    }
+
+    .crns-cta-btn:hover {
+      background-color: var(--cronos-dark);
+      color: var(--cronos-bg);
+      border-color: var(--cronos-dark);
+    }
+
+    /* Mobile Menu Toggle Trigger Button */
+    .crns-menu-toggle {
+      display: none;
+      background: none;
+      border: none;
+      cursor: pointer;
+      width: 24px;
+      height: 24px;
+      position: relative;
+      z-index: 110;
+    }
+
+    .crns-menu-toggle span {
+      display: block;
+      width: 100%;
+      height: 2px;
+      background-color: var(--cronos-dark);
+      position: absolute;
+      transition: transform 0.3s ease, top 0.3s ease, bottom 0.3s ease;
+    }
+
+    .crns-menu-toggle span:first-child { top: 6px; }
+    .crns-menu-toggle span:last-child { bottom: 6px; }
+
+    /* Active State for Mobile Close Arrow */
+    .crns-header.menu-active .crns-menu-toggle span:first-child {
+      transform: rotate(45deg);
+      top: 11px;
+    }
+    .crns-header.menu-active .crns-menu-toggle span:last-child {
+      transform: rotate(-45deg);
+      bottom: 11px;
+    }
+
+    /* Asymmetric Hero Split Layout Grid */
+    .crns-hero-grid {
+      display: grid;
+      grid-template-columns: 1.1fr 0.9fr;
+      align-items: start;
+      gap: 60px;
+      flex-grow: 1;
+      padding-top: 80px;
+      padding-bottom: 60px;
+    }
+
+    .crns-left-col {
+      display: flex;
+      flex-direction: column;
+      justify-content: space-between;
+      min-height: 580px;
+    }
+
+    .crns-hero-title {
+      font-size: 5.5rem;
+      font-weight: 500;
+      line-height: 1.05;
+      letter-spacing: -0.04em;
+      max-width: 600px;
+    }
+
+    .crns-left-footer-tag {
+      font-size: 14px;
+      font-weight: 600;
+      line-height: 1.4;
+      color: var(--cronos-dark);
+      max-width: 240px;
+      margin-top: 40px;
+    }
+
+    .crns-right-col {
+      display: flex;
+      flex-direction: column;
+      gap: 50px;
+      position: relative;
+    }
+
+    /* Real Editorial Image Layout Box Component */
+    .crns-image-container {
+      width: 100%;
+      height: 340px;
+      position: relative;
+      overflow: hidden;
+      border-radius: 1px; /* Crisp sharp branding edge matching constraints */
+    }
+
+    .crns-hero-img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      filter: grayscale(100%) contrast(1.05); /* Premium editorial photo finish */
+      transition: transform 0.6s cubic-bezier(0.16, 1, 0.3, 1);
+    }
+
+    .crns-image-container:hover .crns-hero-img {
+      transform: scale(1.03);
+    }
+
+    /* Core Editorial Description Block */
+    .crns-body-panel {
+      display: flex;
+      flex-direction: column;
+      align-items: flex-start;
+      gap: 32px;
+      max-width: 540px;
+    }
+
+    .crns-hero-desc {
+      font-size: 24px;
+      line-height: 1.45;
+      font-weight: 400;
+      color: var(--cronos-dark);
+      letter-spacing: -0.02em;
+    }
+
+    .crns-discover-link {
+      display: inline-flex;
+      align-items: center;
+      gap: 12px;
+      font-size: 14px;
+      font-weight: 600;
+      color: var(--cronos-dark);
+      text-decoration: none;
+      padding-bottom: 4px;
+    }
+
+    .crns-discover-arrow {
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      width: 28px;
+      height: 28px;
+      background-color: rgba(0, 0, 0, 0.05);
+      border-radius: 1px;
+      font-size: 12px;
+      transition: transform 0.2s ease;
+    }
+
+    .crns-discover-link:hover .crns-discover-arrow {
+      transform: translateY(2px);
+    }
+
+    /* Modern Mobile Navigation Media Queries */
+    @media (max-width: 1200px) {
+      .crns-hero-title {
+        font-size: 4rem;
+      }
+    }
+
+    @media (max-width: 992px) {
+      .crns-header {
+        height: 80px;
+      }
+      
+      .crns-menu-toggle {
+        display: block; /* Show hamburger button on mobile viewports */
+      }
+
+      /* Mobile Drawer Interface Positioning Overlay */
+      .crns-nav-container {
+        position: fixed;
+        top: 0;
+        right: -100%;
+        width: 100%;
+        height: 100vh;
+        background-color: var(--cronos-bg);
+        flex-direction: column;
+        justify-content: center;
+        align-items: flex-start;
+        padding: 40px;
+        gap: 48px;
+        z-index: 100;
+        transition: right 0.4s cubic-bezier(0.16, 1, 0.3, 1);
+        border-left: 1px solid var(--cronos-line);
+      }
+
+      .crns-header.menu-active .crns-nav-container {
+        right: 0;
+      }
+
+      .crns-nav {
+        flex-direction: column;
+        align-items: flex-start;
+        gap: 28px;
+        width: 100%;
+      }
+
+      .crns-nav-link {
+        font-size: 24px;
+        font-weight: 600;
+        color: var(--cronos-dark);
+      }
+
+      .crns-cta-btn {
+        font-size: 16px;
+        padding: 14px 28px;
+        width: 100%;
+        text-align: center;
+      }
+
+      .crns-hero-grid {
+        grid-template-columns: 1fr;
+        gap: 60px;
+        padding-top: 40px;
+      }
+      
+      .crns-left-col {
+        min-height: auto;
+      }
+      
+      .crns-left-footer-tag {
+        margin-top: 30px;
+      }
+
+      .crns-image-container {
+        height: 280px;
+      }
+    }
+
+    @media (max-width: 576px) {
+      .crns-hero-title {
+        font-size: 3rem;
+      }
+      .crns-hero-desc {
+        font-size: 19px;
+      }
+    }
+  </style>
+</head>
+<body>
+
+  <div class="crns-site-wrapper">
+    <header class="crns-header" id="crnsHeader">
+      <div class="crns-brand">
+        <div class="crns-brand-icon"></div>
+        <span>Cronos</span>
+      </div>
+
+      <div class="crns-nav-container">
+        <nav class="crns-nav">
+          <a href="#advisory" class="crns-nav-link">Advisory</a>
+          <a href="#architecture" class="crns-nav-link">Architecture</a>
+          <a href="#infrastructure" class="crns-nav-link">Infrastructure</a>
+          <a href="#about" class="crns-nav-link">About</a>
+        </nav>
+        <div>
+          <a href="#newsletter" class="crns-cta-btn">Join the Newsletter</a>
+        </div>
+      </div>
+
+      <button class="crns-menu-toggle" id="crnsMenuBtn" aria-label="Toggle Menu">
+        <span></span>
+        <span></span>
+      </button>
+    </header>
+
+    <main class="crns-hero-grid">
+      <div class="crns-left-col">
+        <h1 class="crns-hero-title">Humanizing<br>Performance.<br>Backed by Insight.</h1>
+        <div class="crns-left-footer-tag">
+          Global Organization and Tech Leadership Advisory
+        </div>
+      </div>
+
+      <div class="crns-right-col">
+        <div class="crns-image-container">
+          <img src="https://images.unsplash.com/photo-1600132806370-bf17e65e942f?auto=format&fit=crop&w=1200&q=80" alt="Modern Architecture Abstract Structural Lines" class="crns-hero-img">
+        </div>
+
+        <div class="crns-body-panel">
+          <p class="crns-hero-desc">
+            Cronos helps enterprise executives, engineering leaders and tech boards unlock structural performance: creating strategic engineering clarity, scaling modern systems, and guiding architecture transitions.
+          </p>
+          <a href="#discover" class="crns-discover-link">
+            <span>Discover more</span>
+            <span class="crns-discover-arrow">↓</span>
+          </a>
+        </div>
+      </div>
+    </main>
+  </div>
+
+  <script>
+    document.addEventListener("DOMContentLoaded", () => {
+      const menuBtn = document.getElementById("crnsMenuBtn");
+      const header = document.getElementById("crnsHeader");
+      const mobileNavLinks = document.querySelectorAll(".crns-nav-link, .crns-cta-btn");
+
+      if (!menuBtn || !header) return;
+
+      // Toggle drawer visibility classes
+      menuBtn.addEventListener("click", () => {
+        header.classList.toggle("menu-active");
+      });
+
+      // Automatically collapse viewport overlay menu upon link selection
+      mobileNavLinks.forEach(link => {
+        link.addEventListener("click", () => {
+          header.classList.remove("menu-active");
+        });
+      });
+    });
+  </script>
+</body>
+</html>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 
 
