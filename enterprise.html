@@ -1651,8 +1651,8 @@ class MalutiVideoShowcase extends HTMLElement {
                 morpher.style.setProperty('--morph-width', `${currentWidth}px`);
                 morpher.style.setProperty('--morph-height', `${currentHeight}px`);
 
-                leftCard.style.opacity = 1 - (progress * 2.5);
-                rightCard.style.opacity = 1 - (progress * 2.5);
+                leftCard.style.opacity = 1 - (progress * 0);
+                rightCard.style.opacity = 1 - (progress * 0);
 
                 if (progress > 0.6) {
                     txtTitle.textContent = "Maluti TVET College";

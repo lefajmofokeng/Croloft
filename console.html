@@ -5,7 +5,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0, minimum-scale=1.0, maximum-scale=5.0, viewport-fit=cover, shrink-to-fit=no">
     <meta http-equiv="x-ua-compatible" content="ie=edge"/>
     
-    <title>Cronos - Pricing Console</title>
+    <title>Cronos Technologies — Web Application Architecture Console</title>
 
     <!-- WEB TAB ICON -->
     <link rel="icon" type="image/png" href="thumbnails/top-1.png">
@@ -33,7 +33,6 @@
             overflow-x: hidden;
         }
 
-        /* Body sits directly under website's 55px fixed header */
         .app-view-body {
             padding-top: 0;
         }
@@ -42,82 +41,13 @@
         .console-container-view {
             max-width: 1280px;
             margin: 0 auto;
-            padding: 0 16px 48px 16px;
+            padding: 28px 16px 48px 16px;
         }
 
         @media (min-width: 768px) {
             .console-container-view {
-                padding: 0 24px 48px 24px;
+                padding: 32px 24px 48px 24px;
             }
-        }
-
-        /* Smart AI Workspace Banner */
-        .ai-banner {
-            display: flex;
-            flex-direction: column;
-            justify-content: space-between;
-            align-items: flex-start;
-            background-color: #e8f0fe;
-            border-radius: 50px;
-            padding: 11px 16px;
-            margin: 0 0 16px 0;
-            gap: 12px;
-        }
-
-        @media (min-width: 768px) {
-            .ai-banner {
-                flex-direction: row;
-                align-items: center;
-                padding: 11px 12px 11px 24px;
-                margin: 0 0 24px 0;
-                gap: 0;  margin-top: 5.3rem;
-            }
-        }
-
-        .ai-banner-text {
-            display: flex;
-            align-items: flex-start;
-            gap: 10px;
-            font-size: 17px;
-            color: #1967d2;
-            font-weight: 400;
-            line-height: 1.4;
-        }
-
-        .sparkle-icon {
-            color: #1a73e8;
-            font-weight: bold;
-            font-size: 16px;
-            display: flex;
-            align-items: center;
-        }
-
-        .ai-banner-btn {
-            background-color: #ffffff;
-            border: none;
-            padding: 15px 18px;
-            border-radius: 100px;
-            font-size: 15px;
-            font-weight: 500;
-            color: #1a73e8;
-            
-            cursor: pointer;
-            white-space: nowrap;
-            transition: all 0.2s ease;
-            width: 100%;
-            text-align: center;
-        }
-
-        @media (min-width: 768px) {
-            .ai-banner-btn {
-                width: auto;
-                margin-left: 12px;
-            }
-        }
-
-        .ai-banner-btn:hover {
-            background-color: #f8f9fa;
-            border-color: #1a73e8;
         }
 
         /* Flexbox Workspace Grid */
@@ -143,63 +73,6 @@
             flex-direction: column;
         }
 
-        /* GCP-Style Service Header - sticky beneath site's 55px header, full width */
-        .service-header {
-            position: sticky;
-            top: 65px;
-            z-index: 100;
-            background-color: #080d1b;
-            border-bottom: none;
-            box-shadow: none;
-            clip-path: inset(0 0 -20px 0);
-            transition: box-shadow 0.2s ease;
-            display: flex;
-            flex-direction: column; border-radius: 15px;
-            justify-content: space-between;
-            align-items: flex-start;
-            padding: 30px 16px;
-            margin-left: -16px;
-            margin-right: -16px;
-            gap: 10px; 
-        }
-
-        @media (min-width: 576px) {
-            .service-header {
-                flex-direction: row;
-                align-items: center;
-                padding: 30px 24px;
-                margin-left: -24px;
-                margin-right: -24px;
-                gap: 0;
-            }
-        }
-
-        .service-title-container {
-            display: flex;
-            align-items: center;
-            gap: 8px;
-        }
-
-        .service-title {
-            font-size: 18px;
-            font-weight: 500;
-            color: #ffffff;
-            display: flex;
-            align-items: center;
-            gap: 6px;
-        }
-
-        @media (min-width: 768px) {
-            .service-title {
-                font-size: 19px;
-                gap: 8px;
-            }
-
-             .header-price-row{
-                display: none;
-             }
-        }
-
         .info-icon {
             display: inline-flex;
             align-items: center;
@@ -217,30 +90,6 @@
             margin-left: 4px;
             user-select: none; vertical-align: middle;
         }
-
-        .header-pricing-summary-block {
-            display: flex;
-            flex-direction: row;
-            align-items: baseline;
-            gap: 20px;
-        }
-
-        .header-price-row {
-            display: flex;
-            align-items: baseline;
-            gap: 5px;
-            font-size: 15px;
-            font-weight: 400;
-            color: #a3a7ab;
-            white-space: nowrap;
-        }
-
-        .header-price-row .highlight-val {
-            font-size: 19px;
-            font-weight: 500;
-        }
-        .header-price-row .once-off { color: #ffffff; }
-        .header-price-row .monthly { color: #ffffff; }
 
         /* High-Fidelity Configuration Content Blocks */
         .config-card {
@@ -592,495 +441,105 @@
             color: #5f6368;
         }
 
-        /* Sticky Pricing Summary Layout Layer */
-        .cost-details-panel {
-            width: 100%;
-            background-color: #ffffff;
-            border-radius: 8px;
-            box-shadow: 0 1px 2px 0 rgba(60,64,67,0.3), 0 2px 6px 2px rgba(60,64,67,0.15);
-            position: fixed;
-            bottom: 0;
-            left: 0;
-            right: 0;
-            z-index: 150; 
-            transform: translateY(calc(100% - 60px));
-            transition: transform 0.3s cubic-bezier(0.4, 0, 0.2, 1);
-        }
-
-        /* Drawer Opened Toggle Rule Override */
-        .cost-details-panel.drawer-open {
-            transform: translateY(0);
-        }
-
-        @media (min-width: 992px) {
-            .cost-details-panel {
-                width: 340px;
-                position: sticky;
-                top: 170px;
-                bottom: auto;
-                left: auto;
-                right: auto;
-                transform: none !important;
-                box-shadow: 0 1px 2px 0 rgba(60,64,67,0.3), 0 2px 6px 2px rgba(60,64,67,0.15);
-            }
-        }
-
-        /* Mobile Trigger Bar Element Block */
-        .mobile-drawer-trigger-bar {
-            height: 60px;
-            display: flex;
-            justify-content: space-between;
-            align-items: center;
-            padding: 0 16px;
-            background-color: #202124;
-            color: #ffffff;
-            cursor: pointer;
-        }
-
-        @media (min-width: 992px) {
-            .mobile-drawer-trigger-bar {
-                display: none;
-            }
-        }
-
-        .mobile-trigger-lbl {
-            font-size: 14px;
-            font-weight: 500;
-            letter-spacing: 0.5px;
-            text-transform: uppercase;
-        }
-
-        .mobile-trigger-value-block {
-            display: flex;
-            flex-direction: column;
-            align-items: flex-end;
-            font-size: 12px;
-            color: #bdc1c6;
-        }
-
-        .mobile-trigger-value-block span b {
-            font-size: 14px;
-        }
-
-        .drawer-arrow-indicator {
-            font-size: 10px;
-            color: #ffffff;
-            transition: transform 0.3s;
-            margin-left: 4px;
-        }
-
-        .cost-details-panel.drawer-open .drawer-arrow-indicator {
-            transform: rotate(180deg);
-        }
-
-        .billing-nag-bar {
-            display: flex;
-            align-items: center;
-            gap: 8px;
-            background-color: #f1f3f4;
-            padding: 12px 16px;
-            font-size: 12px;
-            color: #5f6368;
-            border-bottom: 1px solid #dadce0;
-            line-height: 1.4;
-        }
-
-        @media (min-width: 992px) {
-            .billing-nag-bar {
-                border-radius: 8px 8px 0 0;
-            }
-        }
-
-        .billing-nag-bar svg {
-            flex-shrink: 0;
-        }
-
-        .panel-padding-box {
-            padding: 16px;
-            max-height: 60vh;
-            overflow-y: auto;
-        }
-
-        @media (min-width: 992px) {
-            .panel-padding-box {
-                max-height: none;
-                overflow-y: visible;
-            }
-        }
-
-        .cost-details-title-row {
-            display: flex;
-            justify-content: space-between;
-            align-items: center;
-            margin-bottom: 16px;
-        }
-
-        .cost-details-title {
-            font-size: 18px;
-            font-weight: 400;
-            color: #202124;
-            display: flex;
-            align-items: center;
-            gap: 8px;
-        }
-
-        .currency-select-wrap {
-            border: 1px solid #dadce0;
-            border-radius: 100px;
-            padding: 4px 12px;
-            font-size: 12px;
-            font-weight: 500;
-            color: #3c4043;
-            display: flex;
-            align-items: center;
-            gap: 4px;
-        }
-
-        .add-estimate-btn {
-            width: 100%;
-            background-color: #ffffff;
-            border: 1px solid #dadce0;
-            color: #1a73e8;
-            padding: 10px;
-            border-radius: 100px;
-            font-size: 13px;
-            font-weight: 500;
-            cursor: pointer;
-            margin-bottom: 20px;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            gap: 6px;
-        }
-
-        .add-estimate-btn:hover { background-color: #f4f8ff; border-color: #1a73e8; }
-
-        .sidebar-section-lbl {
-            font-size: 11px;
-            text-transform: uppercase;
-            color: #5f6368;
-            letter-spacing: 0.5px;
-            font-weight: 500;
-            margin-bottom: 8px;
-            display: flex;
-            justify-content: space-between;
-            align-items: center;
-        }
-
-        .trash-icon {
-            cursor: pointer;
-            color: #5f6368;
-            display: flex;
-            align-items: center;
-        }
-
-        /* Token Layout Blocks */
-        .active-token-block {
-            background-color: #e8f0fe;
-            border: 1px solid #1a73e8;
-            border-radius: 8px;
-            padding: 14px 12px 14px 40px;
-            position: relative;
-            margin-bottom: 8px;
-        }
-
-        .active-token-block::before {
-            content: "";
-            position: absolute;
-            left: 14px;
-            top: 16px;
-            width: 14px;
-            height: 14px;
-            background-color: #1a73e8;
-            mask: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24'%3E%3Cpath d='M3 17.25V21h3.75L17.81 9.94l-3.75-3.75L3 17.25zM20.71 7.04c.39-.39.39-1.02 0-1.41l-2.34-2.34c-.39-.39-1.02-.39-1.41 0l-1.83 1.83 3.75 3.75 1.83-1.83z'/%3E%3C/svg%3E") no-repeat center;
-            -webkit-mask: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24'%3E%3Cpath d='M3 17.25V21h3.75L17.81 9.94l-3.75-3.75L3 17.25zM20.71 7.04c.39-.39.39-1.02 0-1.41l-2.34-2.34c-.39-.39-1.02-.39-1.41 0l-1.83 1.83 3.75 3.75 1.83-1.83z'/%3E%3C/svg%3E") no-repeat center;
-        }
-
-        .token-header {
-            display: flex;
-            justify-content: space-between;
-            font-size: 13px;
-            font-weight: 500;
-            color: #202124;
-            margin-bottom: 4px;
-            gap: 8px;
-        }
-
-        .token-sub { font-size: 11px; color: #5f6368; }
-
-        /* Bottom Fixed Drawer Total Segment */
-        .black-total-footer {
-            background-color: #202124;
-            color: #ffffff;
-            padding: 16px;
-            display: none;
-        }
-
-        @media (min-width: 992px) {
-            .black-total-footer {
-                display: block;
-                border-radius: 0 0 8px 8px;
-            }
-        }
-
-        .footer-price-block {
-            display: flex;
-            flex-direction: column;
-            gap: 6px;
-        }
-
-        .footer-price-row {
-            display: flex;
-            justify-content: space-between;
-            align-items: center;
-        }
-
-        .footer-label {
-            font-size: 11px;
-            text-transform: uppercase;
-            letter-spacing: 0.5px;
-            color: #9aa0a6;
-            font-weight: 500;
-        }
-
-        .footer-grand-price {
-            font-size: 18px;
-            font-weight: 500;
-            color: #ffffff;
-        }
-        .footer-grand-price.once-off-color { color: #1a73e8; }
-        .footer-grand-price.monthly-color { color: #1a73e8; }
-
-        /* Dark Mobile Underlay Shield */
-        .mobile-drawer-shield {
-            position: fixed;
-            top: 0;
-            left: 0;
-            width: 100vw;
-            height: 100vh;
-            background-color: rgba(0, 0, 0, 0.5);
-            z-index: 140;
-            display: none;
-        }
-
-        .mobile-drawer-shield.active {
-            display: block;
-        }
-
-        @media (min-width: 992px) {
-            .mobile-drawer-shield {
-                display: none !important;
-            }
-        }
-
-        /* AI EXPERIMENT CHAT SCREEN MODULE */
-        #ai_chat_workspace {
-            min-height: calc(100vh - 55px);
-            background-color: #ffffff;
-            display: flex;
-            flex-direction: column;
-            position: relative;
-        }
-
-        .ai-chat-top-nav {
-            display: flex;
-            justify-content: space-between;
-            align-items: center;
-            padding: 16px 24px;
-            border-bottom: 1px solid #f1f3f4;
-        }
-
-        .back-to-estimate-btn {
-            background: none;
-            border: none;
-            font-size: 14px;
-            color: #3c4043;
-            cursor: pointer;
-            display: flex;
-            align-items: center;
-            gap: 8px;
-            font-weight: 500;
-        }
-
-        .ai-badge-pill {
-            background-color: #e8f0fe;
-            color: #1967d2;
-            padding: 6px 12px;
-            border-radius: 8px;
-            font-size: 13px;
-            font-weight: 500;
-        }
-
-        .ai-chat-main-body {
-            flex: 1;
-            display: flex;
-            flex-direction: column;
-            align-items: center;
-            justify-content: center;
-            padding: 40px 16px;
-            max-width: 1000px;
-            width: 100%;
-            margin: 0 auto;
-        }
-
-        @media (min-width: 768px) {
-            .ai-chat-main-body {
-                padding: 40px 24px;
-            }
-        }
-
-        .ai-chip-icon {
-            width: 44px;
-            height: 44px;
-            background-color: #4285f4;
-            mask: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24'%3E%3Cpath d='M19 19H5V5h14v14zM3 5c0-1.1.9-2 2-2h14c1.1 0 2 .9 2 2v14c0 1.1-.9 2-2 2H5c-1.1 0-2-.9-2-2V5zm14 4.5h-2v2h2v-2zm-6 0H9v2h2v-2z'/%3E%3C/svg%3E") no-repeat center;
-            -webkit-mask: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24'%3E%3Cpath d='M19 19H5V5h14v14zM3 5c0-1.1.9-2 2-2h14c1.1 0 2 .9 2 2v14c0 1.1-.9 2-2 2H5c-1.1 0-2-.9-2-2V5zm14 4.5h-2v2h2v-2zm-6 0H9v2h2v-2z'/%3E%3C/svg%3E") no-repeat center;
-            margin-bottom: 20px;
-        }
-
-        .ai-chat-headline {
-            font-size: 24px;
-            font-weight: 400;
-            color: #202124;
-            margin: 0 0 24px 0;
-            text-align: center;
-        }
-
-        @media (min-width: 768px) {
-            .ai-chat-headline {
-                font-size: 28px;
-                margin: 0 0 32px 0;
-            }
-        }
-
-        .ai-grid-layout {
-            display: flex;
-            flex-direction: column;
-            gap: 24px;
-            width: 100%;
-            align-items: stretch;
-        }
-
-        @media (min-width: 768px) {
-            .ai-grid-layout {
-                flex-direction: row;
-            }
-        }
-
-        .ai-input-card {
-            flex: 1.3;
-            border: 1px solid #dadce0;
-            border-radius: 16px;
-            padding: 20px;
-            display: flex;
-            flex-direction: column;
-            justify-content: space-between;
-            min-height: 220px;
-        }
-
-        .ai-textarea-prompt {
-            width: 100%;
-            border: none;
-            resize: none;
-            outline: none;
-            font-size: 16px;
-            color: #202124;
-            line-height: 1.5;
-        }
-
-        .ai-textarea-prompt::placeholder { color: #80868b; }
-
-        .ai-card-bottom-row {
-            display: flex;
-            justify-content: space-between;
-            align-items: center;
-            margin-top: 16px;
-            gap: 8px;
-        }
-
-        .ai-disclaimer { font-size: 12px; color: #70757a; }
-
-        .start-discussion-btn {
-            background-color: #f1f3f4;
-            border: none;
-            color: #aaaeaf;
-            padding: 10px 24px;
-            border-radius: 100px;
-            font-size: 14px;
-            font-weight: 500;
-            cursor: not-allowed;
-            display: flex;
-            align-items: center;
-            gap: 8px;
-            white-space: nowrap;
-        }
-
-        .start-discussion-btn.ready {
-            background-color: #1a73e8;
-            color: #ffffff;
-            cursor: pointer;
-        }
-
-        .ai-suggestions-card {
-            flex: 1;
-            background-color: #f4f6fa;
-            border-radius: 16px;
-            padding: 24px;
-            display: flex;
-            flex-direction: column;
-            justify-content: space-between;
-        }
-
-        .suggestions-title {
-            font-size: 14px;
-            font-weight: 500;
-            color: #202124;
-            margin-bottom: 12px;
-        }
-
-        .suggestions-list {
-            margin: 0;
-            padding-left: 20px;
-            color: #4a4a4a;
-            font-size: 13px;
-        }
-
-        .suggestions-list li { margin-bottom: 8px; line-height: 1.4; }
-        .suggestions-footer-note { font-size: 12px; color: #5f6368; line-height: 1.4; margin-top: 16px; }
-
-        /* LOADING MODULE MODALS */
-        .loading-overlay {
-            position: fixed;
-            top: 0;
-            left: 0;
-            width: 100vw;
-            height: 100vh;
-            background-color: rgba(255, 255, 255, 0.95);
-            z-index: 1000;
-            display: flex;
-            flex-direction: column;
-            justify-content: center;
-            align-items: center;
-            gap: 16px;
-        }
-
-        .spinner-ring {
-            width: 48px;
-            height: 48px;
-            border: 4px solid #e8f0fe;
-            border-top: 4px solid #1a73e8;
-            border-radius: 50%;
-            animation: spinAnimation 0.8s linear infinite;
-        }
-
-        .loading-text { font-size: 14px; font-weight: 500; color: #1a73e8; letter-spacing: 0.5px; text-align: center; padding: 0 16px; }
-
-        @keyframes spinAnimation {
-            0% { transform: rotate(0deg); }
-            100% { transform: rotate(360deg); }
-        }
-
         .hidden-node { display: none !important; }
+
+        /* Architecture Info Panel (replaces the old pricing sidebar) */
+        .architecture-info-panel {
+            width: 100%;
+            background-color: #ffffff;
+            border-radius: 20px;
+            border: 1px solid #e8eaed;
+            box-shadow: 0 1px 2px rgba(15,23,42,0.04), 0 8px 28px rgba(15,23,42,0.06);
+            padding: 28px 24px;
+        }
+
+        @media (min-width: 992px) {
+            .architecture-info-panel {
+                width: 440px;
+                position: sticky;
+                top: 88px;
+            }
+        }
+
+        .aip-eyebrow {
+            font-size: 11px;
+            font-weight: 600;
+            letter-spacing: 1px;
+            text-transform: uppercase;
+            color: #0d6efd;
+            margin-bottom: 10px;
+        }
+
+        .aip-heading {
+            font-size: 19px;
+            font-weight: 600;
+            color: #0b1f3f;
+            margin: 0 0 12px 0;
+            line-height: 1.3;
+        }
+
+        .aip-intro {
+            font-size: 13.5px;
+            line-height: 1.65;
+            color: #5f6368;
+            margin: 0 0 22px 0;
+        }
+
+        .aip-layer-list {
+            display: flex;
+            flex-direction: column;
+            gap: 16px;
+            margin-bottom: 22px;
+        }
+
+        .aip-layer {
+            display: flex;
+            gap: 12px;
+            align-items: flex-start;
+        }
+
+        .aip-layer-index {
+            flex-shrink: 0;
+            width: 26px;
+            height: 26px;
+            border-radius: 50%;
+            background-color: #eaf1ff;
+            color: #0d6efd;
+            font-size: 12px;
+            font-weight: 700;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+
+        .aip-layer-title {
+            font-size: 13.5px;
+            font-weight: 600;
+            color: #202124;
+            margin-bottom: 2px;
+        }
+
+        .aip-layer-desc {
+            font-size: 12.5px;
+            line-height: 1.5;
+            color: #70757a;
+        }
+
+        .aip-footnote {
+            border-top: 1px solid #eef0f2;
+            padding-top: 18px;
+            font-size: 12.5px;
+            line-height: 1.6;
+            color: #5f6368;
+        }
+
+        .aip-footnote a {
+            color: #0d6efd;
+            font-weight: 600;
+            text-decoration: none;
+        }
+
+        .aip-footnote a:hover { text-decoration: underline; }
 
         /* --- POPUP INFO MODALS OVERLAY (RIGHT ANCHORED / MOBILE CENTERED) --- */
         .info-popover-modal {
@@ -1152,28 +611,6 @@
                 display: block;
             }
         }
-        /* Generate Quote Button */
-        .generate-quote-btn {
-            width: 100%;
-            background: #0077cc;
-            border: none;
-            color: #ffffff;
-            padding: 12px 10px;
-            border-radius: 50px;
-            font-size: 14px;
-            font-weight: 500;
-            cursor: pointer;
-            margin-bottom: 20px;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            gap: 8px;
-            
-        }
-        .generate-quote-btn:hover {
-            box-shadow: 0 4px 16px rgba(26,115,232,0.45);
-        }
-
         /* PDF Quote Modal Overlay */
         .quote-modal-overlay {
             position: fixed;
@@ -1440,43 +877,341 @@
             line-height: 1.6;
         }
 
+        /* ===== Site Header ===== */
+        .site-header {
+            position: sticky;
+            top: 0;
+            z-index: 300;
+            background-color: #0b1f3f;
+            border-bottom: 1px solid rgba(255,255,255,0.08);
+        }
+
+        .site-header-inner {
+            max-width: 1280px;
+            margin: 0 auto;
+            padding: 0 16px;
+            height: 64px;
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            gap: 16px;
+        }
+
+        @media (min-width: 768px) {
+            .site-header-inner {
+                padding: 0 24px;
+            }
+        }
+
+        .site-logo {
+            display: flex;
+            align-items: center;
+            gap: 8px;
+            text-decoration: none;
+            flex-shrink: 0;
+        }
+
+        .site-logo img {
+            height: 26px;
+            width: auto;
+            display: block;
+        }
+
+        .site-logo-text {
+            font-size: 17px;
+            font-weight: 600;
+            color: #ffffff;
+            white-space: nowrap;
+            letter-spacing: 0.2px;
+        }
+
+        /* Nav + CTA grouped together and pushed to the right of the logo */
+        .site-header-right {
+            display: flex;
+            align-items: center;
+            gap: 32px;
+        }
+
+        .site-nav {
+            display: none;
+            align-items: center;
+            gap: 28px;
+        }
+
+        @media (min-width: 768px) {
+            .site-nav {
+                display: flex;
+            }
+        }
+
+        .site-nav a {
+            font-size: 14px;
+            font-weight: 500;
+            color: rgba(255,255,255,0.75);
+            text-decoration: none;
+            transition: color 0.15s ease;
+        }
+
+        .site-nav a:hover {
+            color: #ffffff;
+        }
+
+        .site-header-cta {
+            flex-shrink: 0;
+            background-color: #2f7dfa;
+            color: #ffffff;
+            border: none;
+            padding: 10px 20px;
+            border-radius: 100px;
+            font-size: 14px;
+            font-weight: 600;
+            text-decoration: none;
+            white-space: nowrap;
+            cursor: pointer;
+            transition: background-color 0.15s ease;
+        }
+
+        .site-header-cta:hover {
+            background-color: #1a63e0;
+        }
+
+        /* ===== Page Title / Hero ===== */
+        .console-hero {
+            background: linear-gradient(180deg, #0b1f3f 0%, #0e2650 100%);
+            border-bottom: 1px solid rgba(255,255,255,0.06);
+        }
+
+        .console-hero-inner {
+            max-width: 1280px;
+            margin: 0 auto;
+            padding: 36px 16px 32px 16px;
+        }
+
+        @media (min-width: 768px) {
+            .console-hero-inner {
+                padding: 48px 24px 40px 24px;
+            }
+        }
+
+        .console-hero-eyebrow {
+            font-size: 12px;
+            font-weight: 600;
+            letter-spacing: 1.5px;
+            text-transform: uppercase;
+            color: #7fa8f5;
+            margin: 0 0 10px 0;
+        }
+
+        .console-hero-title {
+            font-size: 28px;
+            font-weight: 700;
+            color: #ffffff;
+            margin: 0 0 10px 0;
+            letter-spacing: -0.3px;
+        }
+
+        @media (min-width: 768px) {
+            .console-hero-title {
+                font-size: 34px;
+            }
+        }
+
+        .console-hero-subtitle {
+            font-size: 14.5px;
+            line-height: 1.6;
+            color: rgba(255,255,255,0.65);
+            max-width: 640px;
+            margin: 0 0 20px 0;
+        }
+
+        .console-hero-reset {
+            display: inline-flex;
+            align-items: center;
+            gap: 6px;
+            background: none;
+            border: 1px solid rgba(255,255,255,0.25);
+            color: rgba(255,255,255,0.85);
+            font-size: 12.5px;
+            font-weight: 500;
+            padding: 8px 16px;
+            border-radius: 100px;
+            cursor: pointer;
+            transition: all 0.15s ease;
+        }
+
+        .console-hero-reset:hover {
+            border-color: rgba(255,255,255,0.5);
+            background-color: rgba(255,255,255,0.06);
+        }
+
+        /* ===== Bottom Sticky Summary Bar (docks on top of the footer) ===== */
+        .bottom-summary-bar {
+            position: sticky;
+            bottom: 0;
+            z-index: 200;
+            background-color: #0b1f3f;
+            border-top: 1px solid rgba(255,255,255,0.08);
+            box-shadow: 0 -4px 20px rgba(0,0,0,0.18);
+        }
+
+        .bsb-inner {
+            max-width: 1280px;
+            margin: 0 auto;
+            padding: 14px 16px;
+            display: flex;
+            flex-wrap: wrap;
+            align-items: center;
+            justify-content: space-between;
+            gap: 14px;
+        }
+
+        @media (min-width: 768px) {
+            .bsb-inner {
+                padding: 16px 24px;
+                flex-wrap: nowrap;
+            }
+        }
+
+        .bsb-prices {
+            display: flex;
+            align-items: flex-start;
+            gap: 20px;
+            flex-wrap: wrap;
+            row-gap: 10px;
+        }
+
+        @media (min-width: 576px) {
+            .bsb-prices {
+                gap: 32px;
+            }
+        }
+
+        .bsb-price-item {
+            display: flex;
+            flex-direction: column;
+            gap: 4px;
+        }
+
+        .bsb-label {
+            font-size: 11px;
+            font-weight: 500;
+            letter-spacing: 0.3px;
+            color: #8c9bbd;
+            white-space: nowrap;
+        }
+
+        .bsb-value {
+            font-size: 17px;
+            font-weight: 700;
+            color: #ffffff;
+            white-space: nowrap;
+        }
+
+        .bsb-generate-btn {
+            flex-shrink: 0;
+            width: 100%;
+            background-color: #2f7dfa;
+            border: none;
+            color: #ffffff;
+            padding: 12px 24px;
+            border-radius: 50px;
+            font-size: 14px;
+            font-weight: 600;
+            cursor: pointer;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            gap: 8px;
+            white-space: nowrap;
+            transition: box-shadow 0.15s ease, background-color 0.15s ease;
+        }
+
+        @media (min-width: 768px) {
+            .bsb-generate-btn {
+                width: auto;
+            }
+        }
+
+        .bsb-generate-btn:hover {
+            background-color: #1a63e0;
+            box-shadow: 0 4px 16px rgba(47,125,250,0.4);
+        }
+
+        /* ===== Site Footer ===== */
+        .site-footer {
+            background-color: #080d1b;
+            border-top: 1px solid rgba(255,255,255,0.08);
+        }
+
+        .site-footer-inner {
+            max-width: 1280px;
+            margin: 0 auto;
+            padding: 16px 24px;
+            display: flex;
+            flex-wrap: wrap;
+            align-items: center;
+            justify-content: space-between;
+            gap: 12px;
+        }
+
+        .footer-copy {
+            font-size: 12px;
+            color: #a3a7ab;
+        }
+
+        .footer-links {
+            display: flex;
+            flex-wrap: wrap;
+            align-items: center;
+            gap: 20px;
+        }
+
+        .footer-links a {
+            font-size: 12px;
+            color: #a3a7ab;
+            text-decoration: none;
+        }
+
+        .footer-links a:hover {
+            color: #ffffff;
+        }
+
     </style>
-    <script src="header.js" defer></script>
-    <script src="footer.js" defer></script> 
 </head>
 <body>
 
-    <cronos-header></cronos-header>
+    <header class="site-header">
+        <div class="site-header-inner">
+            <a href="/" class="site-logo">
+                <img src="thumbnails/top-1.png" alt="Cronos Technologies">
+                <span class="site-logo-text">Cronos Technologies</span>
+            </a>
+            <div class="site-header-right">
+                <nav class="site-nav">
+                    <a href="/services">Services</a>
+                    <a href="/pricing">Pricing</a>
+                    <a href="/about">About</a>
+                </nav>
+                <a href="/contact" class="site-header-cta">Talk to Sales</a>
+            </div>
+        </div>
+    </header>
+
+    <div class="console-hero">
+        <div class="console-hero-inner">
+            <p class="console-hero-eyebrow">Pricing &amp; Configuration Console</p>
+            <h1 class="console-hero-title">Web Application Architecture</h1>
+            <p class="console-hero-subtitle">Configure the hosting, security, features and support layers of your web application below. Your estimate updates automatically in the summary bar at the bottom of the page.</p>
+            <button class="console-hero-reset" onclick="resetAllSelections()">↺ Reset configuration</button>
+        </div>
+    </div>
 
     <div class="app-view-body">
         <div id="pricing_console_view">
             <div class="console-container-view">
 
-                <div class="service-header">
-                    <div class="service-title-container">
-                       <div class="service-title">
-                            Web Application Architecture Engine
-                            <span class="info-icon">i</span>
-                        </div>
-                    </div>
-                    <div class="header-pricing-summary-block">
-                        <div class="header-price-row"><span class="highlight-val once-off" id="header_once_off">R0.00</span> /Estimated upfront cost</div>
-                        <div class="header-price-row"><span class="highlight-val monthly" id="header_monthly">R0.00</span> /Estimated monthly cost</div>
-                    </div>
-                </div>
-
                 <div class="console-workspace">
                     <div class="left-config-column">
-
-                        <div class="ai-banner">
-                            <div class="ai-banner-text">
-                                <span class="sparkle-icon">
-                                    <svg width="16" height="16" viewBox="0 0 24 24" fill="currentColor"><path d="M12 2l2.4 4.9 5.4.8-3.9 3.8.9 5.4-4.8-2.5-4.8 2.5.9-5.4-3.9-3.8 5.4-.8z"/></svg>
-                                </span> 
-                                <span>Skip manual configuration adjustments. Describe your project workloads to generate automated cloud deployment traces.</span>
-                            </div>
-                            <button class="ai-banner-btn" onclick="navigateToAiWorkspace()">Chat to configure</button>
-                        </div>
 
                         <div class="config-card first-node">
                             <div class="card-inner-heading">Application Delivery Instances</div>
@@ -1746,115 +1481,54 @@
                         </div>
                     </div>
 
-                    <div class="mobile-drawer-shield" id="drawer_shield" onclick="toggleMobileDrawer(false)"></div>
+                    <aside class="architecture-info-panel">
+                        <p class="aip-eyebrow">For clients new to this</p>
+                        <h2 class="aip-heading">Understanding your web application</h2>
+                        <p class="aip-intro">A web application is built from several layers working together. Each section of this form configures one of those layers — here's what they mean, in plain terms.</p>
 
-                    <div class="cost-details-panel" id="summary_panel">
-                        
-                        <div class="mobile-drawer-trigger-bar" onclick="handleDrawerTriggerClick()">
-                            <span class="mobile-trigger-lbl">Summary Details</span>
-                            <div class="mobile-trigger-value-block">
-                                <span>Once-off: <b id="drawer_once_off">R0.00</b></span>
-                                <span>Monthly: <b id="drawer_monthly">R0.00</b></span>
-                            </div>
-                            <span class="drawer-arrow-indicator">▲</span>
-                        </div>
-
-                        <div class="billing-nag-bar">
-                            <svg width="14" height="14" viewBox="0 0 24 24" fill="#5f6368"><path d="M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2zm1 15h-2v-6h2v6zm0-8h-2V7h2v2z"/></svg>
-                            <span>Review estimated resource metrics matching the selected configuration layers below.</span>
-                        </div>
-
-                        <div class="panel-padding-box">
-                            <div class="cost-details-title-row">
-                                <div class="cost-details-title">Cost details</div>
-                            </div>
-
-                            <button class="generate-quote-btn" onclick="openQuoteModal()">
-                                <svg width="15" height="15" viewBox="0 0 24 24" fill="currentColor"><path d="M14 2H6c-1.1 0-2 .9-2 2v16c0 1.1.9 2 2 2h12c1.1 0 2-.9 2-2V8l-6-6zm-1 7V3.5L18.5 9H13zm-2 8H7v-2h4v2zm4-4H7v-2h8v2z"/></svg>
-                                Generate Quote
-                            </button>
-
-                            <div class="sidebar-section-lbl">
-                                <span>Compute Architecture</span>
-                                <span class="trash-icon" onclick="resetAllSelections()" title="Reset all selections">
-                                    <svg width="14" height="14" viewBox="0 0 24 24" fill="currentColor"><path d="M6 19c0 1.1.9 2 2 2h8c1.1 0 2-.9 2-2V7H6v12zM19 4h-3.5l-1-1h-5l-1 1H5v2h14V4z"/></svg>
-                                </span>
-                            </div>
-
-                            <div class="active-token-block">
-                                <div class="token-header">
-                                    <span>One-Time Setup</span>
-                                    <span id="token_price">R3,500.00</span>
+                        <div class="aip-layer-list">
+                            <div class="aip-layer">
+                                <div class="aip-layer-index">1</div>
+                                <div>
+                                    <div class="aip-layer-title">Frontend</div>
+                                    <div class="aip-layer-desc">What your visitors see and interact with in their browser or on their phone.</div>
                                 </div>
-                                <div class="token-sub" id="token_framework_lbl">Core Modular Web Build Instance</div>
                             </div>
-                            
-                            <div class="active-token-block" id="sla_token_block" style="background-color: #ffffff; border: 1px solid #dadce0;">
-                                <div class="token-header">
-                                    <span>Support SLA Tier</span>
-                                    <span id="sla_token_price">R0.00</span>
+                            <div class="aip-layer">
+                                <div class="aip-layer-index">2</div>
+                                <div>
+                                    <div class="aip-layer-title">Backend &amp; logic</div>
+                                    <div class="aip-layer-desc">The engine behind the scenes that processes requests, forms, and business rules.</div>
                                 </div>
-                                <div class="token-sub" id="sla_token_sub">Proportional Maintenance Allocation</div>
                             </div>
-                        </div>
-
-                        <div class="black-total-footer">
-                            <div class="footer-price-block">
-                                <div class="footer-price-row">
-                                    <div class="footer-label">One-Time Fees</div>
-                                    <div class="footer-grand-price once-off-color" id="footer_once_off">R0.00</div>
+                            <div class="aip-layer">
+                                <div class="aip-layer-index">3</div>
+                                <div>
+                                    <div class="aip-layer-title">Data &amp; storage</div>
+                                    <div class="aip-layer-desc">Where your content, files, and customer information are securely kept.</div>
                                 </div>
-                                <div class="footer-price-row">
-                                    <div class="footer-label">Monthly Services</div>
-                                    <div class="footer-grand-price monthly-color" id="footer_monthly">R0.00 <span style="font-size:12px; color:#9aa0a6;">/ mo</span></div>
+                            </div>
+                            <div class="aip-layer">
+                                <div class="aip-layer-index">4</div>
+                                <div>
+                                    <div class="aip-layer-title">Hosting &amp; infrastructure</div>
+                                    <div class="aip-layer-desc">The servers and network that keep your application fast, available, and able to grow.</div>
+                                </div>
+                            </div>
+                            <div class="aip-layer">
+                                <div class="aip-layer-index">5</div>
+                                <div>
+                                    <div class="aip-layer-title">Security &amp; maintenance</div>
+                                    <div class="aip-layer-desc">Ongoing protection, backups, and updates that keep the application reliable over time.</div>
                                 </div>
                             </div>
                         </div>
-                    </div>
 
-                </div>
-            </div>
-        </div>
-
-        <div id="ai_chat_workspace" class="hidden-node">
-            <div class="ai-chat-top-nav">
-                <button class="back-to-estimate-btn" onclick="navigateToPricingConsole()">
-                    ← Return to your estimate
-                </button>
-                <div class="ai-badge-pill">AI Assistant</div>
-            </div>
-
-            <div class="ai-chat-main-body">
-                <div class="ai-chip-icon"></div>
-                <h1 class="ai-chat-headline">Let's configure your Compute Engine estimate</h1>
-
-                <div class="ai-grid-layout">
-                    <div class="ai-input-card">
-                        <textarea class="ai-textarea-prompt" id="ai_textarea_input" rows="5" placeholder="Start by describing your use case, project goals, or any workload requirements you have in mind" oninput="evaluatePromptInputState()"></textarea>
-                        
-                        <div class="ai-card-bottom-row">
-                            <span class="ai-disclaimer">Do not include sensitive information</span>
-                            <button class="start-discussion-btn" id="ai_submit_btn" onclick="alert('Running semantic AI parser on criteria specifications...')">
-                                ➔ Start discussion
-                            </button>
+                        <div class="aip-footnote">
+                            As you adjust the options on the left, your estimate updates automatically in the summary bar below. Not sure what to choose? <a href="/contact">Talk to our team →</a>
                         </div>
-                    </div>
+                    </aside>
 
-                    <div class="ai-suggestions-card">
-                        <div>
-                            <div class="suggestions-title">Consider including details like:</div>
-                            <ul class="suggestions-list">
-                                <li>Project description</li>
-                                <li>Region of deployment</li>
-                                <li>Expected user load</li>
-                                <li>CPU & Memory needs</li>
-                                <li>Operating System</li>
-                            </ul>
-                        </div>
-                        <div class="suggestions-footer-note">
-                            Unsure of some details? We can define some starting points during our chat.
-                        </div>
-                    </div>
                 </div>
             </div>
         </div>
@@ -1882,13 +1556,42 @@
         </div>
     </div>
 
-    <div id="processing_loader" class="loading-overlay hidden-node">
-        <div class="spinner-ring"></div>
-        <div class="loading-text">INITIALIZING HIGH-FIDELITY ASSET BLUEPRINT MAP...</div>
-    </div>
-
     <!-- Mobile specific underlay backdrop node to allow easy modal tap-away dismissals -->
     <div class="mobile-popover-underlay" id="mobile_popover_underlay"></div>
+
+    <div class="bottom-summary-bar">
+        <div class="bsb-inner">
+            <div class="bsb-prices">
+                <div class="bsb-price-item">
+                    <span class="bsb-label">Estimated upfront cost</span>
+                    <span class="bsb-value" id="header_once_off">R0.00</span>
+                </div>
+                <div class="bsb-price-item">
+                    <span class="bsb-label">Estimated monthly cost</span>
+                    <span class="bsb-value" id="header_monthly">R0.00</span>
+                </div>
+                <div class="bsb-price-item">
+                    <span class="bsb-label">12-month total (incl. upfront)</span>
+                    <span class="bsb-value" id="header_total_12mo">R0.00</span>
+                </div>
+            </div>
+            <button class="bsb-generate-btn" onclick="openQuoteModal()">
+                <svg width="15" height="15" viewBox="0 0 24 24" fill="currentColor"><path d="M14 2H6c-1.1 0-2 .9-2 2v16c0 1.1.9 2 2 2h12c1.1 0 2-.9 2-2V8l-6-6zm-1 7V3.5L18.5 9H13zm-2 8H7v-2h4v2zm4-4H7v-2h8v2z"/></svg>
+                Generate Quote
+            </button>
+        </div>
+    </div>
+
+    <footer class="site-footer">
+        <div class="site-footer-inner">
+            <span class="footer-copy">&copy; 2026 Cronos Technologies. All rights reserved.</span>
+            <nav class="footer-links">
+                <a href="/privacy-policy">Privacy Policy</a>
+                <a href="/terms-of-service">Terms of Service</a>
+                <a href="/cookie-policy">Cookie Policy</a>
+            </nav>
+        </div>
+    </footer>
 
     <script>
         let segmentedOffset = 0;
@@ -1938,28 +1641,6 @@
             "Cognitive LLM AI Framework Automation Modules": "Deploys real-time conversational processing systems, letting customized large language agents directly resolve client workflows, interface tasks, or support requests."
         };
 
-        function handleDrawerTriggerClick() {
-            if (window.innerWidth < 992) {
-                const panel = document.getElementById('summary_panel');
-                const isOpen = panel.classList.contains('drawer-open');
-                toggleMobileDrawer(!isOpen);
-            }
-        }
-
-        function toggleMobileDrawer(shouldOpen) {
-            const panel = document.getElementById('summary_panel');
-            const shield = document.getElementById('drawer_shield');
-            if (shouldOpen) {
-                panel.classList.add('drawer-open');
-                shield.classList.add('active');
-                document.body.style.overflow = 'hidden'; 
-            } else {
-                panel.classList.remove('drawer-open');
-                shield.classList.remove('active');
-                document.body.style.overflow = ''; 
-            }
-        }
-
         function toggleSwitchNode(toggleId, targetId) {
             const toggleElement = document.getElementById(toggleId);
             const targetElement = document.getElementById(targetId);
@@ -1997,20 +1678,16 @@
             const baseValue = parseInt(document.getElementById('base_tier').value) || 3500;
             const infoTitle = document.getElementById('info_pane_tier_title');
             const infoDesc = document.getElementById('info_pane_tier_desc');
-            const structuralTokenLbl = document.getElementById('token_framework_lbl');
 
             if (baseValue === 3500) {
                 infoTitle.innerText = "n4-standard-modular-web";
                 infoDesc.innerText = "Core baseline web layout framework structures.";
-                structuralTokenLbl.innerText = "Core Modular Web Build Instance";
             } else if (baseValue === 9500) {
                 infoTitle.innerText = "n4-highportal-engine-2";
                 infoDesc.innerText = "Optimized pipeline environments for advanced customer portal interfaces.";
-                structuralTokenLbl.innerText = "High-Availability Portal Instance";
             } else {
                 infoTitle.innerText = "n4-cloud-enterprise-stack";
                 infoDesc.innerText = "Enterprise configuration arrays for absolute concurrent horizontal scales.";
-                structuralTokenLbl.innerText = "Enterprise Dynamic Cloud Stack";
             }
             updateCalculations();
         }
@@ -2064,54 +1741,20 @@
 
             const computedMaintenancePrice = Math.round(baseValue * maintenanceFactor);
             computedMonthlyTotal += computedMaintenancePrice;
-            
-            // Update Summary Token Layout Fields
-            document.getElementById('sla_token_price').innerText = "R" + computedMonthlyTotal.toLocaleString('en-ZA', { minimumFractionDigits: 2 });
-            document.getElementById('sla_token_sub').innerText = maintenanceTitleText;
-            document.getElementById('token_price').innerText = "R" + ((baseValue + modelOffset) * instancesMultiplier).toLocaleString('en-ZA', { minimumFractionDigits: 2 });
 
             // Format Output Figures Cleanly
             const formattedOnceOff = "R" + computedOnceOffTotal.toLocaleString('en-ZA', { minimumFractionDigits: 2, maximumFractionDigits: 2 });
             const formattedMonthly = "R" + computedMonthlyTotal.toLocaleString('en-ZA', { minimumFractionDigits: 2, maximumFractionDigits: 2 });
 
-            // Write output to presentation vectors
+            // Write output to the bottom summary bar
             document.getElementById('header_once_off').innerText = formattedOnceOff;
             document.getElementById('header_monthly').innerText = formattedMonthly;
 
-            document.getElementById('drawer_once_off').innerText = formattedOnceOff;
-            document.getElementById('drawer_monthly').innerText = formattedMonthly;
-
-            document.getElementById('footer_once_off').innerText = formattedOnceOff;
-            document.getElementById('footer_monthly').innerHTML = formattedMonthly + `<span style="font-size:12px; color:#9aa0a6;"> / mo</span>`;
-        }
-
-        function evaluatePromptInputState() {
-            const inputVal = document.getElementById('ai_textarea_input').value.trim();
-            const btn = document.getElementById('ai_submit_btn');
-            if (inputVal.length > 0) {
-                btn.classList.add('ready');
-                btn.disabled = false;
-            } else {
-                btn.classList.remove('ready');
-                btn.disabled = true;
-            }
-        }
-
-        function navigateToAiWorkspace() {
-            const loader = document.getElementById('processing_loader');
-            loader.classList.remove('hidden-node');
-            setTimeout(() => {
-                loader.classList.add('hidden-node');
-                document.getElementById('pricing_console_view').classList.add('hidden-node');
-                document.getElementById('ai_chat_workspace').classList.remove('hidden-node');
-                window.scrollTo(0, 0);
-            }, 600); 
-        }
-
-        function navigateToPricingConsole() {
-            document.getElementById('ai_chat_workspace').classList.add('hidden-node');
-            document.getElementById('pricing_console_view').classList.remove('hidden-node');
-            window.scrollTo(0, 0);
+            // Total cost across 12 months, including the once-off upfront cost
+            const computedTotal12mo = computedOnceOffTotal + (computedMonthlyTotal * 12);
+            const formattedTotal12mo = "R" + computedTotal12mo.toLocaleString('en-ZA', { minimumFractionDigits: 2, maximumFractionDigits: 2 });
+            const total12moEl = document.getElementById('header_total_12mo');
+            if (total12moEl) total12moEl.innerText = formattedTotal12mo;
         }
 
         // ─── RESET ALL SELECTIONS ──────────────────────────────────────────────
@@ -2375,25 +2018,10 @@
             return cssText;
         }
 
-    
-            if (window.innerWidth >= 992) {
-                toggleMobileDrawer(false);
-            }
-        
-
         window.onload = function() {
             onSliderDragValueUpdate();
             onBaseTierChanged();
-            evaluatePromptInputState();
             setupPopoverModalEngine();
-
-            // Shadow appears on service header only after user scrolls
-            const svcHeader = document.querySelector('.service-header');
-            if (svcHeader) {
-                window.addEventListener('scroll', function() {
-                    svcHeader.classList.toggle('scrolled', window.scrollY > 10);
-                }, { passive: true });
-            }
         };
 
         // Vanilla Modal Popover Processing Engine (Anchored Right Layout / Centered Mobile Overlay)
@@ -2518,4 +2146,3 @@
     </script>
 </body>
 </html>
-<cronos-footer></cronos-footer>
