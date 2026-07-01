@@ -93,19 +93,19 @@
 
         /* High-Fidelity Configuration Content Blocks */
         .config-card {
-            background-color: #ffffff;
-            box-shadow: 0 1px 2px 0 rgba(60,64,67,0.3), 0 2px 6px 2px rgba(60,64,67,0.15);
-            padding: 20px 20px;
+            background-color: transparent;
+            border-top: none;
+            padding: 20px 0; 
         }
 
         @media (min-width: 768px) {
             .config-card {
-                padding: 24px 32px;
+                padding: 24px 0;
             }
         }
 
         .config-card.first-node {
-
+            border-top: 1px solid #e5e7eb;
             border-top-left-radius: 20px;
             border-top-right-radius: 20px;
         }
@@ -137,7 +137,7 @@
         /* Custom Dropdown Input Fields */
         .gcp-field-wrap {
             position: relative;
-            margin-bottom: 24px;
+            margin-bottom: 50px;
             width: 100%;
         }
 
@@ -145,7 +145,7 @@
             position: absolute;
             left: 12px;
             top: -8px;
-            background: #ffffff;
+            background: #f8f9fa;
             padding: 0 6px;
             font-size: 12px;
             color: #5f6368;
@@ -162,7 +162,7 @@
             border-radius: 4px;
             font-size: 16px;
             color: #202124;
-            background-color: #ffffff;
+            background-color: transparent;
             outline: none;
             appearance: none;
             -webkit-appearance: none;
@@ -447,9 +447,7 @@
         .architecture-info-panel {
             width: 100%;
             background-color: #ffffff;
-            border-radius: 20px;
-            border: 1px solid #e8eaed;
-            box-shadow: 0 1px 2px rgba(15,23,42,0.04), 0 8px 28px rgba(15,23,42,0.06);
+            border-radius: 1px;
             padding: 28px 24px;
         }
 
@@ -463,7 +461,7 @@
 
         .aip-eyebrow {
             font-size: 11px;
-            font-weight: 600;
+            font-weight: 500;
             letter-spacing: 1px;
             text-transform: uppercase;
             color: #0d6efd;
@@ -472,7 +470,7 @@
 
         .aip-heading {
             font-size: 19px;
-            font-weight: 600;
+            font-weight: 500;
             color: #0b1f3f;
             margin: 0 0 12px 0;
             line-height: 1.3;
@@ -480,62 +478,22 @@
 
         .aip-intro {
             font-size: 13.5px;
-            line-height: 1.65;
+            line-height: 1.75;
             color: #5f6368;
             margin: 0 0 22px 0;
-        }
-
-        .aip-layer-list {
-            display: flex;
-            flex-direction: column;
-            gap: 16px;
-            margin-bottom: 22px;
-        }
-
-        .aip-layer {
-            display: flex;
-            gap: 12px;
-            align-items: flex-start;
-        }
-
-        .aip-layer-index {
-            flex-shrink: 0;
-            width: 26px;
-            height: 26px;
-            border-radius: 50%;
-            background-color: #eaf1ff;
-            color: #0d6efd;
-            font-size: 12px;
-            font-weight: 700;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-        }
-
-        .aip-layer-title {
-            font-size: 13.5px;
-            font-weight: 600;
-            color: #202124;
-            margin-bottom: 2px;
-        }
-
-        .aip-layer-desc {
-            font-size: 12.5px;
-            line-height: 1.5;
-            color: #70757a;
         }
 
         .aip-footnote {
             border-top: 1px solid #eef0f2;
             padding-top: 18px;
-            font-size: 12.5px;
+            font-size: 14px;
             line-height: 1.6;
             color: #5f6368;
         }
 
         .aip-footnote a {
             color: #0d6efd;
-            font-weight: 600;
+            font-weight: 500;
             text-decoration: none;
         }
 
@@ -882,7 +840,7 @@
             position: sticky;
             top: 0;
             z-index: 300;
-            background-color: #0b1f3f;
+            background-color: #080d1b;
             border-bottom: 1px solid rgba(255,255,255,0.08);
         }
 
@@ -890,7 +848,7 @@
             max-width: 1280px;
             margin: 0 auto;
             padding: 0 16px;
-            height: 64px;
+            height: 55px;
             display: flex;
             align-items: center;
             justify-content: space-between;
@@ -919,7 +877,7 @@
 
         .site-logo-text {
             font-size: 17px;
-            font-weight: 600;
+            font-weight: 400;
             color: #ffffff;
             white-space: nowrap;
             letter-spacing: 0.2px;
@@ -946,7 +904,7 @@
 
         .site-nav a {
             font-size: 14px;
-            font-weight: 500;
+            font-weight: 400;
             color: rgba(255,255,255,0.75);
             text-decoration: none;
             transition: color 0.15s ease;
@@ -958,13 +916,13 @@
 
         .site-header-cta {
             flex-shrink: 0;
-            background-color: #2f7dfa;
+            background-color: #0077cc;
             color: #ffffff;
             border: none;
             padding: 10px 20px;
             border-radius: 100px;
             font-size: 14px;
-            font-weight: 600;
+            font-weight: 400;
             text-decoration: none;
             white-space: nowrap;
             cursor: pointer;
@@ -977,71 +935,36 @@
 
         /* ===== Page Title / Hero ===== */
         .console-hero {
-            background: linear-gradient(180deg, #0b1f3f 0%, #0e2650 100%);
+            background: linear-gradient(180deg, #080d1b 0%, #0e2650 100%);
             border-bottom: 1px solid rgba(255,255,255,0.06);
         }
 
         .console-hero-inner {
             max-width: 1280px;
             margin: 0 auto;
-            padding: 36px 16px 32px 16px;
+            padding: 30px 16px;
         }
 
         @media (min-width: 768px) {
             .console-hero-inner {
-                padding: 48px 24px 40px 24px;
+                padding: 38px 24px;
             }
         }
 
-        .console-hero-eyebrow {
-            font-size: 12px;
-            font-weight: 600;
-            letter-spacing: 1.5px;
-            text-transform: uppercase;
-            color: #7fa8f5;
-            margin: 0 0 10px 0;
-        }
-
         .console-hero-title {
-            font-size: 28px;
-            font-weight: 700;
+            font-size: 26px;
+            font-weight: 500;
             color: #ffffff;
-            margin: 0 0 10px 0;
+            margin: 0;
             letter-spacing: -0.3px;
+            position: relative;
+            display: inline-block;
         }
 
         @media (min-width: 768px) {
             .console-hero-title {
-                font-size: 34px;
+                font-size: 32px;
             }
-        }
-
-        .console-hero-subtitle {
-            font-size: 14.5px;
-            line-height: 1.6;
-            color: rgba(255,255,255,0.65);
-            max-width: 640px;
-            margin: 0 0 20px 0;
-        }
-
-        .console-hero-reset {
-            display: inline-flex;
-            align-items: center;
-            gap: 6px;
-            background: none;
-            border: 1px solid rgba(255,255,255,0.25);
-            color: rgba(255,255,255,0.85);
-            font-size: 12.5px;
-            font-weight: 500;
-            padding: 8px 16px;
-            border-radius: 100px;
-            cursor: pointer;
-            transition: all 0.15s ease;
-        }
-
-        .console-hero-reset:hover {
-            border-color: rgba(255,255,255,0.5);
-            background-color: rgba(255,255,255,0.06);
         }
 
         /* ===== Bottom Sticky Summary Bar (docks on top of the footer) ===== */
@@ -1049,7 +972,7 @@
             position: sticky;
             bottom: 0;
             z-index: 200;
-            background-color: #0b1f3f;
+            background-color: #ffffff;
             border-top: 1px solid rgba(255,255,255,0.08);
             box-shadow: 0 -4px 20px rgba(0,0,0,0.18);
         }
@@ -1074,42 +997,75 @@
 
         .bsb-prices {
             display: flex;
-            align-items: flex-start;
-            gap: 20px;
+            align-items: baseline;
             flex-wrap: wrap;
-            row-gap: 10px;
+            column-gap: 10px;
+            row-gap: 6px;
+            font-size: 14px;
+            color: #ffffff;
         }
 
-        @media (min-width: 576px) {
-            .bsb-prices {
-                gap: 32px;
-            }
-        }
-
-        .bsb-price-item {
-            display: flex;
-            flex-direction: column;
-            gap: 4px;
+        .bsb-prices .bsb-divider {
+            color: rgba(255,255,255,0.25);
         }
 
         .bsb-label {
-            font-size: 11px;
             font-weight: 500;
-            letter-spacing: 0.3px;
-            color: #8c9bbd;
+            color: #000000;
             white-space: nowrap;
         }
 
         .bsb-value {
-            font-size: 17px;
-            font-weight: 700;
-            color: #ffffff;
+            font-weight: 500;
+            color: #6a6a6a;
+            white-space: nowrap;
+            margin-right: 4px; font-size: 16px;
+        }
+
+        .bsb-note {
+            font-size: 11.5px;
+            font-weight: 400;
+            color: #8c9bbd;
             white-space: nowrap;
         }
 
-        .bsb-generate-btn {
+        .bsb-actions {
+            display: flex;
+            align-items: center;
+            gap: 10px;
             flex-shrink: 0;
             width: 100%;
+        }
+
+        @media (min-width: 768px) {
+            .bsb-actions {
+                width: auto;
+            }
+        }
+
+        .bsb-reset-btn {
+            flex-shrink: 0;
+            background: none;
+            border: 1px solid rgb(0, 0, 0);
+            color: rgb(0, 0, 0);
+            padding: 12px 18px;
+            border-radius: 50px;
+            font-size: 13px;
+            font-weight: 500;
+            cursor: pointer;
+            display: flex;
+            align-items: center;
+            gap: 6px;
+            white-space: nowrap;
+            transition: all 0.15s ease;
+        }
+
+        .bsb-reset-btn:hover {
+            background-color: rgba(102, 102, 102, 0.06);
+        }
+
+        .bsb-generate-btn {
+            flex: 1;
             background-color: #2f7dfa;
             border: none;
             color: #ffffff;
@@ -1128,7 +1084,7 @@
 
         @media (min-width: 768px) {
             .bsb-generate-btn {
-                width: auto;
+                flex: none;
             }
         }
 
@@ -1155,7 +1111,7 @@
         }
 
         .footer-copy {
-            font-size: 12px;
+            font-size: 14px;
             color: #a3a7ab;
         }
 
@@ -1167,8 +1123,8 @@
         }
 
         .footer-links a {
-            font-size: 12px;
-            color: #a3a7ab;
+            font-size: 14px;
+            color: #ffffff;
             text-decoration: none;
         }
 
@@ -1199,10 +1155,7 @@
 
     <div class="console-hero">
         <div class="console-hero-inner">
-            <p class="console-hero-eyebrow">Pricing &amp; Configuration Console</p>
             <h1 class="console-hero-title">Web Application Architecture</h1>
-            <p class="console-hero-subtitle">Configure the hosting, security, features and support layers of your web application below. Your estimate updates automatically in the summary bar at the bottom of the page.</p>
-            <button class="console-hero-reset" onclick="resetAllSelections()">↺ Reset configuration</button>
         </div>
     </div>
 
@@ -1484,48 +1437,10 @@
                     <aside class="architecture-info-panel">
                         <p class="aip-eyebrow">For clients new to this</p>
                         <h2 class="aip-heading">Understanding your web application</h2>
-                        <p class="aip-intro">A web application is built from several layers working together. Each section of this form configures one of those layers — here's what they mean, in plain terms.</p>
-
-                        <div class="aip-layer-list">
-                            <div class="aip-layer">
-                                <div class="aip-layer-index">1</div>
-                                <div>
-                                    <div class="aip-layer-title">Frontend</div>
-                                    <div class="aip-layer-desc">What your visitors see and interact with in their browser or on their phone.</div>
-                                </div>
-                            </div>
-                            <div class="aip-layer">
-                                <div class="aip-layer-index">2</div>
-                                <div>
-                                    <div class="aip-layer-title">Backend &amp; logic</div>
-                                    <div class="aip-layer-desc">The engine behind the scenes that processes requests, forms, and business rules.</div>
-                                </div>
-                            </div>
-                            <div class="aip-layer">
-                                <div class="aip-layer-index">3</div>
-                                <div>
-                                    <div class="aip-layer-title">Data &amp; storage</div>
-                                    <div class="aip-layer-desc">Where your content, files, and customer information are securely kept.</div>
-                                </div>
-                            </div>
-                            <div class="aip-layer">
-                                <div class="aip-layer-index">4</div>
-                                <div>
-                                    <div class="aip-layer-title">Hosting &amp; infrastructure</div>
-                                    <div class="aip-layer-desc">The servers and network that keep your application fast, available, and able to grow.</div>
-                                </div>
-                            </div>
-                            <div class="aip-layer">
-                                <div class="aip-layer-index">5</div>
-                                <div>
-                                    <div class="aip-layer-title">Security &amp; maintenance</div>
-                                    <div class="aip-layer-desc">Ongoing protection, backups, and updates that keep the application reliable over time.</div>
-                                </div>
-                            </div>
-                        </div>
+                        <p class="aip-intro">A web application is built from several layers working together: the frontend visitors see and interact with, the backend logic that processes requests and business rules, the database where content and customer information are stored, the hosting infrastructure that keeps everything fast and available, and the ongoing security and maintenance that keeps it all reliable over time. Each section of the form on the left configures one of these layers. As you adjust your options, your estimate updates automatically in the summary bar below.</p>
 
                         <div class="aip-footnote">
-                            As you adjust the options on the left, your estimate updates automatically in the summary bar below. Not sure what to choose? <a href="/contact">Talk to our team →</a>
+                            Not sure what to choose? <a href="/contact">Talk to our team →</a>
                         </div>
                     </aside>
 
@@ -1562,23 +1477,17 @@
     <div class="bottom-summary-bar">
         <div class="bsb-inner">
             <div class="bsb-prices">
-                <div class="bsb-price-item">
-                    <span class="bsb-label">Estimated upfront cost</span>
-                    <span class="bsb-value" id="header_once_off">R0.00</span>
-                </div>
-                <div class="bsb-price-item">
-                    <span class="bsb-label">Estimated monthly cost</span>
-                    <span class="bsb-value" id="header_monthly">R0.00</span>
-                </div>
-                <div class="bsb-price-item">
-                    <span class="bsb-label">12-month total (incl. upfront)</span>
-                    <span class="bsb-value" id="header_total_12mo">R0.00</span>
-                </div>
+                <span class="bsb-label">Upfront cost:</span><span class="bsb-value" id="header_once_off">0.00 ZAR</span>
+                <span class="bsb-label">Monthly cost:</span><span class="bsb-value" id="header_monthly">0.00 ZAR</span>
+                <span class="bsb-label">Total 12 months cost:</span><span class="bsb-value" id="header_total_12mo">0.00 ZAR</span><span class="bsb-note">(Includes upfront cost)</span>
             </div>
-            <button class="bsb-generate-btn" onclick="openQuoteModal()">
-                <svg width="15" height="15" viewBox="0 0 24 24" fill="currentColor"><path d="M14 2H6c-1.1 0-2 .9-2 2v16c0 1.1.9 2 2 2h12c1.1 0 2-.9 2-2V8l-6-6zm-1 7V3.5L18.5 9H13zm-2 8H7v-2h4v2zm4-4H7v-2h8v2z"/></svg>
-                Generate Quote
-            </button>
+            <div class="bsb-actions">
+                <button class="bsb-reset-btn" onclick="resetAllSelections()">↺ Reset configuration</button>
+                <button class="bsb-generate-btn" onclick="openQuoteModal()">
+                    <svg width="15" height="15" viewBox="0 0 24 24" fill="currentColor"><path d="M14 2H6c-1.1 0-2 .9-2 2v16c0 1.1.9 2 2 2h12c1.1 0 2-.9 2-2V8l-6-6zm-1 7V3.5L18.5 9H13zm-2 8H7v-2h4v2zm4-4H7v-2h8v2z"/></svg>
+                    Generate Quote
+                </button>
+            </div>
         </div>
     </div>
 
@@ -1743,8 +1652,8 @@
             computedMonthlyTotal += computedMaintenancePrice;
 
             // Format Output Figures Cleanly
-            const formattedOnceOff = "R" + computedOnceOffTotal.toLocaleString('en-ZA', { minimumFractionDigits: 2, maximumFractionDigits: 2 });
-            const formattedMonthly = "R" + computedMonthlyTotal.toLocaleString('en-ZA', { minimumFractionDigits: 2, maximumFractionDigits: 2 });
+            const formattedOnceOff = computedOnceOffTotal.toLocaleString('en-ZA', { minimumFractionDigits: 2, maximumFractionDigits: 2 }) + " ZAR";
+            const formattedMonthly = computedMonthlyTotal.toLocaleString('en-ZA', { minimumFractionDigits: 2, maximumFractionDigits: 2 }) + " ZAR";
 
             // Write output to the bottom summary bar
             document.getElementById('header_once_off').innerText = formattedOnceOff;
@@ -1752,7 +1661,7 @@
 
             // Total cost across 12 months, including the once-off upfront cost
             const computedTotal12mo = computedOnceOffTotal + (computedMonthlyTotal * 12);
-            const formattedTotal12mo = "R" + computedTotal12mo.toLocaleString('en-ZA', { minimumFractionDigits: 2, maximumFractionDigits: 2 });
+            const formattedTotal12mo = computedTotal12mo.toLocaleString('en-ZA', { minimumFractionDigits: 2, maximumFractionDigits: 2 }) + " ZAR";
             const total12moEl = document.getElementById('header_total_12mo');
             if (total12moEl) total12moEl.innerText = formattedTotal12mo;
         }
@@ -1805,8 +1714,8 @@
             // Gather all configured line items
             const lines = gatherQuoteLineItems();
 
-            const onceOffTotal = parseFloat(document.getElementById('header_once_off').innerText.replace('R','').replace(/\s/g,'').replace(/,/g,'')) || 0;
-            const monthlyTotal = parseFloat(document.getElementById('header_monthly').innerText.replace('R','').replace(/\s/g,'').replace(/[\s\/mo]/g,'').replace(/,/g,'')) || 0;
+            const onceOffTotal = parseFloat(document.getElementById('header_once_off').innerText.replace('ZAR','').replace(/\s/g,'').replace(/,/g,'')) || 0;
+            const monthlyTotal = parseFloat(document.getElementById('header_monthly').innerText.replace('ZAR','').replace(/\s/g,'').replace(/,/g,'')) || 0;
 
             const fmtR = (n) => 'R\u00A0' + n.toLocaleString('en-ZA', { minimumFractionDigits: 2, maximumFractionDigits: 2 });
 
