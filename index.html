@@ -113,6 +113,2131 @@
 
 
 
+<div id="component-wrapper">
+  <it-info-cards></it-info-cards>
+</div>
+
+<script>
+  class ITInfoCards extends HTMLElement {
+    constructor() {
+      super();
+      
+      const shadow = this.attachShadow({ mode: 'open' });
+      const container = document.createElement('div');
+      container.innerHTML = `
+        <style>
+          :host {
+            --bg-color: #f5f5f7;
+            --card-bg: #ffffff;
+            --text-primary: #1d1d1f;
+            --text-secondary: #515154;
+            --link-color: #0066cc;
+            --font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
+            
+            display: block;
+            font-family: var(--font-family);
+            background-color: var(--bg-color);
+            padding: 80px 24px; 
+            box-sizing: border-box;
+            width: 100%;
+          }
+
+          *, *::before, *::after {
+            box-sizing: border-box;
+            margin: 0;
+            padding: 0;
+          }
+
+          .container {
+            max-width: 980px;
+            margin: 0 auto;
+            display: flex;
+            flex-direction: column;
+            gap: 24px;
+          }
+
+          .section-header {
+            text-align: center;
+            margin-bottom: 24px;
+          }
+
+          .section-header h1 {
+            font-size: 40px;
+            font-weight: 700;
+            color: var(--text-primary);
+            letter-spacing: -0.02em;
+          }
+
+          .card {
+            background-color: var(--card-bg);
+            border-radius: 18px;
+            padding: 48px;
+            box-shadow: 0 1px 3px rgba(0, 0, 0, 0.02);
+          }
+
+          .card-full {
+            text-align: center;
+            width: 100%;
+          }
+          
+          .card-full-inner {
+            max-width: 780px;
+            margin: 0 auto;
+          }
+
+          .grid {
+            display: grid;
+            grid-template-columns: 1.62fr 1fr;
+            gap: 24px;
+          }
+
+          h2 {
+            font-size: 24px;
+            font-weight: 600;
+            color: var(--text-primary);
+            margin-bottom: 16px;
+            letter-spacing: -0.015em;
+          }
+
+          p {
+            font-size: 15px;
+            line-height: 1.5;
+            color: var(--text-primary);
+            margin-bottom: 16px;
+          }
+
+          p:last-of-type {
+            margin-bottom: 24px;
+          }
+
+          .grid .card p:last-of-type {
+            margin-bottom: 0;
+          }
+
+          .trigger-link {
+            color: var(--link-color);
+            text-decoration: none;
+            font-size: 15px;
+            display: inline-flex;
+            align-items: center;
+            cursor: pointer;
+            margin-top: 14px;
+          }
+
+          .trigger-link:hover {
+            text-decoration: underline;
+          }
+
+          .icon-container {
+            margin-bottom: 20px;
+            color: var(--text-primary);
+          }
+
+          .icon-container svg {
+            width: 38px;
+            height: 38px;
+          }
+
+          .plus-circle {
+            margin-left: 5px;
+            width: 16px;
+            height: 16px;
+            stroke-width: 2;
+          }
+
+          .arrow-link::after {
+            content: " >";
+            font-size: 11px;
+            display: inline-block;
+            margin-left: 3px;
+          }
+
+          /* Modal Styling Layout */
+          .modal-overlay {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background-color: rgba(0, 0, 0, 0.4);
+            backdrop-filter: blur(5px);
+            -webkit-backdrop-filter: blur(5px);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            z-index: 9999;
+            opacity: 0;
+            visibility: hidden;
+            transition: opacity 0.3s ease, visibility 0.3s ease;
+          }
+
+          .modal-overlay.active {
+            opacity: 1;
+            visibility: visible;
+          }
+
+          .modal-window {
+            background-color: #ffffff;
+            width: 100%;
+            max-width: 680px;
+            border-radius: 20px;
+            padding: 48px;
+            box-shadow: 0 10px 40px rgba(0, 0, 0, 0.15);
+            position: relative;
+            max-height: 90vh;
+            overflow-y: auto;
+            transform: translateY(20px);
+            transition: transform 0.3s ease;
+          }
+
+          .modal-overlay.active .modal-window {
+            transform: translateY(0);
+          }
+
+          .close-btn {
+            position: absolute;
+            top: 24px;
+            right: 24px;
+            background-color: #f5f5f7;
+            border: none;
+            width: 36px;
+            height: 36px;
+            border-radius: 50%;
+            cursor: pointer;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: #1d1d1f;
+          }
+
+          .modal-header h2 {
+            font-size: 32px;
+            font-weight: 700;
+            line-height: 1.15;
+            letter-spacing: -0.02em;
+            margin-bottom: 16px;
+          }
+
+          .modal-header p {
+            color: var(--text-secondary);
+            font-size: 15px;
+            line-height: 1.5;
+            margin-bottom: 36px;
+          }
+
+          /* Dynamic Content Areas */
+          .modal-content-view {
+            display: none;
+          }
+
+          .modal-content-view.active {
+            display: block;
+          }
+
+          /* Card 1 Icon Row Styles */
+          .modal-row {
+            display: flex;
+            gap: 24px;
+            margin-bottom: 32px;
+            align-items: flex-start;
+          }
+
+          .modal-row-icon {
+            color: var(--link-color);
+            flex-shrink: 0;
+            width: 36px;
+            height: 36px;
+          }
+
+          .modal-row-content h3 {
+            font-size: 16px;
+            font-weight: 600;
+            color: var(--text-primary);
+            margin-bottom: 6px;
+          }
+
+          /* Cards 2 & 3 Plain Text Structure (No List Icons) */
+          .plain-content-block {
+            margin-bottom: 24px;
+          }
+
+          .plain-content-block h3 {
+            font-size: 18px;
+            font-weight: 600;
+            margin-bottom: 10px;
+            color: var(--text-primary);
+          }
+
+          @media (max-width: 834px) {
+            :host { padding: 56px 16px; }
+            .section-header h1 { font-size: 32px; }
+            .grid { grid-template-columns: 1fr; }
+            .card { padding: 36px 24px; }
+            .modal-window { padding: 32px 24px; width: 92%; }
+            .modal-header h2 { font-size: 26px; }
+          }
+        </style>
+
+        <div class="container">
+          <div class="section-header">
+            <h1>Infrastructure & Security</h1>
+          </div>
+
+          <div class="card card-full">
+            <div class="card-full-inner">
+              <h2>Designing for High Availability</h2>
+              <p>At our core, we are always working to create the most resilient infrastructure for our users, which is why we architect systems that last. Designing for high availability is an organization-wide effort.</p>
+              <span class="trigger-link" data-target="content-high-availability">
+                Learn more about Personal Setup
+                <svg class="plus-circle" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="10"></circle><line x1="12" y1="8" x2="12" y2="16"></line><line x1="8" y1="12" x2="16" y2="12"></line></svg>
+              </span>
+            </div>
+          </div>
+
+          <div class="grid">
+            <div class="card">
+              <h2>Beware of unverified dependencies</h2>
+              <p>Some open-source software and third-party package repositories may not be vetted properly and could result in supply-chain security vulnerabilities.</p>
+              <span class="trigger-link arrow-link" data-target="content-dependencies">Verify libraries</span>
+            </div>
+
+            <div class="card">
+              <div class="icon-container">
+                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.2" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="11" width="18" height="10" rx="2" /><path d="M12 2v9" /><path d="M8 5h8" /></svg>
+              </div>
+              <h2>Be aware of phishing tactics</h2>
+              <p>Be aware of advanced engineering scams involving credential harvesting and administrative spoofing.</p>
+              <span class="trigger-link arrow-link" data-target="content-phishing">Review protocols</span>
+            </div>
+          </div>
+        </div>
+
+        <div class="modal-overlay" id="info-modal">
+          <div class="modal-window">
+            <button class="close-btn" id="close-modal" aria-label="Close modal">
+              <svg width="14" height="14" viewBox="0 0 14 14" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M1 1l12 12M13 1L1 13"/></svg>
+            </button>
+            
+            <div class="modal-content-view" id="content-high-availability">
+              <div class="modal-header">
+                <h2>Set up your device with ease and learn how to make the most of it.</h2>
+                <p>After onboarding directly with our services, we'll invite you to access our free online Personal Setup sessions. Connect one-to-one with an expert on demand.</p>
+              </div>
+              <div class="modal-body">
+                <div class="modal-row">
+                  <svg class="modal-row-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><rect x="5" y="2" width="14" height="20" rx="2"></rect><line x1="12" y1="18" x2="12.01" y2="18"></line></svg>
+                  <div class="modal-row-content">
+                    <h3>Set up your device and seamlessly transfer your data.</h3>
+                    <p>Whether you're upgrading or making the switch to our system, we'll help you get configured and transfer files easily.</p>
+                  </div>
+                </div>
+                <div class="modal-row">
+                  <svg class="modal-row-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><circle cx="12" cy="12" r="10"></circle><path d="M2 12h20"></path></svg>
+                  <div class="modal-row-content">
+                    <h3>Discover what your new device can do.</h3>
+                    <p>Customize your settings and dive into our core systems and platform metrics tools with an advisor.</p>
+                  </div>
+                </div>
+              </div>
+            </div>
+
+            <div class="modal-content-view" id="content-dependencies">
+              <div class="modal-header">
+                <h2>Supply Chain Auditing Rules</h2>
+                <p>Establishing corporate parameters on how external open source applications are injected into secure operational codebeds.</p>
+              </div>
+              <div class="modal-body">
+                <div class="plain-content-block">
+                  <h3>Strict Manifest Lockfiles</h3>
+                  <p>All developer builds must generate immutable cryptographic lockfiles verified against our internal secure artifact registry mirror before merge authorization.</p>
+                </div>
+                <div class="plain-content-block">
+                  <h3>Continuous License Compliance</h3>
+                  <p>Automated software composition analysis (SCA) platforms audit third-party binaries dynamically for unapproved structural dependencies and outdated library flags.</p>
+                </div>
+              </div>
+            </div>
+
+            <div class="modal-content-view" id="content-phishing">
+              <div class="modal-header">
+                <h2>Threat Vector Incident Report</h2>
+                <p>How to identify advanced external administrative engineering attempts aiming to harvest server network secrets.</p>
+              </div>
+              <div class="modal-body">
+                <div class="plain-content-block">
+                  <h3>Lookalike Domain Interception</h3>
+                  <p>Always inspect internal single sign-on address parameters. Malicious threat profiles alter trivial syntax values to mimic legitimate dashboard networks.</p>
+                </div>
+                <div class="plain-content-block">
+                  <h3>Multi-Factor Token Isolation</h3>
+                  <p>System engineers will never query production session tokens over loose communication platforms. Report unsolicited administrative authentication pushes immediately.</p>
+                </div>
+              </div>
+            </div>
+
+          </div>
+        </div>
+      `;
+
+      shadow.appendChild(container);
+
+      const modal = shadow.getElementById('info-modal');
+      const closeBtn = shadow.getElementById('close-modal');
+      const links = shadow.querySelectorAll('.trigger-link');
+      const views = shadow.querySelectorAll('.modal-content-view');
+
+      const openModal = (targetId) => {
+        views.forEach(view => {
+          if(view.id === targetId) view.classList.add('active');
+          else view.classList.remove('active');
+        });
+        modal.classList.add('active');
+      };
+
+      const closeModal = () => modal.classList.remove('active');
+
+      links.forEach(link => {
+        link.addEventListener('click', (e) => {
+          const target = link.getAttribute('data-target');
+          openModal(target);
+        });
+      });
+
+      closeBtn.addEventListener('click', closeModal);
+      modal.addEventListener('click', (e) => { if (e.target === modal) closeModal(); });
+    }
+  }
+
+  if (!customElements.get('it-info-cards')) {
+    customElements.define('it-info-cards', ITInfoCards);
+  }
+</script>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<div class="dch-hero-container">
+  <div class="dch-cards-wrapper">
+    <div class="dch-card" data-index="0" style="background-image: url('thumbnails/pexels-resourceboy-18541715');">
+      <div class="dch-card-overlay"></div>
+      <div class="dch-card-content">
+        <h2 class="dch-card-heading">Strategic Innovation</h2>
+        <p class="dch-card-description">We merge cutting-edge technology with market insights to drive strategic growth and digital transformation for your business.</p>
+        <a href="#your-link" class="dch-card-button">Learn More</a>
+      </div>
+    </div>
+    <div class="dch-card" data-index="1" style="background-image: url('thumbnails/pexels-resourceboy-18541715.jpg');">
+      <div class="dch-card-overlay"></div>
+      <div class="dch-card-content">
+        <h2 class="dch-card-heading">Bespoke Solutions</h2>
+        <p class="dch-card-description">Our team architects custom digital platforms tailored to your unique operational needs and long-term objectives.</p>
+        <a href="#your-link" class="dch-card-button">Discover Solutions</a>
+      </div>
+    </div>
+    <div class="dch-card" data-index="2" style="background-image: url('thumbnails/pexels-pixabay-270669.jpg');">
+      <div class="dch-card-overlay"></div>
+      <div class="dch-card-content">
+        <h2 class="dch-card-heading">User-Centric Design</h2>
+        <p class="dch-card-description">Experience design that captivates users, enhances usability, and converts visitors into loyal customers.</p>
+        <a href="#your-link" class="dch-card-button">Explore Designs</a>
+      </div>
+    </div>
+    <div class="dch-card" data-index="3" style="background-image: url('thumbnails/pexels-inspiredimages-5626726.jpg');">
+      <div class="dch-card-overlay"></div>
+      <div class="dch-card-content">
+        <h2 class="dch-card-heading">Data & Analytics</h2>
+        <p class="dch-card-description">Leverage powerful analytics to unlock actionable intelligence and make data-driven decisions that propel you ahead.</p>
+        <a href="#your-link" class="dch-card-button">View Analytics</a>
+      </div>
+    </div>
+  </div>
+
+  <div class="dch-controls-container">
+    <div class="dch-counter-wrapper">
+      <div class="dch-counter-reel">
+        <div class="dch-counter-num">1</div>
+        <div class="dch-counter-num">2</div>
+        <div class="dch-counter-num">3</div>
+        <div class="dch-counter-num">4</div>
+      </div>
+    </div>
+    <button class="dch-nav-button dch-nav-prev" aria-label="Previous Card">
+      <svg class="dch-nav-icon" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+        <path d="M15 18L9 12L15 6" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+      </svg>
+    </button>
+    <button class="dch-nav-button dch-nav-next" aria-label="Next Card">
+      <svg class="dch-nav-icon" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+        <path d="M9 18L15 12L9 6" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+      </svg>
+    </button>
+  </div>
+</div>
+
+
+  <style>
+  /* --- Hero Container --- */
+  .dch-hero-container {
+    position: relative;
+    width: 100%;
+    height: 100vh;
+    min-height: 700px;
+    background-color: #06273e;
+    overflow: hidden;
+    font-family: "Inter", -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif, "Apple Color Emoji", "Segoe UI Emoji", "Segoe UI Symbol";
+  }
+
+  /* --- Cards --- */
+  .dch-cards-wrapper {
+    position: relative;
+    width: 100%;
+    height: 100%;
+  }
+
+  .dch-card {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-size: cover;
+    background-position: center;
+    background-repeat: no-repeat;
+    transition: transform 1.2s cubic-bezier(0.6, 0.01, 0, 0.9), opacity 1.2s cubic-bezier(0.6, 0.01, 0, 0.9);
+    overflow: hidden;
+  }
+
+  .dch-card-overlay {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: linear-gradient(to top, rgba(6, 39, 62, 0.8), rgba(6, 39, 62, 0) 50%);
+    transition: opacity 0.8s ease;
+  }
+
+  /* States for cards based on JS classes */
+  .dch-card-active .dch-card-overlay {
+    opacity: 1;
+  }
+  .dch-card-inactive .dch-card-overlay {
+    opacity: 0;
+  }
+
+  .dch-card-active {
+    transform: scale(1) translateY(0);
+    opacity: 1;
+    z-index: 10;
+    pointer-events: auto;
+  }
+
+  .dch-card-inactive {
+    transform: translateY(calc(95vh - var(--bottom-offset, 150px))) scale(0.65) translateX(calc(var(--h-offset, 0) * 1%));
+    transform-origin: bottom center;
+    opacity: 1;
+    z-index: calc(5 - var(--stack-order, 1));
+    pointer-events: none;
+  }
+
+  /* --- Card Content --- */
+  .dch-card-content {
+    position: absolute;
+    bottom: 10vh;
+    right: 10vw;
+    width: 100%;
+    max-width: 450px;
+    padding-top: 24px;
+    padding-bottom: 24px;
+    padding-left: 32px;
+    padding-right: 32px;
+    background-color: rgba(6, 39, 62, 0.7);
+
+    backdrop-filter: blur(10px);
+    -webkit-backdrop-filter: blur(10px);
+    border-radius: 1px;
+    transform: translateY(20px);
+    opacity: 0;
+    transition: transform 0.8s cubic-bezier(0.165, 0.84, 0.44, 1) 0.10s, opacity 0.8s cubic-bezier(0.165, 0.84, 0.44, 1) 0.10s;
+  }
+  
+  .dch-card-active .dch-card-content {
+    transform: translateY(0);
+    opacity: 1;
+  }
+
+  .dch-card-heading {
+    margin: 0;
+    padding: 0;
+    font-size: 28px;
+    font-weight: 700;
+    color: #ffffff;
+  }
+
+  .dch-card-description {
+    margin-top: 12px;
+    margin-bottom: 24px;
+    padding: 0;
+    font-size: 16px;
+    line-height: 1.6;
+    color: #e5e5e5;
+  }
+  
+  .dch-card-button {
+    display: inline-block;
+    padding-top: 12px;
+    padding-bottom: 12px;
+    padding-left: 24px;
+    padding-right: 24px;
+    background-color: #0091ff;
+    color: #ffffff;
+    font-size: 14px;
+    font-weight: 600;
+    text-decoration: none;
+    border-radius: 50px;
+    transition: background-color 0.3s ease, transform 0.3s ease;
+  }
+  
+  .dch-card-button:hover {
+    background-color: #007ce6;
+    transform: translateY(-2px);
+  }
+
+  /* --- Controls --- */
+  .dch-controls-container {
+    position: absolute;
+    bottom: 5vh;
+    left: 5vw;
+    display: flex;
+    align-items: center;
+    z-index: 20;
+  }
+
+  .dch-counter-wrapper {
+    width: 28px;
+    height: 48px;
+    overflow: hidden;
+    color: #ffffff;
+    font-size: 32px;
+    font-weight: 700;
+    line-height: 48px;
+  }
+  
+  .dch-counter-reel {
+    transition: transform 0.8s cubic-bezier(0.65, 0, 0.35, 1);
+  }
+
+  .dch-counter-num {
+    text-align: center;
+    height: 48px;
+  }
+
+  .dch-nav-button {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 48px;
+    height: 48px;
+    margin-left: 16px;
+    background-color: transparent;
+    border: 1px solid rgba(255, 255, 255, 0.3);
+    border-radius: 50%;
+    cursor: pointer;
+    transition: background-color 0.3s ease, border-color 0.3s ease;
+  }
+
+  .dch-nav-button:hover {
+    background-color: rgba(255, 255, 255, 0.1);
+    border-color: #ffffff;
+  }
+  
+  .dch-nav-icon {
+    width: 24px;
+    height: 24px;
+    stroke: #ffffff;
+  }
+
+  /* --- Mobile Responsive Styles --- */
+  @media (max-width: 768px) {
+    .dch-card-inactive {
+      /* Stack inactive cards closer on mobile */
+      transform: translateY(calc(95vh - var(--bottom-offset, 100px))) scale(0.6) translateX(calc(var(--h-offset, 0) * 1%));
+    }
+    
+    .dch-controls-container {
+      left: 50%;
+      bottom: 2vh;
+      transform: translateX(-50%);
+      width: 90vw;
+      justify-content: center;
+    }
+    
+    .dch-card-content {
+      left: 5vw;
+      right: 5vw;
+      bottom: auto;
+      top: 55vh;
+      max-width: none;
+      width: auto;
+      padding-left: 20px;
+      padding-right: 20px;
+      text-align: center;
+    }
+    
+    .dch-card-heading {
+      font-size: 24px;
+    }
+
+    .dch-card-description {
+      font-size: 15px;
+      margin-bottom: 20px;
+    }
+  }
+</style>
+
+<script>
+document.addEventListener('DOMContentLoaded', () => {
+    const dchCards = document.querySelectorAll('.dch-card');
+    const dchNextBtn = document.querySelector('.dch-nav-next');
+    const dchPrevBtn = document.querySelector('.dch-nav-prev');
+    const dchCounterReel = document.querySelector('.dch-counter-reel');
+    const dchNumHeight = document.querySelector('.dch-counter-num').clientHeight;
+    
+    let dchCurrentIndex = 0;
+    let dchInterval;
+    const dchTotalCards = dchCards.length;
+
+    const dchUpdateCards = (newIndex) => {
+        dchCurrentIndex = (newIndex + dchTotalCards) % dchTotalCards;
+
+        // Animate counter
+        if (dchCounterReel) {
+            dchCounterReel.style.transform = `translateY(-${dchCurrentIndex * dchNumHeight}px)`;
+        }
+
+        // Update card classes and styles
+        dchCards.forEach((card, i) => {
+            card.classList.remove('dch-card-active', 'dch-card-inactive');
+
+            if (i === dchCurrentIndex) {
+                card.classList.add('dch-card-active');
+            } else {
+                card.classList.add('dch-card-inactive');
+                
+                // Calculate position for stacked preview cards
+                let relativePos = (i - dchCurrentIndex + dchTotalCards) % dchTotalCards;
+                let hOffset = (relativePos - (dchTotalCards / 2)) * 15;
+                let stackOrder = dchTotalCards - relativePos;
+
+                card.style.setProperty('--h-offset', hOffset);
+                card.style.setProperty('--stack-order', stackOrder);
+            }
+        });
+    };
+
+    const dchStartAutoCycle = () => {
+        clearInterval(dchInterval); // Clear existing interval
+        dchInterval = setInterval(() => {
+            dchUpdateCards(dchCurrentIndex + 1);
+        }, 3000);
+    };
+
+    // Event Listeners for manual navigation
+    if (dchNextBtn) {
+        dchNextBtn.addEventListener('click', () => {
+            dchUpdateCards(dchCurrentIndex + 1);
+            dchStartAutoCycle(); // Reset timer on manual click
+        });
+    }
+
+    if (dchPrevBtn) {
+        dchPrevBtn.addEventListener('click', () => {
+            dchUpdateCards(dchCurrentIndex - 1);
+            dchStartAutoCycle(); // Reset timer on manual click
+        });
+    }
+
+    // Initial setup
+    dchUpdateCards(0);
+    dchStartAutoCycle();
+});
+</script>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<section data-it-hero-component="container">
+  <div data-it-hero-component="layout">
+    
+    <div data-it-hero-component="heading-col">
+      <h2 data-it-hero-component="title">
+        Architected <br>around infrastructure.
+      </h2>
+    </div>
+
+    <div data-it-hero-component="content-col">
+      <p data-it-hero-component="body-text">
+        From cloud automation to telemetry tools, every part of the Core-IT digital ecosystem is designed by and for engineers. From infrastructure provisioning profiles to the entire deployment pipeline, every detail is engineered to
+      </p>
+      <p data-it-hero-component="body-text">
+        support how development teams actually scale through high-traffic demands. All for a simple reason: zero-trust security and high availability matter as much as raw processing speed.
+      </p>
+    </div>
+
+  </div>
+</section>
+
+<style>
+  /* Root Container & Reset styling safely scoped to this specific component */
+  [data-it-hero-component="container"] {
+    background-color: #0d0f0e; /* Matte dark off-black background */
+    color: #ffffff;
+    font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
+    padding: 6rem 4rem;
+    box-sizing: border-box;
+    width: 100%;
+  }
+
+  /* Main Layout: Top thin line and flex/grid layout */
+  [data-it-hero-component="layout"] {
+    border-top: 1px solid rgba(255, 255, 255, 0.4); /* Thin horizontal line */
+    padding-top: 2rem;
+    display: grid;
+    grid-template-columns: 1.3fr 2fr;
+    gap: 4rem;
+    align-items: start;
+    max-width: 1200px;
+    margin: 0 auto;
+  }
+
+  /* Left Column Heading Style */
+  [data-it-hero-component="title"] {
+    font-size: 3rem;
+    font-weight: 500;
+    line-height: 1.1;
+    letter-spacing: -0.03em;
+    margin: 0;
+  }
+
+  /* Right Column Text Splitter */
+  [data-it-hero-component="content-col"] {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 2.5rem;
+  }
+
+  /* Body Paragraph Typography */
+  [data-it-hero-component="body-text"] {
+    font-size: 1.05rem;
+    line-height: 1.5;
+    color: rgba(255, 255, 255, 0.9);
+    margin: 0;
+    font-weight: 400;
+    letter-spacing: -0.01em;
+  }
+
+  /* Responsive styling for smaller screens */
+  @media (max-width: 1024px) {
+    [data-it-hero-component="layout"] {
+      grid-template-columns: 1fr;
+      gap: 2rem;
+    }
+    [data-it-hero-component="content-col"] {
+      grid-template-columns: 1fr;
+      gap: 1.5rem;
+    }
+    [data-it-hero-component="title"] {
+      font-size: 2.5rem;
+    }
+  }
+</style>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<section data-it-showcase="container">
+  <div data-it-showcase="inner-wrapper">
+    <h2 data-it-showcase="section-title">Design from every angle</h2>
+    
+    <div data-it-showcase="grid">
+      
+      <div data-it-showcase="card" id="card-1">
+        <div data-it-showcase="card-bg" style="background-image: url('https://picsum.photos/id/180/600/800');"></div>
+        <div data-it-showcase="card-content">
+          <h3 data-it-showcase="card-title">InfiniPack</h3>
+          <p data-it-showcase="card-sub">Toolless rapidly swappable batteries.</p>
+        </div>
+        <button data-it-showcase="action-btn" aria-label="Reveal details">+</button>
+        
+        <div data-it-showcase="drawer">
+          <button data-it-showcase="close-btn" aria-label="Close drawer">&times;</button>
+          
+          <div data-it-showcase="drawer-scroll-body">
+            <span data-it-showcase="drawer-tag">INFINIPACK TECHNOLOGY</span>
+            <h4 data-it-showcase="drawer-heading">High-density hot-swappable cells.</h4>
+            <p data-it-showcase="drawer-text">
+              Engineered for zero downtime. The modular architecture permits immediate hot-swaps under 30 seconds for non-stop performance profiling. This setup isolates thermal arrays to prolong component lifespan under heavy loads.
+            </p>
+            <p data-it-showcase="drawer-text">
+              Additional integrated cooling channels regulate energy dissipation dynamically, keeping diagnostics accessible even under continuous operations.
+            </p>
+            <a href="#learn-more-infinipack" data-it-showcase="drawer-link">Learn more &rarr;</a>
+          </div>
+        </div>
+      </div>
+
+      <div data-it-showcase="card" id="card-2">
+        <div data-it-showcase="card-bg" style="background-image: url('https://picsum.photos/id/26/600/800');"></div>
+        <div data-it-showcase="card-content">
+          <h3 data-it-showcase="card-title">Minimal distraction interface</h3>
+          <p data-it-showcase="card-sub">An interface to keep you in the race.</p>
+        </div>
+        <button data-it-showcase="action-btn" aria-label="Reveal details">+</button>
+        
+        <div data-it-showcase="drawer">
+          <button data-it-showcase="close-btn" aria-label="Close drawer">&times;</button>
+          
+          <div data-it-showcase="drawer-scroll-body">
+            <span data-it-showcase="drawer-tag">MINIMAL DISTRACTION INTERFACE</span>
+            <h4 data-it-showcase="drawer-heading">An interface to keep you in the race.</h4>
+            <p data-it-showcase="drawer-text">
+              A simple, focused UI layout devoid of unnecessary abstractions. All critical operational telemetry data remains readable at a single split-second glance.
+            </p>
+            <p data-it-showcase="drawer-text">
+              By eliminating heavy animations and shifting to high-contrast monochrome UI states during extreme operations, cognitive fatigue is minimized, allowing complete focus where it matters most.
+            </p>
+            <a href="#learn-more-interface" data-it-showcase="drawer-link">Learn more &rarr;</a>
+          </div>
+        </div>
+      </div>
+
+      <div data-it-showcase="card" id="card-3">
+        <div data-it-showcase="card-bg" style="background-image: url('https://picsum.photos/id/119/600/800');"></div>
+        <div data-it-showcase="card-content">
+          <h3 data-it-showcase="card-title">Integrated smart storage</h3>
+          <p data-it-showcase="card-sub">Prepared for any challenge.</p>
+        </div>
+        <button data-it-showcase="action-btn" aria-label="Reveal details">+</button>
+        
+        <div data-it-showcase="drawer">
+          <button data-it-showcase="close-btn" aria-label="Close drawer">&times;</button>
+          
+          <div data-it-showcase="drawer-scroll-body">
+            <span data-it-showcase="drawer-tag">INTEGRATED SMART STORAGE</span>
+            <h4 data-it-showcase="drawer-heading">Utility built into structural frames.</h4>
+            <p data-it-showcase="drawer-text">
+              Weatherproof inner-chassis container compartment space built natively to keep core emergency gear and analytics units safe during harsh tasks.
+            </p>
+            <p data-it-showcase="drawer-text">
+              Features standard dampening brackets, pressurized locking seals, and instant access pathways designed specifically to survive rugged vibrations and sudden climate shifts.
+            </p>
+            <a href="#learn-more-storage" data-it-showcase="drawer-link">Learn more &rarr;</a>
+          </div>
+        </div>
+      </div>
+
+    </div>
+  </div>
+</section>
+
+<style>
+  /* Outer section wrapper */
+  [data-it-showcase="container"] {
+    background-color: #dcdcd8;
+    padding: 4rem 1.5rem; /* Responsive inline padding */
+    font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif;
+    width: 100%;
+    box-sizing: border-box;
+  }
+
+  /* Capped content container precisely centered at 1200px maximum */
+  [data-it-showcase="inner-wrapper"] {
+    max-width: 1200px;
+    margin: 0 auto;
+    width: 100%;
+  }
+
+  [data-it-showcase="section-title"] {
+    font-size: 2.25rem;
+    font-weight: 500;
+    color: #111;
+    margin: 0 0 2rem 0;
+    letter-spacing: -0.02em;
+  }
+
+  /* Responsive CSS Grid layout setup */
+  [data-it-showcase="grid"] {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 1rem;
+    width: 100%;
+  }
+
+  [data-it-showcase="card"] {
+    position: relative;
+    height: 520px;
+    border-radius: 12px;
+    overflow: hidden;
+    display: flex;
+    flex-direction: column;
+    justify-content: flex-end;
+    padding: 2rem;
+    box-sizing: border-box;
+  }
+
+  [data-it-showcase="card-bg"] {
+    position: absolute;
+    top: 0; left: 0; right: 0; bottom: 0;
+    background-size: cover;
+    background-position: center;
+    z-index: 1;
+  }
+
+  [data-it-showcase="card"]::after {
+    content: '';
+    position: absolute;
+    bottom: 0; left: 0; right: 0; height: 50%;
+    background: linear-gradient(to top, rgba(0,0,0,0.8), transparent);
+    z-index: 2;
+  }
+
+  [data-it-showcase="card-content"] {
+    position: relative;
+    z-index: 3;
+    color: #ffffff;
+  }
+
+  [data-it-showcase="card-title"] {
+    font-size: 1.5rem;
+    font-weight: 600;
+    margin: 0 0 0.5rem 0;
+    letter-spacing: -0.01em;
+  }
+
+  [data-it-showcase="card-sub"] {
+    font-size: 0.95rem;
+    margin: 0;
+    opacity: 0.85;
+    line-height: 1.3;
+  }
+
+  [data-it-showcase="action-btn"] {
+    position: absolute;
+    top: 1.5rem;
+    right: 1.5rem;
+    z-index: 4;
+    width: 32px;
+    height: 32px;
+    background-color: rgba(255, 255, 255, 0.9);
+    border: none;
+    border-radius: 50%;
+    font-size: 1.2rem;
+    cursor: pointer;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+  }
+
+  /* Drawer Container Layout */
+  [data-it-showcase="drawer"] {
+    position: absolute;
+    top: 0; left: 0; right: 0; bottom: 0;
+    background-color: #ffffff;
+    z-index: 10;
+    border-radius: 12px;
+    display: flex;
+    flex-direction: column;
+    padding: 3rem 1.5rem 1.5rem 1.5rem;
+    box-sizing: border-box;
+    transform: translateY(100%);
+    transition: transform 0.4s cubic-bezier(0.16, 1, 0.3, 1);
+  }
+
+  [data-it-showcase="drawer"].is-open {
+    transform: translateY(0);
+  }
+
+  [data-it-showcase="close-btn"] {
+    position: absolute;
+    top: 1rem;
+    right: 1rem;
+    z-index: 12;
+    width: 32px;
+    height: 32px;
+    background-color: #ffffff;
+    border: 1px solid #e8e8e8;
+    border-radius: 50%;
+    font-size: 1.4rem;
+    cursor: pointer;
+    line-height: 0;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+  }
+
+  /* Scrollable container styling */
+  [data-it-showcase="drawer-scroll-body"] {
+    width: 100%;
+    height: 100%;
+    overflow-y: auto;
+    padding-right: 0.25rem;
+    display: flex;
+    flex-direction: column;
+    box-sizing: border-box;
+    
+    scrollbar-width: thin;
+    scrollbar-color: #ccc transparent;
+  }
+
+  [data-it-showcase="drawer-scroll-body"]::-webkit-scrollbar {
+    width: 4px;
+  }
+  [data-it-showcase="drawer-scroll-body"]::-webkit-scrollbar-thumb {
+    background-color: #ccc;
+    border-radius: 4px;
+  }
+
+  [data-it-showcase="drawer-tag"] {
+    font-size: 0.65rem;
+    font-weight: 700;
+    letter-spacing: 0.06em;
+    color: #767676;
+    margin-bottom: 0.5rem;
+  }
+
+  [data-it-showcase="drawer-heading"] {
+    font-size: 1.35rem;
+    font-weight: 600;
+    color: #111;
+    margin: 0 0 1rem 0;
+    line-height: 1.25;
+    letter-spacing: -0.01em;
+  }
+
+  [data-it-showcase="drawer-text"] {
+    font-size: 0.95rem;
+    line-height: 1.5;
+    color: #4a4a4a;
+    margin: 0 0 1rem 0;
+  }
+
+  /* Inline Link Style directly below the content narrative block */
+  [data-it-showcase="drawer-link"] {
+    display: inline-block;
+    align-self: flex-start; /* Stops the anchor tag link from taking up full element width */
+    margin-bottom: 1.5rem;  /* Keeps breathing padding room below if viewport elements wrap */
+    font-size: 0.95rem;
+    font-weight: 600;
+    color: #000000;
+    text-decoration: none;
+    transition: opacity 0.2s;
+  }
+
+  [data-it-showcase="drawer-link"]:hover {
+    opacity: 0.6;
+  }
+
+  /* Perfectly Adaptive Mobile Media Queries */
+  @media (max-width: 1024px) {
+    [data-it-showcase="grid"] {
+      grid-template-columns: repeat(2, 1fr);
+    }
+  }
+
+  @media (max-width: 680px) {
+    [data-it-showcase="container"] {
+      padding: 3rem 1rem;
+    }
+    [data-it-showcase="grid"] {
+      grid-template-columns: 1fr;
+    }
+    [data-it-showcase="card"] {
+      height: 460px; /* Marginally lower heights for smaller responsive portrait viewports */
+    }
+    [data-it-showcase="section-title"] {
+      font-size: 1.85rem;
+    }
+  }
+</style>
+
+<script>
+  document.addEventListener('DOMContentLoaded', () => {
+    const container = document.querySelector('[data-it-showcase="container"]');
+    
+    if (container) {
+      // Reveal handler
+      container.querySelectorAll('[data-it-showcase="action-btn"]').forEach(btn => {
+        btn.addEventListener('click', (e) => {
+          const card = e.target.closest('[data-it-showcase="card"]');
+          const drawer = card.querySelector('[data-it-showcase="drawer"]');
+          if (drawer) {
+            drawer.classList.add('is-open');
+            const scrollBody = drawer.querySelector('[data-it-showcase="drawer-scroll-body"]');
+            if (scrollBody) scrollBody.scrollTop = 0;
+          }
+        });
+      });
+
+      // Close handler
+      container.querySelectorAll('[data-it-showcase="close-btn"]').forEach(btn => {
+        btn.addEventListener('click', (e) => {
+          const drawer = e.target.closest('[data-it-showcase="drawer"]');
+          if (drawer) drawer.classList.remove('is-open');
+        });
+      });
+    }
+  });
+</script>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Premium IT Feature Component</title>
+  <style>
+    /* Reset & Fonts for demo isolation */
+    @import url('https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600&display=swap');
+
+    /* Global outer spacing wrapper */
+    .cronos-showcase-wrapper {
+      box-sizing: border-box;
+      width: 100%;
+      padding: 20px;
+      background-color: #f9f9f9;
+      font-family: 'Inter', -apple-system, BlinkMacSystemFont, sans-serif;
+    }
+
+    /* 100% Width Main Panel with 15px border radius */
+    .cronos-feature-panel {
+      box-sizing: border-box;
+      position: relative;
+      width: 100%;
+      height: 610px;
+      border-radius: 15px;
+      overflow: hidden;
+      background-image: url('https://images.pexels.com/photos/17484970/pexels-photo-17484970.png');
+      background-size: cover;
+      background-position: center right;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+    }
+
+
+    /* Constrained Internal Content Wrapper (Exactly 1200px) */
+    .cronos-internal-content {
+      box-sizing: border-box;
+      position: relative;
+      z-index: 2;
+      width: 100%;
+      max-width: 1200px;
+      padding: 0 40px;
+      display: flex;
+      align-items: center;
+    }
+
+    /* Interactive Menu/Accordion Column */
+    .cronos-accordion-stack {
+      width: 100%;
+      max-width: 350px;
+      display: flex;
+      flex-direction: column;
+      gap: 12px;
+    }
+
+    /* Accordion Item Wrapper */
+    .cronos-accordion-item {
+      display: flex;
+      flex-direction: column;
+      background-color: transparent;
+      transition: all 0.4s cubic-bezier(0.25, 1, 0.5, 1);
+    }
+
+    /* Active Card State Layout matching the screenshot card structure */
+    .cronos-accordion-item.cronos-is-active {
+      background-color: #ffffff;
+      border-radius: 30px; /* Sharp professional 1px aesthetic */
+      padding: 24px;
+      box-shadow: 0 4px 30px rgba(0, 0, 0, 0.03);
+    }
+
+    /* Header Trigger button styling */
+    .cronos-accordion-trigger {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      width: fit-content;
+      background: #ffffff;
+      border: none;
+      outline: none;
+      padding: 10px 18px;
+      border-radius: 20px;
+      cursor: pointer;
+      font-size: 0.875rem;
+      font-weight: 500;
+      color: #111111;
+      gap: 10px;
+      transition: background-color 0.2s ease, color 0.2s ease;
+    }
+
+    /* Transform trigger natively into a header card when active */
+    .cronos-accordion-item.cronos-is-active .cronos-accordion-trigger {
+      padding: 0;
+      background: transparent;
+      font-size: 1.05rem;
+      font-weight: 600;
+      color: #000000;
+      cursor: default;
+      pointer-events: none;
+      margin-bottom: 12px;
+    }
+
+    /* Plus Icon Indicator */
+    .cronos-accordion-icon {
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      width: 16px;
+      height: 16px;
+      border: 1px solid #cccccc;
+      border-radius: 50%;
+      font-size: 0.75rem;
+      line-height: 1;
+      font-weight: 400;
+    }
+
+    .cronos-accordion-item.cronos-is-active .cronos-accordion-icon {
+      display: none;
+    }
+
+    /* Seamless CSS Grid Transition Drawer */
+    .cronos-accordion-body {
+      display: grid;
+      grid-template-rows: 0fr;
+      transition: grid-template-rows 0.4s cubic-bezier(0.25, 1, 0.5, 1);
+    }
+
+    .cronos-accordion-item.cronos-is-active .cronos-accordion-body {
+      grid-template-rows: 1fr;
+    }
+
+    .cronos-accordion-inner {
+      overflow: hidden;
+    }
+
+    /* Content styling inside the card */
+    .cronos-feature-description {
+      font-size: 0.9rem;
+      line-height: 1.55;
+      color: #444444;
+      margin: 0 0 16px 0;
+    }
+
+    .cronos-feature-subtext {
+      font-size: 0.75rem;
+      line-height: 1.4;
+      color: #888888;
+      margin: 0;
+    }
+
+    /* Mobile Adaptations */
+    @media (max-width: 768px) {
+      .cronos-feature-panel {
+        height: auto;
+        min-height: 500px;
+        padding: 40px 0;
+      }
+      .cronos-feature-panel::before {
+        background: linear-gradient(180deg, rgba(255,255,255,0.96) 0%, rgba(255,255,255,0.85) 70%, rgba(255,255,255,0.4) 100%);
+      }
+      .cronos-internal-content {
+        padding: 0 24px;
+      }
+      .cronos-accordion-stack {
+        max-width: 100%;
+      }
+    }
+  </style>
+</head>
+<body>
+
+  <div class="cronos-showcase-wrapper">
+    <div class="cronos-feature-panel">
+      
+      <div class="cronos-internal-content">
+        <div class="cronos-accordion-stack">
+          
+          <div class="cronos-accordion-item cronos-is-active">
+            <button class="cronos-accordion-trigger" onclick="toggleCronosAccordion(this)">
+              <span class="cronos-trigger-text">Managed Infrastructure</span>
+              <span class="cronos-accordion-icon">+</span>
+            </button>
+            <div class="cronos-accordion-body">
+              <div class="cronos-accordion-inner">
+                <p class="cronos-feature-description">
+                  Leave complex provisioning at home. Our automated infrastructure offers high-performance bare metal and hyper-scaled container clusters to power enterprise applications smoothly and efficiently.
+                </p>
+                <p class="cronos-feature-subtext">
+                  Provision custom environments instantly using modern declarative deployment manifests.
+                </p>
+              </div>
+            </div>
+          </div>
+
+          <div class="cronos-accordion-item">
+            <button class="cronos-accordion-trigger" onclick="toggleCronosAccordion(this)">
+              <span class="cronos-trigger-text">Custom Application Dev</span>
+              <span class="cronos-accordion-icon">+</span>
+            </button>
+            <div class="cronos-accordion-body">
+              <div class="cronos-accordion-inner">
+                <p class="cronos-feature-description">
+                  Engineered from scratch. We build high-performance, responsive systems with plain, clean code—isolated dynamically to avoid structural overlaps with existing corporate architectures.
+                </p>
+                <p class="cronos-feature-subtext">
+                  Optimized for sub-millisecond execution patterns and reliable state transitions.
+                </p>
+              </div>
+            </div>
+          </div>
+
+          <div class="cronos-accordion-item">
+            <button class="cronos-accordion-trigger" onclick="toggleCronosAccordion(this)">
+              <span class="cronos-trigger-text">Cloud Security Engine</span>
+              <span class="cronos-accordion-icon">+</span>
+            </button>
+            <div class="cronos-accordion-body">
+              <div class="cronos-accordion-inner">
+                <p class="cronos-feature-description">
+                  Vetted end-to-end ecosystems. Zero-trust networks isolate core business intelligence layers from public exploitation, handling threat models and active vulnerability monitoring metrics dynamically.
+                </p>
+                <p class="cronos-feature-subtext">
+                  Fully compliant with advanced zero-trust enterprise infrastructure parameters.
+                </p>
+              </div>
+            </div>
+          </div>
+
+        </div>
+      </div>
+
+    </div>
+  </div>
+
+  <script>
+    function toggleCronosAccordion(element) {
+      const currentItem = element.closest('.cronos-accordion-item');
+      const allItems = currentItem.parentElement.querySelectorAll('.cronos-accordion-item');
+      
+      // Close open drawers cleanly
+      allItems.forEach(item => {
+        if (item !== currentItem) {
+          item.classList.remove('cronos-is-active');
+        }
+      });
+      
+      // Toggle targeted selection
+      currentItem.classList.toggle('cronos-is-active');
+    }
+  </script>
+
+</body>
+</html>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<section data-it-bento="container">
+  <div data-it-bento="inner-wrapper">
+    
+    <div data-it-bento="hero-layout">
+      <div data-it-bento="hero-heading-col">
+        <h2 data-it-bento="hero-title">Architected<br>around the cloud.</h2>
+      </div>
+      <div data-it-bento="hero-content-col">
+        <p data-it-bento="hero-body-text">
+          From cluster automation to cloud telemetry tools, every part of our architecture is built for scale. From infrastructure provisioning profiles to deployment pipelines, every detail is engineered to
+        </p>
+        <p data-it-bento="hero-body-text">
+          support how development teams deploy high-traffic software. All for a simple reason: zero-trust security and high availability matter as much as raw processing speed.
+        </p>
+      </div>
+    </div>
+
+    <div data-it-bento="grid">
+      
+      <div data-it-bento="card">
+        <div data-it-bento="card-bg" style="background-image: url('https://picsum.photos/id/160/600/900');"></div>
+        <div data-it-bento="card-header">
+          <span data-it-bento="card-tag">Innovation</span>
+          <h3 data-it-bento="card-title">Beautiful and durable, by design.</h3>
+        </div>
+        <button data-it-bento="action-btn" aria-label="Open information modal" data-open-modal="modal-1">+</button>
+      </div>
+
+      <div data-it-bento="card">
+        <div data-it-bento="card-bg" style="background-image: url('https://picsum.photos/id/20/600/900');"></div>
+        <div data-it-bento="card-header">
+          <span data-it-bento="card-tag">Cutting-Edge Clusters</span>
+          <h3 data-it-bento="card-title">Picture your best node management.</h3>
+        </div>
+        <button data-it-bento="action-btn" aria-label="Open information modal" data-open-modal="modal-1">+</button>
+      </div>
+
+      <div data-it-bento="card">
+        <div data-it-bento="card-bg" style="background-image: url('https://picsum.photos/id/60/600/900');"></div>
+        <div data-it-bento="card-header">
+          <span data-it-bento="card-tag">Core Architecture</span>
+          <h3 data-it-bento="card-title">Compute power that lasts.</h3>
+        </div>
+        <button data-it-bento="action-btn" aria-label="Open information modal" data-open-modal="modal-1">+</button>
+      </div>
+
+    </div>
+  </div>
+
+  <div data-it-bento="modal-overlay" id="modal-1">
+    <div data-it-bento="modal-window">
+      
+      <div data-it-bento="modal-sticky-bar">
+        <button data-it-bento="modal-close-btn" aria-label="Close modal">&times;</button>
+      </div>
+
+      <div data-it-bento="modal-scroll-content">
+        <span data-it-bento="modal-tag">Innovation</span>
+        <h2 data-it-bento="modal-main-heading">Beautiful and durable, by design.</h2>
+
+        <div data-it-bento="content-block">
+          <p data-it-bento="block-text">
+            <strong>Second to none.</strong> Our infrastructure platforms are known for iconic reliability and advanced telemetry structures. Built to deliver exceptional server response rates through heavy parallel scaling frameworks, hardware and software are explicitly architected in tandem.
+          </p>
+          <div data-it-bento="block-image" style="background-image: url('https://picsum.photos/id/160/1000/500');"></div>
+        </div>
+
+        <div data-it-bento="content-block">
+          <p data-it-bento="block-text">
+            <strong>Built to endure.</strong> Redundant nodes are completely isolated within independent containers, preventing failures from cascading down through runtime processes. Little spikes? No biggie — our platform withstands concurrent data floods with grace.
+          </p>
+          <div data-it-bento="block-image" style="background-image: url('https://picsum.photos/id/20/1000/500');"></div>
+        </div>
+
+        <div data-it-bento="content-block">
+          <p data-it-bento="block-text">
+            <strong>Secure by default.</strong> Encryption-at-rest keys refresh automatically at random increments without causing micro-stutter delays across client request pipelines.
+          </p>
+          <div data-it-bento="block-image" style="background-image: url('https://picsum.photos/id/60/1000/500');"></div>
+        </div>
+
+      </div>
+    </div>
+  </div>
+</section>
+
+<style>
+  /* Base Container Setting */
+  [data-it-bento="container"] {
+    background-color: #0d0f0e; /* Pure deep off-black base */
+    padding: 6rem 1.5rem;
+    font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif;
+    width: 100%;
+    box-sizing: border-box;
+  }
+
+  /* Structural Content Alignment Limit */
+  [data-it-bento="inner-wrapper"] {
+    max-width: 1200px;
+    margin: 0 auto;
+    width: 100%;
+  }
+
+  /* Hero Section Top Layout Style */
+  [data-it-bento="hero-layout"] {
+    border-top: 1px solid rgba(255, 255, 255, 0.3);
+    padding-top: 2rem;
+    display: grid;
+    grid-template-columns: 1.2fr 2fr;
+    gap: 4rem;
+    align-items: start;
+    margin-bottom: 4rem;
+  }
+
+  [data-it-bento="hero-title"] {
+    font-size: 3rem;
+    font-weight: 500;
+    line-height: 1.1;
+    color: #ffffff;
+    margin: 0;
+    letter-spacing: -0.03em;
+  }
+
+  [data-it-bento="hero-content-col"] {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 2.5rem;
+  }
+
+  [data-it-bento="hero-body-text"] {
+    font-size: 1.05rem;
+    line-height: 1.5;
+    color: rgba(255, 255, 255, 0.7);
+    margin: 0;
+  }
+
+  /* Bento Layout Grid */
+  [data-it-bento="grid"] {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 1.25rem;
+    width: 100%;
+  }
+
+  [data-it-bento="card"] {
+    position: relative;
+    height: 540px;
+    border-radius: 28px; /* Elegant heavy apple-style corners */
+    overflow: hidden;
+    display: flex;
+    flex-direction: column;
+    justify-content: flex-start;
+    padding: 2.5rem 2rem;
+    box-sizing: border-box;
+    background-color: #1a1a1a;
+  }
+
+  [data-it-bento="card-bg"] {
+    position: absolute;
+    top: 0; left: 0; right: 0; bottom: 0;
+    background-size: cover;
+    background-position: center;
+    z-index: 1;
+  }
+
+  /* Gentle card gradient to ensure readability at header */
+  [data-it-bento="card"]::after {
+    content: '';
+    position: absolute;
+    top: 0; left: 0; right: 0; height: 40%;
+    background: linear-gradient(to bottom, rgba(0,0,0,0.6), transparent);
+    z-index: 2;
+  }
+
+  [data-it-bento="card-header"] {
+    position: relative;
+    z-index: 3;
+    color: #ffffff;
+  }
+
+  [data-it-bento="card-tag"] {
+    font-size: 0.85rem;
+    font-weight: 500;
+    opacity: 0.7;
+    display: block;
+    margin-bottom: 0.5rem;
+  }
+
+  [data-it-bento="card-title"] {
+    font-size: 1.75rem;
+    font-weight: 600;
+    margin: 0;
+    line-height: 1.2;
+    letter-spacing: -0.01em;
+  }
+
+  /* Circle Action Trigger Button */
+  [data-it-bento="action-btn"] {
+    position: absolute;
+    bottom: 2rem;
+    right: 2rem;
+    z-index: 4;
+    width: 40px;
+    height: 40px;
+    background-color: #ffffff;
+    color: #000000;
+    border: none;
+    border-radius: 50%;
+    font-size: 1.5rem;
+    font-weight: 400;
+    cursor: pointer;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    transition: transform 0.2s cubic-bezier(0.16, 1, 0.3, 1);
+  }
+
+  [data-it-bento="action-btn"]:hover {
+    transform: scale(1.1);
+  }
+
+  /* MODAL DISPLAY SYSTEMS */
+  [data-it-bento="modal-overlay"] {
+    position: fixed;
+    top: 0; left: 0; right: 0; bottom: 0;
+    background-color: rgba(0, 0, 0, 0.6);
+    backdrop-filter: blur(20px);
+    z-index: 1000;
+    display: flex;
+    justify-content: center;
+    align-items: flex-end; /* Slides fluidly up from base like mobile UI */
+    opacity: 0;
+    pointer-events: none;
+    transition: opacity 0.3s ease;
+    padding: 2rem 1rem 0 1rem;
+    box-sizing: border-box;
+  }
+
+  [data-it-bento="modal-overlay"].is-active {
+    opacity: 1;
+    pointer-events: auto;
+  }
+
+  [data-it-bento="modal-window"] {
+    background-color: #f5f5f7; /* Off-white system window tint */
+    width: 100%;
+    max-width: 1200px; /* Restricts internal width profile precisely */
+    height: 90vh;
+    border-top-left-radius: 30px;
+    border-top-right-radius: 30px;
+    display: flex;
+    flex-direction: column;
+    position: relative;
+    overflow: hidden;
+    transform: translateY(100%);
+    transition: transform 0.4s cubic-bezier(0.16, 1, 0.3, 1);
+  }
+
+  [data-it-bento="modal-overlay"].is-active [data-it-bento="modal-window"] {
+    transform: translateY(0);
+  }
+
+  /* Sticky Top Bar: Guarantees Close Button Stays Fixed While Scrolling Content */
+  [data-it-bento="modal-sticky-bar"] {
+    position: absolute;
+    top: 0; left: 0; right: 0;
+    height: 70px;
+    padding: 0 2rem;
+    display: flex;
+    align-items: center;
+    justify-content: flex-end;
+    z-index: 1010;
+    pointer-events: none; /* Allows click-through outside the specific button button element */
+  }
+
+  [data-it-bento="modal-close-btn"] {
+    width: 36px;
+    height: 36px;
+    border-radius: 50%;
+    background-color: #e8e8ed;
+    color: #000000;
+    font-size: 1.5rem;
+    border: none;
+    cursor: pointer;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    pointer-events: auto; /* Restores clicking mechanics to interactive target element */
+    line-height: 0;
+    padding-bottom: 2px;
+    transition: background-color 0.2s;
+  }
+
+  [data-it-bento="modal-close-btn"]:hover {
+    background-color: #dcdce2;
+  }
+
+  /* Core Internal Scroll Area */
+  [data-it-bento="modal-scroll-content"] {
+    padding: 5rem 3rem 4rem 3rem;
+    overflow-y: auto;
+    height: 100%;
+    box-sizing: border-box;
+  }
+
+  [data-it-bento="modal-tag"] {
+    font-size: 1rem;
+    color: #86868b;
+    font-weight: 500;
+    display: block;
+    margin-bottom: 0.5rem;
+  }
+
+  [data-it-bento="modal-main-heading"] {
+    font-size: 3rem;
+    font-weight: 700;
+    color: #1d1d1f;
+    margin: 0 0 3rem 0;
+    letter-spacing: -0.02em;
+    line-height: 1.15;
+  }
+
+  /* Content Block Layout with Requested 15px Rounded Corners */
+  [data-it-bento="content-block"] {
+    background-color: #ffffff;
+    border-radius: 15px; /* Mandated corner styling */
+    padding: 2.5rem;
+    margin-bottom: 1.5rem;
+    box-sizing: border-box;
+    display: flex;
+    flex-direction: column;
+    gap: 2rem;
+  }
+
+  [data-it-bento="block-text"] {
+    font-size: 1.35rem;
+    line-height: 1.5;
+    color: #6e6e73;
+    margin: 0;
+    max-width: 900px;
+  }
+
+  [data-it-bento="block-text"] strong {
+    color: #1d1d1f;
+  }
+
+  [data-it-bento="block-image"] {
+    width: 100%;
+    height: 450px;
+    background-size: cover;
+    background-position: center;
+    border-radius: 12px;
+  }
+
+  /* Perfectly Adaptive Mobile Media Queries */
+  @media (max-width: 1024px) {
+    [data-it-bento="hero-layout"] {
+      grid-template-columns: 1fr;
+      gap: 2rem;
+    }
+    [data-it-bento="hero-content-col"] {
+      grid-template-columns: 1fr;
+      gap: 1.5rem;
+    }
+    [data-it-bento="grid"] {
+      grid-template-columns: repeat(2, 1fr);
+    }
+  }
+
+  @media (max-width: 768px) {
+    [data-it-bento="container"] {
+      padding: 4rem 1rem;
+    }
+    [data-it-bento="hero-title"] {
+      font-size: 2.25rem;
+    }
+    [data-it-bento="grid"] {
+      grid-template-columns: 1fr;
+    }
+    [data-it-bento="card"] {
+      height: 480px;
+    }
+    [data-it-bento="modal-scroll-content"] {
+      padding: 4rem 1.5rem 2rem 1.5rem;
+    }
+    [data-it-bento="modal-main-heading"] {
+      font-size: 2rem;
+      margin-bottom: 2rem;
+    }
+    [data-it-bento="content-block"] {
+      padding: 1.5rem;
+    }
+    [data-it-bento="block-text"] {
+      font-size: 1.1rem;
+    }
+    [data-it-bento="block-image"] {
+      height: 240px;
+    }
+  }
+</style>
+
+<script>
+  document.addEventListener('DOMContentLoaded', () => {
+    const container = document.querySelector('[data-it-bento="container"]');
+    
+    if (container) {
+      // Open Triggers
+      container.querySelectorAll('[data-open-modal]').forEach(trigger => {
+        trigger.addEventListener('click', () => {
+          const targetId = trigger.getAttribute('data-open-modal');
+          const targetModal = container.querySelector(`#${targetId}`);
+          if (targetModal) {
+            targetModal.classList.add('is-active');
+            document.body.style.overflow = 'hidden'; // Prevents background body scrolling
+            
+            // Auto-reset internal modal scrolling container to the absolute top
+            const targetScrollArea = targetModal.querySelector('[data-it-bento="modal-scroll-content"]');
+            if (targetScrollArea) targetScrollArea.scrollTop = 0;
+          }
+        });
+      });
+
+      // Close Triggers
+      container.querySelectorAll('[data-it-bento="modal-close-btn"]').forEach(closeBtn => {
+        closeBtn.addEventListener('click', (e) => {
+          const activeModal = e.target.closest('[data-it-bento="modal-overlay"]');
+          if (activeModal) {
+            activeModal.classList.remove('is-active');
+            document.body.style.overflow = ''; // Restores standard body interaction mechanics
+          }
+        });
+      });
+
+      // Overlay Dim Close Dismissal Check
+      container.querySelectorAll('[data-it-bento="modal-overlay"]').forEach(overlay => {
+        overlay.addEventListener('click', (e) => {
+          if (e.target === overlay) {
+            overlay.classList.remove('is-active');
+            document.body.style.overflow = '';
+          }
+        });
+      });
+    }
+  });
+</script>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 
 
