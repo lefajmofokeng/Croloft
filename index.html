@@ -149,11 +149,12 @@
           }
 
           .container {
-            max-width: 980px;
+            max-width: 880px;
             margin: 0 auto;
             display: flex;
             flex-direction: column;
-            gap: 24px;
+            gap: 10px;
+            padding: 9rem 0;
           }
 
           .section-header {
@@ -188,7 +189,7 @@
           .grid {
             display: grid;
             grid-template-columns: 1.62fr 1fr;
-            gap: 24px;
+            gap: 10px;
           }
 
           h2 {
@@ -200,7 +201,7 @@
           }
 
           p {
-            font-size: 15px;
+            font-size: 17px;
             line-height: 1.5;
             color: var(--text-primary);
             margin-bottom: 16px;
@@ -217,7 +218,7 @@
           .trigger-link {
             color: var(--link-color);
             text-decoration: none;
-            font-size: 15px;
+            font-size: 17px;
             display: inline-flex;
             align-items: center;
             cursor: pointer;
@@ -398,7 +399,9 @@
             <div class="card">
               <h2>Beware of unverified dependencies</h2>
               <p>Some open-source software and third-party package repositories may not be vetted properly and could result in supply-chain security vulnerabilities.</p>
-              <span class="trigger-link arrow-link" data-target="content-dependencies">Verify libraries</span>
+              <span class="trigger-link arrow-link" data-target="content-dependencies">Verify libraries
+                <svg class="plus-circle" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="10"></circle><line x1="12" y1="8" x2="12" y2="16"></line><line x1="8" y1="12" x2="16" y2="12"></line></svg>  
+              </span>
             </div>
 
             <div class="card">
@@ -407,7 +410,9 @@
               </div>
               <h2>Be aware of phishing tactics</h2>
               <p>Be aware of advanced engineering scams involving credential harvesting and administrative spoofing.</p>
-              <span class="trigger-link arrow-link" data-target="content-phishing">Review protocols</span>
+              <span class="trigger-link arrow-link" data-target="content-phishing">Review protocols
+                <svg class="plus-circle" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="10"></circle><line x1="12" y1="8" x2="12" y2="16"></line><line x1="8" y1="12" x2="16" y2="12"></line></svg>
+              </span>
             </div>
           </div>
         </div>
@@ -3003,16 +3008,9 @@ document.addEventListener("DOMContentLoaded", function() {
         }
 
         .defcon-stack-header h2 {
-            font-size: 3rem;
+            font-size: 2.4rem;
             font-weight: 500;
             line-height: 1.1; letter-spacing: -0.02em;
-        }
-
-        .defcon-stack-header p {
-            font-size: 1.05rem;
-            color: var(--defcon-muted);
-            margin-top: 8px;
-            max-width: 600px;
         }
 
         /* ---------------------------------- */
@@ -3126,8 +3124,8 @@ document.addEventListener("DOMContentLoaded", function() {
         }
 
         .defcon-bottom-text h3 {
-            font-size: 2.5rem;
-            font-weight: 400;
+            font-size: 2.2rem;
+            font-weight: 500;
             color: var(--defcon-white);
             line-height: 1.1;
             max-width: 600px;
@@ -3225,8 +3223,7 @@ document.addEventListener("DOMContentLoaded", function() {
 <div class="defcon-stack-component">
     
     <header class="defcon-stack-header">
-        <h2>Infrastructure Stack Systems</h2>
-        <p>Explore our core deployment architecture. Scroll downward to traverse through active solution frameworks layered chronologically.</p>
+        <h2>Savings and offers. <span style="color: #767676;">Exclusive deals, special stores and more.</span></h2>
     </header>
 
     <div class="defcon-scroll-deck">
@@ -3612,435 +3609,6 @@ document.addEventListener("DOMContentLoaded", function() {
 
 
 
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-<div class="crns-wrapper-context">
-  <section class="crns-showcase-section">
-    
-    <header class="crns-section-header">
-      <h2 class="crns-main-title">Endless Applications.<br>Driven by Performance.</h2>
-    </header>
-
-    <div class="crns-slider-viewport">
-      <button class="crns-nav-btn crns-btn-prev" id="crnsPrevBtn" aria-label="Previous Slide">⟨</button>
-      <button class="crns-nav-btn crns-btn-next" id="crnsNextBtn" aria-label="Next Slide">
-        <svg xmlns="http://www.w3.org/2000/svg" width="40" height="40" viewBox="0 0 24 24" stroke-width="0.2" fill="#f1f1f1">
-            <path d="m8.006 21.308l-1.064-1.064L15.187 12L6.942 3.756l1.064-1.064L17.313 12l-9.307 9.308Z"/>
-        </svg>
-      </button>
-
-      <div class="crns-slider-track" id="crnsSliderTrack">
-        <div class="crns-showcase-card">
-          <div class="crns-glow-pointer-follower"></div>
-          <div class="crns-border-tracer"></div>
-          <svg class="crns-card-icon" viewBox="0 0 24 24"><rect x="2" y="5" width="20" height="14" rx="2"/><line x1="2" y1="10" x2="22" y2="10"/></svg>
-          <h3 class="crns-card-title">Single-use cards</h3>
-          <p class="crns-card-desc">Deploy instant transient programmatic ledger masks for secure global endpoint multi-currency settlement execution buffers.</p>
-        </div>
-
-        <div class="crns-showcase-card">
-          <div class="crns-glow-pointer-follower"></div>
-          <div class="crns-border-tracer"></div>
-          <svg class="crns-card-icon" viewBox="0 0 24 24"><path d="M3 21h18M3 10h18M3 6h18M4 21V10M10 21V10M14 21V10M20 21V10"/></svg>
-          <h3 class="crns-card-title">Traditional Banking</h3>
-          <p class="crns-card-desc">Transform your legacy card infrastructure and operations to unlock efficiency, speed and new growth opportunities.</p>
-        </div>
-
-        <div class="crns-showcase-card">
-          <div class="crns-glow-pointer-follower"></div>
-          <div class="crns-border-tracer"></div>
-          <svg class="crns-card-icon" viewBox="0 0 24 24"><rect x="5" y="2" width="14" height="20" rx="2"/><path d="M12 18h.01"/></svg>
-          <h3 class="crns-card-title">Neobanks</h3>
-          <p class="crns-card-desc">Launch bespoke next-generation digital consumer assets on isolated fast-track APIs with real-time settlement rails.</p>
-        </div>
-
-        <div class="crns-showcase-card">
-          <div class="crns-glow-pointer-follower"></div>
-          <div class="crns-border-tracer"></div>
-          <svg class="crns-card-icon" viewBox="0 0 24 24"><ellipse cx="12" cy="5" rx="9" ry="3"/><path d="M3 5v14c0 1.66 4 3 9 3s9-1.34 9-3V5"/><path d="M3 12c0 1.66 4 3 9 3s9-1.34 9-3"/></svg>
-          <h3 class="crns-card-title">Processor Upgrades</h3>
-          <p class="crns-card-desc">Supercharge high-throughput transaction routing nodes with hardware-accelerated ledger validation schemas.</p>
-        </div>
-
-        <div class="crns-showcase-card">
-          <div class="crns-glow-pointer-follower"></div>
-          <div class="crns-border-tracer"></div>
-          <svg class="crns-card-icon" viewBox="0 0 24 24"><polygon points="12 2 2 7 12 12 22 7 12 2"/><polygon points="2 17 12 22 22 17"/><polygon points="2 12 12 17 22 12"/></svg>
-          <h3 class="crns-card-title">Global Cards</h3>
-          <p class="crns-card-desc">Issue borderless multi-tenant cross-border programmatic physical and digital corporate spend instruments natively.</p>
-        </div>
-      </div>
-    </div>
-  </section>
-</div>
-
-<style>
-  /* Strict Component Namespace Isolation Styles block */
-  .crns-wrapper-context {
-    --crns-space-bg: #030712;
-    --crns-space-card: rgba(13, 22, 47, 0.6);
-    --crns-blue-glow: #00bfff;
-    --crns-blue-core: #0055ff;
-    --crns-font: 'Inter', -apple-system, BlinkMacSystemFont, sans-serif;
-    
-    width: 100%;
-    background-color: var(--crns-space-bg);
-    color: #ffffff;
-    font-family: var(--crns-font);
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    position: relative;
-    overflow: hidden;
-  }
-
-  .crns-wrapper-context .crns-showcase-section {
-    width: 100%;
-    max-width: 1440px;
-    padding: 150px 1%;
-    position: relative;
-    display: flex;
-    flex-direction: column;
-    box-sizing: border-box;
-  }
-
-  /* Section Typography Headers */
-  .crns-wrapper-context .crns-section-header {
-    width: 100%;
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    text-align: center;
-    margin-bottom: -40px;
-    z-index: 50;
-    box-sizing: border-box;
-  }
-
-  .crns-wrapper-context .crns-main-title {
-    font-size: 4rem;
-    font-weight: 500;
-    line-height: 1.1;
-    letter-spacing: -0.04em;
-    margin-bottom: 35px;
-    background: linear-gradient(180deg, #ffffff 0%, rgba(255, 255, 255, 0.386) 100%);
-    -webkit-background-clip: text;
-    -webkit-text-fill-color: transparent;
-  }
-
-  /* Staircase Infinite Viewport Node Window */
-  .crns-wrapper-context .crns-slider-viewport {
-    position: relative;
-    width: 100%;
-    height: 700px;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    mask-image: linear-gradient(to right, transparent 0%, #000 20%, #000 80%, transparent 100%);
-    -webkit-mask-image: linear-gradient(to right, transparent 0%, #000 20%, #000 80%, transparent 100%);
-    perspective: 1500px;
-    box-sizing: border-box;
-  }
-
-  .crns-wrapper-context .crns-slider-track {
-    display: flex;
-    position: absolute;
-    transform-style: preserve-3d;
-    will-change: transform;
-    z-index: 5;
-    box-sizing: border-box;
-  }
-
-  /* Card Component Architecture Layout Structure */
-  .crns-wrapper-context .crns-showcase-card {
-    position: absolute;
-    width: 320px;
-    height: 420px;
-    background: var(--crns-space-card);
-    border-radius: 8px; /* Uniform signature 1px sharp aesthetic edges */
-    padding: 44px 36px;
-    display: flex;
-    flex-direction: column;
-    justify-content: flex-end;
-    gap: 16px;
-    overflow: hidden;
-    cursor: pointer;
-    box-sizing: border-box;
-    
-    /* ANTI-BLUR RENDER ENGINE CRITICAL TOKENS: Prevents raster subpixel shifts */
-    transform-style: preserve-3d;
-    backface-visibility: hidden;
-    -webkit-font-smoothing: antialiased;
-    transform-origin: center center;
-
-    transition: 
-      border-color 0.3s ease, 
-      box-shadow 0.3s ease, 
-      transform 0.7s cubic-bezier(0.16, 1, 0.3, 1), 
-      opacity 0.7s cubic-bezier(0.16, 1, 0.3, 1);
-  }
-
-  .crns-wrapper-context .crns-showcase-card.active-center {
-    border-color: rgba(0, 191, 255, 0.5); opacity: 3;
-    box-shadow: 0 -5px 5px rgb(68, 0, 255), -4px 5px 7px rgb(242, 0, 255), 5px 0 7px 0 rgb(68, 0, 255);
-  }
-
-  /* 1-Second Eased High Vis Trail Logic */
-  .crns-wrapper-context .crns-glow-pointer-follower {
-    position: absolute;
-    width: 350px;
-    height: 350px;
-    background: radial-gradient(
-      circle close-side, 
-      rgba(0, 191, 255, 0.3) 0%, 
-      rgba(0, 85, 255, 0.05) 55%, 
-      transparent 100%
-    );
-    top: 0;
-    left: 0;
-    transform: translate3d(-50%, -50%, 0); /* 3D acceleration alignment framework */
-    pointer-events: none;
-    z-index: 1;
-    opacity: 1;
-    transition: opacity 0.4s ease, top 1s cubic-bezier(0.1, 0.8, 0.2, 1), left 1s cubic-bezier(0.1, 0.8, 0.2, 1);
-  }
-
-  .crns-wrapper-context .crns-border-tracer {
-    position: absolute;
-    top: -1px; left: -1px; right: -1px; bottom: -1px;
-    background: radial-gradient(
-      circle 180px at var(--border-x, 50%) var(--border-y, 50%), 
-      rgba(0, 191, 255, 0.6) 0%, 
-      transparent 70%
-    );
-    opacity: 1;
-    z-index: 2;
-    pointer-events: none;
-    border-radius: 1px;
-    mask: linear-gradient(#fff 0 0) content-box, linear-gradient(#fff 0 0);
-    -webkit-mask: linear-gradient(#fff 0 0) content-box, linear-gradient(#fff 0 0);
-    mask-composite: exclude;
-    -webkit-mask-composite: xor;
-    padding: 1px;
-    transition: opacity 0.4s ease;
-  }
-
-  .crns-wrapper-context .crns-showcase-card:hover .crns-glow-pointer-follower,
-  .crns-wrapper-context .crns-showcase-card:hover .crns-border-tracer {
-    opacity: 1;
-  }
-
-  /* Card Elements Elements Typography formatting */
-  .crns-wrapper-context .crns-card-icon {
-    width: 60px;
-    height: 60px;
-    margin-bottom: auto;
-    stroke: #f1f1f1;
-    stroke-width: 1;
-    fill: none;
-    position: relative;
-    z-index: 5;
-  }
-
-  .crns-wrapper-context .crns-card-title {
-    font-size: 24px;
-    font-weight: 500;
-    letter-spacing: -0.02em;
-    color: #ffffff;
-    z-index: 5; position: relative;
-    transform: translateZ(10px); /* Pushes elements clear of render blurring passes */
-  }
-
-  .crns-wrapper-context .crns-card-desc {
-    font-size: 14px; font-weight: 400;
-    line-height: 1.5;
-    color: #a0a5b5;
-    z-index: 5;
-    transform: translateZ(5px);
-  }
-
-  /* Absolute Interface Interactive Trigger Knobs */
-  .crns-wrapper-context .crns-nav-btn {
-    position: absolute;
-    top: 50%;
-    transform: translateY(-50%);
-    width: 50px;
-    height: 50px;
-    border-radius: 4%;
-    background: transparent;
-    border: 2px solid rgb(255, 255, 255);
-    color: #ffffff;
-    font-size: 20px;
-    cursor: pointer;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    z-index: 900;
-    transition: all 0.2s ease;
-    box-sizing: border-box;
-  }
-
-  .crns-wrapper-context .crns-nav-btn:hover {
-    background: var(--crns-blue-core);
-    border-color: var(--crns-blue-glow);
-    box-shadow: 0 0 30px rgba(0, 85, 255, 0.4);
-  }
-
-  .crns-wrapper-context .crns-btn-prev { left: 40px; }
-  .crns-wrapper-context .crns-btn-next { right: 40px; }
-
-  /* Device Responsive System Scales */
-  @media (max-width: 992px) {
-    .crns-wrapper-context .crns-main-title { font-size: 3rem; }
-    .crns-wrapper-context .crns-slider-viewport { height: 600px; }
-    .crns-wrapper-context .crns-showcase-card { width: 280px; height: 380px; }
-    .crns-wrapper-context .crns-btn-prev { left: 15px; }
-    .crns-wrapper-context .crns-btn-next { right: 15px; }
-  }
-</style>
-
-<script>
-  (() => {
-    // Isolated functional code enclosure loop execution scope block context
-    document.addEventListener("DOMContentLoaded", () => {
-      const track = document.getElementById("crnsSliderTrack");
-      const prevBtn = document.getElementById("crnsPrevBtn");
-      const nextBtn = document.getElementById("crnsNextBtn");
-      if (!track || !prevBtn || !nextBtn) return;
-
-      const stepX = 360;  
-      const stepY = -120; 
-
-      const initialCards = Array.from(track.querySelectorAll(".crns-showcase-card"));
-      const originalCount = initialCards.length;
-
-      // Duplicate elements structurally to maintain seamless loop capabilities
-      for (let i = 0; i < originalCount * 2; i++) {
-        const clone = initialCards[i % originalCount].cloneNode(true);
-        track.appendChild(clone);
-      }
-
-      const cards = track.querySelectorAll(".crns-showcase-card");
-      let currentIndex = originalCount; 
-      let isMoving = false;
-
-      // Assign card positioning arrays natively
-      cards.forEach((card, idx) => {
-        // Strict layout positions calculations
-        const posX = idx * stepX;
-        const posY = idx * stepY;
-        
-        card.setAttribute("data-x", posX);
-        card.setAttribute("data-y", posY);
-        
-        // Locked position anchoring base layer rules variables configurations
-        card.style.left = `${posX}px`;
-        card.style.top = `${posY}px`;
-        card.style.transform = `translate3d(-50%, -50%, 0px) scale(1)`;
-        initTelemetry(card);
-      });
-
-      // Pointer Telemetry System Mechanics
-      function initTelemetry(card) {
-        const follower = card.querySelector(".crns-glow-pointer-follower");
-        card.addEventListener("mousemove", (e) => {
-          const rect = card.getBoundingClientRect();
-          const x = e.clientX - rect.left;
-          const y = e.clientY - rect.top;
-          card.style.setProperty("--border-x", `${x}px`);
-          card.style.setProperty("--border-y", `${y}px`);
-          if (follower) {
-            follower.style.left = `${x}px`;
-            follower.style.top = `${y}px`;
-          }
-        });
-      }
-
-      // Main Anti-Blur Shifting Engine Core Functionality
-      function renderTrack(animate = true) {
-        if (!animate) track.style.transition = "none";
-        else track.style.transition = "transform 0.7s cubic-bezier(0.16, 1, 0.3, 1)";
-
-        const targetX = -(currentIndex * stepX);
-        const targetY = -(currentIndex * stepY);
-        
-        // Exact pixel values are applied to translate3d matrix to preserve crisp fonts on active display
-        track.style.transform = `translate3d(${targetX}px, ${targetY}px, 0px)`;
-
-        cards.forEach((card, idx) => {
-          const dist = Math.abs(idx - currentIndex);
-          
-          if (idx === currentIndex) {
-            card.classList.add("active-center");
-            card.style.opacity = "1";
-            // Scaling engine configuration prevents blurry subpixel rendering by locking coordinate axes
-            card.style.transform = `translate3d(-50%, -50%, 0px) scale(1.05)`;
-          } else {
-            card.classList.remove("active-center");
-            const scale = Math.max(0.7, 1 - (dist * 0.1));
-            const opacity = Math.max(0, 1 - (dist * 0.4));
-            card.style.opacity = opacity.toString();
-            card.style.transform = `translate3d(-50%, -50%, ${-dist * 40}px) scale(${scale})`;
-          }
-        });
-      }
-
-      // Loop Frame Reset boundary management handlers
-      function shift(dir) {
-        if (isMoving) return;
-        currentIndex += dir;
-        renderTrack(true);
-
-        if (currentIndex >= originalCount * 2 || currentIndex <= originalCount - 1) {
-          isMoving = true;
-          setTimeout(() => {
-            track.style.transition = "none";
-            if (currentIndex >= originalCount * 2) currentIndex -= originalCount;
-            else if (currentIndex <= originalCount - 1) currentIndex += originalCount;
-            renderTrack(false);
-            setTimeout(() => { isMoving = false; }, 20);
-          }, 700);
-        }
-      }
-
-      prevBtn.addEventListener("click", () => shift(-1));
-      nextBtn.addEventListener("click", () => shift(1));
-
-      renderTrack(false);
-    });
-  })();
-</script>
 
 
 
