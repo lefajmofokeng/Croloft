@@ -3599,6 +3599,1032 @@ document.addEventListener("DOMContentLoaded", function() {
 
 
 
+<section id="lm-premium-hero-section">
+  <div class="lm-hero-bg-wrapper">
+    <img src="https://images.unsplash.com/photo-1476480862126-209bfaa8edc8?q=80&w=2070" alt="Background" class="lm-hero-bg-img">
+    <div class="lm-hero-overlay"></div>
+  </div>
+
+  <div class="lm-hero-container">
+    <div class="lm-hero-text-side">
+      <h1 class="lm-hero-title">
+        <span>Make.</span>
+        <span>Every Day.</span>
+        <span>Better.</span>
+      </h1>
+    </div>
+
+    <div class="lm-hero-card-side">
+      <a href="#" class="lm-hero-info-card">
+        <div class="lm-card-img-wrapper">
+          <img src="https://images.unsplash.com/photo-1502680390469-be75c86b636f?q=80&w=600" alt="Latest News Thumbnail" class="lm-card-img">
+        </div>
+        <div class="lm-card-content">
+          <span class="lm-card-tag">LATEST NEWS</span>
+          <div class="lm-card-footer">
+            <h2 class="lm-card-title">2025 Annual<br>Report</h2>
+            <div class="lm-card-icon">
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                <line x1="7" y1="17" x2="17" y2="7"></line>
+                <polyline points="7 7 17 7 17 17"></polyline>
+              </svg>
+            </div>
+          </div>
+        </div>
+      </a>
+    </div>
+  </div>
+</section>
+
+<style>
+  /* Import Inter for the premium tech aesthetic */
+@import url('https://fonts.googleapis.com/css2?family=Inter:wght@400;700;800&display=swap');
+
+#lm-premium-hero-section {
+  /* Scoped CSS Variables to guarantee no collisions */
+  --lm-hero-font: 'Inter', -apple-system, BlinkMacSystemFont, sans-serif;
+  --lm-hero-white: #ffffff;
+  --lm-hero-card-bg: rgba(18, 18, 18, 0.85);
+  --lm-hero-radius-sharp: 1px;
+  --lm-hero-radius-card: 12px;
+  
+  position: relative;
+  width: 100%;
+  min-height: 100vh;
+  display: flex;
+  align-items: flex-end;
+  box-sizing: border-box;
+  font-family: var(--lm-hero-font);
+  overflow: hidden;
+  background-color: #000;
+}
+
+#lm-premium-hero-section *,
+#lm-premium-hero-section *::before,
+#lm-premium-hero-section *::after {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+}
+
+/* Background Handling */
+#lm-premium-hero-section .lm-hero-bg-wrapper {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  z-index: 1;
+}
+
+#lm-premium-hero-section .lm-hero-bg-img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  object-position: center 35%;
+}
+
+#lm-premium-hero-section .lm-hero-overlay {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background: linear-gradient(to bottom, rgba(0,0,0,0.2) 0%, rgba(0,0,0,0.5) 100%);
+}
+
+/* Container Layout */
+#lm-premium-hero-section .lm-hero-container {
+  position: relative;
+  z-index: 2;
+  width: 100%;
+  max-width: 1440px;
+  margin: 0 auto;
+  padding: 60px 80px;
+  display: grid;
+  grid-template-columns: 1fr auto;
+  align-items: flex-end;
+  gap: 40px;
+}
+
+/* Left Side: Bold Header Typo */
+#lm-premium-hero-section .lm-hero-text-side {
+  max-width: 800px;
+}
+
+#lm-premium-hero-section .lm-hero-title {
+  color: var(--lm-hero-white);
+  font-size: clamp(3.5rem, 8vw, 7.5rem);
+  font-weight: 800;
+  line-height: 0.88;
+  letter-spacing: -0.04em;
+  display: flex;
+  flex-direction: column;
+}
+
+#lm-premium-hero-section .lm-hero-title span {
+  display: block;
+}
+
+/* Right Side: Overlay Glass Card */
+#lm-premium-hero-section .lm-hero-card-side {
+  display: flex;
+  justify-content: flex-end;
+  margin-bottom: 20px;
+}
+
+#lm-premium-hero-section .lm-hero-info-card {
+  display: block;
+  width: 320px;
+  background: var(--lm-hero-card-bg);
+  backdrop-filter: blur(20px);
+  -webkit-backdrop-filter: blur(20px);
+  border: 1px solid rgba(255, 255, 255, 0.1);
+  border-radius: var(--lm-hero-radius-sharp);
+  padding: 16px;
+  text-decoration: none;
+  transition: transform 0.3s cubic-bezier(0.16, 1, 0.3, 1), border-color 0.3s ease;
+}
+
+#lm-premium-hero-section .lm-hero-info-card:hover {
+  transform: translateY(-4px);
+  border-color: rgba(255, 255, 255, 0.25);
+}
+
+#lm-premium-hero-section .lm-card-img-wrapper {
+  width: 100%;
+  aspect-ratio: 16 / 10;
+  border-radius: var(--lm-hero-radius-card);
+  overflow: hidden;
+  margin-bottom: 16px;
+}
+
+#lm-premium-hero-section .lm-card-img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
+
+#lm-premium-hero-section .lm-card-content {
+  display: flex;
+  flex-direction: column;
+}
+
+#lm-premium-hero-section .lm-card-tag {
+  color: rgba(255, 255, 255, 0.6);
+  font-size: 0.65rem;
+  font-weight: 700;
+  text-transform: uppercase;
+  letter-spacing: 0.05em;
+  margin-bottom: 16px;
+}
+
+#lm-premium-hero-section .lm-card-footer {
+  display: flex;
+  justify-content: space-between;
+  align-items: flex-end;
+}
+
+#lm-premium-hero-section .lm-card-title {
+  color: var(--lm-hero-white);
+  font-size: 1.25rem;
+  font-weight: 700;
+  line-height: 1.15;
+  letter-spacing: -0.02em;
+}
+
+#lm-premium-hero-section .lm-card-icon {
+  width: 18px;
+  height: 18px;
+  color: rgba(255, 255, 255, 0.8);
+  margin-bottom: 2px;
+}
+
+#lm-premium-hero-section .lm-card-icon svg {
+  width: 100%;
+  height: 100%;
+  display: block;
+}
+
+/* --- Responsive Adaptations --- */
+@media (max-width: 1024px) {
+  #lm-premium-hero-section .lm-hero-container {
+    padding: 40px;
+    grid-template-columns: 1fr;
+    gap: 48px;
+  }
+  
+  #lm-premium-hero-section .lm-hero-card-side {
+    justify-content: flex-start;
+    margin-bottom: 0;
+  }
+}
+
+@media (max-width: 640px) {
+  #lm-premium-hero-section {
+    min-height: auto;
+    padding-top: 120px; /* Provides space if there is a top navbar */
+  }
+
+  #lm-premium-hero-section .lm-hero-container {
+    padding: 32px 20px;
+    gap: 40px;
+  }
+
+  #lm-premium-hero-section .lm-hero-info-card {
+    width: 100%; /* Spans full screen width cleanly on small phones */
+  }
+}
+</style>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<!--
+  Cronos Cloud Infrastructure — Performance Comparison Component
+  ---------------------------------------------------------------
+  Drop-in, self-contained Web Component. Fully isolated via Shadow DOM
+  and a unique custom element tag, so it will NOT collide with any
+  classes, IDs, or styles already in your codebase.
+
+  Usage: paste this whole file's <script> tag once per page, then
+  place <cronos-cloud-compare></cronos-cloud-compare> anywhere you
+  want the block to appear. The section is full-bleed (100% width)
+  with its content capped at 1200px. Pressing "Compare Cronos Cloud
+  plans" opens a bottom drawer with the plan comparison.
+-->
+<cronos-cloud-compare></cronos-cloud-compare>
+
+<script>
+(function () {
+    if (customElements.get('cronos-cloud-compare')) return;
+
+    // Comparison data — swap targets and stats here to update copy in one place.
+    const CCC_DATA = {
+        'legacy-onprem': {
+            label: 'Legacy On-Premise Server',
+            stats: [
+                { value: '45% faster', desc: 'application response times' },
+                { value: '3x faster',  desc: 'data backup &amp; recovery speeds' },
+                { value: '18 more hours', desc: 'guaranteed uptime, per month' },
+                { value: '30 more hours', desc: 'saved on manual server maintenance' },
+            ],
+        },
+        'shared-hosting': {
+            label: 'Basic Shared Hosting',
+            stats: [
+                { value: '60% faster', desc: 'page load speeds under peak traffic' },
+                { value: '5x more',    desc: 'concurrent user capacity' },
+                { value: '12 more hours', desc: 'guaranteed uptime, per month' },
+                { value: '15 more hours', desc: 'saved on manual scaling &amp; patches' },
+            ],
+        },
+        'competitor-cloud': {
+            label: 'Competitor Cloud Provider',
+            stats: [
+                { value: '20% faster', desc: 'average response times' },
+                { value: '35% lower',  desc: 'monthly infrastructure costs' },
+                { value: '6 more hours',  desc: 'guaranteed uptime, per month' },
+                { value: '10 more hours', desc: 'saved with managed 24/7 support' },
+            ],
+        },
+    };
+    const CCC_ORDER = ['legacy-onprem', 'shared-hosting', 'competitor-cloud'];
+
+    const CCC_TEMPLATE = document.createElement('template');
+    CCC_TEMPLATE.innerHTML = `
+        <style>
+            :host {
+                all: initial;
+                display: block;
+                font-family: -apple-system, BlinkMacSystemFont, "SF Pro Display", "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
+                color-scheme: dark;
+            }
+            * { box-sizing: border-box; }
+
+            .ccc-section {
+                width: 100%;
+                background: #080d1b;
+                padding: 182px 24px;
+            }
+
+            .ccc-content {
+                max-width: 1200px;
+                margin: 0 auto;
+                background: radial-gradient(120% 140% at 15% 0%, #16305c 0%, #000000 55%),
+                            linear-gradient(160deg, #0a0f1f 0%, #000000 70%);
+                border-radius: 28px;
+                padding: 56px 64px 64px;
+            }
+
+            .ccc-row {
+                display: flex;
+                align-items: center;
+                gap: 16px;
+                margin-bottom: 56px;
+                flex-wrap: wrap;
+            }
+            .ccc-row-label {
+                font-size: 19px;
+                color: #a1a1a6;
+                font-weight: 400;
+                white-space: nowrap;
+            }
+
+            .ccc-dropdown { position: relative; }
+            .ccc-dropdown-trigger {
+                display: flex;
+                align-items: center;
+                gap: 10px;
+                background: rgba(255,255,255,0.06);
+                border: 1px solid rgba(255,255,255,0.28);
+                color: #f5f5f7;
+                font-size: 19px;
+                font-weight: 600;
+                font-family: inherit;
+                padding: 10px 18px;
+                border-radius: 999px;
+                cursor: pointer;
+                transition: background-color 0.2s ease, border-color 0.2s ease;
+            }
+            .ccc-dropdown-trigger:hover { background: rgba(255,255,255,0.1); }
+            .ccc-dropdown-trigger:focus-visible { outline: 2px solid #2997ff; outline-offset: 2px; }
+            .ccc-dropdown-chevron {
+                width: 12px; height: 12px; flex-shrink: 0;
+                transition: transform 0.2s ease;
+            }
+            .ccc-dropdown.open .ccc-dropdown-chevron { transform: rotate(180deg); }
+
+            .ccc-dropdown-list {
+                position: absolute;
+                top: calc(100% + 8px);
+                left: 0;
+                min-width: 100%;
+                background: #1c1c1e;
+                border: 1px solid rgba(255,255,255,0.14);
+                border-radius: 16px;
+                padding: 6px;
+                list-style: none;
+                margin: 0;
+                z-index: 20;
+                opacity: 0;
+                visibility: hidden;
+                transform: translateY(-6px);
+                transition: opacity 0.15s ease, transform 0.15s ease, visibility 0.15s;
+                box-shadow: 0 12px 32px rgba(0,0,0,0.45);
+            }
+            .ccc-dropdown.open .ccc-dropdown-list {
+                opacity: 1; visibility: visible; transform: translateY(0);
+            }
+            .ccc-dropdown-option {
+                padding: 10px 14px;
+                font-size: 16px;
+                font-weight: 500;
+                color: #f5f5f7;
+                border-radius: 10px;
+                cursor: pointer;
+                white-space: nowrap;
+            }
+            .ccc-dropdown-option:hover,
+            .ccc-dropdown-option:focus-visible { background: rgba(255,255,255,0.1); outline: none; }
+            .ccc-dropdown-option[aria-selected="true"] { color: #2997ff; }
+
+            .ccc-stats-grid {
+                display: grid;
+                grid-template-columns: repeat(4, 1fr);
+                gap: 40px;
+                transition: opacity 0.18s ease;
+            }
+            .ccc-stats-grid.ccc-fading { opacity: 0; }
+
+            .ccc-stat-prefix {
+                font-size: 17px;
+                color: #a1a1a6;
+                margin: 0 0 2px;
+            }
+            .ccc-stat-value {
+                font-size: 28px;
+                font-weight: 700;
+                color: #f5f5f7;
+                margin: 0 0 10px;
+                line-height: 1.15;
+            }
+            .ccc-stat-desc {
+                font-size: 15px;
+                color: #a1a1a6;
+                margin: 0;
+                line-height: 1.4;
+            }
+
+            .ccc-cta-row {
+                display: flex;
+                justify-content: center;
+                margin-top: 64px;
+            }
+            .ccc-cta {
+                display: inline-flex;
+                align-items: center;
+                gap: 14px;
+                background: transparent;
+                border: 1.5px solid #2997ff;
+                color: #f5f5f7;
+                font-size: 19px;
+                font-weight: 600;
+                font-family: inherit;
+                text-decoration: none;
+                padding: 14px 14px 14px 28px;
+                border-radius: 999px;
+                transition: background-color 0.2s ease;
+            }
+            .ccc-cta:hover { background: rgba(41,151,255,0.12); }
+            .ccc-cta:focus-visible { outline: 2px solid #2997ff; outline-offset: 3px; }
+            .ccc-cta-plus {
+                width: 28px; height: 28px;
+                border-radius: 50%;
+                background: #2997ff;
+                display: flex; align-items: center; justify-content: center;
+                flex-shrink: 0;
+            }
+            .ccc-cta-plus svg { width: 14px; height: 14px; }
+
+            /* Mobile responsiveness */
+            @media (max-width: 900px) {
+                .ccc-section { padding: 56px 20px; }
+                .ccc-content { padding: 44px 32px 48px; border-radius: 22px; }
+                .ccc-stats-grid { grid-template-columns: repeat(2, 1fr); gap: 32px 24px; }
+            }
+            @media (max-width: 520px) {
+                .ccc-section { padding: 44px 16px; }
+                .ccc-content { padding: 36px 20px 40px; }
+                .ccc-row { margin-bottom: 40px; }
+                .ccc-row-label { font-size: 16px; }
+                .ccc-dropdown-trigger { font-size: 16px; padding: 9px 14px; }
+                .ccc-stats-grid { grid-template-columns: 1fr; gap: 28px; }
+                .ccc-stat-value { font-size: 24px; }
+                .ccc-cta-row { margin-top: 44px; }
+                .ccc-cta { width: 100%; justify-content: center; font-size: 17px; padding: 13px 13px 13px 22px; }
+            }
+
+            @media (prefers-reduced-motion: reduce) {
+                .ccc-dropdown-chevron,
+                .ccc-dropdown-list,
+                .ccc-stats-grid,
+                .ccc-cta,
+                .ccc-drawer,
+                .ccc-drawer-backdrop { transition: none !important; }
+            }
+
+            /* Bottom Drawer */
+            .ccc-drawer-backdrop {
+                position: fixed; inset: 0;
+                background: rgba(0,0,0,0.6);
+                opacity: 0; visibility: hidden;
+                transition: opacity 0.25s ease, visibility 0.25s;
+                z-index: 999;
+            }
+            .ccc-drawer-backdrop.open { opacity: 1; visibility: visible; }
+
+            .ccc-drawer {
+                position: fixed;
+                left: 0; right: 0; bottom: 0;
+                max-width: 1300px;
+                margin: 0 auto;
+                background: #111114;
+                border-radius: 28px 28px 0 0;
+                padding: 40px 56px 56px;
+                max-height: 92vh;
+                overflow-y: auto;
+                transform: translateY(100%);
+                transition: transform 0.32s cubic-bezier(0.32, 0.72, 0, 1);
+                z-index: 1000;
+                box-shadow: 0 -20px 60px rgba(0,0,0,0.5);
+            }
+            .ccc-drawer.open { transform: translateY(0); }
+
+            .ccc-drawer-handle {
+                width: 36px; height: 4px; border-radius: 4px;
+                background: rgba(255,255,255,0.2);
+                margin: 0 auto 24px;
+            }
+            .ccc-drawer-header {
+                display: flex; align-items: center; justify-content: space-between;
+                margin-bottom: 32px;
+            }
+            .ccc-drawer-header h3 {
+                font-size: 26px; font-weight: 700; color: #f5f5f7; margin: 0;
+            }
+            .ccc-drawer-close {
+                width: 38px; height: 38px; flex-shrink: 0;
+                border-radius: 50%; border: none;
+                background: rgba(255,255,255,0.08);
+                display: flex; align-items: center; justify-content: center;
+                cursor: pointer;
+            }
+            .ccc-drawer-close:hover { background: rgba(255,255,255,0.16); }
+            .ccc-drawer-close svg { width: 15px; height: 15px; }
+
+            .ccc-table-scroll { overflow-x: auto; }
+            .ccc-compare-table {
+                width: 100%;
+                border-collapse: collapse;
+            }
+            .ccc-compare-table th,
+            .ccc-compare-table td {
+                border: none;
+                border-bottom: 1px solid rgba(255,255,255,0.1);
+                padding: 20px 16px;
+                text-align: center;
+                white-space: nowrap;
+            }
+            .ccc-compare-table thead th {
+                font-size: 15px;
+                color: #a1a1a6;
+                font-weight: 400;
+                border-bottom: 1px solid rgba(255,255,255,0.18);
+            }
+            .ccc-compare-table th:first-child,
+            .ccc-compare-table td:first-child {
+                text-align: left;
+                color: #a1a1a6;
+                font-size: 15px;
+                white-space: normal;
+            }
+            .ccc-compare-table th.ccc-col-featured,
+            .ccc-compare-table td.ccc-col-featured {
+                background: rgba(41,151,255,0.07);
+            }
+            .ccc-plan-name {
+                font-size: 19px; font-weight: 700; color: #f5f5f7;
+                display: flex; align-items: center; justify-content: center; gap: 8px;
+            }
+            .ccc-plan-badge {
+                background: #2997ff; color: #fff; font-size: 11px; font-weight: 700;
+                padding: 3px 9px; border-radius: 999px; white-space: nowrap;
+            }
+            .ccc-compare-table td { font-size: 15px; color: #d1d1d6; }
+            .ccc-compare-table td.ccc-col-featured { color: #f5f5f7; font-weight: 600; }
+            .ccc-table-cta-row td { border-bottom: none; padding-top: 28px; }
+            .ccc-plan-cta {
+                display: inline-block; text-align: center;
+                background: rgba(255,255,255,0.08); color: #f5f5f7;
+                text-decoration: none; font-size: 14px; font-weight: 600;
+                padding: 10px 22px; border-radius: 999px;
+                transition: background-color 0.2s ease;
+            }
+            .ccc-plan-cta:hover { background: rgba(255,255,255,0.16); }
+            .ccc-plan-cta.ccc-cta-featured { background: #2997ff; }
+            .ccc-plan-cta.ccc-cta-featured:hover { background: #1f87ee; }
+
+            @media (max-width: 720px) {
+                .ccc-drawer { padding: 28px 24px 36px; border-radius: 22px 22px 0 0; }
+                .ccc-compare-table th, .ccc-compare-table td { padding: 16px 14px; font-size: 14px; }
+            }
+        </style>
+
+        <div class="ccc-section">
+            <div class="ccc-content">
+                <div class="ccc-row">
+                    <span class="ccc-row-label">Compare with</span>
+                    <div class="ccc-dropdown" id="cccDropdown">
+                        <button type="button" class="ccc-dropdown-trigger" id="cccDropdownTrigger"
+                                aria-haspopup="listbox" aria-expanded="false">
+                            <span id="cccDropdownLabel"></span>
+                            <svg class="ccc-dropdown-chevron" viewBox="0 0 24 24" fill="none" stroke="#a1a1a6" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round">
+                                <polyline points="6 9 12 15 18 9"></polyline>
+                            </svg>
+                        </button>
+                        <ul class="ccc-dropdown-list" id="cccDropdownList" role="listbox" tabindex="-1"></ul>
+                    </div>
+                </div>
+
+                <div class="ccc-stats-grid" id="cccStatsGrid"></div>
+
+                <div class="ccc-cta-row">
+                    <button type="button" class="ccc-cta" id="cccCta">
+                        <span>Compare Cronos Cloud plans</span>
+                        <span class="ccc-cta-plus">
+                            <svg viewBox="0 0 24 24" fill="none" stroke="#000000" stroke-width="3" stroke-linecap="round" stroke-linejoin="round">
+                                <line x1="12" y1="5" x2="12" y2="19"></line>
+                                <line x1="5" y1="12" x2="19" y2="12"></line>
+                            </svg>
+                        </span>
+                    </button>
+                </div>
+            </div>
+        </div>
+
+        <div class="ccc-drawer-backdrop" id="cccDrawerBackdrop"></div>
+        <div class="ccc-drawer" id="cccDrawer" role="dialog" aria-modal="true" aria-labelledby="cccDrawerTitle">
+            <div class="ccc-drawer-handle"></div>
+            <div class="ccc-drawer-header">
+                <h3 id="cccDrawerTitle">Compare Cronos Cloud plans</h3>
+                <button type="button" class="ccc-drawer-close" id="cccDrawerClose" aria-label="Close">
+                    <svg viewBox="0 0 24 24" fill="none" stroke="#f5f5f7" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round">
+                        <line x1="18" y1="6" x2="6" y2="18"></line>
+                        <line x1="6" y1="6" x2="18" y2="18"></line>
+                    </svg>
+                </button>
+            </div>
+            <div class="ccc-table-scroll">
+                <table class="ccc-compare-table">
+                    <thead>
+                        <tr>
+                            <th></th>
+                            <th>
+                                <span class="ccc-plan-name">Starter</span>
+                            </th>
+                            <th class="ccc-col-featured">
+                                <span class="ccc-plan-name">Business <span class="ccc-plan-badge">Most popular</span></span>
+                            </th>
+                            <th>
+                                <span class="ccc-plan-name">Enterprise</span>
+                            </th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr>
+                            <td>vCPUs &amp; RAM</td>
+                            <td>2 vCPUs, 4GB RAM</td>
+                            <td class="ccc-col-featured">8 vCPUs, 16GB RAM</td>
+                            <td>Dedicated, scalable resources</td>
+                        </tr>
+                        <tr>
+                            <td>Storage</td>
+                            <td>100GB SSD</td>
+                            <td class="ccc-col-featured">500GB SSD</td>
+                            <td>Unlimited storage &amp; bandwidth</td>
+                        </tr>
+                        <tr>
+                            <td>Uptime SLA</td>
+                            <td>99.9%</td>
+                            <td class="ccc-col-featured">99.95%</td>
+                            <td>99.99%</td>
+                        </tr>
+                        <tr>
+                            <td>Support</td>
+                            <td>Business-hours support</td>
+                            <td class="ccc-col-featured">24/7 priority support</td>
+                            <td>Dedicated account manager</td>
+                        </tr>
+                        <tr class="ccc-table-cta-row">
+                            <td></td>
+                            <td><a class="ccc-plan-cta" href="cloud-infrastructure.html#starter">Get started</a></td>
+                            <td class="ccc-col-featured"><a class="ccc-plan-cta ccc-cta-featured" href="cloud-infrastructure.html#business">Get started</a></td>
+                            <td><a class="ccc-plan-cta" href="cloud-infrastructure.html#enterprise">Talk to sales</a></td>
+                        </tr>
+                    </tbody>
+                </table>
+            </div>
+        </div>
+    `;
+
+    class CronosCloudCompare extends HTMLElement {
+        connectedCallback() {
+            if (this._built) return;
+            this._built = true;
+
+            const shadow = this.attachShadow({ mode: 'open' });
+            shadow.appendChild(CCC_TEMPLATE.content.cloneNode(true));
+
+            const dropdown        = shadow.getElementById('cccDropdown');
+            const trigger         = shadow.getElementById('cccDropdownTrigger');
+            const triggerLabel    = shadow.getElementById('cccDropdownLabel');
+            const list            = shadow.getElementById('cccDropdownList');
+            const statsGrid       = shadow.getElementById('cccStatsGrid');
+            const cta             = shadow.getElementById('cccCta');
+            const drawer           = shadow.getElementById('cccDrawer');
+            const drawerBackdrop   = shadow.getElementById('cccDrawerBackdrop');
+            const drawerClose      = shadow.getElementById('cccDrawerClose');
+
+            let activeKey = CCC_ORDER[0];
+
+            const renderStats = (key) => {
+                const data = CCC_DATA[key];
+                statsGrid.classList.add('ccc-fading');
+                setTimeout(() => {
+                    statsGrid.innerHTML = data.stats.map(s => `
+                        <div class="ccc-stat">
+                            <p class="ccc-stat-prefix">Up to</p>
+                            <p class="ccc-stat-value">${s.value}</p>
+                            <p class="ccc-stat-desc">${s.desc}</p>
+                        </div>
+                    `).join('');
+                    statsGrid.classList.remove('ccc-fading');
+                }, 120);
+            };
+
+            const renderOptions = () => {
+                list.innerHTML = CCC_ORDER.map(key => `
+                    <li class="ccc-dropdown-option" role="option" data-key="${key}"
+                        aria-selected="${key === activeKey}" tabindex="0">
+                        ${CCC_DATA[key].label}
+                    </li>
+                `).join('');
+            };
+
+            const selectOption = (key) => {
+                activeKey = key;
+                triggerLabel.textContent = CCC_DATA[key].label;
+                renderOptions();
+                renderStats(key);
+                this.dispatchEvent(new CustomEvent('cronos-compare-change', {
+                    detail: { key, label: CCC_DATA[key].label },
+                    bubbles: true, composed: true,
+                }));
+            };
+
+            const openList = () => {
+                dropdown.classList.add('open');
+                trigger.setAttribute('aria-expanded', 'true');
+            };
+            const closeList = () => {
+                dropdown.classList.remove('open');
+                trigger.setAttribute('aria-expanded', 'false');
+            };
+            const toggleList = () => {
+                dropdown.classList.contains('open') ? closeList() : openList();
+            };
+
+            trigger.addEventListener('click', (e) => { e.stopPropagation(); toggleList(); });
+
+            list.addEventListener('click', (e) => {
+                const opt = e.target.closest('.ccc-dropdown-option');
+                if (!opt) return;
+                selectOption(opt.getAttribute('data-key'));
+                closeList();
+                trigger.focus();
+            });
+
+            list.addEventListener('keydown', (e) => {
+                const opt = e.target.closest('.ccc-dropdown-option');
+                if (!opt) return;
+                if (e.key === 'Enter' || e.key === ' ') {
+                    e.preventDefault();
+                    selectOption(opt.getAttribute('data-key'));
+                    closeList();
+                    trigger.focus();
+                } else if (e.key === 'ArrowDown' || e.key === 'ArrowUp') {
+                    e.preventDefault();
+                    const opts = Array.from(list.querySelectorAll('.ccc-dropdown-option'));
+                    const idx = opts.indexOf(opt);
+                    const next = e.key === 'ArrowDown' ? opts[idx + 1] : opts[idx - 1];
+                    if (next) next.focus();
+                } else if (e.key === 'Escape') {
+                    closeList();
+                    trigger.focus();
+                }
+            });
+
+            trigger.addEventListener('keydown', (e) => {
+                if (e.key === 'ArrowDown' || e.key === 'Enter' || e.key === ' ') {
+                    e.preventDefault();
+                    openList();
+                    const first = list.querySelector('.ccc-dropdown-option');
+                    if (first) first.focus();
+                } else if (e.key === 'Escape') {
+                    closeList();
+                }
+            });
+
+            document.addEventListener('click', (e) => {
+                if (!e.composedPath().includes(dropdown)) closeList();
+            });
+
+            // Bottom drawer (plan comparison)
+            const openDrawer = () => {
+                drawer.classList.add('open');
+                drawerBackdrop.classList.add('open');
+                document.body.style.overflow = 'hidden';
+            };
+            const closeDrawer = () => {
+                drawer.classList.remove('open');
+                drawerBackdrop.classList.remove('open');
+                document.body.style.overflow = '';
+            };
+
+            cta.addEventListener('click', openDrawer);
+            drawerClose.addEventListener('click', closeDrawer);
+            drawerBackdrop.addEventListener('click', closeDrawer);
+            document.addEventListener('keydown', (e) => {
+                if (e.key === 'Escape' && drawer.classList.contains('open')) closeDrawer();
+            });
+
+            // Initial render
+            triggerLabel.textContent = CCC_DATA[activeKey].label;
+            renderOptions();
+            renderStats(activeKey);
+        }
+    }
+
+    customElements.define('cronos-cloud-compare', CronosCloudCompare);
+})();
+</script>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 
 
