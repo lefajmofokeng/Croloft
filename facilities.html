@@ -1,0 +1,771 @@
+<!DOCTYPE html>
+<html lang="en" dir="ltr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, minimum-scale=1.0, maximum-scale=5.0, viewport-fit=cover, shrink-to-fit=no">
+    <meta http-equiv="x-ua-compatible" content="ie=edge"/>
+    
+    <title>Cronos</title>
+
+    <!-- WEB TAB ICON -->
+    <link rel="icon" type="image/png" href="thumbnails/top-1.png">
+
+    <style>
+      @font-face { font-family:'Circular Std'; src:url('fonts/CircularStd-Book.woff2') format('woff2'),url('fonts/CircularStd-Book.woff') format('woff'); font-weight:400; font-style:normal; font-display:swap; }
+  @font-face { font-family:'Circular Std'; src:url('fonts/CircularStd-BookItalic.woff2') format('woff2'),url('fonts/CircularStd-BookItalic.woff') format('woff'); font-weight:400; font-style:italic; font-display:swap; }
+  @font-face { font-family:'Circular Std'; src:url('fonts/CircularStd-Medium.woff2') format('woff2'),url('fonts/CircularStd-Medium.woff') format('woff'); font-weight:500; font-style:normal; font-display:swap; }
+  @font-face { font-family:'Circular Std'; src:url('fonts/CircularStd-Bold.woff2') format('woff2'),url('fonts/CircularStd-Bold.woff') format('woff'); font-weight:600; font-style:normal; font-display:swap; }
+  @font-face { font-family:'Circular Std'; src:url('fonts/CircularStd-Bold.woff2') format('woff2'),url('fonts/CircularStd-Bold.woff') format('woff'); font-weight:700; font-style:normal; font-display:swap; }
+  @font-face { font-family:'Circular Std'; src:url('fonts/CircularStd-Black.woff2') format('woff2'),url('fonts/CircularStd-Black.woff') format('woff'); font-weight:800; font-style:normal; font-display:swap; }
+  @font-face { font-family:'Circular Std'; src:url('fonts/CircularStd-Black.woff2') format('woff2'),url('fonts/CircularStd-Black.woff') format('woff'); font-weight:900; font-style:normal; font-display:swap; }
+    </style>
+</head>
+
+
+
+
+
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>My Website</title>
+    
+    <script src="header.js" defer></script>
+    <script src="footer.js" defer></script> 
+</head>
+<body>
+
+    <cronos-header></cronos-header>
+    
+
+</body>
+</html>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<section id="lm-premium-hero-section">
+  <div class="lm-hero-bg-wrapper">
+    <img src="https://images.unsplash.com/photo-1476480862126-209bfaa8edc8?q=80&w=2070" alt="Background" class="lm-hero-bg-img">
+    <div class="lm-hero-overlay"></div>
+  </div>
+
+  <div class="lm-hero-container">
+    <div class="lm-hero-text-side">
+      <h1 class="lm-hero-title">
+        <span>Make.</span>
+        <span>Every Day.</span>
+        <span>Better.</span>
+      </h1>
+    </div>
+
+    <div class="lm-hero-card-side">
+      <a href="#" class="lm-hero-info-card">
+        <div class="lm-card-img-wrapper">
+          <img src="https://images.unsplash.com/photo-1502680390469-be75c86b636f?q=80&w=600" alt="Latest News Thumbnail" class="lm-card-img">
+        </div>
+        <div class="lm-card-content">
+          <span class="lm-card-tag">LATEST NEWS</span>
+          <div class="lm-card-footer">
+            <h2 class="lm-card-title">2025 Annual<br>Report</h2>
+            <div class="lm-card-icon">
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                <line x1="7" y1="17" x2="17" y2="7"></line>
+                <polyline points="7 7 17 7 17 17"></polyline>
+              </svg>
+            </div>
+          </div>
+        </div>
+      </a>
+    </div>
+  </div>
+</section>
+
+<style>
+
+#lm-premium-hero-section {
+  /* Scoped CSS Variables to guarantee no collisions */
+  --lm-hero-font: 'Circular Std', -apple-system, BlinkMacSystemFont, sans-serif;
+  --lm-hero-white: #ffffff;
+  --lm-hero-card-bg: rgba(18, 18, 18, 0.85);
+  --lm-hero-radius-sharp: 20px;
+  --lm-hero-radius-card: 12px;
+  
+  position: relative;
+  width: 100%;
+  min-height: 100vh;
+  display: flex;
+  align-items: flex-end;
+  box-sizing: border-box;
+  font-family: var(--lm-hero-font);
+  overflow: hidden;
+  background-color: #000;
+}
+
+#lm-premium-hero-section *,
+#lm-premium-hero-section *::before,
+#lm-premium-hero-section *::after {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+}
+
+* {
+    padding: 0;
+    margin: 0;
+    box-sizing: border-box;
+}
+
+/* Background Handling */
+#lm-premium-hero-section .lm-hero-bg-wrapper {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  z-index: 1;
+}
+
+#lm-premium-hero-section .lm-hero-bg-img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  object-position: center 35%;
+}
+
+#lm-premium-hero-section .lm-hero-overlay {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background: linear-gradient(to bottom, rgba(0,0,0,0.2) 0%, rgba(0,0,0,0.5) 100%);
+}
+
+/* Container Layout */
+#lm-premium-hero-section .lm-hero-container {
+  position: relative;
+  z-index: 2;
+  width: 100%;
+  max-width: 1380px;
+  margin: 0 auto;
+  padding: 60px 80px;
+  display: grid;
+  grid-template-columns: 1fr auto;
+  align-items: flex-end;
+  gap: 40px;
+}
+
+/* Left Side: Bold Header Typo */
+#lm-premium-hero-section .lm-hero-text-side {
+  max-width: 800px;
+}
+
+#lm-premium-hero-section .lm-hero-title {
+  color: var(--lm-hero-white);
+  font-size: clamp(3.5rem, 8vw, 6rem);
+  font-weight: 400;
+  line-height: 0.88;
+  letter-spacing: -0.04em;
+  display: flex;
+  flex-direction: column;
+}
+
+#lm-premium-hero-section .lm-hero-title span {
+  display: block;
+}
+
+/* Right Side: Overlay Glass Card */
+#lm-premium-hero-section .lm-hero-card-side {
+  display: flex;
+  justify-content: flex-end;
+  margin-bottom: 20px;
+}
+
+#lm-premium-hero-section .lm-hero-info-card {
+  display: block;
+  width: 320px;
+  background: var(--lm-hero-card-bg);
+  
+ 
+  border-radius: var(--lm-hero-radius-sharp);
+  padding: 8px;
+  text-decoration: none;
+  transition: transform 0.3s cubic-bezier(0.16, 1, 0.3, 1), border-color 0.3s ease;
+}
+
+#lm-premium-hero-section .lm-hero-info-card:hover {
+  transform: translateY(-4px);
+  border-color: rgba(255, 255, 255, 0.25);
+}
+
+#lm-premium-hero-section .lm-card-img-wrapper {
+  width: 100%;
+  aspect-ratio: 16 / 10;
+  border-radius: var(--lm-hero-radius-card);
+  overflow: hidden;
+  margin-bottom: 16px;
+}
+
+#lm-premium-hero-section .lm-card-img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
+
+#lm-premium-hero-section .lm-card-content {
+  display: flex;
+  flex-direction: column; padding: 0 16px 10px 16px;
+}
+
+#lm-premium-hero-section .lm-card-tag {
+  color: rgba(255, 255, 255, 0.6);
+  font-size: 0.65rem;
+  font-weight: 500;
+  text-transform: uppercase;
+  letter-spacing: 0.05em;
+  margin-bottom: 16px;
+}
+
+#lm-premium-hero-section .lm-card-footer {
+  display: flex;
+  justify-content: space-between;
+  align-items: flex-end;
+}
+
+#lm-premium-hero-section .lm-card-title {
+  color: var(--lm-hero-white);
+  font-size: 1.25rem;
+  font-weight: 500;
+  line-height: 1.15;
+  letter-spacing: -0.02em;
+}
+
+#lm-premium-hero-section .lm-card-icon {
+  width: 18px;
+  height: 18px;
+  color: rgba(255, 255, 255, 0.8);
+  margin-bottom: 2px;
+}
+
+#lm-premium-hero-section .lm-card-icon svg {
+  width: 100%;
+  height: 100%;
+  display: block;
+}
+
+/* --- Responsive Adaptations --- */
+@media (max-width: 1024px) {
+  #lm-premium-hero-section .lm-hero-container {
+    padding: 40px;
+    grid-template-columns: 1fr;
+    gap: 48px;
+  }
+  
+  #lm-premium-hero-section .lm-hero-card-side {
+    justify-content: flex-start;
+    margin-bottom: 0;
+  }
+}
+
+@media (max-width: 640px) {
+  #lm-premium-hero-section {
+    min-height: auto;
+    padding-top: 120px; /* Provides space if there is a top navbar */
+  }
+
+  #lm-premium-hero-section .lm-hero-container {
+    padding: 32px 20px;
+    gap: 40px;
+  }
+
+  #lm-premium-hero-section .lm-hero-info-card {
+    width: 100%; /* Spans full screen width cleanly on small phones */
+  }
+}
+</style>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Premium Video Carousel</title>
+  <style>
+    /* Crucial base reset for this demo context - does not affect global codebase */
+    .premium-car {
+      margin: 0;
+      padding: 150px 20px;
+      background-color: #ffffff;
+     
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      min-height: 100vh;
+      box-sizing: border-box;
+    }
+
+    /* ==========================================
+       SCOPED CUSTOM COMPONENT STYLES
+       ========================================== */
+    video-showcase-carousel {
+      display: block;
+      width: 100%;
+      max-width: 1200px;
+      margin: 0 auto; padding: 150px 0;
+      box-sizing: border-box;
+
+      * {
+        box-sizing: border-box;
+        margin: 0;
+        padding: 0;
+        font-family: 'Circular Std', sans-serif;
+      }
+
+      .vsc-container {
+        display: flex;
+        gap: 16px;
+        width: 100%;
+        align-items: flex-start;
+        transition: all 0.5s cubic-bezier(0.25, 1, 0.5, 1);
+      }
+      .video-heading {
+        margin-bottom: 2rem;
+      }
+
+      .video-heading h2 {
+        font-size: 3rem;
+        font-weight: 500;
+      }
+
+      .vsc-card {
+        position: relative;
+        flex: 1;
+        cursor: pointer;
+        transition: flex 0.6s cubic-bezier(0.25, 1, 0.5, 1);
+        overflow: hidden;
+        display: flex;
+        flex-direction: column;
+        gap: 12px;
+      }
+
+      /* When the card is active/expanded */
+      .vsc-card.vsc-active {
+        flex: 2.2; /* Beautiful smooth expansion ratio */
+      }
+
+      .vsc-media-wrapper {
+        position: relative;
+        width: 100%;
+        border-radius: 16px;
+        overflow: hidden;
+        /* Maintains perfect proportional depth for the portrait cards */
+        aspect-ratio: 3 / 4; 
+        transition: aspect-ratio 0.6s cubic-bezier(0.25, 1, 0.5, 1);
+        background-color: #f0f0f0;
+      }
+
+      /* Morph aspect ratio gracefully to landscape-ish when expanded */
+      .vsc-card.vsc-active .vsc-media-wrapper {
+        aspect-ratio: 16 / 10;
+      }
+
+      /* Imagery & Video Layering */
+      .vsc-poster, 
+      .vsc-video {
+        position: absolute;
+        top: 0;
+        left: 0;
+        width: 100%;
+        height: 100%;
+        object-fit: cover;
+        transition: filter 0.5s ease, transform 0.5s ease;
+      }
+
+      /* Unfocused cards get that elegant high-end blur */
+      .vsc-card:not(.vsc-active) .vsc-poster {
+        filter: blur(3px) saturate(1.1);
+        transform: scale(1.05); /* Prevents white edges during blur */
+      }
+
+      .vsc-video {
+        opacity: 0;
+        pointer-events: none;
+        transition: opacity 0.4s ease;
+      }
+
+      .vsc-card.vsc-active .vsc-video.vsc-playing {
+        opacity: 1;
+        pointer-events: auto;
+      }
+
+      /* Custom Premium Play Button Overlay */
+      .vsc-play-btn {
+        position: absolute;
+        top: 16px;
+        left: 16px;
+        background: rgba(255, 255, 255, 0.25);
+        backdrop-filter: blur(12px);
+        -webkit-backdrop-filter: blur(12px);
+        border: 1px solid rgba(255, 255, 255, 0.2);
+        color: #ffffff;
+        padding: 8px 16px 8px 12px;
+        border-radius: 30px;
+        font-size: 13px;
+        font-weight: 500;
+        display: flex;
+        align-items: center;
+        gap: 6px;
+        opacity: 0;
+        transform: translateY(-5px);
+        transition: opacity 0.4s ease 0.2s, transform 0.4s ease 0.2s;
+        pointer-events: none;
+        z-index: 2;
+      }
+
+      .vsc-play-btn svg {
+        width: 12px;
+        height: 12px;
+        fill: currentColor;
+      }
+
+      .vsc-card.vsc-active .vsc-play-btn {
+        opacity: 1;
+        transform: translateY(0);
+      }
+
+      /* Text Label Typography */
+      .vsc-label {
+        font-size: 18px;
+        font-weight: 600;
+        color: #0c2312; /* Deep subtle green/black hue from your reference */
+        padding-left: 2px;
+        transition: opacity 0.3s ease;
+      }
+
+      /* Responsive Mobile Downscaling */
+      @media (max-width: 768px) {
+        .vsc-container, .video-heading {
+          flex-direction: column;
+          gap: 24px; padding: 0 20px;
+        }
+        
+        .video-heading h2 {
+            font-size: 1.8rem;
+            line-height: 1;
+        }
+        .vsc-card {
+          width: 100%;
+          flex: none !important;
+        }
+
+        .vsc-media-wrapper,
+        .vsc-card.vsc-active .vsc-media-wrapper {
+          aspect-ratio: 16 / 10;
+        }
+
+        .vsc-poster {
+          filter: none !important;
+          transform: none !important;
+        }
+
+        .vsc-play-btn {
+          opacity: 1;
+          transform: none;
+        }
+      }
+    }
+  </style>
+</head>
+<premium-car>
+
+  <video-showcase-carousel>
+    <div class="video-heading">
+        <h2>What it's like working with us.</h2>
+    </div>
+    <div class="vsc-container">
+
+      <div class="vsc-card">
+        <div class="vsc-media-wrapper">
+          <div class="vsc-play-btn">
+            <svg viewBox="0 0 24 24"><path d="M8 5v14l11-7z"/></svg>
+            Play
+          </div>
+          <img class="vsc-poster" src="https://images.unsplash.com/photo-1534528741775-53994a69daeb?q=80&w=800&auto=format&fit=crop" alt="Amelia Clarke">
+          <video class="vsc-video" loop muted playsinline src="videos/Recording 2026-03-31 124020.mp4"></video>
+        </div>
+        <div class="vsc-label">Amelia Clarke</div>
+      </div>
+
+      <div class="vsc-card vsc-active">
+        <div class="vsc-media-wrapper">
+          <div class="vsc-play-btn">
+            <svg viewBox="0 0 24 24"><path d="M8 5v14l11-7z"/></svg>
+            Play
+          </div>
+          <img class="vsc-poster" src="https://images.unsplash.com/photo-1544005313-94ddf0286df2?q=80&w=800&auto=format&fit=crop" alt="Amelia Clarke">
+          <video class="vsc-video vsc-playing" loop muted playsinline src="https://assets.mixkit.co/videos/preview/mixkit-close-up-of-a-womans-face-with-clear-skin-43110-large.mp4"></video>
+        </div>
+        <div class="vsc-label">Amelia Clarke</div>
+      </div>
+
+      <div class="vsc-card">
+        <div class="vsc-media-wrapper">
+          <div class="vsc-play-btn">
+            <svg viewBox="0 0 24 24"><path d="M8 5v14l11-7z"/></svg>
+            Play
+          </div>
+          <img class="vsc-poster" src="https://images.unsplash.com/photo-1506794778202-cad84cf45f1d?q=80&w=800&auto=format&fit=crop" alt="Amelia Clarke">
+          <video class="vsc-video" loop muted playsinline src="https://assets.mixkit.co/videos/preview/mixkit-portrait-of-a-woman-with-brown-hair-43108-large.mp4"></video>
+        </div>
+        <div class="vsc-label">Amelia Clarke</div>
+      </div>
+
+    </div>
+  </video-showcase-carousel>
+
+  <script>
+    document.addEventListener('DOMContentLoaded', () => {
+      const cards = document.querySelectorAll('video-showcase-carousel .vsc-card');
+
+      // Initialize the default active video
+      const defaultActiveVideo = document.querySelector('video-showcase-carousel .vsc-card.vsc-active .vsc-video');
+      if (defaultActiveVideo) {
+        defaultActiveVideo.play().catch(err => console.log("Autoplay blocked until user interaction:", err));
+      }
+
+      cards.forEach(card => {
+        card.addEventListener('click', () => {
+          // If clicked card is already active, do nothing
+          if (card.classList.contains('vsc-active')) return;
+
+          // 1. Reset current active card, pause and hide its video
+          const previousActiveCard = document.querySelector('video-showcase-carousel .vsc-card.vsc-active');
+          if (previousActiveCard) {
+            previousActiveCard.classList.remove('vsc-active');
+            const prevVideo = previousActiveCard.querySelector('.vsc-video');
+            if (prevVideo) {
+              prevVideo.pause();
+              prevVideo.classList.remove('vsc-playing');
+              prevVideo.currentTime = 0;
+            }
+          }
+
+          // 2. Activate clicked card
+          card.classList.add('vsc-active');
+          
+          // 3. Play target video smoothly once layout morphs
+          const targetVideo = card.querySelector('.vsc-video');
+          if (targetVideo) {
+            targetVideo.classList.add('vsc-playing');
+            targetVideo.play().catch(err => console.warn("Video playback interrupted:", err));
+          }
+        });
+      });
+    });
+  </script>
+</premium-car>
+</html>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<section data-it-hero-component="container">
+  <div data-it-hero-component="layout">
+    
+    <div data-it-hero-component="heading-col">
+      <h2 data-it-hero-component="title">
+        Architected <br>around infrastructure.
+      </h2>
+    </div>
+
+    <div data-it-hero-component="content-col">
+      <p data-it-hero-component="body-text">
+        From cloud automation to telemetry tools, every part of the Core-IT digital ecosystem is designed by and for engineers. From infrastructure provisioning profiles to the entire deployment pipeline, every detail is engineered to
+      </p>
+      <p data-it-hero-component="body-text">
+        support how development teams actually scale through high-traffic demands. All for a simple reason: zero-trust security and high availability matter as much as raw processing speed.
+      </p>
+    </div>
+
+  </div>
+</section>
+
+<style>
+  /* Root Container & Reset styling safely scoped to this specific component */
+  [data-it-hero-component="container"] {
+    background-color: #0d0f0e; /* Matte dark off-black background */
+    color: #ffffff;
+    font-family: 'Circular Std', sans-serif;
+    padding: 6rem 4rem;
+    box-sizing: border-box;
+    width: 100%;
+  }
+
+  /* Main Layout: Top thin line and flex/grid layout */
+  [data-it-hero-component="layout"] {
+    border-top: 1px solid rgba(255, 255, 255, 0.4); /* Thin horizontal line */
+    padding-top: 2rem;
+    display: grid;
+    grid-template-columns: 1.3fr 2fr;
+    gap: 4rem;
+    align-items: start;
+    max-width: 1200px;
+    margin: 0 auto;
+  }
+
+  /* Left Column Heading Style */
+  [data-it-hero-component="title"] {
+    font-size: 3rem;
+    font-weight: 500;
+    line-height: 1.1;
+    letter-spacing: -0.03em;
+    margin: 0;
+  }
+
+  /* Right Column Text Splitter */
+  [data-it-hero-component="content-col"] {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 2.5rem;
+  }
+
+  /* Body Paragraph Typography */
+  [data-it-hero-component="body-text"] {
+    font-size: 1.05rem;
+    line-height: 1.5;
+    color: rgba(255, 255, 255, 0.9);
+    margin: 0;
+    font-weight: 400;
+    letter-spacing: -0.01em;
+  }
+
+  /* Responsive styling for smaller screens */
+  @media (max-width: 1024px) {
+    [data-it-hero-component="layout"] {
+      grid-template-columns: 1fr;
+      gap: 2rem;
+    }
+    [data-it-hero-component="content-col"] {
+      grid-template-columns: 1fr;
+      gap: 1.5rem;
+    }
+    [data-it-hero-component="title"] {
+      font-size: 2.5rem;
+    }
+  }
+</style>
+
+
+
+
+
+

@@ -6,16 +6,18 @@ class CronosHeader extends HTMLElement {
         this.attachShadow({ mode: 'open' });
     }
 
-    // Static Index for Component/Section level search prediction across the website
     get SEARCH_INDEX() {
         return [
-            { name: 'Artificial Intelligence Development', href: 'mobile-applications.html#ai-development' },
-            { name: 'Web Applications Frameworks',       href: 'mobile-applications.html#web-dev' },
-            { name: 'Managed IT Helpdesk Solutions',     href: 'managed-it-services.html#helpdesk' },
-            { name: 'Enterprise Service Configurator',   href: 'calculator.html#pricing-calculator' },
-            { name: 'Cybersecurity Threat Shield',       href: 'cybersecurity.html#threat-protection' },
-            { name: 'Cloud Infrastructure Nodes',        href: 'cloud-infrastructure.html#cloud-nodes' },
-            { name: 'Blockchain Integration & Web3',      href: 'blockchain-and-web3.html#smart-contracts' }
+            { name: 'Artificial Intelligence Development',             href: 'mobile-applications.html#ai-development' },
+            { name: 'Web Applications Frameworks',                     href: 'mobile-applications.html#web-dev' },
+            { name: 'Managed IT Helpdesk Solutions',                   href: 'managed-it-services.html#helpdesk' },
+            { name: 'Enterprise Service Configurator',                 href: 'calculator.html#pricing-calculator' },
+            { name: 'Cybersecurity Threat Shield',                     href: 'cybersecurity.html#threat-protection' },
+            { name: 'Cloud Infrastructure Nodes',                      href: 'cloud-infrastructure.html#cloud-nodes' },
+            { name: 'Blockchain Integration & Web3',                   href: 'blockchain-and-web3.html#smart-contracts' },
+            { name: 'Affiliate Program',                               href: 'affiliates.html#affiliate-program' },
+            { name: 'Careers',                                         href: 'careers.html#jobs' },
+            { name: 'Jobs',                                            href: 'careers.html#jobs' },
         ];
     }
 
@@ -31,158 +33,90 @@ class CronosHeader extends HTMLElement {
 
     get NAV_CONFIG() {
         return [
-            {
-                label: 'Businesses',
-                megamenu: [
-                    {
-                        heading: 'Level Up',
-                        tagline: 'Flexible pricing for every team',
-                        icon: 'thumbnails/04 (2).png',
-                        links: [
-                            { label: 'Startups',       href: 'startups.html' },
-                            { label: 'Professional',   href: 'professional.html' },
-                            { label: 'Enterprise',     href: 'enterprise.html' },
-                            { label: 'Marketplace',    href: 'marketplace.html', external: true }, 
-                            { label: 'Schedule a Demo',  href: 'demo.html' },
-                        ]
-                    },
-                    {
-                        heading: 'Compare & Save',
-                        links: [
-                            { label: 'Configure',  href: 'calculator.html' },
-                            { label: 'Annual vs Monthly',   href: 'billing.html' },
-                            { label: 'Archictecture & Scopes',  href: 'price.html' },
-                        ]
-                    },
-                    {
-                        heading: 'Support',
-                        links: [
-                            { label: 'Customer Support',   href: 'billing.html' },
-                            { label: 'FAQs',  href: 'faqs.html' },
-                            { label: 'Contact Sales',  href: 'contact-sales.html' },
-                            { label: 'Learn',  href: 'compare.html' },
-                        ]
-                    }
-                ]
-            },
-            {
-                label: 'Individuals',
-                megamenu: [
-                    {
-                        heading: 'Build',
-                        links: [
-                            { label: 'Courses',    href: 'console.html' },
-                            { label: 'Open Source Projects',  href: 'portfolio.html' },
-                            { label: 'Coding for Social Impact (Non-profit)',  href: 'coding.html' },
-                        ]
-                    },
-                    {
-                        heading: 'Programs',
-                        links: [
-                            { label: 'Affiliate Program',      href: 'affiliates.html' },
-                            { label: 'Content Creator Program',    href: 'content-creator.html' },
-                        ]
-                    },
-                    {
-                        heading: 'Engage',
-                        links: [
-                            { label: 'Community',      href: 'community.html' },
-                        ]
-                    },
-                ]
-            },
-            {
-                label: 'Solutions',
-                href: 'page.html',
-                megamenu: [
-                    {
-                        heading: 'Software Development',
-                        tagline: 'Custom apps & platforms',
-                        icon: 'thumbnails/04 (2).png',
-                        mobileBtn: 'Learn more',
-                        mobileBtnHref: 'index.html',
-                        links: [
-                            { label: 'Artificial Intelligence',         href: 'mobile-applications.html' },
-                            { label: 'Web Development',        href: 'mobile-applications.html' },
-                            { label: 'E-commerce',                      href: 'e-commerce.html' },
-                            { label: 'Blockchain',                      href: 'blockchain-and-web3.html' },
-                            { label: 'Databases',                       href: 'database-engineering.html' },
-                            { label: 'Business Systems',                href: 'database-engineering.html' },
-                        ]
-                    },
-                    {
-                        heading: 'IT Services & Infrastructure',
-                        tagline: 'Reliable systems & support',
-                        icon: 'thumbnails/04 (2).png',
-                        mobileBtn: 'Learn more',
-                        mobileBtnHref: 'index.html',
-                        links: [
-                            { label: 'Managed IT Services & Helpdesk',   href: 'managed-it-services.html' },
-                            { label: 'IT Consulting',                    href: 'it-consulting.html' },
-                            { label: 'Cybersecurity',                    href: 'cybersecurity.html' },
-                            { label: 'Cloud Services',                   href: 'cloud-infrastructure.html' },
-                            { label: 'Data Center',                      href: 'data-center.html' },
-                        ]
-                    },
-                    {
-                        heading: 'Training & Consulting',
-                        tagline: 'Protect your business & data',
-                        icon: 'thumbnails/04 (2).png',
-                        mobileBtn: 'Learn more',
-                        mobileBtnHref: 'index.html',
-                        links: [
-                            { label: 'Cybersecurity Training',           href: 'cybersecurity.html' },
-                            { label: 'AI Training',                     href: 'graphic-design.html' },
-                            { label: 'Digital Skills Training',          href: 'content-management.html' },
-                        ]
-                    },
-                    {
-                        heading: 'Advertising & Marketing',
-                        tagline: 'Creative content & design',
-                        icon: 'thumbnails/04 (2).png',
-                        mobileBtn: 'Learn more',
-                        mobileBtnHref: 'index.html',
-                        links: [
-                            { label: 'Digital Marketing',   href: 'digital-marketing.html' },
-                            { label: 'Graphic Design',      href: 'graphic-design.html' },
-                            { label: 'Content Management',  href: 'content-management.html' },
-                            { label: 'Advertising',         href: 'advertising.html' },
-                        ]
-                    }
-                ]
-            },
-            {
-                label: 'Discover',
-                megamenu: [
-                    {
-                        heading: 'Croloft',
-                        links: [
-                            { label: 'About Us',                href: 'about.html' },
-                            { label: 'Roadmap',                 href: 'roadmap.html' },
-                            { label: 'Innovations',             href: 'innovations.html' },
-                            { label: 'Careers',                 href: 'careers.html' },
-                            { label: 'Partners',                href: 'partners.html' },
-                            { label: 'Licenses & Registrations',href: 'licenses-and-registrations.html' },
-                        ]
-                    },
-                    {
-                        heading: 'Connect',
-                        links: [
-                            { label: 'X', href: 'https://x.com/croloftofficial' },
-                            { label: 'YouTube',     href: 'https://youtube.com/croloftofficial' },
-                            { label: 'Facebook',    href: 'https://facebook.com/croloftofficial' },
-                            { label: 'Instagram',     href: 'https://instagram.com/croloftofficial' },
-                        ]
-                    }
-                ]
-            }
+            { label: 'Businesses', i18nKey: 'nav-businesses', megamenu: [
+                { heading: 'Level Up', tagline: 'Flexible pricing for every team', icon: 'thumbnails/04 (2).png', links: [
+                    { label: 'Startups',       href: 'startups.html' },
+                    { label: 'Professional',   href: 'professional.html' },
+                    { label: 'Enterprise',     href: 'enterprise.html' },
+                    { label: 'Marketplace',    href: 'marketplace.html', external: true }, 
+                    { label: 'Schedule a Demo',  href: 'demo.html' },
+                ]},
+                { heading: 'Compare & Save', links: [
+                    { label: 'Configure',  href: 'calculator.html' },
+                    { label: 'Annual vs Monthly',   href: 'billing.html' },
+                    { label: 'Archictecture & Scopes',  href: 'price.html' },
+                ]},
+                { heading: 'Support', links: [
+                    { label: 'Customer Support',   href: 'billing.html' },
+                    { label: 'FAQs',  href: 'faqs.html' },
+                    { label: 'Contact Sales',  href: 'contact-sales.html' },
+                    { label: 'Learn',  href: 'compare.html' },
+                ]}
+            ]},
+            { label: 'Individuals', i18nKey: 'nav-individuals', megamenu: [
+                { heading: 'Build', links: [
+                    { label: 'Courses',    href: 'console.html' },
+                    { label: 'Open Source Projects',  href: 'portfolio.html' },
+                    { label: 'Coding for Social Impact (Non-profit)',  href: 'coding.html' },
+                ]},
+                { heading: 'Programs', links: [
+                    { label: 'Affiliate Program',      href: 'affiliates.html' },
+                    { label: 'Content Creator Program',    href: 'content-creator.html' },
+                ]},
+                { heading: 'Engage', links: [
+                    { label: 'Community',      href: 'community.html' },
+                ]},
+            ]},
+            { label: 'Solutions', i18nKey: 'nav-solutions', href: 'page.html', megamenu: [
+                { heading: 'Software Development', tagline: 'Custom apps & platforms', icon: 'thumbnails/04 (2).png', mobileBtn: 'Learn more', mobileBtnHref: 'index.html', links: [
+                    { label: 'Artificial Intelligence',         href: 'ai.html' },
+                    { label: 'Web Development',                 href: 'web-applications.html' },
+                    { label: 'E-commerce',                      href: 'e-commerce.html' },
+                    { label: 'Blockchain',                      href: 'blockchain-and-web3.html' },
+                    { label: 'Databases',                       href: 'database-engineering.html' },
+                ]},
+                { heading: 'IT Services & Infrastructure', tagline: 'Reliable systems & support', icon: 'thumbnails/04 (2).png', mobileBtn: 'Learn more', mobileBtnHref: 'index.html', links: [
+                    { label: 'Managed IT Services & Helpdesk',   href: 'managed-it-services.html' },
+                    { label: 'IT Consulting',                    href: 'it-consulting.html' },
+                    { label: 'Cybersecurity',                    href: 'cybersecurity.html' },
+                    { label: 'Cloud Services',                   href: 'cloud-infrastructure.html' },
+                    { label: 'Data Center',                      href: 'data-center.html' },
+                ]},
+                { heading: 'Training & Consulting', tagline: 'Protect your business & data', icon: 'thumbnails/04 (2).png', mobileBtn: 'Learn more', mobileBtnHref: 'index.html', links: [
+                    { label: 'Cybersecurity Training',           href: 'cybersecurity.html' },
+                    { label: 'AI Training',                     href: 'graphic-design.html' },
+                    { label: 'Digital Skills Training',          href: 'content-management.html' },
+                ]},
+                { heading: 'Advertising & Marketing', tagline: 'Creative content & design', icon: 'thumbnails/04 (2).png', mobileBtn: 'Learn more', mobileBtnHref: 'index.html', links: [
+                    { label: 'Digital Marketing',   href: 'digital-marketing.html' },
+                    { label: 'Graphic Design',      href: 'graphic-design.html' },
+                    { label: 'Content Management',  href: 'content-management.html' },
+                    { label: 'Advertising',         href: 'advertising.html' },
+                ]}
+            ]},
+            { label: 'Discover', i18nKey: 'nav-discover', megamenu: [
+                { heading: 'Croloft', links: [
+                    { label: 'About Us',                href: 'about.html' },
+                    { label: 'Roadmap',                 href: 'roadmap.html' },
+                    { label: 'Innovations',             href: 'innovations.html' },
+                    { label: 'Careers',                 href: 'careers.html' },
+                    { label: 'Partners',                href: 'partners.html' },
+                    { label: 'Licenses & Registrations',href: 'licenses-and-registrations.html' },
+                ]},
+                { heading: 'Connect', links: [
+                    { label: 'X', href: 'https://x.com/croloftofficial' },
+                    { label: 'YouTube',     href: 'https://youtube.com/croloftofficial' },
+                    { label: 'Facebook',    href: 'https://facebook.com/croloftofficial' },
+                    { label: 'Instagram',     href: 'https://instagram.com/croloftofficial' },
+                ]}
+            ]}
         ];
     }
 
     get ACTION_BUTTONS() {
         return [
-            { label: 'Log In', href: 'login.html', style: 'secondary', id: 'cronos-loginTrigger' },
-            { label: 'Contact us',  href: 'form.html',  style: 'primary' },
+            { label: 'Log In', href: 'login.html', style: 'secondary', id: 'cronos-loginTrigger', i18nKey: 'btn-login' },
+            { label: 'Contact us',  href: 'form.html',  style: 'primary', i18nKey: 'btn-contact' },
         ];
     }
 
@@ -195,6 +129,13 @@ class CronosHeader extends HTMLElement {
     }
 
     _menuId(label) { return label.toLowerCase().replace(/\s+/g, '-'); }
+
+    _getMsg(key, fallback) {
+        if (window.cronosTranslator && typeof window.cronosTranslator.getTranslation === 'function') {
+            return window.cronosTranslator.getTranslation(key);
+        }
+        return fallback;
+    }
 
     _buildGroupCard(group, isMobile) {
         const hasThumbnail = group.icon;
@@ -253,11 +194,11 @@ class CronosHeader extends HTMLElement {
                 <div class="cronos-megamenu-grid cronos-megamenu-cols-1">
                     <div class="cronos-menu-group-card cronos-search-panel-card">
                         <div class="cronos-search-input-field-container">
-                            <input type="text" id="cronos-desktopSearchField" class="cronos-search-control-input" placeholder="Search parameters...">
+                            <input type="text" id="cronos-desktopSearchField" class="cronos-search-control-input" placeholder="${this._getMsg('search-placeholder', 'Search parameters...')}">
                         </div>
                         <div class="cronos-search-live-dynamic-results-view hidden" id="cronos-desktopSearchResults"></div>
                         <div class="cronos-search-fallback-quicklinks" id="cronos-desktopSearchQuicklinks">
-                            <h3>Quick Links</h3>
+                            <h3 data-i18n="search-quick-links">${this._getMsg('search-quick-links', 'Quick Links')}</h3>
                             <ul class="cronos-mega-menu-group-list">${quickLinksHtml}</ul>
                         </div>
                     </div>
@@ -271,9 +212,9 @@ class CronosHeader extends HTMLElement {
         const chevronRight = `<svg class="cronos-mobile-dropdown-icon" xmlns="http://www.w3.org/2000/svg" width="15" height="15" viewBox="0 0 24 24"><path fill="#f2f2f2" d="M8.025 22L6.25 20.225L14.475 12L6.25 3.775L8.025 2l10 10l-10 10Z" stroke-width="0.1" stroke-linecap="round" stroke-linejoin="round"/></svg>`;
         const downIcon    = `<svg class="cronos-desktop-link-icon" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round"><polyline points="6 9 12 15 18 9"/></svg>`;
 
-        return this.NAV_CONFIG.map(item => {
+        let listHtml = this.NAV_CONFIG.map(item => {
             if (!item.megamenu) {
-                return `<li><a href="${item.href || '#'}" class="cronos-custom-nav-link">${item.label}</a></li>`;
+                return `<li><a href="${item.href || '#'}" class="cronos-custom-nav-link" data-i18n="${item.i18nKey || ''}">${this._getMsg(item.i18nKey, item.label)}</a></li>`;
             }
 
             const id = this._menuId(item.label);
@@ -282,7 +223,7 @@ class CronosHeader extends HTMLElement {
             return `
                 <li class="cronos-custom-nav-item--has-megamenu">
                     <a href="#" class="cronos-custom-nav-link" data-cronos-megamenu-trigger="${id}">
-                        <span class="cronos-nav-label-text">${item.label}</span>
+                        <span class="cronos-nav-label-text" data-i18n="${item.i18nKey || ''}">${this._getMsg(item.i18nKey, item.label)}</span>
                         ${downIcon}
                         ${chevronRight}
                     </a>
@@ -295,6 +236,21 @@ class CronosHeader extends HTMLElement {
                     </div>
                 </li>`;
         }).join('');
+
+        // Integrated Language Row for Mobile view inside drawer list flow
+        const currentLangLabel = this._getMsg('lang-' + (localStorage.getItem('cronos_lang') || 'en'), 'Language');
+        listHtml += `
+            <li class="cronos-mobile-lang-drawer-item">
+                <a href="javascript:void(0)" class="cronos-custom-nav-link" id="cronos-mobileLangTrigger">
+                    <span class="cronos-nav-label-text" style="display:flex; align-items:center; gap:8px;">
+                        <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="10"></circle><line x1="2" y1="12" x2="22" y2="12"></line><path d="M12 2a15.3 15.3 0 0 1 4 10 15.3 15.3 0 0 1-4 10 15.3 15.3 0 0 1-4-10 15.3 15.3 0 0 1 4-10z"></path></svg>
+                        <span>Language: <strong>${currentLangLabel}</strong></span>
+                    </span>
+                    ${chevronRight}
+                </a>
+            </li>`;
+
+        return listHtml;
     }
 
     _buildMobileFullscreenSearchOverlay() {
@@ -311,7 +267,7 @@ class CronosHeader extends HTMLElement {
                 </div>
                 <div class="cronos-mobile-overlay-body">
                     <div class="cronos-search-input-field-container">
-                        <input type="text" id="cronos-mobileSearchField" class="cronos-search-control-input" placeholder="Search parameters...">
+                        <input type="text" id="cronos-mobileSearchField" class="cronos-search-control-input" placeholder="${this._getMsg('search-placeholder', 'Search parameters...')}">
                         <span class="cronos-mobile-search-embed-icon">
                             <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
                                 <circle cx="11" cy="11" r="8"></circle>
@@ -321,7 +277,7 @@ class CronosHeader extends HTMLElement {
                     </div>
                     <div class="cronos-search-live-dynamic-results-view hidden" id="cronos-mobileSearchResults"></div>
                     <div class="cronos-search-fallback-quicklinks" id="cronos-mobileSearchQuicklinks">
-                        <h3>Quick Links</h3>
+                        <h3 data-i18n="search-quick-links">${this._getMsg('search-quick-links', 'Quick Links')}</h3>
                         <ul class="cronos-mega-menu-group-list">${quickLinksHtml}</ul>
                     </div>
                 </div>
@@ -333,13 +289,22 @@ class CronosHeader extends HTMLElement {
             const cls = btn.style === 'primary' ? 'cronos-header-action-btn' : 'cronos-header-secondary-btn';
             const idAttr = btn.id ? `id="${btn.id}"` : '';
             const hrefAttr = btn.id === 'cronos-loginTrigger' ? 'href="javascript:void(0)"' : `href="${btn.href}"`;
-            return `<a ${hrefAttr} ${idAttr} class="${cls}">${btn.label}</a>`;
+            return `<a ${hrefAttr} ${idAttr} class="${cls}" data-i18n="${btn.i18nKey || ''}">${this._getMsg(btn.i18nKey, btn.label)}</a>`;
         }).join('');
     }
 
     connectedCallback() {
         this.render();
         this.initScripts();
+        this._langListener = () => {
+            this.render();
+            this.initScripts();
+        };
+        window.addEventListener('cronosLanguageChanged', this._langListener);
+    }
+
+    disconnectedCallback() {
+        window.removeEventListener('cronosLanguageChanged', this._langListener);
     }
 
     render() {
@@ -425,7 +390,7 @@ class CronosHeader extends HTMLElement {
 
         /* Desktop Trigger (Icon before standard buttons) */
         .cronos-header-search-action-trigger {
-            background: transparent; border: none; padding: 0; margin-right: 8px; margin-left: 18px;
+            background: transparent; border: 2px solid rgb(35, 43, 57); padding: 0; margin-right: 8px; margin-left: 18px;
             cursor: pointer; color: var(--cronos-color-text-light); display: flex;
             align-items: center; justify-content: center; width: 34px; height: 34px;
             border-radius: 50%; transition: color 0.2s, background-color 0.2s;
@@ -433,7 +398,7 @@ class CronosHeader extends HTMLElement {
         .cronos-header-search-action-trigger:hover, .cronos-header-search-action-trigger.active {
             color: var(--cronos-color-accent); background-color: rgba(255, 255, 255, 0.05);
         }
-        .cronos-header-search-action-trigger svg { width: 18px; height: 18px; }
+        .cronos-header-search-action-trigger svg { width: 18px; height: 18px; color: #7e8da8; }
 
         .cronos-search-panel-card { width: 250px; }
         .cronos-search-input-field-container { width: 100%; position: relative; margin-bottom: 25px; }
@@ -474,6 +439,17 @@ class CronosHeader extends HTMLElement {
         .cronos-qr-dropdown-content.show { visibility: visible; opacity: 1; transform: translateY(0); }
         .cronos-qr-dropdown-content img { width: 100px; height: 100px; background-color: #fff; padding: 10px; border-radius: 8px; margin-bottom: 15px; }
         .cronos-qr-dropdown-content p { color: var(--cronos-color-text-light); font-size: 14px; font-weight: 400; text-align: center; margin: 0; line-height: 1.4; }
+
+        /* Desktop Language Trigger Style Button */
+        .cronos-desktop-lang-button-trigger {
+            position: relative; margin-left: 10px; width: 40px; height: 40px;
+            border-radius: 50%; background-color: transparent; display: flex;
+            align-items: center; justify-content: center; cursor: pointer;
+            transition: background-color 0.2s; color: var(--cronos-color-text-light);
+            border: 1px solid rgba(255,255,255,0.1);
+        }
+        .cronos-desktop-lang-button-trigger:hover { background-color: #2b294a; }
+        .cronos-desktop-lang-button-trigger svg { width: 20px; height: 20px; }
 
         .cronos-profile-dropdown {
             position: absolute; top: calc(100% + 13px); right: 140px; width: 320px;
@@ -584,9 +560,71 @@ class CronosHeader extends HTMLElement {
         .cronos-mobile-overlay-body .cronos-search-fallback-quicklinks { margin-top: 25px; }
         .cronos-mobile-overlay-body .cronos-search-fallback-quicklinks h3 { font-size: 14px; margin: 0 0 16px; color: var(--cronos-color-text-muted); text-transform: uppercase; letter-spacing: 0.05em; }
 
+        /* Global Premium Overhauled Custom Language Picker Modal Style */
+        .cronos-lang-modal-container {
+            position: fixed; top: 0; left: 0; width: 100%; height: 100vh;
+            background-color: rgba(4, 7, 16, 0.85); backdrop-filter: blur(8px);
+            z-index: 3000; display: none; align-items: center; justify-content: center;
+            opacity: 0; transition: opacity 0.25s ease;
+        }
+        .cronos-lang-modal-container.show { display: flex; opacity: 1; }
+        .cronos-lang-modal-window {
+            background-color: #0d1424; width: 100%; max-width: 440px;
+            border-radius: 20px; border: 1px solid rgba(255, 255, 255, 0.08);
+            box-shadow: 0 20px 40px rgba(0,0,0,0.5); display: flex; flex-direction: column;
+            max-height: 85vh; overflow: hidden; position: relative;
+        }
+        .cronos-lang-modal-header {
+            padding: 22px 24px; border-bottom: 1px solid rgba(255, 255, 255, 0.06);
+            display: flex; align-items: center; justify-content: space-between;
+        }
+        .cronos-lang-modal-header h3 { margin: 0; color: #fff; font-size: 1.2rem; font-weight: 500; }
+        .cronos-lang-modal-close-btn {
+            background: none; border: none; color: var(--cronos-color-text-muted);
+            cursor: pointer; display: flex; align-items: center; justify-content: center;
+            padding: 6px; border-radius: 50%; transition: background-color 0.2s, color 0.2s;
+        }
+        .cronos-lang-modal-close-btn:hover { background-color: rgba(255, 255, 255, 0.08); color: #fff; }
+        
+        /* Minimal Modern Smooth Customized Scrollbar Area Structure Layout */
+        .cronos-lang-modal-body {
+            padding: 16px 24px 24px; overflow-y: auto; flex-grow: 1;
+        }
+        .cronos-lang-modal-body::-webkit-scrollbar {
+            width: 5px;
+        }
+        .cronos-lang-modal-body::-webkit-scrollbar-track {
+            background: transparent;
+        }
+        .cronos-lang-modal-body::-webkit-scrollbar-thumb {
+            background: rgba(255, 255, 255, 0.15);
+            border-radius: 10px;
+        }
+        .cronos-lang-modal-body::-webkit-scrollbar-thumb:hover {
+            background: var(--cronos-color-accent);
+        }
+
+        .cronos-lang-selection-row {
+            display: flex; align-items: center; justify-content: space-between;
+            width: 100%; padding: 14px 16px; margin: 6px 0; background-color: rgba(255,255,255,0.02);
+            border: 1px solid rgba(255,255,255,0.04); border-radius: 12px; text-decoration: none;
+            color: #fff; font-size: 1.05rem; font-weight: 500; cursor: pointer; transition: all 0.2s ease;
+        }
+        .cronos-lang-selection-row:hover {
+            background-color: rgba(0, 145, 255, 0.08); border-color: rgba(0, 145, 255, 0.3);
+            transform: translateX(2px);
+        }
+        .cronos-lang-selection-row.active {
+            background-color: var(--cronos-color-accent); border-color: var(--cronos-color-accent);
+            color: #fff;
+        }
+        .cronos-lang-selection-row .cronos-tick-mark { display: none; width: 18px; height: 18px; }
+        .cronos-lang-selection-row.active .cronos-tick-mark { display: block; }
+
         @media (min-width: 1025px) {
             .cronos-header-back-btn { display: none !important; }
             .cronos-mobile-header-active-title { display: none !important; }
+            .cronos-mobile-lang-drawer-item { display: none !important; }
         }
 
         @media (max-width: 1024px) {
@@ -618,6 +656,7 @@ class CronosHeader extends HTMLElement {
             .cronos-header-action-btn, .cronos-header-secondary-btn { width: 100%; margin: 10px 0 0 0; padding: 15px 20px; text-align: center; font-size: 19px; }
             .cronos-qr-dropdown-trigger, .cronos-qr-dropdown-content { display: none; }
             .cronos-header-search-action-trigger { display: none !important; }
+            .cronos-desktop-lang-button-trigger { display: none !important; }
             
             .cronos-profile-dropdown {
                 position: static; width: 100%; margin-top: 15px; box-shadow: none;
@@ -677,7 +716,7 @@ class CronosHeader extends HTMLElement {
 
                     <nav class="cronos-custom-main-nav">
                         <button type="button" class="cronos-mobile-search-menu-item" id="cronos-mobileMenuSearchTrigger" aria-label="Open search">
-                            <span class="cronos-nav-label-text">Search</span>
+                            <span class="cronos-nav-label-text" data-i18n="search-placeholder">Search</span>
                             <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
                                 <circle cx="11" cy="11" r="8"></circle>
                                 <line x1="21" y1="21" x2="16.65" y2="16.65"></line>
@@ -701,11 +740,11 @@ class CronosHeader extends HTMLElement {
                                         <line x1="6" y1="6" x2="18" y2="18"></line>
                                     </svg>
                                 </button>
-                                <h4 class="cronos-profile-title">Croloft Profile</h4>
-                                <p class="cronos-profile-desc">Your profile helps improve your interactions with select Cronos experiences.</p>
+                                <h4 class="cronos-profile-title" data-i18n="profile-title">${this._getMsg('profile-title', 'Croloft Profile')}</h4>
+                                <p class="cronos-profile-desc" data-i18n="profile-desc">${this._getMsg('profile-desc', 'Your profile helps improve your interactions with select Cronos experiences.')}</p>
                                 <div class="cronos-profile-actions">
-                                    <a href="login.html" class="cronos-profile-btn-login">Log in</a>
-                                    <a href="register.html" class="cronos-profile-btn-create">Create account</a>
+                                    <a href="login.html" class="cronos-profile-btn-login" data-i18n="btn-login">${this._getMsg('btn-login', 'Log in')}</a>
+                                    <a href="register.html" class="cronos-profile-btn-create" data-i18n="profile-create">${this._getMsg('profile-create', 'Create account')}</a>
                                 </div>
                             </div>
 
@@ -716,6 +755,11 @@ class CronosHeader extends HTMLElement {
                                     <p>${qr.label}</p>
                                 </div>
                             </div>
+
+                            <div class="cronos-desktop-lang-button-trigger" id="cronos-desktopLangTrigger" aria-label="Open language mapping module options">
+                                <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="10"></circle><line x1="2" y1="12" x2="22" y2="12"></line><path d="M12 2a15.3 15.3 0 0 1 4 10 15.3 15.3 0 0 1-4 10 15.3 15.3 0 0 1-4-10 15.3 15.3 0 0 1 4-10z"></path></svg>
+                            </div>
+
                         </div>
                     </nav>
 
@@ -732,8 +776,48 @@ class CronosHeader extends HTMLElement {
             </div>
 
             ${this._buildMobileFullscreenSearchOverlay()}
+
+            <div class="cronos-lang-modal-container" id="cronos-langModal">
+                <div class="cronos-lang-modal-window">
+                    <div class="cronos-lang-modal-header">
+                        <h3 data-i18n="lang-select-title">${this._getMsg('lang-select-title', 'Select Language')}</h3>
+                        <button class="cronos-lang-modal-close-btn" id="cronos-langModalClose" aria-label="Close language options selector">
+                            <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><line x1="18" y1="6" x2="6" y2="18"></line><line x1="6" y1="6" x2="18" y2="18"></line></svg>
+                        </button>
+                    </div>
+                    <div class="cronos-lang-modal-body">
+                        ${this._buildLangRowsHtml()}
+                    </div>
+                </div>
+            </div>
+
         </div>
         `;
+    }
+
+    _buildLangRowsHtml() {
+        const langs = [
+            { code: 'en', label: 'English' },
+            { code: 'zu', label: 'isiZulu' },
+            { code: 'xh', label: 'isiXhosa' },
+            { code: 'st', label: 'Sesotho' },
+            { code: 'tn', label: 'Setswana' },
+            { code: 'nso', label: 'Sepedi' },
+            { code: 'af', label: 'Afrikaans' }
+        ];
+        const activeLang = localStorage.getItem('cronos_lang') || 'en';
+
+        return langs.map(l => {
+            const isActive = l.code === activeLang ? 'active' : '';
+            return `
+                <div class="cronos-lang-selection-row ${isActive}" data-lang-code="${l.code}">
+                    <span data-i18n="lang-${l.code}">${this._getMsg('lang-' + l.code, l.label)}</span>
+                    <span class="cronos-tick-mark">
+                        <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="#0091ff" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"></polyline></svg>
+                    </span>
+                </div>
+            `;
+        }).join('');
     }
 
     initScripts() {
@@ -763,6 +847,13 @@ class CronosHeader extends HTMLElement {
         const mobileSearchField         = shadow.getElementById('cronos-mobileSearchField');
         const mobileSearchResults       = shadow.getElementById('cronos-mobileSearchResults');
         const mobileSearchQuicklinks    = shadow.getElementById('cronos-mobileSearchQuicklinks');
+
+        // Language Trigger Selectors
+        const desktopLangTrigger        = shadow.getElementById('cronos-desktopLangTrigger');
+        const mobileLangTrigger         = shadow.getElementById('cronos-mobileLangTrigger');
+        const langModal                 = shadow.getElementById('cronos-langModal');
+        const langModalClose            = shadow.getElementById('cronos-langModalClose');
+        const langRows                  = shadow.querySelectorAll('.cronos-lang-selection-row');
 
         let cronosCloseTimer   = null;
         let cronosQrCloseTimer = null;
@@ -911,7 +1002,8 @@ class CronosHeader extends HTMLElement {
             resultsElement.classList.remove('hidden');
 
             if(matches.length === 0) {
-                resultsElement.innerHTML = `<span class="cronos-search-prediction-empty-notice">No records found</span>`;
+                const emptyMsg = this._getMsg('search-no-records', 'No records found');
+                resultsElement.innerHTML = `<span class="cronos-search-prediction-empty-notice">${emptyMsg}</span>`;
                 return;
             }
 
@@ -929,16 +1021,14 @@ class CronosHeader extends HTMLElement {
 
         // Fullscreen Mobile Search Window Controls
         const openMobileSearchOverlay = () => {
-            // Close the standard mobile navigation menu drawer if it is open
             if (cronosHeaderWrapper.classList.contains('cronos-mobile-menu-open')) {
                 cronosHeaderWrapper.classList.remove('cronos-mobile-menu-open');
                 closeSubpanel();
             }
             
             mobileSearchOverlay.classList.add('open');
-            cronosBody.classList.add('cronos-mobile-menu-active'); // keeps backscroll locked
+            cronosBody.classList.add('cronos-mobile-menu-active');
             
-            // clear dynamic text entries and reset initial window visibility state
             mobileSearchField.value = '';
             mobileSearchResults.classList.add('hidden');
             mobileSearchResults.innerHTML = '';
@@ -965,6 +1055,42 @@ class CronosHeader extends HTMLElement {
         if (mobileSearchCloseBtn) {
             mobileSearchCloseBtn.addEventListener('click', closeMobileSearchOverlay);
         }
+
+        // Language Modal Visibility Controllers
+        const openLangModal = (e) => {
+            e.preventDefault();
+            e.stopPropagation();
+            setActiveMenu(null, null);
+            profileDropdown.classList.remove('show');
+            langModal.classList.add('show');
+        };
+
+        const closeLangModal = () => {
+            langModal.classList.remove('show');
+        };
+
+        if (desktopLangTrigger) desktopLangTrigger.addEventListener('click', openLangModal);
+        if (mobileLangTrigger) mobileLangTrigger.addEventListener('click', openLangModal);
+        if (langModalClose) langModalClose.addEventListener('click', closeLangModal);
+
+        langModal.addEventListener('click', (e) => {
+            if (e.target === langModal) closeLangModal();
+        });
+
+        langRows.forEach(row => {
+            row.addEventListener('click', () => {
+                const selectedLanguage = row.getAttribute('data-lang-code');
+                if (window.cronosTranslator && typeof window.cronosTranslator.setLanguage === 'function') {
+                    window.cronosTranslator.setLanguage(selectedLanguage);
+                }
+                closeLangModal();
+                if (cronosHeaderWrapper.classList.contains('cronos-mobile-menu-open')) {
+                    cronosHeaderWrapper.classList.remove('cronos-mobile-menu-open');
+                    cronosBody.classList.remove('cronos-mobile-menu-active');
+                    closeSubpanel();
+                }
+            });
+        });
 
         // Mobile Menu Navigation Controls
         const mobileDropdownItems = shadow.querySelectorAll('.cronos-custom-nav-item--has-megamenu');
@@ -1009,7 +1135,7 @@ class CronosHeader extends HTMLElement {
         });
 
         shadow.querySelectorAll('.cronos-custom-nav-list a, .cronos-mobile-overlay-body a').forEach(link => {
-            if (link.hasAttribute('data-cronos-megamenu-trigger')) return;
+            if (link.hasAttribute('data-cronos-megamenu-trigger') || link.id === 'cronos-mobileLangTrigger') return;
             link.addEventListener('click', () => {
                 if (window.innerWidth <= 1024) {
                     cronosHeaderWrapper.classList.remove('cronos-mobile-menu-open');

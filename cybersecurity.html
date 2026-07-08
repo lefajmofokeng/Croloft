@@ -120,6 +120,776 @@
 
 
 
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<div id="component-wrapper">
+  <it-info-cards></it-info-cards>
+</div>
+
+<script>
+  class ITInfoCards extends HTMLElement {
+    constructor() {
+      super();
+      
+      const shadow = this.attachShadow({ mode: 'open' });
+      const container = document.createElement('div');
+      container.innerHTML = `
+        <style>
+          :host {
+            --bg-color: #f5f5f7;
+            --card-bg: #ffffff;
+            --text-primary: #1d1d1f;
+            --text-secondary: #515154;
+            --link-color: #0066cc;
+            --font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
+            
+            display: block;
+            font-family: var(--font-family);
+            background-color: var(--bg-color);
+            padding: 80px 24px; 
+            box-sizing: border-box;
+            width: 100%;
+          }
+
+          *, *::before, *::after {
+            box-sizing: border-box;
+            margin: 0;
+            padding: 0;
+          }
+
+          .container {
+            max-width: 880px;
+            margin: 0 auto;
+            display: flex;
+            flex-direction: column;
+            gap: 10px;
+            padding: 9rem 0;
+          }
+
+          .section-header {
+            text-align: center;
+            margin-bottom: 24px;
+          }
+
+          .section-header h1 {
+            font-size: 40px;
+            font-weight: 700;
+            color: var(--text-primary);
+            letter-spacing: -0.02em;
+          }
+
+          .card {
+            background-color: var(--card-bg);
+            border-radius: 18px;
+            padding: 48px;
+            box-shadow: 0 1px 3px rgba(0, 0, 0, 0.02);
+          }
+
+          .card-full {
+            text-align: center;
+            width: 100%;
+          }
+          
+          .card-full-inner {
+            max-width: 780px;
+            margin: 0 auto;
+          }
+
+          .grid {
+            display: grid;
+            grid-template-columns: 1.62fr 1fr;
+            gap: 10px;
+          }
+
+          h2 {
+            font-size: 24px;
+            font-weight: 600;
+            color: var(--text-primary);
+            margin-bottom: 16px;
+            letter-spacing: -0.015em;
+          }
+
+          p {
+            font-size: 17px;
+            line-height: 1.5;
+            color: var(--text-primary);
+            margin-bottom: 16px;
+          }
+
+          p:last-of-type {
+            margin-bottom: 24px;
+          }
+
+          .grid .card p:last-of-type {
+            margin-bottom: 0;
+          }
+
+          .trigger-link {
+            color: var(--link-color);
+            text-decoration: none;
+            font-size: 17px;
+            display: inline-flex;
+            align-items: center;
+            cursor: pointer;
+            margin-top: 14px;
+          }
+
+          .trigger-link:hover {
+            text-decoration: underline;
+          }
+
+          .icon-container {
+            margin-bottom: 20px;
+            color: var(--text-primary);
+          }
+
+          .icon-container svg {
+            width: 38px;
+            height: 38px;
+          }
+
+          .plus-circle {
+            margin-left: 5px;
+            width: 16px;
+            height: 16px;
+            stroke-width: 2;
+          }
+
+          .arrow-link::after {
+            content: " >";
+            font-size: 11px;
+            display: inline-block;
+            margin-left: 3px;
+          }
+
+          /* Modal Styling Layout */
+          .modal-overlay {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background-color: rgba(0, 0, 0, 0.4);
+            backdrop-filter: blur(5px);
+            -webkit-backdrop-filter: blur(5px);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            z-index: 9999;
+            opacity: 0;
+            visibility: hidden;
+            transition: opacity 0.3s ease, visibility 0.3s ease;
+          }
+
+          .modal-overlay.active {
+            opacity: 1;
+            visibility: visible;
+          }
+
+          .modal-window {
+            background-color: #ffffff;
+            width: 100%;
+            max-width: 680px;
+            border-radius: 20px;
+            padding: 48px;
+            box-shadow: 0 10px 40px rgba(0, 0, 0, 0.15);
+            position: relative;
+            max-height: 90vh;
+            overflow-y: auto;
+            transform: translateY(20px);
+            transition: transform 0.3s ease;
+          }
+
+          .modal-overlay.active .modal-window {
+            transform: translateY(0);
+          }
+
+          .close-btn {
+            position: absolute;
+            top: 24px;
+            right: 24px;
+            background-color: #f5f5f7;
+            border: none;
+            width: 36px;
+            height: 36px;
+            border-radius: 50%;
+            cursor: pointer;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: #1d1d1f;
+          }
+
+          .modal-header h2 {
+            font-size: 32px;
+            font-weight: 700;
+            line-height: 1.15;
+            letter-spacing: -0.02em;
+            margin-bottom: 16px;
+          }
+
+          .modal-header p {
+            color: var(--text-secondary);
+            font-size: 15px;
+            line-height: 1.5;
+            margin-bottom: 36px;
+          }
+
+          /* Dynamic Content Areas */
+          .modal-content-view {
+            display: none;
+          }
+
+          .modal-content-view.active {
+            display: block;
+          }
+
+          /* Card 1 Icon Row Styles */
+          .modal-row {
+            display: flex;
+            gap: 24px;
+            margin-bottom: 32px;
+            align-items: flex-start;
+          }
+
+          .modal-row-icon {
+            color: var(--link-color);
+            flex-shrink: 0;
+            width: 36px;
+            height: 36px;
+          }
+
+          .modal-row-content h3 {
+            font-size: 16px;
+            font-weight: 600;
+            color: var(--text-primary);
+            margin-bottom: 6px;
+          }
+
+          /* Cards 2 & 3 Plain Text Structure (No List Icons) */
+          .plain-content-block {
+            margin-bottom: 24px;
+          }
+
+          .plain-content-block h3 {
+            font-size: 18px;
+            font-weight: 600;
+            margin-bottom: 10px;
+            color: var(--text-primary);
+          }
+
+          @media (max-width: 834px) {
+            :host { padding: 56px 16px; }
+            .section-header h1 { font-size: 32px; }
+            .grid { grid-template-columns: 1fr; }
+            .card { padding: 36px 24px; }
+            .modal-window { padding: 32px 24px; width: 92%; }
+            .modal-header h2 { font-size: 26px; }
+          }
+        </style>
+
+        <div class="container">
+          <div class="section-header">
+            <h1>Infrastructure & Security</h1>
+          </div>
+
+          <div class="card card-full">
+            <div class="card-full-inner">
+              <h2>Designing for High Availability</h2>
+              <p>At our core, we are always working to create the most resilient infrastructure for our users, which is why we architect systems that last. Designing for high availability is an organization-wide effort.</p>
+              <span class="trigger-link" data-target="content-high-availability">
+                Learn more about Personal Setup
+                <svg class="plus-circle" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="10"></circle><line x1="12" y1="8" x2="12" y2="16"></line><line x1="8" y1="12" x2="16" y2="12"></line></svg>
+              </span>
+            </div>
+          </div>
+
+          <div class="grid">
+            <div class="card">
+              <h2>Beware of unverified dependencies</h2>
+              <p>Some open-source software and third-party package repositories may not be vetted properly and could result in supply-chain security vulnerabilities.</p>
+              <span class="trigger-link arrow-link" data-target="content-dependencies">Verify libraries
+                <svg class="plus-circle" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="10"></circle><line x1="12" y1="8" x2="12" y2="16"></line><line x1="8" y1="12" x2="16" y2="12"></line></svg>  
+              </span>
+            </div>
+
+            <div class="card">
+              <div class="icon-container">
+                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.2" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="11" width="18" height="10" rx="2" /><path d="M12 2v9" /><path d="M8 5h8" /></svg>
+              </div>
+              <h2>Be aware of phishing tactics</h2>
+              <p>Be aware of advanced engineering scams involving credential harvesting and administrative spoofing.</p>
+              <span class="trigger-link arrow-link" data-target="content-phishing">Review protocols
+                <svg class="plus-circle" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="10"></circle><line x1="12" y1="8" x2="12" y2="16"></line><line x1="8" y1="12" x2="16" y2="12"></line></svg>
+              </span>
+            </div>
+          </div>
+        </div>
+
+        <div class="modal-overlay" id="info-modal">
+          <div class="modal-window">
+            <button class="close-btn" id="close-modal" aria-label="Close modal">
+              <svg width="14" height="14" viewBox="0 0 14 14" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M1 1l12 12M13 1L1 13"/></svg>
+            </button>
+            
+            <div class="modal-content-view" id="content-high-availability">
+              <div class="modal-header">
+                <h2>Set up your device with ease and learn how to make the most of it.</h2>
+                <p>After onboarding directly with our services, we'll invite you to access our free online Personal Setup sessions. Connect one-to-one with an expert on demand.</p>
+              </div>
+              <div class="modal-body">
+                <div class="modal-row">
+                  <svg class="modal-row-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><rect x="5" y="2" width="14" height="20" rx="2"></rect><line x1="12" y1="18" x2="12.01" y2="18"></line></svg>
+                  <div class="modal-row-content">
+                    <h3>Set up your device and seamlessly transfer your data.</h3>
+                    <p>Whether you're upgrading or making the switch to our system, we'll help you get configured and transfer files easily.</p>
+                  </div>
+                </div>
+                <div class="modal-row">
+                  <svg class="modal-row-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><circle cx="12" cy="12" r="10"></circle><path d="M2 12h20"></path></svg>
+                  <div class="modal-row-content">
+                    <h3>Discover what your new device can do.</h3>
+                    <p>Customize your settings and dive into our core systems and platform metrics tools with an advisor.</p>
+                  </div>
+                </div>
+              </div>
+            </div>
+
+            <div class="modal-content-view" id="content-dependencies">
+              <div class="modal-header">
+                <h2>Supply Chain Auditing Rules</h2>
+                <p>Establishing corporate parameters on how external open source applications are injected into secure operational codebeds.</p>
+              </div>
+              <div class="modal-body">
+                <div class="plain-content-block">
+                  <h3>Strict Manifest Lockfiles</h3>
+                  <p>All developer builds must generate immutable cryptographic lockfiles verified against our internal secure artifact registry mirror before merge authorization.</p>
+                </div>
+                <div class="plain-content-block">
+                  <h3>Continuous License Compliance</h3>
+                  <p>Automated software composition analysis (SCA) platforms audit third-party binaries dynamically for unapproved structural dependencies and outdated library flags.</p>
+                </div>
+              </div>
+            </div>
+
+            <div class="modal-content-view" id="content-phishing">
+              <div class="modal-header">
+                <h2>Threat Vector Incident Report</h2>
+                <p>How to identify advanced external administrative engineering attempts aiming to harvest server network secrets.</p>
+              </div>
+              <div class="modal-body">
+                <div class="plain-content-block">
+                  <h3>Lookalike Domain Interception</h3>
+                  <p>Always inspect internal single sign-on address parameters. Malicious threat profiles alter trivial syntax values to mimic legitimate dashboard networks.</p>
+                </div>
+                <div class="plain-content-block">
+                  <h3>Multi-Factor Token Isolation</h3>
+                  <p>System engineers will never query production session tokens over loose communication platforms. Report unsolicited administrative authentication pushes immediately.</p>
+                </div>
+              </div>
+            </div>
+
+          </div>
+        </div>
+      `;
+
+      shadow.appendChild(container);
+
+      const modal = shadow.getElementById('info-modal');
+      const closeBtn = shadow.getElementById('close-modal');
+      const links = shadow.querySelectorAll('.trigger-link');
+      const views = shadow.querySelectorAll('.modal-content-view');
+
+      const openModal = (targetId) => {
+        views.forEach(view => {
+          if(view.id === targetId) view.classList.add('active');
+          else view.classList.remove('active');
+        });
+        modal.classList.add('active');
+      };
+
+      const closeModal = () => modal.classList.remove('active');
+
+      links.forEach(link => {
+        link.addEventListener('click', (e) => {
+          const target = link.getAttribute('data-target');
+          openModal(target);
+        });
+      });
+
+      closeBtn.addEventListener('click', closeModal);
+      modal.addEventListener('click', (e) => { if (e.target === modal) closeModal(); });
+    }
+  }
+
+  if (!customElements.get('it-info-cards')) {
+    customElements.define('it-info-cards', ITInfoCards);
+  }
+</script>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Premium IT Feature Component</title>
+  <style>
+    /* Reset & Fonts for demo isolation */
+    @import url('https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600&display=swap');
+
+    /* Global outer spacing wrapper */
+    .cronos-showcase-wrapper {
+      box-sizing: border-box;
+      width: 100%;
+      padding: 20px;
+      background-color: #f9f9f9;
+      font-family: 'Inter', -apple-system, BlinkMacSystemFont, sans-serif;
+    }
+
+    /* 100% Width Main Panel with 15px border radius */
+    .cronos-feature-panel {
+      box-sizing: border-box;
+      position: relative;
+      width: 100%;
+      height: 610px;
+      border-radius: 15px;
+      overflow: hidden;
+      background-image: url('https://images.pexels.com/photos/17484970/pexels-photo-17484970.png');
+      background-size: cover;
+      background-position: center right;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+    }
+
+
+    /* Constrained Internal Content Wrapper (Exactly 1200px) */
+    .cronos-internal-content {
+      box-sizing: border-box;
+      position: relative;
+      z-index: 2;
+      width: 100%;
+      max-width: 1200px;
+      padding: 0 40px;
+      display: flex;
+      align-items: center;
+    }
+
+    /* Interactive Menu/Accordion Column */
+    .cronos-accordion-stack {
+      width: 100%;
+      max-width: 350px;
+      display: flex;
+      flex-direction: column;
+      gap: 12px;
+    }
+
+    /* Accordion Item Wrapper */
+    .cronos-accordion-item {
+      display: flex;
+      flex-direction: column;
+      background-color: transparent;
+      transition: all 0.4s cubic-bezier(0.25, 1, 0.5, 1);
+    }
+
+    /* Active Card State Layout matching the screenshot card structure */
+    .cronos-accordion-item.cronos-is-active {
+      background-color: #ffffff;
+      border-radius: 30px; /* Sharp professional 1px aesthetic */
+      padding: 24px;
+      box-shadow: 0 4px 30px rgba(0, 0, 0, 0.03);
+    }
+
+    /* Header Trigger button styling */
+    .cronos-accordion-trigger {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      width: fit-content;
+      background: #ffffff;
+      border: none;
+      outline: none;
+      padding: 10px 18px;
+      border-radius: 20px;
+      cursor: pointer;
+      font-size: 0.875rem;
+      font-weight: 500;
+      color: #111111;
+      gap: 10px;
+      transition: background-color 0.2s ease, color 0.2s ease;
+    }
+
+    /* Transform trigger natively into a header card when active */
+    .cronos-accordion-item.cronos-is-active .cronos-accordion-trigger {
+      padding: 0;
+      background: transparent;
+      font-size: 1.05rem;
+      font-weight: 600;
+      color: #000000;
+      cursor: default;
+      pointer-events: none;
+      margin-bottom: 12px;
+    }
+
+    /* Plus Icon Indicator */
+    .cronos-accordion-icon {
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      width: 16px;
+      height: 16px;
+      border: 1px solid #cccccc;
+      border-radius: 50%;
+      font-size: 0.75rem;
+      line-height: 1;
+      font-weight: 400;
+    }
+
+    .cronos-accordion-item.cronos-is-active .cronos-accordion-icon {
+      display: none;
+    }
+
+    /* Seamless CSS Grid Transition Drawer */
+    .cronos-accordion-body {
+      display: grid;
+      grid-template-rows: 0fr;
+      transition: grid-template-rows 0.4s cubic-bezier(0.25, 1, 0.5, 1);
+    }
+
+    .cronos-accordion-item.cronos-is-active .cronos-accordion-body {
+      grid-template-rows: 1fr;
+    }
+
+    .cronos-accordion-inner {
+      overflow: hidden;
+    }
+
+    /* Content styling inside the card */
+    .cronos-feature-description {
+      font-size: 0.9rem;
+      line-height: 1.55;
+      color: #444444;
+      margin: 0 0 16px 0;
+    }
+
+    .cronos-feature-subtext {
+      font-size: 0.75rem;
+      line-height: 1.4;
+      color: #888888;
+      margin: 0;
+    }
+
+    /* Mobile Adaptations */
+    @media (max-width: 768px) {
+      .cronos-feature-panel {
+        height: auto;
+        min-height: 500px;
+        padding: 40px 0;
+      }
+      .cronos-feature-panel::before {
+        background: linear-gradient(180deg, rgba(255,255,255,0.96) 0%, rgba(255,255,255,0.85) 70%, rgba(255,255,255,0.4) 100%);
+      }
+      .cronos-internal-content {
+        padding: 0 24px;
+      }
+      .cronos-accordion-stack {
+        max-width: 100%;
+      }
+    }
+  </style>
+</head>
+<body>
+
+  <div class="cronos-showcase-wrapper">
+    <div class="cronos-feature-panel">
+      
+      <div class="cronos-internal-content">
+        <div class="cronos-accordion-stack">
+          
+          <div class="cronos-accordion-item cronos-is-active">
+            <button class="cronos-accordion-trigger" onclick="toggleCronosAccordion(this)">
+              <span class="cronos-trigger-text">Managed Infrastructure</span>
+              <span class="cronos-accordion-icon">+</span>
+            </button>
+            <div class="cronos-accordion-body">
+              <div class="cronos-accordion-inner">
+                <p class="cronos-feature-description">
+                  Leave complex provisioning at home. Our automated infrastructure offers high-performance bare metal and hyper-scaled container clusters to power enterprise applications smoothly and efficiently.
+                </p>
+                <p class="cronos-feature-subtext">
+                  Provision custom environments instantly using modern declarative deployment manifests.
+                </p>
+              </div>
+            </div>
+          </div>
+
+          <div class="cronos-accordion-item">
+            <button class="cronos-accordion-trigger" onclick="toggleCronosAccordion(this)">
+              <span class="cronos-trigger-text">Custom Application Dev</span>
+              <span class="cronos-accordion-icon">+</span>
+            </button>
+            <div class="cronos-accordion-body">
+              <div class="cronos-accordion-inner">
+                <p class="cronos-feature-description">
+                  Engineered from scratch. We build high-performance, responsive systems with plain, clean code—isolated dynamically to avoid structural overlaps with existing corporate architectures.
+                </p>
+                <p class="cronos-feature-subtext">
+                  Optimized for sub-millisecond execution patterns and reliable state transitions.
+                </p>
+              </div>
+            </div>
+          </div>
+
+          <div class="cronos-accordion-item">
+            <button class="cronos-accordion-trigger" onclick="toggleCronosAccordion(this)">
+              <span class="cronos-trigger-text">Cloud Security Engine</span>
+              <span class="cronos-accordion-icon">+</span>
+            </button>
+            <div class="cronos-accordion-body">
+              <div class="cronos-accordion-inner">
+                <p class="cronos-feature-description">
+                  Vetted end-to-end ecosystems. Zero-trust networks isolate core business intelligence layers from public exploitation, handling threat models and active vulnerability monitoring metrics dynamically.
+                </p>
+                <p class="cronos-feature-subtext">
+                  Fully compliant with advanced zero-trust enterprise infrastructure parameters.
+                </p>
+              </div>
+            </div>
+          </div>
+
+        </div>
+      </div>
+
+    </div>
+  </div>
+
+  <script>
+    function toggleCronosAccordion(element) {
+      const currentItem = element.closest('.cronos-accordion-item');
+      const allItems = currentItem.parentElement.querySelectorAll('.cronos-accordion-item');
+      
+      // Close open drawers cleanly
+      allItems.forEach(item => {
+        if (item !== currentItem) {
+          item.classList.remove('cronos-is-active');
+        }
+      });
+      
+      // Toggle targeted selection
+      currentItem.classList.toggle('cronos-is-active');
+    }
+  </script>
+
+</body>
+</html>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 <!DOCTYPE html>
 <html lang="en">
 <head>

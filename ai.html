@@ -1,0 +1,922 @@
+<!DOCTYPE html>
+<html lang="en" dir="ltr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, minimum-scale=1.0, maximum-scale=5.0, viewport-fit=cover, shrink-to-fit=no">
+    <meta http-equiv="x-ua-compatible" content="ie=edge"/>
+    
+    <title>Cronos</title>
+
+    <!-- WEB TAB ICON -->
+    <link rel="icon" type="image/png" href="thumbnails/top-1.png">
+
+    <style>
+      @font-face { font-family:'Circular Std'; src:url('fonts/CircularStd-Book.woff2') format('woff2'),url('fonts/CircularStd-Book.woff') format('woff'); font-weight:400; font-style:normal; font-display:swap; }
+  @font-face { font-family:'Circular Std'; src:url('fonts/CircularStd-BookItalic.woff2') format('woff2'),url('fonts/CircularStd-BookItalic.woff') format('woff'); font-weight:400; font-style:italic; font-display:swap; }
+  @font-face { font-family:'Circular Std'; src:url('fonts/CircularStd-Medium.woff2') format('woff2'),url('fonts/CircularStd-Medium.woff') format('woff'); font-weight:500; font-style:normal; font-display:swap; }
+  @font-face { font-family:'Circular Std'; src:url('fonts/CircularStd-Bold.woff2') format('woff2'),url('fonts/CircularStd-Bold.woff') format('woff'); font-weight:600; font-style:normal; font-display:swap; }
+  @font-face { font-family:'Circular Std'; src:url('fonts/CircularStd-Bold.woff2') format('woff2'),url('fonts/CircularStd-Bold.woff') format('woff'); font-weight:700; font-style:normal; font-display:swap; }
+  @font-face { font-family:'Circular Std'; src:url('fonts/CircularStd-Black.woff2') format('woff2'),url('fonts/CircularStd-Black.woff') format('woff'); font-weight:800; font-style:normal; font-display:swap; }
+  @font-face { font-family:'Circular Std'; src:url('fonts/CircularStd-Black.woff2') format('woff2'),url('fonts/CircularStd-Black.woff') format('woff'); font-weight:900; font-style:normal; font-display:swap; }
+    </style>
+</head>
+
+
+
+
+
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>My Website</title>
+    
+    <script src="header.js" defer></script>
+    <script src="footer.js" defer></script> 
+</head>
+<body>
+
+    <cronos-header></cronos-header>
+    
+
+</body>
+</html>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Cyberpunk Hero</title>
+    <style>
+        @import url('https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700&display=swap');
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+        
+        body {
+            overflow-x: hidden;
+            background-color: #0a0a12;
+            color: #00fffc;
+            font-family: 'Circular Std', sans-serif;
+        }
+        
+        .cyber-hero {
+            position: relative;
+            width: 100%;
+            height: 100vh;
+            min-height: 600px;
+            background: 
+                radial-gradient(circle at 20% 30%, rgba(0, 80, 120, 0.15) 0%, transparent 30%),
+                radial-gradient(circle at 80% 70%, rgba(120, 0, 80, 0.15) 0%, transparent 30%),
+                linear-gradient(to bottom, #0a0a12 0%, #121225 100%);
+            overflow: hidden;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            padding: 0 20px;
+            perspective: 1000px;
+        }
+        
+        .digital-rain {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            z-index: 1;
+            opacity: 0.3;
+            background: repeating-linear-gradient(
+                0deg,
+                rgba(0, 255, 252, 0) 0px,
+                rgba(0, 255, 252, 0) 3px,
+                rgba(0, 255, 252, 0.03) 4px,
+                rgba(0, 255, 252, 0.03) 5px
+            );
+            animation: rainAnimation 0.8s linear infinite;
+        }
+        
+        .hero-card {
+            position: relative;
+            z-index: 3;
+            max-width: 800px;
+            padding: 40px;
+            background: rgba(10, 15, 30, 0.5);
+            backdrop-filter: blur(15px);
+            -webkit-backdrop-filter: blur(15px);
+            border-radius: 15px;
+            border: 1px solid rgba(0, 255, 252, 0.2);
+            box-shadow: 
+                0 0 30px rgba(0, 255, 252, 0.1),
+                inset 0 0 20px rgba(0, 255, 252, 0.1);
+            transform-style: preserve-3d;
+            transform: perspective(1000px) rotateX(0deg) rotateY(0deg);
+            transition: transform 0.5s ease;
+            overflow: hidden;
+        }
+        
+        .hero-card::before {
+            content: '';
+            position: absolute;
+            top: -50%;
+            left: -50%;
+            width: 200%;
+            height: 200%;
+            background: linear-gradient(
+                to bottom right,
+                rgba(0, 255, 252, 0) 45%,
+                rgba(0, 255, 252, 0.1) 50%,
+                rgba(0, 255, 252, 0) 55%
+            );
+            transform: rotate(30deg);
+            animation: holographicEffect 6s linear infinite;
+            z-index: -1;
+        }
+        
+        .hero-card::after {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            border-radius: 15px;
+            border: 1px solid transparent;
+            background: linear-gradient(45deg, #00fffc, #ff00f7) border-box;
+            -webkit-mask: 
+                linear-gradient(#fff 0 0) padding-box, 
+                linear-gradient(#fff 0 0);
+            -webkit-mask-composite: destination-out;
+            mask-composite: exclude;
+            pointer-events: none;
+        }
+        
+        .glitch-headline {
+            font-family: 'Circular Std', sans-serif;
+            font-weight: 700;
+            font-size: clamp(2rem, 6vw, 4rem);
+            margin-bottom: 20px;
+            color: #fff;
+            text-transform: uppercase;
+            position: relative;
+            text-shadow: 
+                0 0 10px #00fffc,
+                0 0 20px rgba(0, 255, 252, 0.5);
+            animation: glitchEffect 5s infinite alternate;
+        }
+        
+        .glitch-headline span {
+            display: inline-block;
+            position: relative;
+        }
+        
+        .glitch-headline span::before,
+        .glitch-headline span::after {
+            content: attr(data-text);
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: rgba(10, 15, 30, 0.8);
+        }
+        
+        .glitch-headline span::before {
+            color: #ff00f7;
+            z-index: -1;
+            animation: glitch-anim-1 2s infinite linear alternate-reverse;
+        }
+        
+        .glitch-headline span::after {
+            color: #00fffc;
+            z-index: -2;
+            animation: glitch-anim-2 2s infinite linear alternate-reverse;
+        }
+        
+        .cyber-subtitle {
+            font-size: clamp(1rem, 2vw, 1.3rem);
+            margin-bottom: 30px;
+            color: #a0f0ff;
+            line-height: 1.6;
+            opacity: 0;
+            font-weight: 500;
+            transform: translateY(20px);
+            animation: fadeInUp 0.1s ease-out 0.1s forwards;
+        }
+        
+        .cyber-button {
+            display: inline-block;
+            padding: 15px 40px;
+            background: linear-gradient(45deg, #00fffc, #0084ff);
+            border: none;
+            border-radius: 50px;
+            color: #0a0a12;
+            font-family: 'Orbitron', sans-serif;
+            font-size: 1rem;
+            font-weight: 700;
+            text-decoration: none;
+            text-transform: uppercase;
+            letter-spacing: 2px;
+            box-shadow: 
+                0 0 15px rgba(0, 255, 252, 0.5),
+                0 0 30px rgba(0, 132, 255, 0.3);
+            position: relative;
+            overflow: hidden;
+            z-index: 1;
+            opacity: 0;
+            transform: translateY(20px);
+            animation: fadeInUp 0.3s ease-out 0.3s forwards;
+            transition: all 0.001s ease;
+        }
+        
+        .cyber-button:hover {
+            transform: translateY(-5px);
+            box-shadow: 
+                0 0 25px rgba(0, 255, 252, 0.8),
+                0 0 40px rgba(0, 132, 255, 0.5);
+            animation: pulse 0.1s infinite alternate;
+        }
+        
+        .cyber-button::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: linear-gradient(45deg, #ff00f7, #00fffc);
+            z-index: -1;
+            opacity: 0;
+            transition: opacity 0.01s ease;
+        }
+        
+        .cyber-button:hover::before {
+            opacity: 1;
+        }
+        
+        .grid-overlay {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background-image: 
+                linear-gradient(rgba(0, 255, 252, 0.05) 1px, transparent 1px),
+                linear-gradient(90deg, rgba(0, 255, 252, 0.05) 1px, transparent 1px);
+            background-size: 40px 40px;
+            z-index: 2;
+            pointer-events: none;
+        }
+        
+        .scanline {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 10px;
+            background: linear-gradient(
+                to bottom,
+                rgba(0, 255, 252, 0) 0%,
+                rgba(0, 255, 252, 0.2) 50%,
+                rgba(0, 255, 252, 0) 100%
+            );
+            animation: scanline 4s linear infinite;
+            z-index: 4;
+        }
+        
+        @keyframes rainAnimation {
+            from { background-position: 0 0; }
+            to { background-position: 0 20px; }
+        }
+        
+        @keyframes holographicEffect {
+            from { transform: rotate(30deg) translateY(-100%); }
+            to { transform: rotate(30deg) translateY(100%); }
+        }
+        
+        @keyframes glitchEffect {
+            0%, 100% { transform: translate(0); }
+            20% { transform: translate(-3px, 3px); }
+            40% { transform: translate(-3px, -3px); }
+            60% { transform: translate(3px, 3px); }
+            80% { transform: translate(3px, -3px); }
+        }
+        
+        @keyframes glitch-anim-1 {
+            0% { transform: translate(0); opacity: 1; }
+            20% { transform: translate(-5px, -5px); opacity: 0.8; }
+            40% { transform: translate(-5px, 5px); opacity: 0.6; }
+            60% { transform: translate(5px, -5px); opacity: 0.4; }
+            80% { transform: translate(5px, 5px); opacity: 0.2; }
+            100% { transform: translate(0); opacity: 0; }
+        }
+        
+        @keyframes glitch-anim-2 {
+            0% { transform: translate(0); opacity: 1; }
+            20% { transform: translate(5px, 5px); opacity: 0.8; }
+            40% { transform: translate(5px, -5px); opacity: 0.6; }
+            60% { transform: translate(-5px, 5px); opacity: 0.4; }
+            80% { transform: translate(-5px, -5px); opacity: 0.2; }
+            100% { transform: translate(0); opacity: 0; }
+        }
+        
+        @keyframes fadeInUp {
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+        
+        @keyframes pulse {
+            from { box-shadow: 0 0 25px rgba(0, 255, 252, 0.8), 0 0 40px rgba(0, 132, 255, 0.5); }
+            to { box-shadow: 0 0 35px rgba(0, 255, 252, 1), 0 0 50px rgba(0, 132, 255, 0.8); }
+        }
+        
+        @keyframes scanline {
+            from { top: -10px; }
+            to { top: 100%; }
+        }
+        
+        /* 3D card tilt effect */
+        .hero-card:hover {
+            transform: perspective(1000px) rotateX(5deg) rotateY(5deg);
+        }
+        
+        @media (max-width: 768px) {
+            .hero-card {
+                padding: 30px 20px;
+            }
+            
+            .glitch-headline {
+                white-space: normal;
+            }
+        }
+    </style>
+</head>
+<body>
+    <section class="cyber-hero">
+        <div class="digital-rain"></div>
+        <div class="grid-overlay"></div>
+        <div class="scanline"></div>
+        
+        <div class="hero-card">
+            <h1 class="glitch-headline">
+                <span data-text="SYSTEMS">SYSTEMS</span> <span data-text="ONLINE">ONLINE</span>
+            </h1>
+            <p class="cyber-subtitle">
+                Access granted to next-generation digital experiences.<br>
+                Security protocols engaged. All systems operational.
+            </p>
+            <a href="#" class="cyber-button">Engage Systems</a>
+        </div>
+    </section>
+    
+    <script>
+        // 3D tilt effect for the card
+        document.addEventListener('DOMContentLoaded', function() {
+            const card = document.querySelector('.hero-card');
+            
+            if (card) {
+                card.addEventListener('mousemove', (e) => {
+                    const xAxis = (window.innerWidth / 2 - e.pageX) / 25;
+                    const yAxis = (window.innerHeight / 2 - e.pageY) / 25;
+                    card.style.transform = `perspective(1000px) rotateY(${xAxis}deg) rotateX(${yAxis}deg)`;
+                });
+                
+                card.addEventListener('mouseenter', () => {
+                    card.style.transition = 'transform 0.1s ease';
+                });
+                
+                card.addEventListener('mouseleave', () => {
+                    card.style.transition = 'transform 0.5s ease';
+                    card.style.transform = 'perspective(1000px) rotateX(0deg) rotateY(0deg)';
+                });
+            }
+            
+            // Random glitch effect
+            setInterval(() => {
+                const glitch = document.querySelector('.glitch-headline');
+                if (glitch) {
+                    glitch.style.animation = 'none';
+                    void glitch.offsetWidth; // Trigger reflow
+                    glitch.style.animation = 'glitchEffect 5s infinite alternate';
+                }
+            }, 8000);
+        });
+    </script>
+</body>
+</html>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<!-- Unique wrapper to ensure zero style conflicts when pasting -->
+<div class="rf-inc-wrapper">
+  <style>
+
+    .rf-inc-wrapper {
+      font-family: 'Circular Std', -apple-system, BlinkMacSystemFont, sans-serif;
+      background-color: #ffffff;
+      padding: 80px 10%;
+      color: #1a1a1a;
+      display: flex;
+      justify-content: center;
+      align-items: flex-start;
+      box-sizing: border-box;
+    }
+
+    .rf-inc-container {
+      max-width: 1200px;
+      width: 100%;
+      display: grid;
+      grid-template-columns: 1.2fr 1fr;
+      column-gap: 80px;
+      row-gap: 40px;
+    }
+
+    /* Left Column Styles */
+    .rf-inc-left {
+      display: flex;
+      flex-direction: column;
+    }
+
+    .rf-inc-eyebrow {
+      font-size: 16px;
+      font-weight: 400;
+      color: #5f6368;
+      margin-bottom: 12px;
+      letter-spacing: -0.01em;
+    }
+
+    .rf-inc-heading {
+      font-size: 42px;
+      font-weight: 400;
+      color: #000000;
+      margin: 0 0 48px 0;
+      letter-spacing: -0.02em;
+      line-height: 1.15;
+    }
+
+    .rf-inc-body-text {
+      font-size: 16px;
+      line-height: 1.6;
+      color: #202124;
+      margin: 0 0 24px 0;
+      font-weight: 400;
+      max-width: 540px;
+    }
+
+    .rf-inc-body-text:last-child {
+      margin-bottom: 0;
+    }
+
+    /* Right Column (Stats) Styles */
+    .rf-inc-right {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      column-gap: 40px;
+      padding-top: 64px; /* Aligns visually with the body text start */
+    }
+
+    .rf-inc-stat-box {
+      display: flex;
+      flex-direction: column;
+    }
+
+    .rf-inc-stat-number {
+      font-size: 64px;
+      font-weight: 400;
+      line-height: 1;
+      margin-bottom: 16px;
+      letter-spacing: -0.03em;
+      
+      background: linear-gradient(180deg, #479aff 40%, rgb(3, 10, 35) 100%);
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent;
+      background-clip: text;
+    }
+
+    .rf-inc-stat-label {
+      font-size: 15px;
+      line-height: 1.5;
+      color: #202124;
+      max-width: 160px;
+    }
+
+    /* Responsive Adjustments */
+    @media (max-width: 960px) {
+      .rf-inc-container {
+        grid-template-columns: 1fr;
+        row-gap: 48px;
+      }
+      .rf-inc-wrapper {
+        padding: 60px 5%;
+      }
+      .rf-inc-right {
+        padding-top: 0;
+      }
+      .rf-inc-heading {
+        font-size: 34px;
+        margin-bottom: 32px;
+      }
+    }
+  </style>
+
+  <div class="rf-inc-container">
+    <!-- Left content side -->
+    <div class="rf-inc-left">
+      <span class="rf-inc-eyebrow">Economic Access and Opportunity</span>
+      <h2 class="rf-inc-heading">Financial inclusion is a human right</h2>
+      
+      <p class="rf-inc-body-text">
+        Adoption of crypto and blockchain can help dramatically increase global economic participation, opportunity, and resilience for billions of under-banked and unbanked people.
+      </p>
+      <p class="rf-inc-body-text">
+        From enabling low-cost and always-on remittances in emerging markets to building Central Bank Digital Currency solutions for governments working to increase financial inclusion, our global crypto solutions are underpinned with the democratizing power of blockchain technology. Together with our partners and customers, we are working to transform a global financial system to meet the ever-evolving, everyday needs of everyone, everywhere.
+      </p>
+    </div>
+
+    <!-- Right metrics side -->
+    <div class="rf-inc-right">
+      <div class="rf-inc-stat-box">
+        <span class="rf-inc-stat-number">$170M</span>
+        <span class="rf-inc-stat-label">Donations since 2018</span>
+      </div>
+      
+      <div class="rf-inc-stat-box">
+        <span class="rf-inc-stat-number">80+</span>
+        <span class="rf-inc-stat-label">Countries where Ripple NGO partners operate</span>
+      </div>
+    </div>
+  </div>
+</div>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<div class="rf-carousel-wrapper">
+  <style>
+   
+    .rf-carousel-wrapper {
+      font-family: 'Circular Std', -apple-system, BlinkMacSystemFont, sans-serif;
+      background-color: #ffffff;
+      padding: 60px 0;
+      width: 100%;
+      box-sizing: border-box;
+      position: relative;
+    }
+
+    /* Container holding the track and the fading gradients */
+    .rf-carousel-stage {
+      position: relative;
+      width: 100%;
+      overflow: hidden;
+    }
+
+    /* Left and Right disappearing edge shades exactly like the image */
+    .rf-carousel-stage::before,
+    .rf-carousel-stage::after {
+      content: '';
+      position: absolute;
+      top: 0;
+      bottom: 0;
+      width: 12%;
+      z-index: 5;
+      pointer-events: none;
+    }
+    .rf-carousel-stage::before {
+      left: 0;
+      background: linear-gradient(to right, rgba(255, 255, 255, 1) 0%, rgba(255, 255, 255, 0) 100%);
+    }
+    .rf-carousel-stage::after {
+      right: 0;
+      background: linear-gradient(to left, rgba(255, 255, 255, 1) 0%, rgba(255, 255, 255, 0) 100%);
+    }
+
+    /* Scrollable flex track */
+    .rf-carousel-track {
+      display: flex;
+      gap: 20px;
+      padding: 20px 10%; /* Matches track padding with edge gradients */
+      overflow-x: auto;
+      scroll-behavior: smooth;
+      scrollbar-width: none; /* Hide standard scrollbar for Firefox */
+    }
+
+    .rf-carousel-track::-webkit-scrollbar {
+      display: none; /* Hide standard scrollbar for Chrome/Safari */
+    }
+
+    /* Card Layouts */
+    .rf-carousel-card {
+      flex: 0 0 320px; /* Precise uniform card thickness */
+      position: relative;
+      border-radius: 12px;
+      height: 480px;
+      overflow: hidden;
+      display: flex;
+      flex-direction: column;
+      justify-content: space-between;
+      padding: 24px;
+      box-sizing: border-box;
+      background-size: cover;
+      background-position: center;
+      box-shadow: 0 4px 20px rgba(0, 0, 0, 0.08);
+    }
+
+    /* Ambient Card Dark Overlay Gradient */
+    .rf-carousel-card::before {
+      content: '';
+      position: absolute;
+      top: 0; left: 0; right: 0; bottom: 0;
+      background: linear-gradient(180deg, rgba(0, 0, 0, 0.2) 0%, rgba(0, 0, 0, 0) 40%, rgba(0, 0, 0, 0.95) 100%);
+      z-index: 1;
+    }
+
+    .rf-carousel-header {
+      position: relative;
+      z-index: 2;
+      display: flex;
+      align-items: center;
+      gap: 12px;
+    }
+
+    .rf-carousel-tag {
+      font-size: 11px;
+      font-weight: 600;
+      text-transform: uppercase;
+      letter-spacing: 0.05em;
+      color: rgba(255, 255, 255, 0.8);
+      white-space: nowrap;
+    }
+
+    .rf-carousel-line {
+      flex-grow: 1;
+      border: none;
+      border-top: 1px solid rgba(255, 255, 255, 0.3);
+      margin: 0;
+    }
+
+    .rf-carousel-content {
+      position: relative;
+      z-index: 2;
+      color: #ffffff;
+    }
+
+    .rf-carousel-quote {
+      font-size: 15px;
+      line-height: 1.5;
+      margin: 0 0 20px 0;
+      color: rgba(255, 255, 255, 0.95);
+    }
+
+    .rf-carousel-name {
+      font-size: 16px;
+      font-weight: 500;
+      margin-bottom: 2px;
+      display: block;
+    }
+
+    .rf-carousel-title {
+      font-size: 14px;
+      font-weight: 400;
+      color: rgba(255, 255, 255, 0.6);
+      display: block;
+    }
+
+    /* Bottom Control Bar Layout */
+    .rf-carousel-controls {
+      max-width: 80%;
+      margin: 30px auto 0 auto;
+      display: flex;
+      justify-content: flex-end; /* Snaps controls perfectly under the cards at bottom-right */
+      gap: 12px;
+      padding-right: 20px;
+    }
+
+    .rf-carousel-btn {
+      width: 44px;
+      height: 44px;
+      border-radius: 50%;
+      border: 1px solid #e4e4e7;
+      background: #ffffff;
+      color: #18181b;
+      cursor: pointer;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 18px;
+      transition: all 0.2s ease;
+      user-select: none;
+    }
+
+    .rf-carousel-btn:hover {
+      background: #f4f4f5;
+      border-color: #d4d4d8;
+    }
+
+    .rf-carousel-btn:active {
+      transform: scale(0.95);
+    }
+  </style>
+
+  <div class="rf-carousel-stage">
+    <div class="rf-carousel-track" id="rfTrack">
+      
+      <div class="rf-carousel-card" style="background-image: url('https://images.unsplash.com/photo-1573496359142-b8d87734a5a2?auto=format&fit=crop&q=80&w=400');">
+        <div class="rf-carousel-header">
+          <span class="rf-carousel-tag">Agentic AI Graduate</span>
+          <hr class="rf-carousel-line">
+        </div>
+        <div class="rf-carousel-content">
+          <p class="rf-carousel-quote">"The course gave me confidence about the future, especially as AI becomes an important part of our work and day-to-day living."</p>
+          <span class="rf-carousel-name">Eliza Fury</span>
+          <span class="rf-carousel-title">Software Engineer</span>
+        </div>
+      </div>
+
+      <div class="rf-carousel-card" style="background-image: url('https://images.unsplash.com/photo-1519085360753-af0119f7cbe7?auto=format&fit=crop&q=80&w=400');">
+        <div class="rf-carousel-header">
+          <span class="rf-carousel-tag">Agentic AI Graduate</span>
+          <hr class="rf-carousel-line">
+        </div>
+        <div class="rf-carousel-content">
+          <p class="rf-carousel-quote">"Udacity helped me expand my scope and embrace agentic AI approaches. I now lead digital innovation projects that integrate both classical and gen AI."</p>
+          <span class="rf-carousel-name">Federico Martini</span>
+          <span class="rf-carousel-title">AI Engineering Manager & Tech Leader</span>
+        </div>
+      </div>
+
+      <div class="rf-carousel-card" style="background-image: url('https://images.unsplash.com/photo-1500648767791-00dcc994a43e?auto=format&fit=crop&q=80&w=400');">
+        <div class="rf-carousel-header">
+          <span class="rf-carousel-tag">Agentic AI Graduate</span>
+          <hr class="rf-carousel-line">
+        </div>
+        <div class="rf-carousel-content">
+          <p class="rf-carousel-quote">"It has been a genuine game-changer for my professional development... the curriculum bridged the gap between theory and practical application."</p>
+          <span class="rf-carousel-name">Tobias Frei</span>
+          <span class="rf-carousel-title">Digital Engineer</span>
+        </div>
+      </div>
+
+      <div class="rf-carousel-card" style="background-image: url('https://images.unsplash.com/photo-1472099645785-5658abf4ff4e?auto=format&fit=crop&q=80&w=400');">
+        <div class="rf-carousel-header">
+          <span class="rf-carousel-tag">Agentic AI Graduate</span>
+          <hr class="rf-carousel-line">
+        </div>
+        <div class="rf-carousel-content">
+          <p class="rf-carousel-quote">"The projects allowed me to hit the ground running immediately and start executing real solutions inside our workflows."</p>
+          <span class="rf-carousel-name">Satyajit Ovelil</span>
+          <span class="rf-carousel-title">Senior Analyst - Data & AI</span>
+        </div>
+      </div>
+
+    </div>
+  </div>
+
+  <div class="rf-carousel-controls">
+    <button class="rf-carousel-btn" id="rfPrevBtn" aria-label="Previous step">‹</button>
+    <button class="rf-carousel-btn" id="rfNextBtn" aria-label="Next step">›</button>
+  </div>
+
+  <script>
+    document.addEventListener("DOMContentLoaded", () => {
+      const track = document.getElementById('rfTrack');
+      const prevBtn = document.getElementById('rfPrevBtn');
+      const nextBtn = document.getElementById('rfNextBtn');
+      
+      const cards = Array.from(track.children);
+      const cardWidth = cards[0].offsetWidth + 20; // Width + horizontal gap space
+
+      // Clone elements to seamlessly handle wrapping on both sides
+      cards.forEach(card => {
+        const cloneBefore = card.cloneNode(true);
+        const cloneAfter = card.cloneNode(true);
+        track.appendChild(cloneAfter);
+        track.insertBefore(cloneBefore, track.firstChild);
+      });
+
+      // Position initial offset into the actual first element original track index
+      const originalTrackLength = cards.length * cardWidth;
+      track.scrollLeft = originalTrackLength;
+
+      // Handle custom infinite wrapping checks during scrolling
+      track.addEventListener('scroll', () => {
+        if (track.scrollLeft <= 0) {
+          track.style.scrollBehavior = 'auto';
+          track.scrollLeft = originalTrackLength;
+        } else if (track.scrollLeft >= originalTrackLength * 2) {
+          track.style.scrollBehavior = 'auto';
+          track.scrollLeft = originalTrackLength;
+        }
+      });
+
+      // Actions linking to Button Events
+      nextBtn.addEventListener('click', () => {
+        track.style.scrollBehavior = 'smooth';
+        track.scrollLeft += cardWidth;
+      });
+
+      prevBtn.addEventListener('click', () => {
+        track.style.scrollBehavior = 'smooth';
+        track.scrollLeft -= cardWidth;
+      });
+    });
+  </script>
+</div>
+

@@ -113,2406 +113,322 @@
 
 
 
-<div id="component-wrapper">
-  <it-info-cards></it-info-cards>
-</div>
-
-<script>
-  class ITInfoCards extends HTMLElement {
-    constructor() {
-      super();
-      
-      const shadow = this.attachShadow({ mode: 'open' });
-      const container = document.createElement('div');
-      container.innerHTML = `
-        <style>
-          :host {
-            --bg-color: #f5f5f7;
-            --card-bg: #ffffff;
-            --text-primary: #1d1d1f;
-            --text-secondary: #515154;
-            --link-color: #0066cc;
-            --font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
-            
-            display: block;
-            font-family: var(--font-family);
-            background-color: var(--bg-color);
-            padding: 80px 24px; 
-            box-sizing: border-box;
-            width: 100%;
-          }
-
-          *, *::before, *::after {
-            box-sizing: border-box;
-            margin: 0;
-            padding: 0;
-          }
-
-          .container {
-            max-width: 880px;
-            margin: 0 auto;
-            display: flex;
-            flex-direction: column;
-            gap: 10px;
-            padding: 9rem 0;
-          }
-
-          .section-header {
-            text-align: center;
-            margin-bottom: 24px;
-          }
-
-          .section-header h1 {
-            font-size: 40px;
-            font-weight: 700;
-            color: var(--text-primary);
-            letter-spacing: -0.02em;
-          }
-
-          .card {
-            background-color: var(--card-bg);
-            border-radius: 18px;
-            padding: 48px;
-            box-shadow: 0 1px 3px rgba(0, 0, 0, 0.02);
-          }
-
-          .card-full {
-            text-align: center;
-            width: 100%;
-          }
-          
-          .card-full-inner {
-            max-width: 780px;
-            margin: 0 auto;
-          }
-
-          .grid {
-            display: grid;
-            grid-template-columns: 1.62fr 1fr;
-            gap: 10px;
-          }
-
-          h2 {
-            font-size: 24px;
-            font-weight: 600;
-            color: var(--text-primary);
-            margin-bottom: 16px;
-            letter-spacing: -0.015em;
-          }
-
-          p {
-            font-size: 17px;
-            line-height: 1.5;
-            color: var(--text-primary);
-            margin-bottom: 16px;
-          }
-
-          p:last-of-type {
-            margin-bottom: 24px;
-          }
-
-          .grid .card p:last-of-type {
-            margin-bottom: 0;
-          }
-
-          .trigger-link {
-            color: var(--link-color);
-            text-decoration: none;
-            font-size: 17px;
-            display: inline-flex;
-            align-items: center;
-            cursor: pointer;
-            margin-top: 14px;
-          }
-
-          .trigger-link:hover {
-            text-decoration: underline;
-          }
-
-          .icon-container {
-            margin-bottom: 20px;
-            color: var(--text-primary);
-          }
-
-          .icon-container svg {
-            width: 38px;
-            height: 38px;
-          }
-
-          .plus-circle {
-            margin-left: 5px;
-            width: 16px;
-            height: 16px;
-            stroke-width: 2;
-          }
-
-          .arrow-link::after {
-            content: " >";
-            font-size: 11px;
-            display: inline-block;
-            margin-left: 3px;
-          }
-
-          /* Modal Styling Layout */
-          .modal-overlay {
-            position: fixed;
-            top: 0;
-            left: 0;
-            width: 100%;
-            height: 100%;
-            background-color: rgba(0, 0, 0, 0.4);
-            backdrop-filter: blur(5px);
-            -webkit-backdrop-filter: blur(5px);
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            z-index: 9999;
-            opacity: 0;
-            visibility: hidden;
-            transition: opacity 0.3s ease, visibility 0.3s ease;
-          }
-
-          .modal-overlay.active {
-            opacity: 1;
-            visibility: visible;
-          }
-
-          .modal-window {
-            background-color: #ffffff;
-            width: 100%;
-            max-width: 680px;
-            border-radius: 20px;
-            padding: 48px;
-            box-shadow: 0 10px 40px rgba(0, 0, 0, 0.15);
-            position: relative;
-            max-height: 90vh;
-            overflow-y: auto;
-            transform: translateY(20px);
-            transition: transform 0.3s ease;
-          }
-
-          .modal-overlay.active .modal-window {
-            transform: translateY(0);
-          }
-
-          .close-btn {
-            position: absolute;
-            top: 24px;
-            right: 24px;
-            background-color: #f5f5f7;
-            border: none;
-            width: 36px;
-            height: 36px;
-            border-radius: 50%;
-            cursor: pointer;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            color: #1d1d1f;
-          }
-
-          .modal-header h2 {
-            font-size: 32px;
-            font-weight: 700;
-            line-height: 1.15;
-            letter-spacing: -0.02em;
-            margin-bottom: 16px;
-          }
-
-          .modal-header p {
-            color: var(--text-secondary);
-            font-size: 15px;
-            line-height: 1.5;
-            margin-bottom: 36px;
-          }
-
-          /* Dynamic Content Areas */
-          .modal-content-view {
-            display: none;
-          }
-
-          .modal-content-view.active {
-            display: block;
-          }
-
-          /* Card 1 Icon Row Styles */
-          .modal-row {
-            display: flex;
-            gap: 24px;
-            margin-bottom: 32px;
-            align-items: flex-start;
-          }
-
-          .modal-row-icon {
-            color: var(--link-color);
-            flex-shrink: 0;
-            width: 36px;
-            height: 36px;
-          }
-
-          .modal-row-content h3 {
-            font-size: 16px;
-            font-weight: 600;
-            color: var(--text-primary);
-            margin-bottom: 6px;
-          }
-
-          /* Cards 2 & 3 Plain Text Structure (No List Icons) */
-          .plain-content-block {
-            margin-bottom: 24px;
-          }
-
-          .plain-content-block h3 {
-            font-size: 18px;
-            font-weight: 600;
-            margin-bottom: 10px;
-            color: var(--text-primary);
-          }
-
-          @media (max-width: 834px) {
-            :host { padding: 56px 16px; }
-            .section-header h1 { font-size: 32px; }
-            .grid { grid-template-columns: 1fr; }
-            .card { padding: 36px 24px; }
-            .modal-window { padding: 32px 24px; width: 92%; }
-            .modal-header h2 { font-size: 26px; }
-          }
-        </style>
-
-        <div class="container">
-          <div class="section-header">
-            <h1>Infrastructure & Security</h1>
-          </div>
-
-          <div class="card card-full">
-            <div class="card-full-inner">
-              <h2>Designing for High Availability</h2>
-              <p>At our core, we are always working to create the most resilient infrastructure for our users, which is why we architect systems that last. Designing for high availability is an organization-wide effort.</p>
-              <span class="trigger-link" data-target="content-high-availability">
-                Learn more about Personal Setup
-                <svg class="plus-circle" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="10"></circle><line x1="12" y1="8" x2="12" y2="16"></line><line x1="8" y1="12" x2="16" y2="12"></line></svg>
-              </span>
-            </div>
-          </div>
-
-          <div class="grid">
-            <div class="card">
-              <h2>Beware of unverified dependencies</h2>
-              <p>Some open-source software and third-party package repositories may not be vetted properly and could result in supply-chain security vulnerabilities.</p>
-              <span class="trigger-link arrow-link" data-target="content-dependencies">Verify libraries
-                <svg class="plus-circle" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="10"></circle><line x1="12" y1="8" x2="12" y2="16"></line><line x1="8" y1="12" x2="16" y2="12"></line></svg>  
-              </span>
-            </div>
-
-            <div class="card">
-              <div class="icon-container">
-                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.2" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="11" width="18" height="10" rx="2" /><path d="M12 2v9" /><path d="M8 5h8" /></svg>
-              </div>
-              <h2>Be aware of phishing tactics</h2>
-              <p>Be aware of advanced engineering scams involving credential harvesting and administrative spoofing.</p>
-              <span class="trigger-link arrow-link" data-target="content-phishing">Review protocols
-                <svg class="plus-circle" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="10"></circle><line x1="12" y1="8" x2="12" y2="16"></line><line x1="8" y1="12" x2="16" y2="12"></line></svg>
-              </span>
-            </div>
-          </div>
-        </div>
-
-        <div class="modal-overlay" id="info-modal">
-          <div class="modal-window">
-            <button class="close-btn" id="close-modal" aria-label="Close modal">
-              <svg width="14" height="14" viewBox="0 0 14 14" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M1 1l12 12M13 1L1 13"/></svg>
-            </button>
-            
-            <div class="modal-content-view" id="content-high-availability">
-              <div class="modal-header">
-                <h2>Set up your device with ease and learn how to make the most of it.</h2>
-                <p>After onboarding directly with our services, we'll invite you to access our free online Personal Setup sessions. Connect one-to-one with an expert on demand.</p>
-              </div>
-              <div class="modal-body">
-                <div class="modal-row">
-                  <svg class="modal-row-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><rect x="5" y="2" width="14" height="20" rx="2"></rect><line x1="12" y1="18" x2="12.01" y2="18"></line></svg>
-                  <div class="modal-row-content">
-                    <h3>Set up your device and seamlessly transfer your data.</h3>
-                    <p>Whether you're upgrading or making the switch to our system, we'll help you get configured and transfer files easily.</p>
-                  </div>
-                </div>
-                <div class="modal-row">
-                  <svg class="modal-row-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><circle cx="12" cy="12" r="10"></circle><path d="M2 12h20"></path></svg>
-                  <div class="modal-row-content">
-                    <h3>Discover what your new device can do.</h3>
-                    <p>Customize your settings and dive into our core systems and platform metrics tools with an advisor.</p>
-                  </div>
-                </div>
-              </div>
-            </div>
-
-            <div class="modal-content-view" id="content-dependencies">
-              <div class="modal-header">
-                <h2>Supply Chain Auditing Rules</h2>
-                <p>Establishing corporate parameters on how external open source applications are injected into secure operational codebeds.</p>
-              </div>
-              <div class="modal-body">
-                <div class="plain-content-block">
-                  <h3>Strict Manifest Lockfiles</h3>
-                  <p>All developer builds must generate immutable cryptographic lockfiles verified against our internal secure artifact registry mirror before merge authorization.</p>
-                </div>
-                <div class="plain-content-block">
-                  <h3>Continuous License Compliance</h3>
-                  <p>Automated software composition analysis (SCA) platforms audit third-party binaries dynamically for unapproved structural dependencies and outdated library flags.</p>
-                </div>
-              </div>
-            </div>
-
-            <div class="modal-content-view" id="content-phishing">
-              <div class="modal-header">
-                <h2>Threat Vector Incident Report</h2>
-                <p>How to identify advanced external administrative engineering attempts aiming to harvest server network secrets.</p>
-              </div>
-              <div class="modal-body">
-                <div class="plain-content-block">
-                  <h3>Lookalike Domain Interception</h3>
-                  <p>Always inspect internal single sign-on address parameters. Malicious threat profiles alter trivial syntax values to mimic legitimate dashboard networks.</p>
-                </div>
-                <div class="plain-content-block">
-                  <h3>Multi-Factor Token Isolation</h3>
-                  <p>System engineers will never query production session tokens over loose communication platforms. Report unsolicited administrative authentication pushes immediately.</p>
-                </div>
-              </div>
-            </div>
-
-          </div>
-        </div>
-      `;
-
-      shadow.appendChild(container);
-
-      const modal = shadow.getElementById('info-modal');
-      const closeBtn = shadow.getElementById('close-modal');
-      const links = shadow.querySelectorAll('.trigger-link');
-      const views = shadow.querySelectorAll('.modal-content-view');
-
-      const openModal = (targetId) => {
-        views.forEach(view => {
-          if(view.id === targetId) view.classList.add('active');
-          else view.classList.remove('active');
-        });
-        modal.classList.add('active');
-      };
-
-      const closeModal = () => modal.classList.remove('active');
-
-      links.forEach(link => {
-        link.addEventListener('click', (e) => {
-          const target = link.getAttribute('data-target');
-          openModal(target);
-        });
-      });
-
-      closeBtn.addEventListener('click', closeModal);
-      modal.addEventListener('click', (e) => { if (e.target === modal) closeModal(); });
-    }
-  }
-
-  if (!customElements.get('it-info-cards')) {
-    customElements.define('it-info-cards', ITInfoCards);
-  }
-</script>
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-<div class="dch-hero-container">
-  <div class="dch-cards-wrapper">
-    <div class="dch-card" data-index="0" style="background-image: url('thumbnails/pexels-resourceboy-18541715');">
-      <div class="dch-card-overlay"></div>
-      <div class="dch-card-content">
-        <h2 class="dch-card-heading">Strategic Innovation</h2>
-        <p class="dch-card-description">We merge cutting-edge technology with market insights to drive strategic growth and digital transformation for your business.</p>
-        <a href="#your-link" class="dch-card-button">Learn More</a>
-      </div>
-    </div>
-    <div class="dch-card" data-index="1" style="background-image: url('thumbnails/pexels-resourceboy-18541715.jpg');">
-      <div class="dch-card-overlay"></div>
-      <div class="dch-card-content">
-        <h2 class="dch-card-heading">Bespoke Solutions</h2>
-        <p class="dch-card-description">Our team architects custom digital platforms tailored to your unique operational needs and long-term objectives.</p>
-        <a href="#your-link" class="dch-card-button">Discover Solutions</a>
-      </div>
-    </div>
-    <div class="dch-card" data-index="2" style="background-image: url('thumbnails/pexels-pixabay-270669.jpg');">
-      <div class="dch-card-overlay"></div>
-      <div class="dch-card-content">
-        <h2 class="dch-card-heading">User-Centric Design</h2>
-        <p class="dch-card-description">Experience design that captivates users, enhances usability, and converts visitors into loyal customers.</p>
-        <a href="#your-link" class="dch-card-button">Explore Designs</a>
-      </div>
-    </div>
-    <div class="dch-card" data-index="3" style="background-image: url('thumbnails/pexels-inspiredimages-5626726.jpg');">
-      <div class="dch-card-overlay"></div>
-      <div class="dch-card-content">
-        <h2 class="dch-card-heading">Data & Analytics</h2>
-        <p class="dch-card-description">Leverage powerful analytics to unlock actionable intelligence and make data-driven decisions that propel you ahead.</p>
-        <a href="#your-link" class="dch-card-button">View Analytics</a>
-      </div>
-    </div>
-  </div>
-
-  <div class="dch-controls-container">
-    <div class="dch-counter-wrapper">
-      <div class="dch-counter-reel">
-        <div class="dch-counter-num">1</div>
-        <div class="dch-counter-num">2</div>
-        <div class="dch-counter-num">3</div>
-        <div class="dch-counter-num">4</div>
-      </div>
-    </div>
-    <button class="dch-nav-button dch-nav-prev" aria-label="Previous Card">
-      <svg class="dch-nav-icon" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
-        <path d="M15 18L9 12L15 6" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
-      </svg>
-    </button>
-    <button class="dch-nav-button dch-nav-next" aria-label="Next Card">
-      <svg class="dch-nav-icon" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
-        <path d="M9 18L15 12L9 6" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
-      </svg>
-    </button>
-  </div>
-</div>
-
-
-  <style>
-  /* --- Hero Container --- */
-  .dch-hero-container {
-    position: relative;
-    width: 100%;
-    height: 100vh;
-    min-height: 700px;
-    background-color: #06273e;
-    overflow: hidden;
-    font-family: "Inter", -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif, "Apple Color Emoji", "Segoe UI Emoji", "Segoe UI Symbol";
-  }
-
-  /* --- Cards --- */
-  .dch-cards-wrapper {
-    position: relative;
-    width: 100%;
-    height: 100%;
-  }
-
-  .dch-card {
-    position: absolute;
-    top: 0;
-    left: 0;
-    width: 100%;
-    height: 100%;
-    background-size: cover;
-    background-position: center;
-    background-repeat: no-repeat;
-    transition: transform 1.2s cubic-bezier(0.6, 0.01, 0, 0.9), opacity 1.2s cubic-bezier(0.6, 0.01, 0, 0.9);
-    overflow: hidden;
-  }
-
-  .dch-card-overlay {
-    position: absolute;
-    top: 0;
-    left: 0;
-    width: 100%;
-    height: 100%;
-    background: linear-gradient(to top, rgba(6, 39, 62, 0.8), rgba(6, 39, 62, 0) 50%);
-    transition: opacity 0.8s ease;
-  }
-
-  /* States for cards based on JS classes */
-  .dch-card-active .dch-card-overlay {
-    opacity: 1;
-  }
-  .dch-card-inactive .dch-card-overlay {
-    opacity: 0;
-  }
-
-  .dch-card-active {
-    transform: scale(1) translateY(0);
-    opacity: 1;
-    z-index: 10;
-    pointer-events: auto;
-  }
-
-  .dch-card-inactive {
-    transform: translateY(calc(95vh - var(--bottom-offset, 150px))) scale(0.65) translateX(calc(var(--h-offset, 0) * 1%));
-    transform-origin: bottom center;
-    opacity: 1;
-    z-index: calc(5 - var(--stack-order, 1));
-    pointer-events: none;
-  }
-
-  /* --- Card Content --- */
-  .dch-card-content {
-    position: absolute;
-    bottom: 10vh;
-    right: 10vw;
-    width: 100%;
-    max-width: 450px;
-    padding-top: 24px;
-    padding-bottom: 24px;
-    padding-left: 32px;
-    padding-right: 32px;
-    background-color: rgba(6, 39, 62, 0.7);
-
-    backdrop-filter: blur(10px);
-    -webkit-backdrop-filter: blur(10px);
-    border-radius: 1px;
-    transform: translateY(20px);
-    opacity: 0;
-    transition: transform 0.8s cubic-bezier(0.165, 0.84, 0.44, 1) 0.10s, opacity 0.8s cubic-bezier(0.165, 0.84, 0.44, 1) 0.10s;
-  }
-  
-  .dch-card-active .dch-card-content {
-    transform: translateY(0);
-    opacity: 1;
-  }
-
-  .dch-card-heading {
-    margin: 0;
-    padding: 0;
-    font-size: 28px;
-    font-weight: 700;
-    color: #ffffff;
-  }
-
-  .dch-card-description {
-    margin-top: 12px;
-    margin-bottom: 24px;
-    padding: 0;
-    font-size: 16px;
-    line-height: 1.6;
-    color: #e5e5e5;
-  }
-  
-  .dch-card-button {
-    display: inline-block;
-    padding-top: 12px;
-    padding-bottom: 12px;
-    padding-left: 24px;
-    padding-right: 24px;
-    background-color: #0091ff;
-    color: #ffffff;
-    font-size: 14px;
-    font-weight: 600;
-    text-decoration: none;
-    border-radius: 50px;
-    transition: background-color 0.3s ease, transform 0.3s ease;
-  }
-  
-  .dch-card-button:hover {
-    background-color: #007ce6;
-    transform: translateY(-2px);
-  }
-
-  /* --- Controls --- */
-  .dch-controls-container {
-    position: absolute;
-    bottom: 5vh;
-    left: 5vw;
-    display: flex;
-    align-items: center;
-    z-index: 20;
-  }
-
-  .dch-counter-wrapper {
-    width: 28px;
-    height: 48px;
-    overflow: hidden;
-    color: #ffffff;
-    font-size: 32px;
-    font-weight: 700;
-    line-height: 48px;
-  }
-  
-  .dch-counter-reel {
-    transition: transform 0.8s cubic-bezier(0.65, 0, 0.35, 1);
-  }
-
-  .dch-counter-num {
-    text-align: center;
-    height: 48px;
-  }
-
-  .dch-nav-button {
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    width: 48px;
-    height: 48px;
-    margin-left: 16px;
-    background-color: transparent;
-    border: 1px solid rgba(255, 255, 255, 0.3);
-    border-radius: 50%;
-    cursor: pointer;
-    transition: background-color 0.3s ease, border-color 0.3s ease;
-  }
-
-  .dch-nav-button:hover {
-    background-color: rgba(255, 255, 255, 0.1);
-    border-color: #ffffff;
-  }
-  
-  .dch-nav-icon {
-    width: 24px;
-    height: 24px;
-    stroke: #ffffff;
-  }
-
-  /* --- Mobile Responsive Styles --- */
-  @media (max-width: 768px) {
-    .dch-card-inactive {
-      /* Stack inactive cards closer on mobile */
-      transform: translateY(calc(95vh - var(--bottom-offset, 100px))) scale(0.6) translateX(calc(var(--h-offset, 0) * 1%));
-    }
-    
-    .dch-controls-container {
-      left: 50%;
-      bottom: 2vh;
-      transform: translateX(-50%);
-      width: 90vw;
-      justify-content: center;
-    }
-    
-    .dch-card-content {
-      left: 5vw;
-      right: 5vw;
-      bottom: auto;
-      top: 55vh;
-      max-width: none;
-      width: auto;
-      padding-left: 20px;
-      padding-right: 20px;
-      text-align: center;
-    }
-    
-    .dch-card-heading {
-      font-size: 24px;
-    }
-
-    .dch-card-description {
-      font-size: 15px;
-      margin-bottom: 20px;
-    }
-  }
-</style>
-
-<script>
-document.addEventListener('DOMContentLoaded', () => {
-    const dchCards = document.querySelectorAll('.dch-card');
-    const dchNextBtn = document.querySelector('.dch-nav-next');
-    const dchPrevBtn = document.querySelector('.dch-nav-prev');
-    const dchCounterReel = document.querySelector('.dch-counter-reel');
-    const dchNumHeight = document.querySelector('.dch-counter-num').clientHeight;
-    
-    let dchCurrentIndex = 0;
-    let dchInterval;
-    const dchTotalCards = dchCards.length;
-
-    const dchUpdateCards = (newIndex) => {
-        dchCurrentIndex = (newIndex + dchTotalCards) % dchTotalCards;
-
-        // Animate counter
-        if (dchCounterReel) {
-            dchCounterReel.style.transform = `translateY(-${dchCurrentIndex * dchNumHeight}px)`;
-        }
-
-        // Update card classes and styles
-        dchCards.forEach((card, i) => {
-            card.classList.remove('dch-card-active', 'dch-card-inactive');
-
-            if (i === dchCurrentIndex) {
-                card.classList.add('dch-card-active');
-            } else {
-                card.classList.add('dch-card-inactive');
-                
-                // Calculate position for stacked preview cards
-                let relativePos = (i - dchCurrentIndex + dchTotalCards) % dchTotalCards;
-                let hOffset = (relativePos - (dchTotalCards / 2)) * 15;
-                let stackOrder = dchTotalCards - relativePos;
-
-                card.style.setProperty('--h-offset', hOffset);
-                card.style.setProperty('--stack-order', stackOrder);
-            }
-        });
-    };
-
-    const dchStartAutoCycle = () => {
-        clearInterval(dchInterval); // Clear existing interval
-        dchInterval = setInterval(() => {
-            dchUpdateCards(dchCurrentIndex + 1);
-        }, 3000);
-    };
-
-    // Event Listeners for manual navigation
-    if (dchNextBtn) {
-        dchNextBtn.addEventListener('click', () => {
-            dchUpdateCards(dchCurrentIndex + 1);
-            dchStartAutoCycle(); // Reset timer on manual click
-        });
-    }
-
-    if (dchPrevBtn) {
-        dchPrevBtn.addEventListener('click', () => {
-            dchUpdateCards(dchCurrentIndex - 1);
-            dchStartAutoCycle(); // Reset timer on manual click
-        });
-    }
-
-    // Initial setup
-    dchUpdateCards(0);
-    dchStartAutoCycle();
-});
-</script>
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-<section data-it-hero-component="container">
-  <div data-it-hero-component="layout">
-    
-    <div data-it-hero-component="heading-col">
-      <h2 data-it-hero-component="title">
-        Architected <br>around infrastructure.
-      </h2>
-    </div>
-
-    <div data-it-hero-component="content-col">
-      <p data-it-hero-component="body-text">
-        From cloud automation to telemetry tools, every part of the Core-IT digital ecosystem is designed by and for engineers. From infrastructure provisioning profiles to the entire deployment pipeline, every detail is engineered to
-      </p>
-      <p data-it-hero-component="body-text">
-        support how development teams actually scale through high-traffic demands. All for a simple reason: zero-trust security and high availability matter as much as raw processing speed.
-      </p>
-    </div>
-
-  </div>
-</section>
-
-<style>
-  /* Root Container & Reset styling safely scoped to this specific component */
-  [data-it-hero-component="container"] {
-    background-color: #0d0f0e; /* Matte dark off-black background */
-    color: #ffffff;
-    font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
-    padding: 6rem 4rem;
-    box-sizing: border-box;
-    width: 100%;
-  }
-
-  /* Main Layout: Top thin line and flex/grid layout */
-  [data-it-hero-component="layout"] {
-    border-top: 1px solid rgba(255, 255, 255, 0.4); /* Thin horizontal line */
-    padding-top: 2rem;
-    display: grid;
-    grid-template-columns: 1.3fr 2fr;
-    gap: 4rem;
-    align-items: start;
-    max-width: 1200px;
-    margin: 0 auto;
-  }
-
-  /* Left Column Heading Style */
-  [data-it-hero-component="title"] {
-    font-size: 3rem;
-    font-weight: 500;
-    line-height: 1.1;
-    letter-spacing: -0.03em;
-    margin: 0;
-  }
-
-  /* Right Column Text Splitter */
-  [data-it-hero-component="content-col"] {
-    display: grid;
-    grid-template-columns: 1fr 1fr;
-    gap: 2.5rem;
-  }
-
-  /* Body Paragraph Typography */
-  [data-it-hero-component="body-text"] {
-    font-size: 1.05rem;
-    line-height: 1.5;
-    color: rgba(255, 255, 255, 0.9);
-    margin: 0;
-    font-weight: 400;
-    letter-spacing: -0.01em;
-  }
-
-  /* Responsive styling for smaller screens */
-  @media (max-width: 1024px) {
-    [data-it-hero-component="layout"] {
-      grid-template-columns: 1fr;
-      gap: 2rem;
-    }
-    [data-it-hero-component="content-col"] {
-      grid-template-columns: 1fr;
-      gap: 1.5rem;
-    }
-    [data-it-hero-component="title"] {
-      font-size: 2.5rem;
-    }
-  }
-</style>
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-<section data-it-showcase="container">
-  <div data-it-showcase="inner-wrapper">
-    <h2 data-it-showcase="section-title">Design from every angle</h2>
-    
-    <div data-it-showcase="grid">
-      
-      <div data-it-showcase="card" id="card-1">
-        <div data-it-showcase="card-bg" style="background-image: url('https://picsum.photos/id/180/600/800');"></div>
-        <div data-it-showcase="card-content">
-          <h3 data-it-showcase="card-title">InfiniPack</h3>
-          <p data-it-showcase="card-sub">Toolless rapidly swappable batteries.</p>
-        </div>
-        <button data-it-showcase="action-btn" aria-label="Reveal details">+</button>
-        
-        <div data-it-showcase="drawer">
-          <button data-it-showcase="close-btn" aria-label="Close drawer">&times;</button>
-          
-          <div data-it-showcase="drawer-scroll-body">
-            <span data-it-showcase="drawer-tag">INFINIPACK TECHNOLOGY</span>
-            <h4 data-it-showcase="drawer-heading">High-density hot-swappable cells.</h4>
-            <p data-it-showcase="drawer-text">
-              Engineered for zero downtime. The modular architecture permits immediate hot-swaps under 30 seconds for non-stop performance profiling. This setup isolates thermal arrays to prolong component lifespan under heavy loads.
-            </p>
-            <p data-it-showcase="drawer-text">
-              Additional integrated cooling channels regulate energy dissipation dynamically, keeping diagnostics accessible even under continuous operations.
-            </p>
-            <a href="#learn-more-infinipack" data-it-showcase="drawer-link">Learn more &rarr;</a>
-          </div>
-        </div>
-      </div>
-
-      <div data-it-showcase="card" id="card-2">
-        <div data-it-showcase="card-bg" style="background-image: url('https://picsum.photos/id/26/600/800');"></div>
-        <div data-it-showcase="card-content">
-          <h3 data-it-showcase="card-title">Minimal distraction interface</h3>
-          <p data-it-showcase="card-sub">An interface to keep you in the race.</p>
-        </div>
-        <button data-it-showcase="action-btn" aria-label="Reveal details">+</button>
-        
-        <div data-it-showcase="drawer">
-          <button data-it-showcase="close-btn" aria-label="Close drawer">&times;</button>
-          
-          <div data-it-showcase="drawer-scroll-body">
-            <span data-it-showcase="drawer-tag">MINIMAL DISTRACTION INTERFACE</span>
-            <h4 data-it-showcase="drawer-heading">An interface to keep you in the race.</h4>
-            <p data-it-showcase="drawer-text">
-              A simple, focused UI layout devoid of unnecessary abstractions. All critical operational telemetry data remains readable at a single split-second glance.
-            </p>
-            <p data-it-showcase="drawer-text">
-              By eliminating heavy animations and shifting to high-contrast monochrome UI states during extreme operations, cognitive fatigue is minimized, allowing complete focus where it matters most.
-            </p>
-            <a href="#learn-more-interface" data-it-showcase="drawer-link">Learn more &rarr;</a>
-          </div>
-        </div>
-      </div>
-
-      <div data-it-showcase="card" id="card-3">
-        <div data-it-showcase="card-bg" style="background-image: url('https://picsum.photos/id/119/600/800');"></div>
-        <div data-it-showcase="card-content">
-          <h3 data-it-showcase="card-title">Integrated smart storage</h3>
-          <p data-it-showcase="card-sub">Prepared for any challenge.</p>
-        </div>
-        <button data-it-showcase="action-btn" aria-label="Reveal details">+</button>
-        
-        <div data-it-showcase="drawer">
-          <button data-it-showcase="close-btn" aria-label="Close drawer">&times;</button>
-          
-          <div data-it-showcase="drawer-scroll-body">
-            <span data-it-showcase="drawer-tag">INTEGRATED SMART STORAGE</span>
-            <h4 data-it-showcase="drawer-heading">Utility built into structural frames.</h4>
-            <p data-it-showcase="drawer-text">
-              Weatherproof inner-chassis container compartment space built natively to keep core emergency gear and analytics units safe during harsh tasks.
-            </p>
-            <p data-it-showcase="drawer-text">
-              Features standard dampening brackets, pressurized locking seals, and instant access pathways designed specifically to survive rugged vibrations and sudden climate shifts.
-            </p>
-            <a href="#learn-more-storage" data-it-showcase="drawer-link">Learn more &rarr;</a>
-          </div>
-        </div>
-      </div>
-
-    </div>
-  </div>
-</section>
-
-<style>
-  /* Outer section wrapper */
-  [data-it-showcase="container"] {
-    background-color: #dcdcd8;
-    padding: 4rem 1.5rem; /* Responsive inline padding */
-    font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif;
-    width: 100%;
-    box-sizing: border-box;
-  }
-
-  /* Capped content container precisely centered at 1200px maximum */
-  [data-it-showcase="inner-wrapper"] {
-    max-width: 1200px;
-    margin: 0 auto;
-    width: 100%;
-  }
-
-  [data-it-showcase="section-title"] {
-    font-size: 2.25rem;
-    font-weight: 500;
-    color: #111;
-    margin: 0 0 2rem 0;
-    letter-spacing: -0.02em;
-  }
-
-  /* Responsive CSS Grid layout setup */
-  [data-it-showcase="grid"] {
-    display: grid;
-    grid-template-columns: repeat(3, 1fr);
-    gap: 1rem;
-    width: 100%;
-  }
-
-  [data-it-showcase="card"] {
-    position: relative;
-    height: 520px;
-    border-radius: 12px;
-    overflow: hidden;
-    display: flex;
-    flex-direction: column;
-    justify-content: flex-end;
-    padding: 2rem;
-    box-sizing: border-box;
-  }
-
-  [data-it-showcase="card-bg"] {
-    position: absolute;
-    top: 0; left: 0; right: 0; bottom: 0;
-    background-size: cover;
-    background-position: center;
-    z-index: 1;
-  }
-
-  [data-it-showcase="card"]::after {
-    content: '';
-    position: absolute;
-    bottom: 0; left: 0; right: 0; height: 50%;
-    background: linear-gradient(to top, rgba(0,0,0,0.8), transparent);
-    z-index: 2;
-  }
-
-  [data-it-showcase="card-content"] {
-    position: relative;
-    z-index: 3;
-    color: #ffffff;
-  }
-
-  [data-it-showcase="card-title"] {
-    font-size: 1.5rem;
-    font-weight: 600;
-    margin: 0 0 0.5rem 0;
-    letter-spacing: -0.01em;
-  }
-
-  [data-it-showcase="card-sub"] {
-    font-size: 0.95rem;
-    margin: 0;
-    opacity: 0.85;
-    line-height: 1.3;
-  }
-
-  [data-it-showcase="action-btn"] {
-    position: absolute;
-    top: 1.5rem;
-    right: 1.5rem;
-    z-index: 4;
-    width: 32px;
-    height: 32px;
-    background-color: rgba(255, 255, 255, 0.9);
-    border: none;
-    border-radius: 50%;
-    font-size: 1.2rem;
-    cursor: pointer;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-  }
-
-  /* Drawer Container Layout */
-  [data-it-showcase="drawer"] {
-    position: absolute;
-    top: 0; left: 0; right: 0; bottom: 0;
-    background-color: #ffffff;
-    z-index: 10;
-    border-radius: 12px;
-    display: flex;
-    flex-direction: column;
-    padding: 3rem 1.5rem 1.5rem 1.5rem;
-    box-sizing: border-box;
-    transform: translateY(100%);
-    transition: transform 0.4s cubic-bezier(0.16, 1, 0.3, 1);
-  }
-
-  [data-it-showcase="drawer"].is-open {
-    transform: translateY(0);
-  }
-
-  [data-it-showcase="close-btn"] {
-    position: absolute;
-    top: 1rem;
-    right: 1rem;
-    z-index: 12;
-    width: 32px;
-    height: 32px;
-    background-color: #ffffff;
-    border: 1px solid #e8e8e8;
-    border-radius: 50%;
-    font-size: 1.4rem;
-    cursor: pointer;
-    line-height: 0;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-  }
-
-  /* Scrollable container styling */
-  [data-it-showcase="drawer-scroll-body"] {
-    width: 100%;
-    height: 100%;
-    overflow-y: auto;
-    padding-right: 0.25rem;
-    display: flex;
-    flex-direction: column;
-    box-sizing: border-box;
-    
-    scrollbar-width: thin;
-    scrollbar-color: #ccc transparent;
-  }
-
-  [data-it-showcase="drawer-scroll-body"]::-webkit-scrollbar {
-    width: 4px;
-  }
-  [data-it-showcase="drawer-scroll-body"]::-webkit-scrollbar-thumb {
-    background-color: #ccc;
-    border-radius: 4px;
-  }
-
-  [data-it-showcase="drawer-tag"] {
-    font-size: 0.65rem;
-    font-weight: 700;
-    letter-spacing: 0.06em;
-    color: #767676;
-    margin-bottom: 0.5rem;
-  }
-
-  [data-it-showcase="drawer-heading"] {
-    font-size: 1.35rem;
-    font-weight: 600;
-    color: #111;
-    margin: 0 0 1rem 0;
-    line-height: 1.25;
-    letter-spacing: -0.01em;
-  }
-
-  [data-it-showcase="drawer-text"] {
-    font-size: 0.95rem;
-    line-height: 1.5;
-    color: #4a4a4a;
-    margin: 0 0 1rem 0;
-  }
-
-  /* Inline Link Style directly below the content narrative block */
-  [data-it-showcase="drawer-link"] {
-    display: inline-block;
-    align-self: flex-start; /* Stops the anchor tag link from taking up full element width */
-    margin-bottom: 1.5rem;  /* Keeps breathing padding room below if viewport elements wrap */
-    font-size: 0.95rem;
-    font-weight: 600;
-    color: #000000;
-    text-decoration: none;
-    transition: opacity 0.2s;
-  }
-
-  [data-it-showcase="drawer-link"]:hover {
-    opacity: 0.6;
-  }
-
-  /* Perfectly Adaptive Mobile Media Queries */
-  @media (max-width: 1024px) {
-    [data-it-showcase="grid"] {
-      grid-template-columns: repeat(2, 1fr);
-    }
-  }
-
-  @media (max-width: 680px) {
-    [data-it-showcase="container"] {
-      padding: 3rem 1rem;
-    }
-    [data-it-showcase="grid"] {
-      grid-template-columns: 1fr;
-    }
-    [data-it-showcase="card"] {
-      height: 460px; /* Marginally lower heights for smaller responsive portrait viewports */
-    }
-    [data-it-showcase="section-title"] {
-      font-size: 1.85rem;
-    }
-  }
-</style>
-
-<script>
-  document.addEventListener('DOMContentLoaded', () => {
-    const container = document.querySelector('[data-it-showcase="container"]');
-    
-    if (container) {
-      // Reveal handler
-      container.querySelectorAll('[data-it-showcase="action-btn"]').forEach(btn => {
-        btn.addEventListener('click', (e) => {
-          const card = e.target.closest('[data-it-showcase="card"]');
-          const drawer = card.querySelector('[data-it-showcase="drawer"]');
-          if (drawer) {
-            drawer.classList.add('is-open');
-            const scrollBody = drawer.querySelector('[data-it-showcase="drawer-scroll-body"]');
-            if (scrollBody) scrollBody.scrollTop = 0;
-          }
-        });
-      });
-
-      // Close handler
-      container.querySelectorAll('[data-it-showcase="close-btn"]').forEach(btn => {
-        btn.addEventListener('click', (e) => {
-          const drawer = e.target.closest('[data-it-showcase="drawer"]');
-          if (drawer) drawer.classList.remove('is-open');
-        });
-      });
-    }
-  });
-</script>
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-<!DOCTYPE html>
-<html lang="en">
-<head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Premium IT Feature Component</title>
-  <style>
-    /* Reset & Fonts for demo isolation */
-    @import url('https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600&display=swap');
-
-    /* Global outer spacing wrapper */
-    .cronos-showcase-wrapper {
-      box-sizing: border-box;
-      width: 100%;
-      padding: 20px;
-      background-color: #f9f9f9;
-      font-family: 'Inter', -apple-system, BlinkMacSystemFont, sans-serif;
-    }
-
-    /* 100% Width Main Panel with 15px border radius */
-    .cronos-feature-panel {
-      box-sizing: border-box;
-      position: relative;
-      width: 100%;
-      height: 610px;
-      border-radius: 15px;
-      overflow: hidden;
-      background-image: url('https://images.pexels.com/photos/17484970/pexels-photo-17484970.png');
-      background-size: cover;
-      background-position: center right;
-      display: flex;
-      justify-content: center;
-      align-items: center;
-    }
-
-
-    /* Constrained Internal Content Wrapper (Exactly 1200px) */
-    .cronos-internal-content {
-      box-sizing: border-box;
-      position: relative;
-      z-index: 2;
-      width: 100%;
-      max-width: 1200px;
-      padding: 0 40px;
-      display: flex;
-      align-items: center;
-    }
-
-    /* Interactive Menu/Accordion Column */
-    .cronos-accordion-stack {
-      width: 100%;
-      max-width: 350px;
-      display: flex;
-      flex-direction: column;
-      gap: 12px;
-    }
-
-    /* Accordion Item Wrapper */
-    .cronos-accordion-item {
-      display: flex;
-      flex-direction: column;
-      background-color: transparent;
-      transition: all 0.4s cubic-bezier(0.25, 1, 0.5, 1);
-    }
-
-    /* Active Card State Layout matching the screenshot card structure */
-    .cronos-accordion-item.cronos-is-active {
-      background-color: #ffffff;
-      border-radius: 30px; /* Sharp professional 1px aesthetic */
-      padding: 24px;
-      box-shadow: 0 4px 30px rgba(0, 0, 0, 0.03);
-    }
-
-    /* Header Trigger button styling */
-    .cronos-accordion-trigger {
-      display: flex;
-      justify-content: space-between;
-      align-items: center;
-      width: fit-content;
-      background: #ffffff;
-      border: none;
-      outline: none;
-      padding: 10px 18px;
-      border-radius: 20px;
-      cursor: pointer;
-      font-size: 0.875rem;
-      font-weight: 500;
-      color: #111111;
-      gap: 10px;
-      transition: background-color 0.2s ease, color 0.2s ease;
-    }
-
-    /* Transform trigger natively into a header card when active */
-    .cronos-accordion-item.cronos-is-active .cronos-accordion-trigger {
-      padding: 0;
-      background: transparent;
-      font-size: 1.05rem;
-      font-weight: 600;
-      color: #000000;
-      cursor: default;
-      pointer-events: none;
-      margin-bottom: 12px;
-    }
-
-    /* Plus Icon Indicator */
-    .cronos-accordion-icon {
-      display: inline-flex;
-      align-items: center;
-      justify-content: center;
-      width: 16px;
-      height: 16px;
-      border: 1px solid #cccccc;
-      border-radius: 50%;
-      font-size: 0.75rem;
-      line-height: 1;
-      font-weight: 400;
-    }
-
-    .cronos-accordion-item.cronos-is-active .cronos-accordion-icon {
-      display: none;
-    }
-
-    /* Seamless CSS Grid Transition Drawer */
-    .cronos-accordion-body {
-      display: grid;
-      grid-template-rows: 0fr;
-      transition: grid-template-rows 0.4s cubic-bezier(0.25, 1, 0.5, 1);
-    }
-
-    .cronos-accordion-item.cronos-is-active .cronos-accordion-body {
-      grid-template-rows: 1fr;
-    }
-
-    .cronos-accordion-inner {
-      overflow: hidden;
-    }
-
-    /* Content styling inside the card */
-    .cronos-feature-description {
-      font-size: 0.9rem;
-      line-height: 1.55;
-      color: #444444;
-      margin: 0 0 16px 0;
-    }
-
-    .cronos-feature-subtext {
-      font-size: 0.75rem;
-      line-height: 1.4;
-      color: #888888;
-      margin: 0;
-    }
-
-    /* Mobile Adaptations */
-    @media (max-width: 768px) {
-      .cronos-feature-panel {
-        height: auto;
-        min-height: 500px;
-        padding: 40px 0;
-      }
-      .cronos-feature-panel::before {
-        background: linear-gradient(180deg, rgba(255,255,255,0.96) 0%, rgba(255,255,255,0.85) 70%, rgba(255,255,255,0.4) 100%);
-      }
-      .cronos-internal-content {
-        padding: 0 24px;
-      }
-      .cronos-accordion-stack {
-        max-width: 100%;
-      }
-    }
-  </style>
-</head>
-<body>
-
-  <div class="cronos-showcase-wrapper">
-    <div class="cronos-feature-panel">
-      
-      <div class="cronos-internal-content">
-        <div class="cronos-accordion-stack">
-          
-          <div class="cronos-accordion-item cronos-is-active">
-            <button class="cronos-accordion-trigger" onclick="toggleCronosAccordion(this)">
-              <span class="cronos-trigger-text">Managed Infrastructure</span>
-              <span class="cronos-accordion-icon">+</span>
-            </button>
-            <div class="cronos-accordion-body">
-              <div class="cronos-accordion-inner">
-                <p class="cronos-feature-description">
-                  Leave complex provisioning at home. Our automated infrastructure offers high-performance bare metal and hyper-scaled container clusters to power enterprise applications smoothly and efficiently.
-                </p>
-                <p class="cronos-feature-subtext">
-                  Provision custom environments instantly using modern declarative deployment manifests.
-                </p>
-              </div>
-            </div>
-          </div>
-
-          <div class="cronos-accordion-item">
-            <button class="cronos-accordion-trigger" onclick="toggleCronosAccordion(this)">
-              <span class="cronos-trigger-text">Custom Application Dev</span>
-              <span class="cronos-accordion-icon">+</span>
-            </button>
-            <div class="cronos-accordion-body">
-              <div class="cronos-accordion-inner">
-                <p class="cronos-feature-description">
-                  Engineered from scratch. We build high-performance, responsive systems with plain, clean code—isolated dynamically to avoid structural overlaps with existing corporate architectures.
-                </p>
-                <p class="cronos-feature-subtext">
-                  Optimized for sub-millisecond execution patterns and reliable state transitions.
-                </p>
-              </div>
-            </div>
-          </div>
-
-          <div class="cronos-accordion-item">
-            <button class="cronos-accordion-trigger" onclick="toggleCronosAccordion(this)">
-              <span class="cronos-trigger-text">Cloud Security Engine</span>
-              <span class="cronos-accordion-icon">+</span>
-            </button>
-            <div class="cronos-accordion-body">
-              <div class="cronos-accordion-inner">
-                <p class="cronos-feature-description">
-                  Vetted end-to-end ecosystems. Zero-trust networks isolate core business intelligence layers from public exploitation, handling threat models and active vulnerability monitoring metrics dynamically.
-                </p>
-                <p class="cronos-feature-subtext">
-                  Fully compliant with advanced zero-trust enterprise infrastructure parameters.
-                </p>
-              </div>
-            </div>
-          </div>
-
-        </div>
-      </div>
-
-    </div>
-  </div>
-
-  <script>
-    function toggleCronosAccordion(element) {
-      const currentItem = element.closest('.cronos-accordion-item');
-      const allItems = currentItem.parentElement.querySelectorAll('.cronos-accordion-item');
-      
-      // Close open drawers cleanly
-      allItems.forEach(item => {
-        if (item !== currentItem) {
-          item.classList.remove('cronos-is-active');
-        }
-      });
-      
-      // Toggle targeted selection
-      currentItem.classList.toggle('cronos-is-active');
-    }
-  </script>
-
-</body>
-</html>
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-<section data-it-bento="container">
-  <div data-it-bento="inner-wrapper">
-    
-    <div data-it-bento="hero-layout">
-      <div data-it-bento="hero-heading-col">
-        <h2 data-it-bento="hero-title">Architected<br>around the cloud.</h2>
-      </div>
-      <div data-it-bento="hero-content-col">
-        <p data-it-bento="hero-body-text">
-          From cluster automation to cloud telemetry tools, every part of our architecture is built for scale. From infrastructure provisioning profiles to deployment pipelines, every detail is engineered to
-        </p>
-        <p data-it-bento="hero-body-text">
-          support how development teams deploy high-traffic software. All for a simple reason: zero-trust security and high availability matter as much as raw processing speed.
-        </p>
-      </div>
-    </div>
-
-    <div data-it-bento="grid">
-      
-      <div data-it-bento="card">
-        <div data-it-bento="card-bg" style="background-image: url('https://picsum.photos/id/160/600/900');"></div>
-        <div data-it-bento="card-header">
-          <span data-it-bento="card-tag">Innovation</span>
-          <h3 data-it-bento="card-title">Beautiful and durable, by design.</h3>
-        </div>
-        <button data-it-bento="action-btn" aria-label="Open information modal" data-open-modal="modal-1">+</button>
-      </div>
-
-      <div data-it-bento="card">
-        <div data-it-bento="card-bg" style="background-image: url('https://picsum.photos/id/20/600/900');"></div>
-        <div data-it-bento="card-header">
-          <span data-it-bento="card-tag">Cutting-Edge Clusters</span>
-          <h3 data-it-bento="card-title">Picture your best node management.</h3>
-        </div>
-        <button data-it-bento="action-btn" aria-label="Open information modal" data-open-modal="modal-1">+</button>
-      </div>
-
-      <div data-it-bento="card">
-        <div data-it-bento="card-bg" style="background-image: url('https://picsum.photos/id/60/600/900');"></div>
-        <div data-it-bento="card-header">
-          <span data-it-bento="card-tag">Core Architecture</span>
-          <h3 data-it-bento="card-title">Compute power that lasts.</h3>
-        </div>
-        <button data-it-bento="action-btn" aria-label="Open information modal" data-open-modal="modal-1">+</button>
-      </div>
-
-    </div>
-  </div>
-
-  <div data-it-bento="modal-overlay" id="modal-1">
-    <div data-it-bento="modal-window">
-      
-      <div data-it-bento="modal-sticky-bar">
-        <button data-it-bento="modal-close-btn" aria-label="Close modal">&times;</button>
-      </div>
-
-      <div data-it-bento="modal-scroll-content">
-        <span data-it-bento="modal-tag">Innovation</span>
-        <h2 data-it-bento="modal-main-heading">Beautiful and durable, by design.</h2>
-
-        <div data-it-bento="content-block">
-          <p data-it-bento="block-text">
-            <strong>Second to none.</strong> Our infrastructure platforms are known for iconic reliability and advanced telemetry structures. Built to deliver exceptional server response rates through heavy parallel scaling frameworks, hardware and software are explicitly architected in tandem.
-          </p>
-          <div data-it-bento="block-image" style="background-image: url('https://picsum.photos/id/160/1000/500');"></div>
-        </div>
-
-        <div data-it-bento="content-block">
-          <p data-it-bento="block-text">
-            <strong>Built to endure.</strong> Redundant nodes are completely isolated within independent containers, preventing failures from cascading down through runtime processes. Little spikes? No biggie — our platform withstands concurrent data floods with grace.
-          </p>
-          <div data-it-bento="block-image" style="background-image: url('https://picsum.photos/id/20/1000/500');"></div>
-        </div>
-
-        <div data-it-bento="content-block">
-          <p data-it-bento="block-text">
-            <strong>Secure by default.</strong> Encryption-at-rest keys refresh automatically at random increments without causing micro-stutter delays across client request pipelines.
-          </p>
-          <div data-it-bento="block-image" style="background-image: url('https://picsum.photos/id/60/1000/500');"></div>
-        </div>
-
-      </div>
-    </div>
-  </div>
-</section>
-
-<style>
-  /* Base Container Setting */
-  [data-it-bento="container"] {
-    background-color: #0d0f0e; /* Pure deep off-black base */
-    padding: 6rem 1.5rem;
-    font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif;
-    width: 100%;
-    box-sizing: border-box;
-  }
-
-  /* Structural Content Alignment Limit */
-  [data-it-bento="inner-wrapper"] {
-    max-width: 1200px;
-    margin: 0 auto;
-    width: 100%;
-  }
-
-  /* Hero Section Top Layout Style */
-  [data-it-bento="hero-layout"] {
-    border-top: 1px solid rgba(255, 255, 255, 0.3);
-    padding-top: 2rem;
-    display: grid;
-    grid-template-columns: 1.2fr 2fr;
-    gap: 4rem;
-    align-items: start;
-    margin-bottom: 4rem;
-  }
-
-  [data-it-bento="hero-title"] {
-    font-size: 3rem;
-    font-weight: 500;
-    line-height: 1.1;
-    color: #ffffff;
-    margin: 0;
-    letter-spacing: -0.03em;
-  }
-
-  [data-it-bento="hero-content-col"] {
-    display: grid;
-    grid-template-columns: 1fr 1fr;
-    gap: 2.5rem;
-  }
-
-  [data-it-bento="hero-body-text"] {
-    font-size: 1.05rem;
-    line-height: 1.5;
-    color: rgba(255, 255, 255, 0.7);
-    margin: 0;
-  }
-
-  /* Bento Layout Grid */
-  [data-it-bento="grid"] {
-    display: grid;
-    grid-template-columns: repeat(3, 1fr);
-    gap: 1.25rem;
-    width: 100%;
-  }
-
-  [data-it-bento="card"] {
-    position: relative;
-    height: 540px;
-    border-radius: 28px; /* Elegant heavy apple-style corners */
-    overflow: hidden;
-    display: flex;
-    flex-direction: column;
-    justify-content: flex-start;
-    padding: 2.5rem 2rem;
-    box-sizing: border-box;
-    background-color: #1a1a1a;
-  }
-
-  [data-it-bento="card-bg"] {
-    position: absolute;
-    top: 0; left: 0; right: 0; bottom: 0;
-    background-size: cover;
-    background-position: center;
-    z-index: 1;
-  }
-
-  /* Gentle card gradient to ensure readability at header */
-  [data-it-bento="card"]::after {
-    content: '';
-    position: absolute;
-    top: 0; left: 0; right: 0; height: 40%;
-    background: linear-gradient(to bottom, rgba(0,0,0,0.6), transparent);
-    z-index: 2;
-  }
-
-  [data-it-bento="card-header"] {
-    position: relative;
-    z-index: 3;
-    color: #ffffff;
-  }
-
-  [data-it-bento="card-tag"] {
-    font-size: 0.85rem;
-    font-weight: 500;
-    opacity: 0.7;
-    display: block;
-    margin-bottom: 0.5rem;
-  }
-
-  [data-it-bento="card-title"] {
-    font-size: 1.75rem;
-    font-weight: 600;
-    margin: 0;
-    line-height: 1.2;
-    letter-spacing: -0.01em;
-  }
-
-  /* Circle Action Trigger Button */
-  [data-it-bento="action-btn"] {
-    position: absolute;
-    bottom: 2rem;
-    right: 2rem;
-    z-index: 4;
-    width: 40px;
-    height: 40px;
-    background-color: #ffffff;
-    color: #000000;
-    border: none;
-    border-radius: 50%;
-    font-size: 1.5rem;
-    font-weight: 400;
-    cursor: pointer;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    transition: transform 0.2s cubic-bezier(0.16, 1, 0.3, 1);
-  }
-
-  [data-it-bento="action-btn"]:hover {
-    transform: scale(1.1);
-  }
-
-  /* MODAL DISPLAY SYSTEMS */
-  [data-it-bento="modal-overlay"] {
-    position: fixed;
-    top: 0; left: 0; right: 0; bottom: 0;
-    background-color: rgba(0, 0, 0, 0.6);
-    backdrop-filter: blur(20px);
-    z-index: 1000;
-    display: flex;
-    justify-content: center;
-    align-items: flex-end; /* Slides fluidly up from base like mobile UI */
-    opacity: 0;
-    pointer-events: none;
-    transition: opacity 0.3s ease;
-    padding: 2rem 1rem 0 1rem;
-    box-sizing: border-box;
-  }
-
-  [data-it-bento="modal-overlay"].is-active {
-    opacity: 1;
-    pointer-events: auto;
-  }
-
-  [data-it-bento="modal-window"] {
-    background-color: #f5f5f7; /* Off-white system window tint */
-    width: 100%;
-    max-width: 1200px; /* Restricts internal width profile precisely */
-    height: 90vh;
-    border-top-left-radius: 30px;
-    border-top-right-radius: 30px;
-    display: flex;
-    flex-direction: column;
-    position: relative;
-    overflow: hidden;
-    transform: translateY(100%);
-    transition: transform 0.4s cubic-bezier(0.16, 1, 0.3, 1);
-  }
-
-  [data-it-bento="modal-overlay"].is-active [data-it-bento="modal-window"] {
-    transform: translateY(0);
-  }
-
-  /* Sticky Top Bar: Guarantees Close Button Stays Fixed While Scrolling Content */
-  [data-it-bento="modal-sticky-bar"] {
-    position: absolute;
-    top: 0; left: 0; right: 0;
-    height: 70px;
-    padding: 0 2rem;
-    display: flex;
-    align-items: center;
-    justify-content: flex-end;
-    z-index: 1010;
-    pointer-events: none; /* Allows click-through outside the specific button button element */
-  }
-
-  [data-it-bento="modal-close-btn"] {
-    width: 36px;
-    height: 36px;
-    border-radius: 50%;
-    background-color: #e8e8ed;
-    color: #000000;
-    font-size: 1.5rem;
-    border: none;
-    cursor: pointer;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    pointer-events: auto; /* Restores clicking mechanics to interactive target element */
-    line-height: 0;
-    padding-bottom: 2px;
-    transition: background-color 0.2s;
-  }
-
-  [data-it-bento="modal-close-btn"]:hover {
-    background-color: #dcdce2;
-  }
-
-  /* Core Internal Scroll Area */
-  [data-it-bento="modal-scroll-content"] {
-    padding: 5rem 3rem 4rem 3rem;
-    overflow-y: auto;
-    height: 100%;
-    box-sizing: border-box;
-  }
-
-  [data-it-bento="modal-tag"] {
-    font-size: 1rem;
-    color: #86868b;
-    font-weight: 500;
-    display: block;
-    margin-bottom: 0.5rem;
-  }
-
-  [data-it-bento="modal-main-heading"] {
-    font-size: 3rem;
-    font-weight: 700;
-    color: #1d1d1f;
-    margin: 0 0 3rem 0;
-    letter-spacing: -0.02em;
-    line-height: 1.15;
-  }
-
-  /* Content Block Layout with Requested 15px Rounded Corners */
-  [data-it-bento="content-block"] {
-    background-color: #ffffff;
-    border-radius: 15px; /* Mandated corner styling */
-    padding: 2.5rem;
-    margin-bottom: 1.5rem;
-    box-sizing: border-box;
-    display: flex;
-    flex-direction: column;
-    gap: 2rem;
-  }
-
-  [data-it-bento="block-text"] {
-    font-size: 1.35rem;
-    line-height: 1.5;
-    color: #6e6e73;
-    margin: 0;
-    max-width: 900px;
-  }
-
-  [data-it-bento="block-text"] strong {
-    color: #1d1d1f;
-  }
-
-  [data-it-bento="block-image"] {
-    width: 100%;
-    height: 450px;
-    background-size: cover;
-    background-position: center;
-    border-radius: 12px;
-  }
-
-  /* Perfectly Adaptive Mobile Media Queries */
-  @media (max-width: 1024px) {
-    [data-it-bento="hero-layout"] {
-      grid-template-columns: 1fr;
-      gap: 2rem;
-    }
-    [data-it-bento="hero-content-col"] {
-      grid-template-columns: 1fr;
-      gap: 1.5rem;
-    }
-    [data-it-bento="grid"] {
-      grid-template-columns: repeat(2, 1fr);
-    }
-  }
-
-  @media (max-width: 768px) {
-    [data-it-bento="container"] {
-      padding: 4rem 1rem;
-    }
-    [data-it-bento="hero-title"] {
-      font-size: 2.25rem;
-    }
-    [data-it-bento="grid"] {
-      grid-template-columns: 1fr;
-    }
-    [data-it-bento="card"] {
-      height: 480px;
-    }
-    [data-it-bento="modal-scroll-content"] {
-      padding: 4rem 1.5rem 2rem 1.5rem;
-    }
-    [data-it-bento="modal-main-heading"] {
-      font-size: 2rem;
-      margin-bottom: 2rem;
-    }
-    [data-it-bento="content-block"] {
-      padding: 1.5rem;
-    }
-    [data-it-bento="block-text"] {
-      font-size: 1.1rem;
-    }
-    [data-it-bento="block-image"] {
-      height: 240px;
-    }
-  }
-</style>
-
-<script>
-  document.addEventListener('DOMContentLoaded', () => {
-    const container = document.querySelector('[data-it-bento="container"]');
-    
-    if (container) {
-      // Open Triggers
-      container.querySelectorAll('[data-open-modal]').forEach(trigger => {
-        trigger.addEventListener('click', () => {
-          const targetId = trigger.getAttribute('data-open-modal');
-          const targetModal = container.querySelector(`#${targetId}`);
-          if (targetModal) {
-            targetModal.classList.add('is-active');
-            document.body.style.overflow = 'hidden'; // Prevents background body scrolling
-            
-            // Auto-reset internal modal scrolling container to the absolute top
-            const targetScrollArea = targetModal.querySelector('[data-it-bento="modal-scroll-content"]');
-            if (targetScrollArea) targetScrollArea.scrollTop = 0;
-          }
-        });
-      });
-
-      // Close Triggers
-      container.querySelectorAll('[data-it-bento="modal-close-btn"]').forEach(closeBtn => {
-        closeBtn.addEventListener('click', (e) => {
-          const activeModal = e.target.closest('[data-it-bento="modal-overlay"]');
-          if (activeModal) {
-            activeModal.classList.remove('is-active');
-            document.body.style.overflow = ''; // Restores standard body interaction mechanics
-          }
-        });
-      });
-
-      // Overlay Dim Close Dismissal Check
-      container.querySelectorAll('[data-it-bento="modal-overlay"]').forEach(overlay => {
-        overlay.addEventListener('click', (e) => {
-          if (e.target === overlay) {
-            overlay.classList.remove('is-active');
-            document.body.style.overflow = '';
-          }
-        });
-      });
-    }
-  });
-</script>
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-<!DOCTYPE html>
-<html lang="en">
-<head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Cronos Premium Interactive Hero</title>
-  <style>
-    /* Container Isolation & Global Aesthetics */
-    .cronos-hero-wrapper {
-      --cronos-bg-top: #0a192f;
-      --cronos-bg-bottom: #0072ff;
-      --cronos-text-color: #ffffff;
-      --cronos-font-family: 'Circular Std', -apple-system, BlinkMacSystemFont, sans-serif;
-      
-      position: relative;
-      width: 100%;
-      min-height: 100vh;
-      display: flex;
-      flex-direction: column;
-      justify-content: center;
-      align-items: center;
-      /* Premium radial gradient matching the reference image profile */
-      background: radial-gradient(circle at 50% 30%, var(--cronos-bg-bottom) 0%, var(--cronos-bg-top) 85%);
-      padding: 60px 24px;
-      box-sizing: border-box;
-      overflow: hidden;
-      font-family: var(--cronos-font-family);
-    }
-
-    .cronos-hero-wrapper * {
-      box-sizing: border-box;
-      margin: 0;
-      padding: 0;
-    }
-
-    /* Text Container Window */
-    .cronos-hero-text-container {
-      position: relative;
-      width: 100%;
-      max-width: 1200px;
-      height: auto;
-      min-height: 220px;
-      display: flex;
-      justify-content: center;
-      align-items: center;
-      cursor: default; /* Restores the standard default native mouse pointer arrow */
-    }
-
-    /* Master Shared Settings for Typographic Layers */
-    .cronos-hero-text-layer {
-      font-size: 8rem;
-      font-weight: 400;
-      letter-spacing: -0.04em;
-      text-align: center;
-      line-height: 1.1;
-      width: 100%;
-      position: absolute;
-      top: 50%;
-      left: 50%;
-      transform: translate(-50%, -50%);
-      user-select: none;
-      white-space: nowrap;
-    }
-
-    /* Base Blur Layer */
-    .cronos-hero-blur-layer {
-      color: rgba(255, 255, 255, 0.9);
-      filter: blur(5px);
-      opacity: 0.75;
-      z-index: 1;
-    }
-
-    /* Sharp Mask Layer (Controlled via JavaScript CSS Masking) */
-    .cronos-hero-sharp-layer {
-      color: var(--cronos-text-color);
-      z-index: 2;
-      /* Default standalone center mask placement for non-hover/mobile states */
-      -webkit-mask-image: radial-gradient(circle 160px at 50% 50%, black 30%, transparent 100%);
-      mask-image: radial-gradient(circle 160px at 50% 50%, black 30%, transparent 100%);
-    }
-
-    /* Content Control Layer */
-    .cronos-hero-content-panel {
-      position: relative;
-      z-index: 10;
-      display: flex;
-      flex-direction: column;
-      align-items: center;
-      text-align: center;
-      max-width: 500px;
-      width: 100%;
-    }
-
-    .cronos-hero-tagline {
-      color: #ffffff;
-      font-size: 18px;
-      line-height: 1.5;
-      font-weight: 400;
-      margin-bottom: 32px;
-      letter-spacing: -0.01em;
-    }
-
-    /* CTA Buttons Layout */
-    .cronos-hero-button-group {
-      display: flex;
-      gap: 1px; /* Crisp line alignment */
-      background-color: transparent;
-    }
-
-    .cronos-hero-btn {
-      display: inline-flex;
-      align-items: center;
-      justify-content: center;
-      height: 46px;
-      padding: 0 28px;
-      font-size: 16px;
-      font-weight: 500;
-      text-decoration: none;
-      border-radius: 50px; /* Sharp premium branding edge rule */
-    }
-
-    .cronos-btn-secondary {
-      background-color: #ffffff;
-      color: #000000;
-    }
-
-    .cronos-btn-secondary:hover {
-      background-color: #f3f3f3;
-    }
-
-    /* Responsive Fluid Typography Engine */
-    @media (max-width: 1200px) {
-      .cronos-hero-text-layer {
-        font-size: 7rem;
-      }
-      .cronos-hero-text-container {
-        min-height: 180px;
-      }
-    }
-
-    @media (max-width: 768px) {
-      .cronos-hero-wrapper {
-        min-height: auto;
-        padding: 200px 20px;
-      }
-      .cronos-hero-text-layer {
-        font-size: 4.2rem;
-        white-space: normal; /* Smooth text wrapping for standard phone screen displays */
-        line-height: 1.2;
-      }
-      .cronos-hero-text-container {
-        min-height: 160px;
-      }
-      .cronos-hero-blur-layer {
-        filter: blur(6px); /* Streamlined mobile blur execution footprint */
-      }
-      .cronos-hero-sharp-layer {
-        -webkit-mask-image: radial-gradient(circle 130px at 50% 45%, black 45%, transparent 100%);
-        mask-image: radial-gradient(circle 130px at 50% 45%, black 45%, transparent 100%);
-      }
-      .cronos-hero-tagline {
-        font-size: 16px;
-      }
-    }
-  </style>
-</head>
-<body>
-
-  <section class="cronos-hero-wrapper">
-    <div class="cronos-hero-text-container" id="cronosHeroCanvas">
-      
-      <div class="cronos-hero-text-layer cronos-hero-blur-layer" aria-hidden="true">
-        Build full stack
-      </div>
-      
-      <div class="cronos-hero-text-layer cronos-hero-sharp-layer" id="cronosHeroSharp">
-        Build full stack
-      </div>
-
-    </div>
-
-    <div class="cronos-hero-content-panel">
-      <p class="cronos-hero-tagline">
-        Croloft delivers the full stack for a <br>new global economy
-      </p>
-      
-      <div class="cronos-hero-button-group">
-       
-        <a href="#wallet" class="cronos-hero-btn cronos-btn-secondary">Get started with Croloft&#174; </a>
-      </div>
-    </div>
-  </section>
-
-  <script>
-    document.addEventListener("DOMContentLoaded", () => {
-      const canvas = document.getElementById("cronosHeroCanvas");
-      const sharpLayer = document.getElementById("cronosHeroSharp");
-
-      if (!canvas || !sharpLayer) return;
-
-      // Track system cursor position inside canvas container bounds
-      canvas.addEventListener("mousemove", (event) => {
-        const bounds = canvas.getBoundingClientRect();
-        
-        // Accurate positional delta offsets relative to text element wrapper
-        const relativeX = event.clientX - bounds.left;
-        const relativeY = event.clientY - bounds.top;
-
-        // Center lens gradient mask cleanly beneath native mouse pointer pointer positions
-        const lensRadius = "160px";
-        const maskStyle = `radial-gradient(circle ${lensRadius} at ${relativeX}px ${relativeY}px, black 25%, transparent 100%)`;
-        
-        sharpLayer.style.webkitMaskImage = maskStyle;
-        sharpLayer.style.maskImage = maskStyle;
-      });
-
-      // Recenter the lens smoothly if the cursor leaves the element panel boundaries
-      canvas.addEventListener("mouseleave", () => {
-        const defaultMask = `radial-gradient(circle 160px at 50% 50%, black 30%, transparent 100%)`;
-        sharpLayer.style.webkitMaskImage = defaultMask;
-        sharpLayer.style.maskImage = defaultMask;
-      });
-
-      // Support touch devices via fluid touch coordinates mapping
-      canvas.addEventListener("touchmove", (event) => {
-        if (event.touches.length === 0) return;
-        const bounds = canvas.getBoundingClientRect();
-        const touch = event.touches[0];
-        
-        const relativeX = touch.clientX - bounds.left;
-        const relativeY = touch.clientY - bounds.top;
-        
-        const mobileLensRadius = "130px";
-        const maskStyle = `radial-gradient(circle ${mobileLensRadius} at ${relativeX}px ${relativeY}px, black 35%, transparent 100%)`;
-        
-        sharpLayer.style.webkitMaskImage = maskStyle;
-        sharpLayer.style.maskImage = maskStyle;
-      }, { passive: true });
-    });
-  </script>
-
-</body>
-</html>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 
 
@@ -2663,7 +579,7 @@ document.addEventListener('DOMContentLoaded', () => {
 
 <section class="defcon-premium-showcase">
   <div class="defcon-header-container-hd">
-    <div class="defcon-main-heading-hd">Croloft</div>
+    <div class="defcon-main-heading-hd">Build, scale & deploy</div>
     
     <div class="defcon-subheading-wrapper">
       <div class="defcon-subheading-hd" id="dynamic-subheading">
@@ -2685,28 +601,6 @@ document.addEventListener('DOMContentLoaded', () => {
 </section>
 
 <style>
-    @font-face {
-            font-family: 'Circular Std';
-            src: url('fonts/CircularStd-Book.ttf') format('truetype');
-            font-weight: 400;
-            font-style: normal;
-        }
-
-        /* Circular Std - Medium (500) */
-        @font-face {
-            font-family: 'Circular Std';
-            src: url('fonts/CircularStd.ttf') format('truetype');
-            font-weight: 500;
-            font-style: normal;
-        }
-
-        /* Circular Std - Bold (700) */
-        @font-face {
-            font-family: 'Circular Std';
-            src: url('fonts/CircularStd-Bold.ttf') format('truetype');
-            font-weight: 600;
-            font-style: normal;
-        }
   
     .highlight-cron {
         color: #0091ff;
@@ -2739,12 +633,12 @@ document.addEventListener('DOMContentLoaded', () => {
 
 /* Main Heading */
 .defcon-main-heading-hd {
-  font-size: 10rem; 
+  font-size: 6rem; 
   font-weight: 400;
   text-transform: none;
   max-width: 800px; 
   
-  line-height: 0.8;
+  line-height: 1;
   color: white;
   text-align: center;
   margin: 7rem auto 3rem auto; 
@@ -3599,243 +1493,17 @@ document.addEventListener("DOMContentLoaded", function() {
 
 
 
-<section id="lm-premium-hero-section">
-  <div class="lm-hero-bg-wrapper">
-    <img src="https://images.unsplash.com/photo-1476480862126-209bfaa8edc8?q=80&w=2070" alt="Background" class="lm-hero-bg-img">
-    <div class="lm-hero-overlay"></div>
-  </div>
-
-  <div class="lm-hero-container">
-    <div class="lm-hero-text-side">
-      <h1 class="lm-hero-title">
-        <span>Make.</span>
-        <span>Every Day.</span>
-        <span>Better.</span>
-      </h1>
-    </div>
-
-    <div class="lm-hero-card-side">
-      <a href="#" class="lm-hero-info-card">
-        <div class="lm-card-img-wrapper">
-          <img src="https://images.unsplash.com/photo-1502680390469-be75c86b636f?q=80&w=600" alt="Latest News Thumbnail" class="lm-card-img">
-        </div>
-        <div class="lm-card-content">
-          <span class="lm-card-tag">LATEST NEWS</span>
-          <div class="lm-card-footer">
-            <h2 class="lm-card-title">2025 Annual<br>Report</h2>
-            <div class="lm-card-icon">
-              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
-                <line x1="7" y1="17" x2="17" y2="7"></line>
-                <polyline points="7 7 17 7 17 17"></polyline>
-              </svg>
-            </div>
-          </div>
-        </div>
-      </a>
-    </div>
-  </div>
-</section>
-
-<style>
-  /* Import Inter for the premium tech aesthetic */
-@import url('https://fonts.googleapis.com/css2?family=Inter:wght@400;700;800&display=swap');
-
-#lm-premium-hero-section {
-  /* Scoped CSS Variables to guarantee no collisions */
-  --lm-hero-font: 'Inter', -apple-system, BlinkMacSystemFont, sans-serif;
-  --lm-hero-white: #ffffff;
-  --lm-hero-card-bg: rgba(18, 18, 18, 0.85);
-  --lm-hero-radius-sharp: 1px;
-  --lm-hero-radius-card: 12px;
-  
-  position: relative;
-  width: 100%;
-  min-height: 100vh;
-  display: flex;
-  align-items: flex-end;
-  box-sizing: border-box;
-  font-family: var(--lm-hero-font);
-  overflow: hidden;
-  background-color: #000;
-}
-
-#lm-premium-hero-section *,
-#lm-premium-hero-section *::before,
-#lm-premium-hero-section *::after {
-  box-sizing: border-box;
-  margin: 0;
-  padding: 0;
-}
-
-/* Background Handling */
-#lm-premium-hero-section .lm-hero-bg-wrapper {
-  position: absolute;
-  top: 0;
-  left: 0;
-  width: 100%;
-  height: 100%;
-  z-index: 1;
-}
-
-#lm-premium-hero-section .lm-hero-bg-img {
-  width: 100%;
-  height: 100%;
-  object-fit: cover;
-  object-position: center 35%;
-}
-
-#lm-premium-hero-section .lm-hero-overlay {
-  position: absolute;
-  top: 0;
-  left: 0;
-  width: 100%;
-  height: 100%;
-  background: linear-gradient(to bottom, rgba(0,0,0,0.2) 0%, rgba(0,0,0,0.5) 100%);
-}
-
-/* Container Layout */
-#lm-premium-hero-section .lm-hero-container {
-  position: relative;
-  z-index: 2;
-  width: 100%;
-  max-width: 1440px;
-  margin: 0 auto;
-  padding: 60px 80px;
-  display: grid;
-  grid-template-columns: 1fr auto;
-  align-items: flex-end;
-  gap: 40px;
-}
-
-/* Left Side: Bold Header Typo */
-#lm-premium-hero-section .lm-hero-text-side {
-  max-width: 800px;
-}
-
-#lm-premium-hero-section .lm-hero-title {
-  color: var(--lm-hero-white);
-  font-size: clamp(3.5rem, 8vw, 7.5rem);
-  font-weight: 800;
-  line-height: 0.88;
-  letter-spacing: -0.04em;
-  display: flex;
-  flex-direction: column;
-}
-
-#lm-premium-hero-section .lm-hero-title span {
-  display: block;
-}
-
-/* Right Side: Overlay Glass Card */
-#lm-premium-hero-section .lm-hero-card-side {
-  display: flex;
-  justify-content: flex-end;
-  margin-bottom: 20px;
-}
-
-#lm-premium-hero-section .lm-hero-info-card {
-  display: block;
-  width: 320px;
-  background: var(--lm-hero-card-bg);
-  backdrop-filter: blur(20px);
-  -webkit-backdrop-filter: blur(20px);
-  border: 1px solid rgba(255, 255, 255, 0.1);
-  border-radius: var(--lm-hero-radius-sharp);
-  padding: 16px;
-  text-decoration: none;
-  transition: transform 0.3s cubic-bezier(0.16, 1, 0.3, 1), border-color 0.3s ease;
-}
-
-#lm-premium-hero-section .lm-hero-info-card:hover {
-  transform: translateY(-4px);
-  border-color: rgba(255, 255, 255, 0.25);
-}
-
-#lm-premium-hero-section .lm-card-img-wrapper {
-  width: 100%;
-  aspect-ratio: 16 / 10;
-  border-radius: var(--lm-hero-radius-card);
-  overflow: hidden;
-  margin-bottom: 16px;
-}
 
-#lm-premium-hero-section .lm-card-img {
-  width: 100%;
-  height: 100%;
-  object-fit: cover;
-}
 
-#lm-premium-hero-section .lm-card-content {
-  display: flex;
-  flex-direction: column;
-}
 
-#lm-premium-hero-section .lm-card-tag {
-  color: rgba(255, 255, 255, 0.6);
-  font-size: 0.65rem;
-  font-weight: 700;
-  text-transform: uppercase;
-  letter-spacing: 0.05em;
-  margin-bottom: 16px;
-}
 
-#lm-premium-hero-section .lm-card-footer {
-  display: flex;
-  justify-content: space-between;
-  align-items: flex-end;
-}
 
-#lm-premium-hero-section .lm-card-title {
-  color: var(--lm-hero-white);
-  font-size: 1.25rem;
-  font-weight: 700;
-  line-height: 1.15;
-  letter-spacing: -0.02em;
-}
 
-#lm-premium-hero-section .lm-card-icon {
-  width: 18px;
-  height: 18px;
-  color: rgba(255, 255, 255, 0.8);
-  margin-bottom: 2px;
-}
 
-#lm-premium-hero-section .lm-card-icon svg {
-  width: 100%;
-  height: 100%;
-  display: block;
-}
 
-/* --- Responsive Adaptations --- */
-@media (max-width: 1024px) {
-  #lm-premium-hero-section .lm-hero-container {
-    padding: 40px;
-    grid-template-columns: 1fr;
-    gap: 48px;
-  }
-  
-  #lm-premium-hero-section .lm-hero-card-side {
-    justify-content: flex-start;
-    margin-bottom: 0;
-  }
-}
 
-@media (max-width: 640px) {
-  #lm-premium-hero-section {
-    min-height: auto;
-    padding-top: 120px; /* Provides space if there is a top navbar */
-  }
 
-  #lm-premium-hero-section .lm-hero-container {
-    padding: 32px 20px;
-    gap: 40px;
-  }
 
-  #lm-premium-hero-section .lm-hero-info-card {
-    width: 100%; /* Spans full screen width cleanly on small phones */
-  }
-}
-</style>
 
 
 
@@ -3872,667 +1540,6 @@ document.addEventListener("DOMContentLoaded", function() {
 
 
 
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-<!--
-  Cronos Cloud Infrastructure — Performance Comparison Component
-  ---------------------------------------------------------------
-  Drop-in, self-contained Web Component. Fully isolated via Shadow DOM
-  and a unique custom element tag, so it will NOT collide with any
-  classes, IDs, or styles already in your codebase.
-
-  Usage: paste this whole file's <script> tag once per page, then
-  place <cronos-cloud-compare></cronos-cloud-compare> anywhere you
-  want the block to appear. The section is full-bleed (100% width)
-  with its content capped at 1200px. Pressing "Compare Cronos Cloud
-  plans" opens a bottom drawer with the plan comparison.
--->
-<cronos-cloud-compare></cronos-cloud-compare>
-
-<script>
-(function () {
-    if (customElements.get('cronos-cloud-compare')) return;
-
-    // Comparison data — swap targets and stats here to update copy in one place.
-    const CCC_DATA = {
-        'legacy-onprem': {
-            label: 'Legacy On-Premise Server',
-            stats: [
-                { value: '45% faster', desc: 'application response times' },
-                { value: '3x faster',  desc: 'data backup &amp; recovery speeds' },
-                { value: '18 more hours', desc: 'guaranteed uptime, per month' },
-                { value: '30 more hours', desc: 'saved on manual server maintenance' },
-            ],
-        },
-        'shared-hosting': {
-            label: 'Basic Shared Hosting',
-            stats: [
-                { value: '60% faster', desc: 'page load speeds under peak traffic' },
-                { value: '5x more',    desc: 'concurrent user capacity' },
-                { value: '12 more hours', desc: 'guaranteed uptime, per month' },
-                { value: '15 more hours', desc: 'saved on manual scaling &amp; patches' },
-            ],
-        },
-        'competitor-cloud': {
-            label: 'Competitor Cloud Provider',
-            stats: [
-                { value: '20% faster', desc: 'average response times' },
-                { value: '35% lower',  desc: 'monthly infrastructure costs' },
-                { value: '6 more hours',  desc: 'guaranteed uptime, per month' },
-                { value: '10 more hours', desc: 'saved with managed 24/7 support' },
-            ],
-        },
-    };
-    const CCC_ORDER = ['legacy-onprem', 'shared-hosting', 'competitor-cloud'];
-
-    const CCC_TEMPLATE = document.createElement('template');
-    CCC_TEMPLATE.innerHTML = `
-        <style>
-            :host {
-                all: initial;
-                display: block;
-                font-family: -apple-system, BlinkMacSystemFont, "SF Pro Display", "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
-                color-scheme: dark;
-            }
-            * { box-sizing: border-box; }
-
-            .ccc-section {
-                width: 100%;
-                background: #080d1b;
-                padding: 182px 24px;
-            }
-
-            .ccc-content {
-                max-width: 1200px;
-                margin: 0 auto;
-                background: radial-gradient(120% 140% at 15% 0%, #16305c 0%, #000000 55%),
-                            linear-gradient(160deg, #0a0f1f 0%, #000000 70%);
-                border-radius: 28px;
-                padding: 56px 64px 64px;
-            }
-
-            .ccc-row {
-                display: flex;
-                align-items: center;
-                gap: 16px;
-                margin-bottom: 56px;
-                flex-wrap: wrap;
-            }
-            .ccc-row-label {
-                font-size: 19px;
-                color: #a1a1a6;
-                font-weight: 400;
-                white-space: nowrap;
-            }
-
-            .ccc-dropdown { position: relative; }
-            .ccc-dropdown-trigger {
-                display: flex;
-                align-items: center;
-                gap: 10px;
-                background: rgba(255,255,255,0.06);
-                border: 1px solid rgba(255,255,255,0.28);
-                color: #f5f5f7;
-                font-size: 19px;
-                font-weight: 600;
-                font-family: inherit;
-                padding: 10px 18px;
-                border-radius: 999px;
-                cursor: pointer;
-                transition: background-color 0.2s ease, border-color 0.2s ease;
-            }
-            .ccc-dropdown-trigger:hover { background: rgba(255,255,255,0.1); }
-            .ccc-dropdown-trigger:focus-visible { outline: 2px solid #2997ff; outline-offset: 2px; }
-            .ccc-dropdown-chevron {
-                width: 12px; height: 12px; flex-shrink: 0;
-                transition: transform 0.2s ease;
-            }
-            .ccc-dropdown.open .ccc-dropdown-chevron { transform: rotate(180deg); }
-
-            .ccc-dropdown-list {
-                position: absolute;
-                top: calc(100% + 8px);
-                left: 0;
-                min-width: 100%;
-                background: #1c1c1e;
-                border: 1px solid rgba(255,255,255,0.14);
-                border-radius: 16px;
-                padding: 6px;
-                list-style: none;
-                margin: 0;
-                z-index: 20;
-                opacity: 0;
-                visibility: hidden;
-                transform: translateY(-6px);
-                transition: opacity 0.15s ease, transform 0.15s ease, visibility 0.15s;
-                box-shadow: 0 12px 32px rgba(0,0,0,0.45);
-            }
-            .ccc-dropdown.open .ccc-dropdown-list {
-                opacity: 1; visibility: visible; transform: translateY(0);
-            }
-            .ccc-dropdown-option {
-                padding: 10px 14px;
-                font-size: 16px;
-                font-weight: 500;
-                color: #f5f5f7;
-                border-radius: 10px;
-                cursor: pointer;
-                white-space: nowrap;
-            }
-            .ccc-dropdown-option:hover,
-            .ccc-dropdown-option:focus-visible { background: rgba(255,255,255,0.1); outline: none; }
-            .ccc-dropdown-option[aria-selected="true"] { color: #2997ff; }
-
-            .ccc-stats-grid {
-                display: grid;
-                grid-template-columns: repeat(4, 1fr);
-                gap: 40px;
-                transition: opacity 0.18s ease;
-            }
-            .ccc-stats-grid.ccc-fading { opacity: 0; }
-
-            .ccc-stat-prefix {
-                font-size: 17px;
-                color: #a1a1a6;
-                margin: 0 0 2px;
-            }
-            .ccc-stat-value {
-                font-size: 28px;
-                font-weight: 700;
-                color: #f5f5f7;
-                margin: 0 0 10px;
-                line-height: 1.15;
-            }
-            .ccc-stat-desc {
-                font-size: 15px;
-                color: #a1a1a6;
-                margin: 0;
-                line-height: 1.4;
-            }
-
-            .ccc-cta-row {
-                display: flex;
-                justify-content: center;
-                margin-top: 64px;
-            }
-            .ccc-cta {
-                display: inline-flex;
-                align-items: center;
-                gap: 14px;
-                background: transparent;
-                border: 1.5px solid #2997ff;
-                color: #f5f5f7;
-                font-size: 19px;
-                font-weight: 600;
-                font-family: inherit;
-                text-decoration: none;
-                padding: 14px 14px 14px 28px;
-                border-radius: 999px;
-                transition: background-color 0.2s ease;
-            }
-            .ccc-cta:hover { background: rgba(41,151,255,0.12); }
-            .ccc-cta:focus-visible { outline: 2px solid #2997ff; outline-offset: 3px; }
-            .ccc-cta-plus {
-                width: 28px; height: 28px;
-                border-radius: 50%;
-                background: #2997ff;
-                display: flex; align-items: center; justify-content: center;
-                flex-shrink: 0;
-            }
-            .ccc-cta-plus svg { width: 14px; height: 14px; }
-
-            /* Mobile responsiveness */
-            @media (max-width: 900px) {
-                .ccc-section { padding: 56px 20px; }
-                .ccc-content { padding: 44px 32px 48px; border-radius: 22px; }
-                .ccc-stats-grid { grid-template-columns: repeat(2, 1fr); gap: 32px 24px; }
-            }
-            @media (max-width: 520px) {
-                .ccc-section { padding: 44px 16px; }
-                .ccc-content { padding: 36px 20px 40px; }
-                .ccc-row { margin-bottom: 40px; }
-                .ccc-row-label { font-size: 16px; }
-                .ccc-dropdown-trigger { font-size: 16px; padding: 9px 14px; }
-                .ccc-stats-grid { grid-template-columns: 1fr; gap: 28px; }
-                .ccc-stat-value { font-size: 24px; }
-                .ccc-cta-row { margin-top: 44px; }
-                .ccc-cta { width: 100%; justify-content: center; font-size: 17px; padding: 13px 13px 13px 22px; }
-            }
-
-            @media (prefers-reduced-motion: reduce) {
-                .ccc-dropdown-chevron,
-                .ccc-dropdown-list,
-                .ccc-stats-grid,
-                .ccc-cta,
-                .ccc-drawer,
-                .ccc-drawer-backdrop { transition: none !important; }
-            }
-
-            /* Bottom Drawer */
-            .ccc-drawer-backdrop {
-                position: fixed; inset: 0;
-                background: rgba(0,0,0,0.6);
-                opacity: 0; visibility: hidden;
-                transition: opacity 0.25s ease, visibility 0.25s;
-                z-index: 999;
-            }
-            .ccc-drawer-backdrop.open { opacity: 1; visibility: visible; }
-
-            .ccc-drawer {
-                position: fixed;
-                left: 0; right: 0; bottom: 0;
-                max-width: 1300px;
-                margin: 0 auto;
-                background: #111114;
-                border-radius: 28px 28px 0 0;
-                padding: 40px 56px 56px;
-                max-height: 92vh;
-                overflow-y: auto;
-                transform: translateY(100%);
-                transition: transform 0.32s cubic-bezier(0.32, 0.72, 0, 1);
-                z-index: 1000;
-                box-shadow: 0 -20px 60px rgba(0,0,0,0.5);
-            }
-            .ccc-drawer.open { transform: translateY(0); }
-
-            .ccc-drawer-handle {
-                width: 36px; height: 4px; border-radius: 4px;
-                background: rgba(255,255,255,0.2);
-                margin: 0 auto 24px;
-            }
-            .ccc-drawer-header {
-                display: flex; align-items: center; justify-content: space-between;
-                margin-bottom: 32px;
-            }
-            .ccc-drawer-header h3 {
-                font-size: 26px; font-weight: 700; color: #f5f5f7; margin: 0;
-            }
-            .ccc-drawer-close {
-                width: 38px; height: 38px; flex-shrink: 0;
-                border-radius: 50%; border: none;
-                background: rgba(255,255,255,0.08);
-                display: flex; align-items: center; justify-content: center;
-                cursor: pointer;
-            }
-            .ccc-drawer-close:hover { background: rgba(255,255,255,0.16); }
-            .ccc-drawer-close svg { width: 15px; height: 15px; }
-
-            .ccc-table-scroll { overflow-x: auto; }
-            .ccc-compare-table {
-                width: 100%;
-                border-collapse: collapse;
-            }
-            .ccc-compare-table th,
-            .ccc-compare-table td {
-                border: none;
-                border-bottom: 1px solid rgba(255,255,255,0.1);
-                padding: 20px 16px;
-                text-align: center;
-                white-space: nowrap;
-            }
-            .ccc-compare-table thead th {
-                font-size: 15px;
-                color: #a1a1a6;
-                font-weight: 400;
-                border-bottom: 1px solid rgba(255,255,255,0.18);
-            }
-            .ccc-compare-table th:first-child,
-            .ccc-compare-table td:first-child {
-                text-align: left;
-                color: #a1a1a6;
-                font-size: 15px;
-                white-space: normal;
-            }
-            .ccc-compare-table th.ccc-col-featured,
-            .ccc-compare-table td.ccc-col-featured {
-                background: rgba(41,151,255,0.07);
-            }
-            .ccc-plan-name {
-                font-size: 19px; font-weight: 700; color: #f5f5f7;
-                display: flex; align-items: center; justify-content: center; gap: 8px;
-            }
-            .ccc-plan-badge {
-                background: #2997ff; color: #fff; font-size: 11px; font-weight: 700;
-                padding: 3px 9px; border-radius: 999px; white-space: nowrap;
-            }
-            .ccc-compare-table td { font-size: 15px; color: #d1d1d6; }
-            .ccc-compare-table td.ccc-col-featured { color: #f5f5f7; font-weight: 600; }
-            .ccc-table-cta-row td { border-bottom: none; padding-top: 28px; }
-            .ccc-plan-cta {
-                display: inline-block; text-align: center;
-                background: rgba(255,255,255,0.08); color: #f5f5f7;
-                text-decoration: none; font-size: 14px; font-weight: 600;
-                padding: 10px 22px; border-radius: 999px;
-                transition: background-color 0.2s ease;
-            }
-            .ccc-plan-cta:hover { background: rgba(255,255,255,0.16); }
-            .ccc-plan-cta.ccc-cta-featured { background: #2997ff; }
-            .ccc-plan-cta.ccc-cta-featured:hover { background: #1f87ee; }
-
-            @media (max-width: 720px) {
-                .ccc-drawer { padding: 28px 24px 36px; border-radius: 22px 22px 0 0; }
-                .ccc-compare-table th, .ccc-compare-table td { padding: 16px 14px; font-size: 14px; }
-            }
-        </style>
-
-        <div class="ccc-section">
-            <div class="ccc-content">
-                <div class="ccc-row">
-                    <span class="ccc-row-label">Compare with</span>
-                    <div class="ccc-dropdown" id="cccDropdown">
-                        <button type="button" class="ccc-dropdown-trigger" id="cccDropdownTrigger"
-                                aria-haspopup="listbox" aria-expanded="false">
-                            <span id="cccDropdownLabel"></span>
-                            <svg class="ccc-dropdown-chevron" viewBox="0 0 24 24" fill="none" stroke="#a1a1a6" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round">
-                                <polyline points="6 9 12 15 18 9"></polyline>
-                            </svg>
-                        </button>
-                        <ul class="ccc-dropdown-list" id="cccDropdownList" role="listbox" tabindex="-1"></ul>
-                    </div>
-                </div>
-
-                <div class="ccc-stats-grid" id="cccStatsGrid"></div>
-
-                <div class="ccc-cta-row">
-                    <button type="button" class="ccc-cta" id="cccCta">
-                        <span>Compare Cronos Cloud plans</span>
-                        <span class="ccc-cta-plus">
-                            <svg viewBox="0 0 24 24" fill="none" stroke="#000000" stroke-width="3" stroke-linecap="round" stroke-linejoin="round">
-                                <line x1="12" y1="5" x2="12" y2="19"></line>
-                                <line x1="5" y1="12" x2="19" y2="12"></line>
-                            </svg>
-                        </span>
-                    </button>
-                </div>
-            </div>
-        </div>
-
-        <div class="ccc-drawer-backdrop" id="cccDrawerBackdrop"></div>
-        <div class="ccc-drawer" id="cccDrawer" role="dialog" aria-modal="true" aria-labelledby="cccDrawerTitle">
-            <div class="ccc-drawer-handle"></div>
-            <div class="ccc-drawer-header">
-                <h3 id="cccDrawerTitle">Compare Cronos Cloud plans</h3>
-                <button type="button" class="ccc-drawer-close" id="cccDrawerClose" aria-label="Close">
-                    <svg viewBox="0 0 24 24" fill="none" stroke="#f5f5f7" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round">
-                        <line x1="18" y1="6" x2="6" y2="18"></line>
-                        <line x1="6" y1="6" x2="18" y2="18"></line>
-                    </svg>
-                </button>
-            </div>
-            <div class="ccc-table-scroll">
-                <table class="ccc-compare-table">
-                    <thead>
-                        <tr>
-                            <th></th>
-                            <th>
-                                <span class="ccc-plan-name">Starter</span>
-                            </th>
-                            <th class="ccc-col-featured">
-                                <span class="ccc-plan-name">Business <span class="ccc-plan-badge">Most popular</span></span>
-                            </th>
-                            <th>
-                                <span class="ccc-plan-name">Enterprise</span>
-                            </th>
-                        </tr>
-                    </thead>
-                    <tbody>
-                        <tr>
-                            <td>vCPUs &amp; RAM</td>
-                            <td>2 vCPUs, 4GB RAM</td>
-                            <td class="ccc-col-featured">8 vCPUs, 16GB RAM</td>
-                            <td>Dedicated, scalable resources</td>
-                        </tr>
-                        <tr>
-                            <td>Storage</td>
-                            <td>100GB SSD</td>
-                            <td class="ccc-col-featured">500GB SSD</td>
-                            <td>Unlimited storage &amp; bandwidth</td>
-                        </tr>
-                        <tr>
-                            <td>Uptime SLA</td>
-                            <td>99.9%</td>
-                            <td class="ccc-col-featured">99.95%</td>
-                            <td>99.99%</td>
-                        </tr>
-                        <tr>
-                            <td>Support</td>
-                            <td>Business-hours support</td>
-                            <td class="ccc-col-featured">24/7 priority support</td>
-                            <td>Dedicated account manager</td>
-                        </tr>
-                        <tr class="ccc-table-cta-row">
-                            <td></td>
-                            <td><a class="ccc-plan-cta" href="cloud-infrastructure.html#starter">Get started</a></td>
-                            <td class="ccc-col-featured"><a class="ccc-plan-cta ccc-cta-featured" href="cloud-infrastructure.html#business">Get started</a></td>
-                            <td><a class="ccc-plan-cta" href="cloud-infrastructure.html#enterprise">Talk to sales</a></td>
-                        </tr>
-                    </tbody>
-                </table>
-            </div>
-        </div>
-    `;
-
-    class CronosCloudCompare extends HTMLElement {
-        connectedCallback() {
-            if (this._built) return;
-            this._built = true;
-
-            const shadow = this.attachShadow({ mode: 'open' });
-            shadow.appendChild(CCC_TEMPLATE.content.cloneNode(true));
-
-            const dropdown        = shadow.getElementById('cccDropdown');
-            const trigger         = shadow.getElementById('cccDropdownTrigger');
-            const triggerLabel    = shadow.getElementById('cccDropdownLabel');
-            const list            = shadow.getElementById('cccDropdownList');
-            const statsGrid       = shadow.getElementById('cccStatsGrid');
-            const cta             = shadow.getElementById('cccCta');
-            const drawer           = shadow.getElementById('cccDrawer');
-            const drawerBackdrop   = shadow.getElementById('cccDrawerBackdrop');
-            const drawerClose      = shadow.getElementById('cccDrawerClose');
-
-            let activeKey = CCC_ORDER[0];
-
-            const renderStats = (key) => {
-                const data = CCC_DATA[key];
-                statsGrid.classList.add('ccc-fading');
-                setTimeout(() => {
-                    statsGrid.innerHTML = data.stats.map(s => `
-                        <div class="ccc-stat">
-                            <p class="ccc-stat-prefix">Up to</p>
-                            <p class="ccc-stat-value">${s.value}</p>
-                            <p class="ccc-stat-desc">${s.desc}</p>
-                        </div>
-                    `).join('');
-                    statsGrid.classList.remove('ccc-fading');
-                }, 120);
-            };
-
-            const renderOptions = () => {
-                list.innerHTML = CCC_ORDER.map(key => `
-                    <li class="ccc-dropdown-option" role="option" data-key="${key}"
-                        aria-selected="${key === activeKey}" tabindex="0">
-                        ${CCC_DATA[key].label}
-                    </li>
-                `).join('');
-            };
-
-            const selectOption = (key) => {
-                activeKey = key;
-                triggerLabel.textContent = CCC_DATA[key].label;
-                renderOptions();
-                renderStats(key);
-                this.dispatchEvent(new CustomEvent('cronos-compare-change', {
-                    detail: { key, label: CCC_DATA[key].label },
-                    bubbles: true, composed: true,
-                }));
-            };
-
-            const openList = () => {
-                dropdown.classList.add('open');
-                trigger.setAttribute('aria-expanded', 'true');
-            };
-            const closeList = () => {
-                dropdown.classList.remove('open');
-                trigger.setAttribute('aria-expanded', 'false');
-            };
-            const toggleList = () => {
-                dropdown.classList.contains('open') ? closeList() : openList();
-            };
-
-            trigger.addEventListener('click', (e) => { e.stopPropagation(); toggleList(); });
-
-            list.addEventListener('click', (e) => {
-                const opt = e.target.closest('.ccc-dropdown-option');
-                if (!opt) return;
-                selectOption(opt.getAttribute('data-key'));
-                closeList();
-                trigger.focus();
-            });
-
-            list.addEventListener('keydown', (e) => {
-                const opt = e.target.closest('.ccc-dropdown-option');
-                if (!opt) return;
-                if (e.key === 'Enter' || e.key === ' ') {
-                    e.preventDefault();
-                    selectOption(opt.getAttribute('data-key'));
-                    closeList();
-                    trigger.focus();
-                } else if (e.key === 'ArrowDown' || e.key === 'ArrowUp') {
-                    e.preventDefault();
-                    const opts = Array.from(list.querySelectorAll('.ccc-dropdown-option'));
-                    const idx = opts.indexOf(opt);
-                    const next = e.key === 'ArrowDown' ? opts[idx + 1] : opts[idx - 1];
-                    if (next) next.focus();
-                } else if (e.key === 'Escape') {
-                    closeList();
-                    trigger.focus();
-                }
-            });
-
-            trigger.addEventListener('keydown', (e) => {
-                if (e.key === 'ArrowDown' || e.key === 'Enter' || e.key === ' ') {
-                    e.preventDefault();
-                    openList();
-                    const first = list.querySelector('.ccc-dropdown-option');
-                    if (first) first.focus();
-                } else if (e.key === 'Escape') {
-                    closeList();
-                }
-            });
-
-            document.addEventListener('click', (e) => {
-                if (!e.composedPath().includes(dropdown)) closeList();
-            });
-
-            // Bottom drawer (plan comparison)
-            const openDrawer = () => {
-                drawer.classList.add('open');
-                drawerBackdrop.classList.add('open');
-                document.body.style.overflow = 'hidden';
-            };
-            const closeDrawer = () => {
-                drawer.classList.remove('open');
-                drawerBackdrop.classList.remove('open');
-                document.body.style.overflow = '';
-            };
-
-            cta.addEventListener('click', openDrawer);
-            drawerClose.addEventListener('click', closeDrawer);
-            drawerBackdrop.addEventListener('click', closeDrawer);
-            document.addEventListener('keydown', (e) => {
-                if (e.key === 'Escape' && drawer.classList.contains('open')) closeDrawer();
-            });
-
-            // Initial render
-            triggerLabel.textContent = CCC_DATA[activeKey].label;
-            renderOptions();
-            renderStats(activeKey);
-        }
-    }
-
-    customElements.define('cronos-cloud-compare', CronosCloudCompare);
-})();
-</script>
 
 
 
@@ -5794,7 +2801,7 @@ document.addEventListener("DOMContentLoaded", function() {
       --itco-muted:   #4a5568;
       --itco-link:    #0073bb;
       --itco-radius:  28px;
-      --itco-gap:     5px;
+      --itco-gap:     10px;
       --itco-ease:    650ms cubic-bezier(0.42, 0, 0.18, 1);
       --itco-peek:    120px;
       --itco-max:     1200px;
@@ -5816,51 +2823,23 @@ document.addEventListener("DOMContentLoaded", function() {
     .itco-cs__header {
       width: 100%;
       max-width: var(--itco-max);
-      padding: 0 20px 40px;
+      padding-bottom: 20px;
       display: flex;
       align-items: flex-end;
       justify-content: space-between;
-      gap: 40px;
     }
 
     .itco-cs__header-text {
       flex: 1;
-      max-width: 680px;
+      max-width: 100%;
     }
 
     .itco-cs__header-title {
-      font-size: 50px;
+      font-size: 2.4rem;
       font-weight: 500;
       line-height: 1;
       color: var(--itco-text);
       margin: 0 0 14px;
-    }
-
-    .itco-cs__header-desc {
-      font-size: clamp(.88rem, 1.4vw, 1.25rem);
-      font-weight: 400;
-      line-height: 1.65;
-      color: var(--itco-muted);
-      margin: 0;
-      max-width: 560px;
-    }
-
-    .itco-cs__header-link {
-     
-      display: flex;
-      gap: 5px;
-      font-size: 1rem;
-      font-weight: 400;
-      color: #FFF;
-      text-decoration: none;
-      padding-bottom: 4px; /* align with desc baseline */
-      background: #0065c3; padding: 10px 18px; border-radius: 50px; vertical-align: middle;
-    }
-
-    .itco-cs__header-link svg {
-      width: 22px; height: 22px;
-      stroke: #ffffff;
-      flex-shrink: 0;
     }
 
     /* ─── TRACK OUTER ────────────────────────────────────────── */
@@ -6180,16 +3159,8 @@ document.addEventListener("DOMContentLoaded", function() {
   <!-- ── HEADER ───────────────────────────────────────────── -->
   <div class="itco-cs__header">
     <div class="itco-cs__header-text">
-      <h2 class="itco-cs__header-title">Customer success stories</h2>
-      <p class="itco-cs__header-desc">Learn how customers accelerated their tech journeys with solutions from Croloft</p>
+      <h2 class="itco-cs__header-title">Testimonials. <span style="color: dimgray;">What customers say.</span></h2>
     </div>
-    <div>
-    <a class="itco-cs__header-link" href="#">
-      View more stories
-      <svg viewBox="0 0 24 24" fill="none" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round">
-        <line x1="5" y1="12" x2="19" y2="12"/><polyline points="12 5 19 12 12 19"/>
-      </svg>
-    </a></div>
   </div>
 
   <!-- ── CAROUSEL ─────────────────────────────────────────── -->
@@ -6561,21 +3532,207 @@ document.addEventListener("DOMContentLoaded", function() {
 
 
 
+<script src="translations.js"></script>
 
 
 
 
 
+<section class="crft-full-width-section">
+  <div class="crft-bounded-container">
+    
+    <div class="crft-header-container">
+      <h2 class="crft-main-title">Take a closer look.</h2>
+    </div>
 
+    <div class="crft-card-container crft-apple-banner-bg">
+      
+      <div class="crft-left-col">
+        <h3 class="crft-cta-text">
+          A Guided Tour of Next-Gen Software, Infrastructure, and Scale
+        </h3>
+        <button type="button" class="crft-action-btn">
+          Watch the film
+        </button>
+      </div>
 
+      <div class="crft-right-col">
+        <img 
+          src="https://images.pexels.com/photos/1181411/pexels-photo-1181411.jpeg" 
+          alt="IT Business Showcase" 
+          class="crft-full-cover-img"
+        />
+      </div>
 
+    </div>
+    
+  </div>
+</section>
 
+<style>
+  /* Base resets to safeguard the component */
+.crft-full-width-section,
+.crft-full-width-section * {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+}
 
+/* Full Width Section Wrapper */
+.crft-full-width-section {
+  width: 100%;
+  background-color: #f5f5f7;
+  padding: 4rem 0;
+  font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
+  -webkit-font-smoothing: antialiased;
+}
 
+/* Container locked at exactly 1200px max-width */
+.crft-bounded-container {
+  width: 100%;
+  max-width: 1200px;
+  margin: 0 auto;
+  padding: 0 1.5rem;
+}
 
+/* Header Styling */
+.crft-header-container {
+  margin-bottom: 2rem;
+  text-align: left;
+}
 
+.crft-main-title {
+  font-size: 2rem;
+  line-height: 2.25rem;
+  font-weight: 600;
+  color: #1d1d1f;
+  letter-spacing: -0.025em;
+}
 
+/* Feature Card Wrapper */
+.crft-card-container {
+  position: relative;
+  overflow: hidden; /* Crucial to clip the image to the card's rounded corners */
+  border-radius: 28px;
+  min-height: 550px;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  box-shadow: 0 1px 3px rgba(0, 0, 0, 0.05);
+}
 
+/* Exact Split Color Background Logic (Mobile Stacking) */
+.crft-apple-banner-bg {
+  background: #e3e3e3;
+  background: linear-gradient(
+    to bottom,
+    #e3e3e3 0%,
+    #e3e3e3 50%,
+    #e2945c 50%,
+    #e2945c 100%
+  );
+}
+
+/* Left Column Layout */
+.crft-left-col {
+  z-index: 10;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  text-align: center;
+  padding: 3rem 1.5rem 2rem 1.5rem;
+}
+
+.crft-cta-text {
+  font-size: 1.625rem;
+  line-height: 2.1rem;
+  font-weight: 700;
+  color: #1d1d1f;
+  letter-spacing: -0.015em;
+  max-width: 22rem;
+  margin-bottom: 1.5rem;
+}
+
+/* Action Button */
+.crft-action-btn {
+  background-color: #1d1d1f;
+  color: #ffffff;
+  font-size: 0.875rem;
+  font-weight: 500;
+  padding: 0.75rem 1.5rem;
+  border: none;
+  border-radius: 9999px;
+  cursor: pointer;
+  transition: background-color 0.2s ease;
+  letter-spacing: 0.025em;
+}
+
+.crft-action-btn:hover {
+  background-color: #323234;
+}
+
+/* Right Column Graphic Container - Zero padding, structural block */
+.crft-right-col {
+  position: relative;
+  width: 100%;
+  height: 275px; /* Takes exactly half the card height on mobile split */
+  display: block;
+}
+
+/* The Magic Fix: Image completely fills its parent container */
+.crft-full-cover-img {
+  display: block;
+  width: 100%;
+  height: 100%;
+  object-fit: cover; /* Forces image to scale up and fill the entire space without distortion */
+  object-position: center; 
+}
+
+/* --- Desktop & Layout Rules (768px and up) --- */
+@media (min-width: 768px) {
+  .crft-main-title {
+    font-size: 3rem;
+    line-height: 1;
+  }
+
+  .crft-card-container {
+    min-height: 440px;
+    flex-direction: row;
+    align-items: stretch; /* Forces both columns to take up equal full height */
+  }
+
+  /* Flip Gradient Split to Side-by-Side (50% Split) */
+  .crft-apple-banner-bg {
+    background: linear-gradient(
+      to right,
+      #e3e3e3 0%,
+      #e3e3e3 50%,
+      #e2945c 50%,
+      #e2945c 100%
+    );
+  }
+
+  .crft-left-col {
+    width: 50%;
+    align-items: flex-start;
+    text-align: left;
+    padding: 4rem 0 4rem 4rem; /* Left padding inside the card, zero right padding */
+    margin-bottom: 0;
+  }
+
+  .crft-cta-text {
+    font-size: 2.25rem;
+    line-height: 2.5rem;
+    max-width: 26rem;
+  }
+
+  .crft-right-col {
+    width: 50%;
+    height: auto; /* Inherits container height via flex stretch */
+  }
+}
+</style>
 
 
 
@@ -6700,10 +3857,9 @@ document.addEventListener("DOMContentLoaded", function() {
   }
 
   .it-services-header {
-    font-size: 24px;
+    font-size: 2.4rem;
     font-weight: 500;
     margin-bottom: 32px;
-    letter-spacing: -0.5px;
   }
 
   .it-services-grid {

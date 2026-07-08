@@ -207,6 +207,321 @@
 
 
 
+<div class="rf-it-pricing-wrapper">
+  <style>
+
+    .rf-it-pricing-wrapper {
+      font-family: 'Circular Std', -apple-system, BlinkMacSystemFont, sans-serif;
+      background-color: #03070e; /* Deep premium black baseline matching the reference design */
+      padding: 80px 24px;
+      color: #ffffff;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      box-sizing: border-box;
+      width: 100%;
+    }
+
+    /* Table Section Header */
+    .rf-it-header-group {
+      max-width: 1200px;
+      width: 100%;
+      margin-bottom: 48px;
+      text-align: left;
+    }
+
+    .rf-it-main-title {
+      font-size: 36px;
+      font-weight: 500;
+      color: #ffffff;
+      margin: 0; text-align: center;
+      letter-spacing: -0.02em;
+    }
+
+    .rf-it-main-container {
+      max-width: 1200px;
+      width: 100%;
+      display: flex;
+      flex-direction: column;
+      gap: 10px; /* Space between separate rows */
+    }
+
+    /* Master Row Layout: Left label stays outside, right content gets the box layout */
+    .rf-it-master-row {
+      display: grid;
+      grid-template-columns: 260px 1fr;
+      align-items: center;
+      box-sizing: border-box;
+      width: 100%;
+    }
+
+    /* Left Sidebar Labels - Completely outside the bordered box card */
+    .rf-it-row-meta {
+      padding-right: 40px;
+      box-sizing: border-box;
+    }
+
+    .rf-it-meta-title {
+      font-size: 18px;
+      font-weight: 500;
+      line-height: 1.3;
+      color: #ffffff;
+      margin: 0 0 4px 0;
+      position: relative;
+      display: inline-block;
+    }
+
+    /* Sup-tags mirroring reference footnotes numbers */
+    .rf-it-sup {
+      color: #0091ff;
+      font-size: 12px;
+      position: absolute;
+      top: -4px;
+      margin-left: 2px;
+    }
+
+    .rf-it-meta-sub {
+      font-size: 13px;
+      line-height: 1.4;
+      color: #626d7f;
+      margin: 0;
+    }
+
+    .rf-it-meta-sub a {
+      color: #0091ff;
+      text-decoration: none;
+    }
+
+    /* Bordered Box Container - Exclusively for the right metrics columns */
+    .rf-it-content-card {
+      background-color: transparent;
+      border: 2px solid #161b26;
+      border-radius: 12px;
+      padding: 40px 32px;
+      box-sizing: border-box;
+    }
+
+    /* Five-Column Tier Grid Matrix System */
+    .rf-it-matrix-grid {
+      display: grid;
+      grid-template-columns: repeat(5, 1fr);
+      text-align: center;
+      align-items: center;
+      gap: 20px;
+    }
+
+    /* Columns Inside Tiers */
+    .rf-it-tier-column {
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+    }
+
+    /* Typography Treatments for Data Matrices */
+    .rf-it-main-metric {
+      font-size: 24px;
+      font-weight: 400;
+      color: #ffffff;
+      margin-bottom: 4px;
+    }
+
+    .rf-it-sub-metric {
+      font-size: 14px;
+      color: #8c9ba5;
+      line-height: 1.4;
+    }
+
+    .rf-it-accent-value {
+      font-size: 20px;
+      font-weight: 400;
+      color: #ffffff;
+      margin: 8px 0;
+    }
+
+    .rf-it-divider-text {
+      font-size: 16px;
+      color: #8c9ba5; 
+      font-weight: 400;
+      margin: 2px 0;
+    }
+
+    /* Specific Utility Context Styles */
+    .rf-it-free-tier {
+      font-size: 22px;
+      font-weight: 400;
+      color: #ffffff;
+      letter-spacing: 0.05em;
+    }
+
+    /* Responsive Adaptation for mobile devices and smaller viewports */
+    @media (max-width: 1024px) {
+      .rf-it-master-row {
+        grid-template-columns: 1fr;
+        gap: 16px;
+      }
+      .rf-it-row-meta {
+        padding-right: 0;
+        text-align: center;
+        margin-bottom: 8px;
+      }
+      .rf-it-content-card {
+        padding: 32px 20px;
+      }
+      .rf-it-matrix-grid {
+        grid-template-columns: 1fr;
+        gap: 32px;
+      }
+      .rf-it-main-title {
+        font-size: 28px;
+      }
+    }
+  </style>
+
+  <div class="rf-it-header-group" id="demo">
+    <h1 class="rf-it-main-title">IT Tier Metrics & Ecosystem Offers</h1>
+  </div>
+
+  <div class="rf-it-main-container">
+    
+    <div class="rf-it-master-row">
+      <div class="rf-it-row-meta">
+        <h3 class="rf-it-meta-title">Level Up Program<span class="rf-it-sup">6</span></h3>
+        <p class="rf-it-meta-sub">Tier Access Fee</p>
+      </div>
+      
+      <div class="rf-it-content-card">
+        <div class="rf-it-matrix-grid">
+          <div class="rf-it-tier-column">
+            <span class="rf-it-free-tier">FREE</span>
+          </div>
+          <div class="rf-it-tier-column">
+            <span class="rf-it-main-metric">$499/mo</span>
+            <span class="rf-it-sub-metric">or $4,990 yearly (16% off)</span>
+            <span class="rf-it-divider-text">or</span>
+            <span class="rf-it-accent-value">$5,000</span>
+            <span class="rf-it-sub-metric">12-month IT hardware spend</span>
+          </div>
+          <div class="rf-it-tier-column">
+            <span class="rf-it-main-metric">$2,499/mo</span>
+            <span class="rf-it-sub-metric">or $24,990 yearly (16% off)</span>
+            <span class="rf-it-divider-text">or</span>
+            <span class="rf-it-accent-value">$25,000</span>
+            <span class="rf-it-sub-metric">12-month IT hardware spend</span>
+          </div>
+          <div class="rf-it-tier-column">
+            <span class="rf-it-accent-value">$50,000</span>
+            <span class="rf-it-sub-metric">Minimum annual infrastructure contract</span>
+          </div>
+          <div class="rf-it-tier-column">
+            <span class="rf-it-accent-value">$250,000</span>
+            <span class="rf-it-sub-metric">Dedicated cloud infrastructure allocation</span>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <div class="rf-it-master-row">
+      <div class="rf-it-row-meta">
+        <h3 class="rf-it-meta-title">SLA Guarantees<span class="rf-it-sup">4</span></h3>
+        <p class="rf-it-meta-sub">Uptime & resolution metrics performance credits</p>
+      </div>
+      
+      <div class="rf-it-content-card">
+        <div class="rf-it-matrix-grid">
+          <div class="rf-it-tier-column">
+            <span class="rf-it-main-metric" style="color: #0091ff;">99.0%</span>
+            <span class="rf-it-sub-metric">Next business day response</span>
+          </div>
+          <div class="rf-it-tier-column">
+            <span class="rf-it-main-metric" style="color: #0091ff;">99.5%</span>
+            <span class="rf-it-sub-metric">4-hour critical response window</span>
+          </div>
+          <div class="rf-it-tier-column">
+            <span class="rf-it-main-metric" style="color: #0091ff;">99.9%</span>
+            <span class="rf-it-sub-metric">2-hour enterprise response window</span>
+          </div>
+          <div class="rf-it-tier-column">
+            <span class="rf-it-main-metric" style="color: #0091ff;">99.95%</span>
+            <span class="rf-it-sub-metric">1-hour custom dedicated engineer response</span>
+          </div>
+          <div class="rf-it-tier-column">
+            <span class="rf-it-main-metric" style="color: #0091ff;">99.99%</span>
+            <span class="rf-it-sub-metric">Real-time 24/7/365 active support track</span>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <div class="rf-it-master-row">
+      <div class="rf-it-row-meta">
+        <h3 class="rf-it-meta-title">Deployment Bonus<span class="rf-it-sup">3</span></h3>
+        <p class="rf-it-meta-sub">(Valid for agreements signed by Oct 31, 2026; in <a href="#">IT Credits</a>)</p>
+      </div>
+      
+      <div class="rf-it-content-card">
+        <div class="rf-it-matrix-grid">
+          <div class="rf-it-tier-column">
+            <span class="rf-it-main-metric">$1,000</span>
+            <span class="rf-it-sub-metric">(Spend $15,000 in first 90 days of activation)</span>
+          </div>
+          <div class="rf-it-tier-column">
+            <span class="rf-it-main-metric">$2,500</span>
+            <span class="rf-it-sub-metric">(Spend $30,000 in first 90 days of activation)</span>
+          </div>
+          <div class="rf-it-tier-column">
+            <span class="rf-it-main-metric">$5,000</span>
+            <span class="rf-it-sub-metric">(Spend $60,000 in first 90 days of activation)</span>
+          </div>
+          <div class="rf-it-tier-column">
+            <span class="rf-it-main-metric">$15,000</span>
+            <span class="rf-it-sub-metric">(Spend $150,000 in first 90 days of activation)</span>
+          </div>
+          <div class="rf-it-tier-column">
+            <span class="rf-it-main-metric">$50,000</span>
+            <span class="rf-it-sub-metric">(Spend $500,000 in first 90 days of activation)</span>
+          </div>
+        </div>
+      </div>
+    </div>
+
+  </div>
+</div>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 
 
