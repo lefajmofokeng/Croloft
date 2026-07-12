@@ -10,6 +10,7 @@
       heading: 'News and Media',
       links: [
         { label: 'Product News',     href: 'product-news.html' },
+        { label: 'Company News',             href: 'company-news.html' },
         { label: 'Press Enquiries',  href: '#' },
         { label: 'Blog',             href: '#' },
       ]
@@ -131,11 +132,12 @@
   tpl.innerHTML = /* html */`
   <style>
 
-    @import url('https://fonts.cdnfonts.com/css/circular-std');
+  @import url('https://fonts.googleapis.com/css2?family=Google+Sans:ital,opsz,wght@0,17..18,400..700;1,17..18,400..700&display=swap');
+
 
     :host {
       display: block;
-      font-family: 'Circular Std', 'Helvetica Neue', Helvetica, Arial, sans-serif;
+      font-family: 'Google Sans', sans-serif;
       -webkit-font-smoothing: antialiased;
       -moz-osx-font-smoothing: grayscale;
       color: #ffffff;
@@ -180,7 +182,7 @@
 
     .col-links a {
       font-size: 17px;
-      font-weight: 400;
+      font-weight: 450;
       color: #c2c3c4;
       line-height: 1.45;
       display: block;
@@ -269,7 +271,7 @@
 
     .bottom-links a {
       font-size: 13px;
-      font-weight: 400;
+      font-weight: 460;
       color: #8da7bd;
       white-space: nowrap;
       transition: color 0.18s ease;
@@ -280,7 +282,7 @@
     .copyright {
       font-size: 12px;
       color: #55697a;
-      text-align: right;
+      text-align: right; font-weight: 500;
     }
 
     /* ── Mobile Accordion ── */
@@ -364,7 +366,7 @@
 
     .acc-panel-inner a {
       font-size: 13.5px;
-      font-weight: 400;
+      font-weight: 500;
       color: #92a8bf;
       line-height: 1.45;
       min-height: 28px;

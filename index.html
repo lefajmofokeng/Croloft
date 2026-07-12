@@ -514,69 +514,6 @@
 
 
 
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
 <section class="defcon-premium-showcase">
   <div class="defcon-header-container-hd">
     <div class="defcon-main-heading-hd">Build, scale & deploy</div>
@@ -606,7 +543,7 @@
         color: #0091ff;
     }
 
-    * { font-family: 'Circular Std', sans-serif; }
+    * { font-family: 'Google Sans', sans-serif; }
 /* Base Styles */
 .defcon-premium-showcase {
   position: relative;
@@ -658,7 +595,7 @@
 
 .defcon-subheading-hd {
   font-size: 24px;
-  font-weight: 400;
+  font-weight: 430;
   color: #ffffff;
   text-align: center;
   line-height: 1.5;
@@ -890,7 +827,7 @@ document.addEventListener("DOMContentLoaded", function() {
         .defcon-stack-component {
             width: 90%;
             max-width: var(--content-max-width);
-            margin: 80px auto;
+            margin: 180px auto;
             display: flex;
             flex-direction: column;
             gap: 48px;
@@ -1029,8 +966,8 @@ document.addEventListener("DOMContentLoaded", function() {
             font-size: 1rem;
             color: rgba(255, 255, 255, 0.7);
             margin-top: 8px;
-            max-width: 500px;
-            line-height: 1.5;
+            max-width: 500px; letter-spacing: 0.02em;
+            line-height: 1.5; font-weight: 400;
         }
 
         /* Action Anchor Blueprint Channel Button */
@@ -1039,7 +976,7 @@ document.addEventListener("DOMContentLoaded", function() {
             color: var(--defcon-navy);
             padding: 12px 25px;
             text-decoration: none;
-            font-weight: 400;
+            font-weight: 500;
             font-size: 1rem; border-radius: 60px;
             transition: all 0.2s ease;
             white-space: nowrap;
@@ -1679,317 +1616,18 @@ document.addEventListener("DOMContentLoaded", function() {
 
 
 
-<!DOCTYPE html>
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>TechNova IT Solutions</title>
-
-    <link rel="preconnect" href="https://fonts.googleapis.com">
-    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=DM+Sans:opsz,wght@9..40,400;500;700&display=swap" rel="stylesheet">
-
-    <style>
-        @font-face {
-            font-family: 'Circular Std';
-            src: url('fonts/CircularStd-Book.ttf') format('truetype');
-            font-weight: 400;
-            font-style: normal;
-        }
-
-        /* Circular Std - Medium (500) */
-        @font-face {
-            font-family: 'Circular Std';
-            src: url('fonts/CircularStd.ttf') format('truetype');
-            font-weight: 500;
-            font-style: normal;
-        }
-
-        /* Circular Std - Bold (700) */
-        @font-face {
-            font-family: 'Circular Std';
-            src: url('fonts/CircularStd-Bold.ttf') format('truetype');
-            font-weight: 600;
-            font-style: normal;
-        }
-        :root {
-            --itsvc-bg: #F5F7FA;
-            --itsvc-text-dark: #0F172A; 
-            --itsvc-text-body: #475467; 
-            --itsvc-text-muted: #CBD5E1; 
-            --itsvc-accent: #0065ad; 
-            --itsvc-border: #E2E8F0;
-            --itsvc-font: 'Circular Std', sans-serif;
-            --itsvc-anim-speed: 5s;
-        }
-
-        .itsvc-wrapper * { box-sizing: border-box; margin: 0; padding: 0; }
-
-        .itsvc-wrapper {
-            font-family: var(--itsvc-font);
-            background-color: var(--itsvc-bg);
-            padding: 80px 20px 350px 20px;
-            display: flex;
-            flex-direction: column;
-            align-items: center;
-        }
-
-        /* --- Header: 1000px --- */
-        .itsvc-header-section {
-            width: 100%;
-            max-width: 900px;
-            text-align: left;
-            margin-bottom: 80px;
-        }
-
-        .itsvc-eyebrow {
-            color: var(--itsvc-accent);
-            font-weight: 500;
-            font-size: 16px;
-            letter-spacing: 1.2px;
-            text-transform: uppercase;
-            margin-bottom: 20px;
-            display: block;
-        }
-
-        .itsvc-h1 {
-            font-size: 48px;
-            line-height: 1.1;
-            font-weight: 500;
-            color: var(--itsvc-text-dark);
-            
-            margin-bottom: 30px;
-        }
-
-        /* --- Main Content: 1200px --- */
-        .itsvc-main-section {
-            width: 100%;
-            max-width: 1200px;
-            display: flex; /* Using Flex for equal height stretching */
-            gap: 80px;
-            align-items: stretch; /* This makes left and right equal height */
-        }
-
-        /* Left Column: The Image */
-        .itsvc-image-col {
-            flex: 1;
-            position: relative;
-            border-radius: 2px;
-            overflow: hidden;
-            min-height: 500px; /* Base height for mobile/empty states */
-        }
-
-        .itsvc-img {
-            position: absolute;
-            top: 0; left: 0;
-            width: 100%; height: 100%;
-            object-fit: cover;
-            opacity: 0;
-            transition: opacity 0.5s ease;
-        }
-
-        .itsvc-img.active { opacity: 1; z-index: 2; }
-
-        /* Right Column: The Content */
-        .itsvc-content-col {
-            flex: 1;
-            display: flex;
-            flex-direction: column;
-            justify-content: flex-start;
-        }
-
-        /* Tabs */
-        .itsvc-tabs-stack {
-            display: flex;
-            flex-direction: column;
-            margin-bottom: 40px;
-        }
-
-        .itsvc-tab-item {
-            position: relative;
-            cursor: pointer;
-            margin-bottom: 30px;
-            display: inline-block; /* Crucial for progress bar width */
-            width: fit-content;
-        }
-
-        .itsvc-tab-title {
-            font-size: 45px;
-            font-weight: 500;
-            color: var(--itsvc-text-muted);
-            transition: color 0.3s ease;
-            line-height: 1.2;
-        }
-
-        .itsvc-tab-item.active .itsvc-tab-title {
-            color: var(--itsvc-text-dark);
-        }
-
-        /* Progress Bar: Width of the Tab Title */
-        .itsvc-progress-bg {
-            height: 3px;
-            width: 100%;
-            background-color: transparent;
-            margin-top: 8px;
-        }
-
-        .itsvc-tab-item.active .itsvc-progress-bg {
-            background-color: var(--itsvc-border);
-        }
-
-        .itsvc-progress-fill {
-            height: 3px;
-            width: 0%;
-            background-color: var(--itsvc-text-dark);
-        }
-
-        .itsvc-animating {
-            animation: itsvc-fill var(--itsvc-anim-speed) linear forwards;
-        }
-
-        @keyframes itsvc-fill { from { width: 0%; } to { width: 100%; } }
-
-        /* Description & Button Section */
-        .itsvc-description-area {
-            position: relative;
-            margin-top: auto; /* Pushes content to the bottom of the column if needed */
-        }
-
-        .itsvc-desc-content {
-            display: none;
-            animation: fadeIn 0.4s ease forwards;
-        }
-
-        .itsvc-desc-content.active { display: block; }
-
-        .itsvc-body-text {
-            font-size: 18px;
-            line-height: 1.6;
-            margin-bottom: 40px;
-            color: var(--itsvc-text-body);
-        }
-
-        .itsvc-btn {
-            display: inline-block;
-            background-color: var(--itsvc-accent);
-            color: #fff;
-            padding: 16px 40px;
-            font-weight: 500;
-            text-decoration: none;
-            border-radius: 50px;
-            transition: background 0.3s;
-        }
-
-        @keyframes fadeIn { from { opacity: 0; transform: translateY(10px); } to { opacity: 1; transform: translateY(0); } }
-
-        /* --- Responsive --- */
-        @media (max-width: 1024px) {
-            .itsvc-main-section { flex-direction: column; }
-            .itsvc-image-col { order: 2; height: 400px; min-height: 400px; }
-            .itsvc-content-col { order: 1; }
-            .itsvc-h1 { font-size: 34px; }
-            .itsvc-tab-title { font-size: 40px; }
-        }
-    </style>
-</head>
-<body>
-
-<div class="itsvc-wrapper">
-    <header class="itsvc-header-section">
-        <span class="itsvc-eyebrow">(WHO WE ARE)</span>
-        <h1 class="itsvc-h1">Licensed, background-checked pros delivering clean, on-time digital solutions across South Africa, with honest pricing—no surprises.</h1>
-        <p style="font-size: 18px; color: var(--itsvc-text-body); max-width: 800px;">
-            Croloft™ provides reliable service with a commitment to quality. Trusted by 100+ customers nationwide, we're proud to set the standard in the IT industry.
-        </p>
-    </header>
-
-    <section class="itsvc-main-section">
-        <div class="itsvc-image-col">
-            <img src="https://images.pexels.com/photos/31650357/pexels-photo-31650357.jpeg" class="itsvc-img active" data-id="0">
-            <img src="https://images.pexels.com/photos/31401980/pexels-photo-31401980.png" class="itsvc-img" data-id="1">
-        </div>
-
-        <div class="itsvc-content-col">
-            <span class="itsvc-eyebrow">(HOW WE CAN HELP)</span>
-            
-            <div class="itsvc-tabs-stack">
-                <div class="itsvc-tab-item active" data-id="0">
-                    <div class="itsvc-tab-title">Enterprise</div>
-                    <div class="itsvc-progress-bg">
-                        <div class="itsvc-progress-fill itsvc-animating"></div>
-                    </div>
-                </div>
 
-                <div class="itsvc-tab-item" data-id="1">
-                    <div class="itsvc-tab-title">Startups</div>
-                    <div class="itsvc-progress-bg">
-                        <div class="itsvc-progress-fill"></div>
-                    </div>
-                </div>
-            </div>
 
-            <div class="itsvc-description-area">
-                <div class="itsvc-desc-content active" data-id="0">
-                    <p class="itsvc-body-text">
-                        From system architecture to full-scale cloud migrations—fast, clean, and reliable engineering for your infrastructure. We cover security, scalability, and 24/7 maintenance.
-                    </p>
-                    <a href="#" class="itsvc-btn">View Enterprise Details</a>
-                </div>
 
-                <div class="itsvc-desc-content" data-id="1">
-                    <p class="itsvc-body-text">
-                        Rapid MVP development to launch your vision. We build high-performance web and mobile applications designed to scale alongside your user base and business goals.
-                    </p>
-                    <a href="#" class="itsvc-btn">View Startup Details</a>
-                </div>
-            </div>
-        </div>
-    </section>
-</div>
 
-<script>
-    const tabs = document.querySelectorAll('.itsvc-tab-item');
-    const images = document.querySelectorAll('.itsvc-img');
-    const contents = document.querySelectorAll('.itsvc-desc-content');
-    let currentIndex = 0;
-    let timer;
 
-    function switchStep(index) {
-        currentIndex = index % tabs.length;
 
-        tabs.forEach((tab, i) => {
-            const isActive = i === currentIndex;
-            tab.classList.toggle('active', isActive);
-            
-            const bar = tab.querySelector('.itsvc-progress-fill');
-            bar.classList.remove('itsvc-animating');
-            if (isActive) {
-                void bar.offsetWidth; // Trigger reflow
-                bar.classList.add('itsvc-animating');
-            }
-        });
 
-        images.forEach((img, i) => img.classList.toggle('active', i === currentIndex));
-        contents.forEach((desc, i) => desc.classList.toggle('active', i === currentIndex));
 
-        resetTimer();
-    }
 
-    function resetTimer() {
-        clearInterval(timer);
-        timer = setInterval(() => switchStep(currentIndex + 1), 5000);
-    }
 
-    tabs.forEach((tab, i) => {
-        tab.addEventListener('click', () => switchStep(i));
-    });
 
-    resetTimer();
-</script>
 
-</body>
-</html>
 
 
 
@@ -2088,23 +1726,9 @@ document.addEventListener("DOMContentLoaded", function() {
 
 
 
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
+<style>
+@import url('https://fonts.googleapis.com/css2?family=Google+Sans:ital,opsz,wght@0,17..18,400..700;1,17..18,400..700&display=swap');
+</style>
 
 
 <!DOCTYPE html>
@@ -2113,7 +1737,7 @@ document.addEventListener("DOMContentLoaded", function() {
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Code Architecture</title>
-    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    
     <style>
         * {
             margin: 0;
@@ -2147,7 +1771,7 @@ document.addEventListener("DOMContentLoaded", function() {
         .container {
             display: flex;
             min-height: 100vh;
-            font-family: 'Circular Std', sans-serif;
+            font-family: 'Google Sans', sans-serif;
             background-color: #0a0e17;
             color: #fff;
             overflow: hidden;
@@ -2526,7 +2150,7 @@ document.addEventListener("DOMContentLoaded", function() {
     font-weight: 500;
     color: var(--crns-text-main);
     margin: 0 0 42px 0;
-    letter-spacing: -0.03em;
+    
 }
 
 .crns-feature-list {
@@ -2891,7 +2515,7 @@ document.addEventListener("DOMContentLoaded", function() {
     /* Soft outer glow div */
     .itco-cs__slide-glow {
       position: absolute;
-      inset: -6px;
+      inset: -9px;
       border-radius: calc(var(--itco-radius) + 6px);
       z-index: -2;
       background: linear-gradient(270deg,
@@ -2945,9 +2569,9 @@ document.addEventListener("DOMContentLoaded", function() {
       z-index: 1;
       background: linear-gradient(
         108deg,
-        rgba(5,12,24,.93) 0%,
-        rgba(5,12,24,.80) 36%,
-        rgba(5,12,24,.28) 62%,
+        rgb(5, 12, 24) 0%,
+        rgba(5, 12, 24, 0.834) 36%,
+        rgba(5, 12, 24, 0) 62%,
         transparent 100%
       );
     }
@@ -2956,11 +2580,11 @@ document.addEventListener("DOMContentLoaded", function() {
     .itco-cs__slide-body {
       position: relative;
       z-index: 2;
-      aspect-ratio: 14 / 7;
+      aspect-ratio: 14 / 8;
       display: flex;
       flex-direction: column;
       justify-content: flex-end;
-      padding: 40px 54px 120px;
+      padding: 40px 104px 120px;
     }
 
     /* ─── BADGE ──────────────────────────────────────────────── */
@@ -2989,7 +2613,7 @@ document.addEventListener("DOMContentLoaded", function() {
     }
     .itco-cs__badge-pill {
       font-size: .64rem;
-      font-weight: 700;
+      font-weight: 500;
       letter-spacing: .1em;
       text-transform: uppercase;
       padding: 3px 10px;
@@ -3002,7 +2626,7 @@ document.addEventListener("DOMContentLoaded", function() {
     /* ─── HEADLINE ───────────────────────────────────────────── */
     .itco-cs__headline {
       font-size: clamp(1.1rem, 2.2vw, 3rem);
-      font-weight: 400;
+      font-weight: 500;
       line-height: 1.3;
       color: var(--itco-white);
       max-width: 750px;
@@ -3016,7 +2640,7 @@ document.addEventListener("DOMContentLoaded", function() {
       align-items: center;
       gap: 8px;
       font-size: 1rem;
-      font-weight: 400;
+      font-weight: 500;
       text-decoration: none;
       transition: gap .2s; background: #fff; border-radius: 50px; color: #000; width: fit-content; padding: 10px 25px;
     }
@@ -3172,7 +2796,7 @@ document.addEventListener("DOMContentLoaded", function() {
         <div class="itco-cs__slide-glow"></div>
         <div class="itco-cs__slide-inner">
           <div class="itco-cs__slide-img">
-            <img src="https://images.unsplash.com/photo-1558494949-ef010cbdcc31?w=1400&q=85" alt="Cloud Infrastructure" />
+            <img src="https://images.unsplash.com/photo-1686848429284-d108e021a74c?q=80&w=1332&auto=format&fit=crop&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D" alt="Cloud Infrastructure" />
           </div>
           <div class="itco-cs__slide-overlay"></div>
           <div class="itco-cs__slide-body">
@@ -3549,7 +3173,7 @@ document.addEventListener("DOMContentLoaded", function() {
       
       <div class="crft-left-col">
         <h3 class="crft-cta-text">
-          A Guided Tour of Next-Gen Software, Infrastructure, and Scale
+          A Guided Tour of Next Generation Software, Infrastructure, and Scale
         </h3>
         <button type="button" class="crft-action-btn">
           Watch the film
@@ -3582,7 +3206,7 @@ document.addEventListener("DOMContentLoaded", function() {
 .crft-full-width-section {
   width: 100%;
   background-color: #f5f5f7;
-  padding: 4rem 0;
+  padding: 12rem 0;
   font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
   -webkit-font-smoothing: antialiased;
 }
@@ -3604,7 +3228,7 @@ document.addEventListener("DOMContentLoaded", function() {
 .crft-main-title {
   font-size: 2rem;
   line-height: 2.25rem;
-  font-weight: 600;
+  font-weight: 500;
   color: #1d1d1f;
   letter-spacing: -0.025em;
 }
@@ -3614,7 +3238,7 @@ document.addEventListener("DOMContentLoaded", function() {
   position: relative;
   overflow: hidden; /* Crucial to clip the image to the card's rounded corners */
   border-radius: 28px;
-  min-height: 550px;
+  min-height: 500px;
   display: flex;
   flex-direction: column;
   justify-content: space-between;
@@ -3645,9 +3269,9 @@ document.addEventListener("DOMContentLoaded", function() {
 }
 
 .crft-cta-text {
-  font-size: 1.625rem;
+  font-size: 1.3rem;
   line-height: 2.1rem;
-  font-weight: 700;
+  font-weight: 500;
   color: #1d1d1f;
   letter-spacing: -0.015em;
   max-width: 22rem;
@@ -3659,7 +3283,7 @@ document.addEventListener("DOMContentLoaded", function() {
   background-color: #1d1d1f;
   color: #ffffff;
   font-size: 0.875rem;
-  font-weight: 500;
+  font-weight: 400;
   padding: 0.75rem 1.5rem;
   border: none;
   border-radius: 9999px;
@@ -3831,15 +3455,6 @@ document.addEventListener("DOMContentLoaded", function() {
 
 
 <style>
-  /* Base reset and font definition for the component */
- @font-face { font-family:'Circular Std'; src:url('fonts/CircularStd-Book.woff2') format('woff2'),url('fonts/CircularStd-Book.woff') format('woff'); font-weight:400; font-style:normal; font-display:swap; }
-  @font-face { font-family:'Circular Std'; src:url('fonts/CircularStd-BookItalic.woff2') format('woff2'),url('fonts/CircularStd-BookItalic.woff') format('woff'); font-weight:400; font-style:italic; font-display:swap; }
-  @font-face { font-family:'Circular Std'; src:url('fonts/CircularStd-Medium.woff2') format('woff2'),url('fonts/CircularStd-Medium.woff') format('woff'); font-weight:500; font-style:normal; font-display:swap; }
-  @font-face { font-family:'Circular Std'; src:url('fonts/CircularStd-Bold.woff2') format('woff2'),url('fonts/CircularStd-Bold.woff') format('woff'); font-weight:600; font-style:normal; font-display:swap; }
-  @font-face { font-family:'Circular Std'; src:url('fonts/CircularStd-Bold.woff2') format('woff2'),url('fonts/CircularStd-Bold.woff') format('woff'); font-weight:700; font-style:normal; font-display:swap; }
-  @font-face { font-family:'Circular Std'; src:url('fonts/CircularStd-Black.woff2') format('woff2'),url('fonts/CircularStd-Black.woff') format('woff'); font-weight:800; font-style:normal; font-display:swap; }
-  @font-face { font-family:'Circular Std'; src:url('fonts/CircularStd-Black.woff2') format('woff2'),url('fonts/CircularStd-Black.woff') format('woff'); font-weight:900; font-style:normal; font-display:swap; }
-    
 
   .it-services-wrapper {
     font-family: 'Circular Std', -apple-system, BlinkMacSystemFont, sans-serif;
@@ -3953,7 +3568,7 @@ document.addEventListener("DOMContentLoaded", function() {
     line-height: 1.4;
     color: #a0a5b5; /* Light grey matching the design */
     margin: 0;
-    max-width: 80%;
+    max-width: 80%; font-weight: 500;
   }
 
   /* Circular button at the bottom right */
@@ -4328,11 +3943,11 @@ document.addEventListener("DOMContentLoaded", function() {
 <style>
   .faq-section{background:#080d1b;padding:200px 0 250px;font-family:'Circular Std','Inter',sans-serif;}
   .faq-inner{max-width:1230px;margin:0 auto;padding:0 1.5rem;}
-  .faq-heading{font-size:clamp(1.4rem,3.5vw,2.1rem);font-weight:400;color:#fff;letter-spacing:-.02em;margin-bottom:36px;text-align:left;}
+  .faq-heading{font-size:clamp(1.4rem,3.5vw,2.1rem);font-weight:500;color:#fff;letter-spacing:-.02em;margin-bottom:36px;text-align:left;}
   .faq-item{border-top:1px solid rgba(255,255,255,.09);}
   .faq-item:last-of-type{border-bottom:1px solid rgba(255,255,255,.09);}
   .faq-question{display:flex;align-items:center;justify-content:space-between;padding:20px 0;cursor:pointer;user-select:none;gap:1.5rem;}
-  .faq-question-text{font-size:clamp(.92rem,2vw,1.2rem);font-weight:400;color:#f7f9fa;line-height:1.3;}
+  .faq-question-text{font-size:clamp(.92rem,2vw,1.2rem);font-weight:500;color:#f7f9fa;line-height:1.3;}
   .faq-icon{flex-shrink:0;width:20px;height:20px;position:relative;opacity:.5;transition:opacity .2s;}
   .faq-icon::before,.faq-icon::after{content:'';position:absolute;background:#fff;border-radius:2px;transition:transform .3s,opacity .3s;}
   .faq-icon::before{width:2px;height:100%;left:50%;top:0;transform:translateX(-50%);}
@@ -4342,7 +3957,7 @@ document.addEventListener("DOMContentLoaded", function() {
   .faq-question:hover .faq-icon{opacity:1;}
   .faq-answer{overflow:hidden;max-height:0;transition:max-height .4s ease;}
   .faq-item.open .faq-answer{max-height:500px;}
-  .faq-answer-inner{padding:0 0 20px;font-size:1rem;font-weight:400;color:#c9cfdd;line-height:1.75;}
+  .faq-answer-inner{padding:0 0 20px;font-size:1rem;font-weight:440;color:#c9cfdd;line-height:1.75;}
   .faq-answer-inner a{color:#0099fa;text-decoration:none;}
   .faq-answer-inner a:hover{text-decoration:underline;}
   .faq-contact{margin-top:36px;font-size:.95rem;color:rgba(255,255,255,.55); font-weight: 400;}

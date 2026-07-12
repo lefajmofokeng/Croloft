@@ -15,7 +15,9 @@
 
 </body>
 </html>
-
+<style>
+@import url('https://fonts.googleapis.com/css2?family=Google+Sans:ital,opsz,wght@0,17..18,400..700;1,17..18,400..700&display=swap');
+</style>
 
 
 
@@ -233,9 +235,6 @@
 
 
 
-
-<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700&display=swap" rel="stylesheet">
-
 <style>
   /* Unique class prefix to avoid conflicts: tech-dupe- */
   .tech-dupe-container {
@@ -244,7 +243,7 @@
     height: 800px; /* Adjust height as needed */
     background: linear-gradient(145deg, #001affc2 0%, #040e2a 50%, #040a23 100%);
     overflow: hidden;
-    font-family: 'Circular Std', sans-serif;
+    font-family: 'Google Sans', sans-serif;
     color: #f4f4f4;
     display: flex;
     align-items: center;
@@ -283,7 +282,7 @@
     font-weight: 500;
     cursor: pointer;
     transition: background-color 0.3s ease;
-    font-family: 'Circular Std', sans-serif; text-decoration: none; display: inline-flex; align-items: center; gap: 8px;
+    font-family: 'Google Sans', sans-serif; text-decoration: none; display: inline-flex; align-items: center; gap: 8px;
   }
 
   .tech-dupe-button:hover {
@@ -442,20 +441,12 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>About Us</title>
      <style>
-        @import url('https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700&display=swap');
         /* ===== RESET & BASE STYLES ===== */
         * {
             margin: 0;
             padding: 0;
             box-sizing: border-box;
         }
-
-       @font-face { font-family:'Circular Std'; src:url('fonts/CircularStd-Book.woff2') format('woff2'),url('fonts/CircularStd-Book.woff') format('woff'); font-weight:400; font-style:normal; font-display:swap; }
-        @font-face { font-family:'Circular Std'; src:url('fonts/CircularStd-BookItalic.woff2') format('woff2'),url('fonts/CircularStd-BookItalic.woff') format('woff'); font-weight:400; font-style:italic; font-display:swap; }
-        @font-face { font-family:'Circular Std'; src:url('fonts/CircularStd-Medium.woff2') format('woff2'),url('fonts/CircularStd-Medium.woff') format('woff'); font-weight:500; font-style:normal; font-display:swap; }
-        @font-face { font-family:'Circular Std'; src:url('fonts/CircularStd-Bold.woff2') format('woff2'),url('fonts/CircularStd-Bold.woff') format('woff'); font-weight:600; font-style:normal; font-display:swap; }
-        @font-face { font-family:'Circular Std'; src:url('fonts/CircularStd-Black.woff2') format('woff2'),url('fonts/CircularStd-Black.woff') format('woff'); font-weight:800; font-style:normal; font-display:swap; }
-
 
         :root {
             --defcon-primary-dark: #080d1b;
@@ -474,7 +465,7 @@
         }
 
         .aboutus-page-wrapper {
-            font-family: 'Circular Std', sans-serif;
+            font-family: 'Google Sans', sans-serif;
             overflow-x: hidden;
         }
 
@@ -578,7 +569,7 @@
             opacity: 1;
             transform: translateY(20px);
             transition: opacity 0.8s ease, transform 0.8s ease;
-            font-family: 'Circular Std', sans-serif;
+            font-family: 'Google Sans', sans-serif;
         }
 
         .hero p {
@@ -590,7 +581,7 @@
             opacity: 0;
             transform: translateY(20px);
             transition: opacity 0.8s ease 0.2s, transform 0.8s ease 0.2s;
-            font-family: 'Circular Std', sans-serif;
+            font-family: 'Google Sans', sans-serif;
         }
 
         .hero video {
@@ -641,7 +632,7 @@
             transition: all 0.3s ease;
             opacity: 0;
             transform: translateY(20px);
-            font-family: 'Circular Std', sans-serif;
+            font-family: 'Google Sans', sans-serif;
             transition: opacity 0.8s ease 0.4s, transform 0.8s ease 0.4s, background 0.3s ease;
         }
 
@@ -783,7 +774,7 @@
             gap: 8px;
             margin: 0 auto;
             transition: all 0.3s ease;
-            font-family: 'Circular Std', sans-serif;
+            font-family: 'Google Sans', sans-serif;
         }
 
         .aboutus-show-more-btn:hover {
@@ -918,7 +909,7 @@
 
         /* ===== VALUES SECTION ===== */
         .values-section-container {
-            font-family: 'Circular Std', sans-serif;
+            font-family: 'Google Sans', sans-serif;
             background-color: var(--values-dark-blue-bg);
             color: var(--values-text-color);
             padding: 120px 20px;
@@ -1026,7 +1017,7 @@
             cursor: pointer;
             transition: all 0.3s ease;
             text-decoration: none;
-            font-family: 'Circular Std', sans-serif;
+            font-family: 'Google Sans', sans-serif;
         }
 
         /* ===== ANIMATIONS ===== */
@@ -1400,20 +1391,14 @@
         render() {
             this.shadowRoot.innerHTML = `
             <style>
-                @font-face {
-                    font-family: 'Circular Std';
-                    src: local('Circular Std'), url('fonts/circular-std.ttf') format('woff'),
-                        url('fonts/CircularStd-Bold.ttf') format('woff');;
-                    font-weight: normal;
-                    font-style: normal;
-                }
 
-                @import url('https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap');
+            @import url('https://fonts.googleapis.com/css2?family=Google+Sans:ital,opsz,wght@0,17..18,400..700;1,17..18,400..700&display=swap');
+
 
                 :host {
                     display: block;
                     width: 100%;
-                    font-family: 'Circular Std', -apple-system, BlinkMacSystemFont, sans-serif;
+                    font-family: 'Google Sans', -apple-system, BlinkMacSystemFont, sans-serif;
                     background-color: #ffffff;
                     margin: 0;
                     padding: 0;
@@ -1471,7 +1456,7 @@
                     text-decoration: none;
                     transition: all 0.2s ease;
                     cursor: pointer;
-                    font-family: 'Circular Std', sans-serif;
+                    font-family: 'Google Sans', sans-serif;
                 }
 
                 .it-contact-btn:hover {

@@ -51,6 +51,9 @@ class CronosHeader extends HTMLElement {
                     { label: 'FAQs',  href: 'faqs.html' },
                     { label: 'Contact Sales',  href: 'contact-sales.html' },
                     { label: 'Learn',  href: 'compare.html' },
+                ]},
+                { heading: 'Products', links: [
+                    { label: 'Products',   href: 'products.html' },
                 ]}
             ]},
             { label: 'Individuals', i18nKey: 'nav-individuals', megamenu: [
@@ -101,6 +104,7 @@ class CronosHeader extends HTMLElement {
                     { label: 'Innovations',             href: 'innovations.html' },
                     { label: 'Careers',                 href: 'careers.html' },
                     { label: 'Partners',                href: 'partners.html' },
+                    { label: 'Facilities',              href: 'facilities.html' },
                     { label: 'Licenses & Registrations',href: 'licenses-and-registrations.html' },
                 ]},
                 { heading: 'Connect', links: [
@@ -115,7 +119,7 @@ class CronosHeader extends HTMLElement {
 
     get ACTION_BUTTONS() {
         return [
-            { label: 'Log In', href: 'login.html', style: 'secondary', id: 'cronos-loginTrigger', i18nKey: 'btn-login' },
+            { label: 'Log into console', href: 'login.html', style: 'secondary', id: 'cronos-loginTrigger', i18nKey: 'btn-login' },
             { label: 'Contact us',  href: 'form.html',  style: 'primary', i18nKey: 'btn-contact' },
         ];
     }
@@ -313,11 +317,8 @@ class CronosHeader extends HTMLElement {
 
         this.shadowRoot.innerHTML = `
         <style>
-        @font-face { font-family:'Circular Std'; src:url('fonts/CircularStd-Book.woff2') format('woff2'),url('fonts/CircularStd-Book.woff') format('woff'); font-weight:400; font-style:normal; font-display:swap; }
-        @font-face { font-family:'Circular Std'; src:url('fonts/CircularStd-BookItalic.woff2') format('woff2'),url('fonts/CircularStd-BookItalic.woff') format('woff'); font-weight:400; font-style:italic; font-display:swap; }
-        @font-face { font-family:'Circular Std'; src:url('fonts/CircularStd-Medium.woff2') format('woff2'),url('fonts/CircularStd-Medium.woff') format('woff'); font-weight:500; font-style:normal; font-display:swap; }
-        @font-face { font-family:'Circular Std'; src:url('fonts/CircularStd-Bold.woff2') format('woff2'),url('fonts/CircularStd-Bold.woff') format('woff'); font-weight:600; font-style:normal; font-display:swap; }
-        @font-face { font-family:'Circular Std'; src:url('fonts/CircularStd-Black.woff2') format('woff2'),url('fonts/CircularStd-Black.woff') format('woff'); font-weight:800; font-style:normal; font-display:swap; }
+    
+        @import url('https://fonts.googleapis.com/css2?family=Google+Sans:ital,opsz,wght@0,17..18,400..700;1,17..18,400..700&display=swap');
 
         :host {
             --cronos-color-header-bg:    #080d1b;
@@ -329,7 +330,7 @@ class CronosHeader extends HTMLElement {
             --cronos-header-height:       55px;
             --cronos-content-max-width:   1420px;
             display: block;
-            font-family: 'Circular Std', system-ui, -apple-system, sans-serif;
+            font-family: 'Google Sans', system-ui, -apple-system, sans-serif;
         }
 
         * { box-sizing: border-box; }
@@ -367,8 +368,8 @@ class CronosHeader extends HTMLElement {
         .cronos-custom-nav-list { display: flex; list-style: none; margin: 0; padding: 0; align-items: center; }
         .cronos-custom-nav-list li { margin-left: 30px; position: relative; }
         .cronos-custom-nav-link {
-            text-decoration: none; color: #fff; font-weight: 400; padding: 10px 0;
-            display: flex; font-size: 0.89rem; align-items: center; cursor: pointer; white-space: nowrap;
+            text-decoration: none; color: #fff; font-weight: 460; padding: 10px 0;
+            display: flex; font-size: 0.87rem; align-items: center; cursor: pointer; white-space: nowrap;
         }
         .cronos-custom-nav-link:hover { color: var(--cronos-color-text-muted); }
         .cronos-desktop-link-icon { display: none; }
@@ -376,14 +377,14 @@ class CronosHeader extends HTMLElement {
         .cronos-header-action-buttons { display: flex; align-items: center; position: relative; }
         .cronos-header-action-btn {
             background: #0077cc; color: #f7f9fa; border: none; padding: 9px 15px;
-            border-radius: 50px; font-weight: 400; font-size: 15px; cursor: pointer;
+            border-radius: 50px; font-weight: 500; font-size: 14px; cursor: pointer;
             margin-left: 10px; text-decoration: none; font-family: inherit; white-space: nowrap;
         }
         .cronos-header-action-btn:hover { background-color: #0081ff; }
 
         .cronos-header-secondary-btn {
             background-color: #62b8fa32; color: #95d1ff; border: none; padding: 9px 15px;
-            border-radius: 50px; font-weight: 400; font-size: 15px; cursor: pointer;
+            border-radius: 50px; font-weight: 500; font-size: 14px; cursor: pointer;
             margin-left: 10px; text-decoration: none; font-family: inherit; white-space: nowrap;
         }
         .cronos-header-secondary-btn:hover { background-color: #4a4b6b6d; }
@@ -396,7 +397,7 @@ class CronosHeader extends HTMLElement {
             border-radius: 50%; transition: color 0.2s, background-color 0.2s;
         }
         .cronos-header-search-action-trigger:hover, .cronos-header-search-action-trigger.active {
-            color: var(--cronos-color-accent); background-color: rgba(255, 255, 255, 0.05);
+            color: #fff; background-color: rgba(255, 255, 255, 0.05);
         }
         .cronos-header-search-action-trigger svg { width: 18px; height: 18px; color: #7e8da8; }
 
@@ -413,8 +414,8 @@ class CronosHeader extends HTMLElement {
         .cronos-search-fallback-quicklinks.hidden { display: none; }
         .cronos-search-prediction-row-item {
             display: block; padding: 8px 0; font-size: 17px; font-weight: 500;
-            color: var(--cronos-color-accent); text-decoration: none; letter-spacing: -0.02em;
-            transition: color 0.2s; border-bottom: 1px solid rgba(255, 255, 255, 0.05);
+            color: #fff; text-decoration: none; letter-spacing: -0.02em;
+            transition: color 0.2s; 
         }
         .cronos-search-prediction-row-item:hover { color: #9cd4ff; }
         .cronos-search-prediction-empty-notice { color: var(--cronos-color-text-muted); font-size: 14px; padding: 8px 0; }
@@ -424,7 +425,7 @@ class CronosHeader extends HTMLElement {
             border-radius: 50%; background-color: transparent; display: flex;
             align-items: center; justify-content: center; cursor: pointer;
             transition: background-color 0.2s; color: var(--cronos-color-text-light);
-            border: 1px solid rgba(255,255,255,0.1);
+            border: 2px solid rgb(35, 43, 57)
         }
         .cronos-qr-dropdown-trigger:hover { background-color: #2b294a; }
         .cronos-qr-dropdown-trigger svg { width: 25px; height: 25px; }
@@ -446,10 +447,10 @@ class CronosHeader extends HTMLElement {
             border-radius: 50%; background-color: transparent; display: flex;
             align-items: center; justify-content: center; cursor: pointer;
             transition: background-color 0.2s; color: var(--cronos-color-text-light);
-            border: 1px solid rgba(255,255,255,0.1);
+            border: 2px solid rgb(35, 43, 57)
         }
         .cronos-desktop-lang-button-trigger:hover { background-color: #2b294a; }
-        .cronos-desktop-lang-button-trigger svg { width: 20px; height: 20px; }
+        .cronos-desktop-lang-button-trigger svg { width: 20px; height: 20px; color: #647487}
 
         .cronos-profile-dropdown {
             position: absolute; top: calc(100% + 13px); right: 140px; width: 320px;
@@ -465,17 +466,17 @@ class CronosHeader extends HTMLElement {
         }
         .cronos-profile-close:hover { color: #fff; background-color: rgba(255, 255, 255, 0.1); }
         .cronos-profile-title { color: #fff; font-size: 1.28rem; font-weight: 500; margin: 0 0 12px 0; letter-spacing: -0.01em; }
-        .cronos-profile-desc { color: var(--cronos-color-text-muted); font-size: 0.95rem; line-height: 1.5; margin: 0 0 24px 0; }
+        .cronos-profile-desc { color: var(--cronos-color-text-muted); font-size: 0.95rem; font-weight: 480; line-height: 1.5; margin: 0 0 24px 0; }
         .cronos-profile-actions { display: flex; gap: 12px; align-items: center; }
         .cronos-profile-btn-login {
             flex: 1; background: transparent; color: #fff; border: 1px solid rgba(255, 255, 255, 0.4);
-            padding: 11px 16px; border-radius: 50px; font-size: 0.95rem; font-weight: 400;
+            padding: 11px 16px; border-radius: 50px; font-size: 0.9rem; font-weight: 500;
             text-align: center; text-decoration: none; cursor: pointer; transition: border-color 0.2s, background-color 0.2s;
         }
         .cronos-profile-btn-login:hover { border-color: #fff; background-color: rgba(255, 255, 255, 0.05); }
         .cronos-profile-btn-create {
             flex: 1.2; background-color: #ebebeb; color: #080d1b; padding: 11px 16px;
-            border-radius: 50px; font-size: 0.95rem; font-weight: 400; text-align: center;
+            border-radius: 50px; font-size: 0.9rem; font-weight: 500; text-align: center;
             text-decoration: none; cursor: pointer; transition: background-color 0.2s, border-color 0.2s;
         }
         .cronos-profile-btn-create:hover { background-color: #e8e8e8; }
@@ -570,7 +571,7 @@ class CronosHeader extends HTMLElement {
         .cronos-lang-modal-container.show { display: flex; opacity: 1; }
         .cronos-lang-modal-window {
             background-color: #0d1424; width: 100%; max-width: 440px;
-            border-radius: 20px; border: 1px solid rgba(255, 255, 255, 0.08);
+            border-radius: 20px; border: 2px solid rgb(35, 43, 57)
             box-shadow: 0 20px 40px rgba(0,0,0,0.5); display: flex; flex-direction: column;
             max-height: 85vh; overflow: hidden; position: relative;
         }
