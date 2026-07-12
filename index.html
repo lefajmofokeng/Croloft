@@ -10,15 +10,11 @@
     <!-- WEB TAB ICON -->
     <link rel="icon" type="image/png" href="thumbnails/top-1.png">
 
-    <style>
-      @font-face { font-family:'Circular Std'; src:url('fonts/CircularStd-Book.woff2') format('woff2'),url('fonts/CircularStd-Book.woff') format('woff'); font-weight:400; font-style:normal; font-display:swap; }
-  @font-face { font-family:'Circular Std'; src:url('fonts/CircularStd-BookItalic.woff2') format('woff2'),url('fonts/CircularStd-BookItalic.woff') format('woff'); font-weight:400; font-style:italic; font-display:swap; }
-  @font-face { font-family:'Circular Std'; src:url('fonts/CircularStd-Medium.woff2') format('woff2'),url('fonts/CircularStd-Medium.woff') format('woff'); font-weight:500; font-style:normal; font-display:swap; }
-  @font-face { font-family:'Circular Std'; src:url('fonts/CircularStd-Bold.woff2') format('woff2'),url('fonts/CircularStd-Bold.woff') format('woff'); font-weight:600; font-style:normal; font-display:swap; }
-  @font-face { font-family:'Circular Std'; src:url('fonts/CircularStd-Bold.woff2') format('woff2'),url('fonts/CircularStd-Bold.woff') format('woff'); font-weight:700; font-style:normal; font-display:swap; }
-  @font-face { font-family:'Circular Std'; src:url('fonts/CircularStd-Black.woff2') format('woff2'),url('fonts/CircularStd-Black.woff') format('woff'); font-weight:800; font-style:normal; font-display:swap; }
-  @font-face { font-family:'Circular Std'; src:url('fonts/CircularStd-Black.woff2') format('woff2'),url('fonts/CircularStd-Black.woff') format('woff'); font-weight:900; font-style:normal; font-display:swap; }
-    </style>
+    
+<style>
+@import url('https://fonts.googleapis.com/css2?family=Google+Sans:ital,opsz,wght@0,17..18,400..700;1,17..18,400..700&display=swap');
+</style>
+
 </head>
 
 
@@ -117,255 +113,3100 @@
 
 
 
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
+<section class="lfm-showcase-root">
+  
+  <div class="lfm-showcase-window">
+    
+    <video class="lfm-showcase-video-bg" autoplay loop muted playsinline>
+      <source src="https://assets.mixkit.co/videos/preview/mixkit-abstract-laser-lights-background-23116-large.mp4" type="video/mp4">
+    </video>
+    
+    <div class="lfm-showcase-overlay"></div>
+
+    <div class="lfm-showcase-content-boundary">
+      
+      <div class="lfm-showcase-text-block">
+        <span class="lfm-showcase-tagline">Web Applications & Custom Engineering</span>
+        <h1 class="lfm-showcase-title">Enjoy the performance</h1>
+        <p class="lfm-showcase-description">
+          A refined framework built for sustained performance, multi-tier scaling, and everyday corporate reliability. Engineered explicitly to modernize legacy systems into responsive digital consoles.
+        </p>
+      </div>
+
+      <div class="lfm-showcase-details-bar">
+        <div class="lfm-showcase-pill-left">
+          <span class="lfm-showcase-pill-label">Enterprise Platform Architecture</span>
+          <span class="lfm-showcase-pill-meta">SLA Guaranteed / Cloud Native</span>
+        </div>
+        <a href="#contact" class="lfm-showcase-action-btn">Partner with us</a>
+      </div>
+
+    </div>
+
+    <div class="lfm-showcase-top-action">
+      <button class="lfm-showcase-status-btn" id="lfm-showcase-video-toggle" aria-label="Pause background video">
+        <svg viewBox="0 0 24 24" class="lfm-showcase-icon-pause" width="14" height="14" fill="currentColor">
+          <path d="M6 19h4V5H6v14zm8-14v14h4V5h-4z"/>
+        </svg>
+        <svg viewBox="0 0 24 24" class="lfm-showcase-icon-play" width="14" height="14" fill="currentColor" style="display: none;">
+          <path d="M8 5v14l11-7z"/>
+        </svg>
+      </button>
+    </div>
+
+  </div>
+</section>
+
+<style>
+  /* Base Reset & Core Component Layout */
+  .lfm-showcase-root {
+    width: 100%;
+    box-sizing: border-box;
+    margin: 0;
+    padding: 0;
+  }
+
+  .lfm-showcase-root *,
+  .lfm-showcase-root *::before,
+  .lfm-showcase-root *::after {
+    box-sizing: border-box;
+    margin: 0;
+    padding: 0;
+  }
+
+  /* True 100% Viewport Width Exterior Frame Container */
+  .lfm-showcase-root .lfm-showcase-window {
+    position: relative;
+    width: 100%;
+    height: 600px;
+    overflow: hidden;
+    background-color: #000000;
+    font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
+  }
+
+  /* HTML5 Video Engine Background Layer */
+  .lfm-showcase-root .lfm-showcase-video-bg {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    z-index: 1;
+    pointer-events: none;
+  }
+
+  /* Protection Tint Overlay Layer */
+  .lfm-showcase-root .lfm-showcase-overlay {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: linear-gradient(135deg, rgba(0, 0, 0, 0.8) 0%, rgba(0, 0, 0, 0.5) 60%, rgba(0, 0, 0, 0.3) 100%);
+    z-index: 2;
+  }
+
+  /* Centered Content Layout Grid Container (Bounded strictly to 1200px max) */
+  .lfm-showcase-root .lfm-showcase-content-boundary {
+    position: relative;
+    width: 100%;
+    max-width: 1200px;
+    height: 100%;
+    margin: 0 auto;
+    padding: 0 40px;
+    display: flex;
+    flex-direction: column;
+    justify-content: flex-end;
+    padding-bottom: 60px;
+    z-index: 3;
+  }
+
+  /* Text Blocks Layout Styling */
+  .lfm-showcase-root .lfm-showcase-text-block {
+    max-width: 620px;
+    color: #ffffff;
+    text-align: left;
+    margin-bottom: 40px;
+  }
+
+  .lfm-showcase-root .lfm-showcase-tagline {
+    display: block;
+    font-size: 1.1rem;
+    font-weight: 400;
+    color: rgba(255, 255, 255, 0.85);
+    margin-bottom: 12px;
+    letter-spacing: -0.01em;
+  }
+
+  .lfm-showcase-root .lfm-showcase-title {
+    font-size: 4rem;
+    font-weight: 300;
+    line-height: 1.1;
+    color: #ffffff;
+    margin-bottom: 20px;
+    letter-spacing: -0.02em;
+  }
+
+  .lfm-showcase-root .lfm-showcase-description {
+    font-size: 1.1rem;
+    line-height: 1.6;
+    color: rgba(255, 255, 255, 0.75);
+    font-weight: 300;
+  }
+
+  /* Top Right Status Floating Control Element */
+  .lfm-showcase-root .lfm-showcase-top-action {
+    position: absolute;
+    top: 40px;
+    right: 40px;
+    z-index: 4;
+  }
+
+  .lfm-showcase-root .lfm-showcase-status-btn {
+    background: rgba(255, 255, 255, 0.15);
+    backdrop-filter: blur(12px);
+    -webkit-backdrop-filter: blur(12px);
+    border: 1px solid rgba(255, 255, 255, 0.1);
+    color: rgba(255, 255, 255, 0.9);
+    width: 44px;
+    height: 44px;
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    cursor: pointer;
+    transition: all 0.2s cubic-bezier(0.4, 0, 0.2, 1);
+  }
+
+  .lfm-showcase-root .lfm-showcase-status-btn:hover {
+    background: rgba(255, 255, 255, 0.25);
+    color: #ffffff;
+    transform: scale(1.05);
+  }
+
+  /* Bottom Horizontal Institutional Detail Pill Layout */
+  .lfm-showcase-root .lfm-showcase-details-bar {
+    align-self: flex-start;
+    background: rgba(255, 255, 255, 0.12);
+    backdrop-filter: blur(20px);
+    -webkit-backdrop-filter: blur(20px);
+    border: 1px solid rgba(255, 255, 255, 0.15);
+    padding: 8px 8px 8px 24px;
+    border-radius: 30px;
+    display: flex;
+    align-items: center;
+    gap: 32px;
+  }
+
+  .lfm-showcase-root .lfm-showcase-pill-left {
+    display: flex;
+    align-items: center;
+    gap: 16px;
+  }
+
+  .lfm-showcase-root .lfm-showcase-pill-label {
+    font-size: 0.95rem;
+    color: #ffffff;
+    font-weight: 400;
+  }
+
+  .lfm-showcase-root .lfm-showcase-pill-meta {
+    font-size: 0.85rem;
+    color: rgba(255, 255, 255, 0.6);
+    font-weight: 300;
+  }
+
+  .lfm-showcase-root .lfm-showcase-action-btn {
+    background-color: #ffffff;
+    color: #111111;
+    padding: 10px 24px;
+    font-size: 0.95rem;
+    font-weight: 500;
+    text-decoration: none;
+    border-radius: 20px;
+    transition: background-color 0.2s ease, transform 0.2s ease;
+  }
+
+  .lfm-showcase-root .lfm-showcase-action-btn:hover {
+    background-color: #f3f3f3;
+    transform: translateY(-1px);
+  }
+
+  /* Responsive Fluid Media Adaptations */
+  @media (max-width: 1240px) {
+    .lfm-showcase-root .lfm-showcase-content-boundary {
+      padding: 0 40px 60px 40px;
+    }
+  }
+
+  @media (max-width: 768px) {
+    .lfm-showcase-root .lfm-showcase-window {
+      height: auto;
+      min-height: 560px;
+    }
+    .lfm-showcase-root .lfm-showcase-content-boundary {
+      padding: 80px 20px 40px 20px;
+      justify-content: flex-end;
+    }
+    .lfm-showcase-root .lfm-showcase-title {
+      font-size: 2.5rem;
+      margin-bottom: 16px;
+    }
+    .lfm-showcase-root .lfm-showcase-text-block {
+      margin-bottom: 30px;
+    }
+    .lfm-showcase-root .lfm-showcase-description {
+      font-size: 1rem;
+    }
+    .lfm-showcase-root .lfm-showcase-top-action {
+      top: 20px;
+      right: 20px;
+    }
+    .lfm-showcase-root .lfm-showcase-details-bar {
+      width: 100%;
+      flex-direction: column;
+      align-items: flex-start;
+      gap: 16px;
+      padding: 20px;
+      border-radius: 16px;
+    }
+    .lfm-showcase-root .lfm-showcase-pill-left {
+      flex-direction: column;
+      align-items: flex-start;
+      gap: 4px;
+    }
+    .lfm-showcase-root .lfm-showcase-action-btn {
+      width: 100%;
+      text-align: center;
+    }
+  }
+</style>
+
+<script>
+  (() => {
+    document.addEventListener("DOMContentLoaded", () => {
+      const root = document.querySelector(".lfm-showcase-root");
+      if (!root) return;
+
+      const video = root.querySelector(".lfm-showcase-video-bg");
+      const toggleBtn = root.querySelector("#lfm-showcase-video-toggle");
+      const pauseIcon = toggleBtn.querySelector(".lfm-showcase-icon-pause");
+      const playIcon = toggleBtn.querySelector(".lfm-showcase-icon-play");
+
+      if (!video || !toggleBtn) return;
+
+      toggleBtn.addEventListener("click", () => {
+        if (video.paused) {
+          video.play().catch(() => {});
+          pauseIcon.style.display = "block";
+          playIcon.style.display = "none";
+          toggleBtn.setAttribute("aria-label", "Pause background video");
+        } else {
+          video.pause();
+          pauseIcon.style.display = "none";
+          playIcon.style.display = "block";
+          toggleBtn.setAttribute("aria-label", "Play background video");
+        }
+      });
+    });
+  })();
+</script>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Video Carousel Component</title>
+  <style>
+    /* Reset & Base styling for standalone preview (safe to omit if merging) */
+    body {
+      margin: 0;
+      padding: 0;
+      background-color: #f7f7f7;
+    }
+
+    /* Outer Wrapper for Page Layout Padding */
+    .lfa-vcarousel-wrapper {
+      padding: 200px 20px;
+      max-width: 1550px;
+      margin: 0 auto;
+      box-sizing: border-box;
+    }
+
+    /* Centered Header Section */
+    .lfa-vcarousel-header {
+      text-align: center;
+      margin-bottom: 40px;
+      font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
+    }
+
+    .lfa-vcarousel-main-title {
+      font-size: 2.2rem;
+      font-weight: 600;
+      color: #111111;
+      margin-bottom: 12px;
+      letter-spacing: -0.02em;
+    }
+
+    .lfa-vcarousel-main-desc {
+      font-size: 1.1rem;
+      color: #666666;
+      max-width: 600px;
+      margin: 0 auto;
+      line-height: 1.6;
+    }
+
+    /* Scoped Carousel Container */
+    .lfa-vcarousel-container {
+      position: relative;
+      width: 100%;
+      height: 610px;
+      border-radius: 16px;
+      overflow: hidden;
+      background-color: #000;
+      font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
+      box-sizing: border-box;
+      box-shadow: 0 20px 40px rgba(0,0,0,0.08);
+    }
+
+    .lfa-vcarousel-container * {
+      box-sizing: border-box;
+      margin: 0;
+      padding: 0;
+    }
+
+    /* Slide Panels */
+    .lfa-vcarousel-slide {
+      position: absolute;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      opacity: 0;
+      visibility: hidden;
+      transition: opacity 0.8s ease-in-out, visibility 0.8s ease-in-out;
+      z-index: 1;
+    }
+
+    .lfa-vcarousel-slide.lfa-vcarousel-active {
+      opacity: 1;
+      visibility: visible;
+      z-index: 2;
+    }
+
+    /* Video Engine */
+    .lfa-vcarousel-video {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      pointer-events: none;
+    }
+
+    /* Content Layout (Bottom Left Placement) */
+    .lfa-vcarousel-content {
+      position: absolute;
+      bottom: 12%;
+      left: 6%;
+      right: 6%;
+      max-width: 460px;
+      z-index: 10;
+      color: #ffffff;
+      text-align: left;
+    }
+
+    .lfa-vcarousel-title {
+      font-size: 1.8rem;
+      font-weight: 400;
+      letter-spacing: -0.02em;
+      margin-bottom: 12px;
+      opacity: 0;
+      transform: translateY(15px);
+      transition: transform 0.6s ease-out, opacity 0.6s ease-out;
+    }
+
+    .lfa-vcarousel-desc {
+      font-size: 1rem;
+      line-height: 1.5;
+      color: rgba(255, 255, 255, 0.8);
+      opacity: 0;
+      transform: translateY(15px);
+      transition: transform 0.6s ease-out 0.15s, opacity 0.6s ease-out 0.15s;
+    }
+
+    /* Slide Entry Animation Triggers */
+    .lfa-vcarousel-active .lfa-vcarousel-title,
+    .lfa-vcarousel-active .lfa-vcarousel-desc {
+      opacity: 1;
+      transform: translateY(0);
+    }
+
+    /* Control Row Layer */
+    .lfa-vcarousel-controls {
+      position: absolute;
+      top: 8%;
+      left: 6%;
+      right: 6%;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      z-index: 20;
+    }
+
+    /* Top Left Progress Bars */
+    .lfa-vcarousel-progress-group {
+      display: flex;
+      gap: 6px;
+      align-items: center;
+    }
+
+    .lfa-vcarousel-bar-wrapper {
+      width: 42px;
+      height: 2px;
+      background-color: rgba(255, 255, 255, 0.3);
+      cursor: pointer;
+      position: relative;
+      overflow: hidden;
+    }
+
+    .lfa-vcarousel-progress-fill {
+      position: absolute;
+      top: 0;
+      left: 0;
+      height: 100%;
+      width: 0%;
+      background-color: #ffffff;
+    }
+
+    /* Top Right Play/Pause Interaction */
+    .lfa-vcarousel-toggle-btn {
+      background: rgba(255, 255, 255, 0.15);
+      backdrop-filter: blur(8px);
+      -webkit-backdrop-filter: blur(8px);
+      border: none;
+      color: #ffffff;
+      width: 32px;
+      height: 32px;
+      border-radius: 50%;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      cursor: pointer;
+      transition: background-color 0.2s ease, transform 0.2s ease;
+    }
+
+    .lfa-vcarousel-toggle-btn:hover {
+      background: rgba(255, 255, 255, 0.25);
+    }
+
+    .lfa-vcarousel-toggle-btn:active {
+      transform: scale(0.95);
+    }
+
+    /* Mobile & Tablet Adaptation */
+    @media (max-width: 768px) {
+      .lfa-vcarousel-wrapper {
+        padding: 40px 16px;
+      }
+      .lfa-vcarousel-main-title {
+        font-size: 1.8rem;
+      }
+      .lfa-vcarousel-main-desc {
+        font-size: 1rem;
+      }
+      .lfa-vcarousel-container {
+        height: 460px;
+        border-radius: 12px;
+      }
+      .lfa-vcarousel-content {
+        bottom: 8%;
+        max-width: 88%;
+      }
+      .lfa-vcarousel-title {
+        font-size: 1.5rem;
+      }
+      .lfa-vcarousel-desc {
+        font-size: 0.95rem;
+      }
+      .lfa-vcarousel-bar-wrapper {
+        width: 32px;
+      }
+    }
+
+    @media (max-width: 480px) {
+      .lfa-vcarousel-wrapper {
+        padding: 30px 12px;
+      }
+      .lfa-vcarousel-main-title {
+        font-size: 1.5rem;
+      }
+      .lfa-vcarousel-container {
+        height: 400px;
+      }
+      .lfa-vcarousel-content {
+        bottom: 6%;
+      }
+      .lfa-vcarousel-title {
+        font-size: 1.35rem;
+        margin-bottom: 8px;
+      }
+      .lfa-vcarousel-desc {
+        font-size: 0.88rem;
+      }
+    }
+  </style>
+</head>
+<body>
+
+  <div class="lfa-vcarousel-wrapper">
+    
+    <header class="lfa-vcarousel-header">
+      <h1 class="lfa-vcarousel-main-title">Experience Innovation</h1>
+      <p class="lfa-vcarousel-main-desc">Discover hardware configurations crafted perfectly for modern, fluid performance environments.</p>
+    </header>
+
+    <div class="lfa-vcarousel-container">
+      
+      <div class="lfa-vcarousel-slide lfa-vcarousel-active" data-slide="0">
+        <video class="lfa-vcarousel-video" autoplay loop muted playsinline>
+          <source src="https://www.pexels.com/download/video/18124513/" type="video/mp4">
+        </video>
+        <div class="lfa-vcarousel-content">
+          <h2 class="lfa-vcarousel-title">Removable keyboard</h2>
+          <p class="lfa-vcarousel-desc">Switch seamlessly between tablet and laptop modes with a satisfying snap.</p>
+        </div>
+      </div>
+
+      <div class="lfa-vcarousel-slide" data-slide="1">
+        <video class="lfa-vcarousel-video" loop muted playsinline>
+          <source src="https://www.pexels.com/download/video/18124513/" type="video/mp4">
+        </video>
+        <div class="lfa-vcarousel-content">
+          <h2 class="lfa-vcarousel-title">Stunning Display</h2>
+          <p class="lfa-vcarousel-desc">Experience vibrant colors and ultra-crisp details across every single pixel.</p>
+        </div>
+      </div>
+
+      <div class="lfa-vcarousel-slide" data-slide="2">
+        <video class="lfa-vcarousel-video" loop muted playsinline>
+          <source src="https://assets.mixkit.co/videos/preview/mixkit-abstract-technology-glowing-lines-background-41614-large.mp4" type="video/mp4">
+        </video>
+        <div class="lfa-vcarousel-content">
+          <h2 class="lfa-vcarousel-title">All-Day Battery</h2>
+          <p class="lfa-vcarousel-desc">Power through your heaviest workflows without ever reaching for a cable.</p>
+        </div>
+      </div>
+
+      <div class="lfa-vcarousel-controls">
+        <div class="lfa-vcarousel-progress-group">
+          <div class="lfa-vcarousel-bar-wrapper" data-index="0">
+            <div class="lfa-vcarousel-progress-fill"></div>
+          </div>
+          <div class="lfa-vcarousel-bar-wrapper" data-index="1">
+            <div class="lfa-vcarousel-progress-fill"></div>
+          </div>
+          <div class="lfa-vcarousel-bar-wrapper" data-index="2">
+            <div class="lfa-vcarousel-progress-fill"></div>
+          </div>
+        </div>
+
+        <button class="lfa-vcarousel-toggle-btn" aria-label="Pause video playback">
+          <svg class="lfa-vcarousel-icon-pause" viewBox="0 0 24 24" width="14" height="14" fill="currentColor">
+            <path d="M6 19h4V5H6v14zm8-14v14h4V5h-4z"/>
+          </svg>
+          <svg class="lfa-vcarousel-icon-play" viewBox="0 0 24 24" width="14" height="14" fill="currentColor" style="display: none;">
+            <path d="M8 5v14l11-7z"/>
+          </svg>
+        </button>
+      </div>
+
+    </div>
+  </div>
+
+  <script>
+    document.addEventListener("DOMContentLoaded", () => {
+      const container = document.querySelector(".lfa-vcarousel-container");
+      if (!container) return;
+
+      const slides = container.querySelectorAll(".lfa-vcarousel-slide");
+      const progressFills = container.querySelectorAll(".lfa-vcarousel-progress-fill");
+      const toggleBtn = container.querySelector(".lfa-vcarousel-toggle-btn");
+      const iconPause = toggleBtn.querySelector(".lfa-vcarousel-icon-pause");
+      const iconPlay = toggleBtn.querySelector(".lfa-vcarousel-icon-play");
+      const barWrappers = container.querySelectorAll(".lfa-vcarousel-bar-wrapper");
+
+      let currentIndex = 0;
+      let isPlaying = true;
+      let animationFrameId = null;
+      let startTime = null;
+      
+      const SLIDE_DURATION = 6000; // Slide lifecycle duration
+      let elapsedBeforePause = 0;
+
+      function initCarousel() {
+        manageVideoPlayback();
+        startProgressTimer();
+
+        barWrappers.forEach((bar) => {
+          bar.addEventListener("click", () => {
+            const targetIndex = parseInt(bar.getAttribute("data-index"), 10);
+            if (targetIndex !== currentIndex) {
+              switchSlide(targetIndex);
+            }
+          });
+        });
+
+        toggleBtn.addEventListener("click", togglePlayState);
+      }
+
+      function startProgressTimer() {
+        cancelAnimationFrame(animationFrameId);
+        startTime = performance.now() - elapsedBeforePause;
+        
+        function updateProgress(now) {
+          if (!isPlaying) return;
+
+          const progress = now - startTime;
+          const percentage = Math.min((progress / SLIDE_DURATION) * 100, 100);
+
+          progressFills.forEach((fill, index) => {
+            if (index < currentIndex) {
+              fill.style.width = "100%";
+            } else if (index === currentIndex) {
+              fill.style.width = `${percentage}%`;
+            } else {
+              fill.style.width = "0%";
+            }
+          });
+
+          if (progress >= SLIDE_DURATION) {
+            elapsedBeforePause = 0;
+            let nextIndex = (currentIndex + 1) % slides.length;
+            switchSlide(nextIndex);
+          } else {
+            animationFrameId = requestAnimationFrame(updateProgress);
+          }
+        }
+        
+        animationFrameId = requestAnimationFrame(updateProgress);
+      }
+
+      function switchSlide(nextIndex) {
+        cancelAnimationFrame(animationFrameId);
+        elapsedBeforePause = 0;
+
+        slides[currentIndex].classList.remove("lfa-vcarousel-active");
+        slides[nextIndex].classList.add("lfa-vcarousel-active");
+
+        currentIndex = nextIndex;
+        
+        manageVideoPlayback();
+
+        if (isPlaying) {
+          startProgressTimer();
+        } else {
+          progressFills.forEach((fill, index) => {
+            if (index < currentIndex) fill.style.width = "100%";
+            if (index >= currentIndex) fill.style.width = "0%";
+          });
+        }
+      }
+
+      function manageVideoPlayback() {
+        slides.forEach((slide, index) => {
+          const video = slide.querySelector(".lfa-vcarousel-video");
+          if (!video) return;
+
+          if (index === currentIndex && isPlaying) {
+            video.currentTime = 0;
+            video.play().catch(() => {});
+          } else {
+            video.pause();
+          }
+        });
+      }
+
+      function togglePlayState() {
+        const currentVideo = slides[currentIndex].querySelector(".lfa-vcarousel-video");
+
+        if (isPlaying) {
+          isPlaying = false;
+          cancelAnimationFrame(animationFrameId);
+          elapsedBeforePause = performance.now() - startTime;
+          if (currentVideo) currentVideo.pause();
+          
+          iconPause.style.display = "none";
+          iconPlay.style.display = "block";
+        } else {
+          isPlaying = true;
+          if (currentVideo) currentVideo.play().catch(() => {});
+          iconPause.style.display = "block";
+          iconPlay.style.display = "none";
+          startProgressTimer();
+        }
+      }
+
+      initCarousel();
+    });
+  </script>
+</body>
+</html>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<section class="lfa-faq-root">
+  
+  <div class="lfa-faq-header">
+    <h2 class="lfa-faq-main-title">Questions</h2>
+    <div class="lfa-faq-global-controls">
+      <button class="lfa-faq-global-btn" id="lfa-faq-expand-all">
+        Expand All 
+        <span class="lfa-faq-btn-icon-plus">+</span>
+      </button>
+      <button class="lfa-faq-global-btn" id="lfa-faq-collapse-all" disabled>
+        Collapse All 
+        <span class="lfa-faq-btn-icon-minus">—</span>
+      </button>
+    </div>
+  </div>
+
+  <div class="lfa-faq-accordion-stack">
+    
+    <div class="lfa-faq-item">
+      <button class="lfa-faq-trigger" aria-expanded="false">
+        <span class="lfa-faq-question-text">What is Microsoft Surface?</span>
+        <div class="lfa-faq-icon-box">
+          <div class="lfa-faq-icon-line lfa-horizontal"></div>
+          <div class="lfa-faq-icon-line lfa-vertical"></div>
+        </div>
+      </button>
+      <div class="lfa-faq-panel">
+        <div class="lfa-faq-content-inner">
+          Microsoft Surface is a series of touchscreen-based personal computers, tablets, and interactive whiteboards designed and developed by Microsoft, running the Windows operating system.
+        </div>
+      </div>
+    </div>
+
+    <div class="lfa-faq-item">
+      <button class="lfa-faq-trigger" aria-expanded="false">
+        <span class="lfa-faq-question-text">Is Surface good for gaming?</span>
+        <div class="lfa-faq-icon-box">
+          <div class="lfa-faq-icon-line lfa-horizontal"></div>
+          <div class="lfa-faq-icon-line lfa-vertical"></div>
+        </div>
+      </button>
+      <div class="lfa-faq-panel">
+        <div class="lfa-faq-content-inner">
+          Certain high-end devices in the Surface lineup, like the Surface Laptop Studio, feature dedicated NVIDIA GeForce RTX graphics cards, making them capable of handling modern gaming workloads smoothly.
+        </div>
+      </div>
+    </div>
+
+    <div class="lfa-faq-item">
+      <button class="lfa-faq-trigger" aria-expanded="false">
+        <span class="lfa-faq-question-text">Which Microsoft Surface should I buy?</span>
+        <div class="lfa-faq-icon-box">
+          <div class="lfa-faq-icon-line lfa-horizontal"></div>
+          <div class="lfa-faq-icon-line lfa-vertical"></div>
+        </div>
+      </button>
+      <div class="lfa-faq-panel">
+        <div class="lfa-faq-content-inner">
+          It depends on your workflow. For ultimate portability and note-taking, the Surface Pro is ideal. For traditional typing with a premium feel, choose the Surface Laptop, and choose the Studio models for heavy rendering or creative design work.
+        </div>
+      </div>
+    </div>
+
+    <div class="lfa-faq-item">
+      <button class="lfa-faq-trigger" aria-expanded="false">
+        <span class="lfa-faq-question-text">Does Microsoft Surface come with Microsoft 365 (previously Microsoft Office)?</span>
+        <div class="lfa-faq-icon-box">
+          <div class="lfa-faq-icon-line lfa-horizontal"></div>
+          <div class="lfa-faq-icon-line lfa-vertical"></div>
+        </div>
+      </button>
+      <div class="lfa-faq-panel">
+        <div class="lfa-faq-content-inner">
+          Surface devices generally come pre-loaded with a 30-day trial of Microsoft 365. Full ongoing access requires an active individual, family, or commercial Microsoft 365 subscription tier.
+        </div>
+      </div>
+    </div>
+
+    <div class="lfa-faq-item">
+      <button class="lfa-faq-trigger" aria-expanded="false">
+        <span class="lfa-faq-question-text">What is Surface RTX Spark Dev Box?</span>
+        <div class="lfa-faq-icon-box">
+          <div class="lfa-faq-icon-line lfa-horizontal"></div>
+          <div class="lfa-faq-icon-line lfa-vertical"></div>
+        </div>
+      </button>
+      <div class="lfa-faq-panel">
+        <div class="lfa-faq-content-inner">
+          The Surface RTX Spark Dev Box is an advanced, specialized engineering station layout designed for intensive runtime development, local containerization setups, and accelerated machine learning workflows.
+        </div>
+      </div>
+    </div>
+
+    <div class="lfa-faq-item">
+      <button class="lfa-faq-trigger" aria-expanded="false">
+        <span class="lfa-faq-question-text">What is Surface Laptop Ultra?</span>
+        <div class="lfa-faq-icon-box">
+          <div class="lfa-faq-icon-line lfa-horizontal"></div>
+          <div class="lfa-faq-icon-line lfa-vertical"></div>
+        </div>
+      </button>
+      <div class="lfa-faq-panel">
+        <div class="lfa-faq-content-inner">
+          The Surface Laptop Ultra represents the premium pinnacle tier configuration, showcasing an optimized processing configuration, extended engineering thermal thresholds, and a high-refresh variable rate presentation display panel.
+        </div>
+      </div>
+    </div>
+
+  </div>
+</section>
+
+<style>
+  .lfa-faq-root {
+    width: 100%;
+    max-width: 820px;
+    margin: 0 auto;
+    padding: 60px 20px;
+    font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
+    box-sizing: border-box;
+    background-color: transparent; /* Seamlessly takes on parent background */
+  }
+
+  /* Structural internal reset wrapper */
+  .lfa-faq-root *, 
+  .lfa-faq-root *::before, 
+  .lfa-faq-root *::after {
+    box-sizing: border-box;
+    margin: 0;
+    padding: 0;
+  }
+
+  /* Header Controls Container */
+  .lfa-faq-root .lfa-faq-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: baseline;
+    margin-bottom: 40px;
+    padding-bottom: 12px;
+  }
+
+  .lfa-faq-root .lfa-faq-main-title {
+    font-size: 2.2rem;
+    font-weight: 300;
+    color: #1a1a1a;
+    letter-spacing: -0.01em;
+    line-height: 1.2;
+  }
+
+  .lfa-faq-root .lfa-faq-global-controls {
+    display: flex;
+    gap: 16px;
+    font-size: 0.9rem;
+  }
+
+  .lfa-faq-root .lfa-faq-global-btn {
+    background: none;
+    border: none;
+    color: #1a1a1a;
+    cursor: pointer;
+    display: inline-flex;
+    align-items: center;
+    gap: 6px;
+    font-weight: 400;
+    padding: 4px 0;
+    font-family: inherit;
+    transition: opacity 0.2s ease;
+  }
+
+  .lfa-faq-root .lfa-faq-global-btn:hover {
+    opacity: 0.7;
+  }
+
+  .lfa-faq-root .lfa-faq-global-btn:disabled {
+    color: #b5b5b2;
+    cursor: not-allowed;
+    opacity: 1;
+  }
+
+  .lfa-faq-root .lfa-faq-btn-icon-plus {
+    font-weight: 300; 
+    font-size: 1.1rem; 
+    margin-left: 2px;
+  }
+
+  .lfa-faq-root .lfa-faq-btn-icon-minus {
+    font-weight: 300; 
+    font-size: 1.2rem; 
+    margin-left: 2px;
+  }
+
+  /* Accordion Stack Framework */
+  .lfa-faq-root .lfa-faq-accordion-stack {
+    border-top: 1px solid #e2e1dc;
+    width: 100%;
+  }
+
+  .lfa-faq-root .lfa-faq-item {
+    border-bottom: 1px solid #e2e1dc;
+    width: 100%;
+  }
+
+  /* Accordion Trigger Header */
+  .lfa-faq-root .lfa-faq-trigger {
+    width: 100%;
+    background: none;
+    border: none;
+    padding: 26px 0;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    text-align: left;
+    cursor: pointer;
+    color: #1a1a1a;
+    font-family: inherit;
+    transition: color 0.2s ease;
+  }
+
+  .lfa-faq-root .lfa-faq-trigger:hover {
+    color: #000000;
+  }
+
+  .lfa-faq-root .lfa-faq-question-text {
+    font-size: 1.2rem;
+    font-weight: 300;
+    line-height: 1.4;
+    padding-right: 24px;
+    letter-spacing: -0.01em;
+  }
+
+  /* Fluid Icon Engine */
+  .lfa-faq-root .lfa-faq-icon-box {
+    position: relative;
+    width: 16px;
+    height: 16px;
+    flex-shrink: 0;
+  }
+
+  .lfa-faq-root .lfa-faq-icon-line {
+    position: absolute;
+    background-color: currentColor;
+    transition: transform 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+  }
+
+  .lfa-faq-root .lfa-faq-icon-line.lfa-horizontal {
+    top: 7px;
+    left: 0;
+    width: 100%;
+    height: 1.5px;
+  }
+
+  .lfa-faq-root .lfa-faq-icon-line.lfa-vertical {
+    top: 0;
+    left: 7px;
+    width: 1.5px;
+    height: 100%;
+  }
+
+  /* Animation Transforms when item state is active */
+  .lfa-faq-root .lfa-faq-item.lfa-is-open .lfa-faq-icon-line.lfa-vertical {
+    transform: rotate(90deg);
+    opacity: 0;
+  }
+
+  .lfa-faq-root .lfa-faq-item.lfa-is-open .lfa-faq-icon-line.lfa-horizontal {
+    transform: rotate(180deg);
+  }
+
+  /* Collapsible Panel Content Container */
+  .lfa-faq-root .lfa-faq-panel {
+    max-height: 0;
+    overflow: hidden;
+    transition: max-height 0.35s cubic-bezier(0.4, 0, 0.2, 1);
+  }
+
+  .lfa-faq-root .lfa-faq-content-inner {
+    padding-bottom: 26px;
+    font-size: 1.05rem;
+    line-height: 1.6;
+    color: #4a4a4a;
+    font-weight: 300;
+  }
+
+  /* Responsive Adaptation Breakpoints */
+  @media (max-width: 600px) {
+    .lfa-faq-root {
+      padding: 40px 16px;
+    }
+    .lfa-faq-root .lfa-faq-header {
+      flex-direction: column;
+      gap: 16px;
+      align-items: flex-start;
+      margin-bottom: 24px;
+    }
+    .lfa-faq-root .lfa-faq-main-title {
+      font-size: 1.8rem;
+    }
+    .lfa-faq-root .lfa-faq-trigger {
+      padding: 20px 0;
+    }
+    .lfa-faq-root .lfa-faq-question-text {
+      font-size: 1.05rem;
+    }
+    .lfa-faq-root .lfa-faq-content-inner {
+      padding-bottom: 20px;
+      font-size: 0.95rem;
+    }
+  }
+</style>
+
+<script>
+  (() => {
+    document.addEventListener("DOMContentLoaded", () => {
+      const root = document.querySelector(".lfa-faq-root");
+      if (!root) return;
+
+      const faqItems = root.querySelectorAll(".lfa-faq-item");
+      const expandAllBtn = root.querySelector("#lfa-faq-expand-all");
+      const collapseAllBtn = root.querySelector("#lfa-faq-collapse-all");
+
+      faqItems.forEach((item) => {
+        const trigger = item.querySelector(".lfa-faq-trigger");
+        const panel = item.querySelector(".lfa-faq-panel");
+
+        trigger.addEventListener("click", () => {
+          const isOpen = item.classList.contains("lfa-is-open");
+          if (isOpen) {
+            closeItem(item, panel, trigger);
+          } else {
+            openItem(item, panel, trigger);
+          }
+          updateGlobalButtons();
+        });
+      });
+
+      expandAllBtn.addEventListener("click", () => {
+        faqItems.forEach((item) => {
+          const trigger = item.querySelector(".lfa-faq-trigger");
+          const panel = item.querySelector(".lfa-faq-panel");
+          openItem(item, panel, trigger);
+        });
+        updateGlobalButtons();
+      });
+
+      collapseAllBtn.addEventListener("click", () => {
+        faqItems.forEach((item) => {
+          const trigger = item.querySelector(".lfa-faq-trigger");
+          const panel = item.querySelector(".lfa-faq-panel");
+          closeItem(item, panel, trigger);
+        });
+        updateGlobalButtons();
+      });
+
+      function openItem(item, panel, trigger) {
+        item.classList.add("lfa-is-open");
+        trigger.setAttribute("aria-expanded", "true");
+        panel.style.maxHeight = panel.scrollHeight + "px";
+      }
+
+      function closeItem(item, panel, trigger) {
+        item.classList.remove("lfa-is-open");
+        trigger.setAttribute("aria-expanded", "false");
+        panel.style.maxHeight = "0";
+      }
+
+      function updateGlobalButtons() {
+        const totalItems = faqItems.length;
+        const openItemsCount = root.querySelectorAll(".lfa-faq-item.lfa-is-open").length;
+
+        if (openItemsCount === totalItems) {
+          expandAllBtn.disabled = true;
+          collapseAllBtn.disabled = false;
+        } else if (openItemsCount === 0) {
+          expandAllBtn.disabled = false;
+          collapseAllBtn.disabled = true;
+        } else {
+          expandAllBtn.disabled = false;
+          collapseAllBtn.disabled = false;
+        }
+      }
+    });
+  })();
+</script>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Infinite Responsive Hero Slider</title>
+  <style>
+    /* Scope Reset to guarantee zero conflicts with external styles */
+    .lfm-hero-outer-container {
+      width: 100%;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
+      box-sizing: border-box;
+      margin: 0;
+      padding: 0;
+    }
+
+    .lfm-hero-outer-container * {
+      box-sizing: border-box;
+    }
+
+    /* Outer carousel window configuration */
+    .lfm-hero-carousel-wrapper {
+      position: relative;
+      width: 100%;
+      height: 530px;
+      overflow: hidden;
+      background-color: #f3f4f6;
+    }
+
+    /* Flex track holding slides horizontally side-by-side */
+    .lfm-hero-track {
+      display: flex;
+      width: 100%;
+      height: 100%;
+      position: relative;
+      will-change: transform;
+    }
+
+    /* Individual product panel architecture */
+    .lfm-hero-slide {
+      flex: 0 0 100%;
+      width: 100%;
+      height: 100%;
+      display: flex;
+      align-items: center;
+      position: relative;
+    }
+
+    /* Separate background assets per layout slide */
+    .lfm-hero-bg {
+      position: absolute;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      background-size: cover;
+      background-position: center;
+      background-repeat: no-repeat;
+      z-index: 1;
+    }
+
+    .lfm-hero-content-container {
+      width: 100%;
+      max-width: 1280px;
+      margin: 0 auto;
+      padding: 0 4rem;
+      position: relative;
+      z-index: 2;
+    }
+
+    .lfm-hero-text-block {
+      max-width: 550px;
+      color: #111827;
+    }
+
+    .lfm-hero-title {
+      font-size: 3.25rem;
+      font-weight: 700;
+      line-height: 1.15;
+      margin: 0 0 1.25rem 0;
+      letter-spacing: -0.025em;
+    }
+
+    .lfm-hero-description {
+      font-size: 1.15rem;
+      line-height: 1.6;
+      color: #374151;
+      margin: 0 0 2rem 0;
+    }
+
+    .lfm-hero-btn {
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      background-color: #0067b8;
+      color: #ffffff;
+      padding: 0.75rem 2.25rem;
+      font-size: 1rem;
+      font-weight: 600;
+      text-decoration: none;
+      border-radius: 4px;
+      transition: background-color 0.2s ease;
+    }
+
+    .lfm-hero-btn:hover {
+      background-color: #005293;
+    }
+
+    /* Control Panel UI - Positioned completely underneath the window */
+    .lfm-hero-controls-bar {
+      margin-top: 1.5rem;
+      display: flex;
+      align-items: center;
+      gap: 12px;
+      padding: 6px 16px;
+    }
+
+    .lfm-hero-ctrl-btn {
+      background: none;
+      border: none;
+      cursor: pointer;
+      padding: 4px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      color: #4b5563;
+      border-radius: 50%;
+      transition: background-color 0.2s, color 0.2s;
+    }
+
+    .lfm-hero-ctrl-btn:hover {
+      background-color: rgba(0, 0, 0, 0.05);
+      color: #111827;
+    }
+
+    .lfm-hero-icon {
+      width: 20px;
+      height: 20px;
+    }
+
+    .lfm-hero-dots-indicator {
+      display: flex;
+      align-items: center;
+      gap: 10px;
+    }
+
+    .lfm-hero-dot {
+      width: 8px;
+      height: 8px;
+      border-radius: 50%;
+      background-color: #d1d5db;
+      border: none;
+      cursor: pointer;
+      padding: 0;
+      transition: transform 0.2s, background-color 0.2s;
+    }
+
+    .lfm-hero-dot.active {
+      background-color: #111827;
+      transform: scale(1.25);
+    }
+
+    /* Responsive Mobile Breakpoints */
+    @media (max-width: 1024px) {
+      .lfm-hero-content-container { padding: 0 2rem; }
+      .lfm-hero-title { font-size: 2.75rem; }
+    }
+
+    @media (max-width: 768px) {
+      .lfm-hero-carousel-wrapper { height: 400px; }
+      .lfm-hero-content-container { text-align: center; padding: 0 1.5rem; }
+      .lfm-hero-text-block { margin: 0 auto; max-width: 100%; }
+      .lfm-hero-title { font-size: 2.25rem; }
+      .lfm-hero-description { font-size: 1rem; }
+    }
+  </style>
+</head>
+<body>
+
+<div class="lfm-hero-outer-container">
+  
+  <div class="lfm-hero-carousel-wrapper" id="lfm-hero-carousel-root">
+    <div class="lfm-hero-track" id="lfm-hero-slider-track">
+      
+      <div class="lfm-hero-slide">
+        <div class="lfm-hero-bg" style="background-image: url('https://images.unsplash.com/photo-1618005182384-a83a8bd57fbe?auto=format&fit=crop&w=1920&q=80');"></div>
+        <div class="lfm-hero-content-container">
+          <div class="lfm-hero-text-block">
+            <h1 class="lfm-hero-title">Meet Surface Laptop</h1>
+            <p class="lfm-hero-description">Unlock AI features like Live Captions and Cocreator with this exceptionally powerful laptop.</p>
+            <a href="#" class="lfm-hero-btn">Learn more</a>
+          </div>
+        </div>
+      </div>
+
+      <div class="lfm-hero-slide">
+        <div class="lfm-hero-bg" style="background-image: url('https://images.unsplash.com/photo-1634017839464-5c339ebe3cb4?auto=format&fit=crop&w=1920&q=80');"></div>
+        <div class="lfm-hero-content-container">
+          <div class="lfm-hero-text-block">
+            <h1 class="lfm-hero-title">Meet Surface Pro</h1>
+            <p class="lfm-hero-description">The ultimate 2-in-1 flexibility meets next-generation AI performance for all-day productivity.</p>
+            <a href="#" class="lfm-hero-btn">Learn more</a>
+          </div>
+        </div>
+      </div>
+
+      <div class="lfm-hero-slide">
+        <div class="lfm-hero-bg" style="background-image: url('https://images.unsplash.com/photo-1618005198143-e5283b519a7f?auto=format&fit=crop&w=1920&q=80');"></div>
+        <div class="lfm-hero-content-container">
+          <div class="lfm-hero-text-block">
+            <h1 class="lfm-hero-title">Explore Accessories</h1>
+            <p class="lfm-hero-description">Elevate your experience with designed-to-match keyboards, adaptive pens, and high-speed docks.</p>
+            <a href="#" class="lfm-hero-btn">Shop now</a>
+          </div>
+        </div>
+      </div>
+
+    </div>
+  </div>
+
+  <div class="lfm-hero-controls-bar">
+    <button class="lfm-hero-ctrl-btn" id="lfm-hero-toggle-play" aria-label="Pause Auto Scroll">
+      <svg viewBox="0 0 24 24" class="lfm-hero-icon icon-pause"><path d="M6 19h4V5H6v14zm8-14v14h4V5h-4z" fill="currentColor"/></svg>
+      <svg viewBox="0 0 24 24" class="lfm-hero-icon icon-play" style="display:none;"><path d="M8 5v14l11-7z" fill="currentColor"/></svg>
+    </button>
+    
+    <button class="lfm-hero-ctrl-btn" id="lfm-hero-prev" aria-label="Previous Slide">
+      <svg viewBox="0 0 24 24" class="lfm-hero-icon"><path d="M15.41 7.41L14 6l-6 6 6 6 1.41-1.41L10.83 12z" fill="currentColor"/></svg>
+    </button>
+
+    <div class="lfm-hero-dots-indicator" id="lfm-hero-dots-container"></div>
+
+    <button class="lfm-hero-ctrl-btn" id="lfm-hero-next" aria-label="Next Slide">
+      <svg viewBox="0 0 24 24" class="lfm-hero-icon"><path d="M10 6L8.59 7.41 13.17 12l-4.58 4.59L10 18l6-6z" fill="currentColor"/></svg>
+    </button>
+  </div>
+
+</div>
+
+<script>
+document.addEventListener("DOMContentLoaded", () => {
+  const wrapper = document.getElementById("lfm-hero-carousel-root");
+  if (!wrapper) return;
+
+  const track = wrapper.querySelector("#lfm-hero-slider-track");
+  const originalSlides = Array.from(track.children);
+  const totalOriginals = originalSlides.length;
+  if (totalOriginals === 0) return;
+
+  const nextBtn = document.getElementById("lfm-hero-next");
+  const prevBtn = document.getElementById("lfm-hero-prev");
+  const togglePlayBtn = document.getElementById("lfm-hero-toggle-play");
+  const dotsContainer = document.getElementById("lfm-hero-dots-container");
+  
+  const pauseIcon = togglePlayBtn.querySelector(".icon-pause");
+  const playIcon = togglePlayBtn.querySelector(".icon-play");
+
+  let currentIndex = 1; 
+  let autoScrollTimer = null;
+  let isPlaying = true;
+  let isTransitioning = false;
+  const slideDuration = 6000; 
+
+  // Generate Navigation Dots dynamically
+  originalSlides.forEach((_, index) => {
+    const dot = document.createElement("button");
+    dot.classList.add("lfm-hero-dot");
+    if (index === 0) dot.classList.add("active");
+    dot.setAttribute("aria-label", `Go to slide ${index + 1}`);
+    dotsContainer.appendChild(dot);
+  });
+  const dots = Array.from(dotsContainer.children);
+
+  // Setup Clones for Infinite Loop Visual Snapping
+  const firstClone = originalSlides[0].cloneNode(true);
+  const lastClone = originalSlides[totalOriginals - 1].cloneNode(true);
+  
+  track.appendChild(firstClone);
+  track.insertBefore(lastClone, originalSlides[0]);
+
+  // Sync structural offset base position
+  track.style.transform = `translateX(-${currentIndex * 100}%)`;
+
+  function getActiveOriginalIndex(index) {
+    if (index === 0) return totalOriginals - 1;
+    if (index === totalOriginals + 1) return 0;
+    return index - 1;
+  }
+
+  function updateDots() {
+    dots.forEach(dot => dot.classList.remove("active"));
+    const activeIndex = getActiveOriginalIndex(currentIndex);
+    if (dots[activeIndex]) dots[activeIndex].classList.add("active");
+  }
+
+  function moveToSlide(targetIndex, animate = true) {
+    if (isTransitioning && animate) return;
+    
+    isTransitioning = true;
+    currentIndex = targetIndex;
+    
+    if (animate) {
+      track.style.transition = "transform 0.6s cubic-bezier(0.25, 1, 0.5, 1)";
+    } else {
+      track.style.transition = "none";
+    }
+    
+    track.style.transform = `translateX(-${currentIndex * 100}%)`;
+    updateDots();
+
+    // If we aren't animating, reset transition guard immediately
+    if (!animate) {
+      isTransitioning = false;
+    }
+  }
+
+  // Handle Instant Teleport at track boundaries without visual jumps
+  track.addEventListener("transitionend", () => {
+    if (currentIndex === totalOriginals + 1) {
+      track.style.transition = "none";
+      currentIndex = 1;
+      track.style.transform = `translateX(-${currentIndex * 100}%)`;
+      // Read offsetWidth to force browser layout pipeline flush
+      track.offsetWidth; 
+    }
+    if (currentIndex === 0) {
+      track.style.transition = "none";
+      currentIndex = totalOriginals;
+      track.style.transform = `translateX(-${currentIndex * 100}%)`;
+      track.offsetWidth; 
+    }
+    isTransitioning = false;
+  });
+
+  function startAutoScroll() {
+    stopAutoScroll();
+    autoScrollTimer = setInterval(() => {
+      moveToSlide(currentIndex + 1);
+    }, slideDuration);
+  }
+
+  function stopAutoScroll() {
+    if (autoScrollTimer) clearInterval(autoScrollTimer);
+  }
+
+  // UI Navigation Triggers
+  nextBtn.addEventListener("click", () => {
+    moveToSlide(currentIndex + 1);
+    if (isPlaying) startAutoScroll();
+  });
+
+  prevBtn.addEventListener("click", () => {
+    moveToSlide(currentIndex - 1);
+    if (isPlaying) startAutoScroll(); 
+  });
+
+  dots.forEach((dot, index) => {
+    dot.addEventListener("click", () => {
+      moveToSlide(index + 1);
+      if (isPlaying) startAutoScroll();
+    });
+  });
+
+  togglePlayBtn.addEventListener("click", () => {
+    if (isPlaying) {
+      stopAutoScroll();
+      pauseIcon.style.display = "none";
+      playIcon.style.display = "block";
+    } else {
+      startAutoScroll();
+      pauseIcon.style.display = "block";
+      playIcon.style.display = "none";
+    }
+    isPlaying = !isPlaying;
+  });
+
+  // Run Carousel
+  if (totalOriginals > 0) {
+    startAutoScroll();
+  }
+});
+</script>
+
+</body>
+</html>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Surface Feature Slider</title>
+  <style>
+    /* ==========================================================================
+       SCOPED CSS RULES (Namespace: ms-pf-)
+       ========================================================================== */
+    .ms-pf-container {
+      --ms-font-family: "Segoe UI", -apple-system, BlinkMacSystemFont, Roboto, sans-serif;
+      --ms-text-dark: #1b1b1b;
+      --ms-text-muted: #505050;
+      
+      font-family: var(--ms-font-family);
+      max-width: 100%;
+      margin: 0 auto;
+      padding: 200px 0;
+      color: var(--ms-text-dark);
+      box-sizing: border-box;
+      overflow: hidden;
+    }
+
+    .ms-pf-container *, 
+    .ms-pf-container *::before, 
+    .ms-pf-container *::after {
+      box-sizing: border-box;
+    }
+
+    .ms-pf-header {
+      text-align: center;
+      max-width: 680px;
+      margin: 0 auto 56px auto;
+      padding: 0 24px;
+    }
+
+    .ms-pf-title {
+      font-size: 2.8rem;
+      font-weight: 600;
+      margin: 0 0 16px 0;
+    }
+
+    .ms-pf-subtitle {
+      font-size: 1.2rem; font-weight: 450;
+      line-height: 1.5;
+      color: var(--ms-text-muted);
+      margin: 0;
+    }
+
+    /* Viewport structure configured for horizontal centering snap points */
+    .ms-pf-slider-viewport {
+      overflow-x: auto;
+      scroll-behavior: smooth;
+      scrollbar-width: none;
+      scroll-snap-type: x mandatory;
+      width: 100%;
+    }
+
+    .ms-pf-slider-viewport::-webkit-scrollbar {
+      display: none;
+    }
+
+    /* Padding offsets adjacent cards to 50% view widths on big screens */
+    .ms-pf-slider-track {
+      display: flex;
+      gap: 32px;
+      width: max-content;
+      padding: 0 calc((100vw - 1200px) / 2); 
+    }
+
+    /* Huge Card structure initially restricted to 1200px desktop dimensions */
+    .ms-pf-card {
+      width: 900px;
+      display: flex;
+      flex-direction: column;
+      scroll-snap-align: center;
+    }
+
+    .ms-pf-media-container {
+      position: relative;
+      width: 100%;
+      height: 580px; 
+      border-radius: 16px;
+      overflow: hidden;
+      background-color: #000;
+    }
+
+    .ms-pf-video {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      display: block;
+    }
+
+    /* Individual Card Video Controls */
+    .ms-pf-card-pause {
+      position: absolute;
+      top: 24px;
+      right: 24px;
+      width: 36px;
+      height: 36px;
+      border-radius: 50%;
+      background: rgba(0, 0, 0, 0.45);
+      backdrop-filter: blur(10px);
+      -webkit-backdrop-filter: blur(10px);
+      border: 1px solid rgba(255, 255, 255, 0.25);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      cursor: pointer;
+      z-index: 10;
+      transition: background-color 0.2s ease, transform 0.2s ease;
+    }
+
+    .ms-pf-card-pause:hover {
+      background: rgba(0, 0, 0, 0.65);
+      transform: scale(1.05);
+    }
+
+    .ms-pf-card-pause svg {
+      width: 16px;
+      height: 16px;
+      fill: #fff;
+    }
+
+    /* Content Badges & Titles */
+    .ms-pf-overlay-badge {
+      position: absolute;
+      bottom: 32px;
+      left: 50%;
+      transform: translateX(-50%);
+      width: 88px;
+      height: 88px;
+      background: rgba(255, 255, 255, 0.15);
+      backdrop-filter: blur(20px);
+      -webkit-backdrop-filter: blur(20px);
+      border-radius: 14px;
+      padding: 18px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      border: 1px solid rgba(255, 255, 255, 0.2);
+    }
+
+    .ms-pf-video-title {
+      position: absolute;
+      top: 40px;
+      left: 0;
+      width: 100%;
+      text-align: center;
+      color: #fff;
+      font-size: 2.8rem;
+      font-weight: 400;
+      pointer-events: none;
+    }
+
+    .ms-pf-card-content {
+      padding: 24px 30px 0 30px;
+    }
+
+    .ms-pf-card-title {
+      font-size: 1.5rem;
+      font-weight: 600;
+      margin: 0 0 12px 0;
+    }
+
+    .ms-pf-card-desc {
+      font-size: 1.2rem;
+      line-height: 1.5;
+      color: var(--ms-text-muted);
+      margin: 0;
+      width: 800px; font-weight: 500;
+    }
+
+    /* Layout Controls Footer */
+    .ms-pf-controls {
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      margin-top: 48px;
+      gap: 12px;
+    }
+
+    .ms-pf-nav-btn, .ms-pf-global-pause {
+      width: 40px;
+      height: 40px;
+      border-radius: 50%;
+      border: none;
+      background-color: #f5f5f5;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      cursor: pointer;
+      transition: background-color 0.2s ease;
+    }
+
+    .ms-pf-nav-btn:hover, .ms-pf-global-pause:hover {
+      background-color: #e5e5e5;
+    }
+
+    .ms-pf-nav-btn svg, .ms-pf-global-pause svg {
+      width: 22px;
+      height: 22px;
+      fill: var(--ms-text-dark);
+    }
+
+    .ms-pf-progress-bar {
+      width: 120px;
+      height: 2px;
+      background-color: #e0e0e0;
+      position: relative;
+      border-radius: 1px;
+      margin: 0 6px;
+    }
+
+    .ms-pf-progress-indicator {
+      position: absolute;
+      top: 0;
+      left: 0;
+      height: 100%;
+      width: 0%; 
+      background-color: var(--ms-text-dark);
+      border-radius: 1px;
+    }
+
+    /* ==========================================================================
+       RESPONSIVE BREAKPOINTS (Maintains 1 Center Card + 2 Halves Layout)
+       ========================================================================== */
+    @media (max-width: 1400px) {
+      .ms-pf-slider-track {
+        padding: 0 15vw; 
+        gap: 24px;
+      }
+      .ms-pf-card {
+        width: 70vw; 
+      }
+      .ms-pf-media-container {
+        height: 45vw;
+      }
+    }
+
+    @media (max-width: 768px) {
+      .ms-pf-title {
+        font-size: 1.75rem;
+      }
+      .ms-pf-slider-track {
+        padding: 0 10vw;
+        gap: 16px;
+      }
+      .ms-pf-card {
+        width: 80vw;
+      }
+      .ms-pf-media-container {
+        height: 95vw;
+      }
+      .ms-pf-video-title {
+        font-size: 1.75rem;
+        top: 24px;
+      }
+      .ms-pf-card-pause {
+        top: 16px;
+        right: 16px;
+        width: 32px;
+        height: 32px;
+      }
+    }
+  </style>
+</head>
+<body>
+
+<div class="ms-pf-container">
+  <header class="ms-pf-header">
+    <h2 class="ms-pf-title">Power your vision</h2>
+    <p class="ms-pf-subtitle">
+      From smooth multitasking to long-lasting efficiency, Surface is designed to perform consistently across work and play, with security built in from the moment you sign in.
+    </p>
+  </header>
+
+  <div class="ms-pf-slider-viewport" id="msPfViewport">
+    <div class="ms-pf-slider-track" id="msPfTrack">
+      
+      <div class="ms-pf-card">
+        <div class="ms-pf-media-container">
+          <video class="ms-pf-video" autoplay loop muted playsinline>
+            <source src="https://www.pexels.com/download/video/18124513/" type="video/mp4">
+          </video>
+          <button class="ms-pf-card-pause" aria-label="Pause background video">
+            <svg viewBox="0 0 24 24"><path d="M6 19h4V5H6v14zm8-14v14h4V5h-4z"/></svg>
+          </button>
+          
+        </div>
+        <div class="ms-pf-card-content">
+          <h3 class="ms-pf-card-title">Secured from day one</h3>
+          <p class="ms-pf-card-desc">Surface comes protected by default, with built-in security that runs in the background and keeps your device up to date.</p>
+        </div>
+      </div>
+
+      <div class="ms-pf-card">
+        <div class="ms-pf-media-container">
+          <video class="ms-pf-video" autoplay loop muted playsinline>
+            <source src="https://www.pexels.com/download/video/18124513/" type="video/mp4">
+          </video>
+          <button class="ms-pf-card-pause" aria-label="Pause background video">
+            <svg viewBox="0 0 24 24"><path d="M6 19h4V5H6v14zm8-14v14h4V5h-4z"/></svg>
+          </button>
+        </div>
+        <div class="ms-pf-card-content">
+          <h3 class="ms-pf-card-title">Stay unplugged</h3>
+          <p class="ms-pf-card-desc">Stay untethered through long workdays and movie nights with up to 16 hours on Surface Pro and up to 23 hours on Surface Laptop.<sup>2,3</sup></p>
+        </div>
+      </div>
+
+      <div class="ms-pf-card">
+        <div class="ms-pf-media-container">
+          <video class="ms-pf-video" autoplay loop muted playsinline>
+            <source src="https://www.pexels.com/download/video/18124513/" type="video/mp4">
+          </video>
+          <button class="ms-pf-card-pause" aria-label="Pause background video">
+            <svg viewBox="0 0 24 24"><path d="M6 19h4V5H6v14zm8-14v14h4V5h-4z"/></svg>
+          </button>
+        </div>
+        <div class="ms-pf-card-content">
+          <h3 class="ms-pf-card-title">Built for speed</h3>
+          <p class="ms-pf-card-desc">Fast Snapdragon processors power intense multitasking, creative workflows, and heavy gaming sessions effortlessly.</p>
+        </div>
+      </div>
+
+      <div class="ms-pf-card">
+        <div class="ms-pf-media-container">
+          <video class="ms-pf-video" autoplay loop muted playsinline>
+            <source src="https://www.pexels.com/download/video/18124513/" type="video/mp4">
+          </video>
+          <button class="ms-pf-card-pause" aria-label="Pause background video">
+            <svg viewBox="0 0 24 24"><path d="M6 19h4V5H6v14zm8-14v14h4V5h-4z"/></svg>
+          </button>
+        </div>
+        <div class="ms-pf-card-content">
+          <h3 class="ms-pf-card-title">Stunning PixelSense Display</h3>
+          <p class="ms-pf-card-desc">Experience vibrant colors, crisp contrast, and ultra-smooth adaptive refresh rates tailored perfectly for creators.</p>
+        </div>
+      </div>
+
+      <div class="ms-pf-card">
+        <div class="ms-pf-media-container">
+          <video class="ms-pf-video" autoplay loop muted playsinline>
+            <source src="https://www.pexels.com/download/video/18124513/" type="video/mp4">
+          </video>
+          <button class="ms-pf-card-pause" aria-label="Pause background video">
+            <svg viewBox="0 0 24 24"><path d="M6 19h4V5H6v14zm8-14v14h4V5h-4z"/></svg>
+          </button>
+        </div>
+        <div class="ms-pf-card-content">
+          <h3 class="ms-pf-card-title">Next-gen AI capabilities</h3>
+          <p class="ms-pf-card-desc">Transform the way you work with local neural processing units designed for real-time live captions and creative assistance.</p>
+        </div>
+      </div>
+
+    </div>
+  </div>
+
+  <div class="ms-pf-controls">
+    <button class="ms-pf-nav-btn" id="msPfPrev" aria-label="Previous slide">
+      <svg viewBox="0 0 24 24"><path d="M15.41 7.41L14 6l-6 6 6 6 1.41-1.41L10.83 12z"/></svg>
+    </button>
+    
+    <div class="ms-pf-progress-bar">
+      <div class="ms-pf-progress-indicator" id="msPfIndicator"></div>
+    </div>
+
+    <button class="ms-pf-nav-btn" id="msPfNext" aria-label="Next slide">
+      <svg viewBox="0 0 24 24"><path d="M10 6L8.59 7.41 13.17 12l-4.58 4.59L10 18l6-6z"/></svg>
+    </button>
+
+    <button class="ms-pf-global-pause" id="msPfGlobalPause" aria-label="Pause slideshow auto scroll">
+      <svg viewBox="0 0 24 24" id="msPfPauseIcon"><path d="M6 19h4V5H6v14zm8-14v14h4V5h-4z"/></svg>
+    </button>
+  </div>
+</div>
+
+<script>
+  // ==========================================================================
+  // VANILLA JS ENGINE (Auto Scroll + Linear Progress Fill + Card Controls)
+  // ==========================================================================
+  document.addEventListener("DOMContentLoaded", () => {
+    const viewport = document.getElementById("msPfViewport");
+    const track = document.getElementById("msPfTrack");
+    const prevBtn = document.getElementById("msPfPrev");
+    const nextBtn = document.getElementById("msPfNext");
+    const indicator = document.getElementById("msPfIndicator");
+    const globalPauseBtn = document.getElementById("msPfGlobalPause");
+    const pauseIcon = document.getElementById("msPfPauseIcon");
+    
+    let cards = Array.from(track.children);
+    let currentIndex = 0;
+    let autoScrollActive = true;
+    
+    let progress = 0;
+    let lastTime = null;
+    const duration = 5000; 
+    let animationFrameId = null;
+
+    const getScrollPosition = (index) => {
+      if (cards.length === 0) return 0;
+      const cardWidth = cards[0].clientWidth;
+      const computedGap = parseFloat(window.getComputedStyle(track).gap) || 32;
+      return (cardWidth + computedGap) * index;
+    };
+
+    const scrollToCard = (index) => {
+      if (index < 0) index = cards.length - 1;
+      if (index >= cards.length) index = 0;
+      
+      currentIndex = index;
+      viewport.scrollTo({
+        left: getScrollPosition(currentIndex),
+        behavior: "smooth"
+      });
+      progress = 0;
+    };
+
+    const tick = (timestamp) => {
+      if (!lastTime) lastTime = timestamp;
+      const delta = timestamp - lastTime;
+      lastTime = timestamp;
+
+      if (autoScrollActive) {
+        progress += delta;
+        const percentage = Math.min((progress / duration) * 100, 100);
+        indicator.style.width = `${percentage}%`;
+
+        if (progress >= duration) {
+          progress = 0;
+          scrollToCard(currentIndex + 1);
+        }
+      }
+
+      animationFrameId = requestAnimationFrame(tick);
+    };
+
+    animationFrameId = requestAnimationFrame(tick);
+
+    // Nav Arrows
+    nextBtn.addEventListener("click", () => {
+      progress = 0;
+      scrollToCard(currentIndex + 1);
+    });
+
+    prevBtn.addEventListener("click", () => {
+      progress = 0;
+      scrollToCard(currentIndex - 1);
+    });
+
+    // Bottom Auto-Scroll Toggle Play/Pause
+    globalPauseBtn.addEventListener("click", () => {
+      autoScrollActive = !autoScrollActive;
+      if (autoScrollActive) {
+        pauseIcon.innerHTML = `<path d="M6 19h4V5H6v14zm8-14v14h4V5h-4z"/>`;
+        lastTime = performance.now();
+      } else {
+        pauseIcon.innerHTML = `<path d="M8 5v14l11-7z"/>`;
+      }
+    });
+
+    // Individual Corner Card Play/Pause Controls
+    track.querySelectorAll(".ms-pf-card").forEach(card => {
+      const cardVid = card.querySelector(".ms-pf-video");
+      const cardBtn = card.querySelector(".ms-pf-card-pause");
+      
+      if (cardBtn && cardVid) {
+        cardBtn.addEventListener("click", (e) => {
+          e.stopPropagation(); // Prevents manual clicks from throwing scroll positions off
+          
+          if (cardVid.paused) {
+            cardVid.play().catch(() => {});
+            cardBtn.querySelector("svg").innerHTML = `<path d="M6 19h4V5H6v14zm8-14v14h4V5h-4z"/>`;
+          } else {
+            cardVid.pause();
+            cardBtn.querySelector("svg").innerHTML = `<path d="M8 5v14l11-7z"/>`;
+          }
+        });
+      }
+    });
+
+    // Detect User Manual Swipes/Scrolls to reset timeline smoothly
+    let scrollTimeout;
+    viewport.addEventListener("scroll", () => {
+      clearTimeout(scrollTimeout);
+      scrollTimeout = setTimeout(() => {
+        const cardWidth = cards[0].clientWidth;
+        const computedGap = parseFloat(window.getComputedStyle(track).gap) || 32;
+        const step = cardWidth + computedGap;
+        
+        const estimatedIndex = Math.round(viewport.scrollLeft / step);
+        if (estimatedIndex !== currentIndex && estimatedIndex >= 0 && estimatedIndex < cards.length) {
+          currentIndex = estimatedIndex;
+          progress = 0;
+        }
+      }, 150);
+    });
+  });
+</script>
+
+</body>
+</html>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Surface Hero Showcase</title>
+  <style>
+    /* ==========================================================================
+       SCOPED HERO CSS (Namespace: ms-hs-)
+       ========================================================================== */
+    .ms-hs-wrapper {
+      --ms-hs-font: "Segoe UI", -apple-system, BlinkMacSystemFont, Roboto, sans-serif;
+      --ms-hs-white: #ffffff;
+      
+      font-family: var(--ms-hs-font);
+      position: relative;
+      width: 100%;
+      height: 100vh;
+      min-height: 600px;
+      background-color: #000;
+      overflow: hidden;
+      color: var(--ms-hs-white);
+      box-sizing: border-box;
+    }
+
+    .ms-hs-wrapper *,
+    .ms-hs-wrapper *::before,
+    .ms-hs-wrapper *::after {
+      box-sizing: border-box;
+    }
+
+    /* Video Background Layer */
+    .ms-hs-bg-container {
+      position: absolute;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      z-index: 1;
+    }
+
+    .ms-hs-video {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      display: block;
+    }
+
+    /* Subtle darkening vignette overlay to guarantee high text readability */
+    .ms-hs-vignette {
+      position: absolute;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      background: linear-gradient(
+        to bottom,
+        rgba(0, 0, 0, 0.2) 0%,
+        rgba(0, 0, 0, 0.1) 40%,
+        rgba(0, 0, 0, 0.4) 100%
+      );
+      z-index: 2;
+      pointer-events: none;
+    }
+
+    /* Foreground Content Layout Grid */
+    .ms-hs-interface {
+      position: relative;
+      z-index: 3;
+      width: 100%;
+      height: 100%;
+      max-width: 1312px;
+      margin: 0 auto;
+      padding: 0 24px;
+      display: flex;
+      flex-direction: column;
+      justify-content: flex-end; /* Pushes layout naturally to bottom dock orientation */
+      padding-bottom: 56px;
+    }
+
+    /* Top-Right Control Button Placement */
+    .ms-hs-top-controls {
+      position: absolute;
+      top: 40px;
+      right: 24px;
+      z-index: 4;
+    }
+
+    .ms-hs-video-toggle {
+      width: 40px;
+      height: 40px;
+      border-radius: 50%;
+      background: rgba(0, 0, 0, 0.3);
+      backdrop-filter: blur(10px);
+      -webkit-backdrop-filter: blur(10px);
+      border: none;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      cursor: pointer;
+      transition: background-color 0.2s ease, transform 0.2s ease;
+    }
+
+    .ms-hs-video-toggle:hover {
+      background: rgba(0, 0, 0, 0.5);
+      transform: scale(1.05);
+    }
+
+    .ms-hs-video-toggle svg {
+      width: 16px;
+      height: 16px;
+      fill: var(--ms-hs-white);
+    }
+
+    /* Left Aligned Copy Content Blocks */
+    .ms-hs-billboard {
+      max-width: 640px;
+      margin-bottom: 48px;
+    }
+
+    .ms-hs-tagline {
+      font-size: 1.125rem;
+      font-weight: 400;
+      margin: 0 0 16px 0;
+      letter-spacing: 0.02em;
+    }
+
+    .ms-hs-heading {
+      font-size: 3.5rem;
+      font-weight: 500;
+      line-height: 1.1;
+      letter-spacing: -0.03em;
+      margin: 0 0 24px 0;
+    }
+
+    .ms-hs-description {
+      font-size: 1.25rem;
+      line-height: 1.5;
+      font-weight: 400;
+      margin: 0;
+      opacity: 0.95;
+    }
+
+    /* Glassmorphism Bottom Switcher Trays */
+    .ms-hs-navigation-dock {
+      display: flex;
+      gap: 10px;
+      width: 100%;
+    }
+
+    .ms-hs-tab-panel {
+      flex: 1;
+      background: rgba(255, 255, 255, 0.12);
+      backdrop-filter: blur(25px);
+      -webkit-backdrop-filter: blur(25px);
+      border-radius: 8px;
+      padding: 20px 24px;
+      display: flex;
+      justify-content: space-between;
+      align-items: flex-end;
+      cursor: pointer;
+      transition: background 0.2s ease, border-color 0.2s ease;
+      text-align: left;
+    }
+
+    .ms-hs-tab-panel:hover {
+      background: rgba(255, 255, 255, 0.18);
+      border-color: rgba(255, 255, 255, 0.3);
+    }
+
+    .ms-hs-tab-panel.ms-hs-active {
+      background: rgba(255, 255, 255, 0.22);
+      border-color: rgba(255, 255, 255, 0.4);
+      box-shadow: 0 4px 20px rgba(0, 0, 0, 0.15);
+    }
+
+    .ms-hs-tab-meta {
+      display: flex;
+      flex-direction: column;
+      gap: 4px;
+    }
+
+    .ms-hs-tab-context {
+      font-size: 0.8rem;
+      text-transform: capitalize;
+      opacity: 0.7;
+    }
+
+    .ms-hs-tab-title {
+      font-size: 1rem;
+      font-weight: 600;
+      margin: 0;
+    }
+
+    .ms-hs-tab-icon {
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      opacity: 0.9;
+    }
+
+    .ms-hs-tab-icon svg {
+      width: 20px;
+      height: 20px;
+      fill: var(--ms-hs-white);
+    }
+
+    /* ==========================================================================
+       MOBILE RESPONSIVENESS OVERRIDES
+       ========================================================================== */
+    @media (max-width: 992px) {
+      .ms-hs-heading {
+        font-size: 2.75rem;
+      }
+      .ms-hs-navigation-dock {
+        gap: 12px;
+      }
+      .ms-hs-tab-panel {
+        padding: 16px;
+      }
+    }
+
+    @media (max-width: 768px) {
+      .ms-hs-wrapper {
+        height: auto;
+        min-height: 100vh;
+      }
+      .ms-hs-interface {
+        justify-content: flex-end;
+        padding-top: 120px;
+        padding-bottom: 32px;
+      }
+      .ms-hs-top-controls {
+        top: 24px;
+        right: 24px;
+      }
+      .ms-hs-heading {
+        font-size: 2.25rem;
+      }
+      .ms-hs-description {
+        font-size: 1.125rem;
+      }
+      .ms-hs-navigation-dock {
+        flex-direction: column;
+        gap: 8px;
+      }
+      .ms-hs-tab-panel {
+        padding: 14px 20px;
+      }
+    }
+  </style>
+</head>
+<body>
+
+<div class="ms-hs-wrapper">
+  
+  <div class="ms-hs-bg-container">
+    <video class="ms-hs-video" id="msHsVideo" autoplay loop muted playsinline>
+      <source src="https://www.pexels.com/download/video/18124513/" type="video/mp4">
+    </video>
+    <div class="ms-hs-vignette"></div>
+  </div>
+
+  <div class="ms-hs-top-controls">
+    <button class="ms-hs-video-toggle" id="msHsVideoToggle" aria-label="Pause background cinematic loop">
+      <svg id="msHsToggleIcon" viewBox="0 0 24 24"><path d="M6 19h4V5H6v14zm8-14v14h4V5h-4z"/></svg>
+    </button>
+  </div>
+
+  <div class="ms-hs-interface">
+    
+    <div class="ms-hs-billboard">
+      <p class="ms-hs-tagline">Meet Surface</p>
+      <h1 class="ms-hs-heading">Built for this world<br>to create the next</h1>
+      <p class="ms-hs-description">
+        Power and performance that keeps up with how you think, move, and make.
+      </p>
+    </div>
+
+    <div class="ms-hs-navigation-dock">
+      
+      <div class="ms-hs-tab-panel ms-hs-active" data-video="#">
+        <div class="ms-hs-tab-meta">
+          <span class="ms-hs-tab-context">Introducing</span>
+          <h3 class="ms-hs-tab-title">Surface Laptop Ultra</h3>
+        </div>
+        <div class="ms-hs-tab-icon">
+          <svg viewBox="0 0 24 24"><path d="M22 18H2v-2h20v2zm-4-4H6V5h12v9z"/></svg>
+        </div>
+      </div>
+
+      <div class="ms-hs-tab-panel" data-video="https://assets.mixkit.co/videos/preview/mixkit-rotating-futuristic-globe-connection-interface-43227-large.mp4">
+        <div class="ms-hs-tab-meta">
+          <span class="ms-hs-tab-context">All-new</span>
+          <h3 class="ms-hs-tab-title">Surface Pro</h3>
+        </div>
+        <div class="ms-hs-tab-icon">
+          <svg viewBox="0 0 24 24"><path d="M18 2H6c-1.1 0-2 .9-2 2v16c0 1.1.9 2 2 2h12c1.1 0 2-.9 2-2V4c0-1.1-.9-2-2-2zm-1 17H7V5h10v14z"/></svg>
+        </div>
+      </div>
+
+      <div class="ms-hs-tab-panel" data-video="https://assets.mixkit.co/videos/preview/mixkit-glowing-lines-on-a-circuit-board-43231-large.mp4">
+        <div class="ms-hs-tab-meta">
+          <span class="ms-hs-tab-context">All-new</span>
+          <h3 class="ms-hs-tab-title">Surface Laptop</h3>
+        </div>
+        <div class="ms-hs-tab-icon">
+          <svg viewBox="0 0 24 24"><path d="M22 18H2v-2h20v2zm-4-4H6V5h12v9z"/></svg>
+        </div>
+      </div>
+
+    </div>
+
+  </div>
+
+</div>
+
+<script>
+  // ==========================================================================
+  // VANILLA JS INTERACTIVE HERO SYSTEM
+  // ==========================================================================
+  document.addEventListener("DOMContentLoaded", () => {
+    const videoElement = document.getElementById("msHsVideo");
+    const toggleButton = document.getElementById("msHsVideoToggle");
+    const toggleIcon = document.getElementById("msHsToggleIcon");
+    const tabPanels = document.querySelectorAll(".ms-hs-tab-panel");
+
+    // 1. Playback Pause/Play Control Listener System
+    toggleButton.addEventListener("click", () => {
+      if (videoElement.paused) {
+        videoElement.play().catch(() => {});
+        toggleIcon.innerHTML = `<path d="M6 19h4V5H6v14zm8-14v14h4V5h-4z"/>`; // Pause state vector path
+      } else {
+        videoElement.pause();
+        toggleIcon.innerHTML = `<path d="M8 5v14l11-7z"/>`; // Play state vector path
+      }
+    });
+
+    // 2. Tab Panel Dynamic Background Swapping Array Mechanics
+    tabPanels.forEach(panel => {
+      panel.addEventListener("click", () => {
+        // Remove focus flags everywhere instantly
+        tabPanels.forEach(t => t.classList.remove("ms-hs-active"));
+        
+        // Target contextual flags
+        panel.classList.add("ms-hs-active");
+        
+        // Extract raw path strings linked to panel node attributes
+        const newVideoSrc = panel.getAttribute("data-video");
+        
+        if (newVideoSrc && videoElement.getAttribute("src") !== newVideoSrc) {
+          videoElement.src = newVideoSrc;
+          videoElement.load();
+          
+          // Re-trigger playback loop cleanly based on top container global states
+          videoElement.play().catch(() => {});
+          toggleIcon.innerHTML = `<path d="M6 19h4V5H6v14zm8-14v14h4V5h-4z"/>`;
+        }
+      });
+    });
+  });
+</script>
+
+</body>
+</html>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Surface Features Accordion Showcase</title>
+  <style>
+    /* ==========================================================================
+       SCOPED ACCORDION HERO CSS (Namespace: ms-ac-)
+       ========================================================================== */
+    .ms-ac-hero-wrapper {
+      --ms-ac-font: "Segoe UI", -apple-system, BlinkMacSystemFont, Roboto, sans-serif;
+      --ms-ac-white: #ffffff;
+      --ms-ac-panel-bg: rgb(27, 27, 27);
+      --ms-ac-panel-border: rgba(255, 255, 255, 0.1);
+      
+      font-family: var(--ms-ac-font);
+      position: relative;
+      width: 100%;
+      height: 100vh;
+      min-height: 650px;
+      background-color: #000;
+      overflow: hidden;
+      color: var(--ms-ac-white);
+      box-sizing: border-box;
+    }
+
+    .ms-ac-hero-wrapper *,
+    .ms-ac-hero-wrapper *::before,
+    .ms-ac-hero-wrapper *::after {
+      box-sizing: border-box;
+    }
+
+    /* Continuous Background Video Layer */
+    .ms-ac-video-container {
+      position: absolute;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      z-index: 1;
+    }
+
+    .ms-ac-bg-video {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      display: block;
+    }
+
+    /* Top-Left Global Pause Button Position */
+    .ms-ac-top-controls {
+      position: absolute;
+      top: 40px;
+      left: 40px;
+      z-index: 4;
+    }
+
+    .ms-ac-global-toggle {
+      width: 44px;
+      height: 44px;
+      border-radius: 50%;
+      background: rgba(0, 0, 0, 0.5);
+      backdrop-filter: blur(12px);
+      -webkit-backdrop-filter: blur(12px);
+      border: none;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      cursor: pointer;
+      transition: background-color 0.2s ease, transform 0.2s ease;
+    }
+
+    .ms-ac-global-toggle:hover {
+      background: rgba(0, 0, 0, 0.7);
+      transform: scale(1.05);
+    }
+
+    .ms-ac-global-toggle svg {
+      width: 16px;
+      height: 16px;
+      fill: var(--ms-ac-white);
+    }
+
+    /* Core Layout Interface Grid */
+    .ms-ac-interface-container {
+      position: relative;
+      z-index: 3;
+      width: 100%;
+      height: 100%;
+      max-width: 1312px;
+      margin: 0 auto;
+      padding: 0 40px;
+      display: flex;
+      align-items: center; /* Vertically centers the accordion card pile */
+    }
+
+    /* Accordion Stack Box Wrapper */
+    .ms-ac-menu-holder {
+      width: 440px;
+      display: flex;
+      flex-direction: column;
+      gap: 3px;
+    }
+
+    /* Single Accordion Card Cardboard Component */
+    .ms-ac-card {
+      background: var(--ms-ac-panel-bg);
+      border-radius: 12px;
+      overflow: hidden;
+      transition: background-color 0.3s ease, border-color 0.3s ease;
+      display: flex;
+      flex-direction: column;
+      position: relative;
+    }
+
+    /* Clickable Header Area */
+    .ms-ac-card-header {
+      width: 100%;
+      padding: 24px;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      background: none;
+      border: none;
+      color: var(--ms-ac-white);
+      cursor: pointer;
+      text-align: left;
+    }
+
+    .ms-ac-card-title {
+      font-size: 1.125rem;
+      font-weight: 500;
+      margin: 0;
+      letter-spacing: -0.01em;
+      transition: opacity 0.2s ease;
+    }
+
+    .ms-ac-card-icon {
+      font-size: 1.25rem;
+      font-weight: 300;
+      line-height: 1;
+      opacity: 0.8;
+      transition: transform 0.3s ease;
+    }
+
+    /* Hidden Content Body Panel Container */
+    .ms-ac-card-body {
+      max-height: 0;
+      overflow: hidden;
+      transition: max-height 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+      padding: 0 24px;
+    }
+
+    .ms-ac-card-desc {
+      font-size: 1.132rem;
+      line-height: 1.5;
+      margin: 0;
+      padding-bottom: 24px;
+      opacity: 0.85;
+    }
+
+    /* Progress Timeline Track Bar Container */
+    .ms-ac-progress-track {
+      position: absolute;
+      bottom: 0;
+      left: 0;
+      width: 100%;
+      height: 3px;
+      background: rgba(255, 255, 255, 0.1);
+      display: none;
+    }
+
+    .ms-ac-progress-fill {
+      height: 100%;
+      width: 0%;
+      background: linear-gradient(90deg, #0078d4, #00c2ff);
+    }
+
+    /* Active Component States configuration overrides */
+    .ms-ac-card.ms-ac-open {
+      background-color: rgb(20, 20, 20);
+    }
+
+    .ms-ac-card.ms-ac-open .ms-ac-card-body {
+      max-height: 200px; /* Provides sufficient expand clearance safely */
+    }
+
+    .ms-ac-card.ms-ac-open .ms-ac-card-icon {
+      transform: rotate(45deg); /* Flips "+" mark into standard cancellation alignment */
+    }
+
+    .ms-ac-card.ms-ac-open .ms-ac-progress-track {
+      display: block;
+    }
+
+    /* ==========================================================================
+       RESPONSIVE BREAKPOINTS MOBILE SCALING OVERRIDES
+       ========================================================================== */
+    @media (max-width: 768px) {
+      .ms-ac-hero-wrapper {
+        height: auto;
+        min-height: 100vh;
+      }
+      .ms-ac-top-controls {
+        top: 24px;
+        left: 24px;
+      }
+      .ms-ac-interface-container {
+        padding: 100px 20px 48px 20px;
+        align-items: flex-end;
+      }
+      .ms-ac-menu-holder {
+        width: 100%;
+      }
+      .ms-ac-card-header {
+        padding: 20px;
+      }
+      .ms-ac-card-body {
+        padding: 0 20px;
+      }
+      .ms-ac-card-desc {
+        padding-bottom: 20px;
+        font-size: 0.95rem;
+      }
+    }
+  </style>
+</head>
+<body>
+
+<div class="ms-ac-hero-wrapper">
+  
+  <div class="ms-ac-video-container">
+    <video class="ms-ac-bg-video" id="msAcVideo" autoplay loop muted playsinline>
+      <source src="https://www.pexels.com/download/video/18124513/" type="video/mp4">
+    </video>
+  </div>
+
+  <div class="ms-ac-top-controls">
+    <button class="ms-ac-global-toggle" id="msAcGlobalToggle" aria-label="Pause interactive feature transition loop">
+      <svg id="msAcToggleIcon" viewBox="0 0 24 24"><path d="M6 19h4V5H6v14zm8-14v14h4V5h-4z"/></svg>
+    </button>
+  </div>
+
+  <div class="ms-ac-interface-container">
+    
+    <div class="ms-ac-menu-holder" id="msAcMenuHolder">
+      
+      <div class="ms-ac-card ms-ac-open">
+        <button class="ms-ac-card-header" aria-expanded="true">
+          <h3 class="ms-ac-card-title">Find files faster</h3>
+          <span class="ms-ac-card-icon">+</span>
+        </button>
+        <div class="ms-ac-card-body">
+          <p class="ms-ac-card-desc">
+            Looking for your "budget spreadsheet" or "Paris photos"? On Copilot+ PCs, just type a description and improved Windows search can find it.<sup>4,5</sup>
+          </p>
+        </div>
+        <div class="ms-ac-progress-track">
+          <div class="ms-ac-progress-fill"></div>
+        </div>
+      </div>
+
+      <div class="ms-ac-card">
+        <button class="ms-ac-card-header" aria-expanded="false">
+          <h3 class="ms-ac-card-title">All the apps you need</h3>
+          <span class="ms-ac-card-icon">+</span>
+        </button>
+        <div class="ms-ac-card-body">
+          <p class="ms-ac-card-desc">
+            Run all your critical applications natively with hyper-optimized efficiency and unmatched responsiveness designed for intensive multitasking.
+          </p>
+        </div>
+        <div class="ms-ac-progress-track">
+          <div class="ms-ac-progress-fill"></div>
+        </div>
+      </div>
+
+      <div class="ms-ac-card">
+        <button class="ms-ac-card-header" aria-expanded="false">
+          <h3 class="ms-ac-card-title">Create pics in a flash</h3>
+          <span class="ms-ac-card-icon">+</span>
+        </button>
+        <div class="ms-ac-card-body">
+          <p class="ms-ac-card-desc">
+            Generate and iterate stunning high-fidelity visual assets locally on device via deep learning execution cores without cloud latency wait times.
+          </p>
+        </div>
+        <div class="ms-ac-progress-track">
+          <div class="ms-ac-progress-fill"></div>
+        </div>
+      </div>
+
+      <div class="ms-ac-card">
+        <button class="ms-ac-card-header" aria-expanded="false">
+          <h3 class="ms-ac-card-title">Get your game on</h3>
+          <span class="ms-ac-card-icon">+</span>
+        </button>
+        <div class="ms-ac-card-body">
+          <p class="ms-ac-card-desc">
+            Immerse yourself completely within demanding real-time dynamic rendering pipelines designed to support ultra-smooth high-refresh gaming execution.
+          </p>
+        </div>
+        <div class="ms-ac-progress-track">
+          <div class="ms-ac-progress-fill"></div>
+        </div>
+      </div>
+
+    </div>
+
+  </div>
+
+</div>
+
+<script>
+  // ==========================================================================
+  // VANILLA JS INTERACTIVE PROGRESS ACCORDION LOGIC ENGINE
+  // ==========================================================================
+  document.addEventListener("DOMContentLoaded", () => {
+    const holder = document.getElementById("msAcMenuHolder");
+    const cards = Array.from(holder.querySelectorAll(".ms-ac-card"));
+    const globalToggle = document.getElementById("msAcGlobalToggle");
+    const toggleIcon = document.getElementById("msAcToggleIcon");
+    
+    let activeIndex = 0;
+    let autoTransitionActive = true;
+    
+    let progress = 0;
+    let lastTime = null;
+    const duration = 5000; // Duration each accordion segment remains open (5 seconds)
+    let animationFrameId = null;
+
+    // Changes the active accordion pane cleanly
+    const setActiveAccordion = (targetIndex) => {
+      // Clear progress filling rules on the previous card panel element
+      const currentActiveCard = cards[activeIndex];
+      if (currentActiveCard) {
+        const pastFill = currentActiveCard.querySelector(".ms-ac-progress-fill");
+        if (pastFill) pastFill.style.width = "0%";
+        currentActiveCard.classList.remove("ms-ac-open");
+        currentActiveCard.querySelector(".ms-ac-card-header").setAttribute("aria-expanded", "false");
+      }
+
+      // Re-assign bounding loops safely
+      if (targetIndex >= cards.length) targetIndex = 0;
+      if (targetIndex < 0) targetIndex = cards.length - 1;
+      
+      activeIndex = targetIndex;
+      progress = 0;
+
+      // Expand the new targeted component section
+      const newActiveCard = cards[activeIndex];
+      newActiveCard.classList.add("ms-ac-open");
+      newActiveCard.querySelector(".ms-ac-card-header").setAttribute("aria-expanded", "true");
+    };
+
+    // Animation loop ticker logic calculation framework
+    const tick = (timestamp) => {
+      if (!lastTime) lastTime = timestamp;
+      const delta = timestamp - lastTime;
+      lastTime = timestamp;
+
+      if (autoTransitionActive) {
+        progress += delta;
+        const currentActiveCard = cards[activeIndex];
+        
+        if (currentActiveCard) {
+          const fillIndicator = currentActiveCard.querySelector(".ms-ac-progress-fill");
+          if (fillIndicator) {
+            const percentage = Math.min((progress / duration) * 100, 100);
+            fillIndicator.style.width = `${percentage}%`;
+          }
+        }
+
+        if (progress >= duration) {
+          setActiveAccordion(activeIndex + 1);
+        }
+      }
+
+      animationFrameId = requestAnimationFrame(tick);
+    };
+
+    // Start execution timing frameworks loops
+    animationFrameId = requestAnimationFrame(tick);
+
+    // Global Pause/Play Action Event Listener
+    globalToggle.addEventListener("click", () => {
+      autoTransitionActive = !autoTransitionActive;
+      
+      if (autoTransitionActive) {
+        toggleIcon.innerHTML = `<path d="M6 19h4V5H6v14zm8-14v14h4V5h-4z"/>`; // Show pause symbol
+        lastTime = performance.now(); // Recalibrate delta baseline metrics calculation steps
+      } else {
+        toggleIcon.innerHTML = `<path d="M8 5v14l11-7z"/>`; // Show play symbol
+      }
+    });
+
+    // Manual Accordion Panel Header Click Events
+    cards.forEach((card, index) => {
+      const headerButton = card.querySelector(".ms-ac-card-header");
+      headerButton.addEventListener("click", () => {
+        if (index === activeIndex) {
+          // Clicking an already open card simply toggles the global pause state
+          autoTransitionActive = !autoTransitionActive;
+          globalToggle.click();
+        } else {
+          // Shifting focus manually forces direct jumps and resets the timeline metrics
+          setActiveAccordion(index);
+        }
+      });
+    });
+  });
+</script>
+
+</body>
+</html>
 
 
 
@@ -1725,10 +4566,6 @@ document.addEventListener("DOMContentLoaded", function() {
 
 
 
-
-<style>
-@import url('https://fonts.googleapis.com/css2?family=Google+Sans:ital,opsz,wght@0,17..18,400..700;1,17..18,400..700&display=swap');
-</style>
 
 
 <!DOCTYPE html>

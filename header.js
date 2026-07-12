@@ -586,9 +586,9 @@ class CronosHeader extends HTMLElement {
         .cronos-lang-modal-container.show { display: flex; opacity: 1; }
         .cronos-lang-modal-window {
             background-color: #070b14; width: 100%; max-width: 500px;
-            border-radius: 24px; border: 1px solid rgba(255, 255, 255, 0.04);
-            box-shadow: 0 24px 60px rgba(0,0,0,0.8); display: flex; flex-direction: column;
-            max-height: 80vh; overflow: hidden; position: relative;
+            border-radius: 24px; 
+            display: flex; flex-direction: column;
+            max-height: 90vh; overflow: hidden; position: relative;
         }
         .cronos-lang-modal-header {
             padding: 24px 32px 14px 32px;
