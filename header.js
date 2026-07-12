@@ -241,17 +241,32 @@ class CronosHeader extends HTMLElement {
                 </li>`;
         }).join('');
 
-        // Integrated Language Row for Mobile view inside drawer list flow
+        // Mobile Language Row (behaving precisely like an inline subpanel trigger screen)
         const currentLangLabel = this._getMsg('lang-' + (localStorage.getItem('cronos_lang') || 'en'), 'Language');
         listHtml += `
-            <li class="cronos-mobile-lang-drawer-item">
-                <a href="javascript:void(0)" class="cronos-custom-nav-link" id="cronos-mobileLangTrigger">
+            <li class="cronos-custom-nav-item--has-megamenu cronos-mobile-lang-drawer-item">
+                <a href="#" class="cronos-custom-nav-link" data-cronos-megamenu-trigger="mobile-language-panel">
                     <span class="cronos-nav-label-text" style="display:flex; align-items:center; gap:8px;">
                         <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="10"></circle><line x1="2" y1="12" x2="22" y2="12"></line><path d="M12 2a15.3 15.3 0 0 1 4 10 15.3 15.3 0 0 1-4 10 15.3 15.3 0 0 1-4-10 15.3 15.3 0 0 1 4-10z"></path></svg>
                         <span>Language: <strong>${currentLangLabel}</strong></span>
                     </span>
                     ${chevronRight}
                 </a>
+                <div class="cronos-mega-menu-container">
+                    <div class="cronos-mega-menu-panel" data-cronos-megamenu-panel="mobile-language-panel">
+                        <div class="cronos-lang-search-wrapper" style="padding: 0 0 16px 0;">
+                            <div class="cronos-lang-search-container">
+                                <span class="cronos-lang-search-icon">
+                                    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="11" cy="11" r="8"></circle><line x1="21" y1="21" x2="16.65" y2="16.65"></line></svg>
+                                </span>
+                                <input type="text" id="cronos-mobileLangSearchInput" class="cronos-lang-search-input" placeholder="Search">
+                            </div>
+                        </div>
+                        <div class="cronos-mobile-lang-panel-body" id="cronos-mobileLangPanelBody">
+                            ${this._buildLangRowsHtml('cronos-mobile-lang-row')}
+                        </div>
+                    </div>
+                </div>
             </li>`;
 
         return listHtml;
@@ -389,7 +404,7 @@ class CronosHeader extends HTMLElement {
         }
         .cronos-header-secondary-btn:hover { background-color: #4a4b6b6d; }
 
-        /* Desktop Trigger (Icon before standard buttons) */
+        /* Desktop Trigger */
         .cronos-header-search-action-trigger {
             background: transparent; border: 2px solid rgb(35, 43, 57); padding: 0; margin-right: 8px; margin-left: 18px;
             cursor: pointer; color: var(--cronos-color-text-light); display: flex;
@@ -417,7 +432,6 @@ class CronosHeader extends HTMLElement {
             color: #fff; text-decoration: none; letter-spacing: -0.02em;
             transition: color 0.2s; 
         }
-        .cronos-search-prediction-row-item:hover { color: #9cd4ff; }
         .cronos-search-prediction-empty-notice { color: var(--cronos-color-text-muted); font-size: 14px; padding: 8px 0; }
 
         .cronos-qr-dropdown-trigger {
@@ -505,7 +519,6 @@ class CronosHeader extends HTMLElement {
         .cronos-menu-group-tagline { font-size: 14px; font-weight: 400; color: var(--cronos-color-text-muted); margin-top: 5px; }
         .cronos-mega-menu-group-list { list-style: none; padding: 0; margin: 0; }
         .cronos-mega-menu-group-list a { display: block; margin: 7px 0; padding: 2px 0; letter-spacing: -0.02em; font-size: 19px; font-weight: 500; color: var(--cronos-color-text-light); text-decoration: none; }
-        .cronos-mega-menu-group-list a:hover { color: #9cd4ff; }
         .cronos-mega-menu-link-title { font-size: inherit; font-weight: inherit; color: inherit; }
 
         .cronos-group-cta-btn {
@@ -518,22 +531,24 @@ class CronosHeader extends HTMLElement {
         .cronos-mobile-dropdown-icon { display: none; transition: transform 0.3s; }
         
         /* Mobile Control Actions & Layout Alignment Styles */
-        .cronos-mobile-controls-group { display: none; align-items: center; gap: 8px; z-index: 1010; }
+        .cronos-mobile-controls-group { display: none; align-items: center; gap: 14px; z-index: 1010; }
         
-        .cronos-mobile-search-menu-item {
-            display: none; background: none; border: none; padding: 0; margin: 0;
-            color: var(--cronos-color-text-light); font-family: inherit; cursor: pointer;
+        /* Repositioned Header inline mobile search trigger styled optimally */
+        .cronos-mobile-header-search-icon-trigger {
+            background: transparent; border: none; padding: 0; margin: 0;
+            color: var(--cronos-color-text-light); display: flex; align-items: center; justify-content: center;
+            cursor: pointer;
         }
-        .cronos-mobile-search-menu-item svg { width: 20px; height: 20px; }
+        .cronos-mobile-header-search-icon-trigger svg { width: 22px; height: 22px; color: #fff; }
 
         .cronos-mobile-toggle {
-            background: none; border: none; width: 30px; height: 24px;
+            background: none; border: none; width: 24px; height: 24px;
             cursor: pointer; padding: 0; position: relative; display: block;
         }
-        .cronos-mobile-toggle span { display: block; height: 2px; width: 100%; background-color: var(--cronos-color-text-light); margin: 6px 0; transition: all 0.3s; }
-        .cronos-header-wrapper.cronos-mobile-menu-open .cronos-mobile-toggle span:nth-child(1) { transform: translateY(8px) rotate(45deg); }
+        .cronos-mobile-toggle span { display: block; height: 2px; width: 100%; background-color: var(--cronos-color-text-light); margin: 5px 0; transition: all 0.3s; }
+        .cronos-header-wrapper.cronos-mobile-menu-open .cronos-mobile-toggle span:nth-child(1) { transform: translateY(7px) rotate(45deg); }
         .cronos-header-wrapper.cronos-mobile-menu-open .cronos-mobile-toggle span:nth-child(2) { opacity: 0; }
-        .cronos-header-wrapper.cronos-mobile-menu-open .cronos-mobile-toggle span:nth-child(3) { transform: translateY(-8px) rotate(-45deg); }
+        .cronos-header-wrapper.cronos-mobile-menu-open .cronos-mobile-toggle span:nth-child(3) { transform: translateY(-7px) rotate(-45deg); }
 
         /* Full Screen Search Page Component Overlays for Mobile */
         .cronos-mobile-fullscreen-search-overlay {
@@ -561,71 +576,86 @@ class CronosHeader extends HTMLElement {
         .cronos-mobile-overlay-body .cronos-search-fallback-quicklinks { margin-top: 25px; }
         .cronos-mobile-overlay-body .cronos-search-fallback-quicklinks h3 { font-size: 14px; margin: 0 0 16px; color: var(--cronos-color-text-muted); text-transform: uppercase; letter-spacing: 0.05em; }
 
-        /* Global Premium Overhauled Custom Language Picker Modal Style */
+        /* Premium Dark Mode Custom Language Picker Modal Style (Desktop only) */
         .cronos-lang-modal-container {
             position: fixed; top: 0; left: 0; width: 100%; height: 100vh;
-            background-color: rgba(4, 7, 16, 0.85); backdrop-filter: blur(8px);
+            background-color: rgba(3, 5, 10, 0.7); backdrop-filter: blur(10px);
             z-index: 3000; display: none; align-items: center; justify-content: center;
-            opacity: 0; transition: opacity 0.25s ease;
+            opacity: 0; transition: opacity 0.2s cubic-bezier(0.4, 0, 0.2, 1);
         }
         .cronos-lang-modal-container.show { display: flex; opacity: 1; }
         .cronos-lang-modal-window {
-            background-color: #0d1424; width: 100%; max-width: 440px;
-            border-radius: 20px; border: 2px solid rgb(35, 43, 57)
-            box-shadow: 0 20px 40px rgba(0,0,0,0.5); display: flex; flex-direction: column;
-            max-height: 85vh; overflow: hidden; position: relative;
+            background-color: #070b14; width: 100%; max-width: 500px;
+            border-radius: 24px; border: 1px solid rgba(255, 255, 255, 0.04);
+            box-shadow: 0 24px 60px rgba(0,0,0,0.8); display: flex; flex-direction: column;
+            max-height: 80vh; overflow: hidden; position: relative;
         }
         .cronos-lang-modal-header {
-            padding: 22px 24px; border-bottom: 1px solid rgba(255, 255, 255, 0.06);
+            padding: 24px 32px 14px 32px;
             display: flex; align-items: center; justify-content: space-between;
+            background-color: #070b14;
         }
-        .cronos-lang-modal-header h3 { margin: 0; color: #fff; font-size: 1.2rem; font-weight: 500; }
+        .cronos-lang-modal-header h3 { margin: 0; color: #ffffff; font-size: 1.35rem; font-weight: 600; letter-spacing: -0.01em; }
         .cronos-lang-modal-close-btn {
-            background: none; border: none; color: var(--cronos-color-text-muted);
+            background: rgba(255, 255, 255, 0.03); border: 1px solid rgba(255,255,255,0.04); color: #ffffff;
             cursor: pointer; display: flex; align-items: center; justify-content: center;
-            padding: 6px; border-radius: 50%; transition: background-color 0.2s, color 0.2s;
+            padding: 0; width: 36px; height: 36px; border-radius: 50%; transition: background-color 0.2s;
         }
-        .cronos-lang-modal-close-btn:hover { background-color: rgba(255, 255, 255, 0.08); color: #fff; }
+        .cronos-lang-modal-close-btn:hover { background-color: rgba(255, 255, 255, 0.08); }
+        .cronos-lang-modal-close-btn svg { width: 14px; height: 14px; stroke-width: 2.5; }
+
+        /* Modern Dark Modular Search Field Element Container */
+        .cronos-lang-search-wrapper {
+            background-color: transparent;
+        }
+        .cronos-lang-search-container {
+            width: 100%; display: flex; align-items: center;
+            background-color: #1a2233; border-radius: 100px;
+            padding: 12px 18px; gap: 12px;
+        }
+        .cronos-lang-search-icon {
+            display: flex; align-items: center; justify-content: center; color: #64748b;
+        }
+        .cronos-lang-search-icon svg { width: 18px; height: 18px; }
+        .cronos-lang-search-input {
+            width: 100%; background: transparent; border: none; outline: none;
+            color: #ffffff; font-family: inherit; font-size: 1rem; font-weight: 400;
+        }
+        .cronos-lang-search-input::placeholder { color: #64748b; }
         
         /* Minimal Modern Smooth Customized Scrollbar Area Structure Layout */
         .cronos-lang-modal-body {
-            padding: 16px 24px 24px; overflow-y: auto; flex-grow: 1;
+            padding: 12px 32px 32px 32px; overflow-y: auto; flex-grow: 1;
+            display: flex; flex-direction: column;
         }
-        .cronos-lang-modal-body::-webkit-scrollbar {
-            width: 5px;
-        }
-        .cronos-lang-modal-body::-webkit-scrollbar-track {
-            background: transparent;
-        }
-        .cronos-lang-modal-body::-webkit-scrollbar-thumb {
-            background: rgba(255, 255, 255, 0.15);
-            border-radius: 10px;
-        }
-        .cronos-lang-modal-body::-webkit-scrollbar-thumb:hover {
-            background: var(--cronos-color-accent);
-        }
+        .cronos-lang-modal-body::-webkit-scrollbar { width: 6px; }
+        .cronos-lang-modal-body::-webkit-scrollbar-track { background: transparent; }
+        .cronos-lang-modal-body::-webkit-scrollbar-thumb { background: rgba(255, 255, 255, 0.06); border-radius: 100px; }
+        .cronos-lang-modal-body::-webkit-scrollbar-thumb:hover { background: rgba(255, 255, 255, 0.15); }
 
+        /* Language and Region Row Grid Items */
         .cronos-lang-selection-row {
-            display: flex; align-items: center; justify-content: space-between;
-            width: 100%; padding: 14px 16px; margin: 6px 0; background-color: rgba(255,255,255,0.02);
-            border: 1px solid rgba(255,255,255,0.04); border-radius: 12px; text-decoration: none;
-            color: #fff; font-size: 1.05rem; font-weight: 500; cursor: pointer; transition: all 0.2s ease;
+            display: flex; flex-direction: column; align-items: flex-start; justify-content: center;
+            width: 100%; padding: 14px 12px; border-radius: 12px; text-decoration: none;
+            cursor: pointer; transition: background-color 0.15s ease; background: transparent;
         }
-        .cronos-lang-selection-row:hover {
-            background-color: rgba(0, 145, 255, 0.08); border-color: rgba(0, 145, 255, 0.3);
-            transform: translateX(2px);
+        .cronos-lang-selection-row.active { background-color: rgba(255, 255, 255, 0.03); }
+        .cronos-lang-title-text { color: #ffffff; font-size: 1.15rem; font-weight: 600; margin: 0; line-height: 1.25; }
+        .cronos-lang-region-text { color: #64748b; font-size: 0.92rem; font-weight: 500; margin: 2px 0 0 0; line-height: 1.2; }
+        .cronos-lang-selection-row.active .cronos-lang-title-text { color: var(--cronos-color-accent); }
+        .cronos-lang-no-results { color: #64748b; text-align: center; padding: 40px 0; font-size: 1rem; font-weight: 450; }
+
+        /* Media queries for touch devices to avoid double-tap issues caused by hover states */
+        @media (hover: hover) {
+            .cronos-search-prediction-row-item:hover { color: #9cd4ff; }
+            .cronos-mega-menu-group-list a:hover { color: #9cd4ff; }
+            .cronos-lang-selection-row:hover { background-color: rgba(255, 255, 255, 0.04); }
         }
-        .cronos-lang-selection-row.active {
-            background-color: var(--cronos-color-accent); border-color: var(--cronos-color-accent);
-            color: #fff;
-        }
-        .cronos-lang-selection-row .cronos-tick-mark { display: none; width: 18px; height: 18px; }
-        .cronos-lang-selection-row.active .cronos-tick-mark { display: block; }
 
         @media (min-width: 1025px) {
             .cronos-header-back-btn { display: none !important; }
             .cronos-mobile-header-active-title { display: none !important; }
-            .cronos-mobile-lang-drawer-item { display: none !important; }
+            .cronos-mobile-lang-drawer-item { display: none !important; } 
         }
 
         @media (max-width: 1024px) {
@@ -646,18 +676,12 @@ class CronosHeader extends HTMLElement {
             .cronos-custom-nav-link { padding: 15px 0; font-size: 1.1rem; width: 100%; justify-content: space-between; }
             .cronos-mobile-dropdown-icon { display: inline-block; }
 
-            .cronos-mobile-search-menu-item {
-                display: flex; align-items: center; justify-content: space-between;
-                width: 100%; padding: 15px 20px; font-size: 1.1rem;
-                border-bottom: 1px solid rgba(255,255,255,0.06);
-            }
-            .cronos-mobile-search-menu-item svg { color: var(--cronos-color-text-muted); }
-
             .cronos-header-action-buttons { flex-direction: column; width: 100%; padding: 0 20px; margin-top: auto; }
             .cronos-header-action-btn, .cronos-header-secondary-btn { width: 100%; margin: 10px 0 0 0; padding: 15px 20px; text-align: center; font-size: 19px; }
             .cronos-qr-dropdown-trigger, .cronos-qr-dropdown-content { display: none; }
             .cronos-header-search-action-trigger { display: none !important; }
             .cronos-desktop-lang-button-trigger { display: none !important; }
+            .cronos-lang-modal-container { display: none !important; } /* Composed out on mobile screen sizes entirely */
             
             .cronos-profile-dropdown {
                 position: static; width: 100%; margin-top: 15px; box-shadow: none;
@@ -669,12 +693,12 @@ class CronosHeader extends HTMLElement {
             .cronos-custom-nav-item--has-megamenu .cronos-mega-menu-container {
                 display: block; position: absolute; top: 0; left: 0; width: 100%; height: 100%;
                 background-color: var(--cronos-color-header-bg); transform: translateX(100%);
-                transition: transform 0.3s ease; overflow-y: auto; z-index: 10; visibility: visible; opacity: 1; padding: 0;
+                transition: transform 0.3s ease; overflow-y: auto; z-index: 10; visibility: visible; opacity: 1; padding: 0 20px;
             }
             .cronos-custom-main-nav.cronos-subpanel-open { overflow: hidden; }
             .cronos-custom-nav-item--has-megamenu.active .cronos-mega-menu-container { transform: translateX(0); }
 
-            .cronos-mega-menu-panel { padding: 0 20px 40px; display: block; margin-top:25px; }
+            .cronos-mega-menu-panel { padding: 0 0 40px 0; display: block; margin-top:25px; }
             .cronos-megamenu-grid { grid-template-columns: 1fr !important; gap: 0; }
             .cronos-desktop-mega-menu { display: none; }
 
@@ -716,13 +740,6 @@ class CronosHeader extends HTMLElement {
                     </div>
 
                     <nav class="cronos-custom-main-nav">
-                        <button type="button" class="cronos-mobile-search-menu-item" id="cronos-mobileMenuSearchTrigger" aria-label="Open search">
-                            <span class="cronos-nav-label-text" data-i18n="search-placeholder">Search</span>
-                            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
-                                <circle cx="11" cy="11" r="8"></circle>
-                                <line x1="21" y1="21" x2="16.65" y2="16.65"></line>
-                            </svg>
-                        </button>
                         <ul class="cronos-custom-nav-list">${this._buildMobileNavList()}</ul>
                         <div class="cronos-header-action-buttons">
                             <button class="cronos-header-search-action-trigger" id="cronos-desktopSearchTrigger" data-cronos-megamenu-trigger="search-engine-panel" aria-label="Open search engine dropdown">
@@ -758,13 +775,19 @@ class CronosHeader extends HTMLElement {
                             </div>
 
                             <div class="cronos-desktop-lang-button-trigger" id="cronos-desktopLangTrigger" aria-label="Open language mapping module options">
-                                <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="10"></circle><line x1="2" y1="12" x2="22" y2="12"></line><path d="M12 2a15.3 15.3 0 0 1 4 10 15.3 15.3 0 0 1-4 10 15.3 15.3 0 0 1-4-10 15.3 15.3 0 0 1 4-10z"></path></svg>
+                                <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="10"></circle><line x1="2" y1="12" x2="22" y2="12"></line><path d="M12 2a15.3 15.3 0 0 1 4 10 15.3 15.3 0 0 1-4-10 15.3 15.3 0 0 1 4-10z"></path></svg>
                             </div>
 
                         </div>
                     </nav>
 
                     <div class="cronos-mobile-controls-group">
+                        <button type="button" class="cronos-mobile-header-search-icon-trigger" id="cronos-mobileHeaderSearchTrigger" aria-label="Open fullscreen mobile search window">
+                            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round">
+                                <circle cx="11" cy="11" r="8"></circle>
+                                <line x1="21" y1="21" x2="16.65" y2="16.65"></line>
+                            </svg>
+                        </button>
                         <button class="cronos-mobile-toggle" id="cronos-mobileMenuToggle" aria-label="Toggle navigation menu">
                             <span></span><span></span><span></span>
                         </button>
@@ -781,13 +804,21 @@ class CronosHeader extends HTMLElement {
             <div class="cronos-lang-modal-container" id="cronos-langModal">
                 <div class="cronos-lang-modal-window">
                     <div class="cronos-lang-modal-header">
-                        <h3 data-i18n="lang-select-title">${this._getMsg('lang-select-title', 'Select Language')}</h3>
+                        <h3 data-i18n="lang-select-title">${this._getMsg('lang-select-title', 'Language and Region')}</h3>
                         <button class="cronos-lang-modal-close-btn" id="cronos-langModalClose" aria-label="Close language options selector">
-                            <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><line x1="18" y1="6" x2="6" y2="18"></line><line x1="6" y1="6" x2="18" y2="18"></line></svg>
+                            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round"><line x1="18" y1="6" x2="6" y2="18"></line><line x1="6" y1="6" x2="18" y2="18"></line></svg>
                         </button>
                     </div>
-                    <div class="cronos-lang-modal-body">
-                        ${this._buildLangRowsHtml()}
+                    <div style="padding: 0 32px 16px 32px; background-color: #070b14;">
+                        <div class="cronos-lang-search-container">
+                            <span class="cronos-lang-search-icon">
+                                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="11" cy="11" r="8"></circle><line x1="21" y1="21" x2="16.65" y2="16.65"></line></svg>
+                            </span>
+                            <input type="text" id="cronos-desktopLangSearchInput" class="cronos-lang-search-input" placeholder="Search">
+                        </div>
+                    </div>
+                    <div class="cronos-lang-modal-body" id="cronos-desktopLangModalBody">
+                        ${this._buildLangRowsHtml('cronos-desktop-lang-row')}
                     </div>
                 </div>
             </div>
@@ -796,26 +827,31 @@ class CronosHeader extends HTMLElement {
         `;
     }
 
-    _buildLangRowsHtml() {
+    _buildLangRowsHtml(rowClassIdentifier) {
         const langs = [
-            { code: 'en', label: 'English' },
-            { code: 'zu', label: 'isiZulu' },
-            { code: 'xh', label: 'isiXhosa' },
-            { code: 'st', label: 'Sesotho' },
-            { code: 'tn', label: 'Setswana' },
-            { code: 'nso', label: 'Sepedi' },
-            { code: 'af', label: 'Afrikaans' }
+            { code: 'fr', label: 'Français', region: 'Global' },
+            { code: 'id', label: 'Bahasa Indonesia', region: 'Global' },
+            { code: 'ru', label: 'Русский', region: 'Global' },
+            { code: 'vi', label: 'Tiếng Việt', region: 'Global' },
+            { code: 'zh', label: '繁體中文', region: 'Global' },
+            { code: 'ar', label: 'العربية', region: 'United Arab Emirates' },
+            { code: 'en_ae', label: 'English', region: 'United Arab Emirates' },
+            { code: 'en', label: 'English', region: 'Global' },
+            { code: 'zu', label: 'isiZulu', region: 'South Africa' },
+            { code: 'xh', label: 'isiXhosa', region: 'South Africa' },
+            { code: 'st', label: 'Sesotho', region: 'South Africa' },
+            { code: 'tn', label: 'Setswana', region: 'South Africa' },
+            { code: 'nso', label: 'Sepedi', region: 'South Africa' },
+            { code: 'af', label: 'Afrikaans', region: 'South Africa' }
         ];
         const activeLang = localStorage.getItem('cronos_lang') || 'en';
 
         return langs.map(l => {
             const isActive = l.code === activeLang ? 'active' : '';
             return `
-                <div class="cronos-lang-selection-row ${isActive}" data-lang-code="${l.code}">
-                    <span data-i18n="lang-${l.code}">${this._getMsg('lang-' + l.code, l.label)}</span>
-                    <span class="cronos-tick-mark">
-                        <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="#0091ff" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"></polyline></svg>
-                    </span>
+                <div class="cronos-lang-selection-row ${isActive} ${rowClassIdentifier}" data-lang-code="${l.code}" data-lang-search-string="${l.label.toLowerCase()} ${l.region.toLowerCase()}">
+                    <span class="cronos-lang-title-text">${l.label}</span>
+                    <span class="cronos-lang-region-text">${l.region}</span>
                 </div>
             `;
         }).join('');
@@ -842,19 +878,30 @@ class CronosHeader extends HTMLElement {
         const desktopSearchResults      = shadow.getElementById('cronos-desktopSearchResults');
         const desktopSearchQuicklinks   = shadow.getElementById('cronos-desktopSearchQuicklinks');
         
-        const mobileMenuSearchTrigger   = shadow.getElementById('cronos-mobileMenuSearchTrigger');
+        const mobileHeaderSearchTrigger = shadow.getElementById('cronos-mobileHeaderSearchTrigger');
         const mobileSearchOverlay       = shadow.getElementById('cronos-mobileSearchOverlay');
         const mobileSearchCloseBtn      = shadow.getElementById('cronos-mobileSearchCloseBtn');
         const mobileSearchField         = shadow.getElementById('cronos-mobileSearchField');
         const mobileSearchResults       = shadow.getElementById('cronos-mobileSearchResults');
         const mobileSearchQuicklinks    = shadow.getElementById('cronos-mobileSearchQuicklinks');
 
-        // Language Trigger Selectors
+        // Prevent blur event on input when clicking results, allowing the link to navigate instantly on first click
+        [desktopSearchResults, desktopSearchQuicklinks, mobileSearchResults, mobileSearchQuicklinks].forEach(el => {
+            if(el) el.addEventListener('mousedown', (e) => e.preventDefault());
+        });
+
+        // Desktop Specific Lang Elements
         const desktopLangTrigger        = shadow.getElementById('cronos-desktopLangTrigger');
-        const mobileLangTrigger         = shadow.getElementById('cronos-mobileLangTrigger');
         const langModal                 = shadow.getElementById('cronos-langModal');
         const langModalClose            = shadow.getElementById('cronos-langModalClose');
-        const langRows                  = shadow.querySelectorAll('.cronos-lang-selection-row');
+        const desktopLangSearchInput    = shadow.getElementById('cronos-desktopLangSearchInput');
+        const desktopLangModalBody      = shadow.getElementById('cronos-desktopLangModalBody');
+        const desktopLangRows           = shadow.querySelectorAll('.cronos-desktop-lang-row');
+
+        // Mobile Specific Lang Elements
+        const mobileLangSearchInput     = shadow.getElementById('cronos-mobileLangSearchInput');
+        const mobileLangPanelBody       = shadow.getElementById('cronos-mobileLangPanelBody');
+        const mobileLangRows            = shadow.querySelectorAll('.cronos-mobile-lang-row');
 
         let cronosCloseTimer   = null;
         let cronosQrCloseTimer = null;
@@ -872,7 +919,11 @@ class CronosHeader extends HTMLElement {
         };
 
         const setActiveMenu = (trigger, panel) => {
-            cronosMegaMenuTriggers.forEach(t => t.classList.remove('active'));
+            cronosMegaMenuTriggers.forEach(t => {
+                if (window.innerWidth > 1024 || t.getAttribute('data-cronos-megamenu-trigger') !== 'mobile-language-panel') {
+                    t.classList.remove('active');
+                }
+            });
             cronosDesktopPanels.forEach(p => {
                 p.classList.remove('active');
                 const g = p.querySelector('.cronos-megamenu-grid');
@@ -923,8 +974,10 @@ class CronosHeader extends HTMLElement {
                     }
                 });
             } else {
-                trigger.addEventListener('mouseenter', () => handleOpen(trigger));
-                trigger.parentElement.addEventListener('mouseleave', handleClose);
+                if (window.innerWidth > 1024) {
+                    trigger.addEventListener('mouseenter', () => handleOpen(trigger));
+                    trigger.parentElement.addEventListener('mouseleave', handleClose);
+                }
             }
         });
 
@@ -988,7 +1041,6 @@ class CronosHeader extends HTMLElement {
             }
         });
 
-        // Search prediction matching and isolation filters
         const handleSearchFiltering = (inputElement, resultsElement, quicklinksElement) => {
             const query = inputElement.value.trim().toLowerCase();
             if(!query) {
@@ -1020,7 +1072,6 @@ class CronosHeader extends HTMLElement {
             mobileSearchField.addEventListener('input', () => handleSearchFiltering(mobileSearchField, mobileSearchResults, mobileSearchQuicklinks));
         }
 
-        // Fullscreen Mobile Search Window Controls
         const openMobileSearchOverlay = () => {
             if (cronosHeaderWrapper.classList.contains('cronos-mobile-menu-open')) {
                 cronosHeaderWrapper.classList.remove('cronos-mobile-menu-open');
@@ -1046,8 +1097,8 @@ class CronosHeader extends HTMLElement {
             mobileSearchField.blur();
         };
 
-        if (mobileMenuSearchTrigger) {
-            mobileMenuSearchTrigger.addEventListener('click', (e) => {
+        if (mobileHeaderSearchTrigger) {
+            mobileHeaderSearchTrigger.addEventListener('click', (e) => {
                 e.stopPropagation();
                 openMobileSearchOverlay();
             });
@@ -1057,56 +1108,115 @@ class CronosHeader extends HTMLElement {
             mobileSearchCloseBtn.addEventListener('click', closeMobileSearchOverlay);
         }
 
-        // Language Modal Visibility Controllers
+        // Language Modal Logic (Desktop Exclusive Execution)
         const openLangModal = (e) => {
             e.preventDefault();
             e.stopPropagation();
             setActiveMenu(null, null);
             profileDropdown.classList.remove('show');
             langModal.classList.add('show');
+            if (desktopLangSearchInput) {
+                desktopLangSearchInput.value = '';
+                desktopLangRows.forEach(row => row.style.display = 'flex');
+                const noResultsNotice = desktopLangModalBody.querySelector('.cronos-lang-no-results');
+                if (noResultsNotice) noResultsNotice.remove();
+                setTimeout(() => desktopLangSearchInput.focus(), 50);
+            }
         };
 
-        const closeLangModal = () => {
-            langModal.classList.remove('show');
-        };
-
+        const closeLangModal = () => { langModal.classList.remove('show'); };
         if (desktopLangTrigger) desktopLangTrigger.addEventListener('click', openLangModal);
-        if (mobileLangTrigger) mobileLangTrigger.addEventListener('click', openLangModal);
         if (langModalClose) langModalClose.addEventListener('click', closeLangModal);
 
-        langModal.addEventListener('click', (e) => {
-            if (e.target === langModal) closeLangModal();
-        });
+        if (langModal) {
+            langModal.addEventListener('click', (e) => {
+                if (e.target === langModal) closeLangModal();
+            });
+        }
 
-        langRows.forEach(row => {
-            row.addEventListener('click', () => {
-                const selectedLanguage = row.getAttribute('data-lang-code');
-                if (window.cronosTranslator && typeof window.cronosTranslator.setLanguage === 'function') {
-                    window.cronosTranslator.setLanguage(selectedLanguage);
-                }
-                closeLangModal();
-                if (cronosHeaderWrapper.classList.contains('cronos-mobile-menu-open')) {
-                    cronosHeaderWrapper.classList.remove('cronos-mobile-menu-open');
-                    cronosBody.classList.remove('cronos-mobile-menu-active');
-                    closeSubpanel();
+        // Live filtration parsing utility for target list structures
+        const hookLiveFiltration = (inputElement, rowsNodeList, containerElement) => {
+            if (!inputElement) return;
+            inputElement.addEventListener('input', () => {
+                const query = inputElement.value.trim().toLowerCase();
+                let visibleCount = 0;
+
+                rowsNodeList.forEach(row => {
+                    const searchStr = row.getAttribute('data-lang-search-string') || '';
+                    if (searchStr.includes(query)) {
+                        row.style.display = 'flex';
+                        visibleCount++;
+                    } else {
+                        row.style.display = 'none';
+                    }
+                });
+
+                const currentNotice = containerElement.querySelector('.cronos-lang-no-results');
+                if (currentNotice) currentNotice.remove();
+
+                if (visibleCount === 0) {
+                    const notice = document.createElement('div');
+                    notice.className = 'cronos-lang-no-results';
+                    notice.textContent = 'No languages found';
+                    containerElement.appendChild(notice);
                 }
             });
+        };
+
+        hookLiveFiltration(desktopLangSearchInput, desktopLangRows, desktopLangModalBody);
+        hookLiveFiltration(mobileLangSearchInput, mobileLangRows, mobileLangPanelBody);
+
+        const handleLanguageChangeSelection = (selectedLanguage) => {
+            if (window.cronosTranslator && typeof window.cronosTranslator.setLanguage === 'function') {
+                window.cronosTranslator.setLanguage(selectedLanguage);
+            }
+            closeLangModal();
+            if (cronosHeaderWrapper.classList.contains('cronos-mobile-menu-open')) {
+                cronosHeaderWrapper.classList.remove('cronos-mobile-menu-open');
+                cronosBody.classList.remove('cronos-mobile-menu-active');
+                closeSubpanel();
+            }
+        };
+
+        desktopLangRows.forEach(row => {
+            row.addEventListener('click', () => handleLanguageChangeSelection(row.getAttribute('data-lang-code')));
+        });
+        mobileLangRows.forEach(row => {
+            row.addEventListener('click', () => handleLanguageChangeSelection(row.getAttribute('data-lang-code')));
         });
 
-        // Mobile Menu Navigation Controls
+        // Mobile Menu Subpanel Management Flow
         const mobileDropdownItems = shadow.querySelectorAll('.cronos-custom-nav-item--has-megamenu');
         const mobileMainNav       = shadow.querySelector('.cronos-custom-main-nav');
         const headerBackBtn       = shadow.getElementById('cronos-headerBackBtn');
 
         const openSubpanel = (item) => {
-            const labelText = item.querySelector('.cronos-nav-label-text')?.textContent || '';
+            let labelText = '';
+            if (item.classList.contains('cronos-mobile-lang-drawer-item')) {
+                labelText = this._getMsg('lang-select-title', 'Language and Region');
+            } else {
+                labelText = item.querySelector('.cronos-nav-label-text')?.textContent || '';
+            }
             cronosMobileActiveTitle.textContent = labelText;
             item.classList.add('active');
             mobileMainNav.classList.add('cronos-subpanel-open');
             cronosHeaderWrapper.classList.add('cronos-subpanel-header-open');
+            
+            if (item.classList.contains('cronos-mobile-lang-drawer-item') && mobileLangSearchInput) {
+                mobileLangSearchInput.value = '';
+                mobileLangRows.forEach(row => row.style.display = 'flex');
+                const currentNotice = mobileLangPanelBody.querySelector('.cronos-lang-no-results');
+                if (currentNotice) currentNotice.remove();
+                setTimeout(() => mobileLangSearchInput.focus(), 320);
+            }
+        };
+
+        const deleteSubpanelActiveFilters = () => {
+            if(mobileLangSearchInput) mobileLangSearchInput.blur();
         };
 
         const closeSubpanel = () => {
+            deleteSubpanelActiveFilters();
             mobileDropdownItems.forEach(i => i.classList.remove('active'));
             mobileMainNav.classList.remove('cronos-subpanel-open');
             cronosHeaderWrapper.classList.remove('cronos-subpanel-header-open');
@@ -1136,7 +1246,7 @@ class CronosHeader extends HTMLElement {
         });
 
         shadow.querySelectorAll('.cronos-custom-nav-list a, .cronos-mobile-overlay-body a').forEach(link => {
-            if (link.hasAttribute('data-cronos-megamenu-trigger') || link.id === 'cronos-mobileLangTrigger') return;
+            if (link.hasAttribute('data-cronos-megamenu-trigger')) return;
             link.addEventListener('click', () => {
                 if (window.innerWidth <= 1024) {
                     cronosHeaderWrapper.classList.remove('cronos-mobile-menu-open');
