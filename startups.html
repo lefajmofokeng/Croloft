@@ -47,11 +47,947 @@
 
 
 
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Surface Hero Showcase</title>
+  <style>
+    /* ==========================================================================
+       SCOPED HERO CSS (Namespace: ms-hs-)
+       ========================================================================== */
+    .ms-hs-wrapper {
+      --ms-hs-font: "Segoe UI", -apple-system, BlinkMacSystemFont, Roboto, sans-serif;
+      --ms-hs-white: #ffffff;
+      
+      font-family: var(--ms-hs-font);
+      position: relative;
+      width: 100%;
+      height: 100vh;
+      min-height: 600px;
+      background-color: #000;
+      overflow: hidden;
+      color: var(--ms-hs-white);
+      box-sizing: border-box;
+    }
+
+    .ms-hs-wrapper *,
+    .ms-hs-wrapper *::before,
+    .ms-hs-wrapper *::after {
+      box-sizing: border-box;
+    }
+
+    /* Video Background Layer */
+    .ms-hs-bg-container {
+      position: absolute;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      z-index: 1;
+    }
+
+    .ms-hs-video {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      display: block;
+    }
+
+    /* Subtle darkening vignette overlay to guarantee high text readability */
+    .ms-hs-vignette {
+      position: absolute;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      background: linear-gradient(
+        to bottom,
+        rgba(0, 0, 0, 0.2) 0%,
+        rgba(0, 0, 0, 0.1) 40%,
+        rgba(0, 0, 0, 0.4) 100%
+      );
+      z-index: 2;
+      pointer-events: none;
+    }
+
+    /* Foreground Content Layout Grid */
+    .ms-hs-interface {
+      position: relative;
+      z-index: 3;
+      width: 100%;
+      height: 100%;
+      max-width: 1312px;
+      margin: 0 auto;
+      padding: 0 24px;
+      display: flex;
+      flex-direction: column;
+      justify-content: flex-end; /* Pushes layout naturally to bottom dock orientation */
+      padding-bottom: 56px;
+    }
+
+    /* Top-Right Control Button Placement */
+    .ms-hs-top-controls {
+      position: absolute;
+      top: 40px;
+      right: 24px;
+      z-index: 4;
+    }
+
+    .ms-hs-video-toggle {
+      width: 40px;
+      height: 40px;
+      border-radius: 50%;
+      background: rgba(0, 0, 0, 0.3);
+      backdrop-filter: blur(10px);
+      -webkit-backdrop-filter: blur(10px);
+      border: none;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      cursor: pointer;
+      transition: background-color 0.2s ease, transform 0.2s ease;
+    }
+
+    .ms-hs-video-toggle:hover {
+      background: rgba(0, 0, 0, 0.5);
+      transform: scale(1.05);
+    }
+
+    .ms-hs-video-toggle svg {
+      width: 16px;
+      height: 16px;
+      fill: var(--ms-hs-white);
+    }
+
+    /* Left Aligned Copy Content Blocks */
+    .ms-hs-billboard {
+      max-width: 640px;
+      margin-bottom: 48px;
+    }
+
+    .ms-hs-tagline {
+      font-size: 1.125rem;
+      font-weight: 400;
+      margin: 0 0 16px 0;
+      letter-spacing: 0.02em;
+    }
+
+    .ms-hs-heading {
+      font-size: 3.5rem;
+      font-weight: 500;
+      line-height: 1.1;
+      letter-spacing: -0.03em;
+      margin: 0 0 24px 0;
+    }
+
+    .ms-hs-description {
+      font-size: 1.25rem;
+      line-height: 1.5;
+      font-weight: 400;
+      margin: 0;
+      opacity: 0.95;
+    }
+
+    /* Glassmorphism Bottom Switcher Trays */
+    .ms-hs-navigation-dock {
+      display: flex;
+      gap: 10px;
+      width: 100%;
+    }
+
+    .ms-hs-tab-panel {
+      flex: 1;
+      background: rgba(255, 255, 255, 0.12);
+      backdrop-filter: blur(25px);
+      -webkit-backdrop-filter: blur(25px);
+      border-radius: 8px;
+      padding: 20px 24px;
+      display: flex;
+      justify-content: space-between;
+      align-items: flex-end;
+      cursor: pointer;
+      transition: background 0.2s ease, border-color 0.2s ease;
+      text-align: left;
+    }
+
+    .ms-hs-tab-panel:hover {
+      background: rgba(255, 255, 255, 0.18);
+      border-color: rgba(255, 255, 255, 0.3);
+    }
+
+    .ms-hs-tab-panel.ms-hs-active {
+      background: rgba(255, 255, 255, 0.22);
+      border-color: rgba(255, 255, 255, 0.4);
+      box-shadow: 0 4px 20px rgba(0, 0, 0, 0.15);
+    }
+
+    .ms-hs-tab-meta {
+      display: flex;
+      flex-direction: column;
+      gap: 4px;
+    }
+
+    .ms-hs-tab-context {
+      font-size: 0.8rem;
+      text-transform: capitalize;
+      opacity: 0.7;
+    }
+
+    .ms-hs-tab-title {
+      font-size: 1rem;
+      font-weight: 600;
+      margin: 0;
+    }
+
+    .ms-hs-tab-icon {
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      opacity: 0.9;
+    }
+
+    .ms-hs-tab-icon svg {
+      width: 20px;
+      height: 20px;
+      fill: var(--ms-hs-white);
+    }
+
+    /* ==========================================================================
+       MOBILE RESPONSIVENESS OVERRIDES
+       ========================================================================== */
+    @media (max-width: 992px) {
+      .ms-hs-heading {
+        font-size: 2.75rem;
+      }
+      .ms-hs-navigation-dock {
+        gap: 12px;
+      }
+      .ms-hs-tab-panel {
+        padding: 16px;
+      }
+    }
+
+    @media (max-width: 768px) {
+      .ms-hs-wrapper {
+        height: auto;
+        min-height: 100vh;
+      }
+      .ms-hs-interface {
+        justify-content: flex-end;
+        padding-top: 120px;
+        padding-bottom: 32px;
+      }
+      .ms-hs-top-controls {
+        top: 24px;
+        right: 24px;
+      }
+      .ms-hs-heading {
+        font-size: 2.25rem;
+      }
+      .ms-hs-description {
+        font-size: 1.125rem;
+      }
+      .ms-hs-navigation-dock {
+        flex-direction: column;
+        gap: 8px;
+      }
+      .ms-hs-tab-panel {
+        padding: 14px 20px;
+      }
+    }
+  </style>
+</head>
+<body>
+
+<div class="ms-hs-wrapper">
+  
+  <div class="ms-hs-bg-container">
+    <video class="ms-hs-video" id="msHsVideo" autoplay loop muted playsinline>
+      <source src="https://www.pexels.com/download/video/18124513/" type="video/mp4">
+    </video>
+    <div class="ms-hs-vignette"></div>
+  </div>
+
+  <div class="ms-hs-top-controls">
+    <button class="ms-hs-video-toggle" id="msHsVideoToggle" aria-label="Pause background cinematic loop">
+      <svg id="msHsToggleIcon" viewBox="0 0 24 24"><path d="M6 19h4V5H6v14zm8-14v14h4V5h-4z"/></svg>
+    </button>
+  </div>
+
+  <div class="ms-hs-interface">
+    
+    <div class="ms-hs-billboard">
+      <p class="ms-hs-tagline">Meet Surface</p>
+      <h1 class="ms-hs-heading">Built for this world<br>to create the next</h1>
+      <p class="ms-hs-description">
+        Power and performance that keeps up with how you think, move, and make.
+      </p>
+    </div>
+
+    <div class="ms-hs-navigation-dock">
+      
+      <div class="ms-hs-tab-panel ms-hs-active" data-video="#">
+        <div class="ms-hs-tab-meta">
+          <span class="ms-hs-tab-context">Introducing</span>
+          <h3 class="ms-hs-tab-title">Surface Laptop Ultra</h3>
+        </div>
+        <div class="ms-hs-tab-icon">
+          <svg viewBox="0 0 24 24"><path d="M22 18H2v-2h20v2zm-4-4H6V5h12v9z"/></svg>
+        </div>
+      </div>
+
+      <div class="ms-hs-tab-panel" data-video="https://assets.mixkit.co/videos/preview/mixkit-rotating-futuristic-globe-connection-interface-43227-large.mp4">
+        <div class="ms-hs-tab-meta">
+          <span class="ms-hs-tab-context">All-new</span>
+          <h3 class="ms-hs-tab-title">Surface Pro</h3>
+        </div>
+        <div class="ms-hs-tab-icon">
+          <svg viewBox="0 0 24 24"><path d="M18 2H6c-1.1 0-2 .9-2 2v16c0 1.1.9 2 2 2h12c1.1 0 2-.9 2-2V4c0-1.1-.9-2-2-2zm-1 17H7V5h10v14z"/></svg>
+        </div>
+      </div>
+
+      <div class="ms-hs-tab-panel" data-video="https://assets.mixkit.co/videos/preview/mixkit-glowing-lines-on-a-circuit-board-43231-large.mp4">
+        <div class="ms-hs-tab-meta">
+          <span class="ms-hs-tab-context">All-new</span>
+          <h3 class="ms-hs-tab-title">Surface Laptop</h3>
+        </div>
+        <div class="ms-hs-tab-icon">
+          <svg viewBox="0 0 24 24"><path d="M22 18H2v-2h20v2zm-4-4H6V5h12v9z"/></svg>
+        </div>
+      </div>
+
+    </div>
+
+  </div>
+
+</div>
+
+<script>
+  // ==========================================================================
+  // VANILLA JS INTERACTIVE HERO SYSTEM
+  // ==========================================================================
+  document.addEventListener("DOMContentLoaded", () => {
+    const videoElement = document.getElementById("msHsVideo");
+    const toggleButton = document.getElementById("msHsVideoToggle");
+    const toggleIcon = document.getElementById("msHsToggleIcon");
+    const tabPanels = document.querySelectorAll(".ms-hs-tab-panel");
+
+    // 1. Playback Pause/Play Control Listener System
+    toggleButton.addEventListener("click", () => {
+      if (videoElement.paused) {
+        videoElement.play().catch(() => {});
+        toggleIcon.innerHTML = `<path d="M6 19h4V5H6v14zm8-14v14h4V5h-4z"/>`; // Pause state vector path
+      } else {
+        videoElement.pause();
+        toggleIcon.innerHTML = `<path d="M8 5v14l11-7z"/>`; // Play state vector path
+      }
+    });
+
+    // 2. Tab Panel Dynamic Background Swapping Array Mechanics
+    tabPanels.forEach(panel => {
+      panel.addEventListener("click", () => {
+        // Remove focus flags everywhere instantly
+        tabPanels.forEach(t => t.classList.remove("ms-hs-active"));
+        
+        // Target contextual flags
+        panel.classList.add("ms-hs-active");
+        
+        // Extract raw path strings linked to panel node attributes
+        const newVideoSrc = panel.getAttribute("data-video");
+        
+        if (newVideoSrc && videoElement.getAttribute("src") !== newVideoSrc) {
+          videoElement.src = newVideoSrc;
+          videoElement.load();
+          
+          // Re-trigger playback loop cleanly based on top container global states
+          videoElement.play().catch(() => {});
+          toggleIcon.innerHTML = `<path d="M6 19h4V5H6v14zm8-14v14h4V5h-4z"/>`;
+        }
+      });
+    });
+  });
+</script>
+
+</body>
+</html>
 
 
 
 
 
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Surface Feature Slider</title>
+  <style>
+    /* ==========================================================================
+       SCOPED CSS RULES (Namespace: ms-pf-)
+       ========================================================================== */
+    .ms-pf-container {
+      --ms-font-family: "Segoe UI", -apple-system, BlinkMacSystemFont, Roboto, sans-serif;
+      --ms-text-dark: #1b1b1b;
+      --ms-text-muted: #505050;
+      
+      font-family: var(--ms-font-family);
+      max-width: 100%;
+      margin: 0 auto;
+      padding: 200px 0;
+      color: var(--ms-text-dark);
+      box-sizing: border-box;
+      overflow: hidden;
+    }
+
+    .ms-pf-container *, 
+    .ms-pf-container *::before, 
+    .ms-pf-container *::after {
+      box-sizing: border-box;
+    }
+
+    .ms-pf-header {
+      text-align: center;
+      max-width: 680px;
+      margin: 0 auto 56px auto;
+      padding: 0 24px;
+    }
+
+    .ms-pf-title {
+      font-size: 2.8rem;
+      font-weight: 600;
+      margin: 0 0 16px 0;
+    }
+
+    .ms-pf-subtitle {
+      font-size: 1.2rem; font-weight: 450;
+      line-height: 1.5;
+      color: var(--ms-text-muted);
+      margin: 0;
+    }
+
+    /* Viewport structure configured for horizontal centering snap points */
+    .ms-pf-slider-viewport {
+      overflow-x: auto;
+      scroll-behavior: smooth;
+      scrollbar-width: none;
+      scroll-snap-type: x mandatory;
+      width: 100%;
+    }
+
+    .ms-pf-slider-viewport::-webkit-scrollbar {
+      display: none;
+    }
+
+    /* Padding offsets adjacent cards to 50% view widths on big screens */
+    .ms-pf-slider-track {
+      display: flex;
+      gap: 32px;
+      width: max-content;
+      padding: 0 calc((100vw - 1200px) / 2); 
+    }
+
+    /* Huge Card structure initially restricted to 1200px desktop dimensions */
+    .ms-pf-card {
+      width: 900px;
+      display: flex;
+      flex-direction: column;
+      scroll-snap-align: center;
+    }
+
+    .ms-pf-media-container {
+      position: relative;
+      width: 100%;
+      height: 580px; 
+      border-radius: 16px;
+      overflow: hidden;
+      background-color: #000;
+    }
+
+    .ms-pf-video {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      display: block;
+    }
+
+    /* Individual Card Video Controls */
+    .ms-pf-card-pause {
+      position: absolute;
+      top: 24px;
+      right: 24px;
+      width: 36px;
+      height: 36px;
+      border-radius: 50%;
+      background: rgba(0, 0, 0, 0.45);
+      backdrop-filter: blur(10px);
+      -webkit-backdrop-filter: blur(10px);
+      border: 1px solid rgba(255, 255, 255, 0.25);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      cursor: pointer;
+      z-index: 10;
+      transition: background-color 0.2s ease, transform 0.2s ease;
+    }
+
+    .ms-pf-card-pause:hover {
+      background: rgba(0, 0, 0, 0.65);
+      transform: scale(1.05);
+    }
+
+    .ms-pf-card-pause svg {
+      width: 16px;
+      height: 16px;
+      fill: #fff;
+    }
+
+    /* Content Badges & Titles */
+    .ms-pf-overlay-badge {
+      position: absolute;
+      bottom: 32px;
+      left: 50%;
+      transform: translateX(-50%);
+      width: 88px;
+      height: 88px;
+      background: rgba(255, 255, 255, 0.15);
+      backdrop-filter: blur(20px);
+      -webkit-backdrop-filter: blur(20px);
+      border-radius: 14px;
+      padding: 18px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      border: 1px solid rgba(255, 255, 255, 0.2);
+    }
+
+    .ms-pf-video-title {
+      position: absolute;
+      top: 40px;
+      left: 0;
+      width: 100%;
+      text-align: center;
+      color: #fff;
+      font-size: 2.8rem;
+      font-weight: 400;
+      pointer-events: none;
+    }
+
+    .ms-pf-card-content {
+      padding: 24px 30px 0 30px;
+    }
+
+    .ms-pf-card-title {
+      font-size: 1.5rem;
+      font-weight: 600;
+      margin: 0 0 12px 0;
+    }
+
+    .ms-pf-card-desc {
+      font-size: 1.2rem;
+      line-height: 1.5;
+      color: var(--ms-text-muted);
+      margin: 0;
+      width: 800px; font-weight: 500;
+    }
+
+    /* Layout Controls Footer */
+    .ms-pf-controls {
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      margin-top: 48px;
+      gap: 12px;
+    }
+
+    .ms-pf-nav-btn, .ms-pf-global-pause {
+      width: 40px;
+      height: 40px;
+      border-radius: 50%;
+      border: none;
+      background-color: #f5f5f5;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      cursor: pointer;
+      transition: background-color 0.2s ease;
+    }
+
+    .ms-pf-nav-btn:hover, .ms-pf-global-pause:hover {
+      background-color: #e5e5e5;
+    }
+
+    .ms-pf-nav-btn svg, .ms-pf-global-pause svg {
+      width: 22px;
+      height: 22px;
+      fill: var(--ms-text-dark);
+    }
+
+    .ms-pf-progress-bar {
+      width: 120px;
+      height: 2px;
+      background-color: #e0e0e0;
+      position: relative;
+      border-radius: 1px;
+      margin: 0 6px;
+    }
+
+    .ms-pf-progress-indicator {
+      position: absolute;
+      top: 0;
+      left: 0;
+      height: 100%;
+      width: 0%; 
+      background-color: var(--ms-text-dark);
+      border-radius: 1px;
+    }
+
+    /* ==========================================================================
+       RESPONSIVE BREAKPOINTS (Maintains 1 Center Card + 2 Halves Layout)
+       ========================================================================== */
+    @media (max-width: 1400px) {
+      .ms-pf-slider-track {
+        padding: 0 15vw; 
+        gap: 24px;
+      }
+      .ms-pf-card {
+        width: 70vw; 
+      }
+      .ms-pf-media-container {
+        height: 45vw;
+      }
+    }
+
+    @media (max-width: 768px) {
+      .ms-pf-title {
+        font-size: 1.75rem;
+      }
+      .ms-pf-slider-track {
+        padding: 0 10vw;
+        gap: 16px;
+      }
+      .ms-pf-card {
+        width: 80vw;
+      }
+      .ms-pf-media-container {
+        height: 95vw;
+      }
+      .ms-pf-video-title {
+        font-size: 1.75rem;
+        top: 24px;
+      }
+      .ms-pf-card-pause {
+        top: 16px;
+        right: 16px;
+        width: 32px;
+        height: 32px;
+      }
+    }
+  </style>
+</head>
+<body>
+
+<div class="ms-pf-container">
+  <header class="ms-pf-header">
+    <h2 class="ms-pf-title">Power your vision</h2>
+    <p class="ms-pf-subtitle">
+      From smooth multitasking to long-lasting efficiency, Surface is designed to perform consistently across work and play, with security built in from the moment you sign in.
+    </p>
+  </header>
+
+  <div class="ms-pf-slider-viewport" id="msPfViewport">
+    <div class="ms-pf-slider-track" id="msPfTrack">
+      
+      <div class="ms-pf-card">
+        <div class="ms-pf-media-container">
+          <video class="ms-pf-video" autoplay loop muted playsinline>
+            <source src="https://www.pexels.com/download/video/18124513/" type="video/mp4">
+          </video>
+          <button class="ms-pf-card-pause" aria-label="Pause background video">
+            <svg viewBox="0 0 24 24"><path d="M6 19h4V5H6v14zm8-14v14h4V5h-4z"/></svg>
+          </button>
+          
+        </div>
+        <div class="ms-pf-card-content">
+          <h3 class="ms-pf-card-title">Secured from day one</h3>
+          <p class="ms-pf-card-desc">Surface comes protected by default, with built-in security that runs in the background and keeps your device up to date.</p>
+        </div>
+      </div>
+
+      <div class="ms-pf-card">
+        <div class="ms-pf-media-container">
+          <video class="ms-pf-video" autoplay loop muted playsinline>
+            <source src="https://www.pexels.com/download/video/18124513/" type="video/mp4">
+          </video>
+          <button class="ms-pf-card-pause" aria-label="Pause background video">
+            <svg viewBox="0 0 24 24"><path d="M6 19h4V5H6v14zm8-14v14h4V5h-4z"/></svg>
+          </button>
+        </div>
+        <div class="ms-pf-card-content">
+          <h3 class="ms-pf-card-title">Stay unplugged</h3>
+          <p class="ms-pf-card-desc">Stay untethered through long workdays and movie nights with up to 16 hours on Surface Pro and up to 23 hours on Surface Laptop.<sup>2,3</sup></p>
+        </div>
+      </div>
+
+      <div class="ms-pf-card">
+        <div class="ms-pf-media-container">
+          <video class="ms-pf-video" autoplay loop muted playsinline>
+            <source src="https://www.pexels.com/download/video/18124513/" type="video/mp4">
+          </video>
+          <button class="ms-pf-card-pause" aria-label="Pause background video">
+            <svg viewBox="0 0 24 24"><path d="M6 19h4V5H6v14zm8-14v14h4V5h-4z"/></svg>
+          </button>
+        </div>
+        <div class="ms-pf-card-content">
+          <h3 class="ms-pf-card-title">Built for speed</h3>
+          <p class="ms-pf-card-desc">Fast Snapdragon processors power intense multitasking, creative workflows, and heavy gaming sessions effortlessly.</p>
+        </div>
+      </div>
+
+      <div class="ms-pf-card">
+        <div class="ms-pf-media-container">
+          <video class="ms-pf-video" autoplay loop muted playsinline>
+            <source src="https://www.pexels.com/download/video/18124513/" type="video/mp4">
+          </video>
+          <button class="ms-pf-card-pause" aria-label="Pause background video">
+            <svg viewBox="0 0 24 24"><path d="M6 19h4V5H6v14zm8-14v14h4V5h-4z"/></svg>
+          </button>
+        </div>
+        <div class="ms-pf-card-content">
+          <h3 class="ms-pf-card-title">Stunning PixelSense Display</h3>
+          <p class="ms-pf-card-desc">Experience vibrant colors, crisp contrast, and ultra-smooth adaptive refresh rates tailored perfectly for creators.</p>
+        </div>
+      </div>
+
+      <div class="ms-pf-card">
+        <div class="ms-pf-media-container">
+          <video class="ms-pf-video" autoplay loop muted playsinline>
+            <source src="https://www.pexels.com/download/video/18124513/" type="video/mp4">
+          </video>
+          <button class="ms-pf-card-pause" aria-label="Pause background video">
+            <svg viewBox="0 0 24 24"><path d="M6 19h4V5H6v14zm8-14v14h4V5h-4z"/></svg>
+          </button>
+        </div>
+        <div class="ms-pf-card-content">
+          <h3 class="ms-pf-card-title">Next-gen AI capabilities</h3>
+          <p class="ms-pf-card-desc">Transform the way you work with local neural processing units designed for real-time live captions and creative assistance.</p>
+        </div>
+      </div>
+
+    </div>
+  </div>
+
+  <div class="ms-pf-controls">
+    <button class="ms-pf-nav-btn" id="msPfPrev" aria-label="Previous slide">
+      <svg viewBox="0 0 24 24"><path d="M15.41 7.41L14 6l-6 6 6 6 1.41-1.41L10.83 12z"/></svg>
+    </button>
+    
+    <div class="ms-pf-progress-bar">
+      <div class="ms-pf-progress-indicator" id="msPfIndicator"></div>
+    </div>
+
+    <button class="ms-pf-nav-btn" id="msPfNext" aria-label="Next slide">
+      <svg viewBox="0 0 24 24"><path d="M10 6L8.59 7.41 13.17 12l-4.58 4.59L10 18l6-6z"/></svg>
+    </button>
+
+    <button class="ms-pf-global-pause" id="msPfGlobalPause" aria-label="Pause slideshow auto scroll">
+      <svg viewBox="0 0 24 24" id="msPfPauseIcon"><path d="M6 19h4V5H6v14zm8-14v14h4V5h-4z"/></svg>
+    </button>
+  </div>
+</div>
+
+<script>
+  // ==========================================================================
+  // VANILLA JS ENGINE (Auto Scroll + Linear Progress Fill + Card Controls)
+  // ==========================================================================
+  document.addEventListener("DOMContentLoaded", () => {
+    const viewport = document.getElementById("msPfViewport");
+    const track = document.getElementById("msPfTrack");
+    const prevBtn = document.getElementById("msPfPrev");
+    const nextBtn = document.getElementById("msPfNext");
+    const indicator = document.getElementById("msPfIndicator");
+    const globalPauseBtn = document.getElementById("msPfGlobalPause");
+    const pauseIcon = document.getElementById("msPfPauseIcon");
+    
+    let cards = Array.from(track.children);
+    let currentIndex = 0;
+    let autoScrollActive = true;
+    
+    let progress = 0;
+    let lastTime = null;
+    const duration = 5000; 
+    let animationFrameId = null;
+
+    const getScrollPosition = (index) => {
+      if (cards.length === 0) return 0;
+      const cardWidth = cards[0].clientWidth;
+      const computedGap = parseFloat(window.getComputedStyle(track).gap) || 32;
+      return (cardWidth + computedGap) * index;
+    };
+
+    const scrollToCard = (index) => {
+      if (index < 0) index = cards.length - 1;
+      if (index >= cards.length) index = 0;
+      
+      currentIndex = index;
+      viewport.scrollTo({
+        left: getScrollPosition(currentIndex),
+        behavior: "smooth"
+      });
+      progress = 0;
+    };
+
+    const tick = (timestamp) => {
+      if (!lastTime) lastTime = timestamp;
+      const delta = timestamp - lastTime;
+      lastTime = timestamp;
+
+      if (autoScrollActive) {
+        progress += delta;
+        const percentage = Math.min((progress / duration) * 100, 100);
+        indicator.style.width = `${percentage}%`;
+
+        if (progress >= duration) {
+          progress = 0;
+          scrollToCard(currentIndex + 1);
+        }
+      }
+
+      animationFrameId = requestAnimationFrame(tick);
+    };
+
+    animationFrameId = requestAnimationFrame(tick);
+
+    // Nav Arrows
+    nextBtn.addEventListener("click", () => {
+      progress = 0;
+      scrollToCard(currentIndex + 1);
+    });
+
+    prevBtn.addEventListener("click", () => {
+      progress = 0;
+      scrollToCard(currentIndex - 1);
+    });
+
+    // Bottom Auto-Scroll Toggle Play/Pause
+    globalPauseBtn.addEventListener("click", () => {
+      autoScrollActive = !autoScrollActive;
+      if (autoScrollActive) {
+        pauseIcon.innerHTML = `<path d="M6 19h4V5H6v14zm8-14v14h4V5h-4z"/>`;
+        lastTime = performance.now();
+      } else {
+        pauseIcon.innerHTML = `<path d="M8 5v14l11-7z"/>`;
+      }
+    });
+
+    // Individual Corner Card Play/Pause Controls
+    track.querySelectorAll(".ms-pf-card").forEach(card => {
+      const cardVid = card.querySelector(".ms-pf-video");
+      const cardBtn = card.querySelector(".ms-pf-card-pause");
+      
+      if (cardBtn && cardVid) {
+        cardBtn.addEventListener("click", (e) => {
+          e.stopPropagation(); // Prevents manual clicks from throwing scroll positions off
+          
+          if (cardVid.paused) {
+            cardVid.play().catch(() => {});
+            cardBtn.querySelector("svg").innerHTML = `<path d="M6 19h4V5H6v14zm8-14v14h4V5h-4z"/>`;
+          } else {
+            cardVid.pause();
+            cardBtn.querySelector("svg").innerHTML = `<path d="M8 5v14l11-7z"/>`;
+          }
+        });
+      }
+    });
+
+    // Detect User Manual Swipes/Scrolls to reset timeline smoothly
+    let scrollTimeout;
+    viewport.addEventListener("scroll", () => {
+      clearTimeout(scrollTimeout);
+      scrollTimeout = setTimeout(() => {
+        const cardWidth = cards[0].clientWidth;
+        const computedGap = parseFloat(window.getComputedStyle(track).gap) || 32;
+        const step = cardWidth + computedGap;
+        
+        const estimatedIndex = Math.round(viewport.scrollLeft / step);
+        if (estimatedIndex !== currentIndex && estimatedIndex >= 0 && estimatedIndex < cards.length) {
+          currentIndex = estimatedIndex;
+          progress = 0;
+        }
+      }, 150);
+    });
+  });
+</script>
+
+</body>
+</html>
 
 
 

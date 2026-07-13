@@ -172,732 +172,231 @@
 
 
 
-
-
-
-<!DOCTYPE html>
-<html lang="en">
-<head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>IT Consulting Pricing | Strategic IT Guidance</title>
-  <link rel="preconnect" href="https://fonts.googleapis.com">
-  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link href="https://fonts.googleapis.com/css2?family=Outfit:wght@400;600;800&family=Work+Sans:wght@400;500&display=swap" rel="stylesheet">
-  <style>
-    * {
-      margin: 0;
-      padding: 0;
-      box-sizing: border-box;
-    }
-
-    :root {
-      --primary: #1e40af;
-      --primary-dark: #1e3a8a;
-      --primary-light: #3b82f6;
-      --success: #000000;
-      --text-dark: #0f172a;
-      --text-gray: #64748b;
-      --text-light: #94a3b8;
-      --bg-light: #f8fafc;
-      --bg-white: #ffffff;
-      --border: #e2e8f0;
-      --shadow-sm: 0 1px 3px rgba(0, 0, 0, 0.05);
-      --shadow-md: 0 4px 12px rgba(0, 0, 0, 0.08);
-      --shadow-lg: 0 20px 25px -5px rgba(0, 0, 0, 0.1);
-    }
-
-    body {
-      font-family: 'Circular Std', -apple-system, sans-serif;
-      color: var(--text-dark);
-      background-color: var(--bg-light);
-      line-height: 1.6;
-      overflow-x: hidden;
-    }
-
-    /* Container & Wrapper */
-    .itc-pricing-wrap {
-      padding: 60px 20px 80px;
-      background: linear-gradient(135deg, #f8fafc 0%, #f1f5f9 100%);
-    }
-
-    .itc-container {
-      max-width: 1200px;
-      margin: 0 auto;
-    }
-
-    /* Comparison Section */
-    .itc-comparison-section {
-      margin: 80px 0;
-      padding: 0;
-      background: transparent;
-      border-radius: 0;
-      box-shadow: none;
-    }
-
-    .itc-comparison-title {
-      font-family: 'Circular Std', sans-serif;
-      font-size: clamp(1.75rem, 4vw, 2.25rem);
-      font-weight: 700;
-      text-align: center;
-      margin-bottom: 16px;
-      color: var(--text-dark);
-    }
-
-    .itc-comparison-subtitle {
-      text-align: center;
-      color: var(--text-gray);
-      font-size: 1.05rem;
-      margin-bottom: 50px;
-      max-width: 700px;
-      margin-left: auto;
-      margin-right: auto;
-    }
-
-    .itc-comparison-wrapper {
-      display: flex;
-      flex-direction: column;
-      gap: 30px;
-    }
-
-    .itc-table-section {
-      overflow: hidden;
-    }
-
-    /* Sticky header styles */
-    .itc-table-section.itc-table-header {
-      position: sticky;
-      top: 70px;
-      z-index: 100;
-      background: var(--bg-light);
-      box-shadow: 0 4px 12px rgba(0, 0, 0, 0.08);
-      border: none;
-      border-radius: 20px;
-    }
-
-    .itc-comparison-table {
-      overflow-x: auto;
-      -webkit-overflow-scrolling: touch;
-      background: transparent;
-    }
-
-    table {
-      width: 100%;
-      border-collapse: collapse;
-      table-layout: fixed;
-      min-width: 800px;
-      background: transparent;
-    }
-
-    /* Unified Column widths for alignment */
-    table th:first-child,
-    table td:first-child {
-      width: 25%;
-    }
-
-    table th:nth-child(2),
-    table td:nth-child(2),
-    table th:nth-child(3),
-    table td:nth-child(3),
-    table th:nth-child(4),
-    table td:nth-child(4) {
-      width: 25%;
-    }
-
-    thead th {
-      background: var(--bg-white);
-      padding: 20px 16px;
-      text-align: left;
-      font-weight: 500;
-      color: var(--text-dark);
-      font-size: 1.4rem;
-      font-family: 'Circular Std', sans-serif;
-    }
-
-    thead th:first-child {
-      font-size: 1.3rem;
-      color: var(--text-gray);
-      font-family: 'Circular Std', sans-serif;
-    }
-
-    tbody tr:last-child {
-      border-bottom: none;
-    }
-
-    tbody td {
-      padding: 18px 16px;
-      color: var(--text-gray);
-      font-size: 1.3rem;
-      vertical-align: top;
-      background: transparent;
-    }
-
-    tbody td:first-child {
-      font-weight: 500;
-      color: var(--text-dark);
-    }
-
-   
-
-    /* Group Category Pill Box */
-    .itc-feature-group td {
-        padding: 0; /* Reset padding to use the inner div for styling */
-    }
-
-    .itc-feature-group-inner {
-      font-weight: 500;
-      color: var(--text-dark);
-      background: rgba(30, 64, 175, 0.063);
-      letter-spacing: 0.5px;
-      font-size: 1.3rem;
-      border-radius: 15px; /* Added requested border radius */
-      padding: 18px 16px;
-      margin: 10px 0;
-    }
-
-    .itc-check {
-      color: var(--success);
-      font-weight: bold;
-      font-family: 'Circular Std', sans-serif;
-      font-size: 1.3rem;
-    }
-
-    .itc-cross {
-      color: var(--text-light);
-      font-size: 1.2rem;
-    }
-
-    .itc-feature-detail {
-      display: block;
-      font-size: 0.95rem;
-      font-weight: 500;
-      color: var(--text-light);
-      margin-top: 4px;
-      line-height: 1.5;
-    }
-
-    /* FAQ Section */
-    .itc-faq-section {
-      margin: 150px 0;
-      display: grid;
-      grid-template-columns: 300px 1fr;
-      gap: 60px;
-      align-items: start;
-    }
-
-    .itc-faq-left {
-      position: sticky;
-      top: 90px;
-    }
-
-    .itc-faq-title {
-      font-family: 'Circular Std', sans-serif;
-      font-size: clamp(1.75rem, 4vw, 2.25rem);
-      font-weight: 700;
-      color: var(--text-dark);
-      margin-bottom: 16px;
-      line-height: 1.2;
-    }
-
-    .itc-faq-subtitle {
-      color: var(--text-gray);
-      font-size: 1.1rem;
-      line-height: 1.6;
-    }
-
-    .itc-faq-right {
-      display: flex;
-      flex-direction: column;
-      gap: 12px;
-    }
-
-    .itc-faq-item {
-      border-bottom: 1px solid #64748b;
-      overflow: hidden;
-      transition: all 0.3s ease;
-      background: transparent;
-    }
-
-    .itc-faq-item.active {
-      border-color: var(--primary);
-    }
-
-    .itc-faq-question {
-      font-weight: 500;
-      font-size: 1.3rem;
-      color: var(--text-dark);
-      padding: 20px 0;
-      cursor: pointer;
-      display: flex;
-      justify-content: space-between;
-      align-items: center;
-      user-select: none;
-      transition: all 0.3s ease;
-      background: transparent;
-    }
-
-    .itc-faq-icon {
-      font-size: 2.5rem;
-      font-weight: 400;
-      font-family: 'Work Sans', sans-serif;
-      color: var(--primary);
-      transition: transform 0.3s ease;
-      flex-shrink: 0;
-      margin-left: 12px;
-    }
-
-    .itc-faq-item.active .itc-faq-icon {
-      transform: rotate(180deg);
-    }
-
-    .itc-faq-answer {
-      color: var(--text-gray);
-      line-height: 1.8;
-      font-size: 1.1rem;
-      padding: 0;
-      max-height: 0;
-      overflow: hidden;
-      transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
-      background: transparent;
-    }
-
-    .itc-faq-item.active .itc-faq-answer {
-      max-height: 500px;
-      padding: 0 0 24px 0;
-    }
-
-    /* Footer Notes */
-    .itc-footer-notes {
-      text-align: left;
-      max-width: 100%;
-      margin: 150px auto 0;
-    }
-
-    .itc-footer-notes h3 {
-      font-family: 'Circular Std', sans-serif;
-      font-size: 1.5rem;
-      margin-bottom: 20px;
-      font-weight: 500;
-      color: var(--text-dark);
-    }
-
-    .itc-footer-notes p {
-      font-size: 0.95rem;
-      color: var(--text-gray);
-      line-height: 1.8;
-      margin-bottom: 12px;
-    }
-
-    .itc-footer-notes p:last-child {
-      margin-bottom: 0;
-    }
-
-    /* Responsive Design */
-    @media (max-width: 968px) {
-      .itc-faq-section {
-        grid-template-columns: 1fr;
-        gap: 30px;
-      }
-
-      .itc-faq-left {
-        position: static;
-        text-align: center;
-      }
-
-      .itc-faq-title {
-        margin-bottom: 8px;
-      }
-
-      /* Adjust sticky header for mobile */
-      .itc-table-section.itc-table-header {
-        top: 70px;
-      }
-    }
-
-    @media (max-width: 768px) {
-      .itc-pricing-wrap {
-        padding: 40px 16px 60px;
-      }
-
-      .itc-grid {
-        grid-template-columns: 1fr;
-        gap: 24px;
-      }
-
-      .itc-card {
-        padding: 32px 24px;
-      }
-
-      .itc-card-featured {
-        transform: none;
-      }
-
-      .itc-trust-bar {
-        gap: 16px;
-        padding: 16px;
-      }
-
-      .itc-trust-item {
-        font-size: 0.85rem;
-      }
-
-      .itc-comparison-section,
-      .itc-footer-notes {
-        padding: 32px 20px;
-      }
-
-      .itc-comparison-section {
-        padding: 0;
-      }
-
-      .itc-table-section {
-        border-radius: 12px;
-      }
-
-      .itc-comparison-table {
-        border-radius: 12px;
-      }
-
-      .itc-faq-item {
-        padding: 0;
-      }
-
-      .itc-faq-question {
-        font-size: 1rem;
-        padding: 16px 20px;
-      }
-    }
-
-    @media (max-width: 480px) {
-      .itc-card {
-        padding: 24px 20px;
-      }
-
-      .itc-features li {
-        font-size: 0.9rem;
-        padding: 10px 0;
-      }
-
-      .itc-btn {
-        padding: 14px 20px;
-        font-size: 0.95rem;
-      }
-
-      .itc-trust-bar {
-        flex-direction: column;
-        gap: 12px;
-      }
-
-      table {
-        min-width: 650px;
-      }
-
-      thead th, tbody td {
-        padding: 14px 12px;
-        font-size: 0.85rem;
-      }
-
-      .itc-faq-question {
-        font-size: 0.95rem;
-        padding: 14px 16px;
-      }
-
-      .itc-faq-answer {
-        font-size: 0.9rem;
-      }
-
-      .itc-faq-item.active .itc-faq-answer {
-        padding: 0 16px 16px 16px;
-      }
-    }
-
-    /* Print Styles */
-    @media print {
-      .itc-pricing-wrap {
-        background: white;
-      }
-
-      .itc-card {
-        break-inside: avoid;
-        box-shadow: none;
-        border: 2px solid #ccc;
-      }
-
-      .itc-btn {
-        display: none;
-      }
-    }
-  </style>
-</head>
-<body>
-
-<section class="itc-pricing-wrap">
-  <div class="itc-container">
-
-    <div class="itc-comparison-section">
-      <h2 class="itc-comparison-title">Consulting Feature Comparison</h2>
-      <p class="itc-comparison-subtitle">Compare our strategic engagement tiers at a glance.</p>
-      
-      <div class="itc-comparison-wrapper">
-        <div class="itc-table-section itc-table-header">
-          <div class="itc-comparison-table">
-            <table>
-              <thead>
-                <tr>
-                  <th>Deliverables & Access</th>
-                  <th>Advisory<br><span style="font-weight:400; font-size:1rem; color: var(--text-gray);">$150/hr</span></th>
-                  <th>Virtual CTO<br><span style="font-weight:400; font-size:1rem; color: var(--text-gray);">$1,200/mo</span></th>
-                  <th>Project-Based<br><span style="font-weight:400; font-size:1rem; color: var(--text-gray);">Custom Pricing</span></th>
-                </tr>
-              </thead>
-            </table>
-          </div>
-        </div>
-
-        <div class="itc-table-section">
-          <div class="itc-comparison-table">
-            <table>
-              <tbody>
-                <tr class="itc-feature-group">
-                  <td colspan="4"><div class="itc-feature-group-inner">Engagement & Delivery</div></td>
-                </tr>
-                <tr>
-                  <td>Consulting Availability</td>
-                  <td>Scheduled calls</td>
-                  <td>Priority scheduling</td>
-                  <td>Dedicated allocation</td>
-                </tr>
-                <tr>
-                  <td>Strategy Sessions</td>
-                  <td>As requested</td>
-                  <td>Monthly fixed</td>
-                  <td>Weekly/Milestone</td>
-                </tr>
-                <tr>
-                  <td>Delivery Format</td>
-                  <td>Call summaries</td>
-                  <td>Detailed roadmaps</td>
-                  <td>Comprehensive blueprints</td>
-                </tr>
-              </tbody>
-            </table>
-          </div>
-        </div>
-
-        <div class="itc-table-section">
-          <div class="itc-comparison-table">
-            <table>
-              <tbody>
-                <tr class="itc-feature-group">
-                  <td colspan="4"><div class="itc-feature-group-inner">Strategic Planning</div></td>
-                </tr>
-                <tr>
-                  <td>Tech Stack Evaluation</td>
-                  <td class="itc-check">✓</td>
-                  <td class="itc-check">✓</td>
-                  <td class="itc-check">✓</td>
-                </tr>
-                <tr>
-                  <td>Budget Optimization</td>
-                  <td class="itc-cross">—</td>
-                  <td class="itc-check">✓</td>
-                  <td class="itc-check">✓</td>
-                </tr>
-                <tr>
-                  <td>Vendor Negotiation</td>
-                  <td class="itc-cross">—</td>
-                  <td>Guidance</td>
-                  <td>Hands-on negotiation</td>
-                </tr>
-                <tr>
-                  <td>Hiring/Interview Support</td>
-                  <td class="itc-cross">—</td>
-                  <td class="itc-check">✓</td>
-                  <td class="itc-check">✓</td>
-                </tr>
-              </tbody>
-            </table>
-          </div>
-        </div>
-
-        <div class="itc-table-section">
-          <div class="itc-comparison-table">
-            <table>
-              <tbody>
-                <tr class="itc-feature-group">
-                  <td colspan="4"><div class="itc-feature-group-inner">Security & Compliance Consulting</div></td>
-                </tr>
-                <tr>
-                  <td>Risk Assessment</td>
-                  <td>High-level</td>
-                  <td>Quarterly in-depth</td>
-                  <td>Comprehensive</td>
-                </tr>
-                <tr>
-                  <td>Compliance Roadmaps</td>
-                  <td class="itc-cross">—</td>
-                  <td>Framework design</td>
-                  <td>Full pre-audit prep</td>
-                </tr>
-                <tr>
-                  <td>Disaster Recovery Design</td>
-                  <td class="itc-check">✓</td>
-                  <td class="itc-check">✓</td>
-                  <td class="itc-check">✓</td>
-                </tr>
-                <tr>
-                  <td>Security Tool Selection</td>
-                  <td>Ad-hoc advice</td>
-                  <td class="itc-check">✓</td>
-                  <td class="itc-check">✓</td>
-                </tr>
-              </tbody>
-            </table>
-          </div>
-        </div>
-
-        <div class="itc-table-section">
-          <div class="itc-comparison-table">
-            <table>
-              <tbody>
-                <tr class="itc-feature-group">
-                  <td colspan="4"><div class="itc-feature-group-inner">Architecture & Cloud Strategy</div></td>
-                </tr>
-                <tr>
-                  <td>Cloud Migration Strategy</td>
-                  <td class="itc-check">✓</td>
-                  <td class="itc-check">✓</td>
-                  <td class="itc-check">✓</td>
-                </tr>
-                <tr>
-                  <td>Architecture Blueprints</td>
-                  <td class="itc-cross">—</td>
-                  <td class="itc-check">✓</td>
-                  <td class="itc-check">✓</td>
-                </tr>
-                <tr>
-                  <td>Scalability Audits</td>
-                  <td class="itc-cross">—</td>
-                  <td>Annual</td>
-                  <td>Pre/Post Project</td>
-                </tr>
-              </tbody>
-            </table>
-          </div>
-        </div>
-
-      </div>
+<div class="ptd-hero-container">
+  <video 
+    id="ptdHeroVideo" 
+    class="ptd-hero-video" 
+    autoplay 
+    muted 
+    loop 
+    playsinline
+  >
+    <source src="https://www.pexels.com/download/video/18124513/" type="video/mp4">
+    Your browser does not support the video tag.
+  </video>
+
+  <div class="ptd-hero-overlay">
+    <div class="ptd-hero-content-wrapper">
+      <h1 class="ptd-hero-title">Power through your day</h1>
+      <p class="ptd-hero-description">
+        Long-lasting battery life helps keep you mobile from morning to night.<sup>3</sup>
+      </p>
     </div>
-
-    <div class="itc-faq-section">
-      <div class="itc-faq-left">
-        <h2 class="itc-faq-title">Frequently Asked Questions</h2>
-        <p class="itc-faq-subtitle">Get answers to common questions about our consulting process, deliverables, and expertise.</p>
-      </div>
-      
-      <div class="itc-faq-right">
-        <div class="itc-faq-item">
-          <div class="itc-faq-question">
-            How do you deliver your consulting reports and roadmaps?
-            <span class="itc-faq-icon">+</span>
-          </div>
-          <div class="itc-faq-answer">
-            We believe in actionable deliverables, not just talk. For Advisory sessions, we provide PDF summaries and high-level action items following our video calls. For Virtual CTO and Project-Based clients, we deliver comprehensive, professionally formatted architecture blueprints, cybersecurity frameworks, and multi-year IT roadmaps. We present these findings via executive workshops to ensure your entire leadership team is aligned on the technical direction.
-          </div>
-        </div>
-
-        <div class="itc-faq-item">
-          <div class="itc-faq-question">
-            Do you actually manage our IT or helpdesk tickets?
-            <span class="itc-faq-icon">+</span>
-          </div>
-          <div class="itc-faq-answer">
-            No, we are strictly an IT consulting and advisory firm. We do not provide day-to-day managed IT services, helpdesk support, or automated patching. Our focus is purely on high-level strategy, architecture design, and executive leadership. If you require day-to-day operational support, we can help you vet, select, and negotiate with a Managed Service Provider (MSP) as part of our vendor selection services.
-          </div>
-        </div>
-
-        <div class="itc-faq-item">
-          <div class="itc-faq-question">
-            We don't have an internal backend team yet. Can you help?
-            <span class="itc-faq-icon">+</span>
-          </div>
-          <div class="itc-faq-answer">
-            Absolutely. Many of the startups we partner with lack dedicated in-house backend engineers initially. We act as your technical sounding board, designing scalable architecture blueprints that you can hand off to freelance developers or future hires. When you're ready to build your internal team, our Virtual CTO service includes sitting in on technical interviews to ensure you hire the right talent for the tech stack we've helped you design.
-          </div>
-        </div>
-
-        <div class="itc-faq-item">
-          <div class="itc-faq-question">
-            What happens if I exceed my consulting hours on the Advisory plan?
-            <span class="itc-faq-icon">+</span>
-          </div>
-          <div class="itc-faq-answer">
-            Advisory services are billed hourly at $150/hour with no predetermined limit. We track consultation and research time in 15-minute increments and always provide estimates before starting deep-dive research or drafting complex documents. If you find yourself consistently needing more than 8 hours of guidance a month, we will recommend transitioning to the Virtual CTO tier for better value and more structured roadmapping.
-          </div>
-        </div>
-
-        <div class="itc-faq-item">
-          <div class="itc-faq-question">
-            Are software licenses or cloud hosting included?
-            <span class="itc-faq-icon">+</span>
-          </div>
-          <div class="itc-faq-answer">
-            No, our pricing covers professional strategic consulting only. We do not resell software or hardware. We are completely vendor-neutral, meaning our recommendations for AWS, Azure, Microsoft 365, or security tools are based entirely on what is best for your business, not on reseller commissions. We will help you optimize your budgets and negotiate directly with these vendors to save you money.
-          </div>
-        </div>
-
-        <div class="itc-faq-item">
-          <div class="itc-faq-question">
-            What compliance frameworks do you consult on?
-            <span class="itc-faq-icon">+</span>
-          </div>
-          <div class="itc-faq-answer">
-            We provide strategic guidance and gap analysis for major regulatory frameworks including HIPAA, GDPR, and SOC 2 Type II. While we do not act as the final certifying auditor, our pre-audit preparation services ensure your technical architecture, access controls, and disaster recovery policies are structured correctly so you can pass your formal audits with confidence.
-          </div>
-        </div>
-      </div>
-    </div>
-
-    <div class="itc-footer-notes">
-      <h3>Important Information</h3>
-      <p><strong>Commitment Terms:</strong> Virtual CTO plans are billed monthly with a standard 30-day cancellation notice. Advisory services have no commitment. Project-Based consulting relies on custom Statements of Work (SOW).</p>
-      <p><strong>Service Scope:</strong> All plans are purely consultative. Implementation of the provided strategies remains the responsibility of your internal staff, outsourced developers, or managed service providers.</p>
-      <p><strong>Payment Terms:</strong> Monthly retainer plans are billed in advance. Advisory hours are invoiced at month-end. Net 15 payment terms for all services.</p>
-    </div>
-
   </div>
-</section>
+
+  <button 
+    id="ptdVideoToggleBtn" 
+    class="ptd-video-toggle-btn" 
+    aria-label="Pause background video"
+  >
+    <svg class="ptd-btn-icon ptd-icon-pause" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+      <path d="M6 4h4v16H6zM14 4h4v16h-4z"/>
+    </svg>
+    <svg class="ptd-btn-icon ptd-icon-play" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" style="display: none;">
+      <path d="M8 5v14l11-7z"/>
+    </svg>
+  </button>
+</div>
+
+<style>
+  /* Base Scoped Container */
+  .ptd-hero-container {
+    position: relative;
+    width: 100%;
+    height: 100vh; /* Takes full viewport height. Adjust as needed for your layout */
+    min-height: 450px;
+    overflow: hidden;
+    background-color: #000;
+    font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
+    color: #ffffff;
+  }
+
+  /* Video Background Object-Fit Coverage */
+  .ptd-hero-video {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    width: 100%;
+    height: 100%;
+    min-width: 100%;
+    min-height: 100%;
+    transform: translate(-50%, -50%);
+    object-fit: cover;
+    z-index: 1;
+  }
+
+  /* Content Overlay Layer */
+  .ptd-hero-overlay {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    z-index: 2;
+    background: rgba(0, 0, 0, 0.15); /* Light tint for text readability if video is too bright */
+    display: flex;
+    align-items: flex-start; /* Matches upper alignment of text in screenshot */
+    box-sizing: border-box;
+    padding: 10% 8% 5% 8%;
+  }
+
+  /* Text Positioning and Layout */
+  .ptd-hero-content-wrapper {
+    display: flex;
+    flex-direction: row;
+    align-items: flex-start;
+    justify-content: space-between;
+    width: 100%;
+    max-width: 1400px;
+    margin: 0 auto;
+    gap: 40px;
+  }
+
+  .ptd-hero-title {
+    font-size: 3.2rem;
+    font-weight: 300; /* Replicates the clean light-weight font */
+    letter-spacing: -0.02em;
+    margin: 0;
+    flex: 1;
+    line-height: 1.15;
+    max-width: 600px;
+  }
+
+  .ptd-hero-description {
+    font-size: 1.15rem;
+    font-weight: 400;
+    line-height: 1.4;
+    max-width: 320px;
+    margin: 12px 0 0 0;
+    flex: 1;
+    opacity: 0.95;
+  }
+  
+  .ptd-hero-description sup {
+    font-size: 0.65rem;
+    top: -0.5em;
+    margin-left: 2px;
+  }
+
+  /* Bottom Right Video Toggle Button */
+  .ptd-video-toggle-btn {
+    position: absolute;
+    bottom: 30px;
+    right: 40px;
+    z-index: 3;
+    background: rgba(0, 0, 0, 0.4);
+    border: 1px solid rgba(255, 255, 255, 0.2);
+    border-radius: 50%;
+    width: 44px;
+    height: 44px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    cursor: pointer;
+    color: #ffffff;
+    transition: background 0.2s ease, transform 0.1s ease;
+    backdrop-filter: blur(4px);
+    -webkit-backdrop-filter: blur(4px);
+    padding: 0;
+  }
+
+  .ptd-video-toggle-btn:hover {
+    background: rgba(0, 0, 0, 0.6);
+  }
+  
+  .ptd-video-toggle-btn:active {
+    transform: scale(0.95);
+  }
+
+  .ptd-btn-icon {
+    width: 18px;
+    height: 18px;
+  }
+
+  /* --- Responsive Breakpoints --- */
+  
+  /* Tablet Viewports */
+  @media (max-width: 992px) {
+    .ptd-hero-title {
+      font-size: 2.5rem;
+    }
+    .ptd-hero-description {
+      font-size: 1rem;
+      max-width: 260px;
+    }
+  }
+
+  /* Mobile Viewports (Stack layout cleanly) */
+  @media (max-width: 768px) {
+    .ptd-hero-overlay {
+      padding: 60px 24px 80px 24px;
+      align-items: flex-end; /* Shifting layout downwards for improved visibility on small displays */
+    }
+
+    .ptd-hero-content-wrapper {
+      flex-direction: column;
+      gap: 16px;
+    }
+
+    .ptd-hero-title {
+      font-size: 2.2rem;
+      max-width: 100%;
+    }
+
+    .ptd-hero-description {
+      font-size: 1rem;
+      max-width: 100%;
+      margin: 0;
+    }
+
+    .ptd-video-toggle-btn {
+      bottom: 20px;
+      right: 24px;
+      width: 40px;
+      height: 40px;
+    }
+    
+    .ptd-btn-icon {
+      width: 16px;
+      height: 16px;
+    }
+  }
+</style>
 
 <script>
-  // FAQ Accordion functionality
-  document.addEventListener('DOMContentLoaded', function() {
-    const faqItems = document.querySelectorAll('.itc-faq-item');
-    
-    faqItems.forEach(item => {
-      const question = item.querySelector('.itc-faq-question');
-      
-      question.addEventListener('click', () => {
-        // Close other open items
-        faqItems.forEach(otherItem => {
-          if (otherItem !== item && otherItem.classList.contains('active')) {
-            otherItem.classList.remove('active');
-          }
-        });
-        
-        // Toggle current item
-        item.classList.toggle('active');
-      });
-    });
+  document.addEventListener('DOMContentLoaded', function () {
+    var video = document.getElementById('ptdHeroVideo');
+    var toggleBtn = document.getElementById('ptdVideoToggleBtn');
+    var pauseIcon = toggleBtn.querySelector('.ptd-icon-pause');
+    var playIcon = toggleBtn.querySelector('.ptd-icon-play');
 
-    // Optional: Open first FAQ by default
-    if (faqItems.length > 0) {
-      faqItems[0].classList.add('active');
+    if (video && toggleBtn) {
+      toggleBtn.addEventListener('click', function () {
+        if (video.paused) {
+          video.play();
+          pauseIcon.style.display = 'block';
+          playIcon.style.display = 'none';
+          toggleBtn.setAttribute('aria-label', 'Pause background video');
+        } else {
+          video.pause();
+          pauseIcon.style.display = 'none';
+          playIcon.style.display = 'block';
+          toggleBtn.setAttribute('aria-label', 'Play background video');
+        }
+      });
     }
   });
 </script>
-
-</body>
-</html>
 
 
 

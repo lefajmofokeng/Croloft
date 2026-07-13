@@ -218,6 +218,513 @@
 
 
 
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Surface Features Accordion Showcase</title>
+  <style>
+    /* ==========================================================================
+       SCOPED ACCORDION HERO CSS (Namespace: ms-ac-)
+       ========================================================================== */
+    .ms-ac-hero-wrapper {
+      --ms-ac-font: "Segoe UI", -apple-system, BlinkMacSystemFont, Roboto, sans-serif;
+      --ms-ac-white: #ffffff;
+      --ms-ac-panel-bg: rgb(27, 27, 27);
+      --ms-ac-panel-border: rgba(255, 255, 255, 0.1);
+      
+      font-family: var(--ms-ac-font);
+      position: relative;
+      width: 100%;
+      height: 100vh;
+      min-height: 650px;
+      background-color: #000;
+      overflow: hidden;
+      color: var(--ms-ac-white);
+      box-sizing: border-box;
+    }
+
+    .ms-ac-hero-wrapper *,
+    .ms-ac-hero-wrapper *::before,
+    .ms-ac-hero-wrapper *::after {
+      box-sizing: border-box;
+    }
+
+    /* Continuous Background Video Layer */
+    .ms-ac-video-container {
+      position: absolute;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      z-index: 1;
+    }
+
+    .ms-ac-bg-video {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      display: block;
+    }
+
+    /* Top-Left Global Pause Button Position */
+    .ms-ac-top-controls {
+      position: absolute;
+      top: 40px;
+      left: 40px;
+      z-index: 4;
+    }
+
+    .ms-ac-global-toggle {
+      width: 44px;
+      height: 44px;
+      border-radius: 50%;
+      background: rgba(0, 0, 0, 0.5);
+      backdrop-filter: blur(12px);
+      -webkit-backdrop-filter: blur(12px);
+      border: none;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      cursor: pointer;
+      transition: background-color 0.2s ease, transform 0.2s ease;
+    }
+
+    .ms-ac-global-toggle:hover {
+      background: rgba(0, 0, 0, 0.7);
+      transform: scale(1.05);
+    }
+
+    .ms-ac-global-toggle svg {
+      width: 16px;
+      height: 16px;
+      fill: var(--ms-ac-white);
+    }
+
+    /* Core Layout Interface Grid */
+    .ms-ac-interface-container {
+      position: relative;
+      z-index: 3;
+      width: 100%;
+      height: 100%;
+      max-width: 1312px;
+      margin: 0 auto;
+      padding: 0 40px;
+      display: flex;
+      align-items: center; /* Vertically centers the accordion card pile */
+    }
+
+    /* Accordion Stack Box Wrapper */
+    .ms-ac-menu-holder {
+      width: 440px;
+      display: flex;
+      flex-direction: column;
+      gap: 3px;
+    }
+
+    /* Single Accordion Card Cardboard Component */
+    .ms-ac-card {
+      background: var(--ms-ac-panel-bg);
+      border-radius: 12px;
+      overflow: hidden;
+      transition: background-color 0.3s ease, border-color 0.3s ease;
+      display: flex;
+      flex-direction: column;
+      position: relative;
+    }
+
+    /* Clickable Header Area */
+    .ms-ac-card-header {
+      width: 100%;
+      padding: 24px;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      background: none;
+      border: none;
+      color: var(--ms-ac-white);
+      cursor: pointer;
+      text-align: left;
+    }
+
+    .ms-ac-card-title {
+      font-size: 1.125rem;
+      font-weight: 500;
+      margin: 0;
+      letter-spacing: -0.01em;
+      transition: opacity 0.2s ease;
+    }
+
+    .ms-ac-card-icon {
+      font-size: 1.25rem;
+      font-weight: 300;
+      line-height: 1;
+      opacity: 0.8;
+      transition: transform 0.3s ease;
+    }
+
+    /* Hidden Content Body Panel Container */
+    .ms-ac-card-body {
+      max-height: 0;
+      overflow: hidden;
+      transition: max-height 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+      padding: 0 24px;
+    }
+
+    .ms-ac-card-desc {
+      font-size: 1.132rem;
+      line-height: 1.5;
+      margin: 0;
+      padding-bottom: 24px;
+      opacity: 0.85;
+    }
+
+    /* Progress Timeline Track Bar Container */
+    .ms-ac-progress-track {
+      position: absolute;
+      bottom: 0;
+      left: 0;
+      width: 100%;
+      height: 3px;
+      background: rgba(255, 255, 255, 0.1);
+      display: none;
+    }
+
+    .ms-ac-progress-fill {
+      height: 100%;
+      width: 0%;
+      background: linear-gradient(90deg, #0078d4, #00c2ff);
+    }
+
+    /* Active Component States configuration overrides */
+    .ms-ac-card.ms-ac-open {
+      background-color: rgb(20, 20, 20);
+    }
+
+    .ms-ac-card.ms-ac-open .ms-ac-card-body {
+      max-height: 200px; /* Provides sufficient expand clearance safely */
+    }
+
+    .ms-ac-card.ms-ac-open .ms-ac-card-icon {
+      transform: rotate(45deg); /* Flips "+" mark into standard cancellation alignment */
+    }
+
+    .ms-ac-card.ms-ac-open .ms-ac-progress-track {
+      display: block;
+    }
+
+    /* ==========================================================================
+       RESPONSIVE BREAKPOINTS MOBILE SCALING OVERRIDES
+       ========================================================================== */
+    @media (max-width: 768px) {
+      .ms-ac-hero-wrapper {
+        height: auto;
+        min-height: 100vh;
+      }
+      .ms-ac-top-controls {
+        top: 24px;
+        left: 24px;
+      }
+      .ms-ac-interface-container {
+        padding: 100px 20px 48px 20px;
+        align-items: flex-end;
+      }
+      .ms-ac-menu-holder {
+        width: 100%;
+      }
+      .ms-ac-card-header {
+        padding: 20px;
+      }
+      .ms-ac-card-body {
+        padding: 0 20px;
+      }
+      .ms-ac-card-desc {
+        padding-bottom: 20px;
+        font-size: 0.95rem;
+      }
+    }
+  </style>
+</head>
+<body>
+
+<div class="ms-ac-hero-wrapper">
+  
+  <div class="ms-ac-video-container">
+    <video class="ms-ac-bg-video" id="msAcVideo" autoplay loop muted playsinline>
+      <source src="https://www.pexels.com/download/video/18124513/" type="video/mp4">
+    </video>
+  </div>
+
+  <div class="ms-ac-top-controls">
+    <button class="ms-ac-global-toggle" id="msAcGlobalToggle" aria-label="Pause interactive feature transition loop">
+      <svg id="msAcToggleIcon" viewBox="0 0 24 24"><path d="M6 19h4V5H6v14zm8-14v14h4V5h-4z"/></svg>
+    </button>
+  </div>
+
+  <div class="ms-ac-interface-container">
+    
+    <div class="ms-ac-menu-holder" id="msAcMenuHolder">
+      
+      <div class="ms-ac-card ms-ac-open">
+        <button class="ms-ac-card-header" aria-expanded="true">
+          <h3 class="ms-ac-card-title">Find files faster</h3>
+          <span class="ms-ac-card-icon">+</span>
+        </button>
+        <div class="ms-ac-card-body">
+          <p class="ms-ac-card-desc">
+            Looking for your "budget spreadsheet" or "Paris photos"? On Copilot+ PCs, just type a description and improved Windows search can find it.<sup>4,5</sup>
+          </p>
+        </div>
+        <div class="ms-ac-progress-track">
+          <div class="ms-ac-progress-fill"></div>
+        </div>
+      </div>
+
+      <div class="ms-ac-card">
+        <button class="ms-ac-card-header" aria-expanded="false">
+          <h3 class="ms-ac-card-title">All the apps you need</h3>
+          <span class="ms-ac-card-icon">+</span>
+        </button>
+        <div class="ms-ac-card-body">
+          <p class="ms-ac-card-desc">
+            Run all your critical applications natively with hyper-optimized efficiency and unmatched responsiveness designed for intensive multitasking.
+          </p>
+        </div>
+        <div class="ms-ac-progress-track">
+          <div class="ms-ac-progress-fill"></div>
+        </div>
+      </div>
+
+      <div class="ms-ac-card">
+        <button class="ms-ac-card-header" aria-expanded="false">
+          <h3 class="ms-ac-card-title">Create pics in a flash</h3>
+          <span class="ms-ac-card-icon">+</span>
+        </button>
+        <div class="ms-ac-card-body">
+          <p class="ms-ac-card-desc">
+            Generate and iterate stunning high-fidelity visual assets locally on device via deep learning execution cores without cloud latency wait times.
+          </p>
+        </div>
+        <div class="ms-ac-progress-track">
+          <div class="ms-ac-progress-fill"></div>
+        </div>
+      </div>
+
+      <div class="ms-ac-card">
+        <button class="ms-ac-card-header" aria-expanded="false">
+          <h3 class="ms-ac-card-title">Get your game on</h3>
+          <span class="ms-ac-card-icon">+</span>
+        </button>
+        <div class="ms-ac-card-body">
+          <p class="ms-ac-card-desc">
+            Immerse yourself completely within demanding real-time dynamic rendering pipelines designed to support ultra-smooth high-refresh gaming execution.
+          </p>
+        </div>
+        <div class="ms-ac-progress-track">
+          <div class="ms-ac-progress-fill"></div>
+        </div>
+      </div>
+
+    </div>
+
+  </div>
+
+</div>
+
+<script>
+  // ==========================================================================
+  // VANILLA JS INTERACTIVE PROGRESS ACCORDION LOGIC ENGINE
+  // ==========================================================================
+  document.addEventListener("DOMContentLoaded", () => {
+    const holder = document.getElementById("msAcMenuHolder");
+    const cards = Array.from(holder.querySelectorAll(".ms-ac-card"));
+    const globalToggle = document.getElementById("msAcGlobalToggle");
+    const toggleIcon = document.getElementById("msAcToggleIcon");
+    
+    let activeIndex = 0;
+    let autoTransitionActive = true;
+    
+    let progress = 0;
+    let lastTime = null;
+    const duration = 9000; // Duration each accordion segment remains open (9 seconds)
+    let animationFrameId = null;
+
+    // Changes the active accordion pane cleanly
+    const setActiveAccordion = (targetIndex) => {
+      // Clear progress filling rules on the previous card panel element
+      const currentActiveCard = cards[activeIndex];
+      if (currentActiveCard) {
+        const pastFill = currentActiveCard.querySelector(".ms-ac-progress-fill");
+        if (pastFill) pastFill.style.width = "0%";
+        currentActiveCard.classList.remove("ms-ac-open");
+        currentActiveCard.querySelector(".ms-ac-card-header").setAttribute("aria-expanded", "false");
+      }
+
+      // Re-assign bounding loops safely
+      if (targetIndex >= cards.length) targetIndex = 0;
+      if (targetIndex < 0) targetIndex = cards.length - 1;
+      
+      activeIndex = targetIndex;
+      progress = 0;
+
+      // Expand the new targeted component section
+      const newActiveCard = cards[activeIndex];
+      newActiveCard.classList.add("ms-ac-open");
+      newActiveCard.querySelector(".ms-ac-card-header").setAttribute("aria-expanded", "true");
+    };
+
+    // Animation loop ticker logic calculation framework
+    const tick = (timestamp) => {
+      if (!lastTime) lastTime = timestamp;
+      const delta = timestamp - lastTime;
+      lastTime = timestamp;
+
+      if (autoTransitionActive) {
+        progress += delta;
+        const currentActiveCard = cards[activeIndex];
+        
+        if (currentActiveCard) {
+          const fillIndicator = currentActiveCard.querySelector(".ms-ac-progress-fill");
+          if (fillIndicator) {
+            const percentage = Math.min((progress / duration) * 100, 100);
+            fillIndicator.style.width = `${percentage}%`;
+          }
+        }
+
+        if (progress >= duration) {
+          setActiveAccordion(activeIndex + 1);
+        }
+      }
+
+      animationFrameId = requestAnimationFrame(tick);
+    };
+
+    // Start execution timing frameworks loops
+    animationFrameId = requestAnimationFrame(tick);
+
+    // Global Pause/Play Action Event Listener
+    globalToggle.addEventListener("click", () => {
+      autoTransitionActive = !autoTransitionActive;
+      
+      if (autoTransitionActive) {
+        toggleIcon.innerHTML = `<path d="M6 19h4V5H6v14zm8-14v14h4V5h-4z"/>`; // Show pause symbol
+        lastTime = performance.now(); // Recalibrate delta baseline metrics calculation steps
+      } else {
+        toggleIcon.innerHTML = `<path d="M8 5v14l11-7z"/>`; // Show play symbol
+      }
+    });
+
+    // Manual Accordion Panel Header Click Events
+    cards.forEach((card, index) => {
+      const headerButton = card.querySelector(".ms-ac-card-header");
+      headerButton.addEventListener("click", () => {
+        if (index === activeIndex) {
+          // Clicking an already open card simply toggles the global pause state
+          autoTransitionActive = !autoTransitionActive;
+          globalToggle.click();
+        } else {
+          // Shifting focus manually forces direct jumps and resets the timeline metrics
+          setActiveAccordion(index);
+        }
+      });
+    });
+  });
+</script>
+
+</body>
+</html>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 <!DOCTYPE html>
 <html lang="en">
 <head>

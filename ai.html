@@ -57,371 +57,806 @@
 
 
 
+
+<section class="lfm-showcase-root">
+  <div class="lfm-showcase-container">
+    
+    <!-- Video Engine Layer -->
+    <video class="lfm-showcase-video-bg" autoplay loop muted playsinline>
+      <source src="https://www.pexels.com/download/video/18124513/" type="video/mp4">
+    </video>
+    
+    <!-- Linear protection overlay to guarantee text scannability -->
+    <div class="lfm-showcase-overlay"></div>
+
+    <!-- Centered Content Boundary Grid (Strictly bounded to 1200px max) -->
+    <div class="lfm-showcase-content-boundary">
+      
+      <!-- Top Action: Play State Indicator (Upper Right corner of the container) -->
+      <div class="lfm-showcase-top-action">
+        <button class="lfm-showcase-status-btn" id="lfm-showcase-video-toggle" aria-label="Toggle background playback">
+          <svg viewBox="0 0 24 24" class="lfm-showcase-icon-pause" fill="currentColor">
+            <path d="M6 19h4V5H6v14zm8-14v14h4V5h-4z"/>
+          </svg>
+          <svg viewBox="0 0 24 24" class="lfm-showcase-icon-play" fill="currentColor" style="display: none;">
+            <path d="M8 5v14l11-7z"/>
+          </svg>
+        </button>
+      </div>
+
+      <!-- Main Interface Layout Block -->
+      <div class="lfm-showcase-text-block">
+        <span class="lfm-showcase-tagline">Web Applications & Custom Engineering</span>
+        <h1 class="lfm-showcase-title">Enjoy the performance</h1>
+        
+        <!-- Two-Column Flex Split Row: Description and Pill aligned horizontally -->
+        <div class="lfm-showcase-split-row">
+          <p class="lfm-showcase-description">
+            A refined framework built for sustained performance, multi-tier scaling, and everyday corporate reliability. Engineered explicitly to modernize legacy systems into responsive digital consoles.
+          </p>
+
+          <!-- Bottom Horizontal Institutional Detail Pill (Aligned in one row with text) -->
+          <div class="lfm-showcase-details-bar">
+            <div class="lfm-showcase-pill-left">
+              <span class="lfm-showcase-pill-label">Enterprise Platforms</span>
+              <span class="lfm-showcase-pill-meta">SLA Guaranteed</span>
+            </div>
+            <a href="#contact" class="lfm-showcase-action-btn">Partner with us</a>
+          </div>
+        </div>
+
+      </div>
+
+    </div>
+
+  </div>
+</section>
+
+<style>
+  /* Base Component Scope Guard */
+  .lfm-showcase-root {
+    width: 100%;
+    box-sizing: border-box;
+    margin: 0;
+    padding: 0;
+    background-color: #000000;
+  }
+
+  .lfm-showcase-root *,
+  .lfm-showcase-root *::before,
+  .lfm-showcase-root *::after {
+    box-sizing: border-box;
+    margin: 0;
+    padding: 0;
+  }
+
+  /* Core Canvas Container - Spanning 100% Width Edge-to-Edge */
+  .lfm-showcase-root .lfm-showcase-container {
+    position: relative;
+    width: 100%;
+    height: 100vh;
+    overflow: hidden;
+    font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
+  }
+
+  /* Full-Coverage HTML5 Video Element */
+  .lfm-showcase-root .lfm-showcase-video-bg {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    z-index: 1;
+    pointer-events: none;
+  }
+
+  /* Cinematic Linear Dark Gradient Protection Layer */
+  .lfm-showcase-root .lfm-showcase-overlay {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: linear-gradient(180deg, rgba(0, 0, 0, 0.3) 0%, rgba(0, 0, 0, 0.5) 40%, rgba(0, 0, 0, 0.8) 100%);
+    z-index: 2;
+  }
+
+  /* Centered Content Layout Bounded Strictly to 1200px */
+  .lfm-showcase-root .lfm-showcase-content-boundary {
+    position: relative;
+    width: 100%;
+    max-width: 1200px;
+    height: 100%;
+    margin: 0 auto;
+    padding: 40px 20px;
+    display: flex;
+    flex-direction: column;
+    justify-content: flex-end;
+    z-index: 3;
+  }
+
+  /* Upper Right Floating Action Interface Selector */
+  .lfm-showcase-root .lfm-showcase-top-action {
+    position: absolute;
+    top: 40px;
+    right: 24px;
+  }
+
+  .lfm-showcase-root .lfm-showcase-status-btn {
+    background: rgba(255, 255, 255, 0.15);
+    backdrop-filter: blur(16px);
+    -webkit-backdrop-filter: blur(16px);
+    border: none;
+    color: rgba(255, 255, 255, 0.9);
+    width: 38px;
+    height: 38px;
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    cursor: pointer;
+    transition: all 0.2s cubic-bezier(0.4, 0, 0.2, 1);
+  }
+
+  .lfm-showcase-root .lfm-showcase-status-btn:hover {
+    background: rgba(255, 255, 255, 0.25);
+    color: #ffffff;
+    transform: scale(1.05);
+  }
+
+  .lfm-showcase-root .lfm-showcase-status-btn svg {
+    width: 14px;
+    height: 14px;
+  }
+
+  /* Typography Structure Setup */
+  .lfm-showcase-root .lfm-showcase-text-block {
+    width: 100%;
+    color: #ffffff;
+    text-align: left;
+  }
+
+  .lfm-showcase-root .lfm-showcase-tagline {
+    display: block;
+    font-size: 1.25rem;
+    font-weight: 300;
+    color: rgba(255, 255, 255, 0.9);
+    margin-bottom: 8px;
+  }
+
+  .lfm-showcase-root .lfm-showcase-title {
+    font-size: 4.5rem;
+    font-weight: 300;
+    line-height: 1.1;
+    color: #ffffff;
+    margin-bottom: 24px;
+    letter-spacing: -0.02em;
+  }
+
+  /* Desktop Flex Row: Side-by-Side Balancing alignment */
+  .lfm-showcase-root .lfm-showcase-split-row {
+    display: flex;
+    justify-content: space-between;
+    align-items: flex-end;
+    gap: 40px;
+    width: 100%;
+  }
+
+  .lfm-showcase-root .lfm-showcase-description {
+    flex: 1;
+    max-width: 580px;
+    font-size: 1.05rem;
+    line-height: 1.55;
+    color: rgba(255, 255, 255, 0.8);
+    font-weight: 300;
+  }
+
+  /* Pill Container Layout Configuration */
+  .lfm-showcase-root .lfm-showcase-details-bar {
+    flex-shrink: 0;
+    background: rgba(255, 255, 255, 0.12);
+    backdrop-filter: blur(20px);
+    -webkit-backdrop-filter: blur(20px);
+    
+    padding: 6px 6px 6px 24px;
+    border-radius: 30px;
+    display: flex;
+    align-items: center;
+    gap: 36px;
+  }
+
+  .lfm-showcase-root .lfm-showcase-pill-left {
+    display: flex;
+    align-items: center;
+    gap: 16px;
+  }
+
+  .lfm-showcase-root .lfm-showcase-pill-label {
+    font-size: 0.9rem;
+    color: #ffffff;
+    font-weight: 400;
+    white-space: nowrap;
+  }
+
+  .lfm-showcase-root .lfm-showcase-pill-meta {
+    font-size: 0.85rem;
+    color: rgba(255, 255, 255, 0.55);
+    font-weight: 300;
+    white-space: nowrap;
+  }
+
+  .lfm-showcase-root .lfm-showcase-action-btn {
+    background-color: #ffffff;
+    color: #111111;
+    padding: 10px 28px;
+    font-size: 0.9rem;
+    font-weight: 500;
+    text-decoration: none;
+    border-radius: 20px;
+    white-space: nowrap;
+    transition: background-color 0.2s ease, transform 0.2s ease;
+  }
+
+  .lfm-showcase-root .lfm-showcase-action-btn:hover {
+    background-color: #f4f4f4;
+    transform: translateY(-1px);
+  }
+
+  /* Responsive Framework Media Adaptations */
+  @media (max-width: 1024px) {
+    .lfm-showcase-root .lfm-showcase-split-row {
+      flex-direction: column;
+      align-items: flex-start;
+      gap: 24px;
+    }
+    .lfm-showcase-root .lfm-showcase-details-bar {
+      width: 100%;
+      justify-content: space-between;
+    }
+  }
+
+  @media (max-width: 768px) {
+    .lfm-showcase-root .lfm-showcase-container {
+      height: auto;
+      min-height: 520px;
+    }
+    .lfm-showcase-root .lfm-showcase-content-boundary {
+      padding: 80px 20px 30px 20px;
+    }
+    .lfm-showcase-root .lfm-showcase-title {
+      font-size: 2.8rem;
+    }
+    .lfm-showcase-root .lfm-showcase-tagline {
+      font-size: 1.1rem;
+    }
+    .lfm-showcase-root .lfm-showcase-top-action {
+      top: 20px;
+      right: 20px;
+    }
+    .lfm-showcase-root .lfm-showcase-details-bar {
+      flex-direction: column;
+      align-items: flex-start;
+      gap: 16px;
+      padding: 20px;
+      border-radius: 16px;
+    }
+    .lfm-showcase-root .lfm-showcase-pill-left {
+      flex-direction: column;
+      align-items: flex-start;
+      gap: 4px;
+    }
+    .lfm-showcase-root .lfm-showcase-action-btn {
+      width: 100%;
+      text-align: center;
+    }
+  }
+</style>
+
+<script>
+  (() => {
+    document.addEventListener("DOMContentLoaded", () => {
+      const root = document.querySelector(".lfm-showcase-root");
+      if (!root) return;
+
+      const video = root.querySelector(".lfm-showcase-video-bg");
+      const toggleBtn = root.querySelector("#lfm-showcase-video-toggle");
+      const pauseIcon = toggleBtn.querySelector(".lfm-showcase-icon-pause");
+      const playIcon = toggleBtn.querySelector(".lfm-showcase-icon-play");
+
+      if (!video || !toggleBtn) return;
+
+      toggleBtn.addEventListener("click", () => {
+        if (video.paused) {
+          video.play().catch(() => {});
+          pauseIcon.style.display = "block";
+          playIcon.style.display = "none";
+        } else {
+          video.pause();
+          pauseIcon.style.display = "none";
+          playIcon.style.display = "block";
+        }
+      });
+    });
+  })();
+</script>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 <!DOCTYPE html>
 <html lang="en">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Cyberpunk Hero</title>
-    <style>
-        @import url('https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700&display=swap');
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Video Carousel Component</title>
+  <style>
+    /* Reset & Base styling for standalone preview (safe to omit if merging) */
+    body {
+      margin: 0;
+      padding: 0;
+      background-color: #f7f7f7;
+    }
 
-        * {
-            margin: 0;
-            padding: 0;
-            box-sizing: border-box;
-        }
-        
-        body {
-            overflow-x: hidden;
-            background-color: #0a0a12;
-            color: #00fffc;
-            font-family: 'Circular Std', sans-serif;
-        }
-        
-        .cyber-hero {
-            position: relative;
-            width: 100%;
-            height: 100vh;
-            min-height: 600px;
-            background: 
-                radial-gradient(circle at 20% 30%, rgba(0, 80, 120, 0.15) 0%, transparent 30%),
-                radial-gradient(circle at 80% 70%, rgba(120, 0, 80, 0.15) 0%, transparent 30%),
-                linear-gradient(to bottom, #0a0a12 0%, #121225 100%);
-            overflow: hidden;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            padding: 0 20px;
-            perspective: 1000px;
-        }
-        
-        .digital-rain {
-            position: absolute;
-            top: 0;
-            left: 0;
-            width: 100%;
-            height: 100%;
-            z-index: 1;
-            opacity: 0.3;
-            background: repeating-linear-gradient(
-                0deg,
-                rgba(0, 255, 252, 0) 0px,
-                rgba(0, 255, 252, 0) 3px,
-                rgba(0, 255, 252, 0.03) 4px,
-                rgba(0, 255, 252, 0.03) 5px
-            );
-            animation: rainAnimation 0.8s linear infinite;
-        }
-        
-        .hero-card {
-            position: relative;
-            z-index: 3;
-            max-width: 800px;
-            padding: 40px;
-            background: rgba(10, 15, 30, 0.5);
-            backdrop-filter: blur(15px);
-            -webkit-backdrop-filter: blur(15px);
-            border-radius: 15px;
-            border: 1px solid rgba(0, 255, 252, 0.2);
-            box-shadow: 
-                0 0 30px rgba(0, 255, 252, 0.1),
-                inset 0 0 20px rgba(0, 255, 252, 0.1);
-            transform-style: preserve-3d;
-            transform: perspective(1000px) rotateX(0deg) rotateY(0deg);
-            transition: transform 0.5s ease;
-            overflow: hidden;
-        }
-        
-        .hero-card::before {
-            content: '';
-            position: absolute;
-            top: -50%;
-            left: -50%;
-            width: 200%;
-            height: 200%;
-            background: linear-gradient(
-                to bottom right,
-                rgba(0, 255, 252, 0) 45%,
-                rgba(0, 255, 252, 0.1) 50%,
-                rgba(0, 255, 252, 0) 55%
-            );
-            transform: rotate(30deg);
-            animation: holographicEffect 6s linear infinite;
-            z-index: -1;
-        }
-        
-        .hero-card::after {
-            content: '';
-            position: absolute;
-            top: 0;
-            left: 0;
-            right: 0;
-            bottom: 0;
-            border-radius: 15px;
-            border: 1px solid transparent;
-            background: linear-gradient(45deg, #00fffc, #ff00f7) border-box;
-            -webkit-mask: 
-                linear-gradient(#fff 0 0) padding-box, 
-                linear-gradient(#fff 0 0);
-            -webkit-mask-composite: destination-out;
-            mask-composite: exclude;
-            pointer-events: none;
-        }
-        
-        .glitch-headline {
-            font-family: 'Circular Std', sans-serif;
-            font-weight: 700;
-            font-size: clamp(2rem, 6vw, 4rem);
-            margin-bottom: 20px;
-            color: #fff;
-            text-transform: uppercase;
-            position: relative;
-            text-shadow: 
-                0 0 10px #00fffc,
-                0 0 20px rgba(0, 255, 252, 0.5);
-            animation: glitchEffect 5s infinite alternate;
-        }
-        
-        .glitch-headline span {
-            display: inline-block;
-            position: relative;
-        }
-        
-        .glitch-headline span::before,
-        .glitch-headline span::after {
-            content: attr(data-text);
-            position: absolute;
-            top: 0;
-            left: 0;
-            width: 100%;
-            height: 100%;
-            background: rgba(10, 15, 30, 0.8);
-        }
-        
-        .glitch-headline span::before {
-            color: #ff00f7;
-            z-index: -1;
-            animation: glitch-anim-1 2s infinite linear alternate-reverse;
-        }
-        
-        .glitch-headline span::after {
-            color: #00fffc;
-            z-index: -2;
-            animation: glitch-anim-2 2s infinite linear alternate-reverse;
-        }
-        
-        .cyber-subtitle {
-            font-size: clamp(1rem, 2vw, 1.3rem);
-            margin-bottom: 30px;
-            color: #a0f0ff;
-            line-height: 1.6;
-            opacity: 0;
-            font-weight: 500;
-            transform: translateY(20px);
-            animation: fadeInUp 0.1s ease-out 0.1s forwards;
-        }
-        
-        .cyber-button {
-            display: inline-block;
-            padding: 15px 40px;
-            background: linear-gradient(45deg, #00fffc, #0084ff);
-            border: none;
-            border-radius: 50px;
-            color: #0a0a12;
-            font-family: 'Orbitron', sans-serif;
-            font-size: 1rem;
-            font-weight: 700;
-            text-decoration: none;
-            text-transform: uppercase;
-            letter-spacing: 2px;
-            box-shadow: 
-                0 0 15px rgba(0, 255, 252, 0.5),
-                0 0 30px rgba(0, 132, 255, 0.3);
-            position: relative;
-            overflow: hidden;
-            z-index: 1;
-            opacity: 0;
-            transform: translateY(20px);
-            animation: fadeInUp 0.3s ease-out 0.3s forwards;
-            transition: all 0.001s ease;
-        }
-        
-        .cyber-button:hover {
-            transform: translateY(-5px);
-            box-shadow: 
-                0 0 25px rgba(0, 255, 252, 0.8),
-                0 0 40px rgba(0, 132, 255, 0.5);
-            animation: pulse 0.1s infinite alternate;
-        }
-        
-        .cyber-button::before {
-            content: '';
-            position: absolute;
-            top: 0;
-            left: 0;
-            width: 100%;
-            height: 100%;
-            background: linear-gradient(45deg, #ff00f7, #00fffc);
-            z-index: -1;
-            opacity: 0;
-            transition: opacity 0.01s ease;
-        }
-        
-        .cyber-button:hover::before {
-            opacity: 1;
-        }
-        
-        .grid-overlay {
-            position: absolute;
-            top: 0;
-            left: 0;
-            width: 100%;
-            height: 100%;
-            background-image: 
-                linear-gradient(rgba(0, 255, 252, 0.05) 1px, transparent 1px),
-                linear-gradient(90deg, rgba(0, 255, 252, 0.05) 1px, transparent 1px);
-            background-size: 40px 40px;
-            z-index: 2;
-            pointer-events: none;
-        }
-        
-        .scanline {
-            position: absolute;
-            top: 0;
-            left: 0;
-            width: 100%;
-            height: 10px;
-            background: linear-gradient(
-                to bottom,
-                rgba(0, 255, 252, 0) 0%,
-                rgba(0, 255, 252, 0.2) 50%,
-                rgba(0, 255, 252, 0) 100%
-            );
-            animation: scanline 4s linear infinite;
-            z-index: 4;
-        }
-        
-        @keyframes rainAnimation {
-            from { background-position: 0 0; }
-            to { background-position: 0 20px; }
-        }
-        
-        @keyframes holographicEffect {
-            from { transform: rotate(30deg) translateY(-100%); }
-            to { transform: rotate(30deg) translateY(100%); }
-        }
-        
-        @keyframes glitchEffect {
-            0%, 100% { transform: translate(0); }
-            20% { transform: translate(-3px, 3px); }
-            40% { transform: translate(-3px, -3px); }
-            60% { transform: translate(3px, 3px); }
-            80% { transform: translate(3px, -3px); }
-        }
-        
-        @keyframes glitch-anim-1 {
-            0% { transform: translate(0); opacity: 1; }
-            20% { transform: translate(-5px, -5px); opacity: 0.8; }
-            40% { transform: translate(-5px, 5px); opacity: 0.6; }
-            60% { transform: translate(5px, -5px); opacity: 0.4; }
-            80% { transform: translate(5px, 5px); opacity: 0.2; }
-            100% { transform: translate(0); opacity: 0; }
-        }
-        
-        @keyframes glitch-anim-2 {
-            0% { transform: translate(0); opacity: 1; }
-            20% { transform: translate(5px, 5px); opacity: 0.8; }
-            40% { transform: translate(5px, -5px); opacity: 0.6; }
-            60% { transform: translate(-5px, 5px); opacity: 0.4; }
-            80% { transform: translate(-5px, -5px); opacity: 0.2; }
-            100% { transform: translate(0); opacity: 0; }
-        }
-        
-        @keyframes fadeInUp {
-            to {
-                opacity: 1;
-                transform: translateY(0);
-            }
-        }
-        
-        @keyframes pulse {
-            from { box-shadow: 0 0 25px rgba(0, 255, 252, 0.8), 0 0 40px rgba(0, 132, 255, 0.5); }
-            to { box-shadow: 0 0 35px rgba(0, 255, 252, 1), 0 0 50px rgba(0, 132, 255, 0.8); }
-        }
-        
-        @keyframes scanline {
-            from { top: -10px; }
-            to { top: 100%; }
-        }
-        
-        /* 3D card tilt effect */
-        .hero-card:hover {
-            transform: perspective(1000px) rotateX(5deg) rotateY(5deg);
-        }
-        
-        @media (max-width: 768px) {
-            .hero-card {
-                padding: 30px 20px;
-            }
-            
-            .glitch-headline {
-                white-space: normal;
-            }
-        }
-    </style>
+    /* Outer Wrapper for Page Layout Padding */
+    .lfa-vcarousel-wrapper {
+      padding: 200px 20px;
+      max-width: 1550px;
+      margin: 0 auto;
+      box-sizing: border-box;
+    }
+
+    /* Centered Header Section */
+    .lfa-vcarousel-header {
+      text-align: center;
+      margin-bottom: 130px;
+      font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
+    }
+
+    .lfa-vcarousel-main-title {
+      font-size: 2.5rem;
+      font-weight: 600;
+      color: #111111;
+      margin-bottom: 30px;
+      letter-spacing: -0.02em;
+    }
+
+    .lfa-vcarousel-main-desc {
+      font-size: 1.4rem;
+      color: #666666;
+      max-width: 600px;
+      margin: 0 auto;
+      line-height: 1.6;
+    }
+
+    /* Scoped Carousel Container */
+    .lfa-vcarousel-container {
+      position: relative;
+      width: 100%;
+      height: 610px;
+      border-radius: 16px;
+      overflow: hidden;
+      background-color: #000;
+      font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
+      box-sizing: border-box;
+      box-shadow: 0 20px 40px rgba(0,0,0,0.08);
+    }
+
+    .lfa-vcarousel-container * {
+      box-sizing: border-box;
+      margin: 0;
+      padding: 0;
+    }
+
+    /* Slide Panels */
+    .lfa-vcarousel-slide {
+      position: absolute;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      opacity: 0;
+      visibility: hidden;
+      transition: opacity 0.8s ease-in-out, visibility 0.8s ease-in-out;
+      z-index: 1;
+    }
+
+    .lfa-vcarousel-slide.lfa-vcarousel-active {
+      opacity: 1;
+      visibility: visible;
+      z-index: 2;
+    }
+
+    /* Video Engine */
+    .lfa-vcarousel-video {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      pointer-events: none;
+    }
+
+    /* Content Layout (Bottom Left Placement) */
+    .lfa-vcarousel-content {
+      position: absolute;
+      bottom: 12%;
+      left: 6%;
+      right: 6%;
+      max-width: 460px;
+      z-index: 10;
+      color: #ffffff;
+      text-align: left;
+    }
+
+    .lfa-vcarousel-title {
+      font-size: 1.8rem;
+      font-weight: 400;
+      letter-spacing: -0.02em;
+      margin-bottom: 12px;
+      opacity: 0;
+      transform: translateY(15px);
+      transition: transform 0.6s ease-out, opacity 0.6s ease-out;
+    }
+
+    .lfa-vcarousel-desc {
+      font-size: 1rem;
+      line-height: 1.5;
+      color: rgba(255, 255, 255, 0.8);
+      opacity: 0;
+      transform: translateY(15px);
+      transition: transform 0.6s ease-out 0.15s, opacity 0.6s ease-out 0.15s;
+    }
+
+    /* Slide Entry Animation Triggers */
+    .lfa-vcarousel-active .lfa-vcarousel-title,
+    .lfa-vcarousel-active .lfa-vcarousel-desc {
+      opacity: 1;
+      transform: translateY(0);
+    }
+
+    /* Control Row Layer */
+    .lfa-vcarousel-controls {
+      position: absolute;
+      top: 8%;
+      left: 6%;
+      right: 6%;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      z-index: 20;
+    }
+
+    /* Top Left Progress Bars */
+    .lfa-vcarousel-progress-group {
+      display: flex;
+      gap: 6px;
+      align-items: center;
+    }
+
+    .lfa-vcarousel-bar-wrapper {
+      width: 42px;
+      height: 2px;
+      background-color: rgba(255, 255, 255, 0.3);
+      cursor: pointer;
+      position: relative;
+      overflow: hidden;
+    }
+
+    .lfa-vcarousel-progress-fill {
+      position: absolute;
+      top: 0;
+      left: 0;
+      height: 100%;
+      width: 0%;
+      background-color: #ffffff;
+    }
+
+    /* Top Right Play/Pause Interaction */
+    .lfa-vcarousel-toggle-btn {
+      background: rgba(255, 255, 255, 0.15);
+      backdrop-filter: blur(8px);
+      -webkit-backdrop-filter: blur(8px);
+      border: none;
+      color: #ffffff;
+      width: 32px;
+      height: 32px;
+      border-radius: 50%;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      cursor: pointer;
+      transition: background-color 0.2s ease, transform 0.2s ease;
+    }
+
+    .lfa-vcarousel-toggle-btn:hover {
+      background: rgba(255, 255, 255, 0.25);
+    }
+
+    .lfa-vcarousel-toggle-btn:active {
+      transform: scale(0.95);
+    }
+
+    /* Mobile & Tablet Adaptation */
+    @media (max-width: 768px) {
+      .lfa-vcarousel-wrapper {
+        padding: 40px 16px;
+      }
+      .lfa-vcarousel-main-title {
+        font-size: 1.8rem;
+      }
+      .lfa-vcarousel-main-desc {
+        font-size: 1rem;
+      }
+      .lfa-vcarousel-container {
+        height: 460px;
+        border-radius: 12px;
+      }
+      .lfa-vcarousel-content {
+        bottom: 8%;
+        max-width: 88%;
+      }
+      .lfa-vcarousel-title {
+        font-size: 1.5rem;
+      }
+      .lfa-vcarousel-desc {
+        font-size: 0.95rem;
+      }
+      .lfa-vcarousel-bar-wrapper {
+        width: 32px;
+      }
+    }
+
+    @media (max-width: 480px) {
+      .lfa-vcarousel-wrapper {
+        padding: 30px 12px;
+      }
+      .lfa-vcarousel-main-title {
+        font-size: 1.5rem;
+      }
+      .lfa-vcarousel-container {
+        height: 400px;
+      }
+      .lfa-vcarousel-content {
+        bottom: 6%;
+      }
+      .lfa-vcarousel-title {
+        font-size: 1.35rem;
+        margin-bottom: 8px;
+      }
+      .lfa-vcarousel-desc {
+        font-size: 0.88rem;
+      }
+    }
+  </style>
 </head>
 <body>
-    <section class="cyber-hero">
-        <div class="digital-rain"></div>
-        <div class="grid-overlay"></div>
-        <div class="scanline"></div>
-        
-        <div class="hero-card">
-            <h1 class="glitch-headline">
-                <span data-text="SYSTEMS">SYSTEMS</span> <span data-text="ONLINE">ONLINE</span>
-            </h1>
-            <p class="cyber-subtitle">
-                Access granted to next-generation digital experiences.<br>
-                Security protocols engaged. All systems operational.
-            </p>
-            <a href="#" class="cyber-button">Engage Systems</a>
-        </div>
-    </section>
+
+  <div class="lfa-vcarousel-wrapper">
     
-    <script>
-        // 3D tilt effect for the card
-        document.addEventListener('DOMContentLoaded', function() {
-            const card = document.querySelector('.hero-card');
-            
-            if (card) {
-                card.addEventListener('mousemove', (e) => {
-                    const xAxis = (window.innerWidth / 2 - e.pageX) / 25;
-                    const yAxis = (window.innerHeight / 2 - e.pageY) / 25;
-                    card.style.transform = `perspective(1000px) rotateY(${xAxis}deg) rotateX(${yAxis}deg)`;
-                });
-                
-                card.addEventListener('mouseenter', () => {
-                    card.style.transition = 'transform 0.1s ease';
-                });
-                
-                card.addEventListener('mouseleave', () => {
-                    card.style.transition = 'transform 0.5s ease';
-                    card.style.transform = 'perspective(1000px) rotateX(0deg) rotateY(0deg)';
-                });
+    <header class="lfa-vcarousel-header">
+      <h1 class="lfa-vcarousel-main-title">Experience Innovation</h1>
+      <p class="lfa-vcarousel-main-desc">Discover hardware configurations crafted perfectly for modern, fluid performance environments.</p>
+    </header>
+
+    <div class="lfa-vcarousel-container">
+      
+      <div class="lfa-vcarousel-slide lfa-vcarousel-active" data-slide="0">
+        <video class="lfa-vcarousel-video" autoplay loop muted playsinline>
+          <source src="https://www.pexels.com/download/video/18124513/" type="video/mp4">
+        </video>
+        <div class="lfa-vcarousel-content">
+          <h2 class="lfa-vcarousel-title">Removable keyboard</h2>
+          <p class="lfa-vcarousel-desc">Switch seamlessly between tablet and laptop modes with a satisfying snap.</p>
+        </div>
+      </div>
+
+      <div class="lfa-vcarousel-slide" data-slide="1">
+        <video class="lfa-vcarousel-video" loop muted playsinline>
+          <source src="https://www.pexels.com/download/video/18124513/" type="video/mp4">
+        </video>
+        <div class="lfa-vcarousel-content">
+          <h2 class="lfa-vcarousel-title">Stunning Display</h2>
+          <p class="lfa-vcarousel-desc">Experience vibrant colors and ultra-crisp details across every single pixel.</p>
+        </div>
+      </div>
+
+      <div class="lfa-vcarousel-slide" data-slide="2">
+        <video class="lfa-vcarousel-video" loop muted playsinline>
+          <source src="https://assets.mixkit.co/videos/preview/mixkit-abstract-technology-glowing-lines-background-41614-large.mp4" type="video/mp4">
+        </video>
+        <div class="lfa-vcarousel-content">
+          <h2 class="lfa-vcarousel-title">All-Day Battery</h2>
+          <p class="lfa-vcarousel-desc">Power through your heaviest workflows without ever reaching for a cable.</p>
+        </div>
+      </div>
+
+      <div class="lfa-vcarousel-controls">
+        <div class="lfa-vcarousel-progress-group">
+          <div class="lfa-vcarousel-bar-wrapper" data-index="0">
+            <div class="lfa-vcarousel-progress-fill"></div>
+          </div>
+          <div class="lfa-vcarousel-bar-wrapper" data-index="1">
+            <div class="lfa-vcarousel-progress-fill"></div>
+          </div>
+          <div class="lfa-vcarousel-bar-wrapper" data-index="2">
+            <div class="lfa-vcarousel-progress-fill"></div>
+          </div>
+        </div>
+
+        <button class="lfa-vcarousel-toggle-btn" aria-label="Pause video playback">
+          <svg class="lfa-vcarousel-icon-pause" viewBox="0 0 24 24" width="14" height="14" fill="currentColor">
+            <path d="M6 19h4V5H6v14zm8-14v14h4V5h-4z"/>
+          </svg>
+          <svg class="lfa-vcarousel-icon-play" viewBox="0 0 24 24" width="14" height="14" fill="currentColor" style="display: none;">
+            <path d="M8 5v14l11-7z"/>
+          </svg>
+        </button>
+      </div>
+
+    </div>
+  </div>
+
+  <script>
+    document.addEventListener("DOMContentLoaded", () => {
+      const container = document.querySelector(".lfa-vcarousel-container");
+      if (!container) return;
+
+      const slides = container.querySelectorAll(".lfa-vcarousel-slide");
+      const progressFills = container.querySelectorAll(".lfa-vcarousel-progress-fill");
+      const toggleBtn = container.querySelector(".lfa-vcarousel-toggle-btn");
+      const iconPause = toggleBtn.querySelector(".lfa-vcarousel-icon-pause");
+      const iconPlay = toggleBtn.querySelector(".lfa-vcarousel-icon-play");
+      const barWrappers = container.querySelectorAll(".lfa-vcarousel-bar-wrapper");
+
+      let currentIndex = 0;
+      let isPlaying = true;
+      let animationFrameId = null;
+      let startTime = null;
+      
+      const SLIDE_DURATION = 6000; // Slide lifecycle duration
+      let elapsedBeforePause = 0;
+
+      function initCarousel() {
+        manageVideoPlayback();
+        startProgressTimer();
+
+        barWrappers.forEach((bar) => {
+          bar.addEventListener("click", () => {
+            const targetIndex = parseInt(bar.getAttribute("data-index"), 10);
+            if (targetIndex !== currentIndex) {
+              switchSlide(targetIndex);
             }
-            
-            // Random glitch effect
-            setInterval(() => {
-                const glitch = document.querySelector('.glitch-headline');
-                if (glitch) {
-                    glitch.style.animation = 'none';
-                    void glitch.offsetWidth; // Trigger reflow
-                    glitch.style.animation = 'glitchEffect 5s infinite alternate';
-                }
-            }, 8000);
+          });
         });
-    </script>
+
+        toggleBtn.addEventListener("click", togglePlayState);
+      }
+
+      function startProgressTimer() {
+        cancelAnimationFrame(animationFrameId);
+        startTime = performance.now() - elapsedBeforePause;
+        
+        function updateProgress(now) {
+          if (!isPlaying) return;
+
+          const progress = now - startTime;
+          const percentage = Math.min((progress / SLIDE_DURATION) * 100, 100);
+
+          progressFills.forEach((fill, index) => {
+            if (index < currentIndex) {
+              fill.style.width = "100%";
+            } else if (index === currentIndex) {
+              fill.style.width = `${percentage}%`;
+            } else {
+              fill.style.width = "0%";
+            }
+          });
+
+          if (progress >= SLIDE_DURATION) {
+            elapsedBeforePause = 0;
+            let nextIndex = (currentIndex + 1) % slides.length;
+            switchSlide(nextIndex);
+          } else {
+            animationFrameId = requestAnimationFrame(updateProgress);
+          }
+        }
+        
+        animationFrameId = requestAnimationFrame(updateProgress);
+      }
+
+      function switchSlide(nextIndex) {
+        cancelAnimationFrame(animationFrameId);
+        elapsedBeforePause = 0;
+
+        slides[currentIndex].classList.remove("lfa-vcarousel-active");
+        slides[nextIndex].classList.add("lfa-vcarousel-active");
+
+        currentIndex = nextIndex;
+        
+        manageVideoPlayback();
+
+        if (isPlaying) {
+          startProgressTimer();
+        } else {
+          progressFills.forEach((fill, index) => {
+            if (index < currentIndex) fill.style.width = "100%";
+            if (index >= currentIndex) fill.style.width = "0%";
+          });
+        }
+      }
+
+      function manageVideoPlayback() {
+        slides.forEach((slide, index) => {
+          const video = slide.querySelector(".lfa-vcarousel-video");
+          if (!video) return;
+
+          if (index === currentIndex && isPlaying) {
+            video.currentTime = 0;
+            video.play().catch(() => {});
+          } else {
+            video.pause();
+          }
+        });
+      }
+
+      function togglePlayState() {
+        const currentVideo = slides[currentIndex].querySelector(".lfa-vcarousel-video");
+
+        if (isPlaying) {
+          isPlaying = false;
+          cancelAnimationFrame(animationFrameId);
+          elapsedBeforePause = performance.now() - startTime;
+          if (currentVideo) currentVideo.pause();
+          
+          iconPause.style.display = "none";
+          iconPlay.style.display = "block";
+        } else {
+          isPlaying = true;
+          if (currentVideo) currentVideo.play().catch(() => {});
+          iconPause.style.display = "block";
+          iconPlay.style.display = "none";
+          startProgressTimer();
+        }
+      }
+
+      initCarousel();
+    });
+  </script>
 </body>
 </html>
 
@@ -439,6 +874,435 @@
 
 
 
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<section class="lfa-faq-root">
+  
+  <div class="lfa-faq-header">
+    <h2 class="lfa-faq-main-title">Questions</h2>
+    <div class="lfa-faq-global-controls">
+      <button class="lfa-faq-global-btn" id="lfa-faq-expand-all">
+        Expand All 
+        <span class="lfa-faq-btn-icon-plus">+</span>
+      </button>
+      <button class="lfa-faq-global-btn" id="lfa-faq-collapse-all" disabled>
+        Collapse All 
+        <span class="lfa-faq-btn-icon-minus">—</span>
+      </button>
+    </div>
+  </div>
+
+  <div class="lfa-faq-accordion-stack">
+    
+    <div class="lfa-faq-item">
+      <button class="lfa-faq-trigger" aria-expanded="false">
+        <span class="lfa-faq-question-text">What is Microsoft Surface?</span>
+        <div class="lfa-faq-icon-box">
+          <div class="lfa-faq-icon-line lfa-horizontal"></div>
+          <div class="lfa-faq-icon-line lfa-vertical"></div>
+        </div>
+      </button>
+      <div class="lfa-faq-panel">
+        <div class="lfa-faq-content-inner">
+          Microsoft Surface is a series of touchscreen-based personal computers, tablets, and interactive whiteboards designed and developed by Microsoft, running the Windows operating system.
+        </div>
+      </div>
+    </div>
+
+    <div class="lfa-faq-item">
+      <button class="lfa-faq-trigger" aria-expanded="false">
+        <span class="lfa-faq-question-text">Is Surface good for gaming?</span>
+        <div class="lfa-faq-icon-box">
+          <div class="lfa-faq-icon-line lfa-horizontal"></div>
+          <div class="lfa-faq-icon-line lfa-vertical"></div>
+        </div>
+      </button>
+      <div class="lfa-faq-panel">
+        <div class="lfa-faq-content-inner">
+          Certain high-end devices in the Surface lineup, like the Surface Laptop Studio, feature dedicated NVIDIA GeForce RTX graphics cards, making them capable of handling modern gaming workloads smoothly.
+        </div>
+      </div>
+    </div>
+
+    <div class="lfa-faq-item">
+      <button class="lfa-faq-trigger" aria-expanded="false">
+        <span class="lfa-faq-question-text">Which Microsoft Surface should I buy?</span>
+        <div class="lfa-faq-icon-box">
+          <div class="lfa-faq-icon-line lfa-horizontal"></div>
+          <div class="lfa-faq-icon-line lfa-vertical"></div>
+        </div>
+      </button>
+      <div class="lfa-faq-panel">
+        <div class="lfa-faq-content-inner">
+          It depends on your workflow. For ultimate portability and note-taking, the Surface Pro is ideal. For traditional typing with a premium feel, choose the Surface Laptop, and choose the Studio models for heavy rendering or creative design work.
+        </div>
+      </div>
+    </div>
+
+    <div class="lfa-faq-item">
+      <button class="lfa-faq-trigger" aria-expanded="false">
+        <span class="lfa-faq-question-text">Does Microsoft Surface come with Microsoft 365 (previously Microsoft Office)?</span>
+        <div class="lfa-faq-icon-box">
+          <div class="lfa-faq-icon-line lfa-horizontal"></div>
+          <div class="lfa-faq-icon-line lfa-vertical"></div>
+        </div>
+      </button>
+      <div class="lfa-faq-panel">
+        <div class="lfa-faq-content-inner">
+          Surface devices generally come pre-loaded with a 30-day trial of Microsoft 365. Full ongoing access requires an active individual, family, or commercial Microsoft 365 subscription tier.
+        </div>
+      </div>
+    </div>
+
+    <div class="lfa-faq-item">
+      <button class="lfa-faq-trigger" aria-expanded="false">
+        <span class="lfa-faq-question-text">What is Surface RTX Spark Dev Box?</span>
+        <div class="lfa-faq-icon-box">
+          <div class="lfa-faq-icon-line lfa-horizontal"></div>
+          <div class="lfa-faq-icon-line lfa-vertical"></div>
+        </div>
+      </button>
+      <div class="lfa-faq-panel">
+        <div class="lfa-faq-content-inner">
+          The Surface RTX Spark Dev Box is an advanced, specialized engineering station layout designed for intensive runtime development, local containerization setups, and accelerated machine learning workflows.
+        </div>
+      </div>
+    </div>
+
+    <div class="lfa-faq-item">
+      <button class="lfa-faq-trigger" aria-expanded="false">
+        <span class="lfa-faq-question-text">What is Surface Laptop Ultra?</span>
+        <div class="lfa-faq-icon-box">
+          <div class="lfa-faq-icon-line lfa-horizontal"></div>
+          <div class="lfa-faq-icon-line lfa-vertical"></div>
+        </div>
+      </button>
+      <div class="lfa-faq-panel">
+        <div class="lfa-faq-content-inner">
+          The Surface Laptop Ultra represents the premium pinnacle tier configuration, showcasing an optimized processing configuration, extended engineering thermal thresholds, and a high-refresh variable rate presentation display panel.
+        </div>
+      </div>
+    </div>
+
+  </div>
+</section>
+
+<style>
+  .lfa-faq-root {
+    width: 100%;
+    max-width: 820px;
+    margin: 0 auto;
+    padding: 60px 20px;
+    font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
+    box-sizing: border-box;
+    background-color: transparent; /* Seamlessly takes on parent background */
+  }
+
+  /* Structural internal reset wrapper */
+  .lfa-faq-root *, 
+  .lfa-faq-root *::before, 
+  .lfa-faq-root *::after {
+    box-sizing: border-box;
+    margin: 0;
+    padding: 0;
+  }
+
+  /* Header Controls Container */
+  .lfa-faq-root .lfa-faq-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: baseline;
+    margin-bottom: 40px;
+    padding-bottom: 12px;
+  }
+
+  .lfa-faq-root .lfa-faq-main-title {
+    font-size: 2.2rem;
+    font-weight: 300;
+    color: #1a1a1a;
+    letter-spacing: -0.01em;
+    line-height: 1.2;
+  }
+
+  .lfa-faq-root .lfa-faq-global-controls {
+    display: flex;
+    gap: 16px;
+    font-size: 0.9rem;
+  }
+
+  .lfa-faq-root .lfa-faq-global-btn {
+    background: none;
+    border: none;
+    color: #1a1a1a;
+    cursor: pointer;
+    display: inline-flex;
+    align-items: center;
+    gap: 6px;
+    font-weight: 400;
+    padding: 4px 0;
+    font-family: inherit;
+    transition: opacity 0.2s ease;
+  }
+
+  .lfa-faq-root .lfa-faq-global-btn:hover {
+    opacity: 0.7;
+  }
+
+  .lfa-faq-root .lfa-faq-global-btn:disabled {
+    color: #b5b5b2;
+    cursor: not-allowed;
+    opacity: 1;
+  }
+
+  .lfa-faq-root .lfa-faq-btn-icon-plus {
+    font-weight: 300; 
+    font-size: 1.1rem; 
+    margin-left: 2px;
+  }
+
+  .lfa-faq-root .lfa-faq-btn-icon-minus {
+    font-weight: 300; 
+    font-size: 1.2rem; 
+    margin-left: 2px;
+  }
+
+  /* Accordion Stack Framework */
+  .lfa-faq-root .lfa-faq-accordion-stack {
+    border-top: 1px solid #e2e1dc;
+    width: 100%;
+  }
+
+  .lfa-faq-root .lfa-faq-item {
+    border-bottom: 1px solid #e2e1dc;
+    width: 100%;
+  }
+
+  /* Accordion Trigger Header */
+  .lfa-faq-root .lfa-faq-trigger {
+    width: 100%;
+    background: none;
+    border: none;
+    padding: 26px 0;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    text-align: left;
+    cursor: pointer;
+    color: #1a1a1a;
+    font-family: inherit;
+    transition: color 0.2s ease;
+  }
+
+  .lfa-faq-root .lfa-faq-trigger:hover {
+    color: #000000;
+  }
+
+  .lfa-faq-root .lfa-faq-question-text {
+    font-size: 1.2rem;
+    font-weight: 300;
+    line-height: 1.4;
+    padding-right: 24px;
+    letter-spacing: -0.01em;
+  }
+
+  /* Fluid Icon Engine */
+  .lfa-faq-root .lfa-faq-icon-box {
+    position: relative;
+    width: 16px;
+    height: 16px;
+    flex-shrink: 0;
+  }
+
+  .lfa-faq-root .lfa-faq-icon-line {
+    position: absolute;
+    background-color: currentColor;
+    transition: transform 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+  }
+
+  .lfa-faq-root .lfa-faq-icon-line.lfa-horizontal {
+    top: 7px;
+    left: 0;
+    width: 100%;
+    height: 1.5px;
+  }
+
+  .lfa-faq-root .lfa-faq-icon-line.lfa-vertical {
+    top: 0;
+    left: 7px;
+    width: 1.5px;
+    height: 100%;
+  }
+
+  /* Animation Transforms when item state is active */
+  .lfa-faq-root .lfa-faq-item.lfa-is-open .lfa-faq-icon-line.lfa-vertical {
+    transform: rotate(90deg);
+    opacity: 0;
+  }
+
+  .lfa-faq-root .lfa-faq-item.lfa-is-open .lfa-faq-icon-line.lfa-horizontal {
+    transform: rotate(180deg);
+  }
+
+  /* Collapsible Panel Content Container */
+  .lfa-faq-root .lfa-faq-panel {
+    max-height: 0;
+    overflow: hidden;
+    transition: max-height 0.35s cubic-bezier(0.4, 0, 0.2, 1);
+  }
+
+  .lfa-faq-root .lfa-faq-content-inner {
+    padding-bottom: 26px;
+    font-size: 1.05rem;
+    line-height: 1.6;
+    color: #4a4a4a;
+    font-weight: 300;
+  }
+
+  /* Responsive Adaptation Breakpoints */
+  @media (max-width: 600px) {
+    .lfa-faq-root {
+      padding: 40px 16px;
+    }
+    .lfa-faq-root .lfa-faq-header {
+      flex-direction: column;
+      gap: 16px;
+      align-items: flex-start;
+      margin-bottom: 24px;
+    }
+    .lfa-faq-root .lfa-faq-main-title {
+      font-size: 1.8rem;
+    }
+    .lfa-faq-root .lfa-faq-trigger {
+      padding: 20px 0;
+    }
+    .lfa-faq-root .lfa-faq-question-text {
+      font-size: 1.05rem;
+    }
+    .lfa-faq-root .lfa-faq-content-inner {
+      padding-bottom: 20px;
+      font-size: 0.95rem;
+    }
+  }
+</style>
+
+<script>
+  (() => {
+    document.addEventListener("DOMContentLoaded", () => {
+      const root = document.querySelector(".lfa-faq-root");
+      if (!root) return;
+
+      const faqItems = root.querySelectorAll(".lfa-faq-item");
+      const expandAllBtn = root.querySelector("#lfa-faq-expand-all");
+      const collapseAllBtn = root.querySelector("#lfa-faq-collapse-all");
+
+      faqItems.forEach((item) => {
+        const trigger = item.querySelector(".lfa-faq-trigger");
+        const panel = item.querySelector(".lfa-faq-panel");
+
+        trigger.addEventListener("click", () => {
+          const isOpen = item.classList.contains("lfa-is-open");
+          if (isOpen) {
+            closeItem(item, panel, trigger);
+          } else {
+            openItem(item, panel, trigger);
+          }
+          updateGlobalButtons();
+        });
+      });
+
+      expandAllBtn.addEventListener("click", () => {
+        faqItems.forEach((item) => {
+          const trigger = item.querySelector(".lfa-faq-trigger");
+          const panel = item.querySelector(".lfa-faq-panel");
+          openItem(item, panel, trigger);
+        });
+        updateGlobalButtons();
+      });
+
+      collapseAllBtn.addEventListener("click", () => {
+        faqItems.forEach((item) => {
+          const trigger = item.querySelector(".lfa-faq-trigger");
+          const panel = item.querySelector(".lfa-faq-panel");
+          closeItem(item, panel, trigger);
+        });
+        updateGlobalButtons();
+      });
+
+      function openItem(item, panel, trigger) {
+        item.classList.add("lfa-is-open");
+        trigger.setAttribute("aria-expanded", "true");
+        panel.style.maxHeight = panel.scrollHeight + "px";
+      }
+
+      function closeItem(item, panel, trigger) {
+        item.classList.remove("lfa-is-open");
+        trigger.setAttribute("aria-expanded", "false");
+        panel.style.maxHeight = "0";
+      }
+
+      function updateGlobalButtons() {
+        const totalItems = faqItems.length;
+        const openItemsCount = root.querySelectorAll(".lfa-faq-item.lfa-is-open").length;
+
+        if (openItemsCount === totalItems) {
+          expandAllBtn.disabled = true;
+          collapseAllBtn.disabled = false;
+        } else if (openItemsCount === 0) {
+          expandAllBtn.disabled = false;
+          collapseAllBtn.disabled = true;
+        } else {
+          expandAllBtn.disabled = false;
+          collapseAllBtn.disabled = false;
+        }
+      }
+    });
+  })();
+</script>
 
 
 

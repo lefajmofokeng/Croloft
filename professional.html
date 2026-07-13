@@ -378,6 +378,303 @@
 
 
 
+<section class="lfm-showcase-root">
+  <div class="lfm-showcase-container">
+    
+    <!-- Background Static Image Element -->
+    <!-- Replace URL with your actual tech image path -->
+    <div class="lfm-showcase-img-bg" style="background-image: url('https://images.pexels.com/photos/6919954/pexels-photo-6919954.jpeg');"></div>
+    
+    <div class="lfm-showcase-overlay"></div>
+
+    <div class="lfm-showcase-content-boundary">
+      
+      <div class="lfm-showcase-cards-stack">
+        
+        <h1 class="lfm-showcase-main-title">Built for elite client partners</h1>
+        
+        <div class="lfm-showcase-quote-card">
+          <p class="lfm-showcase-quote-text">
+            "Our multi-tier infrastructure scales gracefully under intense corporate loads. The framework completely modernized our legacy operations into an incredibly responsive digital platform."
+          </p>
+          <span class="lfm-showcase-quote-author">@EngineeringDirector, Institutional Partner</span>
+        </div>
+
+        <div class="lfm-showcase-details-pill">
+          <div class="lfm-showcase-pill-left-group">
+            <div class="lfm-showcase-pill-icon-box">
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                <rect x="2" y="5" width="20" height="6" rx="1" />
+                <rect x="2" y="13" width="20" height="6" rx="1" />
+                <circle cx="6" cy="8" r="1" fill="currentColor" />
+                <circle cx="6" cy="16" r="1" fill="currentColor" />
+              </svg>
+            </div>
+            <div class="lfm-showcase-pill-text-block">
+              <span class="lfm-showcase-pill-title">Web Application Framework</span>
+              <span class="lfm-showcase-pill-subtitle">Dedicated Engineering Tier</span>
+            </div>
+          </div>
+          <a href="#contact" class="lfm-showcase-action-btn">Partner</a>
+        </div>
+
+      </div>
+
+    </div>
+
+  </div>
+</section>
+
+<style>
+  /* Base Component Scope Reset Guard */
+  .lfm-showcase-root {
+    width: 100%;
+    box-sizing: border-box;
+    margin: 0;
+    padding: 0;
+    background-color: #0d0d0d;
+  }
+
+  .lfm-showcase-root *,
+  .lfm-showcase-root *::before,
+  .lfm-showcase-root *::after {
+    box-sizing: border-box;
+    margin: 0;
+    padding: 0;
+  }
+
+  /* Core Canvas Container - Spanning 100% Width Edge-to-Edge */
+  .lfm-showcase-root .lfm-showcase-container {
+    position: relative;
+    width: 100%;
+    height: 640px;
+    overflow: hidden;
+    font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
+  }
+
+  /* Full-Coverage Static Image Element */
+  .lfm-showcase-root .lfm-showcase-img-bg {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-size: cover;
+    background-position: center;
+    background-repeat: no-repeat;
+    z-index: 1;
+    pointer-events: none;
+  }
+
+  /* Cinematic Linear Dark Gradient Protection Layer */
+  .lfm-showcase-root .lfm-showcase-overlay {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: radial-gradient(circle at 20% 70%, rgba(0, 0, 0, 0.45) 0%, rgba(0, 0, 0, 0.75) 100%);
+    z-index: 2;
+  }
+
+  /* Centered Content Layout Bounded Strictly to 1200px Window */
+  .lfm-showcase-root .lfm-showcase-content-boundary {
+    position: relative;
+    width: 100%;
+    max-width: 1200px;
+    height: 100%;
+    margin: 0 auto;
+    padding: 40px 24px;
+    display: flex;
+    justify-content: space-between;
+    align-items: flex-end;
+    z-index: 3;
+  }
+
+  /* Vertical Stacking Layout Structure closely grouping title and widgets */
+  .lfm-showcase-root .lfm-showcase-cards-stack {
+    display: flex;
+    flex-direction: column;
+    gap: 16px;
+    width: 100%;
+    max-width: 440px;
+    align-items: flex-start;
+  }
+
+  /* Section Heading pulled tightly into the card deck flow */
+  .lfm-showcase-root .lfm-showcase-main-title {
+    font-size: 3.2rem;
+    font-weight: 300;
+    color: #ffffff;
+    letter-spacing: -0.01em;
+    line-height: 1.15;
+    margin-bottom: 12px;
+    text-align: left;
+  }
+
+  /* Premium Frosted Glass Visual Layout Card Bases */
+  .lfm-showcase-root .lfm-showcase-quote-card,
+  .lfm-showcase-root .lfm-showcase-details-pill {
+    width: 100%;
+    background: rgba(28, 28, 30, 0.65);
+    backdrop-filter: blur(24px);
+    -webkit-backdrop-filter: blur(24px);
+    border: 1px solid rgba(255, 255, 255, 0.08);
+    border-radius: 12px;
+  }
+
+  /* Quote Block Structural Element Metrics */
+  .lfm-showcase-root .lfm-showcase-quote-card {
+    padding: 24px;
+  }
+
+  .lfm-showcase-root .lfm-showcase-quote-text {
+    font-size: 1rem;
+    line-height: 1.5;
+    color: rgba(255, 255, 255, 0.9);
+    font-weight: 300;
+    margin-bottom: 14px;
+  }
+
+  .lfm-showcase-root .lfm-showcase-quote-author {
+    display: block;
+    font-size: 0.85rem;
+    color: rgba(255, 255, 255, 0.5);
+    font-weight: 400;
+  }
+
+  /* Lower Interactive Pill Bar Structural Flex Layout */
+  .lfm-showcase-root .lfm-showcase-details-pill {
+    padding: 12px 14px;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 16px;
+  }
+
+  .lfm-showcase-root .lfm-showcase-pill-left-group {
+    display: flex;
+    align-items: center;
+    gap: 14px;
+  }
+
+  /* Icon Frame Box Display Dimensions */
+  .lfm-showcase-root .lfm-showcase-pill-icon-box {
+    width: 48px;
+    height: 48px;
+    background: rgba(255, 255, 255, 0.06);
+    border-radius: 8px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    color: rgba(255, 255, 255, 0.8);
+    flex-shrink: 0;
+  }
+
+  .lfm-showcase-root .lfm-showcase-pill-icon-box svg {
+    width: 22px;
+    height: 22px;
+  }
+
+  .lfm-showcase-root .lfm-showcase-pill-text-block {
+    display: flex;
+    flex-direction: column;
+    gap: 2px;
+  }
+
+  .lfm-showcase-root .lfm-showcase-pill-title {
+    font-size: 0.95rem;
+    color: #ffffff;
+    font-weight: 400;
+  }
+
+  .lfm-showcase-root .lfm-showcase-pill-subtitle {
+    font-size: 0.8rem;
+    color: rgba(255, 255, 255, 0.45);
+    font-weight: 300;
+  }
+
+  /* Saturated Highlight Action Button Structure */
+  .lfm-showcase-root .lfm-showcase-action-btn {
+    background-color: #0078d4;
+    color: #ffffff;
+    padding: 8px 22px;
+    font-size: 0.88rem;
+    font-weight: 500;
+    text-decoration: none;
+    border-radius: 20px;
+    transition: background-color 0.2s ease, transform 0.1s ease;
+  }
+
+  .lfm-showcase-root .lfm-showcase-action-btn:hover {
+    background-color: #106ebe;
+  }
+
+  /* Responsive Framework Media Optimization Breakpoints */
+  @media (max-width: 768px) {
+    .lfm-showcase-root .lfm-showcase-container {
+      height: auto;
+      min-height: 600px;
+    }
+    .lfm-showcase-root .lfm-showcase-content-boundary {
+      padding: 60px 20px 40px 20px;
+      flex-direction: column;
+      align-items: flex-start;
+      justify-content: flex-start;
+      gap: 30px;
+    }
+    .lfm-showcase-root .lfm-showcase-main-title {
+      font-size: 2.4rem;
+    }
+    .lfm-showcase-root .lfm-showcase-cards-stack {
+      max-width: 100%;
+    }
+  }
+</style>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 
 

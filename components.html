@@ -4440,6 +4440,311 @@
 
 
 
+<section class="defcon-premium-showcase">
+  <div class="defcon-header-container-hd">
+    <div class="defcon-main-heading-hd">Build, scale & deploy</div>
+    
+    <div class="defcon-subheading-wrapper">
+      <div class="defcon-subheading-hd" id="dynamic-subheading">
+        Over <span class="highlight-cron">120+ clients</span> supported nationwide.
+      </div>
+    </div>
+
+  </div>
+
+  <button class="defcon-crypto-cta" onclick="window.location.href='croloft.html'">
+    <span class="defcon-crypto-text">What is Croloft?</span>
+    <span class="defcon-crypto-icon">
+      <svg width="30" height="30" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+        <path d="M5 12H19M19 12L12 5M19 12L12 19" stroke="white" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+      </svg>
+    </span>
+  </button>
+
+</section>
+
+<style>
+  
+    .highlight-cron {
+        color: #0091ff;
+    }
+
+    * { font-family: 'Google Sans', sans-serif; }
+/* Base Styles */
+.defcon-premium-showcase {
+  position: relative;
+  width: 100%;
+  min-height: 100vh;
+  padding: 60px 5%;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  overflow: hidden;
+  background: linear-gradient( rgba(6, 39, 62, 0.648), rgba(6, 39, 62, 0.297)), url('https://images.unsplash.com/photo-1686848429284-d108e021a74c?q=80&w=1332&auto=format&fit=crop&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D') no-repeat center center/cover;
+  box-sizing: border-box;
+  font-family: 'Circular Std', sans-serif; 
+}
+
+/* Header Container */
+.defcon-header-container-hd {
+  max-width: 800px;
+  width: 100%;
+  text-align: center;
+  animation: defconFadeInUp 1s ease-out forwards;
+}
+
+/* Main Heading */
+.defcon-main-heading-hd {
+  font-size: 6rem; 
+  font-weight: 400;
+  text-transform: none;
+  max-width: 800px; 
+  
+  line-height: 1;
+  color: white;
+  text-align: center;
+  margin: 7rem auto 3rem auto; 
+}
+
+/* --- NEW SUBHEADING STYLES --- */
+
+/* Wrapper to hold height stable during transition */
+.defcon-subheading-wrapper {
+  height: 3em; /* Fixed height to prevent layout jumping */
+  margin-bottom: 2rem;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  overflow: hidden; /* Ensures text entering from top is hidden until inside */
+}
+
+.defcon-subheading-hd {
+  font-size: 24px;
+  font-weight: 430;
+  color: #ffffff;
+  text-align: center;
+  line-height: 1.5;
+  
+  /* Animation properties */
+  transition: transform 0.5s cubic-bezier(0.16, 1, 0.3, 1), opacity 0.5s ease;
+  transform: translateY(0);
+  opacity: 1;
+}
+
+/* States for the animation */
+.subheading-exit {
+  transform: translateY(30px); /* Move Down */
+  opacity: 0;
+}
+
+.subheading-enter-setup {
+  transform: translateY(-30px); /* Start at Top */
+  opacity: 0;
+  transition: none; /* Instant jump to top while invisible */
+}
+/* ----------------------------- */
+
+/* CTA Button Styles */
+.defcon-crypto-cta {
+  display: inline-flex;
+  align-items: center;
+  background: #dedede;
+  color: #06273e;
+  border: none;
+  padding: 5px 6px 5px 25px;
+  font-size: 17px;
+  font-weight: 500;
+  border-radius: 60px;
+  cursor: pointer;
+  transition: all 0.3s ease;
+  position: relative;
+  overflow: hidden;
+  margin-bottom: 4rem;
+  margin-top: 1rem;
+  width: fit-content;
+}
+
+.defcon-crypto-cta:active {
+  transform: translateY(1px);
+}
+
+.defcon-crypto-text {
+  margin-right: 15px;
+}
+
+.defcon-crypto-icon {
+  width: 40px;
+  height: 40px;
+  background: #006cbf;
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  transition: all 0.3s ease;
+}
+
+/* --- Responsive Adjustments --- */
+
+@media (max-width: 1024px) {
+  .defcon-main-heading-hd {
+    font-size: 44px; 
+  }
+}
+
+@media (max-width: 767px) {
+  .defcon-premium-showcase {
+    min-height: 70vh; 
+  }
+  .defcon-main-heading-hd {
+    font-size: 38px;
+    line-height: 1.25;
+  }
+
+  .defcon-subheading-hd {
+    font-size: 20px;
+  }
+  
+  .defcon-subheading-wrapper {
+    height: auto; /* Allow auto height on mobile if text wraps */
+    min-height: 3.5em; 
+  }
+}
+
+@media (max-width: 480px) {
+  .defcon-premium-showcase {
+    padding: 40px 5%;
+    min-height: 100vh; 
+  }
+  
+  .defcon-main-heading-hd {
+    font-size: 40px; 
+    line-height: 1.3;
+    margin-bottom: 2rem;
+  }
+  
+  .defcon-crypto-cta {
+    font-size: 18px; 
+    margin-top: 0.5rem;
+    margin-bottom: 2rem;
+    padding: 5px 5px 5px 25px;
+  }
+  
+  .defcon-crypto-icon {
+    width: 40px;
+    height: 40px;
+  }
+  
+  .defcon-crypto-icon svg {
+    width: 20px;
+    height: 20px;
+  }
+  
+  .defcon-crypto-text {
+    margin-right: 10px;
+  }
+}
+</style>
+
+<script>
+document.addEventListener("DOMContentLoaded", function() {
+    const subheadingEl = document.getElementById('dynamic-subheading');
+    
+    // The content array based on your original text split into 3 parts
+    const messages = [
+        'Over <span class="highlight-cron">120+ clients</span> supported nationwide.',
+        'Providing <span class="highlight-cron">24/7 monitoring</span> and real-time alerts.',
+        'Achieving <span class="highlight-cron">zero security breaches</span> in managed environments.'
+    ];
+
+    let currentIndex = 0;
+
+    setInterval(() => {
+        // 1. Slide OUT (Down)
+        subheadingEl.classList.add('subheading-exit');
+
+        setTimeout(() => {
+            // 2. Update Index
+            currentIndex = (currentIndex + 1) % messages.length;
+            
+            // 3. Jump to TOP (Invisible)
+            subheadingEl.classList.add('subheading-enter-setup');
+            subheadingEl.classList.remove('subheading-exit');
+            
+            // 4. Change Text
+            subheadingEl.innerHTML = messages[currentIndex];
+
+            // 5. Slide IN (From Top to Center)
+            // Small timeout allows the browser to register the 'jump to top' before animating down
+            setTimeout(() => {
+                subheadingEl.classList.remove('subheading-enter-setup');
+            }, 50);
+
+        }, 500); // Wait for the 0.5s slide-out animation to finish
+
+    }, 4000); // Change text every 4 seconds
+});
+</script>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 
 
