@@ -31,6 +31,726 @@
 
 
 
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<div class="pin-showcase-root">
+  <div class="pin-showcase-container">
+    <div class="pin-showcase-grid">
+      
+      <div class="pin-card" style="grid-row: span 10;">
+        <img src="https://images.unsplash.com/photo-1544005313-94ddf0286df2?q=80&w=600&auto=format&fit=crop" alt="Rider profile showcase">
+      </div>
+      <div class="pin-card" style="grid-row: span 9;">
+        <img src="https://images.unsplash.com/photo-1508962914676-134849a727f0?q=80&w=600&auto=format&fit=crop" alt="Smart device cockpit close up">
+      </div>
+      <div class="pin-card style-mobile-hide" style="grid-row: span 5;">
+        <img src="https://images.unsplash.com/photo-1534528741775-53994a69daeb?q=80&w=600&auto=format&fit=crop" alt="Lifestyle crop feature">
+      </div>
+
+      <div class="pin-card" style="grid-row: span 11;">
+        <img src="https://images.unsplash.com/photo-1494790108377-be9c29b29330?q=80&w=600&auto=format&fit=crop" alt="Urban travel presentation">
+      </div>
+      <div class="pin-card" style="grid-row: span 11;">
+        <img src="https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?q=80&w=600&auto=format&fit=crop" alt="Active cycling close frame view">
+      </div>
+
+      <div class="pin-card" style="grid-row: span 10;">
+        <img src="https://images.unsplash.com/photo-1488161628813-04466f872be2?q=80&w=600&auto=format&fit=crop" alt="Commuter pose with bicycle infrastructure">
+      </div>
+      <div class="pin-card" style="grid-row: span 11;">
+        <img src="https://images.pexels.com/photos/37882792/pexels-photo-37882792.jpeg" alt="Leisure structural pause detail">
+      </div>
+
+      <div class="pin-card" style="grid-row: span 11;">
+        <img src="https://images.unsplash.com/photo-1501196354995-cbb51c65aaea?q=80&w=600&auto=format&fit=crop" alt="Family leisure transit scenic ride">
+      </div>
+      <div class="pin-card" style="grid-row: span 12;">
+        <img src="https://images.unsplash.com/photo-1517841905240-472988babdf9?q=80&w=600&auto=format&fit=crop" alt="Crossroad commuting motion capture">
+      </div>
+
+      <div class="pin-card" style="grid-row: span 10;">
+        <img src="https://images.unsplash.com/photo-1539571696357-5a69c17a67c6?q=80&w=600&auto=format&fit=crop" alt="Formal fashion cycling fusion style">
+      </div>
+      <div class="pin-card" style="grid-row: span 11;">
+        <img src="https://images.unsplash.com/photo-1524504388940-b1c1722653e1?q=80&w=600&auto=format&fit=crop" alt="Rainy city transit navigation">
+      </div>
+
+      <div class="pin-card" style="grid-row: span 9;">
+        <img src="https://images.unsplash.com/photo-1554151228-14d9def656e4?q=80&w=600&auto=format&fit=crop" alt="Forest woodland bike exploration">
+      </div>
+      <div class="pin-card" style="grid-row: span 10;">
+        <img src="https://images.unsplash.com/photo-1529626455594-4ff0802cfb7e?q=80&w=600&auto=format&fit=crop" alt="Rear view child utility bike seat frame">
+      </div>
+
+      <div class="pin-card" style="grid-row: span 9;">
+        <img src="https://images.unsplash.com/photo-1492562080023-ab3db95bfbce?q=80&w=600&auto=format&fit=crop" alt="Storefront street cycle deployment">
+      </div>
+      <div class="pin-card" style="grid-row: span 10;">
+        <img src="https://images.pexels.com/photos/6147143/pexels-photo-6147143.jpeg" alt="Summertime casual commuting view">
+      </div>
+
+    </div>
+  </div>
+
+</div>
+
+<style>
+  /* Local Namespace Component Reset */
+  .pin-showcase-root {
+    width: 100%;
+    min-height: 100vh;
+    background-color: #f7f7f7;
+    padding: 200px 0;
+    box-sizing: border-box;
+    position: relative;
+    font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif;
+  }
+
+  .pin-showcase-root *,
+  .pin-showcase-root *::before,
+  .pin-showcase-root *::after {
+    box-sizing: border-box;
+    margin: 0;
+    padding: 0;
+  }
+
+  /* Centered Safe Boundary Window Container */
+  .pin-showcase-container {
+    width: 100%;
+    max-width: 1440px;
+    margin: 0 auto;
+    padding: 0 16px;
+  }
+
+  /* Asymmetric Masonry Architecture Grid Core */
+  .pin-showcase-grid {
+    display: grid;
+    /* Replicates the exact 7 unequal vertical grid columns configuration */
+    grid-template-columns: repeat(5, minmax(0, 1fr));
+    /* Dense incremental row spacing allows varying item blocks to overlap organically */
+    grid-auto-rows: 22px;
+    gap: 14px;
+  }
+
+  /* Structural Image Card Layout */
+  .pin-card {
+    position: relative;
+    width: 100%;
+    border-radius: 12px;
+    overflow: hidden;
+    background-color: #eaeaea;
+    transition: transform 0.25s cubic-bezier(0.25, 1, 0.5, 1);
+  }
+
+  .pin-card img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    display: block;
+  }
+
+  /* Visual interactive lift feel matching clean fluid responsive cards */
+  .pin-card:hover {
+    transform: translateY(-4px);
+    box-shadow: 0 10px 20px rgba(0,0,0,0.06);
+  }
+
+  /* --- Responsive Adaptive Grid Tracks Layout Breakdown --- */
+  @media (max-width: 1200px) {
+    .pin-showcase-grid {
+      grid-template-columns: repeat(4, minmax(0, 1fr));
+    }
+  }
+
+  @media (max-width: 768px) {
+    .pin-showcase-grid {
+      grid-template-columns: repeat(2, minmax(0, 1fr));
+      gap: 10px;
+      grid-auto-rows: 18px;
+    }
+    .style-mobile-hide {
+      display: none;
+    }
+    .pin-showcase-root {
+      padding: 16px 0;
+    }
+    .pin-showcase-widget {
+      bottom: 16px;
+      right: 16px;
+      width: 44px;
+      height: 44px;
+    }
+  }
+</style>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<div class="sc-slider-root">
+  <div class="sc-sticky-track">
+    <div class="sc-slider-container">
+      
+      <div class="sc-video-bg-wrapper">
+        <video class="sc-video-element sc-active" data-index="0" autoplay muted loop playsinline>
+          <source src="https://assets.mixkit.co/videos/preview/mixkit-abstract-laser-lights-background-23116-large.mp4" type="video/mp4">
+        </video>
+        <video class="sc-video-element" data-index="1" muted loop playsinline>
+          <source src="https://www.pexels.com/download/video/30156442/" type="video/mp4">
+        </video>
+        <video class="sc-video-element" data-index="2" muted loop playsinline>
+          <source src="https://www.pexels.com/download/video/34436452/" type="video/mp4">
+        </video>
+        <video class="sc-video-element" data-index="3" muted loop playsinline>
+          <source src="https://www.pexels.com/download/video/6890371/" type="video/mp4">
+        </video>
+      </div>
+
+      <div class="sc-slider-overlay"></div>
+
+      <div class="sc-content-boundary">
+        
+        <div class="sc-text-panel sc-active" data-index="0">
+          <span class="sc-category-tag">INNOVATION</span>
+          <h2 class="sc-main-heading">The bar?<br>We raise that.</h2>
+          <p class="sc-sub-heading">We obsess over every. little. detail. In everything we do, we hold ourselves to the very highest of standards.</p>
+          <a href="#explore" class="sc-explore-action">
+            <span class="sc-arrow-wrap">→</span> Explore Origins
+          </a>
+        </div>
+
+        <div class="sc-text-panel" data-index="1">
+          <span class="sc-category-tag">SUSTAINABILITY</span>
+          <h2 class="sc-main-heading">We add green energy<br>to the network.</h2>
+          <p class="sc-sub-heading">Building scalable solutions and modernizing infrastructure into an incredibly responsive digital ecosystem.</p>
+          <a href="#explore" class="sc-explore-action">
+            <span class="sc-arrow-wrap">→</span> View Network
+          </a>
+        </div>
+
+        <div class="sc-text-panel" data-index="2">
+          <span class="sc-category-tag">EFFICIENCY</span>
+          <h2 class="sc-main-heading">Power through<br>your day.</h2>
+          <p class="sc-sub-heading">Long-lasting intelligent power matrices keeping enterprise platforms perfectly mobile from morning to night.</p>
+          <a href="#explore" class="sc-explore-action">
+            <span class="sc-arrow-wrap">→</span> Discover Labs
+          </a>
+        </div>
+
+        <div class="sc-text-panel" data-index="3">
+          <span class="sc-category-tag">SECURITY</span>
+          <h2 class="sc-main-heading">Dedicated tier<br>protection.</h2>
+          <p class="sc-sub-heading">Our multi-tier framework scales gracefully under intense corporate workloads to secure operational longevity.</p>
+          <a href="#explore" class="sc-explore-action">
+            <span class="sc-arrow-wrap">→</span> Secure Infrastructure
+          </a>
+        </div>
+
+        <div class="sc-timeline-nav">
+          <div class="sc-timeline-tab sc-active" data-target="0">
+            <div class="sc-progress-track"><span class="sc-progress-bar"></span></div>
+            <span class="sc-tab-label">01. Origins</span>
+          </div>
+          <div class="sc-timeline-tab" data-target="1">
+            <div class="sc-progress-track"><span class="sc-progress-bar"></span></div>
+            <span class="sc-tab-label">02. Quality</span>
+          </div>
+          <div class="sc-timeline-tab" data-target="2">
+            <div class="sc-progress-track"><span class="sc-progress-bar"></span></div>
+            <span class="sc-tab-label">03. Servicing</span>
+          </div>
+          <div class="sc-timeline-tab" data-target="3">
+            <div class="sc-progress-track"><span class="sc-progress-bar"></span></div>
+            <span class="sc-tab-label">04. Protection</span>
+          </div>
+        </div>
+
+      </div>
+    </div>
+  </div>
+</div>
+
+<style>
+  /* Local Namespace Component Context Reset */
+  .sc-slider-root {
+    width: 100%;
+    background-color: #0b0c10;
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    /* Height dictates the duration of the viewport scroll experience */
+    height: 400vh; 
+  }
+
+  .sc-slider-root *,
+  .sc-slider-root *::before,
+  .sc-slider-root *::after {
+    box-sizing: border-box;
+    margin: 0;
+    padding: 0;
+  }
+
+  /* Sticky Lock Track Window Frame container */
+  .sc-sticky-track {
+    position: sticky;
+    top: 0;
+    width: 100%;
+    height: 100vh;
+    overflow: hidden;
+  }
+
+  /* Full Viewport Canvas Base Box */
+  .sc-slider-container {
+    position: relative;
+    width: 100%;
+    height: 100%;
+    min-height: 650px;
+    font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif;
+    color: #ffffff;
+  }
+
+  /* Video Background Wrapper layers */
+  .sc-video-bg-wrapper {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    z-index: 1;
+  }
+
+  .sc-video-element {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    opacity: 0;
+    visibility: hidden;
+    transition: opacity 0.8s cubic-bezier(0.4, 0, 0.2, 1), visibility 0.8s ease;
+  }
+
+  .sc-video-element.sc-active {
+    opacity: 1;
+    visibility: visible;
+  }
+
+  /* Cinematic overlay matching reference layout visuals */
+  .sc-slider-overlay {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: linear-gradient(180deg, rgba(0,0,0,0.25) 0%, rgba(0,0,0,0.45) 60%, rgba(0,0,0,0.85) 100%);
+    z-index: 2;
+  }
+
+  /* Strict Content Grid Boundary Window Layout */
+  .sc-content-boundary {
+    position: relative;
+    width: 100%;
+    max-width: 1200px;
+    height: 100%;
+    margin: 0 auto;
+    padding: 0 24px;
+    display: flex;
+    flex-direction: column;
+    justify-content: flex-end;
+    z-index: 3;
+    padding-bottom: 140px;
+  }
+
+  /* Content Panel Switch States */
+  .sc-text-panel {
+    max-width: 520px;
+    position: absolute;
+    bottom: 220px;
+    opacity: 0;
+    visibility: hidden;
+    transform: translateY(20px);
+    transition: opacity 0.5s cubic-bezier(0.25, 1, 0.5, 1), transform 0.5s cubic-bezier(0.25, 1, 0.5, 1), visibility 0.5s ease;
+  }
+
+  .sc-text-panel.sc-active {
+    opacity: 1;
+    visibility: visible;
+    transform: translateY(0);
+    position: relative;
+    bottom: auto;
+  }
+
+  .sc-category-tag {
+    font-size: 0.85rem;
+    font-weight: 700;
+    letter-spacing: 0.15em;
+    text-transform: uppercase;
+    color: rgba(255, 255, 255, 0.6);
+    display: block;
+    margin-bottom: 12px;
+  }
+
+  .sc-main-heading {
+    font-size: 3.2rem;
+    font-weight: 400;
+    line-height: 1.15;
+    margin-bottom: 16px;
+    letter-spacing: -0.01em;
+    color: #ffffff;
+  }
+
+  .sc-sub-heading {
+    font-size: 1rem;
+    line-height: 1.6;
+    color: rgba(255, 255, 255, 0.7);
+    margin-bottom: 28px;
+    font-weight: 300;
+  }
+
+  /* Action links styling */
+  .sc-explore-action {
+    display: inline-flex;
+    align-items: center;
+    gap: 8px;
+    color: #ffffff;
+    text-decoration: none;
+    font-size: 0.95rem;
+    font-weight: 500;
+    transition: color 0.2s ease;
+  }
+
+  .sc-arrow-wrap {
+    display: inline-block;
+    transition: transform 0.25s ease;
+  }
+
+  .sc-explore-action:hover .sc-arrow-wrap {
+    transform: translateX(4px);
+  }
+
+  /* Timeline Progress Tracks Footer Section */
+  .sc-timeline-nav {
+    position: absolute;
+    bottom: 50px;
+    left: 24px;
+    right: 24px;
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    gap: 20px;
+  }
+
+  .sc-timeline-tab {
+    display: flex;
+    flex-direction: column;
+    gap: 12px;
+    cursor: pointer;
+    user-select: none;
+  }
+
+  .sc-progress-track {
+    width: 100%;
+    height: 2px;
+    background-color: rgba(255, 255, 255, 0.2);
+    position: relative;
+    border-radius: 1px;
+    overflow: hidden;
+  }
+
+  .sc-progress-bar {
+    position: absolute;
+    top: 0;
+    left: 0;
+    height: 100%;
+    width: 0%;
+    background-color: #ffffff;
+  }
+
+  .sc-tab-label {
+    font-size: 0.9rem;
+    color: rgba(255, 255, 255, 0.4);
+    font-weight: 400;
+    transition: color 0.3s ease;
+  }
+
+  .sc-timeline-tab.sc-active .sc-tab-label {
+    color: #ffffff;
+  }
+
+  /* --- Responsive Adaptive Viewport Rules --- */
+  @media (max-width: 768px) {
+    .sc-main-heading {
+      font-size: 2.2rem;
+    }
+    .sc-timeline-nav {
+      grid-template-columns: repeat(2, 1fr);
+      gap: 12px;
+      bottom: 30px;
+    }
+    .sc-content-boundary {
+      padding-bottom: 160px;
+    }
+    .sc-text-panel.sc-active {
+      max-width: 100%;
+    }
+  }
+</style>
+
+<script>
+  document.addEventListener('DOMContentLoaded', () => {
+    const root = document.querySelector('.sc-slider-root');
+    const tabs = root.querySelectorAll('.sc-timeline-tab');
+    const progressBars = root.querySelectorAll('.sc-progress-bar');
+    const textPanels = root.querySelectorAll('.sc-text-panel');
+    const videoElements = root.querySelectorAll('.sc-video-element');
+    
+    let currentIndex = 0;
+    const totalSlides = tabs.length;
+
+    // Set layout visuals based on designated active slide frame index
+    function updateActiveState(index, segmentProgress) {
+      currentIndex = Math.max(0, Math.min(index, totalSlides - 1));
+
+      // 1. Text Panels visibility transition updates
+      textPanels.forEach((panel, idx) => {
+        panel.classList.toggle('sc-active', idx === currentIndex);
+      });
+
+      // 2. Video elements active state playback trigger updates
+      videoElements.forEach((video, idx) => {
+        if (idx === currentIndex) {
+          if (!video.classList.contains('sc-active')) {
+            video.classList.add('sc-active');
+            video.play().catch(() => {});
+          }
+        } else {
+          video.classList.remove('sc-active');
+          video.pause();
+        }
+      });
+
+      // 3. Update Progress Bar fills cleanly across the active index ranges
+      tabs.forEach((tab, idx) => {
+        tab.classList.toggle('sc-active', idx === currentIndex);
+        
+        if (idx < currentIndex) {
+          progressBars[idx].style.width = '100%';
+        } else if (idx > currentIndex) {
+          progressBars[idx].style.width = '0%';
+        } else {
+          progressBars[idx].style.width = `${segmentProgress * 100}%`;
+        }
+      });
+    }
+
+    // Capture standard page window scrolling coordinates and parse slider status maps
+    function handleWindowScroll() {
+      const rootRect = root.getBoundingClientRect();
+      const totalScrollableHeight = root.clientHeight - window.innerHeight;
+      
+      // Calculate global container progress (value ranging from 0 to 1)
+      let globalProgress = -rootRect.top / totalScrollableHeight;
+      globalProgress = Math.max(0, Math.min(globalProgress, 0.9999));
+
+      // Translate global track map into targeted indices and individual segments
+      const activeSegmentIndex = Math.floor(globalProgress * totalSlides);
+      const segmentRemainderPercent = (globalProgress * totalSlides) % 1;
+
+      updateActiveState(activeSegmentIndex, segmentRemainderPercent);
+    }
+
+    // Attach native viewport scrolling monitor trigger framework loops
+    window.addEventListener('scroll', handleWindowScroll);
+
+    // Support absolute horizontal jumping via direct navigation tab click links
+    tabs.forEach((tab, idx) => {
+      tab.addEventListener('click', () => {
+        const totalScrollableHeight = root.clientHeight - window.innerHeight;
+        const targetScrollPosition = window.scrollY + root.getBoundingClientRect().top + (idx / totalSlides) * totalScrollableHeight;
+        
+        window.scrollTo({
+          top: targetScrollPosition + 2,
+          behavior: 'smooth'
+        });
+      });
+    });
+
+    // Initialize layout positions defaults on primary paint thread
+    handleWindowScroll();
+  });
+</script>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 <!DOCTYPE html>
 <html lang="en">
 <head>
