@@ -332,6 +332,12 @@ class CronosHeader extends HTMLElement {
 
         this.shadowRoot.innerHTML = `
         <style>
+        @font-face { font-family:'Circular Std'; src:url('fonts/CircularStd-Book.woff2') format('woff2'),url('fonts/CircularStd-Book.woff') format('woff'); font-weight:400; font-style:normal; font-display:swap; }
+        @font-face { font-family:'Circular Std'; src:url('fonts/CircularStd-BookItalic.woff2') format('woff2'),url('fonts/CircularStd-BookItalic.woff') format('woff'); font-weight:400; font-style:italic; font-display:swap; }
+        @font-face { font-family:'Circular Std'; src:url('fonts/CircularStd-Medium.woff2') format('woff2'),url('fonts/CircularStd-Medium.woff') format('woff'); font-weight:500; font-style:normal; font-display:swap; }
+        @font-face { font-family:'Circular Std'; src:url('fonts/CircularStd-Bold.woff2') format('woff2'),url('fonts/CircularStd-Bold.woff') format('woff'); font-weight:600; font-style:normal; font-display:swap; }
+        @font-face { font-family:'Circular Std'; src:url('fonts/CircularStd-Black.woff2') format('woff2'),url('fonts/CircularStd-Black.woff') format('woff'); font-weight:800; font-style:normal; font-display:swap; }
+
     
         @import url('https://fonts.googleapis.com/css2?family=Google+Sans:ital,opsz,wght@0,17..18,400..700;1,17..18,400..700&display=swap');
 
@@ -345,7 +351,7 @@ class CronosHeader extends HTMLElement {
             --cronos-header-height:       55px;
             --cronos-content-max-width:   1420px;
             display: block;
-            font-family: 'Google Sans', system-ui, -apple-system, sans-serif;
+            font-family: 'Circular Std', system-ui, -apple-system, sans-serif;
         }
 
         * { box-sizing: border-box; }
@@ -383,8 +389,8 @@ class CronosHeader extends HTMLElement {
         .cronos-custom-nav-list { display: flex; list-style: none; margin: 0; padding: 0; align-items: center; }
         .cronos-custom-nav-list li { margin-left: 30px; position: relative; }
         .cronos-custom-nav-link {
-            text-decoration: none; color: #fff; font-weight: 460; padding: 10px 0;
-            display: flex; font-size: 0.87rem; align-items: center; cursor: pointer; white-space: nowrap;
+            text-decoration: none; color: #fff; font-weight: 400; padding: 10px 0;
+            display: flex; font-size: 0.9rem; align-items: center; cursor: pointer; white-space: nowrap;
         }
         .cronos-custom-nav-link:hover { color: var(--cronos-color-text-muted); }
         .cronos-desktop-link-icon { display: none; }

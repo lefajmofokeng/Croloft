@@ -75,7 +75,7 @@
   
   <div class="tc-slide tc-active" data-slide="0">
     <video class="tc-slide-video" autoplay muted loop playsinline>
-      <source src="https://www.pexels.com/download/video/6890371/" type="video/mp4">
+      <source src="videos/Recording 2026-03-31 124020.mp4" type="video/mp4">
     </video>
     <div class="tc-slide-overlay">
       <div class="tc-slider-content-boundary">
@@ -98,7 +98,7 @@
 
   <div class="tc-slide" data-slide="1">
     <video class="tc-slide-video" muted loop playsinline>
-      <source src="https://www.pexels.com/download/video/30156442/" type="video/mp4">
+      <source src="videos/background-video3.mp4" type="video/mp4">
     </video>
     <div class="tc-slide-overlay">
       <div class="tc-slider-content-boundary">
@@ -168,7 +168,7 @@
 <style>
   .tc-slider-container {
     --bg-dark-blue: #0A192F;
-    --accent-light-blue: #64FFDA;
+    --accent-light-blue: #ffffff;
     --text-primary: #CCD6F6;
     --text-highlight: #FFFFFF;
     
@@ -360,10 +360,13 @@
   }
 
   .tc-nav-btn {
-    border: 1px solid rgba(100, 255, 218, 0.3);
+    background: rgba(255, 255, 255, 0.15);
+    backdrop-filter: blur(16px);
+    -webkit-backdrop-filter: blur(16px);
+    border: none;
     outline: none;
-    background: transparent;
-    color: var(--accent-light-blue);
+    
+    color: #ffffff;
     width: 54px;
     height: 54px;
     border-radius: 50%;
@@ -375,8 +378,6 @@
   }
 
   .tc-nav-btn:hover {
-    background-color: rgba(100, 255, 218, 0.1);
-    border-color: var(--accent-light-blue);
     transform: scale(1.05);
   }
 

@@ -182,7 +182,7 @@
 
     .col-links a {
       font-size: 17px;
-      font-weight: 450;
+      font-weight: 400;
       color: #c2c3c4;
       line-height: 1.45;
       display: block;

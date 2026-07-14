@@ -136,7 +136,7 @@
     width: 100%;
     height: 100vh;
     overflow: hidden;
-    font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
+    font-family: 'Circular Std',-apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
   }
 
   /* Full-Coverage HTML5 Video Element */
@@ -179,7 +179,7 @@
   /* Upper Right Floating Action Interface Selector */
   .lfm-showcase-root .lfm-showcase-top-action {
     position: absolute;
-    top: 40px;
+    top: 100px;
     right: 24px;
   }
 
@@ -258,7 +258,6 @@
     background: rgba(255, 255, 255, 0.12);
     backdrop-filter: blur(20px);
     -webkit-backdrop-filter: blur(20px);
-    
     padding: 6px 6px 6px 24px;
     border-radius: 30px;
     display: flex;
@@ -446,7 +445,7 @@
     .lfa-vcarousel-header {
       text-align: center;
       margin-bottom: 130px;
-      font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
+      font-family: 'Circular Std',-apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
     }
 
     .lfa-vcarousel-main-title {
@@ -469,7 +468,7 @@
     .lfa-vcarousel-container {
       position: relative;
       width: 100%;
-      height: 610px;
+      height: 650px;
       border-radius: 16px;
       overflow: hidden;
       background-color: #000;
@@ -903,6 +902,200 @@
 
 
 
+<!-- Unique wrapper to ensure zero style conflicts when pasting -->
+<div class="rf-inc-wrapper">
+  <style>
+
+    .rf-inc-wrapper {
+      font-family: 'Circular Std', -apple-system, BlinkMacSystemFont, sans-serif;
+      background-color: #f7f7f7;
+      padding: 80px 10%;
+      color: #1a1a1a;
+      display: flex;
+      justify-content: center;
+      align-items: flex-start;
+      box-sizing: border-box;
+    }
+
+    .rf-inc-container {
+      max-width: 1200px;
+      width: 100%;
+      display: grid;
+      grid-template-columns: 1.2fr 1fr;
+      column-gap: 80px;
+      row-gap: 40px;
+    }
+
+    /* Left Column Styles */
+    .rf-inc-left {
+      display: flex;
+      flex-direction: column;
+    }
+
+    .rf-inc-eyebrow {
+      font-size: 16px;
+      font-weight: 400;
+      color: #5f6368;
+      margin-bottom: 12px;
+      letter-spacing: -0.01em;
+    }
+
+    .rf-inc-heading {
+      font-size: 42px;
+      font-weight: 400;
+      color: #000000;
+      margin: 0 0 48px 0;
+      letter-spacing: -0.02em;
+      line-height: 1.15;
+    }
+
+    .rf-inc-body-text {
+      font-size: 16px;
+      line-height: 1.6;
+      color: #202124;
+      margin: 0 0 24px 0;
+      font-weight: 400;
+      max-width: 540px;
+    }
+
+    .rf-inc-body-text:last-child {
+      margin-bottom: 0;
+    }
+
+    /* Right Column (Stats) Styles */
+    .rf-inc-right {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      column-gap: 40px;
+      padding-top: 64px; /* Aligns visually with the body text start */
+    }
+
+    .rf-inc-stat-box {
+      display: flex;
+      flex-direction: column;
+    }
+
+    .rf-inc-stat-number {
+      font-size: 64px;
+      font-weight: 400;
+      line-height: 1;
+      margin-bottom: 16px;
+      letter-spacing: -0.03em;
+      
+      background: linear-gradient(180deg, #479aff 40%, rgb(3, 10, 35) 100%);
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent;
+      background-clip: text;
+    }
+
+    .rf-inc-stat-label {
+      font-size: 15px;
+      line-height: 1.5;
+      color: #202124;
+      max-width: 160px;
+    }
+
+    /* Responsive Adjustments */
+    @media (max-width: 960px) {
+      .rf-inc-container {
+        grid-template-columns: 1fr;
+        row-gap: 48px;
+      }
+      .rf-inc-wrapper {
+        padding: 60px 5%;
+      }
+      .rf-inc-right {
+        padding-top: 0;
+      }
+      .rf-inc-heading {
+        font-size: 34px;
+        margin-bottom: 32px;
+      }
+    }
+  </style>
+
+  <div class="rf-inc-container">
+    <!-- Left content side -->
+    <div class="rf-inc-left">
+      <span class="rf-inc-eyebrow">Economic Access and Opportunity</span>
+      <h2 class="rf-inc-heading">Financial inclusion is a human right</h2>
+      
+      <p class="rf-inc-body-text">
+        Adoption of crypto and blockchain can help dramatically increase global economic participation, opportunity, and resilience for billions of under-banked and unbanked people.
+      </p>
+      <p class="rf-inc-body-text">
+        From enabling low-cost and always-on remittances in emerging markets to building Central Bank Digital Currency solutions for governments working to increase financial inclusion, our global crypto solutions are underpinned with the democratizing power of blockchain technology. Together with our partners and customers, we are working to transform a global financial system to meet the ever-evolving, everyday needs of everyone, everywhere.
+      </p>
+    </div>
+
+    <!-- Right metrics side -->
+    <div class="rf-inc-right">
+      <div class="rf-inc-stat-box">
+        <span class="rf-inc-stat-number">$170M</span>
+        <span class="rf-inc-stat-label">Donations since 2018</span>
+      </div>
+      
+      <div class="rf-inc-stat-box">
+        <span class="rf-inc-stat-number">80+</span>
+        <span class="rf-inc-stat-label">Countries where Ripple NGO partners operate</span>
+      </div>
+    </div>
+  </div>
+</div>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 
 
@@ -1037,8 +1230,8 @@
     width: 100%;
     max-width: 820px;
     margin: 0 auto;
-    padding: 60px 20px;
-    font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
+    padding: 150px 20px;
+    font-family: 'Circular Std',-apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
     box-sizing: border-box;
     background-color: transparent; /* Seamlessly takes on parent background */
   }
@@ -1320,152 +1513,6 @@
 
 
 
-
-
-
-
-
-
-<!-- Unique wrapper to ensure zero style conflicts when pasting -->
-<div class="rf-inc-wrapper">
-  <style>
-
-    .rf-inc-wrapper {
-      font-family: 'Circular Std', -apple-system, BlinkMacSystemFont, sans-serif;
-      background-color: #ffffff;
-      padding: 80px 10%;
-      color: #1a1a1a;
-      display: flex;
-      justify-content: center;
-      align-items: flex-start;
-      box-sizing: border-box;
-    }
-
-    .rf-inc-container {
-      max-width: 1200px;
-      width: 100%;
-      display: grid;
-      grid-template-columns: 1.2fr 1fr;
-      column-gap: 80px;
-      row-gap: 40px;
-    }
-
-    /* Left Column Styles */
-    .rf-inc-left {
-      display: flex;
-      flex-direction: column;
-    }
-
-    .rf-inc-eyebrow {
-      font-size: 16px;
-      font-weight: 400;
-      color: #5f6368;
-      margin-bottom: 12px;
-      letter-spacing: -0.01em;
-    }
-
-    .rf-inc-heading {
-      font-size: 42px;
-      font-weight: 400;
-      color: #000000;
-      margin: 0 0 48px 0;
-      letter-spacing: -0.02em;
-      line-height: 1.15;
-    }
-
-    .rf-inc-body-text {
-      font-size: 16px;
-      line-height: 1.6;
-      color: #202124;
-      margin: 0 0 24px 0;
-      font-weight: 400;
-      max-width: 540px;
-    }
-
-    .rf-inc-body-text:last-child {
-      margin-bottom: 0;
-    }
-
-    /* Right Column (Stats) Styles */
-    .rf-inc-right {
-      display: grid;
-      grid-template-columns: 1fr 1fr;
-      column-gap: 40px;
-      padding-top: 64px; /* Aligns visually with the body text start */
-    }
-
-    .rf-inc-stat-box {
-      display: flex;
-      flex-direction: column;
-    }
-
-    .rf-inc-stat-number {
-      font-size: 64px;
-      font-weight: 400;
-      line-height: 1;
-      margin-bottom: 16px;
-      letter-spacing: -0.03em;
-      
-      background: linear-gradient(180deg, #479aff 40%, rgb(3, 10, 35) 100%);
-      -webkit-background-clip: text;
-      -webkit-text-fill-color: transparent;
-      background-clip: text;
-    }
-
-    .rf-inc-stat-label {
-      font-size: 15px;
-      line-height: 1.5;
-      color: #202124;
-      max-width: 160px;
-    }
-
-    /* Responsive Adjustments */
-    @media (max-width: 960px) {
-      .rf-inc-container {
-        grid-template-columns: 1fr;
-        row-gap: 48px;
-      }
-      .rf-inc-wrapper {
-        padding: 60px 5%;
-      }
-      .rf-inc-right {
-        padding-top: 0;
-      }
-      .rf-inc-heading {
-        font-size: 34px;
-        margin-bottom: 32px;
-      }
-    }
-  </style>
-
-  <div class="rf-inc-container">
-    <!-- Left content side -->
-    <div class="rf-inc-left">
-      <span class="rf-inc-eyebrow">Economic Access and Opportunity</span>
-      <h2 class="rf-inc-heading">Financial inclusion is a human right</h2>
-      
-      <p class="rf-inc-body-text">
-        Adoption of crypto and blockchain can help dramatically increase global economic participation, opportunity, and resilience for billions of under-banked and unbanked people.
-      </p>
-      <p class="rf-inc-body-text">
-        From enabling low-cost and always-on remittances in emerging markets to building Central Bank Digital Currency solutions for governments working to increase financial inclusion, our global crypto solutions are underpinned with the democratizing power of blockchain technology. Together with our partners and customers, we are working to transform a global financial system to meet the ever-evolving, everyday needs of everyone, everywhere.
-      </p>
-    </div>
-
-    <!-- Right metrics side -->
-    <div class="rf-inc-right">
-      <div class="rf-inc-stat-box">
-        <span class="rf-inc-stat-number">$170M</span>
-        <span class="rf-inc-stat-label">Donations since 2018</span>
-      </div>
-      
-      <div class="rf-inc-stat-box">
-        <span class="rf-inc-stat-number">80+</span>
-        <span class="rf-inc-stat-label">Countries where Ripple NGO partners operate</span>
-      </div>
-    </div>
-  </div>
-</div>
 
 
 
