@@ -14,7 +14,7 @@
         @font-face { font-family:'Circular Std'; src:url('fonts/CircularStd-BookItalic.woff2') format('woff2'),url('fonts/CircularStd-BookItalic.woff') format('woff'); font-weight:400; font-style:italic; font-display:swap; }
         @font-face { font-family:'Circular Std'; src:url('fonts/CircularStd-Medium.woff2') format('woff2'),url('fonts/CircularStd-Medium.woff') format('woff'); font-weight:500; font-style:normal; font-display:swap; }
         @font-face { font-family:'Circular Std'; src:url('fonts/CircularStd-Bold.woff2') format('woff2'),url('fonts/CircularStd-Bold.woff') format('woff'); font-weight:600; font-style:normal; font-display:swap; }
-        @font-face { font-family:'Circular Std'; src:url('fonts/CircularStd-Black.woff2') format('woff2'),url('fonts/CircularStd-Black.woff') format('woff'); font-weight:800; font-style:normal; font-display:swap; }
+        @font-face { font-family:'Mino'; src:url('fonts/trade-gothic-lt-1361519976.ttf') format('woff2'),url('fonts/trade-gothic-lt-1361519976.ttf') format('woff'); font-weight:500; font-style:normal; font-display:swap; }
 
     </style>
 </head>
@@ -58,7 +58,7 @@
        SCOPED HERO CSS (Namespace: ms-hs-)
        ========================================================================== */
     .ms-hs-wrapper {
-      --ms-hs-font: "Segoe UI", -apple-system, BlinkMacSystemFont, Roboto, sans-serif;
+      --ms-hs-font: "Mino", -apple-system, BlinkMacSystemFont, Roboto, sans-serif;
       --ms-hs-white: #ffffff;
       
       font-family: var(--ms-hs-font);
@@ -176,7 +176,7 @@
 
     .ms-hs-heading {
       font-size: 3.5rem;
-      font-weight: 500;
+      font-weight: 400;
       line-height: 1.1;
       letter-spacing: -0.03em;
       margin: 0 0 24px 0;
@@ -187,7 +187,7 @@
       line-height: 1.5;
       font-weight: 400;
       margin: 0;
-      opacity: 0.95;
+      color: #d6d6d6;
     }
 
     /* Glassmorphism Bottom Switcher Trays */
@@ -237,7 +237,7 @@
 
     .ms-hs-tab-title {
       font-size: 1rem;
-      font-weight: 600;
+      font-weight: 400;
       margin: 0;
     }
 
@@ -494,7 +494,7 @@
        SCOPED CSS RULES (Namespace: ms-pf-)
        ========================================================================== */
     .ms-pf-container {
-      --ms-font-family: "Segoe UI", -apple-system, BlinkMacSystemFont, Roboto, sans-serif;
+      --ms-font-family: "Mino", -apple-system, BlinkMacSystemFont, Roboto, sans-serif;
       --ms-text-dark: #1b1b1b;
       --ms-text-muted: #505050;
       
@@ -522,12 +522,12 @@
 
     .ms-pf-title {
       font-size: 2.8rem;
-      font-weight: 600;
+      font-weight: 500;
       margin: 0 0 16px 0;
     }
 
     .ms-pf-subtitle {
-      font-size: 1.2rem; font-weight: 450;
+      font-size: 1.2rem; font-weight: 400;
       line-height: 1.5;
       color: var(--ms-text-muted);
       margin: 0;
@@ -556,7 +556,7 @@
 
     /* Huge Card structure initially restricted to 1200px desktop dimensions */
     .ms-pf-card {
-      width: 900px;
+      width: 550px;
       display: flex;
       flex-direction: column;
       scroll-snap-align: center;
@@ -565,7 +565,7 @@
     .ms-pf-media-container {
       position: relative;
       width: 100%;
-      height: 580px; 
+      height: 620px; 
       border-radius: 16px;
       overflow: hidden;
       background-color: #000;
@@ -646,7 +646,7 @@
 
     .ms-pf-card-title {
       font-size: 1.5rem;
-      font-weight: 600;
+      font-weight: 500;
       margin: 0 0 12px 0;
     }
 
@@ -655,7 +655,8 @@
       line-height: 1.5;
       color: var(--ms-text-muted);
       margin: 0;
-      width: 800px; font-weight: 500;
+      width: 500px;
+      font-weight: 400;
     }
 
     /* Layout Controls Footer */

@@ -134,10 +134,11 @@
 
   @import url('https://fonts.googleapis.com/css2?family=Google+Sans:ital,opsz,wght@0,17..18,400..700;1,17..18,400..700&display=swap');
 
-
+@font-face { font-family:'Mino'; src:url('fonts/trade-gothic-lt-1361519976.ttf') format('woff2'),url('fonts/trade-gothic-lt-1361519976.ttf') format('woff'); font-weight:500; font-style:normal; font-display:swap; }
+   
     :host {
       display: block;
-      font-family: 'Google Sans', sans-serif;
+      font-family: 'Mino', sans-serif;
       -webkit-font-smoothing: antialiased;
       -moz-osx-font-smoothing: grayscale;
       color: #ffffff;

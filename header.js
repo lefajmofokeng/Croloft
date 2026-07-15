@@ -337,13 +337,14 @@ class CronosHeader extends HTMLElement {
         @font-face { font-family:'Circular Std'; src:url('fonts/CircularStd-Medium.woff2') format('woff2'),url('fonts/CircularStd-Medium.woff') format('woff'); font-weight:500; font-style:normal; font-display:swap; }
         @font-face { font-family:'Circular Std'; src:url('fonts/CircularStd-Bold.woff2') format('woff2'),url('fonts/CircularStd-Bold.woff') format('woff'); font-weight:600; font-style:normal; font-display:swap; }
         @font-face { font-family:'Circular Std'; src:url('fonts/CircularStd-Black.woff2') format('woff2'),url('fonts/CircularStd-Black.woff') format('woff'); font-weight:800; font-style:normal; font-display:swap; }
-
+        
+  @font-face { font-family:'Mino'; src:url('fonts/trade-gothic-lt-1361519976.ttf') format('woff2'),url('fonts/trade-gothic-lt-1361519976.ttf') format('woff'); font-weight:500; font-style:normal; font-display:swap; }
     
         @import url('https://fonts.googleapis.com/css2?family=Google+Sans:ital,opsz,wght@0,17..18,400..700;1,17..18,400..700&display=swap');
 
         :host {
             --cronos-color-header-bg:    #080d1b;
-            --cronos-color-accent:       #0091ff;
+            --cronos-color-accent:       #68beff;
             --cronos-color-text-light:   #fff;
             --cronos-color-text-muted:   #A0A9BE;
             --cronos-color-menu-bg:      #080d1b;
@@ -351,7 +352,7 @@ class CronosHeader extends HTMLElement {
             --cronos-header-height:       55px;
             --cronos-content-max-width:   1420px;
             display: block;
-            font-family: 'Circular Std', system-ui, -apple-system, sans-serif;
+            font-family: 'Mino', system-ui, -apple-system, sans-serif;
         }
 
         * { box-sizing: border-box; }
@@ -398,14 +399,14 @@ class CronosHeader extends HTMLElement {
         .cronos-header-action-buttons { display: flex; align-items: center; position: relative; }
         .cronos-header-action-btn {
             background: #0077cc; color: #f7f9fa; border: none; padding: 9px 15px;
-            border-radius: 50px; font-weight: 500; font-size: 14px; cursor: pointer;
+            border-radius: 50px; font-weight: 400; font-size: 15px; cursor: pointer;
             margin-left: 10px; text-decoration: none; font-family: inherit; white-space: nowrap;
         }
         .cronos-header-action-btn:hover { background-color: #0081ff; }
 
         .cronos-header-secondary-btn {
             background-color: #62b8fa32; color: #95d1ff; border: none; padding: 9px 15px;
-            border-radius: 50px; font-weight: 500; font-size: 14px; cursor: pointer;
+            border-radius: 50px; font-weight: 400; font-size: 15px; cursor: pointer;
             margin-left: 10px; text-decoration: none; font-family: inherit; white-space: nowrap;
         }
         .cronos-header-secondary-btn:hover { background-color: #4a4b6b6d; }
@@ -486,17 +487,17 @@ class CronosHeader extends HTMLElement {
         }
         .cronos-profile-close:hover { color: #fff; background-color: rgba(255, 255, 255, 0.1); }
         .cronos-profile-title { color: #fff; font-size: 1.28rem; font-weight: 500; margin: 0 0 12px 0; letter-spacing: -0.01em; }
-        .cronos-profile-desc { color: var(--cronos-color-text-muted); font-size: 0.95rem; font-weight: 480; line-height: 1.5; margin: 0 0 24px 0; }
+        .cronos-profile-desc { color: var(--cronos-color-text-muted); font-size: 0.95rem; font-weight: 400; line-height: 1.5; margin: 0 0 24px 0; }
         .cronos-profile-actions { display: flex; gap: 12px; align-items: center; }
         .cronos-profile-btn-login {
             flex: 1; background: transparent; color: #fff; border: 1px solid rgba(255, 255, 255, 0.4);
-            padding: 11px 16px; border-radius: 50px; font-size: 0.9rem; font-weight: 500;
+            padding: 11px 16px; border-radius: 50px; font-size: 0.9rem; font-weight: 400;
             text-align: center; text-decoration: none; cursor: pointer; transition: border-color 0.2s, background-color 0.2s;
         }
         .cronos-profile-btn-login:hover { border-color: #fff; background-color: rgba(255, 255, 255, 0.05); }
         .cronos-profile-btn-create {
             flex: 1.2; background-color: #ebebeb; color: #080d1b; padding: 11px 16px;
-            border-radius: 50px; font-size: 0.9rem; font-weight: 500; text-align: center;
+            border-radius: 50px; font-size: 0.9rem; font-weight: 400; text-align: center;
             text-decoration: none; cursor: pointer; transition: background-color 0.2s, border-color 0.2s;
         }
         .cronos-profile-btn-create:hover { background-color: #e8e8e8; }
@@ -646,7 +647,7 @@ class CronosHeader extends HTMLElement {
             cursor: pointer; transition: background-color 0.15s ease; background: transparent;
         }
         .cronos-lang-selection-row.active { background-color: rgba(255, 255, 255, 0.03); }
-        .cronos-lang-title-text { color: #ffffff; font-size: 1.15rem; font-weight: 600; margin: 0; line-height: 1.25; }
+        .cronos-lang-title-text { color: #ffffff; font-size: 1.15rem; font-weight: 500; margin: 0; line-height: 1.25; }
         .cronos-lang-region-text { color: #64748b; font-size: 0.92rem; font-weight: 500; margin: 2px 0 0 0; line-height: 1.2; }
         .cronos-lang-selection-row.active .cronos-lang-title-text { color: var(--cronos-color-accent); }
         .cronos-lang-no-results { color: #64748b; text-align: center; padding: 40px 0; font-size: 1rem; font-weight: 450; }

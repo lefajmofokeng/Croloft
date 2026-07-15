@@ -20,11 +20,13 @@
   @font-face { font-family:'Circular Std'; src:url('fonts/CircularStd-Bold.woff2') format('woff2'),url('fonts/CircularStd-Bold.woff') format('woff'); font-weight:600; font-style:normal; font-display:swap; }
   @font-face { font-family:'Circular Std'; src:url('fonts/CircularStd-Black.woff2') format('woff2'),url('fonts/CircularStd-Black.woff') format('woff'); font-weight:800; font-style:normal; font-display:swap; }
 
+  @font-face { font-family:'Mino'; src:url('fonts/trade-gothic-lt-1361519976.ttf') format('woff2'),url('fonts/trade-gothic-lt-1361519976.ttf') format('woff'); font-weight:500; font-style:normal; font-display:swap; }
+   
 * {
   margin: 0;
   padding: 0;
   box-sizing: border-box;
-  font-family: 'Circular Std', sans-serif;
+  font-family: 'Mino', sans-serif;
 }
 </style>
 
@@ -207,7 +209,7 @@
     .lfm-hero-carousel-wrapper {
       position: relative;
       width: 100%;
-      height: 530px;
+      height: 600px;
       overflow: hidden;
       background-color: #f3f4f6;
     }
@@ -268,7 +270,7 @@
 
     .lfm-hero-description {
       font-size: 1.15rem;
-      font-weight: 500;
+      font-weight: 400;
       line-height: 1.6;
       color: #374151;
       margin: 0 0 2rem 0;
@@ -281,8 +283,8 @@
       background-color: #0067b8;
       color: #ffffff;
       padding: 0.75rem 2.25rem;
-      font-size: 0.9rem;
-      font-weight: 500;
+      font-size: 0.95rem;
+      font-weight: 400;
       text-decoration: none;
       border-radius: 50px;
       transition: background-color 0.2s ease;
@@ -596,386 +598,6 @@ document.addEventListener("DOMContentLoaded", () => {
 
 
 
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-<div class="its-spec-wrapper">
-  <div class="its-spec-divider"></div>
-  
-  <div class="its-spec-container">
-    
-    <div class="its-spec-left-col">
-      <h2 class="its-spec-title">Technical specs</h2>
-      <div class="its-spec-illustration-box">
-        <svg viewBox="0 0 300 200" fill="none" xmlns="http://www.w3.org/2000/svg" class="its-spec-svg">
-          <rect x="30" y="30" width="240" height="140" rx="6" stroke="#444444" stroke-width="1.5" stroke-dasharray="2 2" />
-          <rect x="25" y="25" width="250" height="150" rx="8" stroke="#ffffff" stroke-width="1" stroke-opacity="0.3" />
-          
-          <rect x="15" y="40" width="10" height="30" rx="2" stroke="#ffffff" stroke-width="1" stroke-opacity="0.2" />
-          <rect x="15" y="130" width="10" height="30" rx="2" stroke="#ffffff" stroke-width="1" stroke-opacity="0.2" />
-          <rect x="275" y="40" width="10" height="30" rx="2" stroke="#ffffff" stroke-width="1" stroke-opacity="0.2" />
-          <rect x="275" y="130" width="10" height="30" rx="2" stroke="#ffffff" stroke-width="1" stroke-opacity="0.2" />
-          
-          <line x1="30" y1="75" x2="270" y2="75" stroke="#ffffff" stroke-width="1" stroke-opacity="0.15" />
-          <line x1="30" y1="125" x2="270" y2="125" stroke="#ffffff" stroke-width="1" stroke-opacity="0.15" />
-          
-          <rect x="45" y="42" width="50" height="22" rx="2" stroke="#ffffff" stroke-width="1" stroke-opacity="0.25" />
-          <rect x="105" y="42" width="50" height="22" rx="2" stroke="#ffffff" stroke-width="1" stroke-opacity="0.25" />
-          <circle cx="55" cy="53" r="2" fill="#ffffff" fill-opacity="0.4" />
-          <circle cx="115" cy="53" r="2" fill="#00ffcc" fill-opacity="0.8" />
-          
-          <rect x="45" y="87" width="50" height="22" rx="2" stroke="#ffffff" stroke-width="1" stroke-opacity="0.25" />
-          <rect x="105" y="87" width="50" height="22" rx="2" stroke="#ffffff" stroke-width="1" stroke-opacity="0.25" />
-          
-          <circle cx="210" cy="100" r="30" stroke="#ffffff" stroke-width="1" stroke-opacity="0.15" stroke-dasharray="4 2" />
-          <circle cx="210" cy="100" r="10" stroke="#ffffff" stroke-width="1" stroke-opacity="0.2" />
-          <path d="M 195 85 L 225 115 M 195 115 L 225 85" stroke="#ffffff" stroke-width="0.75" stroke-opacity="0.2" />
-          
-          <rect x="175" y="45" width="70" height="15" rx="2" stroke="#ffffff" stroke-width="1" stroke-opacity="0.2" />
-          <line x1="185" y1="52.5" x2="215" y2="52.5" stroke="#ffffff" stroke-width="1.5" stroke-opacity="0.4" />
-          <circle cx="232" cy="52.5" r="2.5" fill="#ffffff" fill-opacity="0.5" />
-        </svg>
-      </div>
-    </div>
-    
-    <div class="its-spec-right-column">
-      
-      <div class="its-spec-right-grid">
-        <div class="its-spec-item">
-          <h3 class="its-spec-value">99.999% / &lt;2ms</h3>
-          <p class="its-spec-label">Guaranteed uptime / SLA latency</p>
-        </div>
-        
-        <div class="its-spec-item">
-          <h3 class="its-spec-value">Smart Storage v2</h3>
-          <p class="its-spec-label">Distributed NVMe over Fabrics</p>
-        </div>
-        
-        <div class="its-spec-item">
-          <h3 class="its-spec-value">HyperScale Engine</h3>
-          <p class="its-spec-label">Orchestration & bare-metal hypervisor</p>
-        </div>
-        
-        <div class="its-spec-item">
-          <h3 class="its-spec-value">Kubernetes / IaC</h3>
-          <p class="its-spec-label">Native API & Terraform modules</p>
-        </div>
-        
-        <div class="its-spec-item">
-          <h3 class="its-spec-value">10 - 100 Gbps</h3>
-          <p class="its-spec-label">Dedicated optical burst throughput</p>
-        </div>
-        
-        <div class="its-spec-item">
-          <h3 class="its-spec-value">SOC2 / ISO27001</h3>
-          <p class="its-spec-label">Global compliance homologation</p>
-        </div>
-        
-        <div class="its-spec-item">
-          <h3 class="its-spec-value">Zero-Trust</h3>
-          <p class="its-spec-label">End-to-end hardware-isolated security</p>
-        </div>
-        
-        <div class="its-spec-item">
-          <h3 class="its-spec-value">Multi-Cloud Hybrid</h3>
-          <p class="its-spec-label">Flexible edge & public deployment footprint</p>
-        </div>
-      </div>
-
-      <div class="its-spec-collapsible" id="itsSpecCollapsible">
-        <div class="its-spec-collapsible-inner">
-          <div class="its-spec-right-grid its-spec-extended-grid">
-            <div class="its-spec-item">
-              <h3 class="its-spec-value">PCIe Gen 5.0</h3>
-              <p class="its-spec-label">Next-generation hardware bus architecture</p>
-            </div>
-            
-            <div class="its-spec-item">
-              <h3 class="its-spec-value">Immutable Backups</h3>
-              <p class="its-spec-label">Ransomware-proof historical state archiving</p>
-            </div>
-            
-            <div class="its-spec-item">
-              <h3 class="its-spec-value">Hot-swappable Nodes</h3>
-              <p class="its-spec-label">Zero-downtime structural maintenance capacity</p>
-            </div>
-            
-            <div class="its-spec-item">
-              <h3 class="its-spec-value">AI-Driven Telemetry</h3>
-              <p class="its-spec-label">Predictive load balancing and failure prevention</p>
-            </div>
-          </div>
-        </div>
-      </div>
-
-      <div class="its-spec-action-wrapper">
-        <button class="its-spec-btn" id="itsSpecToggleBtn">
-          <span id="itsSpecBtnText">All specs</span>
-          <span class="its-spec-btn-arrow">
-            <svg viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
-              <path d="M5 12H19M19 12L12 5M19 12L12 19" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
-            </svg>
-          </span>
-        </button>
-      </div>
-
-    </div>
-  </div>
-</div>
-
-<style>
-/* CSS Reset wrapper to preserve containment */
-.its-spec-wrapper {
-  background-color: #0d0d0d;
-  color: #ffffff;
-  font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
-  padding: 150px 24px 150px 24px;
-  box-sizing: border-box;
-}
-
-.its-spec-wrapper * {
-  box-sizing: border-box;
-  margin: 0;
-  padding: 0;
-}
-
-/* Divider Line */
-.its-spec-divider {
-  width: 100%;
-  height: 1px;
-  background-color: rgba(255, 255, 255, 0.15);
-  margin-bottom: 48px;
-}
-
-/* Main Layout Grid */
-.its-spec-container {
-  max-width: 1200px;
-  margin: 0 auto;
-  display: grid;
-  grid-template-columns: 1fr 2.2fr;
-  gap: 40px;
-}
-
-/* Left Column Styling */
-.its-spec-left-col {
-  display: flex;
-  flex-direction: column;
-  gap: 32px;
-}
-
-.its-spec-title {
-  font-size: clamp(2rem, 4vw, 3.2rem);
-  font-weight: 500;
-  letter-spacing: -0.03em;
-  color: #ffffff;
-}
-
-.its-spec-illustration-box {
-  width: 100%;
-  max-width: 280px;
-}
-
-.its-spec-svg {
-  width: 100%;
-  height: auto;
-  display: block;
-}
-
-/* Right Column Main Container */
-.its-spec-right-column {
-  display: flex;
-  flex-direction: column;
-}
-
-/* Right Grid Styling (Two Columns of specs) */
-.its-spec-right-grid {
-  display: grid;
-  grid-template-columns: repeat(2, 1fr);
-  row-gap: 48px;
-  column-gap: 64px;
-  align-content: start;
-}
-
-/* Spec Elements */
-.its-spec-item {
-  display: flex;
-  flex-direction: column;
-  gap: 8px;
-}
-
-.its-spec-value {
-  font-size: clamp(1.4rem, 2.5vw, 2rem);
-  font-weight: 500;
-  letter-spacing: -0.01em;
-  color: #ffffff;
-}
-
-.its-spec-label {
-  font-size: 0.85rem;
-  font-weight: 400;
-  color: #8e8e93;
-  line-height: 1.4;
-}
-
-/* Collapsible Animation Mechanics */
-.its-spec-collapsible {
-  display: grid;
-  grid-template-rows: 0fr;
-  transition: grid-template-rows 0.4s ease-out;
-}
-
-.its-spec-collapsible-inner {
-  overflow: hidden;
-}
-
-.its-spec-collapsible.its-spec-open {
-  grid-template-rows: 1fr;
-}
-
-.its-spec-extended-grid {
-  padding-top: 48px;
-}
-
-/* Aligns CTA Action directly left inside the right-column panel */
-.its-spec-action-wrapper {
-  margin-top: 48px;
-  display: flex;
-  justify-content: flex-start;
-}
-
-/* Expand Button Styling */
-.its-spec-btn {
-  background: transparent;
-  border: 1px solid rgba(255, 255, 255, 0.35);
-  border-radius: 999px;
-  color: #ffffff;
-  padding: 12px 24px;
-  font-size: 0.95rem;
-  font-weight: 500;
-  cursor: pointer;
-  display: inline-flex;
-  align-items: center;
-  gap: 12px;
-  transition: border-color 0.2s ease, background-color 0.2s ease;
-}
-
-.its-spec-btn:hover {
-  border-color: #ffffff;
-  background-color: rgba(255, 255, 255, 0.05);
-}
-
-.its-spec-btn-arrow {
-  width: 16px;
-  height: 16px;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  transition: transform 0.3s ease;
-}
-
-.its-spec-btn-arrow svg {
-  width: 100%;
-  height: 100%;
-}
-
-/* Rotates the arrow downward/upward based on state */
-.its-spec-btn.its-spec-active .its-spec-btn-arrow {
-  transform: rotate(90deg);
-}
-
-/* ========================================== */
-/* RESPONSIVE BREAKPOINTS                     */
-/* ========================================== */
-
-/* Tablet Viewports */
-@media (max-width: 900px) {
-  .its-spec-container {
-    grid-template-columns: 1fr;
-    gap: 48px;
-  }
-  
-  .its-spec-left-col {
-    align-items: flex-start;
-  }
-}
-
-/* Mobile Viewports */
-@media (max-width: 600px) {
-  .its-spec-wrapper {
-    padding: 0 16px 48px 16px;
-  }
-  
-  .its-spec-divider {
-    margin-bottom: 32px;
-  }
-  
-  .its-spec-right-grid {
-    grid-template-columns: 1fr;
-    row-gap: 32px;
-  }
-  
-  .its-spec-illustration-box {
-    max-width: 200px;
-    margin: 0 auto;
-  }
-  
-  .its-spec-left-col {
-    align-items: center;
-    text-align: center;
-    gap: 24px;
-  }
-  
-  .its-spec-action-wrapper {
-    margin-top: 36px;
-    justify-content: flex-start; /* Keeps it aligned to the left of the mobile grid */
-  }
-}
-</style>
-
-<script>
-document.addEventListener("DOMContentLoaded", () => {
-  const toggleBtn = document.getElementById("itsSpecToggleBtn");
-  const collapsible = document.getElementById("itsSpecCollapsible");
-  const btnText = document.getElementById("itsSpecBtnText");
-
-  if (toggleBtn && collapsible) {
-    toggleBtn.addEventListener("click", () => {
-      const isOpen = collapsible.classList.contains("its-spec-open");
-      
-      if (isOpen) {
-        collapsible.classList.remove("its-spec-open");
-        toggleBtn.classList.remove("its-spec-active");
-        btnText.textContent = "All specs";
-      } else {
-        collapsible.classList.add("its-spec-open");
-        toggleBtn.classList.add("its-spec-active");
-        btnText.textContent = "Show less";
-      }
-    });
-  }
-});
-</script>
 
 
 
@@ -2366,7 +1988,7 @@ document.addEventListener("DOMContentLoaded", () => {
         
         <div class="crns-text-col">
             <span class="crns-eyebrow">MOBILE-FIRST</span>
-            <h1 class="crns-headline">Responsive Mobile Apps</h1>
+            <h1 class="crns-headline">Progressive Web Apps</h1>
             
             <div class="crns-feature-list">
                 <p class="crns-feature-item">
