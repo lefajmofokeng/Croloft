@@ -133,7 +133,7 @@
 
     /* Master Shared Settings for Typographic Layers */
     .cronos-hero-text-layer {
-      font-size: 8rem;
+      font-size: 12rem;
       font-weight: 400;
       letter-spacing: -0.04em;
       text-align: center;
@@ -516,12 +516,11 @@
 }
 
 .krk-heading {
-    padding-top: 8rem; 
-    padding-bottom: 2rem;
+    padding-top: 12rem; 
+    padding-bottom: 3.2rem;
 }
 .krk-heading h2{
- align-items: center; text-align: center; font-size: 3.8rem; font-weight: 500;
-}
+ align-items: center; text-align: center; font-size: 3.8rem; font-weight: 500; letter-spacing: -0.02em;}
 
 /* Base Block Design with Explicit Massive Heights */
 .krk-landing-block {
@@ -687,6 +686,349 @@
   }
 }
 </style>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<section class="crft-full-width-section">
+  <div class="crft-bounded-container">
+    
+    <div class="crft-header-container">
+      <h2 class="crft-main-title">Take a closer look.</h2>
+    </div>
+
+    <div class="crft-card-container crft-apple-banner-bg">
+      
+      <div class="crft-left-col">
+        <h3 class="crft-cta-text">
+          A Guided Tour of Next Generation Software, Infrastructure, and Scale
+        </h3>
+        <button type="button" class="crft-action-btn">
+          Watch the film
+        </button>
+      </div>
+
+      <div class="crft-right-col">
+        <img 
+          src="https://images.pexels.com/photos/1181411/pexels-photo-1181411.jpeg" 
+          alt="IT Business Showcase" 
+          class="crft-full-cover-img"
+        />
+      </div>
+
+    </div>
+    
+  </div>
+</section>
+
+<style>
+  /* Base resets to safeguard the component */
+.crft-full-width-section,
+.crft-full-width-section * {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+}
+
+/* Full Width Section Wrapper */
+.crft-full-width-section {
+  width: 100%;
+  background-color: #f5f5f7;
+  padding: 12rem 0;
+  font-family: 'Circular Std',-apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
+  -webkit-font-smoothing: antialiased;
+}
+
+/* Container locked at exactly 1200px max-width */
+.crft-bounded-container {
+  width: 100%;
+  max-width: 1200px;
+  margin: 0 auto;
+  padding: 0 1.5rem;
+}
+
+/* Header Styling */
+.crft-header-container {
+  margin-bottom: 2rem;
+  text-align: left;
+}
+
+.crft-main-title {
+  font-size: 2rem;
+  line-height: 2.25rem;
+  font-weight: 500;
+  color: #1d1d1f;
+  letter-spacing: -0.025em;
+}
+
+/* Feature Card Wrapper */
+.crft-card-container {
+  position: relative;
+  overflow: hidden; /* Crucial to clip the image to the card's rounded corners */
+  border-radius: 28px;
+  min-height: 500px;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  box-shadow: -1px 3px 9px 8px rgba(0, 0, 0, 0.355);
+}
+
+/* --- Imprinted Neon Rainbow Shadow Animation --- */
+  @keyframes awslm-vibrant-rainbow {
+    0% { box-shadow: 0 8px 30px rgb(236, 72, 154), 0 0 15px rgb(138, 92, 246); }
+    33% { box-shadow: 0 8px 30px rgb(59, 131, 246), 0 0 15px rgb(6, 181, 212); }
+    66% { box-shadow: 0 8px 30px rgb(245, 159, 11), 0 0 15px rgb(236, 72, 154); }
+    100% { box-shadow: 0 8px 30px rgb(236, 72, 154), 0 0 15px rgba(138, 92, 246, 0.933); }
+  }
+
+  .crft-card-container {
+    animation: awslm-vibrant-rainbow 3s linear infinite;
+  }
+
+/* Exact Split Color Background Logic (Mobile Stacking) */
+.crft-apple-banner-bg {
+  background: #e3e3e3;
+  background: linear-gradient(
+    to bottom,
+    #e3e3e3 0%,
+    #e3e3e3 50%,
+    #e2945c 50%,
+    #e2945c 100%
+  );
+}
+
+/* Left Column Layout */
+.crft-left-col {
+  z-index: 10;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  text-align: center;
+  padding: 3rem 1.5rem 2rem 1.5rem;
+}
+
+.crft-cta-text {
+  font-size: 1.3rem;
+  line-height: 2.1rem;
+  font-weight: 500;
+  color: #1d1d1f;
+  letter-spacing: -0.015em;
+  max-width: 22rem;
+  margin-bottom: 1.5rem;
+}
+
+/* Action Button */
+.crft-action-btn {
+  background-color: #1d1d1f;
+  color: #ffffff;
+  font-size: 0.875rem;
+  font-weight: 400;
+  padding: 0.75rem 1.5rem;
+  border: none;
+  border-radius: 9999px;
+  cursor: pointer;
+  transition: background-color 0.2s ease;
+  letter-spacing: 0.025em;
+}
+
+.crft-action-btn:hover {
+  background-color: #323234;
+}
+
+/* Right Column Graphic Container - Zero padding, structural block */
+.crft-right-col {
+  position: relative;
+  width: 100%;
+  height: 275px; /* Takes exactly half the card height on mobile split */
+  display: block;
+}
+
+/* The Magic Fix: Image completely fills its parent container */
+.crft-full-cover-img {
+  display: block;
+  width: 100%;
+  height: 100%;
+  object-fit: cover; /* Forces image to scale up and fill the entire space without distortion */
+  object-position: center; 
+}
+
+/* --- Desktop & Layout Rules (768px and up) --- */
+@media (min-width: 768px) {
+  .crft-main-title {
+    font-size: 3rem;
+    line-height: 1;
+  }
+
+  .crft-card-container {
+    min-height: 440px;
+    flex-direction: row;
+    align-items: stretch; /* Forces both columns to take up equal full height */
+  }
+
+  /* Flip Gradient Split to Side-by-Side (50% Split) */
+  .crft-apple-banner-bg {
+    background: linear-gradient(
+      to right,
+      #e3e3e3 0%,
+      #e3e3e3 50%,
+      #e2945c 50%,
+      #e2945c 100%
+    );
+  }
+
+  .crft-left-col {
+    width: 50%;
+    align-items: flex-start;
+    text-align: left;
+    padding: 4rem 0 4rem 4rem; /* Left padding inside the card, zero right padding */
+    margin-bottom: 0;
+  }
+
+  .crft-cta-text {
+    font-size: 2.25rem;
+    line-height: 2.5rem;
+    max-width: 26rem;
+  }
+
+  .crft-right-col {
+    width: 50%;
+    height: auto; /* Inherits container height via flex stretch */
+  }
+}
+</style>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 
 

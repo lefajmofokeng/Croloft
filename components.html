@@ -4440,251 +4440,406 @@
 
 
 
-<section class="defcon-premium-showcase">
-  <div class="defcon-header-container-hd">
-    <div class="defcon-main-heading-hd">Build, scale & deploy</div>
-    
-    <div class="defcon-subheading-wrapper">
-      <div class="defcon-subheading-hd" id="dynamic-subheading">
-        Over <span class="highlight-cron">120+ clients</span> supported nationwide.
-      </div>
-    </div>
 
-  </div>
 
-  <button class="defcon-crypto-cta" onclick="window.location.href='croloft.html'">
-    <span class="defcon-crypto-text">What is Croloft?</span>
-    <span class="defcon-crypto-icon">
-      <svg width="30" height="30" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
-        <path d="M5 12H19M19 12L12 5M19 12L12 19" stroke="white" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
-      </svg>
-    </span>
-  </button>
 
-</section>
-
-<style>
-  
-    .highlight-cron {
-        color: #0091ff;
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Infinite Responsive Hero Slider</title>
+  <style>
+    /* Scope Reset to guarantee zero conflicts with external styles */
+    .lfm-hero-outer-container {
+      width: 100%;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      font-family: 'Circular Std', sans-serif;
+      box-sizing: border-box;
+      margin: 0;
+      padding: 0;
     }
 
-    * { font-family: 'Google Sans', sans-serif; }
-/* Base Styles */
-.defcon-premium-showcase {
-  position: relative;
-  width: 100%;
-  min-height: 100vh;
-  padding: 60px 5%;
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  justify-content: center;
-  overflow: hidden;
-  background: linear-gradient( rgba(6, 39, 62, 0.648), rgba(6, 39, 62, 0.297)), url('https://images.unsplash.com/photo-1686848429284-d108e021a74c?q=80&w=1332&auto=format&fit=crop&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D') no-repeat center center/cover;
-  box-sizing: border-box;
-  font-family: 'Circular Std', sans-serif; 
-}
+    .lfm-hero-outer-container * {
+      box-sizing: border-box;
+    }
 
-/* Header Container */
-.defcon-header-container-hd {
-  max-width: 800px;
-  width: 100%;
-  text-align: center;
-  animation: defconFadeInUp 1s ease-out forwards;
-}
+    /* Outer carousel window configuration */
+    .lfm-hero-carousel-wrapper {
+      position: relative;
+      width: 100%;
+      height: 600px;
+      overflow: hidden;
+      background-color: #f3f4f6;
+    }
 
-/* Main Heading */
-.defcon-main-heading-hd {
-  font-size: 6rem; 
-  font-weight: 400;
-  text-transform: none;
-  max-width: 800px; 
+    /* Flex track holding slides horizontally side-by-side */
+    .lfm-hero-track {
+      display: flex;
+      width: 100%;
+      height: 100%;
+      position: relative;
+      will-change: transform;
+    }
+
+    /* Individual product panel architecture */
+    .lfm-hero-slide {
+      flex: 0 0 100%;
+      width: 100%;
+      height: 100%;
+      display: flex;
+      align-items: center;
+      position: relative;
+    }
+
+    /* Separate background assets per layout slide */
+    .lfm-hero-bg {
+      position: absolute;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      background-size: cover;
+      background-position: center;
+      background-repeat: no-repeat;
+      z-index: 1;
+    }
+
+    .lfm-hero-content-container {
+      width: 100%;
+      max-width: 1280px;
+      margin: 0 auto;
+      padding: 0 4rem;
+      position: relative;
+      z-index: 2;
+    }
+
+    .lfm-hero-text-block {
+      max-width: 550px;
+      color: #111827;
+    }
+
+    .lfm-hero-title {
+      font-size: 3.25rem;
+      font-weight: 500;
+      line-height: 1.15;
+      margin: 0 0 1.25rem 0;
+      letter-spacing: -0.025em;
+    }
+
+    .lfm-hero-description {
+      font-size: 1.15rem;
+      font-weight: 400;
+      line-height: 1.6;
+      color: #374151;
+      margin: 0 0 2rem 0;
+    }
+
+    .lfm-hero-btn {
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      background-color: #0067b8;
+      color: #ffffff;
+      padding: 0.75rem 2.25rem;
+      font-size: 0.95rem;
+      font-weight: 400;
+      text-decoration: none;
+      border-radius: 50px;
+      transition: background-color 0.2s ease;
+    }
+
+    .lfm-hero-btn:hover {
+      background-color: #005293;
+    }
+
+    /* Control Panel UI - Positioned completely underneath the window */
+    .lfm-hero-controls-bar {
+      margin-top: 1.5rem;
+      display: flex;
+      align-items: center;
+      gap: 12px;
+      padding: 6px 16px;
+    }
+
+    .lfm-hero-ctrl-btn {
+      background: none;
+      border: none;
+      cursor: pointer;
+      padding: 3px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      color: #000000; border: 2px solid rgb(22, 22, 22);
+      border-radius: 50%;
+      transition: background-color 0.2s, color 0.2s;
+    }
+
+    .lfm-hero-ctrl-btn:hover {
+      background-color: rgba(0, 0, 0, 0.05);
+      color: #111827;
+    }
+
+    .lfm-hero-icon {
+      width: 30px;
+      height: 30px; stroke-width: 0.8;
+    }
+
+    .lfm-hero-dots-indicator {
+      display: flex;
+      align-items: center;
+      gap: 10px;
+    }
+
+    .lfm-hero-dot {
+      width: 8px;
+      height: 8px;
+      border-radius: 50%;
+      background-color: #d1d5db;
+      border: none;
+      cursor: pointer;
+      padding: 0;
+      transition: transform 0.2s, background-color 0.2s;
+    }
+
+    .lfm-hero-dot.active {
+      background-color: #111827;
+      transform: scale(1.25);
+    }
+
+    /* Responsive Mobile Breakpoints */
+    @media (max-width: 1024px) {
+      .lfm-hero-content-container { padding: 0 2rem; }
+      .lfm-hero-title { font-size: 2.75rem; }
+    }
+
+    @media (max-width: 768px) {
+      .lfm-hero-carousel-wrapper { height: 500px; }
+      .lfm-hero-content-container { text-align: center; padding: 0 1.5rem; }
+      .lfm-hero-text-block { margin: 0 auto; max-width: 100%; }
+      .lfm-hero-title { font-size: 2.25rem; }
+      .lfm-hero-description { font-size: 1rem; }
+    }
+  </style>
+</head>
+<body>
+
+<div class="lfm-hero-outer-container">
   
-  line-height: 1;
-  color: white;
-  text-align: center;
-  margin: 7rem auto 3rem auto; 
-}
+  <div class="lfm-hero-carousel-wrapper" id="lfm-hero-carousel-root">
+    <div class="lfm-hero-track" id="lfm-hero-slider-track">
+      
+      <div class="lfm-hero-slide">
+        <div class="lfm-hero-bg" style="background-image: url('https://images.pexels.com/photos/9202379/pexels-photo-9202379.jpeg');"></div>
+        <div class="lfm-hero-content-container">
+          <div class="lfm-hero-text-block">
+            <h1 class="lfm-hero-title">Meet Surface Laptop</h1>
+            <p class="lfm-hero-description">Unlock AI features like Live Captions and Cocreator with this exceptionally powerful laptop.</p>
+            <a href="#" class="lfm-hero-btn">Learn more</a>
+          </div>
+        </div>
+      </div>
 
-/* --- NEW SUBHEADING STYLES --- */
+      <div class="lfm-hero-slide">
+        <div class="lfm-hero-bg" style="background-image: url('https://images.pexels.com/photos/4273094/pexels-photo-4273094.jpeg');"></div>
+        <div class="lfm-hero-content-container">
+          <div class="lfm-hero-text-block">
+            <h1 class="lfm-hero-title">Meet Surface Pro</h1>
+            <p class="lfm-hero-description">The ultimate 2-in-1 flexibility meets next-generation AI performance for all-day productivity.</p>
+            <a href="#" class="lfm-hero-btn">Learn more</a>
+          </div>
+        </div>
+      </div>
 
-/* Wrapper to hold height stable during transition */
-.defcon-subheading-wrapper {
-  height: 3em; /* Fixed height to prevent layout jumping */
-  margin-bottom: 2rem;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  overflow: hidden; /* Ensures text entering from top is hidden until inside */
-}
+      <div class="lfm-hero-slide">
+        <div class="lfm-hero-bg" style="background-image: url('https://images.pexels.com/photos/4992078/pexels-photo-4992078.jpeg');"></div>
+        <div class="lfm-hero-content-container">
+          <div class="lfm-hero-text-block">
+            <h1 class="lfm-hero-title">Explore Accessories</h1>
+            <p class="lfm-hero-description">Elevate your experience with designed-to-match keyboards, adaptive pens, and high-speed docks.</p>
+            <a href="#" class="lfm-hero-btn">Shop now</a>
+          </div>
+        </div>
+      </div>
 
-.defcon-subheading-hd {
-  font-size: 24px;
-  font-weight: 430;
-  color: #ffffff;
-  text-align: center;
-  line-height: 1.5;
-  
-  /* Animation properties */
-  transition: transform 0.5s cubic-bezier(0.16, 1, 0.3, 1), opacity 0.5s ease;
-  transform: translateY(0);
-  opacity: 1;
-}
+    </div>
+  </div>
 
-/* States for the animation */
-.subheading-exit {
-  transform: translateY(30px); /* Move Down */
-  opacity: 0;
-}
+  <div class="lfm-hero-controls-bar">
+    <button class="lfm-hero-ctrl-btn" id="lfm-hero-toggle-play" aria-label="Pause Auto Scroll">
+      <svg viewBox="0 0 24 24" class="lfm-hero-icon icon-pause"><path d="M6 19h4V5H6v14zm8-14v14h4V5h-4z" fill="currentColor"/></svg>
+      <svg viewBox="0 0 24 24" class="lfm-hero-icon icon-play" style="display:none;"><path d="M8 5v14l11-7z" fill="currentColor"/></svg>
+    </button>
+    
+    <button class="lfm-hero-ctrl-btn" id="lfm-hero-prev" aria-label="Previous Slide">
+      <svg viewBox="0 0 24 24" class="lfm-hero-icon"><path d="M15.41 7.41L14 6l-6 6 6 6 1.41-1.41L10.83 12z" fill="currentColor"/></svg>
+    </button>
 
-.subheading-enter-setup {
-  transform: translateY(-30px); /* Start at Top */
-  opacity: 0;
-  transition: none; /* Instant jump to top while invisible */
-}
-/* ----------------------------- */
+    <div class="lfm-hero-dots-indicator" id="lfm-hero-dots-container"></div>
 
-/* CTA Button Styles */
-.defcon-crypto-cta {
-  display: inline-flex;
-  align-items: center;
-  background: #dedede;
-  color: #06273e;
-  border: none;
-  padding: 5px 6px 5px 25px;
-  font-size: 17px;
-  font-weight: 500;
-  border-radius: 60px;
-  cursor: pointer;
-  transition: all 0.3s ease;
-  position: relative;
-  overflow: hidden;
-  margin-bottom: 4rem;
-  margin-top: 1rem;
-  width: fit-content;
-}
+    <button class="lfm-hero-ctrl-btn" id="lfm-hero-next" aria-label="Next Slide">
+      <svg viewBox="0 0 24 24" class="lfm-hero-icon"><path d="M10 6L8.59 7.41 13.17 12l-4.58 4.59L10 18l6-6z" fill="currentColor"/></svg>
+    </button>
+  </div>
 
-.defcon-crypto-cta:active {
-  transform: translateY(1px);
-}
-
-.defcon-crypto-text {
-  margin-right: 15px;
-}
-
-.defcon-crypto-icon {
-  width: 40px;
-  height: 40px;
-  background: #006cbf;
-  border-radius: 50%;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  transition: all 0.3s ease;
-}
-
-/* --- Responsive Adjustments --- */
-
-@media (max-width: 1024px) {
-  .defcon-main-heading-hd {
-    font-size: 44px; 
-  }
-}
-
-@media (max-width: 767px) {
-  .defcon-premium-showcase {
-    min-height: 70vh; 
-  }
-  .defcon-main-heading-hd {
-    font-size: 38px;
-    line-height: 1.25;
-  }
-
-  .defcon-subheading-hd {
-    font-size: 20px;
-  }
-  
-  .defcon-subheading-wrapper {
-    height: auto; /* Allow auto height on mobile if text wraps */
-    min-height: 3.5em; 
-  }
-}
-
-@media (max-width: 480px) {
-  .defcon-premium-showcase {
-    padding: 40px 5%;
-    min-height: 100vh; 
-  }
-  
-  .defcon-main-heading-hd {
-    font-size: 40px; 
-    line-height: 1.3;
-    margin-bottom: 2rem;
-  }
-  
-  .defcon-crypto-cta {
-    font-size: 18px; 
-    margin-top: 0.5rem;
-    margin-bottom: 2rem;
-    padding: 5px 5px 5px 25px;
-  }
-  
-  .defcon-crypto-icon {
-    width: 40px;
-    height: 40px;
-  }
-  
-  .defcon-crypto-icon svg {
-    width: 20px;
-    height: 20px;
-  }
-  
-  .defcon-crypto-text {
-    margin-right: 10px;
-  }
-}
-</style>
+</div>
 
 <script>
-document.addEventListener("DOMContentLoaded", function() {
-    const subheadingEl = document.getElementById('dynamic-subheading');
+document.addEventListener("DOMContentLoaded", () => {
+  const wrapper = document.getElementById("lfm-hero-carousel-root");
+  if (!wrapper) return;
+
+  const track = wrapper.querySelector("#lfm-hero-slider-track");
+  const originalSlides = Array.from(track.children);
+  const totalOriginals = originalSlides.length;
+  if (totalOriginals === 0) return;
+
+  const nextBtn = document.getElementById("lfm-hero-next");
+  const prevBtn = document.getElementById("lfm-hero-prev");
+  const togglePlayBtn = document.getElementById("lfm-hero-toggle-play");
+  const dotsContainer = document.getElementById("lfm-hero-dots-container");
+  
+  const pauseIcon = togglePlayBtn.querySelector(".icon-pause");
+  const playIcon = togglePlayBtn.querySelector(".icon-play");
+
+  let currentIndex = 1; 
+  let autoScrollTimer = null;
+  let isPlaying = true;
+  let isTransitioning = false;
+  const slideDuration = 9000; 
+
+  // Generate Navigation Dots dynamically
+  originalSlides.forEach((_, index) => {
+    const dot = document.createElement("button");
+    dot.classList.add("lfm-hero-dot");
+    if (index === 0) dot.classList.add("active");
+    dot.setAttribute("aria-label", `Go to slide ${index + 1}`);
+    dotsContainer.appendChild(dot);
+  });
+  const dots = Array.from(dotsContainer.children);
+
+  // Setup Clones for Infinite Loop Visual Snapping
+  const firstClone = originalSlides[0].cloneNode(true);
+  const lastClone = originalSlides[totalOriginals - 1].cloneNode(true);
+  
+  track.appendChild(firstClone);
+  track.insertBefore(lastClone, originalSlides[0]);
+
+  // Sync structural offset base position
+  track.style.transform = `translateX(-${currentIndex * 100}%)`;
+
+  function getActiveOriginalIndex(index) {
+    if (index === 0) return totalOriginals - 1;
+    if (index === totalOriginals + 1) return 0;
+    return index - 1;
+  }
+
+  function updateDots() {
+    dots.forEach(dot => dot.classList.remove("active"));
+    const activeIndex = getActiveOriginalIndex(currentIndex);
+    if (dots[activeIndex]) dots[activeIndex].classList.add("active");
+  }
+
+  function moveToSlide(targetIndex, animate = true) {
+    if (isTransitioning && animate) return;
     
-    // The content array based on your original text split into 3 parts
-    const messages = [
-        'Over <span class="highlight-cron">120+ clients</span> supported nationwide.',
-        'Providing <span class="highlight-cron">24/7 monitoring</span> and real-time alerts.',
-        'Achieving <span class="highlight-cron">zero security breaches</span> in managed environments.'
-    ];
+    isTransitioning = true;
+    currentIndex = targetIndex;
+    
+    if (animate) {
+      track.style.transition = "transform 0.6s cubic-bezier(0.25, 1, 0.5, 1)";
+    } else {
+      track.style.transition = "none";
+    }
+    
+    track.style.transform = `translateX(-${currentIndex * 100}%)`;
+    updateDots();
 
-    let currentIndex = 0;
+    // If we aren't animating, reset transition guard immediately
+    if (!animate) {
+      isTransitioning = false;
+    }
+  }
 
-    setInterval(() => {
-        // 1. Slide OUT (Down)
-        subheadingEl.classList.add('subheading-exit');
+  // Handle Instant Teleport at track boundaries without visual jumps
+  track.addEventListener("transitionend", () => {
+    if (currentIndex === totalOriginals + 1) {
+      track.style.transition = "none";
+      currentIndex = 1;
+      track.style.transform = `translateX(-${currentIndex * 100}%)`;
+      // Read offsetWidth to force browser layout pipeline flush
+      track.offsetWidth; 
+    }
+    if (currentIndex === 0) {
+      track.style.transition = "none";
+      currentIndex = totalOriginals;
+      track.style.transform = `translateX(-${currentIndex * 100}%)`;
+      track.offsetWidth; 
+    }
+    isTransitioning = false;
+  });
 
-        setTimeout(() => {
-            // 2. Update Index
-            currentIndex = (currentIndex + 1) % messages.length;
-            
-            // 3. Jump to TOP (Invisible)
-            subheadingEl.classList.add('subheading-enter-setup');
-            subheadingEl.classList.remove('subheading-exit');
-            
-            // 4. Change Text
-            subheadingEl.innerHTML = messages[currentIndex];
+  function startAutoScroll() {
+    stopAutoScroll();
+    autoScrollTimer = setInterval(() => {
+      moveToSlide(currentIndex + 1);
+    }, slideDuration);
+  }
 
-            // 5. Slide IN (From Top to Center)
-            // Small timeout allows the browser to register the 'jump to top' before animating down
-            setTimeout(() => {
-                subheadingEl.classList.remove('subheading-enter-setup');
-            }, 50);
+  function stopAutoScroll() {
+    if (autoScrollTimer) clearInterval(autoScrollTimer);
+  }
 
-        }, 500); // Wait for the 0.5s slide-out animation to finish
+  // UI Navigation Triggers
+  nextBtn.addEventListener("click", () => {
+    moveToSlide(currentIndex + 1);
+    if (isPlaying) startAutoScroll();
+  });
 
-    }, 4000); // Change text every 4 seconds
+  prevBtn.addEventListener("click", () => {
+    moveToSlide(currentIndex - 1);
+    if (isPlaying) startAutoScroll(); 
+  });
+
+  dots.forEach((dot, index) => {
+    dot.addEventListener("click", () => {
+      moveToSlide(index + 1);
+      if (isPlaying) startAutoScroll();
+    });
+  });
+
+  togglePlayBtn.addEventListener("click", () => {
+    if (isPlaying) {
+      stopAutoScroll();
+      pauseIcon.style.display = "none";
+      playIcon.style.display = "block";
+    } else {
+      startAutoScroll();
+      pauseIcon.style.display = "block";
+      playIcon.style.display = "none";
+    }
+    isPlaying = !isPlaying;
+  });
+
+  // Run Carousel
+  if (totalOriginals > 0) {
+    startAutoScroll();
+  }
 });
 </script>
+
+</body>
+</html>
+
+
+
+
+
+
+
+
 
 
 
@@ -12730,4 +12885,1493 @@ document.addEventListener("DOMContentLoaded", () => {
 
 </body>
 </html>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Kentwood Academy Design Recreation</title>
+<style>
+  /* --- Unique Namespace Styling (kw-special-) --- */
+  .kw-special-container * {
+    box-sizing: border-box;
+    margin: 0;
+    padding: 0;
+    font-family: 'Lucida Sans', sans-serif;
+  }
+
+  .kw-special-container {
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: 100px 0 150px 0;
+    background-color: transparent;
+    display: grid;
+    grid-template-columns: 1fr 1fr 1fr;
+    grid-template-rows: auto auto;
+    gap: 20px;
+  }
+
+  /* --- New Header Section Styling --- */
+  .kw-special-header {
+    grid-column: 1 / -1;
+    margin-bottom: 20px;
+    color: #0a0a3c;
+  }
+
+  .kw-special-header-title {
+    font-size: 48px;
+    font-weight: 400;
+    line-height: 1.2; font-family: 'Lucida Sans', sans-serif;
+    margin-bottom: 15px;
+  }
+
+  .kw-special-header-desc {
+    font-size: 20px;
+    line-height: 1.6;
+    max-width: 800px;
+    color: #4a4a6a;
+  }
+
+  /* --- General Card Styling --- */
+  .kw-special-card {
+    border-radius: 20px;
+    overflow: hidden;
+    position: relative;
+  }
+
+  .kw-special-dark-bg {
+    background-color: #0a0a3c;
+    color: white;
+  }
+
+  .kw-special-light-bg {
+    background-color: #e9e9f5;
+    color: #0a0a3c;
+  }
+
+  .kw-special-card-content {
+    padding: 40px;
+  }
+
+  /* --- Typography --- */
+  .kw-special-title {
+    font-size: 40px;
+    font-weight: 400;
+    margin-bottom: 20px; 
+    line-height: 1.2; font-family: 'Lucida Sans', sans-serif;
+  }
+
+  .kw-special-text {
+    font-size: 18px;
+    line-height: 1.6;
+    margin-bottom: 30px;
+  }
+
+  /* --- Buttons --- */
+  .kw-special-btn {
+    display: inline-block;
+    padding: 12px 30px;
+    background-color: #0a0a3c;
+    color: white;
+    font-size: 14px;
+    text-decoration: none;
+    border-radius: 30px;
+    font-weight: 500;
+    transition: background-color 0.3s;
+    border: none;
+    cursor: pointer;
+  }
+
+  .kw-special-btn.kw-special-btn-outline {
+    background-color: transparent;
+    border: 2px solid white;
+  }
+
+  .kw-special-btn:hover {
+    background-color: #1a1a5c;
+  }
+  .kw-special-btn.kw-special-btn-outline:hover {
+    background-color: white;
+    color: #0a0a3c;
+  }
+
+  /* --- Grid Cell Specifics --- */
+
+  /* 1. Welcome from Headteacher (Top Left) */
+  .kw-special-welcome-card {
+    grid-column: 1 / 2;
+    grid-row: 2 / 4; /* Shifted down to accommodate header row */
+    position: relative;
+    min-height: 600px;
+  }
+
+  .kw-special-welcome-bg {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    z-index: 1;
+  }
+
+  .kw-special-welcome-content {
+    position: relative;
+    z-index: 2;
+    height: 100%;
+    display: flex;
+    flex-direction: column;
+    justify-content: flex-end;
+    padding: 40px;
+    background: linear-gradient(to top, rgba(0,0,0,0.7) 0%, rgba(0,0,0,0) 60%);
+    color: white;
+  }
+
+  /* 2. Arrange a Personal Visit (Top Right, Wide) */
+  .kw-special-visit-card {
+    grid-column: 2 / 4;
+    grid-row: 2 / 3; /* Shifted down to accommodate header row */
+  }
+
+  /* 3. Crest (Middle Right, Square) */
+  .kw-special-crest-card {
+    grid-column: 2 / 3;
+    grid-row: 3 / 4; /* Shifted down to accommodate header row */
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    padding: 0;
+  }
+  
+  .kw-special-crest-img {
+      width: 140px;
+      height: auto;
+  }
+
+  /* 4. Admissions (Middle Right, Square) */
+  .kw-special-admissions-card {
+    grid-column: 3 / 4;
+    grid-row: 3 / 4; /* Shifted down to accommodate header row */
+  }
+
+  /* 5. The Ethos and Environment (Bottom Left, Wide) */
+  .kw-special-ethos-card {
+    grid-column: 1 / 3;
+    grid-row: 4 / 5; /* Shifted down to accommodate header row */
+  }
+
+  /* 6. Children Image (Bottom Right, Square) */
+  .kw-special-children-card {
+    grid-column: 3 / 4;
+    grid-row: 4 / 5; /* Shifted down to accommodate header row */
+    position: relative;
+    min-height: 300px;
+  }
+
+  .kw-special-children-bg {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+  }
+
+  /* --- Responsive Design for smaller screens --- */
+  @media (max-width: 900px) {
+    .kw-special-container {
+      grid-template-columns: 1fr;
+      grid-template-rows: auto;
+      padding: 60px 20px; /* Added slight side padding for smaller displays */
+    }
+    .kw-special-header-title {
+      font-size: 36px;
+    }
+    .kw-special-header-desc {
+      font-size: 18px;
+    }
+    .kw-special-welcome-card, .kw-special-visit-card, .kw-special-crest-card, .kw-special-admissions-card, .kw-special-ethos-card, .kw-special-children-card {
+      grid-column: 1 / -1;
+      grid-row: auto;
+    }
+    .kw-special-welcome-card, .kw-special-children-card {
+        min-height: 400px;
+    }
+    .kw-special-crest-card {
+        padding: 40px 0;
+    }
+  }
+</style>
+</head>
+<body>
+
+<div class="kw-special-container">
+
+  <div class="kw-special-header">
+    <h1 class="kw-special-header-title">Discover Maluti Life</h1>
+    <p class="kw-special-header-desc">Explore our vibrant campus community, dedicated academic pathways, and the unique ethos that prepares our students for global leadership and creative innovation.</p>
+  </div>
+
+  <div class="kw-special-card kw-special-welcome-card">
+    <img src="https://images.unsplash.com/photo-1666866850021-a843a45479af?q=80&w=687&auto=format&fit=crop&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D" alt="Headteacher" class="kw-special-welcome-bg">
+    <div class="kw-special-welcome-content">
+      <h2 class="kw-special-title">Welcome from the Principal</h2>
+      <p class="kw-special-text">At Maluti, our guiding principle is 'Aim High, Be Kind, and Dare to be Different'. This motto, deeply rooted at our core, combined with exceptional teaching sets us apart.</p>
+      <a href="principal.html" class="kw-special-btn" style="width: fit-content;">Read More</a>
+    </div>
+  </div>
+
+  <div class="kw-special-card kw-special-dark-bg kw-special-visit-card">
+    <div class="kw-special-card-content">
+      <h2 class="kw-special-title">Arrange a Personal Visit</h2>
+      <p class="kw-special-text">Experience Maluti TVET College firsthand. Tailored to your child's interests and admission stage, we offer visits year-round, from Nursery to Prep School.</p>
+      <a href="#" class="kw-special-btn kw-special-btn-outline">Arrange a Visit</a>
+    </div>
+  </div>
+
+  <div class="kw-special-card kw-special-dark-bg kw-special-crest-card">
+      <img src="images/logo.png" alt="Kentwood Academy Crest" class="kw-special-crest-img">
+  </div>
+
+  <div class="kw-special-card kw-special-light-bg kw-special-admissions-card">
+    <div class="kw-special-card-content">
+      <h2 class="kw-special-title">Admissions</h2>
+      <p class="kw-special-text">Selecting the ideal educational environment for your child is a significant and profound choice.</p>
+      <a href="#" class="kw-special-btn">Read More</a>
+    </div>
+  </div>
+
+  <div class="kw-special-card kw-special-light-bg kw-special-ethos-card">
+    <div class="kw-special-card-content">
+      <h2 class="kw-special-title">The Ethos and the Environment</h2>
+      <p class="kw-special-text">At Maluti, our ethos goes beyond academia. We believe in nurturing the whole child, promoting resilience, creativity, and global awareness. Set against the backdrop of Kent's natural beauty, our campus offers an environment where students are inspired daily, both by the lessons in the classroom and the serenity outside.</p>
+      <a href="#" class="kw-special-btn">Read More</a>
+    </div>
+  </div>
+
+  <div class="kw-special-card kw-special-children-card">
+    <img src="https://images.unsplash.com/photo-1556560957-9b6c2b102581?q=80&w=689&auto=format&fit=crop&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D" alt="Children Waving" class="kw-special-children-bg">
+  </div>
+
+</div>
+
+</body>
+</html>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Features Section</title>
+    <style>
+        /* =========================================
+           CSS Isolation: Prefix 'ft-' (Feature) used
+           to prevent conflicts.
+           ========================================= */
+
+        :root {
+            --ft-font-family: 'Lucida Sans', sans-serif;
+            --ft-color-bg: #020035; /* Deep Navy Blue matching the screenshot */
+            --ft-color-text: #ffffff;
+            --ft-color-border: #ffffff;
+            --ft-spacing-col: 80px;
+            --ft-spacing-row: 100px;
+        }
+
+        /* Component Reset */
+        .ft-component-wrapper {
+            font-family: var(--ft-font-family);
+            background-color: var(--ft-color-bg);
+            color: var(--ft-color-text);
+            padding: 100px 20px;
+            overflow: hidden;
+        }
+
+        .ft-component-wrapper * {
+            box-sizing: border-box;
+            margin: 0;
+            padding: 0;
+        }
+
+        .ft-container {
+            max-width: 1200px;
+            margin: 0 auto;
+            display: flex;
+            flex-direction: column;
+            gap: var(--ft-spacing-row);
+        }
+
+        /* --- Row Layout --- */
+        .ft-row {
+            display: flex;
+            align-items: center;
+            gap: var(--ft-spacing-col);
+        }
+
+        /* Alternating Layout: Even rows flip the order */
+        .ft-row:nth-child(even) {
+            flex-direction: row-reverse;
+        }
+
+        /* --- Image Side --- */
+        .ft-image-col {
+            flex: 1;
+            width: 100%;
+        }
+
+        .ft-image-wrapper {
+            width: 100%;
+            height: 400px; /* Fixed height for consistency */
+            overflow: hidden;
+            /* No border radius shown in this specific screenshot, keeping sharp edges */
+        }
+
+        .ft-image {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            display: block;
+            transition: transform 0.5s ease; border-radius: 6px;
+        }
+
+        .ft-image-wrapper:hover .ft-image {
+            transform: scale(1.05); /* Subtle zoom effect */
+        }
+
+        /* --- Text Side --- */
+        .ft-text-col {
+            flex: 1;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: flex-start; /* Left align content */
+            gap: 24px;
+        }
+
+        .ft-heading {
+            font-size: 40px;
+            font-weight: 400;
+            line-height: 1.1;
+            letter-spacing: -0.01em;
+        }
+
+        .ft-description {
+            font-size: 18px;
+            line-height: 1.6;
+            color: #eeeeee;
+            max-width: 90%;
+            font-weight: 400;
+        }
+
+        /* --- Button Styling --- */
+        .ft-btn {
+            display: inline-block;
+            padding: 12px 32px;
+            border: 1px solid var(--ft-color-border);
+            border-radius: 100px; /* Pill shape */
+            color: var(--ft-color-text);
+            text-decoration: none;
+            font-size: 14px;
+            font-weight: 600;
+            letter-spacing: 0.02em;
+            background: transparent;
+            transition: all 0.3s ease;
+            margin-top: 10px; font-family: 'Karla', sans-serif;
+        }
+
+        .ft-btn:hover {
+            background-color: #ffffff;
+            color: var(--ft-color-bg);
+        }
+
+        /* --- Responsiveness --- */
+        @media (max-width: 900px) {
+            .ft-row {
+                flex-direction: column !important; /* Stack everything vertically */
+                gap: 40px;
+            }
+            
+            .ft-heading {
+                font-size: 32px;
+            }
+
+            .ft-description {
+                max-width: 100%;
+            }
+
+            .ft-image-wrapper {
+                height: 300px;
+            }
+        }
+    </style>
+</head>
+<body>
+
+<div class="ft-component-wrapper">
+    <div class="ft-container">
+
+        <div class="ft-row">
+            <div class="ft-image-col">
+                <div class="ft-image-wrapper">
+                    <img src="images/academic-excellence.jpg" alt="Statue in a classic library setting" class="ft-image">
+                </div>
+            </div>
+            
+            <div class="ft-text-col">
+                <h2 class="ft-heading">Academic Excellence</h2>
+                <p class="ft-description">
+                    85% A*-B Grades at A Level. Dynamic instruction fosters intellectual curiosity, autonomy, and self-assurance. At Roedean, we inspire girls and boys to cultivate distinctiveness in character and innovative thought.
+                </p>
+                <a href="#" class="ft-btn">Read More</a>
+            </div>
+        </div>
+
+        <div class="ft-row">
+            <div class="ft-image-col">
+                <div class="ft-image-wrapper">
+                    <img src="https://images.unsplash.com/photo-1656413088977-6e923a205256?q=80&w=687&auto=format&fit=crop&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D" alt="Students running on athletic track" class="ft-image">
+                </div>
+            </div>
+
+            <div class="ft-text-col">
+                <h2 class="ft-heading">A Happy Learning Environment</h2>
+                <p class="ft-description">
+                    Our mission is to ignite a lifelong passion for learning. By challenging the advanced and uplifting the less assured, we ensure each pupil realizes their unique academic potential.
+                </p>
+                <a href="#" class="ft-btn">Read More</a>
+            </div>
+        </div>
+
+    </div>
+</div>
+
+</body>
+</html>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<div class="stu-page-wrapper">
+  
+  <!-- Hero Section -->
+  <section class="stu-hero">
+    <div class="stu-container">
+      <h1 class="stu-hero__title">Scaling Ideas into <span class="stu-text-blue">Market Leaders</span></h1>
+      <p class="stu-hero__subtitle">From seed to scale, we provide the infrastructure, liquidity, and compliance frameworks startups need to thrive in the digital economy.</p>
+      <div class="stu-hero__actions">
+        <a href="#solutions" class="stu-btn stu-btn--primary">Explore Solutions</a>
+      </div>
+    </div>
+  </section>
+
+  <!-- Solutions Grid -->
+  <section id="solutions" class="stu-solutions">
+    <div class="stu-container">
+      <h2 class="stu-section-title">Built for Founders</h2>
+      <div class="stu-grid">
+        <!-- Item 1 -->
+        <div class="stu-card">
+          <div class="stu-card__icon">⚡</div>
+          <h3>Rapid Integration</h3>
+          <p>Access enterprise-grade APIs to integrate crypto payment rails into your platform in days, not months.</p>
+        </div>
+        <!-- Item 2 -->
+        <div class="stu-card">
+          <div class="stu-card__icon">🛡️</div>
+          <h3>Institutional Security</h3>
+          <p>Rest easy with SOC2-compliant infrastructure and multi-layer custody solutions for your user assets.</p>
+        </div>
+        <!-- Item 3 -->
+        <div class="stu-card">
+          <div class="stu-card__icon">📈</div>
+          <h3>Liquidity Access</h3>
+          <p>Connect to our deep liquidity pools to ensure seamless trading experiences for your growing user base.</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Process / How We Work -->
+  <section class="stu-process">
+    <div class="stu-container">
+      <h2 class="stu-section-title">The Startup Lifecycle</h2>
+      <div class="stu-timeline">
+        <div class="stu-timeline__item">
+          <span class="stu-timeline__step">01</span>
+          <h4>Launch</h4>
+          <p>Custom onboarding and regulatory guidance.</p>
+        </div>
+        <div class="stu-timeline__item">
+          <span class="stu-timeline__step">02</span>
+          <h4>Optimize</h4>
+          <p>Growth hacking with our partner ecosystem.</p>
+        </div>
+        <div class="stu-timeline__item">
+          <span class="stu-timeline__step">03</span>
+          <h4>Scale</h4>
+          <p>Global expansion support and venture access.</p>
+        </div>
+      </div>
+    </div>
+  </section>
+</div>
+
+<style>
+/* Scoped Startup Page Styles */
+.stu-page-wrapper {
+  --stu-bg: #060b14;
+  --stu-text: #ffffff;
+  --stu-accent: #1e70eb;
+  background-color: var(--stu-bg);
+  color: var(--stu-text);
+  font-family: 'Circular Std', sans-serif;
+  padding: 80px 20px;
+}
+
+.stu-container { max-width: 1000px; margin: 0 auto; }
+
+/* Hero */
+.stu-hero { text-align: center; padding: 60px 0; }
+.stu-hero__title { font-size: 3.5rem; margin-bottom: 20px; }
+.stu-text-blue { color: var(--stu-accent); }
+.stu-hero__subtitle { font-size: 1.25rem; color: #94a3b8; max-width: 700px; margin: 0 auto 40px; }
+
+/* Grid */
+.stu-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(280px, 1fr)); gap: 30px; margin-top: 40px; }
+.stu-card { background: rgba(255,255,255,0.03); padding: 40px; border-radius: 20px; border: 1px solid rgba(255,255,255,0.05); }
+.stu-card__icon { font-size: 2.5rem; margin-bottom: 20px; }
+
+/* Timeline */
+.stu-process { padding: 100px 0; }
+.stu-section-title { text-align: center; font-size: 2.5rem; margin-bottom: 60px; }
+.stu-timeline { display: flex; justify-content: space-between; gap: 40px; }
+.stu-timeline__step { display: block; font-size: 2rem; font-weight: 700; color: var(--stu-accent); margin-bottom: 10px; }
+
+/* Buttons */
+.stu-btn { padding: 16px 32px; border-radius: 50px; text-decoration: none; font-weight: 600; display: inline-block; }
+.stu-btn--primary { background: var(--stu-accent); color: white; transition: background 0.3s; }
+.stu-btn--primary:hover { background: #165cc5; }
+
+@media (max-width: 768px) {
+  .stu-timeline { flex-direction: column; }
+  .stu-hero__title { font-size: 2.5rem; }
+}
+</style>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<!-- =============================================
+     **** HERO SECTION SLIDER ****
+     ============================================= -->
+
+<div class="croloft-hero-container">
+  <div class="croloft-hero-slides">
+    <!-- Slide 1: Staking -->
+    <div class="croloft-hero-slide croloft-hero-slide-1 active">
+      <img src="https://images.pexels.com/photos/11279906/pexels-photo-11279906.jpeg" alt="Crypto Staking" class="croloft-hero-slide-bg">
+      <div class="croloft-hero-slide-overlay"></div>
+      <div class="croloft-hero-content">
+        <h1 class="croloft-hero-title">Stake Crypto & Earn Up to 22% APY</h1>
+        <p class="croloft-hero-description">Put your crypto to work. Our non-custodial staking protocol lets you earn passive rewards on BTC, ETH, SOL and more — securely and effortlessly.</p>
+        
+        <!-- button start --> 
+          <button class="animated-button-bv" style="margin-top: 3rem;">
+            <svg viewBox="0 0 24 24" class="arr-2" xmlns="http://www.w3.org/2000/svg">
+              <path d="M16.1716 10.9999L10.8076 5.63589L12.2218 4.22168L20 11.9999L12.2218 19.778L10.8076 18.3638L16.1716 12.9999H4V10.9999H16.1716Z"></path>
+            </svg>
+            <span class="text">Start Staking Now</span>
+            <span class="circle"></span>
+            <svg viewBox="0 0 24 24" class="arr-1" xmlns="http://www.w3.org/2000/svg">
+              <path d="M16.1716 10.9999L10.8076 5.63589L12.2218 4.22168L20 11.9999L12.2218 19.778L10.8076 18.3638L16.1716 12.9999H4V10.9999H16.1716Z"></path>
+            </svg>
+          </button>
+        <!-- button end -->
+      </div>
+    </div>
+    
+    <!-- Slide 2: Live Markets -->
+    <div class="croloft-hero-slide croloft-hero-slide-2">
+      <img src="https://images.pexels.com/photos/8919551/pexels-photo-8919551.jpeg" alt="Crypto Markets" class="croloft-hero-slide-bg">
+      <div class="croloft-hero-slide-overlay"></div>
+      <div class="croloft-hero-content">
+        <h1 class="croloft-hero-title">Live Crypto Markets & Real-Time Data</h1>
+        <p class="croloft-hero-description">Track prices, analyse trends and make smarter trades. Access 500+ trading pairs with institutional-grade charts and on-chain analytics — 24/7.</p>
+        
+        <!-- button start --> 
+          <button class="animated-button-bv" style="margin-top: 3rem;">
+            <svg viewBox="0 0 24 24" class="arr-2" xmlns="http://www.w3.org/2000/svg">
+              <path d="M16.1716 10.9999L10.8076 5.63589L12.2218 4.22168L20 11.9999L12.2218 19.778L10.8076 18.3638L16.1716 12.9999H4V10.9999H16.1716Z"></path>
+            </svg>
+            <span class="text">Explore Markets</span>
+            <span class="circle"></span>
+            <svg viewBox="0 0 24 24" class="arr-1" xmlns="http://www.w3.org/2000/svg">
+              <path d="M16.1716 10.9999L10.8076 5.63589L12.2218 4.22168L20 11.9999L12.2218 19.778L10.8076 18.3638L16.1716 12.9999H4V10.9999H16.1716Z"></path>
+            </svg>
+          </button>
+        <!-- button end -->
+      </div>
+    </div>
+    
+    <!-- Slide 3: Yield Farming & Affiliate -->
+    <div class="croloft-hero-slide croloft-hero-slide-3">
+      <img src="https://images.pexels.com/photos/8358032/pexels-photo-8358032.jpeg" alt="Yield Farming" class="croloft-hero-slide-bg">
+      <div class="croloft-hero-slide-overlay"></div>
+      <div class="croloft-hero-content">
+        <h1 class="croloft-hero-title">Yield Farming, DeFi Pools & Affiliate Rewards</h1>
+        <p class="croloft-hero-description">Provide liquidity, farm DeFi yields up to 48% APR, and earn lifetime commissions through our affiliate program — all in one platform.</p>
+        
+        <!-- button start --> 
+          <button class="animated-button-bv" style="margin-top: 3rem;">
+            <svg viewBox="0 0 24 24" class="arr-2" xmlns="http://www.w3.org/2000/svg">
+              <path d="M16.1716 10.9999L10.8076 5.63589L12.2218 4.22168L20 11.9999L12.2218 19.778L10.8076 18.3638L16.1716 12.9999H4V10.9999H16.1716Z"></path>
+            </svg>
+            <span class="text">Get Started</span>
+            <span class="circle"></span>
+            <svg viewBox="0 0 24 24" class="arr-1" xmlns="http://www.w3.org/2000/svg">
+              <path d="M16.1716 10.9999L10.8076 5.63589L12.2218 4.22168L20 11.9999L12.2218 19.778L10.8076 18.3638L16.1716 12.9999H4V10.9999H16.1716Z"></path>
+            </svg>
+          </button>
+        <!-- button end -->
+      </div>
+    </div>
+  </div>
+  
+  <div class="croloft-hero-controls">
+    <button class="croloft-hero-arrow croloft-hero-prev">
+      <svg viewBox="0 0 24 24">
+        <path d="M15.41 16.59L10.83 12l4.58-4.59L14 6l-6 6 6 6 1.41-1.41z"/>
+      </svg>
+    </button>
+    
+    <div class="croloft-hero-pagination">
+      <div class="croloft-hero-dot active" data-slide="0"></div>
+      <div class="croloft-hero-dot" data-slide="1"></div>
+      <div class="croloft-hero-dot" data-slide="2"></div>
+    </div>
+    
+    <button class="croloft-hero-pause">❚❚</button>
+    
+    <button class="croloft-hero-arrow croloft-hero-next">
+      <svg viewBox="0 0 24 24">
+        <path d="M8.59 16.59L13.17 12 8.59 7.41 10 6l6 6-6 6-1.41-1.41z"/>
+      </svg>
+    </button>
+  </div>
+</div>
+
+<style>
+  .croloft-hero-container * {
+    box-sizing: border-box;
+  }
+
+  .croloft-hero-container {
+    font-family: 'Circular Std', -apple-system, BlinkMacSystemFont, sans-serif;
+    width: 100%;
+    height: 93vh;
+    min-height: 600px;
+    position: relative;
+    overflow: hidden;
+    background-color: #e5e5e5;
+  }
+  
+  .croloft-hero-slides {
+    width: 300%;
+    height: 100%;
+    display: flex;
+    transition: transform 0.8s cubic-bezier(0.77, 0, 0.175, 1);
+  }
+  
+  .croloft-hero-slide {
+    width: 33.333%;
+    height: 100%;
+    position: relative;
+    display: flex;
+    align-items: center; /* Centers vertically */
+    justify-content: center;
+  }
+  
+  .croloft-hero-slide-bg {
+    position: absolute;
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    z-index: 1;
+  }
+  
+  .croloft-hero-slide-overlay {
+    position: absolute;
+    width: 100%;
+    height: 100%;
+    background: rgba(6, 39, 62, 0.5);
+    z-index: 2;
+  }
+  
+  .croloft-hero-content {
+    position: relative;
+    z-index: 3;
+    width: 100%;
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: 0 20px;
+    color: #ffffff;
+    text-align: left; /* Forces text to align to the left */
+    transform: translateY(30px);
+    opacity: 0;
+    transition: transform 0.8s ease, opacity 0.8s ease;
+    transition-delay: 0.3s;
+  }
+
+  .croloft-hero-slide.active .croloft-hero-content {
+    opacity: 1;
+    transform: translateY(0); /* Perfect true vertical center instead of a 10% offset */
+  }
+  
+  .croloft-hero-title {
+    font-size: 56px;
+    letter-spacing: -0.03em;
+    -webkit-text-fill-color: rgb(255, 255, 255);
+    font-weight: 500;
+    margin-bottom: 20px;
+    line-height: 1.15;
+    width: 800px;
+    max-width: 100%;
+    text-shadow: 0 2px 10px rgba(0, 0, 0, 0.3);
+    text-wrap: balance; 
+  }
+  
+  .croloft-hero-description {
+    font-size: 1.2rem;
+    font-weight: 400;
+    color: #ededed;
+    max-width: 600px;
+    margin-bottom: 40px;
+    line-height: 1.6;
+    text-shadow: 0 1px 3px rgba(0, 0, 0, 0.3);
+  }
+  
+  .croloft-hero-controls {
+    position: absolute;
+    bottom: 40px;
+    left: 50%;
+    transform: translateX(-50%);
+    z-index: 10;
+    display: flex;
+    align-items: center;
+    gap: 20px;
+    width: max-content;
+  }
+  
+  .croloft-hero-arrow {
+    width: 50px;
+    height: 50px;
+    border-radius: 50%;
+    background-color: rgba(255, 255, 255, 0.2);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    cursor: pointer;
+    transition: all 0.3s ease;
+    border: none;
+    color: #ffffff;
+    font-size: 1.2rem;
+  }
+
+  .croloft-hero-arrow svg {
+    width: 20px;
+    height: 20px;
+    fill: #ffffff;
+  }
+  
+  .croloft-hero-arrow:hover {
+    background-color: #0091ff;
+    transform: scale(1.1);
+  }
+  
+  .croloft-hero-pause {
+    width: 40px;
+    height: 40px;
+    border-radius: 50%;
+    background-color: rgba(255, 255, 255, 0.2);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    cursor: pointer;
+    transition: all 0.3s ease;
+    border: none;
+    color: #ffffff;
+    font-size: 1rem;
+    margin: 0 15px;
+  }
+  
+  .croloft-hero-pause:hover {
+    background-color: #ccff00;
+    transform: scale(1.1);
+  }
+  
+  .croloft-hero-pagination {
+    display: flex;
+    gap: 10px;
+  }
+  
+  .croloft-hero-dot {
+    width: 12px;
+    height: 12px;
+    border-radius: 50%;
+    background-color: rgba(255, 255, 255, 0.4);
+    cursor: pointer;
+    transition: all 0.3s ease;
+  }
+  
+  .croloft-hero-dot.active {
+    background-color: #ccff00;
+    transform: scale(1.2);
+  }
+  
+  /* Slide-specific content variations */
+  .croloft-hero-slide-1 .croloft-hero-title,
+  .croloft-hero-slide-2 .croloft-hero-title,
+  .croloft-hero-slide-3 .croloft-hero-title {
+    color: #ffffff;
+  }
+  
+  /* Responsive adjustments */
+  @media (max-width: 992px) {
+    .croloft-hero-title {
+      font-size: 2.8rem;
+    }
+    
+    .croloft-hero-description {
+      font-size: 1.1rem;
+      max-width: 500px;
+    }
+  }
+  
+  @media (max-width: 768px) {
+    .croloft-hero-container {
+      height: 100svh;
+      min-height: 550px; 
+    }
+
+    .croloft-hero-slide {
+      height: 100svh;
+      min-height: 550px;
+      align-items: center; /* Forces vertical centering on mobile */
+      padding-bottom: 0; /* Removes bottom padding that was pushing it near controls */
+    }
+
+    .croloft-hero-slide-overlay {
+      background: rgba(6, 39, 62, 0.6); /* Uniform dark overlay for legibility in the middle */
+    }
+
+    .croloft-hero-slide.active .croloft-hero-content {
+      transform: translateY(0);
+    }
+
+    .croloft-hero-content {
+      padding: 0 24px;
+    }
+    
+    .croloft-hero-title {
+      font-size: 2.25rem;
+      width: 100%;
+      max-width: 100%;
+    }
+    
+    .croloft-hero-description {
+      font-size: 1rem;
+      max-width: 100%;
+      margin-bottom: 30px;
+    }
+
+    .animated-button-bv {
+      margin-top: 1.5rem !important;
+    }
+    
+    .croloft-hero-controls {
+      bottom: 30px;
+      gap: 14px;
+    }
+    
+    .croloft-hero-arrow {
+      width: 40px;
+      height: 40px;
+      font-size: 1rem;
+    }
+    
+    .croloft-hero-pause {
+      width: 35px;
+      height: 35px;
+      margin: 0 8px;
+    }
+  }
+  
+  @media (max-width: 480px) {
+    .croloft-hero-title {
+      font-size: 1.85rem; 
+      line-height: 1.25;
+    }
+    
+    .croloft-hero-description {
+      font-size: 0.95rem;
+    }
+    
+    .croloft-hero-controls {
+      gap: 10px;
+      width: 100%;
+      justify-content: center;
+      padding: 0 15px;
+    }
+    
+    .croloft-hero-arrow {
+      width: 35px;
+      height: 35px;
+    }
+
+    .croloft-hero-arrow svg {
+      width: 16px;
+      height: 16px;
+    }
+    
+    .croloft-hero-pause {
+      width: 30px;
+      height: 30px;
+      margin: 0 6px;
+      font-size: 0.7rem;
+    }
+    
+    .croloft-hero-dot {
+      width: 10px;
+      height: 10px;
+    }
+
+    .animated-button-bv {
+      font-size: 14px;
+      padding: 12px 24px;
+      width: 100%; 
+      justify-content: center;
+    }
+  }
+
+  /* From Uiverse.io by gharsh11032000 */ 
+  .animated-button-bv {
+    position: relative;
+    display: flex;
+    align-items: center;
+    gap: 4px;
+    padding: 10px 30px;
+    border: none;
+    font-size: 16px;
+    border-radius: 100px;
+    font-weight: 500;
+    background: linear-gradient(45deg, #006aff 50%, #00d5ff 100%);
+    color: #ffffff;
+    
+    cursor: pointer;
+    overflow: hidden;
+    transition: all 0.6s cubic-bezier(0.23, 1, 0.32, 1);
+    font-family: 'Circular Std', sans-serif;
+  }
+
+  .animated-button-bv svg {
+    position: absolute;
+    width: 24px;
+    fill: #ffffff;
+    z-index: 9;
+    transition: all 0.8s cubic-bezier(0.23, 1, 0.32, 1);
+  }
+
+  .animated-button-bv .arr-1 { right: 16px; }
+  .animated-button-bv .arr-2 { left: -25%; }
+
+  .animated-button-bv .circle {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    width: 20px;
+    height: 20px;
+    
+    border-radius: 50%;
+    opacity: 0;
+    transition: all 0.8s cubic-bezier(0.23, 1, 0.32, 1);
+  }
+
+  .animated-button-bv .text {
+    position: relative;
+    z-index: 1;
+    transform: translateX(-12px);
+    transition: all 0.8s cubic-bezier(0.23, 1, 0.32, 1);
+  }
+
+  @media (hover: hover) {
+    .animated-button-bv:hover {
+      box-shadow: 0 0 0 12px transparent;
+      color: rgb(0, 0, 0);
+      border-radius: 8px;
+    }
+    .animated-button-bv:hover .arr-1 { right: -25%; }
+    .animated-button-bv:hover .arr-2 { left: 16px; }
+    .animated-button-bv:hover .text { transform: translateX(12px); }
+    .animated-button-bv:hover svg { fill: rgb(0, 0, 0); }
+    .animated-button-bv:hover .circle {
+      width: 350px;
+      height: 350px;
+      opacity: 1;
+    }
+  }
+
+  .animated-button-bv:active {
+    scale: 0.95;
+  }
+</style>
+
+<script>
+   // CROLOFT HERO SLIDER - INTERACTIVITY
+  document.addEventListener('DOMContentLoaded', function() {
+    const slider = document.querySelector('.croloft-hero-slides');
+    const slides = document.querySelectorAll('.croloft-hero-slide');
+    const dots = document.querySelectorAll('.croloft-hero-dot');
+    const prevBtn = document.querySelector('.croloft-hero-prev');
+    const nextBtn = document.querySelector('.croloft-hero-next');
+    const pauseBtn = document.querySelector('.croloft-hero-pause');
+    
+    let currentSlide = 0;
+    let slideCount = slides.length;
+    let autoSlide = true;
+    let slideInterval;
+    const slideDuration = 6000;
+    
+    function initSlider() {
+      updateSlider();
+      startAutoSlide();
+      
+      slides.forEach((slide, index) => {
+        if (index === currentSlide) {
+          slide.classList.add('active');
+          setTimeout(() => {
+            slide.querySelector('.croloft-hero-content').style.opacity = '1';
+            slide.querySelector('.croloft-hero-content').style.transform = 'translateY(0)';
+          }, 100);
+        } else {
+          slide.classList.remove('active');
+          slide.querySelector('.croloft-hero-content').style.opacity = '0';
+          slide.querySelector('.croloft-hero-content').style.transform = 'translateY(30px)';
+        }
+      });
+    }
+    
+    function updateSlider() {
+      slider.style.transform = `translateX(-${currentSlide * 33.333}%)`;
+      
+      dots.forEach((dot, index) => {
+        if (index === currentSlide) {
+          dot.classList.add('active');
+        } else {
+          dot.classList.remove('active');
+        }
+      });
+      
+      slides.forEach((slide, index) => {
+        if (index === currentSlide) {
+          slide.classList.add('active');
+          setTimeout(() => {
+            slide.querySelector('.croloft-hero-content').style.opacity = '1';
+            slide.querySelector('.croloft-hero-content').style.transform = 'translateY(0)';
+          }, 100);
+        } else {
+          slide.classList.remove('active');
+          slide.querySelector('.croloft-hero-content').style.opacity = '0';
+          slide.querySelector('.croloft-hero-content').style.transform = 'translateY(30px)';
+        }
+      });
+    }
+    
+    function goToSlide(index) {
+      currentSlide = (index + slideCount) % slideCount;
+      updateSlider();
+      resetAutoSlide();
+    }
+    
+    function nextSlide() {
+      currentSlide = (currentSlide + 1) % slideCount;
+      updateSlider();
+      resetAutoSlide();
+    }
+    
+    function prevSlide() {
+      currentSlide = (currentSlide - 1 + slideCount) % slideCount;
+      updateSlider();
+      resetAutoSlide();
+    }
+    
+    function startAutoSlide() {
+      if (autoSlide) {
+        slideInterval = setInterval(nextSlide, slideDuration);
+      }
+    }
+    
+    function resetAutoSlide() {
+      clearInterval(slideInterval);
+      if (autoSlide) {
+        startAutoSlide();
+      }
+    }
+    
+    function toggleAutoSlide() {
+      autoSlide = !autoSlide;
+      if (autoSlide) {
+        pauseBtn.innerHTML = '❚❚';
+        startAutoSlide();
+      } else {
+        pauseBtn.innerHTML = '►';
+        clearInterval(slideInterval);
+      }
+    }
+    
+    nextBtn.addEventListener('click', nextSlide);
+    prevBtn.addEventListener('click', prevSlide);
+    pauseBtn.addEventListener('click', toggleAutoSlide);
+    
+    dots.forEach(dot => {
+      dot.addEventListener('click', function() {
+        goToSlide(parseInt(this.getAttribute('data-slide')));
+      });
+    });
+    
+    let touchStartX = 0;
+    let touchEndX = 0;
+    
+    slider.addEventListener('touchstart', function(e) {
+      touchStartX = e.changedTouches[0].screenX;
+    }, {passive: true});
+    
+    slider.addEventListener('touchend', function(e) {
+      touchEndX = e.changedTouches[0].screenX;
+      handleSwipe();
+    }, {passive: true});
+    
+    function handleSwipe() {
+      if (touchEndX < touchStartX - 50) {
+        nextSlide();
+      }
+      if (touchEndX > touchStartX + 50) {
+        prevSlide();
+      }
+    }
+    
+    document.addEventListener('keydown', function(e) {
+      if (e.key === 'ArrowRight') {
+        nextSlide();
+      } else if (e.key === 'ArrowLeft') {
+        prevSlide();
+      } else if (e.key === ' ') {
+        toggleAutoSlide();
+      }
+    });
+    
+    initSlider();
+  });
+</script>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 

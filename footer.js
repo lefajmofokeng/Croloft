@@ -272,7 +272,7 @@
 
     .bottom-links a {
       font-size: 13px;
-      font-weight: 460;
+      font-weight: 400;
       color: #8da7bd;
       white-space: nowrap;
       transition: color 0.18s ease;
@@ -367,7 +367,7 @@
 
     .acc-panel-inner a {
       font-size: 13.5px;
-      font-weight: 500;
+      font-weight: 400;
       color: #92a8bf;
       line-height: 1.45;
       min-height: 28px;

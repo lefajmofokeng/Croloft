@@ -386,7 +386,7 @@
     }
 
     .awslm-card-description {
-      font-size: 14px;
+      font-size: 16px;
       line-height: 1.5;
       color: #414750;
       margin: 0;
@@ -427,7 +427,7 @@
 
     .awslm-link-text {
       color: #16191f;
-      font-size: 15px;
+      font-size: 16px;
       font-weight: 500;
       opacity: 0;
       white-space: nowrap;
@@ -644,13 +644,16 @@
   transition: transform 0.3s ease, background 0.3s ease;
 }
 
-/* Top Sections Rainbow Shadow effect on Hover */
-.aws-comp-media-wrapper:hover {
-  box-shadow: 
-    0 0 20px rgb(136, 0, 255),
-    0 0 40px rgb(255, 0, 255),
-    0 0 40px rgb(0, 204, 255);
-}
+@keyframes awslm-vibrant-rainbow {
+    0% { box-shadow: 0 5px 25px rgb(236, 72, 154), 0 0 15px rgb(138, 92, 246); }
+    33% { box-shadow: 0 5px 25px rgb(59, 131, 246), 0 0 15px rgb(6, 181, 212); }
+    66% { box-shadow: 0 5px 25px rgb(245, 159, 11), 0 0 15px rgb(236, 72, 154); }
+    100% { box-shadow: 0 5px 25px rgb(236, 72, 154), 0 0 15px rgba(138, 92, 246, 0.933); }
+  }
+
+  .aws-comp-media-wrapper:hover {
+    animation: awslm-vibrant-rainbow 3s linear infinite;
+  }
 
 .aws-comp-media-wrapper:hover .aws-comp-play-btn {
   background: #ffffff;
@@ -749,13 +752,17 @@
   min-height: 350px;
 }
 
-/* Grid Cards Rainbow Shadow on Hover */
-.aws-comp-grid-card:hover {
-  box-shadow: 
-    0 0 20px rgb(136, 0, 255),
-    0 0 40px rgb(255, 0, 255),
-    0 0 40px rgb(0, 204, 255);
-}
+@keyframes awslm-vibrant-rainbow {
+    0% { box-shadow: 0 5px 25px rgb(236, 72, 154), 0 0 15px rgb(138, 92, 246); }
+    33% { box-shadow: 0 5px 25px rgb(59, 131, 246), 0 0 15px rgb(6, 181, 212); }
+    66% { box-shadow: 0 5px 25px rgb(245, 159, 11), 0 0 15px rgb(236, 72, 154); }
+    100% { box-shadow: 0 5px 25px rgb(236, 72, 154), 0 0 15px rgba(138, 92, 246, 0.933); }
+  }
+
+  .aws-comp-grid-card:hover {
+    animation: awslm-vibrant-rainbow 3s linear infinite;
+  }
+
 
 /* Card Badge and Internal Typography */
 .aws-comp-badge {

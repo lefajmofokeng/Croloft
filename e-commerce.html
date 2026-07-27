@@ -10,38 +10,33 @@
     <!-- WEB TAB ICON -->
     <link rel="icon" type="image/png" href="thumbnails/top-1.png">
 
-    
+    <script src="header.js" defer></script>
+    <script src="footer.js" defer></script> 
+
 <style>
-@import url('https://fonts.googleapis.com/css2?family=Google+Sans:ital,opsz,wght@0,17..18,400..700;1,17..18,400..700&display=swap');
+  @font-face { font-family:'Circular Std'; src:url('fonts/CircularStd-Book.woff2') format('woff2'),url('fonts/CircularStd-Book.woff') format('woff'); font-weight:400; font-style:normal; font-display:swap; }
+  @font-face { font-family:'Circular Std'; src:url('fonts/CircularStd-BookItalic.woff2') format('woff2'),url('fonts/CircularStd-BookItalic.woff') format('woff'); font-weight:400; font-style:italic; font-display:swap; }
+  @font-face { font-family:'Circular Std'; src:url('fonts/CircularStd-Medium.woff2') format('woff2'),url('fonts/CircularStd-Medium.woff') format('woff'); font-weight:500; font-style:normal; font-display:swap; }
+  @font-face { font-family:'Circular Std'; src:url('fonts/CircularStd-Bold.woff2') format('woff2'),url('fonts/CircularStd-Bold.woff') format('woff'); font-weight:600; font-style:normal; font-display:swap; }
+  @font-face { font-family:'Circular Std'; src:url('fonts/CircularStd-Black.woff2') format('woff2'),url('fonts/CircularStd-Black.woff') format('woff'); font-weight:800; font-style:normal; font-display:swap; }
 
 * {
-  font-family: 'Google Sans', sans-serif;
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+  font-family: 'Circular Std', sans-serif;
 }
 </style>
 
 </head>
-
-
-
-
-
-
-<!DOCTYPE html>
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <title>My Website</title>
-    
-    <script src="header.js" defer></script>
-    <script src="footer.js" defer></script> 
-</head>
 <body>
 
-    <cronos-header></cronos-header>
+  <cronos-header></cronos-header>
     
-
 </body>
 </html>
+
+
 
 
 
@@ -148,7 +143,7 @@
     padding: 200px 0;
     box-sizing: border-box;
     position: relative;
-    font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif;
+    font-family: 'Circular Std',-apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif;
   }
 
   .pin-showcase-root *,
@@ -177,6 +172,7 @@
     font-weight: 500;
     color: #000;
     margin-bottom: 100px;
+    letter-spacing: -0.02em;
   }
 
   /* Asymmetric Masonry Architecture Grid Core */
@@ -329,36 +325,24 @@
           <span class="sc-category-tag">INNOVATION</span>
           <h2 class="sc-main-heading">The bar?<br>We raise that.</h2>
           <p class="sc-sub-heading">We obsess over every. little. detail. In everything we do, we hold ourselves to the very highest of standards.</p>
-          <a href="#explore" class="sc-explore-action">
-            <span class="sc-arrow-wrap">→</span> Explore Origins
-          </a>
         </div>
 
         <div class="sc-text-panel" data-index="1">
           <span class="sc-category-tag">SUSTAINABILITY</span>
           <h2 class="sc-main-heading">We add green energy<br>to the network.</h2>
           <p class="sc-sub-heading">Building scalable solutions and modernizing infrastructure into an incredibly responsive digital ecosystem.</p>
-          <a href="#explore" class="sc-explore-action">
-            <span class="sc-arrow-wrap">→</span> View Network
-          </a>
         </div>
 
         <div class="sc-text-panel" data-index="2">
           <span class="sc-category-tag">EFFICIENCY</span>
           <h2 class="sc-main-heading">Power through<br>your day.</h2>
           <p class="sc-sub-heading">Long-lasting intelligent power matrices keeping enterprise platforms perfectly mobile from morning to night.</p>
-          <a href="#explore" class="sc-explore-action">
-            <span class="sc-arrow-wrap">→</span> Discover Labs
-          </a>
         </div>
 
         <div class="sc-text-panel" data-index="3">
           <span class="sc-category-tag">SECURITY</span>
           <h2 class="sc-main-heading">Dedicated tier<br>protection.</h2>
           <p class="sc-sub-heading">Our multi-tier framework scales gracefully under intense corporate workloads to secure operational longevity.</p>
-          <a href="#explore" class="sc-explore-action">
-            <span class="sc-arrow-wrap">→</span> Secure Infrastructure
-          </a>
         </div>
 
         <div class="sc-timeline-nav">
@@ -420,7 +404,7 @@
     width: 100%;
     height: 100%;
     min-height: 650px;
-    font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif;
+    font-family: 'Circular Std',-apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif;
     color: #ffffff;
   }
 
@@ -498,10 +482,10 @@
 
   .sc-category-tag {
     font-size: 0.85rem;
-    font-weight: 700;
+    font-weight: 500;
     letter-spacing: 0.15em;
     text-transform: uppercase;
-    color: rgba(255, 255, 255, 0.6);
+    color: #777;
     display: block;
     margin-bottom: 12px;
   }
@@ -518,22 +502,11 @@
   .sc-sub-heading {
     font-size: 1rem;
     line-height: 1.6;
-    color: rgba(255, 255, 255, 0.7);
+    color: #959595;
     margin-bottom: 28px;
     font-weight: 300;
   }
 
-  /* Action links styling */
-  .sc-explore-action {
-    display: inline-flex;
-    align-items: center;
-    gap: 8px;
-    color: #ffffff;
-    text-decoration: none;
-    font-size: 0.95rem;
-    font-weight: 500;
-    transition: color 0.2s ease;
-  }
 
   .sc-arrow-wrap {
     display: inline-block;
@@ -582,8 +555,8 @@
   }
 
   .sc-tab-label {
-    font-size: 0.9rem;
-    color: rgba(255, 255, 255, 0.4);
+    font-size: 1rem;
+    color: #959595;
     font-weight: 400;
     transition: color 0.3s ease;
   }
@@ -1673,7 +1646,7 @@
 <div class="custom-card-container-wrapper custom-flex custom-justify-center custom-align-center custom-min-height-screen custom-padding-large custom-background-light">
 
     <div class="custom-cards-layout custom-display-grid custom-grid-cols-one custom-lg-grid-cols-three custom-gap-medium custom-max-width-extra-large">
-       
+
         <div class="custom-text-card custom-background-white custom-padding-extra-large custom-border-radius-large custom-shadow-mild custom-display-flex custom-flex-column custom-justify-between custom-align-start">
             <h2 class="custom-card-title-main custom-font-size-extra-large custom-font-weight-bolder custom-line-height-tight custom-text-dark">Make payments easy, simplify your finances.</h2>
             <button class="custom-action-button custom-background-red custom-text-white custom-padding-y-small custom-padding-x-medium custom-border-radius-small custom-font-weight-medium custom-display-flex custom-align-center custom-gap-small custom-hover-background-dark-red custom-transition-colors">
@@ -1690,7 +1663,7 @@
 
         <div class="custom-image-card custom-background-white custom-padding-zero custom-border-radius-large custom-overflow-hidden custom-shadow-mild custom-display-flex custom-justify-center custom-align-center">
             <div class="custom-image-placeholder custom-width-full custom-height-full custom-background-gray custom-display-flex custom-justify-center custom-align-center custom-text-dark custom-font-bold custom-font-size-large">
-                <img src="https://images.pexels.com/photos/8193806/pexels-photo-8193806.jpeg" style="width: 100%; height: 100%; object-fit: cover;">
+                <img src="https://images.pexels.com/photos/1181411/pexels-photo-1181411.jpeg" style="width: 100%; height: 100%; object-fit: cover;">
             </div>
         </div>
 
@@ -1733,7 +1706,7 @@
 
     .custom-card-title-main {
         font-size: 34px; /* font-size-extra-large */
-        font-weight: 700; /* font-weight-bolder */
+        font-weight: 500; /* font-weight-bolder */
         line-height: 1; /* line-height-tight */
         color: #212121; /* text-dark */
         letter-spacing: -0.02em;
@@ -1745,7 +1718,7 @@
         color: #fff;
         padding: 12px 24px; /* padding-y-small, padding-x-medium */
         border-radius: 60px; /* border-radius-small */
-        font-weight: 600; /* font-weight-medium */
+        font-weight: 400; /* font-weight-medium */
         display: flex;
         align-items: center;
         gap: 8px; /* gap-small */
@@ -1757,7 +1730,7 @@
     }
 
     .custom-action-button:hover {
-        background-color: #991b1b; /* dark-red */
+        background-color: #2261ff; /* dark-red */
     }
 
     .custom-arrow-icon {
@@ -1786,20 +1759,20 @@
     .custom-header-highlight {
         color: #0055c4; /* red */
         font-size: 36px; /* font-size-large */
-        font-weight: 700; /* font-weight-bold */
+        font-weight: 500; /* font-weight-bold */
     }
 
     .custom-header-text {
         color: #212121;
         font-size: 18px; /* font-size-medium */
-        font-weight: 700; /* font-weight-bold */
+        font-weight: 500; /* font-weight-bold */
         letter-spacing: 0.05em; /* letter-spacing-wide */
     }
 
     .custom-card-subheader {
         color: #0053ac;
         font-size: 34px; /* font-size-large */
-        font-weight: 700; /* font-weight-bold */
+        font-weight: 500; /* font-weight-bold */
         margin-bottom: 24px; /* margin-bottom-medium */
         line-height: 1;
         letter-spacing: -0.02em; /* letter-spacing-wide */
@@ -1808,7 +1781,7 @@
     .custom-card-description {
         color: #212121;
         font-size: 19px; /* font-size-small */
-        font-weight: 600;
+        font-weight: 400;
         line-height: 1.1; /* line-height-relaxed */
     }
 
@@ -1824,6 +1797,17 @@
         align-items: center;
         min-height: 280px; /* Ensure consistent height with other cards on larger screens */
     }
+
+     @keyframes awslm-vibrant-rainbow {
+    0% { box-shadow: 0 8px 15px rgb(236, 72, 154), 0 0 15px rgb(138, 92, 246); }
+    33% { box-shadow: 0 8px 15px rgb(59, 131, 246), 0 0 15px rgb(6, 181, 212); }
+    66% { box-shadow: 0 8px 15px rgb(245, 159, 11), 0 0 15px rgb(236, 72, 154); }
+    100% { box-shadow: 0 8px 15px rgb(236, 72, 154), 0 0 15px rgba(138, 92, 246, 0.933); }
+  }
+
+  .custom-image-card, .custom-info-card, .custom-text-card {
+    animation: awslm-vibrant-rainbow 3s linear infinite;
+  }
 
     .custom-image-placeholder {
         width: 100%;
@@ -1848,6 +1832,12 @@
     @media (max-width: 1023px) { /* Adjust for smaller screens below lg */
         .custom-text-card, .custom-info-card, .custom-image-card {
             min-height: 280px; /* Ensure a minimum height for all cards */
+        }
+    }
+
+    @media (max-width: 768px) {
+       .custom-cards-layout {
+            padding: 0 20px;
         }
     }
 

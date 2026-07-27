@@ -1,29 +1,42 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="en" dir="ltr">
 <head>
     <meta charset="UTF-8">
-    <link href="https://fonts.cdnfonts.com/css/circular-std" rel="stylesheet">
-    <title>My Website</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, minimum-scale=1.0, maximum-scale=5.0, viewport-fit=cover, shrink-to-fit=no">
+    <meta http-equiv="x-ua-compatible" content="ie=edge"/>
     
-    <script src="header.js" defer></script> 
-    <script src="footer.js" defer></script>
+    <title>Cronos</title>
 
-    <style>
-          
-        @font-face { font-family:'Circular Std'; src:url('fonts/CircularStd-Book.woff2') format('woff2'),url('fonts/CircularStd-Book.woff') format('woff'); font-weight:400; font-style:normal; font-display:swap; }
-        @font-face { font-family:'Circular Std'; src:url('fonts/CircularStd-BookItalic.woff2') format('woff2'),url('fonts/CircularStd-BookItalic.woff') format('woff'); font-weight:400; font-style:italic; font-display:swap; }
-        @font-face { font-family:'Circular Std'; src:url('fonts/CircularStd-Medium.woff2') format('woff2'),url('fonts/CircularStd-Medium.woff') format('woff'); font-weight:500; font-style:normal; font-display:swap; }
-        @font-face { font-family:'Circular Std'; src:url('fonts/CircularStd-Bold.woff2') format('woff2'),url('fonts/CircularStd-Bold.woff') format('woff'); font-weight:600; font-style:normal; font-display:swap; }
-        @font-face { font-family:'Mino'; src:url('fonts/trade-gothic-lt-1361519976.ttf') format('woff2'),url('fonts/trade-gothic-lt-1361519976.ttf') format('woff'); font-weight:500; font-style:normal; font-display:swap; }
+    <!-- WEB TAB ICON -->
+    <link rel="icon" type="image/png" href="thumbnails/top-1.png">
 
-    </style>
+    <script src="header.js" defer></script>
+    <script src="footer.js" defer></script> 
+
+<style>
+  @font-face { font-family:'Circular Std'; src:url('fonts/CircularStd-Book.woff2') format('woff2'),url('fonts/CircularStd-Book.woff') format('woff'); font-weight:400; font-style:normal; font-display:swap; }
+  @font-face { font-family:'Circular Std'; src:url('fonts/CircularStd-BookItalic.woff2') format('woff2'),url('fonts/CircularStd-BookItalic.woff') format('woff'); font-weight:400; font-style:italic; font-display:swap; }
+  @font-face { font-family:'Circular Std'; src:url('fonts/CircularStd-Medium.woff2') format('woff2'),url('fonts/CircularStd-Medium.woff') format('woff'); font-weight:500; font-style:normal; font-display:swap; }
+  @font-face { font-family:'Circular Std'; src:url('fonts/CircularStd-Bold.woff2') format('woff2'),url('fonts/CircularStd-Bold.woff') format('woff'); font-weight:600; font-style:normal; font-display:swap; }
+  @font-face { font-family:'Circular Std'; src:url('fonts/CircularStd-Black.woff2') format('woff2'),url('fonts/CircularStd-Black.woff') format('woff'); font-weight:800; font-style:normal; font-display:swap; }
+
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+  font-family: 'Circular Std', sans-serif;
+}
+</style>
+
 </head>
 <body>
 
-    <cronos-header></cronos-header>
-
+  <cronos-header></cronos-header>
+    
 </body>
 </html>
+
+
 
 
 
@@ -58,7 +71,7 @@
        SCOPED HERO CSS (Namespace: ms-hs-)
        ========================================================================== */
     .ms-hs-wrapper {
-      --ms-hs-font: "Mino", -apple-system, BlinkMacSystemFont, Roboto, sans-serif;
+      --ms-hs-font: "Circular Std", -apple-system, BlinkMacSystemFont, Roboto, sans-serif;
       --ms-hs-white: #ffffff;
       
       font-family: var(--ms-hs-font);
@@ -494,7 +507,7 @@
        SCOPED CSS RULES (Namespace: ms-pf-)
        ========================================================================== */
     .ms-pf-container {
-      --ms-font-family: "Mino", -apple-system, BlinkMacSystemFont, Roboto, sans-serif;
+      --ms-font-family: "Circular Std", -apple-system, BlinkMacSystemFont, Roboto, sans-serif;
       --ms-text-dark: #1b1b1b;
       --ms-text-muted: #505050;
       
@@ -524,6 +537,7 @@
       font-size: 2.8rem;
       font-weight: 500;
       margin: 0 0 16px 0;
+      letter-spacing: -0.02em;
     }
 
     .ms-pf-subtitle {
@@ -556,7 +570,7 @@
 
     /* Huge Card structure initially restricted to 1200px desktop dimensions */
     .ms-pf-card {
-      width: 550px;
+      width: 1000px;
       display: flex;
       flex-direction: column;
       scroll-snap-align: center;
@@ -645,17 +659,18 @@
     }
 
     .ms-pf-card-title {
-      font-size: 1.5rem;
+      font-size: 1.8rem;
       font-weight: 500;
       margin: 0 0 12px 0;
+      letter-spacing: -0.02em;
     }
 
     .ms-pf-card-desc {
       font-size: 1.2rem;
-      line-height: 1.5;
+      line-height: 1;
       color: var(--ms-text-muted);
       margin: 0;
-      width: 500px;
+      width: 700px;
       font-weight: 400;
     }
 
@@ -1040,122 +1055,6 @@
 
 
 
-<div class="stu-page-wrapper">
-  
-  <!-- Hero Section -->
-  <section class="stu-hero">
-    <div class="stu-container">
-      <h1 class="stu-hero__title">Scaling Ideas into <span class="stu-text-blue">Market Leaders</span></h1>
-      <p class="stu-hero__subtitle">From seed to scale, we provide the infrastructure, liquidity, and compliance frameworks startups need to thrive in the digital economy.</p>
-      <div class="stu-hero__actions">
-        <a href="#solutions" class="stu-btn stu-btn--primary">Explore Solutions</a>
-      </div>
-    </div>
-  </section>
-
-  <!-- Solutions Grid -->
-  <section id="solutions" class="stu-solutions">
-    <div class="stu-container">
-      <h2 class="stu-section-title">Built for Founders</h2>
-      <div class="stu-grid">
-        <!-- Item 1 -->
-        <div class="stu-card">
-          <div class="stu-card__icon">⚡</div>
-          <h3>Rapid Integration</h3>
-          <p>Access enterprise-grade APIs to integrate crypto payment rails into your platform in days, not months.</p>
-        </div>
-        <!-- Item 2 -->
-        <div class="stu-card">
-          <div class="stu-card__icon">🛡️</div>
-          <h3>Institutional Security</h3>
-          <p>Rest easy with SOC2-compliant infrastructure and multi-layer custody solutions for your user assets.</p>
-        </div>
-        <!-- Item 3 -->
-        <div class="stu-card">
-          <div class="stu-card__icon">📈</div>
-          <h3>Liquidity Access</h3>
-          <p>Connect to our deep liquidity pools to ensure seamless trading experiences for your growing user base.</p>
-        </div>
-      </div>
-    </div>
-  </section>
-
-  <!-- Process / How We Work -->
-  <section class="stu-process">
-    <div class="stu-container">
-      <h2 class="stu-section-title">The Startup Lifecycle</h2>
-      <div class="stu-timeline">
-        <div class="stu-timeline__item">
-          <span class="stu-timeline__step">01</span>
-          <h4>Launch</h4>
-          <p>Custom onboarding and regulatory guidance.</p>
-        </div>
-        <div class="stu-timeline__item">
-          <span class="stu-timeline__step">02</span>
-          <h4>Optimize</h4>
-          <p>Growth hacking with our partner ecosystem.</p>
-        </div>
-        <div class="stu-timeline__item">
-          <span class="stu-timeline__step">03</span>
-          <h4>Scale</h4>
-          <p>Global expansion support and venture access.</p>
-        </div>
-      </div>
-    </div>
-  </section>
-</div>
-
-<style>
-/* Scoped Startup Page Styles */
-.stu-page-wrapper {
-  --stu-bg: #060b14;
-  --stu-text: #ffffff;
-  --stu-accent: #1e70eb;
-  background-color: var(--stu-bg);
-  color: var(--stu-text);
-  font-family: 'Circular Std', sans-serif;
-  padding: 80px 20px;
-}
-
-.stu-container { max-width: 1000px; margin: 0 auto; }
-
-/* Hero */
-.stu-hero { text-align: center; padding: 60px 0; }
-.stu-hero__title { font-size: 3.5rem; margin-bottom: 20px; }
-.stu-text-blue { color: var(--stu-accent); }
-.stu-hero__subtitle { font-size: 1.25rem; color: #94a3b8; max-width: 700px; margin: 0 auto 40px; }
-
-/* Grid */
-.stu-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(280px, 1fr)); gap: 30px; margin-top: 40px; }
-.stu-card { background: rgba(255,255,255,0.03); padding: 40px; border-radius: 20px; border: 1px solid rgba(255,255,255,0.05); }
-.stu-card__icon { font-size: 2.5rem; margin-bottom: 20px; }
-
-/* Timeline */
-.stu-process { padding: 100px 0; }
-.stu-section-title { text-align: center; font-size: 2.5rem; margin-bottom: 60px; }
-.stu-timeline { display: flex; justify-content: space-between; gap: 40px; }
-.stu-timeline__step { display: block; font-size: 2rem; font-weight: 700; color: var(--stu-accent); margin-bottom: 10px; }
-
-/* Buttons */
-.stu-btn { padding: 16px 32px; border-radius: 50px; text-decoration: none; font-weight: 600; display: inline-block; }
-.stu-btn--primary { background: var(--stu-accent); color: white; transition: background 0.3s; }
-.stu-btn--primary:hover { background: #165cc5; }
-
-@media (max-width: 768px) {
-  .stu-timeline { flex-direction: column; }
-  .stu-hero__title { font-size: 2.5rem; }
-}
-</style>
-
-
-
-
-
-
-
-
-
-
 
 
 
@@ -1253,8 +1152,8 @@
     }
 
     .it-hero-footer-note {
-        font-size: 0.9rem;
-        font-weight: 600;
+        font-size: 1.2rem;
+        font-weight: 400;
         color: #b0b8d1;
         margin-top: 1rem;
     }
@@ -1420,7 +1319,7 @@
 
   .impact-grid-title {
     font-size: 42px;
-    font-weight: 700;
+    font-weight: 500;
     line-height: 1.2;
     margin: 0 0 20px 0;
     letter-spacing: -0.5px;
@@ -1454,7 +1353,7 @@
   }
 
   .impact-grid-text {
-    font-size: 16px;
+    font-size: 18px;
     line-height: 1.6;
     color: #8b94a3;
     margin: 0;
@@ -1462,7 +1361,7 @@
 
   .impact-grid-bold {
     color: #ffffff;
-    font-weight: 600;
+    font-weight: 500;
   }
 
   .impact-grid-muted {

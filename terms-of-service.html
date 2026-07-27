@@ -1,19 +1,41 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="en" dir="ltr">
 <head>
     <meta charset="UTF-8">
-    <title>My Website</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, minimum-scale=1.0, maximum-scale=5.0, viewport-fit=cover, shrink-to-fit=no">
+    <meta http-equiv="x-ua-compatible" content="ie=edge"/>
     
+    <title>Cronos</title>
+
+    <!-- WEB TAB ICON -->
+    <link rel="icon" type="image/png" href="thumbnails/top-1.png">
+
     <script src="header.js" defer></script>
     <script src="footer.js" defer></script> 
+
+<style>
+  @font-face { font-family:'Circular Std'; src:url('fonts/CircularStd-Book.woff2') format('woff2'),url('fonts/CircularStd-Book.woff') format('woff'); font-weight:400; font-style:normal; font-display:swap; }
+  @font-face { font-family:'Circular Std'; src:url('fonts/CircularStd-BookItalic.woff2') format('woff2'),url('fonts/CircularStd-BookItalic.woff') format('woff'); font-weight:400; font-style:italic; font-display:swap; }
+  @font-face { font-family:'Circular Std'; src:url('fonts/CircularStd-Medium.woff2') format('woff2'),url('fonts/CircularStd-Medium.woff') format('woff'); font-weight:500; font-style:normal; font-display:swap; }
+  @font-face { font-family:'Circular Std'; src:url('fonts/CircularStd-Bold.woff2') format('woff2'),url('fonts/CircularStd-Bold.woff') format('woff'); font-weight:600; font-style:normal; font-display:swap; }
+  @font-face { font-family:'Circular Std'; src:url('fonts/CircularStd-Black.woff2') format('woff2'),url('fonts/CircularStd-Black.woff') format('woff'); font-weight:800; font-style:normal; font-display:swap; }
+
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+  font-family: 'Circular Std', sans-serif;
+}
+</style>
+
 </head>
 <body>
 
-    <cronos-header></cronos-header>
+  <cronos-header></cronos-header>
     
-
 </body>
 </html>
+
 
 
 
@@ -24,29 +46,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Terms of Service - Cronos IT Solutions</title>
     <style>
-         @font-face {
-            font-family: 'Circular Std';
-            src: url('fonts/CircularStd-Book.ttf') format('truetype');
-            font-weight: 400;
-            font-style: normal;
-        }
-
-        /* Circular Std - Medium (500) */
-        @font-face {
-            font-family: 'Circular Std';
-            src: url('fonts/CircularStd.ttf') format('truetype');
-            font-weight: 500;
-            font-style: normal;
-        }
-
-        /* Circular Std - Bold (700) */
-        @font-face {
-            font-family: 'Circular Std';
-            src: url('fonts/CircularStd-Bold.ttf') format('truetype');
-            font-weight: 600;
-            font-style: normal;
-        }
-
+         
         * {
             margin: 0;
             padding: 0;
@@ -66,17 +66,18 @@
             margin-bottom: 30px;
         }
 
-        .it-policy-h1 {
-            font-size: 42px;
-            letter-spacing: -0.02em;
+        .it-policy-title {
+            font-size: 54px;
             margin-bottom: 10px;
             font-weight: 500;
+            letter-spacing: -0.02em;
+            font-family: 'Circular Std', sans-serif;
+            text-decoration: underline;
         }
 
         .it-policy-date {
             color: #757575;
             font-size: 14px;
-            letter-spacing: 0.1em;
             margin-bottom: 15px;
         }
 
@@ -90,7 +91,7 @@
 
         .it-policy-h2 {
             font-size: 26px;
-            font-weight: 700;
+            font-weight: 500;
             margin-bottom: 20px;
             color: #000;
             padding-top: 15px;
@@ -98,7 +99,7 @@
 
         .it-policy-h3 {
             font-size: 19px;
-            font-weight: 600;
+            font-weight: 500;
             margin-bottom: 12px;
             margin-top: 25px;
             color: #1a1a1a;
@@ -291,9 +292,8 @@
 
 <div class="it-policy-wrapper">
     <header class="it-policy-header">
-        <h1 class="it-policy-h1">Terms of Service</h1>
+        <h2 class="it-policy-title">Terms of Service</h2>
         <p class="it-policy-date">Last Updated: February 13, 2026</p>
-        <p class="it-policy-date">Effective Date: February 13, 2026</p>
     </header>
 
     <div class="it-policy-intro">

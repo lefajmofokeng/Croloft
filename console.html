@@ -28,7 +28,7 @@
         body {
             margin: 0;
             padding: 0;
-            background-color: #f8f9fa;
+            background-color: #ffffff;
             color: #3c4043;
             overflow-x: hidden;
         }
@@ -158,7 +158,7 @@
         .gcp-select, .gcp-input {
             width: 100%;
             padding: 18px;
-            border: 2px solid #9b9999;
+            border: 1px solid #9b9999;
             border-radius: 3px;
             font-size: 16px;
             color: #202124;
@@ -333,12 +333,12 @@
 
         .slider-floating-tooltip {
             position: absolute;
-            top: -30px;
+            top: -45px;
             transform: translateX(-50%);
             background-color: #137333;
             color: #ffffff;
-            padding: 4px 8px;
-            font-size: 12px;
+            padding: 8px 16px;
+            font-size: 15px;
             font-weight: 500;
             border-radius: 4px;
             white-space: nowrap;
@@ -361,7 +361,7 @@
         .slider-manual-entry-box {
             width: 70px;
             border: 1px solid #797b7e;
-            border-radius: 4px;
+            border-radius: 3px;
             padding: 8px;
             text-align: center;
             font-size: 14px;
@@ -411,34 +411,6 @@
             font-size: 14px;
             color: #202124;
             outline: none;
-        }
-
-        .inline-card-info-pane {
-            background-color: #f8f9fa;
-            border-radius: 16px;
-            padding: 20px;
-            margin-top: 16px;
-            border: 1px solid #e0e0e0;
-        }
-
-        .info-pane-title {
-            font-size: 13px;
-            color: #5f6368;
-            margin-bottom: 4px;
-            display: flex;
-            align-items: center;
-        }
-
-        .info-pane-main-value {
-            font-size: 18px;
-            font-weight: 500;
-            color: #1a73e8;
-            margin-bottom: 2px;
-        }
-
-        .info-pane-sub {
-            font-size: 11px;
-            color: #5f6368;
         }
 
         .hidden-node { display: none !important; }
@@ -964,7 +936,7 @@
             position: sticky;
             bottom: 0;
             z-index: 200;
-            background-color: hsl(210, 100%, 17%);
+            background-color: hsl(0, 0%, 91%);
             border-top: 1px solid rgba(255,255,255,0.08);
         }
 
@@ -1002,13 +974,13 @@
 
         .bsb-label {
             font-weight: 400;
-            color: #d3d3d3;
+            color: #444444;
             white-space: nowrap;
         }
 
         .bsb-value {
             font-weight: 500;
-            color: #ffffff;
+            color: #181818;
             white-space: nowrap;
             margin-right: 4px; font-size: 16px;
         }
@@ -1285,11 +1257,6 @@
                                 </div>
                             </div>
 
-                            <div class="inline-card-info-pane">
-                                <div class="info-pane-title">Allocated Provisioning Target Tier <span class="info-icon">i</span></div>
-                                <div class="info-pane-main-value" id="info_pane_tier_title">n4-standard-modular-web</div>
-                                <div class="info-pane-sub" id="info_pane_tier_desc">Core baseline web layout framework structures.</div>
-                            </div>
                         </div>
 
                         <div class="config-card">

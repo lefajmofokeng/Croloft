@@ -18,9 +18,8 @@
   @font-face { font-family:'Circular Std'; src:url('fonts/CircularStd-BookItalic.woff2') format('woff2'),url('fonts/CircularStd-BookItalic.woff') format('woff'); font-weight:400; font-style:italic; font-display:swap; }
   @font-face { font-family:'Circular Std'; src:url('fonts/CircularStd-Medium.woff2') format('woff2'),url('fonts/CircularStd-Medium.woff') format('woff'); font-weight:500; font-style:normal; font-display:swap; }
   @font-face { font-family:'Circular Std'; src:url('fonts/CircularStd-Bold.woff2') format('woff2'),url('fonts/CircularStd-Bold.woff') format('woff'); font-weight:600; font-style:normal; font-display:swap; }
-  @font-face { font-family:'Circular Std'; src:url('fonts/CircularStd-Black.woff2') format('woff2'),url('fonts/CircularStd-Black.woff') format('woff'); font-weight:800; font-style:normal; font-display:swap; }
-
-* {
+  @font-face { font-family:'Sunflare'; src:url('fonts/Finlandica[wght].ttf') format('woff2'),url('fonts/CircularStd-Black.woff') format('woff'); font-weight:900; font-style:normal; font-display:swap; }
+   * {
   margin: 0;
   padding: 0;
   box-sizing: border-box;
@@ -99,478 +98,798 @@
 
 
 
-<!DOCTYPE html>
-<html lang="en">
-<head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Infinite Responsive Hero Slider</title>
-  <style>
-    /* Scope Reset to guarantee zero conflicts with external styles */
-    .lfm-hero-outer-container {
-      width: 100%;
-      display: flex;
-      flex-direction: column;
-      align-items: center;
-      font-family: 'Google Sans', sans-serif;
-      box-sizing: border-box;
-      margin: 0;
-      padding: 0;
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<section class="defcon-premium-showcase">
+  <div class="defcon-header-container-hd">
+    <div class="defcon-main-heading-hd">Build, scale & deploy</div>
+    
+    <div class="defcon-subheading-wrapper">
+      <div class="defcon-subheading-hd" id="dynamic-subheading">
+        Over <span class="highlight-cron">120+ clients</span> supported nationwide.
+      </div>
+    </div>
+
+  </div>
+
+  <button class="defcon-crypto-cta" onclick="window.location.href='croloft.html'">
+    <span class="defcon-crypto-text">What is Croloft?</span>
+    <span class="defcon-crypto-icon">
+      <svg width="30" height="30" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+        <path d="M5 12H19M19 12L12 5M19 12L12 19" stroke="white" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+      </svg>
+    </span>
+  </button>
+
+</section>
+
+<style>
+    .highlight-cron {
+        color: #0091ff;
     }
 
-    .lfm-hero-outer-container * {
-      box-sizing: border-box;
-    }
+/* Base Styles */
+.defcon-premium-showcase {
+  position: relative;
+  width: 100%;
+  min-height: 100vh;
+  padding: 60px 5%;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  overflow: hidden;
+  background: linear-gradient( rgba(6, 39, 62, 0.648), rgba(6, 39, 62, 0.297)), url('https://images.unsplash.com/photo-1686848429284-d108e021a74c?q=80&w=1332&auto=format&fit=crop&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D') no-repeat center center/cover;
+  box-sizing: border-box;
+  font-family: 'Circular Std', sans-serif; 
+}
 
-    /* Outer carousel window configuration */
-    .lfm-hero-carousel-wrapper {
-      position: relative;
-      width: 100%;
-      height: 600px;
-      overflow: hidden;
-      background-color: #f3f4f6;
-    }
+/* Header Container */
+.defcon-header-container-hd {
+  max-width: 800px;
+  width: 100%;
+  text-align: center;
+  animation: defconFadeInUp 1s ease-out forwards;
+}
 
-    /* Flex track holding slides horizontally side-by-side */
-    .lfm-hero-track {
-      display: flex;
-      width: 100%;
-      height: 100%;
-      position: relative;
-      will-change: transform;
-    }
+/* Main Heading */
+.defcon-main-heading-hd {
+  font-size: 6rem; 
+  font-weight: 400;
+  text-transform: none;
+  max-width: 800px; 
+  letter-spacing: -0.03em;
+  line-height: 1;
+  color: white;
+  text-align: center;
+  margin: 7rem auto 3rem auto;
+}
 
-    /* Individual product panel architecture */
-    .lfm-hero-slide {
-      flex: 0 0 100%;
-      width: 100%;
-      height: 100%;
-      display: flex;
-      align-items: center;
-      position: relative;
-    }
+/* --- NEW SUBHEADING STYLES --- */
 
-    /* Separate background assets per layout slide */
-    .lfm-hero-bg {
-      position: absolute;
-      top: 0;
-      left: 0;
-      width: 100%;
-      height: 100%;
-      background-size: cover;
-      background-position: center;
-      background-repeat: no-repeat;
-      z-index: 1;
-    }
+/* Wrapper to hold height stable during transition */
+.defcon-subheading-wrapper {
+  height: 3em; /* Fixed height to prevent layout jumping */
+  margin-bottom: 2rem;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  overflow: hidden; /* Ensures text entering from top is hidden until inside */
+}
 
-    .lfm-hero-content-container {
-      width: 100%;
-      max-width: 1280px;
-      margin: 0 auto;
-      padding: 0 4rem;
-      position: relative;
-      z-index: 2;
-    }
-
-    .lfm-hero-text-block {
-      max-width: 550px;
-      color: #111827;
-    }
-
-    .lfm-hero-title {
-      font-size: 3.25rem;
-      font-weight: 500;
-      line-height: 1.15;
-      margin: 0 0 1.25rem 0;
-      letter-spacing: -0.025em;
-    }
-
-    .lfm-hero-description {
-      font-size: 1.15rem;
-      font-weight: 400;
-      line-height: 1.6;
-      color: #374151;
-      margin: 0 0 2rem 0;
-    }
-
-    .lfm-hero-btn {
-      display: inline-flex;
-      align-items: center;
-      justify-content: center;
-      background-color: #0067b8;
-      color: #ffffff;
-      padding: 0.75rem 2.25rem;
-      font-size: 0.95rem;
-      font-weight: 400;
-      text-decoration: none;
-      border-radius: 50px;
-      transition: background-color 0.2s ease;
-    }
-
-    .lfm-hero-btn:hover {
-      background-color: #005293;
-    }
-
-    /* Control Panel UI - Positioned completely underneath the window */
-    .lfm-hero-controls-bar {
-      margin-top: 1.5rem;
-      display: flex;
-      align-items: center;
-      gap: 12px;
-      padding: 6px 16px;
-    }
-
-    .lfm-hero-ctrl-btn {
-      background: none;
-      border: none;
-      cursor: pointer;
-      padding: 3px;
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      color: #000000; border: 2px solid rgb(22, 22, 22);
-      border-radius: 50%;
-      transition: background-color 0.2s, color 0.2s;
-    }
-
-    .lfm-hero-ctrl-btn:hover {
-      background-color: rgba(0, 0, 0, 0.05);
-      color: #111827;
-    }
-
-    .lfm-hero-icon {
-      width: 30px;
-      height: 30px; stroke-width: 0.8;
-    }
-
-    .lfm-hero-dots-indicator {
-      display: flex;
-      align-items: center;
-      gap: 10px;
-    }
-
-    .lfm-hero-dot {
-      width: 8px;
-      height: 8px;
-      border-radius: 50%;
-      background-color: #d1d5db;
-      border: none;
-      cursor: pointer;
-      padding: 0;
-      transition: transform 0.2s, background-color 0.2s;
-    }
-
-    .lfm-hero-dot.active {
-      background-color: #111827;
-      transform: scale(1.25);
-    }
-
-    /* Responsive Mobile Breakpoints */
-    @media (max-width: 1024px) {
-      .lfm-hero-content-container { padding: 0 2rem; }
-      .lfm-hero-title { font-size: 2.75rem; }
-    }
-
-    @media (max-width: 768px) {
-      .lfm-hero-carousel-wrapper { height: 500px; }
-      .lfm-hero-content-container { text-align: center; padding: 0 1.5rem; }
-      .lfm-hero-text-block { margin: 0 auto; max-width: 100%; }
-      .lfm-hero-title { font-size: 2.25rem; }
-      .lfm-hero-description { font-size: 1rem; }
-    }
-  </style>
-</head>
-<body>
-
-<div class="lfm-hero-outer-container">
+.defcon-subheading-hd {
+  font-size: 24px;
+  font-weight: 400;
+  color: #ffffff;
+  text-align: center;
+  line-height: 1.5;
   
-  <div class="lfm-hero-carousel-wrapper" id="lfm-hero-carousel-root">
-    <div class="lfm-hero-track" id="lfm-hero-slider-track">
+  /* Animation properties */
+  transition: transform 0.5s cubic-bezier(0.16, 1, 0.3, 1), opacity 0.5s ease;
+  transform: translateY(0);
+  opacity: 1;
+}
+
+/* States for the animation */
+.subheading-exit {
+  transform: translateY(30px); /* Move Down */
+  opacity: 0;
+}
+
+.subheading-enter-setup {
+  transform: translateY(-30px); /* Start at Top */
+  opacity: 0;
+  transition: none; /* Instant jump to top while invisible */
+}
+/* ----------------------------- */
+
+/* CTA Button Styles */
+.defcon-crypto-cta {
+  display: inline-flex;
+  align-items: center;
+  background: #dedede;
+  color: #06273e;
+  border: none;
+  padding: 5px 6px 5px 25px;
+  font-size: 17px;
+  font-weight: 500;
+  border-radius: 60px;
+  cursor: pointer;
+  transition: all 0.3s ease;
+  position: relative;
+  overflow: hidden;
+  margin-bottom: 4rem;
+  margin-top: 1rem;
+  width: fit-content;
+}
+
+.defcon-crypto-cta:active {
+  transform: translateY(1px);
+}
+
+.defcon-crypto-text {
+  margin-right: 15px;
+}
+
+.defcon-crypto-icon {
+  width: 40px;
+  height: 40px;
+  background: #006cbf;
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  transition: all 0.3s ease;
+}
+
+/* --- Responsive Adjustments --- */
+
+@media (max-width: 1024px) {
+  .defcon-main-heading-hd {
+    font-size: 44px; 
+  }
+}
+
+@media (max-width: 767px) {
+  .defcon-premium-showcase {
+    min-height: 70vh; 
+  }
+  .defcon-main-heading-hd {
+    font-size: 38px;
+    line-height: 1.25;
+  }
+
+  .defcon-subheading-hd {
+    font-size: 20px;
+  }
+  
+  .defcon-subheading-wrapper {
+    height: auto; /* Allow auto height on mobile if text wraps */
+    min-height: 3.5em; 
+  }
+}
+
+@media (max-width: 480px) {
+  .defcon-premium-showcase {
+    padding: 40px 5%;
+    min-height: 100vh; 
+  }
+  
+  .defcon-main-heading-hd {
+    font-size: 40px; 
+    line-height: 1.3;
+    margin-bottom: 2rem;
+  }
+  
+  .defcon-crypto-cta {
+    font-size: 18px; 
+    margin-top: 0.5rem;
+    margin-bottom: 2rem;
+    padding: 5px 5px 5px 25px;
+  }
+  
+  .defcon-crypto-icon {
+    width: 40px;
+    height: 40px;
+  }
+  
+  .defcon-crypto-icon svg {
+    width: 20px;
+    height: 20px;
+  }
+  
+  .defcon-crypto-text {
+    margin-right: 10px;
+  }
+}
+</style>
+
+<script>
+document.addEventListener("DOMContentLoaded", function() {
+    const subheadingEl = document.getElementById('dynamic-subheading');
+    
+    // The content array based on your original text split into 3 parts
+    const messages = [
+        'Over <span class="highlight-cron">120+ clients</span> supported nationwide.',
+        'Providing <span class="highlight-cron">24/7 monitoring</span> and real-time alerts.',
+        'Achieving <span class="highlight-cron">zero security breaches</span> in managed environments.'
+    ];
+
+    let currentIndex = 0;
+
+    setInterval(() => {
+        // 1. Slide OUT (Down)
+        subheadingEl.classList.add('subheading-exit');
+
+        setTimeout(() => {
+            // 2. Update Index
+            currentIndex = (currentIndex + 1) % messages.length;
+            
+            // 3. Jump to TOP (Invisible)
+            subheadingEl.classList.add('subheading-enter-setup');
+            subheadingEl.classList.remove('subheading-exit');
+            
+            // 4. Change Text
+            subheadingEl.innerHTML = messages[currentIndex];
+
+            // 5. Slide IN (From Top to Center)
+            // Small timeout allows the browser to register the 'jump to top' before animating down
+            setTimeout(() => {
+                subheadingEl.classList.remove('subheading-enter-setup');
+            }, 50);
+
+        }, 500); // Wait for the 0.5s slide-out animation to finish
+
+    }, 4000); // Change text every 4 seconds
+});
+</script>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<div class="cronos-scroll-section-wrapper">
+  <div class="cronos-scroll-track">
+    <div class="cronos-sticky-viewport">
       
-      <div class="lfm-hero-slide">
-        <div class="lfm-hero-bg" style="background-image: url('https://images.pexels.com/photos/9202379/pexels-photo-9202379.jpeg');"></div>
-        <div class="lfm-hero-content-container">
-          <div class="lfm-hero-text-block">
-            <h1 class="lfm-hero-title">Meet Surface Laptop</h1>
-            <p class="lfm-hero-description">Unlock AI features like Live Captions and Cocreator with this exceptionally powerful laptop.</p>
-            <a href="#" class="lfm-hero-btn">Learn more</a>
+      <div class="cronos-content-grid">
+        <div class="cronos-col-left">
+          <span class="cronos-sub-brand">Croloft<span style="font-family: 'Inter', Tahoma, Geneva, Verdana, sans-serif;">&#174;.</span></span>
+          <p class="cronos-brand-desc">
+            Our agency, Croloft, reflects our commitment to building hyper-scalable, high-performance web applications and infrastructure designed to withstand the next generation of global data demands.
+          </p>
+        </div>
+        
+        <div class="cronos-col-right">
+          <h2 class="cronos-main-heading">
+            Projections show that annual global data traffic will surpass 175 zettabytes by 2030, requiring robust systems built for absolute reliability, speed, and real-time efficiency.
+          </h2>
+          
+          <div class="cronos-action-block">
+            <div class="cronos-btn-combo">
+              <button class="cronos-main-btn" onclick="console.log('Action triggered')">Discover Our Solutions</button>
+            </div>
           </div>
+          
+          <div class="cronos-video-anchor"></div>
         </div>
       </div>
 
-      <div class="lfm-hero-slide">
-        <div class="lfm-hero-bg" style="background-image: url('https://images.pexels.com/photos/4273094/pexels-photo-4273094.jpeg');"></div>
-        <div class="lfm-hero-content-container">
-          <div class="lfm-hero-text-block">
-            <h1 class="lfm-hero-title">Meet Surface Pro</h1>
-            <p class="lfm-hero-description">The ultimate 2-in-1 flexibility meets next-generation AI performance for all-day productivity.</p>
-            <a href="#" class="lfm-hero-btn">Learn more</a>
-          </div>
-        </div>
-      </div>
-
-      <div class="lfm-hero-slide">
-        <div class="lfm-hero-bg" style="background-image: url('https://images.pexels.com/photos/4992078/pexels-photo-4992078.jpeg');"></div>
-        <div class="lfm-hero-content-container">
-          <div class="lfm-hero-text-block">
-            <h1 class="lfm-hero-title">Explore Accessories</h1>
-            <p class="lfm-hero-description">Elevate your experience with designed-to-match keyboards, adaptive pens, and high-speed docks.</p>
-            <a href="#" class="lfm-hero-btn">Shop now</a>
+      <div class="cronos-video-container-wrapper">
+        <video class="cronos-video-element" autoplay loop muted playsinline poster="https://images.unsplash.com/photo-1518770660439-4636190af475?auto=format&fit=crop&w=1200&q=80">
+          <source src="videos/background-video3.mp4" type="video/mp4">
+        </video>
+        <div class="cronos-video-darkener"></div>
+        
+        <div class="cronos-fullscreen-overlay">
+          <div class="cronos-overlay-inner">
+            <h3 class="cronos-overlay-heading">Uncompromising Performance</h3>
+            <p class="cronos-overlay-text">We build secure, flawless digital solutions engineered to scale with your vision.</p>
           </div>
         </div>
       </div>
 
     </div>
   </div>
-
-  <div class="lfm-hero-controls-bar">
-    <button class="lfm-hero-ctrl-btn" id="lfm-hero-toggle-play" aria-label="Pause Auto Scroll">
-      <svg viewBox="0 0 24 24" class="lfm-hero-icon icon-pause"><path d="M6 19h4V5H6v14zm8-14v14h4V5h-4z" fill="currentColor"/></svg>
-      <svg viewBox="0 0 24 24" class="lfm-hero-icon icon-play" style="display:none;"><path d="M8 5v14l11-7z" fill="currentColor"/></svg>
-    </button>
-    
-    <button class="lfm-hero-ctrl-btn" id="lfm-hero-prev" aria-label="Previous Slide">
-      <svg viewBox="0 0 24 24" class="lfm-hero-icon"><path d="M15.41 7.41L14 6l-6 6 6 6 1.41-1.41L10.83 12z" fill="currentColor"/></svg>
-    </button>
-
-    <div class="lfm-hero-dots-indicator" id="lfm-hero-dots-container"></div>
-
-    <button class="lfm-hero-ctrl-btn" id="lfm-hero-next" aria-label="Next Slide">
-      <svg viewBox="0 0 24 24" class="lfm-hero-icon"><path d="M10 6L8.59 7.41 13.17 12l-4.58 4.59L10 18l6-6z" fill="currentColor"/></svg>
-    </button>
-  </div>
-
 </div>
 
+<style>
+/* --- NAMESPACED SCOPE CSS --- */
+.cronos-scroll-section-wrapper {
+  --cronos-font-sans: 'Circular Std', -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif;
+  --cronos-bg-color: #ffffff;
+  --cronos-text-primary: #0f172a;
+  --cronos-text-secondary: #475569;
+  --cronos-border-color: #e2e8f0;
+  --cronos-radius: 50px; /* Strict 1px border-radius constraint */
+  
+  font-family: var(--cronos-font-sans);
+  background-color: var(--cronos-bg-color);
+  color: var(--cronos-text-primary);
+  margin: 0;
+  padding: 120px 0 60px 0;
+  box-sizing: border-box;
+  overflow: clip;
+}
+
+.cronos-scroll-section-wrapper *,
+.cronos-scroll-section-wrapper *::before,
+.cronos-scroll-section-wrapper *::after {
+  box-sizing: border-box;
+}
+
+/* Scroll track sets the scrolling distance for the animation */
+.cronos-scroll-track {
+  position: relative;
+  height: 290vh; /* Adjust height to control speed/duration of expansion */
+}
+
+/* Sticky viewport keeps layout in place while scrolling through the track */
+.cronos-sticky-viewport {
+  position: sticky;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100vh;
+  overflow: hidden;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+/* Main Content Layout Grid */
+.cronos-content-grid {
+  width: 100%;
+  max-width: 1200px;
+  margin: 0 auto;
+  padding: 0 2rem;
+  display: grid;
+  grid-template-columns: 1fr 1.2fr;
+  gap: 4rem;
+  align-items: stretch;
+  z-index: 2;
+  transition: opacity 0.3s ease-out, transform 0.3s ease-out;
+}
+
+/* Left Column Styling */
+.cronos-col-left {
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  padding-bottom: 3rem;
+}
+
+.cronos-sub-brand {
+  font-size: 4rem;
+  font-weight: 400; line-height: 1;
+  color: #000000;
+  text-align: left; 
+  letter-spacing: -0.03em; 
+}
+
+.cronos-brand-desc {
+  font-size: 1.125rem;
+  line-height: 1.6;
+  color: var(--cronos-text-secondary);
+  text-align: left;
+  max-width: 420px;
+  margin: 0;
+}
+
+/* Right Column Styling */
+.cronos-col-right {
+  display: flex;
+  flex-direction: column;
+  gap: 2rem;
+}
+
+.cronos-main-heading {
+  font-size: 1.75rem;
+  font-weight: 400;
+  line-height: 1.4;
+  letter-spacing: -0.01em;
+  color: var(--cronos-text-primary);
+  margin: 0;
+  text-align: left;
+}
+
+/* Action button component matching the reference image layout */
+.cronos-action-block {
+  display: flex;
+  justify-content: flex-start;
+}
+
+.cronos-btn-combo {
+  display: inline-flex;
+  align-items: stretch;
+}
+
+.cronos-main-btn {
+  font-family: var(--cronos-font-sans);
+  font-size: 15px;
+  font-weight: 400;
+  letter-spacing: 0.02em;
+  color: #ffffff;
+  background: #0082e0;
+  border: none;
+  padding: 14px 25px;
+  cursor: pointer;
+  border-radius: 50px;
+  transition: background-color 0.15s ease, border-color 0.15s ease;
+  font-family: inherit;
+}
+
+.cronos-main-btn:hover {
+  background-color: #0064c7;
+}
+
+/* Placeholder box where the video sits before fullscreen transition */
+.cronos-video-anchor {
+  width: 100%;
+  aspect-ratio: 16 / 9;
+  border-radius: var(--cronos-radius);
+}
+
+/* Transitioning Video Container (Controls positioning dynamically) */
+.cronos-video-container-wrapper {
+  position: absolute;
+  z-index: 100;
+  border-radius: var(--cronos-radius);
+  overflow: hidden;
+  box-shadow: 0 10px 30px -10px rgba(0, 0, 0, 0.1);
+  will-change: transform, width, height, top, left, border-radius;
+  pointer-events: none;
+}
+
+.cronos-video-element {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
+
+/* Video dark overlay overlayed upon fullscreen */
+.cronos-video-darkener {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background: rgba(15, 23, 42, 0.6);
+  opacity: 0;
+  transition: opacity 0.3s ease;
+}
+
+/* Text Overlay that fades in over the video */
+.cronos-fullscreen-overlay {
+  position: absolute;
+  top: 0;
+  left: 150px;
+  width: 100%;
+  height: 100%;
+  display: flex;
+  align-items: center;
+  justify-content: flex-start;
+  opacity: 0;
+  transform: translateY(20px);
+  transition: opacity 0.5s ease, transform 0.5s ease;
+  padding: 2rem;
+}
+
+.cronos-overlay-inner {
+  text-align: left;
+  max-width: 600px;
+  line-height: 1;
+}
+
+.cronos-overlay-heading {
+  font-size: 3rem;
+  font-weight: 500;
+  letter-spacing: -0.02em;
+  color: #ffffff;
+  margin-bottom: 1rem;
+}
+
+.cronos-overlay-text {
+  font-size: 1.25rem;
+  line-height: 1.6;
+  color: #f1f5f9;
+  font-weight: 400;
+}
+
+/* --- MOBILE RESPONSIVENESS BREAKPOINT --- */
+@media (max-width: 768px) {
+  .cronos-sticky-viewport {
+    height: auto;
+    position: relative;
+    overflow: visible;
+    padding: 3rem 0;
+  }
+  
+  .cronos-scroll-track {
+    height: auto !important; /* Disables scroll transition on mobile for accessibility */
+  }
+  
+  .cronos-content-grid {
+    grid-template-columns: 1fr;
+    gap: 2.5rem;
+    opacity: 1 !important;
+  }
+  
+  .cronos-col-left {
+    padding-bottom: 0;
+    gap: 1.5rem;
+  }
+  
+  .cronos-brand-desc {
+    max-width: 100%;
+  }
+  
+  .cronos-video-anchor {
+    display: none;
+  }
+
+  /* Fixed layout on mobile: Video container drops down cleanly below main CTA */
+  .cronos-video-container-wrapper {
+    display: flex; position: absolute;
+    top: auto !important;
+    left: auto !important;
+    width: 100% !important;
+    height: auto !important;
+    aspect-ratio: 16 / 9;
+    margin-top: 2rem;
+    transform: none !important;
+    box-shadow: none;
+  }
+
+  .cronos-video-darkener {
+    opacity: 0.4 !important; /* Keep a static slight overlay */
+  }
+
+  .cronos-fullscreen-overlay {
+    position: absolute;
+    opacity: 1 !important;
+    transform: none !important;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    padding: 1rem;
+  }
+
+  .cronos-overlay-heading {
+    font-size: 1.5rem;
+    margin-bottom: 0.5rem;
+  }
+
+  .cronos-overlay-text {
+    font-size: 0.875rem;
+  }
+}
+</style>
+
 <script>
-document.addEventListener("DOMContentLoaded", () => {
-  const wrapper = document.getElementById("lfm-hero-carousel-root");
-  if (!wrapper) return;
+(() => {
+  const wrapper = document.querySelector('.cronos-scroll-section-wrapper');
+  const track = document.querySelector('.cronos-scroll-track');
+  const anchor = document.querySelector('.cronos-video-anchor');
+  const videoWrapper = document.querySelector('.cronos-video-container-wrapper');
+  const contentGrid = document.querySelector('.cronos-content-grid');
+  const darkener = document.querySelector('.cronos-video-darkener');
+  const overlay = document.querySelector('.cronos-fullscreen-overlay');
 
-  const track = wrapper.querySelector("#lfm-hero-slider-track");
-  const originalSlides = Array.from(track.children);
-  const totalOriginals = originalSlides.length;
-  if (totalOriginals === 0) return;
+  function updateVideoPosition() {
+    // Disable heavy calculations on mobile devices
+    if (window.innerWidth <= 768) {
+      videoWrapper.style.cssText = '';
+      contentGrid.style.opacity = 1;
+      contentGrid.style.transform = 'none';
+      return;
+    }
 
-  const nextBtn = document.getElementById("lfm-hero-next");
-  const prevBtn = document.getElementById("lfm-hero-prev");
-  const togglePlayBtn = document.getElementById("lfm-hero-toggle-play");
-  const dotsContainer = document.getElementById("lfm-hero-dots-container");
-  
-  const pauseIcon = togglePlayBtn.querySelector(".icon-pause");
-  const playIcon = togglePlayBtn.querySelector(".icon-play");
-
-  let currentIndex = 1; 
-  let autoScrollTimer = null;
-  let isPlaying = true;
-  let isTransitioning = false;
-  const slideDuration = 9000; 
-
-  // Generate Navigation Dots dynamically
-  originalSlides.forEach((_, index) => {
-    const dot = document.createElement("button");
-    dot.classList.add("lfm-hero-dot");
-    if (index === 0) dot.classList.add("active");
-    dot.setAttribute("aria-label", `Go to slide ${index + 1}`);
-    dotsContainer.appendChild(dot);
-  });
-  const dots = Array.from(dotsContainer.children);
-
-  // Setup Clones for Infinite Loop Visual Snapping
-  const firstClone = originalSlides[0].cloneNode(true);
-  const lastClone = originalSlides[totalOriginals - 1].cloneNode(true);
-  
-  track.appendChild(firstClone);
-  track.insertBefore(lastClone, originalSlides[0]);
-
-  // Sync structural offset base position
-  track.style.transform = `translateX(-${currentIndex * 100}%)`;
-
-  function getActiveOriginalIndex(index) {
-    if (index === 0) return totalOriginals - 1;
-    if (index === totalOriginals + 1) return 0;
-    return index - 1;
-  }
-
-  function updateDots() {
-    dots.forEach(dot => dot.classList.remove("active"));
-    const activeIndex = getActiveOriginalIndex(currentIndex);
-    if (dots[activeIndex]) dots[activeIndex].classList.add("active");
-  }
-
-  function moveToSlide(targetIndex, animate = true) {
-    if (isTransitioning && animate) return;
+    const trackRect = track.getBoundingClientRect();
+    const anchorRect = anchor.getBoundingClientRect();
     
-    isTransitioning = true;
-    currentIndex = targetIndex;
-    
-    if (animate) {
-      track.style.transition = "transform 0.6s cubic-bezier(0.25, 1, 0.5, 1)";
+    // Calculate progress (0 to 1) of the total track scroll space
+    const totalScrollable = trackRect.height - window.innerHeight;
+    const scrolled = -trackRect.top;
+    let progress = Math.max(0, Math.min(1, scrolled / totalScrollable));
+
+    // Calculate dynamic coordinates from anchor frame to full viewport
+    const startLeft = anchorRect.left;
+    const startTop = anchorRect.top;
+    const startWidth = anchorRect.width;
+    const startHeight = anchorRect.height;
+
+    const endLeft = 0;
+    const endTop = 0;
+    const endWidth = window.innerWidth;
+    const endHeight = window.innerHeight;
+
+    // Interpolate layout states
+    const currentLeft = startLeft + (endLeft - startLeft) * progress;
+    const currentTop = startTop + (endTop - startTop) * progress;
+    const currentWidth = startWidth + (endWidth - startWidth) * progress;
+    const currentHeight = startHeight + (endHeight - startHeight) * progress;
+    const borderRadius = 6 * (1 - progress); // Scales from strict 1px to 0px at true fullscreen
+
+    // Apply exact positions
+    videoWrapper.style.left = `${currentLeft}px`;
+    videoWrapper.style.top = `${currentTop}px`;
+    videoWrapper.style.width = `${currentWidth}px`;
+    videoWrapper.style.height = `${currentHeight}px`;
+    videoWrapper.style.borderRadius = `${borderRadius}px`;
+
+    // Fade out original content grid as video dominates screen
+    if (progress > 0.15) {
+      const fadeProgress = Math.min(1, (progress - 0.15) / 0.35);
+      contentGrid.style.opacity = (1 - fadeProgress).toString();
+      contentGrid.style.transform = `scale(${1 - fadeProgress * 0.15})`;
     } else {
-      track.style.transition = "none";
+      contentGrid.style.opacity = '1';
+      contentGrid.style.transform = 'scale(1)';
     }
-    
-    track.style.transform = `translateX(-${currentIndex * 100}%)`;
-    updateDots();
 
-    // If we aren't animating, reset transition guard immediately
-    if (!animate) {
-      isTransitioning = false;
-    }
-  }
-
-  // Handle Instant Teleport at track boundaries without visual jumps
-  track.addEventListener("transitionend", () => {
-    if (currentIndex === totalOriginals + 1) {
-      track.style.transition = "none";
-      currentIndex = 1;
-      track.style.transform = `translateX(-${currentIndex * 100}%)`;
-      // Read offsetWidth to force browser layout pipeline flush
-      track.offsetWidth; 
-    }
-    if (currentIndex === 0) {
-      track.style.transition = "none";
-      currentIndex = totalOriginals;
-      track.style.transform = `translateX(-${currentIndex * 100}%)`;
-      track.offsetWidth; 
-    }
-    isTransitioning = false;
-  });
-
-  function startAutoScroll() {
-    stopAutoScroll();
-    autoScrollTimer = setInterval(() => {
-      moveToSlide(currentIndex + 1);
-    }, slideDuration);
-  }
-
-  function stopAutoScroll() {
-    if (autoScrollTimer) clearInterval(autoScrollTimer);
-  }
-
-  // UI Navigation Triggers
-  nextBtn.addEventListener("click", () => {
-    moveToSlide(currentIndex + 1);
-    if (isPlaying) startAutoScroll();
-  });
-
-  prevBtn.addEventListener("click", () => {
-    moveToSlide(currentIndex - 1);
-    if (isPlaying) startAutoScroll(); 
-  });
-
-  dots.forEach((dot, index) => {
-    dot.addEventListener("click", () => {
-      moveToSlide(index + 1);
-      if (isPlaying) startAutoScroll();
-    });
-  });
-
-  togglePlayBtn.addEventListener("click", () => {
-    if (isPlaying) {
-      stopAutoScroll();
-      pauseIcon.style.display = "none";
-      playIcon.style.display = "block";
+    // Fade in dark overlay and centered headline texts
+    if (progress > 0.5) {
+      const overlayProgress = Math.min(1, (progress - 0.5) / 0.5);
+      darkener.style.opacity = (overlayProgress * 0.65).toString();
+      overlay.style.opacity = overlayProgress.toString();
+      overlay.style.transform = `translateY(${(1 - overlayProgress) * 20}px)`;
     } else {
-      startAutoScroll();
-      pauseIcon.style.display = "block";
-      playIcon.style.display = "none";
+      darkener.style.opacity = '0';
+      overlay.style.opacity = '0';
+      overlay.style.transform = 'translateY(1px)';
     }
-    isPlaying = !isPlaying;
-  });
-
-  // Run Carousel
-  if (totalOriginals > 0) {
-    startAutoScroll();
   }
-});
+
+  // Bind event listeners with high performance checks
+  window.addEventListener('scroll', updateVideoPosition, { passive: true });
+  window.addEventListener('resize', updateVideoPosition);
+  
+  // Initialize positions on load
+  document.addEventListener('DOMContentLoaded', updateVideoPosition);
+  setTimeout(updateVideoPosition, 100); // Fail-safe fallback call
+})();
 </script>
-
-</body>
-</html>
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
 
 
 
@@ -724,7 +1043,7 @@ document.addEventListener("DOMContentLoaded", () => {
         .defcon-stack-header h2 {
             font-size: 2.4rem;
             font-weight: 500;
-            line-height: 1.1; letter-spacing: -0.02em;
+            line-height: 1.1; letter-spacing: -0.02em; 
         }
 
         /* ---------------------------------- */
@@ -839,7 +1158,7 @@ document.addEventListener("DOMContentLoaded", () => {
 
         .defcon-bottom-text h3 {
             font-size: 2.2rem;
-            font-weight: 500;
+            font-weight: 400;
             color: var(--defcon-white);
             line-height: 1.1;
             max-width: 600px;
@@ -1204,7 +1523,7 @@ document.addEventListener("DOMContentLoaded", () => {
         .tech-hero-card-description-unique {
             color: #797979;
             font-size: 20px;
-            font-weight: 500;
+            font-weight: 400;
             line-height: 1;
             margin: 0;
         }
@@ -2387,7 +2706,7 @@ document.addEventListener("DOMContentLoaded", () => {
     /* Soft outer glow div */
     .itco-cs__slide-glow {
       position: absolute;
-      inset: -9px;
+      inset: -5px;
       border-radius: calc(var(--itco-radius) + 6px);
       z-index: -2;
       background: linear-gradient(270deg,
@@ -2498,7 +2817,7 @@ document.addEventListener("DOMContentLoaded", () => {
     /* ─── HEADLINE ───────────────────────────────────────────── */
     .itco-cs__headline {
       font-size: clamp(1.1rem, 2.2vw, 3rem);
-      font-weight: 500;
+      font-weight: 400;
       line-height: 1.3;
       color: var(--itco-white);
       max-width: 750px;
@@ -2512,7 +2831,7 @@ document.addEventListener("DOMContentLoaded", () => {
       align-items: center;
       gap: 8px;
       font-size: 1rem;
-      font-weight: 500;
+      font-weight: 400;
       text-decoration: none;
       transition: gap .2s; background: #fff; border-radius: 50px; color: #000; width: fit-content; padding: 10px 25px;
     }
@@ -3028,7 +3347,7 @@ document.addEventListener("DOMContentLoaded", () => {
 
 
 
-<script src="translations.js"></script>
+
 
 
 
@@ -3114,8 +3433,20 @@ document.addEventListener("DOMContentLoaded", () => {
   display: flex;
   flex-direction: column;
   justify-content: space-between;
-  box-shadow: 0 1px 3px rgba(0, 0, 0, 0.05);
+  box-shadow: -1px 3px 9px 8px rgba(0, 0, 0, 0.355);
 }
+
+/* --- Imprinted Neon Rainbow Shadow Animation --- */
+  @keyframes awslm-vibrant-rainbow {
+    0% { box-shadow: 0 8px 30px rgb(236, 72, 154), 0 0 15px rgb(138, 92, 246); }
+    33% { box-shadow: 0 8px 30px rgb(59, 131, 246), 0 0 15px rgb(6, 181, 212); }
+    66% { box-shadow: 0 8px 30px rgb(245, 159, 11), 0 0 15px rgb(236, 72, 154); }
+    100% { box-shadow: 0 8px 30px rgb(236, 72, 154), 0 0 15px rgba(138, 92, 246, 0.933); }
+  }
+
+  .crft-card-container {
+    animation: awslm-vibrant-rainbow 3s linear infinite;
+  }
 
 /* Exact Split Color Background Logic (Mobile Stacking) */
 .crft-apple-banner-bg {
@@ -3440,7 +3771,7 @@ document.addEventListener("DOMContentLoaded", () => {
     line-height: 1.4;
     color: #a0a5b5; /* Light grey matching the design */
     margin: 0;
-    max-width: 80%; font-weight: 500;
+    max-width: 80%; font-weight: 400;
   }
 
   /* Circular button at the bottom right */
