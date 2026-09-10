@@ -150,7 +150,7 @@
         }
 
         .it-tech-flex-center { display: flex; align-items: center; justify-content: center; }
-        .it-tech-img-responsive { display: block; width: 100%; height: auto; border-radius: var(--it-border-radius-card); }
+        .it-tech-img-responsive { display: block; object-fit: cover; width: 100%; height: 670px; border-radius: var(--it-border-radius-card); }
 
         /* --- Typography Utilities --- */
         .it-tech-h1 { font-size: 64px; font-weight: 400; line-height: 1.2; letter-spacing: -0.02em;}
@@ -161,7 +161,7 @@
             background-clip: text;
             color: transparent; }
         .it-tech-h3 { font-size: 25px; font-weight: 500; }
-        .it-tech-subtext { font-size: 16px; color: #080d1b; text-align: center; margin-bottom: 30px; font-weight: 400; }
+        .it-tech-subtext { font-size: 16px; color: #3d4b61; text-align: center; margin-bottom: 30px; font-weight: 400; }
         .it-tech-text-blue { color: var(--it-blue-primary); }
         .it-tech-text-white { color: var(--it-white); }
 
@@ -181,7 +181,7 @@
         .it-tech-btn-primary:hover { background-color: #006fd0; }
         .it-tech-btn-outline-white { background-color: #fff; border: none; color: #080d1b; }
         .it-tech-btn-outline-white:hover { background-color: var(--it-white); color: var(--it-blue-dark); }
-        .it-tech-btn-outline-blue { background-color: transparent; border: 1px solid var(--it-blue-primary); color: var(--it-blue-primary); }
+        .it-tech-btn-outline-blue { background-color: #0066d2; border: 1px solid var(--it-blue-primary); color: #fff; }
         .it-tech-btn-outline-blue:hover { background-color: var(--it-blue-primary); color: var(--it-white); }
         .it-tech-btn-small { padding: 8px 20px; font-size: 18px; }
         .it-tech-btn-dark { background-color: #0B1426; color: var(--it-white); }
@@ -191,16 +191,16 @@
            SECTION 1: Hero (Full Width Background)
         ========================================= */
         .it-tech-hero-section {
-            width: 100%;
+            width: 100%; height: 100vh;
             position: relative;
             background-color: var(--it-blue-dark);
-            padding: 200px 0 150px;
+            padding: 230px 0 150px;
             overflow: hidden;
         }
         .it-tech-hero-bg {
             position: absolute;
             top: 0; left: 0; right: 0; bottom: 0;
-            background-image: url('https://images.pexels.com/photos/29586678/pexels-photo-29586678.jpeg');
+            background-image: url('thumbnails/pexels-alp-mmiy-2147670381-29822392.jpg');
             background-size: cover;
             background-position: center;
             opacity: 0.4;
@@ -219,7 +219,7 @@
         }
         .it-tech-hero-h1 {
             color: var(--it-white); line-height: 1;
-            margin-bottom: 30px;
+            margin-bottom: 30px; 
         }
 
         /* =========================================
@@ -268,16 +268,16 @@
             gap: 80px;
         }
         .it-tech-phone-mockup {
-            width: 300px;
-            height: 550px;
-            border-radius: 40px;
+            width: 350px;
+            min-height: 650px;
+            border-radius: 35px;
             box-shadow: 0 25px 50px -12px rgba(0,0,0,0.25);
-            border: 8px solid #333;
+            border: 8px solid transparent;
             overflow: hidden;
-            background-color: var(--it-white);
+            background: linear-gradient(45deg, #6B7280, #0A192F);
         }
         .it-tech-deployment-text {
-            max-width: 350px;
+            max-width: 380px;
         }
         .it-tech-deployment-h3 {
             font-size: 42px;
@@ -328,23 +328,23 @@
             display: flex;
             flex-direction: column;
         }
-        .it-tech-bg-monitoring { background: linear-gradient(to bottom, rgb(10, 25, 47), rgba(10, 25, 47, 0)), url('https://images.unsplash.com/photo-1551288049-bebda4e38f71?q=80&w=2070&auto=format&fit=crop'); background-size: cover; }
-        .it-tech-bg-transfer { background: linear-gradient(to bottom, rgba(10,25,47,0.7), rgba(10, 25, 47, 0)), url('https://images.unsplash.com/photo-1451187580459-43490279c0fa?q=80&w=2072&auto=format&fit=crop'); background-size: cover; }
+        .it-tech-bg-monitoring { background: linear-gradient(to bottom, rgb(10, 25, 47), rgba(10, 25, 47, 0)), url('thumbnails/pexels-alp-mmiy-2147670381-29822392.jpg'); background-size: cover; }
+        .it-tech-bg-transfer { background: linear-gradient(to bottom, rgba(10,25,47,0.7), rgba(10, 25, 47, 0)), url('thumbnails/pexels-alp-mmiy-2147670381-29822392.jpg'); background-size: cover; }
 
         .it-tech-feature-h3 {
             color: var(--it-white);
             font-size: 28px;
-            font-weight: 500;
+            font-weight: 400; line-height: 1.1;
             margin-bottom: 20px;
             position: relative; z-index: 2;
             max-width: 90%;
         }
         .it-tech-feature-phone-img {
             position: absolute;
-            bottom: -60px;
+            bottom: -10px;
             left: 50%;
             transform: translateX(-50%);
-            width: 280px;
+            width: 320px;
             z-index: 1;
             border-radius: 20px;
             box-shadow: 0 -20px 40px rgba(0,0,0,0.3);
@@ -367,7 +367,7 @@
         .it-tech-footer-p { margin-bottom: 32px; font-size: 18px; color: var(--it-text-gray); }
         
         .it-tech-footer-img-wrapper {
-            flex: 0 0 500px; /* Fixed width for image container */
+            flex: 0 0 580px; /* Fixed width for image container */
             height: 400px;
             border-radius: 0 20px 20px 0;
             overflow: hidden;
@@ -381,17 +381,17 @@
             .it-tech-stacks-grid { grid-template-columns: repeat(2, 1fr); }
             .it-tech-deployment-flex { flex-direction: column; text-align: center; gap: 40px; }
             .it-tech-features-flex { flex-direction: column; }
-            .it-tech-feature-dark-card { height: 450px; }
+            .it-tech-feature-dark-card { height: 750px; }
             .it-tech-footer-bar { flex-direction: column; gap: 40px; padding: 40px; }
             .it-tech-footer-content { padding-right: 0; text-align: center; }
             .it-tech-footer-img-wrapper { flex: 1; width: 100%; max-width: 100%; }
         }
-        @media (max-width: 600px) {
+        @media (max-width: 768px) {
             .it-tech-h1 { font-size: 32px; }
             .it-tech-h2 { font-size: 28px; }
             .it-tech-stacks-grid { grid-template-columns: 1fr; }
-            .it-tech-feature-h3 { font-size: 22px; }
-            .it-tech-feature-dark-card { padding: 30px; }
+            .it-tech-feature-h3 { font-size: 22px; font-weight: 400; }
+            .it-tech-feature-dark-card { padding: 30px; border-radius: 15px;}
         }
     </style>
 </head>
@@ -404,12 +404,10 @@
         <div class="it-tech-container">
             <div class="it-tech-hero-content">
                 <div class="it-tech-hero-logo">
-                   <img src="thumbnails/mock.png" style="height: 30px;"/>
+                   <img src="thumbnails/mock2.png" style="height: 30px;"/>
                 </div>
-                <h1 class="it-tech-h1 it-tech-hero-h1">Secured applications, all-round.</h1>
-                <a href="#" class="it-tech-btn it-tech-btn-outline-white">Start development
-                    <svg style="vertical-align: middle;" xmlns="http://www.w3.org/2000/svg" width="25" height="25" viewBox="0 0 24 24"><path fill="#080d1b" d="M16.175 13H5q-.425 0-.713-.288T4 12q0-.425.288-.713T5 11h11.175l-4.9-4.9q-.3-.3-.288-.7t.313-.7q.3-.275.7-.288t.7.288l6.6 6.6q.15.15.213.325t.062.375q0 .2-.063.375t-.212.325l-6.6 6.6q-.275.275-.687.275T11.3 19.3q-.3-.3-.3-.713t.3-.712L16.175 13Z"/></svg>
-                </a>
+                <h1 class="it-tech-h1 it-tech-hero-h1">The bar?<br> We raise that.</h1>
+                <a href="#" class="it-tech-btn it-tech-btn-outline-white">Start development</a>
             </div>
         </div>
     </section>
@@ -460,7 +458,16 @@
             
             <div class="it-tech-deployment-flex">
                 <div class="it-tech-phone-mockup">
-                    <img src="https://images.pexels.com/photos/18423763/pexels-photo-18423763.jpeg" class="it-tech-img-responsive" alt="Deployment App Screen">
+                    <video 
+                class="it-tech-img-responsive"
+                autoplay 
+                loop 
+                muted 
+                playsinline
+                src="videos/Screenrecording_20260816_162745.mp4">
+                Your browser does not support the video tag.
+                </video>
+                 
                 </div>
                 <div class="it-tech-deployment-text">
                     <h3 class="it-tech-deployment-h3">Execute shell commands with a single tap.</h3>
@@ -486,8 +493,8 @@
             </div>
             
             <div class="it-tech-flex-center" style="margin-top: 40px;">
-                 <a href="#" class="it-tech-btn it-tech-btn-outline-blue it-tech-btn-small">Explore Marketplace 
-                    <svg style="vertical-align: middle;" xmlns="http://www.w3.org/2000/svg" width="25" height="25" viewBox="0 0 24 24"><path fill="#0066d2" d="M16.175 13H5q-.425 0-.713-.288T4 12q0-.425.288-.713T5 11h11.175l-4.9-4.9q-.3-.3-.288-.7t.313-.7q.3-.275.7-.288t.7.288l6.6 6.6q.15.15.213.325t.062.375q0 .2-.063.375t-.212.325l-6.6 6.6q-.275.275-.687.275T11.3 19.3q-.3-.3-.3-.713t.3-.712L16.175 13Z"/></svg>
+                 <a href="marketplace.html" class="it-tech-btn it-tech-btn-outline-blue it-tech-btn-small">Explore Marketplace 
+                    <svg style="vertical-align: middle;" xmlns="http://www.w3.org/2000/svg" width="25" height="25" viewBox="0 0 24 24"><path fill="#fff" d="M16.175 13H5q-.425 0-.713-.288T4 12q0-.425.288-.713T5 11h11.175l-4.9-4.9q-.3-.3-.288-.7t.313-.7q.3-.275.7-.288t.7.288l6.6 6.6q.15.15.213.325t.062.375q0 .2-.063.375t-.212.325l-6.6 6.6q-.275.275-.687.275T11.3 19.3q-.3-.3-.3-.713t.3-.712L16.175 13Z"/></svg>
                  </a>
             </div>
             <p class="it-tech-subtext" style="margin-top: 20px;">Availability varies by enterprise agreement region.</p>
@@ -500,27 +507,9 @@
             <div class="it-tech-features-flex">
                 <div class="it-tech-feature-dark-card it-tech-bg-monitoring">
                     <h3 class="it-tech-feature-h3">Monitor server health and get real-time alerts up to 5x faster.</h3>
-                    <img src="https://via.placeholder.com/280x500/0A192F/00A3FF?text=Server+Health+Stats" class="it-tech-feature-phone-img" alt="Monitoring App">
                 </div>
                 <div class="it-tech-feature-dark-card it-tech-bg-transfer">
                     <h3 class="it-tech-feature-h3">Transfer large datasets securely and instantly between clusters.</h3>
-                    <img src="https://via.placeholder.com/280x500/0A192F/00A3FF?text=Data+Packet+Transfer" class="it-tech-feature-phone-img" alt="Data Transfer App">
-                </div>
-            </div>
-        </div>
-    </section>
-
-    <section class="it-tech-section" style="padding: 200px;">
-        <div class="it-tech-container">
-            <div class="it-tech-container-narrow">
-                <h2 class="it-tech-h2" style="margin-bottom: 24px;">
-                    Get started with<br>
-                    <span class="it-tech-text-blue">TechOps Platform</span>
-                </h2>
-                <div class="it-tech-flex-center">
-                    <a href="#" class="it-tech-btn it-tech-btn-primary">Get the App 
-                        <svg style="vertical-align: middle;" xmlns="http://www.w3.org/2000/svg" width="25" height="25" viewBox="0 0 24 24"><path fill="#fff" d="M16.175 13H5q-.425 0-.713-.288T4 12q0-.425.288-.713T5 11h11.175l-4.9-4.9q-.3-.3-.288-.7t.313-.7q.3-.275.7-.288t.7.288l6.6 6.6q.15.15.213.325t.062.375q0 .2-.063.375t-.212.325l-6.6 6.6q-.275.275-.687.275T11.3 19.3q-.3-.3-.3-.713t.3-.712L16.175 13Z"/></svg>
-                    </a>
                 </div>
             </div>
         </div>
@@ -530,11 +519,13 @@
         <div class="it-tech-container">
             <div class="it-tech-footer-bar">
                 <div class="it-tech-footer-content">
-                    <h3 class="it-tech-footer-h3">Start offering tech services to 400m+ users around the world.</h3>
-                    <a href="#" class="it-tech-btn it-tech-btn-dark">Become a Partner ></a>
+                    <h3 class="it-tech-footer-h3">Start offering tech services to 400M+ users around the world.</h3>
+                    <a href="#" class="it-tech-btn it-tech-btn-dark">Become a Partner
+                         <svg style="vertical-align: middle;" xmlns="http://www.w3.org/2000/svg" width="25" height="25" viewBox="0 0 24 24"><path fill="#fff" d="M16.175 13H5q-.425 0-.713-.288T4 12q0-.425.288-.713T5 11h11.175l-4.9-4.9q-.3-.3-.288-.7t.313-.7q.3-.275.7-.288t.7.288l6.6 6.6q.15.15.213.325t.062.375q0 .2-.063.375t-.212.325l-6.6 6.6q-.275.275-.687.275T11.3 19.3q-.3-.3-.3-.713t.3-.712L16.175 13Z"/></svg>
+                    </a>
                 </div>
                 <div class="it-tech-footer-img-wrapper">
-                    <img src="https://images.unsplash.com/photo-1553877522-43269d4ea984?q=80&w=2070&auto=format&fit=crop" alt="IT Professional working">
+                    <img src="thumbnails/pexels-googledeepmind-17484975.jpg" alt="IT Professional working">
                 </div>
             </div>
         </div>

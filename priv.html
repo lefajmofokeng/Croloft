@@ -1,0 +1,143 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Defcon Privacy Dashboard</title>
+    <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;600;700&display=swap" rel="stylesheet">
+    <style>
+        @font-face { font-family:'Circular Std'; src:url('fonts/CircularStd-Book.woff2') format('woff2'),url('fonts/CircularStd-Book.woff') format('woff'); font-weight:400; font-style:normal; font-display:swap; }
+        @font-face { font-family:'Circular Std'; src:url('fonts/CircularStd-BookItalic.woff2') format('woff2'),url('fonts/CircularStd-BookItalic.woff') format('woff'); font-weight:400; font-style:italic; font-display:swap; }
+        @font-face { font-family:'Circular Std'; src:url('fonts/CircularStd-Medium.woff2') format('woff2'),url('fonts/CircularStd-Medium.woff') format('woff'); font-weight:500; font-style:normal; font-display:swap; }
+        @font-face { font-family:'Circular Std'; src:url('fonts/CircularStd-Bold.woff2') format('woff2'),url('fonts/CircularStd-Bold.woff') format('woff'); font-weight:600; font-style:normal; font-display:swap; }
+        @font-face { font-family:'Circular Std'; src:url('fonts/CircularStd-Bold.woff2') format('woff2'),url('fonts/CircularStd-Bold.woff') format('woff'); font-weight:700; font-style:normal; font-display:swap; }
+        @font-face { font-family:'Circular Std'; src:url('fonts/CircularStd-Black.woff2') format('woff2'),url('fonts/CircularStd-Black.woff') format('woff'); font-weight:800; font-style:normal; font-display:swap; }
+        @font-face { font-family:'Circular Std'; src:url('fonts/CircularStd-Black.woff2') format('woff2'),url('fonts/CircularStd-Black.woff') format('woff'); font-weight:900; font-style:normal; font-display:swap; }
+    </style>
+    <style>
+        body {
+            margin: 0;
+            font-family: 'Circular Std', sans-serif;
+             background: linear-gradient(275deg, #004bb4 0%, #080d1b 100%);
+            color: #e2e8f0; /* Light text color */
+        }
+        .header {
+            background-color: #080d1b;
+            padding: 10px 40px;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+        }
+        .header img {
+            height: 30px; /* Adjust as needed */
+            margin-right: 10px;
+        }
+        .container {
+            display: flex;
+            padding: 40px;
+            max-width: 1200px;
+            margin: 0 auto;
+        }
+        .sidebar {
+            flex: 0 0 300px; /* Fixed width for the sidebar */
+            padding-right: 40px;
+        }
+        .sidebar h1 {
+            font-size: 2.5em;
+            font-weight: 500;
+            color: #e2e8f0;
+            margin-bottom: 20px;
+        }
+        .content {
+            flex: 1;
+        }
+        .content p {
+            margin-bottom: 1.5em;font-weight: 400;
+            line-height: 1.6;
+            color: #b8c3d1; /* Slightly lighter gray for body text */
+        }
+        .content a {
+            color: #63b3ed; /* Link color */
+            text-decoration: none;
+        }
+        .content a:hover {
+            text-decoration: underline;
+        }
+        .card {
+            background: #fff; /* Darker gray for the card background */
+            border-radius: 1px;
+            padding: 30px;
+            margin-top: 40px;
+            box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+        }
+        .card h2 {
+            font-size: 1.2em;
+            font-weight: 600;
+            margin-bottom: 20px;
+            color: #050608;
+        }
+        .jurisdiction-group {
+            margin-bottom: 25px;
+        }
+        .jurisdiction-group h3 {
+            font-size: 1.1em;
+            font-weight: 600;
+            margin-bottom: 15px;
+            color: #121519; /* Slightly lighter gray for group titles */
+        }
+        .jurisdiction-links {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 15px 30px; /* Gap between links */
+        }
+        .jurisdiction-links a {
+            color: #006cb9; /* Link color */
+            text-decoration: none;
+            font-weight: 400;
+            white-space: nowrap; /* Prevent links from breaking */
+        }
+        .jurisdiction-links a:hover {
+            text-decoration: underline;
+        }
+    </style>
+</head>
+<body>
+    <div class="header">
+        <a href="index.html"><img src="thumbnails/mock2.png" alt="Defcon Logo"></a>
+    </div>
+
+    <div class="container">
+        <div class="sidebar">
+            <h1>Privacy Dashboard</h1>
+        </div>
+        <div class="content">
+            <p>
+                Welcome to the Defcon Privacy Dashboard. Here, you'll find important notices and policies - please review them carefully before sharing any personal information. Note that the type of information we process will depend on your individual circumstances.
+            </p>
+            <p>
+                This Privacy Dashboard governs how various Defcon companies handle personal data when providing services, websites, or mobile apps. The notices inform you about data processing practices of the specific Defcon company with which you engage or whose terms you have accepted. If needed, we'll provide a "just in time" notice for any additional processing activities not covered here. For any questions, reach out to us at <a href="mailto:dpo@defcon.com">dpo@defcon.com</a>. Please be aware that some services may not be accessible in certain regions.
+            </p>
+
+            <div class="card">
+                <h2>Select Province:</h2>
+
+                <div class="jurisdiction-group">
+                    <h3>South Africa</h3>
+                    <div class="jurisdiction-links">
+                        <a href="#">Eastern Cape</a>
+                        <a href="#">Free State</a>
+                        <a href="#">Gauteng</a>
+                        <a href="#">KwaZulu-Natal</a>
+                        <a href="#">Limpopo</a>
+                        <a href="#">Mpumalanga</a>
+                        <a href="#">North West</a>
+                        <a href="#">Northern Cape</a>
+                        <a href="#">Western Cape</a>
+                    </div>
+                </div>
+
+                </div>
+        </div>
+    </div>
+</body>
+</html>

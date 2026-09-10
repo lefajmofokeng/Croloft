@@ -35,6 +35,45 @@
 
 
 
+<style>
+    /* ==========================================================================
+           250px Mixed Blue Tech Gradient Hero Section (Title Placed at Bottom)
+           ========================================================================== */
+        .it-faq-hero {
+            width: 100%;
+            height: 250px;
+            background: linear-gradient(135deg, #040D1A 0%, #08214D 35%, #0056E0 100%);
+            display: flex;
+            align-items: flex-end; /* Anchors the content inner grid to the bottom */
+            justify-content: center;
+            padding: 0 20px 40px 20px; /* Strategic bottom padding pushes text flush above layout */
+        }
+
+        .it-faq-hero-inner {
+            width: 100%;
+            max-width: 1150px; /* Synchronized directly with core answer grid layout line width */
+            display: flex;
+            justify-content: flex-start;
+        }
+
+        .it-faq-hero-title {
+            font-size: clamp(38px, 6vw, 56px);
+            font-weight: 500;
+            letter-spacing: -0.02em;
+            color: #FFFFFF; 
+            margin: 0;
+        }
+</style>
+
+
+ <section class="it-faq-hero">
+            <div class="it-faq-hero-inner">
+                <h1 class="it-faq-hero-title">Press Enquiries</h1>
+            </div>
+        </section>
+
+
+
 
 
 
@@ -108,7 +147,7 @@
             --defcon-muted: #64748b;
             --defcon-white: #ffffff;
             --font-family-inter: 'Circular Std', sans-serif;
-            --content-max-width: 1100px;
+            --content-max-width: 1200px;
         }
 
         body {
@@ -132,30 +171,6 @@
             display: flex;
             flex-direction: column;
             gap: 80px;
-        }
-
-        /* Editorial Header Split */
-        .defcon-press-header {
-            display: grid;
-            grid-template-columns: 1.2fr 1fr;
-            gap: 60px;
-            align-items: end;
-            border-bottom: 1px solid var(--defcon-navy);
-            padding-bottom: 40px;
-        }
-
-        .defcon-press-title-area h1 {
-            font-size: 4rem;
-            font-weight: 600;
-            letter-spacing: -0.04em;
-            line-height: 1;
-            text-transform: uppercase;
-        }
-
-        .defcon-press-subtitle-area p {
-            font-size: 1.15rem;
-            line-height: 1.6;
-            color: var(--defcon-muted);
         }
 
         /* Split Layout: Contact channels & Kit Downloads */
@@ -201,7 +216,7 @@
         }
 
         .defcon-channel-meta {
-            font-size: 0.9rem;
+            font-size: 1rem;
             color: var(--defcon-muted);
             line-height: 1.5;
         }
@@ -282,9 +297,9 @@
         }
 
         .defcon-guidelines-text {
-            font-size: 0.85rem;
+            font-size: 1rem;
             color: var(--defcon-muted);
-            max-width: 600px;
+            max-width: 900px;
             line-height: 1.5;
         }
 
@@ -339,16 +354,6 @@
 <main class="defcon-press-container">
     <div class="defcon-press-wrapper">
         
-        <!-- Editorial Header Block -->
-        <header class="defcon-press-header">
-            <div class="defcon-press-title-area">
-                <h1>Press<br>Enquiries</h1>
-            </div>
-            <div class="defcon-press-subtitle-area">
-                <p>Official resources, media assets, and direct communication channels for journalists, publishers, and industry researchers tracking our software ecosystem.</p>
-            </div>
-        </header>
-
         <!-- Main Content Split -->
         <section class="defcon-press-body">
             

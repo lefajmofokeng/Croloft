@@ -38,6 +38,382 @@
 
 
 
+<!-- Custom Isolated Component: Hero Banner with QR Modal -->
+<section class="it-hero-section">
+  <!-- Full Bleed Background Image Layer -->
+  <div class="it-hero-bg">
+    <img 
+      src="https://images.unsplash.com/photo-1618005182384-a83a8bd57fbe?w=1920&auto=format&fit=crop&q=85" 
+      alt="Managed Infrastructure Background" 
+      class="it-hero-bg-img" 
+    />
+    <div class="it-hero-overlay"></div>
+  </div>
+
+  <!-- Content Container -->
+  <div class="it-hero-container">
+    <div class="it-hero-content">
+      <h1 class="it-hero-title">Managed Cloud Stacks</h1>
+      
+      <p class="it-hero-description">
+        Make the most of your enterprise infrastructure with up to 99.99% uptime SLAs on custom web applications and cloud protocols.
+      </p>
+
+      <!-- Action Area with Popup QR Modal -->
+      <div class="it-hero-action-wrapper">
+        <button type="button" class="it-hero-btn" id="itHeroQrTrigger" aria-expanded="false" aria-controls="itHeroQrModal">
+          <span>Scan to Explore</span>
+          <svg class="it-hero-qr-icon" viewBox="0 0 24 24" fill="currentColor">
+            <path d="M3 3h8v8H3V3zm2 2v4h4V5H5zm8-2h8v8h-8V3zm2 2v4h4V5h-4zM3 13h8v8H3v-8zm2 2v4h4v-4H5zm13-2h3v3h-3v-3zm-5 0h3v3h-3v-3zm0 5h3v3h-3v-3zm5 0h3v3h-3v-3zm-2.5-2.5h3v3h-3v-3z"/>
+          </svg>
+        </button>
+
+        <!-- Inline QR Code Modal -->
+        <div class="it-hero-qr-modal" id="itHeroQrModal" aria-hidden="true">
+          <div class="it-hero-qr-card">
+            <div class="it-hero-qr-header">
+             
+              <button type="button" class="it-hero-qr-close" id="itHeroQrClose" aria-label="Close modal">&times;</button>
+            </div>
+            <div class="it-hero-qr-img-wrap">
+              <!-- QR Code SVG Image -->
+              <img src="thumbnails/frame.jpg" alt="QR Code for Mobile Access" style="height: auto; width: 100px;" class="it-hero-qr-img" />
+            </div>
+            
+          </div>
+        </div>
+      </div>
+
+      <span class="it-hero-disclaimer">Terms and conditions apply.</span>
+    </div>
+  </div>
+</section>
+
+<style>
+  /* ==========================================================================
+     ISOLATED COMPONENT STYLES (Prefix: it-hero-)
+     ========================================================================== */
+
+  .it-hero-section {
+    position: relative;
+    width: 100%;
+    min-height: 100vh;
+    display: flex;
+    align-items: center;
+    overflow: hidden;
+    background-color: #040914;
+    font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
+    box-sizing: border-box;
+  }
+
+  .it-hero-section * {
+    box-sizing: border-box;
+    margin: 0;
+    padding: 0;
+  }
+
+  /* Full Bleed Background Setup */
+  .it-hero-bg {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    z-index: 1;
+  }
+
+  .it-hero-bg-img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    object-position: center;
+    display: block;
+  }
+
+  /* Gradient Overlay */
+  .it-hero-overlay {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: linear-gradient(
+      90deg, 
+      rgba(4, 9, 20, 0.9) 0%, 
+      rgba(4, 9, 20, 0.65) 50%, 
+      rgba(4, 9, 20, 0.25) 100%
+    );
+  }
+
+  /* Container & Content Layout */
+  .it-hero-container {
+    position: relative;
+    z-index: 2;
+    width: 100%;
+    max-width: 1140px;
+    margin: 0 auto;
+    padding: 60px 24px;
+  }
+
+  .it-hero-content {
+    max-width: 520px;
+  }
+
+  .it-hero-title {
+    font-size: 56px;
+    font-weight: 700;
+    color: #ffffff;
+    line-height: 1.1;
+    letter-spacing: -1.2px;
+    margin-bottom: 20px;
+  }
+
+  .it-hero-description {
+    font-size: 17px;
+    line-height: 1.5;
+    color: #e2e8f0;
+    font-weight: 400;
+    margin-bottom: 28px;
+  }
+
+  /* Action Area Wrapper */
+  .it-hero-action-wrapper {
+    position: relative;
+    display: inline-block;
+    margin-bottom: 16px;
+  }
+
+  .it-hero-btn {
+    display: inline-flex;
+    align-items: center;
+    gap: 10px;
+    background-color: #ffffff;
+    color: #040914;
+    font-size: 15px;
+    font-weight: 600;
+    padding: 12px 28px;
+    border-radius: 9999px;
+    border: none;
+    cursor: pointer;
+    box-shadow: 0 4px 14px rgba(0, 0, 0, 0.25);
+    transition: transform 0.2s ease, background-color 0.2s ease;
+  }
+
+  .it-hero-btn:hover {
+    background-color: #f8fafc;
+    transform: translateY(-1px);
+  }
+
+  .it-hero-qr-icon {
+    width: 18px;
+    height: 18px;
+    fill: #040914;
+  }
+
+  /* QR Modal Positioning & Styling */
+  .it-hero-qr-modal {
+    position: absolute;
+    top: calc(100% + 12px);
+    left: 0;
+    z-index: 10;
+    opacity: 0;
+    visibility: hidden;
+    transform: translateY(-8px);
+    transition: opacity 0.25s ease, transform 0.25s ease, visibility 0.25s ease;
+  }
+
+  .it-hero-qr-modal.it-hero-is-active {
+    opacity: 1;
+    visibility: visible;
+    transform: translateY(0);
+  }
+
+  .it-hero-qr-card {
+    background: #ffffff;
+    border-radius: 16px;
+    padding: 8px;
+    width: fit-content;
+    box-shadow: 0 12px 30px rgba(0, 0, 0, 0.4);
+    text-align: center;
+    border: 1px solid rgba(255, 255, 255, 0.2);
+  }
+
+  .it-hero-qr-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    font-size: 12px;
+    font-weight: 700;
+    color: #040914;
+    margin-bottom: 12px;
+  }
+
+  .it-hero-qr-close {
+    background: #ececec; border-radius: 50px; vertical-align: middle;
+    border: none;
+    font-size: 18px;
+    line-height: 1;
+    color: #090a0a;
+    cursor: pointer;
+    padding: 0 4px;
+  }
+
+  .it-hero-qr-close:hover {
+    color: #040914;
+  }
+
+  .it-hero-qr-img-wrap {
+    width: 100px;
+    aspect-ratio: 1;
+    background: #f8fafc;
+    border-radius: 8px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+  }
+
+  .it-hero-qr-img-wrap svg {
+    width: 100%;
+    height: 100%;
+  }
+
+  .it-hero-qr-caption {
+    font-size: 11px;
+    color: #64748b;
+    margin-top: 8px;
+    font-weight: 500;
+  }
+
+  .it-hero-disclaimer {
+    display: block;
+    font-size: 12px;
+    color: #94a3b8;
+  }
+
+  /* Mobile Adjustments */
+  @media (max-width: 768px) {
+    .it-hero-title {
+      font-size: 38px;
+    }
+
+    .it-hero-description {
+      font-size: 15px;
+    }
+  }
+</style>
+
+<script>
+  /* Isolated Modal Logic */
+  document.addEventListener('DOMContentLoaded', () => {
+    const trigger = document.getElementById('itHeroQrTrigger');
+    const modal = document.getElementById('itHeroQrModal');
+    const closeBtn = document.getElementById('itHeroQrClose');
+
+    if (trigger && modal && closeBtn) {
+      function toggleModal() {
+        const isActive = modal.classList.contains('it-hero-is-active');
+        if (isActive) {
+          modal.classList.remove('it-hero-is-active');
+          trigger.setAttribute('aria-expanded', 'false');
+          modal.setAttribute('aria-hidden', 'true');
+        } else {
+          modal.classList.add('it-hero-is-active');
+          trigger.setAttribute('aria-expanded', 'true');
+          modal.setAttribute('aria-hidden', 'false');
+        }
+      }
+
+      trigger.addEventListener('click', (e) => {
+        e.stopPropagation();
+        toggleModal();
+      });
+
+      closeBtn.addEventListener('click', (e) => {
+        e.stopPropagation();
+        modal.classList.remove('it-hero-is-active');
+        trigger.setAttribute('aria-expanded', 'false');
+        modal.setAttribute('aria-hidden', 'true');
+      });
+
+      /* Close when clicking anywhere outside */
+      document.addEventListener('click', (e) => {
+        if (!modal.contains(e.target) && !trigger.contains(e.target)) {
+          modal.classList.remove('it-hero-is-active');
+          trigger.setAttribute('aria-expanded', 'false');
+          modal.setAttribute('aria-hidden', 'true');
+        }
+      });
+    }
+  });
+</script>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 
 
@@ -1187,6 +1563,310 @@
 
 
 
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<!-- Custom Isolated Component: FAQ Section -->
+<section class="it-faq-section">
+  <div class="it-faq-container">
+    <div class="it-faq-main-layout">
+      
+      <!-- Left Column: Heading -->
+      <div class="it-faq-header">
+        <h2 class="it-faq-title">Frequently Asked Questions</h2>
+      </div>
+
+      <!-- Right Column: Accordions & Contact Link -->
+      <div class="it-faq-content">
+        <div class="it-faq-accordion-group">
+          
+          <!-- Accordion Item 1 -->
+          <div class="it-faq-item">
+            <button class="it-faq-trigger" aria-expanded="false">
+              <span class="it-faq-question">Who can participate in Enterprise Infrastructure & Cloud Services?</span>
+              <span class="it-faq-icon">
+                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                  <line x1="12" y1="5" x2="12" y2="19"></line>
+                  <line x1="5" y1="12" x2="19" y2="12"></line>
+                </svg>
+              </span>
+            </button>
+            <div class="it-faq-panel">
+              <p class="it-faq-answer">
+                Our services are designed for businesses of all sizes, from growing startups requiring custom web stacks to established enterprises needing dedicated cloud migrations and cybersecurity audits.
+              </p>
+            </div>
+          </div>
+
+          <!-- Accordion Item 2 -->
+          <div class="it-faq-item">
+            <button class="it-faq-trigger" aria-expanded="false">
+              <span class="it-faq-question">What are the Service Level Agreements (SLAs) and deployment timelines?</span>
+              <span class="it-faq-icon">
+                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                  <line x1="12" y1="5" x2="12" y2="19"></line>
+                  <line x1="5" y1="12" x2="19" y2="12"></line>
+                </svg>
+              </span>
+            </button>
+            <div class="it-faq-panel">
+              <p class="it-faq-answer">
+                We guarantee up to 99.99% uptime for cloud infrastructure. Deployment schedules depend on project scope, with standard cloud setups completing in 2–5 business days.
+              </p>
+            </div>
+          </div>
+
+        </div>
+
+        <!-- Contact Line -->
+        <div class="it-faq-contact">
+          <span>Have more questions?</span>
+          <a href="#contact" class="it-faq-contact-link">Contact Us</a>
+        </div>
+      </div>
+
+    </div>
+
+    <!-- Divider Line & Disclaimer Footer -->
+    <div class="it-faq-footer">
+      <p>
+        We respect your privacy and are committed to protecting your personal data. Please read our 
+        <a href="#privacy" class="it-faq-bold-link">Privacy Notice</a> carefully before providing any information about you or any other person. Terms, conditions and eligibility apply for managed hosting & SLA agreements. Please refer to the <a href="#faq" class="it-faq-bold-link">FAQ</a> for details.
+      </p>
+    </div>
+  </div>
+</section>
+
+<style>
+  /* ==========================================================================
+     ISOLATED COMPONENT STYLES (Prefix: it-faq-)
+     ========================================================================== */
+
+  .it-faq-section {
+    width: 100%;
+    background-color: #080f1e; /* Deep navy dark theme matching image */
+    color: #ffffff;
+    padding: 150px 20px 150px 20px;
+    font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
+    box-sizing: border-box;
+  }
+
+  .it-faq-section * {
+    box-sizing: border-box;
+    margin: 0;
+    padding: 0;
+  }
+
+  .it-faq-container {
+    max-width: 1140px;
+    margin: 0 auto;
+  }
+
+  /* Split Layout */
+  .it-faq-main-layout {
+    display: flex;
+    gap: 60px;
+    justify-content: space-between;
+    align-items: flex-start;
+    margin-bottom: 60px;
+  }
+
+  @media (max-width: 768px) {
+    .it-faq-main-layout {
+      flex-direction: column;
+      gap: 32px;
+    }
+  }
+
+  /* Left Header Column */
+  .it-faq-header {
+    flex: 1 1 40%;
+  }
+
+  .it-faq-title {
+    font-size: 32px;
+    font-weight: 500;
+    letter-spacing: -0.5px;
+    color: #ffffff;
+    line-height: 1.2;
+  }
+
+  /* Right Content Column */
+  .it-faq-content {
+    flex: 1 1 60%;
+    width: 100%;
+  }
+
+  .it-faq-accordion-group {
+    border-top: 1px solid rgba(255, 255, 255, 0.12);
+  }
+
+  /* Individual Accordion Item */
+  .it-faq-item {
+    border-bottom: 1px solid rgba(255, 255, 255, 0.12);
+  }
+
+  .it-faq-trigger {
+    width: 100%;
+    background: none;
+    border: none;
+    outline: none;
+    padding: 24px 0;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    cursor: pointer;
+    text-align: left;
+    color: #ffffff;
+    transition: opacity 0.2s ease;
+  }
+
+  .it-faq-trigger:hover {
+    opacity: 0.85;
+  }
+
+  .it-faq-question {
+    font-size: 20px;
+    font-weight: 500;
+    line-height: 1.4;
+    padding-right: 20px;
+  }
+
+  .it-faq-icon {
+    width: 20px;
+    height: 20px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-shrink: 0;
+    transition: transform 0.3s ease;
+  }
+
+  .it-faq-icon svg {
+    width: 20px;
+    height: 20px;
+    stroke: #ffffff;
+  }
+
+  /* Rotate icon when active */
+  .it-faq-trigger[aria-expanded="true"] .it-faq-icon {
+    transform: rotate(45deg);
+  }
+
+  /* Expandable Content Panel */
+  .it-faq-panel {
+    max-height: 0;
+    overflow: hidden;
+    transition: max-height 0.3s cubic-bezier(0, 1, 0, 1), padding 0.3s ease;
+  }
+
+  .it-faq-trigger[aria-expanded="true"] + .it-faq-panel {
+    max-height: 500px;
+    padding-bottom: 24px;
+    transition: max-height 0.3s ease-in-out, padding 0.3s ease;
+  }
+
+  .it-faq-answer {
+    font-size: 16px;
+    color: #94a3b8;
+    line-height: 1.6;
+  }
+
+  /* Direct Contact Line */
+  .it-faq-contact {
+    margin-top: 36px;
+    font-size: 16px;
+    color: #ffffff;
+    font-weight: 500;
+  }
+
+  .it-faq-contact-link {
+    color: #258feb; /* Vibrant electric blue matching reference */
+    text-decoration: none;
+    margin-left: 6px;
+    transition: color 0.2s ease;
+  }
+
+  .it-faq-contact-link:hover {
+    color: #0582ff;
+    text-decoration: underline;
+  }
+
+  /* Footer Disclaimer Section */
+  .it-faq-footer {
+    border-top: 1px solid rgba(255, 255, 255, 0.08);
+    padding-top: 32px;
+  }
+
+  .it-faq-footer p {
+    font-size: 14px;
+    color: #64748b;
+    line-height: 1.6;
+  }
+
+  .it-faq-bold-link {
+    color: #ffffff;
+    font-weight: 500;
+    text-decoration: none;
+  }
+
+  .it-faq-bold-link:hover {
+    text-decoration: underline;
+  }
+</style>
+
+<script>
+  /* Isolated JavaScript for Accordion Interactivity */
+  document.addEventListener('DOMContentLoaded', () => {
+    const faqTriggers = document.querySelectorAll('.it-faq-trigger');
+
+    faqTriggers.forEach(trigger => {
+      trigger.addEventListener('click', () => {
+        const isExpanded = trigger.getAttribute('aria-expanded') === 'true';
+        
+        // Close all items for single-open accordions (optional, but clean)
+        faqTriggers.forEach(otherTrigger => {
+          otherTrigger.setAttribute('aria-expanded', 'false');
+        });
+
+        // Toggle state of clicked trigger
+        if (!isExpanded) {
+          trigger.setAttribute('aria-expanded', 'true');
+        }
+      });
+    });
+  });
+</script>
 
 
 

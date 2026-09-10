@@ -72,6 +72,905 @@
 
 
 
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<div class="it-pricing-comp-wrapper-hook">
+  <div class="it-pricing-comp-background-graphic"></div>
+  <div class="it-pricing-comp-container">
+    <h2 class="it-pricing-comp-main-headline">
+      Pricing built for<br />IT businesses of all sizes
+    </h2>
+
+    <div class="it-pricing-comp-grid">
+      <div class="it-pricing-comp-card it-pricing-card-standard">
+        <div class="it-pricing-card-body-left">
+          <h3 class="it-pricing-card-title">Standard Plan</h3>
+          <p class="it-pricing-card-description">
+            Access essential IT infrastructure monitoring and basic support ticketing with simple, pay-as-you-go pricing. No setup fees or hidden costs.
+          </p>
+          <a href="#" class="it-pricing-btn it-btn-purple">
+            Get started
+            <svg class="it-btn-icon" width="14" height="14" viewBox="0 0 14 14" fill="none" xmlns="http://www.w3.org/2000/svg">
+              <path d="M5.25 10.5L8.75 7L5.25 3.5" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>
+            </svg>
+          </a>
+        </div>
+        <div class="it-pricing-card-price-right">
+          <div class="it-price-large">$99 / mo</div>
+          <div class="it-price-subtext">per user for basic managed services</div>
+        </div>
+      </div>
+
+      <div class="it-pricing-comp-card it-pricing-card-custom">
+        <div class="it-pricing-card-body-left it-custom-left-pad">
+          <h3 class="it-pricing-card-title it-text-white">Enterprise Custom</h3>
+          <p class="it-pricing-card-description it-text-gray-light">
+            Design a tailored enterprise IT strategy available for businesses with complex network needs, dedicated security requirements, or unique software ecosystems.
+          </p>
+          <a href="#" class="it-pricing-btn it-btn-cyan">
+            Contact sales
+            <svg class="it-btn-icon" width="14" height="14" viewBox="0 0 14 14" fill="none" xmlns="http://www.w3.org/2000/svg">
+              <path d="M5.25 10.5L8.75 7L5.25 3.5" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>
+            </svg>
+          </a>
+        </div>
+        <div class="it-pricing-card-features-right">
+          <ul class="it-feature-list">
+            <li class="it-feature-item">Dedicated Solutions Architect</li>
+            <li class="it-feature-item">24/7 Priority Support & SLA</li>
+            <li class="it-feature-item">Custom Cybersecurity Suite</li>
+            <li class="it-feature-item it-item-last">Global Infrastructure Management</li>
+          </ul>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<style>
+    /* Replace this import with your actual Circular Std font files */
+@import url('https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;500;700&display=swap');
+
+/* COMPONENT SCOPED STYLES */
+.it-pricing-comp-wrapper-hook {
+  /* Font stack - prioritizes Circular Std, falls back to similar sans-serifs */
+  font-family: 'Circular Std', 'DM Sans', -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
+  box-sizing: border-box;
+  position: relative;
+  overflow: hidden;
+  background-color: #Fff; /* Light background color from image */
+  padding: 80px 20px 250px; /* Spacing around the component */
+}
+
+.it-pricing-comp-wrapper-hook *,
+.it-pricing-comp-wrapper-hook *::before,
+.it-pricing-comp-wrapper-hook *::after {
+  box-sizing: inherit;
+  margin: 0;
+  padding: 0;
+}
+
+/* The background swoosh and grid pattern */
+.it-pricing-comp-background-graphic {
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  z-index: 1;
+  /* Subtle vertical grid lines */
+  background-image: linear-gradient(to right, rgba(0,0,0,0.03) 1px, transparent 1px);
+  background-size: 150px 100%;
+}
+
+.it-pricing-comp-background-graphic::after {
+    content: '';
+    position: absolute;
+    left: -10%;
+    right: -10%;
+    bottom: 10%;
+    height: 400px;
+    /* The colorful diagonal gradient */
+    background: linear-gradient(135deg, #F7A578 0%, #E25E7D 25%, #A76FCE 60%, #8C52FF 100%);
+    transform: skewY(-8deg);
+    opacity: 0.9;
+    z-index: -1;
+    pointer-events: none;
+}
+
+/* Main container */
+.it-pricing-comp-container {
+  position: relative;
+  z-index: 2;
+  max-width: 1200px;
+  margin: 0 auto;
+  padding: 50px 20px 0;
+}
+
+/* Headline */
+.it-pricing-comp-main-headline {
+  font-size: 52px;
+  font-weight: 500;
+  line-height: 1;
+  letter-spacing: -0.02em;
+  color: #0A2540; /* Dark blue text */
+  margin-bottom: 60px;
+}
+
+/* Card Grid Layout */
+.it-pricing-comp-grid {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 30px;
+}
+
+/* General Card Styles */
+.it-pricing-comp-card {
+  flex: 1;
+  border-radius: 8px;
+  overflow: hidden;
+  box-shadow: 0 15px 35px rgba(0, 0, 0, 0.1), 0 5px 15px rgba(0,0,0,0.05);
+  display: flex;
+  min-height: 340px; /* Ensure consistent height */
+}
+
+/* ============ STANDARD CARD STYLES ============ */
+.it-pricing-card-standard {
+  background-color: #FFFFFF;
+}
+
+.it-pricing-card-body-left {
+  padding: 40px;
+  flex: 1.4; /* Takes up slightly more space */
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+}
+
+.it-pricing-card-price-right {
+  background-color: #F6F9FC; /* Slightly offset right background */
+  padding: 40px;
+  margin: 5px;
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: flex-start;
+}
+
+.it-price-large {
+  font-size: 32px;
+  font-weight: 700;
+  color: #0A2540;
+  margin-bottom: 8px;
+}
+
+.it-price-subtext {
+  font-size: 16px;
+  line-height: 1.4;
+  color: #425466;
+}
+
+/* ============ CUSTOM CARD STYLES ============ */
+.it-pricing-card-custom {
+  background-color: #0A2540; /* Dark blue background */
+  color: #FFFFFF;
+}
+
+.it-custom-left-pad {
+    padding-right: 60px; /* Extra padding between text and feature list */
+}
+
+.it-pricing-card-features-right {
+  flex: 1;
+  background-color: rgba(255,255,255,0.1); /* Subtle lighter blue overlay */
+  display: flex;
+  flex-direction: column;
+  margin: 5px;
+}
+
+.it-feature-list {
+  list-style: none;
+  height: 100%;
+  display: flex;
+  flex-direction: column;
+}
+
+.it-feature-item {
+  flex: 1;
+  display: flex;
+  align-items: center;
+  padding: 0 30px;
+  font-size: 16px;
+  font-weight: 400;
+  color: #FFFFFF;
+  text-align: center;
+  border-bottom: 1px solid rgba(255, 255, 255, 0.15);
+}
+
+.it-feature-item.it-item-last {
+    border-bottom: none;
+}
+
+
+/* ============ SHARED TYPOGRAPHY & BUTTONS ============ */
+.it-pricing-card-title {
+  font-size: 24px;
+  font-weight: 700;
+  margin-bottom: 16px;
+  color: #0A2540;
+}
+
+.it-text-white { color: #FFFFFF; }
+
+.it-pricing-card-description {
+  font-size: 16px;
+  line-height: 1.6;
+  color: #425466;
+  margin-bottom: 32px;
+}
+
+.it-text-gray-light { color: #ADBDCC; }
+
+.it-pricing-btn {
+  display: inline-flex;
+  align-items: center;
+  padding: 12px 24px;
+  border-radius: 24px;
+  font-weight: 500;
+  font-size: 16px;
+  text-decoration: none;
+  transition: transform 0.2s ease, box-shadow 0.2s ease;
+  width: fit-content;
+}
+
+.it-pricing-btn:hover {
+    transform: translateY(-2px);
+    box-shadow: 0 4px 12px rgba(0,0,0,0.15);
+}
+
+.it-btn-purple {
+  background-color: #635BFF; /* Stripe-like purple */
+  color: #FFFFFF;
+}
+
+.it-btn-cyan {
+  background-color: #00D4FF; /* Bright cyan */
+  color: #0A2540;
+}
+
+.it-btn-icon {
+  margin-left: 8px;
+  transition: transform 0.2s ease;
+}
+
+.it-pricing-btn:hover .it-btn-icon {
+    transform: translateX(3px);
+}
+
+/* ============ RESPONSIVE BREAKPOINTS ============ */
+
+/* Tablet (768px - 992px) */
+@media (max-width: 992px) {
+    .it-pricing-comp-wrapper-hook {
+        padding: 60px 20px 100px;
+    }
+    
+    .it-pricing-comp-main-headline {
+        font-size: 44px;
+        margin-bottom: 50px;
+    }
+    
+    .it-pricing-comp-grid {
+        flex-direction: column;
+        gap: 25px;
+    }
+    
+    .it-pricing-comp-card {
+        min-height: auto;
+    }
+    
+    .it-pricing-card-body-left {
+        padding: 35px;
+    }
+    
+    .it-pricing-card-price-right {
+        padding: 35px;
+    }
+    
+    .it-custom-left-pad {
+        padding-right: 35px;
+    }
+    
+    .it-feature-item {
+        padding: 0 25px;
+        font-size: 15px;
+    }
+}
+
+/* Mobile Large (481px - 767px) */
+@media (max-width: 767px) {
+    .it-pricing-comp-wrapper-hook {
+        padding: 50px 16px 80px;
+    }
+    
+    .it-pricing-comp-main-headline {
+        font-size: 36px;
+        margin-bottom: 40px;
+    }
+    
+    .it-pricing-comp-grid {
+        gap: 20px;
+    }
+    
+    /* Stack cards vertically on mobile */
+    .it-pricing-comp-card {
+        flex-direction: column;
+        min-height: auto;
+    }
+    
+    .it-pricing-card-body-left {
+        padding: 30px 25px;
+        flex: 1;
+    }
+    
+    .it-pricing-card-price-right {
+        padding: 25px;
+        margin: 0;
+        border-top: 1px solid rgba(0, 0, 0, 0.08);
+    }
+    
+    .it-pricing-card-features-right {
+        margin: 0;
+        border-top: 1px solid rgba(255, 255, 255, 0.15);
+    }
+    
+    .it-custom-left-pad {
+        padding-right: 25px;
+    }
+    
+    .it-pricing-card-title {
+        font-size: 22px;
+    }
+    
+    .it-pricing-card-description {
+        font-size: 15px;
+        margin-bottom: 24px;
+    }
+    
+    .it-price-large {
+        font-size: 28px;
+    }
+    
+    .it-price-subtext {
+        font-size: 14px;
+    }
+    
+    .it-feature-item {
+        padding: 20px;
+        font-size: 14px;
+        text-align: left;
+        min-height: 60px;
+    }
+    
+    .it-pricing-btn {
+        padding: 11px 20px;
+        font-size: 15px;
+    }
+}
+
+/* Mobile Small (320px - 480px) */
+@media (max-width: 480px) {
+    .it-pricing-comp-wrapper-hook {
+        padding: 40px 12px 60px;
+    }
+    
+    .it-pricing-comp-main-headline {
+        font-size: 28px;
+        margin-bottom: 30px;
+        line-height: 1.2;
+    }
+    
+    .it-pricing-comp-grid {
+        gap: 16px;
+    }
+    
+    .it-pricing-card-body-left {
+        padding: 25px 20px;
+    }
+    
+    .it-pricing-card-price-right {
+        padding: 20px;
+    }
+    
+    .it-custom-left-pad {
+        padding-right: 20px;
+    }
+    
+    .it-pricing-card-title {
+        font-size: 20px;
+        margin-bottom: 12px;
+    }
+    
+    .it-pricing-card-description {
+        font-size: 14px;
+        line-height: 1.5;
+        margin-bottom: 20px;
+    }
+    
+    .it-price-large {
+        font-size: 24px;
+        margin-bottom: 6px;
+    }
+    
+    .it-price-subtext {
+        font-size: 13px;
+    }
+    
+    .it-feature-item {
+        padding: 16px;
+        font-size: 13px;
+        min-height: 56px;
+    }
+    
+    .it-pricing-btn {
+        padding: 10px 18px;
+        font-size: 14px;
+        width: 100%;
+        justify-content: center;
+    }
+    
+    /* Adjust background graphic for small screens */
+    .it-pricing-comp-background-graphic::after {
+        height: 300px;
+        bottom: 5%;
+    }
+}
+
+/* Extra Small Mobile (< 360px) */
+@media (max-width: 359px) {
+    .it-pricing-comp-main-headline {
+        font-size: 24px;
+    }
+    
+    .it-pricing-card-body-left {
+        padding: 20px 16px;
+    }
+    
+    .it-pricing-card-price-right {
+        padding: 16px;
+    }
+    
+    .it-custom-left-pad {
+        padding-right: 16px;
+    }
+    
+    .it-pricing-card-title {
+        font-size: 18px;
+    }
+    
+    .it-price-large {
+        font-size: 22px;
+    }
+    
+    .it-feature-item {
+        padding: 14px;
+        font-size: 12px;
+        min-height: 52px;
+    }
+}
+</style>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<!-- IT Business Solutions Component -->
+<div class="w11c-wrapper">
+  
+  <!-- Header Section -->
+  <header class="w11c-header">
+    <h1 class="w11c-main-title">Scale your enterprise infrastructure</h1>
+    <p class="w11c-subtitle">
+      Deploy robust IT environments with optimal performance at the ready. Embrace modern cloud architectures to secure and refine your digital enterprise.
+    </p>
+    <a href="#" class="w11c-btn-primary">Explore Solutions</a>
+  </header>
+
+  <!-- Features Grid -->
+  <div class="w11c-grid">
+    
+    <!-- Card 1: Managed Security -->
+    <div class="w11c-card">
+      <div class="w11c-icon-container">
+        <!-- Cybersecurity Shield & Check Icon -->
+        <svg class="w11c-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round">
+          <path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/>
+          <path d="m9 11 2 2 4-4"/>
+        </svg>
+      </div>
+      <div class="w11c-card-content">
+        <h2 class="w11c-card-title">Managed cybersecurity</h2>
+        <p class="w11c-card-text">
+          Before a threat even reaches your network, our active monitoring is at work. Safeguard your infrastructure from phishing, ransomware, and zero-day cyber-attacks.
+        </p>
+        <a href="#" class="w11c-link">
+          Learn more 
+          <span class="w11c-arrow">&gt;</span>
+        </a>
+      </div>
+    </div>
+
+    <!-- Card 2: Hybrid Workspace -->
+    <div class="w11c-card">
+      <div class="w11c-icon-container">
+        <!-- Hybrid Network / Users Icon -->
+        <svg class="w11c-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round">
+          <path d="M16 21v-2a4 4 0 0 0-4-4H6a4 4 0 0 0-4 4v2"/>
+          <circle cx="9" cy="7" r="4"/>
+          <path d="M22 21v-2a4 4 0 0 0-3-3.87"/>
+          <path d="M16 3.13a4 4 0 0 1 0 7.75"/>
+        </svg>
+      </div>
+      <div class="w11c-card-content">
+        <h2 class="w11c-card-title">Hybrid work infrastructure</h2>
+        <p class="w11c-card-text">
+          Connect your remote workforce seamlessly. Adapt your digital ecosystems to your unique operational and visual needs. Our architecture is made for uptime, and for the teams you manage.
+        </p>
+        <a href="#" class="w11c-link">
+          Learn more 
+          <span class="w11c-arrow">&gt;</span>
+        </a>
+      </div>
+    </div>
+
+    <!-- Card 3: Cloud Optimization -->
+    <div class="w11c-card">
+      <div class="w11c-icon-container">
+        <!-- Cloud Server Icon -->
+        <svg class="w11c-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round">
+          <path d="M20 16.58A5 5 0 0 0 18 7h-1.26A8 8 0 1 0 4 15.25"/>
+          <path d="M8 16h.01"/>
+          <path d="M12 16h.01"/>
+          <path d="M16 16h.01"/>
+        </svg>
+      </div>
+      <div class="w11c-card-content">
+        <h2 class="w11c-card-title">Cloud never looked so good</h2>
+        <p class="w11c-card-text">
+          Immerse your business in a frictionless ecosystem with next-level performance, smoother database syncing, and natural microservice lighting. Run legacy and cloud-native applications together.
+        </p>
+        <a href="#" class="w11c-link">
+          Learn more 
+          <span class="w11c-arrow">&gt;</span>
+        </a>
+      </div>
+    </div>
+
+    <!-- Card 4: Business Intelligence -->
+    <div class="w11c-card">
+      <div class="w11c-icon-container">
+        <!-- Analytics/AI Intelligence Icon -->
+        <svg class="w11c-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round">
+          <line x1="18" x2="18" y1="20" y2="10"/>
+          <line x1="12" x2="12" y1="20" y2="4"/>
+          <line x1="6" x2="6" y1="20" y2="14"/>
+        </svg>
+      </div>
+      <div class="w11c-card-content">
+        <h2 class="w11c-card-title">Analytics meets intelligence</h2>
+        <p class="w11c-card-text">
+          Use enterprise AI to focus on the business metrics that matter most. Modernize your data pipelines and workflows with predictive reporting dashboards.
+        </p>
+        <a href="#" class="w11c-link">
+          Learn more 
+          <span class="w11c-arrow">&gt;</span>
+        </a>
+      </div>
+    </div>
+
+  </div>
+</div>
+
+<style>
+/* Encapsulated Component Styles */
+.w11c-wrapper {
+  font-family: 'Circular Std', -apple-system, BlinkMacSystemFont, Roboto, Helvetica, Arial, sans-serif;
+  max-width: 1200px;
+  margin: 0 auto;
+  padding: 100px 20px 170px 20px;
+  background-color: #ffffff;
+  color: #000000;
+  box-sizing: border-box;
+}
+
+.w11c-wrapper * {
+  box-sizing: border-box;
+}
+
+/* Header styling */
+.w11c-header {
+  text-align: center;
+  margin-bottom: 48px;
+}
+
+.w11c-main-title {
+  font-size: 45px;
+  font-weight: 500;
+  margin: 0 0 16px 0;
+}
+
+.w11c-subtitle {
+  font-size: 18px;
+  line-height: 1.5;
+  max-width: 800px;
+  margin: 0 auto 32px auto;
+  color: #111111;
+}
+
+.w11c-btn-primary {
+  display: inline-block;
+  background-color: #001A66; 
+  color: #ffffff;
+  padding: 12px 32px;
+  font-size: 16px;
+  font-weight: 400;
+  text-decoration: none;
+  border-radius: 60px;
+  transition: background-color 0.2s ease;
+}
+
+.w11c-btn-primary:hover {
+  background-color: #001144;
+}
+
+/* Grid Layout */
+.w11c-grid {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  gap: 24px;
+}
+
+/* Card Structure */
+.w11c-card {
+  background-color: #E8F0FE; 
+  padding: 40px;
+  display: flex;
+  align-items: flex-start;
+  gap: 15px;
+  min-height: 260px; border-radius: 20px;
+}
+
+/* Icons */
+.w11c-icon-container {
+  flex-shrink: 0;
+  width: 48px;
+  height: 48px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  color: #001A66;
+}
+
+.w11c-icon {
+  width: 100%;
+  height: 100%;
+}
+
+/* Card Typography & Links */
+.w11c-card-content {
+  display: flex;
+  flex-direction: column;
+  height: 100%;
+}
+
+.w11c-card-title {
+  font-size: 22px;
+  font-weight: 500;
+  margin: 0 0 12px 0;
+  color: #000000;
+}
+
+.w11c-card-text {
+  font-size: 15px;
+  line-height: 1.5;
+  color: #222222;
+  margin: 0 0 24px 0;
+  flex-grow: 1; 
+}
+
+.w11c-link {
+  display: inline-flex;
+  align-items: center;
+  font-size: 17px;
+  font-weight: 500;
+  color: #001A66;
+  text-decoration: none;
+}
+
+.w11c-link:hover {
+  text-decoration: underline;
+}
+
+.w11c-arrow {
+  margin-left: 6px;
+  font-family: Arial, sans-serif; 
+  font-size: 13px;
+}
+
+/* Responsive adjustments */
+@media (max-width: 900px) {
+  .w11c-main-title {
+    font-size: 44px;
+  }
+  .w11c-grid {
+    grid-template-columns: 1fr;
+  }
+  .w11c-card {
+    padding: 32px;
+    min-height: auto;
+  }
+}
+</style>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 <!DOCTYPE html>
 <html lang="en">
 <head>

@@ -1,9 +1,36 @@
+<!DOCTYPE html>
+<html lang="en" dir="ltr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, minimum-scale=1.0, maximum-scale=5.0, viewport-fit=cover, shrink-to-fit=no">
+    <meta http-equiv="x-ua-compatible" content="ie=edge"/>
+    
+    <title>Cronos</title>
+
+    <!-- WEB TAB ICON -->
+    <link rel="icon" type="image/png" href="thumbnails/top-1.png">
+
+    <style>
+      @font-face { font-family:'Circular Std'; src:url('fonts/CircularStd-Book.woff2') format('woff2'),url('fonts/CircularStd-Book.woff') format('woff'); font-weight:400; font-style:normal; font-display:swap; }
+  @font-face { font-family:'Circular Std'; src:url('fonts/CircularStd-BookItalic.woff2') format('woff2'),url('fonts/CircularStd-BookItalic.woff') format('woff'); font-weight:400; font-style:italic; font-display:swap; }
+  @font-face { font-family:'Circular Std'; src:url('fonts/CircularStd-Medium.woff2') format('woff2'),url('fonts/CircularStd-Medium.woff') format('woff'); font-weight:500; font-style:normal; font-display:swap; }
+  @font-face { font-family:'Circular Std'; src:url('fonts/CircularStd-Bold.woff2') format('woff2'),url('fonts/CircularStd-Bold.woff') format('woff'); font-weight:600; font-style:normal; font-display:swap; }
+  @font-face { font-family:'Circular Std'; src:url('fonts/CircularStd-Bold.woff2') format('woff2'),url('fonts/CircularStd-Bold.woff') format('woff'); font-weight:700; font-style:normal; font-display:swap; }
+  @font-face { font-family:'Circular Std'; src:url('fonts/CircularStd-Black.woff2') format('woff2'),url('fonts/CircularStd-Black.woff') format('woff'); font-weight:800; font-style:normal; font-display:swap; }
+  @font-face { font-family:'Circular Std'; src:url('fonts/CircularStd-Black.woff2') format('woff2'),url('fonts/CircularStd-Black.woff') format('woff'); font-weight:900; font-style:normal; font-display:swap; }
+    </style>
+</head>
+
+
+
+
+
 
 <!DOCTYPE html>
 <html lang="en">
 <head>
     <meta charset="UTF-8">
-    <title>Affiliate</title>
+    <title>My Website</title>
     
     <script src="header.js" defer></script>
     <script src="footer.js" defer></script> 
@@ -18,6 +45,8 @@
 
 
 
+
+
 <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700&display=swap" rel="stylesheet">
 
 <style>
@@ -26,9 +55,9 @@
     position: relative;
     width: 100%;
     height: 800px; /* Adjust height as needed */
-    background: linear-gradient(180deg, #000428 0%, #004e92 100%);
+    background: linear-gradient(140deg, #080d1b 0%, #002456 100%);
     overflow: hidden;
-    font-family: 'Inter', sans-serif;
+    font-family: 'Circular Std', sans-serif;
     color: #ffffff;
     display: flex;
     align-items: center;
@@ -39,6 +68,7 @@
   * {
     margin: 0;
     padding: 0;
+    font-family: 'Circular Std', sans-serif;
   }
 
   .tech-dupe-content {
@@ -48,7 +78,7 @@
 
   .tech-dupe-title {
     font-size: 64px;
-    font-weight: 600;
+    font-weight: 500;
     line-height: 1.1;
     margin-bottom: 16px;
     letter-spacing: -0.02em;
@@ -56,7 +86,7 @@
 
   .tech-dupe-subtitle {
     font-size: 20px;
-    font-weight: 600;
+    font-weight: 400;
     color: #838eb1;
     margin-bottom: 32px;
   }
@@ -68,7 +98,7 @@
     border-radius: 24px;
     padding: 12px 24px;
     font-size: 17px;
-    font-weight: 600;
+    font-weight: 400;
     cursor: pointer;
     transition: background-color 0.3s ease;
   }
@@ -163,7 +193,7 @@
             --text-primary: #1d1d1f;
             --text-secondary: #515154;
             --link-color: #0066cc;
-            --font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
+            --font-family: 'Circular Std', -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
             
             display: block;
             font-family: var(--font-family);
@@ -275,13 +305,6 @@
             width: 16px;
             height: 16px;
             stroke-width: 2;
-          }
-
-          .arrow-link::after {
-            content: " >";
-            font-size: 11px;
-            display: inline-block;
-            margin-left: 3px;
           }
 
           /* Modal Styling Layout */
@@ -430,7 +453,7 @@
             <div class="card">
               <h2>Beware of unverified dependencies</h2>
               <p>Some open-source software and third-party package repositories may not be vetted properly and could result in supply-chain security vulnerabilities.</p>
-              <span class="trigger-link arrow-link" data-target="content-dependencies">Verify libraries
+              <span class="trigger-link" data-target="content-dependencies">Verify libraries
                 <svg class="plus-circle" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="10"></circle><line x1="12" y1="8" x2="12" y2="16"></line><line x1="8" y1="12" x2="16" y2="12"></line></svg>  
               </span>
             </div>
@@ -441,7 +464,7 @@
               </div>
               <h2>Be aware of phishing tactics</h2>
               <p>Be aware of advanced engineering scams involving credential harvesting and administrative spoofing.</p>
-              <span class="trigger-link arrow-link" data-target="content-phishing">Review protocols
+              <span class="trigger-link" data-target="content-phishing">Review protocols
                 <svg class="plus-circle" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="10"></circle><line x1="12" y1="8" x2="12" y2="16"></line><line x1="8" y1="12" x2="16" y2="12"></line></svg>
               </span>
             </div>
@@ -618,7 +641,7 @@
       width: 100%;
       padding: 20px;
       background-color: #f9f9f9;
-      font-family: 'Inter', -apple-system, BlinkMacSystemFont, sans-serif;
+      font-family: 'Circular Std', -apple-system, BlinkMacSystemFont, sans-serif;
     }
 
     /* 100% Width Main Panel with 15px border radius */

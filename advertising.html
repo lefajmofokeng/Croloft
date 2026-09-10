@@ -1,22 +1,30 @@
-
 <!DOCTYPE html>
-<html lang="en">
+<html lang="en" dir="ltr">
 <head>
     <meta charset="UTF-8">
-    <title>My Website</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, minimum-scale=1.0, maximum-scale=5.0, viewport-fit=cover, shrink-to-fit=no">
+    <meta http-equiv="x-ua-compatible" content="ie=edge"/>
+    
+    <title>Cronos</title>
+
+    <link rel="icon" type="image/png" href="thumbnails/top-1.png">
+
+    <style>
+      @font-face { font-family:'Circular Std'; src:url('fonts/CircularStd-Book.woff2') format('woff2'),url('fonts/CircularStd-Book.woff') format('woff'); font-weight:400; font-style:normal; font-display:swap; }
+      @font-face { font-family:'Circular Std'; src:url('fonts/CircularStd-BookItalic.woff2') format('woff2'),url('fonts/CircularStd-BookItalic.woff') format('woff'); font-weight:400; font-style:italic; font-display:swap; }
+      @font-face { font-family:'Circular Std'; src:url('fonts/CircularStd-Medium.woff2') format('woff2'),url('fonts/CircularStd-Medium.woff') format('woff'); font-weight:500; font-style:normal; font-display:swap; }
+      @font-face { font-family:'Circular Std'; src:url('fonts/CircularStd-Bold.woff2') format('woff2'),url('fonts/CircularStd-Bold.woff') format('woff'); font-weight:600; font-style:normal; font-display:swap; }
+      @font-face { font-family:'Circular Std'; src:url('fonts/CircularStd-Bold.woff2') format('woff2'),url('fonts/CircularStd-Bold.woff') format('woff'); font-weight:700; font-style:normal; font-display:swap; }
+      @font-face { font-family:'Circular Std'; src:url('fonts/CircularStd-Black.woff2') format('woff2'),url('fonts/CircularStd-Black.woff') format('woff'); font-weight:800; font-style:normal; font-display:swap; }
+      @font-face { font-family:'Circular Std'; src:url('fonts/CircularStd-Black.woff2') format('woff2'),url('fonts/CircularStd-Black.woff') format('woff'); font-weight:900; font-style:normal; font-display:swap; }
+    </style>
     
     <script src="header.js" defer></script>
     <script src="footer.js" defer></script> 
 </head>
 <body>
 
-    <cronos-header></cronos-header>
-    
-
-</body>
-</html>
-
-
+  <cronos-header></cronos-header>
 
 
 
@@ -46,13 +54,13 @@
     --brand-blue: #0061c2;
     --text-main: #ffffff;
     --text-dim: #bbc4d2;
-    --bg-deep: #05070a;
+    --bg-deep: #09101e;
     --glass-bg: rgba(255, 255, 255, 0.03);
     --glass-border: rgba(255, 255, 255, 0.08);
     
     display: block;
     width: 100%;
-    font-family: 'Inter', sans-serif;
+    font-family: 'Circular Std', sans-serif;
     background-color: var(--bg-deep);
     color: var(--text-main);
     box-sizing: border-box;
@@ -74,49 +82,62 @@
   .it-ad-hero-section {
     position: relative;
     width: 100%;
-    min-height: 110vh; /* Large atmospheric height */
+    min-height: 250vh; /* Large atmospheric height */
     display: flex;
     flex-direction: column;
     align-items: center;
     justify-content: flex-start;
-    padding-top: 210px;
+    padding-top: 310px;
     text-align: center;
     
     /* BACKGROUND IMAGE PLACEHOLDER */
     /* Replace with your high-res tech background. 
        Use a dark gradient overlay to ensure text readability. */
     background: linear-gradient(to bottom, rgba(5, 7, 10, 0.2) 0%, var(--bg-deep) 100%), 
-                url('https://images.pexels.com/photos/2382738/pexels-photo-2382738.jpeg');
+                url('thumbnails/pexels-marek-piwnicki-3907296-8991553.jpg');
     background-size: cover;
     background-position: center top;
   }
 
   .it-ad-hero-tagline {
-    font-size: 60px;
+    font-size: 100px;
     font-weight: 500;
-    line-height: 1.1;
+    line-height: 1;
     max-width: 900px;
-    margin-bottom: 24px;
+    margin-bottom: 24px; 
+    letter-spacing: -0.02em;
     padding: 0 20px;
+  
+     background: linear-gradient(
+                to right,
+                #ff0000 0%,
+                #ffa600 40%,
+                #9d00ff 75%,
+                #ff00fb 100%
+            );
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
   }
+
 
   .it-ad-hero-subtext {
     font-size: 25px;
     color: var(--text-dim);
-    font-weight: 500;
+    font-weight: 400;
     margin-bottom: 32px;
     max-width: 600px;
     line-height: 1.5;
   }
 
   .it-ad-btn {
-    background-color: var(--brand-blue);
-    color: white;
+    background-color: #f4f4f4;
+    color: #03060d;
     padding: 12px 28px;
     border-radius: 60px;
     text-decoration: none;
-    font-weight: 600;
-    font-size: 18px;
+    font-weight: 500;
+    font-size: 16px;
     display: inline-flex;
     align-items: center;
     gap: 8px;
@@ -140,7 +161,7 @@
   .it-ad-proof-title {
     font-size: 42px;
     letter-spacing: -0.02em;
-    font-weight: 600;
+    font-weight: 500;
     margin-bottom: 20px;
     text-align: center;
   }
@@ -161,7 +182,7 @@
   .it-ad-star-meta {
     font-size: 19px;
     color: var(--text-dim);
-    font-weight: 500;
+    font-weight: 400;
   }
 
   /* --- GRID SECTION --- */
@@ -174,16 +195,18 @@
   }
 
   .it-ad-card {
-    background: var(--glass-bg);
+    background: linear-gradient(170deg, #1c2638 30%, #131a29 100%);
     padding: 40px;
-    border-radius: 12px;
+    border-radius: 25px;
     display: flex;
     flex-direction: column;
-    gap: 16px;
+    gap: 5px;
     min-height: 280px;
     transition: border 0.3s ease;
     margin-top: 3rem;
   }
+
+  .it-ad-card:first-child {top: 150px;}
 
   .it-ad-card:hover {
     border-color: rgba(255, 255, 255, 0.2);
@@ -198,13 +221,13 @@
   .it-ad-card-title {
     font-size: 30px;
     letter-spacing: -0.02em;
-    font-weight: 550;
+    font-weight: 500;
     margin-top: 10px;
   }
 
   .it-ad-card-body {
     font-size: 18px;
-    font-weight: 600;
+    font-weight: 400;
     color: var(--text-dim);
     line-height: 1.4;
     margin-top: 6rem;
@@ -220,7 +243,7 @@
 
 <it-premium-ad-wrapper>
   <header class="it-ad-hero-section">
-    <h1 class="it-ad-hero-tagline">The only advertising platform you need</h1>
+    <h1 class="it-ad-hero-tagline">We Lit, bro.</h1>
     <p class="it-ad-hero-subtext">Reach 400M+ tech-savvy users, developers, and IT decision makers in their local environment.</p>
     <a href="#" class="it-ad-btn">
       Get Started 
@@ -335,7 +358,7 @@
       --ads-text-gray: #8a94ad;
       --ads-blue: #0082fa;          /* Primary Blue */
       --ads-blue-dark: #0056b3;
-      --ads-font: 'Inter', sans-serif;
+      --ads-font: 'Circular Std', sans-serif;
       
       font-family: var(--ads-font);
       background-color: var(--ads-bg-dark);
@@ -356,7 +379,7 @@
     .it-ads-container {
       max-width: 1200px;
       margin: 0 auto;
-      padding: 150px 20px;
+      padding: 200px 20px;
       position: relative;
     }
 

@@ -12,7 +12,7 @@
         @font-face { font-family:'Circular Std'; src:url('fonts/CircularStd-BookItalic.woff2') format('woff2'),url('fonts/CircularStd-BookItalic.woff') format('woff'); font-weight:400; font-style:italic; font-display:swap; }
         @font-face { font-family:'Circular Std'; src:url('fonts/CircularStd-Medium.woff2') format('woff2'),url('fonts/CircularStd-Medium.woff') format('woff'); font-weight:500; font-style:normal; font-display:swap; }
         @font-face { font-family:'Circular Std'; src:url('fonts/CircularStd-Bold.woff2') format('woff2'),url('fonts/CircularStd-Bold.woff') format('woff'); font-weight:600; font-style:normal; font-display:swap; }
-        @font-face { font-family:'Circular Std'; src:url('fonts/CircularStd-Black.woff2') format('woff2'),url('fonts/CircularStd-Black.woff') format('woff'); font-weight:800; font-style:normal; font-display:swap; }
+        @font-face { font-family:'Sunflare'; src:url('fonts/Finlandica[wght].ttf') format('woff2'),url('fonts/CircularStd-Black.woff') format('woff'); font-weight:600; font-style:normal; font-display:swap; }
     </style>
 </head>
 <body>
@@ -51,16 +51,16 @@
 
         /* ===== HERO SECTION ===== */
         .hero-section {
-            background-color: #002d7a;
-            background-image: 
-                radial-gradient(at 0% 0%, rgba(4, 11, 26, 0.579) 0%, transparent 50%),
-                radial-gradient(at 100% 100%, rgba(5, 85, 164, 0.627) 0%, transparent 0%);
+            
+            background: 
+                linear-gradient(to right, rgba(4, 7, 12, 0.729) 0%, rgba(3, 10, 26, 0.7) 50%, rgba(3, 11, 26, 0.3) 100%),
+              linear-gradient(to bottom, transparent 60%, #1a202c 100%), url(https://images.pexels.com/photos/23466423/pexels-photo-23466423.png) no-repeat center center/cover;
             border-radius: 15px;
-            padding: 160px 20px 0 20px;
+            padding: 170px 20px 0 20px;
             text-align: left;
             color: white;
             margin: 1rem 1.5rem; margin-top: 4rem;
-            height: 100vh;
+            height: 90vh;
         }
 
         .hero-container {
@@ -73,6 +73,8 @@
             font-weight: 400;
             margin-bottom: 20px;
             line-height: 1;
+            letter-spacing: -0.02em;
+            font-family: 'Sunflare', sans-serif;
         }
 
         .hero-subtitle {
@@ -81,6 +83,7 @@
             color: #adbcc8;
             margin-bottom: 30px;
             max-width: 600px;
+            line-height: 1.5;
             
         }
 
@@ -119,7 +122,7 @@
             font-family: var(--font-family-inter);
             color: var(--defcon-white);
             background: radial-gradient(75.83% 86.4% at 50% 100%, rgb(3, 68, 129) 0%, rgba(3, 68, 129, 0.21) 67.99%, rgba(3, 68, 129, 0.07) 88.86%, rgba(3, 68, 129, 0) 100%), #010a19;
-            padding: 40px 0;
+            padding: 150px 0;
             border: none;
             width: 100%;
             margin: 0;
@@ -138,7 +141,7 @@
             font-weight: 400;
             color: var(--defcon-white);
             margin-bottom: 30px;
-            text-align: left; line-height: 1;
+            text-align: left; line-height: 1; font-family: 'Sunflare', sans-serif;
         }
 
         .defcon-asym-feature-grid {
@@ -457,6 +460,7 @@
             font-weight: 500;
             text-align: center;
             color: #0a0a0a;
+            font-family: 'Sunflare', sans-serif; letter-spacing: -0.02em;
         }
 
         .dungeon-integration-grid {
@@ -756,7 +760,8 @@
             
             .hero-section {
                 margin: 1rem;
-                padding: 60px 20px;
+                padding: 200px 20px;
+                margin-top: 4rem;
             }
 
             .project-section-wrapper {
@@ -831,9 +836,9 @@
         <!-- HERO SECTION -->
         <header class="hero-section">
             <div class="hero-container">
-                <h2 class="hero-title">We've been cookin'</h2>
+                <h2 class="hero-title">We build Projects<span style="font-family: 'Inter', sans-serif; font-weight: 400;">&#174;</span><br> that are magnificent</h2>
                 <p class="hero-subtitle">Over 10 years of experience in delivering high-quality digital solutions, and experts in various industries.</p>
-                <a href="#projects" class="hero-button">View Our Work In Action</a>
+                <a href="#projects" class="hero-button">Get Started</a>
             </div>
         </header>
 

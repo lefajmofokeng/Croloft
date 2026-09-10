@@ -1,24 +1,44 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="en" dir="ltr">
 <head>
     <meta charset="UTF-8">
-    <title>My Website</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, minimum-scale=1.0, maximum-scale=5.0, viewport-fit=cover, shrink-to-fit=no">
+    <meta http-equiv="x-ua-compatible" content="ie=edge"/>
     
-    <script src="header.js" defer></script> 
-    <script src="footer.js" defer></script>
-    
+    <title>Cronos</title>
 
-    <style>
-    @import url('https://fonts.googleapis.com/css2?family=Google+Sans:ital,opsz,wght@0,17..18,400..700;1,17..18,400..700&display=swap');
-    </style>
+    <!-- WEB TAB ICON -->
+    <link rel="icon" type="image/png" href="thumbnails/top-1.png">
+
+    <script src="header.js" defer></script>
+    <script src="footer.js" defer></script> 
+
+<style>
+  @font-face { font-family:'Circular Std'; src:url('fonts/CircularStd-Book.woff2') format('woff2'),url('fonts/CircularStd-Book.woff') format('woff'); font-weight:400; font-style:normal; font-display:swap; }
+  @font-face { font-family:'Circular Std'; src:url('fonts/CircularStd-BookItalic.woff2') format('woff2'),url('fonts/CircularStd-BookItalic.woff') format('woff'); font-weight:400; font-style:italic; font-display:swap; }
+  @font-face { font-family:'Circular Std'; src:url('fonts/CircularStd-Medium.woff2') format('woff2'),url('fonts/CircularStd-Medium.woff') format('woff'); font-weight:500; font-style:normal; font-display:swap; }
+  @font-face { font-family:'Circular Std'; src:url('fonts/CircularStd-Bold.woff2') format('woff2'),url('fonts/CircularStd-Bold.woff') format('woff'); font-weight:600; font-style:normal; font-display:swap; }
+  @font-face { font-family:'Circular Std'; src:url('fonts/CircularStd-Black.woff2') format('woff2'),url('fonts/CircularStd-Black.woff') format('woff'); font-weight:800; font-style:normal; font-display:swap; }
+
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+  font-family: 'Circular Std', sans-serif;
+}
+</style>
 
 </head>
 <body>
 
-    <cronos-header></cronos-header>
-
+  <cronos-header></cronos-header>
+    
 </body>
 </html>
+
+
+
+
 
 
 
@@ -38,7 +58,7 @@
     box-sizing: border-box;
     margin: 0;
     padding: 0;
-    font-family: 'Google Sans', -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif;
+    font-family: 'Circular Std', -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif;
   }
 
   /* Core Canvas Container matching the deep dark theme */
@@ -90,15 +110,15 @@
   }
 
   .crns-prtnr-title {
-    font-size: 2rem;
+    font-size: 3rem;
     font-weight: 500;
     color: #ffffff;
     letter-spacing: -0.02em;
   }
 
   .crns-prtnr-subtitle {
-    font-size: 1.1rem;
-    font-weight: 500;
+    font-size: 1.4rem;
+    font-weight: 400;
     color: #8fa0b5;
     line-height: 1.5;
   }
@@ -149,7 +169,7 @@
 
   /* Card Footer Text Labels */
   .crns-prtnr-label {
-    font-size: 0.95rem;
+    font-size: 1.1rem;
     font-weight: 500;
     color: #708399;
     margin-top: 24px;
@@ -167,8 +187,8 @@
     align-items: center;
     gap: 8px;
     color: #4da3ff;
-    font-size: 0.95rem;
-    font-weight: 600;
+    font-size: 1rem;
+    font-weight: 500;
     cursor: pointer;
     border: none;
     outline: none;
@@ -238,21 +258,21 @@
 
   .crns-form-back-btn {
     align-self: flex-start;
-    background: transparent;
+    background: #f4f4f4;
     border: none;
-    color: #708399;
+    color: #040609;
     font-size: 0.9rem;
     font-weight: 500;
     cursor: pointer;
     display: flex;
     align-items: center;
     gap: 6px;
-    margin-bottom: -8px;
+    margin-bottom: 8px;
     transition: color 0.2s ease; border: 1px solid #f4f4f4; padding: 10px 20px; border-radius: 50px;
   }
 
   .crns-form-back-btn:hover {
-    color: #ffffff;
+    color: #010203;
   }
 
   .crns-form-subheading {
@@ -362,6 +382,13 @@
             <img src="thumbnails/mock1.png" style="height: 65px;" />
           </div>
           <div class="crns-prtnr-label">Underdog Fantasy Sports</div>
+        </div>
+
+        <div class="crns-prtnr-card">
+          <div class="crns-prtnr-logo-box">
+             <img src="thumbnails/colored-logo2.png" style="height: 25px;" />
+          </div>
+          <div class="crns-prtnr-label">Fanatics</div>
         </div>
 
         <div class="crns-prtnr-card">

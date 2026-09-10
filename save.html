@@ -1,0 +1,647 @@
+<!DOCTYPE html>
+<html lang="en" dir="ltr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, minimum-scale=1.0, maximum-scale=5.0, viewport-fit=cover, shrink-to-fit=no">
+    <meta http-equiv="x-ua-compatible" content="ie=edge"/>
+    
+    <title>Cronos</title>
+
+    <!-- WEB TAB ICON -->
+    <link rel="icon" type="image/png" href="thumbnails/top-1.png">
+
+    <script src="header.js" defer></script>
+    <script src="footer.js" defer></script> 
+
+<style>
+  @font-face { font-family:'Circular Std'; src:url('fonts/CircularStd-Book.woff2') format('woff2'),url('fonts/CircularStd-Book.woff') format('woff'); font-weight:400; font-style:normal; font-display:swap; }
+  @font-face { font-family:'Circular Std'; src:url('fonts/CircularStd-BookItalic.woff2') format('woff2'),url('fonts/CircularStd-BookItalic.woff') format('woff'); font-weight:400; font-style:italic; font-display:swap; }
+  @font-face { font-family:'Circular Std'; src:url('fonts/CircularStd-Medium.woff2') format('woff2'),url('fonts/CircularStd-Medium.woff') format('woff'); font-weight:500; font-style:normal; font-display:swap; }
+  @font-face { font-family:'Circular Std'; src:url('fonts/CircularStd-Bold.woff2') format('woff2'),url('fonts/CircularStd-Bold.woff') format('woff'); font-weight:600; font-style:normal; font-display:swap; }
+  @font-face { font-family:'Sunflare'; src:url('fonts/Finlandica[wght].ttf') format('woff2'),url('fonts/CircularStd-Black.woff') format('woff'); font-weight:900; font-style:normal; font-display:swap; }
+   * {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+  font-family: 'Circular Std', sans-serif;
+}
+</style>
+
+</head>
+<body>
+
+  <cronos-header></cronos-header>
+    
+</body>
+</html>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<!-- Custom Isolated Component: Interactive Calculator with Sticky Filter Bar -->
+<section class="it-calc-section">
+  <div class="it-calc-container">
+    
+    <!-- Section Header (Scrolls out of view) -->
+    <header class="it-calc-header">
+      <p class="it-calc-subtitle"><span style="color: #0099ff;">Calculate Your Cost Savings.</span>
+        Select a service, infrastructure budget, SLA tier, and commitment term to estimate your return on investment. *
+      </p>
+    </header>
+
+    <!-- STICKY CONTROL BAR (Sticks to top as user scrolls down) -->
+    <div class="it-calc-sticky-bar">
+      <div class="it-calc-controls">
+        
+        <!-- Control 1: Service Select -->
+        <div class="it-calc-control-group">
+          <label class="it-calc-label">Services</label>
+          <div class="it-calc-select-wrap">
+            <select id="itCalcService" class="it-calc-select">
+              <option value="cloud">Cloud Hosting</option>
+              <option value="devops">DevOps & CI/CD</option>
+              <option value="cyber">Cyber Security</option>
+            </select>
+            <span class="it-calc-arrow">▾</span>
+          </div>
+        </div>
+
+        <!-- Control 2: Amount Input -->
+        <div class="it-calc-control-group">
+          <label class="it-calc-label">Budget (ZAR)</label>
+          <div class="it-calc-input-wrap">
+            <span class="it-calc-currency">R</span>
+            <input type="number" id="itCalcBudget" class="it-calc-input" value="5000" step="500" min="500" />
+          </div>
+        </div>
+
+        <!-- Control 3: Tier Select -->
+        <div class="it-calc-control-group">
+          <label class="it-calc-label">Service Tiers <span class="it-calc-info">ⓘ</span></label>
+          <div class="it-calc-select-wrap">
+            <select id="itCalcTier" class="it-calc-select">
+              <option value="1.0">Standard</option>
+              <option value="1.25" selected>Pro Tier</option>
+              <option value="1.5">Enterprise</option>
+            </select>
+            <span class="it-calc-arrow">▾</span>
+          </div>
+        </div>
+
+        <!-- Control 4: Term Select -->
+        <div class="it-calc-control-group">
+          <label class="it-calc-label">Term</label>
+          <div class="it-calc-select-wrap">
+            <select id="itCalcTerm" class="it-calc-select">
+              <option value="1">1 Month</option>
+              <option value="3" selected>3 Months</option>
+              <option value="12">12 Months</option>
+            </select>
+            <span class="it-calc-arrow">▾</span>
+          </div>
+        </div>
+
+      </div>
+    </div>
+
+    <!-- Sub-link -->
+    <div class="it-calc-subtext">
+      Click <a href="#tiers" class="it-calc-link">here</a> to learn more about our tiered ROI rate structure.
+    </div>
+
+    <!-- Dynamic Output Banner -->
+    <div class="it-calc-results-box">
+      <div class="it-calc-results-left">
+        <span class="it-calc-results-heading">Save up to</span>
+        <div class="it-calc-main-stat">
+          <span class="it-calc-currency-large">R</span><span id="itCalcAnnualVal">1,500</span>
+          <span class="it-calc-unit">ZAR</span>
+        </div>
+        <p class="it-calc-results-sub">per year in direct operational efficiency</p>
+      </div>
+
+      <div class="it-calc-results-right">
+        <div class="it-calc-side-stat">
+          <span class="it-calc-stat-tag">UP TO <span id="itCalcPctVal" class="it-calc-blue-text">30.00%</span></span>
+          <span class="it-calc-stat-desc">Optimised efficiency p.a.</span>
+        </div>
+
+        <div class="it-calc-side-stat">
+          <span class="it-calc-stat-tag">UP TO <span class="it-calc-blue-text">R<span id="itCalcWeeklyVal">28.85</span></span> <span class="it-calc-tag-unit">ZAR</span></span>
+          <span class="it-calc-stat-desc">Savings generated weekly</span>
+        </div>
+      </div>
+    </div>
+
+    <!-- CTA Button -->
+    <div class="it-calc-cta-wrap">
+      <a href="#contact" class="it-calc-btn">Start Saving Today &rarr;</a>
+    </div>
+
+    <!-- Comparison Table Section (Replicated from 3rd Image) -->
+    <div class="it-calc-compare-section">
+      <h3 class="it-calc-compare-title">Compare Efficiency Rates</h3>
+      <p class="it-calc-compare-subtitle">
+        Keeping your infrastructure optimized is our priority as an enterprise IT partner. 
+        <a href="#rates" class="it-calc-link">Learn more</a>. Check out our specs to see latest rates.
+      </p>
+
+      <div class="it-calc-grid">
+        <!-- Col 1 -->
+        <div class="it-calc-grid-col">
+          <div class="it-calc-grid-header">Tier 1</div>
+          
+          <div class="it-calc-row">
+            <div class="it-calc-row-item">
+              <span class="it-calc-icon">☁️</span>
+              <span class="it-calc-row-name">AWS Managed</span>
+            </div>
+            <span class="it-calc-row-rate">up to 15%</span>
+          </div>
+
+          <div class="it-calc-row">
+            <div class="it-calc-row-item">
+              <span class="it-calc-icon">🔷</span>
+              <span class="it-calc-row-name">Azure Stack</span>
+            </div>
+            <span class="it-calc-row-rate">up to 25%</span>
+          </div>
+
+          <div class="it-calc-row">
+            <div class="it-calc-row-item">
+              <span class="it-calc-icon">⚡</span>
+              <span class="it-calc-row-name">DevOps CI/CD</span>
+            </div>
+            <span class="it-calc-row-rate">up to 18%</span>
+          </div>
+
+          <div class="it-calc-row">
+            <div class="it-calc-row-item">
+              <span class="it-calc-icon">🛡️</span>
+              <span class="it-calc-row-name">Cyber Security</span>
+            </div>
+            <span class="it-calc-row-rate">up to 30%</span>
+          </div>
+        </div>
+
+        <!-- Col 2 -->
+        <div class="it-calc-grid-col">
+          <div class="it-calc-grid-header">Tier 1</div>
+
+          <div class="it-calc-row">
+            <div class="it-calc-row-item">
+              <span class="it-calc-icon">🗄️</span>
+              <span class="it-calc-row-name">DB Optimization</span>
+            </div>
+            <span class="it-calc-row-rate">up to 20%</span>
+          </div>
+
+          <div class="it-calc-row">
+            <div class="it-calc-row-item">
+              <span class="it-calc-icon">🌐</span>
+              <span class="it-calc-row-name">Custom Web Apps</span>
+            </div>
+            <span class="it-calc-row-rate">up to 35%</span>
+          </div>
+
+          <div class="it-calc-row">
+            <div class="it-calc-row-item">
+              <span class="it-calc-icon">🔗</span>
+              <span class="it-calc-row-name">API Integrations</span>
+            </div>
+            <span class="it-calc-row-rate">up to 22%</span>
+          </div>
+
+          <div class="it-calc-row">
+            <div class="it-calc-row-item">
+              <span class="it-calc-icon">🤖</span>
+              <span class="it-calc-row-name">AI Automation</span>
+            </div>
+            <span class="it-calc-row-rate">up to 40%</span>
+          </div>
+        </div>
+      </div>
+    </div>
+
+  </div>
+</section>
+
+<style>
+  /* ==========================================================================
+     ISOLATED COMPONENT STYLES (Prefix: it-calc-)
+     ========================================================================== */
+
+  .it-calc-section {
+    width: 100%;
+    background-color: #061023; /* Dark navy background matching images */
+    color: #ffffff;
+    padding: 200px 20px 200px 20px;
+    font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
+    box-sizing: border-box;
+  }
+
+  .it-calc-section * {
+    box-sizing: border-box;
+    margin: 0;
+    padding: 0;
+  }
+
+  .it-calc-container {
+    max-width: 1100px;
+    margin: 0 auto;
+  }
+
+  /* Header */
+  .it-calc-header {
+    text-align: center;
+    margin-bottom: 74px;
+  }
+
+  .it-calc-title {
+    font-size: 56px;
+    font-weight: 500;
+    color: #ffffff;
+    letter-spacing: -0.5px;
+    margin-bottom: 8px;
+  }
+
+  .it-calc-subtitle {
+    font-size: 32px;
+    color: #ced0d0;
+    max-width: 700px;
+    margin: 0 auto;
+    line-height: 1.4;
+  }
+
+  /* STICKY CONTROL BAR ENCLOSURE */
+  .it-calc-sticky-bar {
+    position: sticky;
+    top: 100px; /* Offset from top of window when scrolling */
+    z-index: 100;
+    margin-bottom: 20px;
+  }
+
+  .it-calc-controls {
+    background: linear-gradient(45deg, #073159 0%, #071d3a 100%);
+    backdrop-filter: blur(12px);
+    border-radius: 20px;
+    padding: 30px 24px;
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    gap: 16px;
+    box-shadow: 0 12px 30px rgba(0, 0, 0, 0.4);
+  }
+
+  .it-calc-control-group {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    padding-right: 12px;
+  }
+
+  .it-calc-control-group:last-child {
+    border-right: none;
+    padding-right: 0;
+  }
+
+  .it-calc-label {
+    font-size: 18px;
+    font-weight: 500;
+    color: #94a3b8;
+    letter-spacing: 0.5px;
+    margin-bottom: 4px;
+    display: flex;
+    align-items: center;
+    gap: 4px;
+  }
+
+  .it-calc-info {
+    font-size: 20px;
+    color: #64748b;
+    cursor: help;
+  }
+
+  /* Select and Input Wrappers */
+  .it-calc-select-wrap, 
+  .it-calc-input-wrap {
+    position: relative;
+    display: flex;
+    align-items: center;
+  }
+
+  .it-calc-select, 
+  .it-calc-input {
+    width: 100%;
+    background: transparent;
+    border: none;
+    outline: none;
+    /*outline: 2px solid #64748b; border-radius: 8px;
+    padding: 10px 12px;*/
+    color: #ffffff;
+    font-size: 23px;
+    font-weight: 600;
+    font-family: inherit;
+    cursor: pointer;
+    appearance: none;
+    -webkit-appearance: none;
+  }
+
+  .it-calc-select option {
+    background-color: #0b1736;
+    color: #ffffff;
+  }
+
+  .it-calc-arrow {
+    position: absolute;
+    right: 0;
+    color: #0099ff;
+    pointer-events: none;
+    font-size: 12px;
+  }
+
+  .it-calc-currency {
+    color: #0099ff;
+    font-size: 19px;
+    font-weight: 700;
+    margin-right: 2px;
+  }
+
+  /* Subtext */
+  .it-calc-subtext {
+    text-align: center;
+    font-size: 19px;
+    color: #64748b;
+    margin-bottom: 60px;
+  }
+
+  .it-calc-link {
+    color: #0099ff;
+    text-decoration: none;
+  }
+
+  .it-calc-link:hover {
+    text-decoration: underline;
+  }
+
+  /* Results Display Box */
+  .it-calc-results-box {
+    display: flex;
+    justify-content: space-between;
+    align-items: flex-end;
+    margin-bottom: 40px;
+    padding: 0 10px;
+  }
+
+  .it-calc-results-heading {
+    font-size: 52px;
+    font-weight: 700;
+    color: #ffffff;
+    display: block;
+    margin-bottom: 8px;
+  }
+
+  .it-calc-main-stat {
+    font-size: 150px;
+    font-weight: 500;
+    color: #0099ff; /* Bright cyan blue from screenshot */
+    line-height: 1;
+  }
+
+  .it-calc-currency-large {
+    font-size: 54px;
+  }
+
+  .it-calc-unit {
+    font-size: 14px;
+    color: #94a3b8;
+    font-weight: 600;
+    margin-left: 4px;
+  }
+
+  .it-calc-results-sub {
+    font-size: 29px;
+    color: #ffffff;
+    font-weight: 500;
+    margin-top: 12px;
+  }
+
+  /* Right Side Side Stats */
+  .it-calc-results-right {
+    display: flex;
+    flex-direction: column;
+    gap: 24px;
+    align-items: flex-end;
+    text-align: right;
+  }
+
+  .it-calc-stat-tag {
+    font-size: 19px;
+    font-weight: 500;
+    color: #0099ff;
+    letter-spacing: 0.5px;
+  }
+
+  .it-calc-blue-text {
+    color: #0099ff;
+    font-size: 64px;
+    font-weight: 500;
+  }
+
+  .it-calc-tag-unit {
+    font-size: 10px;
+    color: #94a3b8;
+  }
+
+  .it-calc-stat-desc {
+    display: block;
+    font-size: 21px;
+    font-weight: 500;
+    color: #ffffff;
+    margin-top: 2px;
+  }
+
+  /* CTA Button */
+  .it-calc-cta-wrap {
+    text-align: center;
+    margin-bottom: 90px;
+    margin-top: 160px;
+  }
+
+  .it-calc-btn {
+    display: inline-block;
+    padding: 13px 32px;
+    border-radius: 9999px;
+    border: 1px solid rgb(255, 255, 255);
+    background: transparent;
+    color: #ffffff;
+    font-size: 16px;
+    font-weight: 500;
+    text-decoration: none;
+    transition: all 0.2s ease;
+  }
+
+  .it-calc-btn:hover {
+    background: #ffffff;
+    color: #061023;
+  }
+
+  /* Comparison Section */
+  .it-calc-compare-section {
+    text-align: center;
+    padding-top: 120px;
+  }
+
+  .it-calc-compare-title {
+    font-size: 52px;
+    font-weight: 500;
+    color: #ffffff;
+    margin-bottom: 8px;
+  }
+
+  .it-calc-compare-subtitle {
+    font-size: 19px;
+    color: #94a3b8;
+    max-width: 520px;
+    margin: 0 auto 40px auto;
+    line-height: 1.5;
+  }
+
+  .it-calc-grid {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 60px;
+  }
+
+  .it-calc-grid-header {
+    font-size: 22px;
+    font-weight: 500;
+    color: #ffffff;
+    margin-bottom: 20px;
+  }
+
+  .it-calc-row {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 12px 0;
+  }
+
+  .it-calc-row-item {
+    display: flex;
+    align-items: center;
+    gap: 12px;
+  }
+
+  .it-calc-icon {
+    font-size: 18px;
+  }
+
+  .it-calc-row-name {
+    font-size: 20px;
+    font-weight: 600;
+    color: #ffffff;
+  }
+
+  .it-calc-row-rate {
+    font-size: 23px;
+    font-weight: 500;
+    color: #38bdf8;
+  }
+
+  /* Mobile Responsive */
+  @media (max-width: 768px) {
+    .it-calc-controls {
+      grid-template-columns: repeat(2, 1fr);
+      gap: 12px;
+    }
+
+    .it-calc-control-group:nth-child(2) {
+      border-right: none;
+    }
+
+    .it-calc-results-box {
+      flex-direction: column;
+      align-items: flex-start;
+      gap: 32px;
+    }
+
+    .it-calc-results-right {
+      align-items: flex-start;
+      text-align: left;
+    }
+
+    .it-calc-grid {
+      grid-template-columns: 1fr;
+      gap: 30px;
+    }
+
+    .it-calc-main-stat {
+        font-size: 6rem;
+    }
+
+    .it-calc-sticky-bar {
+      top: 60px; /* Adjust sticky offset for smaller screens */}
+  }
+</style>
+
+<script>
+  /* Isolated JavaScript for Dynamic Calculator Updates */
+  document.addEventListener('DOMContentLoaded', () => {
+    const budgetInput = document.getElementById('itCalcBudget');
+    const tierSelect = document.getElementById('itCalcTier');
+    const termSelect = document.getElementById('itCalcTerm');
+
+    const annualVal = document.getElementById('itCalcAnnualVal');
+    const pctVal = document.getElementById('itCalcPctVal');
+    const weeklyVal = document.getElementById('itCalcWeeklyVal');
+
+    function updateCalculator() {
+      const budget = parseFloat(budgetInput.value) || 0;
+      const tierMultiplier = parseFloat(tierSelect.value) || 1;
+      const termMonths = parseFloat(termSelect.value) || 1;
+
+      // Rate calculations
+      const basePercentage = 0.20 * tierMultiplier; // ~20-30% base savings rate
+      const annualSavings = budget * basePercentage * (termMonths / 3);
+      const weeklySavings = annualSavings / 52;
+
+      // Format outputs
+      annualVal.textContent = annualSavings.toLocaleString('en-US', { minimumFractionDigits: 2, maximumFractionDigits: 2 });
+      pctVal.textContent = (basePercentage * 100).toFixed(2) + '%';
+      weeklyVal.textContent = weeklySavings.toLocaleString('en-US', { minimumFractionDigits: 2, maximumFractionDigits: 2 });
+    }
+
+    if (budgetInput && tierSelect && termSelect) {
+      budgetInput.addEventListener('input', updateCalculator);
+      tierSelect.addEventListener('change', updateCalculator);
+      termSelect.addEventListener('change', updateCalculator);
+    }
+  });
+</script>
+
+
+
+
+<cronos-footer></cronos-footer>

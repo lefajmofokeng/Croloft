@@ -28,8 +28,8 @@
     {
       heading: 'Support & Resources',
       links: [
-        { label: 'Developer Hub',             href: 'developer-hub.html' },
-        { label: 'Contact Us',                href: '#' },
+        { label: 'Developers',             href: 'developer-hub.html' },
+        { label: 'Case Studies',                href: '#' },
         { label: 'Glossary',                  href: 'glossary.html' },
         { label: 'Bot',                       href: 'bot.html' },
         { label: 'Learn',                     href: 'learn.html' },
@@ -46,7 +46,7 @@
         { label: 'Innovations',               href: 'innovations.html' },
         { label: 'Careers',                   href: 'careers.html' },
         { label: 'Events',                    href: 'events.html' },
-        { label: 'Partners',                  href: 'partners.html' },
+        { label: 'Partner with Croloft',      href: 'partners.html' },
         { label: 'Licenses & Registrations',  href: 'licenses-and-registrations.html' },
         { label: 'Capital',                   href: 'capital.html' },
         { label: 'Global Reach',              href: 'global.html' },
@@ -461,17 +461,17 @@
     <section class="bottom-bar">
       <div class="brand-block">
         <div class="logo-placeholder">
-          <img src="thumbnails/mock.png" alt="Cronos IT"/>
+          <img src="thumbnails/mock2.png" alt="Cronos IT"/>
         </div>
         <p class="brand-tagline">
-          Operating across 30+ countries, Cronos IT is a leader in enterprise technology solutions and digital transformation.
+          Croloft is a leader in enterprise technology solutions and digital transformation.
         </p>
       </div>
       <div class="bottom-nav">
         <nav class="bottom-links" aria-label="Footer Quick Links">
           ${buildBottomLinks()}
         </nav>
-        <p class="copyright">Copyright &copy; Croloft 2026. All rights are reserved.</p>
+        <p class="copyright">Copyright &copy; 2026 Croloft Computing Inc., Digital Infrastructure & Web Services. All rights are reserved.</p>
       </div>
     </section>
 

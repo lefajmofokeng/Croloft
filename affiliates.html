@@ -1,8 +1,39 @@
 <!DOCTYPE html>
+<html lang="en" dir="ltr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, minimum-scale=1.0, maximum-scale=5.0, viewport-fit=cover, shrink-to-fit=no">
+    <meta http-equiv="x-ua-compatible" content="ie=edge"/>
+    
+    <title>Cronos</title>
+
+    <!-- WEB TAB ICON -->
+    <link rel="icon" type="image/png" href="thumbnails/top-1.png">
+
+    <style>
+      @font-face { font-family:'Circular Std'; src:url('fonts/CircularStd-Book.woff2') format('woff2'),url('fonts/CircularStd-Book.woff') format('woff'); font-weight:400; font-style:normal; font-display:swap; }
+      @font-face { font-family:'Circular Std'; src:url('fonts/CircularStd-BookItalic.woff2') format('woff2'),url('fonts/CircularStd-BookItalic.woff') format('woff'); font-weight:400; font-style:italic; font-display:swap; }
+      @font-face { font-family:'Circular Std'; src:url('fonts/CircularStd-Medium.woff2') format('woff2'),url('fonts/CircularStd-Medium.woff') format('woff'); font-weight:500; font-style:normal; font-display:swap; }
+      @font-face { font-family:'Circular Std'; src:url('fonts/CircularStd-Bold.woff2') format('woff2'),url('fonts/CircularStd-Bold.woff') format('woff'); font-weight:600; font-style:normal; font-display:swap; }
+      @font-face { font-family:'Circular Std'; src:url('fonts/CircularStd-Bold.woff2') format('woff2'),url('fonts/CircularStd-Bold.woff') format('woff'); font-weight:700; font-style:normal; font-display:swap; }
+      @font-face { font-family:'Circular Std'; src:url('fonts/CircularStd-Black.woff2') format('woff2'),url('fonts/CircularStd-Black.woff') format('woff'); font-weight:800; font-style:normal; font-display:swap; }
+      @font-face { font-family:'Circular Std'; src:url('fonts/CircularStd-Black.woff2') format('woff2'),url('fonts/CircularStd-Black.woff') format('woff'); font-weight:900; font-style:normal; font-display:swap; }
+        
+      @font-face { font-family:'Mino'; src:url('fonts/trade-gothic-lt-1361519976.ttf') format('woff2'),url('fonts/trade-gothic-lt-1361519976.ttf') format('woff'); font-weight:500; font-style:normal; font-display:swap; }
+    
+    </style>
+</head>
+
+
+
+
+
+
+<!DOCTYPE html>
 <html lang="en">
 <head>
     <meta charset="UTF-8">
-    <title>Affiliate</title>
+    <title>My Website</title>
     
     <script src="header.js" defer></script>
     <script src="footer.js" defer></script> 
@@ -44,9 +75,6 @@
 
 
 
-
-
-
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -58,29 +86,7 @@
     <link href="https://fonts.cdnfonts.com/css/circular-std" rel="stylesheet">
     <style>
          /* Circular Std - Book/Regular (400) */
-        @font-face {
-            font-family: 'Circular Std';
-            src: url('fonts/CircularStd-Book.ttf') format('truetype');
-            font-weight: 400;
-            font-style: normal;
-        }
-
-        /* Circular Std - Medium (500) */
-        @font-face {
-            font-family: 'Circular Std';
-            src: url('fonts/CircularStd.ttf') format('truetype');
-            font-weight: 500;
-            font-style: normal;
-        }
-
-        /* Circular Std - Bold (700) */
-        @font-face {
-            font-family: 'Circular Std';
-            src: url('fonts/CircularStd-Bold.ttf') format('truetype');
-            font-weight: 600;
-            font-style: normal;
-        }
-
+    
         * {
             margin: 0;
             padding: 0;
@@ -586,7 +592,6 @@
 <!-- Scoped wrapper ensuring zero system styling contamination -->
 <div class="rf-it-table-wrapper">
   <style>
-    @import url('https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap');
 
     :root {
       --rf-accent: #0091ff;
@@ -597,10 +602,16 @@
       --rf-text-muted: #8c9ba5;
     }
 
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+    }
+
     .rf-it-table-wrapper {
       font-family: 'Circular Std', -apple-system, BlinkMacSystemFont, sans-serif;
       background-color: var(--rf-bg-dark);
-      padding: 60px 24px;
+      padding: 200px 24px;
       color: #ffffff;
       display: flex;
       flex-direction: column;
@@ -620,19 +631,19 @@
     /* Table Section Typography Header */
     .rf-table-main-header {
       text-align: center;
-      margin-bottom: 40px;
+      margin-bottom: 70px;
     }
 
     .rf-table-main-header h1 {
-      font-size: 38px;
+      font-size: 54px;
       font-weight: 500;
-      letter-spacing: -0.03em;
       margin: 0 0 8px 0;
+      letter-spacing: -0.02em;
       color: #ffffff;
     }
 
     .rf-table-main-header p {
-      font-size: 16px;
+      font-size: 18px;
       color: var(--rf-text-muted);
       margin: 0;
     }
@@ -651,7 +662,7 @@
     /* Category Section Headers (Internal Banner Row) */
     .rf-it-category-banner {
       font-size: 18px;
-      font-weight: 600;
+      font-weight: 500;
       color: #ffffff;
       padding: 24px 32px;
       border-bottom: 1px solid var(--rf-border);
@@ -709,7 +720,7 @@
     }
 
     .rf-it-row-subtitle {
-      font-size: 13px;
+      font-size: 15px;
       font-weight: 400;
       line-height: 1.4;
       color: var(--rf-text-dim);
@@ -722,43 +733,24 @@
       z-index: 999;
       background-color: var(--rf-bg-dark);
       padding: 0;
+      margin-bottom: 1.5rem;
     }
 
-    /* Mini visual display tier cards */
-    .rf-it-visual-card {
-      width: 75px;
-      height: 48px;
-      border-radius: 4px; 
-      margin-top: 12px;
-      margin-bottom: 12px;
-      display: flex;
-      align-items: flex-end;
-      padding: 6px;
-      box-sizing: border-box;
-      font-size: 8px;
-      font-weight: 500;
-      text-shadow: 0 1px 2px rgba(0,0,0,0.6);
-    }
-    .rf-card-1 { background: linear-gradient(135deg, #1e293b, #475569); }
-    .rf-card-2 { background: linear-gradient(135deg, #0044ff, var(--rf-accent)); }
-    .rf-card-3 { background: linear-gradient(135deg, #6366f1, #a855f7); }
-    .rf-card-4 { background: linear-gradient(135deg, #ec4899, #f43f5e); }
-    .rf-card-5 { background: linear-gradient(135deg, #111827, #374151); border: 1px solid #4b5563; }
-
+   
     .rf-it-tier-name {
-      font-size: 16px;
+      font-size: 18px;
       font-weight: 500;
       margin-bottom: 12px;
       color: #ffffff;
     }
 
     .rf-it-action-btn {
-      background-color: #ffffff;
+      background: linear-gradient(45deg, #111a2f -15%, #fff 100%);
       color: var(--rf-bg-dark);
       border: none;
       padding: 9px 24px;
       border-radius: 20px;
-      font-size: 14px;
+      font-size: 15px;
       font-weight: 500;
       cursor: pointer;
       transition: background-color 0.2s, color 0.2s;
@@ -773,22 +765,22 @@
     /* Core Metrics Elements styling */
     .rf-it-main-metric {
       font-size: 20px;
-      font-weight: 600;
+      font-weight: 500;
       color: #ffffff;
     }
     .rf-it-sub-metric {
-      font-size: 11px;
+      font-size: 14px;
       color: var(--rf-text-muted);
       margin-top: 4px;
     }
     .rf-it-currency-tag {
-      font-size: 12px;
+      font-size: 14px;
       font-weight: 400;
       color: var(--rf-text-dim);
       margin-left: 2px;
     }
     .rf-it-divider-text {
-      font-size: 10px;
+      font-size: 14px;
       color: #475467;
       margin: 4px 0;
     }
@@ -823,27 +815,22 @@
             <span class="rf-it-row-subtitle">Pricing in <span class="rf-text-accent">USD</span></span>
           </div>
           <div class="rf-it-cell">
-            <div class="rf-it-visual-card rf-card-1">CORE</div>
             <span class="rf-it-tier-name">Foundation</span>
             <button class="rf-it-action-btn">Provision</button>
           </div>
           <div class="rf-it-cell">
-            <div class="rf-it-visual-card rf-card-2">PRO</div>
             <span class="rf-it-tier-name">Business Pro</span>
             <button class="rf-it-action-btn">Provision</button>
           </div>
           <div class="rf-it-cell">
-            <div class="rf-it-visual-card rf-card-3">SCALE</div>
             <span class="rf-it-tier-name">Enterprise SRE</span>
             <button class="rf-it-action-btn">Provision</button>
           </div>
           <div class="rf-it-cell">
-            <div class="rf-it-visual-card rf-card-4">PREMIUM</div>
             <span class="rf-it-tier-name">Elite Cloud</span>
             <button class="rf-it-action-btn">Provision</button>
           </div>
           <div class="rf-it-cell">
-            <div class="rf-it-visual-card rf-card-5">CUSTOM</div>
             <span class="rf-it-tier-name">Mission Critical</span>
             <button class="rf-it-action-btn">Provision</button>
           </div>
@@ -862,22 +849,22 @@
           <span class="rf-it-main-metric">$299<span class="rf-it-currency-tag">USD</span></span>
           <span class="rf-it-sub-metric">(per month)</span>
           <span class="rf-it-divider-text">or</span>
-          <span class="rf-it-main-metric" style="font-size:15px;">$5,000</span>
+          <span class="rf-it-main-metric" style="font-size:19px;">$5,000</span>
           <span class="rf-it-sub-metric">Annual spend commitment</span>
         </div>
         <div class="rf-it-cell">
           <span class="rf-it-main-metric">$899<span class="rf-it-currency-tag">USD</span></span>
           <span class="rf-it-sub-metric">(per month)</span>
           <span class="rf-it-divider-text">or</span>
-          <span class="rf-it-main-metric" style="font-size:15px;">$15,000</span>
+          <span class="rf-it-main-metric" style="font-size:19px;">$15,000</span>
           <span class="rf-it-sub-metric">Annual spend commitment</span>
         </div>
         <div class="rf-it-cell">
-          <span class="rf-it-main-metric" style="font-size:18px;">$40,000</span>
+          <span class="rf-it-main-metric" style="font-size:19px;">$40,000</span>
           <span class="rf-it-sub-metric">Minimum annual contract</span>
         </div>
         <div class="rf-it-cell">
-          <span class="rf-it-main-metric" style="font-size:18px;">$200,000</span>
+          <span class="rf-it-main-metric" style="font-size:19px;">$200,000</span>
           <span class="rf-it-sub-metric">Dedicated cluster contract</span>
         </div>
       </div>

@@ -17,7 +17,9 @@
   @font-face { font-family:'Circular Std'; src:url('fonts/CircularStd-Bold.woff2') format('woff2'),url('fonts/CircularStd-Bold.woff') format('woff'); font-weight:600; font-style:normal; font-display:swap; }
   @font-face { font-family:'Circular Std'; src:url('fonts/CircularStd-Bold.woff2') format('woff2'),url('fonts/CircularStd-Bold.woff') format('woff'); font-weight:700; font-style:normal; font-display:swap; }
   @font-face { font-family:'Circular Std'; src:url('fonts/CircularStd-Black.woff2') format('woff2'),url('fonts/CircularStd-Black.woff') format('woff'); font-weight:800; font-style:normal; font-display:swap; }
-  @font-face { font-family:'Circular Std'; src:url('fonts/CircularStd-Black.woff2') format('woff2'),url('fonts/CircularStd-Black.woff') format('woff'); font-weight:900; font-style:normal; font-display:swap; }
+  @font-face { font-family:'X'; src:url('fonts/Finlandica[wght].ttf') format('woff2'),url('fonts/CircularStd-Black.woff') format('woff'); font-weight:400; font-style:normal; font-display:swap; }
+   @font-face { font-family:'X'; src:url('fonts/Finlandica[wght].ttf') format('woff2'),url('fonts/CircularStd-Black.woff') format('woff'); font-weight:500; font-style:normal; font-display:swap; }
+     
     </style>
 </head>
 
@@ -89,9 +91,9 @@
   display: flex;
   align-items: center;
   /* Replace the URL below with your premium background image asset */
-  background: url('https://images.pexels.com/photos/17485820/pexels-photo-17485820.png') no-repeat center center / cover;
+  background: url('thumbnails/pexels-alp-mmiy-2147670381-29822392.jpg') no-repeat center center / cover;
   overflow: hidden;
-  font-family: 'Circular Std',-apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Helvetica, Arial, sans-serif;
+  font-family: 'X',-apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Helvetica, Arial, sans-serif;
   box-sizing: border-box;
 }
 
@@ -124,9 +126,9 @@
 
 /* Typography */
 #lfm-hero-section .lfm-hero__title {
-  font-size: 3rem;
+  font-size: 3.4rem;
   font-weight: 500;
-  line-height: 1.2;
+  line-height: 1;
   color: #ffffff;
   margin-bottom: 16px;
   letter-spacing: -0.02em;
@@ -137,7 +139,7 @@
   line-height: 1.6;
   color: #efefef;
   font-weight: 400;
-  margin-bottom: 32px;
+  margin-bottom: 32px; 
 }
 
 /* Interactive Elements */
@@ -405,8 +407,8 @@
       font-weight: 400;
       margin: 0;
       letter-spacing: -0.01em;
-      font-family: 'Circular Std', sans-serif;
-      transition: opacity 0.2s ease;
+      font-family: 'X', sans-serif;
+      transition: opacity 0.2s ease; 
     }
 
     .ms-ac-card-icon {
@@ -426,11 +428,11 @@
     }
 
     .ms-ac-card-desc {
-      font-size: 1.132rem;
+      font-size: 1rem;
       line-height: 1.5;
       margin: 0;
       padding-bottom: 24px;
-      font-weight: 400; color: #aaa;
+      font-weight: 400; color: #aaa; font-family: 'X', sans-serif;
     }
 
     /* Progress Timeline Track Bar Container */

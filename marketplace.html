@@ -1,1271 +1,815 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>CloudSphere Marketplace</title>
-    <script defer src="https://cdn.jsdelivr.net/npm/alpinejs@3.x.x/dist/cdn.min.js"></script>
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
-    
-    <style>
-        /* Typography Architecture */
-        @font-face {
-            font-family: 'Circular Std';
-            src: local('Circular Std'), local('CircularStd-Book'), url(https://fonts.cdnfonts.com/s/15011/CircularStd-Book.woff) format('woff');
-            font-weight: normal;
-            font-style: normal;
-        }
-
-        /* Root Layout System Variables */
-        :root {
-            --editorial-black: #111111;
-            --editorial-muted: #666666;
-            --editorial-light: #999999;
-            --workspace-bg: #fafafa;
-            --ui-divider: #eaebed;
-            --global-max: 1200px;
-            --sharp-radius: 1px;
-            --font-family-premium: 'Circular Std', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
-        }
-
-        * {
-            box-sizing: border-box;
-            margin: 0;
-            padding: 0;
-        }
-
-        body { 
-            font-family: var(--font-family-premium); 
-            background-color: var(--workspace-bg);
-            color: var(--editorial-black);
-            letter-spacing: -0.02em;
-            -webkit-font-smoothing: antialiased;
-        }
-
-        /* Structural Container System */
-        .max-w-1200 {
-            max-width: var(--global-max);
-            margin-left: auto;
-            margin-right: auto;
-            padding-left: 24px;
-            padding-right: 24px;
-            width: 100%;
-        }
-
-        /* Header Architecture */
-        header {
-            position: sticky;
-            top: 0;
-            z-index: 40;
-            background-color: rgb(255, 255, 255);
-            border-bottom: 1px solid var(--ui-divider);
-        }
-
-        .header-inner {
-            height: 55px;
-            display: flex;
-            align-items: center;
-            justify-content: space-between;
-        }
-
-        .header-left {
-            display: flex;
-            align-items: center;
-            gap: 48px;
-        }
-
-        .brand-name {
-            text-transform: uppercase;
-            font-size: 14px;
-            font-weight: 700;
-            letter-spacing: 0.05em;
-        }
-
-        nav.nav-links {
-            display: flex;
-            gap: 24px;
-        }
-
-        nav.nav-links a {
-            text-decoration: none;
-            font-size: 14px;
-            font-weight: 400;
-            color: var(--editorial-muted);
-            transition: color 0.2s ease;
-        }
-
-        nav.nav-links a:hover, nav.nav-links a.active {
-            color: var(--editorial-black);
-        }
-
-        .header-right {
-            display: flex;
-            align-items: center;
-            gap: 24px;
-        }
-
-        .cart-trigger-btn {
-            position: relative;
-            background: none;
-            border: none;
-            color: var(--editorial-black);
-            cursor: pointer;
-            padding: 8px;
-        }
-
-        .cart-counter-badge {
-            position: absolute;
-            top: -2px;
-            right: -2px;
-            background: var(--editorial-black);
-            color: #ffffff;
-            font-size: 9px;
-            font-weight: 700;
-            width: 16px;
-            height: 16px;
-            border-radius: 50%;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-        }
-
-        .action-button-black {
-            background: black;
-            color: #ffffff;
-            border: none;
-            padding: 8px 20px;
-            border-radius: 50px;
-            font-family: var(--font-family-premium);
-            font-size: 14px;
-            font-weight: 400;
-            cursor: pointer;
-            transition: background 0.2s ease;
-        }
-
-        .action-button-black:hover {
-            background: #333333;
-        }
-
-        /* Hero Carousel Architecture */
-        .carousel-section {
-            padding-top: 32px;
-            padding-bottom: 48px;
-        }
-
-        .carousel-wrapper {
-            position: relative;
-            border-radius: 15px;
-            overflow: hidden;
-            background: #ffffff;
-        }
-
-        .carousel-viewport {
-            position: relative;
-            height: 520px;
-            width: 100%;
-        }
-
-        .slide-instance {
-            position: absolute;
-            inset: 0;
-            display: flex;
-            align-items: center;
-            justify-content: space-between;
-            padding: 64px;
-            width: 100%;
-            height: 100%;
-        }
-
-        .slide-content-left {
-            max-width: 560px;
-            z-index: 10;
-        }
-
-        .slide-meta-badge {
-            display: inline-block;
-            background: #ffffff;
-            border: 1px solid var(--ui-divider);
-            font-size: 10px;
-            font-weight: 700;
-            padding: 6px 14px;
-            border-radius: var(--sharp-radius);
-            text-transform: uppercase;
-            letter-spacing: 0.08em;
-            color: var(--editorial-muted);
-            margin-bottom: 24px;
-        }
-
-        .slide-title {
-            font-size: 44px;
-            font-weight: 500;
-            line-height: 1.15;
-            letter-spacing: -0.03em;
-            margin-bottom: 16px;
-            color: var(--editorial-black);
-        }
-
-        .slide-desc {
-            font-size: 16px;
-            line-height: 1.5;
-            color: var(--editorial-muted);
-            margin-bottom: 32px;
-        }
-
-        .slide-media-right {
-            width: 45%;
-            height: 100%;
-            position: relative;
-        }
-
-        .slide-img {
-            position: absolute;
-            inset: 0;
-            width: 100%;
-            height: 100%;
-            object-fit: cover;
-            border-radius: var(--sharp-radius);
-            opacity: 0.9;
-        }
-
-        /* Carousel Navigation Controls */
-        .carousel-controls-row {
-            display: flex;
-            align-items: center;
-            justify-content: space-between;
-            margin-top: 24px;
-        }
-
-        .matrix-indicators {
-            display: flex;
-            gap: 12px;
-        }
-
-        .indicator-dot {
-            height: 3px;
-            background: #e2e8f0;
-            border: none;
-            cursor: pointer;
-            transition: all 0.3s ease;
-        }
-
-        .indicator-dot.is-active {
-            background: var(--editorial-black);
-            width: 48px;
-        }
-
-        .indicator-dot.is-inactive {
-            width: 16px;
-        }
-
-        .vector-arrow-cluster {
-            display: flex;
-            gap: 8px;
-        }
-
-        .arrow-nav-btn {
-            width: 44px;
-            height: 44px;
-            background: #ffffff;
-            border-radius: 50px;
-            color: var(--editorial-black);
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            cursor: pointer;
-            transition: background 0.2s ease;
-        }
-
-        .arrow-nav-btn:hover {
-            background: var(--workspace-bg);
-        }
-
-        /* Product Catalog Matrix Grid */
-        .catalog-section {
-            padding-bottom: 64px;
-        }
-
-        .section-header-bar {
-            display: flex;
-            align-items: flex-end;
-            justify-content: space-between;
-            margin-bottom: 32px;
-            border-bottom: 1px solid var(--ui-divider);
-            padding-bottom: 20px;
-        }
-
-        .section-heading-title {
-            font-size: 20px;
-            font-weight: 500;
-            letter-spacing: -0.02em;
-        }
-
-        .section-heading-sub {
-            font-size: 13px;
-            color: var(--editorial-light);
-            margin-top: 4px;
-        }
-
-        .editorial-section-link {
-            font-size: 12px;
-            font-weight: 600;
-            color: var(--editorial-muted);
-            text-decoration: none;
-            text-transform: uppercase;
-            letter-spacing: 0.03em;
-        }
-
-        .editorial-section-link:hover {
-            color: var(--editorial-black);
-        }
-
-        .products-grid-layout {
-            display: grid;
-            grid-template-columns: repeat(3, 1fr);
-            gap: 32px;
-        }
-
-        .product-premium-card {
-            background: #ffffff;
-            border-radius: 12px;
-            padding: 24px;
-            display: flex;
-            flex-direction: column;
-            justify-content: space-between;
-            transition: border 0.3s ease;
-        }
-
-        .product-premium-card:hover {
-            border-color: var(--editorial-light);
-        }
-
-        .product-media-container {
-            background: transparent;
-            height: 250px;
-            border-radius: var(--sharp-radius);
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            margin-bottom: 24px;
-            padding: 16px; 
-        }
-
-        .product-showcase-img {
-            max-height: 110px;
-            object-fit: contain;
-            transition: transform 0.3s ease;
-        }
-
-        .product-premium-card:hover .product-showcase-img {
-            transform: scale(1.02);
-        }
-
-        .product-category-badge {
-            font-size: 10px;
-            font-weight: 700;
-            color: var(--editorial-light);
-            text-transform: uppercase;
-            letter-spacing: 0.05em;
-        }
-
-        .product-main-title {
-            font-size: 16px;
-            font-weight: 500;
-            color: var(--editorial-black);
-            margin-top: 6px;
-            margin-bottom: 8px;
-        }
-
-        .product-summary-desc {
-            font-size: 13px;
-            color: var(--editorial-muted);
-            line-height: 1.5;
-        }
-
-        .product-action-footer {
-            margin-top: 32px;
-            padding-top: 16px;
-            border-top: 1px solid var(--workspace-bg);
-            display: flex;
-            align-items: center;
-            justify-content: space-between;
-        }
-
-        .price-display-node {
-            font-size: 20px;
-            font-weight: 600;
-        }
-
-        .price-sub-period {
-            font-size: 10px;
-            color: var(--editorial-light);
-            display: block;
-            font-weight: normal;
-        }
-
-        .add-to-cart-btn {
-            background: var(--workspace-bg);
-            color: var(--editorial-black);
-            border: none;
-            padding: 10px 18px;
-            border-radius: var(--sharp-radius);
-            font-size: 12px;
-            font-weight: 600;
-            cursor: pointer;
-            text-transform: uppercase;
-            letter-spacing: 0.03em;
-            transition: all 0.2s ease;
-        }
-
-        .add-to-cart-btn:hover {
-            background: var(--editorial-black);
-            color: #ffffff;
-        }
-
-        /* Workspace Drawer Slide Panel System */
-        .drawer-slide-overlay {
-            position: fixed;
-            inset: 0;
-            background: rgba(17, 17, 17, 0.2);
-            backdrop-filter: blur(4px);
-            z-index: 1000;
-        }
-
-        .drawer-sliding-frame {
-            position: fixed;
-            top: 0;
-            right: 0;
-            bottom: 0;
-            width: 100%;
-            max-width: 440px;
-            background: #ffffff;
-            z-index: 1001;
-            box-shadow: -16px 0 40px rgba(0, 0, 0, 0.05);
-            display: flex;
-            flex-direction: column;
-        }
-
-        .drawer-body-container {
-            flex: 1;
-            overflow-y: auto;
-            padding: 32px;
-        }
-
-        .drawer-header-row {
-            display: flex;
-            align-items: center;
-            justify-content: space-between;
-            border-bottom: 1px solid var(--ui-divider);
-            padding-bottom: 20px;
-        }
-
-        .drawer-panel-title {
-            font-size: 16px;
-            font-weight: 600;
-        }
-
-        .drawer-dismiss-btn {
-            background: none;
-            border: none;
-            color: var(--editorial-light);
-            cursor: pointer;
-            padding: 4px;
-        }
-
-        .drawer-dismiss-btn:hover {
-            color: var(--editorial-black);
-        }
-
-        .cart-queue-stream {
-            margin-top: 32px;
-        }
-
-        .cart-item-block {
-            display: flex;
-            padding: 24px 0;
-            border-bottom: 1px solid var(--ui-divider);
-        }
-
-        .cart-item-media {
-            width: 80px;
-            height: 80px;
-            background: var(--workspace-bg);
-            border-radius: var(--sharp-radius);
-            padding: 8px;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            flex-shrink: 0;
-        }
-
-        .cart-item-img {
-            max-width: 100%;
-            max-height: 100%;
-            object-fit: contain;
-        }
-
-        .cart-item-details {
-            margin-left: 16px;
-            flex: 1;
-            display: flex;
-            flex-direction: column;
-            justify-content: space-between;
-        }
-
-        .cart-item-header {
-            display: flex;
-            justify-content: space-between;
-            font-size: 14px;
-            font-weight: 600;
-        }
-
-        .cart-item-tagline {
-            font-size: 12px;
-            color: var(--editorial-light);
-            margin-top: 4px;
-        }
-
-        .cart-item-footer-meta {
-            display: flex;
-            justify-content: space-between;
-            font-size: 12px;
-            color: var(--editorial-light);
-        }
-
-        .cart-remove-trigger {
-            background: none;
-            border: none;
-            color: #dc2626;
-            cursor: pointer;
-            font-weight: 500;
-        }
-
-        .cart-empty-announcement {
-            text-align: center;
-            padding: 64px 0;
-        }
-
-        .cart-empty-announcement i {
-            color: var(--ui-divider);
-            font-size: 40px;
-            margin-bottom: 16px;
-            display: block;
-        }
-
-        .cart-empty-announcement p {
-            font-size: 12px;
-            color: var(--editorial-light);
-        }
-
-        .drawer-footer-anchor {
-            border-top: 1px solid var(--ui-divider);
-            padding: 24px 32px;
-            background: var(--workspace-bg);
-        }
-
-        .summary-total-line {
-            display: flex;
-            justify-content: space-between;
-            font-size: 14px;
-            font-weight: 600;
-        }
-
-        .drawer-footer-anchor p.disclaimer-text {
-            font-size: 11px;
-            color: var(--editorial-light);
-            margin-top: 4px;
-        }
-
-        .checkout-action-btn {
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            width: 100%;
-            background: var(--editorial-black);
-            color: #ffffff;
-            text-decoration: none;
-            font-size: 13px;
-            font-weight: 600;
-            padding: 16px;
-            border-radius: var(--sharp-radius);
-            margin-top: 24px;
-            text-transform: uppercase;
-            letter-spacing: 0.05em;
-        }
-
-        /* Footer Infrastructure Area */
-        footer {
-            background: #ffffff;
-            border-top: 1px solid var(--ui-divider);
-            font-size: 12px;
-            color: var(--editorial-muted);
-        }
-
-        /* High-Priority Continuous Vertical Notification Area */
-        .vertical-notice-banner {
-            background: var(--editorial-black);
-            color: #d4d4d8;
-            padding: 40px 0;
-        }
-
-        .vertical-notice-inner {
-            display: flex;
-            flex-direction: column;
-            gap: 32px;
-        }
-
-        .vertical-message-node {
-            display: flex;
-            align-items: flex-start;
-            gap: 16px;
-            max-width: 900px;
-            line-height: 1.6;
-            font-size: 12px;
-        }
-
-        .vertical-message-node i {
-            color: var(--editorial-light);
-            font-size: 14px;
-            margin-top: 2px;
-            flex-shrink: 0;
-        }
-
-        .vertical-message-node strong {
-            color: #ffffff;
-        }
-
-        /* Footer Navigation Matrix Container */
-        .footer-nav-container {
-            padding: 48px 0;
-        }
-
-        /* Desktop View Navigation Layout Grid */
-        .footer-nav-links-grid {
-            display: grid;
-            grid-template-columns: repeat(4, 1fr);
-            gap: 32px;
-        }
-
-        .footer-link-group-node {
-            display: flex;
-            flex-direction: column;
-            gap: 12px;
-        }
-
-        .footer-link-group-node h4 {
-            font-size: 11px;
-            font-weight: 500;
-            color: var(--editorial-black);
-            text-transform: uppercase;
-            letter-spacing: 0.05em;
-        }
-
-        .footer-link-group-node ul {
-            list-style: none;
-            display: flex;
-            flex-direction: column;
-            gap: 8px;
-        }
-
-        .footer-link-group-node ul a {
-            color: var(--editorial-muted);
-            text-decoration: none;
-            transition: color 0.2s ease;
-        }
-
-        .footer-link-group-node ul a:hover {
-            color: var(--editorial-black);
-        }
-
-        .corporate-registry-paragraph {
-            font-size: 11px;
-            line-height: 1.5;
-            color: var(--editorial-light);
-        }
-
-        /* Mobile Accordion Elements (Hidden on Desktop) */
-        .footer-mobile-accordion {
-            display: none;
-            flex-direction: column;
-        }
-
-        .accordion-item-node {
-            border-bottom: 1px solid var(--ui-divider);
-        }
-
-        .accordion-trigger-header {
-            width: 100%;
-            background: none;
-            border: none;
-            display: flex;
-            align-items: center;
-            justify-content: space-between;
-            padding: 18px 0;
-            font-family: var(--font-family-premium);
-            font-size: 11px;
-            font-weight: 700;
-            color: var(--editorial-black);
-            text-transform: uppercase;
-            letter-spacing: 0.05em;
-            cursor: pointer;
-        }
-
-        .accordion-panel-content {
-            padding-bottom: 18px;
-        }
-
-        .accordion-panel-content ul {
-            list-style: none;
-            display: flex;
-            flex-direction: column;
-            gap: 12px;
-        }
-
-        .accordion-panel-content ul a {
-            color: var(--editorial-muted);
-            text-decoration: none;
-            font-size: 18px;
-        }
-
-        .footer-copyright-row {
-            padding: 24px 0;
-            border-top: 1px solid var(--ui-divider);
-            text-align: center;
-            font-size: 10px;
-            color: var(--editorial-light);
-        }
-
-        /* ── RESPONSIVE MEDIA BREAKPOINTS ── */
-        @media (max-width: 1024px) {
-            .products-grid-layout {
-                grid-template-columns: repeat(2, 1fr);
-                gap: 24px;
-            }
-            .slide-instance {
-                padding: 48px;
-            }
-            .slide-title {
-                font-size: 36px;
-            }
-        }
-
-        @media (max-width: 768px) {
-            /* Navbar Mobile Compression */
-            nav.nav-links, 
-            .header-right .text-btn {
-                display: none;
-            }
-            
-            .header-inner {
-                height: 72px;
-            }
-
-            .header-right {
-                gap: 16px;
-            }
-
-            .action-button-black {
-                padding: 10px 18px;
-                font-size: 11px;
-            }
-
-            /* Carousel Layout Shifts */
-            .carousel-section {
-                padding-top: 16px;
-                padding-bottom: 32px;
-            }
-
-            .carousel-viewport {
-                height: auto;
-                min-height: 340px;
-            }
-
-            .slide-instance {
-                position: relative;
-                flex-direction: column;
-                align-items: flex-start;
-                justify-content: center;
-                padding: 32px 24px;
-            }
-
-            .slide-media-right {
-                display: none;
-            }
-
-            .slide-content-left {
-                max-width: 100%;
-            }
-
-            .slide-meta-badge {
-                margin-bottom: 16px;
-            }
-
-            .slide-title {
-                font-size: 28px;
-                margin-bottom: 12px;
-            }
-
-            .slide-desc {
-                font-size: 14px;
-                margin-bottom: 24px;
-            }
-
-            /* Catalog Header Adaptation */
-            .section-header-bar {
-                flex-direction: column;
-                align-items: flex-start;
-                gap: 12px;
-                margin-bottom: 24px;
-            }
-
-            /* Products Stacked Layout */
-            .products-grid-layout {
-                grid-template-columns: 1fr;
-                gap: 20px;
-            }
-
-            .product-premium-card {
-                padding: 20px;
-            }
-
-            /* Swapping Desktop Grid for sleek Accordions */
-            .footer-nav-links-grid {
-                display: none;
-            }
-
-            .footer-mobile-accordion {
-                display: flex;
-            }
-
-            .footer-nav-container {
-                padding: 16px 0 32px 0;
-            }
-        }
-
-        @media (max-width: 480px) {
-            .max-w-1200 {
-                padding-left: 16px;
-                padding-right: 16px;
-            }
-
-            .brand-name {
-                font-size: 12px;
-            }
-
-            .logo-icon-box {
-                padding: 8px;
-            }
-
-            .drawer-sliding-frame {
-                width: 100%;
-            }
-        }
-    </style>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>IT Hardware & Gear Store</title>
+  
+<style>
+  @font-face { font-family:'Circular Std'; src:url('fonts/CircularStd-Book.woff2') format('woff2'),url('fonts/CircularStd-Book.woff') format('woff'); font-weight:400; font-style:normal; font-display:swap; }
+  @font-face { font-family:'Circular Std'; src:url('fonts/CircularStd-BookItalic.woff2') format('woff2'),url('fonts/CircularStd-BookItalic.woff') format('woff'); font-weight:400; font-style:italic; font-display:swap; }
+  @font-face { font-family:'Circular Std'; src:url('fonts/CircularStd-Medium.woff2') format('woff2'),url('fonts/CircularStd-Medium.woff') format('woff'); font-weight:500; font-style:normal; font-display:swap; }
+  @font-face { font-family:'Circular Std'; src:url('fonts/CircularStd-Bold.woff2') format('woff2'),url('fonts/CircularStd-Bold.woff') format('woff'); font-weight:600; font-style:normal; font-display:swap; }
+  @font-face { font-family:'Sunflare'; src:url('fonts/Finlandica[wght].ttf') format('woff2'),url('fonts/CircularStd-Black.woff') format('woff'); font-weight:900; font-style:normal; font-display:swap; }
+   * {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+  font-family: 'Circular Std', sans-serif;
+}
+</style>
+  <style>
+    /* CSS Reset & Scope Namespace */
+    .it-scope * {
+      box-sizing: border-box;
+      margin: 0;
+      padding: 0;
+      font-family: 'Sunflare', -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
+    }
+
+    .it-scope {
+      background-color: #0b0e14;
+      color: #ffffff;
+      min-height: 100vh;
+      overflow-x: hidden;
+    }
+
+    /* --- HEADER STYLES --- */
+    .it-header {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      padding: 12px 32px;
+      background-color: #0d111a;
+      border-bottom: 1px solid #1a2332;
+      position: relative;
+      z-index: 100;
+    }
+
+    .it-brand-group {
+      display: flex;
+      align-items: center;
+      gap: 12px;
+    }
+
+    .it-logo {
+      font-size: 20px;
+      font-weight: 700;
+      letter-spacing: -0.5px;
+      color: #ffffff;
+      text-decoration: none;
+      display: flex;
+      align-items: center;
+      gap: 6px;
+    }
+
+    .it-logo-badge {
+      font-weight: 300;
+      color: #94a3b8;
+    }
+
+    .it-divider {
+      width: 1px;
+      height: 20px;
+      background-color: #2a364f;
+    }
+
+    .it-logo-sub {
+      font-size: 13px;
+      font-weight: 700;
+      letter-spacing: 1.5px;
+      color: #94a3b8;
+    }
+
+    /* Search Component */
+    .it-search-container {
+      position: relative;
+      width: 320px;
+    }
+
+    .it-search-input-wrap {
+      display: flex;
+      align-items: center;
+      background-color: #07090e;
+      border: 1px solid #2a364f;
+      border-radius: 20px;
+      padding: 6px 14px;
+      transition: border-color 0.2s ease;
+    }
+
+    .it-search-input-wrap:focus-within {
+      border-color: #00a3ff;
+    }
+
+    .it-search-icon {
+      width: 16px;
+      height: 16px;
+      fill: none;
+      stroke: #64748b;
+      stroke-width: 2;
+      stroke-linecap: round;
+      stroke-linejoin: round;
+      margin-right: 8px;
+    }
+
+    .it-search-input {
+      background: transparent;
+      border: none;
+      outline: none;
+      color: #ffffff;
+      font-size: 14px;
+      width: 100%;
+    }
+
+    .it-search-results {
+      position: absolute;
+      top: calc(100% + 8px);
+      left: 0;
+      right: 0;
+      background: #111827;
+      border: 1px solid #1f2937;
+      border-radius: 8px;
+      max-height: 250px;
+      overflow-y: auto;
+      display: none;
+      box-shadow: 0 10px 25px rgba(0,0,0,0.5);
+      z-index: 110;
+    }
+
+    .it-search-results.active {
+      display: block;
+    }
+
+    .it-search-item {
+      padding: 10px 14px;
+      font-size: 13px;
+      color: #cbd5e1;
+      cursor: pointer;
+      border-bottom: 1px solid #1f2937;
+    }
+
+    .it-search-item:last-child {
+      border-bottom: none;
+    }
+
+    .it-search-item:hover {
+      background-color: #1f2937;
+      color: #00a3ff;
+    }
+
+    /* Navigation Menu */
+    .it-nav {
+      display: flex;
+      align-items: center;
+      gap: 24px;
+    }
+
+    .it-nav-link {
+      color: #ffffff;
+      text-decoration: none;
+      font-size: 14px;
+      font-weight: 500;
+      transition: color 0.2s ease;
+    }
+
+    .it-nav-link:hover {
+      color: #00a3ff;
+    }
+
+    /* Dropdown Component */
+    .it-dropdown {
+      position: relative;
+    }
+
+    .it-dropdown-btn {
+      background: none;
+      border: none;
+      color: #ffffff;
+      font-size: 14px;
+      font-weight: 500;
+      cursor: pointer;
+      display: flex;
+      align-items: center;
+      gap: 4px;
+      padding: 0;
+    }
+
+    .it-dropdown-chevron {
+      width: 12px;
+      height: 12px;
+      fill: none;
+      stroke: currentColor;
+      stroke-width: 2.5;
+      transition: transform 0.2s ease;
+    }
+
+    .it-dropdown.open .it-dropdown-chevron {
+      transform: rotate(180deg);
+    }
+
+    .it-dropdown-menu {
+      position: absolute;
+      top: calc(100% + 16px);
+      left: 50%;
+      transform: translateX(-50%);
+      background-color: #ffffff;
+      border-radius: 16px;
+      padding: 12px 0;
+      min-width: 220px;
+      box-shadow: 0 20px 30px rgba(0, 0, 0, 0.4);
+      opacity: 0;
+      visibility: hidden;
+      transition: opacity 0.2s ease, visibility 0.2s ease;
+      z-index: 120;
+    }
+
+    .it-dropdown.open .it-dropdown-menu {
+      opacity: 1;
+      visibility: visible;
+    }
+
+    .it-dropdown-item {
+      display: block;
+      padding: 10px 20px;
+      color: #0f172a;
+      text-decoration: none;
+      font-size: 13px;
+      font-weight: 700;
+      line-height: 1.3;
+      transition: background 0.15s ease;
+    }
+
+    .it-dropdown-item:hover {
+      background-color: #f1f5f9;
+    }
+
+    /* Right Action Bar */
+    .it-actions {
+      display: flex;
+      align-items: center;
+      gap: 16px;
+    }
+
+    .it-btn-signin {
+      color: #ffffff;
+      text-decoration: none;
+      font-size: 14px;
+      font-weight: 500;
+    }
+
+    .it-btn-signup {
+      background-color: #00a3ff;
+      color: #ffffff;
+      border: none;
+      border-radius: 6px;
+      padding: 8px 18px;
+      font-size: 14px;
+      font-weight: 600;
+      cursor: pointer;
+      transition: background-color 0.2s ease;
+    }
+
+    .it-btn-signup:hover {
+      background-color: #0082cc;
+    }
+
+    .it-lang-selector {
+      color: #ffffff;
+      font-size: 12px;
+      font-weight: 600;
+      cursor: pointer;
+    }
+
+    .it-cart-btn {
+      position: relative;
+      background: none;
+      border: none;
+      cursor: pointer;
+      color: #ffffff;
+      display: flex;
+      align-items: center;
+    }
+
+    .it-cart-badge {
+      position: absolute;
+      top: -6px;
+      right: -8px;
+      background-color: #00a3ff;
+      color: #ffffff;
+      font-size: 10px;
+      font-weight: 700;
+      border-radius: 10px;
+      padding: 1px 5px;
+    }
+
+    /* --- HERO SECTION --- */
+    .it-hero {
+      position: relative;
+      padding: 40px 20px 60px 20px;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+    }
+
+    .it-hero-heading {
+      font-size: 52px;
+      font-weight: 700;
+      letter-spacing: -1px;
+      margin-bottom: 8px;
+      text-align: center; padding-top: 3rem;
+    }
+
+    .it-hero-subheading {
+      font-size: 18px;
+      color: #94a3b8;
+      margin-bottom: 40px;
+      text-align: center;
+      font-weight: 400;
+    }
+
+    /* Carousel Main Stage */
+    .it-carousel-wrapper {
+      position: relative;
+      width: 100%;
+      max-width: 1500px;
+      margin: 0 auto; padding-top: 5rem;
+    }
+
+    .it-carousel-glow {
+      position: relative;
+      border-radius: 20px;
+      padding: 3px;
+      background: radial-gradient(circle at 50% 50%, rgba(0, 163, 255, 0.4), transparent 70%);
+      box-shadow: 0 0 50px rgba(0, 163, 255, 0.25);
+    }
+
+    .it-carousel-viewport {
+      position: relative;
+      border-radius: 18px;
+      overflow: hidden;
+      height: 650px;
+      background-color: #05070a;
+    }
+
+    .it-slide {
+      position: absolute;
+      inset: 0;
+      opacity: 0;
+      transition: opacity 0.6s cubic-bezier(0.4, 0, 0.2, 1);
+      display: flex;
+      flex-direction: column;
+      justify-content: space-between;
+      align-items: center;
+      padding: 32px;
+      background-size: cover;
+      background-position: center;
+    }
+
+    .it-slide.active {
+      opacity: 1;
+      z-index: 2;
+    }
+
+    .it-slide-overlay {
+      position: absolute;
+      inset: 0;
+      background: radial-gradient(circle at center, rgba(0,0,0,0.1) 0%, rgba(0,0,0,0.75) 100%),
+                  linear-gradient(to top, rgba(0,0,0,0.9) 0%, transparent 60%);
+      z-index: 1;
+    }
+
+    .it-slide-content {
+      position: relative;
+      z-index: 2;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      height: 100%;
+      justify-content: space-between;
+      width: 100%;
+    }
+
+    /* Live Tag */
+    .it-badge-live {
+      display: inline-flex;
+      align-items: center;
+      gap: 6px;
+      background-color: #00a3ff;
+      color: #ffffff;
+      font-size: 12px;
+      font-weight: 700;
+      padding: 6px 14px;
+      border-radius: 20px;
+      letter-spacing: 0.5px;
+      box-shadow: 0 0 12px rgba(0, 163, 255, 0.5);
+    }
+
+    .it-badge-live-icon {
+      width: 14px;
+      height: 14px;
+      fill: currentColor;
+    }
+
+    /* Slide Info Group */
+    .it-slide-info {
+      text-align: center;
+      margin-bottom: 8px;
+    }
+
+    .it-slide-date {
+      color: #cbd5e1;
+      font-size: 14px;
+      font-weight: 600;
+      margin-bottom: 6px;
+    }
+
+    .it-slide-title {
+      font-size: 32px;
+      font-weight: 900;
+      letter-spacing: 1px;
+      color: #ffffff;
+      text-transform: uppercase;
+      margin-bottom: 4px;
+      text-shadow: 0 2px 10px rgba(0,0,0,0.5);
+    }
+
+    .it-slide-subtitle {
+      color: #94a3b8;
+      font-size: 13px;
+      font-weight: 600;
+      letter-spacing: 1px;
+      text-transform: uppercase;
+      margin-bottom: 20px;
+    }
+
+    .it-btn-primary {
+      background-color: #00a3ff;
+      color: #ffffff;
+      border: none;
+      border-radius: 6px;
+      padding: 12px 32px;
+      font-size: 14px;
+      font-weight: 700;
+      cursor: pointer;
+      transition: transform 0.15s ease, background-color 0.2s ease;
+      box-shadow: 0 4px 14px rgba(0, 163, 255, 0.3);
+    }
+
+    .it-btn-primary:hover {
+      background-color: #0082cc;
+      transform: translateY(-1px);
+    }
+
+    /* Navigation Arrows */
+    .it-arrow {
+      position: absolute;
+      top: 50%;
+      transform: translateY(-50%);
+      background: none;
+      border: none;
+      color: #ffffff;
+      cursor: pointer;
+      z-index: 10;
+      padding: 12px;
+      opacity: 0.7;
+      transition: opacity 0.2s ease, transform 0.2s ease;
+    }
+
+    .it-arrow:hover {
+      opacity: 1;
+    }
+
+    .it-arrow-prev {
+      left: -56px;
+    }
+
+    .it-arrow-prev:hover {
+      transform: translateY(-50%) translateX(-2px);
+    }
+
+    .it-arrow-next {
+      right: -56px;
+    }
+
+    .it-arrow-next:hover {
+      transform: translateY(-50%) translateX(2px);
+    }
+
+    .it-arrow svg {
+      width: 28px;
+      height: 28px;
+      fill: none;
+      stroke: currentColor;
+      stroke-width: 2.5;
+      stroke-linecap: round;
+      stroke-linejoin: round;
+    }
+
+    /* Indicators (Dots) */
+    .it-indicators {
+      display: flex;
+      gap: 10px;
+      position: absolute;
+      bottom: 16px;
+      left: 50%;
+      transform: translateX(-50%);
+      z-index: 10;
+    }
+
+    .it-dot {
+      width: 28px;
+      height: 3px;
+      background-color: rgba(255, 255, 255, 0.2);
+      border-radius: 2px;
+      cursor: pointer;
+      transition: background-color 0.3s ease;
+    }
+
+    .it-dot.active {
+      background-color: #ffffff;
+    }
+  </style>
 </head>
-<body x-data="{ cartOpen: false, cartCount: 0 }">
+<body>
 
-    <header>
-        <div class="max-w-1200 header-inner">
-            <div class="header-left">
-                <div class="brand-logo-block">
-                    <img src="thumbnails/logo1.png" style="height: 35px;"/>
-                </div>
-                <nav class="nav-links">
-                    <a href="#" class="active">Marketplace</a>
-                    <a href="#">Solutions</a>
-                    <a href="#">Pricing</a>
-                    <a href="#">Support</a>
-                </nav>
-            </div>
+  <div class="it-scope">
+    <!-- HEADER -->
+    <header class="it-header">
+      <div class="it-brand-group">
+        <a href="#" class="it-logo">
+          tech.com <span class="it-logo-badge">| HARDWARE</span>
+        </a>
+        <div class="it-divider"></div>
+        <span class="it-logo-sub">STORE</span>
+      </div>
 
-            <div class="header-right">
-                <button @click="cartOpen = true" class="cart-trigger-btn" aria-label="View shopping cart row">
-                    <i class="fa-solid fa-bag-shopping" style="font-size: 20px;"></i>
-                    <span x-show="cartCount > 0" x-text="cartCount" class="cart-counter-badge" style="display: none;">0</span>
-                </button>
-                <button class="action-button-black">Sign In</button>
-            </div>
+      <!-- Real-time Search Box -->
+      <div class="it-search-container">
+        <div class="it-search-input-wrap">
+          <svg class="it-search-icon" viewBox="0 0 24 24"><circle cx="11" cy="11" r="8"></circle><line x1="21" y1="21" x2="16.65" y2="16.65"></line></svg>
+          <input type="text" class="it-search-input" id="itSearchInput" placeholder="Search hardware, GPUs, laptops..." autocomplete="off">
         </div>
+        <div class="it-search-results" id="itSearchResults"></div>
+      </div>
+
+      <!-- Navigation Links & Dynamic Dropdown -->
+      <nav class="it-nav">
+        <a href="#" class="it-nav-link">Marketplace</a>
+        <a href="#" class="it-nav-link">Drops</a>
+        
+        <div class="it-dropdown" id="itDropdown">
+          <button class="it-dropdown-btn" id="itDropdownBtn">
+            Top Hardware
+            <svg class="it-dropdown-chevron" viewBox="0 0 24 24"><polyline points="6 9 12 15 18 9"></polyline></svg>
+          </button>
+          <div class="it-dropdown-menu">
+            <a href="#" class="it-dropdown-item">NVIDIA RTX 4090 Series</a>
+            <a href="#" class="it-dropdown-item">Custom Mechanical Keyboards</a>
+            <a href="#" class="it-dropdown-item">OLED Gaming Monitors</a>
+            <a href="#" class="it-dropdown-item">DDR5 High-Speed RAM</a>
+            <a href="#" class="it-dropdown-item">NVMe Gen5 SSDs</a>
+          </div>
+        </div>
+
+        <a href="#" class="it-nav-link">Build PC</a>
+      </nav>
+
+      <!-- User Actions & Shopping Cart -->
+      <div class="it-actions">
+        <a href="#" class="it-btn-signin">Sign In</a>
+        <button class="it-btn-signup">Sign Up</button>
+        <div class="it-divider"></div>
+        <span class="it-lang-selector">EN</span>
+        <button class="it-cart-btn" id="itCartBtn" aria-label="Cart">
+          <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="9" cy="21" r="1"></circle><circle cx="20" cy="21" r="1"></circle><path d="M1 1h4l2.68 13.39a2 2 0 0 0 2 1.61h9.72a2 2 0 0 0 2-1.61L23 6H6"></path></svg>
+          <span class="it-cart-badge" id="itCartCount">0</span>
+        </button>
+      </div>
     </header>
 
-    <section class="max-w-1200 carousel-section" 
-             x-data="{ 
-                activeSlide: 0, 
-                slides: [
-                    { title: 'Microsoft 365 Business Premium', desc: 'The ultimate cloud productivity, collaboration, and enterprise-grade security ecosystem customized perfectly for modern operational environments.', tag: 'Enterprise Suite', image: 'https://images.unsplash.com/photo-1618005182384-a83a8bd57fbe?auto=format&fit=crop&w=1200&q=80', color: '#f5f5f5' },
-                    { title: 'Next-Gen Workspace Infrastructure', desc: 'Equip hybrid distributed networks with state-of-the-art server virtualization capabilities and lightning-fast deployment cycles.', tag: 'Cloud Compute', image: 'https://images.unsplash.com/photo-1639762681485-074b7f938ba0?auto=format&fit=crop&w=1200&q=80', color: '#f4f4f5' }
-                ],
-                init() {
-                    setInterval(() => {
-                        this.activeSlide = (this.activeSlide === this.slides.length - 1) ? 0 : this.activeSlide + 1;
-                    }, 5000);
-                }
-             }">
-        
-        <div class="carousel-wrapper">
-            <div class="carousel-viewport">
-                <template x-for="(slide, index) in slides" :key="index">
-                    <div x-show="activeSlide === index" 
-                         style="display: none;"
-                         class="slide-instance"
-                         :style="'background-color: ' + slide.color">
-                        
-                        <div class="slide-content-left">
-                            <span x-text="slide.tag" class="slide-meta-badge"></span>
-                            <h1 x-text="slide.title" class="slide-title"></h1>
-                            <p x-text="slide.desc" class="slide-desc"></p>
-                            <div>
-                                <button @click="cartCount++" class="action-button-black" style="display: inline-flex; align-items: center; gap: 12px; padding: 16px 28px;">
-                                    <span>Provision Instantly</span>
-                                    <i class="fa-solid fa-arrow-right" style="font-size: 11px;"></i>
-                                </button>
-                            </div>
-                        </div>
-                        
-                        <div class="slide-media-right">
-                            <img :src="slide.image" class="slide-img" alt="Hero Product Visual">
-                        </div>
-                    </div>
-                </template>
-            </div>
-        </div>
+    <!-- HERO SECTION -->
+    <main class="it-hero">
+      <h1 class="it-hero-heading">Buy, sell, and showcase</h1>
+      <p class="it-hero-subtitle">premium IT hardware from leading brands and custom builders</p>
 
-        <div class="carousel-controls-row">
-            <div class="matrix-indicators">
-                <template x-for="(slide, index) in slides" :key="index">
-                    <button @click="activeSlide = index" class="indicator-dot" :class="activeSlide === index ? 'is-active' : 'is-inactive'"></button>
-                </template>
-            </div>
+      <div class="it-carousel-wrapper">
+        <!-- Navigation Arrows -->
+        <button class="it-arrow it-arrow-prev" id="itPrevBtn" aria-label="Previous Slide">
+          <svg viewBox="0 0 24 24"><polyline points="15 18 9 12 15 6"></polyline></svg>
+        </button>
+        <button class="it-arrow it-arrow-next" id="itNextBtn" aria-label="Next Slide">
+          <svg viewBox="0 0 24 24"><polyline points="9 18 15 12 9 6"></polyline></svg>
+        </button>
+
+        <!-- Main Card Wrapper -->
+        <div class="it-carousel-glow">
+          <div class="it-carousel-viewport" id="itCarouselViewport">
             
-            <div class="vector-arrow-cluster">
-                <button @click="activeSlide = activeSlide === 0 ? slides.length - 1 : activeSlide - 1" class="arrow-nav-btn" aria-label="Previous image block shift">
-                    <i class="fa-solid fa-chevron-left" style="font-size: 12px;"></i>
-                </button>
-                <button @click="activeSlide = activeSlide === slides.length - 1 ? 0 : activeSlide + 1" class="arrow-nav-btn" aria-label="Next image block shift">
-                    <i class="fa-solid fa-chevron-right" style="font-size: 12px;"></i>
-                </button>
+            <!-- Slide 1 -->
+            <div class="it-slide active" style="background-image: url('https://images.unsplash.com/photo-1542751371-adc38448a05e?auto=format&fit=crop&w=1200&q=80');">
+              <div class="it-slide-overlay"></div>
+              <div class="it-slide-content">
+                <div class="it-badge-live">
+                  <svg class="it-badge-live-icon" viewBox="0 0 24 24"><path d="M12 2A10 10 0 0 0 2 12a10 10 0 0 0 10 10 10 10 0 0 0 10-10A10 10 0 0 0 12 2zm0 18a8 8 0 1 1 0-16 8 8 0 0 1 0 16z"/><circle cx="12" cy="12" r="3"/></svg>
+                  LIVE NOW
+                </div>
+                <div class="it-slide-info">
+                  <p class="it-slide-date">Mon, Jan 12</p>
+                  <h2 class="it-slide-title">THE HARDWARE KIDS</h2>
+                  <p class="it-slide-subtitle">LIMITED EDITION RIGS & PERIPHERALS</p>
+                  <button class="it-btn-primary it-action-btn" data-product="Hardware Kids Drop">View Drop</button>
+                </div>
+              </div>
             </div>
+
+            <!-- Slide 2 -->
+            <div class="it-slide" style="background-image: url('https://images.unsplash.com/photo-1587202372775-e229f172b9d7?auto=format&fit=crop&w=1200&q=80');">
+              <div class="it-slide-overlay"></div>
+              <div class="it-slide-content">
+                <div class="it-badge-live">
+                  <svg class="it-badge-live-icon" viewBox="0 0 24 24"><path d="M12 2A10 10 0 0 0 2 12a10 10 0 0 0 10 10 10 10 0 0 0 10-10A10 10 0 0 0 12 2zm0 18a8 8 0 1 1 0-16 8 8 0 0 1 0 16z"/><circle cx="12" cy="12" r="3"/></svg>
+                  PRE-ORDER NOW
+                </div>
+                <div class="it-slide-info">
+                  <p class="it-slide-date">Wed, Jan 14</p>
+                  <h2 class="it-slide-title">NEXT-GEN GRAPHICS</h2>
+                  <p class="it-slide-subtitle">ULTRA HIGH-FRAME PERFORMANCE</p>
+                  <button class="it-btn-primary it-action-btn" data-product="Next-Gen GPUs">Explore GPUs</button>
+                </div>
+              </div>
+            </div>
+
+            <!-- Slide 3 -->
+            <div class="it-slide" style="background-image: url('https://images.unsplash.com/photo-1618005182384-a83a8bd57fbe?auto=format&fit=crop&w=1200&q=80');">
+              <div class="it-slide-overlay"></div>
+              <div class="it-slide-content">
+                <div class="it-badge-live">
+                  <svg class="it-badge-live-icon" viewBox="0 0 24 24"><path d="M12 2A10 10 0 0 0 2 12a10 10 0 0 0 10 10 10 10 0 0 0 10-10A10 10 0 0 0 12 2zm0 18a8 8 0 1 1 0-16 8 8 0 0 1 0 16z"/><circle cx="12" cy="12" r="3"/></svg>
+                  NEW RELEASE
+                </div>
+                <div class="it-slide-info">
+                  <p class="it-slide-date">Fri, Jan 16</p>
+                  <h2 class="it-slide-title">CUSTOM KEYBOARD SUITE</h2>
+                  <p class="it-slide-subtitle">HOT-SWAPPABLE MECHANICAL SWITCHES</p>
+                  <button class="it-btn-primary it-action-btn" data-product="Custom Keyboards">Shop Keyboards</button>
+                </div>
+              </div>
+            </div>
+
+          </div>
         </div>
-    </section>
 
-    <main class="max-w-1200 catalog-section">
-        <div class="section-header-bar">
-            <div>
-                <h2 class="section-heading-title">Cloud Software & Licenses</h2>
-                <p class="section-heading-sub">Instantly provisioned enterprise productivity digital infrastructure solutions.</p>
-            </div>
-            <a href="#" class="editorial-section-link">Browse all software &rarr;</a>
+        <!-- Indicators -->
+        <div class="it-indicators" id="itIndicators">
+          <div class="it-dot active" data-slide="0"></div>
+          <div class="it-dot" data-slide="1"></div>
+          <div class="it-dot" data-slide="2"></div>
         </div>
 
-        <div class="products-grid-layout">
-            
-            <div class="product-premium-card">
-                <div>
-                    <div class="product-media-container">
-                        <img src="https://images.unsplash.com/photo-1633419461186-7d40a38105ec?auto=format&fit=crop&w=300&q=80" alt="M365 Basic" class="product-showcase-img">
-                    </div>
-                    <span class="product-category-badge">Microsoft Tier</span>
-                    <h3 class="product-main-title">Microsoft 365 Business Basic</h3>
-                    <p class="product-summary-desc">Web and mobile versions of core workspace configurations alongside secure identity protections.</p>
-                </div>
-                <div class="product-action-footer">
-                    <div>
-                        <span class="price-display-node">$6.00</span>
-                        <span class="price-sub-period">user / month</span>
-                    </div>
-                    <button @click="cartCount++" class="add-to-cart-btn">Add to Cart</button>
-                </div>
-            </div>
-
-            <div class="product-premium-card">
-                <div>
-                    <div class="product-media-container">
-                        <img src="https://images.unsplash.com/photo-1611162617213-7d7a39e9b1d7?auto=format&fit=crop&w=300&q=80" alt="M365 Standard" class="product-showcase-img">
-                    </div>
-                    <span class="product-category-badge">Most Popular</span>
-                    <h3 class="product-main-title">Microsoft 365 Business Standard</h3>
-                    <p class="product-summary-desc">Fully functional premium localized desktop applications deployable across comprehensive network layers.</p>
-                </div>
-                <div class="product-action-footer">
-                    <div>
-                        <span class="price-display-node">$12.50</span>
-                        <span class="price-sub-period">user / month</span>
-                    </div>
-                    <button @click="cartCount++" class="action-button-black" style="padding: 10px 18px; font-size: 12px;">Add to Cart</button>
-                </div>
-            </div>
-
-            <div class="product-premium-card">
-                <div>
-                    <div class="product-media-container">
-                        <img src="https://images.unsplash.com/photo-1620712943543-bcc4688e7485?auto=format&fit=crop&w=300&q=80" alt="M365 Enterprise" class="product-showcase-img">
-                    </div>
-                    <span class="product-category-badge">Premium Scale</span>
-                    <h3 class="product-main-title">Microsoft 365 Enterprise E5</h3>
-                    <p class="product-summary-desc">Advanced analytics structures combined with voice integration systems built for global configurations.</p>
-                </div>
-                <div class="product-action-footer">
-                    <div>
-                        <span class="price-display-node">$36.00</span>
-                        <span class="price-sub-period">user / month</span>
-                    </div>
-                    <button @click="cartCount++" class="add-to-cart-btn">Add to Cart</button>
-                </div>
-            </div>
-
-        </div>
+      </div>
     </main>
+  </div>
 
-    <section class="max-w-1200 catalog-section">
-        <div class="section-header-bar">
-            <div>
-                <h2 class="section-heading-title">Devices & Hardware Components</h2>
-                <p class="section-heading-sub">Premium engineered hardware components and high-throughput endpoint terminals.</p>
-            </div>
-            <a href="#" class="editorial-section-link">View full hardware catalogue &rarr;</a>
-        </div>
+  <!-- INTERACTIVE JAVASCRIPT -->
+  <script>
+    (function() {
+      // 1. CAROUSEL ENGINE
+      const slides = document.querySelectorAll('.it-slide');
+      const dots = document.querySelectorAll('.it-dot');
+      const prevBtn = document.getElementById('itPrevBtn');
+      const nextBtn = document.getElementById('itNextBtn');
+      let currentSlide = 0;
+      let autoPlayTimer = null;
 
-        <div class="products-grid-layout">
-            
-            <div class="product-premium-card">
-                <div>
-                    <div class="product-media-container">
-                        <img src="https://images.unsplash.com/photo-1587829741301-dc798b83add3?auto=format&fit=crop&w=350&q=80" alt="Workstation Terminal" class="product-showcase-img" style="max-height: 120px;">
-                    </div>
-                    <span class="product-category-badge">Endpoints</span>
-                    <h3 class="product-main-title">ProStation Elite Client Terminal</h3>
-                    <p class="product-summary-desc">Thin-client workspace computer optimized for seamless interaction with provisioned enterprise cloud platforms.</p>
-                </div>
-                <div class="product-action-footer">
-                    <div>
-                        <span class="price-display-node">$849.00</span>
-                        <span class="price-sub-period">per unit hardware</span>
-                    </div>
-                    <button @click="cartCount++" class="add-to-cart-btn">Add to Cart</button>
-                </div>
-            </div>
+      function goToSlide(index) {
+        slides[currentSlide].classList.remove('active');
+        dots[currentSlide].classList.remove('active');
+        currentSlide = (index + slides.length) % slides.length;
+        slides[currentSlide].classList.add('active');
+        dots[currentSlide].classList.add('active');
+      }
 
-            <div class="product-premium-card">
-                <div>
-                    <div class="product-media-container">
-                        <img src="https://images.unsplash.com/photo-1544244015-0df4b3ffc6b0?auto=format&fit=crop&w=350&q=80" alt="Tablet Device" class="product-showcase-img" style="max-height: 120px;">
-                    </div>
-                    <span class="product-category-badge">Mobile Devices</span>
-                    <h3 class="product-main-title">CloudTab 10" Enterprise Edition</h3>
-                    <p class="product-summary-desc">Secured biometric workspace slate featuring preloaded mobile configuration nodes for field arrays.</p>
-                </div>
-                <div class="product-action-footer">
-                    <div>
-                        <span class="price-display-node">$429.00</span>
-                        <span class="price-sub-period">per unit hardware</span>
-                    </div>
-                    <button @click="cartCount++" class="add-to-cart-btn">Add to Cart</button>
-                </div>
-            </div>
+      function nextSlide() {
+        goToSlide(currentSlide + 1);
+      }
 
-            <div class="product-premium-card">
-                <div>
-                    <div class="product-media-container">
-                        <img src="https://images.unsplash.com/photo-1601524909162-be87252be298?auto=format&fit=crop&w=350&q=80" alt="PCIe Storage Matrix" class="product-showcase-img" style="max-height: 120px;">
-                    </div>
-                    <span class="product-category-badge">Components</span>
-                    <h3 class="product-main-title">QuantumLink 2TB NVMe Component Matrix</h3>
-                    <p class="product-summary-desc">PCIe Gen-5 high-throughput hardware caching blocks engineered for local edge database replication arrays.</p>
-                </div>
-                <div class="product-action-footer">
-                    <div>
-                        <span class="price-display-node">$189.00</span>
-                        <span class="price-sub-period">per system module</span>
-                    </div>
-                    <button @click="cartCount++" class="add-to-cart-btn">Add to Cart</button>
-                </div>
-            </div>
+      function prevSlide() {
+        goToSlide(currentSlide - 1);
+      }
 
-        </div>
-    </section>
+      function startAutoPlay() {
+        stopAutoPlay();
+        autoPlayTimer = setInterval(nextSlide, 5000);
+      }
 
-    <div x-show="cartOpen" class="drawer-slide-overlay" role="dialog" aria-modal="true" style="display: none;" @click="cartOpen = false"></div>
-    
-    <div x-show="cartOpen" 
-         style="display: none;"
-         x-transition:enter="transition ease-in-out duration-300"
-         x-transition:enter-start="transform translate-x-full"
-         x-transition:enter-end="transform translate-x-0"
-         x-transition:leave="transition ease-in-out duration-300"
-         x-transition:leave-start="transform translate-x-0"
-         x-transition:leave-end="transform translate-x-full"
-         class="drawer-sliding-frame">
+      function stopAutoPlay() {
+        if (autoPlayTimer) clearInterval(autoPlayTimer);
+      }
+
+      nextBtn.addEventListener('click', () => { nextSlide(); startAutoPlay(); });
+      prevBtn.addEventListener('click', () => { prevSlide(); startAutoPlay(); });
+
+      dots.forEach(dot => {
+        dot.addEventListener('click', (e) => {
+          const slideIdx = parseInt(e.target.dataset.slide);
+          goToSlide(slideIdx);
+          startAutoPlay();
+        });
+      });
+
+      startAutoPlay();
+
+      // 2. DROPDOWN TOGGLE ENGINE
+      const dropdown = document.getElementById('itDropdown');
+      const dropdownBtn = document.getElementById('itDropdownBtn');
+
+      dropdownBtn.addEventListener('click', (e) => {
+        e.stopPropagation();
+        dropdown.classList.toggle('open');
+      });
+
+      document.addEventListener('click', () => {
+        dropdown.classList.remove('open');
+      });
+
+      // 3. REAL-TIME SEARCH ENGINE
+      const searchInput = document.getElementById('itSearchInput');
+      const searchResults = document.getElementById('itSearchResults');
+
+      const mockDatabase = [
+        "NVIDIA GeForce RTX 4090",
+        "NVIDIA GeForce RTX 4080 Super",
+        "AMD Radeon RX 7900 XTX",
+        "Custom Mechanical Keyboard - Artisan Edition",
+        "Logitech G Pro X Superlight Mouse",
+        "Samsung Odyssey OLED G9 Monitor",
+        "Intel Core i9-14900K Processor",
+        "Corsair Vengeance DDR5 32GB RAM",
+        "WD_BLACK 2TB NVMe Gen5 SSD"
+      ];
+
+      searchInput.addEventListener('input', (e) => {
+        const query = e.target.value.toLowerCase().trim();
+        searchResults.innerHTML = '';
         
-        <div class="drawer-body-container">
-            <div class="drawer-header-row">
-                <h2 class="drawer-panel-title">Marketplace Shopping Cart</h2>
-                <button type="button" @click="cartOpen = false" class="drawer-dismiss-btn">
-                    <i class="fa-solid fa-xmark" style="font-size: 18px;"></i>
-                </button>
-            </div>
+        if (query.length === 0) {
+          searchResults.classList.remove('active');
+          return;
+        }
 
-            <div class="cart-queue-stream">
-                <div class="flow-root" x-show="cartCount > 0">
-                    <ul role="list">
-                        <li class="cart-item-block">
-                            <div class="cart-item-media">
-                                <img src="https://images.unsplash.com/photo-1611162617213-7d7a39e9b1d7?auto=format&fit=crop&w=150&q=80" class="cart-item-img" alt="Thumbnail product image inside sidebar queue list">
-                            </div>
-                            <div class="cart-item-details">
-                                <div>
-                                    <div class="cart-item-header">
-                                        <h3>M365 Business Standard</h3>
-                                        <p>$12.50</p>
-                                    </div>
-                                    <p class="cart-item-tagline">Digital provisioning node</p>
-                                </div>
-                                <div class="cart-item-footer-meta">
-                                    <p>Quantity: <span style="color: var(--editorial-black); font-weight: 600;" x-text="cartCount">1</span></p>
-                                    <button type="button" @click="cartCount = 0" class="cart-remove-trigger">Remove</button>
-                                </div>
-                            </div>
-                        </li>
-                    </ul>
-                </div>
-                
-                <div class="cart-empty-announcement" x-show="cartCount === 0">
-                    <i class="fa-solid fa-basket-shopping"></i>
-                    <p>Your cloud provisioning queue is empty.</p>
-                </div>
-            </div>
-        </div>
+        const matches = mockDatabase.filter(item => item.toLowerCase().includes(query));
 
-        <div class="drawer-footer-anchor">
-            <div class="summary-total-line">
-                <p>Estimated Subtotal</p>
-                <p x-text="'$' + (cartCount * 12.50).toFixed(2)">$0.00</p>
-            </div>
-            <p class="disclaimer-text">Fulfillment parameters and tier processing applied on step 2.</p>
-            <a href="#" class="checkout-action-btn">Proceed to Secure Checkout</a>
-        </div>
-    </div>
+        if (matches.length > 0) {
+          matches.forEach(match => {
+            const div = document.createElement('div');
+            div.className = 'it-search-item';
+            div.textContent = match;
+            div.addEventListener('click', () => {
+              searchInput.value = match;
+              searchResults.classList.remove('active');
+            });
+            searchResults.appendChild(div);
+          });
+          searchResults.classList.add('active');
+        } else {
+          const div = document.createElement('div');
+          div.className = 'it-search-item';
+          div.style.color = '#64748b';
+          div.textContent = 'No hardware items found';
+          searchResults.appendChild(div);
+          searchResults.classList.add('active');
+        }
+      });
 
-    <footer x-data="{ openGroup: null }">
-        
-        <div class="vertical-notice-banner">
-            <div class="max-w-1200 vertical-notice-inner">
-                <div class="vertical-message-node">
-                    <i class="fa-solid fa-bolt"></i>
-                    <p>
-                        <strong>Digital & Hardware Shipping Parameters:</strong> All digital cloud license software allocations and workspace environment configurations instances are processed instantly and deployed directly onto tenancy parameters. Physical hardware endpoint components, thin terminal arrays, and component matrices dispatch daily via localized, fully audited next-day secure logistics transit courier networks.
-                    </p>
-                </div>
-                <div class="vertical-message-node">
-                    <i class="fa-solid fa-arrow-rotate-left"></i>
-                    <p>
-                        <strong>Transparent Return Operational Protocol:</strong> Digital core cloud license provisions retain standard enterprise flexibility parameters and are fully covered by our mandatory 14-day zero-prior-use tenancy return structural validation guarantees. Unopened localized engineering equipment models and boxed physical hardware component blocks maintain complete structural baseline return processing criteria.
-                    </p>
-                </div>
-                <div class="vertical-message-node">
-                    <i class="fa-solid fa-tags"></i>
-                    <p>
-                        <strong>Automated Scale Matrix Discounts:</strong> Local institutional volume tier parameters, educational workspace scale arrangements, and bulk multi-seat corporate provisioning configurations process cost reductions dynamically across baseline frameworks. Scale-based adjustments apply variable programmatic price metric discounts natively directly during transactional checkout calculations.
-                    </p>
-                </div>
-            </div>
-        </div>
+      document.addEventListener('click', (e) => {
+        if (!e.target.closest('.it-search-container')) {
+          searchResults.classList.remove('active');
+        }
+      });
 
-        <div class="max-w-1200 footer-nav-container">
-            
-            <div class="footer-nav-links-grid">
-                <div class="footer-link-group-node">
-                    <h4>Solutions</h4>
-                    <ul>
-                        <li><a href="#">Enterprise Microsoft 365</a></li>
-                        <li><a href="#">Edge Computing Terminal Nodes</a></li>
-                        <li><a href="#">Component Storage Networks</a></li>
-                    </ul>
-                </div>
-                <div class="footer-link-group-node">
-                    <h4>Framework</h4>
-                    <ul>
-                        <li><a href="#">Terms of Operations</a></li>
-                        <li><a href="#">Data Security Charters</a></li>
-                        <li><a href="#">Service Level Frameworks</a></li>
-                    </ul>
-                </div>
-                <div class="footer-link-group-node">
-                    <h4>Support</h4>
-                    <ul>
-                        <li><a href="#">Deployment Documentation</a></li>
-                        <li><a href="#">Global Registry API</a></li>
-                        <li><a href="#">Infrastructure Health Status</a></li>
-                    </ul>
-                </div>
-                <div class="footer-link-group-node">
-                    <h4>Corporate Registry</h4>
-                    <p class="corporate-registry-paragraph">
-                        All distribution loops across software environments and structural physical endpoints are verified under regulatory international standards.
-                    </p>
-                </div>
-            </div>
+      // 4. CART SYSTEM INTEGRATION
+      let cartCount = 0;
+      const cartBadge = document.getElementById('itCartCount');
+      const actionBtns = document.querySelectorAll('.it-action-btn');
 
-            <div class="footer-mobile-accordion">
-                <div class="accordion-item-node">
-                    <button class="accordion-trigger-header" @click="openGroup = openGroup === 'solutions' ? null : 'solutions'">
-                        <span>Solutions</span>
-                        <i class="fa-solid" :class="openGroup === 'solutions' ? 'fa-minus' : 'fa-plus'"></i>
-                    </button>
-                    <div class="accordion-panel-content" x-show="openGroup === 'solutions'" style="display: none;">
-                        <ul>
-                            <li><a href="#">Enterprise Microsoft 365</a></li>
-                            <li><a href="#">Edge Computing Terminal Nodes</a></li>
-                            <li><a href="#">Component Storage Networks</a></li>
-                        </ul>
-                    </div>
-                </div>
-
-                <div class="accordion-item-node">
-                    <button class="accordion-trigger-header" @click="openGroup = openGroup === 'framework' ? null : 'framework'">
-                        <span>Framework</span>
-                        <i class="fa-solid" :class="openGroup === 'framework' ? 'fa-minus' : 'fa-plus'"></i>
-                    </button>
-                    <div class="accordion-panel-content" x-show="openGroup === 'framework'" style="display: none;">
-                        <ul>
-                            <li><a href="#">Terms of Operations</a></li>
-                            <li><a href="#">Data Security Charters</a></li>
-                            <li><a href="#">Service Level Frameworks</a></li>
-                        </ul>
-                    </div>
-                </div>
-
-                <div class="accordion-item-node">
-                    <button class="accordion-trigger-header" @click="openGroup = openGroup === 'support' ? null : 'support'">
-                        <span>Support</span>
-                        <i class="fa-solid" :class="openGroup === 'support' ? 'fa-minus' : 'fa-plus'"></i>
-                    </button>
-                    <div class="accordion-panel-content" x-show="openGroup === 'support'" style="display: none;">
-                        <ul>
-                            <li><a href="#">Deployment Documentation</a></li>
-                            <li><a href="#">Global Registry API</a></li>
-                            <li><a href="#">Infrastructure Health Status</a></li>
-                        </ul>
-                    </div>
-                </div>
-
-                <div class="accordion-item-node" style="border-bottom: none;">
-                    <div class="accordion-trigger-header" style="cursor: default;">
-                        <span>Corporate Registry</span>
-                    </div>
-                    <div class="accordion-panel-content" style="padding-bottom: 24px;">
-                        <p class="corporate-registry-paragraph">
-                            All distribution loops across software environments and structural physical endpoints are verified under regulatory international standards.
-                        </p>
-                    </div>
-                </div>
-            </div>
-
-        </div>
-
-        <div class="footer-copyright-row">
-            &copy; 2026 CloudSphere Inc. All structural workspace infrastructure parameters active.
-        </div>
-    </footer>
-
+      actionBtns.forEach(btn => {
+        btn.addEventListener('click', (e) => {
+          cartCount++;
+          cartBadge.textContent = cartCount;
+          
+          // Temporary feedback
+          const originalText = e.target.textContent;
+          e.target.textContent = 'Added to Cart!';
+          e.target.style.backgroundColor = '#10b981';
+          
+          setTimeout(() => {
+            e.target.textContent = originalText;
+            e.target.style.backgroundColor = '';
+          }, 1500);
+        });
+      });
+    })();
+  </script>
 </body>
 </html>
 
@@ -1298,162 +842,3 @@
 
 
 
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-<!DOCTYPE html>
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>CloudSphere Marketplace</title>
-    <script src="https://cdn.tailwindcss.com"></script>
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
-    
-    <style>
-        /* Loading Circular Std font family fallback chain */
-        @font-face {
-            font-family: 'Circular Std';
-            src: local('Circular Std'), local('CircularStd-Book'), url(https://fonts.cdnfonts.com/s/15011/CircularStd-Book.woff) format('woff');
-            font-weight: normal;
-            font-style: normal;
-        }
-        body { 
-            font-family: 'Circular Std', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Helvetica, Arial, sans-serif; 
-            letter-spacing: -0.02em;
-        }
-        /* Lock layout container specifically to your 1200px requirement */
-        .max-w-1200 {
-            max-width: 1200px !important;
-        }
-
-        /* --- Custom Plain CSS automatic scroll animation for Hero --- */
-        @keyframes scrollHero {
-            0%, 45% { transform: translateX(0%); }    
-            50%, 95% { transform: translateX(-100%); } 
-            100% { transform: translateX(0%); }       
-        }
-
-        .hero-carousel-track {
-            display: flex;
-            width: 200%; 
-            animation: scrollHero 12s infinite ease-in-out; 
-            will-change: transform;
-        }
-
-        .hero-slide {
-            width: 50%; 
-            flex-shrink: 0;
-        }
-
-        /* --- Plain CSS Floating Left Social Media Bar --- */
-        .social-sidebar {
-            position: fixed;
-            top: 50%;
-            left: 0;
-            transform: translateY(-50%);
-            z-index: 50;
-            display: flex;
-            flex-direction: column;
-            background-color: #080d1b;
-            border-left: none;
-            border-top-right-radius: 1rem;
-            border-bottom-right-radius: 1rem;
-            box-shadow: 0 4px 12px rgba(0, 0, 0, 0.03);
-            overflow: hidden;
-            padding: 0.5rem 0;
-        }
-
-        .social-link {
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            width: 3.25rem;
-            height: 3.25rem;
-            color: #c2c9d7;
-            text-decoration: none;
-            transition: all 0.2s ease-in-out;
-            position: relative;
-        }
-
-        /* Hover states with clean interactions */
-        .social-link:hover {
-            color: #111111;
-            background-color: #f9fafb;
-            padding-left: 0.25rem; /* Subtle nudge effect */
-        }
-
-        /* Brand matching on specific hover overrides */
-        .social-link.linkedin:hover { color: #0077b5; }
-        .social-link.twitter:hover { color: #1da1f2; }
-        .social-link.github:hover { color: #24292e; }
-        .social-link.youtube:hover { color: #ff0000; }
-    </style>
-</head>
-<body class="bg-[#fafafa] text-[#111111]">
-
-    <div class="social-sidebar">
-        <a href="#" class="social-link linkedin" title="LinkedIn" target="_blank">
-            <i class="fa-brands fa-linkedin-in text-lg"></i>
-        </a>
-        <a href="#" class="social-link twitter" title="X / Twitter" target="_blank">
-            <i class="fa-brands fa-facebook text-lg"></i>
-        </a>
-        <a href="#" class="social-link github" title="GitHub" target="_blank">
-            <i class="fa-brands fa-github text-lg"></i>
-        </a>
-        <a href="#" class="social-link youtube" title="YouTube" target="_blank">
-            <i class="fa-brands fa-youtube text-lg"></i>
-        </a>
-    </div>

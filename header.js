@@ -45,16 +45,26 @@ class CronosHeader extends HTMLElement {
                     { label: 'Configure',  href: 'calculator.html' },
                     { label: 'Annual vs Monthly',   href: 'billing.html' },
                     { label: 'Archictecture & Scopes',  href: 'price.html' },
+                    { label: 'Save',  href: 'save.html' },
+                    { label: 'Deals',  href: 'sitemap.html' },
+                    { label: 'Projects',  href: 'projects.html' },
+                    { label: 'Products',  href: 'products.html' },
                 ]},
                 { heading: 'For Individuals', links: [
-                    { label: 'Affiliate Program',   href: 'billing.html' },
-                    { label: 'Content Creator Program',  href: 'faqs.html' },
+                    { label: 'Affiliate Program',   href: 'affiliates.html' },
+                    { label: 'Content Creator Program',  href: 'content-creator.html' },
+                    { label: 'Shopping',  href: 'store.html' },
+                    { label: 'Tech',  href: 'tech.html' },
+                    { label: 'Level Up Program',  href: 'level-up.html' },
+                    { label: 'Dev',  href: 'proof.html' },
                 ]},
                 { heading: 'Support', links: [
                     { label: 'Customer Support',   href: 'billing.html' },
                     { label: 'FAQs',  href: 'faqs.html' },
                     { label: 'Contact Sales',  href: 'contact-sales.html' },
                     { label: 'Learn',  href: 'compare.html' },
+                    { label: 'Developers',  href: 'developer-hub.html' },
+                    { label: 'Podcasts',  href: 'podcasts.html' },
                 ]}
             ]},
             { label: 'Products', i18nKey: 'nav-individuals', megamenu: [
@@ -74,14 +84,15 @@ class CronosHeader extends HTMLElement {
             { label: 'Solutions', i18nKey: 'nav-solutions', href: 'page.html', megamenu: [
                 { heading: 'Software Development', tagline: 'Custom apps & platforms', icon: 'thumbnails/04 (2).png', mobileBtn: 'Learn more', mobileBtnHref: 'index.html', links: [
                     { label: 'Artificial Intelligence',         href: 'ai.html' },
-                    { label: 'Web Development',                 href: 'web-applications.html' },
+                    { label: 'Web & App Development',                 href: 'web-applications.html' },
                     { label: 'E-commerce',                      href: 'e-commerce.html' },
                     { label: 'Blockchain',                      href: 'blockchain-and-web3.html' },
                     { label: 'Databases',                       href: 'database-engineering.html' },
                 ]},
                 { heading: 'IT Services & Infrastructure', tagline: 'Reliable systems & support', icon: 'thumbnails/04 (2).png', mobileBtn: 'Learn more', mobileBtnHref: 'index.html', links: [
-                    { label: 'Managed IT Services & Helpdesk',   href: 'managed-it-services.html' },
+                    { label: 'Managed IT Services',   href: 'managed-it-services.html' },
                     { label: 'IT Consulting',                    href: 'it-consulting.html' },
+                    { label: 'Networking',                    href: 'networking.html' },
                     { label: 'Cybersecurity',                    href: 'cybersecurity.html' },
                     { label: 'Cloud Services',                   href: 'cloud-infrastructure.html' },
                     { label: 'Data Center & Storage',                      href: 'data-center.html' },
@@ -97,7 +108,7 @@ class CronosHeader extends HTMLElement {
                 { heading: 'Croloft', links: [
                     { label: 'About Us',                href: 'about.html' },
                     { label: 'Roadmap',                 href: 'roadmap.html' },
-                    { label: 'Innovations',             href: 'innovations.html' },
+                    { label: 'CEO',                     href: 'leadership.html' },
                     { label: 'Careers',                 href: 'careers.html' },
                     { label: 'Partners',                href: 'partners.html' },
                     { label: 'Facilities',              href: 'facilities.html' },
@@ -121,12 +132,12 @@ class CronosHeader extends HTMLElement {
     get ACTION_BUTTONS() {
         return [
             { label: 'Log In', href: 'login.html', style: 'secondary', id: 'cronos-loginTrigger', i18nKey: 'btn-login' },
-            { label: 'Get Pricing',  href: 'form.html',  style: 'primary', i18nKey: 'btn-contact' },
+            { label: 'Get Pricing',  href: 'calculator.html',  style: 'primary', i18nKey: 'btn-contact' },
         ];
     }
 
     get LOGO() {
-        return { src: 'thumbnails/mock.png', alt: 'Cronos Logo', href: 'index.html' };
+        return { src: 'thumbnails/mock2.png', alt: 'Cronos Logo', href: 'index.html' };
     }
 
     get QR_DROPDOWN() {
@@ -378,7 +389,7 @@ class CronosHeader extends HTMLElement {
             align-items: center;
         }
 
-        .cronos-custom-logo-text img { height: 30px; vertical-align: middle; }
+        .cronos-custom-logo-text img { height: 27px; vertical-align: middle; }
         .cronos-custom-logo-text { color: var(--cronos-color-text-light); transition: color 0.3s; }
         .cronos-custom-logo-text:hover { color: var(--cronos-color-accent); }
 
@@ -485,7 +496,7 @@ class CronosHeader extends HTMLElement {
         .cronos-profile-desc { color: var(--cronos-color-text-muted); font-size: 0.95rem; font-weight: 400; line-height: 1.5; margin: 0 0 24px 0; }
         .cronos-profile-actions { display: flex; gap: 12px; align-items: center; }
         .cronos-profile-btn-login {
-            flex: 1; background: transparent; color: #fff; border: 1px solid rgba(255, 255, 255, 0.4);
+            flex: 1; background: transparent; color: #fff; border: 2px solid rgb(59, 67, 79);
             padding: 11px 16px; border-radius: 50px; font-size: 0.9rem; font-weight: 400;
             text-align: center; text-decoration: none; cursor: pointer; transition: border-color 0.2s, background-color 0.2s;
         }

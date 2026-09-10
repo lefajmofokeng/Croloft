@@ -70,7 +70,7 @@
     .it-tech-hero-section {
         /* Gradient approximation based on image_0.png */
         background: linear-gradient(135deg, var(--it-tech-color-bg-hero-start) 0%, var(--it-tech-color-bg-hero-end) 60%, var(--it-tech-color-white) 100%);
-        padding: 140px 20px 160px;
+        padding: 200px 20px 200px;
         display: flex;
         justify-content: center;
     }
@@ -81,7 +81,7 @@
         display: flex;
         align-items: center;
         justify-content: space-between;
-        gap: 60px;
+        gap: 30px;
     }
 
     .it-tech-hero-content {
@@ -89,20 +89,21 @@
     }
 
     .it-tech-title-large {
-        font-size: 54px;
+        font-size: 64px;
         font-weight: 500;
         letter-spacing: -0.02em;
         color: var(--it-tech-color-text-main);
-        line-height: 1;
+        line-height: 0.9;
         margin-bottom: 24px;
     }
 
     .it-tech-text-sub-large {
         font-size: 19px;
-        font-weight: 500;
+        font-weight: 400;
         color: var(--it-tech-color-text-sub);
         margin-bottom: 40px;
         max-width: 480px;
+        line-height: 1.1;
     }
 
     .it-tech-button-group {
@@ -114,7 +115,7 @@
     .it-tech-btn {
         padding: 9px 24px;
         border-radius: 30px;
-        font-weight: 500;
+        font-weight: 400;
         font-size: 16px;
         cursor: pointer;
         transition: all 0.2s ease;
@@ -126,12 +127,6 @@
         background-color: var(--it-tech-color-dark-blue);
         color: var(--it-tech-color-white);
         border: none;
-    }
-
-    .it-tech-btn-outline {
-        background-color: transparent;
-        color: var(--it-tech-color-dark-blue);
-        border: 1px solid var(--it-tech-color-dark-blue);
     }
 
     .it-tech-helper-text {
@@ -184,7 +179,7 @@
 
     .it-tech-title-medium {
         font-size: 46px;
-        font-weight: 600;
+        font-weight: 500;
         letter-spacing: -0.02em;
         color: var(--it-tech-color-text-main);
         margin-bottom: 40px;
@@ -193,15 +188,15 @@
     .it-tech-text-body-large {
         font-size: 21px;
         color: var(--it-tech-color-text-sub);
-        line-height: 1.6;
+        line-height: 1.2;
         margin-bottom: 32px;
-        font-weight: 600;
+        font-weight: 400;
     }
 
     .it-tech-link-arrow {
         color: var(--it-tech-color-link-blue);
         text-decoration: none;
-        font-weight: 600;
+        font-weight: 400;
         font-size: 19px;
         display: inline-flex;
         align-items: center;
@@ -250,7 +245,7 @@
 
     .it-tech-text-body {
         font-size: 21px;
-        font-weight: 600;
+        font-weight: 400;
         color: var(--it-tech-color-text-sub);
         line-height: 1.6;
         margin-bottom: 32px;
@@ -261,8 +256,7 @@
         width: 500px;
         height: 500px;
         /* Mimicking the blue square style */
-        background: linear-gradient(135deg, #4facfe 0%, #00f2fe 100%);
-        box-shadow: 0 10px 30px rgba(79, 172, 254, 0.4);
+        background: transparent;
         border-radius: 12px;
         display: flex;
         align-items: center;
@@ -324,10 +318,10 @@
                 <p class="it-tech-text-sub-large">All our enterprise IT solutions are rigorously tested (1:1), securely deployed, and available for immediate integration into your infrastructure.</p>
                 <div class="it-tech-button-group">
                     <a href="#" class="it-tech-btn it-tech-btn-primary">Explore Solutions</a>
-                    <a href="#" class="it-tech-btn it-tech-btn-outline">View Case Studies</a>
+                    
                 </div>
             </div>
-            <img src="thumbnails/Screenshot_2025-11-10_212555-removebg-preview.png" alt="Abstract IT Core Architecture" class="it-tech-hero-image">
+            <img src="thumbnails/sec.png" alt="Abstract IT Core Architecture" class="it-tech-hero-image">
         </div>
     </div>
 
@@ -987,10 +981,6 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Defcon Image-Text Grid</title>
-    <link rel="preconnect" href="https://fonts.googleapis.com">
-    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
-    
     <style>
         /* Root Variables */
         :root {
@@ -999,7 +989,7 @@
             --defcon-light-gray: #e5e5e5;
             --defcon-white: #ffffff;
             --defcon-black: #000000;
-            --font-family-inter: 'Inter', sans-serif;
+            --font-family-inter: 'Circular Std', sans-serif;
             --border-radius-1px: 12px;
             --content-max-width: 1100px; /* Adjusted for this section */
         }
@@ -1008,7 +998,7 @@
         .defcon-image-text-section-container {
             font-family: var(--font-family-inter);
             background-color: var(--defcon-white); /* White background for this section */
-            padding: 60px 0; /* Vertical padding */
+            padding: 200px 0; /* Vertical padding */
             width: 100%;
             margin: 0;
             text-align: center; /* Center content within */
@@ -1070,7 +1060,7 @@
             text-align: left;
             padding: 30px; /* Apply padding here for text */
             font-size: 1.8rem; /* Slightly larger for this prominent text */
-            font-weight: 700;
+            font-weight: 500;
             line-height: 1.3;
             color: var(--defcon-navy);
             /* Ensure it stretches vertically in the grid */
@@ -1101,7 +1091,7 @@
             text-align: left;
             padding: 30px; /* Apply padding here for text */
             font-size: 1.8rem; /* Consistent large font */
-            font-weight: 700;
+            font-weight: 500;
             line-height: 1.3;
             color: var(--defcon-navy);
             /* Ensure it stretches vertically in the grid */

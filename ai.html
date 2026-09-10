@@ -10,40 +10,30 @@
     <!-- WEB TAB ICON -->
     <link rel="icon" type="image/png" href="thumbnails/top-1.png">
 
-    <style>
-      @font-face { font-family:'Circular Std'; src:url('fonts/CircularStd-Book.woff2') format('woff2'),url('fonts/CircularStd-Book.woff') format('woff'); font-weight:400; font-style:normal; font-display:swap; }
+    <script src="header.js" defer></script>
+    <script src="footer.js" defer></script> 
+
+<style>
+  @font-face { font-family:'Circular Std'; src:url('fonts/CircularStd-Book.woff2') format('woff2'),url('fonts/CircularStd-Book.woff') format('woff'); font-weight:400; font-style:normal; font-display:swap; }
   @font-face { font-family:'Circular Std'; src:url('fonts/CircularStd-BookItalic.woff2') format('woff2'),url('fonts/CircularStd-BookItalic.woff') format('woff'); font-weight:400; font-style:italic; font-display:swap; }
   @font-face { font-family:'Circular Std'; src:url('fonts/CircularStd-Medium.woff2') format('woff2'),url('fonts/CircularStd-Medium.woff') format('woff'); font-weight:500; font-style:normal; font-display:swap; }
   @font-face { font-family:'Circular Std'; src:url('fonts/CircularStd-Bold.woff2') format('woff2'),url('fonts/CircularStd-Bold.woff') format('woff'); font-weight:600; font-style:normal; font-display:swap; }
-  @font-face { font-family:'Circular Std'; src:url('fonts/CircularStd-Bold.woff2') format('woff2'),url('fonts/CircularStd-Bold.woff') format('woff'); font-weight:700; font-style:normal; font-display:swap; }
-  @font-face { font-family:'Circular Std'; src:url('fonts/CircularStd-Black.woff2') format('woff2'),url('fonts/CircularStd-Black.woff') format('woff'); font-weight:800; font-style:normal; font-display:swap; }
-  @font-face { font-family:'Circular Std'; src:url('fonts/CircularStd-Black.woff2') format('woff2'),url('fonts/CircularStd-Black.woff') format('woff'); font-weight:900; font-style:normal; font-display:swap; }
-    </style>
-</head>
+  @font-face { font-family:'S'; src:url('fonts/SoDoSans-Regular.ttf') format('woff2'),url('fonts/CircularStd-Black.woff') format('woff'); font-weight:900; font-style:normal; font-display:swap; }
+   * {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+  font-family: 'Circular Std', sans-serif;
+}
+</style>
 
-
-
-
-
-
-<!DOCTYPE html>
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <title>My Website</title>
-    
-    <script src="header.js" defer></script>
-    <script src="footer.js" defer></script> 
 </head>
 <body>
 
-    <cronos-header></cronos-header>
+  <cronos-header></cronos-header>
     
-
 </body>
 </html>
-
-
 
 
 
@@ -86,7 +76,7 @@
 
       <!-- Main Interface Layout Block -->
       <div class="lfm-showcase-text-block">
-        <span class="lfm-showcase-tagline">Web Applications & Custom Engineering</span>
+       
         <h1 class="lfm-showcase-title">Enjoy the performance</h1>
         
         <!-- Two-Column Flex Split Row: Description and Pill aligned horizontally -->
@@ -217,14 +207,6 @@
     text-align: left;
   }
 
-  .lfm-showcase-root .lfm-showcase-tagline {
-    display: block;
-    font-size: 1.25rem;
-    font-weight: 300;
-    color: rgba(255, 255, 255, 0.9);
-    margin-bottom: 8px;
-  }
-
   .lfm-showcase-root .lfm-showcase-title {
     font-size: 4.5rem;
     font-weight: 300;
@@ -232,6 +214,17 @@
     color: #ffffff;
     margin-bottom: 24px;
     letter-spacing: -0.02em;
+
+     background: linear-gradient(
+                to right,
+                #ff00c8 0%,
+                #b600ee 40%,
+                #5d00ff 75%,
+                #0040ff 100%
+            );
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
   }
 
   /* Desktop Flex Row: Side-by-Side Balancing alignment */
@@ -248,8 +241,8 @@
     max-width: 580px;
     font-size: 1.05rem;
     line-height: 1.55;
-    color: rgba(255, 255, 255, 0.8);
-    font-weight: 300;
+    color: rgb(255, 255, 255);
+    font-weight: 400;
   }
 
   /* Pill Container Layout Configuration */
@@ -318,10 +311,10 @@
   @media (max-width: 768px) {
     .lfm-showcase-root .lfm-showcase-container {
       height: auto;
-      min-height: 520px;
+      min-height: 620px;
     }
     .lfm-showcase-root .lfm-showcase-content-boundary {
-      padding: 80px 20px 30px 20px;
+      padding: 150px 20px 30px 20px;
     }
     .lfm-showcase-root .lfm-showcase-title {
       font-size: 2.8rem;
@@ -330,7 +323,7 @@
       font-size: 1.1rem;
     }
     .lfm-showcase-root .lfm-showcase-top-action {
-      top: 20px;
+      top: 70px;
       right: 20px;
     }
     .lfm-showcase-root .lfm-showcase-details-bar {
@@ -379,6 +372,708 @@
     });
   })();
 </script>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<!-- AI SERVICES SECTION COMPONENT -->
+<section class="ai-sec-wrapper">
+  <div class="ai-sec-inner">
+    <h2 class="ai-sec-title">Implementation of Artificial Intelligence</h2>
+    <!-- Top Navigation Bar (Horizontal Scroll on Mobile) -->
+    <nav class="ai-sec-nav" aria-label="AI Service Categories">
+      <div class="ai-sec-nav-list" role="tablist">
+        <button class="ai-sec-tab-btn ai-sec-active" role="tab" aria-selected="true" aria-controls="ai-panel-nlp" id="ai-tab-nlp" data-ai-target="ai-panel-nlp">
+          Natural Language Processing
+        </button>
+        <button class="ai-sec-tab-btn" role="tab" aria-selected="false" aria-controls="ai-panel-cv" id="ai-tab-cv" data-ai-target="ai-panel-cv">
+          Computer Vision
+        </button>
+        <button class="ai-sec-tab-btn" role="tab" aria-selected="false" aria-controls="ai-panel-predictive" id="ai-tab-predictive" data-ai-target="ai-panel-predictive">
+          Predictive Analytics
+        </button>
+        <button class="ai-sec-tab-btn" role="tab" aria-selected="false" aria-controls="ai-panel-automation" id="ai-tab-automation" data-ai-target="ai-panel-automation">
+          Process Automation
+        </button>
+        <button class="ai-sec-tab-btn" role="tab" aria-selected="false" aria-controls="ai-panel-generative" id="ai-tab-generative" data-ai-target="ai-panel-generative">
+          Generative AI
+        </button>
+      </div>
+    </nav>
+
+    <!-- Main Content Panels -->
+    <div class="ai-sec-content-container">
+      
+      <!-- 1. TAB PANEL: Natural Language Processing -->
+      <div class="ai-sec-tab-panel ai-sec-active" id="ai-panel-nlp" role="tabpanel" aria-labelledby="ai-tab-nlp">
+        <div class="ai-sec-col-left">
+          <h2 class="ai-sec-heading">Enterprise Language Models & Text Analytics</h2>
+          <p class="ai-sec-lead-text">
+            Convert unstructured communications, support logs, and internal documents into structured insights. NLP solutions help automate text comprehension, language translation, and automated document extraction across enterprise systems.
+          </p>
+        </div>
+
+        <div class="ai-sec-col-center">
+          <div class="ai-sec-gif-placeholder">
+            <img src="thumbnails/social-media.gif" alt="NLP Demonstration GIF" class="ai-sec-media-asset" />
+          </div>
+        </div>
+
+        <div class="ai-sec-col-right">
+          <div class="ai-sec-accordion">
+            <div class="ai-sec-accordion-item ai-sec-open">
+              <button class="ai-sec-accordion-trigger" aria-expanded="true">
+                <span class="ai-sec-accordion-title">Understanding Language Processing</span>
+                <span class="ai-sec-icon" aria-hidden="true">+</span>
+              </button>
+              <div class="ai-sec-accordion-body">
+                <p class="ai-sec-accordion-text">
+                  NLP algorithms interpret syntax, semantics, and context in human language to classify support requests, summarize documents, and extract entities automatically.
+                </p>
+                <a href="#nlp-overview" class="ai-sec-link">Read technical implementation guide &rarr;</a>
+              </div>
+            </div>
+
+            <div class="ai-sec-accordion-item">
+              <button class="ai-sec-accordion-trigger" aria-expanded="false">
+                <span class="ai-sec-accordion-title">Enterprise Use Cases</span>
+                <span class="ai-sec-icon" aria-hidden="true">+</span>
+              </button>
+              <div class="ai-sec-accordion-body">
+                <p class="ai-sec-accordion-text">
+                  Implement automated document indexing, semantic enterprise search, email categorization, and multi-lingual customer sentiment tracking.
+                </p>
+                <a href="#nlp-cases" class="ai-sec-link">View document processing workflows &rarr;</a>
+              </div>
+            </div>
+
+            <div class="ai-sec-accordion-item">
+              <button class="ai-sec-accordion-trigger" aria-expanded="false">
+                <span class="ai-sec-accordion-title">Data Privacy & Fine-Tuning</span>
+                <span class="ai-sec-icon" aria-hidden="true">+</span>
+              </button>
+              <div class="ai-sec-accordion-body">
+                <p class="ai-sec-accordion-text">
+                  Models are fine-tuned strictly on isolated client infrastructure, ensuring proprietary language sets and internal documents remain fully private.
+                </p>
+                <a href="#nlp-security" class="ai-sec-link">Explore data governance architecture &rarr;</a>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <!-- 2. TAB PANEL: Computer Vision -->
+      <div class="ai-sec-tab-panel" id="ai-panel-cv" role="tabpanel" aria-labelledby="ai-tab-cv">
+        <div class="ai-sec-col-left">
+          <h2 class="ai-sec-heading">Visual Intelligence & Automated Inspection</h2>
+          <p class="ai-sec-lead-text">
+            Transform visual data from cameras, video feeds, and imagery into operational intelligence. Computer Vision algorithms identify anomalies, track assets, and enforce safety protocols in real time.
+          </p>
+        </div>
+
+        <div class="ai-sec-col-center">
+          <div class="ai-sec-gif-placeholder">
+            <img src="thumbnails/laptop.gif" alt="Computer Vision GIF" class="ai-sec-media-asset" />
+          </div>
+        </div>
+
+        <div class="ai-sec-col-right">
+          <div class="ai-sec-accordion">
+            <div class="ai-sec-accordion-item ai-sec-open">
+              <button class="ai-sec-accordion-trigger" aria-expanded="true">
+                <span class="ai-sec-accordion-title">How Computer Vision Operates</span>
+                <span class="ai-sec-icon" aria-hidden="true">+</span>
+              </button>
+              <div class="ai-sec-accordion-body">
+                <p class="ai-sec-accordion-text">
+                  Deep neural networks analyze pixel matrices from visual streams to detect objects, recognize facial geometries, and flag structural defects instantly.
+                </p>
+                <a href="#cv-architecture" class="ai-sec-link">Discover vision model capabilities &rarr;</a>
+              </div>
+            </div>
+
+            <div class="ai-sec-accordion-item">
+              <button class="ai-sec-accordion-trigger" aria-expanded="false">
+                <span class="ai-sec-accordion-title">Industrial & Commercial Applications</span>
+                <span class="ai-sec-icon" aria-hidden="true">+</span>
+              </button>
+              <div class="ai-sec-accordion-body">
+                <p class="ai-sec-accordion-text">
+                  Used for automated quality control on assembly lines, site safety monitoring, optical character recognition (OCR), and inventory tracking.
+                </p>
+                <a href="#cv-applications" class="ai-sec-link">See real-time detection examples &rarr;</a>
+              </div>
+            </div>
+
+            <div class="ai-sec-accordion-item">
+              <button class="ai-sec-accordion-trigger" aria-expanded="false">
+                <span class="ai-sec-accordion-title">Edge Deployment & Speed</span>
+                <span class="ai-sec-icon" aria-hidden="true">+</span>
+              </button>
+              <div class="ai-sec-accordion-body">
+                <p class="ai-sec-accordion-text">
+                  Vision models are deployed directly on edge devices and local hardware to provide low-latency processing without depending on cloud connectivity.
+                </p>
+                <a href="#cv-edge" class="ai-sec-link">Check edge computing specifications &rarr;</a>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <!-- 3. TAB PANEL: Predictive Analytics -->
+      <div class="ai-sec-tab-panel" id="ai-panel-predictive" role="tabpanel" aria-labelledby="ai-tab-predictive">
+        <div class="ai-sec-col-left">
+          <h2 class="ai-sec-heading">Data-Driven Forecasting & Risk Management</h2>
+          <p class="ai-sec-lead-text">
+            Leverage historical metrics to forecast demand patterns, prevent operational bottlenecks, and optimize resource allocation before costly downtime occurs.
+          </p>
+        </div>
+
+        <div class="ai-sec-col-center">
+          <div class="ai-sec-gif-placeholder">
+            <img src="https://via.placeholder.com/400x300.gif?text=Predictive+Analytics+GIF" alt="Predictive Analytics GIF" class="ai-sec-media-asset" />
+          </div>
+        </div>
+
+        <div class="ai-sec-col-right">
+          <div class="ai-sec-accordion">
+            <div class="ai-sec-accordion-item ai-sec-open">
+              <button class="ai-sec-accordion-trigger" aria-expanded="true">
+                <span class="ai-sec-accordion-title">The Value of Predictive Modeling</span>
+                <span class="ai-sec-icon" aria-hidden="true">+</span>
+              </button>
+              <div class="ai-sec-accordion-body">
+                <p class="ai-sec-accordion-text">
+                  Statistical algorithms analyze complex data sets to identify trends, forecast outcomes, and output dynamic confidence interval metrics.
+                </p>
+                <a href="#predictive-models" class="ai-sec-link">Learn forecasting methodology &rarr;</a>
+              </div>
+            </div>
+
+            <div class="ai-sec-accordion-item">
+              <button class="ai-sec-accordion-trigger" aria-expanded="false">
+                <span class="ai-sec-accordion-title">Preventative Maintenance & Planning</span>
+                <span class="ai-sec-icon" aria-hidden="true">+</span>
+              </button>
+              <div class="ai-sec-accordion-body">
+                <p class="ai-sec-accordion-text">
+                  Anticipate equipment failures, project supply chain gaps, manage inventory requirements, and optimize server workload distribution dynamically.
+                </p>
+                <a href="#predictive-planning" class="ai-sec-link">Review preventive maintenance workflows &rarr;</a>
+              </div>
+            </div>
+
+            <div class="ai-sec-accordion-item">
+              <button class="ai-sec-accordion-trigger" aria-expanded="false">
+                <span class="ai-sec-accordion-title">Enterprise System Integration</span>
+                <span class="ai-sec-icon" aria-hidden="true">+</span>
+              </button>
+              <div class="ai-sec-accordion-body">
+                <p class="ai-sec-accordion-text">
+                  Connect predictive models directly into existing ERP and CRM software to stream insights and fuel automated decision loops.
+                </p>
+                <a href="#predictive-integration" class="ai-sec-link">Explore data pipeline integration &rarr;</a>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <!-- 4. TAB PANEL: Process Automation -->
+      <div class="ai-sec-tab-panel" id="ai-panel-automation" role="tabpanel" aria-labelledby="ai-tab-automation">
+        <div class="ai-sec-col-left">
+          <h2 class="ai-sec-heading">Intelligent Task & Workflow Automation</h2>
+          <p class="ai-sec-lead-text">
+            Streamline repetitive internal tasks through intelligent process engineering. Bridge legacy software systems without major infrastructure re-architecting.
+          </p>
+        </div>
+
+        <div class="ai-sec-col-center">
+          <div class="ai-sec-gif-placeholder">
+            <img src="https://via.placeholder.com/400x300.gif?text=Process+Automation+GIF" alt="Process Automation GIF" class="ai-sec-media-asset" />
+          </div>
+        </div>
+
+        <div class="ai-sec-col-right">
+          <div class="ai-sec-accordion">
+            <div class="ai-sec-accordion-item ai-sec-open">
+              <button class="ai-sec-accordion-trigger" aria-expanded="true">
+                <span class="ai-sec-accordion-title">Intelligent Automation Explained</span>
+                <span class="ai-sec-icon" aria-hidden="true">+</span>
+              </button>
+              <div class="ai-sec-accordion-body">
+                <p class="ai-sec-accordion-text">
+                  Combines traditional RPA with machine learning decision logic, enabling systems to make context-aware operational choices without manual intervention.
+                </p>
+                <a href="#automation-tech" class="ai-sec-link">Read smart automation whitepaper &rarr;</a>
+              </div>
+            </div>
+
+            <div class="ai-sec-accordion-item">
+              <button class="ai-sec-accordion-trigger" aria-expanded="false">
+                <span class="ai-sec-accordion-title">Workflow & Legacy Integration</span>
+                <span class="ai-sec-icon" aria-hidden="true">+</span>
+              </button>
+              <div class="ai-sec-accordion-body">
+                <p class="ai-sec-accordion-text">
+                  Connect isolated legacy databases with cloud applications to build end-to-end automated pipelines for reporting, data transfer, and approvals.
+                </p>
+                <a href="#automation-legacy" class="ai-sec-link">See system compatibility standards &rarr;</a>
+              </div>
+            </div>
+
+            <div class="ai-sec-accordion-item">
+              <button class="ai-sec-accordion-trigger" aria-expanded="false">
+                <span class="ai-sec-accordion-title">Efficiency Metrics & Governance</span>
+                <span class="ai-sec-icon" aria-hidden="true">+</span>
+              </button>
+              <div class="ai-sec-accordion-body">
+                <p class="ai-sec-accordion-text">
+                  Track execution rates, process execution times, and error handling through clear audit logs and operational control dashboards.
+                </p>
+                <a href="#automation-metrics" class="ai-sec-link">View performance logging details &rarr;</a>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <!-- 5. TAB PANEL: Generative AI -->
+      <div class="ai-sec-tab-panel" id="ai-panel-generative" role="tabpanel" aria-labelledby="ai-tab-generative">
+        <div class="ai-sec-col-left">
+          <h2 class="ai-sec-heading">Custom Generative Models & Fine-Tuning</h2>
+          <p class="ai-sec-lead-text">
+            Develop proprietary generative models trained exclusively on your business assets. Generate custom code, documentation, media assets, and domain knowledge assistants securely.
+          </p>
+        </div>
+
+        <div class="ai-sec-col-center">
+          <div class="ai-sec-gif-placeholder">
+            <img src="https://via.placeholder.com/400x300.gif?text=Generative+AI+GIF" alt="Generative AI GIF" class="ai-sec-media-asset" />
+          </div>
+        </div>
+
+        <div class="ai-sec-col-right">
+          <div class="ai-sec-accordion">
+            <div class="ai-sec-accordion-item ai-sec-open">
+              <button class="ai-sec-accordion-trigger" aria-expanded="true">
+                <span class="ai-sec-accordion-title">Enterprise Generative Systems</span>
+                <span class="ai-sec-icon" aria-hidden="true">+</span>
+              </button>
+              <div class="ai-sec-accordion-body">
+                <p class="ai-sec-accordion-text">
+                  Retrieval-Augmented Generation (RAG) architecture connects foundation models directly to your dynamic internal databases without data leaks.
+                </p>
+                <a href="#generative-rag" class="ai-sec-link">Read RAG architecture guide &rarr;</a>
+              </div>
+            </div>
+
+            <div class="ai-sec-accordion-item">
+              <button class="ai-sec-accordion-trigger" aria-expanded="false">
+                <span class="ai-sec-accordion-title">Private Model Deployments</span>
+                <span class="ai-sec-icon" aria-hidden="true">+</span>
+              </button>
+              <div class="ai-sec-accordion-body">
+                <p class="ai-sec-accordion-text">
+                  Run open-weight foundation models within your self-hosted private cloud or local servers, guaranteeing strict zero-data retention.
+                </p>
+                <a href="#generative-private" class="ai-sec-link">Explore hosting options &rarr;</a>
+              </div>
+            </div>
+
+            <div class="ai-sec-accordion-item">
+              <button class="ai-sec-accordion-trigger" aria-expanded="false">
+                <span class="ai-sec-accordion-title">Custom Assistant Integration</span>
+                <span class="ai-sec-icon" aria-hidden="true">+</span>
+              </button>
+              <div class="ai-sec-accordion-body">
+                <p class="ai-sec-accordion-text">
+                  Embed tailored AI assistants directly into developer environments, internal documentation portals, and client-facing applications.
+                </p>
+                <a href="#generative-assistants" class="ai-sec-link">View implementation API details &rarr;</a>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+
+    </div>
+  </div>
+</section>
+
+<style>
+  /* 100% WIDTH SECTION WRAPPER */
+  .ai-sec-wrapper {
+    --ai-sec-bg: #ffffff;
+    --ai-sec-text-main: #111827;
+    --ai-sec-text-muted: #4b5563;
+    --ai-sec-border: #e5e7eb;
+    --ai-sec-accent: #0077ee;
+    --ai-sec-font: 'Circular Std', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+
+    width: 100%;
+    background-color: var(--ai-sec-bg);
+    color: var(--ai-sec-text-main);
+    font-family: var(--ai-sec-font);
+    padding: 0;
+    margin: 0;
+    box-sizing: border-box;
+  }
+
+  .ai-sec-wrapper *, 
+  .ai-sec-wrapper *::before, 
+  .ai-sec-wrapper *::after {
+    box-sizing: border-box;
+  }
+
+  /* 1200PX CENTERED CONTENT CONTAINER */
+  .ai-sec-inner {
+    width: 100%;
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: 200PX 24px;
+  }
+
+  .ai-sec-title {
+    font-size: 3.2rem;
+    margin-bottom: 3rem;
+    font-weight: 500;
+    letter-spacing: -0.02em;
+  }
+
+  /* TOP NAVIGATION (DESKTOP DEFAULT) */
+  .ai-sec-nav {
+    border-bottom: 1px solid var(--ai-sec-border);
+    margin-bottom: 40px;
+  }
+
+  .ai-sec-nav-list {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 32px;
+  }
+
+  /* MOBILE HORIZONTAL SCROLL BEHAVIOR (< 768px) */
+  @media (max-width: 768px) {
+    .ai-sec-nav {
+      overflow-x: auto;
+      scrollbar-width: none; /* Firefox */
+      -ms-overflow-style: none; /* IE/Edge */
+    }
+    
+    .ai-sec-nav::-webkit-scrollbar {
+      display: none; /* Chrome/Safari */
+    }
+
+    .ai-sec-nav-list {
+      flex-wrap: nowrap; /* Prevent wrapping on mobile */
+      white-space: nowrap;
+      gap: 24px;
+    }
+
+    .ai-sec-title {
+      font-size: 2.4rem;
+      line-height: 1;
+    }
+  }
+
+  .ai-sec-tab-btn {
+    background: none;
+    border: none;
+    padding: 16px 4px;
+    font-size: 1.1rem;
+    color: #6b7280;
+    cursor: pointer;
+    position: relative;
+    transition: color 0.2s ease;
+    font-weight: 400;
+    font-family: inherit;
+    flex-shrink: 0; /* Ensures buttons maintain full size while scrolling */
+  }
+
+  .ai-sec-tab-btn:hover,
+  .ai-sec-tab-btn.ai-sec-active {
+    color: var(--ai-sec-text-main);
+  }
+
+  .ai-sec-tab-btn.ai-sec-active::after {
+    content: '';
+    position: absolute;
+    bottom: -1px;
+    left: 0;
+    right: 0;
+    height: 4px;
+    background-color: var(--ai-sec-accent);
+  }
+
+  /* GRID PANELS */
+  .ai-sec-tab-panel {
+    display: none;
+    grid-template-columns: 1fr;
+    gap: 32px;
+  }
+
+  .ai-sec-tab-panel.ai-sec-active {
+    display: grid;
+  }
+
+  @media (min-width: 992px) {
+    .ai-sec-tab-panel {
+      grid-template-columns: 1.1fr 0.9fr 1fr;
+      align-items: start;
+      gap: 32px;
+    }
+  }
+
+  /* LEFT COLUMN */
+  .ai-sec-heading {
+    font-size: 1.85rem;
+    line-height: 1.25;
+    font-weight: 400;
+    letter-spacing: -0.02em;
+    margin: 0 0 78px 0;
+    color: var(--ai-sec-text-main);
+  }
+
+  .ai-sec-lead-text {
+    font-size: 1rem;
+    line-height: 1.6;
+    color: var(--ai-sec-text-muted);
+    margin: 0;
+  }
+
+  /* CENTER COLUMN (GIF PLACEHOLDER) */
+  .ai-sec-col-center {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+  }
+
+  .ai-sec-gif-placeholder {
+    width: 100%;
+    max-width: 250px;
+    overflow: hidden;
+    background-color: #f9fafb;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+  }
+
+  .ai-sec-media-asset {
+    width: 100%;
+    height: auto;
+    display: block;
+    object-fit: cover;
+  }
+
+  /* RIGHT COLUMN ACCORDION */
+  .ai-sec-accordion-item {
+    border-bottom: 1px solid var(--ai-sec-border);
+  }
+
+  .ai-sec-accordion-trigger {
+    width: 100%;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    background: none;
+    border: none;
+    padding: 18px 0;
+    text-align: left;
+    cursor: pointer;
+  }
+
+  .ai-sec-accordion-title {
+    font-size: 1.25rem;
+    font-weight: 400;
+    color: var(--ai-sec-text-main);
+    font-family: 'Circular Std', sans-serif;
+  }
+
+  .ai-sec-icon {
+    font-size: 1.25rem;
+    font-weight: 300;
+    color: var(--ai-sec-text-main);
+    transition: transform 0.2s ease;
+  }
+
+  .ai-sec-accordion-item.ai-sec-open .ai-sec-icon {
+    transform: rotate(45deg);
+  }
+
+  .ai-sec-accordion-body {
+    display: none;
+    padding-bottom: 20px;
+  }
+
+  .ai-sec-accordion-item.ai-sec-open .ai-sec-accordion-body {
+    display: block;
+  }
+
+  .ai-sec-accordion-text {
+    font-size: 1rem;
+    line-height: 1.6;
+    color: var(--ai-sec-text-muted);
+    margin: 0 0 14px 0;
+  }
+
+  .ai-sec-link {
+    display: inline-block;
+    font-size: 1rem;
+    font-weight: 500;
+    color: var(--ai-sec-accent);
+    text-decoration: none;
+  }
+
+  .ai-sec-link:hover {
+    text-decoration: underline;
+  }
+</style>
+
+<script>
+  (function() {
+    'use strict';
+
+    // TOP NAVIGATION TAB SWITCHING
+    const tabButtons = document.querySelectorAll('.ai-sec-tab-btn');
+    const tabPanels = document.querySelectorAll('.ai-sec-tab-panel');
+
+    tabButtons.forEach(button => {
+      button.addEventListener('click', function() {
+        const targetId = this.getAttribute('data-ai-target');
+
+        tabButtons.forEach(btn => {
+          btn.classList.remove('ai-sec-active');
+          btn.setAttribute('aria-selected', 'false');
+        });
+
+        tabPanels.forEach(panel => {
+          panel.classList.remove('ai-sec-active');
+        });
+
+        this.classList.add('ai-sec-active');
+        this.setAttribute('aria-selected', 'true');
+        
+        const targetPanel = document.getElementById(targetId);
+        if (targetPanel) {
+          targetPanel.classList.add('ai-sec-active');
+        }
+      });
+    });
+
+    // ACCORDION TOGGLING
+    const accordionTriggers = document.querySelectorAll('.ai-sec-accordion-trigger');
+    
+    accordionTriggers.forEach(trigger => {
+      trigger.addEventListener('click', function() {
+        const currentItem = this.parentElement;
+        const isOpen = currentItem.classList.contains('ai-sec-open');
+        const accordionContainer = currentItem.parentElement;
+        
+        accordionContainer.querySelectorAll('.ai-sec-accordion-item').forEach(item => {
+          item.classList.remove('ai-sec-open');
+          const btn = item.querySelector('.ai-sec-accordion-trigger');
+          if (btn) btn.setAttribute('aria-expanded', 'false');
+        });
+
+        if (!isOpen) {
+          currentItem.classList.add('ai-sec-open');
+          this.setAttribute('aria-expanded', 'true');
+        }
+      });
+    });
+  })();
+</script>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 
 
@@ -623,7 +1318,7 @@
         font-size: 1rem;
       }
       .lfa-vcarousel-container {
-        height: 460px;
+        height: 550px;
         border-radius: 12px;
       }
       .lfa-vcarousel-content {
