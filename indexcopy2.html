@@ -782,7 +782,7 @@ body {
 }
 
 .custom-header-container {
-    max-width: 1200px;
+    max-width: 1400px;
     margin: 18px auto 0 auto;
     padding: 0 32px;
     height: 60px;
@@ -862,16 +862,17 @@ body {
    ============================================= */
 .mega-menu-container {
     background: #ffffff;
-    max-width: 1200px;
+    max-width: 1400px;
     margin: 0 auto;
     border-bottom-left-radius: 8px;
     border-bottom-right-radius: 8px;
-    border: 1px solid #eee;
+    border: none;
     border-top: none;
     max-height: 0;
     opacity: 0;
     visibility: hidden;
     overflow: hidden;
+    box-shadow: 0 9px 10px rgba(0, 0, 0, 0.334);
     transition: max-height 0.1s ease, opacity 0.1s ease, visibility 0s 0.1s;
 }
 
@@ -4964,11 +4965,11 @@ document.addEventListener('DOMContentLoaded', function() {
   height: 40px;
   text-decoration: none;
   font-size: 15px;
-  outline: 2px solid #0091ff;
+  outline: 1px solid #0091ff;
   border-radius: 50%;
   transition-property: outline-offset, outline-color, background-color;
   transition-duration: 0.25s;
-  color: #0091ff;
+  color: #0091ff;  stroke-width: 0.5;
 }
 
 .icon:hover {

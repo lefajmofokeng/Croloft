@@ -50,16 +50,8 @@ class CronosHeader extends HTMLElement {
                     { label: 'Projects',  href: 'projects.html' },
                     { label: 'Products',  href: 'products.html' },
                 ]},
-                { heading: 'For Individuals', links: [
-                    { label: 'Affiliate Program',   href: 'affiliates.html' },
-                    { label: 'Content Creator Program',  href: 'content-creator.html' },
-                    { label: 'Shopping',  href: 'store.html' },
-                    { label: 'Tech',  href: 'tech.html' },
-                    { label: 'Level Up Program',  href: 'level-up.html' },
-                    { label: 'Dev',  href: 'proof.html' },
-                ]},
                 { heading: 'Support', links: [
-                    { label: 'Customer Support',   href: 'billing.html' },
+                    { label: 'Contact Support',   href: 'form.html' },
                     { label: 'FAQs',  href: 'faqs.html' },
                     { label: 'Contact Sales',  href: 'contact-sales.html' },
                     { label: 'Learn',  href: 'compare.html' },
@@ -67,19 +59,16 @@ class CronosHeader extends HTMLElement {
                     { label: 'Podcasts',  href: 'podcasts.html' },
                 ]}
             ]},
-            { label: 'Products', i18nKey: 'nav-individuals', megamenu: [
-                { heading: 'Boolean', tagline: 'Crypto staking & market feed terminal.', icon: 'thumbnails/istockphoto-1347360064-612x612.jpg', links: [] },
-                { heading: 'Aspire', tagline: 'SaaS multi-tenant e-commerce storefronts.', icon: 'thumbnails/04 (2).png', links: [] },
-                { heading: 'Cronos POS', tagline: 'Streamlined point of sale for small shops.', icon: 'thumbnails/microsoft.png', links: [] },
-                { heading: 'TalentGrid', tagline: 'Job listing and recruitment board portal.', icon: 'thumbnails/04 (2).png', links: [] },
-                { heading: 'LogiFlow', tagline: 'Supply chain tracking & fleet manager.', icon: 'thumbnails/04 (2).png', links: [] },
-                { heading: 'DocuVault', tagline: 'Encrypted document repository & sharing.', icon: 'thumbnails/AiCPA American Institute of Certified Public Accountants.png', links: [] },
-                { heading: 'MediCare CRM', tagline: 'Clinic patient dashboard & scheduling.', icon: 'thumbnails/04 (2).png', links: [] },
-                { heading: 'EduPulse', tagline: 'LMS platform for virtual course suites.', icon: 'thumbnails/04 (2).png', links: [] },
-                { heading: 'FinSight', tagline: 'Automated financial metrics and budgeting.', icon: 'thumbnails/04 (2).png', links: [] },
-                { heading: 'RestoOrder', tagline: 'QR interactive menus & kitchen displays.', icon: 'thumbnails/04 (2).png', links: [] },
-                { heading: 'CivicConnect', tagline: 'Municipal incident reporting system.', icon: 'thumbnails/04 (2).png', links: [] },
-                { heading: 'BuildTrack', tagline: 'Construction project tracker & milestones.', icon: 'thumbnails/04 (2).png', links: [] }
+            { label: 'Individuals', i18nKey: 'nav-businesses', megamenu: [
+                { heading: 'For Individuals', links: [
+                    { label: 'Affiliate Program',   href: 'affiliates.html' },
+                    { label: 'Content Creator Program',  href: 'content-creator.html' },
+                    { label: 'Create account',  href: 'login.html' },
+                    { label: 'Shopping',  href: 'store.html' },
+                    { label: 'Tech',  href: 'tech.html' },
+                    { label: 'Level Up Program',  href: 'level-up.html' },
+                    { label: 'Dev',  href: 'proof.html' },
+                ]},
             ]},
             { label: 'Solutions', i18nKey: 'nav-solutions', href: 'page.html', megamenu: [
                 { heading: 'Software Development', tagline: 'Custom apps & platforms', icon: 'thumbnails/04 (2).png', mobileBtn: 'Learn more', mobileBtnHref: 'index.html', links: [
@@ -405,7 +394,7 @@ class CronosHeader extends HTMLElement {
 
         .cronos-header-action-buttons { display: flex; align-items: center; position: relative; }
         .cronos-header-action-btn {
-            background: #0077cc; color: #f7f9fa; border: none; padding: 9px 15px;
+            background: #0077cc; color: #f7f9fa; border: none; padding: 8px 15px;
             border-radius: 50px; font-weight: 400; font-size: 15px; cursor: pointer;
             margin-left: 10px; text-decoration: none; font-family: inherit; white-space: nowrap;
         }

@@ -127,7 +127,7 @@
       position: relative;
       width: 100%;
       height: 600px;
-      overflow: hidden;
+      overflow: hidden; 
       background-color: #f3f4f6;
     }
 
@@ -174,13 +174,13 @@
 
     .lfm-hero-text-block {
       max-width: 550px;
-      color: #000000;
+      color: #f4f4f4;
     }
 
     .lfm-hero-title {
       font-size: 3.25rem;
       font-weight: 500;
-      line-height: 1.15;
+      line-height: 1;
       margin: 0 0 1.25rem 0;
       letter-spacing: -0.025em;
     }
@@ -189,7 +189,7 @@
       font-size: 1.15rem;
       font-weight: 400;
       line-height: 1.6;
-      color: #000000;
+      color: #cecece;
       margin: 0 0 2rem 0;
     }
 
@@ -218,6 +218,7 @@
       align-items: center;
       gap: 12px;
       padding: 6px 16px;
+     
     }
 
     .lfm-hero-ctrl-btn {
@@ -288,11 +289,11 @@
     <div class="lfm-hero-track" id="lfm-hero-slider-track">
       
       <div class="lfm-hero-slide">
-        <div class="lfm-hero-bg" style="background-image: url('thumbnails/pexels-alp-mmiy-2147670381-29822392.jpg');"></div>
+        <div class="lfm-hero-bg" style="background-image: url('https://images.unsplash.com/photo-1686848429284-d108e021a74c?q=80&w=1332&auto=format&fit=crop&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D');"></div>
         <div class="lfm-hero-content-container">
           <div class="lfm-hero-text-block">
-            <h1 class="lfm-hero-title">Meet Surface Laptop</h1>
-            <p class="lfm-hero-description">Unlock AI features like Live Captions and Cocreator with this exceptionally powerful laptop.</p>
+            <h1 class="lfm-hero-title">Secure Business Systems</h1>
+            <p class="lfm-hero-description">Unlock AI features like Live Captions and Cocreator with this exceptionally powerful engine from R3,599*.</p>
             <a href="#" class="lfm-hero-btn">Learn more</a>
           </div>
         </div>
@@ -605,7 +606,7 @@ document.addEventListener("DOMContentLoaded", () => {
     position: relative;
     width: 100%;
     height: 580px; /* Adjust height to match your specific photos */
-    border-radius: 8px;
+    border-radius: 15px;
     overflow: hidden;
     margin-bottom: 40px;
   }
@@ -1264,6 +1265,313 @@ document.addEventListener("DOMContentLoaded", () => {
 
 
 
+
+
+
+
+
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Premium Hero</title>
+    <style>
+        /* --- SCOPED PREMIUM HERO STYLES --- */
+        @import url('https://fonts.googleapis.com/css2?family=DM+Sans:opsz,wght@9..40,400;500;700&display=swap');
+
+        .it-premium-hero {
+            --it-primary: #161616;
+            --it-secondary: #636363;
+            --it-accent: #3ECF8E; 
+            --it-font: 'Circular Std', 'DM Sans', sans-serif;
+            
+            background: #ffffff;
+            width: 100%;
+            min-height: 500px;
+            overflow: hidden; 
+            display: flex;
+            align-items: center;
+            position: relative;
+            font-family: var(--it-font);
+            box-sizing: border-box;
+        }
+
+        /* Ensure all elements inside use border-box */
+        .it-premium-hero *, .it-premium-hero *::before, .it-premium-hero *::after {
+            box-sizing: border-box;
+        }
+
+        .it-premium-container {
+            max-width: 1200px;
+            margin: 0 auto;
+            width: 100%;
+            padding: 0 20px; /* Added padding for safety on small screens */
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            z-index: 2;
+        }
+
+        /* --- Left Side: Text --- */
+        .it-premium-text-box {
+            flex: 0 0 500px; /* Slightly wider to accommodate text */
+            z-index: 10; /* Keep text above visual elements */
+        }
+
+        .it-premium-headline {
+            font-size: 45px;
+            font-weight: 500; /* Bumped weight slightly for readability */
+            line-height: 1.1;
+            color: var(--it-primary);
+            letter-spacing: -0.04em;
+            margin: 0;
+        }
+
+        /* Dynamic Text Container */
+        .it-dynamic-wrapper {
+            display: inline-block;
+            min-width: 300px; /* Prevents layout shift when text length changes */
+        }
+
+        #it-dynamic-text {
+            color: var(--it-primary);
+            transition: opacity 0.2s ease, transform 0.2s ease;
+            display: inline-block;
+            position: relative;
+        }
+
+        /* Highlight color for the dynamic text */
+        .it-highlight {
+            color: var(--it-accent); /* Optional: Use accent color when active */
+        }
+
+        .it-text-fade {
+            opacity: 0;
+            transform: translateY(10px);
+        }
+
+        /* --- Right Side: Visual Area --- */
+        .it-premium-visual-area {
+            flex: 1;
+            position: relative;
+            display: flex;
+            align-items: center;
+            height: 180px; /* Increased height slightly */
+            overflow: hidden;
+            /* Masking for the fade effect on edges */
+            -webkit-mask-image: linear-gradient(to right, transparent 0%, black 10%, black 90%, transparent 100%);
+            mask-image: linear-gradient(to right, transparent 0%, black 10%, black 90%, transparent 100%);
+            margin-left: 40px; /* Spacing from text */
+        }
+
+        .it-premium-single-row {
+            display: flex;
+            width: max-content;
+            animation: scroll-seamless 30s linear infinite; /* Slowed down slightly for elegance */
+            will-change: transform;
+        }
+
+        .it-group {
+            display: flex;
+            gap: 10px; /* Increased gap for cleaner look */
+            padding-right: 30px; 
+        }
+
+        /* Hover pauses animation */
+        .it-premium-single-row:hover {
+            animation-play-state: paused;
+        }
+
+        @keyframes scroll-seamless {
+            0% { transform: translateX(0); }
+            100% { transform: translateX(-50%); }
+        }
+
+        /* --- Card Styles --- */
+        .it-premium-card {
+            width: 100px;
+            height: 100px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            cursor: pointer;
+            transition: all 0.3s cubic-bezier(0.25, 0.8, 0.25, 1);
+            flex-shrink: 0;
+        }
+
+        .it-premium-card img {
+            width: 50px;
+            height: 50px;
+            object-fit: contain;
+            filter: grayscale(100%);
+            opacity: 0.9;
+            transition: all 0.3s ease;
+            pointer-events: none; /* Prevents image dragging */
+        }
+
+        .it-premium-card:hover {
+            transform: translateY(-5px) scale(1.05);
+            z-index: 5;
+        }
+
+        .it-premium-card:hover img {
+            filter: grayscale(0%);
+            opacity: 1;
+        }
+
+        /* --- Mobile Responsiveness --- */
+        @media (max-width: 992px) {
+            .it-premium-hero {
+                padding: 60px 0;
+                min-height: auto;
+                flex-direction: column;
+                justify-content: center;
+            }
+
+            .it-premium-container {
+                flex-direction: column;
+                text-align: center;
+                padding: 0 15px;
+            }
+
+            .it-premium-text-box {
+                flex: 0 0 auto;
+                width: 100%;
+                margin-bottom: 40px;
+            }
+
+            .it-premium-headline {
+                font-size: 36px; /* Smaller font on mobile */
+            }
+
+            .it-dynamic-wrapper {
+                display: block; /* Stack on mobile if needed */
+                min-width: 0;
+            }
+
+            .it-premium-visual-area {
+                width: 100%;
+                margin-left: 0;
+                /* Reset mask for fuller width visibility on mobile */
+                -webkit-mask-image: linear-gradient(to right, transparent 0%, black 5%, black 95%, transparent 100%);
+                mask-image: linear-gradient(to right, transparent 0%, black 5%, black 95%, transparent 100%);
+            }
+            
+            /* KEY FIX: Ensure single row persists on mobile */
+            .it-premium-single-row {
+                flex-wrap: nowrap; /* Prevent wrapping */
+            }
+            
+            .it-group {
+                gap: 20px;
+                padding-right: 20px;
+            }
+            
+            .it-premium-card {
+                width: 80px; /* Smaller cards on mobile */
+                height: 80px;
+            }
+            
+            .it-premium-card img {
+                width: 40px;
+                height: 40px;
+            }
+        }
+    </style>
+</head>
+<body>
+
+<section class="it-premium-hero">
+    <div class="it-premium-container">
+        
+        <div class="it-premium-text-box">
+            <h1 class="it-premium-headline">
+                Build your solution with<br>
+                <span class="it-dynamic-wrapper">
+                    <span id="it-dynamic-text">any framework</span>
+                </span>
+            </h1>
+        </div>
+
+        <div class="it-premium-visual-area">
+            <div class="it-premium-single-row">
+                <div class="it-group">
+                    <div class="it-premium-card" data-name="React.js"><img src="https://cdn.worldvectorlogo.com/logos/react-2.svg" alt="React"></div>
+                    <div class="it-premium-card" data-name="Next.js"><img src="https://cdn.worldvectorlogo.com/logos/next-js.svg" alt="Next"></div>
+                    <div class="it-premium-card" data-name="Vue.js"><img src="https://cdn.worldvectorlogo.com/logos/vue-9.svg" alt="Vue"></div>
+                    <div class="it-premium-card" data-name="TypeScript"><img src="https://cdn.worldvectorlogo.com/logos/typescript.svg" alt="TS"></div>
+                    <div class="it-premium-card" data-name="Node.js"><img src="https://cdn.worldvectorlogo.com/logos/nodejs-icon.svg" alt="Node"></div>
+                    <div class="it-premium-card" data-name="Angular"><img src="https://cdn.worldvectorlogo.com/logos/angular-icon-1.svg" alt="Angular"></div>
+                </div>
+                
+                <div class="it-group">
+                    <div class="it-premium-card" data-name="React.js"><img src="https://cdn.worldvectorlogo.com/logos/react-2.svg" alt="React"></div>
+                    <div class="it-premium-card" data-name="Next.js"><img src="https://cdn.worldvectorlogo.com/logos/next-js.svg" alt="Next"></div>
+                    <div class="it-premium-card" data-name="Vue.js"><img src="https://cdn.worldvectorlogo.com/logos/vue-9.svg" alt="Vue"></div>
+                    <div class="it-premium-card" data-name="TypeScript"><img src="https://cdn.worldvectorlogo.com/logos/typescript.svg" alt="TS"></div>
+                    <div class="it-premium-card" data-name="Node.js"><img src="https://cdn.worldvectorlogo.com/logos/nodejs-icon.svg" alt="Node"></div>
+                    <div class="it-premium-card" data-name="Angular"><img src="https://cdn.worldvectorlogo.com/logos/angular-icon-1.svg" alt="Angular"></div>
+                </div>
+            </div>
+        </div>
+
+    </div>
+</section>
+
+<script>
+    document.addEventListener("DOMContentLoaded", () => {
+        const dynamicText = document.getElementById('it-dynamic-text');
+        const cards = document.querySelectorAll('.it-premium-card');
+        const defaultText = "any framework";
+        let textTimeout; // Variable to track the timer
+
+        // Function to handle text change
+        const changeText = (newName, isDefault = false) => {
+            // Clear any existing timer to prevent overlapping animations
+            clearTimeout(textTimeout);
+
+            dynamicText.classList.add('it-text-fade');
+            
+            // Wait for fade out, then change text
+            textTimeout = setTimeout(() => {
+                dynamicText.innerText = newName;
+                if(isDefault) {
+                    dynamicText.classList.remove('it-highlight');
+                } else {
+                    dynamicText.classList.add('it-highlight');
+                }
+                dynamicText.classList.remove('it-text-fade');
+            }, 150);
+        };
+
+        cards.forEach(card => {
+            card.addEventListener('mouseenter', function() {
+                const newName = this.getAttribute('data-name');
+                changeText(newName);
+            });
+
+            card.addEventListener('mouseleave', function() {
+                changeText(defaultText, true);
+            });
+            
+            // Added simple click support for mobile tap interaction
+            card.addEventListener('click', function() {
+                const newName = this.getAttribute('data-name');
+                changeText(newName);
+                
+                // Auto reset after 2 seconds on mobile tap
+                setTimeout(() => {
+                    changeText(defaultText, true);
+                }, 2000);
+            });
+        });
+    });
+</script>
+
+</body>
+</html>
 
 
 
