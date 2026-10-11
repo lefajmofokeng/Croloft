@@ -70,6 +70,716 @@
 
 
 
+<style>
+  /* Scoped Variables & Container Base */
+  .nv-hero-wrapper {
+    --nv-green: #149ff5;
+    --nv-green-hover: #8ee000;
+    --nv-dark-bg: #0a0b0d;
+    --nv-text-main: #111111;
+    --nv-text-sub: #333333;
+    --nv-tab-text-active: #000000;
+    --nv-tab-text-idle: #4a4a4a;
+    --nv-font-family: 'Segoe UI', -apple-system, BlinkMacSystemFont, Roboto, sans-serif;
+
+    position: relative;
+    width: 100%;
+    height: 100vh;
+    min-height: 550px;
+    overflow: hidden;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    background-color: #f2f4f7;
+    font-family: var(--nv-font-family);
+    box-sizing: border-box;
+    margin: 0;
+    padding: 0;
+    color: #fff;
+    -webkit-font-smoothing: antialiased;
+  }
+
+  .nv-hero-wrapper *,
+  .nv-hero-wrapper *::before,
+  .nv-hero-wrapper *::after {
+    box-sizing: border-box;
+  }
+
+  /* Top Right Play / Pause Toggle Button */
+  .nv-hero-top-controls {
+    position: absolute;
+    top: 90px;
+    right: 90px;
+    z-index: 20;
+  }
+
+  .nv-hero-playpause-btn {
+    background: rgba(255, 255, 255, 0.16);
+    backdrop-filter: blur(8px);
+    -webkit-backdrop-filter: blur(8px);
+    border: none;
+    border-radius: 50%;
+    width: 44px;
+    height: 44px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    cursor: pointer;
+    color: #000;
+    transition: all 0.25s cubic-bezier(0.4, 0, 0.2, 1);
+    outline: none;
+  }
+
+  .nv-hero-wrapper[data-current-theme="dark"] .nv-hero-playpause-btn {
+    background: rgba(10, 11, 13, 0.232);
+    color: #ffffff;
+  }
+
+  .nv-hero-playpause-btn:hover {
+    background-color: var(--nv-green);
+    border-color: var(--nv-green);
+    color: #000000;
+    transform: scale(1.08);
+  }
+
+  /* Pure CSS Pause Icon */
+  .nv-hero-icon-pause {
+    display: flex;
+    gap: 4px;
+    width: 14px;
+    height: 14px;
+    align-items: center;
+    justify-content: center;
+  }
+
+  .nv-hero-icon-pause::before,
+  .nv-hero-icon-pause::after {
+    content: '';
+    display: block;
+    width: 4px;
+    height: 14px;
+    background-color: currentColor;
+    border-radius: 1px;
+  }
+
+  /* Pure CSS Play Icon */
+  .nv-hero-icon-play {
+    width: 0;
+    height: 0;
+    border-top: 7px solid transparent;
+    border-bottom: 7px solid transparent;
+    border-left: 12px solid currentColor;
+    margin-left: 2px;
+  }
+
+  /* Background Slides Wrapper */
+  .nv-hero-bg-wrapper {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    z-index: 1;
+  }
+
+  .nv-hero-slide-bg {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    opacity: 0;
+    visibility: hidden;
+    transition: opacity 0.8s cubic-bezier(0.4, 0, 0.2, 1), visibility 0.8s;
+    overflow: hidden;
+  }
+
+  .nv-hero-slide-bg.nv-hero-active {
+    opacity: 1;
+    visibility: visible;
+  }
+
+  .nv-hero-media-item {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    object-position: center right;
+  }
+
+  .nv-hero-content-layer {
+    position: relative;
+    z-index: 10;
+    max-width: 1400px;
+    width: 100%;
+    margin: 0 auto;
+    padding: 150px 40px 0 40px;
+    pointer-events: none;
+  }
+
+  .nv-hero-content-card {
+    max-width: 760px;
+    pointer-events: auto;
+    transition: color 0.5s ease;
+  }
+
+  /* Content Elements */
+  .nv-hero-category-tag {
+    font-size: 16px;
+    font-weight: 700;
+    letter-spacing: -0.2px;
+    margin-bottom: 12px;
+    display: inline-block;
+    transition: opacity 0.3s ease, transform 0.3s ease;
+  }
+
+  .nv-hero-main-title {
+    font-size: 48px;
+    line-height: 1.1;
+    font-weight: 800;
+    letter-spacing: -0.8px;
+    margin-bottom: 24px;
+    transition: opacity 0.3s ease, transform 0.3s ease;
+  }
+
+  .nv-hero-description {
+    font-size: 18px;
+    line-height: 1.5;
+    font-weight: 400;
+    margin-bottom: 32px;
+    transition: opacity 0.3s ease, transform 0.3s ease;
+  }
+
+  .nv-hero-cta-btn {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    background-color: var(--nv-green);
+    color: #f4f4f4;
+    font-size: 16px;
+    font-weight: 400;
+    padding: 14px 28px;
+    text-decoration: none;
+    border: none;
+    border-radius: 2px;
+    cursor: pointer;
+    transition: background-color 0.2s ease, transform 0.2s ease;
+  }
+
+  .nv-hero-cta-btn:hover {
+    background-color: var(--nv-green-hover);
+    transform: translateY(-1px);
+  }
+
+  /* Container Theme Adaptations */
+  .nv-hero-wrapper[data-current-theme="light"] {
+    color: var(--nv-text-main);
+  }
+  .nv-hero-wrapper[data-current-theme="light"] .nv-hero-description {
+    color: var(--nv-text-sub);
+  }
+  .nv-hero-wrapper[data-current-theme="light"] .nv-hero-category-tag {
+    color: var(--nv-text-main);
+  }
+
+  .nv-hero-wrapper[data-current-theme="dark"] {
+    color: #ffffff;
+  }
+  .nv-hero-wrapper[data-current-theme="dark"] .nv-hero-description {
+    color: #e0e0e0;
+  }
+  .nv-hero-wrapper[data-current-theme="dark"] .nv-hero-category-tag {
+    color: #ffffff;
+  }
+
+  /* Text Animations */
+  .nv-hero-text-animate-out {
+    opacity: 0;
+    transform: translateY(-8px);
+  }
+  .nv-hero-text-animate-in {
+    animation: nvTextFadeIn 0.4s ease forwards;
+  }
+
+  @keyframes nvTextFadeIn {
+    from {
+      opacity: 0;
+      transform: translateY(12px);
+    }
+    to {
+      opacity: 1;
+      transform: translateY(0);
+    }
+  }
+
+  /* Bottom Navigation Tabs */
+  .nv-hero-bottom-nav {
+    position: relative;
+    z-index: 10;
+    width: 100%;
+    background: rgba(255, 255, 255, 0.25);
+    backdrop-filter: blur(12px);
+    -webkit-backdrop-filter: blur(12px);
+    transition: background 0.5s ease, border-color 0.5s ease;
+  }
+
+  .nv-hero-wrapper[data-current-theme="dark"] .nv-hero-bottom-nav {
+    background: rgba(10, 11, 13, 0.37);
+  }
+
+  .nv-hero-nav-inner {
+    max-width: 1400px;
+    margin: 0 auto;
+    padding: 40px 40px;
+  }
+
+  .nv-hero-tabs-grid {
+    display: grid;
+    grid-template-columns: repeat(5, 1fr);
+    gap: 16px;
+    width: 100%;
+  }
+
+  .nv-hero-tab-item {
+    display: flex;
+    flex-direction: column;
+    cursor: pointer;
+    background: transparent;
+    border: none;
+    text-align: left;
+    padding: 0;
+    font-family: inherit;
+    color: var(--nv-tab-text-idle);
+    outline: none;
+    transition: color 0.3s ease;
+  }
+
+  .nv-hero-wrapper[data-current-theme="dark"] .nv-hero-tab-item {
+    color: #999999;
+  }
+
+  .nv-hero-tab-item:hover {
+    color: #000000;
+  }
+
+  .nv-hero-wrapper[data-current-theme="dark"] .nv-hero-tab-item:hover {
+    color: #ffffff;
+  }
+
+  .nv-hero-tab-item.nv-hero-tab-active {
+    color: var(--nv-tab-text-active);
+  }
+
+  .nv-hero-wrapper[data-current-theme="dark"] .nv-hero-tab-item.nv-hero-tab-active {
+    color: #ffffff;
+  }
+
+  .nv-hero-progress-track {
+    position: relative;
+    width: 100%;
+    height: 3px;
+    background-color: rgba(0, 0, 0, 0.15);
+    margin-bottom: 12px;
+    overflow: hidden;
+    border-radius: 50px;
+  }
+
+  .nv-hero-wrapper[data-current-theme="dark"] .nv-hero-progress-track {
+    background-color: rgba(255, 255, 255, 0.2);
+  }
+
+  .nv-hero-progress-bar {
+    position: absolute;
+    top: 0;
+    left: 0;
+    height: 100%;
+    width: 0%;
+    background-color: var(--nv-green);
+    transition: width 0.05s linear;
+  }
+
+  .nv-hero-tab-category {
+    font-size: 11px;
+    font-weight: 700;
+    line-height: 1.3;
+    margin-bottom: 4px;
+    text-transform: uppercase;
+    letter-spacing: 0.2px;
+  }
+
+  .nv-hero-tab-title {
+    font-size: 17px;
+    font-weight: 600;
+    line-height: 1.3;
+    display: -webkit-box;
+    -webkit-line-clamp: 2;
+    -webkit-box-orient: vertical;
+    overflow: hidden;
+    text-overflow: ellipsis;
+  }
+
+  @media (max-width: 1024px) {
+    .nv-hero-main-title {
+      font-size: 36px;
+    }
+    .nv-hero-description {
+      font-size: 16px;
+    }
+    .nv-hero-tabs-grid {
+      grid-template-columns: repeat(3, 1fr);
+      gap: 12px;
+    }
+    .nv-hero-content-layer {
+      padding: 80px 24px 0 24px;
+    }
+    .nv-hero-nav-inner {
+      padding: 16px 24px;
+    }
+    .nv-hero-top-controls {
+      top: 24px;
+      right: 24px;
+    }
+  }
+
+  @media (max-width: 768px) {
+    .nv-hero-wrapper {
+      height: auto;
+      min-height: 100vh;
+    }
+    .nv-hero-content-layer {
+      padding: 60px 20px 40px 20px;
+    }
+    .nv-hero-main-title {
+      font-size: 28px;
+    }
+    .nv-hero-tabs-grid {
+      display: flex;
+      overflow-x: auto;
+      scroll-snap-type: x mandatory;
+      padding-bottom: 8px;
+      -webkit-overflow-scrolling: touch;
+    }
+    .nv-hero-tab-item {
+      min-width: 200px;
+      scroll-snap-align: start;
+      flex-shrink: 0;
+    }
+  }
+</style>
+
+<div class="nv-hero-wrapper" id="nvHeroCarousel" data-current-theme="light">
+  
+  <!-- Top Right Control Toggle with Pure CSS Icons -->
+  <div class="nv-hero-top-controls">
+    <button class="nv-hero-playpause-btn" id="nvPauseToggle" aria-label="Pause Auto Cycle">
+      <div id="nvPlayPauseIcon" class="nv-hero-icon-pause"></div>
+    </button>
+  </div>
+
+  <!-- Background Media Elements (4 Images, 2 Videos) -->
+  <div class="nv-hero-bg-wrapper">
+    
+    <!-- Slide 1: Image Background -->
+    <div class="nv-hero-slide-bg nv-hero-active" data-slide-index="0" data-theme="light">
+      <img class="nv-hero-media-item" src="thumbnails/pexels-ayush-kumar-907951968-23466423.jpg" alt="NVIDIA RTX Spark Laptop" />
+    </div>
+
+    <!-- Slide 2: Video Background 1 -->
+    <div class="nv-hero-slide-bg" data-slide-index="1" data-theme="dark">
+      <video class="nv-hero-media-item" autoplay loop muted playsinline poster="https://images.unsplash.com/photo-1618005182384-a83a8bd57fbe?auto=format&fit=crop&w=1600&q=80">
+        <source src="videos/8275959-hd_1920_1080_30fps.mp4" type="video/mp4">
+      </video>
+    </div>
+
+    <!-- Slide 3: Image Background -->
+    <div class="nv-hero-slide-bg" data-slide-index="2" data-theme="dark">
+      <img class="nv-hero-media-item" src="thumbnails/pexels-divinetechygirl-1181318.jpg" alt="NVIDIA GTC Conference" />
+    </div>
+
+    <!-- Slide 4: Video Background 2 -->
+    <div class="nv-hero-slide-bg" data-slide-index="3" data-theme="dark">
+      <video class="nv-hero-media-item" autoplay loop muted playsinline poster="https://images.unsplash.com/photo-1558494949-ef010cbdcc31?auto=format&fit=crop&w=1600&q=80">
+        <source src="videos/background-video3.mp4" type="video/mp4">
+      </video>
+    </div>
+
+    <!-- Slide 5: Image Background -->
+    <div class="nv-hero-slide-bg" data-slide-index="4" data-theme="dark">
+      <img class="nv-hero-media-item" src="thumbnails/pexels-altabena-10142683.jpg" alt="NVIDIA Keynote Auditorium" />
+    </div>
+    
+  </div>
+
+  <!-- Left Content Box -->
+  <div class="nv-hero-content-layer">
+    <div class="nv-hero-content-card">
+      <div class="nv-hero-category-tag" id="nvHeroCategory">Artificial Intelligence</div>
+      <h1 class="nv-hero-main-title" id="nvHeroTitle">A New Beginning for Windows PCs</h1>
+      <p class="nv-hero-description" id="nvHeroDesc">
+        NVIDIA RTX Spark brings NVIDIA AI and RTX graphics together in one powerful PC for creating, developing, and gaming. Preorder now.
+      </p>
+      <a href="#" class="nv-hero-cta-btn" id="nvHeroCta">Learn More</a>
+    </div>
+  </div>
+
+  <!-- Bottom Navigation Tabs Area -->
+  <div class="nv-hero-bottom-nav">
+    <div class="nv-hero-nav-inner">
+      <div class="nv-hero-tabs-grid" id="nvTabsContainer">
+        
+        <button class="nv-hero-tab-item nv-hero-tab-active" data-index="0">
+          <div class="nv-hero-progress-track">
+            <div class="nv-hero-progress-bar"></div>
+          </div>
+          <div class="nv-hero-tab-category">Artificial Intelligence</div>
+          <div class="nv-hero-tab-title">A New Beginning for Windows PCs</div>
+        </button>
+
+        <button class="nv-hero-tab-item" data-index="1">
+          <div class="nv-hero-progress-track">
+            <div class="nv-hero-progress-bar"></div>
+          </div>
+          <div class="nv-hero-tab-category">Artificial Intelligence</div>
+          <div class="nv-hero-tab-title">Watch NVIDIA CEO Jensen Huang Join Microsoft for...</div>
+        </button>
+
+        <button class="nv-hero-tab-item" data-index="2">
+          <div class="nv-hero-progress-track">
+            <div class="nv-hero-progress-bar"></div>
+          </div>
+          <div class="nv-hero-tab-category">NVIDIA GTC</div>
+          <div class="nv-hero-tab-title">GTC Washington, D.C.</div>
+        </button>
+
+        <button class="nv-hero-tab-item" data-index="3">
+          <div class="nv-hero-progress-track">
+            <div class="nv-hero-progress-bar"></div>
+          </div>
+          <div class="nv-hero-tab-category">Data Center</div>
+          <div class="nv-hero-tab-title">Productive, Durable, Fungible, NVIDIA...</div>
+        </button>
+
+        <button class="nv-hero-tab-item" data-index="4">
+          <div class="nv-hero-progress-track">
+            <div class="nv-hero-progress-bar"></div>
+          </div>
+          <div class="nv-hero-tab-category">Keynote</div>
+          <div class="nv-hero-tab-title">Watch NVIDIA CEO Jensen Huang's Keynote at GTC...</div>
+        </button>
+
+       
+      </div>
+    </div>
+  </div>
+
+</div>
+
+<script>
+  (function () {
+    const slidesData = [
+      {
+        category: "Artificial Intelligence",
+        title: "A New Beginning for Windows PCs",
+        description: "NVIDIA RTX Spark brings NVIDIA AI and RTX graphics together in one powerful PC for creating, developing, and gaming. Preorder now.",
+        ctaText: "Learn More",
+        ctaUrl: "#",
+        theme: "light"
+      },
+      {
+        category: "Artificial Intelligence",
+        title: "Watch NVIDIA CEO Jensen Huang Join Microsoft for AI Breakthroughs",
+        description: "Discover how NVIDIA and Microsoft are accelerating AI development, cloud infrastructure, and next-gen developer workflows.",
+        ctaText: "Watch Video",
+        ctaUrl: "#",
+        theme: "dark"
+      },
+      {
+        category: "NVIDIA GTC",
+        title: "GTC Washington, D.C.",
+        description: "Join industry leaders, researchers, and developers to explore the latest advances in AI, autonomous systems, and cybersecurity.",
+        ctaText: "Register Now",
+        ctaUrl: "#",
+        theme: "dark"
+      },
+      {
+        category: "Data Center",
+        title: "Productive, Durable, Fungible, NVIDIA Supercomputing",
+        description: "Transform your enterprise infrastructure with accelerated computing solutions engineered for massive AI workloads and scale.",
+        ctaText: "Explore Data Center",
+        ctaUrl: "#",
+        theme: "dark"
+      },
+      {
+        category: "Keynote",
+        title: "Watch NVIDIA CEO Jensen Huang's Keynote at GTC 2026",
+        description: "Experience the vision of computing transforming every industry with breakthroughs in robotics, generative AI, and digital twins.",
+        ctaText: "Watch Keynote",
+        ctaUrl: "#",
+        theme: "dark"
+      },
+    ];
+
+    const DURATION = 6000;
+    const INTERVAL_STEP = 50;
+
+    const heroContainer = document.getElementById('nvHeroCarousel');
+    const categoryEl = document.getElementById('nvHeroCategory');
+    const titleEl = document.getElementById('nvHeroTitle');
+    const descEl = document.getElementById('nvHeroDesc');
+    const ctaEl = document.getElementById('nvHeroCta');
+    const pauseBtn = document.getElementById('nvPauseToggle');
+    const playPauseIcon = document.getElementById('nvPlayPauseIcon');
+    const slideBgs = heroContainer.querySelectorAll('.nv-hero-slide-bg');
+    const tabItems = heroContainer.querySelectorAll('.nv-hero-tab-item');
+
+    let currentIndex = 0;
+    let elapsedTime = 0;
+    let isPaused = false;
+    let timerId = null;
+
+    function updateSlide(targetIndex) {
+      if (targetIndex === currentIndex && timerId && elapsedTime > 0) return;
+
+      currentIndex = targetIndex;
+      elapsedTime = 0;
+
+      const currentData = slidesData[currentIndex];
+
+      heroContainer.setAttribute('data-current-theme', currentData.theme);
+
+      slideBgs.forEach((bg, idx) => {
+        if (idx === currentIndex) {
+          bg.classList.add('nv-hero-active');
+          const video = bg.querySelector('video');
+          if (video) {
+            video.currentTime = 0;
+            if (!isPaused) video.play().catch(() => {});
+          }
+        } else {
+          bg.classList.remove('nv-hero-active');
+        }
+      });
+
+      categoryEl.classList.add('nv-hero-text-animate-out');
+      titleEl.classList.add('nv-hero-text-animate-out');
+      descEl.classList.add('nv-hero-text-animate-out');
+
+      setTimeout(() => {
+        categoryEl.textContent = currentData.category;
+        titleEl.textContent = currentData.title;
+        descEl.textContent = currentData.description;
+        ctaEl.textContent = currentData.ctaText;
+        ctaEl.href = currentData.ctaUrl;
+
+        categoryEl.classList.remove('nv-hero-text-animate-out');
+        titleEl.classList.remove('nv-hero-text-animate-out');
+        descEl.classList.remove('nv-hero-text-animate-out');
+
+        categoryEl.classList.add('nv-hero-text-animate-in');
+        titleEl.classList.add('nv-hero-text-animate-in');
+        descEl.classList.add('nv-hero-text-animate-in');
+
+        setTimeout(() => {
+          categoryEl.classList.remove('nv-hero-text-animate-in');
+          titleEl.classList.remove('nv-hero-text-animate-in');
+          descEl.classList.remove('nv-hero-text-animate-in');
+        }, 400);
+      }, 150);
+
+      tabItems.forEach((tab, idx) => {
+        const bar = tab.querySelector('.nv-hero-progress-bar');
+        if (idx === currentIndex) {
+          tab.classList.add('nv-hero-tab-active');
+        } else {
+          tab.classList.remove('nv-hero-tab-active');
+          if (bar) bar.style.width = '0%';
+        }
+      });
+    }
+
+    function tick() {
+      if (isPaused) return;
+
+      elapsedTime += INTERVAL_STEP;
+      const progressPercentage = Math.min((elapsedTime / DURATION) * 100, 100);
+
+      const activeTab = tabItems[currentIndex];
+      if (activeTab) {
+        const bar = activeTab.querySelector('.nv-hero-progress-bar');
+        if (bar) {
+          bar.style.width = progressPercentage + '%';
+        }
+      }
+
+      if (elapsedTime >= DURATION) {
+        const nextIndex = (currentIndex + 1) % slidesData.length;
+        updateSlide(nextIndex);
+      }
+    }
+
+    function startTimer() {
+      if (timerId) clearInterval(timerId);
+      timerId = setInterval(tick, INTERVAL_STEP);
+    }
+
+    function togglePause() {
+      isPaused = !isPaused;
+      
+      if (isPaused) {
+        playPauseIcon.className = 'nv-hero-icon-play';
+        pauseBtn.setAttribute('aria-label', 'Play Auto Cycle');
+      } else {
+        playPauseIcon.className = 'nv-hero-icon-pause';
+        pauseBtn.setAttribute('aria-label', 'Pause Auto Cycle');
+      }
+
+      const activeVideo = slideBgs[currentIndex].querySelector('video');
+      if (activeVideo) {
+        if (isPaused) {
+          activeVideo.pause();
+        } else {
+          activeVideo.play().catch(() => {});
+        }
+      }
+    }
+
+    tabItems.forEach((tab) => {
+      tab.addEventListener('click', function () {
+        const index = parseInt(this.getAttribute('data-index'), 10);
+        updateSlide(index);
+      });
+    });
+
+    pauseBtn.addEventListener('click', togglePause);
+
+    updateSlide(0);
+    startTimer();
+  })();
+</script>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 
 
@@ -559,7 +1269,6 @@ document.addEventListener('DOMContentLoaded', function() {
     }
   });
 </script>
-
 
 
 
@@ -2021,7 +2730,7 @@ document.addEventListener("DOMContentLoaded", function() {
         /* --- Mobile Adjustments --- */
         @media (max-width: 768px) {
             .it-hero-headline {
-                font-size: 7vw;
+                font-size: 1.2rem;
                 top: 10%;
                 left: 5%;
                 max-width: 90%;
@@ -2030,7 +2739,7 @@ document.addEventListener("DOMContentLoaded", function() {
             .it-hero-label {
                 top: 2%;
                 right: 5%;
-                font-size: 0.8rem;
+                font-size: 1.1rem;
             }
         }
     </style>
@@ -2930,11 +3639,6 @@ document.addEventListener("DOMContentLoaded", function() {
 
 
 
-
-<link rel="preconnect" href="https://fonts.googleapis.com">
-<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet">
-
 <section class="crns-section-wrapper">
     <div class="crns-container">
         
@@ -3189,7 +3893,11 @@ document.addEventListener("DOMContentLoaded", function() {
 @media (max-width: 900px) {
     .crns-container {
         flex-direction: column;
-        text-align: center;
+        text-align: center; 
+    }
+
+    .crns-section-wrapper {
+      padding: 0 20px;
     }
     
     .crns-text-col {
