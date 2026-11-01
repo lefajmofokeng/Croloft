@@ -1,0 +1,448 @@
+<!DOCTYPE html>
+<html lang="en" dir="ltr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, minimum-scale=1.0, maximum-scale=5.0, viewport-fit=cover, shrink-to-fit=no">
+    <meta http-equiv="x-ua-compatible" content="ie=edge"/>
+    
+    <title>Cronos</title>
+
+    <!-- WEB TAB ICON -->
+    <link rel="icon" type="image/png" href="thumbnails/top-1.png">
+
+    <style>
+      @font-face { font-family:'Circular Std'; src:url('fonts/CircularStd-Book.woff2') format('woff2'),url('fonts/CircularStd-Book.woff') format('woff'); font-weight:400; font-style:normal; font-display:swap; }
+  @font-face { font-family:'Circular Std'; src:url('fonts/CircularStd-BookItalic.woff2') format('woff2'),url('fonts/CircularStd-BookItalic.woff') format('woff'); font-weight:400; font-style:italic; font-display:swap; }
+  @font-face { font-family:'Circular Std'; src:url('fonts/CircularStd-Medium.woff2') format('woff2'),url('fonts/CircularStd-Medium.woff') format('woff'); font-weight:500; font-style:normal; font-display:swap; }
+  @font-face { font-family:'Circular Std'; src:url('fonts/CircularStd-Bold.woff2') format('woff2'),url('fonts/CircularStd-Bold.woff') format('woff'); font-weight:600; font-style:normal; font-display:swap; }
+  @font-face { font-family:'Circular Std'; src:url('fonts/CircularStd-Bold.woff2') format('woff2'),url('fonts/CircularStd-Bold.woff') format('woff'); font-weight:700; font-style:normal; font-display:swap; }
+  @font-face { font-family:'Circular Std'; src:url('fonts/CircularStd-Black.woff2') format('woff2'),url('fonts/CircularStd-Black.woff') format('woff'); font-weight:800; font-style:normal; font-display:swap; }
+  @font-face { font-family:'Circular Std'; src:url('fonts/CircularStd-Black.woff2') format('woff2'),url('fonts/CircularStd-Black.woff') format('woff'); font-weight:900; font-style:normal; font-display:swap; }
+    </style>
+</head>
+
+
+
+
+
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>My Website</title>
+    
+    <script src="header.js" defer></script>
+    <script src="footer.js" defer></script> 
+</head>
+<body>
+
+    <cronos-header></cronos-header>
+    
+
+</body>
+</html>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Cronos Systems — Performance Architecture</title>
+  <style>
+    /* Premium Minimalist Design Tokens */
+    :root {
+      --cronos-bg: #020711; /* Warm high-end corporate cream canvas */
+      --cronos-dark: #111111;
+      --cronos-muted: #666666;
+      --cronos-line: rgba(0, 0, 0, 0.08);
+      --cronos-font: 'Circular Std', -apple-system, BlinkMacSystemFont, sans-serif;
+    }
+
+    * {
+      box-sizing: border-box;
+      margin: 0;
+      padding: 0;
+    }
+
+    body {
+      background-color: var(--cronos-bg);
+      color: var(--cronos-dark);
+      font-family: var(--cronos-font);
+      -webkit-font-smoothing: antialiased;
+      overflow-x: hidden;
+    }
+
+    /* Isolated Structural Component Namespace Wrapper */
+    .crns-site-wrapper {
+      width: 100%;
+      min-height: 100vh;
+      display: flex;
+      flex-direction: column;
+      padding: 0 11%; 
+      padding-top: 2rem;
+    }
+
+    /* Asymmetric Hero Split Layout Grid */
+    .crns-hero-grid {
+      display: grid;
+      grid-template-columns: 1.1fr 0.9fr;
+      align-items: start;
+      gap: 60px;
+      flex-grow: 1;
+      padding-top: 80px;
+      padding-bottom: 60px;
+    }
+
+    .crns-left-col {
+      display: flex;
+      flex-direction: column;
+      justify-content: space-between;
+      min-height: 580px;
+    }
+
+    .crns-hero-title {
+      font-size: 4rem;
+      font-weight: 400;
+      line-height: 1;
+      letter-spacing: -0.04em;
+      max-width: 600px; color: #f4f4f4;
+    }
+
+    .crns-left-footer-tag {
+      font-size: 14px;
+      font-weight: 600;
+      line-height: 1.4;
+      color: #f4f4f4;
+      max-width: 240px;
+      margin-top: 40px;
+    }
+
+    .crns-right-col {
+      display: flex;
+      flex-direction: column;
+      gap: 50px;
+      position: relative;
+    }
+
+    /* Real Editorial Image Layout Box Component */
+    .crns-image-container {
+      width: 100%;
+      height: 340px;
+      position: relative;
+      overflow: hidden;
+      border-radius: 2px; /* Crisp sharp branding edge matching constraints */
+    }
+
+    .crns-hero-img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+     
+      transition: transform 0.6s cubic-bezier(0.16, 1, 0.3, 1);
+    }
+
+    .crns-image-container:hover .crns-hero-img {
+      transform: scale(1.03);
+    }
+
+    /* Core Editorial Description Block */
+    .crns-body-panel {
+      display: flex;
+      flex-direction: column;
+      align-items: flex-start;
+      gap: 32px;
+      max-width: 540px;
+    }
+
+    .crns-hero-desc {
+      font-size: 24px;
+      line-height: 1.1;
+      font-weight: 400;
+      color: #f4f4f4;
+      letter-spacing: -0.02em;
+    }
+
+    .crns-discover-link {
+      display: inline-flex;
+      align-items: center;
+      gap: 12px;
+      font-size: 16px;
+      font-weight: 400;
+      color: #f4f4f4;
+      text-decoration: none;
+      border: none;
+      padding: 10px 25px; background: #0068ae;
+      border-radius: 50px;
+    }
+
+    /* Modern Mobile Navigation Media Queries */
+    @media (max-width: 1200px) {
+      .crns-hero-title {
+        font-size: 4rem;
+      }
+    }
+
+    @media (max-width: 992px) {
+      .crns-header {
+        height: 80px;
+      }
+      
+      .crns-menu-toggle {
+        display: block; /* Show hamburger button on mobile viewports */
+      }
+
+      /* Mobile Drawer Interface Positioning Overlay */
+      .crns-nav-container {
+        position: fixed;
+        top: 0;
+        right: -100%;
+        width: 100%;
+        height: 100vh;
+        background-color: var(--cronos-bg);
+        flex-direction: column;
+        justify-content: center;
+        align-items: flex-start;
+        padding: 40px;
+        gap: 48px;
+        z-index: 100;
+        transition: right 0.4s cubic-bezier(0.16, 1, 0.3, 1);
+        border-left: 1px solid var(--cronos-line);
+      }
+
+      .crns-header.menu-active .crns-nav-container {
+        right: 0;
+      }
+
+      .crns-nav {
+        flex-direction: column;
+        align-items: flex-start;
+        gap: 28px;
+        width: 100%;
+      }
+
+      .crns-nav-link {
+        font-size: 24px;
+        font-weight: 600;
+        color: var(--cronos-dark);
+      }
+
+      .crns-cta-btn {
+        font-size: 16px;
+        padding: 14px 28px;
+        width: 100%;
+        text-align: center;
+      }
+
+      .crns-hero-grid {
+        grid-template-columns: 1fr;
+        gap: 60px;
+        padding-top: 40px;
+      }
+      
+      .crns-left-col {
+        min-height: auto;
+      }
+      
+      .crns-left-footer-tag {
+        margin-top: 30px;
+      }
+
+      .crns-image-container {
+        height: 280px;
+      }
+    }
+
+    @media (max-width: 576px) {
+      .crns-hero-title {
+        font-size: 3rem;
+      }
+      .crns-hero-desc {
+        font-size: 19px;
+      }
+    }
+  </style>
+</head>
+<body>
+
+  <div class="crns-site-wrapper">
+
+
+    <main class="crns-hero-grid">
+      <div class="crns-left-col">
+        <h1 class="crns-hero-title">Humanizing<br>Performance.<br>Backed by Insight.</h1>
+        <div class="crns-left-footer-tag">
+          Global Organization and Tech Leadership Advisory
+        </div>
+      </div>
+
+      <div class="crns-right-col">
+        <div class="crns-image-container">
+          <img src="thumbnails/pexels-theo-decker-5447398.jpg" alt="Modern Architecture Abstract Structural Lines" class="crns-hero-img">
+        </div>
+
+        <div class="crns-body-panel">
+          <p class="crns-hero-desc">
+            Cronos helps enterprise executives, engineering leaders and tech boards unlock structural performance: creating strategic engineering clarity, scaling modern systems, and guiding architecture transitions.
+          </p>
+          <a href="#discover" class="crns-discover-link">
+            Learn more
+           </a>
+        </div>
+      </div>
+    </main>
+  </div>
+
+  <script>
+    document.addEventListener("DOMContentLoaded", () => {
+      const menuBtn = document.getElementById("crnsMenuBtn");
+      const header = document.getElementById("crnsHeader");
+      const mobileNavLinks = document.querySelectorAll(".crns-nav-link, .crns-cta-btn");
+
+      if (!menuBtn || !header) return;
+
+      // Toggle drawer visibility classes
+      menuBtn.addEventListener("click", () => {
+        header.classList.toggle("menu-active");
+      });
+
+      // Automatically collapse viewport overlay menu upon link selection
+      mobileNavLinks.forEach(link => {
+        link.addEventListener("click", () => {
+          header.classList.remove("menu-active");
+        });
+      });
+    });
+  </script>
+</body>
+</html>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<cronos-footer></cronos-footer>

@@ -1,0 +1,793 @@
+<!DOCTYPE html>
+<html lang="en" dir="ltr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, minimum-scale=1.0, maximum-scale=5.0, viewport-fit=cover, shrink-to-fit=no">
+    <meta http-equiv="x-ua-compatible" content="ie=edge"/>
+    
+    <title>Croloft</title>
+
+    <!-- WEB TAB ICON -->
+    <link rel="icon" type="image/png" href="thumbnails/top-2.png">
+
+    <script src="header.js" defer></script>
+    <script src="footer.js" defer></script> 
+
+<style>
+  @font-face { font-family:'Circular Std'; src:url('fonts/CircularStd-Book.woff2') format('woff2'),url('fonts/CircularStd-Book.woff') format('woff'); font-weight:400; font-style:normal; font-display:swap; }
+  @font-face { font-family:'Circular Std'; src:url('fonts/CircularStd-BookItalic.woff2') format('woff2'),url('fonts/CircularStd-BookItalic.woff') format('woff'); font-weight:400; font-style:italic; font-display:swap; }
+  @font-face { font-family:'Circular Std'; src:url('fonts/CircularStd-Medium.woff2') format('woff2'),url('fonts/CircularStd-Medium.woff') format('woff'); font-weight:500; font-style:normal; font-display:swap; }
+  @font-face { font-family:'Circular Std'; src:url('fonts/CircularStd-Bold.woff2') format('woff2'),url('fonts/CircularStd-Bold.woff') format('woff'); font-weight:600; font-style:normal; font-display:swap; }
+  @font-face { font-family:'S'; src:url('fonts/AttenNewRegular.otf') format('woff2'),url('fonts/CircularStd-Black.woff') format('woff'); font-weight:900; font-style:normal; font-display:swap; }
+   * {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+  font-family: 'Circular Std', sans-serif;
+}
+</style>
+
+</head>
+<body>
+
+  <cronos-header></cronos-header>
+    
+</body>
+</html>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<div class="tc-slider-container">
+  
+  <div class="tc-slide tc-active" data-slide="0">
+    <video class="tc-slide-video" autoplay muted loop playsinline>
+      <source src="videos/background-video3.mp4" type="video/mp4">
+    </video>
+    <div class="tc-slide-overlay">
+      <div class="tc-slider-content-boundary">
+        <div class="tc-content-box">
+          <span class="tc-category">INNOVATION HUB</span>
+          <h2 class="tc-title">Building the next generation of digital solutions.</h2>
+          <a href="#explore" class="tc-explore-link">
+            <span class="tc-arrow-circle">
+              <svg class="tc-arrow-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5">
+                <line x1="5" y1="12" x2="19" y2="12"></line>
+                <polyline points="12 5 19 12 12 19"></polyline>
+              </svg>
+            </span>
+            <span class="tc-link-text">Explore Platform</span>
+          </a>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <div class="tc-slide" data-slide="1">
+    <video class="tc-slide-video" muted loop playsinline>
+      <source src="videos/background-video3.mp4" type="video/mp4">
+    </video>
+    <div class="tc-slide-overlay">
+      <div class="tc-slider-content-boundary">
+        <div class="tc-content-box">
+          <span class="tc-category">ENTERPRISE CLOUD</span>
+          <h2 class="tc-title">Scalable infrastructure that adapts to your growth.</h2>
+          <a href="#explore" class="tc-explore-link">
+            <span class="tc-arrow-circle">
+              <svg class="tc-arrow-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5">
+                <line x1="5" y1="12" x2="19" y2="12"></line>
+                <polyline points="12 5 19 12 12 19"></polyline>
+              </svg>
+            </span>
+            <span class="tc-link-text">Learn More</span>
+          </a>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <div class="tc-slide" data-slide="2">
+    <video class="tc-slide-video" muted loop playsinline>
+      <source src="https://www.pexels.com/download/video/34436452/" type="video/mp4">
+    </video>
+    <div class="tc-slide-overlay">
+      <div class="tc-slider-content-boundary">
+        <div class="tc-content-box">
+          <span class="tc-category">AI LABS</span>
+          <h2 class="tc-title">Intelligent systems transforming data into action.</h2>
+          <a href="#explore" class="tc-explore-link">
+            <span class="tc-arrow-circle">
+              <svg class="tc-arrow-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5">
+                <line x1="5" y1="12" x2="19" y2="12"></line>
+                <polyline points="12 5 19 12 12 19"></polyline>
+              </svg>
+            </span>
+            <span class="tc-link-text">Discover AI</span>
+          </a>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <div class="tc-global-controls-container">
+    <div class="tc-pagination">
+      <div class="tc-dot-bar tc-active"><span class="tc-progress-fill"></span></div>
+      <div class="tc-dot-bar"><span class="tc-progress-fill"></span></div>
+      <div class="tc-dot-bar"><span class="tc-progress-fill"></span></div>
+    </div>
+
+    <div class="tc-nav-controls">
+      <button class="tc-nav-btn tc-prev-btn" aria-label="Previous slide">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5">
+          <polyline points="15 18 9 12 15 6"></polyline>
+        </svg>
+      </button>
+      <button class="tc-nav-btn tc-next-btn" aria-label="Next slide">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5">
+          <polyline points="9 18 15 12 9 6"></polyline>
+        </svg>
+      </button>
+    </div>
+  </div>
+
+</div>
+
+<style>
+  .tc-slider-container {
+    --bg-dark-blue: #0A192F;
+    --accent-light-blue: #ffffff;
+    --text-primary: #CCD6F6;
+    --text-highlight: #FFFFFF;
+    
+    position: relative;
+    width: 100%;
+    height: 100vh;
+    min-height: 600px;
+    overflow: hidden;
+    background-color: var(--bg-dark-blue);
+    font-family: 'Google Sans', -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif;
+    color: var(--text-primary);
+  }
+
+  .tc-slide {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    opacity: 0;
+    visibility: hidden;
+    transition: opacity 0.8s ease-in-out, visibility 0.8s ease-in-out;
+    z-index: 1;
+  }
+
+  .tc-slide.tc-active {
+    opacity: 1;
+    visibility: visible;
+    z-index: 2;
+  }
+
+  .tc-slide-video {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+  }
+
+  .tc-slide-overlay {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: linear-gradient(90deg, rgba(10, 25, 47, 0.95) 0%, rgba(10, 25, 47, 0.6) 50%, rgba(10, 25, 47, 0) 90%);
+    z-index: 3;
+  }
+
+  /* Strict 1200px Content Window Containment */
+  .tc-slider-content-boundary {
+    position: relative;
+    width: 100%;
+    max-width: 1200px;
+    height: 100%;
+    margin: 0 auto;
+    padding: 0 20px 120px 20px;
+    display: flex;
+    align-items: flex-end;
+    box-sizing: border-box;
+  }
+
+  .tc-content-box {
+    max-width: 700px;
+    width: 100%;
+  }
+
+  .tc-category {
+    font-size: 0.85rem;
+    font-weight: 500;
+    text-transform: uppercase;
+    letter-spacing: 0.2em;
+    display: block;
+    margin-bottom: 16px;
+    color: var(--accent-light-blue);
+  }
+
+  .tc-title {
+    font-size: 3.5rem;
+    font-weight: 500;
+    line-height: 1.1;
+    margin: 0 0 32px 0;
+    letter-spacing: -0.01em;
+    color: var(--text-highlight);
+  }
+
+  /* Interactive CTA Link with Circular Icon Prefix */
+  .tc-explore-link {
+    display: inline-flex;
+    align-items: center;
+    color: var(--text-highlight);
+    text-decoration: none;
+    font-size: 1.1rem;
+    font-weight: 400;
+    gap: 14px;
+    transition: color 0.3s ease;
+  }
+
+  .tc-arrow-circle {
+    width: 42px;
+    height: 42px;
+    border: 2px solid var(--accent-light-blue);
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    color: var(--accent-light-blue);
+    transition: background-color 0.3s ease, transform 0.3s ease;
+    flex-shrink: 0;
+  }
+
+  .tc-arrow-icon {
+    width: 18px;
+    height: 18px;
+    transition: transform 0.3s ease;
+  }
+
+  /* Hover Animations */
+  .tc-explore-link:hover .tc-arrow-circle {
+    background-color: rgba(100, 255, 218, 0.15);
+  }
+
+  .tc-explore-link:hover .tc-arrow-icon {
+    transform: translateX(3px);
+  }
+
+  /* Absolute Controls Boundary Alignment Layer */
+  .tc-global-controls-container {
+    position: absolute;
+    top: 0;
+    left: 50%;
+    transform: translateX(-50%);
+    width: 100%;
+    max-width: 1200px;
+    height: 100%;
+    padding: 0 20px;
+    pointer-events: none; /* Let clicks pass through to layer below */
+    z-index: 10;
+    box-sizing: border-box;
+  }
+
+  /* Progress bar defaults to strict circular dots when not active */
+  .tc-pagination {
+    position: absolute;
+    top: 40%;
+    left: 24px;
+    transform: translateY(-50%);
+    display: flex;
+    gap: 12px;
+    align-items: center;
+    pointer-events: auto;
+  }
+
+  .tc-dot-bar {
+    position: relative;
+    width: 10px;
+    height: 10px;
+    background: rgba(255, 255, 255, 0.25);
+    border-radius: 50%; /* Pure Circle Dot */
+    overflow: hidden;
+    cursor: pointer;
+    transition: width 0.3s cubic-bezier(0.4, 0, 0.2, 1), height 0.3s ease, border-radius 0.3s ease;
+  }
+
+  /* Expands to horizontal fill track only when active/in-play */
+  .tc-dot-bar.tc-active {
+    width: 50px;
+    height: 4px;
+    border-radius: 2px; /* Smooth Bar Track transition */
+    background: rgba(255, 255, 255, 0.15);
+  }
+
+  .tc-progress-fill {
+    display: block;
+    position: absolute;
+    top: 0;
+    left: 0;
+    height: 100%;
+    width: 0%;
+    background: var(--accent-light-blue);
+  }
+
+  /* Bottom Right Arrows Setup */
+  .tc-nav-controls {
+    position: absolute;
+    bottom: 120px;
+    right: 24px;
+    display: flex;
+    gap: 15px;
+    pointer-events: auto;
+  }
+
+  .tc-nav-btn {
+    background: rgba(255, 255, 255, 0.15);
+    backdrop-filter: blur(16px);
+    -webkit-backdrop-filter: blur(16px);
+    border: none;
+    outline: none;
+    
+    color: #ffffff;
+    width: 54px;
+    height: 54px;
+    border-radius: 50%;
+    cursor: pointer;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    transition: all 0.3s ease;
+  }
+
+  .tc-nav-btn:hover {
+    transform: scale(1.05);
+  }
+
+  .tc-nav-btn svg {
+    width: 24px;
+    height: 24px;
+  }
+
+  /* Responsive Adjustments */
+  @media (max-width: 1024px) {
+    .tc-title {
+      font-size: 2.8rem;
+    }
+  }
+
+  @media (max-width: 768px) {
+    .tc-slide-overlay {
+      background: linear-gradient(180deg, rgba(10, 25, 47, 0.95) 0%, rgba(10, 25, 47, 0.75) 100%);
+    }
+
+    .tc-slider-content-boundary {
+      padding-bottom: 160px;
+    }
+
+    .tc-global-controls-container {
+      position: absolute;
+      left: 0;
+      transform: none;
+      max-width: 100%;
+    }
+
+    .tc-pagination {
+      top: 8%;
+      left: 24px;
+      transform: none;
+    }
+
+    .tc-title {
+      font-size: 2.2rem;
+      margin-bottom: 24px;
+    }
+    
+    .tc-nav-controls {
+      right: 24px;
+      bottom: 60px;
+    }
+  }
+</style>
+
+<script>
+  document.addEventListener('DOMContentLoaded', function() {
+    const sliderContainer = document.querySelector('.tc-slider-container');
+    const slides = sliderContainer.querySelectorAll('.tc-slide');
+    const dotBars = sliderContainer.querySelectorAll('.tc-dot-bar');
+    const prevBtn = sliderContainer.querySelector('.tc-prev-btn');
+    const nextBtn = sliderContainer.querySelector('.tc-next-btn');
+    
+    let currentIndex = 0;
+    let progressInterval;
+    const slideDuration = 6000; 
+    let startTime;
+
+    function initSlide(index) {
+      slides.forEach((slide, idx) => {
+        const video = slide.querySelector('.tc-slide-video');
+        if(idx === index) {
+          slide.classList.add('tc-active');
+          if(video) { 
+            video.currentTime = 0;
+            video.play().catch(()=>{}); 
+          }
+        } else {
+          slide.classList.remove('tc-active');
+          if(video) { video.pause(); }
+        }
+      });
+
+      dotBars.forEach((bar, idx) => {
+        const fill = bar.querySelector('.tc-progress-fill');
+        if(idx === index) {
+          bar.classList.add('tc-active');
+        } else {
+          bar.classList.remove('tc-active');
+          if(fill) fill.style.width = '0%';
+        }
+      });
+
+      startProgressBar(index);
+    }
+
+    function startProgressBar(index) {
+      clearInterval(progressInterval);
+      const fillElement = dotBars[index].querySelector('.tc-progress-fill');
+      if (!fillElement) return;
+
+      startTime = Date.now();
+      
+      progressInterval = setInterval(() => {
+        let elapsedTime = Date.now() - startTime;
+        let percentage = (elapsedTime / slideDuration) * 100;
+        
+        if (percentage >= 100) {
+          percentage = 100;
+          clearInterval(progressInterval);
+          changeSlide(1);
+        }
+        
+        fillElement.style.transition = 'width 0.05s linear';
+        fillElement.style.width = percentage + '%';
+      }, 50);
+    }
+
+    function changeSlide(direction) {
+      currentIndex += direction;
+      if (currentIndex >= slides.length) currentIndex = 0;
+      if (currentIndex < 0) currentIndex = slides.length - 1;
+      initSlide(currentIndex);
+    }
+
+    nextBtn.addEventListener('click', () => changeSlide(1));
+    prevBtn.addEventListener('click', () => changeSlide(-1));
+
+    dotBars.forEach((bar, idx) => {
+      bar.addEventListener('click', function() {
+        if(currentIndex === idx) return;
+        currentIndex = idx;
+        initSlide(currentIndex);
+      });
+    });
+
+    initSlide(currentIndex);
+  });
+</script>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Alternating Grid Section</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+    <style>
+        .altgrid-wrapper-m3r {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        .altgrid-wrapper-m3r *,
+        .altgrid-wrapper-m3r *::before,
+        .altgrid-wrapper-m3r *::after {
+            box-sizing: inherit;
+        }
+
+        .altgrid-section-m3r {
+            background: #ffffff;
+            padding: 0;
+            font-family: 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif;
+        }
+
+        .altgrid-row-m3r {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            min-height: 600px;
+            align-items: center;
+        }
+
+        .altgrid-image-container-m3r {
+            width: 100%;
+            height: 100%;
+            min-height: 600px;
+            overflow: hidden;
+            position: relative;
+        }
+
+        .altgrid-image-m3r {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            display: block;
+        }
+
+        .altgrid-content-m3r {
+            padding: 80px 100px;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+        }
+
+        .altgrid-heading-m3r {
+            color: #1a1f35;
+            font-size: 48px;
+            font-weight: 600;
+            line-height: 1;
+            margin: 0 0 24px 0;
+            letter-spacing: -0.04em;
+        }
+
+        .altgrid-description-m3r {
+            color: #4a5568;
+            font-size: 18px;
+            font-weight: 400;
+            line-height: 1.7;
+            margin: 0;
+        }
+
+        /* Alternating pattern - image on right */
+        .altgrid-row-reverse-m3r {
+            direction: rtl;
+        }
+
+        .altgrid-row-reverse-m3r .altgrid-content-m3r {
+            direction: ltr;
+        }
+
+        /* Even rows with different background */
+        .altgrid-row-m3r:nth-child(even) {
+            background: #f7fafc;
+        }
+
+        @media (max-width: 968px) {
+            .altgrid-row-m3r,
+            .altgrid-row-reverse-m3r {
+                grid-template-columns: 1fr;
+                direction: ltr;
+            }
+
+            .altgrid-image-container-m3r {
+                min-height: 400px;
+            }
+
+            .altgrid-content-m3r {
+                padding: 60px 40px;
+            }
+
+            .altgrid-heading-m3r {
+                font-size: 36px;
+            }
+
+            .altgrid-description-m3r {
+                font-size: 16px;
+            }
+        }
+
+        @media (max-width: 640px) {
+            .altgrid-image-container-m3r {
+                min-height: 300px;
+            }
+
+            .altgrid-content-m3r {
+                padding: 40px 24px;
+            }
+
+            .altgrid-heading-m3r {
+                font-size: 28px;
+                margin-bottom: 16px;
+            }
+        }
+    </style>
+</head>
+<body class="altgrid-wrapper-m3r">
+    <section class="altgrid-section-m3r">
+        
+        <!-- Row 1: Image Left, Content Right -->
+        <div class="altgrid-row-m3r">
+            <div class="altgrid-image-container-m3r">
+                <img src="https://images.pexels.com/photos/10050551/pexels-photo-10050551.jpeg" 
+                     alt="Technology" 
+                     class="altgrid-image-m3r">
+            </div>
+            <div class="altgrid-content-m3r">
+                <h2 class="altgrid-heading-m3r">Cloud Infrastructure Solutions</h2>
+                <p class="altgrid-description-m3r">
+                    Transform your business with scalable cloud infrastructure that grows with your needs. Our enterprise-grade solutions provide the reliability and performance you demand, with 99.99% uptime and global reach across multiple regions.
+                </p>
+            </div>
+        </div>
+
+        <!-- Row 2: Content Left, Image Right -->
+        <div class="altgrid-row-m3r altgrid-row-reverse-m3r">
+            <div class="altgrid-image-container-m3r">
+                <img src="https://images.pexels.com/photos/8193806/pexels-photo-8193806.jpeg" 
+                     alt="Security" 
+                     class="altgrid-image-m3r">
+            </div>
+            <div class="altgrid-content-m3r">
+                <h2 class="altgrid-heading-m3r">Advanced Security Protocols</h2>
+                <p class="altgrid-description-m3r">
+                    Protect your data with military-grade encryption and multi-layered security architecture. Our comprehensive security framework includes real-time threat detection, automated response systems, and continuous monitoring to keep your assets safe.
+                </p>
+            </div>
+        </div>
+
+        <!-- Row 3: Image Left, Content Right -->
+        <div class="altgrid-row-m3r">
+            <div class="altgrid-image-container-m3r">
+                <img src="https://images.pexels.com/photos/14171333/pexels-photo-14171333.jpeg" 
+                     alt="Analytics" 
+                     class="altgrid-image-m3r">
+            </div>
+            <div class="altgrid-content-m3r">
+                <h2 class="altgrid-heading-m3r">Data Analytics & Insights</h2>
+                <p class="altgrid-description-m3r">
+                    Unlock the power of your data with advanced analytics and machine learning capabilities. Gain actionable insights in real-time, visualize complex data patterns, and make informed decisions that drive your business forward.
+                </p>
+            </div>
+        </div>
+
+        <!-- Row 4: Content Left, Image Right -->
+        <div class="altgrid-row-m3r altgrid-row-reverse-m3r">
+            <div class="altgrid-image-container-m3r">
+                <img src="https://images.pexels.com/photos/10050600/pexels-photo-10050600.jpeg" 
+                     alt="Collaboration" 
+                     class="altgrid-image-m3r">
+            </div>
+            <div class="altgrid-content-m3r">
+                <h2 class="altgrid-heading-m3r">Seamless Team Collaboration</h2>
+                <p class="altgrid-description-m3r">
+                    Enable your teams to work together effortlessly from anywhere in the world. Our collaboration platform integrates communication, project management, and file sharing in one unified workspace designed for modern teams.
+                </p>
+            </div>
+        </div>
+
+    </section>
+</body>
+</html>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<cronos-footer></cronos-footer>

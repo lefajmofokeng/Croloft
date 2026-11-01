@@ -1,0 +1,671 @@
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Glossary</title>
+    
+    <script src="header.js" defer></script>
+    <script src="footer.js" defer></script> 
+
+    <style>
+        @font-face { font-family:'Circular Std'; src:url('fonts/CircularStd-Book.woff2') format('woff2'),url('fonts/CircularStd-Book.woff') format('woff'); font-weight:400; font-style:normal; font-display:swap; }
+        @font-face { font-family:'Circular Std'; src:url('fonts/CircularStd-BookItalic.woff2') format('woff2'),url('fonts/CircularStd-BookItalic.woff') format('woff'); font-weight:400; font-style:italic; font-display:swap; }
+        @font-face { font-family:'Circular Std'; src:url('fonts/CircularStd-Medium.woff2') format('woff2'),url('fonts/CircularStd-Medium.woff') format('woff'); font-weight:500; font-style:normal; font-display:swap; }
+        @font-face { font-family:'Circular Std'; src:url('fonts/CircularStd-Bold.woff2') format('woff2'),url('fonts/CircularStd-Bold.woff') format('woff'); font-weight:600; font-style:normal; font-display:swap; }
+        @font-face { font-family:'Circular Std'; src:url('fonts/CircularStd-Black.woff2') format('woff2'),url('fonts/CircularStd-Black.woff') format('woff'); font-weight:800; font-style:normal; font-display:swap; }
+    
+        @font-face { font-family:'Sunflare'; src:url('fonts/Finlandica[wght].ttf') format('woff2'),url('fonts/CircularStd-Black.woff') format('woff'); font-weight:900; font-style:normal; font-display:swap; }
+      * {
+        margin: 0;
+        padding: 0;
+        box-sizing: border-box;
+      }
+    </style>
+</head>
+<body>
+
+  <cronos-header></cronos-header>
+    
+</body>
+</html>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Digital Finance Glossary</title>
+<style>
+  *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+  /* ─── HERO / SEARCH SECTION (original design) ─── */
+  .itcp-glossary-container {
+    font-family: 'Circular Std', 'CircularStd', -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
+    background: #f6fcac;
+    min-height: 80vh;
+    width: 100%;
+    padding: 5vh 10vw;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+  }
+
+  .itcp-glossary-back-button {
+    display: inline-flex;
+    align-items: center;
+    margin-bottom: 8vh;
+    cursor: pointer;
+  }
+
+  .itcp-glossary-back-icon {
+    width: 16px;
+    height: 16px;
+    fill: #000000;
+    margin-right: 8px;
+  }
+
+  .itcp-glossary-back-text {
+    font-size: 13px;
+    font-weight: 500;
+    color: #000000;
+  }
+
+  .itcp-glossary-content {
+    max-width: 790px;
+    width: 100%;
+    margin-left: auto;
+    margin-right: auto;
+    transform: translateX(-5vw);
+  }
+
+  .itcp-glossary-title {
+    font-size: 56px;
+    font-weight: 500;
+    line-height: 1.1;
+    color: #000000;
+    margin-bottom: 4vh;
+    
+  }
+
+  .itcp-glossary-intro {
+    font-size: 15px;
+    font-weight: 400;
+    line-height: 1.6;
+    color: #000000;
+    margin-bottom: 10vh;
+    max-width: 520px;
+  }
+
+  .itcp-glossary-search-wrapper {
+    position: relative;
+    display: flex;
+    align-items: center;
+    border: 2px solid #7a7a7a; border-radius: 50px;
+    padding: 10px 15px;
+  }
+
+  .itcp-glossary-search-icon {
+    width: 22px;
+    height: 22px;
+    fill: #7a7a7a;
+    position: absolute;
+    left: 15px;
+  }
+
+  .itcp-glossary-search-input {
+    flex: 1;
+    border: none;
+    background: transparent;
+    font-family: inherit;
+    font-size: 19px;
+    font-weight: 400;
+    color: #000;
+    padding-left: 28px;
+    outline: none;
+  }
+
+  .itcp-glossary-search-input::placeholder { color: #7a7a7a; }
+
+  .itcp-search-clear {
+    background: none;
+    border: none;
+    cursor: pointer;
+    color: #7a7a7a;
+    font-size: 20px;
+    line-height: 1;
+    padding: 0 4px;
+    display: none;
+    font-family: inherit;
+  }
+  .itcp-search-clear.visible { display: block; }
+
+  /* ─── GLOSSARY BODY ─── */
+  .itg-glossary-wrapper {
+    font-family: 'Circular Std', -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif;
+    background: #fff;
+    color: #000;
+    -webkit-font-smoothing: antialiased;
+  }
+
+  .itg-body-layout {
+    display: flex;
+    max-width: 1100px;
+    margin: 0 auto;
+    padding: 40px 5%;
+    align-items: flex-start;
+    gap: 80px;
+  }
+
+  /* ─── LEFT SIDEBAR ─── */
+  .itg-sidebar {
+    width: 200px;
+    flex-shrink: 0;
+    position: sticky;
+    top: 90px;
+  }
+
+  .itg-filter-label {
+    font-size: 1.2rem;
+    line-height: 1;
+    margin-bottom: 15px;
+    font-weight: 500;
+  }
+
+  .itg-filter-dropdown {
+    border: 2px solid #000;
+    padding: 9px 13px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    cursor: pointer;
+    font-size: 1.1rem;
+    font-weight: 500;
+    position: relative;
+    user-select: none; border-radius: 50px;
+  }
+
+  .itg-arrow-icon { transition: transform 0.3s ease; }
+  .itg-filter-dropdown.active .itg-arrow-icon { transform: rotate(180deg); }
+
+  .itg-dropdown-menu {
+    display: none;
+    position: absolute;
+    top: 100%;
+    left: 0;
+    right: 0;
+    background: #fff;
+    border: 1px solid #e0e0e0;
+    z-index: 10; border: 2px solid #7a7a7a;
+  }
+
+  .itg-filter-dropdown.active .itg-dropdown-menu { display: block; }
+
+  .itg-opt {
+    padding: 15px 20px;
+    font-size: 1rem;
+    transition: background 0.2s;
+    cursor: pointer;
+  }
+  .itg-opt:hover { background: #f9f9f9; }
+  .itg-opt.selected { font-weight: 700; }
+
+  /* ─── RIGHT: DEFINITIONS ─── */
+  .itg-content-area { flex: 1; min-width: 0; }
+
+  .itg-no-results {
+    display: none;
+    padding: 80px 0;
+    color: #777;
+    font-size: 1rem;
+  }
+  .itg-no-results.visible { display: block; }
+
+  .itg-group {
+    display: flex;
+    margin-bottom: 100px;
+    scroll-margin-top: 120px;
+  }
+
+  .itg-letter-label {
+    font-size: 7rem;
+    font-weight: 400;
+    line-height: 0.75;
+    min-width: 140px;
+    color: #000;
+  }
+
+  .itg-entries { flex: 1; }
+
+  .itg-item { margin-bottom: 40px; }
+
+  .itg-title {
+    font-size: 1.7rem;
+    font-weight: 500;
+    margin: 0 0 12px 0;
+  }
+
+  .itg-text {
+    font-size: 1rem;
+    line-height: 1.6;
+    color: #777;
+    max-width: 550px;
+  }
+
+  .itg-title mark, .itg-text mark {
+    background: #f6fcac;
+    color: #000;
+    border-radius: 2px;
+    padding: 0 1px;
+  }
+
+  /* ─── RESPONSIVE ─── */
+  @media (max-width: 900px) {
+    .itcp-glossary-content { transform: none; max-width: 100%; margin-top: 5rem;}
+    .itcp-glossary-title { font-size: 40px; }
+    .itg-body-layout { flex-direction: column; gap: 32px; padding: 32px 5%; }
+    .itg-sidebar { width: 100%; position: static; }
+    .itg-letter-label { font-size: 5rem; min-width: 90px; }
+    .itg-filter-label {font-size: 1.5rem;}
+  }
+
+  @media (max-width: 600px) {
+    .itcp-glossary-container { padding: 5vh 6vw; min-height: auto; }
+    .itcp-glossary-title { font-size: 32px; }
+    .itg-group { flex-direction: column; }
+    .itg-letter-label { margin-bottom: 20px; }
+  }
+</style>
+</head>
+<body>
+
+<!-- ─── HERO ─── -->
+<div class="itcp-glossary-container">
+  
+  <div class="itcp-glossary-content">
+    <h1 class="itcp-glossary-title">Digital Croloft<br>Glossary</h1>
+    <p class="itcp-glossary-intro">Here you can find important finance terms and definitions, explained in a simple and clear way. Our goal is to enlighten you on important topics from all areas of the financial and corporate world.</p>
+    <div class="itcp-glossary-search-wrapper">
+      <svg class="itcp-glossary-search-icon" viewBox="0 0 24 24">
+        <path d="M9.5,3A6.5,6.5 0 0,1 16,9.5C16,11.11 15.41,12.59 14.44,13.73L14.71,14H15.5L20.5,19L19,20.5L14,15.5V14.71L13.73,14.44C12.59,15.41 11.11,16 9.5,16A6.5,6.5 0 0,1 3,9.5A6.5,6.5 0 0,1 9.5,3M9.5,5C7,5 5,7 5,9.5C5,12 7,14 9.5,14C12,14 14,12 14,9.5C14,7 12,5 9.5,5Z"/>
+      </svg>
+      <input type="text" class="itcp-glossary-search-input" id="glossary-search" placeholder="Search" autocomplete="off">
+      <button class="itcp-search-clear" id="search-clear">×</button>
+    </div>
+  </div>
+</div>
+
+<!-- ─── GLOSSARY BODY ─── -->
+<div class="itg-glossary-wrapper">
+  <div class="itg-body-layout">
+
+    <aside class="itg-sidebar">
+      <h2 class="itg-filter-label">Filter by category</h2>
+      <div class="itg-filter-dropdown" id="itg-filter-trigger">
+        <span id="itg-active-cat">All definitions</span>
+        <span class="itg-arrow-icon">
+          <svg width="14" height="8" viewBox="0 0 14 8" fill="none">
+            <path d="M1 1L7 7L13 1" stroke="black" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+          </svg>
+        </span>
+        <div class="itg-dropdown-menu" id="itg-filter-menu">
+          <div class="itg-opt selected" data-cat="all">All definitions</div>
+          <div class="itg-opt" data-cat="dev">Software Development</div>
+          <div class="itg-opt" data-cat="infra">Infrastructure & Cloud</div>
+          <div class="itg-opt" data-cat="sec">Cybersecurity</div>
+          <div class="itg-opt" data-cat="data">Data & AI</div>
+          <div class="itg-opt" data-cat="marketing">Marketing & Creative</div>
+        </div>
+      </div>
+    </aside>
+
+    <div class="itg-content-area" id="itg-content-area">
+      <div class="itg-no-results" id="itg-no-results">No results found.</div>
+    </div>
+
+  </div>
+</div>
+
+<script>
+(function () {
+
+  const TERMS = [
+
+    // ── A ──
+    { letter: 'A', title: 'A/B Testing', cat: 'marketing', text: 'A method of comparing two versions of a webpage, ad, or piece of content against each other to determine which performs better. It is a core technique in digital marketing for optimizing conversion rates and user engagement.' },
+    { letter: 'A', title: 'Agile Development', cat: 'dev', text: 'A software development methodology that promotes iterative progress, collaboration, and flexibility. Work is broken into short cycles called sprints, allowing teams to respond quickly to change and deliver value continuously.' },
+    { letter: 'A', title: 'API (Application Programming Interface)', cat: 'dev', text: 'A set of protocols that allow different software applications to communicate. It defines the methods and data formats that applications can use to request and exchange information.' },
+    { letter: 'A', title: 'Automation', cat: 'dev', text: 'The use of technology to perform tasks with minimal human intervention. In software development and IT, automation covers everything from code deployment pipelines to robotic process automation (RPA) that handles repetitive business workflows.' },
+    { letter: 'A', title: 'Ad Network', cat: 'marketing', text: 'A platform that connects advertisers with websites and apps that want to host advertisements. Ad networks aggregate inventory from publishers and match it with relevant advertiser campaigns to maximize reach and relevance.' },
+    { letter: 'A', title: 'Analytics', cat: 'marketing', text: 'The systematic collection and interpretation of data to understand performance and guide decisions. In digital marketing, analytics tools track website traffic, campaign effectiveness, user behavior, and return on investment.' },
+
+    // ── B ──
+    { letter: 'B', title: 'Backend Development', cat: 'dev', text: 'The server-side layer of a web or mobile application responsible for databases, business logic, and APIs. Backend developers build the systems that power what users see, typically using languages like Python, Node.js, Java, or PHP.' },
+    { letter: 'B', title: 'Bandwidth', cat: 'infra', text: 'The maximum rate of data transfer across a given path. In IT infrastructure, it is critical for determining the capacity and speed of network communications.' },
+    { letter: 'B', title: 'Brand Identity', cat: 'marketing', text: 'The visual and conceptual elements that distinguish a company — including logo, color palette, typography, tone of voice, and design language. A strong brand identity builds recognition, trust, and differentiation in the market.' },
+    { letter: 'B', title: 'Business Intelligence (BI)', cat: 'data', text: 'Technologies and strategies used to analyze business data and convert it into actionable insights. BI tools create dashboards, reports, and visualizations that help leadership make data-driven decisions.' },
+
+    // ── C ──
+    { letter: 'C', title: 'CI/CD (Continuous Integration / Continuous Deployment)', cat: 'dev', text: 'A set of practices that automate the building, testing, and deployment of software. CI ensures code changes are regularly merged and tested; CD automates the release of validated code to production environments.' },
+    { letter: 'C', title: 'Cloud Computing', cat: 'infra', text: 'The on-demand delivery of computing services—including servers, storage, databases, and software—over the internet with pay-as-you-go pricing. It eliminates the need for businesses to own and manage physical hardware.' },
+    { letter: 'C', title: 'Cloud Infrastructure', cat: 'infra', text: 'The combination of hardware and software components — such as servers, storage, networking, and virtualization — that supports cloud computing services. Providers like AWS, Azure, and Google Cloud offer scalable cloud infrastructure.' },
+    { letter: 'C', title: 'CMS (Content Management System)', cat: 'marketing', text: 'A software platform that allows users to create, manage, and publish digital content without requiring deep technical knowledge. Popular CMS platforms include WordPress, Drupal, and Webflow.' },
+    { letter: 'C', title: 'CRM (Customer Relationship Management)', cat: 'marketing', text: 'Software that helps businesses manage interactions with current and potential customers. CRM systems centralize contact data, track sales pipelines, and enable personalized communication at scale.' },
+    { letter: 'C', title: 'Cybersecurity', cat: 'sec', text: 'The practice of protecting systems, networks, and programs from digital attacks. It encompasses a broad range of disciplines including network security, endpoint protection, identity management, and incident response.' },
+    { letter: 'C', title: 'Content Marketing', cat: 'marketing', text: 'A strategy focused on creating and distributing valuable, relevant content to attract and retain a clearly defined audience. It includes blog posts, videos, infographics, and whitepapers that educate and engage rather than directly sell.' },
+    { letter: 'C', title: 'Colocation (Colo)', cat: 'infra', text: 'A data center service where a business rents space for its servers and hardware rather than hosting them on-premises. Colocation provides enterprise-grade power, cooling, and connectivity without the full cost of owning a facility.' },
+
+    // ── D ──
+    { letter: 'D', title: 'Data Center', cat: 'infra', text: 'A physical or virtual facility that houses an organization\'s IT infrastructure, including servers, storage systems, and networking equipment. Data centers are the backbone of enterprise computing and cloud services.' },
+    { letter: 'D', title: 'Data Engineering', cat: 'data', text: 'The discipline of designing and building systems for collecting, storing, and analyzing data at scale. Data engineers create pipelines that transform raw data into formats ready for analysis and machine learning.' },
+    { letter: 'D', title: 'Database Management', cat: 'data', text: 'The administration, optimization, and maintenance of databases to ensure data is stored securely, retrieved efficiently, and remains accurate. It includes tasks like schema design, query optimization, backups, and user access control.' },
+    { letter: 'D', title: 'DevOps', cat: 'dev', text: 'A set of practices that combines software development and IT operations to shorten the development lifecycle and provide continuous, high-quality delivery. DevOps teams share responsibility for code from development through to production.' },
+    { letter: 'D', title: 'Digital Marketing', cat: 'marketing', text: 'The promotion of products, services, or brands through digital channels including search engines, social media, email, and websites. It encompasses SEO, paid advertising, content strategy, and performance analytics.' },
+    { letter: 'D', title: 'DNS (Domain Name System)', cat: 'infra', text: 'The internet\'s directory system that translates human-readable domain names into IP addresses. DNS ensures that when a user types a URL, their request is routed to the correct server hosting that website or service.' },
+    { letter: 'D', title: 'Docker', cat: 'infra', text: 'An open-source platform that uses containerization to package applications and their dependencies into isolated, portable units called containers. Docker ensures software runs consistently regardless of the underlying infrastructure.' },
+
+    // ── E ──
+    { letter: 'E', title: 'E-Commerce', cat: 'dev', text: 'The buying and selling of goods or services over the internet. E-commerce development involves building online storefronts, payment processing systems, product catalogues, and order management platforms.' },
+    { letter: 'E', title: 'Email Marketing', cat: 'marketing', text: 'The use of email to promote products, share content, nurture leads, and build customer loyalty. Effective email marketing relies on audience segmentation, personalization, and measurable campaigns with clear calls to action.' },
+    { letter: 'E', title: 'Encryption', cat: 'sec', text: 'The process of converting information into a coded format to prevent unauthorized access. Encryption is fundamental to securing data in transit (e.g. HTTPS) and at rest (e.g. encrypted databases and storage).' },
+    { letter: 'E', title: 'ERP (Enterprise Resource Planning)', cat: 'dev', text: 'Integrated software that centralizes and automates core business processes such as finance, HR, supply chain, and operations. ERP systems give organizations a unified view of data across all departments.' },
+
+    // ── F ──
+    { letter: 'F', title: 'Firewall', cat: 'sec', text: 'A network security device that monitors and filters incoming and outgoing traffic based on established security rules. Firewalls act as the first line of defence between trusted internal networks and untrusted external networks.' },
+    { letter: 'F', title: 'Frontend Development', cat: 'dev', text: 'The client-side layer of a web or mobile application that users interact with directly. Frontend developers build interfaces using HTML, CSS, and JavaScript frameworks like React, Vue, or Angular.' },
+    { letter: 'F', title: 'Full-Stack Development', cat: 'dev', text: 'Development that spans both the frontend (user interface) and backend (server, database, logic) of an application. Full-stack developers can build complete, end-to-end solutions independently or as part of a cross-functional team.' },
+
+    // ── G ──
+    { letter: 'G', title: 'Graphic Design', cat: 'marketing', text: 'The craft of creating visual content — including logos, layouts, illustrations, and brand materials — to communicate messages effectively. Professional graphic design reinforces brand identity and elevates the perceived quality of a business.' },
+    { letter: 'G', title: 'GUI (Graphical User Interface)', cat: 'dev', text: 'A form of user interface that allows users to interact with software through visual elements like icons, buttons, and menus rather than text commands. Good GUI design is essential for intuitive digital products.' },
+
+    // ── H ──
+    { letter: 'H', title: 'Helpdesk', cat: 'infra', text: 'A centralized IT support service that handles employee or customer requests, troubleshoots technical issues, and resolves incidents. Helpdesk services can be delivered on-site, remotely, or through a hybrid model.' },
+    { letter: 'H', title: 'Hybrid Cloud', cat: 'infra', text: 'An IT environment that combines on-premises infrastructure with public and private cloud services. It allows organizations to keep sensitive workloads in-house while leveraging the scalability and cost benefits of the cloud.' },
+    { letter: 'H', title: 'Hypervisor', cat: 'infra', text: 'Software that creates and runs virtual machines by abstracting physical hardware. Hypervisors allow one host server to support multiple isolated VMs, making them central to virtualization and cloud infrastructure.' },
+
+    // ── I ──
+    { letter: 'I', title: 'IDE (Integrated Development Environment)', cat: 'dev', text: 'A software application that bundles the tools developers need — code editor, debugger, compiler, and version control integration — into a single interface. Popular IDEs include VS Code, IntelliJ IDEA, and Xcode.' },
+    { letter: 'I', title: 'Incident Management', cat: 'infra', text: 'The process of identifying, logging, categorizing, and resolving IT incidents to restore normal service as quickly as possible. It is a core practice in IT service management (ITSM) frameworks like ITIL.' },
+    { letter: 'I', title: 'IT Consulting', cat: 'infra', text: 'Advisory services that help businesses align their technology strategy with their goals. IT consultants assess existing systems, identify gaps, recommend solutions, and guide digital transformation initiatives.' },
+    { letter: 'I', title: 'IT Support', cat: 'infra', text: 'Ongoing technical assistance provided to businesses to maintain, troubleshoot, and optimize their IT systems. IT support can cover hardware, software, networks, and end-user devices.' },
+
+    // ── J ──
+    { letter: 'J', title: 'JSON', cat: 'dev', text: 'JavaScript Object Notation. A lightweight, human-readable data-interchange format widely used in APIs and web services to structure and transmit data between a client and server.' },
+
+    // ── K ──
+    { letter: 'K', title: 'Kubernetes', cat: 'infra', text: 'An open-source container orchestration platform that automates the deployment, scaling, and management of containerized applications. It is the industry standard for running production workloads in cloud-native environments.' },
+    { letter: 'K', title: 'KPI (Key Performance Indicator)', cat: 'marketing', text: 'A measurable value that demonstrates how effectively an individual, team, or campaign is achieving a defined objective. In marketing, KPIs might include conversion rate, cost per acquisition, click-through rate, or return on ad spend.' },
+
+    // ── L ──
+    { letter: 'L', title: 'Landing Page', cat: 'marketing', text: 'A standalone web page designed specifically for a marketing or advertising campaign. Visitors "land" on it after clicking an ad or link, and the page is optimized to drive a single action — such as signing up or making a purchase.' },
+    { letter: 'L', title: 'Latency', cat: 'infra', text: 'The time delay between a request and the corresponding response in a network. Low latency is critical for real-time applications, cloud-hosted services, and seamless user experiences.' },
+    { letter: 'L', title: 'Load Balancing', cat: 'infra', text: 'The process of distributing network traffic or workloads across multiple servers to ensure no single server becomes overwhelmed. Load balancers improve availability, performance, and resilience of applications.' },
+
+    // ── M ──
+    { letter: 'M', title: 'Machine Learning', cat: 'data', text: 'A branch of artificial intelligence that builds systems capable of learning from data and improving their performance over time without being explicitly programmed. It powers recommendation engines, fraud detection, and predictive analytics.' },
+    { letter: 'M', title: 'Managed IT Services', cat: 'infra', text: 'A model where an external provider proactively manages a company\'s IT infrastructure and end-user systems. This includes monitoring, maintenance, security patching, and support — typically under a fixed monthly agreement.' },
+    { letter: 'M', title: 'Microservices', cat: 'dev', text: 'An architectural approach where an application is built as a collection of small, independently deployable services. Each microservice handles a specific function and communicates via APIs, making systems easier to scale and maintain.' },
+    { letter: 'M', title: 'Mobile App Development', cat: 'dev', text: 'The process of building software applications that run on smartphones and tablets. Mobile development targets iOS, Android, or both, using native frameworks like Swift and Kotlin, or cross-platform tools like Flutter and React Native.' },
+
+    // ── N ──
+    { letter: 'N', title: 'Natural Language Processing (NLP)', cat: 'data', text: 'A field of AI that enables computers to understand, interpret, and generate human language. NLP powers chatbots, voice assistants, sentiment analysis, and automated content summarization.' },
+    { letter: 'N', title: 'Network Infrastructure', cat: 'infra', text: 'The hardware and software resources that enable network connectivity, communication, and operations within an organization. This includes routers, switches, firewalls, cabling, and wireless access points.' },
+    { letter: 'N', title: 'Node', cat: 'infra', text: 'Any device connected to a network, from a server or router to a workstation or IoT device. In software architecture, a node refers to a single unit within a distributed system or data structure.' },
+
+    // ── O ──
+    { letter: 'O', title: 'Open Source', cat: 'dev', text: 'Software whose source code is publicly available for anyone to inspect, modify, and distribute. Open-source projects like Linux, PostgreSQL, and React are foundational to modern software development.' },
+    { letter: 'O', title: 'On-Premises (On-Prem)', cat: 'infra', text: 'IT infrastructure that is physically located and managed within a company\'s own facilities rather than hosted in the cloud. Organizations choose on-prem solutions for greater control, security, or regulatory compliance.' },
+
+    // ── P ──
+    { letter: 'P', title: 'Payment Gateway', cat: 'dev', text: 'A technology that facilitates online payment processing by securely transmitting transaction data between a customer, a merchant, and a payment processor. It is an essential component of any e-commerce platform.' },
+    { letter: 'P', title: 'PPC (Pay-Per-Click)', cat: 'marketing', text: 'An online advertising model where advertisers pay a fee each time their ad is clicked. PPC campaigns on platforms like Google Ads and Meta allow businesses to drive targeted traffic quickly with measurable, controllable spend.' },
+    { letter: 'P', title: 'Phishing', cat: 'sec', text: 'A social engineering attack where attackers impersonate trusted entities to trick users into revealing sensitive information like passwords or financial data. It is one of the most common vectors for data breaches.' },
+    { letter: 'P', title: 'Private Cloud', cat: 'infra', text: 'Cloud infrastructure operated exclusively for a single organization. It can be hosted on-premises or by a third-party provider, offering greater control, customization, and security than public cloud environments.' },
+
+    // ── Q ──
+    { letter: 'Q', title: 'QA (Quality Assurance)', cat: 'dev', text: 'A systematic process of evaluating software to detect defects and ensure it meets requirements before release. QA includes manual testing, automated test suites, performance testing, and security audits.' },
+
+    // ── R ──
+    { letter: 'R', title: 'RAM (Random Access Memory)', cat: 'infra', text: 'Temporary memory that a computer uses to store data it is actively working with. More RAM allows systems to handle more simultaneous processes, which is critical for servers running multiple applications or virtual machines.' },
+    { letter: 'R', title: 'Responsive Design', cat: 'dev', text: 'A web design approach that ensures a website or application looks and functions correctly across all screen sizes and devices — from desktops to tablets and smartphones. Responsive design is essential for modern web and e-commerce development.' },
+    { letter: 'R', title: 'RPA (Robotic Process Automation)', cat: 'dev', text: 'The use of software robots to automate repetitive, rule-based business tasks such as data entry, invoice processing, and report generation. RPA frees employees from manual work and reduces errors in high-volume processes.' },
+    { letter: 'R', title: 'ROI (Return on Investment)', cat: 'marketing', text: 'A measure of the profitability of an investment relative to its cost. In marketing, ROI evaluates the revenue generated by campaigns, helping businesses allocate budgets to the channels and strategies delivering the most value.' },
+
+    // ── S ──
+    { letter: 'S', title: 'SaaS (Software as a Service)', cat: 'infra', text: 'A cloud-based software delivery model where applications are hosted by a provider and accessed via the internet on a subscription basis. SaaS eliminates the need for local installation and simplifies updates and maintenance.' },
+    { letter: 'S', title: 'Scalability', cat: 'infra', text: 'The ability of a system, network, or application to handle increased demand without degrading performance. Scalable infrastructure can grow horizontally (adding more servers) or vertically (upgrading existing servers) as business needs evolve.' },
+    { letter: 'S', title: 'SEO (Search Engine Optimization)', cat: 'marketing', text: 'The practice of optimizing web content to rank higher in search engine results pages. SEO involves keyword research, on-page content improvements, technical site health, and link building to drive organic traffic.' },
+    { letter: 'S', title: 'Social Media Marketing', cat: 'marketing', text: 'The use of social media platforms — such as LinkedIn, Instagram, Facebook, and X — to build brand awareness, engage audiences, and drive traffic or conversions. It includes both organic content strategy and paid advertising.' },
+    { letter: 'S', title: 'SQL (Structured Query Language)', cat: 'data', text: 'The standard language for managing and querying relational databases. SQL is used to retrieve, insert, update, and delete data, and is a foundational skill in database engineering and data analytics.' },
+    { letter: 'S', title: 'SSL/TLS', cat: 'sec', text: 'Cryptographic protocols that provide secure, encrypted communication over a network. SSL/TLS is the technology behind HTTPS, protecting data transmitted between browsers and web servers from interception.' },
+
+    // ── T ──
+    { letter: 'T', title: 'Technical Debt', cat: 'dev', text: 'The accumulated cost of shortcuts and suboptimal decisions made during software development. Like financial debt, technical debt accrues interest — making future changes slower and riskier if not addressed through refactoring.' },
+    { letter: 'T', title: 'Two-Factor Authentication (2FA)', cat: 'sec', text: 'A security process requiring users to provide two separate forms of verification before accessing an account — typically a password and a one-time code. 2FA significantly reduces the risk of unauthorized access.' },
+
+    // ── U ──
+    { letter: 'U', title: 'UI (User Interface)', cat: 'dev', text: 'The visual layer of a software product — the screens, buttons, forms, and elements a user interacts with. Good UI design balances aesthetics with functionality to create clear, intuitive, and consistent experiences.' },
+    { letter: 'U', title: 'Uptime', cat: 'infra', text: 'The percentage of time a system, server, or service is operational and available. High uptime — typically expressed as "99.9% uptime" — is a key benchmark for managed IT services, hosting providers, and business-critical applications.' },
+    { letter: 'U', title: 'UX (User Experience)', cat: 'dev', text: 'The overall experience a person has when interacting with a product, covering usability, accessibility, performance, and emotional response. UX design research and testing ensure products are intuitive and genuinely useful.' },
+
+    // ── V ──
+    { letter: 'V', title: 'Virtualization', cat: 'infra', text: 'The process of creating software-based representations of physical resources such as servers, storage, and networks. Virtualization increases hardware utilization, reduces costs, and forms the foundation of cloud computing.' },
+    { letter: 'V', title: 'VPN (Virtual Private Network)', cat: 'sec', text: 'A service that creates an encrypted tunnel over the internet between a user\'s device and a private network. VPNs are widely used to secure remote worker connections and protect sensitive business data from interception.' },
+
+    // ── W ──
+    { letter: 'W', title: 'WAN (Wide Area Network)', cat: 'infra', text: 'A network that spans large geographic areas, connecting multiple local networks. WANs enable communication between offices, data centers, and cloud environments, and the internet itself is the world\'s largest WAN.' },
+    { letter: 'W', title: 'Web App Development', cat: 'dev', text: 'The process of building applications that run in a web browser. Web apps are accessed via URLs and can range from simple websites to complex platforms like project management tools, CRMs, and online marketplaces.' },
+
+    // ── X ──
+    { letter: 'X', title: 'XML', cat: 'dev', text: 'Extensible Markup Language. A flexible markup language used to structure and transport data between systems. While largely replaced by JSON in modern APIs, XML remains widely used in enterprise integrations and document standards.' },
+
+    // ── Y ──
+    { letter: 'Y', title: 'Yottabyte', cat: 'data', text: 'A unit of digital information equal to one septillion bytes. As global data generation accelerates, storage technologies and data engineering practices must scale to manage ever-larger volumes of information.' },
+
+    // ── Z ──
+    { letter: 'Z', title: 'Zero Trust', cat: 'sec', text: 'A security framework built on the principle of "never trust, always verify." Every user, device, and application — regardless of location — must be authenticated and authorized before accessing any resource, minimizing the risk of breaches.' },
+
+  ];
+
+  const searchInput    = document.getElementById('glossary-search');
+  const searchClear    = document.getElementById('search-clear');
+  const filterTrigger  = document.getElementById('itg-filter-trigger');
+  const filterOpts     = document.querySelectorAll('.itg-opt');
+  const activeCatLabel = document.getElementById('itg-active-cat');
+  const contentArea    = document.getElementById('itg-content-area');
+  const noResults      = document.getElementById('itg-no-results');
+
+  let currentCat   = 'all';
+  let currentQuery = '';
+
+  function escapeHtml(s) {
+    return s.replace(/&/g,'&amp;').replace(/</g,'&lt;').replace(/>/g,'&gt;');
+  }
+  function escapeRe(s) {
+    return s.replace(/[-[\]{}()*+?.,\\^$|#\s]/g,'\\$&');
+  }
+  function highlight(text, q) {
+    if (!q) return text;
+    return text.replace(new RegExp('('+escapeRe(q)+')','gi'),'<mark>$1</mark>');
+  }
+
+  function render() {
+    const q = currentQuery.trim().toLowerCase();
+
+    const filtered = TERMS.filter(t => {
+      const catOk   = currentCat === 'all' || t.cat === currentCat;
+      const queryOk = !q || t.title.toLowerCase().includes(q) || t.text.toLowerCase().includes(q);
+      return catOk && queryOk;
+    });
+
+    contentArea.querySelectorAll('.itg-group').forEach(el => el.remove());
+
+    if (filtered.length === 0) {
+      noResults.classList.add('visible');
+      return;
+    }
+    noResults.classList.remove('visible');
+
+    const byLetter = {};
+    filtered.forEach(t => {
+      (byLetter[t.letter] = byLetter[t.letter] || []).push(t);
+    });
+
+    const frag = document.createDocumentFragment();
+    Object.keys(byLetter).sort().forEach(letter => {
+      const section = document.createElement('section');
+      section.className = 'itg-group';
+      section.id = 'itg-' + letter.toLowerCase();
+
+      const lbl = document.createElement('div');
+      lbl.className = 'itg-letter-label';
+      lbl.textContent = letter;
+
+      const entries = document.createElement('div');
+      entries.className = 'itg-entries';
+
+      byLetter[letter].forEach(term => {
+        const item = document.createElement('div');
+        item.className = 'itg-item';
+        item.innerHTML =
+          `<h3 class="itg-title">${highlight(escapeHtml(term.title), currentQuery)}</h3>` +
+          `<p class="itg-text">${highlight(escapeHtml(term.text), currentQuery)}</p>`;
+        entries.appendChild(item);
+      });
+
+      section.appendChild(lbl);
+      section.appendChild(entries);
+      frag.appendChild(section);
+    });
+
+    contentArea.insertBefore(frag, noResults);
+  }
+
+  // Search
+  searchInput.addEventListener('input', () => {
+    currentQuery = searchInput.value;
+    searchClear.classList.toggle('visible', currentQuery.length > 0);
+    render();
+  });
+
+  searchClear.addEventListener('click', () => {
+    searchInput.value = '';
+    currentQuery = '';
+    searchClear.classList.remove('visible');
+    searchInput.focus();
+    render();
+  });
+
+  // Filter
+  filterTrigger.addEventListener('click', e => {
+    e.stopPropagation();
+    filterTrigger.classList.toggle('active');
+  });
+
+  filterOpts.forEach(opt => {
+    opt.addEventListener('click', e => {
+      e.stopPropagation();
+      currentCat = opt.getAttribute('data-cat');
+      activeCatLabel.textContent = opt.textContent;
+      filterOpts.forEach(o => o.classList.remove('selected'));
+      opt.classList.add('selected');
+      filterTrigger.classList.remove('active');
+      render();
+    });
+  });
+
+  window.addEventListener('click', () => filterTrigger.classList.remove('active'));
+
+  render();
+
+})();
+</script>
+
+</body>
+</html>
+
+
+
+
+
+<cronos-footer></cronos-footer>

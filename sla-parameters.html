@@ -1,0 +1,279 @@
+<!DOCTYPE html>
+<html lang="en" dir="ltr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, minimum-scale=1.0, maximum-scale=5.0, viewport-fit=cover, shrink-to-fit=no">
+    <meta http-equiv="x-ua-compatible" content="ie=edge"/>
+    
+    <title>Croloft</title>
+
+    <!-- WEB TAB ICON -->
+    <link rel="icon" type="image/png" href="thumbnails/top-2.png">
+
+    <script src="header.js" defer></script>
+    <script src="footer.js" defer></script> 
+
+<style>
+  @font-face { font-family:'Circular Std'; src:url('fonts/CircularStd-Book.woff2') format('woff2'),url('fonts/CircularStd-Book.woff') format('woff'); font-weight:400; font-style:normal; font-display:swap; }
+  @font-face { font-family:'Circular Std'; src:url('fonts/CircularStd-BookItalic.woff2') format('woff2'),url('fonts/CircularStd-BookItalic.woff') format('woff'); font-weight:400; font-style:italic; font-display:swap; }
+  @font-face { font-family:'Circular Std'; src:url('fonts/CircularStd-Medium.woff2') format('woff2'),url('fonts/CircularStd-Medium.woff') format('woff'); font-weight:500; font-style:normal; font-display:swap; }
+  @font-face { font-family:'Circular Std'; src:url('fonts/CircularStd-Bold.woff2') format('woff2'),url('fonts/CircularStd-Bold.woff') format('woff'); font-weight:600; font-style:normal; font-display:swap; }
+  @font-face { font-family:'S'; src:url('fonts/AttenNewRegular.otf') format('woff2'),url('fonts/CircularStd-Black.woff') format('woff'); font-weight:900; font-style:normal; font-display:swap; }
+   * {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+  font-family: 'Circular Std', sans-serif;
+}
+</style>
+
+</head>
+<body>
+
+  <cronos-header></cronos-header>
+    
+</body>
+</html>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Disclaimers UI Recreation</title>
+    <style>
+        /* CRITICAL: Prefix all classes and IDs with 'cdm-' to avoid conflicts */
+
+        /* Assume Circular Std is available. 
+           In a real project, you would include it via @font-face.
+           Here, I'll structure it to use it as the first preference.
+        */
+        .cdm-disclaimer-wrapper {
+            font-family: 'Circular Std', Arial, sans-serif;
+            background-color: #070a21; /* Match dark navy background */
+            padding: 150px 180px; /* Adjust padding to match visual balance */
+            box-sizing: border-box;
+            line-height: 1.5;
+            -webkit-font-smoothing: antialiased;
+            -moz-osx-font-smoothing: grayscale; 
+        }
+
+        .cdm-disclaimer-header {
+            color: #ffffff;
+            font-weight: 600;
+            font-size: 20px;
+            margin: 0 0 24px 0;
+            letter-spacing: -0.02em;
+        }
+
+        .cdm-country-nav {
+            list-style-type: none;
+            margin: 0 0 24px 0;
+            padding: 0;
+            display: flex;
+            gap: 24px; /* Horizontal spacing between countries */
+        }
+
+        .cdm-nav-item {
+            color: #99A9C2; /* Grey-white for inactive countries */
+            font-weight: 500;
+            font-size: 16px;
+            cursor: pointer;
+            text-transform: capitalize;
+            transition: color 0.2s ease;
+            user-select: none;
+        }
+
+        .cdm-nav-item:hover {
+            color: #ffffff;
+        }
+
+        .cdm-nav-item.cdm-active {
+            color: #ffffff; /* Brighter for active country */
+            font-weight: 700;
+        }
+
+        /* This container will hold all the content panels. 
+           We use IDs to target individual panels.
+        */
+        .cdm-content-wrapper {
+            /* No extra styling needed here, just a container */
+        }
+
+        .cdm-content-panel {
+            color: #D1DAE1; /* Grey-white for content text */
+            font-weight: 400;
+            font-size: 14px;
+            display: none; /* Hidden by default */
+        }
+
+        .cdm-content-panel.cdm-active {
+            display: block; /* Shown when active */
+        }
+
+        /* Styling for the text paragraphs within panels */
+        .cdm-content-panel p {
+            margin: 0 0 16px 0;
+        }
+
+        /* Special styling for the contact links and phone number */
+        .cdm-contact-info {
+            color: #D1DAE1;
+            display: flex;
+            align-items: center;
+            gap: 4px; /* Small space before/after text/link */
+        }
+
+        .cdm-contact-info a {
+            color: #4DA6FF; /* Match light blue color for links */
+            text-decoration: none;
+            font-weight: 500;
+        }
+
+        .cdm-contact-info a:hover {
+            text-decoration: underline;
+        }
+
+        /* Utility class to make phone number text distinct */
+        .cdm-phone-number {
+            color: #4DA6FF;
+            font-weight: 500;
+        }
+    </style>
+</head>
+<body>
+
+<div id="cdm-disclaimer-wrapper-unique-id" class="cdm-disclaimer-wrapper">
+    <div class="cdm-disclaimer-header">SLA Parameters</div>
+    
+    <ul class="cdm-country-nav" id="cdm-country-nav-unique-id">
+        <li class="cdm-nav-item" data-target="cdm-panel-us">United States</li>
+        <li class="cdm-nav-item" data-target="cdm-panel-europe">Europe</li>
+        <li class="cdm-nav-item cdm-active" data-target="cdm-panel-singapore">Singapore</li>
+        <li class="cdm-nav-item" data-target="cdm-panel-canada">Canada</li>
+        <li class="cdm-nav-item" data-target="cdm-panel-australia">Australia</li>
+        <li class="cdm-nav-item" data-target="cdm-panel-brazil">Brazil</li>
+        <li class="cdm-nav-item" data-target="cdm-panel-uk">United Kingdom</li>
+    </ul>
+
+    <div class="cdm-content-wrapper" id="cdm-content-wrapper-unique-id">
+        <div id="cdm-panel-us" class="cdm-content-panel">
+            <p><strong>United States Specific Disclaimers:</strong> [Text would go here...]</p>
+        </div>
+        <div id="cdm-panel-europe" class="cdm-content-panel">
+            <p><strong>Europe Specific Disclaimers:</strong> [Text would go here...]</p>
+        </div>
+
+        <div id="cdm-panel-singapore" class="cdm-content-panel cdm-active">
+            <p>
+                The purpose of this website is solely to display information regarding the products and services available on the Crypto.com App. It is not intended to offer access to any of such products and services. You may obtain access to such products and services on the Crypto.com App.
+            </p>
+            <p>
+                Please note that the availability of the products and services on the Crypto.com App is subject to jurisdictional limitations.
+            </p>
+            <p>
+                Crypto.com Visa Card is issued and distributed by Foris Asia Pte. Ltd. that holds a Major Payment Institution License approved by the Monetary Authority of Singapore ("MAS"), which allows it to provide e-money issuance services, account issuance services, cross border and domestic money transfer services. Where Foris Asia Pte. Ltd. issues e-money to non-Singapore residents, please note that this does not mean you will be able to recover all the money you paid to Foris Asia Pte. Ltd. if Foris Asia Pte. Ltd.'s business fails.
+            </p>
+            <p class="cdm-contact-info">
+                For any issues with the crypto.com visa card, you may email us at: <a href="mailto:contact@crypto.com">contact@crypto.com</a> or contact us at <span class="cdm-phone-number">65-6264-0211</span>.
+            </p>
+        </div>
+
+        <div id="cdm-panel-canada" class="cdm-content-panel">
+            <p><strong>Canada Specific Disclaimers:</strong> [Text would go here...]</p>
+        </div>
+        <div id="cdm-panel-australia" class="cdm-content-panel">
+            <p><strong>Australia Specific Disclaimers:</strong> [Text would go here...]</p>
+        </div>
+        <div id="cdm-panel-brazil" class="cdm-content-panel">
+            <p><strong>Brazil Specific Disclaimers:</strong> [Text would go here...]</p>
+        </div>
+        <div id="cdm-panel-uk" class="cdm-content-panel">
+            <p><strong>United Kingdom Specific Disclaimers:</strong> [Text would go here...]</p>
+        </div>
+    </div>
+</div>
+
+<script>
+    /*
+      Clean JavaScript logic using unique IDs for selection 
+      to prevent conflicts with other page scripts.
+    */
+    (function() {
+        const navContainer = document.getElementById('cdm-country-nav-unique-id');
+        const contentContainer = document.getElementById('cdm-content-wrapper-unique-id');
+
+        if (!navContainer || !contentContainer) {
+            console.warn('Crypto Disclaimer elements not found.');
+            return;
+        }
+
+        const navItems = navContainer.querySelectorAll('.cdm-nav-item');
+        const contentPanels = contentContainer.querySelectorAll('.cdm-content-panel');
+
+        navItems.forEach(item => {
+            item.addEventListener('click', function() {
+                // Do nothing if the same tab is clicked
+                if (this.classList.contains('cdm-active')) return;
+
+                // 1. Remove active class from current nav and panel
+                navContainer.querySelector('.cdm-nav-item.cdm-active').classList.remove('cdm-active');
+                contentContainer.querySelector('.cdm-content-panel.cdm-active').classList.remove('cdm-active');
+
+                // 2. Add active class to clicked nav item
+                this.classList.add('cdm-active');
+
+                // 3. Get the target panel ID from data attribute
+                const targetPanelId = this.getAttribute('data-target');
+                const targetPanel = contentContainer.querySelector(`#${targetPanelId}`);
+
+                // 4. Show the target panel
+                if (targetPanel) {
+                    targetPanel.classList.add('cdm-active');
+                } else {
+                    console.error(`Panel with ID ${targetPanelId} not found.`);
+                }
+            });
+        });
+    })();
+</script>
+
+</body>
+</html>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+    <cronos-footer></cronos-footer>

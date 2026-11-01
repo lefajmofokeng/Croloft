@@ -1,0 +1,721 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>My Website</title>
+    
+    <script src="header.js" defer></script> 
+    <script src="footer.js" defer></script>
+
+     <style>
+        @font-face { font-family:'Circular Std'; src:url('fonts/CircularStd-Book.woff2') format('woff2'),url('fonts/CircularStd-Book.woff') format('woff'); font-weight:400; font-style:normal; font-display:swap; }
+        @font-face { font-family:'Circular Std'; src:url('fonts/CircularStd-BookItalic.woff2') format('woff2'),url('fonts/CircularStd-BookItalic.woff') format('woff'); font-weight:400; font-style:italic; font-display:swap; }
+        @font-face { font-family:'Circular Std'; src:url('fonts/CircularStd-Medium.woff2') format('woff2'),url('fonts/CircularStd-Medium.woff') format('woff'); font-weight:500; font-style:normal; font-display:swap; }
+        @font-face { font-family:'Circular Std'; src:url('fonts/CircularStd-Bold.woff2') format('woff2'),url('fonts/CircularStd-Bold.woff') format('woff'); font-weight:600; font-style:normal; font-display:swap; }
+        @font-face { font-family:'Circular Std'; src:url('fonts/CircularStd-Black.woff2') format('woff2'),url('fonts/CircularStd-Black.woff') format('woff'); font-weight:800; font-style:normal; font-display:swap; }
+    </style>
+</head>
+<body>
+
+    <cronos-header></cronos-header>
+
+</body>
+</html>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<style>
+  /* ─── SCOPED NAMESPACED RESET ─── */
+        .cr-solutions-root *,
+        .cr-solutions-root *::before,
+        .cr-solutions-root *::after {
+            box-sizing: border-box;
+            margin: 0;
+            padding: 0;
+        }
+
+        * {
+            padding: 0;
+            margin: 0;
+            box-sizing: border-box; font-family: 'Circular Std', -apple-system, BlinkMacSystemFont, sans-serif;
+        }
+
+        .cr-solutions-root {
+            font-family: 'Circular Std', -apple-system, BlinkMacSystemFont, sans-serif;
+            -webkit-font-smoothing: antialiased;
+            background: #fff;
+            color: #111827;
+            width: 100%;
+            overflow-x: hidden;
+        }
+
+        .cr-sol-container {
+            width: 100%;
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 16px;
+        }
+        @media (min-width: 768px) {
+            .cr-sol-container {
+                padding: 0 24px;
+            }
+        }
+
+  /* ─── HERO SECTION WITH SEAMLESS CHROMATIC BACKGROUND FLOW ─── */
+        .cr-sol-hero {
+            position: relative;
+            padding: 120px 0 80px;
+            text-align: left;
+            overflow: hidden;
+            background-color: #0794ad;
+        }
+        @media (min-width: 768px) {
+            .cr-sol-hero {
+                padding: 160px 0 120px;
+            }
+        }
+
+       
+
+        .cr-sol-hero::after {
+            content: '';
+            position: absolute;
+            inset: 0;
+            background: linear-gradient(180deg, 
+                rgba(11, 18, 31, 0) 0%, 
+                rgba(254, 254, 254, 0.822) 70%, 
+                #fff 100%
+            );
+            z-index: 2;
+        }
+
+        @keyframes cr-hero-seamless-flow {
+            0% { background-position: 0% 50%; }
+            50% { background-position: 100% 50%; }
+            100% { background-position: 0% 50%; }
+        }
+
+        .cr-sol-hero__content {
+            position: relative;
+            max-width: 820px;
+            z-index: 3;
+        }
+
+        .cr-sol-hero__title {
+            font-size: clamp(32px, 6vw, 64px);
+            font-weight: 500;
+            line-height: 1.1;
+            color: #ffffff;
+            margin-bottom: 20px;
+        }
+
+        .cr-sol-hero__desc {
+            font-size: clamp(15px, 2vw, 19px);
+            line-height: 1.6;
+            color: #ffffff;
+            margin-bottom: 32px;
+            max-width: 680px;
+        }
+
+        /* ─── ACTIONS & BUTTONS (1PX BORDER RADIUS) ─── */
+        .cr-sol-btn {
+            display: inline-flex;
+            align-items: center;
+            justify-content: center;
+            padding: 14px 28px;
+            font-size: 16px;
+            font-weight: 400;
+            text-decoration: none;
+            cursor: pointer;
+            border-radius: 50px;
+            transition: all 0.2s ease;
+            outline: none;
+            width: 100%;
+            text-align: center;
+            position: relative;
+        }
+        @media (min-width: 480px) {
+            .cr-sol-btn {
+                width: auto;
+            }
+        }
+
+        .cr-sol-btn--primary {
+            background: #111827;
+            color: #ffffff; border: none;
+        }
+
+        .cr-sol-btn--primary:hover {
+            background: #000000;
+            border-color: #000000;
+        }
+
+        .cr-sol-btn--secondary {
+            background: #080d1b;
+            color: #f9fbff; border: none;
+        }
+
+        .cr-sol-btn--secondary:hover {
+            border-color: #111827;
+            background: #f9fafb;
+        }
+</style>
+<div id="cr-directory-view">
+            
+            <div class="cr-sol-hero">
+                <div class="cr-sol-container">
+                    <div class="cr-sol-hero__content">
+                      <a href="" style="color: #fff;">What is Croloft?</a>
+                        <h1 class="cr-sol-hero__title">Sales Support</h1>
+                        <p class="cr-sol-hero__desc">
+                            Please complete the form to reach a Croloft sales representative. An asterisk (*) indicates required information.
+                        </p>
+                        <a href="#services-display" class="cr-sol-btn cr-sol-btn--secondary">Browse Catalog</a>
+                    </div>
+                </div>
+            </div>
+  </div>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Contact IT Solutions — Enterprise Specification</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        :root {
+            --aws-navy: #111625;
+            --aws-blue: #0091ff;
+            --aws-light-gray: #f1f3f6;
+            --aws-muted: #64748b;
+            --aws-white: #ffffff;
+            --font-family-circular: 'Circular Std', -apple-system, BlinkMacSystemFont, sans-serif;
+            --content-max-width: 1200px;
+        }
+
+        body {
+            font-family: var(--font-family-circular);
+            background-color: var(--aws-white);
+            color: var(--aws-navy);
+            -webkit-font-smoothing: antialiased; 
+        }
+
+        /* Scoped Container Custom Selector to avoid codebase clashes */
+        aws-contact-form-component, .aws-form-container {
+            display: block;
+            width: 100%;
+            padding: 80px 0;
+            display: flex;
+            justify-content: center;
+        }
+
+        .aws-form-wrapper {
+            width: calc(100% - 40px);
+            max-width: var(--content-max-width);
+            display: grid;
+            grid-template-columns: 1fr 1.6fr; /* Split: Heading Left, Form Right */
+            gap: 80px;
+            align-items: start; padding: 0 20px;
+        }
+
+        /* Left Side Column Heading */
+        .aws-form-left-col h1 {
+            font-size: 3.5rem;
+            font-weight: 500;
+            letter-spacing: -0.03em;
+            line-height: 1.1;
+            color: var(--aws-navy);
+            position: sticky;
+            top: 40px;
+        }
+
+        /* Right Side Column Form Block */
+        .aws-form-right-col {
+            background-color: var(--aws-white);
+        }
+
+        .aws-form-block {
+            display: flex;
+            flex-direction: column;
+            gap: 48px;
+        }
+
+        .aws-form-step {
+            display: flex;
+            flex-direction: column;
+            gap: 16px;
+        }
+
+        .aws-step-label {
+            font-size: 1rem;
+            font-weight: 500;
+            color: var(--aws-blue);
+        }
+
+        /* Input Layout Layout Configuration */
+        .aws-input-group {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 16px;
+        }
+
+        .aws-span-full {
+            grid-column: span 2;
+        }
+
+        .aws-text-input {
+            width: 100%;
+            background-color: var(--aws-light-gray);
+            border: 1px solid transparent;
+            padding: 18px;
+            font-family: var(--font-family-circular);
+            font-size: 1rem;
+            color: var(--aws-navy);
+            outline: none;
+            transition: all 0.2s ease; 
+            border-radius: 8px;
+        }
+
+        .aws-text-input:focus {
+            background-color: var(--aws-white);
+            border-color: var(--aws-navy);
+            box-shadow: 0 0 0 2px rgba(17, 22, 37, 0.05);
+        }
+
+        /* Drops Custom Selector Styling (Replacing Checkboxes) */
+        .aws-drop-selector-container {
+            position: relative;
+            width: 100%;
+        }
+
+        .aws-drop-selected-box {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            width: 100%;
+            background-color: var(--aws-light-gray);
+            padding: 18px;
+            font-size: 1rem;
+            font-weight: 500;
+            color: var(--aws-navy);
+            border-radius: 8px;
+            cursor: pointer;
+            transition: background-color 0.2s ease;
+            user-select: none;
+        }
+
+        .aws-drop-selected-box:hover {
+            background-color: #e4e7eb;
+        }
+
+        .aws-drop-caret {
+            font-size: 10px;
+            color: var(--aws-muted);
+            transition: transform 0.2s ease;
+            display: inline-block;
+        }
+
+        .aws-drop-selector-container.open .aws-drop-caret {
+            transform: rotate(180deg);
+        }
+
+        .aws-drop-options-list {
+            position: absolute;
+            top: calc(100% + 6px);
+            left: 0;
+            width: 100%;
+            background-color: var(--aws-white);
+            border: 1px solid rgba(17, 22, 37, 0.1);
+            border-radius: 8px;
+            box-shadow: 0 10px 25px rgba(0, 0, 0, 0.08);
+            z-index: 10;
+            display: none;
+            overflow: hidden;
+        }
+
+        .aws-drop-selector-container.open .aws-drop-options-list {
+            display: block;
+        }
+
+        .aws-drop-item {
+            padding: 16px 18px;
+            font-size: 1rem;
+            color: var(--aws-navy);
+            cursor: pointer;
+            transition: background-color 0.15s ease;
+        }
+
+        .aws-drop-item:hover {
+            background-color: var(--aws-light-gray);
+        }
+
+        /* Conditional Section Toggles */
+        .aws-conditional-fields {
+            display: none;
+            flex-direction: column;
+            gap: 16px;
+         
+            margin-top: 4px;
+        }
+
+        .aws-conditional-fields.active {
+            display: flex;
+        }
+
+        /* Action Form Button Configuration */
+        .aws-submit-cta {
+            background-color: var(--aws-navy);
+            color: var(--aws-white);
+            border: none;
+            padding: 14px 36px;
+            font-size: 1rem;
+            font-weight: 500;
+            cursor: pointer;
+            width: fit-content;
+            transition: background-color 0.2s ease;
+            margin-top: 12px; 
+            border-radius: 50px; 
+            font-family: var(--font-family-circular);
+        }
+
+        .aws-submit-cta:hover {
+            background-color: var(--aws-blue);
+        }
+
+        /* Responsive Breakpoints */
+        @media (max-width: 900px) {
+            .aws-form-wrapper {
+                grid-template-columns: 1fr;
+                gap: 40px;
+            }
+
+            .aws-form-left-col h1 {
+                font-size: 2.5rem;
+                position: static;
+            }
+        }
+
+        @media (max-width: 600px) {
+            .aws-form-container {
+                padding: 40px 0;
+            }
+
+            .aws-input-group {
+                grid-template-columns: 1fr;
+            }
+
+            .aws-span-full {
+                grid-column: span 1;
+            }
+
+            .aws-submit-cta {
+                width: 100%;
+                text-align: center;
+            }
+            
+            .aws-conditional-fields {
+                padding-left: 14px;
+            }
+        }
+    </style>
+</head>
+<body>
+
+<aws-contact-form-component class="aws-form-container">
+    <div class="aws-form-wrapper">
+        
+        <div class="aws-form-left-col">
+            <h1>Contact Us</h1>
+        </div>
+
+        <div class="aws-form-right-col">
+            <form class="aws-form-block" onsubmit="event.preventDefault(); alert('IT Solutions brief received. Our architecture team will respond shortly.');">
+                
+                <div class="aws-form-step">
+                    <span class="aws-step-label">01 / Personal Details</span>
+                    <div class="aws-input-group">
+                        <input type="text" placeholder="First Name" class="aws-text-input" required>
+                        <input type="text" placeholder="Last Name" class="aws-text-input" required>
+                        <input type="email" placeholder="Email Address" class="aws-text-input aws-span-full" required>
+                        <input type="tel" placeholder="Cellphone Number" class="aws-text-input" id="personal-cellphone" required>
+                        <input type="text" placeholder="Location / Region (e.g., South Africa, Gauteng)" class="aws-text-input" required>
+                    </div>
+                </div>
+
+                <div class="aws-form-step">
+                    <span class="aws-step-label">02 / What environment is this inquiry regarding?</span>
+                    
+                    <div class="aws-drop-selector-container" id="intent-dropdown">
+                        <div class="aws-drop-selected-box" onclick="toggleDropdown('intent-dropdown')">
+                            <span id="aws-selected-value-label">Select your structural path...</span>
+                            <span class="aws-drop-caret">▼</span>
+                        </div>
+                        <div class="aws-drop-options-list">
+                            <div class="aws-drop-item" onclick="selectIntentOption('Personal Interests', 'personal-fields')">Personal Interests</div>
+                            <div class="aws-drop-item" onclick="selectIntentOption('Business', 'business-fields')">Business</div>
+                            <div class="aws-drop-item" onclick="selectIntentOption('Work', 'work-fields')">Work</div>
+                        </div>
+                    </div>
+
+                    <div id="business-fields" class="aws-conditional-fields">
+                        <div class="aws-input-group">
+                            <input type="text" placeholder="Company Name" class="aws-text-input" data-required="true">
+                            <input type="tel" placeholder="Company Telephone" class="aws-text-input" data-required="true">
+                            <input type="text" placeholder="Company Size (e.g., 10-50, 500+)" class="aws-text-input">
+                            <input type="text" placeholder="Industry Vertical" class="aws-text-input">
+                        </div>
+                    </div>
+
+                    <div id="work-fields" class="aws-conditional-fields">
+                        <div class="aws-input-group">
+                            <input type="text" placeholder="Your Corporate Position / Title" class="aws-text-input" data-required="true">
+                            <input type="tel" placeholder="Direct Office Extension" class="aws-text-input" data-required="true">
+                            <input type="text" placeholder="Operational Industry" class="aws-text-input aws-span-full">
+                        </div>
+                    </div>
+
+                    <div id="personal-fields" class="aws-conditional-fields">
+                        </div>
+                </div>
+
+                <div class="aws-form-step">
+                    <span class="aws-step-label">03 / Project Details</span>
+                    <div class="aws-input-group">
+                        
+                        <div class="aws-drop-selector-container aws-span-full" id="dept-dropdown">
+                            <div class="aws-drop-selected-box" onclick="toggleDropdown('dept-dropdown')">
+                                <span id="aws-selected-dept-label">Target IT Architecture Department...</span>
+                                <span class="aws-drop-caret">▼</span>
+                            </div>
+                            <div class="aws-drop-options-list">
+                                <div class="aws-drop-item" onclick="selectSecondaryOption('Cloud Infrastructure & DevOps', 'aws-selected-dept-label', 'dept-dropdown')">Cloud Infrastructure & DevOps</div>
+                                <div class="aws-drop-item" onclick="selectSecondaryOption('Custom Software & Web Engineering', 'aws-selected-dept-label', 'dept-dropdown')">Custom Software & Web Engineering</div>
+                                <div class="aws-drop-item" onclick="selectSecondaryOption('Cybersecurity & Risk Auditing', 'aws-selected-dept-label', 'dept-dropdown')">Cybersecurity & Risk Auditing</div>
+                                <div class="aws-drop-item" onclick="selectSecondaryOption('Managed IT Support & Networks', 'aws-selected-dept-label', 'dept-dropdown')">Managed IT Support & Networks</div>
+                                <div class="aws-drop-item" onclick="selectSecondaryOption('Generative AI & Data Analytics Integration', 'aws-selected-dept-label', 'dept-dropdown')">Generative AI & Data Analytics Integration</div>
+                            </div>
+                        </div>
+
+                        <div class="aws-drop-selector-container aws-span-full" id="nature-dropdown">
+                            <div class="aws-drop-selected-box" onclick="toggleDropdown('nature-dropdown')">
+                                <span id="aws-selected-nature-label">Nature of Inquiry...</span>
+                                <span class="aws-drop-caret">▼</span>
+                            </div>
+                            <div class="aws-drop-options-list">
+                                <div class="aws-drop-item" onclick="selectSecondaryOption('Request a Quote / Project Briefing', 'aws-selected-nature-label', 'nature-dropdown')">Request a Quote / Project Briefing</div>
+                                <div class="aws-drop-item" onclick="selectSecondaryOption('Emergency IT System Down / Incident Support', 'aws-selected-nature-label', 'nature-dropdown')">Emergency IT System Down / Incident Support</div>
+                                <div class="aws-drop-item" onclick="selectSecondaryOption('Long-term Outsourcing Consultation', 'aws-selected-nature-label', 'nature-dropdown')">Long-term Outsourcing Consultation</div>
+                                <div class="aws-drop-item" onclick="selectSecondaryOption('Vendor Partnership / RFQ Submission', 'aws-selected-nature-label', 'nature-dropdown')">Vendor Partnership / RFQ Submission</div>
+                            </div>
+                        </div>
+
+                        <textarea placeholder="Briefly detail your operational bottlenecks, system objectives, architecture limits, or scope parameters..." class="aws-text-input aws-span-full" rows="5" style="resize: none;" required></textarea>
+                    </div>
+                </div>
+
+                <button type="submit" class="aws-submit-cta">Submit Brief &rarr;</button>
+
+            </form>
+        </div>
+
+    </div>
+</aws-contact-form-component>
+
+<script>
+    // Toggles targeted dropdown containers cleanly using IDs
+    function toggleDropdown(dropdownId) {
+        // Close all other dropdowns first to keep UI completely clean
+        const activeDropdowns = document.querySelectorAll('.aws-drop-selector-container');
+        activeDropdowns.forEach(drop => {
+            if (drop.id !== dropdownId) drop.classList.remove('open');
+        });
+        
+        document.getElementById(dropdownId).classList.toggle('open');
+    }
+
+    // Handles the environment selection routing paths and reallocates form constraint laws
+    function selectIntentOption(labelValue, targetSectionId) {
+        document.getElementById('aws-selected-value-label').innerText = labelValue;
+        document.getElementById('intent-dropdown').classList.remove('open');
+
+        // Hide all conditional element spaces
+        const sections = document.getElementsByClassName('aws-conditional-fields');
+        for (let i = 0; i < sections.length; i++) {
+            sections[i].classList.remove('active');
+            
+            // Wipe required rules from hidden input structures
+            const conditionallyRequiredInputs = sections[i].querySelectorAll('[data-required="true"]');
+            conditionallyRequiredInputs.forEach(input => input.removeAttribute('required'));
+        }
+
+        // Display targeted architecture block
+        const visibleSection = document.getElementById(targetSectionId);
+        if (visibleSection) {
+            visibleSection.classList.add('active');
+            
+            // Enforce requirement rules on newly visible nodes
+            const activeRequiredInputs = visibleSection.querySelectorAll('[data-required="true"]');
+            activeRequiredInputs.forEach(input => input.setAttribute('required', 'true'));
+        }
+        
+        // Dynamically alter personal cellphone rule state
+        const personalCell = document.getElementById('personal-cellphone');
+        if (labelValue === 'Personal Interests') {
+            personalCell.setAttribute('placeholder', 'Cellphone Number (Required)');
+        } else {
+            personalCell.setAttribute('placeholder', 'Personal Cellphone');
+        }
+    }
+
+    // Handles secondary project drops cleanly without disrupting main toggle loops
+    function selectSecondaryOption(labelValue, labelId, dropdownId) {
+        document.getElementById(labelId).innerText = labelValue;
+        document.getElementById(dropdownId).classList.remove('open');
+    }
+
+    // Dismisses menus gracefully if clicking outside active form vectors
+    window.addEventListener('click', function(e) {
+        if (!e.target.closest('.aws-drop-selector-container')) {
+            const dropdowns = document.querySelectorAll('.aws-drop-selector-container');
+            dropdowns.forEach(drop => drop.classList.remove('open'));
+        }
+    });
+</script>
+
+</body>
+</html>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<cronos-footer></cronos-footer>

@@ -1,0 +1,817 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>My Website</title>
+    
+    <script src="header.js" defer></script> 
+    <script src="footer.js" defer></script>
+</head>
+<body>
+
+    <cronos-header></cronos-header>
+
+</body>
+</html>
+
+
+
+
+
+
+
+
+
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Innovations | Tech Portal</title>
+    <style>
+        /* --- CORE CONFIG --- */
+        :root {
+            --bg-white: #ffffff;
+            --text-dark: #121212;
+            --text-soft: #5f6368;
+            --accent-blue: #0091ff;
+            --border-color: #eeeeee;
+            --font-main: 'Circular Std', -apple-system, BlinkMacSystemFont, sans-serif;
+        }
+
+        * {
+            box-sizing: border-box;
+            margin: 0;
+            padding: 0;
+        }
+
+        body {
+            font-family: var(--font-main);
+            background-color: var(--bg-white);
+            color: var(--text-dark);
+            line-height: 1.5;
+        }
+
+        /* --- HERO SECTION (REDUCED HEIGHT) --- */
+        .hero {
+            position: relative;
+            height: 280px; /* Small height as requested */
+            display: flex;
+            align-items: center;
+            background-image: url('https://images.unsplash.com/photo-1451187580459-43490279c0fa?q=80&w=2072&auto=format&fit=crop');
+            background-size: cover;
+            background-position: center;
+            overflow: hidden;
+            margin-bottom: 60px;
+        }
+
+        /* Subtle overlay for text legibility */
+        .hero::before {
+            content: '';
+            position: absolute;
+            top: 0; left: 0; right: 0; bottom: 0;
+            background: linear-gradient(to right, rgba(0,0,0,0.7), rgba(0,0,0,0.2));
+            z-index: 1;
+        }
+
+        .hero-content {
+            position: relative;
+            z-index: 2;
+            width: 100%;
+        }
+
+        .hero h1 {
+            font-size: clamp(32px, 5vw, 48px);
+            font-weight: 500;
+            letter-spacing: -1.5px;
+            color: #ffffff;
+        }
+
+        /* --- LAYOUT --- */
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 15px;
+        }
+
+        /* --- INNOVATION GRID --- */
+        .innovation-item {
+            display: flex;
+            border-top: 1px solid var(--border-color);
+            padding: 40px 0;
+        }
+
+        .innovation-item:last-child {
+            border-bottom: 1px solid var(--border-color);
+        }
+
+        .col-left {
+            flex: 0 0 35%;
+            padding-right: 40px;
+        }
+
+        .col-right {
+            flex: 1;
+            padding-left: 40px;
+            border-left: 1px solid var(--border-color);
+        }
+
+        .innovation-name {
+            font-size: 20px;
+            font-weight: 700;
+            color: var(--text-dark);
+            text-transform: uppercase;
+            letter-spacing: 0.5px;
+        }
+
+        .category-label {
+            font-size: 11px;
+            font-weight: 500;
+            color: var(--accent-blue);
+            text-transform: uppercase;
+            letter-spacing: 1.5px;
+            display: block;
+            margin-bottom: 8px;
+        }
+
+        .description {
+            font-size: 17px;
+            color: var(--text-soft);
+            margin-bottom: 24px;
+            max-width: 650px;
+        }
+
+        /* --- LINKS --- */
+        .link-group {
+            display: flex;
+            gap: 30px;
+        }
+
+        .nav-link {
+            text-decoration: none;
+            color: var(--text-dark);
+            font-size: 15px;
+            font-weight: 500;
+            display: flex;
+            align-items: center;
+            transition: color 0.2s ease;
+        }
+
+        .nav-link:hover {
+            color: var(--accent-blue);
+        }
+
+        .nav-link::after {
+            content: '→';
+            margin-left: 8px;
+            font-size: 16px;
+        }
+
+        /* --- MOBILE RESPONSIVENESS --- */
+        @media (max-width: 768px) {
+            .hero { height: 200px; }
+
+            .innovation-item {
+                flex-direction: column;
+                padding: 30px 0;
+            }
+
+            .col-left {
+                flex: 1;
+                padding-right: 0;
+                margin-bottom: 15px;
+            }
+
+            .col-right {
+                flex: 1;
+                padding-left: 0;
+                border-left: none;
+                border-top: 1px solid #f9f9f9;
+                padding-top: 20px;
+            }
+
+            .link-group {
+                flex-direction: column;
+                gap: 15px;
+            }
+        }
+    </style>
+</head>
+<body>
+
+    <section class="hero">
+        <div class="container hero-content">
+            <h1>Our innovations</h1>
+        </div>
+    </section>
+
+    <div class="container">
+        <main>
+            <section class="innovation-item">
+                <div class="col-left">
+                    <span class="category-label">Distributed Systems</span>
+                    <h2 class="innovation-name">Autonomous Mesh</h2>
+                </div>
+                <div class="col-right">
+                    <p class="description">
+                        Decentralized network architectures where edge devices collaborate to route data without central servers, providing resilient and censorship-resistant connectivity for the next-gen web.
+                    </p>
+                    <div class="link-group">
+                        <a href="#" class="nav-link">Network Protocol</a>
+                        <a href="#" class="nav-link">Whitepaper</a>
+                    </div>
+                </div>
+            </section>
+
+            <section class="innovation-item">
+                <div class="col-left">
+                    <span class="category-label">Computation</span>
+                    <h2 class="innovation-name">Quantum Synthesis</h2>
+                </div>
+                <div class="col-right">
+                    <p class="description">
+                        Utilizing superposition to simulate complex molecular interactions, drastically reducing the time required for material science discovery and pharmaceutical development.
+                    </p>
+                    <div class="link-group">
+                        <a href="#" class="nav-link">Research Data</a>
+                        <a href="#" class="nav-link">API Access</a>
+                    </div>
+                </div>
+            </section>
+
+            <section class="innovation-item">
+                <div class="col-left">
+                    <span class="category-label">AI / Engineering</span>
+                    <h2 class="innovation-name">Generative Blueprints</h2>
+                </div>
+                <div class="col-right">
+                    <p class="description">
+                        Multi-modal AI models capable of synthesizing code and physical 3D blueprints from natural language intent, accelerating the engineering lifecycle from weeks to hours.
+                    </p>
+                    <div class="link-group">
+                        <a href="#" class="nav-link">Model Specs</a>
+                        <a href="#" class="nav-link">Documentation</a>
+                    </div>
+                </div>
+            </section>
+
+            <section class="innovation-item">
+                <div class="col-left">
+                    <span class="category-label">Energy Storage</span>
+                    <h2 class="innovation-name">Solid-State Power</h2>
+                </div>
+                <div class="col-right">
+                    <p class="description">
+                        High-density battery technology using solid electrolytes. This innovation eliminates thermal runaway risks while tripling the range of electric mobile units.
+                    </p>
+                    <div class="link-group">
+                        <a href="#" class="nav-link">Efficiency Report</a>
+                        <a href="#" class="nav-link">Patents</a>
+                    </div>
+                </div>
+            </section>
+        </main>
+    </div>
+
+</body>
+</html>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Course Grid - IT Company</title>
+    <link href="https://fonts.cdnfonts.com/css/circular-std" rel="stylesheet">
+    <style>
+        /* CSS Variables for easy maintenance */
+        :root {
+            --itc-main-width: 1200px;
+            --itc-border-radius: 32px;
+            --itc-bg-color: #e4e4e4;
+            --itc-text-dark: #000000;
+            --itc-text-light: #ffffff;
+            --itc-accent-gray: #e8e8e8;
+            /* Font Stack - Assuming Circular Std is loaded via your system/hosting */
+            --itc-font-family: 'Circular Std', -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
+        }
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        .itc-section-wrapper {
+            width: 100%;
+            display: flex;
+            justify-content: center;
+            padding: 120px 0;
+            background-color: var(--itc-bg-color);
+            font-family: var(--itc-font-family);
+        }
+
+        .itc-container {
+            width: var(--itc-main-width);
+            display: flex;
+            flex-direction: column;
+            gap: 40px;
+        }
+
+        /* Header Section */
+        .itc-header {
+            display: flex;
+            justify-content: space-between;
+            align-items: flex-start;
+        }
+
+        .itc-title {
+            font-size: 54px;
+            font-weight: 500;
+            line-height: 1.05;
+            letter-spacing: -2px;
+            margin: 0;
+            color: var(--itc-text-dark);
+        }
+
+        .itc-badge {
+            background-color: transparent;
+            padding: 10px 20px;
+            border-radius: 50px;
+            font-size: 14px;
+            border: 1px solid #000;
+            font-weight: 500;
+            color: #000000;
+        }
+
+        /* Grid Layout */
+        .itc-grid {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 24px;
+        }
+
+        .itc-card {
+            position: relative;
+            height: 480px;
+            border-radius: var(--itc-border-radius);
+            overflow: hidden;
+            display: flex;
+            flex-direction: column;
+            justify-content: flex-end;
+            padding: 32px;
+            transition: transform 0.3s ease;
+            border: 5px solid #fff;
+            cursor: pointer;
+        }
+
+        .itc-card:hover {
+            transform: translateY(-5px);
+        }
+
+        /* Background Images/Overlays */
+        .itc-card-bg {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            z-index: 1;
+        }
+
+        .itc-card-overlay {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: linear-gradient(180deg, rgba(0,0,0,0) 40%, rgba(0,0,0,0.85) 100%);
+            z-index: 2;
+        }
+
+        /* Content inside card */
+        .itc-card-content {
+            position: relative;
+            z-index: 3;
+            color: var(--itc-text-light);
+        }
+
+        .itc-card-tag {
+            font-size: 13px;
+            font-weight: 400;
+            opacity: 0.8;
+            margin-bottom: 8px;
+            text-transform: capitalize;
+        }
+
+        .itc-card-headline {
+            font-size: 28px;
+            font-weight: 700;
+            margin: 0 0 12px 0;
+            line-height: 1.2;
+        }
+
+        .itc-card-description {
+            font-size: 16px;
+            line-height: 1.5;
+            opacity: 0.9;
+            margin: 0;
+            font-weight: 400;
+        }
+
+        /* Mobile Responsiveness */
+        @media (max-width: 1240px) {
+            .itc-container { width: 95%; }
+            .itc-title { font-size: 48px; }
+        }
+
+        @media (max-width: 991px) {
+            .itc-grid { grid-template-columns: repeat(2, 1fr); }
+        }
+
+        @media (max-width: 767px) {
+            .itc-grid { grid-template-columns: 1fr; }
+            .itc-header { flex-direction: column; gap: 20px; }
+        }
+    </style>
+</head>
+<body>
+
+    <section class="itc-section-wrapper">
+        <div class="itc-container">
+            
+            <header class="itc-header">
+                <h1 class="itc-title">Our Innovations</h1>
+                <div class="itc-badge">Our Approach</div>
+            </header>
+
+            <div class="itc-grid">
+                
+                <div class="itc-card">
+                    <img src="https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?auto=format&fit=crop&q=80&w=600" alt="Growth" class="itc-card-bg">
+                    <div class="itc-card-overlay"></div>
+                    <div class="itc-card-content">
+                        <div class="itc-card-tag">Real momentum</div>
+                        <h2 class="itc-card-headline">Growth that pops</h2>
+                        <p class="itc-card-description">Learn how to push your content further and spark growth you can actually see.</p>
+                    </div>
+                </div>
+
+                <div class="itc-card">
+                    <img src="https://images.unsplash.com/photo-1534528741775-53994a69daeb?auto=format&fit=crop&q=80&w=600" alt="Posting" class="itc-card-bg">
+                    <div class="itc-card-overlay"></div>
+                    <div class="itc-card-content">
+                        <div class="itc-card-tag">No more falling off</div>
+                        <h2 class="itc-card-headline">Posting on lock</h2>
+                        <p class="itc-card-description">Build a simple posting flow that keeps you showing up without overthinking it.</p>
+                    </div>
+                </div>
+
+                <div class="itc-card">
+                    <img src="https://images.unsplash.com/photo-1517841905240-472988babdf9?auto=format&fit=crop&q=80&w=600" alt="Content" class="itc-card-bg">
+                    <div class="itc-card-overlay"></div>
+                    <div class="itc-card-content">
+                        <div class="itc-card-tag">Never stuck again</div>
+                        <h2 class="itc-card-headline">Content on repeat</h2>
+                        <p class="itc-card-description">Use proven frameworks that tell you exactly what to post — again and again.</p>
+                    </div>
+                </div>
+
+                <div class="itc-card">
+                    <img src="https://images.unsplash.com/photo-1494790108377-be9c29b29330?auto=format&fit=crop&q=80&w=600" alt="Views" class="itc-card-bg">
+                    <div class="itc-card-overlay"></div>
+                    <div class="itc-card-content">
+                        <div class="itc-card-tag">Growth with profit</div>
+                        <h2 class="itc-card-headline">Monetized views</h2>
+                        <p class="itc-card-description">Learn how to turn attention into real opportunities, not just empty numbers.</p>
+                    </div>
+                </div>
+
+                <div class="itc-card">
+                    <img src="https://images.unsplash.com/photo-1506794778202-cad84cf45f1d?auto=format&fit=crop&q=80&w=600" alt="Engagement" class="itc-card-bg">
+                    <div class="itc-card-overlay"></div>
+                    <div class="itc-card-content">
+                        <div class="itc-card-tag">Likes, comments, shares</div>
+                        <h2 class="itc-card-headline">Real engagement</h2>
+                        <p class="itc-card-description">Create posts people actually stop for, react to, and share across platforms.</p>
+                    </div>
+                </div>
+
+                <div class="itc-card">
+                    <img src="https://images.unsplash.com/photo-1524504388940-b1c1722653e1?auto=format&fit=crop&q=80&w=600" alt="Energy" class="itc-card-bg">
+                    <div class="itc-card-overlay"></div>
+                    <div class="itc-card-content">
+                        <div class="itc-card-tag">You're ready now</div>
+                        <h2 class="itc-card-headline">Level-up energy</h2>
+                        <p class="itc-card-description">Know what works, why it works, and how to repeat it with confidence.</p>
+                    </div>
+                </div>
+
+            </div>
+        </div>
+    </section>
+
+</body>
+</html>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<div id="nftJourney-asym-wrapper" class="nftJourney-outer">
+    <style>
+        :root {
+            --nj-bg: #000000;
+            --nj-card-dark: #111111;
+            --nj-lime: #CCFF00;
+            --nj-radius: 32px; /* Smooth, deep corners from the image */
+            --nj-font: 'Circular Std', -apple-system, sans-serif;
+        }
+
+        .nftJourney-outer {
+            background-color: var(--nj-bg);
+            color: #ffffff;
+            font-family: var(--nj-font);
+            padding: 60px 20px;
+            display: flex;
+            justify-content: center;
+        }
+
+        /* ASYMMETRICAL GRID LOGIC */
+        .nftJourney-grid {
+            display: grid;
+            max-width: 800px;
+            width: 100%;
+            gap: 15px;
+            /* Creates a 3-column foundation for asymmetry */
+            grid-template-columns: 1.2fr 0.8fr; 
+            grid-template-areas: 
+                "top top"
+                "bottom-left bottom-right";
+        }
+
+        .nj-card {
+            border-radius: var(--nj-radius);
+            padding: 40px;
+            display: flex;
+            flex-direction: column;
+            justify-content: space-between;
+            position: relative;
+            overflow: hidden;
+            min-height: 320px;
+        }
+
+        /* Layout Assignments */
+        .nj-top { grid-area: top; background: var(--nj-card-dark); min-height: 400px; }
+        .nj-left { grid-area: bottom-left; background: var(--nj-lime); color: #000; }
+        .nj-right { grid-area: bottom-right; background: var(--nj-card-dark); }
+
+        /* Typography */
+        .nj-label {
+            font-size: 14px;
+            display: flex;
+            align-items: center;
+            gap: 8px;
+            opacity: 0.8;
+            margin-bottom: 40px;
+        }
+
+        .nj-title-large {
+            font-size: clamp(40px, 6vw, 52px);
+            font-weight: 300;
+            line-height: 1;
+            letter-spacing: -3px;
+            margin: 0;
+        }
+
+        .nj-subtext {
+            font-size: 18px;
+            opacity: 0.7;
+            margin-top: 20px;
+        }
+
+        /* Avatar Group */
+        .nj-footer {
+            display: flex;
+            justify-content: space-between;
+            align-items: flex-end;
+        }
+
+        .nj-avatars {
+            display: flex;
+            margin-left: auto;
+        }
+
+        .nj-avatars img {
+            width: 40px;
+            height: 40px;
+            border-radius: 50%;
+            border: 3px solid var(--nj-card-dark);
+            margin-left: -12px;
+        }
+
+        /* Animated Numbers */
+        .nj-number-wrap {
+            font-size: clamp(60px, 8vw, 540px);
+            font-weight: 400;
+            letter-spacing: -5px;
+            line-height: 0.8;
+            margin-top: auto;
+        }
+
+        .nj-projects-val {
+            color: #444; /* Darker gray for the number in the dark card */
+            font-family: monospace; /* Digital look from image */
+        }
+
+        /* Mobile Layout */
+        @media (max-width: 850px) {
+            .nftJourney-grid {
+                grid-template-columns: 1fr;
+                grid-template-areas: 
+                    "top"
+                    "bottom-left"
+                    "bottom-right";
+            }
+            .nj-card { padding: 30px; min-height: auto; }
+            .nj-number-wrap { font-size: 80px; margin-top: 40px; }
+        }
+    </style>
+
+    <div class="nftJourney-grid">
+        <div class="nj-card nj-top">
+            <div class="nj-label"><span>●</span> My teammates and me <span style="margin-left:auto">🌐</span></div>
+            <div>
+                <h1 class="nj-title-large">Our journey in<br>Number</h1>
+            </div>
+            <div class="nj-footer">
+                <p class="nj-subtext">Great work comes from great teams</p>
+                <div class="nj-avatars">
+                    <img src="https://i.pravatar.cc/100?u=1" alt="p1">
+                    <img src="https://i.pravatar.cc/100?u=2" alt="p2">
+                    <img src="https://i.pravatar.cc/100?u=3" alt="p3">
+                </div>
+            </div>
+        </div>
+
+        <div class="nj-card nj-left">
+            <div class="nj-label"><span>●</span> Clients’ Revenue</div>
+            <h2 style="font-size: 24px; font-weight: 400; margin: 0;">Revenue Growth in 2024</h2>
+            <div class="nj-number-wrap">
+                <span class="nj-counter" data-target="100">0</span>K+
+            </div>
+            <div style="margin-top: 20px; opacity: 0.2; font-size: 30px;">⠿⠿⠿</div>
+        </div>
+
+        <div class="nj-card nj-right">
+            <div class="nj-label"><span>●</span> Work</div>
+            <h2 style="font-size: 24px; font-weight: 400; margin: 0;">Projects<br>Done</h2>
+            <div class="nj-number-wrap nj-projects-val">
+                <span class="nj-counter" data-target="23">0</span>
+            </div>
+        </div>
+    </div>
+
+    <script>
+        const njObserver = new IntersectionObserver((entries) => {
+            entries.forEach(entry => {
+                if (entry.isIntersecting) {
+                    const counter = entry.target;
+                    const target = +counter.getAttribute('data-target');
+                    const speed = 50; 
+                    
+                    const update = () => {
+                        const count = +counter.innerText;
+                        const inc = target / speed;
+                        if (count < target) {
+                            counter.innerText = Math.ceil(count + inc);
+                            setTimeout(update, 20);
+                        } else {
+                            counter.innerText = target;
+                        }
+                    };
+                    update();
+                    njObserver.unobserve(counter);
+                }
+            });
+        }, { threshold: 0.5 });
+
+        document.querySelectorAll('.nj-counter').forEach(n => njObserver.observe(n));
+    </script>
+</div>
+
+
+<cronos-footer></cronos-footer>

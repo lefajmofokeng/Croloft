@@ -1,0 +1,374 @@
+<!DOCTYPE html>
+<html lang="en" dir="ltr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, minimum-scale=1.0, maximum-scale=5.0, viewport-fit=cover, shrink-to-fit=no">
+    <meta http-equiv="x-ua-compatible" content="ie=edge"/>
+    
+    <title>Cronos</title>
+
+    <!-- WEB TAB ICON -->
+    <link rel="icon" type="image/png" href="thumbnails/top-1.png">
+
+    <script src="header.js" defer></script>
+    <script src="footer.js" defer></script> 
+
+<style>
+  @font-face { font-family:'Circular Std'; src:url('fonts/CircularStd-Book.woff2') format('woff2'),url('fonts/CircularStd-Book.woff') format('woff'); font-weight:400; font-style:normal; font-display:swap; }
+  @font-face { font-family:'Circular Std'; src:url('fonts/CircularStd-BookItalic.woff2') format('woff2'),url('fonts/CircularStd-BookItalic.woff') format('woff'); font-weight:400; font-style:italic; font-display:swap; }
+  @font-face { font-family:'Circular Std'; src:url('fonts/CircularStd-Medium.woff2') format('woff2'),url('fonts/CircularStd-Medium.woff') format('woff'); font-weight:500; font-style:normal; font-display:swap; }
+  @font-face { font-family:'Circular Std'; src:url('fonts/CircularStd-Bold.woff2') format('woff2'),url('fonts/CircularStd-Bold.woff') format('woff'); font-weight:600; font-style:normal; font-display:swap; }
+  @font-face { font-family:'S'; src:url('fonts/AttenNewRegular.otf') format('woff2'),url('fonts/CircularStd-Black.woff') format('woff'); font-weight:600; font-style:normal; font-display:swap; }
+   * {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+  font-family: 'Circular Std', sans-serif;
+}
+</style>
+
+</head>
+<body>
+
+  <cronos-header></cronos-header>
+    
+</body>
+</html>
+
+
+
+
+
+
+
+
+
+<div class="cs-it-podcast-module">
+  
+  <section class="cs-it-hero">
+    <div class="cs-it-container">
+      <div class="cs-it-row cs-it-row--featured">
+        <div class="cs-it-content">
+          <h1 class="cs-it-title-main">Episode 09: Grace Hopper: The Pioneer of Machine Independent Languages</h1>
+          <p class="cs-it-meta">OCT 25, 2024 &middot; PODCAST</p>
+        </div>
+        
+        <div class="cs-it-media-card cs-it-media-card--large" role="button" tabindex="0">
+          <img class="cs-it-poster" src="https://images.pexels.com/photos/5399014/pexels-photo-5399014.jpeg" alt="Episode 09 Cover Art">
+          <video class="cs-it-video" loop muted playsinline preload="none">
+            <source src="https://www.pexels.com/download/video/27153537/" type="video/mp4">
+          </video>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section class="cs-it-list">
+    <div class="cs-it-container">
+      
+      <article class="cs-it-row cs-it-row--list">
+        <div class="cs-it-content">
+          <h2 class="cs-it-title-sub">Episode 8: Alan Turing: The Architect of Modern Computing</h2>
+          <p class="cs-it-description">The transformative journey of Alan Turing, from his early conceptualization of the Universal Turing Machine to deciphering the Enigma code. <a href="#" class="cs-it-link">Listen &rarr;</a></p>
+        </div>
+        
+        <div class="cs-it-media-card cs-it-media-card--small" role="button" tabindex="0">
+          <img class="cs-it-poster" src="https://images.pexels.com/photos/5399030/pexels-photo-5399030.jpeg" alt="Episode 08 Cover Art">
+          <video class="cs-it-video" loop muted playsinline preload="none">
+            <source src="https://www.pexels.com/download/video/4540152/" type="video/mp4">
+          </video>
+        </div>
+      </article>
+
+      <article class="cs-it-row cs-it-row--list">
+        <div class="cs-it-content">
+          <h2 class="cs-it-title-sub">Episode 07: Tim Berners-Lee: Forging the World Wide Web</h2>
+          <p class="cs-it-description">Delving into the creation of HTTP and HTML, how a proposal at CERN connected humanity, and the complexities of net neutrality. <a href="#" class="cs-it-link">Listen &rarr;</a></p>
+        </div>
+        
+        <div class="cs-it-media-card cs-it-media-card--small" role="button" tabindex="0">
+          <img class="cs-it-poster" src="https://images.pexels.com/photos/7598543/pexels-photo-7598543.jpeg" alt="Episode 07 Cover Art">
+          <video class="cs-it-video" loop muted playsinline preload="none">
+            <source src="https://www.pexels.com/download/video/7599378/" type="video/mp4">
+          </video>
+        </div>
+      </article>
+
+    </div>
+  </section>
+  
+</div>
+
+<style>
+  /* ==========================================================================
+   CS-IT Podcast Component Styles (Namespaced for Zero Conflicts)
+   ========================================================================== */
+
+.cs-it-podcast-module {
+  /* Typography Setup */
+  --cs-it-font: "Circular Std", -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif;
+  --cs-it-color-dark: #111111;
+  --cs-it-color-gray: #444444;
+  --cs-it-bg-hero: #e5e5ec;
+  --cs-it-bg-list: #ffffff;
+  
+  font-family: var(--cs-it-font);
+  color: var(--cs-it-color-dark);
+  line-height: 1.4;
+  -webkit-font-smoothing: antialiased;
+}
+
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+/* Container locking to 1200px */
+.cs-it-container {
+  max-width: 1200px;
+  margin: 0 auto;
+  padding: 0 2rem;
+  width: 100%;
+}
+
+/* Sections */
+.cs-it-hero {
+  background-color: var(--cs-it-bg-hero);
+  padding: 200px 0;
+}
+
+.cs-it-list {
+  background-color: var(--cs-it-bg-list);
+  padding: 5rem 0;
+}
+
+
+/* Rows & Flexbox Layout */
+.cs-it-row {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  gap: 4rem;
+}
+
+.cs-it-row--list {
+  margin-bottom: 5rem;
+  align-items: flex-start;
+}
+
+.cs-it-row--list:last-child {
+  margin-bottom: 0;
+}
+
+/* Content Blocks */
+.cs-it-content {
+  flex: 1;
+  max-width: 680px;
+}
+
+/* Typography Variables */
+.cs-it-title-main {
+  font-size: clamp(2.5rem, 4vw, 3.5rem);
+  font-weight: 700;
+  letter-spacing: -0.02em;
+  margin: 0 0 1rem 0;
+  line-height: 1.1;
+}
+
+.cs-it-title-sub {
+  font-size: clamp(2rem, 3vw, 2.5rem);
+  font-weight: 700;
+  letter-spacing: -0.02em;
+  margin: 0 0 1rem 0;
+  line-height: 1.15;
+}
+
+.cs-it-meta {
+  font-size: 0.85rem;
+  font-weight: 700;
+  text-transform: uppercase;
+  letter-spacing: 0.05em;
+  margin: 0;
+}
+
+.cs-it-description {
+  font-size: 1.2rem;
+  color: var(--cs-it-color-gray);
+  line-height: 1.6;
+  margin: 0;
+}
+
+.cs-it-link {
+  color: var(--cs-it-color-dark);
+  text-decoration: underline;
+  font-weight: 500;
+  text-underline-offset: 4px;
+}
+
+.cs-it-link:hover {
+  text-decoration: none;
+}
+
+/* Interactive Media Cards */
+.cs-it-media-card {
+  position: relative;
+  flex-shrink: 0;
+  background-color: #000;
+  overflow: hidden;
+  cursor: pointer;
+  box-shadow: 0 10px 30px rgba(0,0,0,0.1);
+  transition: transform 0.3s ease;
+}
+
+.cs-it-media-card--large {
+  width: clamp(280px, 30vw, 400px); 
+  height: 300px;
+  aspect-ratio: 1 / 1;
+}
+
+.cs-it-media-card--small {
+  width: clamp(350px, 20vw, 280px);
+  height: 250px;
+  aspect-ratio: 1 / 1;
+}
+
+.cs-it-media-card:hover {
+  transform: translateY(-5px);
+}
+
+.cs-it-poster {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  z-index: 2;
+  transition: opacity 0.4s ease;
+}
+
+.cs-it-video {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  z-index: 1;
+  opacity: 0;
+}
+
+.cs-it-media-card.is-playing .cs-it-poster {
+  opacity: 0;
+  pointer-events: none;
+}
+
+.cs-it-media-card.is-playing .cs-it-video {
+  opacity: 1;
+}
+
+/* Mobile Responsiveness - Tablets & Standard Mobile */
+@media (max-width: 900px) {
+  .cs-it-row,
+  .cs-it-row--featured,
+  .cs-it-row--list {
+    flex-direction: column-reverse;
+    text-align: left;
+    gap: 2.5rem;
+  }
+
+  .cs-it-content {
+    max-width: 100%;
+  }
+
+  .cs-it-media-card {
+    width: 100%;
+    max-width: 400px;
+    height: auto;
+    aspect-ratio: 16 / 9; /* Wider aspect ratio for mobile screens looks better */
+    margin: 0;
+  }
+}
+
+/* Mobile Responsiveness - Small Phones */
+@media (max-width: 600px) {
+  .cs-it-hero {
+    padding: 6rem 0 5rem 0;
+  }
+  
+  .cs-it-list {
+    padding: 3rem 0;
+  }
+
+  .cs-it-hosts {
+    padding: 4rem 0;
+  }
+
+  .cs-it-container {
+    padding: 0 1.5rem;
+  }
+
+  .cs-it-title-main {
+    font-size: 2.2rem;
+  }
+
+  .cs-it-title-sub {
+    font-size: 1.6rem;
+  }
+
+  .cs-it-description {
+    font-size: 1rem;
+  }
+  
+  .cs-it-hosts-grid {
+    flex-direction: column;
+    align-items: center;
+    gap: 3.5rem;
+  }
+}
+</style>
+
+<script>
+  document.addEventListener('DOMContentLoaded', () => {
+    // Select all media cards inside our custom namespace
+    const mediaCards = document.querySelectorAll('.cs-it-media-card');
+
+    mediaCards.forEach(card => {
+      const video = card.querySelector('.cs-it-video');
+      if (!video) return;
+
+      // Play video on mouse enter
+      card.addEventListener('mouseenter', async () => {
+        try {
+          // If the video hasn't been loaded yet, force a load
+          if (video.readyState === 0) {
+            video.load();
+          }
+          
+          await video.play();
+          card.classList.add('is-playing');
+        } catch (err) {
+          // Handle autoplay restrictions gracefully
+          console.warn('Video playback prevented by browser:', err);
+        }
+      });
+
+      // Pause and reset video on mouse leave
+      card.addEventListener('mouseleave', () => {
+        card.classList.remove('is-playing');
+        
+        // Slight timeout allows CSS fade transition to finish before pausing
+        setTimeout(() => {
+          video.pause();
+          video.currentTime = 0; // Rewind to start
+        }, 400); 
+      });
+
+      // Accessibility: Allow keyboard focus to trigger play
+      card.addEventListener('focus', () => card.dispatchEvent(new Event('mouseenter')));
+      card.addEventListener('blur', () => card.dispatchEvent(new Event('mouseleave')));
+    });
+  });
+</script>
+<cronos-footer></cronos-footer>

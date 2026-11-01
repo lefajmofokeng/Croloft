@@ -1,0 +1,844 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>IT Hardware & Gear Store</title>
+  
+<style>
+  @font-face { font-family:'Circular Std'; src:url('fonts/CircularStd-Book.woff2') format('woff2'),url('fonts/CircularStd-Book.woff') format('woff'); font-weight:400; font-style:normal; font-display:swap; }
+  @font-face { font-family:'Circular Std'; src:url('fonts/CircularStd-BookItalic.woff2') format('woff2'),url('fonts/CircularStd-BookItalic.woff') format('woff'); font-weight:400; font-style:italic; font-display:swap; }
+  @font-face { font-family:'Circular Std'; src:url('fonts/CircularStd-Medium.woff2') format('woff2'),url('fonts/CircularStd-Medium.woff') format('woff'); font-weight:500; font-style:normal; font-display:swap; }
+  @font-face { font-family:'Circular Std'; src:url('fonts/CircularStd-Bold.woff2') format('woff2'),url('fonts/CircularStd-Bold.woff') format('woff'); font-weight:600; font-style:normal; font-display:swap; }
+  @font-face { font-family:'Sunflare'; src:url('fonts/Finlandica[wght].ttf') format('woff2'),url('fonts/CircularStd-Black.woff') format('woff'); font-weight:900; font-style:normal; font-display:swap; }
+   * {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+  font-family: 'Circular Std', sans-serif;
+}
+</style>
+  <style>
+    /* CSS Reset & Scope Namespace */
+    .it-scope * {
+      box-sizing: border-box;
+      margin: 0;
+      padding: 0;
+      font-family: 'Sunflare', -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
+    }
+
+    .it-scope {
+      background-color: #0b0e14;
+      color: #ffffff;
+      min-height: 100vh;
+      overflow-x: hidden;
+    }
+
+    /* --- HEADER STYLES --- */
+    .it-header {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      padding: 12px 32px;
+      background-color: #0d111a;
+      border-bottom: 1px solid #1a2332;
+      position: relative;
+      z-index: 100;
+    }
+
+    .it-brand-group {
+      display: flex;
+      align-items: center;
+      gap: 12px;
+    }
+
+    .it-logo {
+      font-size: 20px;
+      font-weight: 700;
+      letter-spacing: -0.5px;
+      color: #ffffff;
+      text-decoration: none;
+      display: flex;
+      align-items: center;
+      gap: 6px;
+    }
+
+    .it-logo-badge {
+      font-weight: 300;
+      color: #94a3b8;
+    }
+
+    .it-divider {
+      width: 1px;
+      height: 20px;
+      background-color: #2a364f;
+    }
+
+    .it-logo-sub {
+      font-size: 13px;
+      font-weight: 700;
+      letter-spacing: 1.5px;
+      color: #94a3b8;
+    }
+
+    /* Search Component */
+    .it-search-container {
+      position: relative;
+      width: 320px;
+    }
+
+    .it-search-input-wrap {
+      display: flex;
+      align-items: center;
+      background-color: #07090e;
+      border: 1px solid #2a364f;
+      border-radius: 20px;
+      padding: 6px 14px;
+      transition: border-color 0.2s ease;
+    }
+
+    .it-search-input-wrap:focus-within {
+      border-color: #00a3ff;
+    }
+
+    .it-search-icon {
+      width: 16px;
+      height: 16px;
+      fill: none;
+      stroke: #64748b;
+      stroke-width: 2;
+      stroke-linecap: round;
+      stroke-linejoin: round;
+      margin-right: 8px;
+    }
+
+    .it-search-input {
+      background: transparent;
+      border: none;
+      outline: none;
+      color: #ffffff;
+      font-size: 14px;
+      width: 100%;
+    }
+
+    .it-search-results {
+      position: absolute;
+      top: calc(100% + 8px);
+      left: 0;
+      right: 0;
+      background: #111827;
+      border: 1px solid #1f2937;
+      border-radius: 8px;
+      max-height: 250px;
+      overflow-y: auto;
+      display: none;
+      box-shadow: 0 10px 25px rgba(0,0,0,0.5);
+      z-index: 110;
+    }
+
+    .it-search-results.active {
+      display: block;
+    }
+
+    .it-search-item {
+      padding: 10px 14px;
+      font-size: 13px;
+      color: #cbd5e1;
+      cursor: pointer;
+      border-bottom: 1px solid #1f2937;
+    }
+
+    .it-search-item:last-child {
+      border-bottom: none;
+    }
+
+    .it-search-item:hover {
+      background-color: #1f2937;
+      color: #00a3ff;
+    }
+
+    /* Navigation Menu */
+    .it-nav {
+      display: flex;
+      align-items: center;
+      gap: 24px;
+    }
+
+    .it-nav-link {
+      color: #ffffff;
+      text-decoration: none;
+      font-size: 14px;
+      font-weight: 500;
+      transition: color 0.2s ease;
+    }
+
+    .it-nav-link:hover {
+      color: #00a3ff;
+    }
+
+    /* Dropdown Component */
+    .it-dropdown {
+      position: relative;
+    }
+
+    .it-dropdown-btn {
+      background: none;
+      border: none;
+      color: #ffffff;
+      font-size: 14px;
+      font-weight: 500;
+      cursor: pointer;
+      display: flex;
+      align-items: center;
+      gap: 4px;
+      padding: 0;
+    }
+
+    .it-dropdown-chevron {
+      width: 12px;
+      height: 12px;
+      fill: none;
+      stroke: currentColor;
+      stroke-width: 2.5;
+      transition: transform 0.2s ease;
+    }
+
+    .it-dropdown.open .it-dropdown-chevron {
+      transform: rotate(180deg);
+    }
+
+    .it-dropdown-menu {
+      position: absolute;
+      top: calc(100% + 16px);
+      left: 50%;
+      transform: translateX(-50%);
+      background-color: #ffffff;
+      border-radius: 16px;
+      padding: 12px 0;
+      min-width: 220px;
+      box-shadow: 0 20px 30px rgba(0, 0, 0, 0.4);
+      opacity: 0;
+      visibility: hidden;
+      transition: opacity 0.2s ease, visibility 0.2s ease;
+      z-index: 120;
+    }
+
+    .it-dropdown.open .it-dropdown-menu {
+      opacity: 1;
+      visibility: visible;
+    }
+
+    .it-dropdown-item {
+      display: block;
+      padding: 10px 20px;
+      color: #0f172a;
+      text-decoration: none;
+      font-size: 13px;
+      font-weight: 700;
+      line-height: 1.3;
+      transition: background 0.15s ease;
+    }
+
+    .it-dropdown-item:hover {
+      background-color: #f1f5f9;
+    }
+
+    /* Right Action Bar */
+    .it-actions {
+      display: flex;
+      align-items: center;
+      gap: 16px;
+    }
+
+    .it-btn-signin {
+      color: #ffffff;
+      text-decoration: none;
+      font-size: 14px;
+      font-weight: 500;
+    }
+
+    .it-btn-signup {
+      background-color: #00a3ff;
+      color: #ffffff;
+      border: none;
+      border-radius: 6px;
+      padding: 8px 18px;
+      font-size: 14px;
+      font-weight: 600;
+      cursor: pointer;
+      transition: background-color 0.2s ease;
+    }
+
+    .it-btn-signup:hover {
+      background-color: #0082cc;
+    }
+
+    .it-lang-selector {
+      color: #ffffff;
+      font-size: 12px;
+      font-weight: 600;
+      cursor: pointer;
+    }
+
+    .it-cart-btn {
+      position: relative;
+      background: none;
+      border: none;
+      cursor: pointer;
+      color: #ffffff;
+      display: flex;
+      align-items: center;
+    }
+
+    .it-cart-badge {
+      position: absolute;
+      top: -6px;
+      right: -8px;
+      background-color: #00a3ff;
+      color: #ffffff;
+      font-size: 10px;
+      font-weight: 700;
+      border-radius: 10px;
+      padding: 1px 5px;
+    }
+
+    /* --- HERO SECTION --- */
+    .it-hero {
+      position: relative;
+      padding: 40px 20px 60px 20px;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+    }
+
+    .it-hero-heading {
+      font-size: 52px;
+      font-weight: 700;
+      letter-spacing: -1px;
+      margin-bottom: 8px;
+      text-align: center; padding-top: 3rem;
+    }
+
+    .it-hero-subheading {
+      font-size: 18px;
+      color: #94a3b8;
+      margin-bottom: 40px;
+      text-align: center;
+      font-weight: 400;
+    }
+
+    /* Carousel Main Stage */
+    .it-carousel-wrapper {
+      position: relative;
+      width: 100%;
+      max-width: 1500px;
+      margin: 0 auto; padding-top: 5rem;
+    }
+
+    .it-carousel-glow {
+      position: relative;
+      border-radius: 20px;
+      padding: 3px;
+      background: radial-gradient(circle at 50% 50%, rgba(0, 163, 255, 0.4), transparent 70%);
+      box-shadow: 0 0 50px rgba(0, 163, 255, 0.25);
+    }
+
+    .it-carousel-viewport {
+      position: relative;
+      border-radius: 18px;
+      overflow: hidden;
+      height: 650px;
+      background-color: #05070a;
+    }
+
+    .it-slide {
+      position: absolute;
+      inset: 0;
+      opacity: 0;
+      transition: opacity 0.6s cubic-bezier(0.4, 0, 0.2, 1);
+      display: flex;
+      flex-direction: column;
+      justify-content: space-between;
+      align-items: center;
+      padding: 32px;
+      background-size: cover;
+      background-position: center;
+    }
+
+    .it-slide.active {
+      opacity: 1;
+      z-index: 2;
+    }
+
+    .it-slide-overlay {
+      position: absolute;
+      inset: 0;
+      background: radial-gradient(circle at center, rgba(0,0,0,0.1) 0%, rgba(0,0,0,0.75) 100%),
+                  linear-gradient(to top, rgba(0,0,0,0.9) 0%, transparent 60%);
+      z-index: 1;
+    }
+
+    .it-slide-content {
+      position: relative;
+      z-index: 2;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      height: 100%;
+      justify-content: space-between;
+      width: 100%;
+    }
+
+    /* Live Tag */
+    .it-badge-live {
+      display: inline-flex;
+      align-items: center;
+      gap: 6px;
+      background-color: #00a3ff;
+      color: #ffffff;
+      font-size: 12px;
+      font-weight: 700;
+      padding: 6px 14px;
+      border-radius: 20px;
+      letter-spacing: 0.5px;
+      box-shadow: 0 0 12px rgba(0, 163, 255, 0.5);
+    }
+
+    .it-badge-live-icon {
+      width: 14px;
+      height: 14px;
+      fill: currentColor;
+    }
+
+    /* Slide Info Group */
+    .it-slide-info {
+      text-align: center;
+      margin-bottom: 8px;
+    }
+
+    .it-slide-date {
+      color: #cbd5e1;
+      font-size: 14px;
+      font-weight: 600;
+      margin-bottom: 6px;
+    }
+
+    .it-slide-title {
+      font-size: 32px;
+      font-weight: 900;
+      letter-spacing: 1px;
+      color: #ffffff;
+      text-transform: uppercase;
+      margin-bottom: 4px;
+      text-shadow: 0 2px 10px rgba(0,0,0,0.5);
+    }
+
+    .it-slide-subtitle {
+      color: #94a3b8;
+      font-size: 13px;
+      font-weight: 600;
+      letter-spacing: 1px;
+      text-transform: uppercase;
+      margin-bottom: 20px;
+    }
+
+    .it-btn-primary {
+      background-color: #00a3ff;
+      color: #ffffff;
+      border: none;
+      border-radius: 6px;
+      padding: 12px 32px;
+      font-size: 14px;
+      font-weight: 700;
+      cursor: pointer;
+      transition: transform 0.15s ease, background-color 0.2s ease;
+      box-shadow: 0 4px 14px rgba(0, 163, 255, 0.3);
+    }
+
+    .it-btn-primary:hover {
+      background-color: #0082cc;
+      transform: translateY(-1px);
+    }
+
+    /* Navigation Arrows */
+    .it-arrow {
+      position: absolute;
+      top: 50%;
+      transform: translateY(-50%);
+      background: none;
+      border: none;
+      color: #ffffff;
+      cursor: pointer;
+      z-index: 10;
+      padding: 12px;
+      opacity: 0.7;
+      transition: opacity 0.2s ease, transform 0.2s ease;
+    }
+
+    .it-arrow:hover {
+      opacity: 1;
+    }
+
+    .it-arrow-prev {
+      left: -56px;
+    }
+
+    .it-arrow-prev:hover {
+      transform: translateY(-50%) translateX(-2px);
+    }
+
+    .it-arrow-next {
+      right: -56px;
+    }
+
+    .it-arrow-next:hover {
+      transform: translateY(-50%) translateX(2px);
+    }
+
+    .it-arrow svg {
+      width: 28px;
+      height: 28px;
+      fill: none;
+      stroke: currentColor;
+      stroke-width: 2.5;
+      stroke-linecap: round;
+      stroke-linejoin: round;
+    }
+
+    /* Indicators (Dots) */
+    .it-indicators {
+      display: flex;
+      gap: 10px;
+      position: absolute;
+      bottom: 16px;
+      left: 50%;
+      transform: translateX(-50%);
+      z-index: 10;
+    }
+
+    .it-dot {
+      width: 28px;
+      height: 3px;
+      background-color: rgba(255, 255, 255, 0.2);
+      border-radius: 2px;
+      cursor: pointer;
+      transition: background-color 0.3s ease;
+    }
+
+    .it-dot.active {
+      background-color: #ffffff;
+    }
+  </style>
+</head>
+<body>
+
+  <div class="it-scope">
+    <!-- HEADER -->
+    <header class="it-header">
+      <div class="it-brand-group">
+        <a href="#" class="it-logo">
+          tech.com <span class="it-logo-badge">| HARDWARE</span>
+        </a>
+        <div class="it-divider"></div>
+        <span class="it-logo-sub">STORE</span>
+      </div>
+
+      <!-- Real-time Search Box -->
+      <div class="it-search-container">
+        <div class="it-search-input-wrap">
+          <svg class="it-search-icon" viewBox="0 0 24 24"><circle cx="11" cy="11" r="8"></circle><line x1="21" y1="21" x2="16.65" y2="16.65"></line></svg>
+          <input type="text" class="it-search-input" id="itSearchInput" placeholder="Search hardware, GPUs, laptops..." autocomplete="off">
+        </div>
+        <div class="it-search-results" id="itSearchResults"></div>
+      </div>
+
+      <!-- Navigation Links & Dynamic Dropdown -->
+      <nav class="it-nav">
+        <a href="#" class="it-nav-link">Marketplace</a>
+        <a href="#" class="it-nav-link">Drops</a>
+        
+        <div class="it-dropdown" id="itDropdown">
+          <button class="it-dropdown-btn" id="itDropdownBtn">
+            Top Hardware
+            <svg class="it-dropdown-chevron" viewBox="0 0 24 24"><polyline points="6 9 12 15 18 9"></polyline></svg>
+          </button>
+          <div class="it-dropdown-menu">
+            <a href="#" class="it-dropdown-item">NVIDIA RTX 4090 Series</a>
+            <a href="#" class="it-dropdown-item">Custom Mechanical Keyboards</a>
+            <a href="#" class="it-dropdown-item">OLED Gaming Monitors</a>
+            <a href="#" class="it-dropdown-item">DDR5 High-Speed RAM</a>
+            <a href="#" class="it-dropdown-item">NVMe Gen5 SSDs</a>
+          </div>
+        </div>
+
+        <a href="#" class="it-nav-link">Build PC</a>
+      </nav>
+
+      <!-- User Actions & Shopping Cart -->
+      <div class="it-actions">
+        <a href="#" class="it-btn-signin">Sign In</a>
+        <button class="it-btn-signup">Sign Up</button>
+        <div class="it-divider"></div>
+        <span class="it-lang-selector">EN</span>
+        <button class="it-cart-btn" id="itCartBtn" aria-label="Cart">
+          <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="9" cy="21" r="1"></circle><circle cx="20" cy="21" r="1"></circle><path d="M1 1h4l2.68 13.39a2 2 0 0 0 2 1.61h9.72a2 2 0 0 0 2-1.61L23 6H6"></path></svg>
+          <span class="it-cart-badge" id="itCartCount">0</span>
+        </button>
+      </div>
+    </header>
+
+    <!-- HERO SECTION -->
+    <main class="it-hero">
+      <h1 class="it-hero-heading">Buy, sell, and showcase</h1>
+      <p class="it-hero-subtitle">premium IT hardware from leading brands and custom builders</p>
+
+      <div class="it-carousel-wrapper">
+        <!-- Navigation Arrows -->
+        <button class="it-arrow it-arrow-prev" id="itPrevBtn" aria-label="Previous Slide">
+          <svg viewBox="0 0 24 24"><polyline points="15 18 9 12 15 6"></polyline></svg>
+        </button>
+        <button class="it-arrow it-arrow-next" id="itNextBtn" aria-label="Next Slide">
+          <svg viewBox="0 0 24 24"><polyline points="9 18 15 12 9 6"></polyline></svg>
+        </button>
+
+        <!-- Main Card Wrapper -->
+        <div class="it-carousel-glow">
+          <div class="it-carousel-viewport" id="itCarouselViewport">
+            
+            <!-- Slide 1 -->
+            <div class="it-slide active" style="background-image: url('https://images.unsplash.com/photo-1542751371-adc38448a05e?auto=format&fit=crop&w=1200&q=80');">
+              <div class="it-slide-overlay"></div>
+              <div class="it-slide-content">
+                <div class="it-badge-live">
+                  <svg class="it-badge-live-icon" viewBox="0 0 24 24"><path d="M12 2A10 10 0 0 0 2 12a10 10 0 0 0 10 10 10 10 0 0 0 10-10A10 10 0 0 0 12 2zm0 18a8 8 0 1 1 0-16 8 8 0 0 1 0 16z"/><circle cx="12" cy="12" r="3"/></svg>
+                  LIVE NOW
+                </div>
+                <div class="it-slide-info">
+                  <p class="it-slide-date">Mon, Jan 12</p>
+                  <h2 class="it-slide-title">THE HARDWARE KIDS</h2>
+                  <p class="it-slide-subtitle">LIMITED EDITION RIGS & PERIPHERALS</p>
+                  <button class="it-btn-primary it-action-btn" data-product="Hardware Kids Drop">View Drop</button>
+                </div>
+              </div>
+            </div>
+
+            <!-- Slide 2 -->
+            <div class="it-slide" style="background-image: url('https://images.unsplash.com/photo-1587202372775-e229f172b9d7?auto=format&fit=crop&w=1200&q=80');">
+              <div class="it-slide-overlay"></div>
+              <div class="it-slide-content">
+                <div class="it-badge-live">
+                  <svg class="it-badge-live-icon" viewBox="0 0 24 24"><path d="M12 2A10 10 0 0 0 2 12a10 10 0 0 0 10 10 10 10 0 0 0 10-10A10 10 0 0 0 12 2zm0 18a8 8 0 1 1 0-16 8 8 0 0 1 0 16z"/><circle cx="12" cy="12" r="3"/></svg>
+                  PRE-ORDER NOW
+                </div>
+                <div class="it-slide-info">
+                  <p class="it-slide-date">Wed, Jan 14</p>
+                  <h2 class="it-slide-title">NEXT-GEN GRAPHICS</h2>
+                  <p class="it-slide-subtitle">ULTRA HIGH-FRAME PERFORMANCE</p>
+                  <button class="it-btn-primary it-action-btn" data-product="Next-Gen GPUs">Explore GPUs</button>
+                </div>
+              </div>
+            </div>
+
+            <!-- Slide 3 -->
+            <div class="it-slide" style="background-image: url('https://images.unsplash.com/photo-1618005182384-a83a8bd57fbe?auto=format&fit=crop&w=1200&q=80');">
+              <div class="it-slide-overlay"></div>
+              <div class="it-slide-content">
+                <div class="it-badge-live">
+                  <svg class="it-badge-live-icon" viewBox="0 0 24 24"><path d="M12 2A10 10 0 0 0 2 12a10 10 0 0 0 10 10 10 10 0 0 0 10-10A10 10 0 0 0 12 2zm0 18a8 8 0 1 1 0-16 8 8 0 0 1 0 16z"/><circle cx="12" cy="12" r="3"/></svg>
+                  NEW RELEASE
+                </div>
+                <div class="it-slide-info">
+                  <p class="it-slide-date">Fri, Jan 16</p>
+                  <h2 class="it-slide-title">CUSTOM KEYBOARD SUITE</h2>
+                  <p class="it-slide-subtitle">HOT-SWAPPABLE MECHANICAL SWITCHES</p>
+                  <button class="it-btn-primary it-action-btn" data-product="Custom Keyboards">Shop Keyboards</button>
+                </div>
+              </div>
+            </div>
+
+          </div>
+        </div>
+
+        <!-- Indicators -->
+        <div class="it-indicators" id="itIndicators">
+          <div class="it-dot active" data-slide="0"></div>
+          <div class="it-dot" data-slide="1"></div>
+          <div class="it-dot" data-slide="2"></div>
+        </div>
+
+      </div>
+    </main>
+  </div>
+
+  <!-- INTERACTIVE JAVASCRIPT -->
+  <script>
+    (function() {
+      // 1. CAROUSEL ENGINE
+      const slides = document.querySelectorAll('.it-slide');
+      const dots = document.querySelectorAll('.it-dot');
+      const prevBtn = document.getElementById('itPrevBtn');
+      const nextBtn = document.getElementById('itNextBtn');
+      let currentSlide = 0;
+      let autoPlayTimer = null;
+
+      function goToSlide(index) {
+        slides[currentSlide].classList.remove('active');
+        dots[currentSlide].classList.remove('active');
+        currentSlide = (index + slides.length) % slides.length;
+        slides[currentSlide].classList.add('active');
+        dots[currentSlide].classList.add('active');
+      }
+
+      function nextSlide() {
+        goToSlide(currentSlide + 1);
+      }
+
+      function prevSlide() {
+        goToSlide(currentSlide - 1);
+      }
+
+      function startAutoPlay() {
+        stopAutoPlay();
+        autoPlayTimer = setInterval(nextSlide, 5000);
+      }
+
+      function stopAutoPlay() {
+        if (autoPlayTimer) clearInterval(autoPlayTimer);
+      }
+
+      nextBtn.addEventListener('click', () => { nextSlide(); startAutoPlay(); });
+      prevBtn.addEventListener('click', () => { prevSlide(); startAutoPlay(); });
+
+      dots.forEach(dot => {
+        dot.addEventListener('click', (e) => {
+          const slideIdx = parseInt(e.target.dataset.slide);
+          goToSlide(slideIdx);
+          startAutoPlay();
+        });
+      });
+
+      startAutoPlay();
+
+      // 2. DROPDOWN TOGGLE ENGINE
+      const dropdown = document.getElementById('itDropdown');
+      const dropdownBtn = document.getElementById('itDropdownBtn');
+
+      dropdownBtn.addEventListener('click', (e) => {
+        e.stopPropagation();
+        dropdown.classList.toggle('open');
+      });
+
+      document.addEventListener('click', () => {
+        dropdown.classList.remove('open');
+      });
+
+      // 3. REAL-TIME SEARCH ENGINE
+      const searchInput = document.getElementById('itSearchInput');
+      const searchResults = document.getElementById('itSearchResults');
+
+      const mockDatabase = [
+        "NVIDIA GeForce RTX 4090",
+        "NVIDIA GeForce RTX 4080 Super",
+        "AMD Radeon RX 7900 XTX",
+        "Custom Mechanical Keyboard - Artisan Edition",
+        "Logitech G Pro X Superlight Mouse",
+        "Samsung Odyssey OLED G9 Monitor",
+        "Intel Core i9-14900K Processor",
+        "Corsair Vengeance DDR5 32GB RAM",
+        "WD_BLACK 2TB NVMe Gen5 SSD"
+      ];
+
+      searchInput.addEventListener('input', (e) => {
+        const query = e.target.value.toLowerCase().trim();
+        searchResults.innerHTML = '';
+        
+        if (query.length === 0) {
+          searchResults.classList.remove('active');
+          return;
+        }
+
+        const matches = mockDatabase.filter(item => item.toLowerCase().includes(query));
+
+        if (matches.length > 0) {
+          matches.forEach(match => {
+            const div = document.createElement('div');
+            div.className = 'it-search-item';
+            div.textContent = match;
+            div.addEventListener('click', () => {
+              searchInput.value = match;
+              searchResults.classList.remove('active');
+            });
+            searchResults.appendChild(div);
+          });
+          searchResults.classList.add('active');
+        } else {
+          const div = document.createElement('div');
+          div.className = 'it-search-item';
+          div.style.color = '#64748b';
+          div.textContent = 'No hardware items found';
+          searchResults.appendChild(div);
+          searchResults.classList.add('active');
+        }
+      });
+
+      document.addEventListener('click', (e) => {
+        if (!e.target.closest('.it-search-container')) {
+          searchResults.classList.remove('active');
+        }
+      });
+
+      // 4. CART SYSTEM INTEGRATION
+      let cartCount = 0;
+      const cartBadge = document.getElementById('itCartCount');
+      const actionBtns = document.querySelectorAll('.it-action-btn');
+
+      actionBtns.forEach(btn => {
+        btn.addEventListener('click', (e) => {
+          cartCount++;
+          cartBadge.textContent = cartCount;
+          
+          // Temporary feedback
+          const originalText = e.target.textContent;
+          e.target.textContent = 'Added to Cart!';
+          e.target.style.backgroundColor = '#10b981';
+          
+          setTimeout(() => {
+            e.target.textContent = originalText;
+            e.target.style.backgroundColor = '';
+          }, 1500);
+        });
+      });
+    })();
+  </script>
+</body>
+</html>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+

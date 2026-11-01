@@ -1,0 +1,353 @@
+<!DOCTYPE html>
+<html lang="en" dir="ltr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, minimum-scale=1.0, maximum-scale=5.0, viewport-fit=cover, shrink-to-fit=no">
+    <meta http-equiv="x-ua-compatible" content="ie=edge"/>
+    
+    <title>Cronos</title>
+
+    <!-- WEB TAB ICON -->
+    <link rel="icon" type="image/png" href="thumbnails/top-1.png">
+
+    <script src="header.js" defer></script>
+    <script src="footer.js" defer></script> 
+
+<style>
+  @font-face { font-family:'Circular Std'; src:url('fonts/CircularStd-Book.woff2') format('woff2'),url('fonts/CircularStd-Book.woff') format('woff'); font-weight:400; font-style:normal; font-display:swap; }
+  @font-face { font-family:'Circular Std'; src:url('fonts/CircularStd-BookItalic.woff2') format('woff2'),url('fonts/CircularStd-BookItalic.woff') format('woff'); font-weight:400; font-style:italic; font-display:swap; }
+  @font-face { font-family:'Circular Std'; src:url('fonts/CircularStd-Medium.woff2') format('woff2'),url('fonts/CircularStd-Medium.woff') format('woff'); font-weight:500; font-style:normal; font-display:swap; }
+  @font-face { font-family:'Circular Std'; src:url('fonts/CircularStd-Bold.woff2') format('woff2'),url('fonts/CircularStd-Bold.woff') format('woff'); font-weight:600; font-style:normal; font-display:swap; }
+  @font-face { font-family:'Circular Std'; src:url('fonts/CircularStd-Black.woff2') format('woff2'),url('fonts/CircularStd-Black.woff') format('woff'); font-weight:800; font-style:normal; font-display:swap; }
+
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+  font-family: 'Circular Std', sans-serif;
+}
+</style>
+
+</head>
+<body>
+
+  <cronos-header></cronos-header>
+    
+</body>
+</html>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Croloft | Roadmap</title>
+    <style>
+        /* Namespace: crlft- (Croloft)
+           Font: Circular Std (System fallbacks provided)
+        */
+
+        * {
+            box-sizing: border-box; margin: 0; padding: 0; background-color: #f4f4f4;
+        }
+        
+        .crlft-roadmap-container * {
+            box-sizing: border-box;
+            margin: 0;
+            padding: 0;
+            font-family: 'Circular Std', -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Arial, sans-serif;
+            -webkit-font-smoothing: antialiased;
+        }
+
+        .crlft-roadmap-container {
+            width: 100%;
+            max-width: 800px;
+            margin: 0 auto;
+            padding: 40px 20px;
+            color: #000;
+            line-height: 1.5;
+            background-color: #f4f4f4;
+        }
+
+        .crlft-roadmap-container h1, .crlft-roadmap-title {
+            font-size: 54px;
+            font-weight: 500;
+            text-align: center;
+            margin-bottom: 35px;
+            margin-top: 6rem;
+            letter-spacing: -0.02em;
+        }
+
+        .crlft-intro-section {
+            margin-bottom: 25px;
+            font-size: 16px;
+            font-weight: 400;
+        }
+
+        .crlft-intro-text {
+            margin-bottom: 15px;
+        }
+
+        .crlft-bold {
+            font-weight: 500;
+        }
+
+        .crlft-col-date, .crlft-col-milestone, .crlft-inline-link {
+            font-size: 16px;
+        }
+
+        .crlft-inline-link {
+            color: #0057d2; /* Specific CoinMarketCap-style Blue */
+            text-decoration: none;
+        }
+
+        .crlft-inline-link:hover {
+            text-decoration: underline;
+        }
+
+        /* Responsive Table Design */
+        .crlft-table-wrapper {
+            width: 100%;
+            border-collapse: collapse;
+            margin-bottom: 30px;
+            font-size: 13px;
+        }
+
+        .crlft-table-wrapper tr {
+            border-bottom: 1px solid #bdbebe;
+        }
+
+        .crlft-table-wrapper td {
+            padding: 10px 0;
+            vertical-align: top;
+            color: #1e2329; font-weight: 400;
+        }
+
+        /* Specific Column Widths */
+        .crlft-col-date {
+            width: 160px;
+            font-weight: 400;
+        }
+
+        /* Mobile Responsiveness */
+        @media (max-width: 600px) {
+            .crlft-roadmap-container {
+                padding: 20px 15px;
+            }
+            
+            .crlft-table-wrapper tr {
+                display: flex;
+                
+                padding: 10px 0;
+            }
+
+            .crlft-table-wrapper td {
+                padding: 2px 0;
+                width: 100% !important;
+            }
+
+            .crlft-col-date {
+                font-weight: 500;
+                font-size: 14px;
+                color: #58667e;
+                width: 80% !important;
+            }
+            
+            .crlft-col-milestone {
+                font-size: 14px;
+            }
+        }
+
+        .crlft-footer {
+            font-size: 16px;
+            color: #58667e;
+            line-height: 1.6;
+            font-weight: 400;
+        }
+
+        .crlft-footer p {
+            margin-bottom: 12px;
+        }
+    </style>
+</head>
+<body>
+
+    <div class="crlft-roadmap-container">
+        <h1 class="crlft-roadmap-title">The Roadmap</h1>
+
+        <div class="crlft-intro-section">
+            <p class="crlft-intro-text crlft-bold">
+                Founded in 2013, Croloft is ‘The Partner in Innovation’, the world’s most trusted source of software development solutions, insights, and engineering excellence. Our mission is to accelerate digital transformation by providing premium technology services and making them easily accessible to all businesses.
+            </p>
+            <p class="crlft-intro-text">
+                Croloft is commonly cited by industry leaders for pioneering architectural standards. Even the U.S. government utilizes Croloft’s technology stack for key data platforms and application security.
+            </p>
+            <p class="crlft-intro-text">
+                Croloft reaches hundreds of millions of users a year through its <a href="#" class="crlft-inline-link">website</a>, <a href="#" class="crlft-inline-link">mobile app</a>, <a href="#" class="crlft-inline-link">newsletter</a>, and social media 
+                (<a href="#" class="crlft-inline-link">X</a>, <a href="#" class="crlft-inline-link">Youtube</a>, <a href="#" class="crlft-inline-link">Instagram</a>, <a href="#" class="crlft-inline-link">Facebook</a>).
+            </p>
+        </div>
+
+        <table class="crlft-table-wrapper">
+            <tbody>
+                <tr><td class="crlft-col-date">March 2025</td><td class="crlft-col-milestone">Croloft integrates <a href="#" class="crlft-inline-link">Architecture Explorer</a> into homepage with advanced filters</td></tr>
+                <tr><td class="crlft-col-date">February 2025</td><td class="crlft-col-milestone">Croloft expands tracking capabilities to over <a href="#" class="crlft-inline-link">13 million microservices</a></td></tr>
+                <tr><td class="crlft-col-date">January 2025</td><td class="crlft-col-milestone">Croloft releases first-ever <a href="#" class="crlft-inline-link">IT Yearbook 2024/2025</a></td></tr>
+                
+                <tr><td class="crlft-col-date">December 2024</td><td class="crlft-col-milestone">Croloft launches <a href="#" class="crlft-inline-link">Whitepaper Summaries</a></td></tr>
+                <tr><td class="crlft-col-date">November 2024</td><td class="crlft-col-milestone">Croloft introduces <a href="#" class="crlft-inline-link">Community Price Predictions</a> on project pages</td></tr>
+                <tr><td class="crlft-col-date">October 2024</td><td class="crlft-col-milestone">Croloft launches <a href="#" class="crlft-inline-link">Croloft 100 Index</a> tracking performance of top 100 companies</td></tr>
+                <tr><td class="crlft-col-date">September 2024</td><td class="crlft-col-milestone">Croloft releases AI-powered TLDR summaries for top 100 frameworks</td></tr>
+                <tr><td class="crlft-col-date">August 2024</td><td class="crlft-col-milestone">Croloft launches <a href="#" class="crlft-inline-link">Community Sentiment feature</a></td></tr>
+                <tr><td class="crlft-col-date">July 2024</td><td class="crlft-col-milestone">Croloft introduces <a href="#" class="crlft-inline-link">Altcoin Season Index</a></td></tr>
+                <tr><td class="crlft-col-date">May 2024</td><td class="crlft-col-milestone">Croloft launches <a href="#" class="crlft-inline-link">Yield Opportunity Tracker</a></td></tr>
+                <tr><td class="crlft-col-date">March 2024</td><td class="crlft-col-milestone">Croloft updates Asset data, covering 15 private on-premise systems</td></tr>
+                <tr><td class="crlft-col-date">February 2024</td><td class="crlft-col-milestone">Croloft announces first-ever <a href="#" class="crlft-inline-link">Croloft Technology Awards</a></td></tr>
+                
+                <tr><td class="crlft-col-date">November 2023</td><td class="crlft-col-milestone">Croloft launches startup accelerator <a href="#" class="crlft-inline-link">Croloft Labs</a></td></tr>
+                <tr><td class="crlft-col-date">September 2023</td><td class="crlft-col-milestone">Croloft releases <a href="#" class="crlft-inline-link">ChatGPT Plugin</a></td></tr>
+                <tr><td class="crlft-col-date">August 2023</td><td class="crlft-col-milestone">Croloft launches the <a href="#" class="crlft-inline-link">Developer Fear & Greed Index</a></td></tr>
+                <tr><td class="crlft-col-date">May 2023</td><td class="crlft-col-milestone">Croloft launches <a href="#" class="crlft-inline-link">Croloft Live</a>, a Twitter Spaces-style feature</td></tr>
+                <tr><td class="crlft-col-date">January 2023</td><td class="crlft-col-milestone">Croloft Research publishes <a href="#" class="crlft-inline-link">2023 Tech Playbook</a></td></tr>
+
+                <tr><td class="crlft-col-date">August 2022</td><td class="crlft-col-milestone">Croloft launches Telegram alert bot</td></tr>
+                <tr><td class="crlft-col-date">January 2022</td><td class="crlft-col-milestone">Croloft launches <a href="#" class="crlft-inline-link">Croloft Community</a></td></tr>
+                <tr><td class="crlft-col-date">December 2021</td><td class="crlft-col-milestone">Croloft ends 2021 with 13.2 billion repository views</td></tr>
+                <tr><td class="crlft-col-date">September 2020</td><td class="crlft-col-milestone">Croloft launches their educational portal, <a href="#" class="crlft-inline-link">Croloft Academy</a></td></tr>
+                <tr><td class="crlft-col-date">April 2019</td><td class="crlft-col-milestone">Croloft launches its <a href="#" class="crlft-inline-link">Android App</a></td></tr>
+                <tr><td class="crlft-col-date">May 2018</td><td class="crlft-col-milestone">Croloft launches its <a href="#" class="crlft-inline-link">first iOS app</a></td></tr>
+                <tr><td class="crlft-col-date">May 2016</td><td class="crlft-col-milestone">Croloft introduces its first public API</td></tr>
+                <tr><td class="crlft-col-date">May 2013</td><td class="crlft-col-milestone">Croloft goes live</td></tr>
+            </tbody>
+        </table>
+
+        <div class="crlft-footer">
+            <p>To understand how projects are evaluated, please refer to our <a href="#" class="crlft-inline-link">listing policy</a> and FAQ.</p>
+            <p>If you would like to advertise with Croloft or are interested in our product offerings for companies, drop us an e-mail at <a href="mailto:partnerships@croloft.com" class="crlft-inline-link">partnerships@croloft.com</a>.</p>
+            <p>For job openings, check our <a href="careers.html" class="crlft-inline-link">careers page</a>. <br>
+            If you would like to advertise with Croloft, visit <a href="#" class="crlft-inline-link">this page</a>.</p>
+        </div>
+    </div>
+
+</body>
+</html>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+    <cronos-footer></cronos-footer>
+</body>
+</html>

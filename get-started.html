@@ -1,0 +1,616 @@
+<!DOCTYPE html>
+<html lang="en" dir="ltr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, minimum-scale=1.0, maximum-scale=5.0, viewport-fit=cover, shrink-to-fit=no">
+    <meta http-equiv="x-ua-compatible" content="ie=edge"/>
+    
+    <title>Cronos</title>
+
+    <!-- WEB TAB ICON -->
+    <link rel="icon" type="image/png" href="thumbnails/top-1.png">
+
+    <style>
+        @font-face { font-family:'Circular Std'; src:url('fonts/CircularStd-Book.woff2') format('woff2'),url('fonts/CircularStd-Book.woff') format('woff'); font-weight:400; font-style:normal; font-display:swap; }
+        @font-face { font-family:'Circular Std'; src:url('fonts/CircularStd-BookItalic.woff2') format('woff2'),url('fonts/CircularStd-BookItalic.woff') format('woff'); font-weight:400; font-style:italic; font-display:swap; }
+        @font-face { font-family:'Circular Std'; src:url('fonts/CircularStd-Medium.woff2') format('woff2'),url('fonts/CircularStd-Medium.woff') format('woff'); font-weight:500; font-style:normal; font-display:swap; }
+        @font-face { font-family:'Circular Std'; src:url('fonts/CircularStd-Bold.woff2') format('woff2'),url('fonts/CircularStd-Bold.woff') format('woff'); font-weight:600; font-style:normal; font-display:swap; }
+        @font-face { font-family:'Circular Std'; src:url('fonts/CircularStd-Bold.woff2') format('woff2'),url('fonts/CircularStd-Bold.woff') format('woff'); font-weight:700; font-style:normal; font-display:swap; }
+        @font-face { font-family:'Circular Std'; src:url('fonts/CircularStd-Black.woff2') format('woff2'),url('fonts/CircularStd-Black.woff') format('woff'); font-weight:800; font-style:normal; font-display:swap; }
+        @font-face { font-family:'Circular Std'; src:url('fonts/CircularStd-Black.woff2') format('woff2'),url('fonts/CircularStd-Black.woff') format('woff'); font-weight:900; font-style:normal; font-display:swap; }
+    </style>
+</head>
+
+
+
+
+
+
+
+
+
+
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>My Website</title>
+    
+    <script src="header.js" defer></script>
+    <script src="footer.js" defer></script> 
+</head>
+<body>
+
+    <cronos-header></cronos-header>
+    
+
+</body>
+</html>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<style>
+  /* ─── SCOPED NAMESPACED RESET ─── */
+        .cr-solutions-root *,
+        .cr-solutions-root *::before,
+        .cr-solutions-root *::after {
+            box-sizing: border-box;
+            margin: 0;
+            padding: 0;
+        }
+
+        * {
+            padding: 0;
+            margin: 0;
+            box-sizing: border-box; font-family: 'Circular Std', -apple-system, BlinkMacSystemFont, sans-serif;
+        }
+
+        .cr-solutions-root {
+            font-family: 'Circular Std', -apple-system, BlinkMacSystemFont, sans-serif;
+            -webkit-font-smoothing: antialiased;
+            background: #fff;
+            color: #111827;
+            width: 100%;
+            overflow-x: hidden;
+        }
+
+        .cr-sol-container {
+            width: 100%;
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 16px;
+        }
+        @media (min-width: 768px) {
+            .cr-sol-container {
+                padding: 0 24px;
+            }
+        }
+
+  /* ─── HERO SECTION WITH SEAMLESS CHROMATIC BACKGROUND FLOW ─── */
+        .cr-sol-hero {
+            position: relative;
+            padding: 120px 0 80px;
+            text-align: left;
+            overflow: hidden;
+            background-color: #5d22c9;
+        }
+        @media (min-width: 768px) {
+            .cr-sol-hero {
+                padding: 160px 0 120px;
+            }
+        }
+
+       
+
+        .cr-sol-hero::after {
+            content: '';
+            position: absolute;
+            inset: 0;
+            background: linear-gradient(180deg, 
+                rgba(11, 18, 31, 0) 0%, 
+                rgba(254, 254, 254, 0.822) 70%, 
+                #fff 100%
+            );
+            z-index: 2;
+        }
+
+        @keyframes cr-hero-seamless-flow {
+            0% { background-position: 0% 50%; }
+            50% { background-position: 100% 50%; }
+            100% { background-position: 0% 50%; }
+        }
+
+        .cr-sol-hero__content {
+            position: relative;
+            max-width: 820px;
+            z-index: 3;
+        }
+
+        .cr-sol-hero__title {
+            font-size: clamp(32px, 6vw, 64px);
+            font-weight: 500;
+            line-height: 1.1;
+            color: #ffffff;
+            margin-bottom: 20px;
+        }
+
+        .cr-sol-hero__desc {
+            font-size: clamp(15px, 2vw, 19px);
+            line-height: 1.6;
+            color: #ffffff;
+            margin-bottom: 32px;
+            max-width: 680px;
+        }
+
+        /* ─── ACTIONS & BUTTONS (1PX BORDER RADIUS) ─── */
+        .cr-sol-btn {
+            display: inline-flex;
+            align-items: center;
+            justify-content: center;
+            padding: 14px 28px;
+            font-size: 16px;
+            font-weight: 400;
+            text-decoration: none;
+            cursor: pointer;
+            border-radius: 50px;
+            transition: all 0.2s ease;
+            outline: none;
+            width: 100%;
+            text-align: center;
+            position: relative;
+        }
+        @media (min-width: 480px) {
+            .cr-sol-btn {
+                width: auto;
+            }
+        }
+
+        .cr-sol-btn--primary {
+            background: #111827;
+            color: #ffffff; border: none;
+        }
+
+        .cr-sol-btn--primary:hover {
+            background: #000000;
+            border-color: #000000;
+        }
+
+        .cr-sol-btn--secondary {
+            background: #080d1b;
+            color: #f9fbff; border: none;
+        }
+
+        .cr-sol-btn--secondary:hover {
+            border-color: #111827;
+            background: #f9fafb;
+        }
+</style>
+<div id="cr-directory-view">
+            
+            <div class="cr-sol-hero">
+                <div class="cr-sol-container">
+                    <div class="cr-sol-hero__content">
+                      <a href="" style="color: #fff;">What is Croloft?</a>
+                        <h1 class="cr-sol-hero__title">Get Started</h1>
+                        <p class="cr-sol-hero__desc">
+                            Steps to get started with Croloft and how to engage with our solutions team to build your custom application.
+                        </p>
+                        <a href="#services-display" class="cr-sol-btn cr-sol-btn--secondary">Browse Catalog</a>
+                    </div>
+                </div>
+            </div>
+  </div>
+
+
+
+
+
+
+
+
+
+
+
+<div class="cr-min-onboarding-container">
+    
+    <div class="cr-min-sidebar">
+        <h2 class="cr-min-heading">Getting <br>Started with Croloft</h2>
+    </div>
+
+    <div class="cr-min-accordion-group">
+        
+        <div class="cr-min-accordion-item active" onclick="crMinToggleAccordion(this)">
+            <div class="cr-min-trigger">
+                <span class="cr-min-number">01</span>
+                <span class="cr-min-title">Discovery &amp; Strategy Framing</span>
+                <span class="cr-min-icon"></span>
+            </div>
+            <div class="cr-min-content">
+                <div class="cr-min-content-inner">
+                    <p>We review your structural architecture requirements, identify performance bottlenecks, and frame out strict scope paths before writing any functional logic.</p>
+                    <a href="mailto:solutions@cronos.com?subject=Phase 1 Scope Sync" class="cr-min-action-link">Schedule Engineering Sync</a>
+                </div>
+            </div>
+        </div>
+
+        <div class="cr-min-accordion-item" onclick="crMinToggleAccordion(this)">
+            <div class="cr-min-trigger">
+                <span class="cr-min-number">02</span>
+                <span class="cr-min-title">Architecture &amp; Layout Prototyping</span>
+                <span class="cr-min-icon"></span>
+            </div>
+            <div class="cr-min-content">
+                <div class="cr-min-content-inner">
+                    <p>Our studio engineers isolated system components, constructs application interfaces, and models data schemas using standard framework-free standards.</p>
+                    <a href="mailto:solutions@cronos.com?subject=Phase 2 Architecture Map" class="cr-min-action-link">Explore Custom Schema Models</a>
+                </div>
+            </div>
+        </div>
+
+        <div class="cr-min-accordion-item" onclick="crMinToggleAccordion(this)">
+            <div class="cr-min-trigger">
+                <span class="cr-min-number">03</span>
+                <span class="cr-min-title">Agile Sprint Production</span>
+                <span class="cr-min-icon"></span>
+            </div>
+            <div class="cr-min-content">
+                <div class="cr-min-content-inner">
+                    <p>Incremental delivery loops deploy robust application modules straight into protected staging environments for live testing, feedback, and tracking metrics.</p>
+                    <a href="mailto:solutions@cronos.com?subject=Phase 3 Repository Access" class="cr-min-action-link">Access Production Tracking Board</a>
+                </div>
+            </div>
+        </div>
+
+        <div class="cr-min-accordion-item" onclick="crMinToggleAccordion(this)">
+            <div class="cr-min-trigger">
+                <span class="cr-min-number">04</span>
+                <span class="cr-min-title">Handover &amp; Help Desk Activation</span>
+                <span class="cr-min-icon"></span>
+            </div>
+            <div class="cr-min-content">
+                <div class="cr-min-content-inner">
+                    <p>Final deployment goes live, accompanied by native standalone source deliveries and your onboarding configuration straight into our SLA ticket engineering queues.</p>
+                    <a href="mailto:solutions@cronos.com?subject=Phase 4 SLA Launch" class="cr-min-action-link">Activate Help Desk Operations</a>
+                </div>
+            </div>
+        </div>
+
+    </div>
+</div>
+
+<style>
+    /* Clean Base Typography Alignment */
+    .cr-min-onboarding-container {
+        display: grid;
+        grid-template-columns: 0.8fr 1.2fr;
+        gap: 48px;
+        width: 100%;
+        max-width: 1200px;
+        margin: 50px auto;
+        font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
+        color: #111111;
+        box-sizing: border-box;
+        padding: 0 20px;
+    }
+
+    .cr-min-onboarding-container *, 
+    .cr-min-onboarding-container *::before, 
+    .cr-min-onboarding-container *::after {
+        box-sizing: border-box;
+        margin: 0;
+        padding: 0;
+    }
+
+    /* Left Sidebar Panel */
+    .cr-min-sidebar {
+        display: flex;
+        flex-direction: column;
+        align-items: flex-start;
+    }
+
+    .cr-min-heading {
+        font-size: 2.5rem;
+        font-weight: 500;
+        letter-spacing: -0.02em;
+        line-height: 1.2;
+        margin-bottom: 24px;
+    }
+
+    /* Right Accordion Panel */
+    .cr-min-accordion-group {
+        display: flex;
+        flex-direction: column;
+    }
+
+    .cr-min-accordion-item {
+        border-bottom: 1px solid #e5e5e5;
+        cursor: pointer;
+    }
+
+    .cr-min-trigger {
+        display: flex;
+        align-items: center;
+        padding: 24px 0;
+        position: relative;
+    }
+
+    .cr-min-number {
+        font-family: monospace;
+        font-size: 1rem;
+        color: #888888;
+        width: 40px;
+        flex-shrink: 0;
+    }
+
+    .cr-min-title {
+        font-size: 1.6rem;
+        font-weight: 500;
+        color: #111111;
+        flex-grow: 1;
+        padding-right: 20px;
+    }
+
+    /* Minimal Line Indicator Utility */
+    .cr-min-icon {
+        width: 12px;
+        height: 12px;
+        position: relative;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+    }
+
+    .cr-min-icon::before,
+    .cr-min-icon::after {
+        content: "";
+        position: absolute;
+        background-color: #111111;
+        transition: transform 0.2s ease;
+    }
+
+    .cr-min-icon::before { width: 12px; height: 1.5px; }
+    .cr-min-icon::after { width: 1.5px; height: 12px; }
+
+    .cr-min-accordion-item.active .cr-min-icon::after {
+        transform: rotate(90deg);
+        opacity: 0;
+    }
+
+    /* Smooth Expanding Mechanics */
+    .cr-min-content {
+        max-height: 0;
+        overflow: hidden;
+        transition: max-height 0.25s ease-out;
+    }
+
+    .cr-min-accordion-item.active .cr-min-content {
+        max-height: 250px; /* Safe standard height boundary */
+    }
+
+    .cr-min-content-inner {
+        padding: 0 0 24px 40px;
+    }
+
+    .cr-min-content-inner p {
+        font-size: 1.1rem;
+        line-height: 1.55;
+        color: #555555;
+        margin-bottom: 16px;
+    }
+
+    .cr-min-action-link {
+        display: inline-block;
+        font-size: 1rem;
+        font-weight: 500;
+        color: #111111;
+        text-decoration: underline;
+        text-underline-offset: 3px;
+        transition: color 0.15s ease;
+    }
+
+    .cr-min-action-link:hover {
+        color: #666666;
+    }
+
+    /* Fluid Responsive Breakpoints */
+    @media (max-width: 768px) {
+        .cr-min-onboarding-container {
+            grid-template-columns: 1fr;
+            gap: 36px;
+            margin: 30px auto;
+        }
+
+        .cr-min-heading {
+            font-size: 1.8rem;
+            margin-bottom: 16px;
+        }
+
+        .cr-min-trigger {
+            padding: 20px 0;
+        }
+
+        .cr-min-title {
+            font-size: 1.1rem;
+        }
+    }
+</style>
+
+<script>
+    function crMinToggleAccordion(element) {
+        // Find sibling nodes context inside parent layout
+        const container = element.closest('.cr-min-accordion-group');
+        const items = container.querySelectorAll('.cr-min-accordion-item');
+
+        // Collapse open layers excluding currently targeted panel
+        items.forEach(item => {
+            if (item !== element) {
+                item.classList.remove('active');
+            }
+        });
+
+        // Toggle state assignment smoothly
+        element.classList.toggle('active');
+    }
+</script>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<aws-get-started-banner class="awsgs-container">
+  <div class="awsgs-wrapper">
+    
+    <div class="awsgs-left-col">
+      <h2 class="awsgs-heading">Get Started</h2>
+    </div>
+
+    <div class="awsgs-right-col">
+      <p class="awsgs-description">
+        Organizations of all sizes across all industries are transforming their businesses 
+        and delivering on their missions every day using AWS. Contact our experts and 
+        start your own AWS journey today.
+      </p>
+      <a href="#" class="awsgs-link">Contact Sales</a>
+    </div>
+
+  </div>
+
+  <style>
+    /* Scoped Container Styles */
+    aws-get-started-banner, .awsgs-container {
+      display: block;
+      font-family: 'Circular Std', -apple-system, BlinkMacSystemFont, sans-serif;
+      width: 100%;
+      background-color: #ffffff;
+      padding: 170px 0;
+      box-sizing: border-box;
+    }
+
+    .awsgs-container *, .awsgs-container *::before, .awsgs-container *::after {
+      box-sizing: border-box;
+    }
+
+    /* Minimalist Split Row Alignment */
+    .awsgs-wrapper {
+      max-width: 1200px;
+      width: calc(100% - 40px);
+      margin: 0 auto;
+      display: grid;
+      grid-template-columns: 1fr 1.5fr; /* Matches the visual weight split */
+      gap: 40px; padding: 0 20px;
+      align-items: start;
+    }
+
+    /* Left Typography Mechanics */
+    .awsgs-heading {
+      font-size: 38px;
+      font-weight: 500;
+      color: #16191f;
+      margin: 0;
+      letter-spacing: -0.5px;
+      line-height: 1.1;
+    }
+
+    /* Right Copy Mechanics */
+    .awsgs-right-col {
+      display: flex;
+      flex-direction: column;
+      gap: 16px;
+    }
+
+    .awsgs-description {
+      font-size: 16px;
+      line-height: 1.5;
+      color: #16191f;
+      margin: 0;
+      max-width: 540px; /* Keeps the text block beautifully readable */
+    }
+
+    /* Classic Underlined Text-Link */
+    .awsgs-link {
+      font-size: 16px;
+      font-weight: 500;
+      color: #0073bb; /* Clean AWS interactive blue signature */
+      text-decoration: underline;
+      text-underline-offset: 4px;
+      text-decoration-thickness: 1.5px;
+      width: fit-content;
+      transition: color 0.15s ease;
+    }
+
+    .awsgs-link:hover {
+      color: #005a93; /* Subtle darkening depth transition on interaction */
+    }
+
+    /* Responsive Configurations */
+    @media (max-width: 768px) {
+      .awsgs-wrapper {
+        grid-template-columns: 1fr; /* Stacks seamlessly on tablet and mobile */
+        gap: 20px;
+      }
+      
+      .awsgs-heading {
+        font-size: 32px;
+      }
+      
+      .awsgs-container {
+        padding: 40px 0;
+      }
+    }
+  </style>
+</aws-get-started-banner>
+
+
+
+
+<cronos-footer></cronos-footer>

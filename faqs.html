@@ -1,0 +1,543 @@
+<!DOCTYPE html>
+<html lang="en" dir="ltr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, minimum-scale=1.0, maximum-scale=5.0, viewport-fit=cover, shrink-to-fit=no">
+    <meta http-equiv="x-ua-compatible" content="ie=edge"/>
+    
+    <title>Cronos</title>
+
+    <!-- WEB TAB ICON -->
+    <link rel="icon" type="image/png" href="thumbnails/top-1.png">
+
+    <script src="header.js" defer></script>
+    <script src="footer.js" defer></script> 
+
+<style>
+  @font-face { font-family:'Circular Std'; src:url('fonts/CircularStd-Book.woff2') format('woff2'),url('fonts/CircularStd-Book.woff') format('woff'); font-weight:400; font-style:normal; font-display:swap; }
+  @font-face { font-family:'Circular Std'; src:url('fonts/CircularStd-BookItalic.woff2') format('woff2'),url('fonts/CircularStd-BookItalic.woff') format('woff'); font-weight:400; font-style:italic; font-display:swap; }
+  @font-face { font-family:'Circular Std'; src:url('fonts/CircularStd-Medium.woff2') format('woff2'),url('fonts/CircularStd-Medium.woff') format('woff'); font-weight:500; font-style:normal; font-display:swap; }
+  @font-face { font-family:'Circular Std'; src:url('fonts/CircularStd-Bold.woff2') format('woff2'),url('fonts/CircularStd-Bold.woff') format('woff'); font-weight:600; font-style:normal; font-display:swap; }
+  @font-face { font-family:'Circular Std'; src:url('fonts/CircularStd-Black.woff2') format('woff2'),url('fonts/CircularStd-Black.woff') format('woff'); font-weight:800; font-style:normal; font-display:swap; }
+
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+  font-family: 'Circular Std', sans-serif;
+}
+</style>
+
+</head>
+<body>
+
+  <cronos-header></cronos-header>
+    
+</body>
+</html>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Multipurpose IT Solutions - Frequently Asked Questions</title>
+    <style>
+        /* Encapsulated Namespace Base to completely protect external layout styles */
+        .it-faq-scope {
+            --it-faq-font: 'Circular Std', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+            --it-faq-bg-main: #080d1b;
+            --it-faq-text-dark: #F4f4f4;
+            --it-faq-text-muted: #bdbdbd;
+            --it-faq-accent-blue: rgb(1, 100, 206);
+            --it-faq-border-line: #2a3037;
+            --it-faq-canvas-bg: #F8FAFC;
+            
+            font-family: var(--it-faq-font);
+            background-color: var(--it-faq-bg-main);
+            color: var(--it-faq-text-dark);
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            width: 100%;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+        }
+
+         * {
+            box-sizing: border-box; margin: 0; padding: 0;
+        }
+
+        /* ==========================================================================
+           250px Mixed Blue Tech Gradient Hero Section (Title Placed at Bottom)
+           ========================================================================== */
+        .it-faq-hero {
+            width: 100%;
+            height: 250px;
+            background: linear-gradient(135deg, #040D1A 0%, #08214D 35%, #0056E0 100%);
+            display: flex;
+            align-items: flex-end; /* Anchors the content inner grid to the bottom */
+            justify-content: center;
+            padding: 0 20px 40px 20px; /* Strategic bottom padding pushes text flush above layout */
+        }
+
+        .it-faq-hero-inner {
+            width: 100%;
+            max-width: 900px; /* Synchronized directly with core answer grid layout line width */
+            display: flex;
+            justify-content: flex-start;
+        }
+
+        .it-faq-hero-title {
+            font-size: clamp(38px, 6vw, 56px);
+            font-weight: 500;
+            color: #FFFFFF; 
+            margin: 0;
+        }
+
+        /* ==========================================================================
+           Structured Layout Container
+           ========================================================================== */
+        .it-faq-main-layout {
+            width: 100%;
+            max-width: 900px;
+            margin: 70px auto 100px auto;
+            padding: 0;
+        }
+
+        /* Category System Blocks */
+        .it-faq-category-section {
+            margin-bottom: 64px;
+        }
+
+        .it-faq-category-section:last-of-type {
+            margin-bottom: 0;
+        }
+
+        .it-faq-category-title {
+            font-size: 36px;
+            font-weight: 500;
+            color: var(--it-faq-text-dark);
+            letter-spacing: -0.02em;
+            margin: 0 0 28px 0;
+            padding-bottom: 12px;
+        }
+
+        /* ==========================================================================
+           Accordion Component Layout
+           ========================================================================== */
+        .it-faq-item-container {
+            border-bottom: 1px solid var(--it-faq-border-line);
+        }
+
+        /* HTML5 Native details selector node override resetting browser standards */
+        .it-faq-accordion-node {
+            width: 100%;
+        }
+
+        .it-faq-summary-trigger {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 26px 0;
+            cursor: pointer;
+            list-style: none;
+            user-select: none;
+        }
+
+        .it-faq-summary-trigger::-webkit-details-marker {
+            display: none; /* Safari focus frame cleanup */
+        }
+
+        .it-faq-question-heading {
+            font-size: 21px;
+            font-weight: 500;
+            line-height: 1.4;
+            color: var(--it-faq-text-dark);
+            margin: 0;
+            padding-right: 24px;
+            letter-spacing: -0.01em;
+        }
+
+        /* Circle Outline Icon Logic */
+        .it-faq-toggle-circle {
+            width: 26px;
+            height: 26px;
+            border-radius: 50%;
+            border: 2px solid var(--it-faq-accent-blue);
+            position: relative;
+            flex-shrink: 0;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            transition: transform 0.25s ease;
+        }
+
+        /* Graphic Vector Crossbars inside Circle Icon */
+        .it-faq-icon-bar-horizontal,
+        .it-faq-icon-bar-vertical {
+            position: absolute;
+            background-color: var(--it-faq-accent-blue);
+            transition: transform 0.25s cubic-bezier(0.2, 0.8, 0.2, 1), opacity 0.2s ease;
+        }
+
+        .it-faq-icon-bar-horizontal {
+            width: 12px;
+            height: 2px;
+        }
+
+        .it-faq-icon-bar-vertical {
+            width: 2px;
+            height: 12px;
+        }
+
+        /* State Transforms when Accordion Panel details open */
+        .it-faq-accordion-node[open] .it-faq-icon-bar-vertical {
+            transform: rotate(90deg);
+            opacity: 0; /* Hides internal vertical sequence creating clean dynamic minus sign (-) visual */
+        }
+
+        .it-faq-accordion-node[open] .it-faq-icon-bar-horizontal {
+            transform: rotate(180deg);
+        }
+
+        /* Expandable Context Panels */
+        .it-faq-panel-body {
+            padding: 4px 0 28px 0;
+        }
+
+        .it-faq-paragraph-content {
+            font-size: 22px;
+            line-height: 1.65;
+            color: var(--it-faq-text-muted);
+            margin: 0 0 16px 0; font-weight: 400;
+        }
+
+        .it-faq-paragraph-content:last-of-type {
+            margin-bottom: 0;
+        }
+
+        /* ==========================================================================
+           Footer Message Call-To-Action (CTA) Area Styling
+           ========================================================================== */
+        .it-faq-footer-cta {
+            margin-top: 80px;
+            padding-top: 40px;
+            border-top: 1px solid var(--it-faq-border-line);
+            text-align: left;
+        }
+
+        .it-faq-footer-text {
+            font-size: 17px;
+            line-height: 1.6;
+            color: var(--it-faq-text-muted);
+        }
+
+        .it-faq-footer-link {
+            color: var(--it-faq-accent-blue);
+            text-decoration: none;
+            font-weight: 500;
+          
+        }
+
+        .it-faq-footer-link:hover {
+            border-color: var(--it-faq-accent-blue);
+            text-decoration: underline;
+        }
+
+        /* ==========================================================================
+           Mobile Optimization Media Queries
+           ========================================================================== */
+        @media (max-width: 767px) {
+            .it-faq-hero {
+                height: 200px;
+                padding: 0 20px 24px 20px;
+            }
+
+            .it-faq-main-layout {
+                margin: 44px auto 60px auto;
+                padding: 0 20px;
+            }
+
+            .it-faq-category-title {
+                font-size: 20px;
+                margin-bottom: 20px;
+            }
+
+            .it-faq-summary-trigger {
+                padding: 20px 0;
+            }
+
+            .it-faq-question-heading {
+                font-size: 16.5px;
+            }
+
+            .it-faq-toggle-circle {
+                width: 24px;
+                height: 24px;
+            }
+
+            .it-faq-icon-bar-horizontal { width: 10px; }
+            .it-faq-icon-bar-vertical { height: 10px; }
+
+            .it-faq-panel-body {
+                padding-bottom: 22px;
+            }
+
+            .it-faq-paragraph-content {
+                font-size: 15px;
+                line-height: 1.6;
+            }
+
+            .it-faq-footer-cta {
+                margin-top: 60px;
+                padding-top: 30px;
+            }
+
+            .it-faq-footer-text {
+                font-size: 15.5px;
+            }
+        }
+    </style>
+</head>
+<body>
+
+    <div class="it-faq-scope">
+        
+        <section class="it-faq-hero">
+            <div class="it-faq-hero-inner">
+                <h1 class="it-faq-hero-title">FAQs</h1>
+            </div>
+        </section>
+
+        <main class="it-faq-main-layout">
+            
+            <div class="it-faq-category-section">
+                <h2 class="it-faq-category-title">Managed Infrastructure &amp; Support</h2>
+                
+                <div class="it-faq-item-container">
+                    <details class="it-faq-accordion-node">
+                        <summary class="it-faq-summary-trigger">
+                            <h3 class="it-faq-question-heading">What's different between a standard public cloud setup and your custom hybrid cloud models?</h3>
+                            <div class="it-faq-toggle-circle" aria-hidden="true">
+                                <div class="it-faq-icon-bar-horizontal"></div>
+                                <div class="it-faq-icon-bar-vertical"></div>
+                            </div>
+                        </summary>
+                        <div class="it-faq-panel-body">
+                            <p class="it-faq-paragraph-content">If you're looking to run public applications while isolating critical user databases, our hybrid architecture models are a good place to start. They combine the rapid deployment capabilities of standard public cloud configurations with specialized custom private clusters dedicated to protecting sensitive internal business information pipelines.</p>
+                            <p class="it-faq-paragraph-content">Our structural framework remains highly flexible, meaning you preserve complete configuration control over secure operational access parameters. This allows your engineers to dispatch application data updates across distinct public environments smoothly while maintaining fixed local compliance baselines.</p>
+                        </div>
+                    </details>
+                </div>
+
+                <div class="it-faq-item-container">
+                    <details class="it-faq-accordion-node">
+                        <summary class="it-faq-summary-trigger">
+                            <h3 class="it-faq-question-heading">What are your baseline Response Time Service Level Agreements (SLAs)?</h3>
+                            <div class="it-faq-toggle-circle" aria-hidden="true">
+                                <div class="it-faq-icon-bar-horizontal"></div>
+                                <div class="it-faq-icon-bar-vertical"></div>
+                            </div>
+                        </summary>
+                        <div class="it-faq-panel-body">
+                            <p class="it-faq-paragraph-content">We provide clear operational protection agreements tailored specifically to enterprise system environments. Critical Level 1 incidents trigger automated alerts to our rapid-response infrastructure teams within an absolute sub-15 minute window, operating continuously 24 hours a day, 365 days a year.</p>
+                        </div>
+                    </details>
+                </div>
+
+                <div class="it-faq-item-container">
+                    <details class="it-faq-accordion-node">
+                        <summary class="it-faq-summary-trigger">
+                            <h3 class="it-faq-question-heading">How are technical updates and kernel patches handled across our production servers?</h3>
+                            <div class="it-faq-toggle-circle" aria-hidden="true">
+                                <div class="it-faq-icon-bar-horizontal"></div>
+                                <div class="it-faq-icon-bar-vertical"></div>
+                            </div>
+                        </summary>
+                        <div class="it-faq-panel-body">
+                            <p class="it-faq-paragraph-content">All software enhancements, platform structural configurations, and core security updates undergo automated sandbox testing before integration into active services. Deployments utilize zero-downtime micro-rolling updates, which updates application code nodes incrementally without interrupting customer access pipelines.</p>
+                        </div>
+                    </details>
+                </div>
+            </div>
+
+            <div class="it-faq-category-section">
+                <h2 class="it-faq-category-title">Cloud Migrations &amp; Strategy</h2>
+                
+                <div class="it-faq-item-container">
+                    <details class="it-faq-accordion-node">
+                        <summary class="it-faq-summary-trigger">
+                            <h3 class="it-faq-question-heading">How long does an initial enterprise infrastructure migration phase typically take?</h3>
+                            <div class="it-faq-toggle-circle" aria-hidden="true">
+                                <div class="it-faq-icon-bar-horizontal"></div>
+                                <div class="it-faq-icon-bar-vertical"></div>
+                            </div>
+                        </summary>
+                        <div class="it-faq-panel-body">
+                            <p class="it-faq-paragraph-content">Onboarding pathways scale dynamically based on the complexity of your current software layout. Standard environment adjustments finish within 2 to 4 weeks, whereas deep modernization of historical legacy frameworks spans over structured multi-week phases to verify absolute transactional accuracy at every transition stage.</p>
+                        </div>
+                    </details>
+                </div>
+
+                <div class="it-faq-item-container">
+                    <details class="it-faq-accordion-node">
+                        <summary class="it-faq-summary-trigger">
+                            <h3 class="it-faq-question-heading">Do your system architectures support seamless automated multi-cloud failover systems?</h3>
+                            <div class="it-faq-toggle-circle" aria-hidden="true">
+                                <div class="it-faq-icon-bar-horizontal"></div>
+                                <div class="it-faq-icon-bar-vertical"></div>
+                            </div>
+                        </summary>
+                        <div class="it-faq-panel-body">
+                            <p class="it-faq-paragraph-content">Yes. By using advanced container systems configured with real-time multi-region health checks, live customer web traffic redirects automatically to secondary public backup environments if an primary host network drops out unexpectedly.</p>
+                        </div>
+                    </details>
+                </div>
+            </div>
+
+            <div class="it-faq-category-section">
+                <h2 class="it-faq-category-title">Cybersecurity &amp; Global Compliance</h2>
+                
+                <div class="it-faq-item-container">
+                    <details class="it-faq-accordion-node">
+                        <summary class="it-faq-summary-trigger">
+                            <h3 class="it-faq-question-heading">What specific industrial compliance regulations are guaranteed within your network designs?</h3>
+                            <div class="it-faq-toggle-circle" aria-hidden="true">
+                                <div class="it-faq-icon-bar-horizontal"></div>
+                                <div class="it-faq-icon-bar-vertical"></div>
+                            </div>
+                        </summary>
+                        <div class="it-faq-panel-body">
+                            <p class="it-faq-paragraph-content">Every infrastructure environment we build is pre-engineered to pass strict verification audits, directly meeting international frameworks such as SOC 2 Type II, ISO/IEC 27001, HIPAA encryption standards, and GDPR data tracking rules.</p>
+                        </div>
+                    </details>
+                </div>
+
+                <div class="it-faq-item-container">
+                    <details class="it-faq-accordion-node">
+                        <summary class="it-faq-summary-trigger">
+                            <h3 class="it-faq-question-heading">How are automated file backup sets handled during localized hardware crises?</h3>
+                            <div class="it-faq-toggle-circle" aria-hidden="true">
+                                <div class="it-faq-icon-bar-horizontal"></div>
+                                <div class="it-faq-icon-bar-vertical"></div>
+                            </div>
+                        </summary>
+                        <div class="it-faq-panel-body">
+                            <p class="it-faq-paragraph-content">Data sets undergo continuous immutable end-to-end encryption cycles, streaming snapshots in real-time to disconnected storage repositories. This completely separates data backups from primary processing clusters, shielding your systems from external ransomware encryption risks.</p>
+                        </div>
+                    </details>
+                </div>
+            </div>
+
+            <!-- New Footer Call-To-Action Message Section -->
+            <footer class="it-faq-footer-cta">
+                <p class="it-faq-footer-text">
+                    Have more questions? Please <a href="#contact-sales" class="it-faq-footer-link">contact sales</a> for more specific product and solutions or <a href="#send-message" class="it-faq-footer-link">send us a message</a>.
+                </p>
+            </footer>
+
+        </main>
+    </div>
+
+</body>
+</html>
+
+<cronos-footer></cronos-footer>

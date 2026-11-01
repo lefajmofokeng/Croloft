@@ -1,0 +1,1617 @@
+<!DOCTYPE html>
+<html lang="en" dir="ltr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, minimum-scale=1.0, maximum-scale=5.0, viewport-fit=cover, shrink-to-fit=no">
+    <meta http-equiv="x-ua-compatible" content="ie=edge"/>
+    
+    <title>Cronos</title>
+
+    <!-- WEB TAB ICON -->
+    <link rel="icon" type="image/png" href="thumbnails/top-1.png">
+
+    <style>
+      @font-face { font-family:'Circular Std'; src:url('fonts/CircularStd-Book.woff2') format('woff2'),url('fonts/CircularStd-Book.woff') format('woff'); font-weight:400; font-style:normal; font-display:swap; }
+  @font-face { font-family:'Circular Std'; src:url('fonts/CircularStd-BookItalic.woff2') format('woff2'),url('fonts/CircularStd-BookItalic.woff') format('woff'); font-weight:400; font-style:italic; font-display:swap; }
+  @font-face { font-family:'Circular Std'; src:url('fonts/CircularStd-Medium.woff2') format('woff2'),url('fonts/CircularStd-Medium.woff') format('woff'); font-weight:500; font-style:normal; font-display:swap; }
+  @font-face { font-family:'Circular Std'; src:url('fonts/CircularStd-Bold.woff2') format('woff2'),url('fonts/CircularStd-Bold.woff') format('woff'); font-weight:600; font-style:normal; font-display:swap; }
+  @font-face { font-family:'Circular Std'; src:url('fonts/CircularStd-Bold.woff2') format('woff2'),url('fonts/CircularStd-Bold.woff') format('woff'); font-weight:700; font-style:normal; font-display:swap; }
+  @font-face { font-family:'Circular Std'; src:url('fonts/CircularStd-Black.woff2') format('woff2'),url('fonts/CircularStd-Black.woff') format('woff'); font-weight:800; font-style:normal; font-display:swap; }
+  @font-face { font-family:'Circular Std'; src:url('fonts/CircularStd-Black.woff2') format('woff2'),url('fonts/CircularStd-Black.woff') format('woff'); font-weight:900; font-style:normal; font-display:swap; }
+    </style>
+</head>
+
+
+
+
+
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>My Website</title>
+    
+    <script src="header.js" defer></script>
+    <script src="footer.js" defer></script> 
+</head>
+<body>
+
+    <cronos-header></cronos-header>
+    
+
+</body>
+</html>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Cronos Premium Interactive Hero</title>
+  <style>
+    /* Container Isolation & Global Aesthetics */
+    .cronos-hero-wrapper {
+      --cronos-bg-top: #0a192f;
+      --cronos-bg-bottom: #0072ff;
+      --cronos-text-color: #ffffff;
+      --cronos-font-family: 'Circular Std', -apple-system, BlinkMacSystemFont, sans-serif;
+      
+      position: relative;
+      width: 100%;
+      min-height: 100vh;
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+      align-items: center;
+      /* Premium radial gradient matching the reference image profile */
+      background: radial-gradient(circle at 50% 30%, var(--cronos-bg-bottom) 0%, var(--cronos-bg-top) 85%);
+      padding: 60px 24px;
+      box-sizing: border-box;
+      overflow: hidden;
+      font-family: var(--cronos-font-family);
+    }
+
+    .cronos-hero-wrapper * {
+      box-sizing: border-box;
+      margin: 0;
+      padding: 0;
+    }
+
+    /* Text Container Window */
+    .cronos-hero-text-container {
+      position: relative;
+      width: 100%;
+      max-width: 1200px;
+      height: auto;
+      min-height: 220px;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      cursor: default; /* Restores the standard default native mouse pointer arrow */
+    }
+
+    /* Master Shared Settings for Typographic Layers */
+    .cronos-hero-text-layer {
+      font-size: 12rem;
+      font-weight: 400;
+      letter-spacing: -0.04em;
+      text-align: center;
+      line-height: 1.1;
+      width: 100%;
+      position: absolute;
+      top: 50%;
+      left: 50%;
+      transform: translate(-50%, -50%);
+      user-select: none;
+      white-space: nowrap;
+    }
+
+    /* Base Blur Layer */
+    .cronos-hero-blur-layer {
+      color: rgba(255, 255, 255, 0.9);
+      filter: blur(5px);
+      opacity: 0.75;
+      z-index: 1;
+    }
+
+    /* Sharp Mask Layer (Controlled via JavaScript CSS Masking) */
+    .cronos-hero-sharp-layer {
+      color: var(--cronos-text-color);
+      z-index: 2;
+      /* Default standalone center mask placement for non-hover/mobile states */
+      -webkit-mask-image: radial-gradient(circle 160px at 50% 50%, black 30%, transparent 100%);
+      mask-image: radial-gradient(circle 160px at 50% 50%, black 30%, transparent 100%);
+    }
+
+    /* Content Control Layer */
+    .cronos-hero-content-panel {
+      position: relative;
+      z-index: 10;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      text-align: center;
+      max-width: 500px;
+      width: 100%;
+    }
+
+    .cronos-hero-tagline {
+      color: #ffffff;
+      font-size: 18px;
+      line-height: 1.5;
+      font-weight: 400;
+      margin-bottom: 32px;
+      letter-spacing: -0.01em;
+    }
+
+    /* CTA Buttons Layout */
+    .cronos-hero-button-group {
+      display: flex;
+      gap: 1px; /* Crisp line alignment */
+      background-color: transparent;
+    }
+
+    .cronos-hero-btn {
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      height: 46px;
+      padding: 0 28px;
+      font-size: 16px;
+      font-weight: 500;
+      text-decoration: none;
+      border-radius: 50px; /* Sharp premium branding edge rule */
+    }
+
+    .cronos-btn-secondary {
+      background-color: #ffffff;
+      color: #000000;
+    }
+
+    .cronos-btn-secondary:hover {
+      background-color: #f3f3f3;
+    }
+
+    /* Responsive Fluid Typography Engine */
+    @media (max-width: 1200px) {
+      .cronos-hero-text-layer {
+        font-size: 7rem;
+      }
+      .cronos-hero-text-container {
+        min-height: 180px;
+      }
+    }
+
+    @media (max-width: 768px) {
+      .cronos-hero-wrapper {
+        min-height: auto;
+        padding: 200px 20px;
+      }
+      .cronos-hero-text-layer {
+        font-size: 4.2rem;
+        white-space: normal; /* Smooth text wrapping for standard phone screen displays */
+        line-height: 1.2;
+      }
+      .cronos-hero-text-container {
+        min-height: 160px;
+      }
+      .cronos-hero-blur-layer {
+        filter: blur(6px); /* Streamlined mobile blur execution footprint */
+      }
+      .cronos-hero-sharp-layer {
+        -webkit-mask-image: radial-gradient(circle 130px at 50% 45%, black 45%, transparent 100%);
+        mask-image: radial-gradient(circle 130px at 50% 45%, black 45%, transparent 100%);
+      }
+      .cronos-hero-tagline {
+        font-size: 16px;
+      }
+    }
+  </style>
+</head>
+<body>
+
+  <section class="cronos-hero-wrapper">
+    <div class="cronos-hero-text-container" id="cronosHeroCanvas">
+      
+      <div class="cronos-hero-text-layer cronos-hero-blur-layer" aria-hidden="true">
+       Level Up
+      </div>
+      
+      <div class="cronos-hero-text-layer cronos-hero-sharp-layer" id="cronosHeroSharp">
+        Level Up
+      </div>
+
+    </div>
+
+    <div class="cronos-hero-content-panel">
+      <p class="cronos-hero-tagline">
+        Croloft delivers the full stack for a <br>new global economy
+      </p>
+      
+      <div class="cronos-hero-button-group">
+       
+        <a href="#wallet" class="cronos-hero-btn cronos-btn-secondary">Get started with Croloft&#174; </a>
+      </div>
+    </div>
+  </section>
+
+  <script>
+    document.addEventListener("DOMContentLoaded", () => {
+      const canvas = document.getElementById("cronosHeroCanvas");
+      const sharpLayer = document.getElementById("cronosHeroSharp");
+
+      if (!canvas || !sharpLayer) return;
+
+      // Track system cursor position inside canvas container bounds
+      canvas.addEventListener("mousemove", (event) => {
+        const bounds = canvas.getBoundingClientRect();
+        
+        // Accurate positional delta offsets relative to text element wrapper
+        const relativeX = event.clientX - bounds.left;
+        const relativeY = event.clientY - bounds.top;
+
+        // Center lens gradient mask cleanly beneath native mouse pointer pointer positions
+        const lensRadius = "160px";
+        const maskStyle = `radial-gradient(circle ${lensRadius} at ${relativeX}px ${relativeY}px, black 25%, transparent 100%)`;
+        
+        sharpLayer.style.webkitMaskImage = maskStyle;
+        sharpLayer.style.maskImage = maskStyle;
+      });
+
+      // Recenter the lens smoothly if the cursor leaves the element panel boundaries
+      canvas.addEventListener("mouseleave", () => {
+        const defaultMask = `radial-gradient(circle 160px at 50% 50%, black 30%, transparent 100%)`;
+        sharpLayer.style.webkitMaskImage = defaultMask;
+        sharpLayer.style.maskImage = defaultMask;
+      });
+
+      // Support touch devices via fluid touch coordinates mapping
+      canvas.addEventListener("touchmove", (event) => {
+        if (event.touches.length === 0) return;
+        const bounds = canvas.getBoundingClientRect();
+        const touch = event.touches[0];
+        
+        const relativeX = touch.clientX - bounds.left;
+        const relativeY = touch.clientY - bounds.top;
+        
+        const mobileLensRadius = "130px";
+        const maskStyle = `radial-gradient(circle ${mobileLensRadius} at ${relativeX}px ${relativeY}px, black 35%, transparent 100%)`;
+        
+        sharpLayer.style.webkitMaskImage = maskStyle;
+        sharpLayer.style.maskImage = maskStyle;
+      }, { passive: true });
+    });
+  </script>
+
+</body>
+</html>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Cronos — Level Up Program Matrix</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    
+    <style>
+        /* Global resets targeting the document boundaries to ensure a true edge-to-edge section container */
+        html, body {
+            margin: 0;
+            padding: 0;
+            width: 100%;
+        }
+
+        /* Scoped root block using precise custom properties to prevent external CSS leakage */
+        .cronos-level-up-section {
+            --lvl-bg-color: #020409;
+            --lvl-card-bg: #191b23;
+            --lvl-border-color: #1e2229;
+            --lvl-text-main: #ffffff;
+            --lvl-text-muted: #898e9b;
+            --lvl-btn-bg: #22252d;
+            --lvl-btn-hover: #2d313c;
+            --lvl-font-family: 'Circular Std', sans-serif;
+            --lvl-border-radius: 16px;
+
+            background-color: var(--lvl-bg-color);
+            color: var(--lvl-text-main);
+            font-family: var(--lvl-font-family);
+            padding: 120px 0; /* Vertical structure padding only */
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            width: 100%;
+            box-sizing: border-box;
+        }
+
+        .cronos-level-up-section * {
+            box-sizing: border-box;
+            margin: 0;
+            padding: 0;
+        }
+
+        /* Inner Layout Frame fixed exactly to 1200px width limit */
+        .lvl-layout-wrapper {
+            width: 100%;
+            max-width: 1200px;
+            display: flex;
+            flex-direction: column;
+            align-items: flex-start;
+            padding: 0 24px; /* Fluid buffer area protecting layout integrity on mobile screen sizes */
+        }
+
+        /* Headings and Descriptions Perfectly Aligned to the Left */
+        .lvl-intro-header {
+            max-width: 680px;
+            text-align: left;
+            margin-bottom: 64px;
+            align-self: flex-start;
+        }
+
+        .lvl-intro-title {
+            font-size: 3.2rem;
+            font-weight: 500;
+            letter-spacing: -0.04em;
+            margin-bottom: 16px;
+            line-height: 1.15;
+            color: var(--lvl-text-main);
+        }
+
+        .lvl-intro-desc {
+            font-size: 1.05rem;
+            color: var(--lvl-text-muted);
+            line-height: 1.6;
+            font-weight: 400;
+        }
+
+        /* Equal-Height 3-Column Content Matrix Work area */
+        .lvl-tier-grid {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 24px;
+            width: 100%;
+            align-items: stretch; /* Maintains strict equal height parameters across all cards */
+        }
+
+        /* Structural Framework for Individual Tier Cards */
+        .lvl-tier-card {
+            background-color: var(--lvl-card-bg);
+            border: 1px solid var(--lvl-border-color);
+            border-radius: var(--lvl-border-radius);
+            overflow: hidden;
+            display: flex;
+            flex-direction: column;
+            transition: border-color 0.3s ease;
+        }
+
+        .lvl-tier-card:hover {
+            border-color: #313745;
+        }
+
+        /* Media Header Area: 100% Width Full Fill */
+        .lvl-media-banner-slot {
+            width: 100%;
+            height: 220px;
+            position: relative;
+            overflow: hidden;
+            background-color: #16181d;
+        }
+
+        /* Graphic Object filling outer asset frame borders completely */
+        .lvl-card-graphic-full {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            transition: transform 0.5s cubic-bezier(0.25, 1, 0.5, 1);
+        }
+
+        .lvl-tier-card:hover .lvl-card-graphic-full {
+            transform: scale(1.05);
+        }
+
+        /* Internal Details Compartment Container */
+        .lvl-card-content {
+            padding: 40px 32px;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            text-align: center;
+            flex-grow: 1; /* Instructs inner element boxes to scale smoothly together */
+        }
+
+        /* Typography & Headings */
+        .lvl-tier-label {
+            font-size: 1.5rem;
+            font-weight: 600;
+            text-transform: uppercase;
+            color: var(--lvl-text-main);
+            margin-bottom: 14px;
+            
+         background: linear-gradient(
+                to right,
+                #ffffff 0%,
+                #d3d3d3 40%,
+                #9d9d9d 75%,
+                #7a7a7a 100%
+            );
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+  }
+        .lvl-tier-headline {
+            font-size: 2.2rem;
+            font-weight: 400;
+            letter-spacing: -0.04em;
+            line-height: 1.1;
+            margin-bottom: 6px;
+        }
+
+        .lvl-tier-sub-headline {
+            font-size: 0.9rem;
+            color: var(--lvl-text-muted);
+            margin-bottom: 36px;
+            letter-spacing: 0.02em;
+        }
+
+        /* Action Triggers */
+        .lvl-btn-action {
+            width: 100%;
+            background-color: var(--lvl-btn-bg);
+            color: var(--lvl-text-main);
+            border: none;
+            border-radius: 30px;
+            padding: 14px 24px;
+            font-family: var(--lvl-font-family);
+            font-size: 0.95rem;
+            font-weight: 500;
+            cursor: pointer;
+            transition: background-color 0.2s ease;
+            margin-bottom: 20px;
+            text-decoration: none;
+            display: inline-block;
+        }
+
+        .lvl-btn-action:hover {
+            background-color: var(--lvl-btn-hover);
+        }
+
+        .lvl-link-secondary {
+            font-size: 0.92rem;
+            color: var(--lvl-text-muted);
+            text-decoration: none;
+            font-weight: 400;
+            transition: color 0.2s ease;
+            margin-bottom: 36px;
+        }
+
+        .lvl-link-secondary:hover {
+            color: var(--lvl-text-main);
+        }
+
+        /* Footer Meta Block detailing specific price metrics */
+        .lvl-tier-meta {
+            margin-top: auto; /* Locks metadata panel smoothly into row floor position */
+            width: 100%;
+            padding-top: 28px;
+            border-top: 1px solid #1a1d24;
+        }
+
+        .lvl-meta-primary {
+            font-size: 0.95rem;
+            font-weight: 500;
+            color: var(--lvl-text-main);
+            margin-bottom: 6px;
+        }
+
+        .lvl-meta-secondary {
+            font-size: 0.82rem;
+            color: var(--lvl-text-muted);
+            line-height: 1.5;
+        }
+
+        .lvl-meta-secondary strong {
+            color: #e2e8f0;
+        }
+
+        /* Mobile Layout & Adaptive Design Configurations */
+        @media (max-width: 968px) {
+            .cronos-level-up-section {
+                padding: 80px 0;
+            }
+
+            .lvl-intro-title {
+                font-size: 2.4rem;
+            }
+
+            .lvl-tier-grid {
+                grid-template-columns: 1fr;
+                gap: 32px;
+                max-width: 440px;
+            }
+            
+            .lvl-intro-header {
+                align-self: center;
+                text-align: center;
+                margin-bottom: 48px;
+            }
+        }
+    </style>
+</head>
+<body>
+
+    <section class="cronos-level-up-section">
+        
+        <div class="lvl-layout-wrapper">
+            
+            <header class="lvl-intro-header">
+                <h1 class="lvl-intro-title">The Level Up Program</h1>
+                <p class="lvl-intro-desc">Accelerate your company trajectory. Access end-to-end bundled premium solutions across brand engineering, scalable database architecture, and performance-driven web applications built completely from scratch.</p>
+            </header>
+
+            <main class="lvl-tier-grid">
+
+                <article class="lvl-tier-card">
+                    <div class="lvl-media-banner-slot">
+                        <img src="thumbnails/pexels-alp-mmiy-2147670381-29822392.jpg" alt="Startups Core Solution Suite" class="lvl-card-graphic-full">
+                    </div>
+                    <div class="lvl-card-content">
+                        <h2 class="lvl-tier-label">Startups</h2>
+                        <div class="lvl-tier-headline">Identity & Launch</div>
+                        <p class="lvl-tier-sub-headline">Essential production ready parameters</p>
+                        
+                        <a href="#" class="lvl-btn-action">Join Startups →</a>
+                        <a href="#" class="lvl-link-secondary">View execution timeline</a>
+
+                        <div class="lvl-tier-meta">
+                            <div class="lvl-meta-primary">$750 per month</div>
+                            <div class="lvl-meta-secondary">Includes premium <strong>brand design guidelines</strong>, single-page fluid applications, and streamlined setup structures.</div>
+                        </div>
+                    </div>
+                </article>
+
+                <article class="lvl-tier-card">
+                    <div class="lvl-media-banner-slot">
+                        <img src="thumbnails/pexels-ayush-kumar-907951968-23466423.jpg" alt="Pro Business Integration Module" class="lvl-card-graphic-full">
+                    </div>
+                    <div class="lvl-card-content">
+                        <h2 class="lvl-tier-label">Pro Biz</h2>
+                        <div class="lvl-tier-headline">Scale & Deploy</div>
+                        <p class="lvl-tier-sub-headline">Advanced application ecosystem parameters</p>
+                        
+                        <a href="#" class="lvl-btn-action">Join Pro Biz →</a>
+                        <a href="#" class="lvl-link-secondary">View execution timeline</a>
+
+                        <div class="lvl-tier-meta">
+                            <div class="lvl-meta-primary">$1,500 per month</div>
+                            <div class="lvl-meta-secondary">Includes extensive <strong>database systems design</strong>, comprehensive web application engines, and optimization pipelines.</div>
+                        </div>
+                    </div>
+                </article>
+
+                <article class="lvl-tier-card">
+                    <div class="lvl-media-banner-slot">
+                        <img src="thumbnails/pexels-googledeepmind-17484975.jpg" alt="Enterprise Architecture Execution" class="lvl-card-graphic-full">
+                    </div>
+                    <div class="lvl-card-content">
+                        <h2 class="lvl-tier-label">Enterprise</h2>
+                        <div class="lvl-tier-headline">Custom Matrix</div>
+                        <p class="lvl-tier-sub-headline">Bespoke software execution parameters</p>
+                        
+                        <a href="#" class="lvl-btn-action">Join Enterprise →</a>
+                        <a href="#" class="lvl-link-secondary">View execution timeline</a>
+
+                        <div class="lvl-tier-meta">
+                            <div class="lvl-meta-primary">Custom Contract Routing</div>
+                            <div class="lvl-meta-secondary">Dedicated infrastructure development built completely <strong>from scratch</strong> to match massive scale governance frameworks.</div>
+                        </div>
+                    </div>
+                </article>
+
+            </main>
+        </div>
+    </section>
+
+</body>
+</html>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Multipurpose IT Company Benefits</title>
+    <style>
+        /* Unique styles prefixed with 'itc-unique-' to prevent conflicts. */
+        .itc-unique-section {
+            font-family: 'Circular Std', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Helvetica, Arial, sans-serif;
+            background-color: #020409;
+            color: #fff;
+            width: 100%;
+            padding: 180px 0 150px 0;
+            box-sizing: border-box;
+            display: flex;
+            justify-content: center;
+        }
+
+        .itc-unique-container {
+            width: 1200px;
+            max-width: 100%;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            box-sizing: border-box;
+            padding: 0 20px;
+        }
+
+        .itc-unique-header {
+            text-align: center;
+            margin-bottom: 70px;
+        }
+
+        .itc-unique-heading {
+            display: block;
+            color: #7b61ff; /* Purple matched to the 'BENEFITS' text */
+            font-size: 19px;
+            font-weight: 400;
+            letter-spacing: 1.5px;
+            text-transform: uppercase;
+            margin-bottom: 24px;
+        }
+
+        .itc-unique-headline {
+            color: #e8e8e8; /* Slightly off-white to match image */
+            font-size: 56px;
+            font-weight: 400;
+            line-height: 1.1;
+            margin: 0;
+            letter-spacing: -0.04em;
+        }
+
+        .itc-unique-grid {
+            width: 100%;
+            display: flex;
+            justify-content: center;
+            gap: 24px;
+            box-sizing: border-box;
+        }
+
+        .itc-unique-card {
+            flex: 1;
+            max-width: 580px;
+            background-color: #020409; /* Deep black for the card itself */
+            border-radius: 20px;
+            padding: 64px;
+            box-sizing: border-box;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            text-align: center;
+            position: relative;
+            z-index: 1;
+        }
+
+        /* Gradient Border Technique 
+           Uses CSS masks to create the fading border effect without a solid background
+        */
+        .itc-unique-card::before {
+            content: "";
+            position: absolute;
+            inset: -1.5px; /* Border thickness */
+            border-radius: inherit;
+            padding: 1.5px; /* Content-box size for mask */
+            z-index: -1;
+            -webkit-mask: linear-gradient(#fff 0 0) content-box, linear-gradient(#fff 0 0);
+            mask: linear-gradient(#fff 0 0) content-box, linear-gradient(#fff 0 0);
+            -webkit-mask-composite: xor;
+            mask-composite: exclude;
+        }
+
+        /* Left Card: Fades from Top-Right (colored) to Bottom-Left (transparent) */
+        .itc-unique-card-left::before {
+            background: linear-gradient(to bottom left, rgba(123, 97, 255, 0.8) 0%, rgba(255, 255, 255, 0.4) 20%, rgba(0, 0, 0, 0) 50%);
+        }
+
+        /* Right Card: Fades from Top-Left (colored) to Bottom-Right (transparent) */
+        .itc-unique-card-right::before {
+            background: linear-gradient(to bottom right, rgba(123, 97, 255, 0.8) 0%, rgba(255, 255, 255, 0.4) 20%, rgba(0, 0, 0, 0) 50%);
+        }
+
+        .itc-unique-card-title {
+            color: #d1d1d1;
+            font-size: 32px;
+            font-weight: 400;
+            margin-bottom: 24px;
+            margin-top: 0;
+        }
+
+        .itc-unique-card-description {
+            color: #7a7a7a;
+            font-size: 18px;
+            font-weight: 400;
+            line-height: 1.6;
+            margin: 0;
+            max-width: 95%;
+        }
+
+        /* Responsive Design Adjustments */
+        @media (max-width: 1200px) {
+            .itc-unique-headline {
+                font-size: 46px;
+            }
+        }
+
+        @media (max-width: 992px) {
+            .itc-unique-headline {
+                font-size: 36px;
+            }
+            .itc-unique-grid {
+                flex-direction: column;
+                align-items: center;
+                gap: 40px;
+            }
+            .itc-unique-card {
+                width: 100%;
+                max-width: 600px;
+            }
+            /* On mobile/stacked, standardizing the fade from the top down looks better */
+            .itc-unique-card-left::before,
+            .itc-unique-card-right::before {
+              background: linear-gradient(to bottom, rgba(123, 97, 255, 0.6) 0%, rgba(0, 0, 0, 0) 60%);
+            }
+        }
+
+        @media (max-width: 600px) {
+            .itc-unique-card-title {
+                font-size: 26px;
+            }
+            .itc-unique-card {
+                padding: 40px 24px;
+            }
+        }
+    </style>
+</head>
+<body>
+    <section class="itc-unique-section">
+        <div class="itc-unique-container">
+            <header class="itc-unique-header">
+                <span class="itc-unique-heading">BENEFITS</span>
+                <h2 class="itc-unique-headline">What makes our IT solutions unique?</h2>
+            </header>
+            <div class="itc-unique-grid">
+                <div class="itc-unique-card itc-unique-card-left">
+                    <h3 class="itc-unique-card-title">Efficient processing</h3>
+                    <p class="itc-unique-card-description">The cost of optimizing and managing complex IT infrastructures is relatively low compared to disjointed solutions. Our average deployment optimization reduces ongoing operational expenses significantly.</p>
+                </div>
+                <div class="itc-unique-card itc-unique-card-right">
+                    <h3 class="itc-unique-card-title">Worldwide deployment</h3>
+                    <p class="itc-unique-card-description">Our services can be fully deployed and supported worldwide. Once the initial integration and network parameters are confirmed, system availability is nearly instantaneous and resources are fully available to your team.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+</body>
+</html>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Cronos — Events & Ecosystem Showcase</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    
+    <style>
+        /* Document-level reset to maintain perfect alignment with no outer layout gaps */
+        html, body {
+            margin: 0;
+            padding: 0;
+            width: 100%;
+        }
+
+        /* Scoped root wrapper strictly using custom properties to preserve context isolation */
+        .cronos-events-section {
+            --ev-bg: #0c0d0e;
+            --ev-text-main: #ffffff;
+            --ev-text-muted: #646975;
+            --ev-blue: #0066cc;
+            --ev-blue-hover: #0052a3;
+            --ev-font: 'Inter', sans-serif;
+
+            background-color: var(--ev-bg);
+            color: var(--ev-text-main);
+            font-family: var(--ev-font);
+            padding: 120px 0;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            width: 100%;
+            box-sizing: border-box;
+        }
+
+        .cronos-events-section * {
+            box-sizing: border-box;
+            margin: 0;
+            padding: 0;
+        }
+
+        /* 1200px Content Core Boundary Box */
+        .ev-layout-wrapper {
+            width: 100%;
+            max-width: 1200px;
+            padding: 0 24px;
+            display: flex;
+            flex-direction: column;
+        }
+
+        /* Section Pre-title tag precisely tracking Left Alignment rules */
+        .ev-section-tag {
+            font-size: 1rem;
+            color: var(--ev-text-muted);
+            margin-bottom: 24px;
+            font-weight: 400;
+            align-self: flex-start;
+        }
+
+        /* Zig-Zag Staggered Hero Section Layout */
+        .ev-zigzag-header {
+            display: flex;
+            flex-direction: column;
+            width: 100%;
+            margin-bottom: 88px;
+        }
+
+        /* Top row: Left-aligned title */
+        .ev-header-title-row {
+            width: 100%;
+            display: flex;
+            justify-content: flex-start;
+        }
+
+        .ev-header-left-title {
+            font-size: 4.2rem;
+            font-weight: 400;
+            letter-spacing: -0.04em;
+            line-height: 1.08;
+            color: var(--ev-text-main);
+            max-width: 800px;
+        }
+
+        /* Bottom row: Displaced under and completely right-aligned */
+        .ev-header-desc-row {
+            width: 100%;
+            display: flex;
+            justify-content: flex-end;
+            margin-top: 32px; /* Generates clear vertical rhythm separating the stack */
+        }
+
+        .ev-header-right-desc {
+            font-size: 1.05rem;
+            color: #a3a8b4;
+            line-height: 1.6;
+            font-weight: 400;
+            max-width: 500px; /* Forces optimal reading width while creating structural asymmetry */
+            text-align: left; /* Text remains legible but block box sits on the far right edge */
+        }
+
+        /* Main Featured Card Layer Workspace */
+        .ev-featured-showcase {
+            width: 100%;
+            height: 480px;
+            border-radius: 12px;
+            position: relative;
+            overflow: hidden;
+            margin-bottom: 96px;
+            display: flex;
+            align-items: flex-end; /* Locks content area to bottom left */
+        }
+
+        /* Background Graphic covering 100% canvas bounds */
+        .ev-featured-image-bg {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            z-index: 1;
+        }
+
+        /* Text Layer on top of Featured Background */
+        .ev-featured-overlay-box {
+            position: relative;
+            z-index: 2;
+            padding: 56px;
+            max-width: 560px;
+            display: flex;
+            flex-direction: column;
+            align-items: flex-start;
+        }
+
+        .ev-feat-label {
+            font-size: 0.75rem;
+            text-transform: uppercase;
+            letter-spacing: 0.15em;
+            color: #94a3b8;
+            margin-bottom: 16px;
+            font-weight: 600;
+        }
+
+        .ev-feat-title {
+            font-size: 3.5rem;
+            font-weight: 500;
+            letter-spacing: -0.03em;
+            margin-bottom: 16px;
+            line-height: 1.1;
+        }
+
+        .ev-feat-desc {
+            font-size: 0.98rem;
+            color: #cbd5e1;
+            line-height: 1.55;
+            margin-bottom: 28px;
+        }
+
+        /* Pill Action Design Component */
+        .ev-action-pill {
+            background-color: var(--ev-blue);
+            color: var(--ev-text-main);
+            padding: 10px 24px;
+            border-radius: 20px;
+            font-size: 0.88rem;
+            font-weight: 500;
+            text-decoration: none;
+            transition: background-color 0.2s ease;
+            display: inline-flex;
+            align-items: center;
+        }
+
+        .ev-action-pill:hover {
+            background-color: var(--ev-blue-hover);
+        }
+
+        /* Carousel Title Row Layout with Far Right Anchored Navigation Link */
+        .ev-carousel-header-row {
+            display: flex;
+            justify-content: space-between;
+            align-items: flex-end;
+            margin-bottom: 40px;
+            width: 100%;
+        }
+
+        .ev-carousel-main-title {
+            font-size: 1.8rem;
+            font-weight: 400;
+            letter-spacing: -0.02em;
+        }
+
+        /* Premium Floating Right Text Link with Nested Visual Arrow Component */
+        .ev-browse-link {
+            color: var(--ev-blue);
+            text-decoration: none;
+            font-size: 0.92rem;
+            font-weight: 500;
+            transition: color 0.2s ease;
+            display: inline-flex;
+            align-items: center;
+            gap: 4px;
+            padding-bottom: 4px;
+        }
+
+        .ev-browse-link:hover {
+            color: #33b5e5;
+        }
+
+        /* Horizontal Carousel Matrix Track Framework */
+        .ev-slider-outer-frame {
+            width: 100%;
+            position: relative;
+            margin-bottom: 40px;
+        }
+
+        .ev-slider-viewport-track {
+            display: flex;
+            gap: 24px;
+            scroll-behavior: smooth;
+            overflow-x: auto;
+            scrollbar-width: none; /* Disables scrollbar indicators on Firefox engine */
+        }
+
+        .ev-slider-viewport-track::-webkit-scrollbar {
+            display: none; /* Disables scrollbar indicators on Chromium/Webkit engines */
+        }
+
+        /* Dynamic Grid Layout Item Elements */
+        .ev-carousel-card-item {
+            min-width: 384px;
+            max-width: 384px;
+            display: flex;
+            flex-direction: column;
+            background-color: transparent;
+        }
+
+        .ev-item-media-container {
+            width: 100%;
+            height: 230px;
+            border-radius: 8px;
+            overflow: hidden;
+            margin-bottom: 24px;
+            background-color: #16181d;
+        }
+
+        .ev-item-graphic-node {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            transition: transform 0.4s ease;
+        }
+
+        .ev-carousel-card-item:hover .ev-item-graphic-node {
+            transform: scale(1.02);
+        }
+
+        /* Meta Timeline Block Typography Grid */
+        .ev-item-date {
+            font-size: 0.78rem;
+            text-transform: uppercase;
+            letter-spacing: 0.08em;
+            color: var(--ev-text-muted);
+            margin-bottom: 12px;
+            font-weight: 500;
+        }
+
+        .ev-item-headline {
+            font-size: 1.25rem;
+            font-weight: 500;
+            margin-bottom: 8px;
+            color: var(--ev-text-main);
+            letter-spacing: -0.01em;
+        }
+
+        .ev-item-location-sub {
+            font-size: 0.8rem;
+            color: var(--ev-text-muted);
+            text-transform: uppercase;
+            letter-spacing: 0.05em;
+        }
+
+        /* Navigation Controls Panel Row */
+        .ev-control-panel-row {
+            display: flex;
+            gap: 12px;
+            justify-content: flex-start;
+            width: 100%;
+        }
+
+        /* Exact Circular Outline Action Controls Wrapper */
+        .ev-nav-circle-trigger {
+            width: 48px;
+            height: 48px;
+            border-radius: 50%;
+            border: 1px solid #2d313c;
+            background-color: transparent;
+            color: var(--ev-text-main);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            cursor: pointer;
+            transition: border-color 0.2s ease, background-color 0.2s ease;
+            user-select: none;
+        }
+
+        .ev-nav-circle-trigger:hover {
+            border-color: #ffffff;
+            background-color: #121316;
+        }
+
+        .ev-nav-circle-trigger svg {
+            width: 18px;
+            height: 18px;
+            fill: currentColor;
+        }
+
+        /* Mobile Layout Breakpoint Configurations */
+        @media (max-width: 968px) {
+            .cronos-events-section {
+                padding: 80px 0;
+            }
+
+            .ev-header-left-title {
+                font-size: 2.8rem;
+            }
+
+            .ev-header-desc-row {
+                justify-content: flex-start;
+                margin-top: 20px;
+            }
+
+            .ev-header-right-desc {
+                max-width: 100%;
+            }
+
+            .ev-featured-showcase {
+                height: auto;
+                min-height: 440px;
+            }
+
+            .ev-featured-overlay-box {
+                padding: 40px 24px;
+            }
+
+            .ev-feat-title {
+                font-size: 2.6rem;
+            }
+
+            .ev-carousel-card-item {
+                min-width: 290px;
+                max-width: 290px;
+            }
+
+            .ev-item-media-container {
+                height: 180px;
+            }
+        }
+    </style>
+</head>
+<body>
+
+    <section class="cronos-events-section">
+        <div class="ev-layout-wrapper">
+            
+            <span class="ev-section-tag">Events</span>
+
+            <header class="ev-zigzag-header">
+                <div class="ev-header-title-row">
+                    <h1 class="ev-header-left-title">Connect, converse<br>and collaborate</h1>
+                </div>
+                <div class="ev-header-desc-row">
+                    <p class="ev-header-right-desc">Connection and discussion are two important keys to unlocking innovation in the crypto industry. Here's where you can meet the Ripple team to build connections and start the conversation.</p>
+                </div>
+            </header>
+
+            <article class="ev-featured-showcase">
+                <img src="https://images.unsplash.com/photo-1618005182384-a83a8bd57fbe?auto=format&fit=crop&w=1200&q=80" alt="Featured Swell Matrix Layer Graphic" class="ev-featured-image-bg">
+                <div class="ev-featured-overlay-box">
+                    <span class="ev-feat-label">Featured</span>
+                    <h2 class="ev-feat-title">Swell</h2>
+                    <p class="ev-feat-desc">Join us for an unforgettable two-days. Make connections with the brightest minds in blockchain technologies and join a wide range of discussions from the latest in payments and digital currencies to the future of finance.</p>
+                    <a href="#" class="ev-action-pill">Learn More &nbsp;&rsaquo;</a>
+                </div>
+            </article>
+
+            <div class="ev-carousel-header-row">
+                <h3 class="ev-carousel-main-title">Upcoming Events</h3>
+                <a href="#" class="ev-browse-link">Browse All &nbsp;<span style="font-size: 1.1rem; line-height: 1;">&rsaquo;</span></a>
+            </div>
+
+            <div class="ev-slider-outer-frame">
+                <div class="ev-slider-viewport-track" id="evMainSliderTrack">
+                    
+                    <article class="ev-carousel-card-item">
+                        <div class="ev-item-media-container">
+                            <img src="https://images.unsplash.com/photo-1486406146926-c627a92ad1ab?auto=format&fit=crop&w=400&q=80" alt="Zurich Point Zero Showcase Graphic" class="ev-item-graphic-node">
+                        </div>
+                        <div class="ev-item-date">June 23-25, 2026</div>
+                        <h4 class="ev-item-headline">Point Zero Forum</h4>
+                        <div class="ev-item-location-sub">Zurich, Switzerland</div>
+                    </article>
+
+                    <article class="ev-carousel-card-item">
+                        <div class="ev-item-media-container">
+                            <img src="https://images.unsplash.com/photo-1519501025264-65ba15a82390?auto=format&fit=crop&w=400&q=80" alt="São Paulo Febraban System Infrastructure" class="ev-item-graphic-node">
+                        </div>
+                        <div class="ev-item-date">August 24-26, 2026</div>
+                        <h4 class="ev-item-headline">Febraban Tech</h4>
+                        <div class="ev-item-location-sub">São Paulo, Brazil</div>
+                    </article>
+
+                    <article class="ev-carousel-card-item">
+                        <div class="ev-item-media-container">
+                            <img src="https://images.unsplash.com/photo-1540959733332-eab4deceeaf7?auto=format&fit=crop&w=400&q=80" alt="Washington Stablecon Panel Interface" class="ev-item-graphic-node">
+                        </div>
+                        <div class="ev-item-date">September 9-11, 2026</div>
+                        <h4 class="ev-item-headline">Stablecon USA</h4>
+                        <div class="ev-item-location-sub">Washington D.C.</div>
+                    </article>
+
+                    <article class="ev-carousel-card-item">
+                        <div class="ev-item-media-container">
+                            <img src="https://images.unsplash.com/photo-1507525428034-b723cf961d3e?auto=format&fit=crop&w=400&q=80" alt="Ecosystem Strategy Node" class="ev-item-graphic-node">
+                        </div>
+                        <div class="ev-item-date">October 14-16, 2026</div>
+                        <h4 class="ev-item-headline">Ecosystem Summit</h4>
+                        <div class="ev-item-location-sub">Cape Town, South Africa</div>
+                    </article>
+
+                </div>
+            </div>
+
+            <div class="ev-control-panel-row">
+                <button class="ev-nav-circle-trigger" id="evMoveLeftAction" aria-label="Slide Left">
+                    <svg viewBox="0 0 24 24"><path d="M15.41 7.41L14 6l-6 6 6 6 1.41-1.41L10.83 12z"/></svg>
+                </button>
+                <button class="ev-nav-circle-trigger" id="evMoveRightAction" aria-label="Slide Right">
+                    <svg viewBox="0 0 24 24"><path d="M10 6L8.59 7.41 13.17 12l-4.58 4.59L10 18l6-6z"/></svg>
+                </button>
+            </div>
+
+        </div>
+    </section>
+
+    <script>
+        document.addEventListener('DOMContentLoaded', () => {
+            const trackElement = document.getElementById('evMainSliderTrack');
+            const leftActionBtn = document.getElementById('evMoveLeftAction');
+            const rightActionBtn = document.getElementById('evMoveRightAction');
+
+            if (trackElement && leftActionBtn && rightActionBtn) {
+                const transitionStepSize = 408;
+
+                rightActionBtn.addEventListener('click', () => {
+                    trackElement.scrollBy({ left: transitionStepSize, behavior: 'smooth' });
+                });
+
+                leftActionBtn.addEventListener('click', () => {
+                    trackElement.scrollBy({ left: -transitionStepSize, behavior: 'smooth' });
+                });
+            }
+        });
+    </script>
+
+</body>
+</html>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+

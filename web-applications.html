@@ -1,0 +1,1959 @@
+<!DOCTYPE html>
+<html lang="en" dir="ltr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, minimum-scale=1.0, maximum-scale=5.0, viewport-fit=cover, shrink-to-fit=no">
+    <meta http-equiv="x-ua-compatible" content="ie=edge"/>
+    
+    <title>Cronos</title>
+
+    <!-- WEB TAB ICON -->
+    <link rel="icon" type="image/png" href="thumbnails/top-1.png">
+
+    <style>
+      @font-face { font-family:'Circular Std'; src:url('fonts/CircularStd-Book.woff2') format('woff2'),url('fonts/CircularStd-Book.woff') format('woff'); font-weight:400; font-style:normal; font-display:swap; }
+  @font-face { font-family:'Circular Std'; src:url('fonts/CircularStd-BookItalic.woff2') format('woff2'),url('fonts/CircularStd-BookItalic.woff') format('woff'); font-weight:400; font-style:italic; font-display:swap; }
+  @font-face { font-family:'Circular Std'; src:url('fonts/CircularStd-Medium.woff2') format('woff2'),url('fonts/CircularStd-Medium.woff') format('woff'); font-weight:500; font-style:normal; font-display:swap; }
+  @font-face { font-family:'Circular Std'; src:url('fonts/CircularStd-Bold.woff2') format('woff2'),url('fonts/CircularStd-Bold.woff') format('woff'); font-weight:600; font-style:normal; font-display:swap; }
+  @font-face { font-family:'Circular Std'; src:url('fonts/CircularStd-Bold.woff2') format('woff2'),url('fonts/CircularStd-Bold.woff') format('woff'); font-weight:700; font-style:normal; font-display:swap; }
+  @font-face { font-family:'Circular Std'; src:url('fonts/CircularStd-Black.woff2') format('woff2'),url('fonts/CircularStd-Black.woff') format('woff'); font-weight:800; font-style:normal; font-display:swap; }
+  @font-face { font-family:'Circular Std'; src:url('fonts/CircularStd-Black.woff2') format('woff2'),url('fonts/CircularStd-Black.woff') format('woff'); font-weight:900; font-style:normal; font-display:swap; }
+    </style>
+</head>
+
+
+
+
+
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>My Website</title>
+    
+    <script src="header.js" defer></script>
+    <script src="footer.js" defer></script> 
+</head>
+<body>
+
+    <cronos-header></cronos-header>
+    
+
+</body>
+</html>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Infinite Responsive Hero Slider</title>
+  <style>
+    /* Scope Reset to guarantee zero conflicts with external styles */
+    .lfm-hero-outer-container {
+      width: 100%;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      font-family: 'Circular Std', sans-serif;
+      box-sizing: border-box;
+      margin: 0;
+      padding: 0;
+    }
+
+    .lfm-hero-outer-container * {
+      box-sizing: border-box;
+    }
+
+    /* Outer carousel window configuration */
+    .lfm-hero-carousel-wrapper {
+      position: relative;
+      width: 100%;
+      height: 600px;
+      overflow: hidden; 
+      background-color: #f3f4f6;
+    }
+
+    /* Flex track holding slides horizontally side-by-side */
+    .lfm-hero-track {
+      display: flex;
+      width: 100%;
+      height: 100%;
+      position: relative;
+      will-change: transform;
+    }
+
+    /* Individual product panel architecture */
+    .lfm-hero-slide {
+      flex: 0 0 100%;
+      width: 100%;
+      height: 100%;
+      display: flex;
+      align-items: center;
+      position: relative;
+    }
+
+    /* Separate background assets per layout slide */
+    .lfm-hero-bg {
+      position: absolute;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      background-size: cover;
+      background-position: center;
+      background-repeat: no-repeat;
+      z-index: 1;
+    }
+
+    .lfm-hero-content-container {
+      width: 100%;
+      max-width: 1280px;
+      margin: 0 auto;
+      padding: 0 4rem;
+      position: relative;
+      z-index: 2;  
+    }
+
+    .lfm-hero-text-block {
+      max-width: 550px;
+      color: #f4f4f4;
+    }
+
+    .lfm-hero-title {
+      font-size: 3.25rem;
+      font-weight: 500;
+      line-height: 1;
+      margin: 0 0 1.25rem 0;
+      letter-spacing: -0.025em;
+    }
+
+    .lfm-hero-description {
+      font-size: 1.15rem;
+      font-weight: 400;
+      line-height: 1.6;
+      color: #cecece;
+      margin: 0 0 2rem 0;
+    }
+
+    .lfm-hero-btn {
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      background-color: #0067b8;
+      color: #ffffff;
+      padding: 0.75rem 2.25rem;
+      font-size: 0.95rem;
+      font-weight: 400;
+      text-decoration: none;
+      border-radius: 50px;
+      transition: background-color 0.2s ease;
+    }
+
+    .lfm-hero-btn:hover {
+      background-color: #005293;
+    }
+
+    /* Control Panel UI - Positioned completely underneath the window */
+    .lfm-hero-controls-bar {
+      margin-top: 1.5rem;
+      display: flex;
+      align-items: center;
+      gap: 12px;
+      padding: 6px 16px;
+     
+    }
+
+    .lfm-hero-ctrl-btn {
+      background: none;
+      border: none;
+      cursor: pointer;
+      padding: 3px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      color: #000000; 
+      border-radius: 50%;
+      transition: background-color 0.2s, color 0.2s;
+    }
+
+    .lfm-hero-ctrl-btn:hover {
+      background-color: rgba(0, 0, 0, 0.05);
+      color: #111827; 
+    }
+
+    .lfm-hero-icon {
+      width: 30px;
+      height: 30px; stroke-width: 0.8;
+    }
+
+    .lfm-hero-dots-indicator {
+      display: flex;
+      align-items: center;
+      gap: 10px;
+    }
+
+    .lfm-hero-dot {
+      width: 8px;
+      height: 8px;
+      border-radius: 50%;
+      background-color: #d1d5db;
+      border: none;
+      cursor: pointer;
+      padding: 0;
+      transition: transform 0.2s, background-color 0.2s;
+    }
+
+    .lfm-hero-dot.active {
+      background-color: #111827;
+      transform: scale(1.25);
+    }
+
+    /* Responsive Mobile Breakpoints */
+    @media (max-width: 1024px) {
+      .lfm-hero-content-container { padding: 0 2rem; }
+      .lfm-hero-title { font-size: 2.75rem; }
+    }
+
+    @media (max-width: 768px) {
+      .lfm-hero-carousel-wrapper { height: 500px; }
+      .lfm-hero-content-container { text-align: center; padding: 0 1.5rem; }
+      .lfm-hero-text-block { margin: 0 auto; max-width: 100%; }
+      .lfm-hero-title { font-size: 2.25rem; }
+      .lfm-hero-description { font-size: 1rem; }
+    }
+  </style>
+</head>
+<body>
+
+<div class="lfm-hero-outer-container">
+  
+  <div class="lfm-hero-carousel-wrapper" id="lfm-hero-carousel-root">
+    <div class="lfm-hero-track" id="lfm-hero-slider-track">
+      
+      <div class="lfm-hero-slide">
+        <div class="lfm-hero-bg" style="background-image: url('https://images.unsplash.com/photo-1686848429284-d108e021a74c?q=80&w=1332&auto=format&fit=crop&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D');"></div>
+        <div class="lfm-hero-content-container">
+          <div class="lfm-hero-text-block">
+            <h1 class="lfm-hero-title">Secure Business Systems</h1>
+            <p class="lfm-hero-description">Unlock AI features like Live Captions and Cocreator with this exceptionally powerful engine from R3,599*.</p>
+            <a href="#" class="lfm-hero-btn">Learn more</a>
+          </div>
+        </div>
+      </div>
+
+      <div class="lfm-hero-slide">
+        <div class="lfm-hero-bg" style="background-image: url('thumbnails/pexels-ayush-kumar-907951968-23466423.jpg');"></div>
+        <div class="lfm-hero-content-container">
+          <div class="lfm-hero-text-block">
+            <h1 class="lfm-hero-title">Meet Surface Pro</h1>
+            <p class="lfm-hero-description">The ultimate 2-in-1 flexibility meets next-generation AI performance for all-day productivity.</p>
+            <a href="#" class="lfm-hero-btn">Learn more</a>
+          </div>
+        </div>
+      </div>
+
+      <div class="lfm-hero-slide">
+        <div class="lfm-hero-bg" style="background-image: url('https://images.pexels.com/photos/4992078/pexels-photo-4992078.jpeg');"></div>
+        <div class="lfm-hero-content-container">
+          <div class="lfm-hero-text-block">
+            <h1 class="lfm-hero-title">Explore Accessories</h1>
+            <p class="lfm-hero-description">Elevate your experience with designed-to-match keyboards, adaptive pens, and high-speed docks.</p>
+            <a href="#" class="lfm-hero-btn">Shop now</a>
+          </div>
+        </div>
+      </div>
+
+    </div>
+  </div>
+
+  <div class="lfm-hero-controls-bar">
+    <button class="lfm-hero-ctrl-btn" id="lfm-hero-toggle-play" aria-label="Pause Auto Scroll">
+      <svg viewBox="0 0 24 24" class="lfm-hero-icon icon-pause"><path d="M6 19h4V5H6v14zm8-14v14h4V5h-4z" fill="currentColor"/></svg>
+      <svg viewBox="0 0 24 24" class="lfm-hero-icon icon-play" style="display:none;"><path d="M8 5v14l11-7z" fill="currentColor"/></svg>
+    </button>
+    
+    <button class="lfm-hero-ctrl-btn" id="lfm-hero-prev" aria-label="Previous Slide">
+      <svg viewBox="0 0 24 24" class="lfm-hero-icon"><path d="M15.41 7.41L14 6l-6 6 6 6 1.41-1.41L10.83 12z" fill="currentColor"/></svg>
+    </button>
+
+    <div class="lfm-hero-dots-indicator" id="lfm-hero-dots-container"></div>
+
+    <button class="lfm-hero-ctrl-btn" id="lfm-hero-next" aria-label="Next Slide">
+      <svg viewBox="0 0 24 24" class="lfm-hero-icon"><path d="M10 6L8.59 7.41 13.17 12l-4.58 4.59L10 18l6-6z" fill="currentColor"/></svg>
+    </button>
+  </div>
+
+</div>
+
+<script>
+document.addEventListener("DOMContentLoaded", () => {
+  const wrapper = document.getElementById("lfm-hero-carousel-root");
+  if (!wrapper) return;
+
+  const track = wrapper.querySelector("#lfm-hero-slider-track");
+  const originalSlides = Array.from(track.children);
+  const totalOriginals = originalSlides.length;
+  if (totalOriginals === 0) return;
+
+  const nextBtn = document.getElementById("lfm-hero-next");
+  const prevBtn = document.getElementById("lfm-hero-prev");
+  const togglePlayBtn = document.getElementById("lfm-hero-toggle-play");
+  const dotsContainer = document.getElementById("lfm-hero-dots-container");
+  
+  const pauseIcon = togglePlayBtn.querySelector(".icon-pause");
+  const playIcon = togglePlayBtn.querySelector(".icon-play");
+
+  let currentIndex = 1; 
+  let autoScrollTimer = null;
+  let isPlaying = true;
+  let isTransitioning = false;
+  const slideDuration = 9000; 
+
+  // Generate Navigation Dots dynamically
+  originalSlides.forEach((_, index) => {
+    const dot = document.createElement("button");
+    dot.classList.add("lfm-hero-dot");
+    if (index === 0) dot.classList.add("active");
+    dot.setAttribute("aria-label", `Go to slide ${index + 1}`);
+    dotsContainer.appendChild(dot);
+  });
+  const dots = Array.from(dotsContainer.children);
+
+  // Setup Clones for Infinite Loop Visual Snapping
+  const firstClone = originalSlides[0].cloneNode(true);
+  const lastClone = originalSlides[totalOriginals - 1].cloneNode(true);
+  
+  track.appendChild(firstClone);
+  track.insertBefore(lastClone, originalSlides[0]);
+
+  // Sync structural offset base position
+  track.style.transform = `translateX(-${currentIndex * 100}%)`;
+
+  function getActiveOriginalIndex(index) {
+    if (index === 0) return totalOriginals - 1;
+    if (index === totalOriginals + 1) return 0;
+    return index - 1;
+  }
+
+  function updateDots() {
+    dots.forEach(dot => dot.classList.remove("active"));
+    const activeIndex = getActiveOriginalIndex(currentIndex);
+    if (dots[activeIndex]) dots[activeIndex].classList.add("active");
+  }
+
+  function moveToSlide(targetIndex, animate = true) {
+    if (isTransitioning && animate) return;
+    
+    isTransitioning = true;
+    currentIndex = targetIndex;
+    
+    if (animate) {
+      track.style.transition = "transform 0.6s cubic-bezier(0.25, 1, 0.5, 1)";
+    } else {
+      track.style.transition = "none";
+    }
+    
+    track.style.transform = `translateX(-${currentIndex * 100}%)`;
+    updateDots();
+
+    // If we aren't animating, reset transition guard immediately
+    if (!animate) {
+      isTransitioning = false;
+    }
+  }
+
+  // Handle Instant Teleport at track boundaries without visual jumps
+  track.addEventListener("transitionend", () => {
+    if (currentIndex === totalOriginals + 1) {
+      track.style.transition = "none";
+      currentIndex = 1;
+      track.style.transform = `translateX(-${currentIndex * 100}%)`;
+      // Read offsetWidth to force browser layout pipeline flush
+      track.offsetWidth; 
+    }
+    if (currentIndex === 0) {
+      track.style.transition = "none";
+      currentIndex = totalOriginals;
+      track.style.transform = `translateX(-${currentIndex * 100}%)`;
+      track.offsetWidth; 
+    }
+    isTransitioning = false;
+  });
+
+  function startAutoScroll() {
+    stopAutoScroll();
+    autoScrollTimer = setInterval(() => {
+      moveToSlide(currentIndex + 1);
+    }, slideDuration);
+  }
+
+  function stopAutoScroll() {
+    if (autoScrollTimer) clearInterval(autoScrollTimer);
+  }
+
+  // UI Navigation Triggers
+  nextBtn.addEventListener("click", () => {
+    moveToSlide(currentIndex + 1);
+    if (isPlaying) startAutoScroll();
+  });
+
+  prevBtn.addEventListener("click", () => {
+    moveToSlide(currentIndex - 1);
+    if (isPlaying) startAutoScroll(); 
+  });
+
+  dots.forEach((dot, index) => {
+    dot.addEventListener("click", () => {
+      moveToSlide(index + 1);
+      if (isPlaying) startAutoScroll();
+    });
+  });
+
+  togglePlayBtn.addEventListener("click", () => {
+    if (isPlaying) {
+      stopAutoScroll();
+      pauseIcon.style.display = "none";
+      playIcon.style.display = "block";
+    } else {
+      startAutoScroll();
+      pauseIcon.style.display = "block";
+      playIcon.style.display = "none";
+    }
+    isPlaying = !isPlaying;
+  });
+
+  // Run Carousel
+  if (totalOriginals > 0) {
+    startAutoScroll();
+  }
+});
+</script>
+
+</body>
+</html>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<style>
+  /* 1. Reset and Font */
+  .croloft-feature-wrapper {
+    font-family: 'Circular Std', -apple-system, sans-serif;
+    display: flex;
+    justify-content: center;
+    background-color: #ffffff;
+    padding: 200px 0;
+  }
+
+  /* 2. Constrained Container (1200px) */
+  .croloft-feature-container {
+    width: 1200px;
+    max-width: 95%; /* For mobile padding */
+  }
+
+  .croloft-ft-hd {
+    font-size: 45px;
+    padding: 0 0 30px 0;
+    color: #000;
+    font-weight: 500;
+  }
+
+  .croloft-ft-hd span {
+    color: grey;
+  }
+
+  /* 3. Image Display Area */
+  .croloft-feature-visuals {
+    position: relative;
+    width: 100%;
+    height: 580px; /* Adjust height to match your specific photos */
+    border-radius: 15px;
+    overflow: hidden;
+    margin-bottom: 40px;
+  }
+
+  .croloft-feature-img {
+    position: absolute;
+    inset: 0;
+    background-size: cover;
+    background-position: center;
+    opacity: 0;
+    transition: opacity 0.8s ease-in-out;
+  }
+
+  .croloft-feature-img.active {
+    opacity: 1;
+  }
+
+  /* 4. Progress Navigation */
+  .croloft-feature-nav {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 40px;
+  }
+
+  .croloft-feature-item {
+    position: relative;
+    padding-top: 25px;
+    cursor: pointer;
+    border-top: 2px solid #e5e5e5; /* The grey background line */
+  }
+
+  /* The Black Progress Line Overlay */
+  .croloft-feature-progress-line {
+    position: absolute;
+    top: -2px; /* Align exactly over the grey border */
+    left: 0;
+    height: 2px;
+    width: 0%;
+    background-color: #000000;
+  }
+
+  /* Animation class triggered by JS */
+  .croloft-feature-item.animating .croloft-feature-progress-line {
+    width: 100%;
+    transition: width 5000ms linear; /* 5 second duration */
+  }
+
+  /* 5. Typography */
+  .croloft-feature-label {
+    display: block;
+    font-size: 22px;
+    font-weight: 500;
+    margin-bottom: 15px;
+    color: #9b9b9b; /* Faded when inactive */
+    transition: color 0.3s;
+  }
+
+  .croloft-feature-item.active .croloft-feature-label {
+    color: #000000;
+  }
+
+  .croloft-feature-desc {
+    font-size: 18px;
+    line-height: 1.5;
+    color: #6d6d6d;
+    margin: 0;
+  }
+
+  /* 6. Mobile Responsiveness */
+  @media (max-width: 900px) {
+    .croloft-feature-nav {
+      grid-template-columns: 1fr;
+    }
+    .croloft-feature-visuals {
+      height: 300px;
+    }
+  }
+
+  @media (max-width: 768px) {
+     .croloft-ft-hd {
+      font-size: 28px;
+     }
+
+     .croloft-feature-wrapper {
+      padding: 8rem 1rem;
+     }
+     }
+</style>
+
+<div class="croloft-feature-wrapper">
+  <div class="croloft-feature-container"> 
+   
+    <div>
+      <h2 class="croloft-ft-hd">Design from every angle. <span>With precision.</span></h2>
+    </div>
+
+    <div class="croloft-feature-visuals">
+      <div class="croloft-feature-img active" style="background-image: url('thumbnails/pexels-alp-mmiy-2147670381-29822392.jpg');"></div>
+      <div class="croloft-feature-img" style="background-image: url('https://images.pexels.com/photos/3862627/pexels-photo-3862627.jpeg');"></div>
+      <div class="croloft-feature-img" style="background-image: url('thumbnails/pexels-ayush-kumar-907951968-23466423.jpg');"></div>
+    </div>
+
+    <div class="croloft-feature-nav">
+      
+      <div class="croloft-feature-item" data-index="0">
+        <div class="croloft-feature-progress-line"></div>
+        <span class="croloft-feature-label">Build</span>
+        <p class="croloft-feature-desc">Build a new site from the ground up — including its entire design system — modify its structure and design with ease.</p>
+      </div>
+
+      <div class="croloft-feature-item" data-index="1">
+        <div class="croloft-feature-progress-line"></div>
+        <span class="croloft-feature-label">Manage</span>
+        <p class="croloft-feature-desc">Manage the content of your site with the ability to generate copy and CMS collection items individually or in bulk.</p>
+      </div>
+
+      <div class="croloft-feature-item" data-index="2">
+        <div class="croloft-feature-progress-line"></div>
+        <span class="croloft-feature-label">Optimize</span>
+        <p class="croloft-feature-desc">Optimize your site for all audiences by auditing and improving SEO and AEO — based on CRO best practices.</p>
+      </div>
+
+    </div>
+  </div>
+</div>
+
+<script>
+  const featureItems = document.querySelectorAll('.croloft-feature-item');
+  const featureImages = document.querySelectorAll('.croloft-feature-img');
+  let currentIdx = 0;
+  const duration = 5000;
+  let slideTimer;
+
+  function runSlide(index) {
+    // 1. Clear existing timer and animation states
+    clearTimeout(slideTimer);
+    featureItems.forEach(item => {
+      item.classList.remove('active', 'animating');
+    });
+    featureImages.forEach(img => img.classList.remove('active'));
+
+    // 2. Set Active Image and Label
+    featureItems[index].classList.add('active');
+    featureImages[index].classList.add('active');
+
+    // 3. Trigger Progress Animation (using setTimeout to ensure browser registers the class removal first)
+    setTimeout(() => {
+      featureItems[index].classList.add('animating');
+    }, 10);
+
+    // 4. Queue next slide
+    currentIdx = index;
+    slideTimer = setTimeout(() => {
+      let next = (currentIdx + 1) % featureItems.length;
+      runSlide(next);
+    }, duration);
+  }
+
+  // Initial Start
+  runSlide(0);
+
+  // Manual Click Override
+  featureItems.forEach((item, i) => {
+    item.addEventListener('click', () => {
+      runSlide(i);
+    });
+  });
+</script>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<section data-it-showcase="container">
+  <div data-it-showcase="inner-wrapper">
+    <h2 data-it-showcase="section-title">Design from every angle</h2>
+    
+    <div data-it-showcase="grid">
+      
+      <div data-it-showcase="card" id="card-1">
+        <div data-it-showcase="card-bg" style="background-image: url('https://picsum.photos/id/180/600/800');"></div>
+        <div data-it-showcase="card-content">
+          <h3 data-it-showcase="card-title">InfiniPack</h3>
+          <p data-it-showcase="card-sub">Toolless rapidly swappable batteries.</p>
+        </div>
+        <button data-it-showcase="action-btn" aria-label="Reveal details">+</button>
+        
+        <div data-it-showcase="drawer">
+          <button data-it-showcase="close-btn" aria-label="Close drawer">&times;</button>
+          
+          <div data-it-showcase="drawer-scroll-body">
+            <span data-it-showcase="drawer-tag">INFINIPACK TECHNOLOGY</span>
+            <h4 data-it-showcase="drawer-heading">High-density hot-swappable cells.</h4>
+            <p data-it-showcase="drawer-text">
+              Engineered for zero downtime. The modular architecture permits immediate hot-swaps under 30 seconds for non-stop performance profiling. This setup isolates thermal arrays to prolong component lifespan under heavy loads.
+            </p>
+            <p data-it-showcase="drawer-text">
+              Additional integrated cooling channels regulate energy dissipation dynamically, keeping diagnostics accessible even under continuous operations.
+            </p>
+            <a href="#learn-more-infinipack" data-it-showcase="drawer-link">Learn more &rarr;</a>
+          </div>
+        </div>
+      </div>
+
+      <div data-it-showcase="card" id="card-2">
+        <div data-it-showcase="card-bg" style="background-image: url('https://picsum.photos/id/26/600/800');"></div>
+        <div data-it-showcase="card-content">
+          <h3 data-it-showcase="card-title">Minimal distraction interface</h3>
+          <p data-it-showcase="card-sub">An interface to keep you in the race.</p>
+        </div>
+        <button data-it-showcase="action-btn" aria-label="Reveal details">+</button>
+        
+        <div data-it-showcase="drawer">
+          <button data-it-showcase="close-btn" aria-label="Close drawer">&times;</button>
+          
+          <div data-it-showcase="drawer-scroll-body">
+            <span data-it-showcase="drawer-tag">MINIMAL DISTRACTION INTERFACE</span>
+            <h4 data-it-showcase="drawer-heading">An interface to keep you in the race.</h4>
+            <p data-it-showcase="drawer-text">
+              A simple, focused UI layout devoid of unnecessary abstractions. All critical operational telemetry data remains readable at a single split-second glance.
+            </p>
+            <p data-it-showcase="drawer-text">
+              By eliminating heavy animations and shifting to high-contrast monochrome UI states during extreme operations, cognitive fatigue is minimized, allowing complete focus where it matters most.
+            </p>
+            <a href="#learn-more-interface" data-it-showcase="drawer-link">Learn more &rarr;</a>
+          </div>
+        </div>
+      </div>
+
+      <div data-it-showcase="card" id="card-3">
+        <div data-it-showcase="card-bg" style="background-image: url('https://picsum.photos/id/119/600/800');"></div>
+        <div data-it-showcase="card-content">
+          <h3 data-it-showcase="card-title">Integrated smart storage</h3>
+          <p data-it-showcase="card-sub">Prepared for any challenge.</p>
+        </div>
+        <button data-it-showcase="action-btn" aria-label="Reveal details">+</button>
+        
+        <div data-it-showcase="drawer">
+          <button data-it-showcase="close-btn" aria-label="Close drawer">&times;</button>
+          
+          <div data-it-showcase="drawer-scroll-body">
+            <span data-it-showcase="drawer-tag">INTEGRATED SMART STORAGE</span>
+            <h4 data-it-showcase="drawer-heading">Utility built into structural frames.</h4>
+            <p data-it-showcase="drawer-text">
+              Weatherproof inner-chassis container compartment space built natively to keep core emergency gear and analytics units safe during harsh tasks.
+            </p>
+            <p data-it-showcase="drawer-text">
+              Features standard dampening brackets, pressurized locking seals, and instant access pathways designed specifically to survive rugged vibrations and sudden climate shifts.
+            </p>
+            <a href="#learn-more-storage" data-it-showcase="drawer-link">Learn more &rarr;</a>
+          </div>
+        </div>
+      </div>
+
+    </div>
+  </div>
+</section>
+
+<style>
+
+  * {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+  }  
+  /* Outer section wrapper */
+  [data-it-showcase="container"] {
+    background-color: #f4f4f4;
+    padding: 200px 1.5rem; /* Responsive inline padding */
+    font-family: 'Circular Std',-apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif;
+    width: 100%;
+    box-sizing: border-box;
+  }
+
+  /* Capped content container precisely centered at 1200px maximum */
+  [data-it-showcase="inner-wrapper"] {
+    max-width: 1200px;
+    margin: 0 auto;
+    width: 100%;
+  }
+
+  [data-it-showcase="section-title"] {
+    font-size: 3rem;
+    font-weight: 500;
+    color: #111;
+    margin: 0 0 2rem 0;
+    letter-spacing: -0.02em;
+  }
+
+  /* Responsive CSS Grid layout setup */
+  [data-it-showcase="grid"] {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 1rem;
+    width: 100%;
+  }
+
+  [data-it-showcase="card"] {
+    position: relative;
+    height: 520px;
+    border-radius: 12px;
+    overflow: hidden;
+    display: flex;
+    flex-direction: column;
+    justify-content: flex-end;
+    padding: 2rem;
+    box-sizing: border-box;
+  }
+
+  [data-it-showcase="card-bg"] {
+    position: absolute;
+    top: 0; left: 0; right: 0; bottom: 0;
+    background-size: cover;
+    background-position: center;
+    z-index: 1;
+  }
+
+  [data-it-showcase="card"]::after {
+    content: '';
+    position: absolute;
+    bottom: 0; left: 0; right: 0; height: 50%;
+    background: linear-gradient(to top, rgba(0,0,0,0.8), transparent);
+    z-index: 2;
+  }
+
+  [data-it-showcase="card-content"] {
+    position: relative;
+    z-index: 3;
+    color: #ffffff;
+  }
+
+  [data-it-showcase="card-title"] {
+    font-size: 1.5rem;
+    font-weight: 500;
+    margin: 0 0 0.5rem 0;
+    letter-spacing: -0.01em;
+  }
+
+  [data-it-showcase="card-sub"] {
+    font-size: 1rem;
+    margin: 0;
+    font-weight: 400;
+    line-height: 1.3;
+  }
+
+  [data-it-showcase="action-btn"] {
+    position: absolute;
+    top: 1.5rem;
+    right: 1.5rem;
+    z-index: 4;
+    width: 32px;
+    height: 32px;
+    background-color: rgba(255, 255, 255, 0.9);
+    border: none;
+    border-radius: 50%;
+    font-size: 1.2rem;
+    cursor: pointer;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+  }
+
+  /* Drawer Container Layout */
+  [data-it-showcase="drawer"] {
+    position: absolute;
+    top: 0; left: 0; right: 0; bottom: 0;
+    background-color: #ffffff;
+    z-index: 10;
+    border-radius: 12px;
+    display: flex;
+    flex-direction: column;
+    padding: 3rem 2rem 2rem 2rem;
+    box-sizing: border-box;
+    transform: translateY(100%);
+    transition: transform 0.4s cubic-bezier(0.16, 1, 0.3, 1);
+  }
+
+  [data-it-showcase="drawer"].is-open {
+    transform: translateY(0);
+  }
+
+  [data-it-showcase="close-btn"] {
+    position: absolute;
+    top: 1rem;
+    right: 1rem;
+    z-index: 12;
+    width: 32px;
+    height: 32px;
+    background-color: #ffffff;
+    border: 1px solid #e8e8e8;
+    border-radius: 50%;
+    font-size: 1.4rem;
+    cursor: pointer;
+    line-height: 0;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+  }
+
+  /* Scrollable container styling */
+  [data-it-showcase="drawer-scroll-body"] {
+    width: 100%;
+    height: 100%;
+    overflow-y: auto;
+    padding-right: 0.25rem;
+    display: flex;
+    flex-direction: column;
+    box-sizing: border-box;
+    
+    scrollbar-width: thin;
+    scrollbar-color: #ccc transparent;
+  }
+
+  [data-it-showcase="drawer-scroll-body"]::-webkit-scrollbar {
+    width: 4px;
+  }
+  [data-it-showcase="drawer-scroll-body"]::-webkit-scrollbar-thumb {
+    background-color: #ccc;
+    border-radius: 4px;
+  }
+
+  [data-it-showcase="drawer-tag"] {
+    font-size: 0.65rem;
+    font-weight: 500;
+    letter-spacing: 0.06em;
+    color: #767676;
+    margin-bottom: 0.5rem;
+  }
+
+  [data-it-showcase="drawer-heading"] {
+    font-size: 1.35rem;
+    font-weight: 500;
+    color: #111;
+    margin: 0 0 1rem 0;
+    line-height: 1.25;
+    letter-spacing: -0.01em;
+  }
+
+  [data-it-showcase="drawer-text"] {
+    font-size: 0.95rem;
+    line-height: 1.5;
+    color: #4a4a4a;
+    margin: 0 0 1rem 0;
+  }
+
+  /* Inline Link Style directly below the content narrative block */
+  [data-it-showcase="drawer-link"] {
+    display: inline-block;
+    align-self: flex-start; /* Stops the anchor tag link from taking up full element width */
+    margin-bottom: 1.5rem;  /* Keeps breathing padding room below if viewport elements wrap */
+    font-size: 0.95rem;
+    font-weight: 500;
+    color: #000000;
+    text-decoration: none;
+    transition: opacity 0.2s;
+  }
+
+  [data-it-showcase="drawer-link"]:hover {
+    opacity: 0.6;
+  }
+
+  /* Perfectly Adaptive Mobile Media Queries */
+  @media (max-width: 1024px) {
+    [data-it-showcase="grid"] {
+      grid-template-columns: repeat(2, 1fr);
+    }
+  }
+
+  @media (max-width: 680px) {
+    [data-it-showcase="container"] {
+      padding: 7rem 1rem;
+    }
+    [data-it-showcase="grid"] {
+      grid-template-columns: 1fr;
+    }
+    [data-it-showcase="card"] {
+      height: 460px; /* Marginally lower heights for smaller responsive portrait viewports */
+    }
+    [data-it-showcase="section-title"] {
+      font-size: 1.85rem;
+    }
+  }
+</style>
+
+<script>
+  document.addEventListener('DOMContentLoaded', () => {
+    const container = document.querySelector('[data-it-showcase="container"]');
+    
+    if (container) {
+      // Reveal handler
+      container.querySelectorAll('[data-it-showcase="action-btn"]').forEach(btn => {
+        btn.addEventListener('click', (e) => {
+          const card = e.target.closest('[data-it-showcase="card"]');
+          const drawer = card.querySelector('[data-it-showcase="drawer"]');
+          if (drawer) {
+            drawer.classList.add('is-open');
+            const scrollBody = drawer.querySelector('[data-it-showcase="drawer-scroll-body"]');
+            if (scrollBody) scrollBody.scrollTop = 0;
+          }
+        });
+      });
+
+      // Close handler
+      container.querySelectorAll('[data-it-showcase="close-btn"]').forEach(btn => {
+        btn.addEventListener('click', (e) => {
+          const drawer = e.target.closest('[data-it-showcase="drawer"]');
+          if (drawer) drawer.classList.remove('is-open');
+        });
+      });
+    }
+  });
+</script>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Premium Hero</title>
+    <style>
+        /* --- SCOPED PREMIUM HERO STYLES --- */
+        @import url('https://fonts.googleapis.com/css2?family=DM+Sans:opsz,wght@9..40,400;500;700&display=swap');
+
+        .it-premium-hero {
+            --it-primary: #161616;
+            --it-secondary: #636363;
+            --it-accent: #3ECF8E; 
+            --it-font: 'Circular Std', 'DM Sans', sans-serif;
+            
+            background: #ffffff;
+            width: 100%;
+            min-height: 500px;
+            overflow: hidden; 
+            display: flex;
+            align-items: center;
+            position: relative;
+            font-family: var(--it-font);
+            box-sizing: border-box;
+        }
+
+        /* Ensure all elements inside use border-box */
+        .it-premium-hero *, .it-premium-hero *::before, .it-premium-hero *::after {
+            box-sizing: border-box;
+        }
+
+        .it-premium-container {
+            max-width: 1200px;
+            margin: 0 auto;
+            width: 100%;
+            padding: 0 20px; /* Added padding for safety on small screens */
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            z-index: 2;
+        }
+
+        /* --- Left Side: Text --- */
+        .it-premium-text-box {
+            flex: 0 0 500px; /* Slightly wider to accommodate text */
+            z-index: 10; /* Keep text above visual elements */
+        }
+
+        .it-premium-headline {
+            font-size: 45px;
+            font-weight: 500; /* Bumped weight slightly for readability */
+            line-height: 1.1;
+            color: var(--it-primary);
+            letter-spacing: -0.04em;
+            margin: 0;
+        }
+
+        /* Dynamic Text Container */
+        .it-dynamic-wrapper {
+            display: inline-block;
+            min-width: 300px; /* Prevents layout shift when text length changes */
+        }
+
+        #it-dynamic-text {
+            color: var(--it-primary);
+            transition: opacity 0.2s ease, transform 0.2s ease;
+            display: inline-block;
+            position: relative;
+        }
+
+        /* Highlight color for the dynamic text */
+        .it-highlight {
+            color: var(--it-accent); /* Optional: Use accent color when active */
+        }
+
+        .it-text-fade {
+            opacity: 0;
+            transform: translateY(10px);
+        }
+
+        /* --- Right Side: Visual Area --- */
+        .it-premium-visual-area {
+            flex: 1;
+            position: relative;
+            display: flex;
+            align-items: center;
+            height: 180px; /* Increased height slightly */
+            overflow: hidden;
+            /* Masking for the fade effect on edges */
+            -webkit-mask-image: linear-gradient(to right, transparent 0%, black 10%, black 90%, transparent 100%);
+            mask-image: linear-gradient(to right, transparent 0%, black 10%, black 90%, transparent 100%);
+            margin-left: 40px; /* Spacing from text */
+        }
+
+        .it-premium-single-row {
+            display: flex;
+            width: max-content;
+            animation: scroll-seamless 30s linear infinite; /* Slowed down slightly for elegance */
+            will-change: transform;
+        }
+
+        .it-group {
+            display: flex;
+            gap: 10px; /* Increased gap for cleaner look */
+            padding-right: 30px; 
+        }
+
+        /* Hover pauses animation */
+        .it-premium-single-row:hover {
+            animation-play-state: paused;
+        }
+
+        @keyframes scroll-seamless {
+            0% { transform: translateX(0); }
+            100% { transform: translateX(-50%); }
+        }
+
+        /* --- Card Styles --- */
+        .it-premium-card {
+            width: 100px;
+            height: 100px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            cursor: pointer;
+            transition: all 0.3s cubic-bezier(0.25, 0.8, 0.25, 1);
+            flex-shrink: 0;
+        }
+
+        .it-premium-card img {
+            width: 50px;
+            height: 50px;
+            object-fit: contain;
+            filter: grayscale(100%);
+            opacity: 0.9;
+            transition: all 0.3s ease;
+            pointer-events: none; /* Prevents image dragging */
+        }
+
+        .it-premium-card:hover {
+            transform: translateY(-5px) scale(1.05);
+            z-index: 5;
+        }
+
+        .it-premium-card:hover img {
+            filter: grayscale(0%);
+            opacity: 1;
+        }
+
+        /* --- Mobile Responsiveness --- */
+        @media (max-width: 992px) {
+            .it-premium-hero {
+                padding: 60px 0;
+                min-height: auto;
+                flex-direction: column;
+                justify-content: center;
+            }
+
+            .it-premium-container {
+                flex-direction: column;
+                text-align: center;
+                padding: 0 15px;
+            }
+
+            .it-premium-text-box {
+                flex: 0 0 auto;
+                width: 100%;
+                margin-bottom: 40px;
+            }
+
+            .it-premium-headline {
+                font-size: 36px; /* Smaller font on mobile */
+            }
+
+            .it-dynamic-wrapper {
+                display: block; /* Stack on mobile if needed */
+                min-width: 0;
+            }
+
+            .it-premium-visual-area {
+                width: 100%;
+                margin-left: 0;
+                /* Reset mask for fuller width visibility on mobile */
+                -webkit-mask-image: linear-gradient(to right, transparent 0%, black 5%, black 95%, transparent 100%);
+                mask-image: linear-gradient(to right, transparent 0%, black 5%, black 95%, transparent 100%);
+            }
+            
+            /* KEY FIX: Ensure single row persists on mobile */
+            .it-premium-single-row {
+                flex-wrap: nowrap; /* Prevent wrapping */
+            }
+            
+            .it-group {
+                gap: 20px;
+                padding-right: 20px;
+            }
+            
+            .it-premium-card {
+                width: 80px; /* Smaller cards on mobile */
+                height: 80px;
+            }
+            
+            .it-premium-card img {
+                width: 40px;
+                height: 40px;
+            }
+        }
+    </style>
+</head>
+<body>
+
+<section class="it-premium-hero">
+    <div class="it-premium-container">
+        
+        <div class="it-premium-text-box">
+            <h1 class="it-premium-headline">
+                Build your solution with<br>
+                <span class="it-dynamic-wrapper">
+                    <span id="it-dynamic-text">any framework</span>
+                </span>
+            </h1>
+        </div>
+
+        <div class="it-premium-visual-area">
+            <div class="it-premium-single-row">
+                <div class="it-group">
+                    <div class="it-premium-card" data-name="React.js"><img src="https://cdn.worldvectorlogo.com/logos/react-2.svg" alt="React"></div>
+                    <div class="it-premium-card" data-name="Next.js"><img src="https://cdn.worldvectorlogo.com/logos/next-js.svg" alt="Next"></div>
+                    <div class="it-premium-card" data-name="Vue.js"><img src="https://cdn.worldvectorlogo.com/logos/vue-9.svg" alt="Vue"></div>
+                    <div class="it-premium-card" data-name="TypeScript"><img src="https://cdn.worldvectorlogo.com/logos/typescript.svg" alt="TS"></div>
+                    <div class="it-premium-card" data-name="Node.js"><img src="https://cdn.worldvectorlogo.com/logos/nodejs-icon.svg" alt="Node"></div>
+                    <div class="it-premium-card" data-name="Angular"><img src="https://cdn.worldvectorlogo.com/logos/angular-icon-1.svg" alt="Angular"></div>
+                </div>
+                
+                <div class="it-group">
+                    <div class="it-premium-card" data-name="React.js"><img src="https://cdn.worldvectorlogo.com/logos/react-2.svg" alt="React"></div>
+                    <div class="it-premium-card" data-name="Next.js"><img src="https://cdn.worldvectorlogo.com/logos/next-js.svg" alt="Next"></div>
+                    <div class="it-premium-card" data-name="Vue.js"><img src="https://cdn.worldvectorlogo.com/logos/vue-9.svg" alt="Vue"></div>
+                    <div class="it-premium-card" data-name="TypeScript"><img src="https://cdn.worldvectorlogo.com/logos/typescript.svg" alt="TS"></div>
+                    <div class="it-premium-card" data-name="Node.js"><img src="https://cdn.worldvectorlogo.com/logos/nodejs-icon.svg" alt="Node"></div>
+                    <div class="it-premium-card" data-name="Angular"><img src="https://cdn.worldvectorlogo.com/logos/angular-icon-1.svg" alt="Angular"></div>
+                </div>
+            </div>
+        </div>
+
+    </div>
+</section>
+
+<script>
+    document.addEventListener("DOMContentLoaded", () => {
+        const dynamicText = document.getElementById('it-dynamic-text');
+        const cards = document.querySelectorAll('.it-premium-card');
+        const defaultText = "any framework";
+        let textTimeout; // Variable to track the timer
+
+        // Function to handle text change
+        const changeText = (newName, isDefault = false) => {
+            // Clear any existing timer to prevent overlapping animations
+            clearTimeout(textTimeout);
+
+            dynamicText.classList.add('it-text-fade');
+            
+            // Wait for fade out, then change text
+            textTimeout = setTimeout(() => {
+                dynamicText.innerText = newName;
+                if(isDefault) {
+                    dynamicText.classList.remove('it-highlight');
+                } else {
+                    dynamicText.classList.add('it-highlight');
+                }
+                dynamicText.classList.remove('it-text-fade');
+            }, 150);
+        };
+
+        cards.forEach(card => {
+            card.addEventListener('mouseenter', function() {
+                const newName = this.getAttribute('data-name');
+                changeText(newName);
+            });
+
+            card.addEventListener('mouseleave', function() {
+                changeText(defaultText, true);
+            });
+            
+            // Added simple click support for mobile tap interaction
+            card.addEventListener('click', function() {
+                const newName = this.getAttribute('data-name');
+                changeText(newName);
+                
+                // Auto reset after 2 seconds on mobile tap
+                setTimeout(() => {
+                    changeText(defaultText, true);
+                }, 2000);
+            });
+        });
+    });
+</script>
+
+</body>
+</html>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <style>
+        :root {
+            --crEcosystem-bg-dark: #030816;
+            --crEcosystem-text-main: #FFFFFF;
+            --crEcosystem-logo-border: rgba(255, 255, 255, 0.1);
+            --crEcosystem-logo-size: 100px; 
+            --crEcosystem-logo-gap: 12px; /* Tighter gap for a more unified look */
+            --crEcosystem-anim-speed: 25s; /* Faster for smoother feel */
+        }
+
+        .crEcosystem-wrapper {
+            background-color: var(--crEcosystem-bg-dark);
+            font-family: 'Circular Std', -apple-system, BlinkMacSystemFont, sans-serif;
+            color: var(--crEcosystem-text-main);
+            min-height: 100vh;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            padding: 40px;
+            box-sizing: border-box;
+            overflow: hidden;
+        }
+
+        .crEcosystem-main-layout {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 40px; /* Reduced gap between text and logos */
+            max-width: 1200px; /* As per your requirement */
+            width: 100%;
+            align-items: center;
+        }
+
+        /* Left Content */
+        .crEcosystem-content-col {
+            padding-right: 20px;
+            z-index: 2;
+        }
+
+        .crEcosystem-main-title {
+            font-size: 62px;
+            font-weight: 400;
+            margin: 0;
+            letter-spacing: -2px;
+            line-height: 1;
+        }
+
+        .crEcosystem-sub-title {
+            font-size: 62px;
+            font-weight: 400;
+            margin: 0 0 40px 0;
+           
+            letter-spacing: -2px;
+            line-height: 1;
+        }
+
+        .crEcosystem-primary-btn {
+            display: inline-flex;
+            align-items: center;
+            padding: 10px 28px;
+            border: 1px solid rgb(255, 255, 255);
+            border-radius: 30px;
+            background: transparent;
+            color: #FFFFFF;
+            font-weight: 400;
+            text-decoration: none;
+            transition: all 0.3s ease;
+        
+        
+           border: 2px solid transparent;
+  border-radius: 50px;
+  /* Inner box color (clipt to content), followed by outer rainbow gradient background */
+  background: 
+    linear-gradient(#080d1b, #080d1b) padding-box, 
+    linear-gradient(135deg, #ff0055, #00ff66, #00ffff, #ff00ff, #ff0055, #ff4500) border-box;
+  background-size: 300% 300%;
+  animation: fluidRainbow 5s ease infinite;
+}
+
+
+@keyframes fluidRainbow {
+  0% {
+    background-position: 0% 50%;
+  }
+  50% {
+    background-position: 100% 50%;
+  }
+  100% {
+    background-position: 0% 50%;
+  }
+}
+
+        .crEcosystem-primary-btn:hover {
+            border-color: #FFFFFF;
+            background: rgba(255, 255, 255, 0.1);
+            transform: translateY(-2px);
+        }
+
+        /* Right Logo Section */
+        .crEcosystem-logos-col {
+            display: grid;
+            grid-template-columns: repeat(4, 1fr);
+            gap: var(--crEcosystem-logo-gap);
+            width: 100%;
+            height: 650px; 
+            position: relative;
+            /* Creates the fade effect at top and bottom */
+            -webkit-mask-image: linear-gradient(to bottom, transparent, black 15%, black 85%, transparent);
+            mask-image: linear-gradient(to bottom, transparent, black 15%, black 85%, transparent);
+        }
+
+        .crEcosystem-ticker-column {
+            overflow: hidden;
+            height: 100%;
+        }
+
+        .crEcosystem-logo-ticker-track {
+            display: flex;
+            flex-direction: column;
+            gap: var(--crEcosystem-logo-gap);
+            height: fit-content;
+        }
+
+        .crEcosystem-logo-tile {
+            width: 100%;
+            aspect-ratio: 1/1;
+            background: #040d27;
+            border-radius: 16px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            padding: 22%;
+            box-sizing: border-box;
+        }
+        
+
+        .crEcosystem-logo-img {
+            width: 100%;
+            height: 100%;
+            object-fit: contain;
+            filter: grayscale(1) brightness(1.5); /* Unified look */
+            opacity: 0.7;
+            transition: 0.3s;
+        }
+
+        .crEcosystem-logo-tile:hover .crEcosystem-logo-img {
+            filter: grayscale(0) brightness(1);
+            opacity: 1;
+        }
+
+        /* Seamless Loop Logic: 
+           The track contains 5 unique logos + 5 duplicates.
+           We animate exactly the height of the first 5 logos + their gaps.
+        */
+        @keyframes ticker-up {
+            from { transform: translateY(0); }
+            to { transform: translateY(calc(-50% - (var(--crEcosystem-logo-gap) / 2))); }
+        }
+
+        @keyframes ticker-down {
+            from { transform: translateY(calc(-50% - (var(--crEcosystem-logo-gap) / 2))); }
+            to { transform: translateY(0); }
+        }
+
+        .crEcosystem-col-move-up {
+            animation: ticker-up var(--crEcosystem-anim-speed) linear infinite;
+        }
+
+        .crEcosystem-col-move-down {
+            animation: ticker-down var(--crEcosystem-anim-speed) linear infinite;
+        }
+
+        /* Responsiveness */
+        @media (max-width: 900px) {
+            .crEcosystem-main-layout { grid-template-columns: 1fr; text-align: center; }
+            .crEcosystem-content-col { padding-right: 0; order: 2; }
+            .crEcosystem-logos-col { height: 400px; order: 1; }
+            .crEcosystem-main-title, .crEcosystem-sub-title { font-size: 50px; }
+        }
+    </style>
+</head>
+<body>
+
+<div class="crEcosystem-wrapper">
+    <div class="crEcosystem-main-layout">
+        
+        <div class="crEcosystem-content-col">
+            <h1 class="crEcosystem-main-title">Explore The</h1>
+            <h2 class="crEcosystem-sub-title">Technologies We Use</h2>
+            <a href="tech-stack.html" class="crEcosystem-primary-btn">
+                Learn more <span style="margin-left:8px">↗</span>
+            </a>
+        </div>
+
+        <div class="crEcosystem-logos-col">
+            
+            <div class="crEcosystem-ticker-column">
+                <div class="crEcosystem-logo-ticker-track crEcosystem-col-move-up">
+                    <div class="crEcosystem-logo-tile"><img src="https://cdn.simpleicons.org/intel/white" class="crEcosystem-logo-img"></div>
+                    <div class="crEcosystem-logo-tile"><img src="https://cdn.simpleicons.org/nvidia/white" class="crEcosystem-logo-img"></div>
+                    <div class="crEcosystem-logo-tile"><img src="https://cdn.simpleicons.org/amd/white" class="crEcosystem-logo-img"></div>
+                    <div class="crEcosystem-logo-tile"><img src="https://cdn.simpleicons.org/cisco/white" class="crEcosystem-logo-img"></div>
+                    <div class="crEcosystem-logo-tile"><img src="https://cdn.simpleicons.org/ibm/white" class="crEcosystem-logo-img"></div>
+                    <div class="crEcosystem-logo-tile"><img src="https://cdn.simpleicons.org/intel/white" class="crEcosystem-logo-img"></div>
+                    <div class="crEcosystem-logo-tile"><img src="https://cdn.simpleicons.org/nvidia/white" class="crEcosystem-logo-img"></div>
+                    <div class="crEcosystem-logo-tile"><img src="https://cdn.simpleicons.org/amd/white" class="crEcosystem-logo-img"></div>
+                    <div class="crEcosystem-logo-tile"><img src="https://cdn.simpleicons.org/cisco/white" class="crEcosystem-logo-img"></div>
+                    <div class="crEcosystem-logo-tile"><img src="https://cdn.simpleicons.org/ibm/white" class="crEcosystem-logo-img"></div>
+                </div>
+            </div>
+
+            <div class="crEcosystem-ticker-column">
+                <div class="crEcosystem-logo-ticker-track crEcosystem-col-move-down">
+                    <div class="crEcosystem-logo-tile"><img src="https://cdn.simpleicons.org/googlecloud/white" class="crEcosystem-logo-img"></div>
+                    <div class="crEcosystem-logo-tile"><img src="https://cdn.simpleicons.org/amazonaws/white" class="crEcosystem-logo-img"></div>
+                    <div class="crEcosystem-logo-tile"><img src="https://cdn.simpleicons.org/microsoftazure/white" class="crEcosystem-logo-img"></div>
+                    <div class="crEcosystem-logo-tile"><img src="https://cdn.simpleicons.org/digitalocean/white" class="crEcosystem-logo-img"></div>
+                    <div class="crEcosystem-logo-tile"><img src="https://cdn.simpleicons.org/oracle/white" class="crEcosystem-logo-img"></div>
+                    <div class="crEcosystem-logo-tile"><img src="https://cdn.simpleicons.org/googlecloud/white" class="crEcosystem-logo-img"></div>
+                    <div class="crEcosystem-logo-tile"><img src="https://cdn.simpleicons.org/amazonaws/white" class="crEcosystem-logo-img"></div>
+                    <div class="crEcosystem-logo-tile"><img src="https://cdn.simpleicons.org/microsoftazure/white" class="crEcosystem-logo-img"></div>
+                    <div class="crEcosystem-logo-tile"><img src="https://cdn.simpleicons.org/digitalocean/white" class="crEcosystem-logo-img"></div>
+                    <div class="crEcosystem-logo-tile"><img src="https://cdn.simpleicons.org/oracle/white" class="crEcosystem-logo-img"></div>
+                </div>
+            </div>
+
+            <div class="crEcosystem-ticker-column">
+                <div class="crEcosystem-logo-ticker-track crEcosystem-col-move-up">
+                    <div class="crEcosystem-logo-tile"><img src="https://cdn.simpleicons.org/docker/white" class="crEcosystem-logo-img"></div>
+                    <div class="crEcosystem-logo-tile"><img src="https://cdn.simpleicons.org/kubernetes/white" class="crEcosystem-logo-img"></div>
+                    <div class="crEcosystem-logo-tile"><img src="https://cdn.simpleicons.org/linux/white" class="crEcosystem-logo-img"></div>
+                    <div class="crEcosystem-logo-tile"><img src="https://cdn.simpleicons.org/python/white" class="crEcosystem-logo-img"></div>
+                    <div class="crEcosystem-logo-tile"><img src="https://cdn.simpleicons.org/javascript/white" class="crEcosystem-logo-img"></div>
+                    <div class="crEcosystem-logo-tile"><img src="https://cdn.simpleicons.org/docker/white" class="crEcosystem-logo-img"></div>
+                    <div class="crEcosystem-logo-tile"><img src="https://cdn.simpleicons.org/kubernetes/white" class="crEcosystem-logo-img"></div>
+                    <div class="crEcosystem-logo-tile"><img src="https://cdn.simpleicons.org/linux/white" class="crEcosystem-logo-img"></div>
+                    <div class="crEcosystem-logo-tile"><img src="https://cdn.simpleicons.org/python/white" class="crEcosystem-logo-img"></div>
+                    <div class="crEcosystem-logo-tile"><img src="https://cdn.simpleicons.org/javascript/white" class="crEcosystem-logo-img"></div>
+                </div>
+            </div>
+
+            <div class="crEcosystem-ticker-column">
+                <div class="crEcosystem-logo-ticker-track crEcosystem-col-move-down">
+                    <div class="crEcosystem-logo-tile"><img src="https://cdn.simpleicons.org/mongodb/white" class="crEcosystem-logo-img"></div>
+                    <div class="crEcosystem-logo-tile"><img src="https://cdn.simpleicons.org/postgresql/white" class="crEcosystem-logo-img"></div>
+                    <div class="crEcosystem-logo-tile"><img src="https://cdn.simpleicons.org/redis/white" class="crEcosystem-logo-img"></div>
+                    <div class="crEcosystem-logo-tile"><img src="https://cdn.simpleicons.org/cloudfare/white" class="crEcosystem-logo-img"></div>
+                    <div class="crEcosystem-logo-tile"><img src="https://cdn.simpleicons.org/nginx/white" class="crEcosystem-logo-img"></div>
+                    <div class="crEcosystem-logo-tile"><img src="https://cdn.simpleicons.org/mongodb/white" class="crEcosystem-logo-img"></div>
+                    <div class="crEcosystem-logo-tile"><img src="https://cdn.simpleicons.org/postgresql/white" class="crEcosystem-logo-img"></div>
+                    <div class="crEcosystem-logo-tile"><img src="https://cdn.simpleicons.org/redis/white" class="crEcosystem-logo-img"></div>
+                    <div class="crEcosystem-logo-tile"><img src="https://cdn.simpleicons.org/cloudfare/white" class="crEcosystem-logo-img"></div>
+                    <div class="crEcosystem-logo-tile"><img src="https://cdn.simpleicons.org/nginx/white" class="crEcosystem-logo-img"></div>
+                </div>
+            </div>
+
+        </div>
+    </div>
+</div>
+
+</body>
+</html>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<cronos-footer></cronos-footer>

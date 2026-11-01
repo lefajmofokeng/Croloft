@@ -1,0 +1,3636 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Affiliate</title>
+    
+    <script src="header.js" defer></script>
+    <script src="footer.js" defer></script> 
+</head>
+<body>
+
+    <cronos-header></cronos-header>
+    
+
+</body>
+</html>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<!-- Custom Isolated Component: Hero Banner with QR Modal -->
+<section class="it-hero-section">
+  <!-- Full Bleed Background Image Layer -->
+  <div class="it-hero-bg">
+    <img 
+      src="https://images.unsplash.com/photo-1618005182384-a83a8bd57fbe?w=1920&auto=format&fit=crop&q=85" 
+      alt="Managed Infrastructure Background" 
+      class="it-hero-bg-img" 
+    />
+    <div class="it-hero-overlay"></div>
+  </div>
+
+  <!-- Content Container -->
+  <div class="it-hero-container">
+    <div class="it-hero-content">
+      <h1 class="it-hero-title">Managed Cloud Stacks</h1>
+      
+      <p class="it-hero-description">
+        Make the most of your enterprise infrastructure with up to 99.99% uptime SLAs on custom web applications and cloud protocols.
+      </p>
+
+      <!-- Action Area with Popup QR Modal -->
+      <div class="it-hero-action-wrapper">
+        <button type="button" class="it-hero-btn" id="itHeroQrTrigger" aria-expanded="false" aria-controls="itHeroQrModal">
+          <span>Scan to Explore</span>
+          <svg class="it-hero-qr-icon" viewBox="0 0 24 24" fill="currentColor">
+            <path d="M3 3h8v8H3V3zm2 2v4h4V5H5zm8-2h8v8h-8V3zm2 2v4h4V5h-4zM3 13h8v8H3v-8zm2 2v4h4v-4H5zm13-2h3v3h-3v-3zm-5 0h3v3h-3v-3zm0 5h3v3h-3v-3zm5 0h3v3h-3v-3zm-2.5-2.5h3v3h-3v-3z"/>
+          </svg>
+        </button>
+
+        <!-- Inline QR Code Modal -->
+        <div class="it-hero-qr-modal" id="itHeroQrModal" aria-hidden="true">
+          <div class="it-hero-qr-card">
+            <div class="it-hero-qr-header">
+             
+              <button type="button" class="it-hero-qr-close" id="itHeroQrClose" aria-label="Close modal">&times;</button>
+            </div>
+            <div class="it-hero-qr-img-wrap">
+              <!-- QR Code SVG Image -->
+              <img src="thumbnails/frame.jpg" alt="QR Code for Mobile Access" style="height: auto; width: 100px;" class="it-hero-qr-img" />
+            </div>
+            
+          </div>
+        </div>
+      </div>
+
+      <span class="it-hero-disclaimer">Terms and conditions apply.</span>
+    </div>
+  </div>
+</section>
+
+<style>
+  /* ==========================================================================
+     ISOLATED COMPONENT STYLES (Prefix: it-hero-)
+     ========================================================================== */
+
+  .it-hero-section {
+    position: relative;
+    width: 100%;
+    min-height: 100vh;
+    display: flex;
+    align-items: center;
+    overflow: hidden;
+    background-color: #040914;
+    font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
+    box-sizing: border-box;
+  }
+
+  .it-hero-section * {
+    box-sizing: border-box;
+    margin: 0;
+    padding: 0;
+  }
+
+  /* Full Bleed Background Setup */
+  .it-hero-bg {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    z-index: 1;
+  }
+
+  .it-hero-bg-img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    object-position: center;
+    display: block;
+  }
+
+  /* Gradient Overlay */
+  .it-hero-overlay {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: linear-gradient(
+      90deg, 
+      rgba(4, 9, 20, 0.9) 0%, 
+      rgba(4, 9, 20, 0.65) 50%, 
+      rgba(4, 9, 20, 0.25) 100%
+    );
+  }
+
+  /* Container & Content Layout */
+  .it-hero-container {
+    position: relative;
+    z-index: 2;
+    width: 100%;
+    max-width: 1140px;
+    margin: 0 auto;
+    padding: 60px 24px;
+  }
+
+  .it-hero-content {
+    max-width: 520px;
+  }
+
+  .it-hero-title {
+    font-size: 56px;
+    font-weight: 700;
+    color: #ffffff;
+    line-height: 1.1;
+    letter-spacing: -1.2px;
+    margin-bottom: 20px;
+  }
+
+  .it-hero-description {
+    font-size: 17px;
+    line-height: 1.5;
+    color: #e2e8f0;
+    font-weight: 400;
+    margin-bottom: 28px;
+  }
+
+  /* Action Area Wrapper */
+  .it-hero-action-wrapper {
+    position: relative;
+    display: inline-block;
+    margin-bottom: 16px;
+  }
+
+  .it-hero-btn {
+    display: inline-flex;
+    align-items: center;
+    gap: 10px;
+    background-color: #ffffff;
+    color: #040914;
+    font-size: 15px;
+    font-weight: 600;
+    padding: 12px 28px;
+    border-radius: 9999px;
+    border: none;
+    cursor: pointer;
+    box-shadow: 0 4px 14px rgba(0, 0, 0, 0.25);
+    transition: transform 0.2s ease, background-color 0.2s ease;
+  }
+
+  .it-hero-btn:hover {
+    background-color: #f8fafc;
+    transform: translateY(-1px);
+  }
+
+  .it-hero-qr-icon {
+    width: 18px;
+    height: 18px;
+    fill: #040914;
+  }
+
+  /* QR Modal Positioning & Styling */
+  .it-hero-qr-modal {
+    position: absolute;
+    top: calc(100% + 12px);
+    left: 0;
+    z-index: 10;
+    opacity: 0;
+    visibility: hidden;
+    transform: translateY(-8px);
+    transition: opacity 0.25s ease, transform 0.25s ease, visibility 0.25s ease;
+  }
+
+  .it-hero-qr-modal.it-hero-is-active {
+    opacity: 1;
+    visibility: visible;
+    transform: translateY(0);
+  }
+
+  .it-hero-qr-card {
+    background: #ffffff;
+    border-radius: 16px;
+    padding: 8px;
+    width: fit-content;
+    box-shadow: 0 12px 30px rgba(0, 0, 0, 0.4);
+    text-align: center;
+    border: 1px solid rgba(255, 255, 255, 0.2);
+  }
+
+  .it-hero-qr-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    font-size: 12px;
+    font-weight: 700;
+    color: #040914;
+    margin-bottom: 12px;
+  }
+
+  .it-hero-qr-close {
+    background: #ececec; border-radius: 50px; vertical-align: middle;
+    border: none;
+    font-size: 18px;
+    line-height: 1;
+    color: #090a0a;
+    cursor: pointer;
+    padding: 0 4px;
+  }
+
+  .it-hero-qr-close:hover {
+    color: #040914;
+  }
+
+  .it-hero-qr-img-wrap {
+    width: 100px;
+    aspect-ratio: 1;
+    background: #f8fafc;
+    border-radius: 8px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+  }
+
+  .it-hero-qr-img-wrap svg {
+    width: 100%;
+    height: 100%;
+  }
+
+  .it-hero-qr-caption {
+    font-size: 11px;
+    color: #64748b;
+    margin-top: 8px;
+    font-weight: 500;
+  }
+
+  .it-hero-disclaimer {
+    display: block;
+    font-size: 12px;
+    color: #94a3b8;
+  }
+
+  /* Mobile Adjustments */
+  @media (max-width: 768px) {
+    .it-hero-title {
+      font-size: 38px;
+    }
+
+    .it-hero-description {
+      font-size: 15px;
+    }
+  }
+</style>
+
+<script>
+  /* Isolated Modal Logic */
+  document.addEventListener('DOMContentLoaded', () => {
+    const trigger = document.getElementById('itHeroQrTrigger');
+    const modal = document.getElementById('itHeroQrModal');
+    const closeBtn = document.getElementById('itHeroQrClose');
+
+    if (trigger && modal && closeBtn) {
+      function toggleModal() {
+        const isActive = modal.classList.contains('it-hero-is-active');
+        if (isActive) {
+          modal.classList.remove('it-hero-is-active');
+          trigger.setAttribute('aria-expanded', 'false');
+          modal.setAttribute('aria-hidden', 'true');
+        } else {
+          modal.classList.add('it-hero-is-active');
+          trigger.setAttribute('aria-expanded', 'true');
+          modal.setAttribute('aria-hidden', 'false');
+        }
+      }
+
+      trigger.addEventListener('click', (e) => {
+        e.stopPropagation();
+        toggleModal();
+      });
+
+      closeBtn.addEventListener('click', (e) => {
+        e.stopPropagation();
+        modal.classList.remove('it-hero-is-active');
+        trigger.setAttribute('aria-expanded', 'false');
+        modal.setAttribute('aria-hidden', 'true');
+      });
+
+      /* Close when clicking anywhere outside */
+      document.addEventListener('click', (e) => {
+        if (!modal.contains(e.target) && !trigger.contains(e.target)) {
+          modal.classList.remove('it-hero-is-active');
+          trigger.setAttribute('aria-expanded', 'false');
+          modal.setAttribute('aria-hidden', 'true');
+        }
+      });
+    }
+  });
+</script>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<!--
+  Cronos Cloud Infrastructure — Performance Comparison Component
+  ---------------------------------------------------------------
+  Drop-in, self-contained Web Component. Fully isolated via Shadow DOM
+  and a unique custom element tag, so it will NOT collide with any
+  classes, IDs, or styles already in your codebase.
+
+  Usage: paste this whole file's <script> tag once per page, then
+  place <cronos-cloud-compare></cronos-cloud-compare> anywhere you
+  want the block to appear. The section is full-bleed (100% width)
+  with its content capped at 1200px. Pressing "Compare Cronos Cloud
+  plans" opens a bottom drawer with the plan comparison.
+-->
+<cronos-cloud-compare></cronos-cloud-compare>
+
+<script>
+(function () {
+    if (customElements.get('cronos-cloud-compare')) return;
+
+    // Comparison data — swap targets and stats here to update copy in one place.
+    const CCC_DATA = {
+        'legacy-onprem': {
+            label: 'Legacy On-Premise Server',
+            stats: [
+                { value: '45% faster', desc: 'application response times' },
+                { value: '3x faster',  desc: 'data backup &amp; recovery speeds' },
+                { value: '18 more hours', desc: 'guaranteed uptime, per month' },
+                { value: '30 more hours', desc: 'saved on manual server maintenance' },
+            ],
+        },
+        'shared-hosting': {
+            label: 'Basic Shared Hosting',
+            stats: [
+                { value: '60% faster', desc: 'page load speeds under peak traffic' },
+                { value: '5x more',    desc: 'concurrent user capacity' },
+                { value: '12 more hours', desc: 'guaranteed uptime, per month' },
+                { value: '15 more hours', desc: 'saved on manual scaling &amp; patches' },
+            ],
+        },
+        'competitor-cloud': {
+            label: 'Competitor Cloud Provider',
+            stats: [
+                { value: '20% faster', desc: 'average response times' },
+                { value: '35% lower',  desc: 'monthly infrastructure costs' },
+                { value: '6 more hours',  desc: 'guaranteed uptime, per month' },
+                { value: '10 more hours', desc: 'saved with managed 24/7 support' },
+            ],
+        },
+    };
+    const CCC_ORDER = ['legacy-onprem', 'shared-hosting', 'competitor-cloud'];
+
+    const CCC_TEMPLATE = document.createElement('template');
+    CCC_TEMPLATE.innerHTML = `
+        <style>
+            :host {
+                all: initial;
+                display: block;
+                font-family: -apple-system, BlinkMacSystemFont, "SF Pro Display", "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
+                color-scheme: dark;
+            }
+            * { box-sizing: border-box; }
+
+            .ccc-section {
+                width: 100%;
+                background: #080d1b;
+                padding: 182px 24px;
+            }
+
+            .ccc-content {
+                max-width: 1200px;
+                margin: 0 auto;
+                background: radial-gradient(120% 140% at 15% 0%, #16305c 0%, #000000 55%),
+                            linear-gradient(160deg, #0a0f1f 0%, #000000 70%);
+                border-radius: 28px;
+                padding: 56px 64px 64px;
+            }
+
+            .ccc-row {
+                display: flex;
+                align-items: center;
+                gap: 16px;
+                margin-bottom: 56px;
+                flex-wrap: wrap;
+            }
+            .ccc-row-label {
+                font-size: 19px;
+                color: #a1a1a6;
+                font-weight: 400;
+                white-space: nowrap;
+            }
+
+            .ccc-dropdown { position: relative; }
+            .ccc-dropdown-trigger {
+                display: flex;
+                align-items: center;
+                gap: 10px;
+                background: rgba(255,255,255,0.06);
+                border: 1px solid rgba(255,255,255,0.28);
+                color: #f5f5f7;
+                font-size: 19px;
+                font-weight: 500;
+                font-family: inherit;
+                padding: 10px 18px;
+                border-radius: 999px;
+                cursor: pointer;
+                transition: background-color 0.2s ease, border-color 0.2s ease;
+            }
+            .ccc-dropdown-trigger:hover { background: rgba(255,255,255,0.1); }
+            .ccc-dropdown-trigger:focus-visible { outline: 2px solid #2997ff; outline-offset: 2px; }
+            .ccc-dropdown-chevron {
+                width: 12px; height: 12px; flex-shrink: 0;
+                transition: transform 0.2s ease;
+            }
+            .ccc-dropdown.open .ccc-dropdown-chevron { transform: rotate(180deg); }
+
+            .ccc-dropdown-list {
+                position: absolute;
+                top: calc(100% + 8px);
+                left: 0;
+                min-width: 100%;
+                background: #020e24;
+            
+                border-radius: 16px;
+                padding: 6px;
+                list-style: none;
+                margin: 0;
+                z-index: 20;
+                opacity: 0;
+                visibility: hidden;
+                transform: translateY(-6px);
+                transition: opacity 0.15s ease, transform 0.15s ease, visibility 0.15s;
+                box-shadow: 0 12px 32px rgba(0,0,0,0.45);
+            }
+            .ccc-dropdown.open .ccc-dropdown-list {
+                opacity: 1; visibility: visible; transform: translateY(0);
+            }
+            .ccc-dropdown-option {
+                padding: 10px 14px;
+                font-size: 16px;
+                font-weight: 400;
+                color: #f5f5f7;
+                border-radius: 10px;
+                cursor: pointer;
+                white-space: nowrap;
+            }
+            .ccc-dropdown-option:hover,
+            .ccc-dropdown-option:focus-visible { background: rgba(255,255,255,0.1); outline: none; }
+            .ccc-dropdown-option[aria-selected="true"] { color: #2997ff; }
+
+            .ccc-stats-grid {
+                display: grid;
+                grid-template-columns: repeat(4, 1fr);
+                gap: 40px;
+                transition: opacity 0.18s ease;
+            }
+            .ccc-stats-grid.ccc-fading { opacity: 0; }
+
+            .ccc-stat-prefix {
+                font-size: 17px;
+                color: #a1a1a6;
+                margin: 0 0 2px;
+            }
+            .ccc-stat-value {
+                font-size: 28px;
+                font-weight: 600;
+                color: #f5f5f7;
+                margin: 0 0 10px;
+                line-height: 1.15;
+            }
+            .ccc-stat-desc {
+                font-size: 15px;
+                color: #a1a1a6;
+                margin: 0;
+                line-height: 1.4;
+            }
+
+            .ccc-cta-row {
+                display: flex;
+                justify-content: center;
+                margin-top: 64px;
+            }
+            .ccc-cta {
+                display: inline-flex;
+                align-items: center;
+                gap: 14px;
+                background: transparent;
+                border: 1.5px solid #2997ff;
+                color: #f5f5f7;
+                font-size: 19px;
+                font-weight: 500;
+                font-family: inherit;
+                text-decoration: none;
+                padding: 9px 9px 9px 28px;
+                border-radius: 999px;
+                transition: background-color 0.2s ease;
+            }
+            .ccc-cta:hover { background: rgba(41,151,255,0.12); }
+            .ccc-cta:focus-visible { outline: 2px solid #2997ff; outline-offset: 3px; }
+            .ccc-cta-plus {
+                width: 32px; height: 32px;
+                border-radius: 50%;
+                background: #2997ff;
+                display: flex; align-items: center; justify-content: center;
+                flex-shrink: 0;
+            }
+            .ccc-cta-plus svg { width: 14px; height: 14px; }
+
+            /* Mobile responsiveness */
+            @media (max-width: 900px) {
+                .ccc-section { padding: 56px 20px; }
+                .ccc-content { padding: 44px 32px 48px; border-radius: 22px; }
+                .ccc-stats-grid { grid-template-columns: repeat(2, 1fr); gap: 32px 24px; }
+            }
+            @media (max-width: 520px) {
+                .ccc-section { padding: 44px 16px; }
+                .ccc-content { padding: 36px 20px 40px; }
+                .ccc-row { margin-bottom: 40px; }
+                .ccc-row-label { font-size: 16px; }
+                .ccc-dropdown-trigger { font-size: 16px; padding: 9px 14px; }
+                .ccc-stats-grid { grid-template-columns: 1fr; gap: 28px; }
+                .ccc-stat-value { font-size: 24px; }
+                .ccc-cta-row { margin-top: 44px; }
+                .ccc-cta { width: 100%; justify-content: center; font-size: 13px; padding: 4px -2px 4px 22px; }
+            }
+
+            @media (prefers-reduced-motion: reduce) {
+                .ccc-dropdown-chevron,
+                .ccc-dropdown-list,
+                .ccc-stats-grid,
+                .ccc-cta,
+                .ccc-drawer,
+                .ccc-drawer-backdrop { transition: none !important; }
+            }
+
+            /* Bottom Drawer */
+            .ccc-drawer-backdrop {
+                position: fixed; inset: 0;
+                background: rgba(0,0,0,0.6);
+                opacity: 0; visibility: hidden;
+                transition: opacity 0.25s ease, visibility 0.25s;
+                z-index: 999;
+            }
+            .ccc-drawer-backdrop.open { opacity: 1; visibility: visible; }
+
+            .ccc-drawer {
+                position: fixed;
+                left: 0; right: 0; bottom: 0;
+                max-width: 1300px;
+                margin: 0 auto;
+                background: #111114;
+                border-radius: 28px 28px 0 0;
+                padding: 40px 56px 56px;
+                max-height: 94vh;
+                overflow-y: auto;
+                transform: translateY(100%);
+                transition: transform 0.32s cubic-bezier(0.32, 0.72, 0, 1);
+                z-index: 1000;
+            }
+            .ccc-drawer.open { transform: translateY(0); }
+
+            .ccc-drawer-handle {
+                width: 36px; height: 4px; border-radius: 4px;
+                background: rgba(255,255,255,0.2);
+                margin: 0 auto 24px;
+            }
+            .ccc-drawer-header {
+                display: flex; align-items: center; justify-content: space-between;
+                margin-bottom: 32px;
+            }
+            .ccc-drawer-header h3 {
+                font-size: 26px; font-weight: 700; color: #f5f5f7; margin: 0;
+            }
+            .ccc-drawer-close {
+                width: 38px; height: 38px; flex-shrink: 0;
+                border-radius: 50%; border: none;
+                background: rgba(255,255,255,0.08);
+                display: flex; align-items: center; justify-content: center;
+                cursor: pointer;
+            }
+            .ccc-drawer-close:hover { background: rgba(255,255,255,0.16); }
+            .ccc-drawer-close svg { width: 15px; height: 15px; }
+
+            .ccc-table-scroll { overflow-x: auto; }
+            .ccc-compare-table {
+                width: 100%;
+                border-collapse: collapse;
+            }
+            .ccc-compare-table th,
+            .ccc-compare-table td {
+                border: none;
+                border-bottom: 1px solid rgba(255,255,255,0.1);
+                padding: 20px 16px;
+                text-align: center;
+                white-space: nowrap;
+            }
+            .ccc-compare-table thead th {
+                font-size: 15px;
+                color: #a1a1a6;
+                font-weight: 400;
+                border-bottom: 1px solid rgba(255,255,255,0.18);
+            }
+            .ccc-compare-table th:first-child,
+            .ccc-compare-table td:first-child {
+                text-align: left;
+                color: #a1a1a6;
+                font-size: 15px;
+                white-space: normal;
+            }
+
+           
+            .ccc-plan-name {
+                font-size: 19px; font-weight: 500; color: #f5f5f7;
+                display: flex; align-items: center; justify-content: center; gap: 8px;
+            }
+            .ccc-plan-badge {
+                background: #2997ff; color: #fff; font-size: 11px; font-weight: 500;
+                padding: 3px 9px; border-radius: 999px; white-space: nowrap;
+            }
+            .ccc-compare-table td { font-size: 15px; color: #d1d1d6; }
+            .ccc-compare-table td.ccc-col-featured { color: #f5f5f7; font-weight: 600; }
+            .ccc-table-cta-row td { border-bottom: none; padding-top: 28px; }
+            .ccc-plan-cta {
+                display: inline-block; text-align: center;
+                background: rgba(255,255,255,0.08); color: #f5f5f7;
+                text-decoration: none; font-size: 14px; font-weight: 500;
+                padding: 10px 22px; border-radius: 999px;
+                transition: background-color 0.2s ease;
+            }
+            .ccc-plan-cta:hover { background: rgba(255,255,255,0.16); }
+            .ccc-plan-cta.ccc-cta-featured { background: #2997ff; }
+            .ccc-plan-cta.ccc-cta-featured:hover { background: #1f87ee; }
+
+            @media (max-width: 720px) {
+                .ccc-drawer { padding: 28px 24px 36px; border-radius: 22px 22px 0 0; }
+                .ccc-compare-table th, .ccc-compare-table td { padding: 16px 14px; font-size: 14px; }
+            }
+        </style>
+
+        <div class="ccc-section">
+            <div class="ccc-content">
+                <div class="ccc-row">
+                    <span class="ccc-row-label">Compare with</span>
+                    <div class="ccc-dropdown" id="cccDropdown">
+                        <button type="button" class="ccc-dropdown-trigger" id="cccDropdownTrigger"
+                                aria-haspopup="listbox" aria-expanded="false">
+                            <span id="cccDropdownLabel"></span>
+                            <svg class="ccc-dropdown-chevron" viewBox="0 0 24 24" fill="none" stroke="#a1a1a6" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round">
+                                <polyline points="6 9 12 15 18 9"></polyline>
+                            </svg>
+                        </button>
+                        <ul class="ccc-dropdown-list" id="cccDropdownList" role="listbox" tabindex="-1"></ul>
+                    </div>
+                </div>
+
+                <div class="ccc-stats-grid" id="cccStatsGrid"></div>
+
+                <div class="ccc-cta-row">
+                    <button type="button" class="ccc-cta" id="cccCta">
+                        <span>Compare Cronos Cloud plans</span>
+                        <span class="ccc-cta-plus">
+                            <svg viewBox="0 0 24 24" fill="none" stroke="#000000" stroke-width="3" stroke-linecap="round" stroke-linejoin="round">
+                                <line x1="12" y1="5" x2="12" y2="19"></line>
+                                <line x1="5" y1="12" x2="19" y2="12"></line>
+                            </svg>
+                        </span>
+                    </button>
+                </div>
+            </div>
+        </div>
+
+        <div class="ccc-drawer-backdrop" id="cccDrawerBackdrop"></div>
+        <div class="ccc-drawer" id="cccDrawer" role="dialog" aria-modal="true" aria-labelledby="cccDrawerTitle">
+            <div class="ccc-drawer-handle"></div>
+            <div class="ccc-drawer-header">
+                <h3 id="cccDrawerTitle">Compare Cronos Cloud plans</h3>
+                <button type="button" class="ccc-drawer-close" id="cccDrawerClose" aria-label="Close">
+                    <svg viewBox="0 0 24 24" fill="none" stroke="#f5f5f7" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round">
+                        <line x1="18" y1="6" x2="6" y2="18"></line>
+                        <line x1="6" y1="6" x2="18" y2="18"></line>
+                    </svg>
+                </button>
+            </div>
+            <div class="ccc-table-scroll">
+                <table class="ccc-compare-table">
+                    <thead>
+                        <tr>
+                            <th></th>
+                            <th>
+                                <span class="ccc-plan-name">Starter</span>
+                            </th>
+                            <th class="ccc-col-featured">
+                                <span class="ccc-plan-name">Business <span class="ccc-plan-badge">Most popular</span></span>
+                            </th>
+                            <th>
+                                <span class="ccc-plan-name">Enterprise</span>
+                            </th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr>
+                            <td>vCPUs &amp; RAM</td>
+                            <td>2 vCPUs, 4GB RAM</td>
+                            <td class="ccc-col-featured">8 vCPUs, 16GB RAM</td>
+                            <td>Dedicated, scalable resources</td>
+                        </tr>
+                        <tr>
+                            <td>Storage</td>
+                            <td>100GB SSD</td>
+                            <td class="ccc-col-featured">500GB SSD</td>
+                            <td>Unlimited storage &amp; bandwidth</td>
+                        </tr>
+                        <tr>
+                            <td>Uptime SLA</td>
+                            <td>99.9%</td>
+                            <td class="ccc-col-featured">99.95%</td>
+                            <td>99.99%</td>
+                        </tr>
+                        <tr>
+                            <td>Support</td>
+                            <td>Business-hours support</td>
+                            <td class="ccc-col-featured">24/7 priority support</td>
+                            <td>Dedicated account manager</td>
+                        </tr>
+                        <tr class="ccc-table-cta-row">
+                            <td></td>
+                            <td><a class="ccc-plan-cta" href="cloud-infrastructure.html#starter">Get started</a></td>
+                            <td class="ccc-col-featured"><a class="ccc-plan-cta ccc-cta-featured" href="cloud-infrastructure.html#business">Get started</a></td>
+                            <td><a class="ccc-plan-cta" href="cloud-infrastructure.html#enterprise">Talk to sales</a></td>
+                        </tr>
+                    </tbody>
+                </table>
+            </div>
+        </div>
+    `;
+
+    class CronosCloudCompare extends HTMLElement {
+        connectedCallback() {
+            if (this._built) return;
+            this._built = true;
+
+            const shadow = this.attachShadow({ mode: 'open' });
+            shadow.appendChild(CCC_TEMPLATE.content.cloneNode(true));
+
+            const dropdown        = shadow.getElementById('cccDropdown');
+            const trigger         = shadow.getElementById('cccDropdownTrigger');
+            const triggerLabel    = shadow.getElementById('cccDropdownLabel');
+            const list            = shadow.getElementById('cccDropdownList');
+            const statsGrid       = shadow.getElementById('cccStatsGrid');
+            const cta             = shadow.getElementById('cccCta');
+            const drawer           = shadow.getElementById('cccDrawer');
+            const drawerBackdrop   = shadow.getElementById('cccDrawerBackdrop');
+            const drawerClose      = shadow.getElementById('cccDrawerClose');
+
+            let activeKey = CCC_ORDER[0];
+
+            const renderStats = (key) => {
+                const data = CCC_DATA[key];
+                statsGrid.classList.add('ccc-fading');
+                setTimeout(() => {
+                    statsGrid.innerHTML = data.stats.map(s => `
+                        <div class="ccc-stat">
+                            <p class="ccc-stat-prefix">Up to</p>
+                            <p class="ccc-stat-value">${s.value}</p>
+                            <p class="ccc-stat-desc">${s.desc}</p>
+                        </div>
+                    `).join('');
+                    statsGrid.classList.remove('ccc-fading');
+                }, 120);
+            };
+
+            const renderOptions = () => {
+                list.innerHTML = CCC_ORDER.map(key => `
+                    <li class="ccc-dropdown-option" role="option" data-key="${key}"
+                        aria-selected="${key === activeKey}" tabindex="0">
+                        ${CCC_DATA[key].label}
+                    </li>
+                `).join('');
+            };
+
+            const selectOption = (key) => {
+                activeKey = key;
+                triggerLabel.textContent = CCC_DATA[key].label;
+                renderOptions();
+                renderStats(key);
+                this.dispatchEvent(new CustomEvent('cronos-compare-change', {
+                    detail: { key, label: CCC_DATA[key].label },
+                    bubbles: true, composed: true,
+                }));
+            };
+
+            const openList = () => {
+                dropdown.classList.add('open');
+                trigger.setAttribute('aria-expanded', 'true');
+            };
+            const closeList = () => {
+                dropdown.classList.remove('open');
+                trigger.setAttribute('aria-expanded', 'false');
+            };
+            const toggleList = () => {
+                dropdown.classList.contains('open') ? closeList() : openList();
+            };
+
+            trigger.addEventListener('click', (e) => { e.stopPropagation(); toggleList(); });
+
+            list.addEventListener('click', (e) => {
+                const opt = e.target.closest('.ccc-dropdown-option');
+                if (!opt) return;
+                selectOption(opt.getAttribute('data-key'));
+                closeList();
+                trigger.focus();
+            });
+
+            list.addEventListener('keydown', (e) => {
+                const opt = e.target.closest('.ccc-dropdown-option');
+                if (!opt) return;
+                if (e.key === 'Enter' || e.key === ' ') {
+                    e.preventDefault();
+                    selectOption(opt.getAttribute('data-key'));
+                    closeList();
+                    trigger.focus();
+                } else if (e.key === 'ArrowDown' || e.key === 'ArrowUp') {
+                    e.preventDefault();
+                    const opts = Array.from(list.querySelectorAll('.ccc-dropdown-option'));
+                    const idx = opts.indexOf(opt);
+                    const next = e.key === 'ArrowDown' ? opts[idx + 1] : opts[idx - 1];
+                    if (next) next.focus();
+                } else if (e.key === 'Escape') {
+                    closeList();
+                    trigger.focus();
+                }
+            });
+
+            trigger.addEventListener('keydown', (e) => {
+                if (e.key === 'ArrowDown' || e.key === 'Enter' || e.key === ' ') {
+                    e.preventDefault();
+                    openList();
+                    const first = list.querySelector('.ccc-dropdown-option');
+                    if (first) first.focus();
+                } else if (e.key === 'Escape') {
+                    closeList();
+                }
+            });
+
+            document.addEventListener('click', (e) => {
+                if (!e.composedPath().includes(dropdown)) closeList();
+            });
+
+            // Bottom drawer (plan comparison)
+            const openDrawer = () => {
+                drawer.classList.add('open');
+                drawerBackdrop.classList.add('open');
+                document.body.style.overflow = 'hidden';
+            };
+            const closeDrawer = () => {
+                drawer.classList.remove('open');
+                drawerBackdrop.classList.remove('open');
+                document.body.style.overflow = '';
+            };
+
+            cta.addEventListener('click', openDrawer);
+            drawerClose.addEventListener('click', closeDrawer);
+            drawerBackdrop.addEventListener('click', closeDrawer);
+            document.addEventListener('keydown', (e) => {
+                if (e.key === 'Escape' && drawer.classList.contains('open')) closeDrawer();
+            });
+
+            // Initial render
+            triggerLabel.textContent = CCC_DATA[activeKey].label;
+            renderOptions();
+            renderStats(activeKey);
+        }
+    }
+
+    customElements.define('cronos-cloud-compare', CronosCloudCompare);
+})();
+</script>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<section data-it-bento="container">
+  <div data-it-bento="inner-wrapper">
+    
+    <div data-it-bento="hero-layout">
+      <div data-it-bento="hero-heading-col">
+        <h2 data-it-bento="hero-title">Architected<br>around the cloud.</h2>
+      </div>
+    </div>
+
+    <div data-it-bento="grid">
+      
+      <div data-it-bento="card">
+        <div data-it-bento="card-bg" style="background-image: url('https://picsum.photos/id/160/600/900');"></div>
+        <div data-it-bento="card-header">
+          <span data-it-bento="card-tag">Innovation</span>
+          <h3 data-it-bento="card-title">Beautiful and durable, by design.</h3>
+        </div>
+        <button data-it-bento="action-btn" aria-label="Open information modal" data-open-modal="modal-1">+</button>
+      </div>
+
+      <div data-it-bento="card">
+        <div data-it-bento="card-bg" style="background-image: url('https://picsum.photos/id/20/600/900');"></div>
+        <div data-it-bento="card-header">
+          <span data-it-bento="card-tag">Cutting-Edge Clusters</span>
+          <h3 data-it-bento="card-title">Picture your best node management.</h3>
+        </div>
+        <button data-it-bento="action-btn" aria-label="Open information modal" data-open-modal="modal-1">+</button>
+      </div>
+
+      <div data-it-bento="card">
+        <div data-it-bento="card-bg" style="background-image: url('https://picsum.photos/id/60/600/900');"></div>
+        <div data-it-bento="card-header">
+          <span data-it-bento="card-tag">Core Architecture</span>
+          <h3 data-it-bento="card-title">Compute power that lasts.</h3>
+        </div>
+        <button data-it-bento="action-btn" aria-label="Open information modal" data-open-modal="modal-1">+</button>
+      </div>
+
+    </div>
+  </div>
+
+  <div data-it-bento="modal-overlay" id="modal-1">
+    <div data-it-bento="modal-window">
+      
+      <div data-it-bento="modal-sticky-bar">
+        <button data-it-bento="modal-close-btn" aria-label="Close modal">&times;</button>
+      </div>
+
+      <div data-it-bento="modal-scroll-content">
+        <span data-it-bento="modal-tag">Innovation</span>
+        <h2 data-it-bento="modal-main-heading">Beautiful and durable, by design.</h2>
+
+        <div data-it-bento="content-block">
+          <p data-it-bento="block-text">
+            <strong>Second to none.</strong> Our infrastructure platforms are known for iconic reliability and advanced telemetry structures. Built to deliver exceptional server response rates through heavy parallel scaling frameworks, hardware and software are explicitly architected in tandem.
+          </p>
+          <div data-it-bento="block-image" style="background-image: url('https://picsum.photos/id/160/1000/500');"></div>
+        </div>
+
+        <div data-it-bento="content-block">
+          <p data-it-bento="block-text">
+            <strong>Built to endure.</strong> Redundant nodes are completely isolated within independent containers, preventing failures from cascading down through runtime processes. Little spikes? No biggie — our platform withstands concurrent data floods with grace.
+          </p>
+          <div data-it-bento="block-image" style="background-image: url('https://picsum.photos/id/20/1000/500');"></div>
+        </div>
+
+        <div data-it-bento="content-block">
+          <p data-it-bento="block-text">
+            <strong>Secure by default.</strong> Encryption-at-rest keys refresh automatically at random increments without causing micro-stutter delays across client request pipelines.
+          </p>
+          <div data-it-bento="block-image" style="background-image: url('https://picsum.photos/id/60/1000/500');"></div>
+        </div>
+
+      </div>
+    </div>
+  </div>
+</section>
+
+<style>
+  /* Base Container Setting */
+  [data-it-bento="container"] {
+    background-color: #0d0f0e; /* Pure deep off-black base */
+    padding: 6rem 1.5rem;
+    font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif;
+    width: 100%;
+    box-sizing: border-box;
+  }
+
+  /* Structural Content Alignment Limit */
+  [data-it-bento="inner-wrapper"] {
+    max-width: 1200px;
+    margin: 0 auto;
+    width: 100%;
+  }
+
+  /* Hero Section Top Layout Style */
+  [data-it-bento="hero-layout"] {
+    padding-top: 2rem;
+    display: flex;
+    
+    align-items: start;
+    margin-bottom: 4rem;
+  }
+
+  [data-it-bento="hero-title"] {
+    font-size: 3rem;
+    font-weight: 500;
+    line-height: 1.1;
+    color: #ffffff;
+    margin: 0;
+    letter-spacing: -0.03em;
+  }
+
+  [data-it-bento="hero-content-col"] {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 2.5rem;
+  }
+
+  [data-it-bento="hero-body-text"] {
+    font-size: 1.05rem;
+    line-height: 1.5;
+    color: rgba(255, 255, 255, 0.7);
+    margin: 0;
+  }
+
+  /* Bento Layout Grid */
+  [data-it-bento="grid"] {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 1.25rem;
+    width: 100%;
+  }
+
+  [data-it-bento="card"] {
+    position: relative;
+    height: 540px;
+    border-radius: 28px; /* Elegant heavy apple-style corners */
+    overflow: hidden;
+    display: flex;
+    flex-direction: column;
+    justify-content: flex-start;
+    padding: 2.5rem 2rem;
+    box-sizing: border-box;
+    background-color: #1a1a1a;
+  }
+
+  [data-it-bento="card-bg"] {
+    position: absolute;
+    top: 0; left: 0; right: 0; bottom: 0;
+    background-size: cover;
+    background-position: center;
+    z-index: 1;
+  }
+
+  /* Gentle card gradient to ensure readability at header */
+  [data-it-bento="card"]::after {
+    content: '';
+    position: absolute;
+    top: 0; left: 0; right: 0; height: 40%;
+    background: linear-gradient(to bottom, rgba(0,0,0,0.6), transparent);
+    z-index: 2;
+  }
+
+  [data-it-bento="card-header"] {
+    position: relative;
+    z-index: 3;
+    color: #ffffff;
+  }
+
+  [data-it-bento="card-tag"] {
+    font-size: 0.85rem;
+    font-weight: 500;
+    opacity: 0.7;
+    display: block;
+    margin-bottom: 0.5rem;
+  }
+
+  [data-it-bento="card-title"] {
+    font-size: 1.75rem;
+    font-weight: 600;
+    margin: 0;
+    line-height: 1.2;
+    letter-spacing: -0.01em;
+  }
+
+  /* Circle Action Trigger Button */
+  [data-it-bento="action-btn"] {
+    position: absolute;
+    bottom: 2rem;
+    right: 2rem;
+    z-index: 4;
+    width: 40px;
+    height: 40px;
+    background-color: #ffffff;
+    color: #000000;
+    border: none;
+    border-radius: 50%;
+    font-size: 1.5rem;
+    font-weight: 400;
+    cursor: pointer;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    transition: transform 0.2s cubic-bezier(0.16, 1, 0.3, 1);
+  }
+
+  [data-it-bento="action-btn"]:hover {
+    transform: scale(1.1);
+  }
+
+  /* MODAL DISPLAY SYSTEMS */
+  [data-it-bento="modal-overlay"] {
+    position: fixed;
+    top: 0; left: 0; right: 0; bottom: 0;
+    background-color: rgba(0, 0, 0, 0.6);
+    backdrop-filter: blur(20px);
+    z-index: 1000;
+    display: flex;
+    justify-content: center;
+    align-items: flex-end; /* Slides fluidly up from base like mobile UI */
+    opacity: 0;
+    pointer-events: none;
+    transition: opacity 0.3s ease;
+    padding: 2rem 1rem 0 1rem;
+    box-sizing: border-box;
+  }
+
+  [data-it-bento="modal-overlay"].is-active {
+    opacity: 1;
+    pointer-events: auto;
+  }
+
+  [data-it-bento="modal-window"] {
+    background-color: #f5f5f7; /* Off-white system window tint */
+    width: 100%;
+    max-width: 1200px; /* Restricts internal width profile precisely */
+    height: 90vh;
+    border-top-left-radius: 30px;
+    border-top-right-radius: 30px;
+    display: flex;
+    flex-direction: column;
+    position: relative;
+    overflow: hidden;
+    transform: translateY(100%);
+    transition: transform 0.4s cubic-bezier(0.16, 1, 0.3, 1);
+  }
+
+  [data-it-bento="modal-overlay"].is-active [data-it-bento="modal-window"] {
+    transform: translateY(0);
+  }
+
+  /* Sticky Top Bar: Guarantees Close Button Stays Fixed While Scrolling Content */
+  [data-it-bento="modal-sticky-bar"] {
+    position: absolute;
+    top: 0; left: 0; right: 0;
+    height: 70px;
+    padding: 0 2rem;
+    display: flex;
+    align-items: center;
+    justify-content: flex-end;
+    z-index: 1010;
+    pointer-events: none; /* Allows click-through outside the specific button button element */
+  }
+
+  [data-it-bento="modal-close-btn"] {
+    width: 36px;
+    height: 36px;
+    border-radius: 50%;
+    background-color: #e8e8ed;
+    color: #000000;
+    font-size: 1.5rem;
+    border: none;
+    cursor: pointer;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    pointer-events: auto; /* Restores clicking mechanics to interactive target element */
+    line-height: 0;
+    padding-bottom: 2px;
+    transition: background-color 0.2s;
+  }
+
+  [data-it-bento="modal-close-btn"]:hover {
+    background-color: #dcdce2;
+  }
+
+  /* Core Internal Scroll Area */
+  [data-it-bento="modal-scroll-content"] {
+    padding: 5rem 3rem 4rem 3rem;
+    overflow-y: auto;
+    height: 100%;
+    box-sizing: border-box;
+  }
+
+  [data-it-bento="modal-tag"] {
+    font-size: 1rem;
+    color: #86868b;
+    font-weight: 500;
+    display: block;
+    margin-bottom: 0.5rem;
+  }
+
+  [data-it-bento="modal-main-heading"] {
+    font-size: 3rem;
+    font-weight: 700;
+    color: #1d1d1f;
+    margin: 0 0 3rem 0;
+    letter-spacing: -0.02em;
+    line-height: 1.15;
+  }
+
+  /* Content Block Layout with Requested 15px Rounded Corners */
+  [data-it-bento="content-block"] {
+    background-color: #ffffff;
+    border-radius: 15px; /* Mandated corner styling */
+    padding: 2.5rem;
+    margin-bottom: 1.5rem;
+    box-sizing: border-box;
+    display: flex;
+    flex-direction: column;
+    gap: 2rem;
+  }
+
+  [data-it-bento="block-text"] {
+    font-size: 1.35rem;
+    line-height: 1.5;
+    color: #6e6e73;
+    margin: 0;
+    max-width: 900px;
+  }
+
+  [data-it-bento="block-text"] strong {
+    color: #1d1d1f;
+  }
+
+  [data-it-bento="block-image"] {
+    width: 100%;
+    height: 450px;
+    background-size: cover;
+    background-position: center;
+    border-radius: 12px;
+  }
+
+  /* Perfectly Adaptive Mobile Media Queries */
+  @media (max-width: 1024px) {
+    [data-it-bento="hero-layout"] {
+      grid-template-columns: 1fr;
+      gap: 2rem;
+    }
+    [data-it-bento="hero-content-col"] {
+      grid-template-columns: 1fr;
+      gap: 1.5rem;
+    }
+    [data-it-bento="grid"] {
+      grid-template-columns: repeat(2, 1fr);
+    }
+  }
+
+  @media (max-width: 768px) {
+    [data-it-bento="container"] {
+      padding: 4rem 1rem;
+    }
+    [data-it-bento="hero-title"] {
+      font-size: 2.25rem;
+    }
+    [data-it-bento="grid"] {
+      grid-template-columns: 1fr;
+    }
+    [data-it-bento="card"] {
+      height: 480px;
+    }
+    [data-it-bento="modal-scroll-content"] {
+      padding: 4rem 1.5rem 2rem 1.5rem;
+    }
+    [data-it-bento="modal-main-heading"] {
+      font-size: 2rem;
+      margin-bottom: 2rem;
+    }
+    [data-it-bento="content-block"] {
+      padding: 1.5rem;
+    }
+    [data-it-bento="block-text"] {
+      font-size: 1.1rem;
+    }
+    [data-it-bento="block-image"] {
+      height: 240px;
+    }
+  }
+</style>
+
+<script>
+  document.addEventListener('DOMContentLoaded', () => {
+    const container = document.querySelector('[data-it-bento="container"]');
+    
+    if (container) {
+      // Open Triggers
+      container.querySelectorAll('[data-open-modal]').forEach(trigger => {
+        trigger.addEventListener('click', () => {
+          const targetId = trigger.getAttribute('data-open-modal');
+          const targetModal = container.querySelector(`#${targetId}`);
+          if (targetModal) {
+            targetModal.classList.add('is-active');
+            document.body.style.overflow = 'hidden'; // Prevents background body scrolling
+            
+            // Auto-reset internal modal scrolling container to the absolute top
+            const targetScrollArea = targetModal.querySelector('[data-it-bento="modal-scroll-content"]');
+            if (targetScrollArea) targetScrollArea.scrollTop = 0;
+          }
+        });
+      });
+
+      // Close Triggers
+      container.querySelectorAll('[data-it-bento="modal-close-btn"]').forEach(closeBtn => {
+        closeBtn.addEventListener('click', (e) => {
+          const activeModal = e.target.closest('[data-it-bento="modal-overlay"]');
+          if (activeModal) {
+            activeModal.classList.remove('is-active');
+            document.body.style.overflow = ''; // Restores standard body interaction mechanics
+          }
+        });
+      });
+
+      // Overlay Dim Close Dismissal Check
+      container.querySelectorAll('[data-it-bento="modal-overlay"]').forEach(overlay => {
+        overlay.addEventListener('click', (e) => {
+          if (e.target === overlay) {
+            overlay.classList.remove('is-active');
+            document.body.style.overflow = '';
+          }
+        });
+      });
+    }
+  });
+</script>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<!-- Custom Isolated Component: FAQ Section -->
+<section class="it-faq-section">
+  <div class="it-faq-container">
+    <div class="it-faq-main-layout">
+      
+      <!-- Left Column: Heading -->
+      <div class="it-faq-header">
+        <h2 class="it-faq-title">Frequently Asked Questions</h2>
+      </div>
+
+      <!-- Right Column: Accordions & Contact Link -->
+      <div class="it-faq-content">
+        <div class="it-faq-accordion-group">
+          
+          <!-- Accordion Item 1 -->
+          <div class="it-faq-item">
+            <button class="it-faq-trigger" aria-expanded="false">
+              <span class="it-faq-question">Who can participate in Enterprise Infrastructure & Cloud Services?</span>
+              <span class="it-faq-icon">
+                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                  <line x1="12" y1="5" x2="12" y2="19"></line>
+                  <line x1="5" y1="12" x2="19" y2="12"></line>
+                </svg>
+              </span>
+            </button>
+            <div class="it-faq-panel">
+              <p class="it-faq-answer">
+                Our services are designed for businesses of all sizes, from growing startups requiring custom web stacks to established enterprises needing dedicated cloud migrations and cybersecurity audits.
+              </p>
+            </div>
+          </div>
+
+          <!-- Accordion Item 2 -->
+          <div class="it-faq-item">
+            <button class="it-faq-trigger" aria-expanded="false">
+              <span class="it-faq-question">What are the Service Level Agreements (SLAs) and deployment timelines?</span>
+              <span class="it-faq-icon">
+                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                  <line x1="12" y1="5" x2="12" y2="19"></line>
+                  <line x1="5" y1="12" x2="19" y2="12"></line>
+                </svg>
+              </span>
+            </button>
+            <div class="it-faq-panel">
+              <p class="it-faq-answer">
+                We guarantee up to 99.99% uptime for cloud infrastructure. Deployment schedules depend on project scope, with standard cloud setups completing in 2–5 business days.
+              </p>
+            </div>
+          </div>
+
+        </div>
+
+        <!-- Contact Line -->
+        <div class="it-faq-contact">
+          <span>Have more questions?</span>
+          <a href="#contact" class="it-faq-contact-link">Contact Us</a>
+        </div>
+      </div>
+
+    </div>
+
+    <!-- Divider Line & Disclaimer Footer -->
+    <div class="it-faq-footer">
+      <p>
+        We respect your privacy and are committed to protecting your personal data. Please read our 
+        <a href="#privacy" class="it-faq-bold-link">Privacy Notice</a> carefully before providing any information about you or any other person. Terms, conditions and eligibility apply for managed hosting & SLA agreements. Please refer to the <a href="#faq" class="it-faq-bold-link">FAQ</a> for details.
+      </p>
+    </div>
+  </div>
+</section>
+
+<style>
+  /* ==========================================================================
+     ISOLATED COMPONENT STYLES (Prefix: it-faq-)
+     ========================================================================== */
+
+  .it-faq-section {
+    width: 100%;
+    background-color: #080f1e; /* Deep navy dark theme matching image */
+    color: #ffffff;
+    padding: 150px 20px 150px 20px;
+    font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
+    box-sizing: border-box;
+  }
+
+  .it-faq-section * {
+    box-sizing: border-box;
+    margin: 0;
+    padding: 0;
+  }
+
+  .it-faq-container {
+    max-width: 1140px;
+    margin: 0 auto;
+  }
+
+  /* Split Layout */
+  .it-faq-main-layout {
+    display: flex;
+    gap: 60px;
+    justify-content: space-between;
+    align-items: flex-start;
+    margin-bottom: 60px;
+  }
+
+  @media (max-width: 768px) {
+    .it-faq-main-layout {
+      flex-direction: column;
+      gap: 32px;
+    }
+  }
+
+  /* Left Header Column */
+  .it-faq-header {
+    flex: 1 1 40%;
+  }
+
+  .it-faq-title {
+    font-size: 32px;
+    font-weight: 500;
+    letter-spacing: -0.5px;
+    color: #ffffff;
+    line-height: 1.2;
+  }
+
+  /* Right Content Column */
+  .it-faq-content {
+    flex: 1 1 60%;
+    width: 100%;
+  }
+
+  .it-faq-accordion-group {
+    border-top: 1px solid rgba(255, 255, 255, 0.12);
+  }
+
+  /* Individual Accordion Item */
+  .it-faq-item {
+    border-bottom: 1px solid rgba(255, 255, 255, 0.12);
+  }
+
+  .it-faq-trigger {
+    width: 100%;
+    background: none;
+    border: none;
+    outline: none;
+    padding: 24px 0;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    cursor: pointer;
+    text-align: left;
+    color: #ffffff;
+    transition: opacity 0.2s ease;
+  }
+
+  .it-faq-trigger:hover {
+    opacity: 0.85;
+  }
+
+  .it-faq-question {
+    font-size: 20px;
+    font-weight: 500;
+    line-height: 1.4;
+    padding-right: 20px;
+  }
+
+  .it-faq-icon {
+    width: 20px;
+    height: 20px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-shrink: 0;
+    transition: transform 0.3s ease;
+  }
+
+  .it-faq-icon svg {
+    width: 20px;
+    height: 20px;
+    stroke: #ffffff;
+  }
+
+  /* Rotate icon when active */
+  .it-faq-trigger[aria-expanded="true"] .it-faq-icon {
+    transform: rotate(45deg);
+  }
+
+  /* Expandable Content Panel */
+  .it-faq-panel {
+    max-height: 0;
+    overflow: hidden;
+    transition: max-height 0.3s cubic-bezier(0, 1, 0, 1), padding 0.3s ease;
+  }
+
+  .it-faq-trigger[aria-expanded="true"] + .it-faq-panel {
+    max-height: 500px;
+    padding-bottom: 24px;
+    transition: max-height 0.3s ease-in-out, padding 0.3s ease;
+  }
+
+  .it-faq-answer {
+    font-size: 16px;
+    color: #94a3b8;
+    line-height: 1.6;
+  }
+
+  /* Direct Contact Line */
+  .it-faq-contact {
+    margin-top: 36px;
+    font-size: 16px;
+    color: #ffffff;
+    font-weight: 500;
+  }
+
+  .it-faq-contact-link {
+    color: #258feb; /* Vibrant electric blue matching reference */
+    text-decoration: none;
+    margin-left: 6px;
+    transition: color 0.2s ease;
+  }
+
+  .it-faq-contact-link:hover {
+    color: #0582ff;
+    text-decoration: underline;
+  }
+
+  /* Footer Disclaimer Section */
+  .it-faq-footer {
+    border-top: 1px solid rgba(255, 255, 255, 0.08);
+    padding-top: 32px;
+  }
+
+  .it-faq-footer p {
+    font-size: 14px;
+    color: #64748b;
+    line-height: 1.6;
+  }
+
+  .it-faq-bold-link {
+    color: #ffffff;
+    font-weight: 500;
+    text-decoration: none;
+  }
+
+  .it-faq-bold-link:hover {
+    text-decoration: underline;
+  }
+</style>
+
+<script>
+  /* Isolated JavaScript for Accordion Interactivity */
+  document.addEventListener('DOMContentLoaded', () => {
+    const faqTriggers = document.querySelectorAll('.it-faq-trigger');
+
+    faqTriggers.forEach(trigger => {
+      trigger.addEventListener('click', () => {
+        const isExpanded = trigger.getAttribute('aria-expanded') === 'true';
+        
+        // Close all items for single-open accordions (optional, but clean)
+        faqTriggers.forEach(otherTrigger => {
+          otherTrigger.setAttribute('aria-expanded', 'false');
+        });
+
+        // Toggle state of clicked trigger
+        if (!isExpanded) {
+          trigger.setAttribute('aria-expanded', 'true');
+        }
+      });
+    });
+  });
+</script>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<div class="its-spec-wrapper">
+  <div class="its-spec-divider"></div>
+  
+  <div class="its-spec-container">
+    
+    <div class="its-spec-left-col">
+      <h2 class="its-spec-title">Technical specs</h2>
+      <div class="its-spec-illustration-box">
+        <svg viewBox="0 0 300 200" fill="none" xmlns="http://www.w3.org/2000/svg" class="its-spec-svg">
+          <rect x="30" y="30" width="240" height="140" rx="6" stroke="#444444" stroke-width="1.5" stroke-dasharray="2 2" />
+          <rect x="25" y="25" width="250" height="150" rx="8" stroke="#ffffff" stroke-width="1" stroke-opacity="0.3" />
+          
+          <rect x="15" y="40" width="10" height="30" rx="2" stroke="#ffffff" stroke-width="1" stroke-opacity="0.2" />
+          <rect x="15" y="130" width="10" height="30" rx="2" stroke="#ffffff" stroke-width="1" stroke-opacity="0.2" />
+          <rect x="275" y="40" width="10" height="30" rx="2" stroke="#ffffff" stroke-width="1" stroke-opacity="0.2" />
+          <rect x="275" y="130" width="10" height="30" rx="2" stroke="#ffffff" stroke-width="1" stroke-opacity="0.2" />
+          
+          <line x1="30" y1="75" x2="270" y2="75" stroke="#ffffff" stroke-width="1" stroke-opacity="0.15" />
+          <line x1="30" y1="125" x2="270" y2="125" stroke="#ffffff" stroke-width="1" stroke-opacity="0.15" />
+          
+          <rect x="45" y="42" width="50" height="22" rx="2" stroke="#ffffff" stroke-width="1" stroke-opacity="0.25" />
+          <rect x="105" y="42" width="50" height="22" rx="2" stroke="#ffffff" stroke-width="1" stroke-opacity="0.25" />
+          <circle cx="55" cy="53" r="2" fill="#ffffff" fill-opacity="0.4" />
+          <circle cx="115" cy="53" r="2" fill="#00ffcc" fill-opacity="0.8" />
+          
+          <rect x="45" y="87" width="50" height="22" rx="2" stroke="#ffffff" stroke-width="1" stroke-opacity="0.25" />
+          <rect x="105" y="87" width="50" height="22" rx="2" stroke="#ffffff" stroke-width="1" stroke-opacity="0.25" />
+          
+          <circle cx="210" cy="100" r="30" stroke="#ffffff" stroke-width="1" stroke-opacity="0.15" stroke-dasharray="4 2" />
+          <circle cx="210" cy="100" r="10" stroke="#ffffff" stroke-width="1" stroke-opacity="0.2" />
+          <path d="M 195 85 L 225 115 M 195 115 L 225 85" stroke="#ffffff" stroke-width="0.75" stroke-opacity="0.2" />
+          
+          <rect x="175" y="45" width="70" height="15" rx="2" stroke="#ffffff" stroke-width="1" stroke-opacity="0.2" />
+          <line x1="185" y1="52.5" x2="215" y2="52.5" stroke="#ffffff" stroke-width="1.5" stroke-opacity="0.4" />
+          <circle cx="232" cy="52.5" r="2.5" fill="#ffffff" fill-opacity="0.5" />
+        </svg>
+      </div>
+    </div>
+    
+    <div class="its-spec-right-column">
+      
+      <div class="its-spec-right-grid">
+        <div class="its-spec-item">
+          <h3 class="its-spec-value">99.999% / &lt;2ms</h3>
+          <p class="its-spec-label">Guaranteed uptime / SLA latency</p>
+        </div>
+        
+        <div class="its-spec-item">
+          <h3 class="its-spec-value">Smart Storage v2</h3>
+          <p class="its-spec-label">Distributed NVMe over Fabrics</p>
+        </div>
+        
+        <div class="its-spec-item">
+          <h3 class="its-spec-value">HyperScale Engine</h3>
+          <p class="its-spec-label">Orchestration & bare-metal hypervisor</p>
+        </div>
+        
+        <div class="its-spec-item">
+          <h3 class="its-spec-value">Kubernetes / IaC</h3>
+          <p class="its-spec-label">Native API & Terraform modules</p>
+        </div>
+        
+        <div class="its-spec-item">
+          <h3 class="its-spec-value">10 - 100 Gbps</h3>
+          <p class="its-spec-label">Dedicated optical burst throughput</p>
+        </div>
+        
+        <div class="its-spec-item">
+          <h3 class="its-spec-value">SOC2 / ISO27001</h3>
+          <p class="its-spec-label">Global compliance homologation</p>
+        </div>
+        
+        <div class="its-spec-item">
+          <h3 class="its-spec-value">Zero-Trust</h3>
+          <p class="its-spec-label">End-to-end hardware-isolated security</p>
+        </div>
+        
+        <div class="its-spec-item">
+          <h3 class="its-spec-value">Multi-Cloud Hybrid</h3>
+          <p class="its-spec-label">Flexible edge & public deployment footprint</p>
+        </div>
+      </div>
+
+      <div class="its-spec-collapsible" id="itsSpecCollapsible">
+        <div class="its-spec-collapsible-inner">
+          <div class="its-spec-right-grid its-spec-extended-grid">
+            <div class="its-spec-item">
+              <h3 class="its-spec-value">PCIe Gen 5.0</h3>
+              <p class="its-spec-label">Next-generation hardware bus architecture</p>
+            </div>
+            
+            <div class="its-spec-item">
+              <h3 class="its-spec-value">Immutable Backups</h3>
+              <p class="its-spec-label">Ransomware-proof historical state archiving</p>
+            </div>
+            
+            <div class="its-spec-item">
+              <h3 class="its-spec-value">Hot-swappable Nodes</h3>
+              <p class="its-spec-label">Zero-downtime structural maintenance capacity</p>
+            </div>
+            
+            <div class="its-spec-item">
+              <h3 class="its-spec-value">AI-Driven Telemetry</h3>
+              <p class="its-spec-label">Predictive load balancing and failure prevention</p>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <div class="its-spec-action-wrapper">
+        <button class="its-spec-btn" id="itsSpecToggleBtn">
+          <span id="itsSpecBtnText">All specs</span>
+          <span class="its-spec-btn-arrow">
+            <svg viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+              <path d="M5 12H19M19 12L12 5M19 12L12 19" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+            </svg>
+          </span>
+        </button>
+      </div>
+
+    </div>
+  </div>
+</div>
+
+<style>
+/* CSS Reset wrapper to preserve containment */
+.its-spec-wrapper {
+  background-color: #0d0d0d;
+  color: #ffffff;
+  font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
+  padding: 150px 24px 150px 24px;
+  box-sizing: border-box;
+}
+
+.its-spec-wrapper * {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+}
+
+
+/* Main Layout Grid */
+.its-spec-container {
+  max-width: 1200px;
+  margin: 0 auto;
+  display: grid;
+  grid-template-columns: 1fr 2.2fr;
+  gap: 40px;
+  border-top: 1px solid #fff;
+  padding-top: 3rem;
+}
+
+/* Left Column Styling */
+.its-spec-left-col {
+  display: flex;
+  flex-direction: column;
+  gap: 32px;
+}
+
+.its-spec-title {
+  font-size: clamp(2rem, 4vw, 2.6rem);
+  font-weight: 400;
+  letter-spacing: -0.03em;
+  color: #ffffff;
+}
+
+.its-spec-illustration-box {
+  width: 100%;
+  max-width: 280px;
+}
+
+.its-spec-svg {
+  width: 100%;
+  height: auto;
+  display: block;
+}
+
+/* Right Column Main Container */
+.its-spec-right-column {
+  display: flex;
+  flex-direction: column;
+}
+
+/* Right Grid Styling (Two Columns of specs) */
+.its-spec-right-grid {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  row-gap: 48px;
+  column-gap: 64px;
+  align-content: start;
+}
+
+/* Spec Elements */
+.its-spec-item {
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+}
+
+.its-spec-value {
+  font-size: clamp(1.4rem, 2.5vw, 2rem);
+  font-weight: 400;
+  letter-spacing: -0.01em;
+  color: #ffffff;
+}
+
+.its-spec-label {
+  font-size: 0.9rem;
+  font-weight: 400;
+  color: #8e8e93;
+  line-height: 1.4;
+}
+
+/* Collapsible Animation Mechanics */
+.its-spec-collapsible {
+  display: grid;
+  grid-template-rows: 0fr;
+  transition: grid-template-rows 0.4s ease-out;
+}
+
+.its-spec-collapsible-inner {
+  overflow: hidden;
+}
+
+.its-spec-collapsible.its-spec-open {
+  grid-template-rows: 1fr;
+}
+
+.its-spec-extended-grid {
+  padding-top: 48px;
+}
+
+/* Aligns CTA Action directly left inside the right-column panel */
+.its-spec-action-wrapper {
+  margin-top: 48px;
+  display: flex;
+  justify-content: flex-start;
+}
+
+/* Expand Button Styling */
+.its-spec-btn {
+  background: transparent;
+  border: 1px solid rgba(255, 255, 255, 0.35);
+  border-radius: 999px;
+  color: #ffffff;
+  padding: 12px 24px;
+  font-size: 0.95rem;
+  font-weight: 500;
+  cursor: pointer;
+  display: inline-flex;
+  align-items: center;
+  gap: 12px;
+  transition: border-color 0.2s ease, background-color 0.2s ease;
+}
+
+.its-spec-btn:hover {
+  border-color: #ffffff;
+  background-color: rgba(255, 255, 255, 0.05);
+}
+
+.its-spec-btn-arrow {
+  width: 16px;
+  height: 16px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  transition: transform 0.3s ease;
+}
+
+.its-spec-btn-arrow svg {
+  width: 100%;
+  height: 100%;
+}
+
+/* Rotates the arrow downward/upward based on state */
+.its-spec-btn.its-spec-active .its-spec-btn-arrow {
+  transform: rotate(90deg);
+}
+
+/* ========================================== */
+/* RESPONSIVE BREAKPOINTS                     */
+/* ========================================== */
+
+/* Tablet Viewports */
+@media (max-width: 900px) {
+  .its-spec-container {
+    grid-template-columns: 1fr;
+    gap: 48px;
+  }
+  
+  .its-spec-left-col {
+    align-items: flex-start;
+  }
+}
+
+/* Mobile Viewports */
+@media (max-width: 600px) {
+  .its-spec-wrapper {
+    padding: 0 16px 48px 16px;
+  }
+  
+  .its-spec-divider {
+    margin-bottom: 32px;
+  }
+  
+  .its-spec-right-grid {
+    grid-template-columns: 1fr;
+    row-gap: 32px;
+  }
+  
+  .its-spec-illustration-box {
+    max-width: 200px;
+    margin: 0 auto;
+  }
+  
+  .its-spec-left-col {
+    align-items: center;
+    text-align: center;
+    gap: 24px;
+  }
+  
+  .its-spec-action-wrapper {
+    margin-top: 36px;
+    justify-content: flex-start; /* Keeps it aligned to the left of the mobile grid */
+  }
+}
+</style>
+
+<script>
+document.addEventListener("DOMContentLoaded", () => {
+  const toggleBtn = document.getElementById("itsSpecToggleBtn");
+  const collapsible = document.getElementById("itsSpecCollapsible");
+  const btnText = document.getElementById("itsSpecBtnText");
+
+  if (toggleBtn && collapsible) {
+    toggleBtn.addEventListener("click", () => {
+      const isOpen = collapsible.classList.contains("its-spec-open");
+      
+      if (isOpen) {
+        collapsible.classList.remove("its-spec-open");
+        toggleBtn.classList.remove("its-spec-active");
+        btnText.textContent = "All specs";
+      } else {
+        collapsible.classList.add("its-spec-open");
+        toggleBtn.classList.add("its-spec-active");
+        btnText.textContent = "Show less";
+      }
+    });
+  }
+});
+</script>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Defcon - Cloud Computing Services</title>
+    
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
+
+    <style>
+        /* ========================================
+        DEFCON CLOUD COMPUTING (DCF-CC) STYLES
+        ========================================
+        */
+
+        /* COMMENT: Root color palette and font definition */
+        :root {
+            --dcf-cc-color-primary: #1199fA; /* Accent Blue */
+            --dcf-cc-color-primary-darker: #0a74c3;
+            --dcf-cc-color-dark-bg: #020e24;    /* Main Dark Background */
+            --dcf-cc-color-dark-surface: #1E1E22; /* Slightly Lighter Card/Surface */
+            --dcf-cc-color-white: #ffffff;
+            --dcf-cc-color-text: #f4f4f4;       /* Primary Text */
+            --dcf-cc-color-text-muted: #a0a0a0; /* Muted Text */
+            --dcf-cc-color-border: #3a3a40;     /* Borders */
+
+            --dcf-cc-font-family: 'Inter', -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
+        }
+
+        * {
+            margin: 0;
+            padding: 0;
+        }
+
+        /* COMMENT: Global Resets and Base Styles */
+        .dcf-cc-page-wrapper * {
+            box-sizing: border-box;
+            margin: 0;
+            padding: 0;
+        }
+
+        .dcf-cc-page-wrapper {
+            font-family: var(--dcf-cc-font-family);
+            background-color: var(--dcf-cc-color-dark-bg);
+            color: var(--dcf-cc-color-text);
+            overflow-x: hidden; /* Prevent horizontal scroll */
+        }
+
+        .dcf-cc-container {
+            width: 90%;
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 120px 0;
+            position: relative;
+            z-index: 2;
+        }
+
+        /* COMMENT: Reusable Utility Classes */
+        .dcf-cc-btn {
+            display: inline-block;
+            padding: 14px 28px;
+            font-family: var(--dcf-cc-font-family);
+            font-size: 16px;
+            font-weight: 600;
+            border-radius: 8px;
+            text-decoration: none;
+            transition: all 0.3s ease;
+            cursor: pointer;
+            border: none;
+        }
+
+        .dcf-cc-btn-primary {
+            background: linear-gradient(45deg, var(--dcf-cc-color-primary), var(--dcf-cc-color-primary-darker));
+            color: var(--dcf-cc-color-white);
+            box-shadow: 0 4px 15px rgba(17, 153, 250, 0.3);
+        }
+
+        .dcf-cc-btn-primary:hover {
+            transform: translateY(-3px);
+            box-shadow: 0 6px 20px rgba(17, 153, 250, 0.4);
+        }
+
+        .dcf-cc-btn-secondary {
+            background-color: transparent;
+            color: var(--dcf-cc-color-white);
+            border: 2px solid var(--dcf-cc-color-border);
+        }
+
+        .dcf-cc-btn-secondary:hover {
+            background-color: var(--dcf-cc-color-primary);
+            border-color: var(--dcf-cc-color-primary);
+        }
+
+        .dcf-cc-section-heading {
+            font-size: 44px;
+            font-weight: 700;
+            color: var(--dcf-cc-color-white);
+            margin-bottom: 20px;
+            text-align: center;
+        }
+
+        .dcf-cc-section-subheading {
+            font-size: 19px;
+            color: var(--dcf-cc-color-text-muted);
+            text-align: center;
+            max-width: 700px;
+            font-weight: 600;
+            margin: 0 auto 60px auto;
+        }
+        
+        .dcf-cc-accent-text {
+            color: var(--dcf-cc-color-primary);
+            font-weight: 700;
+        }
+
+        /* ========================================
+        1. HERO SECTION (dcf-cc-hero)
+        ========================================
+        */
+        .dcf-cc-hero-section {
+            position: relative;
+            height: 100vh;
+            min-height: 600px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            text-align: center;
+            background-color: var(--dcf-cc-color-dark-bg);
+            overflow: hidden;
+        }
+
+        .dcf-cc-hero-background {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            /* COMMENT: Replace with your actual background image URL */
+            background-image: url('https://images.pexels.com/photos/14171333/pexels-photo-14171333.jpeg');
+            background-size: cover;
+            background-position: center;
+            z-index: 1;
+        }
+
+        .dcf-cc-hero-overlay {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: linear-gradient(180deg, rgba(21, 21, 25, 0.9) 0%, rgba(21, 21, 25, 0.7) 50%, rgba(21, 21, 25, 0.9) 100%);
+            z-index: 2;
+        }
+
+        .dcf-cc-hero-content {
+            position: relative;
+            z-index: 3;
+            max-width: 900px;
+            padding: 0 20px;
+        }
+
+        .dcf-cc-hero-new-badge {
+            display: inline-block;
+            background-color: rgba(17, 153, 250, 0.1);
+            color: var(--dcf-cc-color-primary);
+            border: 1px solid rgba(17, 153, 250, 0.3);
+            padding: 8px 16px;
+            border-radius: 50px;
+            font-size: 14px;
+            font-weight: 600;
+            margin-bottom: 24px;
+        }
+
+        .dcf-cc-hero-headline {
+            font-size: 64px;
+            font-weight: 600;
+            color: var(--dcf-cc-color-white);
+            margin-bottom: 24px;
+            line-height: 1.2;
+            letter-spacing: -0.02em;
+        }
+
+        .dcf-cc-hero-subheadline {
+            font-size: 20px;
+            color: var(--dcf-cc-color-text);
+            margin-bottom: 40px;
+            max-width: 650px;
+            font-weight: 600;
+            margin-left: auto;
+            margin-right: auto;
+            line-height: 1.6;
+        }
+
+        .dcf-cc-hero-cta-group {
+            display: flex;
+            justify-content: center;
+            gap: 16px;
+        }
+        
+        /* COMMENT: Hero background 'glow' element */
+        .dcf-cc-hero-glow {
+            position: absolute;
+            width: 600px;
+            height: 600px;
+            background: radial-gradient(circle, rgba(17, 153, 250, 0.15) 0%, rgba(17, 153, 250, 0) 70%);
+            bottom: -300px;
+            left: 50%;
+            transform: translateX(-50%);
+            border-radius: 50%;
+            z-index: 1;
+            pointer-events: none;
+        }
+
+        /* ========================================
+        2. SERVICE OVERVIEW (dcf-cc-overview) - F-Layout
+        ========================================
+        */
+        .dcf-cc-overview-section {
+            background-color: var(--dcf-cc-color-dark-bg);
+        }
+        
+        .dcf-cc-overview-grid {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 60px;
+            align-items: center;
+        }
+        
+        .dcf-cc-overview-image-wrapper {
+            position: relative;
+            border-radius: 12px;
+            overflow: hidden;
+            box-shadow: 0 10px 30px rgba(0,0,0,0.3);
+        }
+
+        .dcf-cc-overview-image-wrapper img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            display: block;
+        }
+        
+        .dcf-cc-overview-image-wrapper::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: linear-gradient(-45deg, rgba(17, 153, 250, 0.2), transparent 50%);
+            z-index: 2;
+        }
+
+        .dcf-cc-overview-content .dcf-cc-content-tag {
+            font-size: 14px;
+            font-weight: 600;
+            color: var(--dcf-cc-color-primary);
+            margin-bottom: 16px;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+        }
+        
+        .dcf-cc-overview-content .dcf-cc-content-title {
+            font-size: 36px;
+            font-weight: 700;
+            color: var(--dcf-cc-color-white);
+            margin-bottom: 24px;
+        }
+        
+        .dcf-cc-overview-content .dcf-cc-content-description {
+            font-size: 16px;
+            color: var(--dcf-cc-color-text-muted);
+            line-height: 1.7;
+            margin-bottom: 32px;
+        }
+        
+        .dcf-cc-benefits-list {
+            list-style: none;
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 20px;
+        }
+        
+        .dcf-cc-benefits-item {
+            font-size: 16px;
+            font-weight: 500;
+            color: var(--dcf-cc-color-text);
+            display: flex;
+            align-items: center;
+            gap: 12px;
+        }
+        
+        .dcf-cc-benefits-item svg {
+            width: 20px;
+            height: 20px;
+            flex-shrink: 0;
+            color: var(--dcf-cc-color-primary);
+        }
+
+        /* ========================================
+        3. PRODUCTS (dcf-cc-products)
+        ========================================
+        */
+        .dcf-cc-products-section {
+            background-color: var(--dcf-cc-color-dark-surface);
+            border-top: 1px solid var(--dcf-cc-color-border);
+            border-bottom: 1px solid var(--dcf-cc-color-border);
+        }
+        
+        .dcf-cc-products-grid {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 30px;
+        }
+        
+        .dcf-cc-product-card {
+            background-color: var(--dcf-cc-color-dark-bg);
+            border: 1px solid var(--dcf-cc-color-border);
+            border-radius: 12px;
+            padding: 32px;
+            transition: all 0.3s ease;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .dcf-cc-product-card:hover {
+            transform: translateY(-8px);
+            border-color: var(--dcf-cc-color-primary);
+            box-shadow: 0 8px 25px rgba(17, 153, 250, 0.1);
+        }
+        
+        .dcf-cc-product-card-icon {
+            width: 50px;
+            height: 50px;
+            margin-bottom: 24px;
+            color: var(--dcf-cc-color-primary);
+        }
+        
+        .dcf-cc-product-card-title {
+            font-size: 22px;
+            font-weight: 600;
+            color: var(--dcf-cc-color-white);
+            margin-bottom: 16px;
+        }
+        
+        .dcf-cc-product-card-desc {
+            font-size: 17px;
+            font-weight: 500;
+            color: var(--dcf-cc-color-text-muted);
+            line-height: 1.1;
+        }
+
+        /* ========================================
+        4. PRICING TABLE (dcf-cc-pricing)
+        ========================================
+        */
+        .dcf-cc-pricing-section {
+             background: linear-gradient(180deg, var(--dcf-cc-color-dark-bg) 0%, #1a1a1e 100%);
+        }
+
+        .dcf-cc-pricing-toggle-wrap {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            gap: 16px;
+            margin-bottom: 40px;
+        }
+        
+        .dcf-cc-pricing-toggle-label {
+            font-size: 16px;
+            font-weight: 500;
+            color: var(--dcf-cc-color-text-muted);
+            transition: color 0.3s ease;
+        }
+        
+        .dcf-cc-pricing-toggle-label.active {
+            color: var(--dcf-cc-color-white);
+        }
+        
+        .dcf-cc-pricing-toggle {
+            position: relative;
+            display: inline-block;
+            width: 50px;
+            height: 26px;
+        }
+        
+        .dcf-cc-pricing-toggle-input {
+            opacity: 0;
+            width: 0;
+            height: 0;
+        }
+        
+        .dcf-cc-pricing-toggle-slider {
+            position: absolute;
+            cursor: pointer;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background-color: var(--dcf-cc-color-dark-surface);
+            border: 1px solid var(--dcf-cc-color-border);
+            transition: .4s;
+            border-radius: 26px;
+        }
+        
+        .dcf-cc-pricing-toggle-slider:before {
+            position: absolute;
+            content: "";
+            height: 18px;
+            width: 18px;
+            left: 3px;
+            bottom: 3px;
+            background-color: white;
+            transition: .4s;
+            border-radius: 50%;
+        }
+        
+        .dcf-cc-pricing-toggle-input:checked + .dcf-cc-pricing-toggle-slider {
+            background-color: var(--dcf-cc-color-primary);
+            border-color: var(--dcf-cc-color-primary);
+        }
+
+        .dcf-cc-pricing-toggle-input:checked + .dcf-cc-pricing-toggle-slider:before {
+            transform: translateX(24px);
+        }
+
+        .dcf-cc-pricing-table-wrapper {
+            overflow-x: auto; /* For mobile responsiveness */
+            border: 1px solid var(--dcf-cc-color-border);
+            border-radius: 1px;
+            background-color: var(--dcf-cc-color-dark-surface);
+            box-shadow: 0 10px 40px rgba(0,0,0,0.2);
+        }
+
+        .dcf-cc-pricing-table {
+            width: 100%;
+            min-width: 1000px; /* Force scroll on small screens */
+            border-collapse: collapse;
+            text-align: left;
+        }
+
+        .dcf-cc-pricing-table th,
+        .dcf-cc-pricing-table td {
+            padding: 24px;
+            vertical-align: top;
+        }
+
+        .dcf-cc-pricing-table thead th {
+            font-size: 14px;
+            font-weight: 600;
+            color: var(--dcf-cc-color-text-muted);
+            text-transform: uppercase;
+            letter-spacing: 0.5px;
+            border-bottom: 1px solid var(--dcf-cc-color-border);
+        }
+
+        .dcf-cc-pricing-table tbody tr {
+            border-bottom: 1px solid var(--dcf-cc-color-border);
+            transition: background-color 0.3s ease;
+        }
+
+        .dcf-cc-pricing-table tbody tr:last-child {
+            border-bottom: none;
+        }
+        
+        .dcf-cc-pricing-table tbody tr:hover {
+            background-color: var(--dcf-cc-color-dark-bg);
+        }
+
+        .dcf-cc-pricing-table .dcf-cc-product-name {
+            font-size: 18px;
+            font-weight: 600;
+            color: var(--dcf-cc-color-white);
+        }
+        
+        .dcf-cc-pricing-table .dcf-cc-product-desc {
+            font-size: 14px;
+            color: var(--dcf-cc-color-text-muted);
+            max-width: 300px;
+        }
+        
+        .dcf-cc-pricing-table .dcf-cc-features-list {
+            list-style: none;
+            padding: 0;
+            margin: 0;
+        }
+        
+        .dcf-cc-pricing-table .dcf-cc-features-list li {
+            font-size: 14px;
+            color: var(--dcf-cc-color-text);
+            margin-bottom: 8px;
+            display: flex;
+            align-items: center;
+            gap: 8px;
+        }
+        
+        .dcf-cc-pricing-table .dcf-cc-features-list li svg {
+            width: 16px;
+            height: 16px;
+            flex-shrink: 0;
+            color: var(--dcf-cc-color-primary);
+        }
+
+        .dcf-cc-pricing-table .dcf-cc-features-list li:last-child {
+            margin-bottom: 0;
+        }
+        
+        .dcf-cc-price-value {
+            font-size: 28px;
+            font-weight: 700;
+            color: var(--dcf-cc-color-white);
+            display: block;
+        }
+        
+        .dcf-cc-price-term {
+            font-size: 14px;
+            color: var(--dcf-cc-color-text-muted);
+        }
+
+        /* COMMENT: JS hook classes for price toggling */
+        .dcf-cc-price-yearly {
+            display: none; /* Hide yearly by default */
+        }
+        
+        .dcf-cc-price-static {
+            font-size: 18px;
+            font-weight: 600;
+            color: var(--dcf-cc-color-white);
+        }
+
+        /* ========================================
+        5. HOW IT WORKS (dcf-cc-how-it-works)
+        ========================================
+        */
+        .dcf-cc-how-it-works-section {
+            background-color: var(--dcf-cc-color-dark-bg);
+        }
+        
+        .dcf-cc-how-it-works-grid {
+            display: grid;
+            grid-template-columns: repeat(4, 1fr);
+            gap: 30px;
+            position: relative;
+        }
+        
+        /* COMMENT: Dashed line connecting steps (desktop) */
+        .dcf-cc-how-it-works-grid::before {
+            content: '';
+            position: absolute;
+            top: 40px; /* Position vertically center of the number */
+            left: 12.5%; /* Start after half of the first item */
+            width: 75%; /* Span across the middle items */
+            height: 2px;
+            background-image: linear-gradient(to right, var(--dcf-cc-color-border) 50%, transparent 50%);
+            background-size: 20px 2px;
+            z-index: 1;
+        }
+
+        .dcf-cc-how-it-works-step {
+            position: relative;
+            z-index: 2;
+            padding: 24px;
+            background-color: var(--dcf-cc-color-dark-surface);
+            border: 1px solid var(--dcf-cc-color-border);
+            border-radius: 12px;
+        }
+        
+        .dcf-cc-step-number {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            width: 80px;
+            height: 80px;
+            font-size: 32px;
+            font-weight: 700;
+            color: var(--dcf-cc-color-primary);
+            background-color: rgba(17, 153, 250, 0.1);
+            border: 1px solid rgba(17, 153, 250, 0.2);
+            border-radius: 50%;
+            margin-bottom: 24px;
+            box-shadow: 0 0 15px rgba(17, 153, 250, 0.1);
+        }
+        
+        .dcf-cc-step-title {
+            font-size: 20px;
+            font-weight: 600;
+            color: var(--dcf-cc-color-white);
+            margin-bottom: 12px;
+        }
+        
+        .dcf-cc-step-desc {
+            font-size: 14px;
+            color: var(--dcf-cc-color-text-muted);
+            line-height: 1.6;
+        }
+
+        /* ========================================
+        6. FEATURES DEEP DIVE (dcf-cc-features) - Z-Layout
+        ========================================
+        */
+        .dcf-cc-features-section {
+            background-color: var(--dcf-cc-color-dark-surface);
+            border-top: 1px solid var(--dcf-cc-color-border);
+        }
+        
+        .dcf-cc-feature-item {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 60px;
+            align-items: center;
+            margin-bottom: 80px;
+        }
+        
+        .dcf-cc-feature-item:last-child {
+            margin-bottom: 0;
+        }
+        
+        /* COMMENT: Z-Layout reversal */
+        .dcf-cc-feature-item:nth-child(even) .dcf-cc-feature-content {
+            order: 1;
+        }
+        
+        .dcf-cc-feature-item:nth-child(even) .dcf-cc-feature-image {
+            order: 2;
+        }
+
+        .dcf-cc-feature-image {
+            position: relative;
+            border-radius: 12px;
+            overflow: hidden;
+            background-color: var(--dcf-cc-color-dark-bg);
+            border: 1px solid var(--dcf-cc-color-border);
+        }
+        
+        .dcf-cc-feature-image img {
+            width: 100%;
+            height: auto;
+            display: block;
+            object-fit: cover;
+            opacity: 0.9;
+        }
+
+        .dcf-cc-feature-content .dcf-cc-content-tag {
+            font-size: 14px;
+            font-weight: 600;
+            color: var(--dcf-cc-color-primary);
+            margin-bottom: 16px;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+        }
+        
+        .dcf-cc-feature-content .dcf-cc-content-title {
+            font-size: 36px;
+            font-weight: 700;
+            color: var(--dcf-cc-color-white);
+            margin-bottom: 24px;
+        }
+        
+        .dcf-cc-feature-content .dcf-cc-content-description {
+            font-size: 16px;
+            color: var(--dcf-cc-color-text-muted);
+            line-height: 1.7;
+            margin-bottom: 32px;
+        }
+
+        /* ========================================
+        7. GETTING STARTED (dcf-cc-get-started)
+        ========================================
+        */
+        .dcf-cc-get-started-section {
+            background-color: var(--dcf-cc-color-dark-bg);
+        }
+        
+        .dcf-cc-get-started-container {
+            background: linear-gradient(135deg, var(--dcf-cc-color-dark-surface), #2a2a30);
+            border: 1px solid var(--dcf-cc-color-border);
+            border-radius: 16px;
+            padding: 60px;
+            text-align: center;
+            position: relative;
+            overflow: hidden;
+        }
+        
+        /* COMMENT: Glow effect for CTA box */
+        .dcf-cc-get-started-container::before {
+            content: '';
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            width: 80%;
+            height: 80%;
+            transform: translate(-50%, -50%);
+            background: radial-gradient(circle, rgba(17, 153, 250, 0.05) 0%, rgba(17, 153, 250, 0) 70%);
+            z-index: 1;
+            pointer-events: none;
+        }
+        
+        .dcf-cc-get-started-content {
+            position: relative;
+            z-index: 2;
+        }
+        
+        .dcf-cc-get-started-title {
+            font-size: 36px;
+            font-weight: 700;
+            color: var(--dcf-cc-color-white);
+            margin-bottom: 20px;
+        }
+        
+        .dcf-cc-get-started-desc {
+            font-size: 18px;
+            color: var(--dcf-cc-color-text-muted);
+            max-width: 600px;
+            margin: 0 auto 40px auto;
+        }
+
+        /* ========================================
+        8. FAQ (dcf-cc-faq)
+        ========================================
+        */
+        .dcf-cc-faq-section {
+            background-color: var(--dcf-cc-color-dark-bg);
+        }
+        
+        .dcf-cc-faq-container {
+            max-width: 900px;
+            margin: 0 auto;
+        }
+        
+        .dcf-cc-faq-item {
+            border-bottom: 1px solid var(--dcf-cc-color-border);
+        }
+        
+        .dcf-cc-faq-question {
+            width: 100%;
+            background: none;
+            border: none;
+            text-align: left;
+            padding: 24px 0;
+            font-family: var(--dcf-cc-font-family);
+            font-size: 21px;
+            font-weight: 600;
+            color: var(--dcf-cc-color-white);
+            cursor: pointer;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+        
+        .dcf-cc-faq-icon {
+            width: 20px;
+            height: 20px;
+            color: var(--dcf-cc-color-text-muted);
+            transition: transform 0.3s ease;
+            flex-shrink: 0;
+            margin-left: 16px;
+        }
+        
+        .dcf-cc-faq-item.active .dcf-cc-faq-icon {
+            transform: rotate(45deg);
+            color: var(--dcf-cc-color-primary);
+        }
+
+        .dcf-cc-faq-answer {
+            max-height: 0;
+            overflow: hidden;
+            transition: max-height 0.4s ease-out;
+        }
+        
+        .dcf-cc-faq-answer p {
+            font-size: 18px;
+            color: var(--dcf-cc-color-text-muted);
+            line-height: 1.7;
+            padding: 0 0 24px 0;
+        }
+
+        /* ========================================
+        RESPONSIVE STYLES
+        ========================================
+        */
+
+        @media (max-width: 1024px) {
+            .dcf-cc-section-heading {
+                font-size: 36px;
+            }
+
+            .dcf-cc-hero-headline {
+                font-size: 50px;
+            }
+            
+            .dcf-cc-overview-grid {
+                grid-template-columns: 1fr;
+            }
+            
+            .dcf-cc-products-grid {
+                grid-template-columns: 1fr 1fr;
+            }
+            
+            .dcf-cc-how-it-works-grid {
+                grid-template-columns: 1fr 1fr;
+            }
+            
+            .dcf-cc-how-it-works-grid::before {
+                display: none; /* Hide connector on tablet */
+            }
+
+            .dcf-cc-feature-item {
+                grid-template-columns: 1fr;
+            }
+            
+            /* COMMENT: Reset Z-Layout for mobile */
+            .dcf-cc-feature-item:nth-child(even) .dcf-cc-feature-content {
+                order: 2;
+            }
+            
+            .dcf-cc-feature-item:nth-child(even) .dcf-cc-feature-image {
+                order: 1;
+            }
+        }
+
+        @media (max-width: 768px) {
+            .dcf-cc-container {
+                padding: 60px 0;
+            }
+            
+            .dcf-cc-hero-headline {
+                font-size: 40px;
+            }
+            
+            .dcf-cc-hero-subheadline {
+                font-size: 18px;
+            }
+            
+            .dcf-cc-hero-cta-group {
+                flex-direction: column;
+                gap: 12px;
+                padding: 0 20px;
+            }
+            
+            .dcf-cc-products-grid {
+                grid-template-columns: 1fr;
+            }
+
+            .dcf-cc-how-it-works-grid {
+                grid-template-columns: 1fr;
+            }
+            
+            .dcf-cc-get-started-container {
+                padding: 40px 24px;
+            }
+            
+            .dcf-cc-get-started-title {
+                font-size: 28px;
+            }
+            
+            .dcf-cc-faq-question {
+                font-size: 16px;
+            }
+        }
+
+    </style>
+</head>
+<body>
+
+    <div class="dcf-cc-page-wrapper">
+
+        <section class="dcf-cc-hero-section">
+            <div class="dcf-cc-hero-background"></div>
+            <div class="dcf-cc-hero-overlay"></div>
+            <div class="dcf-cc-hero-glow"></div>
+            
+            <div class="dcf-cc-hero-content">
+                <span class="dcf-cc-hero-new-badge">Powered by Defcon AI</span>
+                <h1 class="dcf-cc-hero-headline">
+                    Elevate Your Infrastructure
+                </h1>
+                <p class="dcf-cc-hero-subheadline">
+                    Defcon Cloud Computing: Scalable, Secure, and Intelligent solutions designed to fuel your growth and streamline operations.
+                </p>
+                <div class="dcf-cc-hero-cta-group">
+                    <a href="#dcf-cc-pricing-section" class="dcf-cc-btn dcf-cc-btn-primary">View Pricing & Plans</a>
+                    <a href="#dcf-cc-get-started-section" class="dcf-cc-btn dcf-cc-btn-secondary">Schedule Consultation</a>
+                </div>
+            </div>
+        </section>
+
+        <section class="dcf-cc-overview-section">
+            <div class="dcf-cc-container">
+                <div class="dcf-cc-overview-grid">
+                    <div class="dcf-cc-overview-image-wrapper">
+                        <img src="thumbnails/pexels-resourceboy-18541715.jpg" alt="Defcon data center infrastructure">
+                    </div>
+                    <div class="dcf-cc-overview-content">
+                        <div class="dcf-cc-content-tag">The Defcon Difference</div>
+                        <h2 class="dcf-cc-content-title">Move Beyond Limits, Not Budgets</h2>
+                        <p class="dcf-cc-content-description">
+                            Traditional infrastructure is a bottleneck. Defcon's cloud platform is engineered for high performance and infinite scalability, allowing you to innovate faster, deploy quicker, and reduce operational overhead. We handle the complexity so you can focus on your code.
+                        </p>
+                        <ul class="dcf-cc-benefits-list">
+                            <li class="dcf-cc-benefits-item">
+                                <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 20 20" fill="currentColor"><path fill-rule="evenodd" d="M10 18a8 8 0 100-16 8 8 0 000 16zm3.857-9.809a.75.75 0 00-1.214-.882l-3.483 4.79-1.88-1.88a.75.75 0 10-1.06 1.061l2.5 2.5a.75.75 0 001.137-.089l4-5.5z" clip-rule="evenodd" /></svg>
+                                99.99% Uptime SLA
+                            </li>
+                            <li class="dcf-cc-benefits-item">
+                                <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 20 20" fill="currentColor"><path fill-rule="evenodd" d="M10 18a8 8 0 100-16 8 8 0 000 16zm3.857-9.809a.75.75 0 00-1.214-.882l-3.483 4.79-1.88-1.88a.75.75 0 10-1.06 1.061l2.5 2.5a.75.75 0 001.137-.089l4-5.5z" clip-rule="evenodd" /></svg>
+                                AI-Driven Security
+                            </li>
+                            <li class="dcf-cc-benefits-item">
+                                <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 20 20" fill="currentColor"><path fill-rule="evenodd" d="M10 18a8 8 0 100-16 8 8 0 000 16zm3.857-9.809a.75.75 0 00-1.214-.882l-3.483 4.79-1.88-1.88a.75.75 0 10-1.06 1.061l2.5 2.5a.75.75 0 001.137-.089l4-5.5z" clip-rule="evenodd" /></svg>
+                                Pay-As-You-Grow
+                            </li>
+                            <li class="dcf-cc-benefits-item">
+                                <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 20 20" fill="currentColor"><path fill-rule="evenodd" d="M10 18a8 8 0 100-16 8 8 0 000 16zm3.857-9.809a.75.75 0 00-1.214-.882l-3.483 4.79-1.88-1.88a.75.75 0 10-1.06 1.061l2.5 2.5a.75.75 0 001.137-.089l4-5.5z" clip-rule="evenodd" /></svg>
+                                24/7 Expert Support
+                            </li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <section class="dcf-cc-products-section">
+            <div class="dcf-cc-container">
+                <h2 class="dcf-cc-section-heading">Our Cloud Product Suite</h2>
+                <p class="dcf-cc-section-subheading">
+                    A comprehensive set of services to build, deploy, and manage applications at scale, from virtual machines to serverless code.
+                </p>
+                <div class="dcf-cc-products-grid">
+                    <div class="dcf-cc-product-card">
+                        <svg class="dcf-cc-product-card-icon" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" d="M21.75 17.25v-.228a4.5 4.5 0 00-.12-1.03l-2.268-9.64a3.375 3.375 0 00-3.285-2.602H7.923a3.375 3.375 0 00-3.285 2.602l-2.268 9.64a4.5 4.5 0 00-.12 1.03v.228m19.5 0a3 3 0 01-3 3H5.25a3 3 0 01-3-3m19.5 0a3 3 0 00-3-3H5.25a3 3 0 00-3 3m16.5 0h.008v.008h-.008v-.008zm-3 0h.008v.008h-.008v-.008z" /></svg>
+                        <h3 class="dcf-cc-product-card-title">Cloud Virtual Machines</h3>
+                        <p class="dcf-cc-product-card-desc">Secure and resizable compute capacity (IaaS). Deploy VMs in minutes with your choice of OS, storage, and networking.</p>
+                    </div>
+                    <div class="dcf-cc-product-card">
+                        <svg class="dcf-cc-product-card-icon" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" d="M6.75 7.5l3 2.25-3 2.25v-4.5zm3 2.25l3-2.25v4.5l-3-2.25zm3 2.25l3 2.25v-4.5l-3 2.25zM6.75 12l3 2.25-3 2.25v-4.5zm3 2.25l3-2.25v4.5l-3-2.25zm3 2.25l3 2.25v-4.5l-3 2.25zM3.75 12c0-1.036.84-1.875 1.875-1.875h12.75c1.035 0 1.875.84 1.875 1.875s-.84 1.875-1.875 1.875H5.625c-1.036 0-1.875-.84-1.875-1.875z" /></svg>
+                        <h3 class="dcf-cc-product-card-title">Cloud Kubernetes (DKE)</h3>
+                        <p class="dcf-cc-product-card-desc">Managed Kubernetes service for automating deployment, scaling, and management of containerized applications.</p>
+                    </div>
+                    <div class="dcf-cc-product-card">
+                        <svg class="dcf-cc-product-card-icon" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" d="M20.25 7.5l-.625 10.632a2.25 2.25 0 01-2.247 2.118H6.622a2.25 2.25 0 01-2.247-2.118L3.75 7.5M10.5 11.25h3M12 15V7.5" /><path stroke-linecap="round" stroke-linejoin="round" d="M3.75 7.5H20.25M3.75 7.5A2.25 2.25 0 015.25 5.25h13.5a2.25 2.25 0 011.5 2.25" /></svg>
+                        <h3 class="dcf-cc-product-card-title">Cloud Storage</h3>
+                        <p class="dcf-cc-product-card-desc">Scalable object storage (S3-compatible) and high-performance block storage for all your data needs, from backups to big data.</p>
+                    </div>
+                    <div class="dcf-cc-product-card">
+                        <svg class="dcf-cc-product-card-icon" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" d="M4.034 15.118A9 9 0 013 12v-1.5M4.034 15.118l.028.018a9 9 0 013.858 1.85m-3.886-1.868a9 9 0 01-1.562-3.045m1.562 3.045a9 9 0 003.886 1.868M7.922 16.968a9 9 0 003.886-1.868M3 10.5v.153c0 3.045 1.562 5.86 4.034 7.458l.028.018a9 9 0 007.976 0l.028-.018c2.472-1.598 4.034-4.413 4.034-7.458V10.5M3 10.5c0-3.138 2.55-5.69 5.706-5.69h6.588C18.45 4.81 21 7.361 21 10.5M12 4.81v6m0 0v6m0-6h.008v.008H12v-.008z" /></svg>
+                        <h3 class="dcf-cc-product-card-title">Cloud Database</h3>
+                        <p class="dcf-cc-product-card-desc">Fully managed SQL (PostgreSQL, MySQL) and NoSQL (MongoDB) databases. We handle patching, backups, and scaling.</p>
+                    </div>
+                    <div class="dcf-cc-product-card">
+                        <svg class="dcf-cc-product-card-icon" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" d="M17.25 6.75l-5.25 5.25-5.25-5.25m5.25 5.25l-5.25 5.25m5.25-5.25l5.25 5.25m5.25-5.25l-5.25-5.25m0 0l-5.25 5.25m5.25-5.25l5.25 5.25" /></svg>
+                        <h3 class="dcf-cc-product-card-title">Cloud Serverless</h3>
+                        <p class="dcf-cc-product-card-desc">Run code without provisioning servers (FaaS). Pay only for the compute time you consume, down to the millisecond.</p>
+                    </div>
+                    <div class="dcf-cc-product-card">
+                        <svg class="dcf-cc-product-card-icon" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" d="M8.288 15.038a5.25 5.25 0 017.424 0M5.106 11.856c3.807-3.808 9.98-3.808 13.788 0M1.924 8.674c5.565-5.565 14.587-5.565 20.152 0M12 20.25h.008v.008H12v-.008z" /></svg>
+                        <h3 class="dcf-cc-product-card-title">Cloud Networking</h3>
+                        <p class="dcf-cc-product-card-desc">Create isolated networks with VPCs, manage traffic with Load Balancers, and secure your perimeter with our Cloud Firewall.</p>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <section class="dcf-cc-pricing-section" id="dcf-cc-pricing-section">
+            <div class="dcf-cc-container">
+                <h2 class="dcf-cc-section-heading">Transparent, Predictable Pricing</h2>
+                <p class="dcf-cc-section-subheading">
+                    Choose the plan that fits your needs. Scale up or down anytime. Save more with annual commitments.
+                </p>
+
+                <div class="dcf-cc-pricing-toggle-wrap">
+                    <span class="dcf-cc-pricing-toggle-label active" id="dcf-cc-toggle-label-monthly">Monthly</span>
+                    <label class="dcf-cc-pricing-toggle">
+                        <input type="checkbox" class="dcf-cc-pricing-toggle-input" id="dcf-cc-pricing-toggle-input">
+                        <span class="dcf-cc-pricing-toggle-slider"></span>
+                    </label>
+                    <span class="dcf-cc-pricing-toggle-label" id="dcf-cc-toggle-label-yearly">Yearly (Save 10%)</span>
+                </div>
+
+                <div class="dcf-cc-pricing-table-wrapper">
+                    <table class="dcf-cc-pricing-table">
+                        <thead>
+                            <tr>
+                                <th>Product</th>
+                                <th>Description</th>
+                                <th>Key Features</th>
+                                <th>Pricing</th>
+                                <th></th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <tr class="dcf-cc-price-toggleable">
+                                <td>
+                                    <div class="dcf-cc-product-name">VM Starter</div>
+                                </td>
+                                <td>
+                                    <div class="dcf-cc-product-desc">Perfect for development, testing, and small web applications.</div>
+                                </td>
+                                <td>
+                                    <ul class="dcf-cc-features-list">
+                                        <li><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 16 16" fill="currentColor"><path d="M8 15A7 7 0 1 1 8 1a7 7 0 0 1 0 14Zm3.844-8.707.001-.002-3.375 3.374a.75.75 0 0 1-1.06 0L5.156 7.41a.75.75 0 0 1 1.06-1.06l1.75 1.75 2.813-2.814a.75.75 0 1 1 1.06 1.06Z" /></svg> 1 vCPU (Shared)</li>
+                                        <li><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 16 16" fill="currentColor"><path d="M8 15A7 7 0 1 1 8 1a7 7 0 0 1 0 14Zm3.844-8.707.001-.002-3.375 3.374a.75.75 0 0 1-1.06 0L5.156 7.41a.75.75 0 0 1 1.06-1.06l1.75 1.75 2.813-2.814a.75.75 0 1 1 1.06 1.06Z" /></svg> 2 GB RAM</li>
+                                        <li><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 16 16" fill="currentColor"><path d="M8 15A7 7 0 1 1 8 1a7 7 0 0 1 0 14Zm3.844-8.707.001-.002-3.375 3.374a.75.75 0 0 1-1.06 0L5.156 7.41a.75.75 0 0 1 1.06-1.06l1.75 1.75 2.813-2.814a.75.75 0 1 1 1.06 1.06Z" /></svg> 50 GB SSD Storage</li>
+                                    </ul>
+                                </td>
+                                <td>
+                                    <div class="dcf-cc-price-monthly">
+                                        <span class="dcf-cc-price-value">$50</span>
+                                        <span class="dcf-cc-price-term">/ per month</span>
+                                    </div>
+                                    <div class="dcf-cc-price-yearly">
+                                        <span class="dcf-cc-price-value">$540</span>
+                                        <span class="dcf-cc-price-term">/ per year</span>
+                                    </div>
+                                </td>
+                                <td>
+                                    <a href="#" class="dcf-cc-btn dcf-cc-btn-secondary">Deploy Now</a>
+                                </td>
+                            </tr>
+                            
+                            <tr class="dcf-cc-price-toggleable">
+                                <td>
+                                    <div class="dcf-cc-product-name">Managed Kubernetes</div>
+                                </td>
+                                <td>
+                                    <div class="dcf-cc-product-desc">Managed control plane for your containerized workloads.</div>
+                                </td>
+                                <td>
+                                    <ul class="dcf-cc-features-list">
+                                        <li><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 16 16" fill="currentColor"><path d="M8 15A7 7 0 1 1 8 1a7 7 0 0 1 0 14Zm3.844-8.707.001-.002-3.375 3.374a.75.75 0 0 1-1.06 0L5.156 7.41a.75.75 0 0 1 1.06-1.06l1.75 1.75 2.813-2.814a.75.75 0 1 1 1.06 1.06Z" /></svg> Free Control Plane</li>
+                                        <li><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 16 16" fill="currentColor"><path d="M8 15A7 7 0 1 1 8 1a7 7 0 0 1 0 14Zm3.844-8.707.001-.002-3.375 3.374a.75.75 0 0 1-1.06 0L5.156 7.41a.75.75 0 0 1 1.06-1.06l1.75 1.75 2.813-2.814a.75.75 0 1 1 1.06 1.06Z" /></svg> Auto-Scaling Nodes</li>
+                                        <li><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 16 16" fill="currentColor"><path d="M8 15A7 7 0 1 1 8 1a7 7 0 0 1 0 14Zm3.844-8.707.001-.002-3.375 3.374a.75.75 0 0 1-1.06 0L5.156 7.41a.75.75 0 0 1 1.06-1.06l1.75 1.75 2.813-2.814a.75.75 0 1 1 1.06 1.06Z" /></svg> Integrated Load Balancing</li>
+                                    </ul>
+                                </td>
+                                <td>
+                                    <div class="dcf-cc-price-monthly">
+                                        <span class="dcf-cc-price-value">$300</span>
+                                        <span class="dcf-cc-price-term">/ per month (plus node costs)</span>
+                                    </div>
+                                    <div class="dcf-cc-price-yearly">
+                                        <span class="dcf-cc-price-value">$3,240</span>
+                                        <span class="dcf-cc-price-term">/ per year (plus node costs)</span>
+                                    </div>
+                                </td>
+                                <td>
+                                    <a href="#" class="dcf-cc-btn dcf-cc-btn-secondary">Deploy Now</a>
+                                </td>
+                            </tr>
+
+                            <tr>
+                                <td>
+                                    <div class="dcf-cc-product-name">Object Storage</div>
+                                </td>
+                                <td>
+                                    <div class="dcf-cc-product-desc">S3-compatible storage for backups, archives, and static assets.</div>
+                                </td>
+                                <td>
+                                    <ul class="dcf-cc-features-list">
+                                        <li><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 16 16" fill="currentColor"><path d="M8 15A7 7 0 1 1 8 1a7 7 0 0 1 0 14Zm3.844-8.707.001-.002-3.375 3.374a.75.75 0 0 1-1.06 0L5.156 7.41a.75.75 0 0 1 1.06-1.06l1.75 1.75 2.813-2.814a.75.75 0 1 1 1.06 1.06Z" /></svg> 99.9999% Durability</li>
+                                        <li><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 16 16" fill="currentColor"><path d="M8 15A7 7 0 1 1 8 1a7 7 0 0 1 0 14Zm3.844-8.707.001-.002-3.375 3.374a.75.75 0 0 1-1.06 0L5.156 7.41a.75.75 0 0 1 1.06-1.06l1.75 1.75 2.813-2.814a.75.75 0 1 1 1.06 1.06Z" /></svg> No Data Ingress Fees</li>
+                                        <li><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 16 16" fill="currentColor"><path d="M8 15A7 7 0 1 1 8 1a7 7 0 0 1 0 14Zm3.844-8.707.001-.002-3.375 3.374a.75.75 0 0 1-1.06 0L5.156 7.41a.75.75 0 0 1 1.06-1.06l1.75 1.75 2.813-2.814a.75.75 0 1 1 1.06 1.06Z" /></svg> Global CDN Integration</li>
+                                    </ul>
+                                </td>
+                                <td>
+                                    <div class="dcf-cc-price-static">Pay-As-You-Go</div>
+                                    <span class="dcf-cc-price-term">$0.02 per GB/month</span>
+                                </td>
+                                <td>
+                                    <a href="#" class="dcf-cc-btn dcf-cc-btn-secondary">Start Storing</a>
+                                </td>
+                            </tr>
+                        </tbody>
+                    </table>
+                </div>
+            </div>
+        </section>
+        
+        <section class="dcf-cc-how-it-works-section">
+            <div class="dcf-cc-container">
+                <h2 class="dcf-cc-section-heading">Your Journey to the Cloud</h2>
+                <p class="dcf-cc-section-subheading">
+                    We follow a proven 4-step process to ensure a seamless and successful migration, minimizing disruption and maximizing value.
+                </p>
+                <div class="dcf-cc-how-it-works-grid">
+                    <div class="dcf-cc-how-it-works-step">
+                        <div class="dcf-cc-step-number">01</div>
+                        <h3 class="dcf-cc-step-title">Discovery & Analysis</h3>
+                        <p class="dcf-cc-step-desc">We map your current infrastructure, applications, and business goals to design a bespoke cloud strategy.</p>
+                    </div>
+                    <div class="dcf-cc-how-it-works-step">
+                        <div class="dcf-cc-step-number">02</div>
+                        <h3 class="dcf-cc-step-title">Architect & Design</h3>
+                        <p class="dcf-cc-step-desc">Our certified architects design a secure, scalable, and resilient cloud environment tailored to your needs.</p>
+                    </div>
+                    <div class="dcf-cc-how-it-works-step">
+                        <div class="dcf-cc-step-number">03</div>
+                        <h3 class="dcf-cc-step-title">Migrate & Deploy</h3>
+                        <p class="dcf-cc-step-desc">A phased, zero-downtime migration plan to move your workloads safely. New applications are deployed via CI/CD pipelines.</p>
+                    </div>
+                    <div class="dcf-cc-how-it-works-step">
+                        <div class="dcf-cc-step-number">04</div>
+                        <h3 class="dcf-cc-step-title">Optimize & Manage</h3>
+                        <p class="dcf-cc-step-desc">Continuous monitoring, cost optimization, and 24/7 managed support to ensure your environment is always performant.</p>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <section class="dcf-cc-features-section">
+            <div class="dcf-cc-container">
+                
+                <div class="dcf-cc-feature-item">
+                    <div class="dcf-cc-feature-image">
+                        <img src="thumbnails/pexels-inspiredimages-5626726.jpg" alt="Global network map">
+                    </div>
+                    <div class="dcf-cc-feature-content">
+                        <div class="dcf-cc-content-tag">Security First</div>
+                        <h2 class="dcf-cc-content-title">Ironclad Security & Compliance</h2>
+                        <p class="dcf-cc-content-description">
+                            Your trust is our top priority. Our platform is built with AI-powered threat detection, network-level firewalls, and data encryption at rest and in transit. We provide all the tools you need to meet rigorous compliance standards like PCI, HIPAA, and GDPR.
+                        </p>
+                        <a href="#" class="dcf-cc-btn dcf-cc-btn-secondary">Explore Security Features</a>
+                    </div>
+                </div>
+
+                <div class="dcf-cc-feature-item">
+                    <div class="dcf-cc-feature-image">
+                        <img src="thumbnails/pexels-serpstat-177219-572056.jpg" alt="Developers collaborating on API">
+                    </div>
+                    <div class="dcf-cc-feature-content">
+                        <div class="dcf-cc-content-tag">Developer Ready</div>
+                        <h2 class="dcf-cc-content-title">Built for Developers, Loved by Teams</h2>
+                        <p class="dcf-cc-content-description">
+                            Stop fighting your infrastructure. With our comprehensive APIs, CLI, and Terraform provider, you can automate everything. Integrate seamlessly with your existing CI/CD pipelines to build, test, and deploy faster than ever before.
+                        </p>
+                        <a href="#" class="dcf-cc-btn dcf-cc-btn-secondary">Read API Documentation</a>
+                    </div>
+                </div>
+
+            </div>
+        </section>
+
+        <section class="dcf-cc-get-started-section" id="dcf-cc-get-started-section">
+            <div class="dcf-cc-container">
+                <div class="dcf-cc-get-started-container">
+                    <div class="dcf-cc-get-started-content">
+                        <h2 class="dcf-cc-get-started-title">Ready to Ascend to the Cloud?</h2>
+                        <p class="dcf-cc-get-started-desc">
+                            Let our cloud architects show you what's possible. Schedule a free, no-obligation consultation to discuss your goals, challenges, and how Defcon can help you succeed.
+                        </p>
+                        <a href="#" class="dcf-cc-btn dcf-cc-btn-primary">Schedule Your Free Consultation</a>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <section class="dcf-cc-faq-section">
+            <div class="dcf-cc-container dcf-cc-faq-container">
+                <h2 class="dcf-cc-section-heading">Frequently Asked Questions</h2>
+                <p class="dcf-cc-section-subheading">
+                    Have more questions? We've got answers.
+                </p>
+
+                <div class="dcf-cc-faq-list">
+                    <div class="dcf-cc-faq-item">
+                        <button class="dcf-cc-faq-question" aria-expanded="false">
+                            What cloud models do you support (IaaS, PaaS, SaaS)?
+                            <svg class="dcf-cc-faq-icon" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" d="M12 4.5v15m7.5-7.5h-15" /></svg>
+                        </button>
+                        <div class="dcf-cc-faq-answer">
+                            <p>We primarily offer Infrastructure-as-a-Service (IaaS) with products like Virtual Machines and Block Storage, and Platform-as-a-Service (PaaS) with our Managed Kubernetes and Managed Databases. This gives you the most flexibility and control, while we manage the underlying hardware and platform stability.</p>
+                        </div>
+                    </div>
+                    <div class="dcf-cc-faq-item">
+                        <button class="dcf-cc-faq-question" aria-expanded="false">
+                            How do you handle data security and compliance?
+                            <svg class="dcf-cc-faq-icon" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" d="M12 4.5v15m7.5-7.5h-15" /></svg>
+                        </button>
+                        <div class="dcf-cc-faq-answer">
+                            <p>Security is our foundation. All data is encrypted at rest (AES-256) and in-transit (TLS 1.2+). Our data centers are certified for SOC 2, ISO 27001, and we provide tools to help you maintain HIPAA and PCI-DSS compliance. Our AI-powered security center monitors for threats 24/7.</p>
+                        </div>
+                    </div>
+                    <div class="dcf-cc-faq-item">
+                        <button class="dcf-cc-faq-question" aria-expanded="false">
+                            What is the migration process like?
+                            <svg class="dcf-cc-faq-icon" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" d="M12 4.5v15m7.5-7.5h-15" /></svg>
+                        </button>
+                        <div class="dcf-cc-faq-answer">
+                            <p>Our migrations are planned in 4 phases: Discover, Architect, Migrate, and Optimize. We use a "lift-and-shift" or "re-platform" approach based on your needs. For critical applications, we plan for parallel environments to ensure zero downtime during the final cutover.</p>
+                        </div>
+                    </div>
+                    <div class="dcf-cc-faq-item">
+                        <button class="dcf-cc-faq-question" aria-expanded="false">
+                            How does "Pay-As-You-Go" billing work?
+                            <svg class="dcf-cc-faq-icon" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" d="M12 4.5v15m7.5-7.5h-15" /></svg>
+                        </button>
+                        <div class="dcf-cc-faq-answer">
+                            <p>For services like Object Storage and Serverless, you are billed only for what you use, calculated per-hour or per-GB. For IaaS products like VMs, you are billed hourly for the resources you provision, whether they are running or stopped. You can see a real-time cost breakdown in your control panel.</p>
+                        </div>
+                    </div>
+                </div>
+
+            </div>
+        </section>
+
+    </div>
+    
+    <script>
+        /* COMMENT: Wait for the DOM to be fully loaded before running scripts */
+        document.addEventListener('DOMContentLoaded', function() {
+
+            /* ========================================
+            PRICING TOGGLE LOGIC
+            ========================================
+            */
+            const pricingToggle = document.getElementById('dcf-cc-pricing-toggle-input');
+            const labelMonthly = document.getElementById('dcf-cc-toggle-label-monthly');
+            const labelYearly = document.getElementById('dcf-cc-toggle-label-yearly');
+            
+            // Find all toggleable rows
+            const toggleableRows = document.querySelectorAll('.dcf-cc-price-toggleable');
+
+            if (pricingToggle) {
+                pricingToggle.addEventListener('change', function() {
+                    const isYearly = this.checked;
+
+                    // Update labels
+                    if (isYearly) {
+                        labelMonthly.classList.remove('active');
+                        labelYearly.classList.add('active');
+                    } else {
+                        labelMonthly.classList.add('active');
+                        labelYearly.classList.remove('active');
+                    }
+                    
+                    // Iterate ONLY over the toggleable rows
+                    toggleableRows.forEach(row => {
+                        const monthlyPrice = row.querySelector('.dcf-cc-price-monthly');
+                        const yearlyPrice = row.querySelector('.dcf-cc-price-yearly');
+
+                        if (monthlyPrice && yearlyPrice) {
+                            if (isYearly) {
+                                monthlyPrice.style.display = 'none';
+                                yearlyPrice.style.display = 'block';
+                            } else {
+                                monthlyPrice.style.display = 'block';
+                                yearlyPrice.style.display = 'none';
+                            }
+                        }
+                    });
+                });
+            }
+
+            /* ========================================
+            FAQ ACCORDION LOGIC
+            ========================================
+            */
+            const faqItems = document.querySelectorAll('.dcf-cc-faq-item');
+
+            faqItems.forEach(item => {
+                const questionButton = item.querySelector('.dcf-cc-faq-question');
+                const answerPanel = item.querySelector('.dcf-cc-faq-answer');
+
+                if (questionButton && answerPanel) {
+                    questionButton.addEventListener('click', () => {
+                        const isOpening = !item.classList.contains('active');
+
+                        // Optional: Close all other items
+                        // faqItems.forEach(otherItem => {
+                        //     otherItem.classList.remove('active');
+                        //     otherItem.querySelector('.dcf-cc-faq-question').setAttribute('aria-expanded', 'false');
+                        //     otherItem.querySelector('.dcf-cc-faq-answer').style.maxHeight = null;
+                        // });
+
+                        if (isOpening) {
+                            item.classList.add('active');
+                            questionButton.setAttribute('aria-expanded', 'true');
+                            // Set max-height to the panel's scroll height so CSS transition works
+                            answerPanel.style.maxHeight = answerPanel.scrollHeight + 'px';
+                        } else {
+                            item.classList.remove('active');
+                            questionButton.setAttribute('aria-expanded', 'false');
+                            answerPanel.style.maxHeight = null;
+                        }
+                    });
+                }
+            });
+
+        });
+    </script>
+
+    <cronos-footer></cronos-footer>
+
+</body>
+</html>

@@ -1,0 +1,2098 @@
+<!DOCTYPE html>
+<html lang="en" dir="ltr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, minimum-scale=1.0, maximum-scale=5.0, viewport-fit=cover, shrink-to-fit=no">
+    <meta http-equiv="x-ua-compatible" content="ie=edge"/>
+    
+    <title>Cronos</title>
+
+    <!-- WEB TAB ICON -->
+    <link rel="icon" type="image/png" href="thumbnails/top-1.png">
+
+    <script src="header.js" defer></script>
+    <script src="footer.js" defer></script> 
+
+<style>
+  @font-face { font-family:'Circular Std'; src:url('fonts/CircularStd-Book.woff2') format('woff2'),url('fonts/CircularStd-Book.woff') format('woff'); font-weight:400; font-style:normal; font-display:swap; }
+  @font-face { font-family:'Circular Std'; src:url('fonts/CircularStd-BookItalic.woff2') format('woff2'),url('fonts/CircularStd-BookItalic.woff') format('woff'); font-weight:400; font-style:italic; font-display:swap; }
+  @font-face { font-family:'Circular Std'; src:url('fonts/CircularStd-Medium.woff2') format('woff2'),url('fonts/CircularStd-Medium.woff') format('woff'); font-weight:500; font-style:normal; font-display:swap; }
+  @font-face { font-family:'Circular Std'; src:url('fonts/CircularStd-Bold.woff2') format('woff2'),url('fonts/CircularStd-Bold.woff') format('woff'); font-weight:600; font-style:normal; font-display:swap; }
+  @font-face { font-family:'Circular Std'; src:url('fonts/CircularStd-Black.woff2') format('woff2'),url('fonts/CircularStd-Black.woff') format('woff'); font-weight:800; font-style:normal; font-display:swap; }
+
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+  font-family: 'Circular Std', sans-serif;
+}
+</style>
+
+</head>
+<body>
+
+  <cronos-header></cronos-header>
+    
+</body>
+</html>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<div class="sc-slider-root">
+  <div class="sc-sticky-track">
+    <div class="sc-slider-container">
+      
+      <div class="sc-video-bg-wrapper">
+        <video class="sc-video-element sc-active" data-index="0" autoplay muted loop playsinline>
+          <source src="videos/background-video3.mp4" type="video/mp4">
+        </video>
+        <video class="sc-video-element" data-index="1" muted loop playsinline>
+          <source src="videos/s.mp4" type="video/mp4">
+        </video>
+        <video class="sc-video-element" data-index="2" muted loop playsinline>
+          <source src="https://www.pexels.com/download/video/34436452/" type="video/mp4">
+        </video>
+        <video class="sc-video-element" data-index="3" muted loop playsinline>
+          <source src="https://www.pexels.com/download/video/6890371/" type="video/mp4">
+        </video>
+      </div>
+
+      <div class="sc-slider-overlay"></div>
+
+      <div class="sc-content-boundary">
+        
+        <div class="sc-text-panel sc-active" data-index="0">
+          <h2 class="sc-main-heading">The bar?<br>We raise that.</h2>
+          <p class="sc-sub-heading">We obsess over every. little. detail. In everything we do, we hold ourselves to the very highest of standards.</p>
+        </div>
+
+        <div class="sc-text-panel" data-index="1">
+          <h2 class="sc-main-heading">We add green energy<br>to the network.</h2>
+          <p class="sc-sub-heading">Building scalable solutions and modernizing infrastructure into an incredibly responsive digital ecosystem.</p>
+        </div>
+
+        <div class="sc-text-panel" data-index="2">
+          <h2 class="sc-main-heading">Power through<br>your day.</h2>
+          <p class="sc-sub-heading">Long-lasting intelligent power matrices keeping enterprise platforms perfectly mobile from morning to night.</p>
+        </div>
+
+        <div class="sc-text-panel" data-index="3">
+          <h2 class="sc-main-heading">Dedicated tier<br>protection.</h2>
+          <p class="sc-sub-heading">Our multi-tier framework scales gracefully under intense corporate workloads to secure operational longevity.</p>
+        </div>
+
+        <div class="sc-timeline-nav">
+          <div class="sc-timeline-tab sc-active" data-target="0">
+            <div class="sc-progress-track"><span class="sc-progress-bar"></span></div>
+            <span class="sc-tab-label">01. Origins</span>
+          </div>
+          <div class="sc-timeline-tab" data-target="1">
+            <div class="sc-progress-track"><span class="sc-progress-bar"></span></div>
+            <span class="sc-tab-label">02. Quality</span>
+          </div>
+          <div class="sc-timeline-tab" data-target="2">
+            <div class="sc-progress-track"><span class="sc-progress-bar"></span></div>
+            <span class="sc-tab-label">03. Servicing</span>
+          </div>
+          <div class="sc-timeline-tab" data-target="3">
+            <div class="sc-progress-track"><span class="sc-progress-bar"></span></div>
+            <span class="sc-tab-label">04. Protection</span>
+          </div>
+        </div>
+
+      </div>
+    </div>
+  </div>
+</div>
+
+<style>
+  /* Local Namespace Component Context Reset */
+  .sc-slider-root {
+    width: 100%;
+   
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    /* Height dictates the duration of the viewport scroll experience */
+    height: 400vh; 
+  }
+
+  .sc-slider-root *,
+  .sc-slider-root *::before,
+  .sc-slider-root *::after {
+    box-sizing: border-box;
+    margin: 0;
+    padding: 0;
+  }
+
+  /* Sticky Lock Track Window Frame container */
+  .sc-sticky-track {
+    position: sticky;
+    top: 0;
+    width: 100%;
+    height: 100vh;
+    overflow: hidden;
+  }
+
+  /* Full Viewport Canvas Base Box */
+  .sc-slider-container {
+    position: relative;
+    width: 100%;
+    height: 100%;
+    min-height: 650px;
+    font-family: 'Circular Std',-apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif;
+    color: #ffffff;
+  }
+
+  /* Video Background Wrapper layers */
+  .sc-video-bg-wrapper {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    z-index: 1;
+  }
+
+  .sc-video-element {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    opacity: 0;
+    visibility: hidden;
+    transition: opacity 0.8s cubic-bezier(0.4, 0, 0.2, 1), visibility 0.8s ease;
+  }
+
+  .sc-video-element.sc-active {
+    opacity: 1;
+    visibility: visible;
+  }
+
+  /* Cinematic overlay matching reference layout visuals */
+  .sc-slider-overlay {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: linear-gradient(180deg, rgba(0,0,0,0.25) 0%, rgba(0,0,0,0.45) 60%, rgba(0,0,0,0.85) 100%);
+    z-index: 2;
+  }
+
+  /* Strict Content Grid Boundary Window Layout */
+  .sc-content-boundary {
+    position: relative;
+    width: 100%;
+    max-width: 1200px;
+    height: 100%;
+    margin: 0 auto;
+    padding: 0 24px;
+    display: flex;
+    flex-direction: column;
+    justify-content: flex-end;
+    z-index: 3;
+    padding-bottom: 140px;
+  }
+
+  /* Content Panel Switch States */
+  .sc-text-panel {
+    max-width: 520px;
+    position: absolute;
+    bottom: 220px;
+    opacity: 0;
+    visibility: hidden;
+    transform: translateY(20px);
+    transition: opacity 0.5s cubic-bezier(0.25, 1, 0.5, 1), transform 0.5s cubic-bezier(0.25, 1, 0.5, 1), visibility 0.5s ease;
+  }
+
+  .sc-text-panel.sc-active {
+    opacity: 1;
+    visibility: visible;
+    transform: translateY(0);
+    position: relative;
+    bottom: auto;
+  }
+
+  .sc-main-heading {
+    font-size: 3.2rem;
+    font-weight: 400;
+    line-height: 1;
+    margin-bottom: 16px;
+    letter-spacing: -0.01em;
+    color: #ffffff;
+  }
+
+  .sc-sub-heading {
+    font-size: 1rem;
+    line-height: 1.6;
+    color: #959595;
+    margin-bottom: 28px;
+    font-weight: 300;
+  }
+
+
+  .sc-arrow-wrap {
+    display: inline-block;
+    transition: transform 0.25s ease;
+  }
+
+  .sc-explore-action:hover .sc-arrow-wrap {
+    transform: translateX(4px);
+  }
+
+  /* Timeline Progress Tracks Footer Section */
+  .sc-timeline-nav {
+    position: absolute;
+    bottom: 50px;
+    left: 24px;
+    right: 24px;
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    gap: 20px;
+  }
+
+  .sc-timeline-tab {
+    display: flex;
+    flex-direction: column;
+    gap: 12px;
+    cursor: pointer;
+    user-select: none;
+  }
+
+  .sc-progress-track {
+    width: 100%;
+    height: 2px;
+    background-color: rgba(255, 255, 255, 0.2);
+    position: relative;
+    border-radius: 1px;
+    overflow: hidden;
+  }
+
+  .sc-progress-bar {
+    position: absolute;
+    top: 0;
+    left: 0;
+    height: 100%;
+    width: 0%;
+    background-color: #ffffff;
+  }
+
+  .sc-tab-label {
+    font-size: 1rem;
+    color: #959595;
+    font-weight: 400;
+    transition: color 0.3s ease;
+  }
+
+  .sc-timeline-tab.sc-active .sc-tab-label {
+    color: #ffffff;
+  }
+
+  /* --- Responsive Adaptive Viewport Rules --- */
+  @media (max-width: 768px) {
+    .sc-main-heading {
+      font-size: 2.2rem;
+    }
+    .sc-timeline-nav {
+      grid-template-columns: repeat(2, 1fr);
+      gap: 12px;
+      bottom: 30px;
+    }
+    .sc-content-boundary {
+      padding-bottom: 160px;
+    }
+    .sc-text-panel.sc-active {
+      max-width: 100%;
+    }
+  }
+</style>
+
+<script>
+  document.addEventListener('DOMContentLoaded', () => {
+    const root = document.querySelector('.sc-slider-root');
+    const tabs = root.querySelectorAll('.sc-timeline-tab');
+    const progressBars = root.querySelectorAll('.sc-progress-bar');
+    const textPanels = root.querySelectorAll('.sc-text-panel');
+    const videoElements = root.querySelectorAll('.sc-video-element');
+    
+    let currentIndex = 0;
+    const totalSlides = tabs.length;
+
+    // Set layout visuals based on designated active slide frame index
+    function updateActiveState(index, segmentProgress) {
+      currentIndex = Math.max(0, Math.min(index, totalSlides - 1));
+
+      // 1. Text Panels visibility transition updates
+      textPanels.forEach((panel, idx) => {
+        panel.classList.toggle('sc-active', idx === currentIndex);
+      });
+
+      // 2. Video elements active state playback trigger updates
+      videoElements.forEach((video, idx) => {
+        if (idx === currentIndex) {
+          if (!video.classList.contains('sc-active')) {
+            video.classList.add('sc-active');
+            video.play().catch(() => {});
+          }
+        } else {
+          video.classList.remove('sc-active');
+          video.pause();
+        }
+      });
+
+      // 3. Update Progress Bar fills cleanly across the active index ranges
+      tabs.forEach((tab, idx) => {
+        tab.classList.toggle('sc-active', idx === currentIndex);
+        
+        if (idx < currentIndex) {
+          progressBars[idx].style.width = '100%';
+        } else if (idx > currentIndex) {
+          progressBars[idx].style.width = '0%';
+        } else {
+          progressBars[idx].style.width = `${segmentProgress * 100}%`;
+        }
+      });
+    }
+
+    // Capture standard page window scrolling coordinates and parse slider status maps
+    function handleWindowScroll() {
+      const rootRect = root.getBoundingClientRect();
+      const totalScrollableHeight = root.clientHeight - window.innerHeight;
+      
+      // Calculate global container progress (value ranging from 0 to 1)
+      let globalProgress = -rootRect.top / totalScrollableHeight;
+      globalProgress = Math.max(0, Math.min(globalProgress, 0.9999));
+
+      // Translate global track map into targeted indices and individual segments
+      const activeSegmentIndex = Math.floor(globalProgress * totalSlides);
+      const segmentRemainderPercent = (globalProgress * totalSlides) % 1;
+
+      updateActiveState(activeSegmentIndex, segmentRemainderPercent);
+    }
+
+    // Attach native viewport scrolling monitor trigger framework loops
+    window.addEventListener('scroll', handleWindowScroll);
+
+    // Support absolute horizontal jumping via direct navigation tab click links
+    tabs.forEach((tab, idx) => {
+      tab.addEventListener('click', () => {
+        const totalScrollableHeight = root.clientHeight - window.innerHeight;
+        const targetScrollPosition = window.scrollY + root.getBoundingClientRect().top + (idx / totalSlides) * totalScrollableHeight;
+        
+        window.scrollTo({
+          top: targetScrollPosition + 2,
+          behavior: 'smooth'
+        });
+      });
+    });
+
+    // Initialize layout positions defaults on primary paint thread
+    handleWindowScroll();
+  });
+</script>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>IT Tech Independent Slide</title>
+
+    <style>
+        /* Global Reset & Namespace styling */
+        * {
+            box-sizing: border-box;
+        }
+
+        :root {
+            --it-sep-font: 'Circular Std', sans-serif;
+            --it-sep-bg: #f4f4f4;
+            --it-sep-text: #0B1221;
+            --it-sep-sub: #556987;
+            --it-sep-accent: #0B1221;
+            --it-sep-line: #E5E7EB;
+        }
+
+        body {
+            margin: 0;
+            padding: 0;
+            font-family: var(--it-sep-font);
+            background: var(--it-sep-bg);
+        }
+
+        /* 1. Track: Controls total scroll depth */
+        .it-sep-track {
+            position: relative; padding: 120px 0;
+            height: 400vh; /* 100vh per section */
+        }
+
+        /* 2. Sticky Container: Keeps component locked in viewport during scroll */
+        .it-sep-sticky {
+            position: sticky;
+            top: 60px;
+            height: 90vh;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            overflow: hidden; 
+            padding: 40px 20px;
+        }
+
+        .it-sep-header {
+            text-align: center;
+            margin-bottom: 40px;
+            z-index: 10;
+        }
+
+        .it-sep-title {
+            font-size: clamp(28px, 4vw, 42px); /* Fluid text scaling */
+            font-weight: 500;
+            letter-spacing: -0.03em;
+            margin: 0;
+            color: var(--it-sep-text);
+        }
+
+        /* 3. Central Dynamic Layout */
+        .it-sep-grid {
+            position: relative;
+            display: grid;
+            grid-template-columns: 1fr 2px 1fr;
+            gap: 60px;
+            width: 100%;
+            max-width: 1100px;
+            height: 450px;
+            align-items: center;
+        }
+
+        /* Center Progress Line */
+        .it-sep-line-container {
+            height: 100%;
+            background: var(--it-sep-line);
+            position: relative;
+            width: 100%;
+        }
+
+        .it-sep-line-fill {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            background: var(--it-sep-accent);
+            height: 0%;
+            transition: height 0.1s ease-out;
+        }
+
+        /* 4. Content Masks */
+        .it-sep-slot {
+            position: relative;
+            height: 100%;
+            width: 100%;
+            overflow: hidden; 
+            border-radius: 20px;
+        }
+
+        .it-sep-text-slot {
+            overflow: hidden;
+            border-radius: 0;
+            display: flex;
+            align-items: center;
+        }
+
+        /* Individual Sliding Layers */
+        .it-sep-layer {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            opacity: 0;
+            pointer-events: none;
+            transition: transform 0.6s cubic-bezier(0.16, 1, 0.3, 1), opacity 0.4s ease;
+        }
+
+        /* Active Transition States */
+        .it-sep-layer.active {
+            opacity: 1;
+            transform: translateY(0) !important;
+            pointer-events: auto;
+        }
+
+        /* Directional Entry Definitions */
+        .it-sep-img-layer {
+            transform: translateY(-100%);
+        }
+
+        .it-sep-text-layer {
+            transform: translateY(100%);
+            display: flex; width: 400px;
+            flex-direction: column;
+            justify-content: center;
+        }
+
+        .it-sep-img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            border-radius: 20px;
+        }
+
+        .it-sep-h3 { 
+            font-size: clamp(24px, 3vw, 32px); 
+            font-weight: 600; 
+            margin: 0 0 15px 0; 
+            color: var(--it-sep-text); 
+            letter-spacing: -0.02em;
+        }
+        
+        .it-sep-p { 
+            font-size: clamp(15px, 2vw, 18px); 
+            color: var(--it-sep-sub); 
+            line-height: 1.4; 
+            margin: 0; 
+            font-weight: 400;
+        }
+
+        .it-sep-footer {
+            margin-top: 40px;
+            z-index: 10;
+        }
+
+        .it-sep-btn {
+            background: #0B1221;
+            color: white;
+            padding: 12px 30px;
+            border-radius: 50px;
+            font-weight: 400;
+            font-size: 17px;
+            border: none;
+            cursor: pointer;
+            font-family: inherit;
+            transition: transform 0.2s ease;
+        }
+
+        .it-sep-btn:hover {
+            transform: scale(1.03);
+        }
+
+        /* ==========================================================================
+           Mobile Responsiveness (Screens 900px and below)
+           ========================================================================== */
+        @media (max-width: 900px) {
+            .it-sep-sticky {
+                padding: 30px 20px; top:70px
+            }
+
+            .it-sep-header {
+                margin-bottom: 25px;
+            }
+
+            /* Restructure grid layout: Left bar (4px), Right content area (1fr) */
+            .it-sep-grid {
+                grid-template-columns: 4px 1fr;
+                grid-template-rows: 220px 140px; /* Separated row heights for img and text slots */
+                gap: 20px 25px;
+                height: 380px;
+                align-items: stretch; 
+            }
+
+            /* Make progress bar track span full height of both slot rows */
+            .it-sep-line-container {
+                grid-column: 1;
+                grid-row: 1 / span 2;
+                width: 4px;
+            }
+
+            /* Send image slot cleanly into row 1 on the right */
+            .it-sep-slot:not(.it-sep-text-slot) {
+                grid-column: 2;
+                grid-row: 1;
+            }
+
+            /* Send text slot safely into row 2 on the right */
+            .it-sep-text-slot {
+                grid-column: 2;
+                grid-row: 2;
+                align-items: flex-start;
+                padding-top: 5px;
+            }
+
+            .it-sep-text-layer {
+                justify-content: flex-start;
+            }
+
+            .it-sep-footer {
+                margin-top: 25px;
+            }
+        }
+    </style>
+</head>
+<body>
+
+<div class="it-sep-track" id="itTrack">
+    <div class="it-sep-sticky">
+        
+        <div class="it-sep-header">
+            <h2 class="it-sep-title">See why 4,000+ merchants trust us</h2>
+        </div>
+
+        <div class="it-sep-grid">
+            <!-- Images Slot -->
+            <div class="it-sep-slot">
+                <div class="it-sep-layer it-sep-img-layer active" data-index="0">
+                    <img src="https://images.unsplash.com/photo-1686848429284-d108e021a74c?q=80&w=1332&auto=format&fit=crop&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D" class="it-sep-img" alt="Tech 1">
+                </div>
+                <div class="it-sep-layer it-sep-img-layer" data-index="1">
+                    <img src="https://images.unsplash.com/photo-1451187580459-43490279c0fa?auto=format&fit=crop&q=80&w=800" class="it-sep-img" alt="Tech 2">
+                </div>
+                <div class="it-sep-layer it-sep-img-layer" data-index="2">
+                    <img src="https://images.unsplash.com/photo-1518770660439-4636190af475?auto=format&fit=crop&q=80&w=800" class="it-sep-img" alt="Tech 3">
+                </div>
+                <div class="it-sep-layer it-sep-img-layer" data-index="3">
+                    <img src="https://images.unsplash.com/photo-1563986768609-322da13575f3?auto=format&fit=crop&q=80&w=800" class="it-sep-img" alt="Tech 4">
+                </div>
+            </div>
+
+            <!-- Left / Center Progress Line -->
+            <div class="it-sep-line-container">
+                <div class="it-sep-line-fill" id="itLine"></div>
+            </div>
+
+            <!-- Text Slot -->
+            <div class="it-sep-slot it-sep-text-slot">
+                <div class="it-sep-layer it-sep-text-layer active" data-index="0">
+                    <h3 class="it-sep-h3">Advanced Data Security</h3>
+                    <p class="it-sep-p">Protect your infrastructure with hardware-level encryption and real-time threat monitoring.</p>
+                </div>
+                <div class="it-sep-layer it-sep-text-layer" data-index="1">
+                    <h3 class="it-sep-h3">Cloud Infrastructure</h3>
+                    <p class="it-sep-p">Scalable cloud solutions that grow with your business, ensuring 99.9% uptime across all regions.</p>
+                </div>
+                <div class="it-sep-layer it-sep-text-layer" data-index="2">
+                    <h3 class="it-sep-h3">AI Performance</h3>
+                    <p class="it-sep-p">Harness the power of neural networks to automate complex workflows and data analysis.</p>
+                </div>
+                <div class="it-sep-layer it-sep-text-layer" data-index="3">
+                    <h3 class="it-sep-h3">Smart Interfaces</h3>
+                    <p class="it-sep-p">Intuitive dashboards designed for deep technical oversight without the clutter.</p>
+                </div>
+            </div>
+        </div>
+
+        <div class="it-sep-footer">
+            <button class="it-sep-btn">Get started with Croloft</button>
+        </div>
+
+    </div>
+</div>
+
+<script>
+(function() {
+    const track = document.getElementById('itTrack');
+    const line = document.getElementById('itLine');
+    const imgLayers = document.querySelectorAll('.it-sep-img-layer');
+    const textLayers = document.querySelectorAll('.it-sep-text-layer');
+    const totalItems = 4;
+
+    function updateScroll() {
+        if (!track) return; // Removed the window width restriction to enable mobile animation
+
+        const rect = track.getBoundingClientRect();
+        const viewHeight = window.innerHeight;
+        
+        // Total scrollable distance
+        const totalDist = rect.height - viewHeight;
+        // Current progress (0 to 1)
+        let progress = -rect.top / totalDist;
+        progress = Math.max(0, Math.min(1, progress));
+
+        // Update Line progress fill height
+        line.style.height = `${progress * 100}%`;
+
+        // Determine current active index based on scroll progress
+        const activeIndex = Math.min(Math.floor(progress * totalItems), totalItems - 1);
+
+        // Update Layers
+        imgLayers.forEach((layer, idx) => {
+            if (idx === activeIndex) {
+                layer.classList.add('active');
+            } else if (idx < activeIndex) {
+                // Scrolled past: push DOWN out of box mask
+                layer.classList.remove('active');
+                layer.style.transform = 'translateY(100%)';
+            } else {
+                // Not reached: keep UP above box mask
+                layer.classList.remove('active');
+                layer.style.transform = 'translateY(-100%)';
+            }
+        });
+
+        textLayers.forEach((layer, idx) => {
+            if (idx === activeIndex) {
+                layer.classList.add('active');
+            } else if (idx < activeIndex) {
+                // Scrolled past: push UP out of box mask
+                layer.classList.remove('active');
+                layer.style.transform = 'translateY(-100%)';
+            } else {
+                // Not reached: keep DOWN below box mask
+                layer.classList.remove('active');
+                layer.style.transform = 'translateY(100%)';
+            }
+        });
+    }
+
+    window.addEventListener('scroll', updateScroll, { passive: true });
+    window.addEventListener('resize', updateScroll);
+    updateScroll();
+})();
+</script>
+
+</body>
+</html>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Defcon E-commerce Solutions - Digital Commerce Mastery</title>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
+    <style>
+        /* CSS Variables for Consistency */
+        :root {
+            --defcon-primary: #0086e7; /* Accent Color */
+            --defcon-dark: #010719; /* Primary Background/Text (Deep Navy) */
+            --defcon-white: #fff;
+            --defcon-light-grey: #f4f4f4;
+            --defcon-black: #000;
+            --defcon-lighter-grey: #e5e5e5;
+            --defcon-secondary-dark: #070733; /* Slightly lighter dark for contrast */
+            --defcon-text-light: #c0c0d0; /* Light text on dark background */
+            --defcon-green: #10b981; /* For discounts */
+        }
+
+        /* Base Styles */
+        body {
+            font-family: 'Circular Std', sans-serif;
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            background-color: var(--defcon-dark); /* Dark theme base */
+            color: var(--defcon-white);
+            line-height: 1.6;
+        }
+
+        *, *::before, *::after {
+            box-sizing: inherit;
+        }
+
+        /* General Utilities */
+        .defcon-container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 20px;
+        }
+        
+        .defcon-section-title {
+            font-size: 3em;
+            font-weight: 500;
+            line-height: 1.2;
+            letter-spacing: -0.02em;
+            margin-bottom: 10px;
+            color: var(--defcon-white);
+        }
+
+        .defcon-subtitle-accent {
+            font-size: 1em;
+            color: #0086e7;
+            font-weight: 400;
+            text-transform: uppercase;
+            margin-bottom: 10px;
+        }
+
+        /* Primary Call-to-Action Button */
+        .defcon-primary-btn {
+            display: inline-block;
+            background-color: #f4f4f4;
+            color: #080d1b;
+            padding: 8px 20px;
+            border-radius: 50px;
+            text-decoration: none;
+            font-weight: 500;
+            font-size: 1em;
+            border: none;
+            cursor: pointer;
+        }
+
+        .defcon-primary-btn:hover {
+            background-color: #0d7ac7; /* Darker primary on hover */
+            transform: translateY(-2px);
+        }
+        
+        /* --- 1. HERO SECTION --- */
+        .defcon-ecommerce-hero {
+            position: relative;
+            height: 100vh;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            text-align: left;
+            overflow: hidden;
+            background-color: var(--defcon-dark);
+            background-image: linear-gradient(135deg, rgba(17, 153, 250, 0.1) 0%, rgba(1, 1, 25, 1) 50%, rgba(1, 1, 25, 1) 100%);
+        }
+
+        .defcon-ecommerce-hero-background {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background-image: url('https://images.pexels.com/photos/14171333/pexels-photo-14171333.jpeg'); 
+            background-size: cover;
+            background-position: center;
+            filter: brightness(0.4) contrast(1.1);
+            opacity: 0.3;
+            z-index: 1;
+        }
+
+        .defcon-ecommerce-hero-content {
+            position: relative;
+            z-index: 3;
+            max-width: 1200px; text-align: left;
+            padding: 20px;
+        }
+
+        .defcon-ecommerce-hero h1 {
+            font-size: 4.5em;
+            margin-bottom: 20px;
+            font-weight: 500;
+            letter-spacing: -0.02em;
+            line-height: 1.1;
+            background: linear-gradient(45deg, var(--defcon-white), var(--defcon-primary));
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+        }
+
+        .defcon-ecommerce-hero p {
+            font-size: 1.3em;
+            margin-bottom: 40px; text-align: left;
+            font-weight: 400; 
+            color: var(--defcon-text-light);
+        }
+
+        .defcon-ecommerce-hero-glow1, .defcon-ecommerce-hero-glow2 {
+            position: absolute;
+            width: 350px;
+            height: 350px;
+            background: radial-gradient(circle, rgba(17, 153, 250, 0.5) 0%, transparent 70%);
+            border-radius: 50%;
+            filter: blur(100px);
+            z-index: 2;
+            opacity: 0.7;
+        }
+        .defcon-ecommerce-hero-glow1 { top: 10%; left: 10%; animation: glow-move1 12s infinite alternate ease-in-out; }
+        .defcon-ecommerce-hero-glow2 { bottom: 10%; right: 10%; animation: glow-move2 14s infinite alternate ease-in-out; }
+
+        @keyframes glow-move1 {
+            0% { transform: translate(0, 0); } 50% { transform: translate(30px, 40px); } 100% { transform: translate(0, 0); }
+        }
+        @keyframes glow-move2 {
+            0% { transform: translate(0, 0); } 50% { transform: translate(-30px, -40px); } 100% { transform: translate(0, 0); }
+        }
+
+        /* --- 2. PRODUCT DETAIL/PRICING SECTION --- */
+        .defcon-pricing-section {
+            background-color: var(--defcon-white);
+            padding: 150px 0;
+            color: var(--defcon-black);
+        }
+
+        .defcon-pricing-container {
+            display: flex;
+            gap: 60px;
+        }
+
+        .defcon-pricing-left {
+            flex: 1;
+        }
+
+        .defcon-pricing-left .defcon-section-title {
+            color: var(--defcon-dark);
+            font-size: 3.5em;
+            line-height: 0.9;
+        }
+
+        .defcon-pricing-left p {
+            font-size: 1.1em;
+            color: #555;
+            line-height: 1.7;
+            margin-bottom: 40px;
+        }
+        
+        .defcon-pricing-left .defcon-subtitle-accent {
+            color: var(--defcon-black);
+        }
+
+        .defcon-pricing-right {
+            flex: 1.5;
+        }
+
+        .defcon-product-listing {
+            padding-top: 20px;
+        }
+
+        /* PRODUCT ITEM STYLES */
+        .defcon-product-item {
+            display: grid;
+            grid-template-columns: 2fr 1fr;
+            gap: 30px;
+            padding: 35px 0;
+            border-bottom: 1px solid var(--defcon-lighter-grey);
+            align-items: start;
+        }
+
+        .defcon-product-info h3 {
+            margin: 0 0 10px 0;
+            font-size: 1.5em;
+            font-weight: 700;
+            color: var(--defcon-dark);
+        }
+
+        .defcon-product-desc {
+            margin: 0 0 15px 0;
+            font-size: 1em;
+            color: #555;
+            line-height: 1.5;
+        }
+
+        .defcon-feature-list {
+            list-style: none;
+            padding: 0;
+            margin: 15px 0 0 0;
+        }
+
+        .defcon-feature-list li {
+            position: relative;
+            padding-left: 20px;
+            margin-bottom: 6px;
+            font-size: 0.9em;
+            color: #666;
+            line-height: 1.4;
+        }
+
+        .defcon-feature-list li::before {
+            content: "✓";
+            color: var(--defcon-primary);
+            position: absolute;
+            left: 0;
+            font-weight: bold;
+        }
+
+        .defcon-product-package-tag {
+            display: inline-block;
+            font-size: 0.75em;
+            font-weight: 600;
+            text-transform: uppercase;
+            letter-spacing: 0.05em;
+            color: var(--defcon-primary);
+            background: rgba(0, 134, 231, 0.1);
+            padding: 4px 10px;
+            border-radius: 4px;
+            margin-bottom: 10px;
+        }
+
+        .defcon-price-column {
+            text-align: right;
+            display: flex;
+            flex-direction: column;
+            align-items: flex-end;
+        }
+
+        .defcon-product-price {
+            font-size: 1.8em;
+            font-weight: 800;
+            color: var(--defcon-dark);
+            line-height: 1;
+        }
+
+        .defcon-price-sub {
+            font-size: 0.85em;
+            color: #777;
+            text-transform: uppercase;
+            font-weight: 600;
+            margin-bottom: 10px;
+            display: block;
+        }
+
+        .defcon-installment-price {
+            font-size: 1.05em;
+            color: var(--defcon-dark);
+            font-weight: 600;
+            margin-bottom: 5px;
+        }
+
+        .defcon-installment-note {
+            font-size: 0.85em;
+            color: #666;
+        }
+
+        .defcon-discount-badge {
+            margin-top: 10px;
+            font-size: 0.8em;
+            color: var(--defcon-green);
+            font-weight: 700;
+            background-color: rgba(16, 185, 129, 0.1);
+            padding: 5px 10px;
+            border-radius: 4px;
+            display: inline-block;
+            white-space: nowrap;
+        }
+
+        /* --- 3. VALUE PROPOSITION SECTION --- */
+        .defcon-value-section {
+            padding: 160px 0;
+            background-color: var(--defcon-dark);
+            background-image: radial-gradient(circle at 50% 10%, rgba(0, 149, 255, 0.234) 0%, #010719 50%);
+            text-align: left;
+        }
+
+        .defcon-value-section .defcon-section-title {
+            margin-bottom: 60px;
+            font-size: 3em;
+            font-weight: 500;
+            letter-spacing: -0.02em;
+        }
+        
+        .defcon-value-cards {
+            display: flex;
+            gap: 15px;
+            justify-content: center;
+        }
+
+        .defcon-value-card {
+            background-color: #0f1328;
+            padding: 40px 30px;
+            border-radius: 30px;
+            flex: 1;
+            max-width: 380px;
+        }
+
+
+        .defcon-value-card-icon {
+            font-size: 2.5em;
+            color: var(--defcon-primary);
+            margin-bottom: 20px;
+            font-weight: 300;
+        }
+
+        .defcon-value-card h3 {
+            font-size: 1.8em;
+            font-weight: 400;
+            color: var(--defcon-white);
+            margin-top: 0;
+            margin-bottom: 15px;
+        }
+
+        .defcon-value-card p {
+            color: var(--defcon-text-light);
+            font-size: 1.1em;
+            line-height: 1.6;
+        }
+        
+        /* --- 4. STATISTICS SECTION --- */
+        .defcon-stats-section {
+            padding: 100px 0;
+            background-color: var(--defcon-dark);
+            text-align: center;
+        }
+
+        .defcon-stats-section .defcon-section-title {
+            font-size: 4em;
+            font-weight: 500;
+        }
+        
+        .defcon-stats-section .defcon-subtitle-accent {
+            margin-bottom: 20px;
+        }
+
+        .defcon-stats-subtitle {
+            font-size: 1.4em;
+            color: var(--defcon-text-light);
+            max-width: 700px;
+            margin: 0 auto 50px auto;
+            font-weight: 400;
+        }
+
+        .defcon-stats-grid {
+            display: flex;
+            justify-content: center;
+            gap: 80px;
+            margin-top: 50px;
+        }
+
+        .defcon-stat-item {
+            text-align: center;
+        }
+
+        .defcon-stat-number {
+            font-size: 6em;
+            font-weight: 400;
+            line-height: 1;
+            color: var(--defcon-primary);
+            margin-bottom: 10px;
+        }
+
+        .defcon-stat-label {
+            font-size: 1.1em;
+            font-weight: 500;
+            color: var(--defcon-text-light);
+        }
+
+        /* --- 5. FAQ SECTION --- */
+        .defcon-faq-section {
+            padding: 150px 0;
+            background-color: #010719;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+        
+        .defcon-faq-section .defcon-section-title {
+            text-align: left;
+            margin-bottom: 40px; font-weight: 400; font-size: 1.8em;
+        }
+
+        .defcon-accordion-list {
+            max-width: 1100px;
+        }
+
+        .defcon-accordion-item {
+            font-size: 1.2em;
+            border-bottom: 1px solid #2d2d4d;
+        }
+        
+        .defcon-accordion-item:last-child {
+            border-bottom: none;
+        }
+
+        .defcon-accordion-header {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 25px 0;
+            cursor: pointer;
+            font-size: 1.2em;
+            font-weight: 400;
+            color: var(--defcon-white);
+            transition: color 0.3s ease;
+        }
+        
+        .defcon-accordion-header:hover {
+            color: var(--defcon-primary);
+        }
+
+        .defcon-accordion-toggle {
+            font-size: 2.2em;
+            font-weight: 400;
+            line-height: 1;
+            transition: transform 0.3s ease;
+        }
+        
+        .defcon-accordion-content {
+            max-height: 0;
+            overflow: hidden;
+            transition: max-height 0.4s ease-in-out, padding 0.4s ease-in-out;
+            padding-left: 0;
+            padding-right: 0;
+            padding-bottom: 0;
+            color: var(--defcon-text-light);
+        }
+
+        .defcon-accordion-content p {
+            padding: 0 0 20px 0;
+            margin: 0;
+            font-size: 1em;
+            line-height: 1.7;
+        }
+
+        .defcon-accordion-item.active .defcon-accordion-toggle {
+            transform: rotate(45deg);
+        }
+        .defcon-accordion-item.active .defcon-accordion-content {
+            max-height: 500px;
+            padding-bottom: 25px;
+        }
+        
+        .defcon-new-tag {
+            background-color: var(--defcon-primary);
+            color: white;
+            font-size: 0.5em;
+            font-weight: 400;
+            padding: 3px 8px;
+            border-radius: 60px;
+            margin-left: 10px;
+            vertical-align: middle;
+            display: inline-block;
+        }
+
+
+        /* --- Mobile Responsiveness --- */
+        @media (max-width: 1200px) {
+            .defcon-container {
+                padding: 0 40px; 
+            }
+        }
+        
+        @media (max-width: 1024px) {
+            .defcon-ecommerce-hero h1 {
+                font-size: 3.5em;
+            }
+            .defcon-ecommerce-hero p {
+                font-size: 1.2em;
+            }
+
+            .defcon-pricing-container {
+                flex-direction: column;
+                gap: 40px;
+            }
+            .defcon-pricing-left .defcon-section-title {
+                font-size: 3em;
+            }
+
+            .defcon-value-cards {
+                flex-direction: column;
+                align-items: center;
+            }
+            
+            .defcon-stats-grid {
+                flex-direction: column;
+                gap: 40px;
+            }
+            
+            .defcon-stat-number {
+                font-size: 5em;
+            }
+        }
+
+        @media (max-width: 768px) {
+            .defcon-container {
+                padding: 0 20px; 
+            }
+
+            .defcon-ecommerce-hero h1 {
+                font-size: 2.5em;
+            }
+            .defcon-ecommerce-hero p {
+                font-size: 1em;
+            }
+            .defcon-primary-btn {
+                padding: 12px 25px;
+                font-size: 1em;
+            }
+
+            .defcon-pricing-left .defcon-section-title {
+                font-size: 2.5em;
+            }
+            
+            .defcon-product-item {
+                grid-template-columns: 1fr;
+                padding: 30px 0;
+            }
+            
+            .defcon-price-column {
+                text-align: left;
+                align-items: flex-start;
+                margin-top: 15px;
+                border-top: 1px dashed #ddd;
+                padding-top: 15px;
+                width: 100%;
+            }
+
+            .defcon-stats-section .defcon-section-title {
+                font-size: 3em;
+            }
+        }
+    </style>
+</head>
+<body>
+
+    <section class="defcon-ecommerce-hero">
+        <div class="defcon-ecommerce-hero-background"></div>
+        <div class="defcon-ecommerce-hero-glow1"></div>
+        <div class="defcon-ecommerce-hero-glow2"></div>
+        <div class="defcon-ecommerce-hero-content">
+            <h1>Digital Commerce, Redefined.</h1>
+            <p>Launch, scale, and conquer the online market with Defcon's secure, <br> performance-driven e-commerce platforms. From local startups to global enterprises.</p>
+            <a href="#defcon-pricing-section" class="defcon-primary-btn">View SA Pricing & Packages &rarr;</a>
+        </div>
+    </section>
+
+    <section id="defcon-pricing-section" class="defcon-pricing-section">
+        <div class="defcon-container defcon-pricing-container">
+            <div class="defcon-pricing-left">
+                <span class="defcon-subtitle-accent">Our Solutions</span>
+                <h2 class="defcon-section-title">End-to-End E-commerce Mastery</h2>
+                <p>We build more than just websites; we architect comprehensive sales ecosystems. Whether you are a solo entrepreneur in Joburg or a retail giant in Cape Town, we have a package for you.</p>
+                <a href="#defcon-faq-section" class="defcon-primary-btn" style="background-color: transparent; border: 1px solid #080d1b;">Compare Features</a>
+            </div>
+            
+            <div class="defcon-pricing-right">
+                <div class="defcon-product-listing">
+                    
+                    <div class="defcon-product-item">
+                        <div class="defcon-product-info">
+                            <span class="defcon-product-package-tag">Package: Kickstart (Starters)</span>
+                            <h3>Startup E-commerce Essentials</h3>
+                            <p class="defcon-product-desc">The perfect entry point for solo entrepreneurs and side-hustlers. Get your brand online quickly with a professional, mobile-ready store.</p>
+                            <ul class="defcon-feature-list">
+                                <li>5-Page Store Setup (WooCommerce/Shopify)</li>
+                                <li>Payment Integration (PayFast / Yoco)</li>
+                                <li>WhatsApp Chat Button for Direct Sales</li>
+                                <li>Basic SEO & Google Maps Listing</li>
+                                <li>1 Month Post-Launch Support</li>
+                            </ul>
+                        </div>
+                        <div class="defcon-price-column">
+                            <span class="defcon-product-price">R 4,950</span>
+                            <span class="defcon-price-sub">One-Time Fee</span>
+                            <div class="defcon-installment-price">or R250 <span style="font-size:0.8em; font-weight:400;">x 24 Months</span></div>
+                            <span class="defcon-installment-note">Small deposit required</span>
+                            <div class="defcon-discount-badge">Save 5% on Cash Payment</div>
+                        </div>
+                    </div>
+
+                    <div class="defcon-product-item">
+                        <div class="defcon-product-info">
+                            <span class="defcon-product-package-tag">Package: Business Standard (SME)</span>
+                            <h3>Professional Store Launch</h3>
+                            <p class="defcon-product-desc">Designed for growing small businesses needing inventory management, courier integration, and automated emails.</p>
+                            <ul class="defcon-feature-list">
+                                <li>Up to 50 Products Uploaded & Categorized</li>
+                                <li>Courier Integration (The Courier Guy / Pudo)</li>
+                                <li>Automated Abandoned Cart Emails</li>
+                                <li>Blog/News Section for Content Marketing</li>
+                                <li>Training Session on Order Management</li>
+                            </ul>
+                        </div>
+                        <div class="defcon-price-column">
+                            <span class="defcon-product-price">R 14,500</span>
+                            <span class="defcon-price-sub">One-Time Fee</span>
+                            <div class="defcon-installment-price">or R725 <span style="font-size:0.8em; font-weight:400;">x 24 Months</span></div>
+                            <span class="defcon-installment-note">Fast approval financing</span>
+                            <div class="defcon-discount-badge">Save 10% on Cash Payment</div>
+                        </div>
+                    </div>
+
+                    <div class="defcon-product-item">
+                        <div class="defcon-product-info">
+                            <span class="defcon-product-package-tag">Package: Advanced Growth</span>
+                            <h3>Scale-Up Ecosystem</h3>
+                            <p class="defcon-product-desc">For established brands needing advanced customization, loyalty programs, and deeper analytics to scale revenue.</p>
+                            <ul class="defcon-feature-list">
+                                <li>Custom Theme Development & UX Design</li>
+                                <li>Data Migration (from old platforms)</li>
+                                <li>Advanced Filtering & Search (ElasticSearch)</li>
+                                <li>Loyalty Points & Rewards System Integration</li>
+                                <li>Multi-currency & Cross-border Setup</li>
+                            </ul>
+                        </div>
+                        <div class="defcon-price-column">
+                            <span class="defcon-product-price">R 35,000</span>
+                            <span class="defcon-price-sub">One-Time Fee</span>
+                            <div class="defcon-installment-price">or R1,750 <span style="font-size:0.8em; font-weight:400;">x 24 Months</span></div>
+                            <span class="defcon-installment-note">Interest-free terms available</span>
+                            <div class="defcon-discount-badge">Save 10% on Cash Payment</div>
+                        </div>
+                    </div>
+
+                    <div class="defcon-product-item">
+                        <div class="defcon-product-info">
+                            <span class="defcon-product-package-tag">Package: Dual Platform App</span>
+                            <h3>Native Mobile App</h3>
+                            <p class="defcon-product-desc">iOS and Android apps for direct mobile sales. Secure real estate on your customer's home screen.</p>
+                            <ul class="defcon-feature-list">
+                                <li>Native iOS & Android Development</li>
+                                <li>Biometric Login (FaceID/TouchID)</li>
+                                <li>Push Notification Marketing Dashboard</li>
+                                <li>Offline Shopping Capabilities</li>
+                                <li>App Store & Play Store Submission Handling</li>
+                            </ul>
+                        </div>
+                        <div class="defcon-price-column">
+                            <span class="defcon-product-price">R 85,000</span>
+                            <span class="defcon-price-sub">One-Time Fee</span>
+                            <div class="defcon-installment-price">or R4,250 <span style="font-size:0.8em; font-weight:400;">x 24 Months</span></div>
+                            <span class="defcon-installment-note">Project milestone payments</span>
+                            <div class="defcon-discount-badge">Save 12% on Upfront Payment</div>
+                        </div>
+                    </div>
+
+                    <div class="defcon-product-item">
+                        <div class="defcon-product-info">
+                            <span class="defcon-product-package-tag">Package: Enterprise Custom</span>
+                            <h3>Headless / Custom Build</h3>
+                            <p class="defcon-product-desc">Bespoke development for high-volume retailers. Sub-second speeds, custom APIs, and uncompromising security.</p>
+                            <ul class="defcon-feature-list">
+                                <li>Headless Architecture (React/Next.js + Node)</li>
+                                <li>ERP & CRM Deep Integration (SAP/Sage/Salesforce)</li>
+                                <li>Dedicated DevOps & Auto-Scaling Servers</li>
+                                <li>Advanced Security (DDoS, WAF, Penetration Testing)</li>
+                                <li>SLA: 99.99% Uptime Guarantee</li>
+                            </ul>
+                        </div>
+                        <div class="defcon-price-column">
+                            <span class="defcon-product-price">R 250,000+</span>
+                            <span class="defcon-price-sub">Estimated Project Value</span>
+                            <div class="defcon-installment-price">Custom Terms</div>
+                            <span class="defcon-installment-note">Phased billing structure</span>
+                            <div class="defcon-discount-badge">Consultation Required</div>
+                        </div>
+                    </div>
+
+                    <div class="defcon-product-item">
+                        <div class="defcon-product-info">
+                            <span class="defcon-product-package-tag">Package: Monthly Retainer</span>
+                            <h3>CRO & Maintenance</h3>
+                            <p class="defcon-product-desc">Continuous improvement of your store's conversion rate, speed, and security updates.</p>
+                            <ul class="defcon-feature-list">
+                                <li>Monthly A/B Testing & Reporting</li>
+                                <li>User Session Analysis (Heatmaps)</li>
+                                <li>Plugin/Theme Updates & Backups</li>
+                                <li>Priority Technical Support</li>
+                                <li>Monthly Strategy Call</li>
+                            </ul>
+                        </div>
+                        <div class="defcon-price-column">
+                            <span class="defcon-product-price">R 4,500<span style="font-size:0.5em">/mo</span></span>
+                            <span class="defcon-price-sub">Recurring Service</span>
+                            <div class="defcon-installment-price">Cancel Anytime</div>
+                            <span class="defcon-installment-note">No long-term contracts</span>
+                            <div class="defcon-discount-badge">1 Month Free on Yearly Plan</div>
+                        </div>
+                    </div>
+
+                </div>
+            </div>
+            </div>
+    </section>
+    
+    <section class="defcon-value-section">
+        <div class="defcon-container">
+            <h2 class="defcon-section-title">Unleash Performance, Security, and Scale</h2>
+            <div class="defcon-value-cards">
+                
+                <div class="defcon-value-card">
+                    <div class="defcon-value-card-icon">&#9889;</div> <h3>Performance First</h3>
+                    <p>Our Headless architecture ensures sub-second load times, eliminating bounce rates and maximizing search engine ranking. We don't just load fast; we fly.</p>
+                </div>
+                
+                <div class="defcon-value-card">
+                    <div class="defcon-value-card-icon">&#128274;</div> <h3>Unbreakable Security</h3>
+                    <p>From PCI compliance to advanced DDoS protection, we implement enterprise-grade security measures that protect your customer data and preserve your brand's integrity.</p>
+                </div>
+                
+                <div class="defcon-value-card">
+                    <div class="defcon-value-card-icon">&#128200;</div> <h3>Scalable Growth</h3>
+                    <p>Built on cloud-native infrastructure, our platforms automatically scale to handle Black Friday traffic or sudden viral spikes without missing a single transaction.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section class="defcon-stats-section">
+        <div class="defcon-container">
+            <span class="defcon-subtitle-accent">Impact and Reach</span>
+            <h2 class="defcon-section-title">E-commerce Built on Real-World Results</h2>
+            <p class="defcon-stats-subtitle">Our mission is to translate technological excellence into quantifiable business success. These are the numbers behind Defcon-powered e-commerce stores.</p>
+
+            <div class="defcon-stats-grid">
+                <div class="defcon-stat-item">
+                    <div class="defcon-stat-number">40%</div>
+                    <span class="defcon-stat-label">Avg. Revenue Increase</span>
+                </div>
+                <div class="defcon-stat-item">
+                    <div class="defcon-stat-number">10M+</div>
+                    <span class="defcon-stat-label">Annual Transactions</span>
+                </div>
+                <div class="defcon-stat-item">
+                    <div class="defcon-stat-number">99.9%</div>
+                    <span class="defcon-stat-label">Uptime SLA</span>
+                </div>
+            </div>
+            
+            <a href="#" class="defcon-primary-btn" style="margin-top: 60px;">Request a Case Study &rarr;</a>
+        </div>
+    </section>
+
+    <section id="defcon-faq-section" class="defcon-faq-section">
+        <div class="defcon-container">
+            <h2 class="defcon-section-title">Platform Specifications & FAQs</h2>
+            <div class="defcon-accordion-list">
+                
+                <div class="defcon-accordion-item">
+                    <div class="defcon-accordion-header">
+                        <span>API Specification for Inventory Synchronization</span>
+                        <span class="defcon-accordion-toggle">+</span>
+                    </div>
+                    <div class="defcon-accordion-content">
+                        <p>Our RESTful inventory API is built on a high-availability serverless architecture, enabling real-time stock updates across all channels (Web, POS, Mobile). It supports both webhook and polled update methods, ensuring seamless integration with your existing ERP or 3rd-party logistics provider.</p>
+                    </div>
+                </div>
+
+                <div class="defcon-accordion-item">
+                    <div class="defcon-accordion-header">
+                        <span>Defcon POS System Integration Capabilities</span>
+                        <span class="defcon-accordion-toggle">+</span>
+                    </div>
+                    <div class="defcon-accordion-content">
+                        <p>The Defcon POS solution (part of our Smart Technology service) integrates natively with our e-commerce backend. This allows for unified inventory, centralized order management, and a single view of the customer, bridging your online and physical retail operations without friction.</p>
+                    </div>
+                </div>
+
+                <div class="defcon-accordion-item">
+                    <div class="defcon-accordion-header">
+                        <span>Digital Marketing & SEO Features <span class="defcon-new-tag">NEW</span></span>
+                        <span class="defcon-accordion-toggle">+</span>
+                    </div>
+                    <div class="defcon-accordion-content">
+                        <p>Our platforms are designed from the ground up for SEO. Key features include automatic sitemap generation, customizable schema markup (Product, Offer, Review), canonical URL management, and integrated Google Analytics/Tag Manager support for advanced conversion tracking by our Marketing & Creative Studio team.</p>
+                    </div>
+                </div>
+
+                <div class="defcon-accordion-item">
+                    <div class="defcon-accordion-header">
+                        <span>Supported Payment Gateways</span>
+                        <span class="defcon-accordion-toggle">+</span>
+                    </div>
+                    <div class="defcon-accordion-content">
+                        <p>We support all major global payment gateways including Stripe, PayPal, Authorize.net, and region-specific providers. We also integrate with modern payment methods such as cryptocurrencies (Web3/Blockchain), ensuring maximum customer reach.</p>
+                    </div>
+                </div>
+                
+            </div>
+        </div>
+    </section>
+
+    <script>
+        // JavaScript for Accordion Functionality
+        document.addEventListener('DOMContentLoaded', () => {
+            const accordionItems = document.querySelectorAll('.defcon-accordion-item');
+
+            accordionItems.forEach(item => {
+                const header = item.querySelector('.defcon-accordion-header');
+                
+                header.addEventListener('click', () => {
+                    // Close all other active items
+                    accordionItems.forEach(otherItem => {
+                        if (otherItem !== item && otherItem.classList.contains('active')) {
+                            otherItem.classList.remove('active');
+                        }
+                    });
+
+                    // Toggle the current item
+                    item.classList.toggle('active');
+                });
+            });
+        });
+    </script>
+</body>
+</html>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<div class="custom-card-container-wrapper custom-flex custom-justify-center custom-align-center custom-min-height-screen custom-padding-large custom-background-light">
+
+    <div class="custom-cards-layout custom-display-grid custom-grid-cols-one custom-lg-grid-cols-three custom-gap-medium custom-max-width-extra-large">
+
+        <div class="custom-text-card custom-background-white custom-padding-extra-large custom-border-radius-large custom-shadow-mild custom-display-flex custom-flex-column custom-justify-between custom-align-start">
+            <h2 class="custom-card-title-main custom-font-size-extra-large custom-font-weight-bolder custom-line-height-tight custom-text-dark">Make payments easy, simplify your finances.</h2>
+            <button class="custom-action-button custom-background-red custom-text-white custom-padding-y-small custom-padding-x-medium custom-border-radius-small custom-font-weight-medium custom-display-flex custom-align-center custom-gap-small custom-hover-background-dark-red custom-transition-colors">
+                Our Contact <span class="custom-arrow-icon custom-font-size-medium">&rarr;</span>
+            </button>
+        </div>
+
+        <div class="custom-info-card custom-background-dark-blue custom-padding-extra-large custom-border-radius-large custom-shadow-mild custom-display-flex custom-flex-column custom-justify-between">
+            <p class="custom-card-subheader custom-text-white custom-font-size-large custom-font-weight-bold custom-margin-bottom-medium">Integrated payment gateways</p>
+            <p class="custom-card-description custom-text-white custom-font-size-small custom-line-height-relaxed">
+                Our system integrates the latest technology to help you make smarter financial decisions with ease.
+            </p>
+        </div>
+
+        <div class="custom-image-card custom-background-white custom-padding-zero custom-border-radius-large custom-overflow-hidden custom-shadow-mild custom-display-flex custom-justify-center custom-align-center">
+            <div class="custom-image-placeholder custom-width-full custom-height-full custom-background-gray custom-display-flex custom-justify-center custom-align-center custom-text-dark custom-font-bold custom-font-size-large">
+                <img src="https://images.pexels.com/photos/1181411/pexels-photo-1181411.jpeg" style="width: 100%; height: 100%; object-fit: cover;">
+            </div>
+        </div>
+
+    </div>
+</div>
+
+<style>
+    /* Custom Styles for non-Tailwind CSS */
+    .custom-card-container-wrapper {
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        min-height: 100vh;
+        padding: 150px 0; /* padding-large */
+        background-color: #ffffff; /* light background */
+        font-family: 'Inter', sans-serif;
+        box-sizing: border-box; /* Ensures padding doesn't affect overall width/height */
+    }
+
+    .custom-cards-layout {
+        display: grid;
+        grid-template-columns: 1fr; /* grid-cols-one */
+        gap: 18px; /* gap-medium */
+        max-width: 1200px; /* max-width-extra-large */
+        width: 100%;
+        padding: 110px 0;
+    }
+
+    /* Card 1: Text with Button */
+    .custom-text-card {
+        background-color: #f4f4f4;
+        padding: 40px; /* padding-extra-large */
+        border-radius: 20px; /* border-radius-large */
+        display: flex;
+        flex-direction: column;
+        justify-content: space-between;
+        align-items: flex-start;
+        min-height: 280px; /* Adjust as needed for visual balance */
+    }
+
+    .custom-card-title-main {
+        font-size: 34px; /* font-size-extra-large */
+        font-weight: 500; /* font-weight-bolder */
+        line-height: 1; /* line-height-tight */
+        color: #212121; /* text-dark */
+        letter-spacing: -0.02em;
+        margin-bottom: 24px; /* Spacing before button if needed */
+    }
+
+    .custom-action-button {
+        background-color: #0055c4; /* red */
+        color: #fff;
+        padding: 12px 24px; /* padding-y-small, padding-x-medium */
+        border-radius: 60px; /* border-radius-small */
+        font-weight: 400; /* font-weight-medium */
+        display: flex;
+        align-items: center;
+        gap: 8px; /* gap-small */
+        border: none;
+        cursor: pointer;
+        transition: background-color 0.3s ease; /* transition-colors */
+        font-size: 16px;
+        font-family: 'Inter', sans-serif;
+    }
+
+    .custom-action-button:hover {
+        background-color: #2261ff; /* dark-red */
+    }
+
+    .custom-arrow-icon {
+        font-size: 20px; /* font-size-medium */
+    }
+
+    /* Card 2: Blue with Text */
+    .custom-info-card {
+        background-color: #f4f4f4; /* dark-blue */
+        padding: 40px; /* padding-extra-large */
+        border-radius: 16px; /* border-radius-large */
+        display: flex;
+        flex-direction: column;
+        justify-content: space-between;
+        color: #212121;
+    }
+
+    .custom-card-header {
+        display: flex;
+        align-items: baseline;
+        gap: 8px; /* gap-small */
+        margin-bottom: 8px; /* margin-bottom-small */
+        text-transform: uppercase;
+    }
+
+    .custom-header-highlight {
+        color: #0055c4; /* red */
+        font-size: 36px; /* font-size-large */
+        font-weight: 500; /* font-weight-bold */
+    }
+
+    .custom-header-text {
+        color: #212121;
+        font-size: 18px; /* font-size-medium */
+        font-weight: 500; /* font-weight-bold */
+        letter-spacing: 0.05em; /* letter-spacing-wide */
+    }
+
+    .custom-card-subheader {
+        color: #0053ac;
+        font-size: 34px; /* font-size-large */
+        font-weight: 500; /* font-weight-bold */
+        margin-bottom: 24px; /* margin-bottom-medium */
+        line-height: 1;
+        letter-spacing: -0.02em; /* letter-spacing-wide */
+    }
+
+    .custom-card-description {
+        color: #212121;
+        font-size: 19px; /* font-size-small */
+        font-weight: 400;
+        line-height: 1.1; /* line-height-relaxed */
+    }
+
+    /* Card 3: Image Placeholder */
+    .custom-image-card {
+        background-color: #fff;
+        padding: 0; /* padding-zero */
+        border-radius: 16px; /* border-radius-large */
+        overflow: hidden;
+        box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.1), 0 2px 4px -1px rgba(0, 0, 0, 0.06); /* shadow-mild */
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        min-height: 280px; /* Ensure consistent height with other cards on larger screens */
+    }
+
+     @keyframes awslm-vibrant-rainbow {
+    0% { box-shadow: 0 8px 15px rgb(236, 72, 154), 0 0 15px rgb(138, 92, 246); }
+    33% { box-shadow: 0 8px 15px rgb(59, 131, 246), 0 0 15px rgb(6, 181, 212); }
+    66% { box-shadow: 0 8px 15px rgb(245, 159, 11), 0 0 15px rgb(236, 72, 154); }
+    100% { box-shadow: 0 8px 15px rgb(236, 72, 154), 0 0 15px rgba(138, 92, 246, 0.933); }
+  }
+
+  .custom-image-card, .custom-info-card, .custom-text-card {
+    animation: awslm-vibrant-rainbow 3s linear infinite;
+  }
+
+    .custom-image-placeholder {
+        width: 100%;
+        height: 100%;
+        background-color: #e0e0e0; /* gray placeholder background */
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        color: #555; /* dark placeholder text */
+        font-weight: bold;
+        font-size: 28px; /* font-size-large */
+        text-align: center;
+    }
+
+    /* Responsive adjustments */
+    @media (min-width: 1024px) { /* lg breakpoint */
+        .custom-cards-layout {
+            grid-template-columns: 1fr 1fr 1fr; /* lg-grid-cols-three */
+        }
+    }
+
+    @media (max-width: 1023px) { /* Adjust for smaller screens below lg */
+        .custom-text-card, .custom-info-card, .custom-image-card {
+            min-height: 280px; /* Ensure a minimum height for all cards */
+        }
+    }
+
+    @media (max-width: 768px) {
+       .custom-cards-layout {
+            padding: 0 20px;
+        }
+    }
+
+</style>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+

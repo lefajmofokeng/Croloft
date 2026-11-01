@@ -1,0 +1,1169 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>My Website</title>
+    
+    <script src="header.js" defer></script> 
+    <script src="footer.js" defer></script>
+</head>
+<body>
+
+    <cronos-header></cronos-header>
+
+</body>
+</html>
+<style>
+  @font-face { font-family:'Circular Std'; src:url('fonts/CircularStd-Book.woff2') format('woff2'),url('fonts/CircularStd-Book.woff') format('woff'); font-weight:400; font-style:normal; font-display:swap; }
+  @font-face { font-family:'Circular Std'; src:url('fonts/CircularStd-BookItalic.woff2') format('woff2'),url('fonts/CircularStd-BookItalic.woff') format('woff'); font-weight:400; font-style:italic; font-display:swap; }
+  @font-face { font-family:'Circular Std'; src:url('fonts/CircularStd-Medium.woff2') format('woff2'),url('fonts/CircularStd-Medium.woff') format('woff'); font-weight:500; font-style:normal; font-display:swap; }
+  @font-face { font-family:'Circular Std'; src:url('fonts/CircularStd-Bold.woff2') format('woff2'),url('fonts/CircularStd-Bold.woff') format('woff'); font-weight:600; font-style:normal; font-display:swap; }
+  @font-face { font-family:'Circular Std'; src:url('fonts/CircularStd-Bold.woff2') format('woff2'),url('fonts/CircularStd-Bold.woff') format('woff'); font-weight:700; font-style:normal; font-display:swap; }
+  @font-face { font-family:'Circular Std'; src:url('fonts/CircularStd-Black.woff2') format('woff2'),url('fonts/CircularStd-Black.woff') format('woff'); font-weight:800; font-style:normal; font-display:swap; }
+  @font-face { font-family:'Circular Std'; src:url('fonts/CircularStd-Black.woff2') format('woff2'),url('fonts/CircularStd-Black.woff') format('woff'); font-weight:900; font-style:normal; font-display:swap; }
+</style>
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Verify Asset - Cronos</title>
+    <link href="https://fonts.cdnfonts.com/css/circular-std" rel="stylesheet">
+    <style>
+        :root {
+            --bg-dark: #06080e;
+            --bg-glass: rgba(255, 255, 255, 0.05);
+            --border-glass: rgba(255, 255, 255, 0.1);
+            --text-primary: #FFFFFF;
+            --text-secondary: #c1cada;
+            --accent-blue: #fdfdfd;
+            --loading-color: #00A3B5;
+            --status-green-text: #17e089;
+            --status-green-bg: rgba(23, 224, 137, 0.1);
+            --status-red-text: #ff4d4d;
+            --status-red-bg: rgba(255, 77, 77, 0.1);
+            --border-radius-card: 16px;
+            --border-radius-btn: 50px;
+        }
+
+        *, *::before, *::after {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        html {
+            -webkit-text-size-adjust: 100%;
+            text-size-adjust: 100%;
+        }
+
+        body {
+            font-family: 'Circular Std', 'Circular', -apple-system, BlinkMacSystemFont, sans-serif;
+            background-color: var(--bg-dark);
+            background:
+                radial-gradient(circle at 10% 20%, rgba(0, 106, 255, 0.693), transparent 80%),
+                radial-gradient(circle at 90% 80%, rgba(0, 132, 255, 0), transparent 30%),
+                var(--bg-dark);
+            color: var(--text-primary);
+            line-height: 1.6;
+            min-height: 50vh;
+            -webkit-font-smoothing: antialiased;
+            -moz-osx-font-smoothing: grayscale;
+            font-smooth: always;
+        }
+
+        .verify-wrapper {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            min-height: 100vh;
+            padding: 40px 20px; 
+        }
+
+        .verify-card {
+            padding: 40px;
+            width: 100%;
+            max-width: 700px;
+            text-align: center;
+        }
+
+        .verify-card h1 {
+            font-size: clamp(26px, 5vw, 35px);
+            font-weight: 600;
+            color: var(--text-primary);
+            margin-bottom: 10px;
+            line-height: 1.2;
+            letter-spacing: -0.01em; font-family: 'Inter', sans-serif;
+        }
+
+        .verify-card h1 .brand-name {
+            padding-right: 15px;
+            font-weight: 500; font-family: 'Circular Std', sans-serif;
+        }
+
+        .verify-card h1 .brand-label {
+            border-left: 2px solid #b6b6b6;
+            color: #b6b6b6;
+            padding-left: 20px;
+            letter-spacing: 0.09em;
+            text-transform: uppercase;
+        }
+
+        .verify-card > p {
+            font-size: clamp(14px, 3vw, 16px);
+            color: var(--text-secondary);
+            margin-bottom: 30px;
+            line-height: 1.6;
+        }
+
+        /* --- Unified Input Bar --- */
+        .verify-form {
+            display: flex;
+            flex-direction: column;
+            gap: 12px; 
+        }
+
+        .verify-bar {
+            display: flex;
+            align-items: center;
+            background-color: rgba(3, 17, 36, 0.566);
+        
+            border-radius: var(--border-radius-btn);
+            padding: 5px 5px 5px 6px;
+            gap: 4px;
+            transition: border-color 0.2s ease, box-shadow 0.2s ease;
+        }
+
+        .verify-bar:focus-within {
+            border-color: rgba(253, 253, 253, 0.35);
+            box-shadow: 0 0 0 3px rgba(253, 253, 253, 0.06);
+        }
+
+        /* --- Dropdown trigger (left side of bar) --- */
+        .dropdown-wrapper {
+            position: relative;
+            flex-shrink: 0;
+        }
+
+        .dropdown-trigger {
+            display: flex;
+            align-items: center;
+            gap: 7px;
+            background-color: rgba(255, 255, 255, 0.08);
+            border: none;
+            border-radius: 50px;
+            padding: 16px 14px 9px 14px;
+            cursor: pointer;
+            font-family: 'Circular Std', 'Circular', -apple-system, BlinkMacSystemFont, sans-serif;
+            font-size: clamp(12px, 2.5vw, 13px);
+            font-weight: 600;
+            color: var(--text-primary);
+            white-space: nowrap;
+            user-select: none;
+            transition: background-color 0.2s ease, border-color 0.2s ease;
+            min-width: 118px;
+            justify-content: space-between;
+        }
+
+        .dropdown-trigger:hover {
+            background-color: rgba(255, 255, 255, 0.13);
+            border-color: rgba(255, 255, 255, 0.22);
+        }
+
+        .dropdown-trigger.open {
+            background-color: rgba(255, 255, 255, 0.13);
+            border-color: rgba(255, 255, 255, 0.3);
+        }
+
+        .dropdown-trigger-label {
+            display: flex;
+            align-items: center;
+            gap: 7px;
+        }
+
+        .dropdown-trigger-icon {
+            width: 15px;
+            height: 15px;
+            opacity: 0.75;
+            flex-shrink: 0;
+        }
+
+        .dropdown-chevron {
+            width: 14px;
+            height: 14px;
+            opacity: 0.55;
+            flex-shrink: 0;
+            transition: transform 0.22s ease;
+        }
+
+        .dropdown-trigger.open .dropdown-chevron {
+            transform: rotate(180deg);
+        }
+
+        /* --- Dropdown menu --- */
+        .dropdown-menu {
+            display: none;
+            position: absolute;
+            top: calc(100% + 8px);
+            left: 0;
+            min-width: 170px;
+            background-color: #080d1b;
+            border-radius: 14px;
+            padding: 5px;
+            z-index: 100;
+           
+            animation: dropdown-appear 0.18s cubic-bezier(0.22, 1, 0.36, 1) forwards;
+        }
+
+        .dropdown-menu.open {
+            display: block;
+        }
+
+        @keyframes dropdown-appear {
+            from { opacity: 0; transform: translateY(-6px) scale(0.97); }
+            to   { opacity: 1; transform: translateY(0) scale(1); }
+        }
+
+        .dropdown-option {
+            display: flex;
+            align-items: center;
+            gap: 10px;
+            padding: 10px 13px;
+            border-radius: 9px;
+            cursor: pointer;
+            font-family: 'Circular Std', 'Circular', -apple-system, BlinkMacSystemFont, sans-serif;
+            font-size: 14px;
+            font-weight: 400;
+            color: var(--text-secondary);
+            transition: background-color 0.15s ease, color 0.15s ease;
+            user-select: none;
+        }
+
+        .dropdown-option:hover {
+            background-color: rgba(255, 255, 255, 0.07);
+            color: var(--text-primary);
+        }
+
+        .dropdown-option.selected {
+            background-color: rgba(255, 255, 255, 0.1);
+            color: var(--text-primary);
+            font-weight: 700;
+        }
+
+        .dropdown-option svg {
+            width: 15px;
+            height: 15px;
+            flex-shrink: 0;
+            opacity: 0.7;
+        }
+
+        .dropdown-option.selected svg {
+            opacity: 1;
+        }
+
+        /* --- Text input (middle of bar) --- */
+        #verify-input {
+            flex: 1;
+            min-width: 0;
+            padding: 10px 10px;
+            border: none;
+            background: transparent;
+            color: var(--text-primary);
+            font-size: clamp(13px, 3vw, 15px);
+            font-family: 'Circular Std', 'Circular', -apple-system, BlinkMacSystemFont, sans-serif;
+            appearance: none;
+            -webkit-appearance: none;
+        }
+
+        #verify-input::placeholder {
+            color: #ababab; font-weight: 300;
+        }
+
+        #verify-input:focus {
+            outline: none;
+        }
+
+        /* --- Verify button (right side of bar) --- */
+        .btn {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            gap: 10px;
+            background-color: #0069c55c;
+            color: #f4f4f4;
+            padding: 11px 22px;
+            border-radius: var(--border-radius-btn);
+            font-family: 'Circular Std', 'Circular', -apple-system, BlinkMacSystemFont, sans-serif;
+            font-weight: 400;
+            font-size: clamp(16px, 2.5vw, 15px);
+            border: none;
+            cursor: pointer;
+            transition: opacity 0.2s ease, transform 0.15s ease;
+            position: relative;
+            flex-shrink: 0;
+            min-height: 42px;
+            white-space: nowrap;
+            text-decoration: none;
+        }
+
+        .btn:hover:not(:disabled) {
+            opacity: 0.92;
+        }
+
+        .btn:active:not(:disabled) {
+            transform: translateY(0);
+        }
+
+        .btn:disabled {
+            cursor: not-allowed;
+        }
+
+        .btn.loading {
+            background-color: var(--loading-color);
+            color: transparent;
+        }
+
+        .btn.loading .btn-text {
+            opacity: 0;
+        }
+
+        .spinner {
+            display: none;
+            position: absolute;
+            width: 18px;
+            height: 18px;
+            border: 2.5px solid rgba(255, 255, 255, 0.3);
+            border-top-color: #fff;
+            border-radius: 50%;
+            animation: sos-spin 0.75s linear infinite;
+        }
+
+        .btn.loading .spinner {
+            display: block;
+        }
+
+        @keyframes sos-spin {
+            to { transform: rotate(360deg); }
+        }
+
+        .btn-secondary {
+            background-color: #07142a;
+            color: #fdfdfd;
+            border: 1px solid var(--border-glass);
+        }
+
+        .btn-secondary:hover:not(:disabled) {
+            background-color: #0c1f3d;
+        }
+
+        /* --- Report link below bar --- */
+        .report-note {
+            font-size: clamp(12px, 2.5vw, 15px);
+            color: #f7f7f7;
+            text-align: center;
+            line-height: 1.5;
+            margin-top: 2rem; font-weight: 400;
+        }
+
+        .report-note a {
+            color: #f7f7f7;
+            font-weight: 400;
+            text-decoration: underline;
+            text-underline-offset: 2px;
+            opacity: 1;
+            transition: color 0.2s ease;
+            cursor: pointer;
+        }
+
+        .report-note a:hover {
+            color: #fdfdfd;
+        }
+
+        /* --- Modal Overlay --- */
+        .modal {
+            display: none;
+            position: fixed;
+            inset: 0;
+            background-color: rgba(0, 0, 0, 0.55);
+            z-index: 1000;
+            align-items: flex-end;
+            justify-content: center;
+            padding: 0;
+        }
+
+        .modal.open {
+            display: flex;
+        }
+
+        .modal-content {
+            background-color: #f2f2f2;
+            border-radius: 20px 20px 0 0;
+            width: 100%;
+            max-width: 520px;
+            overflow: hidden;
+            position: relative;
+            text-align: center;
+            animation: modal-slide-up 0.35s cubic-bezier(0.22, 1, 0.36, 1) forwards;
+        }
+
+        @keyframes modal-slide-up {
+            from { opacity: 0; transform: translateY(40px); }
+            to   { opacity: 1; transform: translateY(0); }
+        }
+
+        .modal-header-bar {
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            padding: 16px 20px 14px;
+            background: #ffffff;
+            border-bottom: 1px solid rgba(0,0,0,0.08);
+        }
+
+        .modal-header-logo {
+            display: flex;
+            align-items: center;
+            gap: 8px;
+        }
+
+        .modal-header-logo-icon {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            flex-shrink: 0;
+        }
+
+        .modal-header-logo-icon svg {
+            width: 16px;
+            height: 16px;
+        }
+
+        .modal-header-brand {
+            font-size: 15px;
+            font-weight: 700;
+            color: #0a0a14;
+            font-family: 'Circular Std', 'Circular', -apple-system, BlinkMacSystemFont, sans-serif;
+        }
+
+        .modal-header-divider {
+            width: 1px;
+            height: 16px;
+            background: #c0c0c0;
+            margin: 0 2px;
+        }
+
+        .modal-header-label {
+            font-size: 13px;
+            font-weight: 500;
+            letter-spacing: 0.08em;
+            text-transform: uppercase;
+            color: #888;
+            font-family: 'Circular Std', 'Circular', -apple-system, BlinkMacSystemFont, sans-serif;
+        }
+
+        .close-modal {
+            background: none;
+            border: none;
+            font-size: 22px;
+            cursor: pointer;
+            color: #555;
+            line-height: 1;
+            padding: 4px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            transition: color 0.2s ease;
+            text-decoration: none;
+        }
+
+        .close-modal:hover { color: #111; }
+
+        .modal-body {
+            padding: 32px 28px 28px;
+        }
+
+        .modal-shield {
+            width: 80px;
+            height: 80px;
+            margin: 0 auto 18px;
+            position: relative;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+
+        .modal-shield svg.shield-bg {
+            width: 80px;
+            height: 80px;
+            position: absolute;
+            inset: 0;
+        }
+
+        .modal-shield .shield-inner-icon {
+            position: relative;
+            z-index: 1;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+
+        .modal-asset-id {
+            font-size: clamp(13px, 3vw, 15px);
+            font-weight: 400;
+            margin-bottom: 14px;
+            word-break: break-all;
+            overflow-wrap: anywhere;
+            font-family: 'Circular Std', 'Circular', -apple-system, BlinkMacSystemFont, sans-serif;
+        }
+
+        .modal-asset-id.is-red   { color: #e03030; }
+        .modal-asset-id.is-green { color: #17a85a; }
+
+        .modal-title {
+            font-family: 'Circular Std', 'Circular', -apple-system, BlinkMacSystemFont, sans-serif;
+            font-size: clamp(18px, 4vw, 22px);
+            font-weight: 500;
+            color: #0a0a14;
+            margin-bottom: 14px;
+            line-height: 1.3;
+            letter-spacing: -0.02em;
+        }
+
+        .modal-title .highlight-red   { color: #e03030; }
+        .modal-title .highlight-green { color: #17a85a; }
+
+        .modal-subtext {
+            font-family: 'Circular Std', 'Circular', -apple-system, BlinkMacSystemFont, sans-serif;
+            font-size: clamp(13px, 2.5vw, 14px);
+            color: #555;
+            line-height: 1.65;
+            margin-bottom: 28px;
+            text-align: left;
+        }
+
+        .modal-subtext a {
+            color: #0033a0;
+            font-weight: 500;
+            text-decoration: none;
+        }
+
+        .modal-close-btn {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            width: 100%;
+            padding: 14px 17px;
+            border-radius: 50px;
+            border: none;
+            cursor: pointer;
+            font-family: 'Circular Std', 'Circular', -apple-system, BlinkMacSystemFont, sans-serif;
+            font-size: clamp(15px, 3vw, 17px);
+            font-weight: 500;
+            letter-spacing: -0.01em;
+            transition: opacity 0.2s ease, transform 0.15s ease;
+        }
+
+        .modal-close-btn:hover { opacity: 0.9; transform: translateY(-1px); }
+        .modal-close-btn:active { transform: translateY(0); }
+
+        .modal-close-btn.btn-dark {
+            background: #0a0a14;
+            color: #fff;
+        }
+
+        .modal-close-btn.btn-success {
+            background: #17a85a;
+            color: #fff;
+        }
+
+        /* --- Responsive --- */
+        @media (max-width: 540px) {
+            .verify-bar {
+                border-radius: 50px;
+                padding: 5px;
+                flex-wrap: nowrap;
+                gap: 4px;
+            }
+
+            .dropdown-trigger {
+                min-width: unset;
+                padding: 8px 11px;
+                font-size: 12px;
+            }
+
+            .dropdown-trigger-icon {
+                display: none;
+            }
+
+            #verify-input {
+                padding: 8px 6px;
+                font-size: 13px;
+            }
+
+            .btn {
+                padding: 9px 15px;
+                font-size: 13px;
+            }
+        }
+
+        @media (max-width: 480px) {
+            .verify-wrapper {
+                padding: 28px 16px;
+                align-items: flex-start;
+                padding-top: 48px;
+            }
+
+            .verify-card {
+                padding: 0;
+            }
+
+            .verify-card h1 .brand-name {
+                padding-right: 10px;
+            }
+
+            .verify-card h1 .brand-label {
+                padding-left: 12px;
+            }
+        }
+
+        @media (max-width: 768px) {
+            .verify-wrapper {
+                margin-top: 130px;
+                min-height: 70vh;
+            }
+        }
+    </style>
+</head>
+<body>
+
+    <div class="verify-wrapper">
+        <div class="verify-card">
+            <h1>
+                <span class="brand-name">Croloft</span>
+                <span class="brand-label">Verify</span>
+            </h1>
+            <p>Select an asset type and enter the identifier to confirm<br> it's officially associated with our projects.</p>
+
+            <div class="verify-form">
+                <!-- Unified bar -->
+                <div class="verify-bar" id="verify-bar">
+
+                    <!-- LEFT: type dropdown -->
+                    <div class="dropdown-wrapper" id="dropdown-wrapper">
+                        <button class="dropdown-trigger" id="dropdown-trigger" aria-haspopup="listbox" aria-expanded="false" type="button">
+                            <span class="dropdown-trigger-label">
+                                <!-- icon swapped by JS -->
+                                <svg class="dropdown-trigger-icon" id="trigger-icon" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+                                    <path d="M10 13a5 5 0 0 0 7.54.54l3-3a5 5 0 0 0-7.07-7.07l-1.72 1.71" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+                                    <path d="M14 11a5 5 0 0 0-7.54-.54l-3 3a5 5 0 0 0 7.07 7.07l1.71-1.71" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+                                </svg>
+                                <span id="trigger-label">URL / Link</span>
+                            </span>
+                            <svg class="dropdown-chevron" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+                                <path d="M6 9l6 6 6-6" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"/>
+                            </svg>
+                        </button>
+
+                        <div class="dropdown-menu" id="dropdown-menu" role="listbox" aria-label="Asset type">
+                            <div class="dropdown-option selected" role="option" aria-selected="true" data-type="link" data-label="URL / Link" tabindex="0">
+                                <svg viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+                                    <path d="M10 13a5 5 0 0 0 7.54.54l3-3a5 5 0 0 0-7.07-7.07l-1.72 1.71" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+                                    <path d="M14 11a5 5 0 0 0-7.54-.54l-3 3a5 5 0 0 0 7.07 7.07l1.71-1.71" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+                                </svg>
+                                URL / Link
+                            </div>
+                            <div class="dropdown-option" role="option" aria-selected="false" data-type="email" data-label="Email Address" tabindex="0">
+                                <svg viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+                                    <path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+                                    <polyline points="22,6 12,13 2,6" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+                                </svg>
+                                Email Address
+                            </div>
+                            <div class="dropdown-option" role="option" aria-selected="false" data-type="social" data-label="Social ID" tabindex="0">
+                                <svg viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+                                    <circle cx="18" cy="5" r="3" stroke="currentColor" stroke-width="2"/>
+                                    <circle cx="6" cy="12" r="3" stroke="currentColor" stroke-width="2"/>
+                                    <circle cx="18" cy="19" r="3" stroke="currentColor" stroke-width="2"/>
+                                    <line x1="8.59" y1="13.51" x2="15.42" y2="17.49" stroke="currentColor" stroke-width="2" stroke-linecap="round"/>
+                                    <line x1="15.41" y1="6.51" x2="8.59" y2="10.49" stroke="currentColor" stroke-width="2" stroke-linecap="round"/>
+                                </svg>
+                                Social ID
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- MIDDLE: text input -->
+                    <input
+                        type="text"
+                        id="verify-input"
+                        placeholder="e.g., example.com/project-link"
+                        autocomplete="off"
+                        autocorrect="off"
+                        autocapitalize="off"
+                        spellcheck="false"
+                        aria-label="Asset identifier"
+                    />
+
+                    <!-- RIGHT: verify button -->
+                    <button class="btn" id="verify-btn" aria-live="polite" type="button">
+                        <span class="btn-text">Verify Asset</span>
+                        <span class="spinner" aria-hidden="true"></span>
+                    </button>
+                </div>
+
+                <!-- Report note below the bar -->
+                <p class="report-note">
+                    Spotted a malicious link or suspicious account?
+                    <a href="mailto:security@cronos.com" id="report-link">Report it here.</a>
+                </p>
+            </div>
+        </div>
+    </div>
+
+    <!-- Failure Modal -->
+    <div class="modal" id="failure-modal" role="dialog" aria-modal="true" aria-labelledby="failure-modal-title">
+        <div class="modal-content">
+            <div class="modal-header-bar">
+                <div class="modal-header-logo">
+                    <div class="modal-header-logo-icon">
+                        <img src="thumbnails/logo1.png" alt="Cronos Logo" style="height: 16px;">
+                    </div>
+                    <span class="modal-header-divider"></span>
+                    <span class="modal-header-label">Verify</span>
+                </div>
+                <button class="close-modal" aria-label="Close">&times;</button>
+            </div>
+
+            <div class="modal-body">
+                <div class="modal-shield" aria-hidden="true">
+                    <svg class="shield-bg" viewBox="0 0 80 80" fill="none" xmlns="http://www.w3.org/2000/svg">
+                        <path d="M40 6L68 18V36C68 54 55 68 40 74C25 68 12 54 12 36V18L40 6Z" fill="rgba(224,48,48,0.12)" stroke="#e03030" stroke-width="1.5"/>
+                    </svg>
+                    <div class="shield-inner-icon">
+                        <svg width="32" height="32" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+                            <circle cx="12" cy="12" r="10" fill="#e03030"/>
+                            <path d="M8 8L16 16M16 8L8 16" stroke="white" stroke-width="2.2" stroke-linecap="round"/>
+                        </svg>
+                    </div>
+                </div>
+
+                <p class="modal-asset-id is-red" id="failure-link"></p>
+
+                <h3 class="modal-title" id="failure-modal-title">
+                    This is <span class="highlight-red">NOT</span> an official<br>Cronos communication channel.
+                </h3>
+
+                <div class="modal-subtext">
+                    Please ensure you have selected the right channel and accurately entered its details.<br>
+                    Do not share sensitive information or send assets to an unverified source.<br>
+                    Contact us at <a href="#">support.cronos.com</a> if you are ever in doubt.
+                </div>
+
+                <button class="modal-close-btn btn-dark" id="failure-close-btn">Close</button>
+            </div>
+        </div>
+    </div>
+
+    <!-- Success Modal -->
+    <div class="modal" id="success-modal" role="dialog" aria-modal="true" aria-labelledby="success-modal-title">
+        <div class="modal-content">
+            <div class="modal-header-bar">
+                <div class="modal-header-logo">
+                    <div class="modal-header-logo-icon">
+                        <svg viewBox="0 0 20 20" fill="none" xmlns="http://www.w3.org/2000/svg">
+                            <path d="M10 2L17 6V10C17 13.87 13.87 17.6 10 18.5C6.13 17.6 3 13.87 3 10V6L10 2Z" fill="rgba(255,255,255,0.15)" stroke="white" stroke-width="1.2"/>
+                            <text x="10" y="13.5" text-anchor="middle" font-size="8" font-weight="800" fill="white" font-family="sans-serif">C</text>
+                        </svg>
+                    </div>
+                    <span class="modal-header-brand">Crolofts</span>
+                    <span class="modal-header-divider"></span>
+                    <span class="modal-header-label">Verify</span>
+                </div>
+                <button class="close-modal" aria-label="Close">&times;</button>
+            </div>
+
+            <div class="modal-body">
+                <div class="modal-shield" aria-hidden="true">
+                    <svg class="shield-bg" viewBox="0 0 80 80" fill="none" xmlns="http://www.w3.org/2000/svg">
+                        <path d="M40 6L68 18V36C68 54 55 68 40 74C25 68 12 54 12 36V18L40 6Z" fill="rgba(23,168,90,0.12)" stroke="#17a85a" stroke-width="1.5"/>
+                    </svg>
+                    <div class="shield-inner-icon">
+                        <svg width="32" height="32" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+                            <circle cx="12" cy="12" r="10" fill="#17a85a"/>
+                            <path d="M7.5 12L10.5 15L16.5 9" stroke="white" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"/>
+                        </svg>
+                    </div>
+                </div>
+
+                <p class="modal-asset-id is-green" id="success-link"></p>
+
+                <h3 class="modal-title" id="success-modal-title">
+                    This <span class="highlight-green">IS</span> an official<br>Cronos communication channel.
+                </h3>
+
+                <div class="modal-subtext">
+                    This asset has been verified as an official Cronos channel.<br>
+                    You can interact with confidence.<br>
+                    Stay vigilant — always verify before sharing sensitive information.
+                </div>
+
+                <button class="modal-close-btn btn-success" id="success-close-btn">Got It</button>
+            </div>
+        </div>
+    </div>
+
+    <script>
+        (function () {
+            'use strict';
+
+            // --- Verified asset database ---
+            const verifiedAssets = {
+                link: [
+                    'example.com/project-link',
+                    'official-client-site.com',
+                    'nexus-retail.com',
+                    'artchain.io/marketplace',
+                    'defcon.com/projects'
+                ],
+                email: [
+                    'support@defcon.com',
+                    'jessica.s@nexus-retail.com',
+                    'contact@artchain.io',
+                    'noreply@official-client-site.com'
+                ],
+                social: [
+                    '@defconofficial',
+                    '@nexusretail',
+                    '@artchain_nft',
+                    'facebook.com/defcon'
+                ]
+            };
+
+            const placeholders = {
+                link:   'e.g., example.com/project-link',
+                email:  'e.g., support@defcon.com',
+                social: 'e.g., @DefconOfficial'
+            };
+
+            // Icon SVG strings per type
+            const typeIcons = {
+                link: `<path d="M10 13a5 5 0 0 0 7.54.54l3-3a5 5 0 0 0-7.07-7.07l-1.72 1.71" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/><path d="M14 11a5 5 0 0 0-7.54-.54l-3 3a5 5 0 0 0 7.07 7.07l1.71-1.71" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>`,
+                email: `<path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/><polyline points="22,6 12,13 2,6" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>`,
+                social: `<circle cx="18" cy="5" r="3" stroke="currentColor" stroke-width="2"/><circle cx="6" cy="12" r="3" stroke="currentColor" stroke-width="2"/><circle cx="18" cy="19" r="3" stroke="currentColor" stroke-width="2"/><line x1="8.59" y1="13.51" x2="15.42" y2="17.49" stroke="currentColor" stroke-width="2" stroke-linecap="round"/><line x1="15.41" y1="6.51" x2="8.59" y2="10.49" stroke="currentColor" stroke-width="2" stroke-linecap="round"/>`
+            };
+
+            // DOM references
+            const verifyInput     = document.getElementById('verify-input');
+            const verifyBtn       = document.getElementById('verify-btn');
+            const btnText         = verifyBtn.querySelector('.btn-text');
+            const successModal    = document.getElementById('success-modal');
+            const failureModal    = document.getElementById('failure-modal');
+            const successLink     = document.getElementById('success-link');
+            const failureLink     = document.getElementById('failure-link');
+            const dropdownTrigger = document.getElementById('dropdown-trigger');
+            const dropdownMenu    = document.getElementById('dropdown-menu');
+            const triggerLabel    = document.getElementById('trigger-label');
+            const triggerIcon     = document.getElementById('trigger-icon');
+            const verifyBar       = document.getElementById('verify-bar');
+
+            let currentType = 'link';
+            let verifyTimeout = null;
+            let dropdownOpen = false;
+
+            // --- Dropdown logic ---
+            function openDropdown() {
+                dropdownOpen = true;
+                dropdownMenu.classList.add('open');
+                dropdownTrigger.classList.add('open');
+                dropdownTrigger.setAttribute('aria-expanded', 'true');
+            }
+
+            function closeDropdown() {
+                dropdownOpen = false;
+                dropdownMenu.classList.remove('open');
+                dropdownTrigger.classList.remove('open');
+                dropdownTrigger.setAttribute('aria-expanded', 'false');
+            }
+
+            dropdownTrigger.addEventListener('click', (e) => {
+                e.stopPropagation();
+                dropdownOpen ? closeDropdown() : openDropdown();
+            });
+
+            document.addEventListener('click', (e) => {
+                if (!document.getElementById('dropdown-wrapper').contains(e.target)) {
+                    closeDropdown();
+                }
+            });
+
+            document.querySelectorAll('.dropdown-option').forEach(option => {
+                option.addEventListener('click', () => selectOption(option));
+                option.addEventListener('keydown', (e) => {
+                    if (e.key === 'Enter' || e.key === ' ') {
+                        e.preventDefault();
+                        selectOption(option);
+                    }
+                });
+            });
+
+            function selectOption(option) {
+                document.querySelectorAll('.dropdown-option').forEach(o => {
+                    o.classList.remove('selected');
+                    o.setAttribute('aria-selected', 'false');
+                });
+                option.classList.add('selected');
+                option.setAttribute('aria-selected', 'true');
+
+                currentType = option.getAttribute('data-type');
+                triggerLabel.textContent = option.getAttribute('data-label');
+                triggerIcon.innerHTML = typeIcons[currentType];
+
+                verifyInput.placeholder = placeholders[currentType];
+                verifyInput.value = '';
+                closeDropdown();
+                verifyInput.focus();
+            }
+
+            // --- Modal helpers ---
+            function openModal(modal) {
+                modal.classList.add('open');
+                document.body.style.overflow = 'hidden';
+                const focusable = modal.querySelector('button, [tabindex]');
+                if (focusable) setTimeout(() => focusable.focus(), 50);
+            }
+
+            function closeAllModals() {
+                successModal.classList.remove('open');
+                failureModal.classList.remove('open');
+                document.body.style.overflow = '';
+                verifyBtn.focus();
+            }
+
+            document.querySelectorAll('.close-modal').forEach(btn => {
+                btn.addEventListener('click', closeAllModals);
+            });
+            document.getElementById('success-close-btn').addEventListener('click', closeAllModals);
+            document.getElementById('failure-close-btn').addEventListener('click', closeAllModals);
+
+            [successModal, failureModal].forEach(modal => {
+                modal.addEventListener('click', (e) => {
+                    if (e.target === modal) closeAllModals();
+                });
+            });
+
+            document.addEventListener('keydown', (e) => {
+                if (e.key === 'Escape') {
+                    closeAllModals();
+                    closeDropdown();
+                }
+            });
+
+            // --- Verification logic ---
+            function runVerification(value) {
+                const normalised = value.toLowerCase().trim();
+                const pool = verifiedAssets[currentType] || [];
+                const isVerified = pool.some(item => item.toLowerCase() === normalised);
+
+                verifyBtn.classList.remove('loading');
+                verifyBtn.disabled = false;
+                btnText.textContent = 'Verify';
+
+                if (isVerified) {
+                    successLink.textContent = value;
+                    openModal(successModal);
+                } else {
+                    failureLink.textContent = value;
+                    openModal(failureModal);
+                }
+            }
+
+            function startVerification() {
+                const value = verifyInput.value.trim();
+                if (!value) {
+                    verifyInput.focus();
+                    verifyBar.style.borderColor = 'rgba(255,77,77,0.6)';
+                    setTimeout(() => { verifyBar.style.borderColor = ''; }, 1500);
+                    return;
+                }
+
+                if (verifyBtn.disabled) return;
+                if (verifyTimeout) clearTimeout(verifyTimeout);
+
+                verifyBtn.classList.add('loading');
+                verifyBtn.disabled = true;
+                btnText.textContent = '';
+
+                verifyTimeout = setTimeout(() => runVerification(value), 1800);
+            }
+
+            verifyBtn.addEventListener('click', startVerification);
+
+            verifyInput.addEventListener('keydown', (e) => {
+                if (e.key === 'Enter') startVerification();
+            });
+
+        })();
+    </script>
+</body>
+</html>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<cronos-footer></cronos-footer>
+</body>
+</html>

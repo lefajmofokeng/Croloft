@@ -1,0 +1,615 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <link href="https://fonts.cdnfonts.com/css/circular-std" rel="stylesheet">
+    <title>My Website</title>
+    
+    <script src="header.js" defer></script> 
+    <script src="footer.js" defer></script>
+
+     <style>
+      @font-face { font-family:'Circular Std'; src:url('fonts/CircularStd-Book.woff2') format('woff2'),url('fonts/CircularStd-Book.woff') format('woff'); font-weight:400; font-style:normal; font-display:swap; }
+  @font-face { font-family:'Circular Std'; src:url('fonts/CircularStd-BookItalic.woff2') format('woff2'),url('fonts/CircularStd-BookItalic.woff') format('woff'); font-weight:400; font-style:italic; font-display:swap; }
+  @font-face { font-family:'Circular Std'; src:url('fonts/CircularStd-Medium.woff2') format('woff2'),url('fonts/CircularStd-Medium.woff') format('woff'); font-weight:500; font-style:normal; font-display:swap; }
+  @font-face { font-family:'Circular Std'; src:url('fonts/CircularStd-Bold.woff2') format('woff2'),url('fonts/CircularStd-Bold.woff') format('woff'); font-weight:600; font-style:normal; font-display:swap; }
+  @font-face { font-family:'Circular Std'; src:url('fonts/CircularStd-Bold.woff2') format('woff2'),url('fonts/CircularStd-Bold.woff') format('woff'); font-weight:700; font-style:normal; font-display:swap; }
+  @font-face { font-family:'Circular Std'; src:url('fonts/CircularStd-Black.woff2') format('woff2'),url('fonts/CircularStd-Black.woff') format('woff'); font-weight:800; font-style:normal; font-display:swap; }
+  @font-face { font-family:'Circular Std'; src:url('fonts/CircularStd-Black.woff2') format('woff2'),url('fonts/CircularStd-Black.woff') format('woff'); font-weight:900; font-style:normal; font-display:swap; }
+    </style>
+</head>
+<body>
+
+    <cronos-header></cronos-header>
+
+</body>
+</html>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>IT Tech Component - Full Width</title>
+
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+        }
+
+        /* --- CSS Variables & Reset for Component Scope --- */
+        .it-tech-component-wrapper {
+            --it-blue-primary: #0066d2;
+            --it-blue-dark: #0A192F;
+            --it-blue-light-bg: #F0F7FF;
+            --it-text-dark: #111827;
+            --it-text-gray: #6B7280;
+            --it-white: #FFFFFF;
+            --it-bg-gray: #FAFAFA;
+            --it-border-radius-btn: 50px;
+            --it-border-radius-card: 12px;
+            --it-section-spacing: 80px;
+            
+            font-family: 'Circular Std', sans-serif;
+            color: var(--it-text-dark);
+            line-height: 1.5;
+            box-sizing: border-box;
+            width: 100%;
+            margin: 0;
+            padding: 0;
+            background-color: var(--it-white);
+        }
+
+        .it-tech-component-wrapper *,
+        .it-tech-component-wrapper *::before,
+        .it-tech-component-wrapper *::after {
+            box-sizing: inherit;
+            margin: 0;
+            padding: 0;
+        }
+
+        /* --- Layout Utilities --- */
+        
+        /* 1. Sections: Always 100% width to allow full-bleed backgrounds */
+        .it-tech-section {
+            width: 100%;
+            padding: var(--it-section-spacing) 0;
+            position: relative;
+        }
+
+        /* 2. Container: Constraints content to 1200px and centers it */
+        .it-tech-container {
+            width: 100%;
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 24px; /* Gutters to prevent touching screen edges */
+        }
+        
+        /* Helper for narrower text blocks inside the 1200px container */
+        .it-tech-container-narrow {
+            max-width: 800px;
+            margin: 0 auto;
+        }
+
+        .it-tech-flex-center { display: flex; align-items: center; justify-content: center; }
+        .it-tech-img-responsive { display: block; object-fit: cover; width: 100%; height: 670px; border-radius: var(--it-border-radius-card); }
+
+        /* --- Typography Utilities --- */
+        .it-tech-h1 { font-size: 64px; font-weight: 400; line-height: 1.2; letter-spacing: -0.02em;}
+        .it-tech-h2 { font-size: 50px; font-weight: 500; letter-spacing: -0.02em; text-align: center; margin-bottom: 40px; line-height: 1.1;
+            background: linear-gradient(90deg, #0a1f44, #3fa9f5);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+            color: transparent; }
+        .it-tech-h3 { font-size: 25px; font-weight: 500; }
+        .it-tech-subtext { font-size: 16px; color: #3d4b61; text-align: center; margin-bottom: 30px; font-weight: 400; }
+        .it-tech-text-blue { color: var(--it-blue-primary); }
+        .it-tech-text-white { color: var(--it-white); }
+
+        /* --- Button Utilities --- */
+        .it-tech-btn {
+            display: inline-block;
+            padding: 10px 30px;
+            border-radius: var(--it-border-radius-btn);
+            font-weight: 400;
+            font-size: 17px;
+            text-decoration: none;
+            transition: all 0.3s ease;
+            cursor: pointer;
+            border: none;
+        }
+        .it-tech-btn-primary { background-color: var(--it-blue-primary); color: var(--it-white); }
+        .it-tech-btn-primary:hover { background-color: #006fd0; }
+        .it-tech-btn-outline-white { background-color: #fff; border: none; color: #080d1b; }
+        .it-tech-btn-outline-white:hover { background-color: var(--it-white); color: var(--it-blue-dark); }
+        .it-tech-btn-outline-blue { background-color: #0066d2; border: 1px solid var(--it-blue-primary); color: #fff; }
+        .it-tech-btn-outline-blue:hover { background-color: var(--it-blue-primary); color: var(--it-white); }
+        .it-tech-btn-small { padding: 8px 20px; font-size: 18px; }
+        .it-tech-btn-dark { background-color: #0B1426; color: var(--it-white); }
+        .it-tech-btn-dark:hover { background-color: #1a2b4d; }
+
+        /* =========================================
+           SECTION 1: Hero (Full Width Background)
+        ========================================= */
+        .it-tech-hero-section {
+            width: 100%; height: 100vh;
+            position: relative;
+            background-color: var(--it-blue-dark);
+            padding: 230px 0 150px;
+            overflow: hidden;
+        }
+        .it-tech-hero-bg {
+            position: absolute;
+            top: 0; left: 0; right: 0; bottom: 0;
+            background-image: url('thumbnails/pexels-alp-mmiy-2147670381-29822392.jpg');
+            background-size: cover;
+            background-position: center;
+            opacity: 0.4;
+            z-index: 1;
+        }
+        .it-tech-hero-content {
+            position: relative;
+            z-index: 2;
+            max-width: 600px; /* Limits text width inside the 1200px container */
+        }
+        .it-tech-hero-logo {
+            color: var(--it-white);
+            font-weight: 700;
+            margin-bottom: 20px;
+            display: flex; align-items: center; gap: 8px;
+        }
+        .it-tech-hero-h1 {
+            color: var(--it-white); line-height: 1;
+            margin-bottom: 30px; 
+        }
+
+        /* =========================================
+           SECTION 2: Popular Stacks Grid
+        ========================================= */
+        .it-tech-stacks-grid {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 10px;
+            margin-top: 40px;
+        }
+        .it-tech-stack-card {
+            position: relative;
+            height: 300px; /* Slightly taller for 1200px width */
+            border-radius: var(--it-border-radius-card);
+            overflow: hidden;
+        }
+        .it-tech-stack-card img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+        }
+        .it-tech-stack-info-card {
+            background-color: var(--it-blue-light-bg);
+            padding: 32px;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: flex-start;
+        }
+        .it-tech-stack-info-title {
+            font-size: 30px;
+            font-weight: 500;
+            letter-spacing: -0.02em;
+            margin-bottom: 20px;
+            line-height: 1.2;
+        }
+
+        /* =========================================
+           SECTION 3: Deployment (Phone Mockup)
+        ========================================= */
+        .it-tech-deployment-flex {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            gap: 80px;
+        }
+        .it-tech-phone-mockup {
+            width: 350px;
+            min-height: 650px;
+            border-radius: 35px;
+            box-shadow: 0 25px 50px -12px rgba(0,0,0,0.25);
+            border: 8px solid transparent;
+            overflow: hidden;
+            background: linear-gradient(45deg, #6B7280, #0A192F);
+        }
+        .it-tech-deployment-text {
+            max-width: 380px;
+        }
+        .it-tech-deployment-h3 {
+            font-size: 42px;
+            font-weight: 500;
+            color: var(--it-blue-dark);
+            line-height: 1.2;
+        }
+
+        /* =========================================
+           SECTION 4: Licenses (Gray Background)
+        ========================================= */
+        .it-tech-section-gray {
+            background-color: var(--it-bg-gray);
+        }
+        .it-tech-licenses-flex {
+            display: flex;
+            justify-content: center;
+            gap: 10px;
+            flex-wrap: wrap;
+        }
+        .it-tech-license-card {
+            width: 370px; /* Wider to fill 1200px better */
+            height: 480px;
+            border-radius: var(--it-border-radius-card);
+            overflow: hidden;
+            box-shadow: 0 4px 6px -1px rgba(0,0,0,0.1);
+            background: white;
+        }
+        .it-tech-license-card img {
+            width: 100%; height: 100%; object-fit: cover;
+        }
+
+        /* =========================================
+           SECTION 5: Beyond Coding (Dual Dark Cards)
+        ========================================= */
+        .it-tech-features-flex {
+            display: flex;
+            gap: 30px;
+        }
+        .it-tech-feature-dark-card {
+            flex: 1;
+            background-color: var(--it-blue-dark);
+            border-radius: 24px;
+            padding: 50px;
+            height: 550px;
+            position: relative;
+            overflow: hidden;
+            display: flex;
+            flex-direction: column;
+        }
+        .it-tech-bg-monitoring { background: linear-gradient(to bottom, rgb(10, 25, 47), rgba(10, 25, 47, 0)), url('thumbnails/pexels-alp-mmiy-2147670381-29822392.jpg'); background-size: cover; }
+        .it-tech-bg-transfer { background: linear-gradient(to bottom, rgba(10,25,47,0.7), rgba(10, 25, 47, 0)), url('thumbnails/pexels-alp-mmiy-2147670381-29822392.jpg'); background-size: cover; }
+
+        .it-tech-feature-h3 {
+            color: var(--it-white);
+            font-size: 28px;
+            font-weight: 400; line-height: 1.1;
+            margin-bottom: 20px;
+            position: relative; z-index: 2;
+            max-width: 90%;
+        }
+        .it-tech-feature-phone-img {
+            position: absolute;
+            bottom: -10px;
+            left: 50%;
+            transform: translateX(-50%);
+            width: 320px;
+            z-index: 1;
+            border-radius: 20px;
+            box-shadow: 0 -20px 40px rgba(0,0,0,0.3);
+        }
+
+        /* =========================================
+           SECTION 6: Footer/Merchant Bar
+        ========================================= */
+        .it-tech-footer-bar {
+            background-color: var(--it-blue-light-bg);
+            padding: 0 0 0 60px;
+            border-radius: 20px;
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            overflow: hidden;
+        }
+        .it-tech-footer-content { flex: 1; padding-right: 40px; }
+        .it-tech-footer-h3 { font-size: 42px; font-weight: 500; margin-bottom: 36px; color: var(--it-blue-dark); line-height: 1; letter-spacing: -0.02em; }
+        .it-tech-footer-p { margin-bottom: 32px; font-size: 18px; color: var(--it-text-gray); }
+        
+        .it-tech-footer-img-wrapper {
+            flex: 0 0 580px; /* Fixed width for image container */
+            height: 400px;
+            border-radius: 0 20px 20px 0;
+            overflow: hidden;
+        }
+        .it-tech-footer-img-wrapper img {
+            width: 100%; height: 100%; object-fit: cover;
+        }
+
+        /* --- Responsive Adjustments --- */
+        @media (max-width: 960px) {
+            .it-tech-stacks-grid { grid-template-columns: repeat(2, 1fr); }
+            .it-tech-deployment-flex { flex-direction: column; text-align: center; gap: 40px; }
+            .it-tech-features-flex { flex-direction: column; }
+            .it-tech-feature-dark-card { height: 750px; }
+            .it-tech-footer-bar { flex-direction: column; gap: 40px; padding: 40px; }
+            .it-tech-footer-content { padding-right: 0; text-align: center; }
+            .it-tech-footer-img-wrapper { flex: 1; width: 100%; max-width: 100%; }
+        }
+        @media (max-width: 768px) {
+            .it-tech-h1 { font-size: 32px; }
+            .it-tech-h2 { font-size: 28px; }
+            .it-tech-stacks-grid { grid-template-columns: 1fr; }
+            .it-tech-feature-h3 { font-size: 22px; font-weight: 400; }
+            .it-tech-feature-dark-card { padding: 30px; border-radius: 15px;}
+        }
+    </style>
+</head>
+<body>
+
+<div class="it-tech-component-wrapper">
+
+    <section class="it-tech-hero-section">
+        <div class="it-tech-hero-bg"></div>
+        <div class="it-tech-container">
+            <div class="it-tech-hero-content">
+                <div class="it-tech-hero-logo">
+                   <img src="thumbnails/mock2.png" style="height: 30px;"/>
+                </div>
+                <h1 class="it-tech-h1 it-tech-hero-h1">The bar?<br> We raise that.</h1>
+                <a href="#" class="it-tech-btn it-tech-btn-outline-white">Start development</a>
+            </div>
+        </div>
+    </section>
+
+    <section class="it-tech-section" style="padding: 200px 0;">
+        <div class="it-tech-container">
+            <div class="it-tech-container-narrow">
+                <h2 class="it-tech-h2">
+                    Integrate with popular stacks, <br> including
+                    AWS, Azure, Docker, and K8s
+                </h2>
+            </div>
+            
+            <div class="it-tech-stacks-grid">
+                <div class="it-tech-stack-card">
+                    <img src="https://images.unsplash.com/photo-1558494949-ef010cbdcc31?q=80&w=2034&auto=format&fit=crop" alt="Server Rack">
+                </div>
+                <div class="it-tech-stack-card">
+                    <img src="https://images.unsplash.com/photo-1523580494863-6f3031224c94?q=80&w=2070&auto=format&fit=crop" alt="Cloud Computing Icon">
+                </div>
+                <div class="it-tech-stack-card">
+                    <img src="https://images.unsplash.com/photo-1667372393119-3d4c48d07fc9?q=80&w=2070&auto=format&fit=crop" alt="Smart Watch IoT">
+                </div>
+                <div class="it-tech-stack-card">
+                    <img src="https://images.unsplash.com/photo-1573164713988-8665fc963095?q=80&w=2069&auto=format&fit=crop" alt="Engineer in Data Center">
+                </div>
+                 <div class="it-tech-stack-card it-tech-stack-info-card">
+                    <h3 class="it-tech-stack-info-title">Up to 20% faster deployment with top CI/CD tools.</h3>
+                    <a href="#" class="it-tech-btn it-tech-btn-primary it-tech-btn-small">Read Docs 
+                        <svg style="vertical-align: middle;" xmlns="http://www.w3.org/2000/svg" width="25" height="25" viewBox="0 0 24 24"><path fill="#ffffff" d="M16.175 13H5q-.425 0-.713-.288T4 12q0-.425.288-.713T5 11h11.175l-4.9-4.9q-.3-.3-.288-.7t.313-.7q.3-.275.7-.288t.7.288l6.6 6.6q.15.15.213.325t.062.375q0 .2-.063.375t-.212.325l-6.6 6.6q-.275.275-.687.275T11.3 19.3q-.3-.3-.3-.713t.3-.712L16.175 13Z"/></svg>
+                    </a>
+                </div>
+                 <div class="it-tech-stack-card">
+                    <img src="https://images.unsplash.com/photo-1485827404703-89b55fcc595e?q=80&w=2070&auto=format&fit=crop" alt="Robot Arm AI">
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section class="it-tech-section">
+        <div class="it-tech-container">
+            <div class="it-tech-container-narrow">
+                <h2 class="it-tech-h2">
+                    More ways to deploy to<br>
+                    <span class="it-tech-text-blue">over 300 global regions</span>
+                </h2>
+            </div>
+            
+            <div class="it-tech-deployment-flex">
+                <div class="it-tech-phone-mockup">
+                    <video 
+                class="it-tech-img-responsive"
+                autoplay 
+                loop 
+                muted 
+                playsinline
+                src="videos/Screenrecording_20260816_162745.mp4">
+                Your browser does not support the video tag.
+                </video>
+                 
+                </div>
+                <div class="it-tech-deployment-text">
+                    <h3 class="it-tech-deployment-h3">Execute shell commands with a single tap.</h3>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section class="it-tech-section it-tech-section-gray" style="padding: 150px 0; background-color: #ffffff;">
+        <div class="it-tech-container">
+            <h2 class="it-tech-h2">Acquire software licenses with credits</h2>
+            
+            <div class="it-tech-licenses-flex">
+                <div class="it-tech-license-card">
+                    <img src="https://images.pexels.com/photos/29416859/pexels-photo-29416859.jpeg" alt="VS license">
+                </div>
+                <div class="it-tech-license-card">
+                    <img src="https://images.pexels.com/photos/12564252/pexels-photo-12564252.jpeg" alt="Adobe license">
+                </div>
+                <div class="it-tech-license-card">
+                    <img src="https://images.pexels.com/photos/30032770/pexels-photo-30032770.jpeg" alt="JetBrains license">
+                </div>
+            </div>
+            
+            <div class="it-tech-flex-center" style="margin-top: 40px;">
+                 <a href="marketplace.html" class="it-tech-btn it-tech-btn-outline-blue it-tech-btn-small">Explore Marketplace 
+                    <svg style="vertical-align: middle;" xmlns="http://www.w3.org/2000/svg" width="25" height="25" viewBox="0 0 24 24"><path fill="#fff" d="M16.175 13H5q-.425 0-.713-.288T4 12q0-.425.288-.713T5 11h11.175l-4.9-4.9q-.3-.3-.288-.7t.313-.7q.3-.275.7-.288t.7.288l6.6 6.6q.15.15.213.325t.062.375q0 .2-.063.375t-.212.325l-6.6 6.6q-.275.275-.687.275T11.3 19.3q-.3-.3-.3-.713t.3-.712L16.175 13Z"/></svg>
+                 </a>
+            </div>
+            <p class="it-tech-subtext" style="margin-top: 20px;">Availability varies by enterprise agreement region.</p>
+        </div>
+    </section>
+
+    <section class="it-tech-section">
+        <div class="it-tech-container">
+            <h2 class="it-tech-h2">Technology beyond coding</h2>
+            <div class="it-tech-features-flex">
+                <div class="it-tech-feature-dark-card it-tech-bg-monitoring">
+                    <h3 class="it-tech-feature-h3">Monitor server health and get real-time alerts up to 5x faster.</h3>
+                </div>
+                <div class="it-tech-feature-dark-card it-tech-bg-transfer">
+                    <h3 class="it-tech-feature-h3">Transfer large datasets securely and instantly between clusters.</h3>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section class="it-tech-section" style="padding-top: 0;">
+        <div class="it-tech-container">
+            <div class="it-tech-footer-bar">
+                <div class="it-tech-footer-content">
+                    <h3 class="it-tech-footer-h3">Start offering tech services to 400M+ users around the world.</h3>
+                    <a href="#" class="it-tech-btn it-tech-btn-dark">Become a Partner
+                         <svg style="vertical-align: middle;" xmlns="http://www.w3.org/2000/svg" width="25" height="25" viewBox="0 0 24 24"><path fill="#fff" d="M16.175 13H5q-.425 0-.713-.288T4 12q0-.425.288-.713T5 11h11.175l-4.9-4.9q-.3-.3-.288-.7t.313-.7q.3-.275.7-.288t.7.288l6.6 6.6q.15.15.213.325t.062.375q0 .2-.063.375t-.212.325l-6.6 6.6q-.275.275-.687.275T11.3 19.3q-.3-.3-.3-.713t.3-.712L16.175 13Z"/></svg>
+                    </a>
+                </div>
+                <div class="it-tech-footer-img-wrapper">
+                    <img src="thumbnails/pexels-googledeepmind-17484975.jpg" alt="IT Professional working">
+                </div>
+            </div>
+        </div>
+    </section>
+
+</div> </body>
+</html>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<cronos-footer></cronos-footer>

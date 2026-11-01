@@ -1,0 +1,382 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <link href="https://fonts.cdnfonts.com/css/circular-std" rel="stylesheet">
+    <title>My Website</title>
+    
+    <script src="header.js" defer></script> 
+    <script src="footer.js" defer></script>
+
+    <style>
+          
+        @font-face { font-family:'Circular Std'; src:url('fonts/CircularStd-Book.woff2') format('woff2'),url('fonts/CircularStd-Book.woff') format('woff'); font-weight:400; font-style:normal; font-display:swap; }
+        @font-face { font-family:'Circular Std'; src:url('fonts/CircularStd-BookItalic.woff2') format('woff2'),url('fonts/CircularStd-BookItalic.woff') format('woff'); font-weight:400; font-style:italic; font-display:swap; }
+        @font-face { font-family:'Circular Std'; src:url('fonts/CircularStd-Medium.woff2') format('woff2'),url('fonts/CircularStd-Medium.woff') format('woff'); font-weight:500; font-style:normal; font-display:swap; }
+        @font-face { font-family:'Circular Std'; src:url('fonts/CircularStd-Bold.woff2') format('woff2'),url('fonts/CircularStd-Bold.woff') format('woff'); font-weight:600; font-style:normal; font-display:swap; }
+        @font-face { font-family:'Circular Std'; src:url('fonts/CircularStd-Black.woff2') format('woff2'),url('fonts/CircularStd-Black.woff') format('woff'); font-weight:800; font-style:normal; font-display:swap; }
+
+    </style>
+</head>
+<body>
+
+    <cronos-header></cronos-header>
+
+</body>
+</html>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Stanford Admission Replica</title>
+    
+    <style>
+        body {
+            font-family: 'Circular Std', sans-serif;
+            margin: 0;
+            padding: 0;
+            background-color: #f2f2f2;
+            color: #333;
+        }
+
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 20px;
+        }
+
+        /* Header Section */
+        .header {
+            text-align: center;
+            padding: 140px 0 60px 0; 
+        }
+
+        .main-title {
+            font-size: 3rem;
+            font-weight: 500;
+            margin-bottom: 10px;
+            color: #000;
+        }
+
+        .subtitle {
+            font-size: 18px;
+            font-weight: 400;
+            color: #555;
+            margin-bottom: 2.3rem;
+        }
+
+        .hd-btn {
+            padding: 15px 25px;
+            font-size: 17px;
+            background: linear-gradient(45deg, #006aff 50%, #00d5ff 100%);
+            text-decoration: none; border-radius: 50px; color: #fff;
+        }
+
+        /* Hero Image Section */
+        .hero-image-container {
+            width: auto;
+            height: 600px;
+            overflow: hidden;
+            margin-bottom: 40px; margin: 15px; border-radius: 20px;
+        }
+
+        .hero-image {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+        }
+
+        /* Undergraduates Section */
+        .undergrad-section {
+            background-color: #f4f4f4; 
+            display: flex;
+            margin-bottom: 40px;
+        }
+
+        .undergrad-text-content {
+            flex: 1;
+            padding: 60px;
+        }
+
+        .section-title-wrapper {
+            text-align: center;
+            padding: 40px 0;
+        }
+
+        .section-title {
+            font-size: 28px;
+            font-weight: 500;
+            color: #000;
+            margin-bottom: 0;
+        }
+
+        .undergrad-heading {
+            font-size: 19px;
+            font-weight: 500;
+            color: #000;
+            margin: 0 0 10px 0;
+        }
+
+        .undergrad-para {
+            font-size: 17px;
+            font-weight: 400;
+            line-height: 1.6;
+            margin: 0 0 20px 0;
+            color: #555;
+        }
+
+        .undergrad-image {
+            width: 50%;
+            object-fit: cover;
+        }
+
+        .link-style {
+            color: #007bff;
+            text-decoration: none;
+            font-weight: 600;
+            font-size: 14px;
+        }
+
+
+        /* Financial Aid Section */
+        .finaid-section {
+            background-color: #f7f7f7;
+            padding: 120px 0;
+            margin-bottom: 40px;
+            text-align: center;
+        }
+
+        .finaid-title-block {
+            margin-bottom: 40px;
+        }
+
+        .finaid-stats {
+            display: grid;
+            grid-template-columns: repeat(2, 1fr);
+            gap: 40px;
+            max-width: 800px;
+            margin: 0 auto;
+        }
+
+        .finaid-stat-item h2 {
+            font-size: 32px;
+            font-weight: 700;
+            margin: 0 0 5px 0;
+            color: #000;
+        }
+
+        .finaid-stat-item p {
+            font-size: 18px;
+            font-weight: 400;
+            margin: 0;
+            color: #777;
+        }
+
+        .finaid-para {
+            font-size: 2.4rem;
+            font-weight: 500;
+            color: #555;
+            margin: 0;
+        }
+
+        .btn-finaid {
+            background: linear-gradient(45deg, #006aff 50%, #00d5ff 100%);
+            color: #fff; border-radius: 50px;
+            padding: 15px 25px;
+            border: none;
+            cursor: pointer;
+            font-weight: 400;
+            font-size: 17px;
+            margin-top: 40px; font-family: inherit;
+        }
+
+        /* Applying to Other Programs Section */
+        .other-programs-section {
+            background-color: #fff;
+            padding: 60px 0;
+            
+        }
+
+        .other-programs-cols {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 30px;
+            max-width: 900px;
+            margin: 0 auto;
+        }
+
+        .other-heading {
+            font-size: 19px;
+            font-weight: 700;
+            margin: 0 0 10px 0;
+            color: #000;
+        }
+
+        .other-para {
+            font-size: 17px;
+            font-weight: 400;
+            line-height: 1.6;
+            margin: 0 0 15px 0;
+            color: #555;
+        }
+
+        /* Footer Image Section */
+        .footer-image-container {
+            width: 100%;
+            height: 700px;
+            overflow: hidden;
+        }
+
+        .footer-image {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+        }
+
+    </style>
+</head>
+<body>
+
+<div class="header">
+    <div class="container">
+        <h1 class="main-title">Coding. <span style="color: dimgray;">We help organisations.</span></h1>
+        <h3 class="subtitle">Explore the possibilities of a Stanford education.</h3>
+        <a href="#" class="hd-btn">Register your non-org with Croloft</a>
+    </div>
+</div>
+
+<div class="hero-image-container">
+    <img src="thumbnails/pexels-altabena-10142683.jpg" alt="Stanford Tree mascot in stadium" class="hero-image">
+</div>
+
+<div class="section-title-wrapper">
+    <div class="container">
+        <h2 class="section-title">Undergraduates</h2>
+    </div>
+</div>
+
+<div class="container">
+    <div class="undergrad-section">
+        <div class="undergrad-text-content">
+            <h4 class="undergrad-heading">Undergraduate Admission</h4>
+            <p class="undergrad-para">
+                About 1,700 freshmen and 30 transfer students enroll at Stanford each year. We review each applicant on comprehensive academic excellence, intellectual vitality, and personal context.
+            </p>
+            <a href="#" class="link-style">Undergraduate Admission</a>
+
+            <div style="height: 30px;"></div>
+
+            <h4 class="undergrad-heading">Undergraduate Financial Aid</h4>
+            <p class="undergrad-para">
+                Stanford meets the full financial need of every admitted undergraduate who qualifies for assistance. Tuition is covered for all undergraduates with family incomes below $150,000. Tuition, room, and board are covered for undergraduates with family incomes below $100,000.
+            </p>
+            <a href="#" class="link-style">Undergraduate Financial Aid</a>
+
+            <div style="height: 30px;"></div>
+
+            <h4 class="undergrad-heading">Profile of the Class of 2023</h4>
+            <a href="#" class="link-style">Class of 2023</a>
+        </div>
+        <img src="thumbnails/pexels-altabena-10142683.jpg" alt="Students in group talking" class="undergrad-image">
+    </div>
+</div>
+
+
+<div class="finaid-section">
+    <div class="container">
+        <div class="finaid-title-block">
+            <h3 class="finaid-para">We are committed to making a world-class education affordable.</h3>
+        </div>
+        <div class="finaid-stats">
+            <div class="finaid-stat-item">
+                <h2>69%</h2>
+                <p>of students receive financial aid toward the cost of attendance</p>
+            </div>
+            <div class="finaid-stat-item">
+                <h2>Tuition covered</h2>
+                <p>for undergraduates with family incomes below $150,000</p>
+            </div>
+            <div class="finaid-stat-item">
+                <h2>Tuition, room, & board covered</h2>
+                <p>for undergraduates with family incomes below $100,000</p>
+            </div>
+            <div class="finaid-stat-item">
+                <h2>Graduate aid available</h2>
+                <p>based on available funds and academic merit</p>
+            </div>
+        </div>
+        <button class="btn-finaid">More About Financial Aid</button>
+    </div>
+</div>
+
+<div class="section-title-wrapper">
+    <div class="container">
+        <h2 class="section-title">Applying To Other Programs</h2>
+    </div>
+</div>
+
+<div class="other-programs-section">
+    <div class="container">
+        <div class="other-programs-cols">
+            <div>
+                <h5 class="other-heading">Summer Session</h5>
+                <p class="other-para">High school, college and graduate students can take courses in one of eight different academic programs.</p>
+                <a href="#" class="link-style">Summer Session</a>
+            </div>
+            <div>
+                <h5 class="other-heading">Lifelong Learning</h5>
+                <p class="other-para">Stanford offers wide opportunities in continuing education, executive education, and professional programs, and other programs for diverse students.</p>
+                <a href="#" class="link-style">Lifelong Learning Programs</a>
+            </div>
+            <div>
+                <h5 class="other-heading">Postdocs</h5>
+                <p class="other-para">Information for postdoctoral scholars considering positions at Stanford University.</p>
+                <a href="#" class="link-style">Postdoctoral Positions</a>
+            </div>
+        </div>
+    </div>
+</div>
+
+<div class="footer-image-container">
+    <img src="thumbnails/pexels-efdal-yildiz-325089-917494.jpg" alt="Stanford Dish radio telescope in hills" class="footer-image">
+</div>
+
+</body>
+</html>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<cronos-footer></cronos-footer>

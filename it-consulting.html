@@ -1,0 +1,598 @@
+<!DOCTYPE html>
+<html lang="en" dir="ltr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, minimum-scale=1.0, maximum-scale=5.0, viewport-fit=cover, shrink-to-fit=no">
+    <meta http-equiv="x-ua-compatible" content="ie=edge"/>
+    
+    <title>Cronos</title>
+
+    <!-- WEB TAB ICON -->
+    <link rel="icon" type="image/png" href="thumbnails/top-1.png">
+
+    <style>
+      @font-face { font-family:'Circular Std'; src:url('fonts/CircularStd-Book.woff2') format('woff2'),url('fonts/CircularStd-Book.woff') format('woff'); font-weight:400; font-style:normal; font-display:swap; }
+  @font-face { font-family:'Circular Std'; src:url('fonts/CircularStd-BookItalic.woff2') format('woff2'),url('fonts/CircularStd-BookItalic.woff') format('woff'); font-weight:400; font-style:italic; font-display:swap; }
+  @font-face { font-family:'Circular Std'; src:url('fonts/CircularStd-Medium.woff2') format('woff2'),url('fonts/CircularStd-Medium.woff') format('woff'); font-weight:500; font-style:normal; font-display:swap; }
+  @font-face { font-family:'Circular Std'; src:url('fonts/CircularStd-Bold.woff2') format('woff2'),url('fonts/CircularStd-Bold.woff') format('woff'); font-weight:600; font-style:normal; font-display:swap; }
+  @font-face { font-family:'Circular Std'; src:url('fonts/CircularStd-Bold.woff2') format('woff2'),url('fonts/CircularStd-Bold.woff') format('woff'); font-weight:700; font-style:normal; font-display:swap; }
+  @font-face { font-family:'Circular Std'; src:url('fonts/CircularStd-Black.woff2') format('woff2'),url('fonts/CircularStd-Black.woff') format('woff'); font-weight:800; font-style:normal; font-display:swap; }
+  @font-face { font-family:'Circular Std'; src:url('fonts/CircularStd-Black.woff2') format('woff2'),url('fonts/CircularStd-Black.woff') format('woff'); font-weight:900; font-style:normal; font-display:swap; }
+    </style>
+</head>
+
+
+
+
+
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>My Website</title>
+    
+    <script src="header.js" defer></script>
+    <script src="footer.js" defer></script> 
+</head>
+<body>
+
+    <cronos-header></cronos-header>
+    
+
+</body>
+</html>
+<style>
+
+    /* Scoped Container to prevent global style leakage */
+    .it-hero-wrapper {
+        margin: 0;
+        padding: 0;
+        box-sizing: border-box;
+        font-family: 'Circular Std', sans-serif;
+        display: flex;
+        align-items: center;
+        justify-content: flex-start;
+        min-height: 800px;
+        width: 100%;
+        background: linear-gradient(to right, rgba(0,0,0,0.8) 20%, rgba(0,0,0,0.1) 100%), 
+                    url('thumbnails/pexels-alp-mmiy-2147670381-29822392.jpg');
+        background-size: cover;
+        background-position: center;
+        color: #ffffff;
+        padding-left: 10%;
+        position: relative;
+        overflow: hidden;
+    }
+
+    * {
+        margin: 0;
+        padding: 0;
+    }
+
+    .it-hero-content {
+        max-width: 700px;
+        z-index: 2;
+    }
+
+    .it-hero-headline {
+        font-size: 3.5rem;
+        line-height: 1.1;
+        font-weight: 500;
+        margin-bottom: 1rem;
+        letter-spacing: -0.03em;
+    }
+
+    .it-hero-sub-headline {
+        font-size: 1.25rem;
+        font-weight: 500;
+        margin-bottom: 0.5rem;
+        color: #f1f1f1;
+    }
+
+    .it-hero-footer-note {
+        font-size: 0.9rem;
+        font-weight: 400;
+        color: #b0b8d1;
+        margin-top: 1rem;
+    }
+
+    /* Responsive Adjustments */
+    @media (max-width: 768px) {
+        .it-hero-headline { font-size: 2.5rem; }
+        .it-hero-category { font-size: 1.5rem; }
+        .it-hero-wrapper { padding-left: 5%; }
+    }
+</style>
+
+<section class="it-hero-wrapper">
+    <div class="it-hero-content">
+        
+        <h1 class="it-hero-headline">
+            Innovate your future.<br>
+            Build it when you're right.
+        </h1>
+
+        <p class="it-hero-sub-headline">Available throughout the US.</p>
+        
+        <p class="it-hero-footer-note">
+            Currently only available in the United States.
+        </p>
+    </div>
+</section>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<div class="ptd-hero-container">
+  <video 
+    id="ptdHeroVideo" 
+    class="ptd-hero-video" 
+    autoplay 
+    muted 
+    loop 
+    playsinline
+  >
+    <source src="videos/xxx.mp4" type="video/mp4">
+    Your browser does not support the video tag.
+  </video>
+
+  <div class="ptd-hero-overlay">
+    <div class="ptd-hero-content-wrapper">
+      <h1 class="ptd-hero-title">Power through your day</h1>
+      <p class="ptd-hero-description">
+        Long-lasting battery life helps keep you mobile from morning to night.<sup>3</sup>
+      </p>
+    </div>
+  </div>
+
+  <button 
+    id="ptdVideoToggleBtn" 
+    class="ptd-video-toggle-btn" 
+    aria-label="Pause background video"
+  >
+    <svg class="ptd-btn-icon ptd-icon-pause" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+      <path d="M6 4h4v16H6zM14 4h4v16h-4z"/>
+    </svg>
+    <svg class="ptd-btn-icon ptd-icon-play" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" style="display: none;">
+      <path d="M8 5v14l11-7z"/>
+    </svg>
+  </button>
+</div>
+
+<style>
+  /* Base Scoped Container */
+  .ptd-hero-container {
+    position: relative;
+    width: 100%;
+    height: 100vh; /* Takes full viewport height. Adjust as needed for your layout */
+    min-height: 450px;
+    overflow: hidden;
+    background-color: #000;
+    font-family: 'Circular Std',-apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
+    color: #ffffff;
+  }
+
+  /* Video Background Object-Fit Coverage */
+  .ptd-hero-video {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    width: 100%;
+    height: 100%;
+    min-width: 100%;
+    min-height: 100%;
+    transform: translate(-50%, -50%);
+    object-fit: cover;
+    z-index: 1;
+  }
+
+  /* Content Overlay Layer */
+  .ptd-hero-overlay {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    z-index: 2;
+    background: rgba(0, 0, 0, 0.15); /* Light tint for text readability if video is too bright */
+    display: flex;
+    align-items: flex-start; /* Matches upper alignment of text in screenshot */
+    box-sizing: border-box;
+    padding: 10% 8% 5% 8%;
+  }
+
+  /* Text Positioning and Layout */
+  .ptd-hero-content-wrapper {
+    display: flex;
+    flex-direction: row;
+    align-items: flex-start;
+    justify-content: space-between;
+    width: 100%;
+    max-width: 1400px;
+    margin: 0 auto;
+    gap: 40px;
+  }
+
+  .ptd-hero-title {
+    font-size: 3.2rem;
+    font-weight: 400; /* Replicates the clean light-weight font */
+    letter-spacing: -0.02em;
+    margin: 0;
+    flex: 1;
+    line-height: 1.15;
+    max-width: 600px;
+  }
+
+  .ptd-hero-description {
+    font-size: 1.15rem;
+    font-weight: 400;
+    line-height: 1.4;
+    max-width: 320px;
+    margin: 12px 0 0 0;
+    flex: 1;
+    opacity: 0.95;
+  }
+  
+  .ptd-hero-description sup {
+    font-size: 0.65rem;
+    top: -0.5em;
+    margin-left: 2px;
+  }
+
+  /* Bottom Right Video Toggle Button */
+  .ptd-video-toggle-btn {
+    position: absolute;
+    bottom: 30px;
+    right: 40px;
+    z-index: 3;
+    background: rgba(0, 0, 0, 0.4);
+    border: 1px solid rgba(255, 255, 255, 0.2);
+    border-radius: 50%;
+    width: 44px;
+    height: 44px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    cursor: pointer;
+    color: #ffffff;
+    transition: background 0.2s ease, transform 0.1s ease;
+    backdrop-filter: blur(4px);
+    -webkit-backdrop-filter: blur(4px);
+    padding: 0;
+  }
+
+  .ptd-video-toggle-btn:hover {
+    background: rgba(0, 0, 0, 0.6);
+  }
+  
+  .ptd-video-toggle-btn:active {
+    transform: scale(0.95);
+  }
+
+  .ptd-btn-icon {
+    width: 18px;
+    height: 18px;
+  }
+
+  /* --- Responsive Breakpoints --- */
+  
+  /* Tablet Viewports */
+  @media (max-width: 992px) {
+    .ptd-hero-title {
+      font-size: 2.5rem;
+    }
+    .ptd-hero-description {
+      font-size: 1rem;
+      max-width: 260px;
+    }
+  }
+
+  /* Mobile Viewports (Stack layout cleanly) */
+  @media (max-width: 768px) {
+    .ptd-hero-overlay {
+      padding: 60px 24px 80px 24px;
+      align-items: flex-end; /* Shifting layout downwards for improved visibility on small displays */
+    }
+
+    .ptd-hero-content-wrapper {
+      flex-direction: column;
+      gap: 16px;
+    }
+
+    .ptd-hero-title {
+      font-size: 2.2rem;
+      max-width: 100%;
+    }
+
+    .ptd-hero-description {
+      font-size: 1rem;
+      max-width: 100%;
+      margin: 0;
+    }
+
+    .ptd-video-toggle-btn {
+      bottom: 20px;
+      right: 24px;
+      width: 40px;
+      height: 40px;
+    }
+    
+    .ptd-btn-icon {
+      width: 16px;
+      height: 16px;
+    }
+  }
+</style>
+
+<script>
+  document.addEventListener('DOMContentLoaded', function () {
+    var video = document.getElementById('ptdHeroVideo');
+    var toggleBtn = document.getElementById('ptdVideoToggleBtn');
+    var pauseIcon = toggleBtn.querySelector('.ptd-icon-pause');
+    var playIcon = toggleBtn.querySelector('.ptd-icon-play');
+
+    if (video && toggleBtn) {
+      toggleBtn.addEventListener('click', function () {
+        if (video.paused) {
+          video.play();
+          pauseIcon.style.display = 'block';
+          playIcon.style.display = 'none';
+          toggleBtn.setAttribute('aria-label', 'Pause background video');
+        } else {
+          video.pause();
+          pauseIcon.style.display = 'none';
+          playIcon.style.display = 'block';
+          toggleBtn.setAttribute('aria-label', 'Play background video');
+        }
+      });
+    }
+  });
+</script>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700;800&display=swap" rel="stylesheet">
+
+<style>
+    :root {
+        --it-tech-bg: #030308;
+        --it-tech-text-white: #f7F9FA;
+        --it-tech-text-dim: #A0A9BE;
+        --it-tech-radius: 8px;
+    }
+
+    .it-tech-container {
+        background-color: var(--it-tech-bg);
+        color: var(--it-tech-text-white);
+        font-family: 'Circular Std', sans-serif;
+        padding: 60px 5%;
+    }
+
+    .it-tech-row {
+        display: flex;
+        align-items: center;
+        justify-content: space-between;
+        max-width: 1100px;
+        margin: 0 auto 100px auto;
+        gap: 8%;
+    }
+
+    /* Alternating logic */
+    .it-tech-row:nth-child(even) {
+        flex-direction: row-reverse;
+    }
+
+    /* Reduced Image Size (40% width instead of 50/50 split) */
+    .it-tech-image-box {
+        flex: 0 0 40%;
+    }
+
+    .it-tech-image-box img {
+        width: 100%;
+        height: 320px; /* Controlled height for consistency */
+        border-radius: var(--it-tech-radius);
+        object-fit: cover;
+        display: block;
+    }
+
+    .it-tech-text-box {
+        flex: 0 0 52%;
+    }
+
+    .it-tech-title {
+        font-size: 2.5rem;
+        font-weight: 500;
+        line-height: 1.1;
+        margin-bottom: 20px;
+        letter-spacing: -0.02em;
+    }
+
+    .it-tech-desc {
+        font-size: 1.1rem;
+        line-height: 1.6;
+        color: var(--it-tech-text-dim);
+        font-weight: 400;
+    }
+
+    @media (max-width: 768px) {
+        .it-tech-row, .it-tech-row:nth-child(even) {
+            flex-direction: column;
+            text-align: center;
+            margin-bottom: 60px;
+        }
+        .it-tech-image-box, .it-tech-text-box {
+            flex: 0 0 100%;
+        }
+        .it-tech-image-box img { height: 250px; }
+    }
+</style>
+
+<div class="it-tech-container">
+    <div class="it-tech-row">
+        <div class="it-tech-text-box">
+            <h2 class="it-tech-title">Cloud Native Infrastructure</h2>
+            <p class="it-tech-desc">Scale your applications with microservices architecture designed for maximum uptime and resilience.</p>
+        </div>
+        <div class="it-tech-image-box">
+            <img src="https://images.unsplash.com/photo-1733534843143-a4df42fe8bfe?q=80&w=1170&auto=format&fit=crop&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D" alt="Cloud tech">
+        </div>
+    </div>
+
+    <div class="it-tech-row">
+        <div class="it-tech-text-box">
+            <h2 class="it-tech-title">Cyber Security First</h2>
+            <p class="it-tech-desc">End-to-end encryption and real-time threat detection to protect your most sensitive data assets.</p>
+        </div>
+        <div class="it-tech-image-box">
+            <img src="https://images.unsplash.com/photo-1692825122355-bf1daadefb76?q=80&w=1932&auto=format&fit=crop&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D" alt="Security">
+        </div>
+    </div>
+
+    <div class="it-tech-row">
+        <div class="it-tech-text-box">
+            <h2 class="it-tech-title">AI Driven Analytics</h2>
+            <p class="it-tech-desc">Transform raw data into actionable insights using our proprietary machine learning models.</p>
+        </div>
+        <div class="it-tech-image-box">
+            <img src="https://images.unsplash.com/photo-1702409096882-5508585181fb?q=80&w=1932&auto=format&fit=crop&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D" alt="AI Analytics">
+        </div>
+    </div>
+
+    <div class="it-tech-row">
+        <div class="it-tech-text-box">
+            <h2 class="it-tech-title">Edge Computing</h2>
+            <p class="it-tech-desc">Reduce latency by processing data closer to the source with our distributed edge network.</p>
+        </div>
+        <div class="it-tech-image-box">
+            <img src="https://images.unsplash.com/photo-1714548835781-f910461db159?q=80&w=1332&auto=format&fit=crop&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D" alt="Edge Computing">
+        </div>
+    </div>
+
+    <div class="it-tech-row">
+        <div class="it-tech-text-box">
+            <h2 class="it-tech-title">DevOps Automation</h2>
+            <p class="it-tech-desc">Streamline your CI/CD pipelines and eliminate manual bottlenecks in your release cycle.</p>
+        </div>
+        <div class="it-tech-image-box">
+            <img src="https://images.unsplash.com/photo-1704748430013-41227f6abf2f?q=80&w=1332&auto=format&fit=crop&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D" alt="Automation">
+        </div>
+    </div>
+</div>
+
+
+
+<cronos-footer></cronos-footer>

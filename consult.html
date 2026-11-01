@@ -1,0 +1,1287 @@
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>IT Consulting Services | Strategic Technology Advisory</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Outfit:wght@400;600;800&family=Work+Sans:wght@400;500&display=swap" rel="stylesheet">
+  <style>
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+    }
+
+    :root {
+      --primary: #1e40af;
+      --primary-dark: #1e3a8a;
+      --primary-light: #3b82f6;
+      --success: #000000;
+      --text-dark: #0f172a;
+      --text-gray: #64748b;
+      --text-light: #94a3b8;
+      --bg-light: #f8fafc;
+      --bg-white: #ffffff;
+      --border: #e2e8f0;
+      --shadow-sm: 0 1px 3px rgba(0, 0, 0, 0.05);
+      --shadow-md: 0 4px 12px rgba(0, 0, 0, 0.08);
+      --shadow-lg: 0 20px 25px -5px rgba(0, 0, 0, 0.1);
+    }
+
+    body {
+      font-family: 'Circular Std', -apple-system, sans-serif;
+      color: var(--text-dark);
+      background-color: var(--bg-light);
+      line-height: 1.6;
+      overflow-x: hidden;
+    }
+
+    /* Container & Wrapper */
+    .itc-pricing-wrap {
+      padding: 60px 20px 80px;
+      background: linear-gradient(135deg, #f8fafc 0%, #f1f5f9 100%);
+    }
+
+    .itc-container {
+      max-width: 1200px;
+      margin: 0 auto;
+    }
+
+    /* Header Styling */
+    .itc-header {
+      text-align: center;
+      margin-bottom: 60px;
+      animation: fadeInDown 0.8s ease-out;
+    }
+
+    @keyframes fadeInDown {
+      from {
+        opacity: 0;
+        transform: translateY(-20px);
+      }
+      to {
+        opacity: 1;
+        transform: translateY(0);
+      }
+    }
+
+    .itc-main-title {
+      font-family: 'Outfit', sans-serif;
+      font-size: clamp(2rem, 5vw, 3rem);
+      font-weight: 600;
+      margin-bottom: 16px;
+      color: var(--text-dark);
+      letter-spacing: -0.02em;
+    }
+
+    .itc-subtitle {
+      font-size: clamp(1rem, 2.5vw, 1.25rem);
+      color: var(--text-gray);
+      max-width: 650px;
+      margin: 0 auto 30px;
+      line-height: 1.7;
+    }
+
+    /* Trust Indicators */
+    .itc-trust-bar {
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      gap: 30px;
+      flex-wrap: wrap;
+      margin-top: 30px;
+      padding: 20px;
+      background: rgba(255, 255, 255, 0.6);
+      border-radius: 12px;
+      backdrop-filter: blur(10px);
+    }
+
+    .itc-trust-item {
+      display: flex;
+      align-items: center;
+      gap: 8px;
+      font-size: 0.9rem;
+      color: var(--text-gray);
+    }
+
+    .itc-trust-item::before {
+      content: "✓";
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      width: 24px;
+      height: 24px;
+      background: var(--success);
+      color: white;
+      border-radius: 50%;
+      font-weight: bold;
+      font-size: 0.75rem;
+    }
+
+    /* Grid Logic */
+    .itc-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+      gap: 30px;
+      margin-bottom: 60px;
+    }
+
+    /* Card Styling */
+    .itc-card {
+      background: var(--bg-white);
+      border: 2px solid var(--border);
+      border-radius: 20px;
+      padding: 40px 30px;
+      display: flex;
+      flex-direction: column;
+      transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+      position: relative;
+      animation: fadeInUp 0.8s ease-out backwards;
+    }
+
+    /* Card Header Box - contains tier name, description, and pricing */
+    .itc-card-header {
+      background: var(--bg-light);
+      border-radius: 15px;
+      padding: 30px;
+      margin-bottom: 30px;
+    }
+
+    .itc-card-featured .itc-card-header {
+      background: linear-gradient(135deg, #eff6ff 0%, #dbeafe 100%);
+    }
+
+    @keyframes fadeInUp {
+      from {
+        opacity: 0;
+        transform: translateY(30px);
+      }
+      to {
+        opacity: 1;
+        transform: translateY(0);
+      }
+    }
+
+    .itc-card:nth-child(1) { animation-delay: 0.1s; }
+    .itc-card:nth-child(2) { animation-delay: 0.2s; }
+    .itc-card:nth-child(3) { animation-delay: 0.3s; }
+
+    .itc-card:hover {
+      transform: translateY(-8px);
+      box-shadow: var(--shadow-lg);
+      border-color: var(--primary-light);
+    }
+
+    .itc-card-featured {
+      border: 3px solid var(--primary);
+      background: linear-gradient(135deg, #ffffff 0%, #f0f9ff 100%);
+      position: relative;
+    }
+
+    .itc-card-featured:hover {
+      border-color: var(--primary-dark);
+    }
+
+    /* Badge */
+    .itc-badge {
+      position: absolute;
+      top: -15px;
+      left: 50%;
+      transform: translateX(-50%);
+      background: linear-gradient(135deg, var(--primary) 0%, var(--primary-dark) 100%);
+      color: white;
+      padding: 6px 18px;
+      font-size: 0.75rem;
+      font-weight: 700;
+      border-radius: 20px;
+      text-transform: uppercase;
+      letter-spacing: 0.5px;
+      box-shadow: var(--shadow-md);
+    }
+
+    .itc-tier-name {
+      font-family: 'Circular Std', sans-serif;
+      font-size: clamp(1.5rem, 3vw, 1.75rem);
+      font-weight: 700;
+      margin-bottom: 12px;
+      color: var(--text-dark);
+    }
+
+    .itc-description {
+      color: var(--text-gray);
+      margin-bottom: 24px;
+      font-size: 0.95rem;
+      min-height: 48px;
+    }
+
+    .itc-price-wrapper {
+      font-family: 'Outfit', sans-serif;
+      font-size: clamp(2.5rem, 5vw, 3rem);
+      font-weight: 800;
+      margin-bottom: 24px;
+      color: var(--primary);
+      display: flex;
+      align-items: baseline;
+      gap: 4px;
+    }
+
+    .itc-currency {
+      font-size: clamp(1.5rem, 3vw, 2rem);
+      vertical-align: top;
+    }
+
+    .itc-period {
+      font-size: clamp(1rem, 2vw, 1.25rem);
+      color: var(--text-light);
+      font-weight: 500;
+    }
+
+    .itc-features {
+      list-style: none;
+      padding: 0;
+      margin-bottom: 30px;
+      flex-grow: 1;
+    }
+
+    .itc-features li {
+      padding: 12px 0;
+      font-size: 0.95rem;
+      color: var(--text-gray);
+      border-bottom: 1px solid var(--border);
+      display: flex;
+      align-items: flex-start;
+      gap: 10px;
+      line-height: 1.5;
+    }
+
+    .itc-features li:last-child {
+      border-bottom: none;
+    }
+
+    .itc-features li::before {
+      content: "✓";
+      flex-shrink: 0;
+      color: var(--success);
+      font-weight: bold;
+      font-size: 1.1rem;
+      margin-top: 2px;
+    }
+
+    .itc-features li strong {
+      color: var(--text-dark);
+    }
+
+    /* Buttons */
+    .itc-btn {
+      display: block;
+      text-align: center;
+      padding: 16px 24px;
+      border-radius: 12px;
+      text-decoration: none;
+      font-weight: 600;
+      font-size: 1rem;
+      border: 2px solid var(--primary);
+      color: var(--primary);
+      transition: all 0.3s ease;
+      cursor: pointer;
+      background: var(--bg-white);
+    }
+
+    .itc-btn-primary {
+      background: linear-gradient(135deg, var(--primary) 0%, var(--primary-dark) 100%);
+      color: white;
+      border: none;
+      box-shadow: 0 4px 14px rgba(30, 64, 175, 0.3);
+    }
+
+    .itc-btn:hover {
+      transform: translateY(-2px);
+      box-shadow: var(--shadow-md);
+    }
+
+    .itc-btn-primary:hover {
+      box-shadow: 0 6px 20px rgba(30, 64, 175, 0.4);
+    }
+
+    .itc-btn:active {
+      transform: translateY(0);
+    }
+
+    /* Comparison Section */
+    .itc-comparison-section {
+      margin: 80px 0;
+      padding: 0;
+      background: transparent;
+      border-radius: 0;
+      box-shadow: none;
+    }
+
+    .itc-comparison-title {
+      font-family: 'Circular Std', sans-serif;
+      font-size: clamp(1.75rem, 4vw, 2.25rem);
+      font-weight: 700;
+      text-align: center;
+      margin-bottom: 16px;
+      color: var(--text-dark);
+    }
+
+    .itc-comparison-subtitle {
+      text-align: center;
+      color: var(--text-gray);
+      font-size: 1.05rem;
+      margin-bottom: 50px;
+      max-width: 700px;
+      margin-left: auto;
+      margin-right: auto;
+    }
+
+    .itc-comparison-wrapper {
+      display: flex;
+      flex-direction: column;
+      gap: 30px;
+    }
+
+    .itc-table-section {
+      
+      overflow: hidden;
+      
+    }
+
+    /* Sticky header styles */
+    .itc-table-section.itc-table-header {
+      position: sticky;
+      top: 70px;
+      z-index: 100;
+      background: var(--bg-light);
+      box-shadow: 0 4px 12px rgba(0, 0, 0, 0.08);
+      border: none;
+      border-radius: 20px;
+    }
+
+    .itc-comparison-table {
+      overflow-x: auto;
+      -webkit-overflow-scrolling: touch;
+      background: transparent;
+    }
+
+    table {
+      width: 100%;
+      border-collapse: collapse;
+      table-layout: fixed;
+      min-width: 800px;
+      background: transparent;
+    }
+
+    /* Unified Column widths for alignment */
+    table th:first-child,
+    table td:first-child {
+      width: 20%;
+    }
+
+    table th:nth-child(2),
+    table td:nth-child(2) {
+      width: 20%;
+    }
+
+    table th:nth-child(3),
+    table td:nth-child(3) {
+      width: 20%;
+    }
+
+    table th:nth-child(4),
+    table td:nth-child(4) {
+      width: 20%;
+    }
+
+    thead th {
+      background: var(--bg-white);
+      padding: 20px 16px;
+      text-align: left;
+      font-weight: 500;
+      color: var(--text-dark);
+      font-size: 1.6rem;
+      font-family: 'Circular Std', sans-serif;
+    }
+
+    thead th:first-child {
+      font-size: 1.3rem;
+      color: var(--text-gray);
+      font-family: 'Circular Std', sans-serif;
+    }
+
+    tbody tr {
+      
+    }
+
+    tbody tr:last-child {
+      border-bottom: none;
+    }
+
+    tbody td {
+      padding: 18px 16px;
+      color: var(--text-gray);
+      font-size: 1.3rem;
+      vertical-align: top;
+      background: transparent;
+    }
+
+    tbody td:first-child {
+      font-weight: 600;
+      color: var(--text-dark);
+    }
+
+    tbody tr:hover {
+      background: rgba(30, 64, 175, 0.02);
+    }
+
+    .itc-feature-group {
+      font-weight: 700;
+      color: var(--text-dark);
+      background: rgba(30, 64, 175, 0.04);
+      text-transform: uppercase;
+      letter-spacing: 0.5px;
+      font-size: 0.8rem;
+      border-radius: 15px;
+    }
+
+    .itc-feature-group td {
+        padding: 12px 16px;
+    }
+
+    .itc-check {
+      color: var(--success);
+      font-weight: bold;
+      font-family: 'Circular Std', sans-serif;
+      font-size: 1.3rem;
+    }
+
+    .itc-cross {
+      color: var(--text-light);
+      font-size: 1.2rem;
+    }
+
+    .itc-feature-detail {
+      display: block;
+      font-size: 0.95rem;
+      font-weight: 500;
+      color: var(--text-light);
+      margin-top: 4px;
+      line-height: 1.5;
+    }
+
+    /* FAQ Section */
+    .itc-faq-section {
+      margin: 150px 0;
+      display: grid;
+      grid-template-columns: 300px 1fr;
+      gap: 60px;
+      align-items: start;
+    }
+
+    .itc-faq-left {
+      position: sticky;
+      top: 90px;
+    }
+
+    .itc-faq-title {
+      font-family: 'Circular Std', sans-serif;
+      font-size: clamp(1.75rem, 4vw, 2.25rem);
+      font-weight: 700;
+      color: var(--text-dark);
+      margin-bottom: 16px;
+      line-height: 1.2;
+    }
+
+    .itc-faq-subtitle {
+      color: var(--text-gray);
+      font-size: 1.1rem;
+      line-height: 1.6;
+    }
+
+    .itc-faq-right {
+      display: flex;
+      flex-direction: column;
+      gap: 12px;
+    }
+
+    .itc-faq-item {
+      border-bottom: 1px solid #64748b;
+      overflow: hidden;
+      transition: all 0.3s ease;
+      background: transparent;
+    }
+
+    .itc-faq-item.active {
+      border-color: var(--primary);
+    }
+
+    .itc-faq-question {
+      font-weight: 500;
+      font-size: 1.5rem;
+      color: var(--text-dark);
+      padding: 20px 0;
+      cursor: pointer;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      user-select: none;
+      transition: all 0.3s ease;
+      background: transparent;
+    }
+
+    .itc-faq-icon {
+      font-size: 2.5rem;
+      font-weight: 400;
+      font-family: 'Work Sans', sans-serif;
+      color: var(--primary);
+      transition: transform 0.3s ease;
+      flex-shrink: 0;
+      margin-left: 12px;
+    }
+
+    .itc-faq-item.active .itc-faq-icon {
+      transform: rotate(180deg);
+    }
+
+    .itc-faq-answer {
+      color: var(--text-gray);
+      line-height: 1.8;
+      font-size: 1.2rem;
+      padding: 0;
+      max-height: 0;
+      overflow: hidden;
+      transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+      background: transparent;
+    }
+
+    .itc-faq-item.active .itc-faq-answer {
+      max-height: 500px;
+      padding: 0 0 24px 0;
+    }
+
+    /* Footer Notes */
+    .itc-footer-notes {
+      text-align: left;
+      max-width: 100%;
+      margin: 150px auto 0;
+    }
+
+    .itc-footer-notes h3 {
+      font-family: 'Circular Std', sans-serif;
+      font-size: 1.5rem;
+      margin-bottom: 20px;
+      font-weight: 500;
+      color: var(--text-dark);
+    }
+
+    .itc-footer-notes p {
+      font-size: 0.95rem;
+      color: var(--text-gray);
+      line-height: 1.8;
+      margin-bottom: 12px;
+    }
+
+    .itc-footer-notes p:last-child {
+      margin-bottom: 0;
+    }
+
+    /* Responsive Design */
+    @media (max-width: 968px) {
+      .itc-faq-section {
+        grid-template-columns: 1fr;
+        gap: 30px;
+      }
+
+      .itc-faq-left {
+        position: static;
+        text-align: center;
+      }
+
+      .itc-faq-title {
+        margin-bottom: 8px;
+      }
+
+      /* Adjust sticky header for mobile */
+      .itc-table-section.itc-table-header {
+        top: 70px;
+      }
+    }
+
+    @media (max-width: 768px) {
+      .itc-pricing-wrap {
+        padding: 40px 16px 60px;
+      }
+
+      .itc-grid {
+        grid-template-columns: 1fr;
+        gap: 24px;
+      }
+
+      .itc-card {
+        padding: 32px 24px;
+      }
+
+      .itc-card-featured {
+        transform: none;
+      }
+
+      .itc-trust-bar {
+        gap: 16px;
+        padding: 16px;
+      }
+
+      .itc-trust-item {
+        font-size: 0.85rem;
+      }
+
+      .itc-comparison-section,
+      .itc-footer-notes {
+        padding: 32px 20px;
+      }
+
+      .itc-comparison-section {
+        padding: 0;
+      }
+
+      .itc-table-section {
+        border-radius: 12px;
+      }
+
+      .itc-comparison-table {
+        border-radius: 12px;
+      }
+
+      .itc-faq-item {
+        padding: 0;
+      }
+
+      .itc-faq-question {
+        font-size: 1rem;
+        padding: 16px 20px;
+      }
+    }
+
+    @media (max-width: 480px) {
+      .itc-card {
+        padding: 24px 20px;
+      }
+
+      .itc-features li {
+        font-size: 0.9rem;
+        padding: 10px 0;
+      }
+
+      .itc-btn {
+        padding: 14px 20px;
+        font-size: 0.95rem;
+      }
+
+      .itc-trust-bar {
+        flex-direction: column;
+        gap: 12px;
+      }
+
+      table {
+        min-width: 650px;
+      }
+
+      thead th, tbody td {
+        padding: 14px 12px;
+        font-size: 0.85rem;
+      }
+
+      .itc-faq-question {
+        font-size: 0.95rem;
+        padding: 14px 16px;
+      }
+
+      .itc-faq-answer {
+        font-size: 0.9rem;
+      }
+
+      .itc-faq-item.active .itc-faq-answer {
+        padding: 0 16px 16px 16px;
+      }
+    }
+
+    /* Print Styles */
+    @media print {
+      .itc-pricing-wrap {
+        background: white;
+      }
+
+      .itc-card {
+        break-inside: avoid;
+        box-shadow: none;
+        border: 2px solid #ccc;
+      }
+
+      .itc-btn {
+        display: none;
+      }
+    }
+  </style>
+</head>
+<body>
+
+<section class="itc-pricing-wrap">
+  <div class="itc-container">
+    
+    <div class="itc-header">
+      <h1 class="itc-main-title">IT Consulting Services</h1>
+      <p class="itc-subtitle">Strategic technology advisory and consulting services to help your business make informed IT decisions. From architecture planning to security assessments, our experienced consultants provide expert guidance tailored to your goals.</p>
+      
+      <div class="itc-trust-bar">
+        <div class="itc-trust-item">15+ Years IT Expertise</div>
+        <div class="itc-trust-item">Industry-Certified Consultants</div>
+        <div class="itc-trust-item">Vendor-Agnostic Advice</div>
+        <div class="itc-trust-item">100+ Successful Projects</div>
+      </div>
+    </div>
+
+    <div class="itc-grid">
+      <div class="itc-card">
+        <div class="itc-card-header">
+          <h3 class="itc-tier-name">Strategic Advisory</h3>
+          <p class="itc-description">On-demand consulting for specific IT projects and strategic initiatives. Work with our consultants on an hourly basis to get expert guidance when you need it most.</p>
+          <div class="itc-price-wrapper">
+            <span class="itc-currency">$</span><span class="itc-amount">150</span><span class="itc-period">/hr</span>
+          </div>
+        </div>
+        <ul class="itc-features">
+          <li>IT Strategy & Roadmap Development</li>
+          <li>Technology Architecture Planning</li>
+          <li>Infrastructure Assessment & Recommendations</li>
+          <li>Security Posture Evaluation</li>
+          <li>Cloud Strategy & Migration Planning</li>
+          <li>Vendor Selection & RFP Support</li>
+          <li>Business Continuity & DR Planning</li>
+          <li>Compliance Gap Analysis (HIPAA, GDPR, SOC 2)</li>
+          <li>Technology Stack Optimization</li>
+          <li>Budget Planning & Cost Optimization</li>
+          <li>Email Response Within 48 Hours</li>
+          <li>Billed in 15-Minute Increments</li>
+        </ul>
+        <a href="#contact" class="itc-btn">Book Consultation</a>
+      </div>
+
+      <div class="itc-card itc-card-featured">
+        <div class="itc-badge">Most Popular</div>
+        <div class="itc-card-header">
+          <h3 class="itc-tier-name">Consulting Retainer</h3>
+          <p class="itc-description">Ongoing consulting partnership with dedicated monthly hours. Perfect for businesses that need regular strategic IT guidance and planning support with predictable monthly costs.</p>
+          <div class="itc-price-wrapper">
+            <span class="itc-currency">$</span><span class="itc-amount">2,500</span><span class="itc-period">/mo</span>
+          </div>
+        </div>
+        <ul class="itc-features">
+          <li><strong>20 Consulting Hours Included Monthly</strong></li>
+          <li>Dedicated Senior IT Consultant</li>
+          <li>Quarterly IT Strategic Planning Sessions</li>
+          <li>Technology Roadmap Development & Updates</li>
+          <li>Cybersecurity Advisory & Risk Assessment</li>
+          <li>Cloud Infrastructure Planning & Optimization</li>
+          <li>Vendor Management & Negotiation Support</li>
+          <li>IT Budget Planning & Forecasting</li>
+          <li>Policy & Procedure Development</li>
+          <li>Compliance Consulting (HIPAA, SOC 2, GDPR)</li>
+          <li>Monthly Status Reports & Recommendations</li>
+          <li>Priority Email & Phone Support</li>
+          <li>24-Hour Response Time</li>
+          <li>Additional Hours at $125/hr</li>
+        </ul>
+        <a href="#contact" class="itc-btn itc-btn-primary">Get Started Today</a>
+      </div>
+
+      <div class="itc-card">
+        <div class="itc-card-header">
+          <h3 class="itc-tier-name">Enterprise Consulting</h3>
+          <p class="itc-description">Comprehensive IT consulting partnership for large organizations. Custom-tailored consulting programs with dedicated consultant teams and strategic oversight for complex, multi-faceted IT initiatives.</p>
+          <div class="itc-price-wrapper">
+            <span class="itc-amount">Custom</span>
+          </div>
+        </div>
+        <ul class="itc-features">
+          <li><strong>40+ Consulting Hours Monthly</strong></li>
+          <li>Dedicated Consulting Team (Lead + Specialists)</li>
+          <li>Chief Technology Officer (CTO) Advisory Services</li>
+          <li>Enterprise Architecture Planning & Review</li>
+          <li>Multi-Year Technology Roadmap Development</li>
+          <li>Digital Transformation Strategy</li>
+          <li>Advanced Security Architecture Consulting</li>
+          <li>M&A Technology Due Diligence Support</li>
+          <li>IT Department Structure & Process Optimization</li>
+          <li>Multi-Site & International Expansion Planning</li>
+          <li>Regulatory Compliance Program Development</li>
+          <li>Executive-Level Board Presentations</li>
+          <li>Monthly Business Review Meetings</li>
+          <li>24/7 Emergency Consulting Availability</li>
+          <li>Custom SLA & Engagement Terms</li>
+        </ul>
+        <a href="#contact" class="itc-btn">Contact Sales Team</a>
+      </div>
+    </div>
+
+    <div class="itc-comparison-section">
+      <h2 class="itc-comparison-title">Feature Comparison</h2>
+      <p class="itc-comparison-subtitle">Compare service tiers at a glance.</p>
+      
+      <div class="itc-comparison-wrapper">
+        <div class="itc-table-section itc-table-header">
+          <div class="itc-comparison-table">
+            <table>
+              <thead>
+                <tr>
+                  <th>Feature & Service</th>
+                  <th>Strategic Advisory<br><span style="font-weight:400; font-size:1rem; color: var(--text-gray);">$150/hr</span></th>
+                  <th>Consulting Retainer<br><span style="font-weight:400; font-size:1rem; color: var(--text-gray);">$2,500/mo</span></th>
+                  <th>Enterprise Consulting<br><span style="font-weight:400; font-size:1rem; color: var(--text-gray);">Custom Pricing</span></th>
+                </tr>
+              </thead>
+            </table>
+          </div>
+        </div>
+
+        <div class="itc-table-section">
+          <div class="itc-comparison-table">
+            <table>
+              <tbody>
+                <tr class="itc-feature-group">
+                  <td colspan="4">Engagement & Response</td>
+                </tr>
+                <tr>
+                  <td>Monthly Hours Included</td>
+                  <td>Pay-as-you-go</td>
+                  <td>20 hours</td>
+                  <td>40+ hours</td>
+                </tr>
+                <tr>
+                  <td>Hourly Rate</td>
+                  <td>$150/hr</td>
+                  <td>$125/hr (additional)</td>
+                  <td>Custom</td>
+                </tr>
+                <tr>
+                  <td>Response Time</td>
+                  <td>48 hours</td>
+                  <td>24 hours</td>
+                  <td>4 hours</td>
+                </tr>
+                <tr>
+                  <td>Communication Channels</td>
+                  <td>Email</td>
+                  <td>Email & Phone</td>
+                  <td>All channels + SMS</td>
+                </tr>
+                <tr>
+                  <td>Minimum Commitment</td>
+                  <td>None</td>
+                  <td>3 months</td>
+                  <td>12 months</td>
+                </tr>
+              </tbody>
+            </table>
+          </div>
+        </div>
+
+        <div class="itc-table-section">
+          <div class="itc-comparison-table">
+            <table>
+              <tbody>
+                <tr class="itc-feature-group">
+                  <td colspan="4">Strategic Planning & Architecture</td>
+                </tr>
+                <tr>
+                  <td>IT Strategy & Roadmap Development</td>
+                  <td class="itc-check">✓</td>
+                  <td class="itc-check">✓</td>
+                  <td class="itc-check">✓</td>
+                </tr>
+                <tr>
+                  <td>Technology Architecture Planning</td>
+                  <td class="itc-check">✓</td>
+                  <td class="itc-check">✓</td>
+                  <td class="itc-check">✓</td>
+                </tr>
+                <tr>
+                  <td>Infrastructure Assessment</td>
+                  <td class="itc-check">✓</td>
+                  <td class="itc-check">✓</td>
+                  <td class="itc-check">✓</td>
+                </tr>
+                <tr>
+                  <td>Digital Transformation Consulting</td>
+                  <td class="itc-cross">—</td>
+                  <td class="itc-check">✓</td>
+                  <td class="itc-check">✓</td>
+                </tr>
+                <tr>
+                  <td>Enterprise Architecture Review</td>
+                  <td class="itc-cross">—</td>
+                  <td class="itc-cross">—</td>
+                  <td class="itc-check">✓</td>
+                </tr>
+                <tr>
+                  <td>CTO-Level Advisory Services</td>
+                  <td class="itc-cross">—</td>
+                  <td class="itc-cross">—</td>
+                  <td class="itc-check">✓</td>
+                </tr>
+              </tbody>
+            </table>
+          </div>
+        </div>
+
+        <div class="itc-table-section">
+          <div class="itc-comparison-table">
+            <table>
+              <tbody>
+                <tr class="itc-feature-group">
+                  <td colspan="4">Security & Compliance Consulting</td>
+                </tr>
+                <tr>
+                  <td>Security Posture Assessment</td>
+                  <td class="itc-check">✓</td>
+                  <td class="itc-check">✓</td>
+                  <td class="itc-check">✓</td>
+                </tr>
+                <tr>
+                  <td>Cybersecurity Strategy Development</td>
+                  <td class="itc-check">✓</td>
+                  <td class="itc-check">✓</td>
+                  <td class="itc-check">✓</td>
+                </tr>
+                <tr>
+                  <td>Compliance Gap Analysis</td>
+                  <td class="itc-check">✓</td>
+                  <td class="itc-check">✓</td>
+                  <td class="itc-check">✓</td>
+                </tr>
+                <tr>
+                  <td>Regulatory Compliance Consulting</td>
+                  <td>HIPAA, GDPR, SOC 2</td>
+                  <td>Full program support</td>
+                  <td>Enterprise compliance</td>
+                </tr>
+                <tr>
+                  <td>Security Architecture Review</td>
+                  <td class="itc-cross">—</td>
+                  <td class="itc-check">✓</td>
+                  <td class="itc-check">✓</td>
+                </tr>
+                <tr>
+                  <td>Incident Response Planning</td>
+                  <td class="itc-cross">—</td>
+                  <td class="itc-check">✓</td>
+                  <td class="itc-check">✓</td>
+                </tr>
+              </tbody>
+            </table>
+          </div>
+        </div>
+
+        <div class="itc-table-section">
+          <div class="itc-comparison-table">
+            <table>
+              <tbody>
+                <tr class="itc-feature-group">
+                  <td colspan="4">Cloud & Infrastructure Consulting</td>
+                </tr>
+                <tr>
+                  <td>Cloud Strategy Development</td>
+                  <td class="itc-check">✓</td>
+                  <td class="itc-check">✓</td>
+                  <td class="itc-check">✓</td>
+                </tr>
+                <tr>
+                  <td>Cloud Migration Planning</td>
+                  <td class="itc-check">✓</td>
+                  <td class="itc-check">✓</td>
+                  <td class="itc-check">✓</td>
+                </tr>
+                <tr>
+                  <td>Infrastructure Optimization</td>
+                  <td class="itc-check">✓</td>
+                  <td class="itc-check">✓</td>
+                  <td class="itc-check">✓</td>
+                </tr>
+                <tr>
+                  <td>Multi-Cloud Architecture</td>
+                  <td class="itc-cross">—</td>
+                  <td class="itc-check">✓</td>
+                  <td class="itc-check">✓</td>
+                </tr>
+                <tr>
+                  <td>Cost Optimization Analysis</td>
+                  <td class="itc-cross">—</td>
+                  <td class="itc-check">✓</td>
+                  <td class="itc-check">✓</td>
+                </tr>
+                <tr>
+                  <td>Disaster Recovery Planning</td>
+                  <td class="itc-check">✓</td>
+                  <td class="itc-check">✓</td>
+                  <td class="itc-check">✓</td>
+                </tr>
+              </tbody>
+            </table>
+          </div>
+        </div>
+
+        <div class="itc-table-section">
+          <div class="itc-comparison-table">
+            <table>
+              <tbody>
+                <tr class="itc-feature-group">
+                  <td colspan="4">Vendor & Project Management</td>
+                </tr>
+                <tr>
+                  <td>Vendor Selection Guidance</td>
+                  <td class="itc-check">✓</td>
+                  <td class="itc-check">✓</td>
+                  <td class="itc-check">✓</td>
+                </tr>
+                <tr>
+                  <td>RFP Development & Review</td>
+                  <td class="itc-check">✓</td>
+                  <td class="itc-check">✓</td>
+                  <td class="itc-check">✓</td>
+                </tr>
+                <tr>
+                  <td>Contract Negotiation Support</td>
+                  <td class="itc-cross">—</td>
+                  <td class="itc-check">✓</td>
+                  <td class="itc-check">✓</td>
+                </tr>
+                <tr>
+                  <td>Vendor Management</td>
+                  <td class="itc-cross">—</td>
+                  <td class="itc-check">✓</td>
+                  <td class="itc-check">✓</td>
+                </tr>
+                <tr>
+                  <td>Project Portfolio Management</td>
+                  <td class="itc-cross">—</td>
+                  <td class="itc-cross">—</td>
+                  <td class="itc-check">✓</td>
+                </tr>
+                <tr>
+                  <td>M&A Technology Due Diligence</td>
+                  <td class="itc-cross">—</td>
+                  <td class="itc-cross">—</td>
+                  <td class="itc-check">✓</td>
+                </tr>
+              </tbody>
+            </table>
+          </div>
+        </div>
+
+        <div class="itc-table-section">
+          <div class="itc-comparison-table">
+            <table>
+              <tbody>
+                <tr class="itc-feature-group">
+                  <td colspan="4">Reporting & Account Management</td>
+                </tr>
+                <tr>
+                  <td>Strategic Planning Sessions</td>
+                  <td>Per request</td>
+                  <td>Quarterly</td>
+                  <td>Monthly</td>
+                </tr>
+                <tr>
+                  <td>Status Reports</td>
+                  <td class="itc-cross">—</td>
+                  <td>Monthly</td>
+                  <td>Weekly</td>
+                </tr>
+                <tr>
+                  <td>Business Reviews</td>
+                  <td class="itc-cross">—</td>
+                  <td>Quarterly</td>
+                  <td>Monthly</td>
+                </tr>
+                <tr>
+                  <td>Dedicated Consultant</td>
+                  <td class="itc-cross">—</td>
+                  <td class="itc-check">✓</td>
+                  <td class="itc-check">✓</td>
+                </tr>
+                <tr>
+                  <td>Consulting Team</td>
+                  <td class="itc-cross">—</td>
+                  <td class="itc-cross">—</td>
+                  <td class="itc-check">✓</td>
+                </tr>
+                <tr>
+                  <td>Executive Presentations</td>
+                  <td class="itc-cross">—</td>
+                  <td class="itc-cross">—</td>
+                  <td class="itc-check">✓</td>
+                </tr>
+              </tbody>
+            </table>
+          </div>
+        </div>
+
+      </div>
+    </div>
+
+    <div class="itc-faq-section">
+      <div class="itc-faq-left">
+        <h2 class="itc-faq-title">Frequently Asked Questions</h2>
+        <p class="itc-faq-subtitle">Get answers to common questions about our consulting services, engagement models, and how we work with clients.</p>
+      </div>
+      
+      <div class="itc-faq-right">
+        <div class="itc-faq-item">
+          <div class="itc-faq-question">
+            How does the consulting engagement process work?
+            <span class="itc-faq-icon">+</span>
+          </div>
+          <div class="itc-faq-answer">
+            We begin every engagement with a discovery call to understand your business goals, technical challenges, and specific needs. For Strategic Advisory clients, we provide project-based consulting on an hourly basis with clear scope and deliverables outlined upfront. Consulting Retainer and Enterprise clients start with a comprehensive assessment period (typically 2-3 weeks) where we document your current IT environment, interview key stakeholders, and develop an initial strategic roadmap. We then establish regular meeting cadences, reporting structures, and communication protocols. All consulting deliverables—including assessments, recommendations, roadmaps, and documentation—are provided in professional formats suitable for executive review and decision-making.
+          </div>
+        </div>
+
+        <div class="itc-faq-item">
+          <div class="itc-faq-question">
+            Can I switch between consulting tiers or adjust my retainer hours?
+            <span class="itc-faq-icon">+</span>
+          </div>
+          <div class="itc-faq-answer">
+            Yes, we offer flexibility to scale consulting services as your needs evolve. Strategic Advisory clients can upgrade to a Consulting Retainer at any time to gain dedicated monthly hours and priority support. Retainer clients can adjust their monthly hour allocation with 30 days' notice—we commonly customize retainers anywhere from 10 to 40+ hours monthly. Consulting Retainer plans require a 3-month minimum commitment, while Enterprise agreements are customized based on scope and typically include 12-month terms. If you're unsure which tier fits best, we're happy to discuss your specific situation and recommend the most cost-effective approach. Many clients start with Strategic Advisory for a specific project, then transition to a retainer once they see the value of ongoing strategic guidance.
+          </div>
+        </div>
+
+        <div class="itc-faq-item">
+          <div class="itc-faq-question">
+            What happens to unused retainer hours at the end of the month?
+            <span class="itc-faq-icon">+</span>
+          </div>
+          <div class="itc-faq-answer">
+            Our Consulting Retainer and Enterprise plans include a monthly hour allocation. Unused hours do not roll over month-to-month, which encourages consistent engagement and ensures you're maximizing the value of your consulting partnership. However, we track your utilization patterns and proactively recommend adjustments if we notice you're consistently under or over your monthly allocation. If you need additional hours beyond your retainer in a given month, they're available at a reduced rate ($125/hour for Retainer clients). We provide monthly utilization reports so you always have visibility into how your consulting hours are being used. Most clients find that the retainer structure provides excellent value while maintaining budget predictability—typically 20-30% savings versus hourly-only consulting.
+          </div>
+        </div>
+
+        <div class="itc-faq-item">
+          <div class="itc-faq-question">
+            What types of organizations do you typically consult with?
+            <span class="itc-faq-icon">+</span>
+          </div>
+          <div class="itc-faq-answer">
+            We work with organizations ranging from fast-growing startups to established enterprises across various industries. Our consultants have deep expertise in highly regulated sectors including healthcare (HIPAA), financial services (PCI-DSS, SEC), legal firms (attorney-client privilege protection), and professional services. Common client profiles include: companies planning significant IT investments or transformations, organizations navigating compliance requirements, businesses preparing for rapid growth or M&A activity, and leadership teams who need strategic technology guidance but don't require a full-time CTO. We're particularly effective for companies at inflection points—whether that's scaling from 50 to 200 employees, modernizing legacy systems, or entering new markets that require technology enablement. Our vendor-agnostic approach means we recommend solutions based on your specific needs, not commission relationships.
+          </div>
+        </div>
+
+        <div class="itc-faq-item">
+          <div class="itc-faq-question">
+            Do you implement the solutions you recommend, or just provide advice?
+            <span class="itc-faq-icon">+</span>
+          </div>
+          <div class="itc-faq-answer">
+            Our IT Consulting services focus on strategic advisory, planning, and guidance—we help you make informed decisions and develop comprehensive roadmaps. We do not provide hands-on implementation, managed services, or helpdesk support (those are separate service offerings). Think of us as your strategic technology partner who helps you: evaluate options, design solutions, select vendors, plan projects, mitigate risks, and optimize costs. We work closely with your internal IT team or your chosen implementation partners to ensure successful execution of our recommendations. Many clients engage us for the strategic planning phase, then either handle implementation internally or work with implementation specialists we can recommend. This separation ensures you receive objective, vendor-agnostic advice focused solely on what's best for your business, not what we can implement or resell.
+          </div>
+        </div>
+
+        <div class="itc-faq-item">
+          <div class="itc-faq-question">
+            What are typical consulting projects or engagements?
+            <span class="itc-faq-icon">+</span>
+          </div>
+          <div class="itc-faq-answer">
+            Common consulting engagements include: technology roadmap development (3-5 year strategic plans), cybersecurity assessments and strategy development, cloud migration planning and vendor selection, infrastructure architecture design, compliance gap analysis and remediation planning (HIPAA, SOC 2, GDPR), disaster recovery and business continuity planning, IT budget planning and cost optimization, vendor evaluation and contract negotiation support, M&A technology due diligence, and digital transformation strategy. Project timelines vary—a focused security assessment might take 2-3 weeks, while a comprehensive enterprise architecture review could span 2-3 months. We always provide a clear scope, timeline, and deliverables outline before beginning work. Most Strategic Advisory projects range from 10-40 hours total, while retainer clients typically use their hours for a combination of ongoing strategic guidance and focused project work throughout the year.
+          </div>
+        </div>
+
+        <div class="itc-faq-item">
+          <div class="itc-faq-question">
+            What qualifications and experience do your consultants have?
+            <span class="itc-faq-icon">+</span>
+          </div>
+          <div class="itc-faq-answer">
+            Our consulting team consists of senior technology professionals with 15+ years of hands-on experience in IT leadership roles. Many of our consultants have served as CTOs, IT Directors, or Senior Architects for companies ranging from startups to Fortune 500 enterprises. We maintain industry certifications including CISSP (security), TOGAF (enterprise architecture), AWS/Azure solutions architect certifications, and PMP (project management). More importantly, our consultants bring real-world experience having personally navigated the challenges you're facing—whether that's scaling infrastructure for rapid growth, managing compliance audits, negotiating enterprise software contracts, or leading digital transformation initiatives. We assign consultants based on industry expertise and technical specialization relevant to your needs. For Enterprise clients, you'll work with a dedicated lead consultant supported by specialists in areas like security, cloud architecture, or compliance as needed.
+          </div>
+        </div>
+
+        <div class="itc-faq-item">
+          <div class="itc-faq-question">
+            Do you work with remote and distributed teams?
+            <span class="itc-faq-icon">+</span>
+          </div>
+          <div class="itc-faq-answer">
+            Yes, we work with clients across North America and internationally, and our consulting is delivered entirely remotely unless on-site presence is specifically requested (available for Enterprise clients). Remote consulting actually offers advantages—faster response times, flexible scheduling, reduced costs, and access to our full team of specialists regardless of geography. We conduct strategic planning sessions via video conference, share documentation through secure collaboration platforms, and maintain regular communication through your preferred channels (email, phone, Slack, Teams). Many of our consulting projects specifically focus on helping organizations optimize their technology for remote and hybrid work environments—including cloud infrastructure design, collaboration tool selection, security architecture for distributed teams, and remote workforce enablement strategies. Our consultants are experienced in working asynchronously across time zones and can accommodate your team's schedule.
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <div class="itc-footer-notes">
+      <h3>Important Information</h3>
+      <p><strong>Engagement Terms:</strong> Strategic Advisory services are project-based with no minimum commitment. Consulting Retainer plans require a 3-month minimum commitment. Enterprise agreements are customized with typical 12-month terms and can include flexible scopes of work.</p>
+      <p><strong>Consulting Hours:</strong> Retainer hours are allocated monthly and do not roll over. Time is tracked in 15-minute increments. Strategic Advisory and overage hours are billed at the end of each month. We provide detailed time tracking and monthly utilization reports for all retainer clients.</p>
+      <p><strong>Scope of Services:</strong> Our consulting services provide strategic advisory, planning, and guidance. We do not provide hands-on implementation, managed IT services, helpdesk support, or 24/7 monitoring. Implementation of our recommendations can be handled by your internal team or implementation partners (we can provide referrals if needed).</p>
+      <p><strong>Payment Terms:</strong> Monthly retainers are billed in advance on the 1st of each month. Strategic Advisory hours and retainer overages are invoiced at month-end. Net 15 payment terms apply to all services. We accept major credit cards, ACH transfers, and wire payments.</p>
+      <p><strong>Confidentiality:</strong> All consulting engagements include standard NDA coverage. We maintain strict confidentiality of your business information, technical architecture, and strategic plans. We can accommodate custom NDA requirements for Enterprise clients.</p>
+    </div>
+
+  </div>
+</section>
+
+<script>
+  // FAQ Accordion functionality
+  document.addEventListener('DOMContentLoaded', function() {
+    const faqItems = document.querySelectorAll('.itc-faq-item');
+    
+    faqItems.forEach(item => {
+      const question = item.querySelector('.itc-faq-question');
+      
+      question.addEventListener('click', () => {
+        // Close other open items
+        faqItems.forEach(otherItem => {
+          if (otherItem !== item && otherItem.classList.contains('active')) {
+            otherItem.classList.remove('active');
+          }
+        });
+        
+        // Toggle current item
+        item.classList.toggle('active');
+      });
+    });
+
+    // Optional: Open first FAQ by default
+    if (faqItems.length > 0) {
+      faqItems[0].classList.add('active');
+    }
+  });
+</script>
+
+</body>
+</html>
+

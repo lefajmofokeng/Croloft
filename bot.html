@@ -1,0 +1,767 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Cronos IT Portal</title>
+    <link rel="icon" type="image/png" href="thumbnails/top-1.png">
+    <link href="https://fonts.cdnfonts.com/css/circular-std" rel="stylesheet">
+    <style>
+        @import url('https://fonts.cdnfonts.com/css/circular-std');
+        /* 1. FULL SCREEN LOCK & BACKGROUND */
+        body, html { 
+            margin: 0; 
+            padding: 0; 
+            height: 100%; 
+            width: 100%; 
+            overflow: hidden;  font-family: 'Circular Std', sans-serif;
+        }
+        
+        body {
+            /* Premium Background Image */
+            background: url('https://images.unsplash.com/photo-1721041879210-c2580ae0a8ed?q=80&w=1332&auto=format&fit=crop') no-repeat center center fixed;
+            background-size: cover;
+            font-family: 'Circular Std', sans-serif;
+        }
+
+        /* Dark Overlay for readability */
+        body::after {
+            content: '';
+            position: absolute;
+            top: 0; left: 0; right: 0; bottom: 0;
+            background: rgba(1, 4, 30, 0.85);
+            z-index: -1;
+        }
+
+        /* Mobile fullscreen chat: hide global chrome */
+        @media (max-width: 480px) {
+            body.mobile-chat-open {
+                overflow: hidden;
+            }
+        }
+    </style>
+</head>
+<body>
+
+    <cronos-it-portal></cronos-it-portal>
+
+    <script>
+        // --- 1. THE BRAIN (Backend Simulation) ---
+        const botLogic = {
+            keywords: {
+                "ticket": "I can help you open a support ticket. Is this a critical issue (server down) or a standard request?",
+                "password": "To reset your password, please visit the secure portal at id.cronos.com.",
+                "price": "Our managed services start at $50/user. Would you like a full quote?",
+                "contact": "Emergency line: 555-0199 or email support@cronos.com.",
+                "hello": "Hi there! I'm the Cronos AI assistant. How can I help your IT infrastructure today?",
+                "default": "I've logged this request. A human engineer will review it shortly."
+            },
+            getResponse(input) {
+                const lowerInput = input.toLowerCase();
+                for (const key in this.keywords) {
+                    if (lowerInput.includes(key)) return this.keywords[key];
+                }
+                return this.keywords["default"];
+            }
+        };
+
+        // --- 2. FAQ DATA ---
+        const cronosFAQData = [
+            { id: 1, question: "What IT services does Cronos provide?", answer: "Cronos offers comprehensive IT solutions including Managed IT Services, Cybersecurity Defense, Cloud Migration (Azure/AWS), Custom Software Development, and strategic IT Consulting for various industries." },
+            { id: 2, question: "How do I open a critical support ticket?", answer: "For critical issues, please call our 24/7 emergency line immediately. For non-critical issues, submit a ticket via the Client Portal or email support@cronos.com." },
+            { id: 3, question: "Do you offer cybersecurity compliance audits?", answer: "Yes. We conduct thorough infrastructure audits and help manage compliance for standards including HIPAA, GDPR, SOC 2, and PCI-DSS." },
+            { id: 4, question: "What is your typical client onboarding process?", answer: "Our 4-step process involves: Discovery & Assessment of your current systems, Strategic Roadmap planning, Seamless Implementation/Migration, and Ongoing Management & Support." },
+            { id: 5, question: "Remote Work Solutions & VPN Setup", answer: "We deploy secure remote work infrastructure, including multi-factor authentication (MFA), secure VPN tunnels, and virtual desktop infrastructure (VDI) to ensure your team works safely from anywhere." }
+        ];
+
+        // --- 3. ICONS ---
+        const icons = {
+            search: `<svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="2" stroke="#9ca3af" width="18" height="18"><path stroke-linecap="round" stroke-linejoin="round" d="M21 21l-5.197-5.197m0 0A7.5 7.5 0 105.196 5.196a7.5 7.5 0 0010.607 10.607z" /></svg>`,
+            chevronRight: `<svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="2" stroke="#9ca3af" width="16" height="16"><path stroke-linecap="round" stroke-linejoin="round" d="M8.25 4.5l7.5 7.5-7.5 7.5" /></svg>`,
+            chevronLeft: `<svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" width="16" height="16"><path stroke-linecap="round" stroke-linejoin="round" d="M15.75 19.5L8.25 12l7.5-7.5" /></svg>`,
+            close: `<svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="2" stroke="white" width="24" height="24"><path stroke-linecap="round" stroke-linejoin="round" d="M6 18L18 6M6 6l12 12" /></svg>`,
+            send: `<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="currentColor" width="20" height="20"><path d="M3.478 2.405a.75.75 0 00-.926.94l2.432 7.905H13.5a.75.75 0 010 1.5H4.984l-2.432 7.905a.75.75 0 00.926.94 60.519 60.519 0 0018.445-8.986.75.75 0 000-1.218A60.517 60.517 0 003.478 2.405z" /></svg>`,
+            qr: `<svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" width="16" height="16"><path stroke-linecap="round" stroke-linejoin="round" d="M3.75 4.875c0-.621.504-1.125 1.125-1.125h4.5c.621 0 1.125.504 1.125 1.125v4.5c0 .621-.504 1.125-1.125 1.125h-4.5A1.125 1.125 0 013.75 9.375v-4.5zM3.75 14.625c0-.621.504-1.125 1.125-1.125h4.5c.621 0 1.125.504 1.125 1.125v4.5c0 .621-.504 1.125-1.125 1.125h-4.5a1.125 1.125 0 01-1.125-1.125v-4.5zM14.625 4.875c0-.621.504-1.125 1.125-1.125h4.5c.621 0 1.125.504 1.125 1.125v4.5c0 .621-.504 1.125-1.125 1.125h-4.5a1.125 1.125 0 01-1.125-1.125v-4.5zM14.625 14.625c0-.621.504-1.125 1.125-1.125h4.5c.621 0 1.125.504 1.125 1.125v4.5c0 .621-.504 1.125-1.125 1.125h-4.5a1.125 1.125 0 01-1.125-1.125v-4.5z" /></svg>`
+        };
+
+        class CronosItPortal extends HTMLElement {
+            constructor() {
+                super();
+                this.attachShadow({ mode: 'open' });
+                this.state = {
+                    view: 'list', 
+                    selectedQuestion: null,
+                    isChatActive: false,
+                    timeInterval: null
+                };
+            }
+
+            connectedCallback() {
+                this.render();
+                this.setupEventListeners();
+                this.startTimeUpdate();
+            }
+
+            disconnectedCallback() {
+                if (this.state.timeInterval) clearInterval(this.state.timeInterval);
+            }
+
+            // --- TIME LOGIC ---
+            startTimeUpdate() {
+                const update = () => {
+                    const timeEl = this.shadowRoot.querySelector('#live-time-display');
+                    if (timeEl) {
+                        const now = new Date();
+                        const options = { weekday: 'short', month: 'short', day: 'numeric', hour: 'numeric', minute: '2-digit' };
+                        timeEl.textContent = now.toLocaleDateString('en-US', options).replace(',', '');
+                    }
+                };
+                update();
+                this.state.timeInterval = setInterval(update, 1000);
+            }
+
+            setupEventListeners() {
+                this.renderCardBody();
+
+                const searchInput = this.shadowRoot.querySelector('.c-search-input');
+                const closeBtn = this.shadowRoot.querySelector('.c-close-chat');
+                const sendBtn = this.shadowRoot.querySelector('.c-send-btn');
+                const widgetCard = this.shadowRoot.querySelector('.c-widget-card');
+
+                // Modal Elements (End Chat)
+                const modal = this.shadowRoot.querySelector('.c-modal-overlay');
+                const confirmEndBtn = this.shadowRoot.querySelector('#confirm-end-chat');
+                const cancelEndBtn = this.shadowRoot.querySelector('#cancel-end-chat');
+
+                // Modal Elements (Clear Chat)
+                const clearModal = this.shadowRoot.querySelector('#c-clear-modal');
+                const confirmClearBtn = this.shadowRoot.querySelector('#confirm-clear-chat');
+                const cancelClearBtn = this.shadowRoot.querySelector('#cancel-clear-chat');
+
+                // Menu Elements
+                const menuBtn = this.shadowRoot.querySelector('#c-menu-btn');
+                const optionsDropdown = this.shadowRoot.querySelector('#c-options-dropdown');
+                const clearChatBtn = this.shadowRoot.querySelector('#c-clear-chat-btn');
+
+                const isMobile = () => window.innerWidth <= 480;
+
+                // Enter Chat Mode
+                searchInput.addEventListener('focus', () => {
+                    if (!this.state.isChatActive) {
+                        this.state.isChatActive = true;
+                        widgetCard.classList.add('chat-mode');
+                        // Mobile: fullscreen takeover
+                        if (isMobile()) {
+                            document.body.classList.add('mobile-chat-open');
+                        }
+                        this.renderCardBody(); 
+                        this.startTimeUpdate(); 
+                    }
+                });
+
+                // CLOSE BUTTON -> Open Warning Modal
+                closeBtn.addEventListener('click', (e) => {
+                    e.preventDefault();
+                    optionsDropdown.classList.remove('active');
+                    modal.classList.add('active');
+                });
+
+                // Modal: Cancel (End Chat)
+                cancelEndBtn.addEventListener('click', () => {
+                    modal.classList.remove('active');
+                });
+
+                // Modal: Confirm (End Chat)
+                confirmEndBtn.addEventListener('click', () => {
+                    this.state.isChatActive = false;
+                    widgetCard.classList.remove('chat-mode');
+                    // Mobile: restore page
+                    if (isMobile()) {
+                        document.body.classList.remove('mobile-chat-open');
+                    }
+                    searchInput.value = ''; 
+                    this.renderCardBody();
+                    modal.classList.remove('active');
+                });
+
+                // MENU BUTTON -> Toggle Dropdown
+                menuBtn.addEventListener('click', (e) => {
+                    e.stopPropagation();
+                    optionsDropdown.classList.toggle('active');
+                });
+
+                // Close dropdown when clicking elsewhere
+                this.shadowRoot.addEventListener('click', () => {
+                    optionsDropdown.classList.remove('active');
+                });
+
+                // Clear Chat Button -> Open Clear Modal
+                clearChatBtn.addEventListener('click', () => {
+                    optionsDropdown.classList.remove('active');
+                    clearModal.classList.add('active');
+                });
+
+                // Modal: Cancel (Clear)
+                cancelClearBtn.addEventListener('click', () => {
+                    clearModal.classList.remove('active');
+                });
+
+                // Modal: Confirm (Clear)
+                confirmClearBtn.addEventListener('click', () => {
+                    clearModal.classList.remove('active');
+                    // Reset chat history to fresh state
+                    const cardBody = this.shadowRoot.querySelector('.c-card-body');
+                    if (cardBody) {
+                        const now = new Date();
+                        const timeString = now.toLocaleTimeString([], { hour: '2-digit', minute: '2-digit' });
+                        cardBody.innerHTML = `
+                            <div class="c-chat-history">
+                                <div class="c-message c-message--bot">
+                                    <div class="c-bubble">
+                                        Hello! I'm your AI assistant. How can I help you?
+                                        <div class="c-timestamp">${timeString}</div>
+                                    </div>
+                                </div>
+                                <div class="c-typing-indicator" style="display:none">
+                                    <div class="dot"></div><div class="dot"></div><div class="dot"></div>
+                                </div>
+                            </div>
+                        `;
+                    }
+                });
+
+                // Send Message Logic
+                const handleSend = () => {
+                    const text = searchInput.value;
+                    if (!text.trim()) return;
+                    this.addMessage('user', text);
+                    searchInput.value = '';
+                    
+                    this.showTyping(true);
+                    setTimeout(() => {
+                        this.showTyping(false);
+                        const reply = botLogic.getResponse(text);
+                        this.addMessage('bot', reply);
+                    }, 1200);
+                };
+
+                searchInput.addEventListener('keydown', (e) => {
+                    if (e.key === 'Enter') handleSend();
+                });
+                sendBtn.addEventListener('click', handleSend);
+            }
+
+            // --- MESSAGE HANDLING ---
+            addMessage(sender, text) {
+                const history = this.shadowRoot.querySelector('.c-chat-history');
+                const cardBody = this.shadowRoot.querySelector('.c-card-body');
+                if(!history) return;
+
+                const msgDiv = document.createElement('div');
+                msgDiv.className = `c-message c-message--${sender}`;
+                
+                const now = new Date();
+                const timeString = now.toLocaleTimeString([], { hour: '2-digit', minute: '2-digit' });
+
+                msgDiv.innerHTML = `
+                    <div class="c-bubble">
+                        ${text}
+                        <div class="c-timestamp">${timeString}</div>
+                    </div>
+                `;
+                
+                // Insert BEFORE typing indicator so typing stays at bottom
+                const typing = this.shadowRoot.querySelector('.c-typing-indicator');
+                if (typing) {
+                    history.insertBefore(msgDiv, typing);
+                } else {
+                    history.appendChild(msgDiv);
+                }
+
+                // Scroll to bottom
+                if(cardBody) {
+                    // Slight delay to allow DOM to calculate new height
+                    requestAnimationFrame(() => {
+                        cardBody.scrollTop = cardBody.scrollHeight;
+                    });
+                }
+            }
+
+            showTyping(show) {
+                const typing = this.shadowRoot.querySelector('.c-typing-indicator');
+                const history = this.shadowRoot.querySelector('.c-chat-history');
+                const cardBody = this.shadowRoot.querySelector('.c-card-body');
+                
+                if(typing && history) {
+                    typing.style.display = show ? 'flex' : 'none';
+                    if(show) {
+                        history.appendChild(typing);
+                        if(cardBody) {
+                            requestAnimationFrame(() => {
+                                cardBody.scrollTop = cardBody.scrollHeight;
+                            });
+                        }
+                    }
+                }
+            }
+
+            handleQuestionClick(id) {
+                const selected = cronosFAQData.find(item => item.id === id);
+                this.state.view = 'answer';
+                this.state.selectedQuestion = selected;
+                this.renderCardBody();
+            }
+
+            handleBackClick() {
+                this.state.view = 'list';
+                this.state.selectedQuestion = null;
+                this.renderCardBody();
+            }
+
+            renderCardBody() {
+                const cardBodyContainer = this.shadowRoot.querySelector('.c-card-body');
+                
+                // CHAT MODE
+                if (this.state.isChatActive) {
+                    // Only re-render if history doesn't exist yet to preserve chat state
+                    if (!cardBodyContainer.querySelector('.c-chat-history')) {
+                        const now = new Date();
+                        const timeString = now.toLocaleTimeString([], { hour: '2-digit', minute: '2-digit' });
+
+                        cardBodyContainer.innerHTML = `
+                            <div class="c-chat-history">
+                                <div class="c-message c-message--bot">
+                                    <div class="c-bubble">
+                                        Hello! I'm your AI assistant. How can I help you?
+                                        <div class="c-timestamp">${timeString}</div>
+                                    </div>
+                                </div>
+                                <div class="c-typing-indicator" style="display:none">
+                                    <div class="dot"></div><div class="dot"></div><div class="dot"></div>
+                                </div>
+                            </div>
+                        `;
+                    }
+                    return; 
+                }
+
+                // FAQ MODE
+                if (this.state.view === 'list') {
+                    cardBodyContainer.innerHTML = `
+                        <h2 class="c-faq-title">FAQ</h2>
+                        <ul class="c-faq-list">
+                            ${cronosFAQData.map(item => `
+                                <li class="c-faq-item" data-id="${item.id}">
+                                    <button class="c-faq-link">
+                                        <span>${item.question}</span>
+                                        ${icons.chevronRight}
+                                    </button>
+                                </li>
+                            `).join('')}
+                        </ul>
+                    `;
+                    this.shadowRoot.querySelectorAll('.c-faq-item').forEach(item => {
+                        item.addEventListener('click', () => {
+                            this.handleQuestionClick(parseInt(item.dataset.id));
+                        });
+                    });
+
+                } else if (this.state.view === 'answer' && this.state.selectedQuestion) {
+                    cardBodyContainer.innerHTML = `
+                        <div class="c-answer-view">
+                            <button class="c-back-btn">
+                                ${icons.chevronLeft} Back to FAQ
+                            </button>
+                            <h3 class="c-answer-title">${this.state.selectedQuestion.question}</h3>
+                            <div class="c-answer-content">
+                                ${this.state.selectedQuestion.answer}
+                            </div>
+                        </div>
+                    `;
+                     this.shadowRoot.querySelector('.c-back-btn').addEventListener('click', () => {
+                        this.handleBackClick();
+                    });
+                }
+            }
+
+            render() {
+                this.shadowRoot.innerHTML = `
+                <style>
+                    @import url('https://fonts.cdnfonts.com/css/circular-std');
+
+                    :host {
+                        display: block; width: 100%; height: 100%;
+                        font-family: 'Circular Std', sans-serif; color: white;
+                    }
+                    * { font-family: 'Circular Std', sans-serif; box-sizing: border-box; margin: 0; padding: 0; }
+                    button { background: none; border: none; cursor: pointer; padding: 0; }
+
+                    /* --- Header --- */
+                    .c-global-header {
+                        display: flex; justify-content: space-between; align-items: center;
+                        padding: 7px 150px; background: #080d1b;
+                        position: relative; z-index: 10; height: 55px;
+                    }
+                    .c-header-logo { color: white; display: flex; align-items: center; font-weight: bold; font-size: 20px;}
+                    .c-btn-download {
+                        display: flex; align-items: center; gap: 8px;
+                        background-color: transparent; border: 2px solid #1199ff;
+                        color: white; padding: 10px 16px; border-radius: 30px;
+                        font-weight: 600; font-size: 14px; transition: all 0.2s ease; font-family: 'Circular Std', sans-serif;
+                    }
+                    .c-btn-download:hover { background-color: rgba(255,255,255,0.1); border-color: white; }
+
+                    /* --- Main --- */
+                    .c-main-container {
+                        display: flex; justify-content: center; align-items: center;
+                        height: calc(100vh - 80px); width: 100%;
+                    }
+
+                    /* --- Card --- */
+                    .c-widget-card {
+                        background-color: #fff;
+                        width: 100%; max-width: 400px; height: 550px;
+                        border-radius: 12px; overflow: hidden;
+                        position: relative; display: flex; flex-direction: column;
+                        transition: all 0.4s cubic-bezier(0.16, 1, 0.3, 1);
+                        box-shadow: 0 20px 40px rgba(0,0,0,0.3);
+                    }
+
+                    /* --- Card Header --- */
+                    .c-card-header {
+                        background: linear-gradient(180deg, #06113b 0%, #192c6d 100%);
+                        color: white; padding: 24px;
+                        position: relative; transition: all 0.4s ease;
+                        flex-shrink: 0; 
+                        z-index: 5; border-radius: 0 0 20px 20px;
+                    }
+                    
+                    .c-card-header-top { display: flex; justify-content: space-between; align-items: center; margin-bottom: 24px; transition: opacity 0.3s; }
+                    .c-greeting { font-size: 20px; font-weight: 600; line-height: 1.3; margin-bottom: 50px; transition: all 0.3s; opacity: 1; height: auto;}
+
+                    /* Chat Specific Header View */
+                    .c-chat-header-details {
+                        display: none; opacity: 0; transition: opacity 0.3s;
+                    }
+                    .c-chat-title { font-size: 16px; font-weight: 500; display: block; }
+                    .c-chat-time { font-size: 12px; font-weight: 400; opacity: 0.8; margin-top: 2px; display: block;}
+
+                    /* Close Button */
+                    .c-close-chat {
+                        position: absolute; top: 16px; right: 20px;
+                        width: 32px; height: 32px;
+                        border-radius: 50%; background: rgba(255,255,255,0.2);
+                        display: flex; align-items: center; justify-content: center;
+                        opacity: 0; pointer-events: none; transition: opacity 0.3s;
+                        z-index: 100;
+                    }
+                    .c-close-chat:hover { background: rgba(255,255,255,0.3); }
+
+                    /* Options Menu Button (top-left in chat header) */
+                    .c-menu-btn {
+                        position: absolute; top: 16px; left: 16px;
+                        width: 32px; height: 32px;
+                        border-radius: 50%; background: rgba(255,255,255,0.2);
+                        display: flex; align-items: center; justify-content: center;
+                        opacity: 0; pointer-events: none; transition: opacity 0.3s;
+                        z-index: 100;
+                    }
+                    .c-menu-btn:hover { background: rgba(255,255,255,0.3); }
+
+                    /* Options Dropdown */
+                    .c-options-dropdown {
+                        position: absolute; top: 56px; left: 16px;
+                        background: white; border-radius: 10px;
+                        box-shadow: 0 8px 24px rgba(0,0,0,0.15);
+                        z-index: 150; min-width: 180px;
+                        overflow: hidden;
+                        opacity: 0; pointer-events: none;
+                        transform: translateY(-8px);
+                        transition: opacity 0.2s ease, transform 0.2s ease;
+                    }
+                    .c-options-dropdown.active { opacity: 1; pointer-events: auto; transform: translateY(0); }
+                    .c-option-item {
+                        display: flex; align-items: center; gap: 10px;
+                        padding: 12px 16px; font-size: 14px; color: #374151;
+                        font-weight: 500; width: 100%; text-align: left;
+                        transition: background 0.15s;
+                    }
+                    .c-option-item:hover { background: #f3f4f6; }
+                    .c-option-item.danger { color: #ef4444; }
+                    .c-option-item.danger:hover { background: #fef2f2; }
+
+                    /* --- Search / Input --- */
+                    .c-search-container {
+                        /* Default State (Landing): Absolute Positioning */
+                        position: absolute; left: 24px; right: 24px;
+                        top: 140px; z-index: 20;
+                        transition: all 0.5s cubic-bezier(0.16, 1, 0.3, 1);
+                    }
+                    .c-search-wrapper { position: relative; width: 100%; display: flex; align-items: center; }
+                    .c-search-icon-wrapper { position: absolute; left: 16px; pointer-events: none; transition: opacity 0.3s; vertical-align: middle;}
+                    .c-search-input {
+                        width: 100%; padding: 10px 16px 10px 48px;
+                        border-radius: 8px; border: none;
+                        font-family: 'Circular Std', sans-serif; font-size: 16px; color: #111827; font-weight: 400;
+                        outline: none; transition: all 0.3s;
+                    }
+                    .c-search-input::placeholder { color: #9ca3af; font-weight: 400;}
+                    
+                    .c-send-btn {
+                        position: absolute; right: 6px; top: 50%; transform: translateY(-50%);
+                        background: #192c6d; color: white; border-radius: 6px;
+                        width: 36px; height: 36px;
+                        display: flex; align-items: center; justify-content: center;
+                        opacity: 0; pointer-events: none; transition: opacity 0.3s;
+                        border: none; cursor: pointer;
+                    }
+                    .c-send-btn:hover {
+                        background: #0f1f4d;
+                    }
+
+                    .c-legal-text {
+                        display: block; width: 100%; text-align: center;
+                        font-size: 10px; color: #9ca3af; margin-top: 8px;
+                        opacity: 0; transition: opacity 0.3s; pointer-events: none;
+                    }
+
+                    /* --- Body --- */
+                    .c-card-body {
+                        background-color: #fff; flex-grow: 1;
+                        padding: 40px 24px 24px 24px; 
+                        overflow-y: auto; 
+                        position: relative; transition: padding 0.4s ease;
+                        scrollbar-gutter: stable; 
+                        font-family: 'Circular Std', sans-serif;
+                        display: flex; 
+                        flex-direction: column;
+                    }
+                    
+                    /* Custom Scrollbar */
+                    .c-card-body::-webkit-scrollbar { width: 6px; }
+                    .c-card-body::-webkit-scrollbar-track { background: transparent; }
+                    .c-card-body::-webkit-scrollbar-thumb { background: #d1d5db; border-radius: 10px; }
+                    .c-card-body::-webkit-scrollbar-thumb:hover { background: #9ca3af; }
+
+                    /* FAQ Styles */
+                    .c-faq-title { font-size: 18px; font-weight: 500; color: #111827; margin-bottom: 10px; margin-top: -18px; }
+                    .c-faq-list { list-style: none; }
+                    .c-faq-item { border-bottom: 2px solid #e5e7eb; }
+                    .c-faq-link { display: flex; justify-content: space-between; align-items: center; width: 100%; padding: 12px 0; text-align: left; font-weight: 400; color: #374151; font-size: 16px; }
+                    .c-faq-link:hover { color: #000; }
+                    .c-answer-title { font-size: 20px; font-weight: 700; color: #111827; margin-bottom: 16px; }
+                    .c-answer-content { font-size: 16px; line-height: 1.6; color: #4b5563; }
+                    .c-back-btn { display: flex; align-items: center; gap: 5px; color: #6b7280; font-weight: 600; font-size: 14px; margin-bottom: 20px; }
+
+                    /* Chat History */
+                    .c-chat-history {
+                        display: flex; flex-direction: column; gap: 12px; 
+                        /* IMPORTANT: margin-top: auto pushes the first message to the bottom */
+                        margin-top: auto;
+                        padding-bottom: 10px;
+                    }
+                    .c-message { display: flex; width: 100%; }
+                    .c-message--user { justify-content: flex-end; }
+                    .c-message--bot { justify-content: flex-start; }
+                    
+                    .c-bubble { 
+                        max-width: 80%; padding: 12px 16px; border-radius: 16px; 
+                        font-size: 14px; line-height: 1.5; animation: popIn 0.3s ease-out; 
+                        position: relative; min-width: 60px;
+                    }
+                    .c-message--user .c-bubble { background-color: #192c6d; color: white; border-bottom-right-radius: 4px; font-weight: 400; }
+                    .c-message--bot .c-bubble { background-color: #f3f4f6; color: #1f2937; border-bottom-left-radius: 4px; font-weight: 400; }
+                    .c-timestamp { display: block; font-size: 10px; margin-top: 4px; text-align: right; opacity: 0.6; }
+                    
+                    /* Typing Indicator */
+                    .c-typing-indicator { 
+                        display: none; gap: 4px; padding: 12px; 
+                        background: #f3f4f6; border-radius: 16px; 
+                        width: fit-content; border-bottom-left-radius: 4px;
+                    }
+                    .dot { width: 6px; height: 6px; background: #9ca3af; border-radius: 50%; animation: bounce 1.4s infinite; }
+                    .dot:nth-child(2) { animation-delay: 0.2s; } .dot:nth-child(3) { animation-delay: 0.4s; }
+                    @keyframes bounce { 0%, 100% { transform: translateY(0); } 50% { transform: translateY(-4px); } }
+                    @keyframes popIn { from { opacity: 0; transform: translateY(10px); } to { opacity: 1; transform: translateY(0); } }
+
+                    /* --- STATE: CHAT MODE --- */
+                    .chat-mode .c-card-header { 
+                        height: 70px; 
+                        padding: 0 24px 0 58px; 
+                        background: #06113b; 
+                        display: flex; align-items: center; justify-content: flex-start;
+                    }
+                    .chat-mode .c-card-header-top, .chat-mode .c-greeting { display: none; }
+                    .chat-mode .c-chat-header-details { display: block; opacity: 1; }
+                    .chat-mode .c-close-chat { opacity: 1; pointer-events: auto; }
+                    .chat-mode .c-menu-btn { opacity: 1; pointer-events: auto; }
+
+                    /* FIXED LAYOUT FOR CHAT: Make search part of flow */
+                    .chat-mode .c-search-container { 
+                        position: relative; /* Removes absolute positioning */
+                        top: auto; 
+                        bottom: auto;
+                        left: auto; right: auto;
+                        padding: 10px 24px 24px 24px; /* Padding creates space */
+                        background: white;
+                        flex-shrink: 0; /* Prevents shrinking */
+                    }
+                    
+                    .chat-mode .c-search-input { border: 2px solid #e5e7eb; font-weight: 400; padding: 10px; }
+                    .chat-mode .c-search-icon-wrapper { display: none; }
+                    .chat-mode .c-send-btn { opacity: 1; pointer-events: auto; }
+                    .chat-mode .c-legal-text { opacity: 1; pointer-events: auto; }
+                    
+                    /* Adjust Body padding in chat mode so it doesn't need to account for absolute elements */
+                    .chat-mode .c-card-body { padding: 24px 24px 0 24px; }
+
+                    /* --- MODAL (Warning Popup) --- */
+                    .c-modal-overlay {
+                        position: absolute; top: 0; left: 0; width: 100%; height: 100%;
+                        background: rgba(0,0,0,0.6); z-index: 200;
+                        display: flex; justify-content: center; align-items: center;
+                        opacity: 0; pointer-events: none; transition: opacity 0.2s;
+                        backdrop-filter: blur(2px);
+                    }
+                    .c-modal-overlay.active { opacity: 1; pointer-events: auto; }
+                    
+                    .c-modal-box {
+                        background: white; width: 80%; max-width: 300px;
+                        padding: 24px; border-radius: 12px; text-align: center;
+                        box-shadow: 0 10px 25px rgba(0,0,0,0.2);
+                        color: #111827;
+                    }
+                    .c-modal-title { font-size: 18px; font-weight: 700; margin-bottom: 8px; }
+                    .c-modal-desc { font-size: 14px; color: #6b7280; margin-bottom: 20px; }
+                    .c-modal-actions { display: flex; gap: 10px; justify-content: center; }
+                    .c-btn-modal { padding: 10px 20px; border-radius: 8px; font-weight: 600; font-size: 14px; flex: 1; }
+                    .c-btn-cancel { background: #f3f4f6; color: #374151; }
+                    .c-btn-confirm { background: #ef4444; color: white; }
+
+                    /* --- RESPONSIVE / MOBILE --- */
+                    @media (max-width: 480px) {
+                        .c-global-header { padding: 16px; height: 60px;}
+                        .c-card-icon { display: none;} 
+                        /* On mobile we still want absolute initially, but static in chat */
+                        .c-search-container { left: 16px; right: 16px; top: 110px; }
+                        
+                        .c-main-container {
+                            height: calc(100vh - 60px); 
+                            align-items: flex-end; 
+                            padding: 0;
+                        }
+                        
+                        .c-widget-card {
+                            width: 100%; max-width: 100%;
+                            height: 100%; 
+                            border-radius: 0; 
+                        }
+                        
+                        .c-card-header { padding: 20px; }
+
+                        /* Mobile: fullscreen chat overlay */
+                        .c-widget-card.chat-mode {
+                            position: fixed !important;
+                            top: 0 !important; left: 0 !important;
+                            width: 100vw !important; height: 100vh !important;
+                            max-width: 100vw !important;
+                            border-radius: 0 !important;
+                            z-index: 9999 !important;
+                        }
+                        /* On mobile, hide global header when chat is open */
+                        .mobile-chat-open .c-global-header { display: none; }
+                        .mobile-chat-open .c-main-container { height: 100vh; }
+                    }
+                    @media (max-width: 480px) {
+                        :host-context(body.mobile-chat-open) .c-global-header { display: none !important; }
+                        :host-context(body.mobile-chat-open) .c-main-container { height: 100vh !important; }
+                    }
+
+                     @media (min-width: 768px) and (max-width: 992px) {
+                        .c-main-container { padding: 0 10px;}
+                        .c-card-icon { display: none;}
+                     }
+                </style>
+
+                <header class="c-global-header">
+                    <div class="c-header-logo">
+                    <a href="index.html"><img src="thumbnails/croloft2.png" style="height: 20px; vertical-align: middle;"/></a>    
+                    </div>
+                    <button class="c-btn-download">Contact Cronos ${icons.qr}</button>
+                </header>
+
+                <main class="c-main-container">
+                    
+                    <div class="c-widget-card">
+                        
+                        <div class="c-card-header">
+                            <button class="c-menu-btn" id="c-menu-btn" title="Options">
+                                <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="2" stroke="white" width="18" height="18"><path stroke-linecap="round" stroke-linejoin="round" d="M12 6.75a.75.75 0 110-1.5.75.75 0 010 1.5zM12 12.75a.75.75 0 110-1.5.75.75 0 010 1.5zM12 18.75a.75.75 0 110-1.5.75.75 0 010 1.5z" /></svg>
+                            </button>
+                            <div class="c-options-dropdown" id="c-options-dropdown">
+                                <button class="c-option-item danger" id="c-clear-chat-btn">
+                                    <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.8" stroke="#ef4444" width="16" height="16"><path stroke-linecap="round" stroke-linejoin="round" d="M14.74 9l-.346 9m-4.788 0L9.26 9m9.968-3.21c.342.052.682.107 1.022.166m-1.022-.165L18.16 19.673a2.25 2.25 0 01-2.244 2.077H8.084a2.25 2.25 0 01-2.244-2.077L4.772 5.79m14.456 0a48.108 48.108 0 00-3.478-.397m-12 .562c.34-.059.68-.114 1.022-.165m0 0a48.11 48.11 0 013.478-.397m7.5 0v-.916c0-1.18-.91-2.164-2.09-2.201a51.964 51.964 0 00-3.32 0c-1.18.037-2.09 1.022-2.09 2.201v.916m7.5 0a48.667 48.667 0 00-7.5 0" /></svg>
+                                    Clear Conversation
+                                </button>
+                            </div>
+                            <button class="c-close-chat">${icons.close}</button>
+                            
+                            <div class="c-card-header-top">
+                                <div class="c-card-icon"><img src="thumbnails/croloft2.png" style="height: 20px;"/></div>
+                            </div>
+                            <h1 class="c-greeting">
+                                Hi, <br>
+                                How can we help?
+                            </h1>
+
+                            <div class="c-chat-header-details">
+                                <span class="c-chat-title">Cronos AI Assistant</span>
+                                <span class="c-chat-time" id="live-time-display">--:--</span>
+                            </div>
+                        </div>
+
+                        <div class="c-card-body"></div>
+
+                        <div class="c-search-container">
+                            <div class="c-search-wrapper">
+                                <div class="c-search-icon-wrapper">${icons.search}</div>
+                                <input type="text" class="c-search-input" placeholder="Type your query here...">
+                                <button class="c-send-btn">${icons.send}</button>
+                            </div>
+                            <span class="c-legal-text">
+                                This chatbot may not always be correct. By using this assistant, you agree to our <a href="#">Terms</a>.
+                            </span>
+                        </div>
+
+                        <div class="c-modal-overlay">
+                            <div class="c-modal-box">
+                                <div class="c-modal-title">End Chat?</div>
+                                <p class="c-modal-desc">Your chat history will be lost if you close this session.</p>
+                                <div class="c-modal-actions">
+                                    <button class="c-btn-modal c-btn-cancel" id="cancel-end-chat">Cancel</button>
+                                    <button class="c-btn-modal c-btn-confirm" id="confirm-end-chat">End Chat</button>
+                                </div>
+                            </div>
+                        </div>
+
+                        <div class="c-modal-overlay" id="c-clear-modal">
+                            <div class="c-modal-box">
+                                <div class="c-modal-title">Clear Conversation?</div>
+                                <p class="c-modal-desc">All messages will be permanently deleted and a new session will begin.</p>
+                                <div class="c-modal-actions">
+                                    <button class="c-btn-modal c-btn-cancel" id="cancel-clear-chat">Cancel</button>
+                                    <button class="c-btn-modal c-btn-confirm" id="confirm-clear-chat">Clear</button>
+                                </div>
+                            </div>
+                        </div>
+
+                    </div>
+                </main>
+                `;
+            }
+        }
+
+        customElements.define('cronos-it-portal', CronosItPortal);
+    </script>
+</body>
+</html>

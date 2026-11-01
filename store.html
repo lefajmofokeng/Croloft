@@ -1,0 +1,1728 @@
+
+
+
+
+
+
+
+
+<!--
+  Cronos Store Navbar — Standalone Web Component
+  ---------------------------------------------------------------
+  Fully self-contained. Shadow DOM + a unique custom element tag
+  guarantee it cannot collide with any class, ID, or style already
+  in your codebase — paste it anywhere, above or below the product
+  showcase component.
+
+  Usage:
+    <cronos-store-navbar brand-name="Cronos Store"></cronos-store-navbar>
+
+  Optional attribute:
+    brand-name="Your Store Name"   (defaults to "Cronos Store")
+
+  Integration: if a <cronos-product-showcase> on the same page
+  dispatches an "cronos-add-to-cart" event (it does, out of the box),
+  this navbar's cart badge count updates automatically — no wiring
+  required. The nav links point to #headphones / #earbuds /
+  #speakers / #accessories, matching the showcase's section ids.
+-->
+<cronos-store-navbar></cronos-store-navbar>
+
+<script>
+(function () {
+    if (customElements.get('cronos-store-navbar')) return;
+
+    const CSN_LINKS = [
+        { label: 'Headphones', href: '#headphones' },
+        { label: 'Earbuds',    href: '#earbuds' },
+        { label: 'Speakers',   href: '#speakers' },
+        { label: 'Accessories', href: '#accessories' },
+    ];
+
+    const CSN_TEMPLATE = document.createElement('template');
+    CSN_TEMPLATE.innerHTML = `
+        <style>
+            :host {
+                all: initial;
+                display: block;
+                font-family: -apple-system, BlinkMacSystemFont, "SF Pro Display", "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
+            }
+            * { box-sizing: border-box; }
+
+            .csn-header {
+                position: sticky; top: 0; z-index: 500;
+                background: rgba(255,255,255,0.82);
+                backdrop-filter: saturate(180%) blur(14px);
+                -webkit-backdrop-filter: saturate(180%) blur(14px);
+                border-bottom: 1px solid #e8e8ed;
+                transition: box-shadow 0.2s ease;
+            }
+            .csn-header.csn-scrolled { box-shadow: 0 4px 18px rgba(0,0,0,0.06); }
+
+            .csn-inner {
+                max-width: 1200px; margin: 0 auto;
+                display: flex; align-items: center; justify-content: space-between;
+                height: 60px; padding: 0 24px;
+            }
+
+            .csn-logo {
+                font-size: 1.05rem; font-weight: 700; color: #1d1d1f;
+                text-decoration: none; letter-spacing: -0.01em; flex-shrink: 0;
+            }
+
+            .csn-links { display: flex; align-items: center; gap: 4px; }
+            .csn-links a {
+                color: #1d1d1f; text-decoration: none; font-size: 0.9rem; font-weight: 500;
+                padding: 8px 14px; border-radius: 8px; white-space: nowrap;
+                transition: background-color 0.15s ease;
+            }
+            .csn-links a:hover { background: #f5f5f7; }
+            .csn-links a:focus-visible { outline: 2px solid #0071e3; outline-offset: 2px; }
+
+            .csn-actions { display: flex; align-items: center; gap: 6px; }
+
+            .csn-icon-btn {
+                background: none; border: none; color: #1d1d1f; cursor: pointer;
+                width: 38px; height: 38px; border-radius: 50%;
+                display: flex; align-items: center; justify-content: center;
+                transition: background-color 0.15s ease; flex-shrink: 0; position: relative;
+            }
+            .csn-icon-btn:hover { background: #f5f5f7; }
+            .csn-icon-btn:focus-visible { outline: 2px solid #0071e3; outline-offset: 2px; }
+            .csn-icon-btn svg { width: 19px; height: 19px; }
+
+            .csn-search { display: flex; align-items: center; }
+            .csn-search-input {
+                width: 0; opacity: 0; padding: 0; margin-left: 0;
+                border: none; border-bottom: 1px solid #d2d2d7; background: transparent;
+                font-family: inherit; font-size: 0.9rem; color: #1d1d1f;
+                transition: width 0.25s ease, opacity 0.2s ease, margin-left 0.25s ease;
+            }
+            .csn-search-input::placeholder { color: #a1a1a6; }
+            .csn-search.csn-open .csn-search-input {
+                width: 190px; opacity: 1; margin-left: 8px; padding: 6px 2px; outline: none;
+            }
+
+            .csn-cart-badge {
+                position: absolute; top: 2px; right: 2px;
+                background: #0071e3; color: #fff; font-size: 10px; font-weight: 700;
+                min-width: 16px; height: 16px; border-radius: 8px;
+                display: flex; align-items: center; justify-content: center; padding: 0 3px;
+            }
+            .csn-cart-btn.csn-pulse { animation: csn-pulse 0.35s ease; }
+            @keyframes csn-pulse { 0% { transform: scale(1); } 40% { transform: scale(1.18); } 100% { transform: scale(1); } }
+
+            .csn-hamburger {
+                display: none; flex-direction: column; justify-content: center; gap: 4px;
+                background: none; border: none; cursor: pointer; width: 38px; height: 38px;
+                border-radius: 50%; transition: background-color 0.15s ease;
+            }
+            .csn-hamburger:hover { background: #f5f5f7; }
+            .csn-hamburger span { width: 18px; height: 2px; background: #1d1d1f; margin: 0 auto; border-radius: 2px; }
+
+            .csn-mobile-overlay {
+                position: fixed; inset: 0; background: rgba(0,0,0,0.35);
+                z-index: 999; opacity: 0; visibility: hidden;
+                transition: opacity 0.25s ease, visibility 0.25s;
+            }
+            .csn-mobile-overlay.csn-open { opacity: 1; visibility: visible; }
+
+            .csn-mobile-panel {
+                position: fixed; top: 0; right: 0; bottom: 0; width: 78%; max-width: 320px;
+                background: #ffffff; box-shadow: -8px 0 30px rgba(0,0,0,0.12);
+                transform: translateX(100%); transition: transform 0.3s cubic-bezier(0.25,1,0.5,1);
+                display: flex; flex-direction: column; padding: 20px;
+            }
+            .csn-mobile-overlay.csn-open .csn-mobile-panel { transform: translateX(0); }
+
+            .csn-mobile-header { display: flex; justify-content: flex-end; margin-bottom: 12px; }
+            .csn-mobile-links { display: flex; flex-direction: column; gap: 4px; }
+            .csn-mobile-links a {
+                color: #1d1d1f; text-decoration: none; font-size: 1.05rem; font-weight: 500;
+                padding: 14px 10px; border-bottom: 1px solid #f0f0f2;
+            }
+
+            @media (max-width: 860px) {
+                .csn-links { display: none; }
+                .csn-hamburger { display: flex; }
+            }
+            @media (max-width: 480px) {
+                .csn-inner { padding: 0 16px; height: 54px; }
+                .csn-search.csn-open .csn-search-input { width: 130px; }
+            }
+
+            @media (prefers-reduced-motion: reduce) {
+                .csn-header, .csn-search-input, .csn-mobile-overlay, .csn-mobile-panel, .csn-cart-btn { transition: none !important; animation: none !important; }
+            }
+        </style>
+
+        <header class="csn-header" id="csnHeader">
+            <div class="csn-inner">
+                <a class="csn-logo" id="csnLogo" href="#">Cronos Store</a>
+
+                <nav class="csn-links" id="csnLinks"></nav>
+
+                <div class="csn-actions">
+                    <div class="csn-search" id="csnSearch">
+                        <button type="button" class="csn-icon-btn" id="csnSearchToggle" aria-label="Search">
+                            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                                <circle cx="11" cy="11" r="8"></circle>
+                                <line x1="21" y1="21" x2="16.65" y2="16.65"></line>
+                            </svg>
+                        </button>
+                        <input type="text" class="csn-search-input" id="csnSearchInput" placeholder="Search products…" aria-label="Search products">
+                    </div>
+
+                    <button type="button" class="csn-icon-btn csn-cart-btn" id="csnCartBtn" aria-label="Cart">
+                        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                            <circle cx="9" cy="21" r="1"></circle>
+                            <circle cx="20" cy="21" r="1"></circle>
+                            <path d="M1 1h4l2.68 13.39a2 2 0 0 0 2 1.61h9.72a2 2 0 0 0 2-1.61L23 6H6"></path>
+                        </svg>
+                        <span class="csn-cart-badge" id="csnCartBadge" hidden>0</span>
+                    </button>
+
+                    <button type="button" class="csn-hamburger" id="csnHamburger" aria-label="Open menu">
+                        <span></span><span></span><span></span>
+                    </button>
+                </div>
+            </div>
+        </header>
+
+        <div class="csn-mobile-overlay" id="csnMobileOverlay">
+            <div class="csn-mobile-panel" onclick="event.stopPropagation()">
+                <div class="csn-mobile-header">
+                    <button type="button" class="csn-icon-btn" id="csnMobileClose" aria-label="Close menu">
+                        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                            <line x1="18" y1="6" x2="6" y2="18"></line>
+                            <line x1="6" y1="6" x2="18" y2="18"></line>
+                        </svg>
+                    </button>
+                </div>
+                <nav class="csn-mobile-links" id="csnMobileLinks"></nav>
+            </div>
+        </div>
+    `;
+
+    class CronosStoreNavbar extends HTMLElement {
+        connectedCallback() {
+            if (this._built) return;
+            this._built = true;
+
+            const shadow = this.attachShadow({ mode: 'open' });
+            shadow.appendChild(CSN_TEMPLATE.content.cloneNode(true));
+
+            const brandName = this.getAttribute('brand-name') || 'Cronos Store';
+            shadow.getElementById('csnLogo').textContent = brandName;
+
+            const linksHtml = CSN_LINKS.map(l => `<a href="${l.href}">${l.label}</a>`).join('');
+            shadow.getElementById('csnLinks').innerHTML = linksHtml;
+            shadow.getElementById('csnMobileLinks').innerHTML = linksHtml;
+
+            const header         = shadow.getElementById('csnHeader');
+            const searchWrap     = shadow.getElementById('csnSearch');
+            const searchToggle   = shadow.getElementById('csnSearchToggle');
+            const searchInput    = shadow.getElementById('csnSearchInput');
+            const cartBtn        = shadow.getElementById('csnCartBtn');
+            const cartBadge       = shadow.getElementById('csnCartBadge');
+            const hamburger        = shadow.getElementById('csnHamburger');
+            const mobileOverlay     = shadow.getElementById('csnMobileOverlay');
+            const mobileClose        = shadow.getElementById('csnMobileClose');
+
+            // Scroll shadow
+            window.addEventListener('scroll', () => {
+                header.classList.toggle('csn-scrolled', window.scrollY > 4);
+            }, { passive: true });
+
+            // Search expand/collapse
+            const openSearch = () => {
+                searchWrap.classList.add('csn-open');
+                setTimeout(() => searchInput.focus(), 50);
+            };
+            const closeSearch = () => {
+                if (!searchInput.value) searchWrap.classList.remove('csn-open');
+            };
+            searchToggle.addEventListener('click', () => {
+                searchWrap.classList.contains('csn-open') && document.activeElement !== searchInput
+                    ? closeSearch()
+                    : openSearch();
+            });
+            searchInput.addEventListener('blur', () => setTimeout(closeSearch, 120));
+            searchInput.addEventListener('keydown', (e) => {
+                if (e.key === 'Enter' && searchInput.value.trim()) {
+                    this.dispatchEvent(new CustomEvent('cronos-search-submit', {
+                        detail: { query: searchInput.value.trim() },
+                        bubbles: true, composed: true,
+                    }));
+                    searchInput.value = '';
+                    searchInput.blur();
+                } else if (e.key === 'Escape') {
+                    searchInput.value = '';
+                    searchInput.blur();
+                }
+            });
+
+            // Cart badge — auto-updates when a cronos-product-showcase adds an item
+            let cartCount = 0;
+            const bumpCart = () => {
+                cartCount += 1;
+                cartBadge.textContent = cartCount > 99 ? '99+' : String(cartCount);
+                cartBadge.hidden = false;
+                cartBtn.classList.remove('csn-pulse');
+                void cartBtn.offsetWidth; // restart animation
+                cartBtn.classList.add('csn-pulse');
+            };
+            document.addEventListener('cronos-add-to-cart', bumpCart);
+
+            cartBtn.addEventListener('click', () => {
+                this.dispatchEvent(new CustomEvent('cronos-cart-open', {
+                    detail: { count: cartCount },
+                    bubbles: true, composed: true,
+                }));
+            });
+
+            // Mobile menu
+            const openMobile = () => { mobileOverlay.classList.add('csn-open'); document.body.style.overflow = 'hidden'; };
+            const closeMobile = () => { mobileOverlay.classList.remove('csn-open'); document.body.style.overflow = ''; };
+            hamburger.addEventListener('click', openMobile);
+            mobileClose.addEventListener('click', closeMobile);
+            mobileOverlay.addEventListener('click', closeMobile);
+            shadow.getElementById('csnMobileLinks').addEventListener('click', (e) => {
+                if (e.target.tagName === 'A') closeMobile();
+            });
+            document.addEventListener('keydown', (e) => {
+                if (e.key === 'Escape' && mobileOverlay.classList.contains('csn-open')) closeMobile();
+            });
+        }
+    }
+
+    customElements.define('cronos-store-navbar', CronosStoreNavbar);
+})();
+</script>
+
+
+
+
+
+
+
+
+
+<style>
+    /* ==========================================================================
+   PRODUCT SHOWCASE STYLING (ENCAPSULATED CLASS SCOPE)
+   ========================================================================== */
+
+.btc-product-showcase {
+  font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Helvetica, Arial, sans-serif;
+  background-color: #ffffff;
+  color: #1d1d1f;
+  padding: 40px 20px;
+  box-sizing: border-box;
+}
+
+/* Sections & Typography */
+.btc-product-showcase .btc-section {
+  max-width: 1120px;
+  margin: 0 auto 60px auto;
+  position: relative;
+}
+
+.btc-product-showcase .btc-section-title {
+  font-size: 2.2rem;
+  font-weight: 600;
+  text-align: center;
+  margin-bottom: 32px;
+  letter-spacing: -0.02em;
+}
+
+/* Horizontal Slider Grid Track */
+.btc-product-showcase .btc-grid-container {
+  display: flex;
+  gap: 24px;
+  overflow-x: auto;
+  scroll-behavior: smooth;
+  scrollbar-width: none; /* Firefox */
+  padding-bottom: 12px;
+}
+
+.btc-product-showcase .btc-grid-container::-webkit-scrollbar {
+  display: none; /* Safari and Chrome */
+}
+
+/* Card Architecture */
+.btc-product-showcase .btc-card {
+  flex: 0 0 85%; /* Optimized mobile preview showing next card hint */
+  max-width: 100%;
+  background-color: #f5f5f7;
+  border-radius: 18px;
+  padding: 30px 24px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  text-align: center;
+  box-sizing: border-box;
+  cursor: pointer;
+  transition: transform 0.2s cubic-bezier(0.25, 1, 0.5, 1), box-shadow 0.2s ease;
+}
+
+.btc-product-showcase .btc-card:hover {
+  transform: scale(1.015);
+  box-shadow: 0 10px 30px rgba(0, 0, 0, 0.04);
+}
+
+.btc-product-showcase .btc-image-wrapper {
+  height: 240px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  margin-bottom: 24px;
+  width: 100%;
+}
+
+.btc-product-showcase .btc-image-wrapper img {
+  max-height: 100%;
+  max-width: 100%;
+  object-fit: contain;
+}
+
+.btc-product-showcase .btc-color-dots-row {
+  display: flex;
+  gap: 8px;
+  margin-bottom: 24px;
+}
+
+.btc-product-showcase .btc-color-dot-indicator {
+  width: 10px;
+  height: 10px;
+  border-radius: 50%;
+}
+
+.btc-product-showcase .btc-card-title {
+  font-size: 1rem;
+  font-weight: 500;
+  line-height: 1.4;
+  margin: 0 0 24px 0;
+  min-height: 44px;
+  max-width: 240px;
+}
+
+.btc-product-showcase .btc-card-price {
+  font-size: 0.85rem;
+  font-weight: 500;
+  color: #1d1d1f;
+  margin: auto 0 0 0;
+}
+
+/* Slide Controllers Layout */
+.btc-product-showcase .btc-nav-controls {
+  display: flex;
+  justify-content: flex-end;
+  gap: 12px;
+  margin-top: 16px;
+}
+
+.btc-product-showcase .btc-nav-btn {
+  background-color: #e8e8ed;
+  color: #1d1d1f;
+  border: none;
+  border-radius: 50%;
+  width: 40px;
+  height: 40px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  cursor: pointer;
+  font-size: 1.2rem;
+  transition: background-color 0.2s ease;
+}
+
+.btc-product-showcase .btc-nav-btn:hover {
+  background-color: #d2d2d7;
+}
+
+/* Premium Drawer Mechanics */
+.btc-product-showcase .btc-drawer-overlay {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background-color: rgba(0, 0, 0, 0.4);
+  backdrop-filter: blur(4px);
+  -webkit-backdrop-filter: blur(4px);
+  z-index: 99999;
+  opacity: 0;
+  visibility: hidden;
+  transition: opacity 0.35s ease, visibility 0.35s ease;
+  display: flex;
+  justify-content: center; 
+}
+
+.btc-product-showcase .btc-drawer-overlay.open {
+  opacity: 1;
+  visibility: visible;
+}
+
+.btc-product-showcase .btc-drawer {
+  position: fixed;
+  bottom: 0;
+  width: 100%;
+  max-width: 1050px;
+  height: 95vh;
+  max-height: 95vh;
+  background-color: #ffffff;
+  border-top-left-radius: 24px;
+  border-top-right-radius: 24px;
+  box-shadow: 0 -10px 40px rgba(0, 0, 0, 0.15);
+  transform: translateY(100%);
+  transition: transform 0.4s cubic-bezier(0.25, 1, 0.5, 1);
+  display: flex;
+  flex-direction: column;
+  box-sizing: border-box; padding: 0 45px;
+}
+
+.btc-product-showcase .btc-drawer-overlay.open .btc-drawer {
+  transform: translateY(0);
+}
+
+.btc-product-showcase .btc-drawer-header {
+  padding: 29px 32px 16px 32px;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  border-bottom: 1px solid #e8e8ed;
+  flex-shrink: 0;
+}
+
+.btc-product-showcase .btc-close-btn {
+  background: #e8e8ed;
+  border: none;
+  font-size: 1.1rem;
+  border-radius: 50%;
+  width: 36px;
+  height: 36px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  cursor: pointer;
+  color: #1d1d1f;
+}
+
+/* Master Layout Framework for Drawer Contents */
+.btc-product-showcase .btc-drawer-body {
+  padding: 24px;
+  display: flex;
+  flex-direction: column;
+  gap: 32px;
+  overflow-y: auto;
+  flex-grow: 1;
+}
+
+.btc-product-showcase .btc-drawer-left-pane {
+  display: flex;
+  flex-direction: column;
+  width: 100%;
+}
+
+.btc-product-showcase .btc-drawer-right-pane {
+  width: 100%;
+}
+
+.btc-product-showcase .btc-media-preview {
+  height: 240px;
+  width: 100%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background-color: #f5f5f7;
+  border-radius: 14px;
+  margin-bottom: 20px;
+}
+
+.btc-product-showcase .btc-media-preview img {
+  max-height: 85%;
+  max-width: 85%;
+  object-fit: contain;
+}
+
+.btc-product-showcase .btc-btn-primary {
+  background-color: #0071e3;
+  color: #ffffff;
+  border: none;
+  border-radius: 8px;
+  padding: 14px 24px;
+  font-weight: 500;
+  font-size: 0.95rem;
+  cursor: pointer;
+  width: 100%;
+  transition: background-color 0.15s ease;
+}
+
+.btc-product-showcase .btc-btn-primary:hover {
+  background-color: #0077ed;
+}
+
+.btc-product-showcase .btc-btn-secondary {
+  background-color: transparent;
+  color: #0071e3;
+  border: 1px solid #0071e3;
+  border-radius: 8px;
+  padding: 14px 24px;
+  font-weight: 500;
+  font-size: 0.95rem;
+  cursor: pointer;
+  width: 100%;
+  transition: background-color 0.15s ease;
+}
+
+.btc-product-showcase .btc-btn-secondary:hover {
+  background-color: rgba(0, 113, 227, 0.05);
+}
+
+/* Structured Spec Rows Layout */
+.btc-product-showcase .btc-spec-section {
+  margin-bottom: 32px;
+}
+
+.btc-product-showcase .btc-spec-heading {
+  font-size: 1.1rem;
+  font-weight: 600;
+  color: #1d1d1f;
+  margin: 0 0 12px 0;
+  border-bottom: 1px solid #e8e8ed;
+  padding-bottom: 8px;
+}
+
+.btc-product-showcase .btc-spec-list {
+  margin: 0;
+  padding-left: 20px;
+  font-size: 0.95rem;
+  color: #515154;
+  line-height: 1.65;
+}
+
+.btc-product-showcase .btc-spec-list li {
+  margin-bottom: 8px;
+}
+
+/* ==========================================================================
+   BREAKPOINTS AND SCALABILITY INTERFACES (RESPONSIVENESS)
+   ========================================================================== */
+
+@media (min-width: 640px) {
+  .btc-product-showcase .btc-card {
+    flex: 0 0 calc(50% - 12px);
+  }
+}
+
+@media (min-width: 1024px) {
+  .btc-product-showcase .btc-card {
+    flex: 0 0 calc(33.333% - 16px);
+  }
+}
+
+@media (min-width: 768px) {
+  .btc-product-showcase .btc-drawer-body {
+    padding: 32px;
+    display: grid;
+    grid-template-columns: 420px 1fr;
+    gap: 48px;
+    overflow: hidden;
+    align-items: start;
+  }
+
+  .btc-product-showcase .btc-drawer-left-pane {
+    position: sticky;
+    top: 0;
+    flex-shrink: 0;
+  }
+
+  .btc-product-showcase .btc-drawer-right-pane {
+    overflow-y: auto;
+    height: 100%;
+    max-height: calc(95vh - 140px);
+    scrollbar-width: none;
+    padding-right: 4px;
+  }
+
+  .btc-product-showcase .btc-drawer-right-pane::-webkit-scrollbar {
+    display: none;
+  }
+
+  .btc-product-showcase .btc-media-preview {
+    height: 280px;
+  }
+}
+</style>
+
+<div class="btc-product-showcase">
+
+  <section class="btc-section">
+    <h2 class="btc-section-title">Headphones</h2>
+    
+    <div id="track-headphones" class="btc-grid-container">
+      
+      <div class="btc-card" onclick="btcOpenDrawer('Beats Studio Pro Wireless — Deep Brown', '$349.99', 'https://assets.beatsbydre.com/published/images/product/headphones/studio-pro-wireless/deep-brown/vertical/bbd.audioproduct.studioprowireless.deepbrown.threedqc.v2.jpg', ['#443834', '#23252e', '#dad4cb', '#bfa590'], 'headphones-pro')">
+        <div class="btc-image-wrapper">
+          <img src="thumbnails/Screenshot 2026-07-05 140720.png" alt="Beats Studio Pro Wireless - Deep Brown">
+        </div>
+        <div class="btc-color-dots-row">
+          <span class="btc-color-dot-indicator" style="background-color: #23252e;"></span>
+          <span class="btc-color-dot-indicator" style="background-color: #dad4cb;"></span>
+          <span class="btc-color-dot-indicator" style="background-color: #bfa590;"></span>
+          <span class="btc-color-dot-indicator" style="background-color: #443834; border: 2px solid #888;"></span>
+        </div>
+        <h3 class="btc-card-title">Beats Studio Pro Wireless Headphones — Deep Brown</h3>
+        <p class="btc-card-price">$349.99</p>
+      </div>
+
+      <div class="btc-card" onclick="btcOpenDrawer('Beats Solo 4 — Slate Blue', '$199.99', 'https://assets.beatsbydre.com/published/images/product/headphones/solo4-wireless/slate-blue/vertical/bbd.audioproduct.solo4wireless.slateblue.threedqc.v2.jpg', ['#6a829a', '#1b1b1b', '#e3d7d4'], 'headphones-solo')">
+        <div class="btc-image-wrapper">
+          <img src="https://assets.beatsbydre.com/published/images/product/headphones/solo4-wireless/slate-blue/vertical/bbd.audioproduct.solo4wireless.slateblue.threedqc.v2.jpg" alt="Beats Solo 4 - Slate Blue">
+        </div>
+        <div class="btc-color-dots-row">
+          <span class="btc-color-dot-indicator" style="background-color: #1b1b1b;"></span>
+          <span class="btc-color-dot-indicator" style="background-color: #6a829a; border: 2px solid #888;"></span>
+          <span class="btc-color-dot-indicator" style="background-color: #e3d7d4;"></span>
+        </div>
+        <h3 class="btc-card-title">Beats Solo 4 — On-Ear Wireless Headphones — Slate Blue</h3>
+        <p class="btc-card-price">$199.99</p>
+      </div>
+
+      <div class="btc-card" onclick="btcOpenDrawer('Beats Studio Pro Wireless — Navy', '$349.99', 'https://assets.beatsbydre.com/published/images/product/headphones/studio-pro-wireless/navy/vertical/bbd.audioproduct.studioprowireless.navy.threedqc.v2.jpg', ['#2e3641', '#23252e', '#dad4cb', '#bfa590'], 'headphones-pro')">
+        <div class="btc-image-wrapper">
+          <img src="https://assets.beatsbydre.com/published/images/product/headphones/studio-pro-wireless/navy/vertical/bbd.audioproduct.studioprowireless.navy.threedqc.v2.jpg" alt="Beats Studio Pro Wireless - Navy">
+        </div>
+        <div class="btc-color-dots-row">
+          <span class="btc-color-dot-indicator" style="background-color: #23252e;"></span>
+          <span class="btc-color-dot-indicator" style="background-color: #dad4cb;"></span>
+          <span class="btc-color-dot-indicator" style="background-color: #bfa590;"></span>
+          <span class="btc-color-dot-indicator" style="background-color: #2e3641; border: 2px solid #888;"></span>
+        </div>
+        <h3 class="btc-card-title">Beats Studio Pro Wireless Headphones — Navy</h3>
+        <p class="btc-card-price">$349.99</p>
+      </div>
+
+    </div>
+
+    <div class="btc-nav-controls">
+      <button class="btc-nav-btn" onclick="btcScroll('track-headphones', -340)">‹</button>
+      <button class="btc-nav-btn" onclick="btcScroll('track-headphones', 340)">›</button>
+    </div>
+  </section>
+
+  <section class="btc-section">
+    <h2 class="btc-section-title">Earbuds</h2>
+    
+    <div id="track-earbuds" class="btc-grid-container">
+      
+      <div class="btc-card" onclick="btcOpenDrawer('Beats Solo Buds — Matte Black', '$79.99', 'https://assets.beatsbydre.com/published/images/product/earbuds/beats-solo-buds/matte-black/vertical/bbd.audioproduct.solobuds.matteblack.threedqc.v2.jpg', ['#1c1c1c', '#b9252b', '#796d86'], 'earbuds-solo')">
+        <div class="btc-image-wrapper">
+          <img src="https://assets.beatsbydre.com/published/images/product/earbuds/beats-solo-buds/matte-black/vertical/bbd.audioproduct.solobuds.matteblack.threedqc.v2.jpg" alt="Beats Solo Buds">
+        </div>
+        <div class="btc-color-dots-row">
+          <span class="btc-color-dot-indicator" style="background-color: #1c1c1c; border: 2px solid #888;"></span>
+          <span class="btc-color-dot-indicator" style="background-color: #b9252b;"></span>
+          <span class="btc-color-dot-indicator" style="background-color: #796d86;"></span>
+        </div>
+        <h3 class="btc-card-title">Beats Solo Buds True Wireless Earbuds — Matte Black</h3>
+        <p class="btc-card-price">$79.99</p>
+      </div>
+
+      <div class="btc-card" onclick="btcOpenDrawer('Beats Studio Buds + — Cosmic Silver', '$169.99', 'https://assets.beatsbydre.com/published/images/product/earbuds/studio-buds-plus/cosmic-silver/vertical/bbd.audioproduct.studiobudsplus.cosmicsilver.threedqc.v2.jpg', ['#d1d1d6', '#eedcc7', '#20242a'], 'earbuds-studio')">
+        <div class="btc-image-wrapper">
+          <img src="https://assets.beatsbydre.com/published/images/product/earbuds/studio-buds-plus/cosmic-silver/vertical/bbd.audioproduct.studiobudsplus.cosmicsilver.threedqc.v2.jpg" alt="Beats Studio Buds +">
+        </div>
+        <div class="btc-color-dots-row">
+          <span class="btc-color-dot-indicator" style="background-color: #d1d1d6; border: 2px solid #888;"></span>
+          <span class="btc-color-dot-indicator" style="background-color: #eedcc7;"></span>
+          <span class="btc-color-dot-indicator" style="background-color: #20242a;"></span>
+        </div>
+        <h3 class="btc-card-title">Beats Studio Buds + True Wireless Earbuds — Cosmic Silver</h3>
+        <p class="btc-card-price">$169.99</p>
+      </div>
+
+      <div class="btc-card" onclick="btcOpenDrawer('Beats Fit Pro — Sage Gray', '$199.99', 'https://assets.beatsbydre.com/published/images/product/earbuds/beats-fit-pro/sage-gray/vertical/bbd.audioproduct.beatsfitpro.sagegray.threedqc.v2.jpg', ['#7b817e', '#e3e4e0', '#232226'], 'earbuds-fit')">
+        <div class="btc-image-wrapper">
+          <img src="https://assets.beatsbydre.com/published/images/product/earbuds/beats-fit-pro/sage-gray/vertical/bbd.audioproduct.beatsfitpro.sagegray.threedqc.v2.jpg" alt="Beats Fit Pro">
+        </div>
+        <div class="btc-color-dots-row">
+          <span class="btc-color-dot-indicator" style="background-color: #7b817e; border: 2px solid #888;"></span>
+          <span class="btc-color-dot-indicator" style="background-color: #e3e4e0;"></span>
+          <span class="btc-color-dot-indicator" style="background-color: #232226;"></span>
+        </div>
+        <h3 class="btc-card-title">Beats Fit Pro True Wireless Earbuds — Sage Gray</h3>
+        <p class="btc-card-price">$199.99</p>
+      </div>
+
+    </div>
+
+    <div class="btc-nav-controls">
+      <button class="btc-nav-btn" onclick="btcScroll('track-earbuds', -340)">‹</button>
+      <button class="btc-nav-btn" onclick="btcScroll('track-earbuds', 340)">›</button>
+    </div>
+  </section>
+
+  <section class="btc-section">
+    <h2 class="btc-section-title">Speakers</h2>
+    
+    <div id="track-speakers" class="btc-grid-container">
+      
+      <div class="btc-card" onclick="btcOpenDrawer('Beats Pill — Matte Black', '$149.99', 'https://assets.beatsbydre.com/published/images/product/speakers/beats-pill/matte-black/vertical/bbd.audioproduct.beatspill.matteblack.threedqc.v2.jpg', ['#1c1c1c', '#b4976c', '#b82a32'], 'speakers-pill')">
+        <div class="btc-image-wrapper">
+          <img src="https://assets.beatsbydre.com/published/images/product/speakers/beats-pill/matte-black/vertical/bbd.audioproduct.beatspill.matteblack.threedqc.v2.jpg" alt="Beats Pill - Matte Black">
+        </div>
+        <div class="btc-color-dots-row">
+          <span class="btc-color-dot-indicator" style="background-color: #1c1c1c; border: 2px solid #888;"></span>
+          <span class="btc-color-dot-indicator" style="background-color: #b4976c;"></span>
+          <span class="btc-color-dot-indicator" style="background-color: #b82a32;"></span>
+        </div>
+        <h3 class="btc-card-title">Beats Pill Portable Wireless Speaker — Matte Black</h3>
+        <p class="btc-card-price">$149.99</p>
+      </div>
+
+      <div class="btc-card" onclick="btcOpenDrawer('Beats Pill — Champagne Gold', '$149.99', 'https://assets.beatsbydre.com/published/images/product/speakers/beats-pill/champagne-gold/vertical/bbd.audioproduct.beatspill.champagnegold.threedqc.v2.jpg', ['#b4976c', '#1c1c1c', '#b82a32'], 'speakers-pill')">
+        <div class="btc-image-wrapper">
+          <img src="https://assets.beatsbydre.com/published/images/product/speakers/beats-pill/champagne-gold/vertical/bbd.audioproduct.beatspill.champagnegold.threedqc.v2.jpg" alt="Beats Pill - Champagne Gold">
+        </div>
+        <div class="btc-color-dots-row">
+          <span class="btc-color-dot-indicator" style="background-color: #1c1c1c;"></span>
+          <span class="btc-color-dot-indicator" style="background-color: #b4976c; border: 2px solid #888;"></span>
+          <span class="btc-color-dot-indicator" style="background-color: #b82a32;"></span>
+        </div>
+        <h3 class="btc-card-title">Beats Pill Portable Wireless Speaker — Champagne Gold</h3>
+        <p class="btc-card-price">$149.99</p>
+      </div>
+
+      <div class="btc-card" onclick="btcOpenDrawer('Beats Pill — Statement Red', '$149.99', 'https://assets.beatsbydre.com/published/images/product/speakers/beats-pill/statement-red/vertical/bbd.audioproduct.beatspill.statementred.threedqc.v2.jpg', ['#b82a32', '#1c1c1c', '#b4976c'], 'speakers-pill')">
+        <div class="btc-image-wrapper">
+          <img src="https://assets.beatsbydre.com/published/images/product/speakers/beats-pill/statement-red/vertical/bbd.audioproduct.beatspill.statementred.threedqc.v2.jpg" alt="Beats Pill - Statement Red">
+        </div>
+        <div class="btc-color-dots-row">
+          <span class="btc-color-dot-indicator" style="background-color: #1c1c1c;"></span>
+          <span class="btc-color-dot-indicator" style="background-color: #b4976c;"></span>
+          <span class="btc-color-dot-indicator" style="background-color: #b82a32; border: 2px solid #888;"></span>
+        </div>
+        <h3 class="btc-card-title">Beats Pill Portable Wireless Speaker — Statement Red</h3>
+        <p class="btc-card-price">$149.99</p>
+      </div>
+
+    </div>
+
+    <div class="btc-nav-controls">
+      <button class="btc-nav-btn" onclick="btcScroll('track-speakers', -340)">‹</button>
+      <button class="btc-nav-btn" onclick="btcScroll('track-speakers', 340)">›</button>
+    </div>
+  </section>
+
+  <section class="btc-section">
+    <h2 class="btc-section-title">Accessories</h2>
+    
+    <div id="track-accessories" class="btc-grid-container">
+      
+      <div class="btc-card" onclick="btcOpenDrawer('Beats Pill Portable Protective Case', '$29.99', 'https://images.apple.com/is/MW653?wid=400&hei=400&fmt=jpeg&qlt=95', ['#1c1c1c'], 'acc-case')">
+        <div class="btc-image-wrapper" style="height: 240px;">
+          <img src="https://images.apple.com/is/MW653?wid=400&hei=400&fmt=jpeg&qlt=95" alt="Beats Pill Sleeve" style="max-height: 80%; max-width: 80%;">
+        </div>
+        <div class="btc-color-dots-row">
+          <span class="btc-color-dot-indicator" style="background-color: #1c1c1c; border: 2px solid #888;"></span>
+        </div>
+        <h3 class="btc-card-title">Beats Pill Portable Protective Case — Black</h3>
+        <p class="btc-card-price">$29.99</p>
+      </div>
+
+      <div class="btc-card" onclick="btcOpenDrawer('20W USB-C Power Adapter', '$19.99', 'https://images.apple.com/is/MY1W3?wid=400&hei=400&fmt=jpeg&qlt=95', ['#ffffff'], 'acc-adapter')">
+        <div class="btc-image-wrapper" style="height: 240px;">
+          <img src="https://images.apple.com/is/MY1W3?wid=400&hei=400&fmt=jpeg&qlt=95" alt="Apple USB-C Power Adapter" style="max-height: 70%; max-width: 70%;">
+        </div>
+        <div class="btc-color-dots-row">
+          <span class="btc-color-dot-indicator" style="background-color: #f5f5f7; border: 2px solid #888;"></span>
+        </div>
+        <h3 class="btc-card-title">20W USB-C Power Charging Adapter</h3>
+        <p class="btc-card-price">$19.99</p>
+      </div>
+
+      <div class="btc-card" onclick="btcOpenDrawer('USB-C to USB-C Cable (1m)', '$19.99', 'https://images.apple.com/is/MQGH3?wid=400&hei=400&fmt=jpeg&qlt=95', ['#e3e3e3'], 'acc-cable')">
+        <div class="btc-image-wrapper" style="height: 240px;">
+          <img src="https://images.apple.com/is/MQGH3?wid=400&hei=400&fmt=jpeg&qlt=95" alt="USB-C Charge Cable" style="max-height: 70%; max-width: 70%;">
+        </div>
+        <div class="btc-color-dots-row">
+          <span class="btc-color-dot-indicator" style="background-color: #e3e3e3; border: 2px solid #888;"></span>
+        </div>
+        <h3 class="btc-card-title">USB-C to USB-C Audio Charging Cable (1m)</h3>
+        <p class="btc-card-price">$19.99</p>
+      </div>
+
+    </div>
+
+    <div class="btc-nav-controls">
+      <button class="btc-nav-btn" onclick="btcScroll('track-accessories', -340)">‹</button>
+      <button class="btc-nav-btn" onclick="btcScroll('track-accessories', 340)">›</button>
+    </div>
+  </section>
+
+  <div id="btcProductDrawerOverlay" class="btc-drawer-overlay" onclick="btcCloseDrawer(event)">
+    <div class="btc-drawer" onclick="event.stopPropagation()">
+      
+      <div class="btc-drawer-header">
+        <div>
+          <h2 id="btcDrawerTitle" style="margin: 0; font-size: 1.4rem; font-weight: 600; letter-spacing: -0.01em;">Product Title</h2>
+          <p id="btcDrawerPrice" style="margin: 4px 0 0 0; font-size: 1.1rem; color: #6e6e73; font-weight: 500;">$0.00</p>
+        </div>
+        <button class="btc-close-btn" onclick="btcCloseDrawer(null)">✕</button>
+      </div>
+
+      <div class="btc-drawer-body">
+        
+        <div class="btc-drawer-left-pane">
+          <div class="btc-media-preview">
+            <img id="btcDrawerImg" src="" alt="Product Detail View">
+          </div>
+          
+          <div style="width: 100%; margin-bottom: 24px; text-align: left;">
+            <p style="font-size: 0.8rem; font-weight: 600; text-transform: uppercase; color: #6e6e73; margin-bottom: 10px; letter-spacing: 0.05em;">Available Finishes</p>
+            <div id="btcDrawerColors" style="display: flex; gap: 10px;">
+              </div>
+          </div>
+
+          <div style="display: flex; flex-direction: column; gap: 12px; width: 100%;">
+            <button class="btc-btn-primary" onclick="alert('Added to your shopping bag!')">Add to Cart</button>
+            <button class="btc-btn-secondary" onclick="alert('Saved to your favorites list!')">Save Product</button>
+          </div>
+        </div>
+
+        <div class="btc-drawer-right-pane">
+          <div id="btcDrawerSpecsContainer" style="display: flex; flex-direction: column; width: 100%;">
+             </div>
+        </div>
+
+      </div>
+    </div>
+  </div>
+
+  <script>
+    // Local Product Specification Structured Dataset Map
+    const btcSpecsDataset = {
+      'headphones-pro': `
+        <div class="btc-spec-section">
+          <h4 class="btc-spec-heading">Audio Performance</h4>
+          <ul class="btc-spec-list">
+            <li>Custom 40mm active drivers minimize distortion even at high volumes.</li>
+            <li>Fully integrated Digital Audio Processor optimizes frequency responses.</li>
+            <li>Personalized Spatial Audio with dynamic head tracking wraps sound around you.</li>
+          </ul>
+        </div>
+        <div class="btc-spec-section">
+          <h4 class="btc-spec-heading">Acoustic Engineering</h4>
+          <ul class="btc-spec-list">
+            <li>Fully adaptive Active Noise Cancelling (ANC) continuously monitors environmental noise.</li>
+            <li>High-fidelity dual-diaphragm designs deliver perfectly balanced spatial layers.</li>
+            <li>Upgraded digital-to-analog converters yield pristine sonic output configurations.</li>
+          </ul>
+        </div>
+        <div class="btc-spec-section">
+          <h4 class="btc-spec-heading">Connectivity & Charging</h4>
+          <ul class="btc-spec-list">
+            <li>Class 1 Bluetooth® wireless connectivity framework ensures minimal drops.</li>
+            <li>USB-C port supports native high-fidelity Lossless Audio files.</li>
+            <li>Standard 3.5mm analog auxiliary input port for wired legacy connections.</li>
+          </ul>
+        </div>
+        <div class="btc-spec-section">
+          <h4 class="btc-spec-heading">Power & Portability</h4>
+          <ul class="btc-spec-list">
+            <li>Up to 40 hours of continuous run time with ANC switched off.</li>
+            <li>Fast Fuel system gives 4 hours of playback from a single 10-minute charge.</li>
+            <li>UltraPlush engineered leather ear cushions provide comfortable all-day durability.</li>
+          </ul>
+        </div>`,
+      'headphones-solo': `
+        <div class="btc-spec-section">
+          <h4 class="btc-spec-heading">Design Comfort</h4>
+          <ul class="btc-spec-list">
+            <li>Ultralight on-ear structural architecture with an adjustable clamping force.</li>
+            <li>Ergonomically angled ear cushions featuring specialized sound isolation fabrics.</li>
+          </ul>
+        </div>
+        <div class="btc-spec-section">
+          <h4 class="btc-spec-heading">Battery Infrastructure</h4>
+          <ul class="btc-spec-list">
+            <li>Extended battery architecture yielding up to 50 hours of wireless run time.</li>
+            <li>USB-C fast-action system delivers premium high-fidelity lossless processing.</li>
+          </ul>
+        </div>`,
+      'earbuds-solo': `
+        <div class="btc-spec-section">
+          <h4 class="btc-spec-heading">Form Factor</h4>
+          <ul class="btc-spec-list">
+            <li>The smallest ergonomic case footprint ever engineered by Beats.</li>
+            <li>Laser-cut venting allows precise acoustics with natural pressure relief.</li>
+          </ul>
+        </div>
+        <div class="btc-spec-section">
+          <h4 class="btc-spec-heading">Compatibility</h4>
+          <ul class="btc-spec-list">
+            <li>Instant one-touch pairing native to iOS Apple and Android platforms.</li>
+          </ul>
+        </div>`,
+      'earbuds-studio': `
+        <div class="btc-spec-section">
+          <h4 class="btc-spec-heading">Acoustic Isolation</h4>
+          <ul class="btc-spec-list">
+            <li>Dynamic Active Noise Cancelling continuously targets and isolates exterior environment sounds.</li>
+            <li>Transparency mode balances environmental elements perfectly with your music.</li>
+          </ul>
+        </div>`,
+      'earbuds-fit': `
+        <div class="btc-spec-section">
+          <h4 class="btc-spec-heading">Sports Design</h4>
+          <ul class="btc-spec-list">
+            <li>Secure-fit wingtips comfortably lock your earbuds in place through intense workouts.</li>
+            <li>IPX4 sweat and moisture protection shields internal circuitry.</li>
+          </ul>
+        </div>`,
+      'speakers-pill': `
+        <div class="btc-spec-section">
+          <h4 class="btc-spec-heading">Staging & Driver Arrays</h4>
+          <ul class="btc-spec-list">
+            <li>Racetrack layout woofers output massive bass response and minimal sub-distortion.</li>
+            <li>Redesigned tweeter placement provides pristine high-frequency definition.</li>
+          </ul>
+        </div>
+        <div class="btc-spec-section">
+          <h4 class="btc-spec-heading">Durability Ratings</h4>
+          <ul class="btc-spec-list">
+            <li>IP67 certified waterproof construction handles poolside or outdoor weather elements with ease.</li>
+          </ul>
+        </div>`,
+      'acc-case': `
+        <div class="btc-spec-section">
+          <h4 class="btc-spec-heading">Material Framework</h4>
+          <ul class="btc-spec-list">
+            <li>High-tensile ballistic woven structure guards against dropping or abrasion damage.</li>
+          </ul>
+        </div>`,
+      'acc-adapter': `
+        <div class="btc-spec-section">
+          <h4 class="btc-spec-heading">Power Parameters</h4>
+          <ul class="btc-spec-list">
+            <li>20W power delivery structure maximizes optimal charging speeds across devices.</li>
+          </ul>
+        </div>`,
+      'acc-cable': `
+        <div class="btc-spec-section">
+          <h4 class="btc-spec-heading">Build Elements</h4>
+          <ul class="btc-spec-list">
+            <li>Braided high-flex pattern guarantees structural durability.</li>
+          </ul>
+        </div>`
+    };
+
+    // Scoped Carousel Slider Method
+    function btcScroll(trackId, distance) {
+      const el = document.getElementById(trackId);
+      if (el) {
+        el.scrollBy({ left: distance, behavior: 'smooth' });
+      }
+    }
+
+    // Dynamic Bottom Drawer Injector System
+    function btcOpenDrawer(title, price, imgUrl, hexColorsArray, specKey) {
+      document.getElementById('btcDrawerTitle').innerText = title;
+      document.getElementById('btcDrawerPrice').innerText = price;
+      document.getElementById('btcDrawerImg').src = imgUrl;
+      
+      // Inject Structured Headings & Bullet Rows
+      const container = document.getElementById('btcDrawerSpecsContainer');
+      container.innerHTML = btcSpecsDataset[specKey] || '<p>Detailed specs coming soon.</p>';
+
+      // Generate Interactive Finishes Preview List
+      const colorContainer = document.getElementById('btcDrawerColors');
+      colorContainer.innerHTML = '';
+      hexColorsArray.forEach((hex, index) => {
+        const dot = document.createElement('span');
+        dot.style.width = '24px';
+        dot.style.height = '24px';
+        dot.style.borderRadius = '50%';
+        dot.style.backgroundColor = hex;
+        dot.style.cursor = 'pointer';
+        dot.style.border = index === 0 ? '2px solid #0071e3' : '1px solid #d2d2d7';
+        dot.title = `Color Option ${index + 1}`;
+        colorContainer.appendChild(dot);
+      });
+
+      // Reset internal right pane scrolling layout to top on open
+      const rightPane = document.querySelector('.btc-product-showcase .btc-drawer-right-pane');
+      if (rightPane) rightPane.scrollTop = 0;
+
+      // Animation State Open
+      const overlay = document.getElementById('btcProductDrawerOverlay');
+      overlay.classList.add('open');
+      document.body.style.overflow = 'hidden'; 
+    }
+
+    function btcCloseDrawer(event) {
+      if (!event || event.target === document.getElementById('btcProductDrawerOverlay') || event == null) {
+        document.getElementById('btcProductDrawerOverlay').classList.remove('open');
+        document.body.style.overflow = '';
+      }
+    }
+  </script>
+
+</div>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<style>
+    /* ==========================================================================
+   IPHONE SHOWCASE STYLING (ENCAPSULATED CLASS SCOPE)
+   ========================================================================== */
+
+.ap-compare-showcase {
+  font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Helvetica, Arial, sans-serif;
+  background-color: #f5f5f7;
+  color: #1d1d1f;
+  padding: 60px 20px;
+  overflow: hidden;
+  box-sizing: border-box;
+}
+
+/* Main Product Rack Grid */
+.ap-compare-showcase .ap-rack-header {
+  max-width: 1200px;
+  margin: 0 auto 32px auto;
+  display: flex;
+  justify-content: space-between;
+  align-items: flex-end;
+  padding: 0 10px;
+}
+
+.ap-compare-showcase .ap-rack-title {
+  font-size: 2.2rem;
+  font-weight: 600;
+  margin: 0;
+  letter-spacing: -0.02em;
+}
+
+.ap-compare-showcase .ap-rack-title span { 
+  color: #6e6e73; 
+}
+
+.ap-compare-showcase .ap-rack-container {
+  display: flex;
+  gap: 24px;
+  max-width: 1200px;
+  margin: 0 auto;
+  overflow-x: auto;
+  scroll-behavior: smooth;
+  scrollbar-width: none;
+  padding: 10px 10px 24px 10px;
+}
+
+.ap-compare-showcase .ap-rack-container::-webkit-scrollbar { 
+  display: none; 
+}
+
+/* Card Architecture */
+.ap-compare-showcase .ap-product-card {
+  flex: 0 0 85%;
+  background-color: #ffffff;
+  border-radius: 24px;
+  padding: 40px 32px 32px 32px;
+  display: flex; 
+  flex-direction: column;
+  position: relative;
+  box-sizing: border-box;
+  box-shadow: 0 4px 20px rgba(0,0,0,0.01);
+  transition: transform 0.3s cubic-bezier(0.25, 1, 0.5, 1);
+  overflow: hidden;
+}
+
+/* Closer Look Overlay Trigger Frame */
+.ap-compare-showcase .ap-card-overlay-mask {
+  position: absolute;
+  top: 0; left: 0; right: 0; bottom: 0;
+  background: rgba(0, 0, 0, 0.02);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  opacity: 0;
+  pointer-events: none;
+  transition: opacity 0.25s ease;
+  z-index: 4;
+}
+
+.ap-compare-showcase .ap-product-card:hover .ap-card-overlay-mask {
+  opacity: 1;
+  pointer-events: auto;
+}
+
+.ap-compare-showcase .ap-closer-look-btn {
+  background: rgba(255, 255, 255, 0.95);
+  backdrop-filter: blur(12px);
+  -webkit-backdrop-filter: blur(12px);
+  border: none;
+  color: #1d1d1f;
+  padding: 14px 26px;
+  border-radius: 30px;
+  font-weight: 500;
+  font-size: 0.9rem;
+  cursor: pointer;
+  box-shadow: 0 8px 24px rgba(0,0,0,0.08);
+  transform: scale(0.95);
+  transition: transform 0.2s cubic-bezier(0.25, 1, 0.5, 1);
+}
+
+.ap-compare-showcase .ap-product-card:hover .ap-closer-look-btn { 
+  transform: scale(1); 
+}
+
+/* Card Details */
+.ap-compare-showcase .ap-card-title {
+  font-size: 1.6rem;
+  font-weight: 600;
+  line-height: 1.2;
+  margin: 0 0 24px 0;
+  letter-spacing: -0.01em;
+}
+
+.ap-compare-showcase .ap-card-media {
+  height: 220px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  margin-bottom: 24px;
+}
+
+.ap-compare-showcase .ap-card-media img {
+  max-height: 100%;
+  max-width: 100%;
+  object-fit: contain;
+}
+
+.ap-compare-showcase .ap-card-swatches {
+  display: flex;
+  gap: 6px;
+  justify-content: center;
+  margin-bottom: 32px;
+}
+
+.ap-compare-showcase .ap-swatch-dot {
+  width: 10px;
+  height: 10px;
+  border-radius: 50%;
+  box-shadow: inset 0 1px 2px rgba(0,0,0,0.2);
+}
+
+.ap-compare-showcase .ap-card-footer {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-top: auto;
+}
+
+.ap-compare-showcase .ap-price-subtext {
+  font-size: 0.8rem;
+  color: #6e6e73;
+  line-height: 1.4;
+  margin: 0;
+  max-width: 70%;
+}
+
+.ap-compare-showcase .ap-action-blue-btn {
+  background-color: #0071e3;
+  color: #ffffff;
+  border: none;
+  border-radius: 20px;
+  padding: 6px 16px;
+  font-size: 0.85rem;
+  font-weight: 400;
+  cursor: pointer;
+}
+
+.ap-compare-showcase .ap-nav-circle {
+  background-color: #d2d2d7;
+  color: #1d1d1f;
+  border: none;
+  border-radius: 50%;
+  width: 36px;
+  height: 36px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  cursor: pointer;
+  font-size: 1.1rem;
+}
+
+/* Bottom Drawer Canvas Layout Sheets */
+.ap-compare-showcase .ap-compare-overlay {
+  position: fixed;
+  top: 0; left: 0; width: 100%; height: 100%;
+  background-color: rgba(0, 0, 0, 0.4);
+  backdrop-filter: blur(14px);
+  -webkit-backdrop-filter: blur(14px);
+  z-index: 99999;
+  opacity: 0;
+  visibility: hidden;
+  transition: opacity 0.3s ease, visibility 0.3s ease;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: flex-end;
+}
+
+.ap-compare-showcase .ap-compare-overlay.open {
+  opacity: 1;
+  visibility: visible;
+}
+
+.ap-compare-showcase .ap-compare-sheet {
+  background: #ffffff;
+  width: 100%;
+  max-width: 1020px;
+  height: 75vh;
+  border-top-left-radius: 15px;
+  border-top-right-radius: 15px;
+  border-bottom-left-radius: 0px;
+  border-bottom-right-radius: 0px;
+  margin-bottom: 0px;
+  display: flex;
+  flex-direction: column;
+  position: relative;
+  box-sizing: border-box;
+  transform: translateY(100%);
+  transition: transform 0.4s cubic-bezier(0.25, 1, 0.5, 1);
+}
+
+.ap-compare-showcase .ap-compare-overlay.open .ap-compare-sheet { 
+  transform: translateY(0); 
+}
+
+/* Floating Segmented Filter Control Bar */
+.ap-compare-showcase .ap-floating-pill-bar {
+  position: absolute;
+  top: -56px;
+  left: 50%;
+  transform: translateX(-50%);
+  background: rgba(238, 238, 242, 0.85);
+  backdrop-filter: blur(20px);
+  -webkit-backdrop-filter: blur(20px);
+  padding: 6px;
+  border-radius: 30px;
+  display: flex;
+  gap: 4px;
+  z-index: 100000;
+  box-shadow: 0 4px 20px rgba(0,0,0,0.08);
+  max-width: 90vw;
+  overflow-x: auto;
+}
+
+.ap-compare-showcase .ap-floating-pill-bar::-webkit-scrollbar { 
+  display: none; 
+}
+
+.ap-compare-showcase .ap-pill-item {
+  border: none;
+  background: transparent;
+  padding: 8px 18px;
+  border-radius: 20px;
+  font-size: 0.85rem;
+  font-weight: 500;
+  color: #1d1d1f;
+  cursor: pointer;
+  transition: background 0.2s, color 0.2s, box-shadow 0.2s;
+  white-space: nowrap;
+}
+
+.ap-compare-showcase .ap-pill-item.active {
+  background: #1d1d1f;
+  color: #ffffff;
+  box-shadow: 0 2px 8px rgba(0,0,0,0.15);
+}
+
+/* Modal Layout Viewport View */
+.ap-compare-showcase .ap-modal-viewport {
+  display: flex;
+  flex-direction: column;
+  height: 100%;
+  overflow-y: auto;
+  scrollbar-width: none;
+}
+
+.ap-compare-showcase .ap-modal-viewport::-webkit-scrollbar { 
+  display: none; 
+}
+
+/* Media Display Pane Optimization */
+.ap-compare-showcase .ap-modal-media-pane {
+  padding: 40px 32px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  border-radius: 20px;
+  background: #ffffff;
+}
+
+/* Fixed Image Element Behavior Framework */
+.ap-compare-showcase .ap-modal-media-container {
+  width: 100%;
+  max-width: 320px;
+  height: 280px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.ap-compare-showcase .ap-modal-media-container img {
+  max-height: 100%;
+  max-width: 100%;
+  object-fit: contain;
+}
+
+.ap-compare-showcase .ap-modal-specs-pane {
+  padding: 40px 32px 120px 32px;
+  background: #ffffff; 
+  border-radius: 20px;
+}
+
+/* Comparison Feature Details Matrix Layout */
+.ap-compare-showcase .ap-matrix-row {
+  display: flex;
+  gap: 20px;
+  align-items: flex-start;
+  margin-bottom: 24px;
+  border-bottom: 1px solid #f5f5f7;
+  padding-bottom: 24px;
+}
+
+.ap-compare-showcase .ap-matrix-icon {
+  flex-shrink: 0;
+  width: 28px;
+  height: 28px;
+  color: #1d1d1f;
+}
+
+.ap-compare-showcase .ap-matrix-desc {
+  font-size: 0.95rem;
+  line-height: 1.5;
+  color: #1d1d1f;
+  margin: 0;
+}
+
+/* Bottom Gallery Indicator Elements */
+.ap-compare-showcase .ap-modal-indicators {
+  display: flex;
+  gap: 6px;
+  margin-top: 24px;
+}
+
+.ap-compare-showcase .ap-indicator-dot {
+  width: 6px;
+  height: 6px;
+  background-color: #d2d2d7;
+  border-radius: 50%;
+  transition: background-color 0.2s;
+}
+
+.ap-compare-showcase .ap-indicator-dot.active { 
+  background-color: #1d1d1f; 
+}
+
+/* ==========================================================================
+   BREAKPOINTS AND SCALABILITY INTERFACES (RESPONSIVENESS)
+   ========================================================================== */
+
+@media (min-width: 640px) {
+  .ap-compare-showcase .ap-product-card { 
+    flex: 0 0 calc(50% - 12px); 
+  }
+}
+
+@media (min-width: 1024px) {
+  .ap-compare-showcase .ap-product-card { 
+    flex: 0 0 calc(33.333% - 16px); 
+  }
+}
+
+@media (min-width: 768px) {
+  .ap-compare-showcase .ap-modal-viewport {
+    display: grid;
+    grid-template-columns: 45% 55%;
+    overflow: hidden;
+  }
+  .ap-compare-showcase .ap-modal-media-pane {
+    height: 100%;
+    border-right: 1px solid #f5f5f7;
+  }
+  .ap-compare-showcase .ap-modal-specs-pane {
+    overflow-y: auto;
+    height: 100%;
+    padding: 50px 50px 50px 40px;
+    scrollbar-width: none;
+  }
+  .ap-compare-showcase .ap-modal-specs-pane::-webkit-scrollbar { 
+    display: none; 
+  }
+}
+</style>
+
+<div class="ap-compare-showcase">
+
+  <div class="ap-rack-header">
+    <h2 class="ap-rack-title">All models. <span>Take your pick.</span></h2>
+    <div style="display: flex; gap: 8px;">
+      <button class="ap-nav-circle" onclick="apRackScroll(-360)">‹</button>
+      <button class="ap-nav-circle" onclick="apRackScroll(360)">›</button>
+    </div>
+  </div>
+
+  <div id="apCompareRack" class="ap-rack-container">
+    
+    <div class="ap-product-card">
+      <div class="ap-card-overlay-mask">
+        <button class="ap-closer-look-btn" onclick="apLaunchComparison('pro')">Take a closer look</button>
+      </div>
+      <h3 class="ap-card-title">iPhone 17 Pro &<br>iPhone 17 Pro Max</h3>
+      <div class="ap-card-media">
+        <img src="thumbnails/Screenshot 2026-07-05 140720.png" alt="iPhone 17 Pro">
+      </div>
+      <div class="ap-card-swatches">
+        <span class="ap-swatch-dot" style="background-color: #e3ccb6;"></span>
+        <span class="ap-swatch-dot" style="background-color: #ff761b;"></span>
+        <span class="ap-swatch-dot" style="background-color: #3b4859;"></span>
+      </div>
+      <div class="ap-card-footer">
+        <p class="ap-price-subtext">From $1099 or $45.79/mo. for 24 mo.<sup>Δ</sup></p>
+        <button class="ap-action-blue-btn" onclick="alert('Added configuration view!')">Buy</button>
+      </div>
+    </div>
+
+    <div class="ap-product-card">
+      <div class="ap-card-overlay-mask">
+        <button class="ap-closer-look-btn" onclick="apLaunchComparison('air')">Take a closer look</button>
+      </div>
+      <h3 class="ap-card-title">iPhone Air</h3>
+      <div class="ap-card-media">
+        <img src="thumbnails/Screenshot 2026-07-05 152348.png" alt="iPhone Air">
+      </div>
+      <div class="ap-card-swatches">
+        <span class="ap-swatch-dot" style="background-color: #d2e4f1;"></span>
+        <span class="ap-swatch-dot" style="background-color: #f7ebd3;"></span>
+        <span class="ap-swatch-dot" style="background-color: #1c1c1e;"></span>
+      </div>
+      <div class="ap-card-footer">
+        <p class="ap-price-subtext">From $999 or $41.62/mo. for 24 mo.<sup>Δ</sup></p>
+        <button class="ap-action-blue-btn" onclick="alert('Added configuration view!')">Buy</button>
+      </div>
+    </div>
+
+    <div class="ap-product-card">
+      <div class="ap-card-overlay-mask">
+        <button class="ap-closer-look-btn" onclick="apLaunchComparison('normal')">Take a closer look</button>
+      </div>
+      <h3 class="ap-card-title">iPhone 17</h3>
+      <div class="ap-card-media">
+        <img src="thumbnails/Screenshot 2026-07-05 152404.png" alt="iPhone 17">
+      </div>
+      <div class="ap-card-swatches">
+        <span class="ap-swatch-dot" style="background-color: #eadaf5;"></span>
+        <span class="ap-swatch-dot" style="background-color: #e2f0d9;"></span>
+        <span class="ap-swatch-dot" style="background-color: #2c3e50;"></span>
+      </div>
+      <div class="ap-card-footer">
+        <p class="ap-price-subtext">From $799 or $33.29/mo. for 24 mo.<sup>§</sup></p>
+        <button class="ap-action-blue-btn" onclick="alert('Added configuration view!')">Buy</button>
+      </div>
+    </div>
+
+  </div>
+
+  <div id="apCompareDrawerOverlay" class="ap-compare-overlay" onclick="apDismissComparison(event)">
+    
+    <button onclick="apDismissComparison(null)" style="position: absolute; top: 24px; right: 24px; background: #ffffff; border: none; font-size: 1rem; border-radius: 50%; width: 36px; height: 36px; display: flex; align-items: center; justify-content: center; cursor: pointer; color: #1d1d1f; z-index: 100002; box-shadow: 0 4px 12px rgba(0,0,0,0.15);">✕</button>
+
+    <div class="ap-compare-sheet" onclick="event.stopPropagation()">
+      
+      <div class="ap-floating-pill-bar">
+        <button id="pill-pro" class="ap-pill-item" onclick="apTriggerCompareEngine('pro')">iPhone 17 Pro</button>
+        <button id="pill-air" class="ap-pill-item" onclick="apTriggerCompareEngine('air')">iPhone Air</button>
+        <button id="pill-normal" class="ap-pill-item" onclick="apTriggerCompareEngine('normal')">iPhone 17</button>
+        <button id="pill-17e" class="ap-pill-item" onclick="apTriggerCompareEngine('17e')">iPhone 17e</button>
+        <button id="pill-16" class="ap-pill-item" onclick="apTriggerCompareEngine('16')">iPhone 16</button>
+      </div>
+
+      <div class="ap-modal-viewport">
+        
+        <div class="ap-modal-media-pane">
+          <div class="ap-modal-media-container">
+            <img id="apCompareImg" src="" alt="Live Device Stack">
+          </div>
+          <div class="ap-modal-indicators">
+            <span class="ap-indicator-dot active"></span>
+            <span class="ap-indicator-dot"></span>
+            <span class="ap-indicator-dot"></span>
+            <span class="ap-indicator-dot"></span>
+            <span class="ap-indicator-dot"></span>
+          </div>
+        </div>
+
+        <div class="ap-modal-specs-pane">
+          <div style="display: flex; justify-content: space-between; align-items: flex-start; margin-bottom: 32px;">
+            <div>
+              <h2 id="apCompareTitle" style="font-size: 2rem; font-weight: 600; margin: 0 0 4px 0; letter-spacing: -0.02em;">Model</h2>
+              <p id="apComparePrice" style="font-size: 0.95rem; color: #1d1d1f; margin: 0; font-weight: 400;">Price Segment</p>
+            </div>
+            <button class="ap-action-blue-btn" style="padding: 10px 24px; font-weight: 500; border-radius: 22px; font-size: 0.9rem;" onclick="alert('Navigating to checkout bag!')">Buy</button>
+          </div>
+
+          <div id="apCompareMatrixStack">
+             </div>
+        </div>
+
+      </div>
+
+    </div>
+  </div>
+
+  <script>
+    const apCompareDatabase = {
+      pro: {
+        title: "iPhone 17 Pro",
+        price: "From $1099 or $45.79/mo. for 24 mo.#",
+        img: "https://images.unsplash.com/photo-1695048133142-1a20484d2569?auto=format&fit=crop&w=500&q=80",
+        matrix: [
+          { icon: `<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" class="ap-matrix-icon"><rect x="4" y="2" width="16" height="20" rx="4"/><line x1="12" y1="18" x2="12" y2="18"/></svg>`, text: "6.7-inch or 6.9-inch Super Retina XDR display with ProMotion up to 120Hz. Superthin, ultralight titanium frame design." },
+          { icon: `<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" class="ap-matrix-icon"><circle cx="12" cy="12" r="10"/><path d="M12 2a15.3 15.3 0 0 1 4 10 15.3 15.3 0 0 1-4 10 15.3 15.3 0 0 1-4-10 15.3 15.3 0 0 1 4-10z"/></svg>`, text: "A19 Pro chip with 6-core GPU. Next-generation neural processing engine for extreme intelligent automation workflows." },
+          { icon: `<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" class="ap-matrix-icon"><path d="M23 19a2 2 0 0 1-2 2H3a2 2 0 0 1-2-2V8a2 2 0 0 1 2-2h4l2-3h6l2 3h4a2 2 0 0 1 2 2z"/><circle cx="12" cy="13" r="4"/></svg>`, text: "Advanced Pro Camera Array. 48MP Fusion, 48MP Ultra Wide, and 5x Telephoto module for crisp resolution accuracy." }
+        ]
+      },
+      air: {
+        title: "iPhone Air",
+        price: "From $999 or $41.62/mo. for 24 mo.#",
+        img: "https://images.unsplash.com/photo-1510557880182-3d4d3cba35a5?auto=format&fit=crop&w=500&q=80",
+        matrix: [
+          { icon: `<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" class="ap-matrix-icon"><path d="M15 3e21 3 21 9M9 21 3 21 3 15M21 3l-7 7M3 21l7-7"/></svg>`, text: "6.5-inch display with ProMotion up to 120Hz. Ceramic Shield 2 front with 3x better scratch resistance. Superthin architecture." },
+          { icon: `<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" class="ap-matrix-icon"><circle cx="12" cy="12" r="3"/><path d="M16 21v-2a4 4 0 0 0-4-4H6a4 4 0 0 0-4 4v2"/><circle cx="9" cy="7" r="4"/></svg>`, text: "18MP Center Stage front camera system. Smart dual capture layouts designed for multi-frame simultaneous perspective recording." },
+          { icon: `<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" class="ap-matrix-icon"><rect x="2" y="5" width="20" height="14" rx="2"/><circle cx="12" cy="12" r="3"/></svg>`, text: "48MP Fusion Main camera lens with lossless 2x zoom fidelity parameters packed into a sleek lightweight frame footprint." }
+        ]
+      },
+      normal: {
+        title: "iPhone 17",
+        price: "From $799 or $33.29/mo. for 24 mo.§",
+        img: "https://images.unsplash.com/photo-1592750475338-74b7b21085ab?auto=format&fit=crop&w=500&q=80",
+        matrix: [
+          { icon: `<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" class="ap-matrix-icon"><rect x="5" y="2" width="14" height="20" rx="2"/></svg>`, text: "6.1-inch or 6.7-inch Super Retina XDR display framing vivid color profiles perfectly." },
+          { icon: `<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" class="ap-matrix-icon"><path d="M12 2L2 7l10 5 10-5-10-5zM2 17l10 5 10-5M2 12l10 5 10-5"/></svg>`, text: "A19 Standard balanced dynamic processor architecture built for reliable everyday tasks." },
+          { icon: `<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" class="ap-matrix-icon"><circle cx="12" cy="12" r="10"/><polyline points="12 6 12 12 16 14"/></svg>`, text: "Optimized battery performance delivering up to 27 hours continuous high-definition playback." }
+        ]
+      },
+      '17e': {
+        title: "iPhone 17e",
+        price: "From $599 or $24.95/mo. for 24 mo.§",
+        img: "https://images.unsplash.com/photo-1511707171634-5f897ff02aa9?auto=format&fit=crop&w=500&q=80",
+        matrix: [
+          { icon: `<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" class="ap-matrix-icon"><rect x="5" y="2" width="14" height="20" rx="2"/></svg>`, text: "6.1-inch streamlined crisp OLED display panel engineered for extreme visual clarity." },
+          { icon: `<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" class="ap-matrix-icon"><circle cx="12" cy="12" r="10"/></svg>`, text: "A18 Advanced silicon framework managing optimal runtime processes with smart utility metrics." }
+        ]
+      },
+      '16': {
+        title: "iPhone 16",
+        price: "From $499 or $20.79/mo. for 24 mo.§",
+        img: "https://images.unsplash.com/photo-1616348436168-de43ad0db179?auto=format&fit=crop&w=500&q=80",
+        matrix: [
+          { icon: `<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" class="ap-matrix-icon"><rect x="5" y="2" width="14" height="20" rx="2"/></svg>`, text: "Proven performance footprint with reliable multi-spectrum Retina color capabilities." },
+          { icon: `<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" class="ap-matrix-icon"><polyline points="22 12 18 12 15 21 9 3 6 12 2 12"/></svg>`, text: "A17 Bionic legacy processing node handling fundamental mobile operational criteria easily." }
+        ]
+      }
+    };
+
+    function apRackScroll(distance) {
+      document.getElementById('apCompareRack').scrollBy({ left: distance, behavior: 'smooth' });
+    }
+
+    function apLaunchComparison(modelKey) {
+      apTriggerCompareEngine(modelKey);
+      document.getElementById('apCompareDrawerOverlay').classList.add('open');
+      document.body.style.overflow = 'hidden';
+    }
+
+    function apTriggerCompareEngine(modelKey) {
+      const targetData = apCompareDatabase[modelKey];
+      if (!targetData) return;
+
+      // Update segment tab bar classes cleanly
+      document.querySelectorAll('.ap-compare-showcase .ap-pill-item').forEach(btn => btn.classList.remove('active'));
+      const activePill = document.getElementById(`pill-${modelKey}`);
+      if (activePill) activePill.classList.add('active');
+
+      // Refresh text contents
+      document.getElementById('apCompareImg').src = targetData.img;
+      document.getElementById('apCompareTitle').innerText = targetData.title;
+      document.getElementById('apComparePrice').innerHTML = targetData.price;
+
+      // Rebuild the feature rows seamlessly
+      const stack = document.getElementById('apCompareMatrixStack');
+      stack.innerHTML = '';
+      targetData.matrix.forEach(item => {
+        const block = document.createElement('div');
+        block.className = 'ap-matrix-row';
+        block.innerHTML = `${item.icon}<p class="ap-matrix-desc">${item.text}</p>`;
+        stack.appendChild(block);
+      });
+
+      // Standardize sheet viewport resets
+      const textPane = document.querySelector('.ap-compare-showcase .ap-modal-specs-pane');
+      const viewPane = document.querySelector('.ap-compare-showcase .ap-modal-viewport');
+      if (textPane) textPane.scrollTop = 0;
+      if (viewPane) viewPane.scrollTop = 0;
+    }
+
+    function apDismissComparison(event) {
+      if (!event || event.target === document.getElementById('apCompareDrawerOverlay') || event == null) {
+        document.getElementById('apCompareDrawerOverlay').classList.remove('open');
+        document.body.style.overflow = '';
+      }
+    }
+  </script>
+
+</div>

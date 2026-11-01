@@ -1,0 +1,2014 @@
+<!DOCTYPE html>
+<html lang="en" dir="ltr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, minimum-scale=1.0, maximum-scale=5.0, viewport-fit=cover, shrink-to-fit=no">
+    <meta http-equiv="x-ua-compatible" content="ie=edge"/>
+    
+    <title>Cronos Technologies — Web Application Architecture Console</title>
+
+    <!-- WEB TAB ICON -->
+    <link rel="icon" type="image/png" href="thumbnails/top-1.png">
+
+    <style>
+      @font-face { font-family:'Circular Std'; src:url('fonts/CircularStd-Book.woff2') format('woff2'),url('fonts/CircularStd-Book.woff') format('woff'); font-weight:400; font-style:normal; font-display:swap; }
+      @font-face { font-family:'Circular Std'; src:url('fonts/CircularStd-BookItalic.woff2') format('woff2'),url('fonts/CircularStd-BookItalic.woff') format('woff'); font-weight:400; font-style:italic; font-display:swap; }
+      @font-face { font-family:'Circular Std'; src:url('fonts/CircularStd-Medium.woff2') format('woff2'),url('fonts/CircularStd-Medium.woff') format('woff'); font-weight:500; font-style:normal; font-display:swap; }
+      @font-face { font-family:'Circular Std'; src:url('fonts/CircularStd-Bold.woff2') format('woff2'),url('fonts/CircularStd-Bold.woff') format('woff'); font-weight:600; font-style:normal; font-display:swap; }
+      @font-face { font-family:'Circular Std'; src:url('fonts/CircularStd-Bold.woff2') format('woff2'),url('fonts/CircularStd-Bold.woff') format('woff'); font-weight:700; font-style:normal; font-display:swap; }
+      @font-face { font-family:'Circular Std'; src:url('fonts/CircularStd-Black.woff2') format('woff2'),url('fonts/CircularStd-Black.woff') format('woff'); font-weight:800; font-style:normal; font-display:swap; }
+      @font-face { font-family:'Circular Std'; src:url('fonts/CircularStd-Black.woff2') format('woff2'),url('fonts/CircularStd-Black.woff') format('woff'); font-weight:900; font-style:normal; font-display:swap; }
+
+        /* Base Reset & Corporate Font Face Design */
+        * {
+            box-sizing: border-box;
+            font-family: "Circular Std", "Segoe UI", Roboto, Arial, sans-serif;
+        }
+
+        body {
+            margin: 0;
+            padding: 0;
+            background-color: #ffffff;
+            color: #3c4043;
+            overflow-x: hidden;
+        }
+
+        .app-view-body {
+            padding-top: 0;
+        }
+
+        /* Primary View Container Framework */
+        .console-container-view {
+            max-width: 1280px;
+            margin: 0 auto;
+            padding: 28px 16px 48px 16px;
+        }
+
+        @media (min-width: 768px) {
+            .console-container-view {
+                padding: 32px 24px 48px 24px;
+            }
+        }
+
+        /* Flexbox Workspace Grid */
+        .console-workspace {
+            display: flex;
+            flex-direction: column;
+            gap: 24px;
+            position: relative;
+        }
+
+        @media (min-width: 992px) {
+            .console-workspace {
+                flex-direction: row;
+                align-items: flex-start;
+            }
+        }
+
+        /* Left Setup Config Column Wrapper */
+        .left-config-column {
+            flex: 1;
+            width: 100%;
+            display: flex;
+            flex-direction: column;
+        }
+
+        .info-icon {
+            display: inline-flex;
+            align-items: center;
+            justify-content: center;
+            width: 16px;
+            height: 16px;
+            background-color: transparent;
+            border: 1px solid #80868b;
+            border-radius: 50%;
+            color: #80868b;
+            text-align: center;
+            font-size: 11px;
+            font-weight: bold;
+            cursor: pointer;
+            margin-left: 4px;
+            user-select: none; vertical-align: middle;
+        }
+
+        /* High-Fidelity Configuration Content Blocks */
+        .config-card {
+            background-color: transparent;
+            border-top: none;
+            padding: 20px 0; 
+        }
+
+        @media (min-width: 768px) {
+            .config-card {
+                padding: 24px 0;
+            }
+        }
+
+        .config-card.first-node {
+            border-top: 1px solid #e5e7eb;
+            border-top-left-radius: 20px;
+            border-top-right-radius: 20px;
+        }
+
+        .config-card.last-node {
+            border-bottom-left-radius:20px;
+            border-bottom-right-radius: 20px;
+            margin-bottom: 0;
+        }
+
+        .card-inner-heading {
+            font-size: 16px;
+            font-weight: 500;
+            color: #202124;
+            margin-bottom: 20px;
+            display: flex;
+            align-items: center;
+            gap: 8px;
+        }
+
+        .section-row {
+            margin-bottom: 28px;
+        }
+
+        .section-row:last-child {
+            margin-bottom: 0;
+        }
+
+        /* Custom Dropdown Input Fields */
+        .gcp-field-wrap {
+            position: relative;
+            margin-bottom: 50px;
+            width: 100%;
+        }
+
+        .gcp-field-wrap label {
+            position: absolute;
+            left: 12px;
+            top: -8px;
+            background: #f8f9fa;
+            padding: 0 6px;
+            font-size: 12px;
+            color: #5f6368;
+            font-weight: 400;
+            z-index: 2;
+            display: flex;
+            align-items: center;
+        }
+
+        .gcp-select, .gcp-input {
+            width: 100%;
+            padding: 18px;
+            border: 1px solid #9b9999;
+            border-radius: 3px;
+            font-size: 16px;
+            color: #202124;
+            background-color: transparent;
+            outline: none;
+            appearance: none;
+            -webkit-appearance: none;
+        }
+
+        .gcp-select:focus, .gcp-input:focus {
+            border-color: #1a73e8;
+            border-width: 2px;
+            padding: 11px;
+        }
+
+        .gcp-field-wrap::after {
+            content: "▼";
+            font-size: 9px;
+            color: #5f6368;
+            position: absolute;
+            right: 14px;
+            top: 16px;
+            pointer-events: none;
+        }
+
+        .gcp-field-wrap.no-arrow::after {
+            content: none;
+        }
+
+        /* Toggle Switches */
+        .toggle-row {
+            display: flex;
+            align-items: center;
+            gap: 12px;
+            margin-bottom: 20px;
+            cursor: pointer;
+            user-select: none;
+        }
+
+        .switch-box {
+            position: relative;
+            width: 32px;
+            height: 14px;
+            background-color: #bdc1c6;
+            border-radius: 14px;
+            transition: background-color 0.15s;
+            flex-shrink: 0;
+        }
+
+        .switch-circle {
+            position: absolute;
+            top: -3px;
+            left: -2px;
+            width: 20px;
+            height: 20px;
+            background-color: #ffffff;
+            border-radius: 50%;
+            box-shadow: 0 1px 3px rgba(0,0,0,0.4);
+            transition: transform 0.15s, background-color 0.15s;
+        }
+
+        .toggle-row.active .switch-box {
+            background-color: #aecbfa;
+        }
+
+        .toggle-row.active .switch-circle {
+            transform: translateX(16px);
+            background-color: #1a73e8;
+        }
+
+        .toggle-label {
+            font-size: 14px;
+            color: #202124;
+            display: flex;
+            align-items: center;
+        }
+
+        /* Premium Segmented Controls */
+        .segmented-block-row {
+            display: flex;
+            flex-direction: column;
+            gap: 8px;
+            margin-top: 10px;
+        }
+
+        @media (min-width: 576px) {
+            .segmented-block-row {
+                flex-direction: row;
+                gap: 12px;
+            }
+        }
+
+        .segment-option-node {
+            flex: 1;
+            width: 100%;
+            border: 1px solid #797b7e;
+            background-color: #ffffff;
+            padding: 20px 16px;
+            text-align: center;
+            font-size: 13px;
+            font-weight: 500;
+            color: #1a73e8;
+            border-radius: 4px;
+            cursor: pointer;
+            user-select: none;
+            transition: all 0.15s ease;
+        }
+
+        @media (min-width: 576px) {
+            .segment-option-node {
+                max-width: 240px;
+            }
+        }
+
+        .segment-option-node:hover {
+            background-color: #f4f8ff;
+        }
+
+        .segment-option-node.selected {
+            background-color: #e8f0fe;
+            border-color: #1a73e8;
+            border-width: 2px;
+            padding: 20px 16px;
+            color: #1967d2;
+        }
+
+        @media (min-width: 576px) {
+            .segment-option-node.selected {
+                padding: 20px 23px;
+            }
+        }
+
+        /* Range Slider Layout Wrapper */
+        .slider-row-workspace {
+            display: flex;
+            align-items: flex-end;
+            gap: 16px;
+            margin-top: 32px;
+        }
+
+        .slider-bar-cell {
+            flex: 1;
+            position: relative;
+        }
+
+        .gcp-range-slider {
+            width: 100%;
+            -webkit-appearance: none;
+            appearance: none;
+            height: 12px;
+            border-radius: 6px;
+            outline: none;
+            cursor: pointer;
+            background: linear-gradient(to right, #34a853 0%, #34a853 0%, #e0e0e0 0%, #e0e0e0 100%);
+        }
+
+        .gcp-range-slider::-webkit-slider-thumb {
+            -webkit-appearance: none;
+            appearance: none;
+            width: 22px;
+            height: 22px;
+            border-radius: 50%;
+            background: #ffffff;
+            border: 2px solid #188038;
+            box-shadow: 0 1px 3px rgba(0,0,0,0.3);
+            transition: transform 0.1s;
+        }
+
+        .gcp-range-slider::-webkit-slider-thumb:hover {
+            transform: scale(1.1);
+        }
+
+        .slider-floating-tooltip {
+            position: absolute;
+            top: -45px;
+            transform: translateX(-50%);
+            background-color: #137333;
+            color: #ffffff;
+            padding: 8px 16px;
+            font-size: 15px;
+            font-weight: 500;
+            border-radius: 4px;
+            white-space: nowrap;
+            pointer-events: none;
+        }
+
+        .slider-floating-tooltip::after {
+            content: "";
+            position: absolute;
+            bottom: -4px;
+            left: 50%;
+            transform: translateX(-50%);
+            border-width: 4px 4px 0;
+            border-style: solid;
+            border-color: #137333 transparent;
+            display: block;
+            width: 0;
+        }
+
+        .slider-manual-entry-box {
+            width: 70px;
+            border: 1px solid #797b7e;
+            border-radius: 3px;
+            padding: 8px;
+            text-align: center;
+            font-size: 14px;
+            color: #202124;
+            background-color: #ffffff;
+        }
+
+        /* Base Content Counters */
+        .counter-grid {
+            display: flex;
+            gap: 24px;
+            margin-top: 16px;
+        }
+
+        .counter-unit {
+            display: flex;
+            align-items: center;
+            gap: 4px;
+        }
+
+        .counter-btn {
+            width: 36px;
+            height: 36px;
+            background-color: #e8f0fe;
+            border: none;
+            color: #1a73e8;
+            font-size: 18px;
+            font-weight: bold;
+            cursor: pointer;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+
+        .counter-btn.minus { border-radius: 4px 0 0 4px; }
+        .counter-btn.plus { border-radius: 0 4px 4px 0; }
+        .counter-btn:hover { background-color: #d2e3fc; }
+
+        .counter-value-input {
+            width: 60px;
+            height: 36px;
+            border-top: 1px solid #797b7e;
+            border-bottom: 1px solid #797b7e;
+            border-left: none;
+            border-right: none;
+            text-align: center;
+            font-size: 14px;
+            color: #202124;
+            outline: none;
+        }
+
+        .hidden-node { display: none !important; }
+
+        /* Architecture Info Panel (replaces the old pricing sidebar) */
+        .architecture-info-panel {
+            width: 100%;
+            background-color: transparent;
+            border-radius: 1px;
+            padding: 28px 24px;
+        }
+
+        @media (min-width: 992px) {
+            .architecture-info-panel {
+                width: 440px;
+                position: sticky;
+                top: 88px;
+            }
+        }
+
+        .aip-eyebrow {
+            font-size: 11px;
+            font-weight: 500;
+            letter-spacing: 1px;
+            text-transform: uppercase;
+            color: #0d6efd;
+            margin-bottom: 10px;
+        }
+
+        .aip-heading {
+            font-size: 19px;
+            font-weight: 500;
+            color: #0b1f3f;
+            margin: 0 0 12px 0;
+            line-height: 1.3;
+        }
+
+        .aip-intro {
+            font-size: 13.5px;
+            line-height: 1.75;
+            color: #5f6368;
+            margin: 0 0 22px 0;
+        }
+
+        .aip-footnote {
+            border-top: 1px solid #eef0f2;
+            padding-top: 18px;
+            font-size: 14px;
+            line-height: 1.6;
+            color: #5f6368;
+        }
+
+        .aip-footnote a {
+            color: #0d6efd;
+            font-weight: 500;
+            text-decoration: none;
+        }
+
+        .aip-footnote a:hover { text-decoration: underline; }
+
+        /* --- POPUP INFO MODALS OVERLAY (RIGHT ANCHORED / MOBILE CENTERED) --- */
+        .info-popover-modal {
+            position: absolute;
+            z-index: 999;
+            background-color: #ffffff;
+            color: #3c4043;
+           
+            border-radius: 8px;
+            box-shadow: 0 4px 16px rgba(60,64,67,0.25);
+            padding: 15px 20px;
+            font-size: 15px;
+            line-height: 1.5;
+            max-width: 280px;
+            width: max-content;
+            display: none;
+            font-weight: 400;
+            transition: opacity 0.15s ease-in-out;
+            opacity: 0;
+        }
+
+        /* Desktop arrow pointer vectors */
+        @media (min-width: 768px) {
+            .info-popover-modal::after {
+                content: "";
+                position: absolute;
+                border-width: 6px;
+                border-style: solid;
+                display: block;
+                width: 0;
+            }
+            .info-popover-modal.pos-right::after {
+                left: -12px;
+                top: 50%;
+                transform: translateY(-50%);
+                border-color: transparent #ffffff transparent transparent;
+            }
+            .info-popover-modal.pos-left::after {
+                right: -12px;
+                top: 50%;
+                transform: translateY(-50%);
+                border-color: transparent transparent transparent #ffffff;
+            }
+        }
+
+        /* Mobile specific centered modal behavior */
+        @media (max-width: 767px) {
+            .info-popover-modal {
+                position: fixed !important;
+                top: 50% !important;
+                left: 50% !important;
+                transform: translate(-50%, -50%) !important;
+                max-width: 85% !important;
+                width: 320px;
+                box-shadow: 0 10px 30px rgba(0,0,0,0.3);
+            }
+            /* Modal structural dismissal backdrop overlay element style */
+            .mobile-popover-underlay {
+                position: fixed;
+                top: 0;
+                left: 0;
+                width: 100vw;
+                height: 100vh;
+                background-color: rgba(0,0,0,0.4);
+                z-index: 9998;
+                display: none;
+            }
+            .mobile-popover-underlay.active {
+                display: block;
+            }
+        }
+        /* PDF Quote Modal Overlay */
+        .quote-modal-overlay {
+            position: fixed;
+            inset: 0;
+            background: rgba(0,0,0,0.55);
+            z-index: 2000;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            padding: 16px;
+        }
+        .quote-modal-overlay.hidden-node { display: none !important; }
+        .quote-modal-box {
+            background: #ffffff;
+            border-radius: 16px;
+            max-width: 860px;
+            width: 100%;
+            max-height: 92vh;
+            overflow-y: auto;
+            box-shadow: 0 24px 64px rgba(0,0,0,0.25);
+            display: flex;
+            flex-direction: column;
+        }
+        .quote-modal-header {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 20px 28px;
+            border-bottom: 1px solid #e0e0e0;
+            position: sticky;
+            top: 0;
+            background: #fff;
+            border-radius: 16px 16px 0 0;
+            z-index: 10;
+        }
+        .quote-modal-title {
+            font-size: 16px;
+            font-weight: 600;
+            color: #202124;
+        }
+        .quote-modal-actions {
+            display: flex;
+            gap: 10px;
+            align-items: center;
+        }
+        .quote-close-btn {
+            background: none;
+            border: none;
+            font-size: 22px;
+            color: #5f6368;
+            cursor: pointer;
+            line-height: 1;
+            padding: 2px 6px;
+        }
+        .quote-download-btn {
+            background: #1a73e8;
+            color: #fff;
+            border: none;
+            padding: 9px 20px;
+            border-radius: 100px;
+            font-size: 13px;
+            font-weight: 600;
+            cursor: pointer;
+            display: flex;
+            align-items: center;
+            gap: 6px;
+        }
+        .quote-download-btn:hover { background: #1558c0; }
+
+        /* PDF Preview Document Styles (rendered inside modal) */
+        #quote-preview-doc {
+            padding: 0;
+        }
+        .qpdf-page {
+            width: 100%;
+            background: #ffffff;
+            font-family: "Circular Std", "Segoe UI", Roboto, Arial, sans-serif;
+            color: #202124;
+        }
+        .qpdf-hero {
+            background: linear-gradient(135deg, #0a1628 0%, #1a2d4f 60%, #0d3b7a 100%);
+            padding: 48px 56px 36px 56px;
+            position: relative;
+            overflow: hidden;
+        }
+        .qpdf-hero::after {
+            content: "";
+            position: absolute;
+            right: -60px;
+            top: -60px;
+            width: 300px;
+            height: 300px;
+            border-radius: 50%;
+            background: rgba(26,115,232,0.12);
+        }
+        .qpdf-hero-grid {
+            display: flex;
+            justify-content: space-between;
+            align-items: flex-start;
+            position: relative;
+            z-index: 1;
+        }
+        .qpdf-logo-zone {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: rgba(255,255,255,0.4);
+            font-size: 11px;
+            font-weight: 500;
+            letter-spacing: 0.5px;
+            text-transform: uppercase;
+        }
+        .qpdf-doc-meta {
+            text-align: right;
+        }
+        .qpdf-doc-label {
+            font-size: 11px;
+            font-weight: 600;
+            letter-spacing: 1.5px;
+            text-transform: uppercase;
+            color: rgba(255,255,255,0.5);
+            margin-bottom: 4px;
+        }
+        .qpdf-doc-number {
+            font-size: 22px;
+            font-weight: 700;
+            color: #ffffff;
+            margin-bottom: 6px;
+        }
+        .qpdf-doc-date {
+            font-size: 12px;
+            color: rgba(255,255,255,0.6);
+        }
+        .qpdf-hero-title {
+            margin-top: 32px;
+            position: relative;
+            z-index: 1;
+        }
+        .qpdf-hero-title h1 {
+            font-size: 28px;
+            font-weight: 700;
+            color: #ffffff;
+            margin: 0 0 6px 0;
+            letter-spacing: -0.3px;
+        }
+        .qpdf-hero-title p {
+            font-size: 13px;
+            color: rgba(255,255,255,0.55);
+            margin: 0;
+        }
+        .qpdf-body {
+            padding: 40px 56px;
+        }
+        .qpdf-section-label {
+            font-size: 10px;
+            font-weight: 700;
+            letter-spacing: 1.5px;
+            text-transform: uppercase;
+            color: #1a73e8;
+            margin-bottom: 14px;
+            padding-bottom: 6px;
+            border-bottom: 2px solid #e8f0fe;
+        }
+        .qpdf-line-table {
+            width: 100%;
+            border-collapse: collapse;
+            margin-bottom: 32px;
+        }
+        .qpdf-line-table thead th {
+            font-size: 10px;
+            font-weight: 700;
+            letter-spacing: 0.8px;
+            text-transform: uppercase;
+            color: #80868b;
+            padding: 0 12px 10px 12px;
+            text-align: left;
+            border-bottom: 1px solid #e0e0e0;
+        }
+        .qpdf-line-table thead th:last-child { text-align: right; }
+        .qpdf-line-table tbody tr {
+            border-bottom: 1px solid #f1f3f4;
+        }
+        .qpdf-line-table tbody tr:last-child { border-bottom: none; }
+        .qpdf-line-table tbody td {
+            padding: 13px 12px;
+            font-size: 13px;
+            color: #202124;
+            vertical-align: top;
+        }
+        .qpdf-line-table tbody td:last-child {
+            text-align: right;
+            font-weight: 600;
+            white-space: nowrap;
+            color: #202124;
+        }
+        .qpdf-line-table tbody td.line-desc {
+            font-size: 12px;
+            color: #5f6368;
+            padding-top: 0;
+            padding-bottom: 13px;
+        }
+        .qpdf-totals-box {
+            background: #f8f9fa;
+            border-radius: 12px;
+            padding: 24px 28px;
+            margin-bottom: 32px;
+        }
+        .qpdf-total-row {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 8px 0;
+            font-size: 13px;
+        }
+        .qpdf-total-row.divider { border-top: 1px solid #e0e0e0; margin-top: 8px; padding-top: 16px; }
+        .qpdf-total-row .tot-label { color: #5f6368; font-weight: 400; }
+        .qpdf-total-row .tot-val { color: #202124; font-weight: 600; }
+        .qpdf-total-row.grand .tot-label { font-size: 15px; font-weight: 700; color: #202124; }
+        .qpdf-total-row.grand .tot-val { font-size: 20px; font-weight: 700; color: #1a73e8; }
+        .qpdf-total-row.monthly-row .tot-val { color: #1a73e8; }
+        .qpdf-validity-box {
+            background: #e8f0fe;
+            border-left: 4px solid #1a73e8;
+            border-radius: 0 8px 8px 0;
+            padding: 16px 20px;
+            margin-bottom: 32px;
+            font-size: 12px;
+            color: #1967d2;
+            line-height: 1.6;
+        }
+        .qpdf-validity-box strong { font-weight: 700; }
+        .qpdf-footer {
+            background: #f8f9fa;
+            border-top: 1px solid #e0e0e0;
+            padding: 24px 56px;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            gap: 16px;
+        }
+        .qpdf-footer-seal {
+            display: flex;
+            align-items: center;
+            gap: 10px;
+            font-size: 11px;
+            color: #5f6368;
+        }
+        .qpdf-seal-icon {
+            width: 32px;
+            height: 32px;
+            background: linear-gradient(135deg, #1a73e8, #0d47a1);
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: #fff;
+            font-size: 14px;
+            flex-shrink: 0;
+        }
+        .qpdf-footer-contact {
+            text-align: right;
+            font-size: 11px;
+            color: #5f6368;
+            line-height: 1.6;
+        }
+
+        /* ===== Site Header ===== */
+        .site-header {
+            position: sticky;
+            top: 0;
+            z-index: 300;
+            background-color: #080d1b;
+            border-bottom: 1px solid rgba(255,255,255,0.08);
+        }
+
+        .site-header-inner {
+            max-width: 1280px;
+            margin: 0 auto;
+            padding: 0 16px;
+            height: 55px;
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            gap: 16px;
+        }
+
+        @media (min-width: 768px) {
+            .site-header-inner {
+                padding: 0 24px;
+            }
+        }
+
+        .site-logo {
+            display: flex;
+            align-items: center;
+            gap: 8px;
+            text-decoration: none;
+            flex-shrink: 0;
+        }
+
+        .site-logo img {
+            height: 26px;
+            width: auto;
+            display: block;
+        }
+
+        /* Nav + CTA grouped together and pushed to the right of the logo */
+        .site-header-right {
+            display: flex;
+            align-items: center;
+            gap: 32px;
+        }
+
+        .site-nav {
+            display: none;
+            align-items: center;
+            gap: 28px;
+        }
+
+        @media (min-width: 768px) {
+            .site-nav {
+                display: flex;
+            }
+        }
+
+        .site-nav a {
+            font-size: 14px;
+            font-weight: 400;
+            color: rgb(255, 255, 255);
+            text-decoration: none;
+            transition: color 0.15s ease;
+        }
+
+        .site-nav a:hover {
+            color: #ffffff;
+        }
+
+        .site-header-cta {
+            flex-shrink: 0;
+            background: linear-gradient(45deg, #0d6efd 50%, #0d3b7a 100%);
+            color: #ffffff;
+            border: none;
+            padding: 10px 20px;
+            border-radius: 100px;
+            font-size: 14px;
+            font-weight: 400;
+            text-decoration: none;
+            white-space: nowrap;
+            cursor: pointer;
+            transition: background-color 0.15s ease;
+        }
+
+        .site-header-cta:hover {
+            background-color: #1a63e0;
+        }
+
+        /* ===== Page Title / Hero ===== */
+        .console-hero {
+            background: #080d1b;
+            border-bottom: 1px solid rgba(255,255,255,0.06);
+        }
+
+        .console-hero-inner {
+            max-width: 1280px;
+            margin: 0 auto;
+            padding: 30px 16px;
+        }
+
+        @media (min-width: 768px) {
+            .console-hero-inner {
+                padding: 38px 24px;
+            }
+        }
+
+        .console-hero-title {
+            font-size: 26px;
+            font-weight: 500;
+            color: #ffffff;
+            margin: 0;
+            letter-spacing: -0.3px;
+            position: relative;
+            display: inline-block;
+        }
+
+        @media (min-width: 768px) {
+            .console-hero-title {
+                font-size: 32px;
+            }
+        }
+
+        /* ===== Bottom Sticky Summary Bar (docks on top of the footer) ===== */
+        .bottom-summary-bar {
+            position: sticky;
+            bottom: 0;
+            z-index: 200;
+            background-color: hsl(0, 0%, 91%);
+            border-top: 1px solid rgba(255,255,255,0.08);
+        }
+
+        .bsb-inner {
+            max-width: 1280px;
+            margin: 0 auto;
+            padding: 10px 16px;
+            display: flex;
+            flex-wrap: wrap;
+            align-items: center;
+            justify-content: space-between;
+            gap: 14px;
+        }
+
+        @media (min-width: 768px) {
+            .bsb-inner {
+                padding: 16px 24px;
+                flex-wrap: nowrap;
+            }
+        }
+
+        .bsb-prices {
+            display: flex;
+            align-items: baseline;
+            flex-wrap: wrap;
+            column-gap: 10px;
+            row-gap: 6px;
+            font-size: 14px;
+            color: #ffffff;
+        }
+
+        .bsb-prices .bsb-divider {
+            color: rgba(255,255,255,0.25);
+        }
+
+        .bsb-label {
+            font-weight: 400;
+            color: #444444;
+            white-space: nowrap;
+        }
+
+        .bsb-value {
+            font-weight: 500;
+            color: #181818;
+            white-space: nowrap;
+            margin-right: 4px; font-size: 16px;
+        }
+
+        .bsb-note {
+            font-size: 14px;
+            font-weight: 400;
+            color: #d5d5d5;
+            white-space: nowrap;
+        }
+
+        .bsb-actions {
+            display: flex;
+            align-items: center;
+            gap: 10px;
+            flex-shrink: 0;
+            width: 100%;
+        }
+
+        @media (min-width: 768px) {
+            .bsb-actions {
+                width: auto;
+            }
+        }
+
+        .bsb-reset-btn {
+            flex-shrink: 0;
+            background: none;
+            border: 1px solid rgb(233, 233, 233);
+            color: #f1f3f4;
+            padding: 12px 18px;
+            border-radius: 50px;
+            font-size: 14px;
+            font-weight: 500;
+            cursor: pointer;
+            display: flex;
+            align-items: center;
+            gap: 6px;
+            white-space: nowrap;
+            transition: all 0.15s ease;
+        }
+
+        .bsb-reset-btn:hover {
+            background-color: rgba(102, 102, 102, 0.06);
+        }
+
+        .bsb-generate-btn {
+            flex: 1;
+            background: linear-gradient(45deg, #0d6efd 50%, #0d3b7a 100%);
+            border: none;
+            color: #ffffff;
+            padding: 12px 24px;
+            border-radius: 50px;
+            font-size: 14px;
+            font-weight: 500;
+            cursor: pointer;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            gap: 8px;
+            white-space: nowrap;
+            transition: box-shadow 0.15s ease, background-color 0.15s ease;
+        }
+
+        @media (min-width: 768px) {
+            .bsb-generate-btn {
+                flex: none;
+            }
+        }
+
+        .bsb-generate-btn:hover {
+            background-color: #1a63e0;
+            box-shadow: 0 4px 16px rgba(47,125,250,0.4);
+        }
+
+        /* ===== Site Footer ===== */
+        .site-footer {
+            background-color: #080d1b;
+            border-top: 1px solid rgba(255,255,255,0.08);
+        }
+
+        .site-footer-inner {
+            max-width: 1280px;
+            margin: 0 auto;
+            padding: 16px 24px;
+            display: flex;
+            flex-wrap: wrap;
+            align-items: center;
+            justify-content: space-between;
+            gap: 12px;
+        }
+
+        .footer-copy {
+            font-size: 14px;
+            color: #a3a7ab;
+        }
+
+        .footer-links {
+            display: flex;
+            flex-wrap: wrap;
+            align-items: center;
+            gap: 20px;
+        }
+
+        .footer-links a {
+            font-size: 14px;
+            color: #ffffff;
+            text-decoration: none;
+        }
+
+        .footer-links a:hover {
+            color: #ffffff;
+        }
+
+    </style>
+</head>
+<body>
+
+    <header class="site-header">
+        <div class="site-header-inner">
+            <a href="index.html" class="site-logo">
+               <img src="thumbnails/mock2.png" alt="Cronos Technologies">
+            </a>
+            <div class="site-header-right">
+                <nav class="site-nav">
+                    <a href="/services">SLA Perimeters</a>
+                    <a href="/pricing">Pricing</a>
+                    <a href="/about">About</a>
+                </nav>
+                <a href="/contact" class="site-header-cta">Contact Sales</a>
+            </div>
+        </div>
+    </header>
+
+    <div class="console-hero">
+        <div class="console-hero-inner">
+            <h1 class="console-hero-title">Web Application Architecture</h1>
+        </div>
+    </div>
+
+    <div class="app-view-body">
+        <div id="pricing_console_view">
+            <div class="console-container-view">
+
+                <div class="console-workspace">
+                    <div class="left-config-column">
+
+                        <div class="config-card first-node">
+                            <div class="card-inner-heading">Application Delivery Instances</div>
+                            
+                            <div class="toggle-row" id="toggle_usage_tracker" onclick="toggleSwitchNode('toggle_usage_tracker', 'usage_time_fields')">
+                                <div class="switch-box"><div class="switch-circle"></div></div>
+                                <div class="toggle-label">Specify custom usage scheduling window vectors per instance <span class="info-icon">i</span></div>
+                            </div>
+
+                            <div id="usage_time_fields" class="hidden-node" style="margin-bottom: 24px;">
+                                <div class="counter-grid">
+                                    <div class="counter-unit">
+                                        <div style="font-size:13px; color:#5f6368; margin-right:8px;">Instances * <span class="info-icon">i</span></div>
+                                        <button class="counter-btn minus" onclick="stepCounter('instances_qty_val', -1)">-</button>
+                                        <input type="text" class="counter-value-input" id="instances_qty_val" value="1" readonly>
+                                        <button class="counter-btn plus" onclick="stepCounter('instances_qty_val', 1)">+</button>
+                                    </div>
+                                </div>
+                            </div>
+
+                            <div class="section-row">
+                                <div class="gcp-field-wrap">
+                                    <label>Platform Layer Instance Type * <span class="info-icon">i</span></label>
+                                    <select class="gcp-select" id="base_tier" onchange="onBaseTierChanged()">
+                                        <option value="3500">Core Modular Web Build (Includes 5 Base Pages, Contact Route, Maps API, Legal Shells) — R3,500</option>
+                                        <option value="9500">Custom High-Availability Portal Engine Layer — R9,500</option>
+                                        <option value="18000">Enterprise Scale Dynamic Cloud Web App Stack — R18,000</option>
+                                    </select>
+                                </div>
+                            </div>
+
+                            <div class="section-row">
+                                <div class="gcp-field-wrap">
+                                    <label>Provisioning Service Level Model <span class="info-icon">i</span></label>
+                                    <select class="gcp-select" id="service_model_select" onchange="updateCalculations()">
+                                        <option value="0">Regular Standard SLA</option>
+                                        <option value="-400">Spot Discounted VM (-R400)</option>
+                                    </select>
+                                </div>
+                            </div>
+                        </div>
+
+                        <div class="config-card">
+                            <div class="card-inner-heading">Production Hosting Environments</div>
+                            
+                            <div class="section-row">
+                                <div class="gcp-field-wrap">
+                                    <label>Cloud Node Deployment & Hosting Plan * <span class="info-icon">i</span></label>
+                                    <select class="gcp-select" id="hosting_tier" onchange="updateCalculations()">
+                                        <option value="450">Shared SSD Edge Cloud Hosting — R450</option>
+                                        <option value="1450" selected>Dedicated Scalable Performance Instance — R1,450</option>
+                                        <option value="4900">Multi-Region Load-Balanced Enterprise Cluster — R4,900</option>
+                                    </select>
+                                </div>
+                            </div>
+
+                            <div class="section-row">
+                                <div class="gcp-field-wrap">
+                                    <label>Monthly Traffic & Bandwidth Scale * <span class="info-icon">i</span></label>
+                                    <select class="gcp-select" id="bandwidth_tier" onchange="updateCalculations()">
+                                        <option value="0">Standard Threshold (Up to 25,000 monthly active users) — Included</option>
+                                        <option value="850">High-Volume Scale Array (Up to 100,000 active visitors) — R850</option>
+                                        <option value="2200">Uncapped Data Pipeline Delivery Network Layer — R2,200</option>
+                                    </select>
+                                </div>
+                            </div>
+
+                            <div class="section-row">
+                                <div class="gcp-field-wrap">
+                                    <label>Deployment Region * <span class="info-icon">i</span></label>
+                                    <select class="gcp-select" id="region_tier" onchange="updateCalculations()">
+                                        <option value="0">South Africa (Johannesburg) — Included</option>
+                                        <option value="300">African Multi-Zone (JHB + Lagos + Nairobi) — R300</option>
+                                        <option value="700">Global Edge Deployment (Africa + EU + US East) — R700</option>
+                                        <option value="1200">Full Global Distribution Network (All Regions) — R1,200</option>
+                                    </select>
+                                </div>
+                            </div>
+
+                            <div class="section-row">
+                                <div class="gcp-field-wrap">
+                                    <label>SSL/TLS Security Certificate Layer * <span class="info-icon">i</span></label>
+                                    <select class="gcp-select" id="ssl_tier" onchange="updateCalculations()">
+                                        <option value="0">Standard Domain Validation SSL (DV) — Included</option>
+                                        <option value="250">Organisation Validation Certificate (OV) — R250</option>
+                                        <option value="600">Extended Validation Certificate + Green Bar Trust Seal (EV) — R600</option>
+                                        <option value="1100">Wildcard Multi-Domain SSL Matrix (Unlimited Sub-Domains) — R1,100</option>
+                                    </select>
+                                </div>
+                            </div>
+
+                            <div class="section-row">
+                                <div class="gcp-field-wrap">
+                                    <label>Content Delivery Network (CDN) Edge Cache * <span class="info-icon">i</span></label>
+                                    <select class="gcp-select" id="cdn_tier" onchange="updateCalculations()">
+                                        <option value="0">None — Origin server delivery only</option>
+                                        <option value="400">Regional CDN Edge Cache (50 Points of Presence) — R400</option>
+                                        <option value="900">Global CDN with Image Optimisation & Lazy-Load Pipeline — R900</option>
+                                        <option value="1800">Enterprise CDN + DDoS Mitigation Shield + WAF Layer — R1,800</option>
+                                    </select>
+                                </div>
+                            </div>
+                        </div>
+
+                        <div class="config-card">
+                            <div class="card-inner-heading">Compute Allocation Hardware Scaling</div>
+
+                            <div class="section-row">
+                                <div style="font-size:13px; font-weight:500; color:#202124;">Allocated SSD Workspace Storage Profile <span class="info-icon">i</span></div>
+                                <div class="slider-row-workspace">
+                                    <div class="slider-bar-cell">
+                                        <div class="slider-floating-tooltip" id="slider_tooltip">20 GB</div>
+                                        <input type="range" class="gcp-range-slider" id="storage_slider" min="20" max="500" step="10" value="20" oninput="onSliderDragValueUpdate()">
+                                    </div>
+                                    <input type="text" class="slider-manual-entry-box" id="slider_manual_box" value="20" readonly>
+                                </div>
+                            </div>
+
+                            <div class="section-row">
+                                <div class="gcp-field-wrap">
+                                    <label>Target Operational Deployment Pipeline Environments * <span class="info-icon">i</span></label>
+                                    <select class="gcp-select" id="deployment_env_tier" onchange="updateCalculations()">
+                                        <option value="0">Development Sandbox Only (Included) — R0</option>
+                                        <option value="450">Development + Isolated Staging Array — R450</option>
+                                        <option value="1150">Development + Multi-Region Redundancy Sync — R1,150</option>
+                                        <option value="1600">Full Pipeline: Dev + Staging + Multi-Region DR — R1,600</option>
+                                    </select>
+                                </div>
+                            </div>
+
+                        </div>
+
+                        <div class="config-card">
+                            <div class="card-inner-heading">Identity Access Layer & Workflows</div>
+
+                            <div class="section-row">
+                                <div class="gcp-field-wrap">
+                                    <label>Identity Management & Access Control Layer * <span class="info-icon">i</span></label>
+                                    <select class="gcp-select" id="auth_tier" onchange="updateCalculations()">
+                                        <option value="0">None — No login requirements provisioned</option>
+                                        <option value="2200">Standard Crypto Account Hub (Secure Sign-In + Private Account Spaces) — R2,200</option>
+                                        <option value="4000">Advanced RBAC Engine Dashboard Matrix (Differentiated Permissions Control Layers) — R4,000</option>
+                                    </select>
+                                </div>
+                            </div>
+
+                            <div class="section-row">
+                                <div class="gcp-field-wrap">
+                                    <label>Form Processing & Workflow Tracker Logic * <span class="info-icon">i</span></label>
+                                    <select class="gcp-select" id="form_tier" onchange="updateCalculations()">
+                                        <option value="0">Baseline Routing Components Included — R0</option>
+                                        <option value="120">Additional Unique Form Destination Target Route — R120</option>
+                                        <option value="350">HR Career Capture Pipeline (Direct File Forwarding via Email Node) — R350</option>
+                                        <option value="1400">Enterprise Recruitment Module Stack & Data Table Tracker System — R1,400</option>
+                                    </select>
+                                </div>
+                            </div>
+
+                            <div class="section-row">
+                                <div class="gcp-field-wrap">
+                                    <label>Relational Publishing Engine & CMS Frameworks * <span class="info-icon">i</span></label>
+                                    <select class="gcp-select" id="cms_tier" onchange="updateCalculations()">
+                                        <option value="0">None — Completely static layout directory</option>
+                                        <option value="1400">Dynamic Press Room, Blogging System, & News Desk Engine Layout — R1,400</option>
+                                        <option value="1200">Dynamic Creative Work / Portfolio Showcase Grid with Search Filtering — R1,200</option>
+                                        <option value="2600">Enterprise Omni-Channel Content Suite (Blogging Workspace + Filtering Showcase Hub) — R2,600</option>
+                                    </select>
+                                </div>
+                            </div>
+
+                            <div class="section-row">
+                                <div class="gcp-field-wrap">
+                                    <label>E-Commerce & Payment Gateway Integration * <span class="info-icon">i</span></label>
+                                    <select class="gcp-select" id="ecommerce_tier" onchange="updateCalculations()">
+                                        <option value="0">None — No transactional commerce required</option>
+                                        <option value="2800">Basic Product Catalogue + PayFast / Yoco Checkout Integration — R2,800</option>
+                                        <option value="5500">Full E-Commerce Suite (Cart, Checkout, Orders, Inventory Management) — R5,500</option>
+                                        <option value="9800">Enterprise Commerce Platform (Multi-Currency, Subscriptions, B2B Quotes, ERP Link) — R9,800</option>
+                                    </select>
+                                </div>
+                            </div>
+
+                            <div class="section-row">
+                                <div class="gcp-field-wrap">
+                                    <label>Transactional Email Infrastructure Layer * <span class="info-icon">i</span></label>
+                                    <select class="gcp-select" id="email_tier" onchange="updateCalculations()">
+                                        <option value="0">None — No automated email delivery</option>
+                                        <option value="350">SMTP Relay + Branded Email Templates (Welcome, OTP, Password Reset) — R350</option>
+                                        <option value="750">Marketing Automation Suite (Newsletters, Campaign Triggers, Open-Rate Tracking) — R750</option>
+                                        <option value="1400">Enterprise Email Engine (Drip Sequences, Segmentation, A/B Testing, CRM Sync) — R1,400</option>
+                                    </select>
+                                </div>
+                            </div>
+                        </div>
+
+                        <div class="config-card">
+                            <div class="card-inner-heading">SEO, Analytics & Growth Intelligence</div>
+
+                            <div class="section-row">
+                                <div class="gcp-field-wrap">
+                                    <label>Search Engine Optimisation (SEO) Foundation Layer * <span class="info-icon">i</span></label>
+                                    <select class="gcp-select" id="seo_tier" onchange="updateCalculations()">
+                                        <option value="0">None — Basic metadata only</option>
+                                        <option value="650">On-Page SEO Setup (Schema Markup, Sitemap, Robots.txt, Meta Optimisation) — R650</option>
+                                        <option value="1400">Technical SEO Audit + Core Web Vitals Optimisation Pass — R1,400</option>
+                                        <option value="2800">Full SEO Architecture (Technical + Content Strategy Mapping + Monthly Reporting) — R2,800</option>
+                                    </select>
+                                </div>
+                            </div>
+
+                            <div class="section-row">
+                                <div class="gcp-field-wrap">
+                                    <label>Analytics & Business Intelligence Dashboard * <span class="info-icon">i</span></label>
+                                    <select class="gcp-select" id="analytics_tier" onchange="updateCalculations()">
+                                        <option value="0">None — No tracking integrated</option>
+                                        <option value="0">Google Analytics 4 (GA4) Basic Integration — Included</option>
+                                        <option value="450">GA4 + Google Tag Manager + Conversion Event Tracking — R450</option>
+                                        <option value="1100">Custom BI Dashboard (Session Heatmaps, Funnel Reports, Revenue Attribution) — R1,100</option>
+                                        <option value="2200">Enterprise Data Lake (Multi-Property Analytics + CRM Sync + Monthly Insights Report) — R2,200</option>
+                                    </select>
+                                </div>
+                            </div>
+                        </div>
+
+                        <div class="config-card last-node">
+                            <div class="card-inner-heading">Operational LifeCycle Maintenance & Performance Tuning</div>
+
+                            <div class="section-row">
+                                <div class="gcp-field-wrap">
+                                    <label>System Maintenance SLA Plan, Security Patches & Core Updates * <span class="info-icon">i</span></label>
+                                    <select class="gcp-select" id="maintenance_tier" onchange="updateCalculations()">
+                                        <option value="tier_eco">Eco Essentials SLA Package (Core security validations + monthly codebase audits)</option>
+                                        <option value="tier_pro" selected>Professional SLA Lifecycle Supervision (Weekly patches + uptime monitoring)</option>
+                                        <option value="tier_ent">Enterprise High-Availability SLA Matrix (Realtime mitigation + priority ticketing)</option>
+                                    </select>
+                                </div>
+                            </div>
+
+                            <div class="section-row">
+                                <div class="gcp-field-wrap">
+                                    <label>Automated Server Back-up & Data Archiving Array * <span class="info-icon">i</span></label>
+                                    <select class="gcp-select" id="backup_tier" onchange="updateCalculations()">
+                                        <option value="250">Weekly System Snapshot Array (7-day historical rollbacks) — R250</option>
+                                        <option value="600" selected>Daily Snapshot Lifecycle Matrix (30-day isolated point-in-time restores) — R600</option>
+                                        <option value="1400">Real-time Continuous Transactional Journal Logging — R1,400</option>
+                                    </select>
+                                </div>
+                            </div>
+
+                            <div class="section-row">
+                                <div class="gcp-field-wrap">
+                                    <label>Cognitive LLM AI Framework Automation Modules * <span class="info-icon">i</span></label>
+                                    <select class="gcp-select" id="ai_tier" onchange="updateCalculations()">
+                                        <option value="0">None — Standard structural asset layouts</option>
+                                        <option value="600">Omni-Channel Customer Messaging Engine Layer (Human Live Desk App Integration) — R600</option>
+                                        <option value="1300">Contextually Trained Cognitive AI Chatbot Core Engine Integration — R1,300</option>
+                                        <option value="1900">Advanced Hybrid Chat Suite (Context AI Agent + Instant Live Desk Human Hand-Off Bridge) — R1,900</option>
+                                    </select>
+                                </div>
+                            </div>
+
+                        </div>
+                    </div>
+
+                    <aside class="architecture-info-panel">
+                        <p class="aip-eyebrow">For clients new to this</p>
+                        <h2 class="aip-heading">Understanding your web application</h2>
+                        <p class="aip-intro">A web application is built from several layers working together: the frontend visitors see and interact with, the backend logic that processes requests and business rules, the database where content and customer information are stored, the hosting infrastructure that keeps everything fast and available, and the ongoing security and maintenance that keeps it all reliable over time. Each section of the form on the left configures one of these layers. As you adjust your options, your estimate updates automatically in the summary bar below.</p>
+
+                        <div class="aip-footnote">
+                            Not sure what to choose? <a href="/contact">Talk to our team →</a>
+                        </div>
+                    </aside>
+
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- PDF Quote Modal -->
+    <div class="quote-modal-overlay hidden-node" id="quote_modal_overlay">
+        <div class="quote-modal-box">
+            <div class="quote-modal-header">
+                <div class="quote-modal-title">
+                    <svg width="16" height="16" viewBox="0 0 24 24" fill="#1a73e8" style="margin-right:6px; vertical-align:middle;"><path d="M14 2H6c-1.1 0-2 .9-2 2v16c0 1.1.9 2 2 2h12c1.1 0 2-.9 2-2V8l-6-6zm-1 7V3.5L18.5 9H13zm-2 8H7v-2h4v2zm4-4H7v-2h8v2z"/></svg>
+                    Official Quotation Document
+                </div>
+                <div class="quote-modal-actions">
+                    <button class="quote-download-btn" onclick="downloadQuotePDF()">
+                        <svg width="13" height="13" viewBox="0 0 24 24" fill="currentColor"><path d="M19 9h-4V3H9v6H5l7 7 7-7zm-8 2V5h2v6h1.17L12 13.17 9.83 11H11zm-6 8h14v2H5v-2z"/></svg>
+                        Download PDF
+                    </button>
+                    <button class="quote-close-btn" onclick="closeQuoteModal()">✕</button>
+                </div>
+            </div>
+            <div id="quote-preview-doc">
+                <!-- Generated dynamically by openQuoteModal() -->
+            </div>
+        </div>
+    </div>
+
+    <!-- Mobile specific underlay backdrop node to allow easy modal tap-away dismissals -->
+    <div class="mobile-popover-underlay" id="mobile_popover_underlay"></div>
+
+    <div class="bottom-summary-bar">
+        <div class="bsb-inner">
+            <div class="bsb-prices">
+                <span class="bsb-label">Upfront cost:</span><span class="bsb-value" id="header_once_off">0.00 ZAR</span>
+                <span class="bsb-label">Monthly cost:</span><span class="bsb-value" id="header_monthly">0.00 ZAR</span>
+                <span class="bsb-label">Total 12 months cost:</span><span class="bsb-value" id="header_total_12mo">0.00 ZAR</span><span class="bsb-note">(Includes upfront cost)</span>
+            </div>
+            <div class="bsb-actions">
+                <button class="bsb-reset-btn" onclick="resetAllSelections()">↺ Reset configuration</button>
+                <button class="bsb-generate-btn" onclick="openQuoteModal()">
+                    <svg width="15" height="15" viewBox="0 0 24 24" fill="currentColor"><path d="M14 2H6c-1.1 0-2 .9-2 2v16c0 1.1.9 2 2 2h12c1.1 0 2-.9 2-2V8l-6-6zm-1 7V3.5L18.5 9H13zm-2 8H7v-2h4v2zm4-4H7v-2h8v2z"/></svg>
+                    Generate Quote
+                </button>
+            </div>
+        </div>
+    </div>
+
+    <footer class="site-footer">
+        <div class="site-footer-inner">
+            <span class="footer-copy">&copy; 2026 Cronos Technologies. All rights reserved.</span>
+            <nav class="footer-links">
+                <a href="/privacy-policy">Privacy Policy</a>
+                <a href="/terms-of-service">Terms of Service</a>
+                <a href="/cookie-policy">Cookie Policy</a>
+            </nav>
+        </div>
+    </footer>
+
+    <script>
+        let segmentedOffset = 0;
+
+        const customDropdowns = [
+            'hosting_tier',
+            'bandwidth_tier',
+            'auth_tier',
+            'form_tier',
+            'cms_tier',
+            'backup_tier',
+            'ai_tier',
+            'deployment_env_tier',
+            'ssl_tier',
+            'cdn_tier',
+            'seo_tier',
+            'analytics_tier',
+            'ecommerce_tier',
+            'email_tier',
+            'region_tier'
+        ];
+
+        // Explanations Object Map
+        const infoDescriptionsMap = {
+            "Web Application Architecture Engine": "The overall software design framework powering your digital solution. It dictates foundational structures, load profiles, baseline delivery capabilities, and technical constraints.",
+            "Specify custom usage scheduling window vectors per instance": "Allows instances to run dynamically on specified calendar schedules or operational clock times to match localized target business hours, significantly reducing continuous computation overhead costs.",
+            "Instances": "The precise count of parallel server copies or load-balanced infrastructure components concurrently active to deliver steady performance thresholds.",
+            "Platform Layer Instance Type": "The structural computing package profile chosen for your software—ranging from lightweight informational layouts up to high-capacity transactional clusters.",
+            "Provisioning Service Level Model": "Determines server environment profiles. Selecting Spot models optimizes baseline operations with excess global capacity zones at a heavy discount rate.",
+            "Cloud Node Deployment & Hosting Plan": "The structural virtual host design model. Dedicated environments guarantee non-shared RAM channels and zero shared computing interference from multi-tenant traffic strains.",
+            "Monthly Traffic & Bandwidth Scale": "The maximum data delivery volume allocated for your system. Elevating this threshold protects high-volume production builds from unexpected performance downgrades.",
+            "Deployment Region": "The physical geography of the web servers. Selecting infrastructure geographically near your primary end-user baseline directly drops delivery latency gaps.",
+            "SSL/TLS Security Certificate Layer": "Secures data transfers. Advanced validation profiles confirm company registration indicators inside modern browser addresses to maximize business authority.",
+            "Content Delivery Network (CDN) Edge Cache": "Saves static system assets on countless edge locations globally. Drops asset load burdens off the master origin server while keeping worldwide interaction response speeds uniform.",
+            "Allocated SSD Workspace Storage Profile": "High-speed continuous solid-state drive space explicitly reserved for managing localized application runtime configurations, uploaded files, and rapid database lookups.",
+            "Target Operational Deployment Pipeline Environments": "Isolated code iteration stages. Deploying dedicated staging parameters ensures an insulated test environment to validate updates cleanly before production pushes.",
+            "Allocated Provisioning Target Tier": "The computed hardware signature blueprint designation mapped directly out of your current architectural core selection thresholds.",
+            "Identity Management & Access Control Layer": "Handles client credential storage, protected login environments, and secure operational boundaries. Premium tiers implement advanced role-based access profiles.",
+            "Form Processing & Workflow Tracker Logic": "Backend system logic parsing incoming client queries, contact maps, dynamic documentation submissions, and multi-step pipeline lead pipelines safely.",
+            "Relational Publishing Engine & CMS Frameworks": "Deploys a robust, editable content system letting administrator teams seamlessly design, alter, clean, or schedule system blog articles or media showcase blocks without changing live source code files.",
+            "E-Commerce & Payment Gateway Integration": "Enables end-to-end purchasing environments. Syncs secure transactional state structures like digital carts, automated invoice generation, and real-time payment hooks.",
+            "Transactional Email Infrastructure Layer": "Secure email relay protocols optimized to guarantee high deliverability rates for transactional notifications, user onboarding pins, and automatic system alerts.",
+            "Search Engine Optimisation (SEO) Foundation Layer": "Embeds customized schema layouts, crawler instructions, structural sitemaps, and optimized markup strategies to ensure search crawl scripts easily evaluate and rank your platform.",
+            "Analytics & Business Intelligence Dashboard": "Gathers behavioral performance telemetry, custom funnels, and event triggers into an ordered desk view to systematically track platform growth.",
+            "System Maintenance SLA Plan, Security Patches & Core Updates": "Continuous developer oversight containing regular dependency optimizations, platform framework modifications, and security audits to avoid production failures.",
+            "Automated Server Back-up & Data Archiving Array": "Continuous background snapshot arrays allowing immediate data rollbacks to safe past restoration points in case an anomaly occurs.",
+            "Cognitive LLM AI Framework Automation Modules": "Deploys real-time conversational processing systems, letting customized large language agents directly resolve client workflows, interface tasks, or support requests."
+        };
+
+        function toggleSwitchNode(toggleId, targetId) {
+            const toggleElement = document.getElementById(toggleId);
+            const targetElement = document.getElementById(targetId);
+            toggleElement.classList.toggle('active');
+            targetElement.classList.toggle('hidden-node');
+            updateCalculations();
+        }
+
+        function stepCounter(inputId, stepDirection) {
+            const inputField = document.getElementById(inputId);
+            let parsedVal = parseInt(inputField.value) || 0;
+            parsedVal += stepDirection;
+            if (parsedVal < 1) parsedVal = 1;
+            inputField.value = parsedVal;
+            updateCalculations();
+        }
+
+        function onSliderDragValueUpdate() {
+            const slider = document.getElementById('storage_slider');
+            const tooltip = document.getElementById('slider_tooltip');
+            const manualBox = document.getElementById('slider_manual_box');
+            
+            const currentVal = slider.value;
+            manualBox.value = currentVal;
+            tooltip.innerText = currentVal + " GB";
+
+            const percentage = ((currentVal - slider.min) / (slider.max - slider.min)) * 100;
+            slider.style.background = `linear-gradient(to right, #34a853 0%, #34a853 ${percentage}%, #e0e0e0 ${percentage}%, #e0e0e0 100%)`;
+
+            tooltip.style.left = `calc(${percentage}% + (${8 - percentage * 0.15}px))`;
+            updateCalculations();
+        }
+
+        function onBaseTierChanged() {
+            const baseValue = parseInt(document.getElementById('base_tier').value) || 3500;
+            const infoTitle = document.getElementById('info_pane_tier_title');
+            const infoDesc = document.getElementById('info_pane_tier_desc');
+
+            if (baseValue === 3500) {
+                infoTitle.innerText = "n4-standard-modular-web";
+                infoDesc.innerText = "Core baseline web layout framework structures.";
+            } else if (baseValue === 9500) {
+                infoTitle.innerText = "n4-highportal-engine-2";
+                infoDesc.innerText = "Optimized pipeline environments for advanced customer portal interfaces.";
+            } else {
+                infoTitle.innerText = "n4-cloud-enterprise-stack";
+                infoDesc.innerText = "Enterprise configuration arrays for absolute concurrent horizontal scales.";
+            }
+            updateCalculations();
+        }
+
+        function updateCalculations() {
+            const baseValue = parseInt(document.getElementById('base_tier').value) || 3500;
+            const modelOffset = parseInt(document.getElementById('service_model_select').value) || 0;
+
+            const isUsageScheduled = document.getElementById('toggle_usage_tracker').classList.contains('active');
+            const instancesMultiplier = isUsageScheduled ? (parseInt(document.getElementById('instances_qty_val').value) || 1) : 1;
+
+            // --- ONE-TIME PROVISIONING COSTS ---
+            // Base Core Template Framework Setup is Once-Off
+            let computedOnceOffTotal = (baseValue + modelOffset) * instancesMultiplier;
+            
+            // Infrastructure Hardware Scales, Layout Options, and Integrations are treated as Once-Off setups
+            computedOnceOffTotal += parseInt(document.getElementById('hosting_tier').value) || 0;
+            computedOnceOffTotal += parseInt(document.getElementById('bandwidth_tier').value) || 0;
+            computedOnceOffTotal += parseInt(document.getElementById('region_tier').value) || 0;
+            computedOnceOffTotal += parseInt(document.getElementById('ssl_tier').value) || 0;
+            computedOnceOffTotal += parseInt(document.getElementById('cdn_tier').value) || 0;
+            computedOnceOffTotal += parseInt(document.getElementById('deployment_env_tier').value) || 0;
+            computedOnceOffTotal += parseInt(document.getElementById('auth_tier').value) || 0;
+            computedOnceOffTotal += parseInt(document.getElementById('form_tier').value) || 0;
+            computedOnceOffTotal += parseInt(document.getElementById('cms_tier').value) || 0;
+            computedOnceOffTotal += parseInt(document.getElementById('ecommerce_tier').value) || 0;
+            computedOnceOffTotal += parseInt(document.getElementById('email_tier').value) || 0;
+            computedOnceOffTotal += parseInt(document.getElementById('seo_tier').value) || 0;
+            computedOnceOffTotal += parseInt(document.getElementById('analytics_tier').value) || 0;
+            computedOnceOffTotal += parseInt(document.getElementById('ai_tier').value) || 0;
+
+            const sliderVol = parseInt(document.getElementById('storage_slider').value) || 20;
+            const computedStoragePrice = (sliderVol - 20) * 4.50;
+            computedOnceOffTotal += computedStoragePrice;
+
+            // --- MONTHLY RECURRING OPERATIONAL COSTS ---
+            // Ongoing server backups and lifecycle support SLA plans are treated as Monthly Costs
+            let computedMonthlyTotal = parseInt(document.getElementById('backup_tier').value) || 0;
+
+            const maintenanceKey = document.getElementById('maintenance_tier').value;
+            let maintenanceFactor = 0.10;
+            let maintenanceTitleText = "Eco Essentials Maintenance SLA";
+
+            if (maintenanceKey === 'tier_pro') {
+                maintenanceFactor = 0.20;
+                maintenanceTitleText = "Professional SLA Support Layer";
+            } else if (maintenanceKey === 'tier_ent') {
+                maintenanceFactor = 0.35;
+                maintenanceTitleText = "High-Availability Enterprise SLA";
+            }
+
+            const computedMaintenancePrice = Math.round(baseValue * maintenanceFactor);
+            computedMonthlyTotal += computedMaintenancePrice;
+
+            // Format Output Figures Cleanly
+            const formattedOnceOff = computedOnceOffTotal.toLocaleString('en-ZA', { minimumFractionDigits: 2, maximumFractionDigits: 2 }) + " ZAR";
+            const formattedMonthly = computedMonthlyTotal.toLocaleString('en-ZA', { minimumFractionDigits: 2, maximumFractionDigits: 2 }) + " ZAR";
+
+            // Write output to the bottom summary bar
+            document.getElementById('header_once_off').innerText = formattedOnceOff;
+            document.getElementById('header_monthly').innerText = formattedMonthly;
+
+            // Total cost across 12 months, including the once-off upfront cost
+            const computedTotal12mo = computedOnceOffTotal + (computedMonthlyTotal * 12);
+            const formattedTotal12mo = computedTotal12mo.toLocaleString('en-ZA', { minimumFractionDigits: 2, maximumFractionDigits: 2 }) + " ZAR";
+            const total12moEl = document.getElementById('header_total_12mo');
+            if (total12moEl) total12moEl.innerText = formattedTotal12mo;
+        }
+
+        // ─── RESET ALL SELECTIONS ──────────────────────────────────────────────
+        function resetAllSelections() {
+            // Reset all registered dropdowns to first option
+            const allDropdowns = [
+                'hosting_tier','bandwidth_tier','auth_tier','form_tier',
+                'cms_tier','backup_tier','ai_tier','deployment_env_tier',
+                'ssl_tier','cdn_tier','seo_tier','analytics_tier',
+                'ecommerce_tier','email_tier','region_tier',
+                'base_tier','service_model_select','maintenance_tier'
+            ];
+            allDropdowns.forEach(id => {
+                const el = document.getElementById(id);
+                if (el) el.selectedIndex = 0;
+            });
+
+            // Reset toggle switches
+            ['toggle_usage_tracker'].forEach(id => {
+                const el = document.getElementById(id);
+                if (el && el.classList.contains('active')) {
+                    el.classList.remove('active');
+                    const targetId = id === 'toggle_usage_tracker' ? 'usage_time_fields' : null;
+                    if (targetId) document.getElementById(targetId)?.classList.add('hidden-node');
+                }
+            });
+
+            // Reset counter
+            const instancesInput = document.getElementById('instances_qty_val');
+            if (instancesInput) instancesInput.value = 1;
+
+            // Reset slider
+            const slider = document.getElementById('storage_slider');
+            if (slider) { slider.value = slider.min; onSliderDragValueUpdate(); }
+
+            // Re-run base tier logic and calculations
+            onBaseTierChanged();
+            updateCalculations();
+        }
+
+        // ─── QUOTE MODAL ───────────────────────────────────────────────────────
+        function openQuoteModal() {
+            const quoteNumber = 'QT-' + Date.now().toString(36).toUpperCase().slice(-8);
+            const now = new Date();
+            const dateStr = now.toLocaleDateString('en-ZA', { year: 'numeric', month: 'long', day: 'numeric' });
+            const validUntil = new Date(now.setDate(now.getDate() + 30)).toLocaleDateString('en-ZA', { year: 'numeric', month: 'long', day: 'numeric' });
+
+            // Gather all configured line items
+            const lines = gatherQuoteLineItems();
+
+            const onceOffTotal = parseFloat(document.getElementById('header_once_off').innerText.replace('ZAR','').replace(/\s/g,'').replace(/,/g,'')) || 0;
+            const monthlyTotal = parseFloat(document.getElementById('header_monthly').innerText.replace('ZAR','').replace(/\s/g,'').replace(/,/g,'')) || 0;
+
+            const fmtR = (n) => 'R\u00A0' + n.toLocaleString('en-ZA', { minimumFractionDigits: 2, maximumFractionDigits: 2 });
+
+            // Build line rows HTML
+            let onceOffRows = '';
+            let monthlyRows = '';
+            lines.once_off.forEach(l => {
+                onceOffRows += `<tr>
+                    <td>${l.name}</td>
+                    <td>${l.desc}</td>
+                    <td>${fmtR(l.price)}</td>
+                </tr>`;
+            });
+            lines.monthly.forEach(l => {
+                monthlyRows += `<tr>
+                    <td>${l.name}</td>
+                    <td>${l.desc}</td>
+                    <td>${fmtR(l.price)}</td>
+                </tr>`;
+            });
+
+            const html = `
+            <div class="qpdf-page">
+                <div class="qpdf-hero">
+                    <div class="qpdf-hero-grid">
+                        <div class="qpdf-logo-zone"><img src="thumbnails/mock.png" style="height: 30px;"/></div>
+                        <div class="qpdf-doc-meta">
+                            <div class="qpdf-doc-label">Quotation Reference</div>
+                            <div class="qpdf-doc-number">${quoteNumber}</div>
+                            <div class="qpdf-doc-date">Generated: ${dateStr}</div>
+                        </div>
+                    </div>
+                    <div class="qpdf-hero-title">
+                        <h1>Official Service Quotation</h1>
+                        <p>Web Application Architecture & Digital Infrastructure Services</p>
+                    </div>
+                </div>
+
+                <div class="qpdf-body">
+                    ${onceOffRows ? `
+                    <div class="qpdf-section-label">One-Time Provisioning Services</div>
+                    <table class="qpdf-line-table">
+                        <thead><tr><th>Service</th><th>Specification</th><th>Investment</th></tr></thead>
+                        <tbody>${onceOffRows}</tbody>
+                    </table>` : ''}
+
+                    ${monthlyRows ? `
+                    <div class="qpdf-section-label">Monthly Recurring Services</div>
+                    <table class="qpdf-line-table">
+                        <thead><tr><th>Service</th><th>Specification</th><th>Per Month</th></tr></thead>
+                        <tbody>${monthlyRows}</tbody>
+                    </table>` : ''}
+
+                    <div class="qpdf-totals-box">
+                        <div class="qpdf-total-row">
+                            <span class="tot-label">One-Time Provisioning Total</span>
+                            <span class="tot-val">${fmtR(onceOffTotal)}</span>
+                        </div>
+                        <div class="qpdf-total-row monthly-row">
+                            <span class="tot-label">Monthly Recurring Total</span>
+                            <span class="tot-val">${fmtR(monthlyTotal)} / mo</span>
+                        </div>
+                        <div class="qpdf-total-row divider grand">
+                            <span class="tot-label">Total Project Investment</span>
+                            <span class="tot-val">${fmtR(onceOffTotal + monthlyTotal)}</span>
+                        </div>
+                        <div class="qpdf-total-row" style="padding-top:4px;">
+                            <span class="tot-label" style="font-size:11px; color:#80868b;">All amounts are exclusive of VAT (15%). VAT will be applied on final invoice.</span>
+                            <span></span>
+                        </div>
+                    </div>
+
+                    <div class="qpdf-validity-box">
+                        <strong>✦ Quotation Validity & Terms</strong><br>
+                        This quotation is valid for <strong>30 days</strong> from the date of issue, expiring on <strong>${validUntil}</strong>. Prices are subject to change after the validity period. Project timelines and deliverables will be confirmed upon acceptance of this quotation. A 50% deposit is required to commence work; the remaining balance is due upon project completion.
+                    </div>
+
+                    <div style="background:#e8f0fe; border-left:4px solid #1a73e8; border-radius:0 8px 8px 0; padding:14px 20px; margin-bottom:32px; font-size:12px; color:#1967d2; line-height:1.6;">
+                        <strong>✔ Digital Verification Statement</strong><br>
+                        This is an officially generated digital quotation document produced by the Cronos Pricing Console. Quote reference <strong>${quoteNumber}</strong> is a traceable, system-generated record. This document serves as a formal commercial proposal and may be used for procurement, budgetary approval, and client record-keeping purposes.
+                    </div>
+                </div>
+
+                <div class="qpdf-footer">
+                    <div class="qpdf-footer-seal">
+                        <div class="qpdf-seal-icon">✦</div>
+                        <div>
+                            <div style="font-weight:600; color:#202124; font-size:12px;">Cronos Technologies</div>
+                            <div>Digital Infrastructure & Cloud Services</div>
+                            <div style="margin-top:2px; color:#9aa0a6;">Ref: ${quoteNumber} &nbsp;|&nbsp; ${dateStr}</div>
+                        </div>
+                    </div>
+                    <div class="qpdf-footer-contact">
+                        <div style="font-weight:600; color:#202124; margin-bottom:2px;">Get in touch</div>
+                        <div>info@cronos.co.za</div>
+                        <div>www.cronos.co.za</div>
+                        <div>South Africa</div>
+                    </div>
+                </div>
+            </div>`;
+
+            document.getElementById('quote-preview-doc').innerHTML = html;
+            document.getElementById('quote_modal_overlay').classList.remove('hidden-node');
+            document.body.style.overflow = 'hidden';
+        }
+
+        function closeQuoteModal() {
+            document.getElementById('quote_modal_overlay').classList.add('hidden-node');
+            document.body.style.overflow = '';
+        }
+
+        function gatherQuoteLineItems() {
+            const lines = { once_off: [], monthly: [] };
+
+            const baseTierEl = document.getElementById('base_tier');
+            if (baseTierEl) {
+                const sel = baseTierEl.options[baseTierEl.selectedIndex];
+                lines.once_off.push({ name: 'Platform Instance Type', desc: sel.text.split('—')[0].trim(), price: parseInt(baseTierEl.value) || 0 });
+            }
+
+            const onceOffDropdowns = [
+                { id: 'hosting_tier', name: 'Hosting Plan' },
+                { id: 'bandwidth_tier', name: 'Bandwidth Scale' },
+                { id: 'region_tier', name: 'Deployment Region' },
+                { id: 'ssl_tier', name: 'SSL Certificate' },
+                { id: 'cdn_tier', name: 'CDN Edge Cache' },
+                { id: 'deployment_env_tier', name: 'Deployment Environments' },
+                { id: 'auth_tier', name: 'Identity & Access Control' },
+                { id: 'form_tier', name: 'Form Processing' },
+                { id: 'cms_tier', name: 'CMS / Publishing Engine' },
+                { id: 'ecommerce_tier', name: 'E-Commerce & Payments' },
+                { id: 'email_tier', name: 'Email Infrastructure' },
+                { id: 'seo_tier', name: 'SEO Foundation' },
+                { id: 'analytics_tier', name: 'Analytics & BI' },
+                { id: 'ai_tier', name: 'AI / LLM Modules' },
+            ];
+
+            onceOffDropdowns.forEach(({ id, name }) => {
+                const el = document.getElementById(id);
+                if (!el) return;
+                const val = parseInt(el.value) || 0;
+                if (val > 0) {
+                    const desc = el.options[el.selectedIndex].text.split('—')[0].trim();
+                    lines.once_off.push({ name, desc, price: val });
+                }
+            });
+
+            const sliderVol = parseInt(document.getElementById('storage_slider').value) || 20;
+            const storagePrice = (sliderVol - 20) * 4.50;
+            if (storagePrice > 0) lines.once_off.push({ name: 'SSD Storage', desc: `${sliderVol} GB Allocated SSD Workspace`, price: storagePrice });
+
+            // Monthly items
+            const backupEl = document.getElementById('backup_tier');
+            if (backupEl) {
+                const bval = parseInt(backupEl.value) || 0;
+                if (bval > 0) lines.monthly.push({ name: 'Backup & Archiving', desc: backupEl.options[backupEl.selectedIndex].text.split('—')[0].trim(), price: bval });
+            }
+
+            const maintEl = document.getElementById('maintenance_tier');
+            if (maintEl) {
+                const baseValue = parseInt(document.getElementById('base_tier').value) || 3500;
+                const key = maintEl.value;
+                const factor = key === 'tier_pro' ? 0.20 : key === 'tier_ent' ? 0.35 : 0.10;
+                const maintPrice = Math.round(baseValue * factor);
+                const maintName = key === 'tier_pro' ? 'Professional SLA Support' : key === 'tier_ent' ? 'Enterprise SLA Matrix' : 'Eco Essentials SLA';
+                lines.monthly.push({ name: 'SLA Maintenance', desc: maintName, price: maintPrice });
+            }
+
+            return lines;
+        }
+
+        function downloadQuotePDF() {
+            const quoteContent = document.getElementById('quote-preview-doc').innerHTML;
+            const printWindow = window.open('', '_blank', 'width=900,height=700');
+            printWindow.document.write(`<!DOCTYPE html><html><head>
+                <meta charset="UTF-8">
+                <title>Cronos Quotation</title>
+                <style>
+                    * { box-sizing: border-box; font-family: "Segoe UI", Arial, sans-serif; margin: 0; padding: 0; }
+                    body { background: #fff; }
+                    ${getComputedStyles()}
+                    @media print {
+                        @page { margin: 0; size: A4 portrait; }
+                        body { -webkit-print-color-adjust: exact; print-color-adjust: exact; }
+                    }
+                </style>
+            </head><body>${quoteContent}</body></html>`);
+            printWindow.document.close();
+            printWindow.onload = () => {
+                setTimeout(() => { printWindow.print(); }, 300);
+            };
+        }
+
+        function getComputedStyles() {
+            // Extract qpdf styles from main document for print window
+            const sheets = document.styleSheets;
+            let cssText = '';
+            for (let i = 0; i < sheets.length; i++) {
+                try {
+                    const rules = sheets[i].cssRules || sheets[i].rules;
+                    for (let j = 0; j < rules.length; j++) {
+                        const selector = rules[j].selectorText || '';
+                        if (selector.includes('qpdf') || selector.includes('quote-modal') || selector === 'body' || selector === '*') {
+                            cssText += rules[j].cssText + '\n';
+                        }
+                    }
+                } catch(e) {}
+            }
+            return cssText;
+        }
+
+        window.onload = function() {
+            onSliderDragValueUpdate();
+            onBaseTierChanged();
+            setupPopoverModalEngine();
+        };
+
+        // Vanilla Modal Popover Processing Engine (Anchored Right Layout / Centered Mobile Overlay)
+        function setupPopoverModalEngine() {
+            const popover = document.createElement('div');
+            popover.className = 'info-popover-modal';
+            document.body.appendChild(popover);
+
+            const underlay = document.getElementById('mobile_popover_underlay');
+            let activeTriggerNode = null;
+
+            const positionPopover = (triggerElement) => {
+                if (window.innerWidth < 767) {
+                    // Mobile constraints are fully centered via viewport layout definitions in stylesheet rules
+                    popover.style.left = '';
+                    popover.style.top = '';
+                    return;
+                }
+
+                const triggerRect = triggerElement.getBoundingClientRect();
+                const scrollX = window.scrollX || window.pageXOffset;
+                const scrollY = window.scrollY || window.pageYOffset;
+
+                // Place the modal directly to the right side of the icon (+10px padding clearance)
+                let leftPosition = triggerRect.right + scrollX + 10;
+                popover.className = 'info-popover-modal pos-right';
+
+                // Check edge wall collision bounds: if the modal overflows the screen edge, flip it to the left side
+                if (leftPosition + popover.offsetWidth > window.innerWidth - 12) {
+                    leftPosition = triggerRect.left + scrollX - popover.offsetWidth - 10;
+                    popover.className = 'info-popover-modal pos-left';
+                }
+
+                // Center the modal vertically relative to the target info icon
+                let topPosition = (triggerRect.top + scrollY + (triggerRect.height / 2)) - (popover.offsetHeight / 2);
+                
+                // Keep inside vertical viewport visibility frames
+                if (topPosition < scrollY + 12) {
+                    topPosition = scrollY + 12;
+                }
+
+                popover.style.left = `${leftPosition}px`;
+                popover.style.top = `${topPosition}px`;
+            };
+
+            const triggerHide = () => {
+                popover.style.opacity = '0';
+                popover.style.display = 'none';
+                underlay.classList.remove('active');
+                activeTriggerNode = null;
+            };
+
+            // Set up dismissal tap events directly to mobile structural shield
+            underlay.addEventListener('click', triggerHide);
+
+            const targetInfoIcons = document.querySelectorAll('.info-icon');
+            targetInfoIcons.forEach(icon => {
+                if (icon.innerText.trim() !== 'i') return;
+
+                icon.addEventListener('click', (e) => {
+                    e.stopPropagation();
+                    
+                    if (activeTriggerNode === icon) {
+                        triggerHide();
+                        return;
+                    }
+
+                    activeTriggerNode = icon;
+                    let parsedTextKey = "";
+                    const parentElementNode = icon.parentElement;
+
+                    if (parentElementNode) {
+                        parsedTextKey = Array.from(parentElementNode.childNodes)
+                            .filter(node => node !== icon)
+                            .map(node => node.textContent.trim())
+                            .join(" ")
+                            .replace(/\s+/g, ' ')
+                            .trim();
+                    }
+
+                    if (parsedTextKey.endsWith(":") || parsedTextKey.endsWith("*")) {
+                        parsedTextKey = parsedTextKey.replace(/[:*]+$/, '').trim();
+                    }
+
+                    const explanationText = infoDescriptionsMap[parsedTextKey] || `Configuration parameter guide for: "${parsedTextKey}".`;
+                    popover.innerText = explanationText;
+                    
+                    popover.style.display = 'block';
+                    positionPopover(icon);
+                    
+                    if (window.innerWidth < 767) {
+                        underlay.classList.add('active');
+                    }
+
+                    setTimeout(() => {
+                        popover.style.opacity = '1';
+                    }, 10);
+                });
+            });
+
+            document.addEventListener('click', (e) => {
+                if (!popover.contains(e.target) && e.target !== activeTriggerNode) {
+                    triggerHide();
+                }
+            });
+
+            window.addEventListener('resize', () => {
+                if (activeTriggerNode && popover.style.display === 'block') {
+                    positionPopover(activeTriggerNode);
+                    if (window.innerWidth >= 767) {
+                        underlay.classList.remove('active');
+                    }
+                }
+            });
+
+            window.addEventListener('scroll', () => {
+                if (activeTriggerNode && popover.style.display === 'block' && window.innerWidth >= 767) {
+                    positionPopover(activeTriggerNode);
+                }
+            }, true);
+        }
+    </script>
+</body>
+</html>

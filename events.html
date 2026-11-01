@@ -1,0 +1,497 @@
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Events</title>
+    
+    <script src="header.js" defer></script>
+    <script src="footer.js" defer></script> 
+</head>
+<body>
+
+    <cronos-header></cronos-header>
+    
+
+</body>
+</html>
+
+
+
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>IT Company Events</title>
+  <link href="https://fonts.cdnfonts.com/css/circular-std" rel="stylesheet" />
+  <style>
+
+    /* ═══════════════════════════════════════════
+       NAMESPACE: itevt-  — no global conflicts
+    ═══════════════════════════════════════════ */
+
+    .itevt-root *,
+    .itevt-root *::before,
+    .itevt-root *::after {
+      box-sizing: border-box;
+      margin: 0;
+      padding: 0;
+    }
+
+    * {
+        padding: 0;
+        margin: 0;
+    }
+
+    .itevt-root {
+      --itevt-font:   'Circular Std', -apple-system, BlinkMacSystemFont, sans-serif;
+      --itevt-bg:     #ffffff;
+      --itevt-text:   #0f0f0f;
+      --itevt-muted:  #666;
+      --itevt-border: #e2e2e2;
+      --itevt-accent: #0577da;
+
+      font-family:            var(--itevt-font);
+      background:             var(--itevt-bg);
+      color:                  var(--itevt-text);
+      -webkit-font-smoothing: antialiased;
+      padding:                90px 24px 72px;
+      max-width:              1300px;
+      margin:                 0 auto;
+      width:                  100%;
+    }
+
+    /* ════ PAGE TITLE ════ */
+    .itevt-page-title {
+      font-size: 44px;
+      font-weight: 700;
+      letter-spacing: -0.2px;
+      margin-bottom: 24px;
+    }
+
+    /* ════ BADGES ════ */
+    .itevt-badge {
+      display: inline-flex;
+      align-items: center;
+      font-size: 11px;
+      font-weight: 600;
+      letter-spacing: 0.05em;
+      text-transform: uppercase;
+      padding: 4px 6px;
+      white-space: nowrap;
+      line-height: 1.6;
+      font-family: var(--itevt-font);
+    }
+    .itevt-badge--ongoing { background: #0577da; color: #fff; }
+    .itevt-badge--ended   { background: #e2e2e2; color: #555; }
+    
+    /* Updated tag style to mimic the text-only look in the reference */
+    .itevt-badge--tag     { background: transparent; color: var(--itevt-accent); padding: 0; }
+    .itevt-badge--orange  { background: transparent; color: var(--itevt-accent); padding: 0; }
+    .itevt-badge--green   { background: transparent; color: var(--itevt-accent); padding: 0; }
+
+    .itevt-meta-sep {
+      font-size: 12px;
+      font-weight: 400;
+      text-transform: uppercase;
+      color: #080d1b; letter-spacing: 0.08em;
+    }
+
+    /* ══════════════════════════════════════════════════════
+       FEATURED BLOCK
+    ══════════════════════════════════════════════════════ */
+    .itevt-featured {
+      display: grid;
+      grid-template-columns: 1fr 300px;
+      gap: 24px; /* Added gap to detach the hero from the side stack */
+      margin-bottom: 40px;
+    }
+
+    @media (max-width: 760px) {
+      .itevt-featured { grid-template-columns: 1fr; }
+    }
+
+    /* ── Hero ── */
+    .itevt-hero {
+      display: flex;
+      flex-direction: column;
+      text-decoration: none;
+      color: inherit; border-right: 1px solid #d1d1d1; padding-right: 20px;
+    }
+
+    .itevt-hero-img {
+      width: 100%;
+      display: block;
+      aspect-ratio: 755 / 405;
+      object-fit: cover;
+    }
+
+    .itevt-hero-body {
+      padding: 16px 0 0 0; /* Aligned exactly to the left edge of the image */
+    }
+    
+    .itevt-hero-meta {
+      display: flex;
+      align-items: center;
+      gap: 8px;
+      flex-wrap: wrap;
+      margin-bottom: 8px;
+    }
+    
+    .itevt-hero-title {
+      font-size: clamp(18px, 1.9vw, 56px);
+      font-weight: 600;
+      line-height: 1.25;
+      letter-spacing: -0.3px;
+      transition: color .15s;
+    }
+    .itevt-hero:hover .itevt-hero-title { color: var(--itevt-accent); }
+
+    /* ── Side stack ── */
+    .itevt-side-stack {
+      display: flex;
+      flex-direction: column;
+      gap: 24px; /* Added vertical gap to detach the two side cards */
+    }
+
+    .itevt-side-card {
+      display: flex;
+      flex-direction: column;
+      text-decoration: none;
+      color: inherit;
+    }
+
+    .itevt-side-img {
+      width: 100%;
+      display: block;
+      aspect-ratio: 200 / 130;
+      object-fit: cover;
+    }
+
+    .itevt-side-body {
+      padding: 12px 0 0 0; /* Aligned exactly to the left edge */
+    }
+    
+    .itevt-side-meta {
+      display: flex;
+      align-items: center;
+      gap: 8px;
+      flex-wrap: wrap;
+      margin-bottom: 6px;
+    }
+    
+    .itevt-side-title {
+      font-size: 20px;
+      font-weight: 600;
+      line-height: 1.35;
+      transition: color .15s;
+    }
+    .itevt-side-card:hover .itevt-side-title { color: var(--itevt-accent); }
+
+    /* ════ HORIZONTAL RULE ════ */
+    .itevt-hr {
+      border: none;
+      border-top: 1px solid var(--itevt-border);
+      margin: 0 0 28px;
+    }
+
+    /* ════ SECTION HEADER ════ */
+    .itevt-section-hd {
+      display: flex;
+      align-items: center;
+      gap: 6px;
+      margin-bottom: 24px;
+    }
+    .itevt-section-chevron {
+      color: var(--itevt-accent);
+      font-size: 14px;
+      line-height: 1;
+    }
+    .itevt-section-label {
+      font-size: 20px;
+      font-weight: 700;
+      letter-spacing: -0.2px;
+    }
+    .itevt-section-label em {
+      font-style: normal;
+      color: var(--itevt-accent);
+    }
+
+    /* ══════════════════════════════════════════════════════
+       EVENTS GRID
+    ══════════════════════════════════════════════════════ */
+    .itevt-grid {
+      display: grid;
+      grid-template-columns: repeat(4, 1fr); 
+      row-gap: 36px; /* Replacing bottom borders with clean row gaps */
+    }
+
+    .itevt-card {
+      display: flex;
+      flex-direction: column;
+      text-decoration: none;
+      color: inherit;
+      border-right: 1px solid var(--itevt-border);
+      padding-right: 20px;
+      padding-left: 20px;
+    }
+
+    /* Handling standard 4 column borders/paddings */
+    .itevt-card:nth-child(4n) {
+      border-right: none;
+      padding-right: 0;
+    }
+    .itevt-card:nth-child(4n+1) {
+      padding-left: 0;
+    }
+
+    @media (max-width: 860px) { 
+      .itevt-grid { grid-template-columns: repeat(2,1fr); }
+      .itevt-card {
+        border-right: 1px solid var(--itevt-border);
+        padding-right: 20px;
+        padding-left: 20px;
+      }
+      .itevt-card:nth-child(even) { border-right: none; padding-right: 0; }
+      .itevt-card:nth-child(odd) { padding-left: 0; }
+       .itevt-hero { border-right: none; padding-right: 0;}
+    }
+    
+    @media (max-width: 480px) { 
+      .itevt-grid { grid-template-columns: 1fr; }
+      .itevt-card { border-right: none; padding-right: 0; padding-left: 0; }
+    }
+
+    .itevt-card-img-wrap {
+      /* Removed the border from the image wrappers */
+      overflow: hidden;
+      margin-bottom: 12px;
+      line-height: 0;
+    }
+
+    .itevt-card-img {
+      width: 100%;
+      display: block;
+      aspect-ratio: 5 / 3;
+      object-fit: cover;
+      transition: transform .35s ease;
+    }
+    .itevt-card:hover .itevt-card-img { transform: scale(1.03); }
+
+    .itevt-card-meta {
+      display: flex;
+      align-items: center;
+      gap: 8px;
+      flex-wrap: wrap;
+      margin-bottom: 8px;
+    }
+    
+    .itevt-card-title {
+      font-size: 20px;
+      font-weight: 600;
+      line-height: 1.1;
+      display: -webkit-box;
+      -webkit-line-clamp: 3;
+      -webkit-box-orient: vertical;
+      overflow: hidden;
+      transition: color .15s; letter-spacing: -0.02em;
+    }
+    .itevt-card:hover .itevt-card-title { color: var(--itevt-accent); }
+
+  </style>
+</head>
+<body>
+
+<div class="itevt-root">
+
+  <h1 class="itevt-page-title">Croloft Events</h1>
+
+  <div class="itevt-featured">
+
+    <a href="#" class="itevt-hero">
+      <img
+        class="itevt-hero-img"
+        src="https://images.unsplash.com/photo-1558494949-ef010cbdcc31?w=1000&q=80&auto=format&fit=crop"
+        alt="Microsoft Azure × YourIT Partnership"
+        loading="eager"
+      />
+      <div class="itevt-hero-body">
+        <div class="itevt-hero-meta">
+          <span class="itevt-badge itevt-badge--ongoing">ONGOING</span>
+          <span class="itevt-badge itevt-badge--tag">TRENDING</span>
+          <span class="itevt-meta-sep">- 12 Mar 2026</span>
+        </div>
+        <h2 class="itevt-hero-title">Win Microsoft Azure Credits, Expert Consultation Sessions, and Exclusive IT Partner Benefits</h2>
+      </div>
+    </a>
+
+    <div class="itevt-side-stack">
+
+      <a href="#" class="itevt-side-card">
+        <img
+          class="itevt-side-img"
+          src="https://images.unsplash.com/photo-1550751827-4bd374c3f58b?w=600&q=80&auto=format&fit=crop"
+          alt="Cybersecurity Summit"
+          loading="lazy"
+        />
+        <div class="itevt-side-body">
+          <div class="itevt-side-meta">
+            <span class="itevt-badge itevt-badge--ended">ENDED</span>
+            <span class="itevt-badge itevt-badge--tag">SECURITY</span>
+            <span class="itevt-meta-sep">- 16 Jan 2026</span>
+          </div>
+          <p class="itevt-side-title">Who's Ready For the Annual Cybersecurity Summit 2026?</p>
+        </div>
+      </a>
+
+      <a href="#" class="itevt-side-card">
+        <img
+          class="itevt-side-img"
+          src="https://images.unsplash.com/photo-1451187580459-43490279c0fa?w=600&q=80&auto=format&fit=crop"
+          alt="Cloud Migration Challenge"
+          loading="lazy"
+        />
+        <div class="itevt-side-body">
+          <div class="itevt-side-meta">
+            <span class="itevt-badge itevt-badge--ended">ENDED</span>
+            <span class="itevt-badge itevt-badge--tag">CLOUD</span>
+            <span class="itevt-meta-sep">- 9 Dec 2025</span>
+          </div>
+          <p class="itevt-side-title">Win a Share of $60,000 in Cloud Credits in the YourIT × AWS Migration Challenge</p>
+        </div>
+      </a>
+
+    </div>
+  </div><hr class="itevt-hr" />
+
+  <div class="itevt-section-hd">
+    <h2 class="itevt-section-label"><em>ALL</em> Events</h2>
+  </div>
+
+  <div class="itevt-grid">
+
+    <a href="#" class="itevt-card">
+      <div class="itevt-card-img-wrap">
+        <img class="itevt-card-img"
+          src="https://images.unsplash.com/photo-1504384308090-c894fdcc538d?w=600&q=75&auto=format&fit=crop"
+          alt="Network Challenge" loading="lazy" />
+      </div>
+      <div class="itevt-card-meta">
+        <span class="itevt-badge itevt-badge--ongoing">ONGOING</span>
+        <span class="itevt-badge itevt-badge--tag">APP</span>
+        <span class="itevt-meta-sep">&mdash; 2D AGO</span>
+      </div>
+      <p class="itevt-card-title">Win VIP Access and Premium IT Gear in the YourIT Network Infrastructure Challenge</p>
+    </a>
+
+    <a href="#" class="itevt-card">
+      <div class="itevt-card-img-wrap">
+        <img class="itevt-card-img"
+          src="https://images.unsplash.com/photo-1573164713714-d95e436ab8d6?w=600&q=75&auto=format&fit=crop"
+          alt="IT Champs" loading="lazy" />
+      </div>
+      <div class="itevt-card-meta">
+        <span class="itevt-badge itevt-badge--ongoing">ONGOING</span>
+        <span class="itevt-badge itevt-badge--tag">APP</span>
+        <span class="itevt-meta-sep">&mdash; 3D AGO</span>
+      </div>
+      <p class="itevt-card-title">Prove You're an IT Champ and Stand to Win Cloud Computing Rewards</p>
+    </a>
+
+    <a href="#" class="itevt-card">
+      <div class="itevt-card-img-wrap">
+        <img class="itevt-card-img"
+          src="https://images.unsplash.com/photo-1544197150-b99a580bb7a8?w=600&q=75&auto=format&fit=crop"
+          alt="Cloud Credits" loading="lazy" />
+      </div>
+      <div class="itevt-card-meta">
+        <span class="itevt-badge itevt-badge--ongoing">ONGOING</span>
+        <span class="itevt-badge itevt-badge--tag">CLOUD</span>
+        <span class="itevt-meta-sep">&mdash; 3D AGO</span>
+      </div>
+      <p class="itevt-card-title">Cloud Infrastructure Campaign</p>
+    </a>
+
+    <a href="#" class="itevt-card">
+      <div class="itevt-card-img-wrap">
+        <img class="itevt-card-img"
+          src="https://images.unsplash.com/photo-1563986768494-4dee2763ff3f?w=600&q=75&auto=format&fit=crop"
+          alt="Security Campaign" loading="lazy" />
+      </div>
+      <div class="itevt-card-meta">
+        <span class="itevt-badge itevt-badge--ongoing">ONGOING</span>
+        <span class="itevt-badge itevt-badge--tag">SECURITY</span>
+        <span class="itevt-meta-sep">&mdash; 18 Mar 2026</span>
+      </div>
+      <p class="itevt-card-title">Security Hardening Campaign</p>
+    </a>
+
+    <a href="#" class="itevt-card">
+      <div class="itevt-card-img-wrap">
+        <img class="itevt-card-img"
+          src="https://images.unsplash.com/photo-1460925895917-afdab827c52f?w=600&q=75&auto=format&fit=crop"
+          alt="Referral Credits" loading="lazy" />
+      </div>
+      <div class="itevt-card-meta">
+        <span class="itevt-badge itevt-badge--ongoing">ONGOING</span>
+        <span class="itevt-badge itevt-badge--tag">APP</span>
+        <span class="itevt-meta-sep">&mdash; 17 Mar 2026</span>
+      </div>
+      <p class="itevt-card-title">Stand to Win Up to 500 Cloud Credits with the YourIT Referral Rewards Programme</p>
+    </a>
+
+    <a href="#" class="itevt-card">
+      <div class="itevt-card-img-wrap">
+        <img class="itevt-card-img"
+          src="https://images.unsplash.com/photo-1516321318423-f06f85e504b3?w=600&q=75&auto=format&fit=crop"
+          alt="ZA Exclusive" loading="lazy" />
+      </div>
+      <div class="itevt-card-meta">
+        <span class="itevt-badge itevt-badge--ongoing">ONGOING</span>
+        <span class="itevt-badge itevt-badge--orange">PROMOTIONS</span>
+        <span class="itevt-meta-sep">&mdash; 5 Mar 2026</span>
+      </div>
+      <p class="itevt-card-title">[ZA Exclusive] Earn 100% Back on Your First IT Service Contract</p>
+    </a>
+
+    <a href="#" class="itevt-card">
+      <div class="itevt-card-img-wrap">
+        <img class="itevt-card-img"
+          src="https://images.unsplash.com/photo-1519389950473-47ba0277781c?w=600&q=75&auto=format&fit=crop"
+          alt="Gold Tier" loading="lazy" />
+      </div>
+      <div class="itevt-card-meta">
+        <span class="itevt-badge itevt-badge--ongoing">ONGOING</span>
+        <span class="itevt-badge itevt-badge--green">PARTNER</span>
+        <span class="itevt-meta-sep">&mdash; 5 Mar 2026</span>
+      </div>
+      <p class="itevt-card-title">Gold Taker IT Delivery Competition Is Live – Top Partner Stands to Win R75,000...</p>
+    </a>
+
+    <a href="#" class="itevt-card">
+      <div class="itevt-card-img-wrap">
+        <img class="itevt-card-img"
+          src="https://images.unsplash.com/photo-1531482615713-2afd69097998?w=600&q=75&auto=format&fit=crop"
+          alt="Performance Arena" loading="lazy" />
+      </div>
+      <div class="itevt-card-meta">
+        <span class="itevt-badge itevt-badge--ongoing">ONGOING</span>
+        <span class="itevt-badge itevt-badge--tag">APP</span>
+        <span class="itevt-meta-sep">&mdash; 2 Mar 2026</span>
+      </div>
+      <p class="itevt-card-title">Stand to Win a Share of R250,000 in the YourIT Performance Arena Airdrop</p>
+    </a>
+
+  </div></div></body>
+</html>
+
+
+
+
+
+
+
+
+<cronos-footer></cronos-footer>
