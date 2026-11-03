@@ -32,6 +32,19 @@
 <body>
 
   <cronos-header></cronos-header>
+
+  <script>
+        (function() {
+          var k = '2263617e-f55a-40b9-8829-a1a5c7d0a96b';
+          var v = localStorage.getItem('croloft_vid');
+          if (!v) { v = crypto.randomUUID(); localStorage.setItem('croloft_vid', v); }
+          fetch('http://localhost:3000/api/track', {
+            method: 'POST',
+            headers: { 'Content-Type': 'application/json' },
+            body: JSON.stringify({ site_key: k, path: location.pathname, visitor_id: v })
+          }).catch(function() {});
+        })();
+        </script>
   
     
 </body>
@@ -44,6 +57,366 @@
 
 
 
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Runway Hero Component - Full Width Background</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+
+  <style>
+    /* ==========================================================================
+       SCOPED STYLES: Strict namespacing to prevent leaks
+       ========================================================================== */
+
+    .rw-hero-component-root {
+      font-family: 'Inter', -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif;
+      background-color: #ffffff;
+      color: #111111;
+      width: 100%;
+      min-width: 100%;
+      box-sizing: border-box;
+      padding: 65px 20px 20px; /* Guarantees at least 20px padding all around */
+      -webkit-font-smoothing: antialiased;
+      overflow-x: hidden;
+    }
+
+    .rw-hero-component-root *,
+    .rw-hero-component-root *::before,
+    .rw-hero-component-root *::after {
+      box-sizing: border-box;
+    }
+
+    /* Full-width container wrapper */
+    .rw-hero-full-wrapper {
+      width: 100%;
+      display: flex;
+      flex-direction: column;
+      gap: 3.5rem;
+    }
+
+    /* Video Hero Box - 100% width, background video */
+    .rw-hero-media-wrapper {
+      position: relative;
+      width: 100%;
+      height: 89vh;
+      min-height: 480px;
+      max-height: 750px;
+      border-radius: 12px;
+      overflow: hidden;
+      background-color: #050b14;
+    }
+
+    /* Video element filling the background */
+    .rw-hero-video {
+      position: absolute;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      display: block;
+      z-index: 0;
+    }
+
+    /* Dark Gradient Overlay for text readability */
+    .rw-hero-overlay {
+      position: absolute;
+      inset: 0;
+      background: linear-gradient(
+        to right,
+        rgba(0, 0, 0, 0.7) 0%,
+        rgba(0, 0, 0, 0.35) 50%,
+        rgba(0, 0, 0, 0.1) 100%
+      );
+      z-index: 1;
+      pointer-events: none;
+    }
+
+    /* Content Area constrained strictly to 1200px width inside the video */
+    .rw-hero-inner-container {
+      max-width: 1400px;
+      width: 100%;
+      height: 100%;
+      margin: 0 auto;
+      position: relative;
+      z-index: 2;
+      display: flex;
+      flex-direction: column;
+      justify-content: flex-end;
+      padding: 3rem 2.5rem;
+    }
+
+    @media (max-width: 768px) {
+      .rw-hero-inner-container {
+        padding: 2rem 1.5rem;
+      }
+    }
+
+    .rw-hero-content {
+      max-width: 580px;
+      color: #ffffff;
+    }
+
+    .rw-hero-title {
+      font-size: 3.25rem;
+      font-weight: 500;
+      line-height: 1.1;
+      letter-spacing: -0.03em;
+      margin: 0 0 1.25rem 0;
+      color: #ffffff;
+    }
+
+    @media (max-width: 768px) {
+      .rw-hero-title {
+        font-size: 2.25rem;
+      }
+    }
+
+    .rw-hero-description {
+      font-size: 1.05rem;
+      line-height: 1.5;
+      color: rgba(255, 255, 255, 0.9);
+      margin: 0 0 2rem 0;
+      font-weight: 400;
+      letter-spacing: -0.01em;
+    }
+
+    /* Action Button */
+    .rw-hero-cta-btn {
+      display: inline-flex;
+      align-items: center;
+      gap: 0.5rem;
+      background-color: #ffffff;
+      color: #000000;
+      font-size: 0.95rem;
+      font-weight: 400;
+      padding: 0.75rem 1.25rem;
+      border-radius: 6px;
+      text-decoration: none;
+      transition: background-color 0.2s ease, transform 0.15s ease;
+      box-shadow: 0 4px 12px rgba(0, 0, 0, 0.15);
+    }
+
+    .rw-hero-cta-btn:hover {
+      background-color: #f1f1f1;
+      transform: translateY(-1px);
+    }
+
+    .rw-hero-btn-arrow {
+      font-size: 1.1rem;
+      line-height: 1;
+    }
+
+    /* Logo Marquee Section - Constrained to 1200px container width */
+    .rw-hero-brands-section {
+      max-width: 1000px;
+      width: 100%;
+      margin: 0 auto;
+      text-align: center;
+      padding: 3rem 0 5rem 0;
+    }
+
+    .rw-hero-brands-subtitle {
+      font-size: 1.2rem;
+      color: #71717a;
+      font-weight: 400;
+      margin-bottom: 3rem;
+      letter-spacing: -0.01em;
+    }
+
+    /* Marquee Infinite Auto-Scroll Track */
+    .rw-hero-marquee-viewport {
+      width: 100%;
+      overflow: hidden;
+      position: relative;
+      mask-image: linear-gradient(
+        to right,
+        rgba(0, 0, 0, 0) 0%,
+        rgba(0, 0, 0, 1) 12%,
+        rgba(0, 0, 0, 1) 88%,
+        rgba(0, 0, 0, 0) 100%
+      );
+      -webkit-mask-image: linear-gradient(
+        to right,
+        rgba(0, 0, 0, 0) 0%,
+        rgba(0, 0, 0, 1) 12%,
+        rgba(0, 0, 0, 1) 88%,
+        rgba(0, 0, 0, 0) 100%
+      );
+    }
+
+    .rw-hero-marquee-track {
+      display: flex;
+      align-items: center;
+      width: max-content;
+      gap: 5rem;
+      animation: rw-marquee-scroll 25s linear infinite;
+    }
+
+    .rw-hero-marquee-track:hover {
+      animation-play-state: paused;
+    }
+
+    .rw-hero-logo-item {
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      height: 32px;
+      opacity: 0.8;
+      transition: opacity 0.2s ease;
+    }
+
+    .rw-hero-logo-item:hover {
+      opacity: 1;
+    }
+
+    .rw-hero-logo-svg {
+      height: 24px;
+      width: auto;
+      fill: #111111;
+    }
+
+    @keyframes rw-marquee-scroll {
+      0% {
+        transform: translateX(0);
+      }
+      100% {
+        transform: translateX(-50%);
+      }
+    }
+  </style>
+</head>
+<body>
+
+  <!-- ==========================================================================
+     SCOPED COMPONENT ROOT (100% Width, Min 20px padding all around)
+     ========================================================================== -->
+  <div class="rw-hero-component-root">
+    <div class="rw-hero-full-wrapper">
+
+      <!-- Hero Video Background Section -->
+      <div class="rw-hero-media-wrapper">
+        <video 
+          class="rw-hero-video" 
+          autoplay 
+          loop 
+          muted 
+          playsinline 
+          poster="https://images.unsplash.com/photo-1518709268805-4e9042af9f23?q=80&w=1600&auto=format&fit=crop"
+        >
+          <source src="videos/146944-790648611_medium.mp4" type="video/mp4">
+        </video>
+
+        <!-- Dark Gradient Overlay -->
+        <div class="rw-hero-overlay"></div>
+
+        <!-- 1200px Constrained Content Container inside the video -->
+        <div class="rw-hero-inner-container">
+          <div class="rw-hero-content">
+            <h1 class="rw-hero-title">Intelligent tools for scaling content and teams.</h1>
+            <p class="rw-hero-description">
+              Runway is building foundational Real-World Intelligence that is changing how the world's top brands, companies, agencies and studios are able to tell their stories.
+            </p>
+            <a href="#" class="rw-hero-cta-btn">
+              <span>Try Runway for free</span>
+              <span class="rw-hero-btn-arrow"><svg style="vertical-align: middle;" width="16" height="16" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 5l7 7-7 7"/></svg>
+              </span>
+            </a>
+          </div>
+        </div>
+      </div>
+
+      <!-- Partner Brands Marquee Section (Constrained to 1200px) -->
+      <div class="rw-hero-brands-section">
+        <div class="rw-hero-brands-subtitle">
+          We partner with the world's leading organizations to advance their industries:
+        </div>
+
+        <div class="rw-hero-marquee-viewport">
+          <div class="rw-hero-marquee-track">
+            
+            <!-- LIST 1 -->
+            <div class="rw-hero-logo-item">
+              <svg class="rw-hero-logo-svg" viewBox="0 0 100 30" style="height:22px;"><text x="0" y="22" font-family="Inter" font-weight="700" font-size="22">amazon</text></svg>
+            </div>
+            <div class="rw-hero-logo-item">
+              <svg class="rw-hero-logo-svg" viewBox="0 0 24 24" style="height:26px;"><path d="M0 0h11.379v11.379H0zM12.621 0H24v11.379H12.621zM0 12.621h11.379V24H0zM12.621 12.621H24V24H12.621z"/></svg>
+            </div>
+            <div class="rw-hero-logo-item">
+              <svg class="rw-hero-logo-svg" viewBox="0 0 120 30" style="height:20px;"><text x="0" y="22" font-family="Inter" font-weight="700" font-size="20">Robinhood feather</text></svg>
+            </div>
+            <div class="rw-hero-logo-item">
+              <svg class="rw-hero-logo-svg" viewBox="0 0 130 30" style="height:20px;"><text x="0" y="22" font-family="Inter" font-weight="700" font-size="20">shutterstock</text></svg>
+            </div>
+            <div class="rw-hero-logo-item">
+              <svg class="rw-hero-logo-svg" viewBox="0 0 80 30" style="height:26px;"><text x="0" y="22" font-family="Inter" font-weight="800" font-size="24">D&G</text></svg>
+            </div>
+            <div class="rw-hero-logo-item">
+              <svg class="rw-hero-logo-svg" viewBox="0 0 90 30" style="height:22px;"><text x="0" y="14" font-family="Inter" font-weight="500" font-size="12">Wieden</text><text x="0" y="26" font-family="Inter" font-weight="500" font-size="12">Kennedy</text></svg>
+            </div>
+            <div class="rw-hero-logo-item">
+              <svg class="rw-hero-logo-svg" viewBox="0 0 100 30" style="height:22px;"><text x="0" y="22" font-family="Inter" font-weight="800" font-size="22">.monks</text></svg>
+            </div>
+
+            <!-- LIST 2 (Duplicate for smooth infinite marquee loop) -->
+            <div class="rw-hero-logo-item">
+              <svg class="rw-hero-logo-svg" viewBox="0 0 100 30" style="height:22px;"><text x="0" y="22" font-family="Inter" font-weight="700" font-size="22">amazon</text></svg>
+            </div>
+            <div class="rw-hero-logo-item">
+              <svg class="rw-hero-logo-svg" viewBox="0 0 24 24" style="height:26px;"><path d="M0 0h11.379v11.379H0zM12.621 0H24v11.379H12.621zM0 12.621h11.379V24H0zM12.621 12.621H24V24H12.621z"/></svg>
+            </div>
+            <div class="rw-hero-logo-item">
+              <svg class="rw-hero-logo-svg" viewBox="0 0 120 30" style="height:20px;"><text x="0" y="22" font-family="Inter" font-weight="700" font-size="20">Robinhood feather</text></svg>
+            </div>
+            <div class="rw-hero-logo-item">
+              <svg class="rw-hero-logo-svg" viewBox="0 0 130 30" style="height:20px;"><text x="0" y="22" font-family="Inter" font-weight="700" font-size="20">shutterstock</text></svg>
+            </div>
+            <div class="rw-hero-logo-item">
+              <svg class="rw-hero-logo-svg" viewBox="0 0 80 30" style="height:26px;"><text x="0" y="22" font-family="Inter" font-weight="800" font-size="24">D&G</text></svg>
+            </div>
+            <div class="rw-hero-logo-item">
+              <svg class="rw-hero-logo-svg" viewBox="0 0 90 30" style="height:22px;"><text x="0" y="14" font-family="Inter" font-weight="500" font-size="12">Wieden</text><text x="0" y="26" font-family="Inter" font-weight="500" font-size="12">Kennedy</text></svg>
+            </div>
+            <div class="rw-hero-logo-item">
+              <svg class="rw-hero-logo-svg" viewBox="0 0 100 30" style="height:22px;"><text x="0" y="22" font-family="Inter" font-weight="800" font-size="22">.monks</text></svg>
+            </div>
+
+          </div>
+        </div>
+      </div>
+
+    </div>
+  </div>
+
+</body>
+</html>
 
 
 
@@ -150,8 +523,7 @@
 </section>
 
 <style>
-  @import url('https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap');
-  
+
   .defcon-hero-preheading.active {
     opacity: 1;
     transform: translateX(0);
@@ -2579,333 +2951,6 @@ document.addEventListener('DOMContentLoaded', function() {
 
 
 
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-<!-- STICKY SECTION-SNAPPING HORIZONTAL SCROLL COMPONENT - SCOPED CODEBASE -->
-<div class="cst-hz-pin-wrapper" id="cstHzPinWrapper">
-  <div class="cst-hz-sticky-container">
-    <div class="cst-hz-track" id="cstHzTrack">
-      
-      <!-- Slide 1: Insights (Blue Theme) -->
-      <section class="cst-hz-slide cst-hz-slide-1">
-        <div class="cst-hz-content-container">
-          <div class="cst-hz-card">
-            <span class="cst-hz-eyebrow">Intelligence</span>
-            <h2 class="cst-hz-title">Insights</h2>
-            <p class="cst-hz-desc">
-              Knowledge provides an edge in unpredictable markets. Our proprietary research, expert market insights, and essential guides will lead you to smarter decisions. Understand what's moving markets and grow your expertise with us.
-            </p>
-            <a href="/insights" class="cst-hz-btn">
-              <span class="cst-hz-btn-icon">
-                <svg width="16" height="16" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                  <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 5l7 7-7 7" />
-                </svg>
-              </span>
-              <span>Explore</span>
-            </a>
-          </div>
-        </div>
-      </section>
-
-      <!-- Slide 2: Ecosystem (Dark Violet Theme) -->
-      <section class="cst-hz-slide cst-hz-slide-2">
-        <div class="cst-hz-content-container">
-          <div class="cst-hz-card">
-            <span class="cst-hz-eyebrow">Network</span>
-            <h2 class="cst-hz-title">Ecosystem</h2>
-            <p class="cst-hz-desc">
-              Connect directly with liquidity providers, top-tier venture partners, and cutting-edge decentralized protocols. Build upon robust financial foundations designed for absolute scalability.
-            </p>
-            <a href="/ecosystem" class="cst-hz-btn">
-              <span class="cst-hz-btn-icon">
-                <svg width="16" height="16" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                  <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 5l7 7-7 7" />
-                </svg>
-              </span>
-              <span>Discover Network</span>
-            </a>
-          </div>
-        </div>
-      </section>
-
-      <!-- Slide 3: Technology (Emerald Mint Theme) -->
-      <section class="cst-hz-slide cst-hz-slide-3">
-        <div class="cst-hz-content-container">
-          <div class="cst-hz-card">
-            <span class="cst-hz-eyebrow">Infrastructure</span>
-            <h2 class="cst-hz-title">Technology</h2>
-            <p class="cst-hz-desc">
-              Ultra-low latency execution engines paired with enterprise-grade cryptographic key management. Experience absolute reliability, multi-asset security, and continuous uptime.
-            </p>
-            <a href="/technology" class="cst-hz-btn">
-              <span class="cst-hz-btn-icon">
-                <svg width="16" height="16" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                  <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 5l7 7-7 7" />
-                </svg>
-              </span>
-              <span>View Architecture</span>
-            </a>
-          </div>
-        </div>
-      </section>
-
-      <!-- Slide 4: Markets (Warm Rose Theme) -->
-      <section class="cst-hz-slide cst-hz-slide-4">
-        <div class="cst-hz-content-container">
-          <div class="cst-hz-card">
-            <span class="cst-hz-eyebrow">Liquidity</span>
-            <h2 class="cst-hz-title">Global Markets</h2>
-            <p class="cst-hz-desc">
-              Deep liquidity pools across spot and derivative corridors. Access automated market making and customized institutional pricing feeds around the clock.
-            </p>
-            <a href="/markets" class="cst-hz-btn">
-              <span class="cst-hz-btn-icon">
-                <svg width="16" height="16" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                  <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 5l7 7-7 7" />
-                </svg>
-              </span>
-              <span>Trade Now</span>
-            </a>
-          </div>
-        </div>
-      </section>
-
-    </div>
-  </div>
-</div>
-
-<style>
-  /* Pinned Wrapper: Height is set to 400vh (100vh per slide) */
-  .cst-hz-pin-wrapper {
-    position: relative;
-    width: 100%;
-    height: 400vh;
-    background-color: #0b0f19;
-    font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
-  }
-
-  .cst-hz-pin-wrapper *,
-  .cst-hz-pin-wrapper *::before,
-  .cst-hz-pin-wrapper *::after {
-    box-sizing: border-box;
-  }
-
-  /* Sticky Viewport Container */
-  .cst-hz-sticky-container {
-    position: sticky;
-    top: 0;
-    width: 100%;
-    height: 100vh;
-    overflow: hidden;
-  }
-
-  /* Horizontal Track with Smooth Cubic-Bezier Transition */
-  .cst-hz-track {
-    display: flex;
-    width: 400%; /* 4 slides = 400% width */
-    height: 100%;
-    will-change: transform;
-    transition: transform 0.65s cubic-bezier(0.16, 1, 0.3, 1);
-  }
-
-  /* Individual Slide Styles */
-  .cst-hz-slide {
-    width: 25%; /* 100% of viewport per slide */
-    height: 100%;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    padding: 0 2rem;
-    position: relative;
-    overflow: hidden;
-  }
-
-  /* Slide Themes */
-  .cst-hz-slide-1 {
-    background: linear-gradient(135deg, #e8f0fe 0%, #d2e3fc 100%);
-    color: #1f2937;
-  }
-  .cst-hz-slide-2 {
-    background: linear-gradient(135deg, #1e1b4b 0%, #312e81 100%);
-    color: #f8fafc;
-  }
-  .cst-hz-slide-3 {
-    background: linear-gradient(135deg, #064e3b 0%, #022c22 100%);
-    color: #ecfdf5;
-  }
-  .cst-hz-slide-4 {
-    background: linear-gradient(135deg, #4c0519 0%, #220914 100%);
-    color: #fff1f2;
-  }
-
-  /* Content Container (1200px Max-Width) */
-  .cst-hz-content-container {
-    width: 100%;
-    max-width: 1200px;
-    margin: 0 auto;
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    position: relative;
-    z-index: 2;
-  }
-
-  .cst-hz-card {
-    max-width: 580px;
-    text-align: center;
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-  }
-
-  .cst-hz-eyebrow {
-    font-size: 0.85rem;
-    font-weight: 500;
-    text-transform: uppercase;
-    letter-spacing: 0.15em;
-    opacity: 0.7;
-    margin-bottom: 1rem;
-  }
-
-  .cst-hz-title {
-    font-size: 3.5rem;
-    font-weight: 500;
-    letter-spacing: -0.03em;
-    line-height: 1.15;
-    margin: 0 0 1.5rem 0;
-  }
-
-  .cst-hz-desc {
-    font-size: 1.125rem;
-    line-height: 1.6;
-    opacity: 0.85;
-    margin: 0 0 2.5rem 0;
-    font-weight: 400;
-  }
-
-  .cst-hz-btn {
-    display: inline-flex;
-    align-items: center;
-    gap: 0.75rem;
-    padding: 7px 18px 7px 9px;
-    border-radius: 9999px;
-    background: transparent;
-    border: 1px solid rgba(255, 255, 255, 0.2);
-    color: inherit;
-    font-size: 0.95rem;
-    font-weight: 400;
-    text-decoration: none;
-
-  }
-
-  .cst-hz-slide-1 .cst-hz-btn {
-    background-color: #1f2937;
-    color: #ffffff;
-    border-color: transparent;
-  }
-
-  .cst-hz-btn:hover {
-    transform: translateY(-2px);
-    box-shadow: 0 10px 20px rgba(0,0,0,0.15);
-  }
-
-  .cst-hz-btn-icon {
-    width: 32px;
-    height: 32px;
-    border-radius: 50%;
-    background-color: rgba(255, 255, 255, 0.2);
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    transition: transform 0.2s ease;
-  }
-
-  .cst-hz-slide-1 .cst-hz-btn-icon {
-    background-color: rgba(255, 255, 255, 0.15);
-  }
-
-  .cst-hz-btn:hover .cst-hz-btn-icon {
-    transform: translateX(3px);
-  }
-
-  @media (max-width: 768px) {
-    .cst-hz-title {
-      font-size: 2.5rem;
-    }
-    .cst-hz-desc {
-      font-size: 1rem;
-    }
-  }
-</style>
-
-<script>
-  document.addEventListener("DOMContentLoaded", function () {
-    const pinWrapper = document.getElementById("cstHzPinWrapper");
-    const track = document.getElementById("cstHzTrack");
-
-    if (!pinWrapper || !track) return;
-
-    const totalSlides = 4;
-    let activeIndex = 0;
-
-    function updateSlidePosition(index) {
-      activeIndex = Math.max(0, Math.min(index, totalSlides - 1));
-      const moveX = activeIndex * (100 / totalSlides);
-      track.style.transform = `translateX(-${moveX}%)`;
-    }
-
-    window.addEventListener("scroll", () => {
-      const rect = pinWrapper.getBoundingClientRect();
-      const wrapperHeight = pinWrapper.offsetHeight;
-      const viewportHeight = window.innerHeight;
-
-      const scrollDist = -rect.top;
-      const maxScroll = wrapperHeight - viewportHeight;
-
-      if (scrollDist >= 0 && scrollDist <= maxScroll) {
-        const progress = scrollDist / maxScroll;
-        // Determine exact slide index based on scroll progress through the pinned wrapper
-        const calculatedIndex = Math.min(
-          Math.floor(progress * totalSlides + 0.05),
-          totalSlides - 1
-        );
-        if (calculatedIndex !== activeIndex) {
-          updateSlidePosition(calculatedIndex);
-        }
-      }
-    }, { passive: true });
-  });
-</script>
 
 
 

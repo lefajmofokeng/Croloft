@@ -126,7 +126,7 @@ class CronosHeader extends HTMLElement {
     }
 
     get LOGO() {
-        return { src: 'thumbnails/mock.png', alt: 'Cronos Logo', href: 'index.html' };
+        return { src: 'thumbnails/mock3.png', alt: 'Cronos Logo', href: 'index.html' };
     }
 
     get QR_DROPDOWN() {
@@ -378,7 +378,7 @@ class CronosHeader extends HTMLElement {
             align-items: center;
         }
 
-        .cronos-custom-logo-text img { height: 27px; vertical-align: middle; }
+        .cronos-custom-logo-text img { height: 35px; vertical-align: middle; }
         .cronos-custom-logo-text { color: var(--cronos-color-text-light); transition: color 0.3s; }
         .cronos-custom-logo-text:hover { color: var(--cronos-color-accent); }
 
