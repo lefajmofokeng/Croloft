@@ -6,6 +6,17 @@ class CronosHeader extends HTMLElement {
         this.attachShadow({ mode: 'open' });
     }
 
+    get APPS_CONFIG() {
+        return [
+            { name: 'Cronos Analytics', desc: 'Real-time telemetry and web app monitoring', icon: 'thumbnails/04 (2).png', href: 'analytics.html' },
+            { name: 'Cloud Hub', desc: 'Scalable cloud nodes and architecture nodes', icon: 'thumbnails/microsoft.png', href: 'cloud-infrastructure.html' },
+            { name: 'Cyber Shield', desc: 'Advanced threat protection and firewall rules', icon: 'thumbnails/sec2.png', href: 'cybersecurity.html' },
+            { name: 'Calculator', desc: 'Enterprise service and pricing configurator', icon: 'thumbnails/mock3.png', href: 'calculator.html' },
+            { name: 'Developer Hub', desc: 'APIs, documentation, and source code tools', icon: 'thumbnails/mock3.png', href: 'developer-hub.html' },
+            { name: 'Marketplace', desc: 'Global verified components and integrations', icon: 'thumbnails/mock3.png', href: 'marketplace.html' }
+        ];
+    }
+
     get SEARCH_INDEX() {
         return [
             { name: 'Artificial Intelligence Development',             href: 'mobile-applications.html#ai-development' },
@@ -142,6 +153,20 @@ class CronosHeader extends HTMLElement {
         return fallback;
     }
 
+    _buildAppsListHtml() {
+        return this.APPS_CONFIG.map(app => `
+            <a href="${app.href}" class="cronos-app-list-item">
+                <div class="cronos-app-icon-wrapper">
+                    <img src="${app.icon}" alt="${app.name} Icon" class="cronos-app-icon">
+                </div>
+                <div class="cronos-app-text-content">
+                    <span class="cronos-app-name">${app.name}</span>
+                    <span class="cronos-app-desc">${app.desc}</span>
+                </div>
+            </a>
+        `).join('');
+    }
+
     _buildGroupCard(group, isMobile) {
         const hasThumbnail = group.icon;
         const hasHeading   = group.heading;
@@ -241,6 +266,27 @@ class CronosHeader extends HTMLElement {
                     </div>
                 </li>`;
         }).join('');
+
+        listHtml += `
+            <li class="cronos-custom-nav-item--has-megamenu cronos-mobile-apps-drawer-item">
+                <a href="#" class="cronos-custom-nav-link" data-cronos-megamenu-trigger="mobile-apps-panel">
+                    <span class="cronos-nav-label-text" style="display:flex; align-items:center; gap:8px;">
+                        <svg width="18" height="18" viewBox="0 0 24 24" fill="currentColor"><circle cx="6" cy="6" r="2.2"/><circle cx="12" cy="6" r="2.2"/><circle cx="18" cy="6" r="2.2"/><circle cx="6" cy="12" r="2.2"/><circle cx="12" cy="12" r="2.2"/><circle cx="18" cy="12" r="2.2"/><circle cx="6" cy="18" r="2.2"/><circle cx="12" cy="18" r="2.2"/><circle cx="18" cy="18" r="2.2"/></svg>
+                        <span>Web Apps</span>
+                    </span>
+                    ${chevronRight}
+                </a>
+                <div class="cronos-mega-menu-container">
+                    <div class="cronos-mega-menu-panel" data-cronos-megamenu-panel="mobile-apps-panel">
+                        <div class="cronos-menu-group-card">
+                            <h3>Web Applications</h3>
+                            <div class="cronos-apps-list-container">
+                                ${this._buildAppsListHtml()}
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </li>`;
 
         const currentLangLabel = this._getMsg('lang-' + (localStorage.getItem('cronos_lang') || 'en'), 'Language');
         listHtml += `
@@ -468,6 +514,42 @@ class CronosHeader extends HTMLElement {
         .cronos-desktop-lang-button-trigger:hover { background-color: #2b294a; }
         .cronos-desktop-lang-button-trigger svg { width: 20px; height: 20px; color: #647487}
 
+        /* App Launcher Container Styling (Single Column Layout with Full Description Text Wrapping) */
+        .cronos-apps-dropdown-wrapper { position: relative; margin-left: 10px; }
+        .cronos-apps-button-trigger {
+            position: relative; width: 40px; height: 40px;
+            border-radius: 50%; background-color: transparent; display: flex;
+            align-items: center; justify-content: center; cursor: pointer;
+            transition: background-color 0.2s; color: var(--cronos-color-text-light);
+            border: 2px solid rgb(35, 43, 57);
+        }
+        .cronos-apps-button-trigger:hover, .cronos-apps-button-trigger.active { background-color: #2b294a; color: #fff; }
+        .cronos-apps-dropdown-container {
+            position: absolute; top: calc(100% + 13px); right: 0; width: 340px;
+            background-color: #080d1b;
+            border-radius: 15px; padding: 18px 20px; visibility: hidden; opacity: 0;
+            transform: translateY(-10px); transition: visibility 0.2s, opacity 0.2s, transform 0.2s;
+            z-index: 1150;
+        }
+        .cronos-apps-dropdown-container.show { visibility: visible; opacity: 1; transform: translateY(0); }
+        .cronos-apps-dropdown-header { margin-bottom: 12px; margin-left: 1rem; display: flex; justify-content: space-between; align-items: center; }
+        .cronos-apps-dropdown-title { font-size: 1.05rem; font-weight: 600; color: #fff; margin: 0; }
+        .cronos-apps-list-container { display: flex; flex-direction: column; gap: 10px; }
+        .cronos-app-list-item {
+            display: flex; align-items: flex-start; gap: 14px; padding: 10px;
+            border-radius: 12px; text-decoration: none; transition: background-color 0.2s ease;
+        }
+        .cronos-app-list-item:hover { background-color: rgba(255, 255, 255, 0.05); }
+        .cronos-app-icon-wrapper {
+            width: 38px; height: 38px; border-radius: 10px; background-color: rgba(255, 255, 255, 0.04);
+            display: flex; align-items: center; justify-content: center; flex-shrink: 0; border: 1px solid rgba(255, 255, 255, 0.08);
+            margin-top: 2px;
+        }
+        .cronos-app-icon { width: 40px; height: 40px; object-fit: contain; border-radius: 10px }
+        .cronos-app-text-content { display: flex; flex-direction: column; justify-content: center; min-width: 0; flex: 1; }
+        .cronos-app-name { font-size: 0.9rem; font-weight: 500; color: #fff; margin: 0 0 4px 0; line-height: 1.25; word-wrap: break-word; overflow-wrap: break-word; }
+        .cronos-app-desc { font-size: 0.78rem; font-weight: 400; color: var(--cronos-color-text-muted); margin: 0; line-height: 1.35; word-wrap: break-word; overflow-wrap: break-word; white-space: normal; }
+
         .cronos-profile-dropdown {
             position: absolute; top: calc(100% + 13px); right: 140px; width: 320px;
             background-color: #0d1527; border-radius: 18px; padding: 24px;
@@ -517,8 +599,6 @@ class CronosHeader extends HTMLElement {
 
         .cronos-menu-group-card { padding-top: 10px; padding-bottom: 2.5rem; }
         
-        /* FIX: Changed white-space from nowrap to normal to ensure long headers/taglines */
-        /* wrap inside their 250px layout tracks, respecting the 40px grid space boundaries. */
         .cronos-menu-group-card h3 { 
             font-size: 14px; 
             font-weight: 500; 
@@ -655,6 +735,7 @@ class CronosHeader extends HTMLElement {
         @media (min-width: 1025px) {
             .cronos-header-back-btn { display: none !important; }
             .cronos-mobile-header-active-title { display: none !important; }
+            .cronos-mobile-apps-drawer-item { display: none !important; }
             .cronos-mobile-lang-drawer-item { display: none !important; } 
         }
 
@@ -681,6 +762,7 @@ class CronosHeader extends HTMLElement {
             .cronos-qr-dropdown-trigger, .cronos-qr-dropdown-content { display: none; }
             .cronos-header-search-action-trigger { display: none !important; }
             .cronos-desktop-lang-button-trigger { display: none !important; }
+            .cronos-apps-dropdown-wrapper { display: none !important; }
             .cronos-lang-modal-container { display: none !important; }
             
             .cronos-profile-dropdown {
@@ -778,6 +860,30 @@ class CronosHeader extends HTMLElement {
                             <i class="fal fa-world"></i>
                             </div>
 
+                            <div class="cronos-apps-dropdown-wrapper">
+                                <button class="cronos-apps-button-trigger" id="cronos-appsTrigger" aria-label="Open Web Apps launcher">
+                                    <svg width="20" height="20" viewBox="0 0 24 24" fill="currentColor">
+                                        <circle cx="6" cy="6" r="2.2" />
+                                        <circle cx="12" cy="6" r="2.2" />
+                                        <circle cx="18" cy="6" r="2.2" />
+                                        <circle cx="6" cy="12" r="2.2" />
+                                        <circle cx="12" cy="12" r="2.2" />
+                                        <circle cx="18" cy="12" r="2.2" />
+                                        <circle cx="6" cy="18" r="2.2" />
+                                        <circle cx="12" cy="18" r="2.2" />
+                                        <circle cx="18" cy="18" r="2.2" />
+                                    </svg>
+                                </button>
+                                <div class="cronos-apps-dropdown-container" id="cronos-appsDropdownContainer">
+                                    <div class="cronos-apps-dropdown-header">
+                                        <h4 class="cronos-apps-dropdown-title">Web Apps</h4>
+                                    </div>
+                                    <div class="cronos-apps-list-container">
+                                        ${this._buildAppsListHtml()}
+                                    </div>
+                                </div>
+                            </div>
+
                         </div>
                     </nav>
 
@@ -873,6 +979,9 @@ class CronosHeader extends HTMLElement {
         const profileDropdown           = shadow.getElementById('cronos-profileDropdown');
         const profileClose              = shadow.getElementById('cronos-profileClose');
 
+        const appsTrigger               = shadow.getElementById('cronos-appsTrigger');
+        const appsDropdownContainer     = shadow.getElementById('cronos-appsDropdownContainer');
+
         const desktopSearchField        = shadow.getElementById('cronos-desktopSearchField');
         const desktopSearchResults      = shadow.getElementById('cronos-desktopSearchResults');
         const desktopSearchQuicklinks   = shadow.getElementById('cronos-desktopSearchQuicklinks');
@@ -916,7 +1025,7 @@ class CronosHeader extends HTMLElement {
 
         const setActiveMenu = (trigger, panel) => {
             cronosMegaMenuTriggers.forEach(t => {
-                if (window.innerWidth > 1024 || t.getAttribute('data-cronos-megamenu-trigger') !== 'mobile-language-panel') {
+                if (window.innerWidth > 1024 || (t.getAttribute('data-cronos-megamenu-trigger') !== 'mobile-language-panel' && t.getAttribute('data-cronos-megamenu-trigger') !== 'mobile-apps-panel')) {
                     t.classList.remove('active');
                 }
             });
@@ -932,6 +1041,8 @@ class CronosHeader extends HTMLElement {
                 alignPanel(trigger, panel);
                 cronosHeaderWrapper.classList.add('cronos-mega-menu-open');
                 profileDropdown.classList.remove('show');
+                if (appsDropdownContainer) appsDropdownContainer.classList.remove('show');
+                if (appsTrigger) appsTrigger.classList.remove('active');
                 
                 if(panel.getAttribute('data-cronos-megamenu-panel') === 'search-engine-panel' && window.innerWidth > 1024) {
                     setTimeout(() => desktopSearchField.focus(), 50);
@@ -1002,6 +1113,8 @@ class CronosHeader extends HTMLElement {
                 cronosQrDropdownContent.classList.add('show');
                 setActiveMenu(null, null);
                 profileDropdown.classList.remove('show');
+                if (appsDropdownContainer) appsDropdownContainer.classList.remove('show');
+                if (appsTrigger) appsTrigger.classList.remove('active');
             }
         };
         const hideQrDropdown = () => {
@@ -1019,7 +1132,21 @@ class CronosHeader extends HTMLElement {
                 e.stopPropagation();
                 setActiveMenu(null, null);
                 if (cronosQrDropdownContent) cronosQrDropdownContent.classList.remove('show');
+                if (appsDropdownContainer) appsDropdownContainer.classList.remove('show');
+                if (appsTrigger) appsTrigger.classList.remove('active');
                 profileDropdown.classList.toggle('show');
+            });
+        }
+
+        if (appsTrigger) {
+            appsTrigger.addEventListener('click', (e) => {
+                e.preventDefault();
+                e.stopPropagation();
+                setActiveMenu(null, null);
+                if (cronosQrDropdownContent) cronosQrDropdownContent.classList.remove('show');
+                if (profileDropdown) profileDropdown.classList.remove('show');
+                const isOpen = appsDropdownContainer.classList.toggle('show');
+                appsTrigger.classList.toggle('active', isOpen);
             });
         }
 
@@ -1034,6 +1161,10 @@ class CronosHeader extends HTMLElement {
             const path = e.composedPath();
             if (!path.includes(profileDropdown) && !path.includes(loginTrigger)) {
                 profileDropdown.classList.remove('show');
+            }
+            if (!path.includes(appsDropdownContainer) && !path.includes(appsTrigger)) {
+                if (appsDropdownContainer) appsDropdownContainer.classList.remove('show');
+                if (appsTrigger) appsTrigger.classList.remove('active');
             }
         });
 
@@ -1109,6 +1240,8 @@ class CronosHeader extends HTMLElement {
             e.stopPropagation();
             setActiveMenu(null, null);
             profileDropdown.classList.remove('show');
+            if (appsDropdownContainer) appsDropdownContainer.classList.remove('show');
+            if (appsTrigger) appsTrigger.classList.remove('active');
             langModal.classList.add('show');
             if (desktopLangSearchInput) {
                 desktopLangSearchInput.value = '';
@@ -1187,6 +1320,8 @@ class CronosHeader extends HTMLElement {
             let labelText = '';
             if (item.classList.contains('cronos-mobile-lang-drawer-item')) {
                 labelText = this._getMsg('lang-select-title', 'Language and Region');
+            } else if (item.classList.contains('cronos-mobile-apps-drawer-item')) {
+                labelText = 'Web Apps';
             } else {
                 labelText = item.querySelector('.cronos-nav-label-text')?.textContent || '';
             }
