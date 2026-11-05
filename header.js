@@ -6,17 +6,6 @@ class CronosHeader extends HTMLElement {
         this.attachShadow({ mode: 'open' });
     }
 
-    get APPS_CONFIG() {
-        return [
-            { name: 'Cronos Analytics', desc: 'Real-time telemetry and web app monitoring', icon: 'thumbnails/04 (2).png', href: 'analytics.html' },
-            { name: 'Cloud Hub', desc: 'Scalable cloud nodes and architecture nodes', icon: 'thumbnails/microsoft.png', href: 'cloud-infrastructure.html' },
-            { name: 'Cyber Shield', desc: 'Advanced threat protection and firewall rules', icon: 'thumbnails/sec2.png', href: 'cybersecurity.html' },
-            { name: 'Calculator', desc: 'Enterprise service and pricing configurator', icon: 'thumbnails/mock3.png', href: 'calculator.html' },
-            { name: 'Developer Hub', desc: 'APIs, documentation, and source code tools', icon: 'thumbnails/mock3.png', href: 'developer-hub.html' },
-            { name: 'Marketplace', desc: 'Global verified components and integrations', icon: 'thumbnails/mock3.png', href: 'marketplace.html' }
-        ];
-    }
-
     get SEARCH_INDEX() {
         return [
             { name: 'Artificial Intelligence Development',             href: 'mobile-applications.html#ai-development' },
@@ -39,6 +28,15 @@ class CronosHeader extends HTMLElement {
             { label: 'Active Innovations', href: 'innovations.html' },
             { label: 'Cybersecurity Guard', href: 'cybersecurity.html' },
             { label: 'Open Source Repos', href: 'portfolio.html' }
+        ];
+    }
+
+    get THREE_DOT_MENU_LINKS() {
+        return [
+            { label: 'Contact', href: 'contact-sales.html' },
+            { label: 'Programs & Communities', href: 'programs.html' },
+            { label: 'Developers', href: 'developer-hub.html' },
+            { label: 'Help Center', href: 'help-center.html' }
         ];
     }
 
@@ -153,20 +151,6 @@ class CronosHeader extends HTMLElement {
         return fallback;
     }
 
-    _buildAppsListHtml() {
-        return this.APPS_CONFIG.map(app => `
-            <a href="${app.href}" class="cronos-app-list-item">
-                <div class="cronos-app-icon-wrapper">
-                    <img src="${app.icon}" alt="${app.name} Icon" class="cronos-app-icon">
-                </div>
-                <div class="cronos-app-text-content">
-                    <span class="cronos-app-name">${app.name}</span>
-                    <span class="cronos-app-desc">${app.desc}</span>
-                </div>
-            </a>
-        `).join('');
-    }
-
     _buildGroupCard(group, isMobile) {
         const hasThumbnail = group.icon;
         const hasHeading   = group.heading;
@@ -238,11 +222,11 @@ class CronosHeader extends HTMLElement {
         return executionPanels + searchPanelHtml;
     }
 
-    _buildMobileNavList() {
+    _buildNavList() {
+        const downIcon = `<svg class="cronos-desktop-link-icon" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round"><polyline points="6 9 12 15 18 9"/></svg>`;
         const chevronRight = `<svg class="cronos-mobile-dropdown-icon" xmlns="http://www.w3.org/2000/svg" width="15" height="15" viewBox="0 0 24 24"><path fill="#f2f2f2" d="M8.025 22L6.25 20.225L14.475 12L6.25 3.775L8.025 2l10 10l-10 10Z" stroke-width="0.1" stroke-linecap="round" stroke-linejoin="round"/></svg>`;
-        const downIcon    = `<svg class="cronos-desktop-link-icon" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round"><polyline points="6 9 12 15 18 9"/></svg>`;
 
-        let listHtml = this.NAV_CONFIG.map(item => {
+        return this.NAV_CONFIG.map(item => {
             if (!item.megamenu) {
                 return `<li><a href="${item.href || '#'}" class="cronos-custom-nav-link" data-i18n="${item.i18nKey || ''}">${this._getMsg(item.i18nKey, item.label)}</a></li>`;
             }
@@ -266,29 +250,13 @@ class CronosHeader extends HTMLElement {
                     </div>
                 </li>`;
         }).join('');
+    }
 
-        listHtml += `
-            <li class="cronos-custom-nav-item--has-megamenu cronos-mobile-apps-drawer-item">
-                <a href="#" class="cronos-custom-nav-link" data-cronos-megamenu-trigger="mobile-apps-panel">
-                    <span class="cronos-nav-label-text" style="display:flex; align-items:center; gap:8px;">
-                        <svg width="18" height="18" viewBox="0 0 24 24" fill="currentColor"><circle cx="6" cy="6" r="2.2"/><circle cx="12" cy="6" r="2.2"/><circle cx="18" cy="6" r="2.2"/><circle cx="6" cy="12" r="2.2"/><circle cx="12" cy="12" r="2.2"/><circle cx="18" cy="12" r="2.2"/><circle cx="6" cy="18" r="2.2"/><circle cx="12" cy="18" r="2.2"/><circle cx="18" cy="18" r="2.2"/></svg>
-                        <span>Web Apps</span>
-                    </span>
-                    ${chevronRight}
-                </a>
-                <div class="cronos-mega-menu-container">
-                    <div class="cronos-mega-menu-panel" data-cronos-megamenu-panel="mobile-apps-panel">
-                        <div class="cronos-menu-group-card">
-                            <h3>Web Applications</h3>
-                            <div class="cronos-apps-list-container">
-                                ${this._buildAppsListHtml()}
-                            </div>
-                        </div>
-                    </div>
-                </div>
-            </li>`;
-
+    _buildMobileNavList() {
+        let listHtml = this._buildNavList();
         const currentLangLabel = this._getMsg('lang-' + (localStorage.getItem('cronos_lang') || 'en'), 'Language');
+        const chevronRight = `<svg class="cronos-mobile-dropdown-icon" xmlns="http://www.w3.org/2000/svg" width="15" height="15" viewBox="0 0 24 24"><path fill="#f2f2f2" d="M8.025 22L6.25 20.225L14.475 12L6.25 3.775L8.025 2l10 10l-10 10Z" stroke-width="0.1" stroke-linecap="round" stroke-linejoin="round"/></svg>`;
+
         listHtml += `
             <li class="cronos-custom-nav-item--has-megamenu cronos-mobile-lang-drawer-item">
                 <a href="#" class="cronos-custom-nav-link" data-cronos-megamenu-trigger="mobile-language-panel">
@@ -454,16 +422,41 @@ class CronosHeader extends HTMLElement {
             
         .cronos-header-secondary-btn:hover { background-color: #4a4b6b6d; }
 
-        .cronos-header-search-action-trigger {
-            background: transparent; border: 2px solid rgb(35, 43, 57); padding: 0; margin-right: 1px; margin-left: 18px;
-            cursor: pointer; color: var(--cronos-color-text-light); display: flex;
-            align-items: center; justify-content: center; width: 34px; height: 34px;
-            border-radius: 50%; transition: color 0.2s, background-color 0.2s;
+        .cronos-header-search-pill-trigger {
+            background: rgba(255, 255, 255, 0.03);
+            border: 1px solid rgba(255, 255, 255, 0.12);
+            padding: 0 10px 0 12px;
+            margin-right: 2px;
+            margin-left: 16px;
+            cursor: pointer;
+            color: var(--cronos-color-text-muted);
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            width: 105px;
+            height: 34px;
+            border-radius: 100px;
+            transition: all 0.2s ease;
         }
-        .cronos-header-search-action-trigger:hover, .cronos-header-search-action-trigger.active {
-            color: #fff; background-color: rgba(255, 255, 255, 0.05);
+        .cronos-header-search-pill-trigger:hover, .cronos-header-search-pill-trigger.active {
+            color: #fff;
+            background-color: rgba(255, 255, 255, 0.08);
+            border-color: rgba(255, 255, 255, 0.25);
         }
-        .cronos-header-search-action-trigger svg { width: 18px; height: 18px; color: #7e8da8; }
+        .cronos-search-pill-icon { display: flex; align-items: center; justify-content: center; }
+        .cronos-search-pill-icon svg { width: 15px; height: 15px; color: #a0aec0; }
+        .cronos-header-search-pill-trigger:hover .cronos-search-pill-icon svg { color: #fff; }
+        .cronos-search-pill-kbd {
+            background: rgba(255, 255, 255, 0.08);
+            border: 1px solid rgba(255, 255, 255, 0.12);
+            color: #a0aec0;
+            font-size: 12px;
+            font-weight: 500;
+            border-radius: 6px;
+            padding: 1px 7px;
+            line-height: 1.2;
+            font-family: inherit;
+        }
 
         .cronos-search-panel-card { width: 250px; }
         .cronos-search-input-field-container { width: 100%; position: relative; margin-bottom: 25px; }
@@ -514,41 +507,30 @@ class CronosHeader extends HTMLElement {
         .cronos-desktop-lang-button-trigger:hover { background-color: #2b294a; }
         .cronos-desktop-lang-button-trigger svg { width: 20px; height: 20px; color: #647487}
 
-        /* App Launcher Container Styling (Single Column Layout with Full Description Text Wrapping) */
-        .cronos-apps-dropdown-wrapper { position: relative; margin-left: 10px; }
-        .cronos-apps-button-trigger {
+        .cronos-dots-dropdown-wrapper { position: relative; margin-left: 10px; }
+        .cronos-dots-button-trigger {
             position: relative; width: 40px; height: 40px;
             border-radius: 50%; background-color: transparent; display: flex;
             align-items: center; justify-content: center; cursor: pointer;
             transition: background-color 0.2s; color: var(--cronos-color-text-light);
             border: 2px solid rgb(35, 43, 57);
         }
-        .cronos-apps-button-trigger:hover, .cronos-apps-button-trigger.active { background-color: #2b294a; color: #fff; }
-        .cronos-apps-dropdown-container {
-            position: absolute; top: calc(100% + 13px); right: 0; width: 340px;
-            background-color: #080d1b;
-            border-radius: 15px; padding: 18px 20px; visibility: hidden; opacity: 0;
-            transform: translateY(-10px); transition: visibility 0.2s, opacity 0.2s, transform 0.2s;
-            z-index: 1150;
+        .cronos-dots-button-trigger:hover, .cronos-dots-button-trigger.active { background-color: #2b294a; color: #fff; }
+        
+        .cronos-dots-dropdown-container {
+            position: absolute; top: calc(100% + 13px); right: 0; width: 240px;
+            background-color: #0d1527; border: 1px solid var(--cronos-color-menu-border);
+            border-radius: 15px; padding: 12px; visibility: hidden; opacity: 0;
+            transform: translateY(-10px); transition: visibility 0.2s ease, opacity 0.2s ease, transform 0.2s ease;
+            z-index: 1150; box-shadow: 0 16px 40px rgba(0, 0, 0, 0.6);
         }
-        .cronos-apps-dropdown-container.show { visibility: visible; opacity: 1; transform: translateY(0); }
-        .cronos-apps-dropdown-header { margin-bottom: 12px; margin-left: 1rem; display: flex; justify-content: space-between; align-items: center; }
-        .cronos-apps-dropdown-title { font-size: 1.05rem; font-weight: 600; color: #fff; margin: 0; }
-        .cronos-apps-list-container { display: flex; flex-direction: column; gap: 10px; }
-        .cronos-app-list-item {
-            display: flex; align-items: flex-start; gap: 14px; padding: 10px;
-            border-radius: 12px; text-decoration: none; transition: background-color 0.2s ease;
+        .cronos-dots-dropdown-container.show { visibility: visible; opacity: 1; transform: translateY(0); }
+        .cronos-dots-dropdown-list { display: flex; flex-direction: column; gap: 4px; list-style: none; padding: 0; margin: 0; }
+        .cronos-dots-dropdown-item {
+            display: block; padding: 10px 12px; border-radius: 10px; color: #fff; font-size: 0.9rem;
+            font-weight: 500; text-decoration: none; transition: background-color 0.15s ease, color 0.15s ease;
         }
-        .cronos-app-list-item:hover { background-color: rgba(255, 255, 255, 0.05); }
-        .cronos-app-icon-wrapper {
-            width: 38px; height: 38px; border-radius: 10px; background-color: rgba(255, 255, 255, 0.04);
-            display: flex; align-items: center; justify-content: center; flex-shrink: 0; border: 1px solid rgba(255, 255, 255, 0.08);
-            margin-top: 2px;
-        }
-        .cronos-app-icon { width: 40px; height: 40px; object-fit: contain; border-radius: 10px }
-        .cronos-app-text-content { display: flex; flex-direction: column; justify-content: center; min-width: 0; flex: 1; }
-        .cronos-app-name { font-size: 0.9rem; font-weight: 500; color: #fff; margin: 0 0 4px 0; line-height: 1.25; word-wrap: break-word; overflow-wrap: break-word; }
-        .cronos-app-desc { font-size: 0.78rem; font-weight: 400; color: var(--cronos-color-text-muted); margin: 0; line-height: 1.35; word-wrap: break-word; overflow-wrap: break-word; white-space: normal; }
+        .cronos-dots-dropdown-item:hover { background-color: rgba(255, 255, 255, 0.06); color: var(--cronos-color-accent); }
 
         .cronos-profile-dropdown {
             position: absolute; top: calc(100% + 13px); right: 140px; width: 320px;
@@ -585,7 +567,7 @@ class CronosHeader extends HTMLElement {
             transform: translateY(-10px); transition: visibility 0s, opacity 0s, transform 0s;
         }
         .cronos-header-wrapper.cronos-mega-menu-open .cronos-desktop-mega-menu { visibility: visible; opacity: 1; transform: translateY(0); }
-        .cronos-desktop-mega-menu .cronos-mega-menu-panel { display: none; width: 100%; padding: 18px 0 40px; }
+        .cronos-desktop-mega-menu .cronos-mega-menu-panel { display: none; width: 100%; padding: 25px 0 45px; }
         .cronos-desktop-mega-menu .cronos-mega-menu-panel.active { display: block; }
         .cronos-custom-nav-item--has-megamenu .cronos-mega-menu-container { display: none; }
         .cronos-desktop-mega-menu .cronos-megamenu-grid { transition: none; }
@@ -735,7 +717,6 @@ class CronosHeader extends HTMLElement {
         @media (min-width: 1025px) {
             .cronos-header-back-btn { display: none !important; }
             .cronos-mobile-header-active-title { display: none !important; }
-            .cronos-mobile-apps-drawer-item { display: none !important; }
             .cronos-mobile-lang-drawer-item { display: none !important; } 
         }
 
@@ -760,9 +741,9 @@ class CronosHeader extends HTMLElement {
             .cronos-header-action-buttons { flex-direction: column; width: 100%; padding: 0 20px; margin-top: auto; }
             .cronos-header-action-btn, .cronos-header-secondary-btn { width: 100%; margin: 10px 0 0 0; padding: 15px 20px; text-align: center; font-size: 19px; }
             .cronos-qr-dropdown-trigger, .cronos-qr-dropdown-content { display: none; }
-            .cronos-header-search-action-trigger { display: none !important; }
+            .cronos-header-search-pill-trigger { display: none !important; }
             .cronos-desktop-lang-button-trigger { display: none !important; }
-            .cronos-apps-dropdown-wrapper { display: none !important; }
+            .cronos-dots-dropdown-wrapper { display: none !important; }
             .cronos-lang-modal-container { display: none !important; }
             
             .cronos-profile-dropdown {
@@ -824,11 +805,15 @@ class CronosHeader extends HTMLElement {
                     <nav class="cronos-custom-main-nav">
                         <ul class="cronos-custom-nav-list">${this._buildMobileNavList()}</ul>
                         <div class="cronos-header-action-buttons">
-                            <button class="cronos-header-search-action-trigger" id="cronos-desktopSearchTrigger" data-cronos-megamenu-trigger="search-engine-panel" aria-label="Open search engine dropdown">
-                                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
-                                    <circle cx="11" cy="11" r="8"></circle>
-                                    <line x1="21" y1="21" x2="16.65" y2="16.65"></line>
-                                </svg>
+                            
+                            <button class="cronos-header-search-pill-trigger" id="cronos-desktopSearchTrigger" data-cronos-megamenu-trigger="search-engine-panel" aria-label="Open search engine">
+                                <span class="cronos-search-pill-icon">
+                                    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round">
+                                        <circle cx="11" cy="11" r="8"></circle>
+                                        <line x1="21" y1="21" x2="16.65" y2="16.65"></line>
+                                    </svg>
+                                </span>
+                                <kbd class="cronos-search-pill-kbd">/</kbd>
                             </button>
                             
                             ${this._buildActionButtons()}
@@ -860,27 +845,18 @@ class CronosHeader extends HTMLElement {
                             <i class="fal fa-world"></i>
                             </div>
 
-                            <div class="cronos-apps-dropdown-wrapper">
-                                <button class="cronos-apps-button-trigger" id="cronos-appsTrigger" aria-label="Open Web Apps launcher">
+                            <div class="cronos-dots-dropdown-wrapper">
+                                <button class="cronos-dots-button-trigger" id="cronos-dotsTrigger" aria-label="Open menu options">
                                     <svg width="20" height="20" viewBox="0 0 24 24" fill="currentColor">
-                                        <circle cx="6" cy="6" r="2.2" />
-                                        <circle cx="12" cy="6" r="2.2" />
-                                        <circle cx="18" cy="6" r="2.2" />
-                                        <circle cx="6" cy="12" r="2.2" />
-                                        <circle cx="12" cy="12" r="2.2" />
-                                        <circle cx="18" cy="12" r="2.2" />
-                                        <circle cx="6" cy="18" r="2.2" />
-                                        <circle cx="12" cy="18" r="2.2" />
-                                        <circle cx="18" cy="18" r="2.2" />
+                                        <circle cx="12" cy="5" r="2" />
+                                        <circle cx="12" cy="12" r="2" />
+                                        <circle cx="12" cy="19" r="2" />
                                     </svg>
                                 </button>
-                                <div class="cronos-apps-dropdown-container" id="cronos-appsDropdownContainer">
-                                    <div class="cronos-apps-dropdown-header">
-                                        <h4 class="cronos-apps-dropdown-title">Web Apps</h4>
-                                    </div>
-                                    <div class="cronos-apps-list-container">
-                                        ${this._buildAppsListHtml()}
-                                    </div>
+                                <div class="cronos-dots-dropdown-container" id="cronos-dotsDropdownContainer">
+                                    <ul class="cronos-dots-dropdown-list">
+                                        ${this.THREE_DOT_MENU_LINKS.map(link => `<li><a href="${link.href}" class="cronos-dots-dropdown-item">${link.label}</a></li>`).join('')}
+                                    </ul>
                                 </div>
                             </div>
 
@@ -979,12 +955,13 @@ class CronosHeader extends HTMLElement {
         const profileDropdown           = shadow.getElementById('cronos-profileDropdown');
         const profileClose              = shadow.getElementById('cronos-profileClose');
 
-        const appsTrigger               = shadow.getElementById('cronos-appsTrigger');
-        const appsDropdownContainer     = shadow.getElementById('cronos-appsDropdownContainer');
+        const dotsTrigger               = shadow.getElementById('cronos-dotsTrigger');
+        const dotsDropdownContainer     = shadow.getElementById('cronos-dotsDropdownContainer');
 
         const desktopSearchField        = shadow.getElementById('cronos-desktopSearchField');
         const desktopSearchResults      = shadow.getElementById('cronos-desktopSearchResults');
         const desktopSearchQuicklinks   = shadow.getElementById('cronos-desktopSearchQuicklinks');
+        const desktopSearchTrigger      = shadow.getElementById('cronos-desktopSearchTrigger');
         
         const mobileHeaderSearchTrigger = shadow.getElementById('cronos-mobileHeaderSearchTrigger');
         const mobileSearchOverlay       = shadow.getElementById('cronos-mobileSearchOverlay');
@@ -995,6 +972,20 @@ class CronosHeader extends HTMLElement {
 
         [desktopSearchResults, desktopSearchQuicklinks, mobileSearchResults, mobileSearchQuicklinks].forEach(el => {
             if(el) el.addEventListener('mousedown', (e) => e.preventDefault());
+        });
+
+        document.addEventListener('keydown', (e) => {
+            if (e.key === '/' && document.activeElement !== desktopSearchField && document.activeElement !== mobileSearchField) {
+                const isInputElement = ['INPUT', 'TEXTAREA', 'SELECT'].includes(document.activeElement.tagName) || document.activeElement.isContentEditable;
+                if (!isInputElement) {
+                    e.preventDefault();
+                    if (window.innerWidth > 1024 && desktopSearchTrigger) {
+                        desktopSearchTrigger.click();
+                    } else if (mobileHeaderSearchTrigger) {
+                        mobileHeaderSearchTrigger.click();
+                    }
+                }
+            }
         });
 
         const desktopLangTrigger        = shadow.getElementById('cronos-desktopLangTrigger');
@@ -1025,7 +1016,7 @@ class CronosHeader extends HTMLElement {
 
         const setActiveMenu = (trigger, panel) => {
             cronosMegaMenuTriggers.forEach(t => {
-                if (window.innerWidth > 1024 || (t.getAttribute('data-cronos-megamenu-trigger') !== 'mobile-language-panel' && t.getAttribute('data-cronos-megamenu-trigger') !== 'mobile-apps-panel')) {
+                if (window.innerWidth > 1024 || t.getAttribute('data-cronos-megamenu-trigger') !== 'mobile-language-panel') {
                     t.classList.remove('active');
                 }
             });
@@ -1041,8 +1032,8 @@ class CronosHeader extends HTMLElement {
                 alignPanel(trigger, panel);
                 cronosHeaderWrapper.classList.add('cronos-mega-menu-open');
                 profileDropdown.classList.remove('show');
-                if (appsDropdownContainer) appsDropdownContainer.classList.remove('show');
-                if (appsTrigger) appsTrigger.classList.remove('active');
+                if (dotsDropdownContainer) dotsDropdownContainer.classList.remove('show');
+                if (dotsTrigger) dotsTrigger.classList.remove('active');
                 
                 if(panel.getAttribute('data-cronos-megamenu-panel') === 'search-engine-panel' && window.innerWidth > 1024) {
                     setTimeout(() => desktopSearchField.focus(), 50);
@@ -1100,7 +1091,9 @@ class CronosHeader extends HTMLElement {
         window.addEventListener('resize', () => {
             const activePanel = cronosDesktopMegaMenu.querySelector('.cronos-mega-menu-panel.active');
             const activeTrigger = shadow.querySelector('[data-cronos-megamenu-trigger].active');
-            if (activePanel) alignPanel(activeTrigger, activePanel);
+            if (activePanel) {
+                alignPanel(activeTrigger, activePanel);
+            }
             
             if (window.innerWidth > 1024 && mobileSearchOverlay.classList.contains('open')) {
                 closeMobileSearchOverlay();
@@ -1113,8 +1106,8 @@ class CronosHeader extends HTMLElement {
                 cronosQrDropdownContent.classList.add('show');
                 setActiveMenu(null, null);
                 profileDropdown.classList.remove('show');
-                if (appsDropdownContainer) appsDropdownContainer.classList.remove('show');
-                if (appsTrigger) appsTrigger.classList.remove('active');
+                if (dotsDropdownContainer) dotsDropdownContainer.classList.remove('show');
+                if (dotsTrigger) dotsTrigger.classList.remove('active');
             }
         };
         const hideQrDropdown = () => {
@@ -1132,21 +1125,21 @@ class CronosHeader extends HTMLElement {
                 e.stopPropagation();
                 setActiveMenu(null, null);
                 if (cronosQrDropdownContent) cronosQrDropdownContent.classList.remove('show');
-                if (appsDropdownContainer) appsDropdownContainer.classList.remove('show');
-                if (appsTrigger) appsTrigger.classList.remove('active');
+                if (dotsDropdownContainer) dotsDropdownContainer.classList.remove('show');
+                if (dotsTrigger) dotsTrigger.classList.remove('active');
                 profileDropdown.classList.toggle('show');
             });
         }
 
-        if (appsTrigger) {
-            appsTrigger.addEventListener('click', (e) => {
+        if (dotsTrigger) {
+            dotsTrigger.addEventListener('click', (e) => {
                 e.preventDefault();
                 e.stopPropagation();
                 setActiveMenu(null, null);
                 if (cronosQrDropdownContent) cronosQrDropdownContent.classList.remove('show');
                 if (profileDropdown) profileDropdown.classList.remove('show');
-                const isOpen = appsDropdownContainer.classList.toggle('show');
-                appsTrigger.classList.toggle('active', isOpen);
+                const isOpen = dotsDropdownContainer.classList.toggle('show');
+                dotsTrigger.classList.toggle('active', isOpen);
             });
         }
 
@@ -1162,9 +1155,9 @@ class CronosHeader extends HTMLElement {
             if (!path.includes(profileDropdown) && !path.includes(loginTrigger)) {
                 profileDropdown.classList.remove('show');
             }
-            if (!path.includes(appsDropdownContainer) && !path.includes(appsTrigger)) {
-                if (appsDropdownContainer) appsDropdownContainer.classList.remove('show');
-                if (appsTrigger) appsTrigger.classList.remove('active');
+            if (!path.includes(dotsDropdownContainer) && !path.includes(dotsTrigger)) {
+                if (dotsDropdownContainer) dotsDropdownContainer.classList.remove('show');
+                if (dotsTrigger) dotsTrigger.classList.remove('active');
             }
         });
 
@@ -1240,8 +1233,8 @@ class CronosHeader extends HTMLElement {
             e.stopPropagation();
             setActiveMenu(null, null);
             profileDropdown.classList.remove('show');
-            if (appsDropdownContainer) appsDropdownContainer.classList.remove('show');
-            if (appsTrigger) appsTrigger.classList.remove('active');
+            if (dotsDropdownContainer) dotsDropdownContainer.classList.remove('show');
+            if (dotsTrigger) dotsTrigger.classList.remove('active');
             langModal.classList.add('show');
             if (desktopLangSearchInput) {
                 desktopLangSearchInput.value = '';
@@ -1320,8 +1313,6 @@ class CronosHeader extends HTMLElement {
             let labelText = '';
             if (item.classList.contains('cronos-mobile-lang-drawer-item')) {
                 labelText = this._getMsg('lang-select-title', 'Language and Region');
-            } else if (item.classList.contains('cronos-mobile-apps-drawer-item')) {
-                labelText = 'Web Apps';
             } else {
                 labelText = item.querySelector('.cronos-nav-label-text')?.textContent || '';
             }
@@ -1364,13 +1355,15 @@ class CronosHeader extends HTMLElement {
 
         mobileDropdownItems.forEach(item => {
             const trigger = item.querySelector('.cronos-custom-nav-link');
-            trigger.addEventListener('click', (e) => {
-                if (window.innerWidth <= 1024) {
-                    e.preventDefault();
-                    e.stopPropagation();
-                    openSubpanel(item);
-                }
-            });
+            if (trigger) {
+                trigger.addEventListener('click', (e) => {
+                    if (window.innerWidth <= 1024) {
+                        e.preventDefault();
+                        e.stopPropagation();
+                        openSubpanel(item);
+                    }
+                });
+            }
         });
 
         shadow.querySelectorAll('.cronos-custom-nav-list a, .cronos-mobile-overlay-body a').forEach(link => {
